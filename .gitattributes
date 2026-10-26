@@ -1,0 +1,2 @@
+# Source and robot assets are regular Git objects.
+# Downloadable datasets, pretrained weights and demo media are excluded by .gitignore.

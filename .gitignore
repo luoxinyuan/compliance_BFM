@@ -1,0 +1,26 @@
+# Python and local environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Downloaded pretrained models and experiment outputs
+pretrained/
+artifacts/
+outputs/
+wandb/
+
+# Local credentials and editor state
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+
+# Downloadable upstream motion datasets and demonstration media
+/humanoidverse/data/lafan_29dof.pkl
+/humanoidverse/data/lafan_29dof_10s-clipped.pkl
+/model/
+/resources/
