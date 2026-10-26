@@ -1,5 +1,9 @@
 # Active whole-body compliance (experimental)
 
+**Current whole-body extension:** see [PARALLEL_TRAINING.md](PARALLEL_TRAINING.md)
+for ten random single-contact points and synchronous multi-GPU sampling. The
+single-right-hand prototype and its initial validation are documented below.
+
 ## Repository inspection, before implementation
 
 - `agents/load_utils.py:load_model_from_checkpoint_dir(outer/checkpoint, device)` loads the original model. `model.act(observation, z, mean=True)` is the frozen low-level interface.

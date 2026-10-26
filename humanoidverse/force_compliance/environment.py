@@ -6,6 +6,7 @@ import torch
 import mujoco
 from .interaction import Tether
 from .policy import latent_command
+from .contacts import select_contact
 
 
 class ComplianceEnv:
@@ -65,6 +66,7 @@ class ComplianceEnv:
         self._original_step = self.sim.simulate_at_each_physics_step
         self.sim.simulate_at_each_physics_step = self._physics_step
         self.rng = np.random.default_rng(cfg.seed)
+        self.contact_rng = np.random.default_rng(cfg.seed + 104729)
         self.renderer = None
         self.reset()
 
@@ -119,9 +121,10 @@ class ComplianceEnv:
         self.last_qpos = d.qpos.copy()
         self.last_point = self.tether.point_state()[0]
 
-    def reset(self, seed=None, trajectory=None):
+    def reset(self, seed=None, trajectory=None, contact_index=None):
         if seed is not None:
             self.rng = np.random.default_rng(seed)
+            self.contact_rng = np.random.default_rng(seed + 104729)
         self.failed = False
         self.sub_rewards, self.sub_force_squared, self.sub_force_peak = [], [], []
         # reset_all performs a physics step: disable old interaction during reset.
@@ -130,6 +133,8 @@ class ComplianceEnv:
             self.obs, _ = self.wrapped.reset(seed=seed, to_numpy=False, reset_to_default_pose=True)
         finally:
             self.sim.simulate_at_each_physics_step = self._physics_step
+        self.contact_index, self.contact_name, contact_cfg = select_contact(self.cfg, self.contact_rng, contact_index)
+        self.tether = Tether(self.sim.model, self.sim.data, contact_cfg)
         self.tether.reset(self.rng, trajectory)
         self.previous_z = self.standing.clone()
         self.previous_action = None
@@ -149,8 +154,12 @@ class ComplianceEnv:
             normalized = self.model._normalize(self.obs)
             proprio = torch.cat([normalized[k].reshape(1, -1).float() for k in self.keys], -1)
         contact = np.concatenate((self.history.reshape(-1) / self.cfg.force_scale,
-                                  [float(self.tether.active)], self.cfg.local_point,
+                                  [float(self.tether.active)], self.tether.cfg.local_point,
                                   [self.tether.body / self.sim.model.nbody]))
+        if self.cfg.contact_points:
+            one_hot = np.zeros(len(self.cfg.contact_points), dtype=np.float32)
+            one_hot[self.contact_index] = 1.
+            contact = np.concatenate((contact, one_hot))
         return torch.cat((proprio, torch.tensor(contact, dtype=torch.float32, device=self.device)[None],
                           self.previous_z / np.sqrt(self.standing.shape[-1])), -1)
 
@@ -200,7 +209,7 @@ class ComplianceEnv:
                 break
         self.previous_z = z.clone()
         # Fixed-horizon episodic objective: timeout is terminal, no cross-episode bootstrap.
-        return self.observation(), total, self.done, dict(discount=discount, rows=rows, failed=failure)
+        return self.observation(), total, self.done, dict(discount=discount, rows=rows, failed=failure, contact_index=self.contact_index, contact_name=self.contact_name)
 
     def render(self):
         if self.renderer is None:

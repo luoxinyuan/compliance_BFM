@@ -1,0 +1,136 @@
+{
+  "contact_points": [
+    {
+      "name": "left_hand",
+      "body": "left_wrist_yaw_link",
+      "point": [
+        0.07065,
+        0.0215,
+        0.00141
+      ]
+    },
+    {
+      "name": "right_hand",
+      "body": "right_wrist_yaw_link",
+      "point": [
+        0.07065,
+        -0.0215,
+        0.00141
+      ]
+    },
+    {
+      "name": "left_upper_arm",
+      "body": "left_shoulder_yaw_link",
+      "point": [
+        0.00817,
+        0.02203,
+        -0.03929
+      ]
+    },
+    {
+      "name": "right_upper_arm",
+      "body": "right_shoulder_yaw_link",
+      "point": [
+        0.00817,
+        -0.02203,
+        -0.03929
+      ]
+    },
+    {
+      "name": "chest",
+      "body": "torso_link",
+      "point": [
+        0.07327,
+        0.0,
+        0.17319
+      ]
+    },
+    {
+      "name": "pelvis",
+      "body": "pelvis",
+      "point": [
+        0.0003,
+        0.06514,
+        -0.03211
+      ]
+    },
+    {
+      "name": "left_thigh",
+      "body": "left_hip_yaw_link",
+      "point": [
+        -0.04227,
+        0.03331,
+        -0.09931
+      ]
+    },
+    {
+      "name": "right_thigh",
+      "body": "right_hip_yaw_link",
+      "point": [
+        -0.04227,
+        -0.03331,
+        -0.09931
+      ]
+    },
+    {
+      "name": "left_shin",
+      "body": "left_knee_link",
+      "point": [
+        0.02005,
+        0.02322,
+        -0.15073
+      ]
+    },
+    {
+      "name": "right_shin",
+      "body": "right_knee_link",
+      "point": [
+        0.02005,
+        -0.02322,
+        -0.15073
+      ]
+    }
+  ],
+  "body": "right_wrist_yaw_link",
+  "local_point": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "stiffness": 80.0,
+  "damping": 8.0,
+  "max_force": 60.0,
+  "displacement_min": 0.03,
+  "displacement_max": 0.1,
+  "direction": null,
+  "trajectory": "smooth",
+  "activation_time": 0.0,
+  "anchor_delay": 1.0,
+  "ramp_duration": 2.0,
+  "release_time": null,
+  "episode_duration": 6.0,
+  "initial_joint_positions": {},
+  "initial_root_height": null,
+  "enabled": true,
+  "seed": 0,
+  "high_level_hz": 10.0,
+  "force_scale": 20.0,
+  "gate_force": 5.0,
+  "residual_scale": 0.3,
+  "force_history": 3,
+  "force_weight": 1.0,
+  "angular_weight": 0.01,
+  "joint_limit_weight": 0.1,
+  "ground_contact_weight": 1.0,
+  "torque_weight": 1e-06,
+  "acceleration_weight": 1e-07,
+  "action_rate_weight": 0.01,
+  "latent_rate_weight": 0.01,
+  "failure_penalty": 1000.0,
+  "min_root_height": 0.4,
+  "min_upright": 0.4,
+  "settling_force": 5.0,
+  "settling_window": 0.5,
+  "gamma": 0.99,
+  "gae_lambda": 0.95
+}

@@ -1,10 +1,12 @@
 # compliance_BFM
 
 Active whole-body compliance experiments built on BFM-Zero. The current runnable
-prototype uses one right-hand spring-damper interaction, a frozen pretrained BFM
-controller, and a trainable force-to-latent PPO policy. Full-body contact-point
-sampling and multi-contact interaction are not implemented yet.
+prototype supports ten whole-body candidate contact points, with one randomly
+selected maintained spring-damper tether per episode, a frozen pretrained BFM,
+and a trainable force-to-latent PPO policy. Multi-GPU parallel sampling trains one
+shared high-level policy. Simultaneous multi-contact interaction is not implemented.
 
+- [Whole-body parallel training](humanoidverse/force_compliance/PARALLEL_TRAINING.md)
 - [Implementation and commands](humanoidverse/force_compliance/README.md)
 - [Validation report and current limitations](humanoidverse/force_compliance/REPORT.md)
 - [Interaction configuration](humanoidverse/force_compliance/default.json)

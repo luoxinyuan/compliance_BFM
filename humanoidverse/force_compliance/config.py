@@ -3,6 +3,7 @@ from dataclasses import dataclass, field
 
 @dataclass
 class ComplianceConfig:
+    contact_points: list[dict] = field(default_factory=list)
     body: str = 'right_wrist_yaw_link'
     local_point: list[float] = field(default_factory=lambda: [0., 0., 0.])
     stiffness: float = 80.
@@ -62,6 +63,12 @@ class ComplianceConfig:
             raise ValueError('Initial joint positions must be finite')
         if self.force_history < 1 or len(self.local_point) != 3:
             raise ValueError('Invalid history or point')
+        names = [p['name'] for p in self.contact_points]
+        if len(set(names)) != len(names):
+            raise ValueError('Contact names must be unique')
+        for p in self.contact_points:
+            if not p.get('body') or len(p['point']) != 3 or not all(math.isfinite(x) for x in p['point']):
+                raise ValueError('Invalid contact point')
         if self.trajectory not in ('smooth', 'linear'):
             raise ValueError('Unknown trajectory')
         if self.release_time is not None and self.release_time < self.activation_time:

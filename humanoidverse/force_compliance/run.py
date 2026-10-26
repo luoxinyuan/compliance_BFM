@@ -13,8 +13,8 @@ from .policy import ForceLatentPolicy
 from .ppo import train
 
 
-def evaluate(env, policy, baseline, seed, trajectory=None, video_path=None):
-    observation = env.reset(seed=seed, trajectory=trajectory)
+def evaluate(env, policy, baseline, seed, trajectory=None, video_path=None, contact_index=None):
+    observation = env.reset(seed=seed, trajectory=trajectory, contact_index=contact_index)
     trajectory = (env.tether.origin.copy(), env.tether.delta.copy())
     rows, frames = [], []
     while True:
@@ -47,7 +47,7 @@ def evaluate(env, policy, baseline, seed, trajectory=None, video_path=None):
                 settling = row['time'] - stop
                 break
     supports = np.asarray([r['support'] for r in rows], dtype=int)
-    metrics = dict(peak_force=float(max(r['peak_force'] for r in rows)), mean_force=float(means.mean()),
+    metrics = dict(contact_name=env.contact_name, contact_index=env.contact_index, peak_force=float(max(r['peak_force'] for r in rows)), mean_force=float(means.mean()),
                    rms_force=float(np.sqrt(np.mean([r['force_squared'] for r in rows]))),
                    active_mean_force=float(selected.mean()) if len(selected) else None,
                    settling_time=settling, fall_rate=float(info['failed']),
