@@ -11,6 +11,7 @@ class ComplianceConfig:
     max_force: float = 60.
     displacement_min: float = .03
     displacement_max: float = .10
+    nominal_force_levels: list[float] = field(default_factory=list)  # K * anchor excursion, not guaranteed measured force
     direction: list[float] | None = None  # None: uniform sphere, fixed per episode
     trajectory: str = 'smooth'  # cubic smoothstep or linear ramp
     activation_time: float = 0.
@@ -63,6 +64,8 @@ class ComplianceConfig:
             raise ValueError('Initial joint positions must be finite')
         if self.force_history < 1 or len(self.local_point) != 3:
             raise ValueError('Invalid history or point')
+        if self.nominal_force_levels and (self.stiffness <= 0 or any(not math.isfinite(f) or not 0 < f <= self.max_force for f in self.nominal_force_levels)):
+            raise ValueError('Nominal forces require positive stiffness and levels within max_force')
         names = [p['name'] for p in self.contact_points]
         if len(set(names)) != len(names):
             raise ValueError('Contact names must be unique')

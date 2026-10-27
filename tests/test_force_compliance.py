@@ -24,6 +24,20 @@ class PhysicsTests(unittest.TestCase):
     def model(self):
         return mujoco.MjModel.from_xml_string('<mujoco><option gravity="0 0 0" timestep="0.002"/><worldbody><body name="hand"><freejoint/><geom type="sphere" size=".05" mass="1"/></body></worldbody></mujoco>')
 
+    def test_nominal_force_levels_and_unloading(self):
+        m = self.model(); d = mujoco.MjData(m)
+        for level in [10., 20., 30., 40., 60.]:
+            cfg = ComplianceConfig(body='hand', stiffness=200., nominal_force_levels=[level], direction=[1,0,0])
+            tether = Tether(m, d, cfg)
+            tether.time = cfg.anchor_delay + cfg.ramp_duration
+            np.testing.assert_allclose(tether.measure()[1], [level, 0, 0], atol=1e-8)
+            d.qpos[0] += level / cfg.stiffness
+            np.testing.assert_allclose(tether.measure()[1], 0, atol=1e-8)
+            d.qpos[0] = 0
+        for kwargs in [dict(stiffness=0, nominal_force_levels=[10]), dict(nominal_force_levels=[float('nan')]), dict(nominal_force_levels=[61])]:
+            with self.assertRaises(ValueError):
+                ComplianceConfig(**kwargs)
+
     def test_offset_point_wrench_equals_mj_applyft(self):
         m = self.model(); d = mujoco.MjData(m)
         d.qpos[3:7] = [np.sqrt(.5), 0, 0, np.sqrt(.5)]

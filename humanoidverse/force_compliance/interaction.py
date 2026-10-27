@@ -31,7 +31,9 @@ class Tether:
             direction = rng.normal(size=3) if self.cfg.direction is None else np.asarray(self.cfg.direction, dtype=float)
             if direction.shape != (3,) or not np.isfinite(direction).all() or np.linalg.norm(direction) < 1e-9:
                 raise ValueError('Direction must be a finite nonzero 3-vector')
-            self.delta = direction / np.linalg.norm(direction) * rng.uniform(self.cfg.displacement_min, self.cfg.displacement_max)
+            distance = (float(rng.choice(self.cfg.nominal_force_levels)) / self.cfg.stiffness
+                        if self.cfg.nominal_force_levels else rng.uniform(self.cfg.displacement_min, self.cfg.displacement_max))
+            self.delta = direction / np.linalg.norm(direction) * distance
         else:
             # Absolute anchors copied across baseline and policy, never re-anchored mid-episode.
             self.origin, self.delta = (np.array(v, dtype=float).copy() for v in trajectory)
