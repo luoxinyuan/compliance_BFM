@@ -16,6 +16,23 @@ import time
 import traceback
 
 
+def force_level_seeds(cfg, start=303):
+    """Choose reproducible audit seeds covering every nominal level."""
+    import numpy as np
+    if not cfg.nominal_force_levels:
+        return [start]
+    selected = {}
+    for seed in range(start, start + 100000):
+        rng = np.random.default_rng(seed)
+        if cfg.direction is None:
+            rng.normal(size=3)
+        level = float(rng.choice(cfg.nominal_force_levels))
+        selected.setdefault(level, seed)
+        if len(selected) == len(set(cfg.nominal_force_levels)):
+            return [selected[level] for level in dict.fromkeys(cfg.nominal_force_levels)]
+    raise RuntimeError('Could not cover all nominal force levels')
+
+
 def worker(connection, gpu, worker_id, model_folder, config, output):
     os.environ['CUDA_VISIBLE_DEVICES'] = str(gpu)
     os.environ['MUJOCO_GL'] = 'egl'
@@ -287,7 +304,7 @@ def main():
         atomic_json(args.output/'workers.json', [{k:v for k,v in r.items() if k!='standing'} for r in ready])
         status = 'preflight'
         atomic_json(args.output/'status.json', dict(status=status, decisions=decisions))
-        baseline = audit('preflight', [101, 202])
+        baseline = audit('preflight', force_level_seeds(cfg, 101) if cfg.nominal_force_levels else [101, 202])
         atomic_json(args.output/'preflight.json', baseline)
         if baseline['no_force']['fall_rate'] or any(v['baseline']['fall_rate'] for k,v in baseline.items() if k!='no_force'):
             raise RuntimeError('Frozen baseline fell during preflight; inspect per-contact results')
@@ -332,7 +349,7 @@ def main():
             if iteration % args.checkpoint_every == 0:
                 save()
             if iteration % args.evaluate_every == 0:
-                summaries = audit('evaluate', [303])
+                summaries = audit('evaluate', force_level_seeds(cfg))
                 atomic_json(args.output/f'evaluation_{iteration:06d}.json',summaries)
                 score = sum(v['learned']['episode_return'] for v in summaries.values())/len(summaries)
                 if score > best_score:

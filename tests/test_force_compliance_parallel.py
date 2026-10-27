@@ -8,11 +8,24 @@ from humanoidverse.force_compliance.config import ComplianceConfig
 from humanoidverse.force_compliance.contacts import CONTACTS, select_contact
 from humanoidverse.force_compliance.interaction import Tether
 from humanoidverse.force_compliance.environment import ComplianceEnv
-from humanoidverse.force_compliance.parallel import merge_rollouts, update
+from humanoidverse.force_compliance.parallel import merge_rollouts, update, force_level_seeds
 from humanoidverse.force_compliance.policy import ForceLatentPolicy
 
 
 class WholeBodyTests(unittest.TestCase):
+    def test_audit_covers_all_force_levels(self):
+        for direction in [None, [1., 0., 0.]]:
+            cfg = ComplianceConfig(nominal_force_levels=[10.,20.,30.,40.,60.], direction=direction)
+            seeds = force_level_seeds(cfg)
+            self.assertEqual(seeds, force_level_seeds(cfg))
+            levels = []
+            for seed in seeds:
+                rng = np.random.default_rng(seed)
+                if direction is None:
+                    rng.normal(size=3)
+                levels.append(float(rng.choice(cfg.nominal_force_levels)))
+            self.assertEqual(levels, cfg.nominal_force_levels)
+
     def test_random_contacts_reproducible_uniform_and_config_not_mutated(self):
         cfg = ComplianceConfig(contact_points=CONTACTS)
         rng = np.random.default_rng(17)

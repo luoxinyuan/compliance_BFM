@@ -18,7 +18,7 @@ Run a fresh high-level policy because the force distribution and residual scale
 have changed. Do not use exact `--resume` with a round-one checkpoint. Preflight
 checks the frozen no-force and pulling baseline before optimization. Inspect
 `preflight.json`, measured RMS forces and failure rates in `training.jsonl`, and
-paired evaluation files; completing the budget does not establish convergence.
+paired evaluation files (all five nominal levels across all ten contacts); completing the budget does not establish convergence.
 
 ```bash
 .venv/bin/python -m humanoidverse.force_compliance.parallel \
