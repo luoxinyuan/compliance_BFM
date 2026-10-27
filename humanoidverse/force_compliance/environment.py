@@ -168,7 +168,7 @@ class ComplianceEnv:
         if self.done:
             raise RuntimeError('Reset required after episode end')
         c = self.cfg
-        z = self.standing if baseline else latent_command(self.model, self.standing, raw_action, np.linalg.norm(self.history[-1]), c)
+        z = self.standing if baseline else latent_command(self.model, self.standing, raw_action, np.linalg.norm(self.history[-1]), c, previous_z=self.previous_z)
         latent_delta = float((z - self.previous_z).square().mean())
         total, discount, rows = 0., 1., []
         for low_index in range(self.interval):

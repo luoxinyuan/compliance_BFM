@@ -133,6 +133,41 @@ class PhysicsTests(unittest.TestCase):
 
 
 class LearningTests(unittest.TestCase):
+    def test_accumulate_uses_current_tangent_and_holds_at_zero_force(self):
+        model = SimpleNamespace(cfg=SimpleNamespace(archi=SimpleNamespace(norm_z=True)),
+                                project_z=lambda z: 2 * torch.nn.functional.normalize(z, dim=-1))
+        cfg = ComplianceConfig(latent_update_mode='accumulate', residual_scale=3.)
+        standing = torch.tensor([[2., 0., 0., 0.]])
+        raw = torch.tensor([[0., .2, .1, 0.]])
+        first = latent_command(model, standing, raw, 10., cfg, previous_z=standing)
+        second = latent_command(model, standing, raw, 10., cfg, previous_z=first)
+        tangent = torch.tanh(raw)
+        tangent -= (tangent * first).sum(-1, keepdim=True) / first.square().sum(-1, keepdim=True) * first
+        torch.testing.assert_close(second, model.project_z(first + 3 * tangent))
+        self.assertGreater(float((second-standing).norm()), float((first-standing).norm()))
+        held = second.clone()
+        for _ in range(100):
+            held = latent_command(model, standing, torch.randn_like(raw), 0., cfg, previous_z=held)
+        self.assertTrue(torch.equal(held, second))
+        torch.testing.assert_close(held.norm(dim=-1), torch.tensor([2.]))
+        # An episode reset supplies standing again, independent of the old command.
+        torch.testing.assert_close(latent_command(model, standing, raw, 10., cfg, previous_z=standing), first)
+        with self.assertRaises(ValueError):
+            latent_command(model, standing, raw, 10., cfg)
+        with self.assertRaises(ValueError):
+            ComplianceConfig(latent_update_mode='invalid')
+
+    def test_accumulate_batched_force_gate_and_zero_force(self):
+        model = SimpleNamespace(cfg=SimpleNamespace(archi=SimpleNamespace(norm_z=True)),
+                                project_z=lambda z: 2 * torch.nn.functional.normalize(z, dim=-1))
+        cfg = ComplianceConfig(latent_update_mode='accumulate', residual_scale=3.)
+        previous = torch.tensor([[0., 2., 0., 0.], [0., 2., 0., 0.]])
+        standing = torch.tensor([[2., 0., 0., 0.]])
+        result = latent_command(model, standing, torch.ones(2,4), torch.tensor([0.,10.]), cfg, previous_z=previous)
+        self.assertTrue(torch.equal(result[0], previous[0]))
+        self.assertFalse(torch.equal(result[1], previous[1]))
+        torch.testing.assert_close(result.norm(dim=-1), torch.tensor([2.,2.]))
+
     def test_latent_norm_zero_force_and_gradients(self):
         dim = 16
         model = SimpleNamespace(cfg=SimpleNamespace(archi=SimpleNamespace(norm_z=True)),

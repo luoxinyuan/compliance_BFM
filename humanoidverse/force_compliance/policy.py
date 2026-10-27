@@ -19,13 +19,23 @@ class ForceLatentPolicy(nn.Module):
         return self.critic(observation).squeeze(-1)
 
 
-def latent_command(model, standing, raw_action, force_norm, config):
-    # A bounded tangent residual avoids cancellation of the standing direction.
+def latent_command(model, standing, raw_action, force_norm, config, previous_z=None):
+    # Tangent increments are relative to the selected base, never to an old anchor.
     # Probability ratios are evaluated on the original Gaussian sample, not z.
     if not model.cfg.archi.norm_z:
         raise ValueError('Initial experiment requires the normalized BFM latent convention')
-    stand = model.project_z(standing)
+    if config.latent_update_mode == 'accumulate':
+        if previous_z is None:
+            raise ValueError('Accumulating latent commands require previous_z')
+        base = previous_z
+    else:
+        base = standing
+    stand = model.project_z(base)
     residual = torch.tanh(raw_action)
     residual = residual - (residual * stand).sum(-1, keepdim=True) / stand.square().sum(-1, keepdim=True) * stand
     gate = torch.as_tensor(force_norm / config.gate_force, device=stand.device).clamp(0, 1)
-    return model.project_z(stand + config.residual_scale * gate * residual)
+    if gate.ndim == stand.ndim - 1:
+        gate = gate.unsqueeze(-1)
+    updated = model.project_z(stand + config.residual_scale * gate * residual)
+    # Preserve the command exactly at zero force, including after nonzero updates.
+    return torch.where(gate == 0, base, updated)

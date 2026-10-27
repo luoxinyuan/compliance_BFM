@@ -27,6 +27,7 @@ class ComplianceConfig:
     force_scale: float = 20.
     gate_force: float = 5.
     residual_scale: float = .3
+    latent_update_mode: str = 'standing'  # 'accumulate' updates the previous command
     force_history: int = 3
     force_weight: float = 1.
     angular_weight: float = .01
@@ -74,6 +75,8 @@ class ComplianceConfig:
                 raise ValueError('Invalid contact point')
         if self.trajectory not in ('smooth', 'linear'):
             raise ValueError('Unknown trajectory')
+        if self.latent_update_mode not in ('standing', 'accumulate'):
+            raise ValueError('Unknown latent update mode')
         if self.release_time is not None and self.release_time < self.activation_time:
             raise ValueError('Release must follow activation')
         if not 0 < self.gamma <= 1 or not 0 <= self.gae_lambda <= 1:
