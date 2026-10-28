@@ -1,0 +1,512 @@
+{
+  "task_status": "completed",
+  "scientific_outcome": "no_force_replay_and_minus_x_completed",
+  "model_loaded": true,
+  "original_wrapper_used": true,
+  "script_sha256": "a55c8a810b74577693fb0884bde78cc72620cb2ad1cf18b7aae25d746ac1b45c",
+  "checkpoint_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "latent_norm": 16.0,
+  "anchor_source": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue19-wrist-20261028T054245Z/attempt-01/outputs/no_force.json",
+    "sha256": "ef6e2dfab4e314b59636870f1abc719c304192758420be190af307991bcf4898",
+    "time_s": 1.0,
+    "origin": [
+      0.13686332656697187,
+      -0.1968667867765935,
+      0.848818048880822
+    ]
+  },
+  "plus_x_reference": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue19-wrist-anchor-20261028T062503Z/attempt-02/outputs/closed_loop.json",
+    "sha256": "e03f6b23bb426c884a79a33c232e5c45aa0b06036590a2d416468577496fbd36"
+  },
+  "replay_gate": {
+    "passed": true,
+    "full_horizon": true,
+    "counts": {
+      "physics": [
+        1200,
+        1200
+      ],
+      "actor": [
+        300,
+        300
+      ]
+    },
+    "exact_trace": true,
+    "first_difference": null,
+    "all_forces_zero_and_inactive": true,
+    "max_abs_delta": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "torque": 0.0,
+      "action": 0.0
+    },
+    "physics_time_grid_exact": true,
+    "action_time_grid_exact": true,
+    "replay_live_bfm_calls": 0,
+    "replay_indices_exact": true
+  },
+  "archived_no_force_gate": {
+    "passed": true,
+    "full_horizon": true,
+    "counts": {
+      "physics": [
+        1200,
+        1200
+      ],
+      "actor": [
+        300,
+        300
+      ]
+    },
+    "exact_trace": true,
+    "first_difference": null,
+    "all_forces_zero_and_inactive": true,
+    "max_abs_delta": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "torque": 0.0,
+      "action": 0.0
+    },
+    "physics_time_grid_exact": true,
+    "action_time_grid_exact": true
+  },
+  "conditions": {
+    "no_force": {
+      "simulated_seconds": 6.0,
+      "failed": false,
+      "control_decisions": 300,
+      "live_bfm_calls": 300,
+      "force_rms_n": 0.0,
+      "force_peak_n": 0.0,
+      "force_rms_xyz_n": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "active_force_mean_xyz_n": null,
+      "force_impulse_xyz_ns": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "active_force_rms_n": null,
+      "active_cap_fraction": null,
+      "active_negative_fx_fraction": null,
+      "force_direction_angle_to_plus_x_deg": null,
+      "force_direction_angle_to_minus_x_deg": null,
+      "root_height_min_m": 0.7798337504458689,
+      "tilt_max_deg": 2.5248666582382633,
+      "root_rpy_abs_max_deg": [
+        0.38286315446459557,
+        2.5059306297848294,
+        6.234983535699845
+      ],
+      "double_foot_contact_fraction": 0.9941666666666666,
+      "no_foot_contact_times_s": [
+        0.005,
+        0.01,
+        0.015,
+        0.025,
+        0.030000000000000002
+      ],
+      "foot_xy_displacement_max_m": 0.0168611188130149,
+      "action_saturation_fraction": 0.0,
+      "torque_saturation_fraction": 0.0,
+      "force_law_reconstruction_max_error_n": 0.0,
+      "first_failed_physics_time_s": null
+    },
+    "no_force_replay": {
+      "simulated_seconds": 6.0,
+      "failed": false,
+      "control_decisions": 300,
+      "live_bfm_calls": 0,
+      "force_rms_n": 0.0,
+      "force_peak_n": 0.0,
+      "force_rms_xyz_n": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "active_force_mean_xyz_n": null,
+      "force_impulse_xyz_ns": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "active_force_rms_n": null,
+      "active_cap_fraction": null,
+      "active_negative_fx_fraction": null,
+      "force_direction_angle_to_plus_x_deg": null,
+      "force_direction_angle_to_minus_x_deg": null,
+      "root_height_min_m": 0.7798337504458689,
+      "tilt_max_deg": 2.5248666582382633,
+      "root_rpy_abs_max_deg": [
+        0.38286315446459557,
+        2.5059306297848294,
+        6.234983535699845
+      ],
+      "double_foot_contact_fraction": 0.9941666666666666,
+      "no_foot_contact_times_s": [
+        0.005,
+        0.01,
+        0.015,
+        0.025,
+        0.030000000000000002
+      ],
+      "foot_xy_displacement_max_m": 0.0168611188130149,
+      "action_saturation_fraction": 0.0,
+      "torque_saturation_fraction": 0.0,
+      "force_law_reconstruction_max_error_n": 0.0,
+      "first_failed_physics_time_s": null
+    },
+    "minus_x": {
+      "simulated_seconds": 6.0,
+      "failed": false,
+      "control_decisions": 300,
+      "live_bfm_calls": 300,
+      "force_rms_n": 1.6610486602390784,
+      "force_peak_n": 2.562635344228897,
+      "force_rms_xyz_n": [
+        1.5228924263526287,
+        0.6274412031088019,
+        0.21493916832727208
+      ],
+      "active_force_mean_xyz_n": [
+        -1.932063264337269,
+        0.8019774399689339,
+        0.2748099122944567
+      ],
+      "force_impulse_xyz_ns": [
+        -6.771881741502129,
+        2.810930927091113,
+        0.9632087425920708
+      ],
+      "active_force_rms_n": 2.1732714225800702,
+      "active_cap_fraction": 0.0,
+      "active_negative_fx_fraction": 1.0,
+      "force_direction_angle_to_plus_x_deg": {
+        "min": 128.78600094914714,
+        "median": 156.01727520999486,
+        "max": 161.1548503027353
+      },
+      "force_direction_angle_to_minus_x_deg": {
+        "min": 18.845149697264727,
+        "median": 23.98272479000514,
+        "max": 51.21399905085286
+      },
+      "root_height_min_m": 0.7799344124967561,
+      "tilt_max_deg": 2.3833883935562143,
+      "root_rpy_abs_max_deg": [
+        0.35805977905489983,
+        2.356354327933222,
+        6.8657247568157125
+      ],
+      "double_foot_contact_fraction": 0.9941666666666666,
+      "no_foot_contact_times_s": [
+        0.005,
+        0.01,
+        0.015,
+        0.025,
+        0.030000000000000002
+      ],
+      "foot_xy_displacement_max_m": 0.017611273097546013,
+      "action_saturation_fraction": 0.0,
+      "torque_saturation_fraction": 0.0,
+      "force_law_reconstruction_max_error_n": 4.440892098500626e-16,
+      "first_failed_physics_time_s": null
+    },
+    "plus_x_archived": {
+      "simulated_seconds": 6.0,
+      "failed": false,
+      "control_decisions": 300,
+      "live_bfm_calls": 300,
+      "force_rms_n": 0.5847453447665959,
+      "force_peak_n": 0.9017181085110921,
+      "force_rms_xyz_n": [
+        0.37421581906024987,
+        0.4431275807280844,
+        0.07434773829342224
+      ],
+      "active_force_mean_xyz_n": [
+        0.1931829185760121,
+        0.5775507977918365,
+        0.06578319963498724
+      ],
+      "force_impulse_xyz_ns": [
+        0.6771061296089225,
+        2.024315546260387,
+        0.23057011472063027
+      ],
+      "active_force_rms_n": 0.7650650927258584,
+      "active_cap_fraction": 0.0,
+      "active_negative_fx_fraction": 0.3124108416547789,
+      "force_direction_angle_to_plus_x_deg": {
+        "min": 44.341928577519,
+        "median": 50.67200925560606,
+        "max": 136.4637067095117
+      },
+      "force_direction_angle_to_minus_x_deg": {
+        "min": 43.53629329048829,
+        "median": 129.32799074439396,
+        "max": 135.65807142248102
+      },
+      "root_height_min_m": 0.7799952096943472,
+      "tilt_max_deg": 2.5646197904901706,
+      "root_rpy_abs_max_deg": [
+        0.42217164394302936,
+        2.537919640276504,
+        5.8637442023211355
+      ],
+      "double_foot_contact_fraction": 0.9941666666666666,
+      "no_foot_contact_times_s": [
+        0.005,
+        0.01,
+        0.015,
+        0.025,
+        0.030000000000000002
+      ],
+      "foot_xy_displacement_max_m": 0.01689701741886366,
+      "action_saturation_fraction": 0.0,
+      "torque_saturation_fraction": 0.0,
+      "force_law_reconstruction_max_error_n": 1.1102230246251565e-16,
+      "first_failed_physics_time_s": null
+    }
+  },
+  "hold_paired_deltas": {
+    "minus_x_minus_no_force": {
+      "wrist_paired_mean_delta_m": [
+        -0.02375177894030054,
+        0.0020198983777405307,
+        -0.003258477508703603
+      ],
+      "wrist_relative_root_paired_mean_delta_m": [
+        -0.010243614716835882,
+        -0.0009222055066787413,
+        -0.0036431628069014672
+      ],
+      "wrist_pelvis_frame_paired_mean_delta_m": [
+        -0.0072165038526910245,
+        0.0007472358152755304,
+        -0.00571148576031865
+      ],
+      "root_paired_mean_delta_m": [
+        -0.013508164223464634,
+        0.0029421038844192715,
+        0.0003846852981978638
+      ],
+      "action_rms_delta": 0.013294375732789881,
+      "action_max_abs_delta": 0.06062635779380798
+    },
+    "plus_x_minus_no_force": {
+      "wrist_paired_mean_delta_m": [
+        0.004460525089573037,
+        0.006660597177655517,
+        0.000594234282528247
+      ],
+      "wrist_relative_root_paired_mean_delta_m": [
+        0.0026929892464659633,
+        0.004247077892453729,
+        0.00034600196458747513
+      ],
+      "wrist_pelvis_frame_paired_mean_delta_m": [
+        0.0011197934524600174,
+        0.0030671301618370333,
+        0.0007026365481063177
+      ],
+      "root_paired_mean_delta_m": [
+        0.0017675358431070742,
+        0.0024135192852017882,
+        0.00024823231794077194
+      ],
+      "action_rms_delta": 0.0026994028679677646,
+      "action_max_abs_delta": 0.008089892566204071
+    },
+    "minus_x_minus_plus_x": {
+      "wrist_paired_mean_delta_m": [
+        -0.02821230402987356,
+        -0.004640698799914987,
+        -0.0038527117912318504
+      ],
+      "wrist_relative_root_paired_mean_delta_m": [
+        -0.012936603963301842,
+        -0.005169283399132474,
+        -0.003989164771488942
+      ],
+      "wrist_pelvis_frame_paired_mean_delta_m": [
+        -0.008336297305151041,
+        -0.002319894346561505,
+        -0.0064141223084249735
+      ],
+      "root_paired_mean_delta_m": [
+        -0.015275700066571718,
+        0.0005285845992174838,
+        0.00013645298025709185
+      ],
+      "action_rms_delta": 0.015288107267269296,
+      "action_max_abs_delta": 0.06762543320655823
+    }
+  },
+  "final_paired_deltas": {
+    "minus_x_minus_no_force": {
+      "wrist": [
+        -0.007271849339712283,
+        0.0006775865238211054,
+        -0.002346031607909582
+      ],
+      "wrist_relative_root": [
+        -0.005717113039845678,
+        -0.000699990355538832,
+        -0.0024466936587967947
+      ],
+      "root": [
+        -0.0015547362998666013,
+        0.0013775768793599513,
+        0.00010066205088721247
+      ]
+    },
+    "plus_x_minus_no_force": {
+      "wrist": [
+        0.0026006045126700517,
+        0.004210584614163404,
+        0.0004652352349318045
+      ],
+      "wrist_relative_root": [
+        0.0023390859972862443,
+        0.0031019156736505626,
+        0.0003037759864534806
+      ],
+      "root": [
+        0.00026151851538381427,
+        0.0011086689405128622,
+        0.00016145924847832394
+      ]
+    },
+    "minus_x_minus_plus_x": {
+      "wrist": [
+        -0.009872453852382335,
+        -0.0035329980903422986,
+        -0.0028112668428413867
+      ],
+      "wrist_relative_root": [
+        -0.008056199037131923,
+        -0.0038019060291893947,
+        -0.0027504696452502753
+      ],
+      "root": [
+        -0.0018162548152504156,
+        0.00026890793884708913,
+        -6.079719759111146e-05
+      ]
+    }
+  },
+  "additional_diagnostics": {
+    "minus_x": {
+      "hold_root_rpy_mean_delta_deg": [
+        0.20696130079201555,
+        -0.6959217121741378,
+        -0.700460904466389
+      ],
+      "first_state_change_s": 1.0050000000000006,
+      "first_action_change_s": 1.02
+    },
+    "plus_x_reference": {
+      "hold_root_rpy_mean_delta_deg": [
+        -0.040934804098407815,
+        0.11373333518487654,
+        0.38603808461089917
+      ],
+      "first_state_change_s": 1.0050000000000006,
+      "first_action_change_s": 1.02
+    }
+  },
+  "hold_tracking": {
+    "minus_x": {
+      "force_rms_xyz_n": [
+        2.0043980328528685,
+        1.0014657277686276,
+        0.28460297480626745
+      ],
+      "position_error_mean_xyz_m": [
+        -0.0252593457510168,
+        0.012375654227486042,
+        0.003588758048265596
+      ],
+      "position_error_rms_m": 0.02836609448087727,
+      "relative_to_anchor_origin_mean_xyz_m": [
+        -0.004740654248983213,
+        -0.012375654227486042,
+        -0.003588758048265596
+      ],
+      "root_tilt_mean_deg": 1.691226628080711
+    },
+    "plus_x_archived": {
+      "force_rms_xyz_n": [
+        0.5234527864718814,
+        0.6251315600805779,
+        0.03289656006095752
+      ],
+      "position_error_mean_xyz_m": [
+        0.006528350219109644,
+        0.007734955427571061,
+        -0.0002639537429662542
+      ],
+      "position_error_rms_m": 0.010130778665113662,
+      "relative_to_anchor_origin_mean_xyz_m": [
+        0.023471649780890367,
+        -0.007734955427571061,
+        0.0002639537429662542
+      ],
+      "root_tilt_mean_deg": 2.526388373973212
+    }
+  },
+  "attempts": [
+    {
+      "number": 1,
+      "state": "finished",
+      "script_sha256": "a55c8a810b74577693fb0884bde78cc72620cb2ad1cf18b7aae25d746ac1b45c",
+      "started_utc": "2026-10-28T07:10:11.469589+00:00",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue19-wrist-replay-minusx-20261028T070932Z/attempt-01",
+      "affinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "remaining_wall_seconds": 3600,
+      "peak_rss_bytes": 7390085120,
+      "peak_vms_bytes": 16466292736,
+      "pid": 479846,
+      "pgid": 479846,
+      "exit_code": 0,
+      "remaining_processes": [],
+      "wall_seconds": 140.52333006903064,
+      "resource_boundary": null,
+      "shared_source_unchanged": true
+    }
+  ],
+  "first_engineering_failure": null,
+  "first_scientific_failure": null,
+  "historical_tether_replay_failure": {
+    "time_s": 3.7,
+    "root_height_m": 0.396216008007448,
+    "criterion": "original root height < 0.4 m",
+    "rerun": false,
+    "record_preserved": true
+  },
+  "resources": {
+    "cpu_count": 4,
+    "memory_mib": 8192,
+    "gpu_count": 0,
+    "wall_seconds": 3600
+  },
+  "os_isolation": false,
+  "coding_model_observed": "gpt-6.1-sol / medium; owner explicitly allowed continuation",
+  "limitations": [
+    "seed0 only, 6s per condition",
+    "Same mirrored partner law, unequal realized force histories",
+    "No -X tether replay performed",
+    "No training, force-conditioned policy, contact expert or human-intent validation"
+  ]
+}
