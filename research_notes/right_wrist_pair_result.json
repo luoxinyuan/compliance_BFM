@@ -1,0 +1,756 @@
+{
+  "runtime_status": "executed",
+  "scientific_outcome": "paired_measurement_complete",
+  "model_loaded": true,
+  "original_wrapper_used": true,
+  "model_class": "FBcprAuxModel",
+  "wrapper_class": "HumanoidVerseVectorEnv",
+  "standing_source": "goal_inference(default standing reset observation); requires stability validation",
+  "latent_norm": 16.0,
+  "actor_keys": [
+    "state",
+    "last_action",
+    "history_actor"
+  ],
+  "torch_version": "2.7.1+cu128",
+  "mujoco_version": "3.3.3",
+  "protocol_overrides": {
+    "direction": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "displacement_min": 0.03,
+    "displacement_max": 0.03,
+    "max_force": 5.0,
+    "activation_time": 1.0,
+    "anchor_delay": 0.0,
+    "release_time": 4.5
+  },
+  "script_sha256": "e0838cf0198b1146a2f7d990a83fe7615a0f1564fe2a63842c5e4a8c7e0fda6d",
+  "checkpoint_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "lafan_sha256": "f3a0c2810363f5c50bf4146fa2db33c1ff5b90d00cb7c0bc2aa4622696375e11",
+  "analysis": {
+    "pair_valid": true,
+    "initial_state_and_actor_observation_equal": true,
+    "same_physics_grid": true,
+    "pre_contact_qpos_max_delta": 0.0,
+    "pre_contact_actor_max_delta": 0.0,
+    "episodes": {
+      "no_force": {
+        "simulated_seconds": 6.0,
+        "failed": false,
+        "original_metrics": {
+          "contact_name": "right_wrist_yaw_link",
+          "contact_index": 0,
+          "peak_force": 0.0,
+          "mean_force": 0.0,
+          "rms_force": 0.0,
+          "active_mean_force": 0.0,
+          "settling_time": null,
+          "fall_rate": 0.0,
+          "episode_return": -0.3213555175472622,
+          "duration": 6.0,
+          "point_displacement": 0.09407884951246236,
+          "root_displacement": 0.053773622656310666,
+          "joint_movement": 0.3670664447193742,
+          "mean_anchor_error": 0.09754835523268232,
+          "support_changes": 1,
+          "latent_variation": 0.0,
+          "anchor_displacement": 0.03
+        },
+        "actor_calls": 300,
+        "physics_samples": 1200,
+        "force_rms_n": 0.0,
+        "force_peak_n": 0.0,
+        "cap_fraction": 0.0,
+        "root_height_min_m": 0.7798337504458689,
+        "tilt_max_deg": 2.5248666582382633,
+        "root_rpy_abs_max_deg": [
+          0.38286315446459557,
+          2.5059306297848294,
+          6.234983535699845
+        ],
+        "any_foot_contact_fraction": 0.9958333333333333,
+        "double_foot_contact_fraction": 0.9941666666666666,
+        "no_foot_contact_times_s": [
+          0.005,
+          0.01,
+          0.015,
+          0.025,
+          0.030000000000000002
+        ],
+        "foot_xy_displacement_max_m": 0.0168611188130149,
+        "contact_normal_force_mean_n": [
+          132.9786264272563,
+          210.44986996003146
+        ],
+        "action_abs_max": 0.49598488211631775,
+        "action_saturation_fraction": 0.0,
+        "torque_saturation_fraction": 0.0,
+        "wrist_final_world_m": [
+          0.1526407170851319,
+          -0.21587220622290895,
+          0.8492912818522377
+        ],
+        "wrist_final_relative_root_m": [
+          0.18057693826200988,
+          -0.17458671315259006,
+          0.06945753140636879
+        ],
+        "root_final_m": [
+          -0.027936221176877975,
+          -0.04128549307031891,
+          0.7798337504458689
+        ],
+        "phases": {
+          "pre_contact": {
+            "samples": 200,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.15234091375235712,
+              -0.17226457322106684,
+              0.8592919835567626
+            ],
+            "wrist_mean_relative_root_m": [
+              0.19361136835038334,
+              -0.1553413689377155,
+              0.07519499903215981
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.19838810205093144,
+              -0.14813450925841282,
+              0.07752017005874579
+            ],
+            "root_mean_m": [
+              -0.04127045459802613,
+              -0.01692320428335126,
+              0.7840969845246032
+            ],
+            "anchor_error_mean_m": 0.06506679637622223
+          },
+          "ramp": {
+            "samples": 401,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.15383876002482802,
+              -0.20606740679117358,
+              0.8472417797173614
+            ],
+            "wrist_mean_relative_root_m": [
+              0.1870544058621524,
+              -0.16452709756169392,
+              0.06643290369368651
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.1952905532404085,
+              -0.15133233139947566,
+              0.07373140897093139
+            ],
+            "root_mean_m": [
+              -0.03321564583732431,
+              -0.04154030922947958,
+              0.7808088760236743
+            ],
+            "anchor_error_mean_m": 0.0966377605518735
+          },
+          "hold_late": {
+            "samples": 200,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.1558744512582892,
+              -0.21126233938182007,
+              0.8484877683412596
+            ],
+            "wrist_mean_relative_root_m": [
+              0.18375878819931887,
+              -0.17016486315363546,
+              0.06831726036140064
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.19560251413502514,
+              -0.153056855806115,
+              0.07552848295645614
+            ],
+            "root_mean_m": [
+              -0.027884336941029753,
+              -0.0410974762281846,
+              0.7801705079798594
+            ],
+            "anchor_error_mean_m": 0.10754866367082137
+          },
+          "released": {
+            "samples": 299,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.1538362953525783,
+              -0.21421680739723237,
+              0.8490379351144719
+            ],
+            "wrist_mean_relative_root_m": [
+              0.1817559742175861,
+              -0.17301018097220222,
+              0.06908391203815492
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.19556370559444328,
+              -0.1539622413432303,
+              0.07610575659248987
+            ],
+            "root_mean_m": [
+              -0.027919678865007885,
+              -0.04120662642503011,
+              0.7799540230763174
+            ],
+            "anchor_error_mean_m": 0.11045290897276032
+          }
+        }
+      },
+      "tether": {
+        "simulated_seconds": 6.0,
+        "failed": false,
+        "original_metrics": {
+          "contact_name": "right_wrist_yaw_link",
+          "contact_index": 0,
+          "peak_force": 5.000000000000001,
+          "mean_force": 2.436867345272728,
+          "rms_force": 3.193627967040174,
+          "active_mean_force": 2.9125904525172044,
+          "settling_time": 0.0,
+          "fall_rate": 0.0,
+          "episode_return": -7.974787296762307,
+          "duration": 6.0,
+          "point_displacement": 0.07420708018925067,
+          "root_displacement": 0.05045692360483395,
+          "joint_movement": 0.3663790362754531,
+          "mean_anchor_error": 0.062281864574243,
+          "support_changes": 1,
+          "latent_variation": 0.0,
+          "anchor_displacement": 0.03
+        },
+        "actor_calls": 300,
+        "physics_samples": 1200,
+        "force_rms_n": 3.193627967040174,
+        "force_peak_n": 5.000000000000001,
+        "cap_fraction": 0.028333333333333332,
+        "root_height_min_m": 0.7803847500998203,
+        "tilt_max_deg": 2.8408953522395253,
+        "root_rpy_abs_max_deg": [
+          0.5816425176447387,
+          2.78783763854231,
+          4.278239672167428
+        ],
+        "any_foot_contact_fraction": 0.9958333333333333,
+        "double_foot_contact_fraction": 0.9941666666666666,
+        "no_foot_contact_times_s": [
+          0.005,
+          0.01,
+          0.015,
+          0.025,
+          0.030000000000000002
+        ],
+        "foot_xy_displacement_max_m": 0.016756013321921382,
+        "contact_normal_force_mean_n": [
+          145.83217476938125,
+          196.7065624482049
+        ],
+        "action_abs_max": 0.49598488211631775,
+        "action_saturation_fraction": 0.0,
+        "torque_saturation_fraction": 0.0,
+        "wrist_final_world_m": [
+          0.16604926570753092,
+          -0.2011724199683525,
+          0.855097294299965
+        ],
+        "wrist_final_relative_root_m": [
+          0.19204670841168148,
+          -0.16263314628295703,
+          0.07471254420014461
+        ],
+        "root_final_m": [
+          -0.025997442704150567,
+          -0.038539273685395475,
+          0.7803847500998203
+        ],
+        "phases": {
+          "pre_contact": {
+            "samples": 200,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.15234091375235712,
+              -0.17226457322106684,
+              0.8592919835567626
+            ],
+            "wrist_mean_relative_root_m": [
+              0.19361136835038334,
+              -0.1553413689377155,
+              0.07519499903215981
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.19838810205093144,
+              -0.14813450925841282,
+              0.07752017005874579
+            ],
+            "root_mean_m": [
+              -0.04127045459802613,
+              -0.01692320428335126,
+              0.7840969845246032
+            ],
+            "anchor_error_mean_m": 0.06506679637622223
+          },
+          "ramp": {
+            "samples": 401,
+            "force_mean_vector_n": [
+              2.6416668481194585,
+              2.4171774047505634,
+              2.192203684542006
+            ],
+            "force_rms_n": 4.2298195777911936,
+            "wrist_mean_world_m": [
+              0.1799992730882025,
+              -0.1804660540703731,
+              0.8663555934623002
+            ],
+            "wrist_mean_relative_root_m": [
+              0.2069643150824523,
+              -0.14674799122389395,
+              0.08477654419158132
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.21040564560941277,
+              -0.13640212703008261,
+              0.09316007213241236
+            ],
+            "root_mean_m": [
+              -0.02696504199424995,
+              -0.033718062846479206,
+              0.7815790492707185
+            ],
+            "anchor_error_mean_m": 0.05549533929531816
+          },
+          "hold_late": {
+            "samples": 200,
+            "force_mean_vector_n": [
+              2.931749747850453,
+              2.058666957545782,
+              1.9650771313746755
+            ],
+            "force_rms_n": 4.085979445263555,
+            "wrist_mean_world_m": [
+              0.19305981362817853,
+              -0.1744109708593107,
+              0.870611687167636
+            ],
+            "wrist_mean_relative_root_m": [
+              0.21170224093421816,
+              -0.14425448309183614,
+              0.08925593592225196
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.21427728614436828,
+              -0.13425235746694633,
+              0.09826180492487428
+            ],
+            "root_mean_m": [
+              -0.018642427306039766,
+              -0.03015648776747453,
+              0.7813557512453845
+            ],
+            "anchor_error_mean_m": 0.051163574038397386
+          },
+          "released": {
+            "samples": 299,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.17359667358239544,
+              -0.1920231688170291,
+              0.8586400304350079
+            ],
+            "wrist_mean_relative_root_m": [
+              0.19709535129718384,
+              -0.15710535425358182,
+              0.07782619919286318
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.20310956915925368,
+              -0.14506462119821417,
+              0.08548310633876348
+            ],
+            "root_mean_m": [
+              -0.02349867771478858,
+              -0.034917814563447294,
+              0.7808138312421439
+            ],
+            "anchor_error_mean_m": 0.07988333179239553
+          }
+        }
+      }
+    },
+    "paired_phase_deltas": {
+      "pre_contact": {
+        "wrist_paired_mean_delta_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wrist_relative_root_paired_mean_delta_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wrist_pelvis_frame_paired_mean_delta_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "root_paired_mean_delta_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "action_rms_delta": 0.0,
+        "action_max_abs_delta": 0.0
+      },
+      "ramp": {
+        "wrist_paired_mean_delta_m": [
+          0.026160513063374354,
+          0.025601352720800392,
+          0.019113813744939225
+        ],
+        "wrist_relative_root_paired_mean_delta_m": [
+          0.01990990922029999,
+          0.017779106337800013,
+          0.01834364049789479
+        ],
+        "wrist_pelvis_frame_paired_mean_delta_m": [
+          0.01511509236900442,
+          0.014930204369393024,
+          0.019428663161481053
+        ],
+        "root_paired_mean_delta_m": [
+          0.00625060384307437,
+          0.007822246383000395,
+          0.0007701732470444334
+        ],
+        "action_rms_delta": 0.011609268737687894,
+        "action_max_abs_delta": 0.040315914899110794
+      },
+      "hold_late": {
+        "wrist_paired_mean_delta_m": [
+          0.03718536236988921,
+          0.03685136852250938,
+          0.02212391882637654
+        ],
+        "wrist_relative_root_paired_mean_delta_m": [
+          0.02794345273489921,
+          0.025910380061799333,
+          0.02093867556085138
+        ],
+        "wrist_pelvis_frame_paired_mean_delta_m": [
+          0.018674772009343317,
+          0.018804498339168637,
+          0.022733321968418083
+        ],
+        "root_paired_mean_delta_m": [
+          0.009241909634989987,
+          0.010940988460710066,
+          0.0011852432655251781
+        ],
+        "action_rms_delta": 0.015061292971245251,
+        "action_max_abs_delta": 0.04316344112157822
+      },
+      "released": {
+        "wrist_paired_mean_delta_m": [
+          0.01976037822981734,
+          0.022193638580203182,
+          0.009602095320535313
+        ],
+        "wrist_relative_root_paired_mean_delta_m": [
+          0.015339377079598022,
+          0.015904826718620334,
+          0.00874228715470834
+        ],
+        "wrist_pelvis_frame_paired_mean_delta_m": [
+          0.007545863564810313,
+          0.008897620145016044,
+          0.00937734974627355
+        ],
+        "root_paired_mean_delta_m": [
+          0.004421001150219322,
+          0.006288811861582845,
+          0.000859808165826981
+        ],
+        "action_rms_delta": 0.007798880603317508,
+        "action_max_abs_delta": 0.043196436017751694
+      }
+    },
+    "paired_final_delta_m": {
+      "wrist": [
+        0.013408548622399014,
+        0.014699786254556452,
+        0.005806012447727271
+      ],
+      "wrist_relative_root": [
+        0.011469770149671599,
+        0.011953566869633031,
+        0.005255012793775826
+      ],
+      "root": [
+        0.001938778472727408,
+        0.0027462193849234345,
+        0.000550999653951445
+      ]
+    },
+    "limitation": "Action changes demonstrate closed-loop feedback, not a causal separation of active assistance from passive deflection or PD impedance."
+  },
+  "cuda_initialized": false,
+  "all_parameters_cpu": true,
+  "all_parameters_frozen": true,
+  "no_parameter_gradients": true,
+  "model_eval": true,
+  "first_boundary": null,
+  "run_id": "issue19-wrist-20261028T054245Z",
+  "run_path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue19-wrist-20261028T054245Z/attempt-01",
+  "resources": {
+    "run_id": "issue19-wrist-20261028T054245Z",
+    "authorization": "Owner requested minimal paired wrist pilot and autonomous technical fixes",
+    "resources": {
+      "cpu_count": 4,
+      "memory_mib": 8192,
+      "gpu_count": 0,
+      "wall_seconds": 3600
+    },
+    "attempts": [
+      {
+        "number": 1,
+        "state": "finished",
+        "script_sha256": "e0838cf0198b1146a2f7d990a83fe7615a0f1564fe2a63842c5e4a8c7e0fda6d",
+        "started_utc": "2026-10-28T05:43:13.401305+00:00",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue19-wrist-20261028T054245Z/attempt-01",
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "remaining_wall_seconds": 3600,
+        "peak_rss_bytes": 7829725184,
+        "peak_vms_bytes": 16425357312,
+        "pid": 320526,
+        "pgid": 320526,
+        "exit_code": 0,
+        "remaining_processes": [],
+        "wall_seconds": 142.00171364902053,
+        "resource_boundary": null,
+        "shared_source_unchanged": true
+      }
+    ],
+    "os_isolation": false,
+    "memory_enforcement": "Owned process-group RSS sum watchdog, 0.1 s, not OS hard quota"
+  },
+  "verification": {
+    "checks_passed": 10,
+    "analysis_recompute_abs_max_difference": 1.1368683772161603e-13,
+    "floating_point_comparison_tolerance": 1e-12,
+    "first_nonzero_force_time_s": 1.0000000000000007,
+    "last_active_force_time_s": 4.499999999999926,
+    "first_state_difference_s": 1.0050000000000006,
+    "first_actor_difference_s": 1.02,
+    "active_force_rms_n": 4.178456996029194,
+    "active_force_mean_xyz_n": [
+      2.772844386961706,
+      2.2671324927421876,
+      2.101154190912442
+    ],
+    "active_samples": 701,
+    "capped_samples": 34,
+    "force_at_first_activation_xyz_n": [
+      3.2569448312322504,
+      2.8025477258238896,
+      2.5569584687258557
+    ],
+    "anchor_initial_xyz_m": [
+      0.19977428480554452,
+      -0.14865141941311574,
+      0.8952327940194068
+    ],
+    "anchor_delta_m": [
+      0.03,
+      0.0,
+      0.0
+    ],
+    "pre_contact_wrist_displacement_m": [
+      -0.06291095823857265,
+      -0.04821536736347776,
+      -0.04641474513858479
+    ],
+    "all_post_activation_samples_double_contact": true,
+    "first_runtime_failure_boundary": null,
+    "scientific_boundary": "3D preload from reset-fixed anchor; no causal active/passive ablation; one seed and 6 s"
+  },
+  "prior_baseline_reproduced": true,
+  "hold_action_delta_by_joint": [
+    {
+      "joint": "left_hip_pitch_joint",
+      "rms_action_delta": 0.009434066249016574
+    },
+    {
+      "joint": "left_hip_roll_joint",
+      "rms_action_delta": 0.0034087234942264703
+    },
+    {
+      "joint": "left_hip_yaw_joint",
+      "rms_action_delta": 0.003933742055380785
+    },
+    {
+      "joint": "left_knee_joint",
+      "rms_action_delta": 0.0028031082545530474
+    },
+    {
+      "joint": "left_ankle_pitch_joint",
+      "rms_action_delta": 0.04231272857937509
+    },
+    {
+      "joint": "left_ankle_roll_joint",
+      "rms_action_delta": 0.005379109454341742
+    },
+    {
+      "joint": "right_hip_pitch_joint",
+      "rms_action_delta": 0.003508719359787632
+    },
+    {
+      "joint": "right_hip_roll_joint",
+      "rms_action_delta": 0.004445837343742303
+    },
+    {
+      "joint": "right_hip_yaw_joint",
+      "rms_action_delta": 0.01173406885451164
+    },
+    {
+      "joint": "right_knee_joint",
+      "rms_action_delta": 0.0026880220824362067
+    },
+    {
+      "joint": "right_ankle_pitch_joint",
+      "rms_action_delta": 0.031499020861035544
+    },
+    {
+      "joint": "right_ankle_roll_joint",
+      "rms_action_delta": 0.004776776355916502
+    },
+    {
+      "joint": "waist_yaw_joint",
+      "rms_action_delta": 0.029076827199662383
+    },
+    {
+      "joint": "waist_roll_joint",
+      "rms_action_delta": 0.002956502902483209
+    },
+    {
+      "joint": "waist_pitch_joint",
+      "rms_action_delta": 0.03160990388803817
+    },
+    {
+      "joint": "left_shoulder_pitch_joint",
+      "rms_action_delta": 0.0016833664715386496
+    },
+    {
+      "joint": "left_shoulder_roll_joint",
+      "rms_action_delta": 0.00494205127323755
+    },
+    {
+      "joint": "left_shoulder_yaw_joint",
+      "rms_action_delta": 0.001226117213753677
+    },
+    {
+      "joint": "left_elbow_joint",
+      "rms_action_delta": 0.000826815004251401
+    },
+    {
+      "joint": "left_wrist_roll_joint",
+      "rms_action_delta": 0.005056771310215717
+    },
+    {
+      "joint": "left_wrist_pitch_joint",
+      "rms_action_delta": 0.03017178474419966
+    },
+    {
+      "joint": "left_wrist_yaw_joint",
+      "rms_action_delta": 0.00650031404599655
+    },
+    {
+      "joint": "right_shoulder_pitch_joint",
+      "rms_action_delta": 0.01875794773393641
+    },
+    {
+      "joint": "right_shoulder_roll_joint",
+      "rms_action_delta": 0.003348355248985967
+    },
+    {
+      "joint": "right_shoulder_yaw_joint",
+      "rms_action_delta": 0.010123012775621498
+    },
+    {
+      "joint": "right_elbow_joint",
+      "rms_action_delta": 0.0007357397084915849
+    },
+    {
+      "joint": "right_wrist_roll_joint",
+      "rms_action_delta": 0.00901365348456512
+    },
+    {
+      "joint": "right_wrist_pitch_joint",
+      "rms_action_delta": 0.0025361398096384095
+    },
+    {
+      "joint": "right_wrist_yaw_joint",
+      "rms_action_delta": 0.005331153671061897
+    }
+  ],
+  "source_commit": "662260c36201730c3e308a8b288a70692f1ee610",
+  "assessment": {
+    "stable_in_this_trial": true,
+    "frozen_actor_feedback_changed": true,
+    "active_assistance_causally_established": false,
+    "pure_x_guidance_isolated": false,
+    "lpp_trained": false
+  },
+  "data_hashes": {
+    "attempt-01/stdout.log": "2d2ced2cdb8c7ba844fbde798ac1dab68352e6b7172444df8119e950f86e1134",
+    "attempt-01/stderr.log": "f538025cf1bcd51b765a8c9f9875e3a69ec40c8d53b0da42b385fe93c4088b74",
+    "attempt-01/supervisor-result.json": "ca9651252bb083a7bc9967030ac39c9bf7b370e7a1b4451370775ed9fab5a5a0",
+    "attempt-01/outputs/tether.json": "81e3cd398e10979483e159be6f4498f000376212e9007757d33fcf19b660e5fa",
+    "attempt-01/outputs/result.json": "6b6bda814dc3346a177399c330b216cb72a4d2d8b471ea9aeb45b86d62ac1240",
+    "attempt-01/outputs/no_force.json": "ef6e2dfab4e314b59636870f1abc719c304192758420be190af307991bcf4898"
+  }
+}
