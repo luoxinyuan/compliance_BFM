@@ -1,0 +1,1630 @@
+{
+  "runtime_status": "executed",
+  "scientific_outcome": "replay_negative",
+  "first_boundary": "replay: original failure/termination or incomplete 6s horizon",
+  "model_loaded": true,
+  "original_wrapper_used": true,
+  "model_class": "FBcprAuxModel",
+  "wrapper_class": "HumanoidVerseVectorEnv",
+  "standing_source": "goal_inference(default standing reset observation); requires stability validation",
+  "latent_norm": 16.0,
+  "actor_keys": [
+    "state",
+    "last_action",
+    "history_actor"
+  ],
+  "torch_version": "2.7.1+cu128",
+  "mujoco_version": "3.3.3",
+  "protocol_overrides": {
+    "direction": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "displacement_min": 0.03,
+    "displacement_max": 0.03,
+    "max_force": 5.0,
+    "activation_time": 1.0,
+    "anchor_delay": 0.0,
+    "release_time": 4.5
+  },
+  "script_sha256": "3d5bf87a0c9f5f2ed977ed02c7f66b59cd1af17a3f0f3aa9352014405baeb2db",
+  "checkpoint_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "lafan_sha256": "f3a0c2810363f5c50bf4146fa2db33c1ff5b90d00cb7c0bc2aa4622696375e11",
+  "anchor_source": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue19-wrist-20261028T054245Z/attempt-01/outputs/no_force.json",
+    "sha256": "ef6e2dfab4e314b59636870f1abc719c304192758420be190af307991bcf4898",
+    "time_s": 1.0,
+    "origin": [
+      0.13686332656697187,
+      -0.1968667867765935,
+      0.848818048880822
+    ]
+  },
+  "archived_no_force_state_and_action_reproduced": true,
+  "analysis": {
+    "conditions": {
+      "no_force": {
+        "simulated_seconds": 6.0,
+        "failed": false,
+        "original_metrics": {
+          "contact_name": "right_wrist_yaw_link",
+          "contact_index": 0,
+          "peak_force": 0.0,
+          "mean_force": 0.0,
+          "rms_force": 0.0,
+          "active_mean_force": 0.0,
+          "settling_time": null,
+          "fall_rate": 0.0,
+          "episode_return": -0.3213555175472622,
+          "duration": 6.0,
+          "point_displacement": 0.09407884951246236,
+          "root_displacement": 0.053773622656310666,
+          "joint_movement": 0.3670664447193742,
+          "mean_anchor_error": 0.019198822694385997,
+          "support_changes": 1,
+          "latent_variation": 0.0,
+          "anchor_displacement": 0.03
+        },
+        "physics_samples": 1200,
+        "force_rms_n": 0.0,
+        "force_peak_n": 0.0,
+        "cap_fraction": 0.0,
+        "root_height_min_m": 0.7798337504458689,
+        "tilt_max_deg": 2.5248666582382633,
+        "root_rpy_abs_max_deg": [
+          0.38286315446459557,
+          2.5059306297848294,
+          6.234983535699845
+        ],
+        "any_foot_contact_fraction": 0.9958333333333333,
+        "double_foot_contact_fraction": 0.9941666666666666,
+        "no_foot_contact_times_s": [
+          0.005,
+          0.01,
+          0.015,
+          0.025,
+          0.030000000000000002
+        ],
+        "foot_xy_displacement_max_m": 0.0168611188130149,
+        "contact_normal_force_mean_n": [
+          132.9786264272563,
+          210.44986996003146
+        ],
+        "action_abs_max": 0.49598488211631775,
+        "action_saturation_fraction": 0.0,
+        "torque_saturation_fraction": 0.0,
+        "wrist_final_world_m": [
+          0.1526407170851319,
+          -0.21587220622290895,
+          0.8492912818522377
+        ],
+        "wrist_final_relative_root_m": [
+          0.18057693826200988,
+          -0.17458671315259006,
+          0.06945753140636879
+        ],
+        "root_final_m": [
+          -0.027936221176877975,
+          -0.04128549307031891,
+          0.7798337504458689
+        ],
+        "phases": {
+          "pre_contact": {
+            "samples": 200,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.15234091375235712,
+              -0.17226457322106684,
+              0.8592919835567626
+            ],
+            "wrist_mean_relative_root_m": [
+              0.19361136835038334,
+              -0.1553413689377155,
+              0.07519499903215981
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.19838810205093144,
+              -0.14813450925841282,
+              0.07752017005874579
+            ],
+            "root_mean_m": [
+              -0.04127045459802613,
+              -0.01692320428335126,
+              0.7840969845246032
+            ],
+            "anchor_error_mean_m": 0.034225597149662404
+          },
+          "ramp": {
+            "samples": 401,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.15383876002482802,
+              -0.20606740679117358,
+              0.8472417797173614
+            ],
+            "wrist_mean_relative_root_m": [
+              0.1870544058621524,
+              -0.16452709756169392,
+              0.06643290369368651
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.1952905532404085,
+              -0.15133233139947566,
+              0.07373140897093139
+            ],
+            "root_mean_m": [
+              -0.03321564583732431,
+              -0.04154030922947958,
+              0.7808088760236743
+            ],
+            "anchor_error_mean_m": 0.011461008696187266
+          },
+          "hold_late": {
+            "samples": 200,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.1558744512582892,
+              -0.21126233938182007,
+              0.8484877683412596
+            ],
+            "wrist_mean_relative_root_m": [
+              0.18375878819931887,
+              -0.17016486315363546,
+              0.06831726036140064
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.19560251413502514,
+              -0.153056855806115,
+              0.07552848295645614
+            ],
+            "root_mean_m": [
+              -0.027884336941029753,
+              -0.0410974762281846,
+              0.7801705079798594
+            ],
+            "anchor_error_mean_m": 0.018114367539397637
+          },
+          "released": {
+            "samples": 299,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.1538362953525783,
+              -0.21421680739723237,
+              0.8490379351144719
+            ],
+            "wrist_mean_relative_root_m": [
+              0.1817559742175861,
+              -0.17301018097220222,
+              0.06908391203815492
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.19556370559444328,
+              -0.1539622413432303,
+              0.07610575659248987
+            ],
+            "root_mean_m": [
+              -0.027919678865007885,
+              -0.04120662642503011,
+              0.7799540230763174
+            ],
+            "anchor_error_mean_m": 0.02169786511190152
+          }
+        },
+        "control_decisions": 300,
+        "live_bfm_calls": 300,
+        "force_rms_xyz_n": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "force_abs_peak_xyz_n": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "force_impulse_xyz_ns": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "first_failed_physics_time_s": null,
+        "force_law_reconstruction_max_error_n": 0.0,
+        "max_support_loss_after_onset_samples": 0,
+        "active_samples": 0,
+        "phase_details": {
+          "pre_contact": {
+            "force_rms_xyz_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "position_error_mean_xyz_m": [
+              -0.015477587185385269,
+              -0.02460221355552675,
+              -0.010473934675940886
+            ],
+            "position_error_rms_m": 0.04399704498167734,
+            "relative_to_anchor_origin_mean_xyz_m": [
+              0.015477587185385269,
+              0.02460221355552675,
+              0.010473934675940886
+            ],
+            "root_tilt_mean_deg": 0.81382068178932
+          },
+          "ramp": {
+            "force_rms_xyz_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "position_error_mean_xyz_m": [
+              -0.001975433457856433,
+              0.009200620014580087,
+              0.0015762691634609283
+            ],
+            "position_error_rms_m": 0.011839245410288843,
+            "relative_to_anchor_origin_mean_xyz_m": [
+              0.016975433457856126,
+              -0.009200620014580087,
+              -0.0015762691634609283
+            ],
+            "root_tilt_mean_deg": 2.302692762730351
+          },
+          "hold_late": {
+            "force_rms_xyz_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "position_error_mean_xyz_m": [
+              0.010988875308682679,
+              0.014395552605226578,
+              0.00033028053956199287
+            ],
+            "position_error_rms_m": 0.01813411490687189,
+            "relative_to_anchor_origin_mean_xyz_m": [
+              0.019011124691317313,
+              -0.014395552605226578,
+              -0.00033028053956199287
+            ],
+            "root_tilt_mean_deg": 2.4076301517559218
+          },
+          "released": {
+            "force_rms_xyz_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "position_error_mean_xyz_m": [
+              0.013027031214393749,
+              0.0173500206206389,
+              -0.0002198862336500401
+            ],
+            "position_error_rms_m": 0.021731380451960776,
+            "relative_to_anchor_origin_mean_xyz_m": [
+              0.016972968785606248,
+              -0.0173500206206389,
+              0.0002198862336500401
+            ],
+            "root_tilt_mean_deg": 2.3659029070634996
+          }
+        }
+      },
+      "closed_loop": {
+        "simulated_seconds": 6.0,
+        "failed": false,
+        "original_metrics": {
+          "contact_name": "right_wrist_yaw_link",
+          "contact_index": 0,
+          "peak_force": 0.9017181085110921,
+          "mean_force": 0.44333019032017223,
+          "rms_force": 0.5847453447665962,
+          "active_mean_force": 0.5298767214982139,
+          "settling_time": 0.0,
+          "fall_rate": 0.0,
+          "episode_return": -0.5759199241538147,
+          "duration": 6.0,
+          "point_displacement": 0.08956317410863598,
+          "root_displacement": 0.05272815639375349,
+          "joint_movement": 0.3646208268172084,
+          "mean_anchor_error": 0.014712856912320191,
+          "support_changes": 1,
+          "latent_variation": 0.0,
+          "anchor_displacement": 0.03
+        },
+        "physics_samples": 1200,
+        "force_rms_n": 0.5847453447665959,
+        "force_peak_n": 0.9017181085110921,
+        "cap_fraction": 0.0,
+        "root_height_min_m": 0.7799952096943472,
+        "tilt_max_deg": 2.5646197904901706,
+        "root_rpy_abs_max_deg": [
+          0.42217164394302936,
+          2.537919640276504,
+          5.8637442023211355
+        ],
+        "any_foot_contact_fraction": 0.9958333333333333,
+        "double_foot_contact_fraction": 0.9941666666666666,
+        "no_foot_contact_times_s": [
+          0.005,
+          0.01,
+          0.015,
+          0.025,
+          0.030000000000000002
+        ],
+        "foot_xy_displacement_max_m": 0.01689701741886366,
+        "contact_normal_force_mean_n": [
+          135.56655619989618,
+          207.8352265334205
+        ],
+        "action_abs_max": 0.49598488211631775,
+        "action_saturation_fraction": 0.0,
+        "torque_saturation_fraction": 0.0,
+        "wrist_final_world_m": [
+          0.15524132159780196,
+          -0.21166162160874555,
+          0.8497565170871695
+        ],
+        "wrist_final_relative_root_m": [
+          0.18291602425929612,
+          -0.1714847974789395,
+          0.06976130739282227
+        ],
+        "root_final_m": [
+          -0.02767470266149416,
+          -0.04017682412980605,
+          0.7799952096943472
+        ],
+        "phases": {
+          "pre_contact": {
+            "samples": 200,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.15234091375235712,
+              -0.17226457322106684,
+              0.8592919835567626
+            ],
+            "wrist_mean_relative_root_m": [
+              0.19361136835038334,
+              -0.1553413689377155,
+              0.07519499903215981
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.19838810205093144,
+              -0.14813450925841282,
+              0.07752017005874579
+            ],
+            "root_mean_m": [
+              -0.04127045459802613,
+              -0.01692320428335126,
+              0.7840969845246032
+            ],
+            "anchor_error_mean_m": 0.034225597149662404
+          },
+          "ramp": {
+            "samples": 401,
+            "force_mean_vector_n": [
+              -0.054097696966463285,
+              0.5533846079849769,
+              0.12133544312413148
+            ],
+            "force_rms_n": 0.7337779835076923,
+            "wrist_mean_world_m": [
+              0.15294046179536475,
+              -0.20344006473437384,
+              0.8473405896855866
+            ],
+            "wrist_mean_relative_root_m": [
+              0.18731613977634928,
+              -0.16320702170688614,
+              0.06637322597884307
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.1952902218613253,
+              -0.15025953389793373,
+              0.07358188444181575
+            ],
+            "root_mean_m": [
+              -0.03437567798098472,
+              -0.04023304302748784,
+              0.7809673637067446
+            ],
+            "anchor_error_mean_m": 0.008539762514068957
+          },
+          "hold_late": {
+            "samples": 200,
+            "force_mean_vector_n": [
+              0.5234284337438116,
+              0.6248472622659013,
+              -0.027467712456323293
+            ],
+            "force_rms_n": 0.8160113177755556,
+            "wrist_mean_world_m": [
+              0.16033497634786223,
+              -0.20460174220416452,
+              0.8490820026237879
+            ],
+            "wrist_mean_relative_root_m": [
+              0.186451777445785,
+              -0.1659177852611818,
+              0.0686632623259881
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.196722307587485,
+              -0.14998972564427793,
+              0.07623111950456245
+            ],
+            "root_mean_m": [
+              -0.026116801097922672,
+              -0.03868395694298281,
+              0.7804187402978006
+            ],
+            "anchor_error_mean_m": 0.010128462831676968
+          },
+          "released": {
+            "samples": 299,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.15741803436154062,
+              -0.20851191236290018,
+              0.8496676595185091
+            ],
+            "wrist_mean_relative_root_m": [
+              0.18449064922793615,
+              -0.16911721762311693,
+              0.0695013935418712
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.19673155993205477,
+              -0.15130734425136025,
+              0.07663648926969124
+            ],
+            "root_mean_m": [
+              -0.02707261486639541,
+              -0.03939469473978326,
+              0.7801662659766376
+            ],
+            "anchor_error_mean_m": 0.015018703782556079
+          }
+        },
+        "control_decisions": 300,
+        "live_bfm_calls": 300,
+        "force_rms_xyz_n": [
+          0.37421581906024987,
+          0.4431275807280844,
+          0.07434773829342224
+        ],
+        "force_abs_peak_xyz_n": [
+          0.653689898859733,
+          0.6575422639475951,
+          0.1592542982067788
+        ],
+        "force_impulse_xyz_ns": [
+          0.6771061296089225,
+          2.024315546260387,
+          0.23057011472063027
+        ],
+        "first_failed_physics_time_s": null,
+        "force_law_reconstruction_max_error_n": 1.1102230246251565e-16,
+        "max_support_loss_after_onset_samples": 0,
+        "active_samples": 701,
+        "active_force_rms_n": 0.7650650927258584,
+        "active_cap_fraction": 0.0,
+        "first_applied_force": {
+          "force_time": 1.0000000000000007,
+          "force": [
+            -0.2279042855849439,
+            0.2773707026607023,
+            0.05910252418304352
+          ],
+          "spring_force": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "damping_force": [
+            -0.2279042855849439,
+            0.2773707026607023,
+            0.05910252418304352
+          ],
+          "point_velocity_before": [
+            0.02848803569811802,
+            -0.03467133783258779,
+            -0.00738781552288044
+          ],
+          "position_error_before": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "force_direction_angle_to_plus_x_deg": {
+          "min": 44.341928577519,
+          "median": 50.67200925560606,
+          "max": 136.4637067095117
+        },
+        "active_negative_fx_fraction": 0.3124108416547789,
+        "phase_details": {
+          "pre_contact": {
+            "force_rms_xyz_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "position_error_mean_xyz_m": [
+              -0.015477587185385269,
+              -0.02460221355552675,
+              -0.010473934675940886
+            ],
+            "position_error_rms_m": 0.04399704498167734,
+            "relative_to_anchor_origin_mean_xyz_m": [
+              0.015477587185385269,
+              0.02460221355552675,
+              0.010473934675940886
+            ],
+            "root_tilt_mean_deg": 0.81382068178932
+          },
+          "ramp": {
+            "force_rms_xyz_n": [
+              0.46243301074011545,
+              0.5557396257854547,
+              0.12545639876184206
+            ],
+            "position_error_mean_xyz_m": [
+              -0.0010771352283930346,
+              0.0065732779577804285,
+              0.0014774591952353752
+            ],
+            "position_error_rms_m": 0.008774575683819306,
+            "relative_to_anchor_origin_mean_xyz_m": [
+              0.016077135228392724,
+              -0.0065732779577804285,
+              -0.0014774591952353752
+            ],
+            "root_tilt_mean_deg": 2.2598816534903086
+          },
+          "hold_late": {
+            "force_rms_xyz_n": [
+              0.5234527864718814,
+              0.6251315600805779,
+              0.03289656006095752
+            ],
+            "position_error_mean_xyz_m": [
+              0.006528350219109644,
+              0.007734955427571061,
+              -0.0002639537429662542
+            ],
+            "position_error_rms_m": 0.010130778665113662,
+            "relative_to_anchor_origin_mean_xyz_m": [
+              0.023471649780890367,
+              -0.007734955427571061,
+              0.0002639537429662542
+            ],
+            "root_tilt_mean_deg": 2.526388373973212
+          },
+          "released": {
+            "force_rms_xyz_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "position_error_mean_xyz_m": [
+              0.009445292205431225,
+              0.011645125586306638,
+              -0.0008496106376874994
+            ],
+            "position_error_rms_m": 0.015221462393139335,
+            "relative_to_anchor_origin_mean_xyz_m": [
+              0.02055470779456879,
+              -0.011645125586306638,
+              0.0008496106376874994
+            ],
+            "root_tilt_mean_deg": 2.4006598859416592
+          }
+        }
+      },
+      "replay": {
+        "simulated_seconds": 3.7,
+        "failed": true,
+        "original_metrics": {
+          "contact_name": "right_wrist_yaw_link",
+          "contact_index": 0,
+          "peak_force": 5.000000000000001,
+          "mean_force": 2.1354792667577915,
+          "rms_force": 3.0185069964618343,
+          "active_mean_force": 2.9048798849278774,
+          "settling_time": null,
+          "fall_rate": 1.0,
+          "episode_return": -1009.6197666932808,
+          "duration": 3.7,
+          "point_displacement": 0.9656579341855116,
+          "root_displacement": 0.8383277243096544,
+          "joint_movement": 0.669457200699597,
+          "mean_anchor_error": 0.10596325429985277,
+          "support_changes": 5,
+          "latent_variation": 0.0,
+          "anchor_displacement": 0.03
+        },
+        "physics_samples": 740,
+        "force_rms_n": 3.0185069964618343,
+        "force_peak_n": 5.000000000000002,
+        "cap_fraction": 0.3054054054054054,
+        "root_height_min_m": 0.396216008007448,
+        "tilt_max_deg": 63.41757258242824,
+        "root_rpy_abs_max_deg": [
+          14.630091158212988,
+          62.45274783571652,
+          11.395113116838878
+        ],
+        "any_foot_contact_fraction": 0.9918918918918919,
+        "double_foot_contact_fraction": 0.9851351351351352,
+        "no_foot_contact_times_s": [
+          0.005,
+          0.01,
+          0.015,
+          0.025,
+          0.030000000000000002,
+          3.6799999999999438
+        ],
+        "foot_xy_displacement_max_m": 0.0533152633183586,
+        "contact_normal_force_mean_n": [
+          135.133238632356,
+          191.16325200189465
+        ],
+        "action_abs_max": 0.49598488211631775,
+        "action_saturation_fraction": 0.0,
+        "torque_saturation_fraction": 0.0,
+        "wrist_final_world_m": [
+          -0.7127465321894085,
+          -0.24809326969597664,
+          0.5953789582616924
+        ],
+        "wrist_final_relative_root_m": [
+          0.0183979848286423,
+          -0.1761242015886078,
+          0.1991629502542444
+        ],
+        "root_final_m": [
+          -0.7311445170180508,
+          -0.07196906810736885,
+          0.396216008007448
+        ],
+        "phases": {
+          "pre_contact": {
+            "samples": 200,
+            "force_mean_vector_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "force_rms_n": 0.0,
+            "wrist_mean_world_m": [
+              0.15234091375235712,
+              -0.17226457322106684,
+              0.8592919835567626
+            ],
+            "wrist_mean_relative_root_m": [
+              0.19361136835038334,
+              -0.1553413689377155,
+              0.07519499903215981
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.19838810205093144,
+              -0.14813450925841282,
+              0.07752017005874579
+            ],
+            "root_mean_m": [
+              -0.04127045459802613,
+              -0.01692320428335126,
+              0.7840969845246032
+            ],
+            "anchor_error_mean_m": 0.034225597149662404
+          },
+          "ramp": {
+            "samples": 401,
+            "force_mean_vector_n": [
+              1.690907667788765,
+              0.4595899716230256,
+              -0.4065245904300548
+            ],
+            "force_rms_n": 2.8545036039847327,
+            "wrist_mean_world_m": [
+              0.12751594932313726,
+              -0.20286797466641196,
+              0.8546264736798264
+            ],
+            "wrist_mean_relative_root_m": [
+              0.1857743176829111,
+              -0.16325620711701766,
+              0.07480470596478049
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.19694130772901114,
+              -0.149886982360006,
+              0.07491385334092687
+            ],
+            "root_mean_m": [
+              -0.058258368359774014,
+              -0.039611767549394446,
+              0.7798217677150456
+            ],
+            "anchor_error_mean_m": 0.030777913016249416
+          },
+          "hold_late": {
+            "samples": 39,
+            "force_mean_vector_n": [
+              4.8233537337387045,
+              0.2911955949434613,
+              1.2439778366431609
+            ],
+            "force_rms_n": 5.0,
+            "wrist_mean_world_m": [
+              -0.5379093910455205,
+              -0.24062600874566675,
+              0.7159606313224379
+            ],
+            "wrist_mean_relative_root_m": [
+              0.05928203078933366,
+              -0.17915950860376245,
+              0.18138888385064744
+            ],
+            "wrist_mean_pelvis_frame_m": [
+              0.19867085036516724,
+              -0.15078688960502065,
+              0.08284383484706302
+            ],
+            "root_mean_m": [
+              -0.5971914218348543,
+              -0.061466500141904364,
+              0.5345717474717906
+            ],
+            "anchor_error_mean_m": 0.7197273594319793
+          },
+          "released": {
+            "samples": 0,
+            "force_mean_vector_n": null,
+            "force_rms_n": null,
+            "wrist_mean_world_m": null,
+            "wrist_mean_relative_root_m": null,
+            "wrist_mean_pelvis_frame_m": null,
+            "root_mean_m": null,
+            "anchor_error_mean_m": null
+          }
+        },
+        "control_decisions": 185,
+        "live_bfm_calls": 0,
+        "force_rms_xyz_n": [
+          2.9381621551468706,
+          0.36815146904745066,
+          0.5857065251386137
+        ],
+        "force_abs_peak_xyz_n": [
+          4.990468043288883,
+          0.5892604280348991,
+          1.7960256054632906
+        ],
+        "force_impulse_xyz_ns": [
+          6.814050077590631,
+          1.1391403744133628,
+          -0.670842830757177
+        ],
+        "first_failed_physics_time_s": 3.6999999999999433,
+        "force_law_reconstruction_max_error_n": 4.440892098500626e-16,
+        "max_support_loss_after_onset_samples": 1,
+        "active_samples": 540,
+        "active_force_rms_n": 3.5335493961428193,
+        "active_cap_fraction": 0.4185185185185185,
+        "first_applied_force": {
+          "force_time": 1.0000000000000007,
+          "force": [
+            -0.2279042855849439,
+            0.2773707026607023,
+            0.05910252418304352
+          ],
+          "spring_force": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "damping_force": [
+            -0.2279042855849439,
+            0.2773707026607023,
+            0.05910252418304352
+          ],
+          "point_velocity_before": [
+            0.02848803569811802,
+            -0.03467133783258779,
+            -0.00738781552288044
+          ],
+          "position_error_before": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "force_direction_angle_to_plus_x_deg": {
+          "min": 3.538446857356711,
+          "median": 17.573906245386176,
+          "max": 135.55715846255217
+        },
+        "active_negative_fx_fraction": 0.2759259259259259,
+        "phase_details": {
+          "pre_contact": {
+            "force_rms_xyz_n": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "position_error_mean_xyz_m": [
+              -0.015477587185385269,
+              -0.02460221355552675,
+              -0.010473934675940886
+            ],
+            "position_error_rms_m": 0.04399704498167734,
+            "relative_to_anchor_origin_mean_xyz_m": [
+              0.015477587185385269,
+              0.02460221355552675,
+              0.010473934675940886
+            ],
+            "root_tilt_mean_deg": 0.81382068178932
+          },
+          "ramp": {
+            "force_rms_xyz_n": [
+              2.7416099795541196,
+              0.46472857408905205,
+              0.644820050553829
+            ],
+            "position_error_mean_xyz_m": [
+              0.024347377243834394,
+              0.006001187889818637,
+              -0.005808424799003857
+            ],
+            "position_error_rms_m": 0.04638315463447639,
+            "relative_to_anchor_origin_mean_xyz_m": [
+              -0.009347377243834698,
+              -0.006001187889818637,
+              0.005808424799003857
+            ],
+            "root_tilt_mean_deg": 2.0034336859945734
+          },
+          "hold_late": {
+            "force_rms_xyz_n": [
+              4.824025635518927,
+              0.2919853455883174,
+              1.2819989180252398
+            ],
+            "position_error_mean_xyz_m": [
+              0.7047727176124925,
+              0.04375922196907326,
+              0.1328574175583839
+            ],
+            "position_error_rms_m": 0.7278525524772853,
+            "relative_to_anchor_origin_mean_xyz_m": [
+              -0.6747727176124921,
+              -0.04375922196907326,
+              -0.1328574175583839
+            ],
+            "root_tilt_mean_deg": 50.32571182999354
+          },
+          "released": {
+            "force_rms_xyz_n": null,
+            "position_error_mean_xyz_m": null,
+            "position_error_rms_m": null,
+            "relative_to_anchor_origin_mean_xyz_m": null,
+            "root_tilt_mean_deg": null
+          }
+        }
+      }
+    },
+    "comparisons": {
+      "closed_loop_minus_no_force": {
+        "initial_state_and_actor_observation_equal": true,
+        "same_physics_grid": true,
+        "pre_contact_qpos_max_delta": 0.0,
+        "pre_contact_actor_max_delta": 0.0,
+        "paired_phase_deltas": {
+          "pre_contact": {
+            "wrist_paired_mean_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "wrist_relative_root_paired_mean_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "wrist_pelvis_frame_paired_mean_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "root_paired_mean_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "action_rms_delta": 0.0,
+            "action_max_abs_delta": 0.0
+          },
+          "ramp": {
+            "wrist_paired_mean_delta_m": [
+              -0.0008982982294633975,
+              0.002627342056799659,
+              9.880996822555328e-05
+            ],
+            "wrist_relative_root_paired_mean_delta_m": [
+              0.0002617339141969917,
+              0.001320075854807903,
+              -5.967771484351316e-05
+            ],
+            "wrist_pelvis_frame_paired_mean_delta_m": [
+              -3.3137908294997747e-07,
+              0.0010727975015418108,
+              -0.00014952452911565458
+            ],
+            "root_paired_mean_delta_m": [
+              -0.0011600321436603883,
+              0.0013072662019917591,
+              0.00015848768306906644
+            ],
+            "action_rms_delta": 0.002502227384379919,
+            "action_max_abs_delta": 0.02155408263206482
+          },
+          "hold_late": {
+            "wrist_paired_mean_delta_m": [
+              0.004460525089573037,
+              0.006660597177655517,
+              0.000594234282528247
+            ],
+            "wrist_relative_root_paired_mean_delta_m": [
+              0.0026929892464659633,
+              0.004247077892453729,
+              0.00034600196458747513
+            ],
+            "wrist_pelvis_frame_paired_mean_delta_m": [
+              0.0011197934524600174,
+              0.0030671301618370333,
+              0.0007026365481063177
+            ],
+            "root_paired_mean_delta_m": [
+              0.0017675358431070742,
+              0.0024135192852017882,
+              0.00024823231794077194
+            ],
+            "action_rms_delta": 0.0026994028679677646,
+            "action_max_abs_delta": 0.008089892566204071
+          },
+          "released": {
+            "wrist_paired_mean_delta_m": [
+              0.0035817390089625425,
+              0.005704895034332241,
+              0.0006297244040374592
+            ],
+            "wrist_relative_root_paired_mean_delta_m": [
+              0.0027346750103500518,
+              0.003892963349085363,
+              0.000417481503716294
+            ],
+            "wrist_pelvis_frame_paired_mean_delta_m": [
+              0.0011678543376116258,
+              0.0026548970918699884,
+              0.0005307326772013843
+            ],
+            "root_paired_mean_delta_m": [
+              0.0008470639986124898,
+              0.0018119316852468741,
+              0.00021224290032116524
+            ],
+            "action_rms_delta": 0.0016775190955981732,
+            "action_max_abs_delta": 0.008111204952001572
+          }
+        },
+        "reference": "no_force",
+        "condition": "closed_loop",
+        "matching_initial_and_prefix": true,
+        "common_samples": 1200,
+        "common_end_time_s": 5.999999999999894,
+        "full_horizon_pair_valid": true,
+        "paired_common_horizon_delta_m": {
+          "wrist": [
+            0.0026006045126700517,
+            0.004210584614163404,
+            0.0004652352349318045
+          ],
+          "wrist_relative_root": [
+            0.0023390859972862443,
+            0.0031019156736505626,
+            0.0003037759864534806
+          ],
+          "root": [
+            0.00026151851538381427,
+            0.0011086689405128622,
+            0.00016145924847832394
+          ]
+        },
+        "common_horizon_metrics": {
+          "reference": {
+            "force_rms_n": 0.0,
+            "force_peak_n": 0.0,
+            "root_height_min_m": 0.7798337504458689,
+            "tilt_max_deg": 2.5248666582382633
+          },
+          "condition": {
+            "force_rms_n": 0.5847453447665959,
+            "force_peak_n": 0.9017181085110921,
+            "root_height_min_m": 0.7799952096943472,
+            "tilt_max_deg": 2.5646197904901706
+          }
+        },
+        "torque_rms_delta": 0.1688907206357166
+      },
+      "replay_minus_no_force": {
+        "initial_state_and_actor_observation_equal": true,
+        "same_physics_grid": false,
+        "pre_contact_qpos_max_delta": 0.0,
+        "pre_contact_actor_max_delta": 0.0,
+        "paired_phase_deltas": {
+          "pre_contact": {
+            "wrist_paired_mean_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "wrist_relative_root_paired_mean_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "wrist_pelvis_frame_paired_mean_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "root_paired_mean_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "action_rms_delta": 0.0,
+            "action_max_abs_delta": 0.0
+          },
+          "ramp": {
+            "wrist_paired_mean_delta_m": [
+              -0.02632281070169083,
+              0.003199432124761455,
+              0.007384693962464778
+            ],
+            "wrist_relative_root_paired_mean_delta_m": [
+              -0.001280088179241141,
+              0.0012708904446763175,
+              0.00837180227109395
+            ],
+            "wrist_pelvis_frame_paired_mean_delta_m": [
+              0.0016507544886027689,
+              0.0014453490394698279,
+              0.0011824443699955743
+            ],
+            "root_paired_mean_delta_m": [
+              -0.025042722522449684,
+              0.0019285416800851364,
+              -0.0009871083086291697
+            ],
+            "action_rms_delta": 0.0,
+            "action_max_abs_delta": 0.0
+          },
+          "hold_late": {
+            "wrist_paired_mean_delta_m": [
+              -0.694431672932221,
+              -0.030361016066217054,
+              -0.13229901573331898
+            ],
+            "wrist_relative_root_paired_mean_delta_m": [
+              -0.12512687460257735,
+              -0.00997675981239268,
+              0.11337697972120143
+            ],
+            "wrist_pelvis_frame_paired_mean_delta_m": [
+              0.0030846051671605743,
+              0.001955448640541891,
+              0.007538510101992337
+            ],
+            "root_paired_mean_delta_m": [
+              -0.5693047983296436,
+              -0.020384256253824364,
+              -0.2456759954545204
+            ],
+            "action_rms_delta": 0.0,
+            "action_max_abs_delta": 0.0
+          },
+          "released": {
+            "wrist_paired_mean_delta_m": null,
+            "wrist_relative_root_paired_mean_delta_m": null,
+            "wrist_pelvis_frame_paired_mean_delta_m": null,
+            "root_paired_mean_delta_m": null,
+            "action_rms_delta": null,
+            "action_max_abs_delta": null
+          }
+        },
+        "reference": "no_force",
+        "condition": "replay",
+        "matching_initial_and_prefix": true,
+        "common_samples": 740,
+        "common_end_time_s": 3.6999999999999433,
+        "full_horizon_pair_valid": false,
+        "paired_common_horizon_delta_m": {
+          "wrist": [
+            -0.8691187424310787,
+            -0.03758973969470236,
+            -0.2529403010893795
+          ],
+          "wrist_relative_root": [
+            -0.16585753277387913,
+            -0.006704077427994171,
+            0.13107229778505508
+          ],
+          "root": [
+            -0.7032612096571995,
+            -0.030885662266708212,
+            -0.38401259887443456
+          ]
+        },
+        "common_horizon_metrics": {
+          "reference": {
+            "force_rms_n": 0.0,
+            "force_peak_n": 0.0,
+            "root_height_min_m": 0.7802286068818826,
+            "tilt_max_deg": 2.5248666582382633
+          },
+          "condition": {
+            "force_rms_n": 3.0185069964618343,
+            "force_peak_n": 5.000000000000002,
+            "root_height_min_m": 0.396216008007448,
+            "tilt_max_deg": 63.41757258242824
+          }
+        },
+        "torque_rms_delta": 1.5641991321379785
+      },
+      "closed_loop_minus_replay": {
+        "initial_state_and_actor_observation_equal": true,
+        "same_physics_grid": false,
+        "pre_contact_qpos_max_delta": 0.0,
+        "pre_contact_actor_max_delta": 0.0,
+        "paired_phase_deltas": {
+          "pre_contact": {
+            "wrist_paired_mean_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "wrist_relative_root_paired_mean_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "wrist_pelvis_frame_paired_mean_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "root_paired_mean_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "action_rms_delta": 0.0,
+            "action_max_abs_delta": 0.0
+          },
+          "ramp": {
+            "wrist_paired_mean_delta_m": [
+              0.02542451247222742,
+              -0.0005720900679617926,
+              -0.007285883994239228
+            ],
+            "wrist_relative_root_paired_mean_delta_m": [
+              0.0015418220934381335,
+              4.918541013158429e-05,
+              -0.008431479985937464
+            ],
+            "wrist_pelvis_frame_paired_mean_delta_m": [
+              -0.001651085867685719,
+              -0.0003725515379280169,
+              -0.0013319688991112288
+            ],
+            "root_paired_mean_delta_m": [
+              0.023882690378789304,
+              -0.0006212754780933771,
+              0.0011455959916982362
+            ],
+            "action_rms_delta": 0.002502227384379919,
+            "action_max_abs_delta": 0.02155408263206482
+          },
+          "hold_late": {
+            "wrist_paired_mean_delta_m": [
+              0.6982991056601815,
+              0.036343219449915344,
+              0.13276861523033467
+            ],
+            "wrist_relative_root_paired_mean_delta_m": [
+              0.1273748530506018,
+              0.013717458800296295,
+              -0.11314368585367096
+            ],
+            "wrist_pelvis_frame_paired_mean_delta_m": [
+              -0.002187022870564156,
+              0.0007884699821365967,
+              -0.006923767799940845
+            ],
+            "root_paired_mean_delta_m": [
+              0.5709242526095795,
+              0.022625760649619065,
+              0.2459123010840056
+            ],
+            "action_rms_delta": 0.002570534325328721,
+            "action_max_abs_delta": 0.007225196808576584
+          },
+          "released": {
+            "wrist_paired_mean_delta_m": null,
+            "wrist_relative_root_paired_mean_delta_m": null,
+            "wrist_pelvis_frame_paired_mean_delta_m": null,
+            "root_paired_mean_delta_m": null,
+            "action_rms_delta": null,
+            "action_max_abs_delta": null
+          }
+        },
+        "reference": "replay",
+        "condition": "closed_loop",
+        "matching_initial_and_prefix": true,
+        "common_samples": 740,
+        "common_end_time_s": 3.6999999999999433,
+        "full_horizon_pair_valid": false,
+        "paired_common_horizon_delta_m": {
+          "wrist": [
+            0.8731383826923885,
+            0.043739995053025144,
+            0.2534469533903946
+          ],
+          "wrist_relative_root": [
+            0.16821507282626094,
+            0.010568451040985,
+            -0.1308042580837872
+          ],
+          "root": [
+            0.7049233098661275,
+            0.03317154401204016,
+            0.3842512114741818
+          ]
+        },
+        "common_horizon_metrics": {
+          "reference": {
+            "force_rms_n": 3.0185069964618343,
+            "force_peak_n": 5.000000000000002,
+            "root_height_min_m": 0.396216008007448,
+            "tilt_max_deg": 63.41757258242824
+          },
+          "condition": {
+            "force_rms_n": 0.6383693121348062,
+            "force_peak_n": 0.9017181085110921,
+            "root_height_min_m": 0.7804672194816298,
+            "tilt_max_deg": 2.5646197904901706
+          }
+        },
+        "torque_rms_delta": 1.6203014482663525
+      }
+    },
+    "replay_actions_exactly_match_no_force": true,
+    "same_absolute_tether_trajectory": true
+  },
+  "cuda_initialized": false,
+  "all_parameters_cpu": true,
+  "all_parameters_frozen": true,
+  "no_parameter_gradients": true,
+  "model_eval": true,
+  "completed_conditions": [
+    "no_force",
+    "closed_loop",
+    "replay"
+  ],
+  "execution_parent_commit": "3934d79c079b496d0a13717bbb0b43592aa691e7",
+  "run_id": "issue19-wrist-anchor-20261028T062503Z",
+  "attempts": [
+    {
+      "number": 1,
+      "state": "finished",
+      "script_sha256": "adb5766c06f3ccf53956e27c9771635b0e043cd8a7006f969494aa0ef67c5ff8",
+      "started_utc": "2026-10-28T06:29:30.992571+00:00",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue19-wrist-anchor-20261028T062503Z/attempt-01",
+      "affinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "remaining_wall_seconds": 3600,
+      "peak_rss_bytes": 7406501888,
+      "peak_vms_bytes": 19209023488,
+      "pid": 332338,
+      "pgid": 332338,
+      "exit_code": 1,
+      "remaining_processes": [],
+      "wall_seconds": 138.5753894209629,
+      "resource_boundary": null,
+      "shared_source_unchanged": true
+    },
+    {
+      "number": 2,
+      "state": "finished",
+      "script_sha256": "3d5bf87a0c9f5f2ed977ed02c7f66b59cd1af17a3f0f3aa9352014405baeb2db",
+      "started_utc": "2026-10-28T06:36:25.115914+00:00",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue19-wrist-anchor-20261028T062503Z/attempt-02",
+      "affinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "remaining_wall_seconds": 3461.424610579037,
+      "peak_rss_bytes": 7625588736,
+      "peak_vms_bytes": 19226451968,
+      "pid": 334017,
+      "pgid": 334017,
+      "exit_code": 2,
+      "remaining_processes": [],
+      "wall_seconds": 135.58874446398113,
+      "resource_boundary": null,
+      "shared_source_unchanged": true
+    }
+  ],
+  "verification": {
+    "checks": "recorded data and negative outcomes verified; this is not a survival pass",
+    "recomputed_abs_max_difference": 1.9895196601282805e-13,
+    "tolerance": 1e-12,
+    "live_actor_calls": {
+      "no_force": 300,
+      "closed_loop": 300,
+      "replay": 0
+    },
+    "replayed_actions_exact": true,
+    "same_initial_state_latent_and_anchor": true,
+    "first_spring_position_force_zero": true,
+    "actual_force_matches_original_law": true,
+    "pd_torque_changes_despite_identical_replayed_actions": true
+  },
+  "supplemental": {
+    "closed_vs_noforce": {
+      "first_state_difference_s": 1.0050000000000006,
+      "first_action_difference_s": 1.02
+    },
+    "replay_vs_noforce": {
+      "first_state_difference_s": 1.0050000000000006,
+      "first_action_difference_s": null
+    },
+    "closed_vs_replay": {
+      "first_state_difference_s": 1.0250000000000001,
+      "first_action_difference_s": 1.02
+    },
+    "first_failure_sample": {
+      "time": 3.6999999999999433,
+      "root": [
+        -0.7311445170180508,
+        -0.07196906810736885,
+        0.396216008007448
+      ],
+      "root_rpy_deg": [
+        14.630091158212988,
+        -62.45274783571652,
+        -10.791309186087707
+      ],
+      "tilt_deg": 63.41757258242824,
+      "force": [
+        4.65972168513171,
+        0.2475597738598006,
+        1.7960256054632906
+      ],
+      "support": [
+        true,
+        true
+      ],
+      "foot_normal_forces": [
+        26.306644062227033,
+        33.64689577143863
+      ],
+      "qpos": [
+        -0.7311445170180508,
+        -0.07196906810736885,
+        0.396216008007448,
+        0.8506146572239796,
+        0.06004471970369369,
+        -0.5221611020913904,
+        -0.014039943523386212,
+        -0.1482693227941775,
+        0.04358498015311261,
+        0.06858053796683099,
+        0.3571551057635884,
+        0.01581919375139642,
+        -0.05777872235368846,
+        -0.18146662787559625,
+        0.03288223120977745,
+        0.01820220590751069,
+        0.32475860289093056,
+        0.3325444331849394,
+        -0.09259606202664894,
+        -0.0035422311775991197,
+        0.013819342446370878,
+        0.028474197809398537,
+        -0.06401724000220177,
+        0.008807787963697453,
+        -0.06907593280750018,
+        -0.027062735542035657,
+        -0.17382578362340365,
+        -0.03117614332920135,
+        0.14307664385563826,
+        0.0014897698287651376,
+        -0.021195747217396897,
+        0.00859054698887262,
+        -0.020510356830564364,
+        0.11419304115486775,
+        0.062072788358405837,
+        -0.07089302334393247
+      ],
+      "qvel": [
+        -1.45195261224656,
+        -0.12510942788180546,
+        -1.9538174877035,
+        0.4088922208937014,
+        -2.6346131078040984,
+        0.8377528516972458,
+        -0.2020801867008131,
+        0.04659585169472853,
+        0.0023616609478930477,
+        -0.637880477008577,
+        -1.6878125178310635,
+        0.6393059851856736,
+        -0.09345654666260443,
+        0.05469223540858287,
+        0.008576365748994732,
+        -0.6740543705575248,
+        -1.4041879194495204,
+        0.41722799121424653,
+        -0.0031745704709061242,
+        -0.021346033365838193,
+        0.011839100749615533,
+        -0.9305578936616656,
+        0.0012414522869903233,
+        -0.0022295769343170287,
+        -0.5074292420138066,
+        0.0009943103035272185,
+        -0.07986393869080174,
+        -0.00047211950012725294,
+        -0.28875178099365106,
+        -0.10705835647132271,
+        -0.04122938449339088,
+        -0.35290940206351606,
+        0.00258427697018233,
+        -0.02895387794650865,
+        -0.0002725702685934399
+      ]
+    },
+    "first_failure_reason": "root height < unchanged 0.4 m threshold; upright cosine still > 0.4; qpos/qvel finite",
+    "runtime_wall_total_s": 274.164133884944,
+    "peak_rss_gib": 7.1018829345703125,
+    "force_onset_norm_n": 0.3638241037194796,
+    "closed_hold": {
+      "force_rms_xyz_n": [
+        0.5234527864718814,
+        0.6251315600805779,
+        0.03289656006095752
+      ],
+      "position_error_mean_xyz_m": [
+        0.006528350219109644,
+        0.007734955427571061,
+        -0.0002639537429662542
+      ],
+      "position_error_rms_m": 0.010130778665113662,
+      "relative_to_anchor_origin_mean_xyz_m": [
+        0.023471649780890367,
+        -0.007734955427571061,
+        0.0002639537429662542
+      ],
+      "root_tilt_mean_deg": 2.526388373973212
+    },
+    "closed_hold_delta": {
+      "wrist_paired_mean_delta_m": [
+        0.004460525089573037,
+        0.006660597177655517,
+        0.000594234282528247
+      ],
+      "wrist_relative_root_paired_mean_delta_m": [
+        0.0026929892464659633,
+        0.004247077892453729,
+        0.00034600196458747513
+      ],
+      "wrist_pelvis_frame_paired_mean_delta_m": [
+        0.0011197934524600174,
+        0.0030671301618370333,
+        0.0007026365481063177
+      ],
+      "root_paired_mean_delta_m": [
+        0.0017675358431070742,
+        0.0024135192852017882,
+        0.00024823231794077194
+      ],
+      "action_rms_delta": 0.0026994028679677646,
+      "action_max_abs_delta": 0.008089892566204071
+    },
+    "common_horizon_comparison": {
+      "reference": {
+        "force_rms_n": 3.0185069964618343,
+        "force_peak_n": 5.000000000000002,
+        "root_height_min_m": 0.396216008007448,
+        "tilt_max_deg": 63.41757258242824
+      },
+      "condition": {
+        "force_rms_n": 0.6383693121348062,
+        "force_peak_n": 0.9017181085110921,
+        "root_height_min_m": 0.7804672194816298,
+        "tilt_max_deg": 2.5646197904901706
+      }
+    }
+  },
+  "raw_non_replay_runs_repeated_identically": true,
+  "data_hashes": {
+    "attempt-02/stdout.log": "2df82a50777a5ded35319e78a5dd9afe2fc558f10e3966fdf85506fdcfcf2953",
+    "attempt-02/stderr.log": "8bd47b9b35675356e5a0f16422809e9316579600a2dd3d8cba82cd7c4ffae0b9",
+    "attempt-02/right_wrist_anchor.py": "3d5bf87a0c9f5f2ed977ed02c7f66b59cd1af17a3f0f3aa9352014405baeb2db",
+    "attempt-02/test_right_wrist_anchor.py": "acc7e69158907ede2b12be29b3efab64a0cc58a7a7a856d0d683fb04a570c273",
+    "attempt-02/supervisor-result.json": "b17b41c3aba6fe8abefdf62e94c7d68af2bec6ab046fbc826072473fd2824cfd",
+    "attempt-01/stdout.log": "8d82be7587ea6e4a80bd53f0f9ba029ca530da46792ad6249d4e07c9927f9099",
+    "attempt-01/stderr.log": "f20cc1fac3f3ff3a02320fd532c19c51812317c23c96abfab4d23aca59412b16",
+    "attempt-01/right_wrist_anchor.py": "adb5766c06f3ccf53956e27c9771635b0e043cd8a7006f969494aa0ef67c5ff8",
+    "attempt-01/test_right_wrist_anchor.py": "500ff4108a4140ce8896e14a7fdefcf40a5a856ca48bd23ee19dbf1c6cfa25bf",
+    "attempt-01/supervisor-result.json": "ef9bdb2de7b8316644b3b6ef07345443dc16117de8d431ae36d53e3999581204",
+    "attempt-02/outputs/replay.json": "5e3e562bc54ed1bc1abc139655622d4b1bdb0addf2b601deb28975c1259d742e",
+    "attempt-02/outputs/result.json": "6a61692bcef554c7395f0d89bc693ec3300f9381326bd8c3b9e80398eb6aef17",
+    "attempt-02/outputs/no_force.json": "fb01d0bb683a751af9211354ecb39cd383e555aefd6d5350e808cb94073264c2",
+    "attempt-02/outputs/closed_loop.json": "e03f6b23bb426c884a79a33c232e5c45aa0b06036590a2d416468577496fbd36",
+    "attempt-01/outputs/result.json": "8e9d64c4ab8a7ae26f4bcda74fb9889ba404b3af21c39941d2ab5630eca9f4e3",
+    "attempt-01/outputs/no_force.json": "fb01d0bb683a751af9211354ecb39cd383e555aefd6d5350e808cb94073264c2",
+    "attempt-01/outputs/closed_loop.json": "e03f6b23bb426c884a79a33c232e5c45aa0b06036590a2d416468577496fbd36"
+  },
+  "assessment": {
+    "anchor_position_preload_removed": true,
+    "pure_x_force": false,
+    "closed_loop_survived_6s": true,
+    "replay_survived_6s": false,
+    "evidence_supports_bfm_feedback_stabilization": true,
+    "active_intent_following_or_contact_expert_established": false,
+    "no_force_full_replay_control_run": false
+  }
+}
