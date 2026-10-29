@@ -1,0 +1,15 @@
+Single-scene supervised Contact Projector, authorized by owner after Issue21 review6501937925.
+
+Base03ef478 inherits Issue19 bb08338 and only CCL02A teacher/logging. Fixed dev2: standing, right wrist +X3.5cm @1.1s, seed0, K80 D8 cap5N, ramp2s, release4.5s, duration6s. No changed physical criteria, original model or PPO branches.
+
+First recapture baseline/teacher with saved exact CCL02A initialization; verify numerical physical trajectory parity and add all 50Hz actor observations to the existing 10Hz history/force records. Train targets are actual full29D teacher action and q_PD, including release, never privileged latent labels.
+
+Sparse projection checks: predetermined decision indices11,12,13,31,35,44,46,47; 200 Adam steps lr.05 each, held10Hz raw latent across five actual50Hz frames. Compare original force_norm/5 gate with ideal sensed-contact gate1 and causal .2s release fade. Production student uses latter, matching the active-gate1 feasibility convention in Issue20 and Issue21 causal fade; no force-amplitude attenuation that suppresses response as force is relieved. This is an explicit small interface choice in this new branch, not a PPO/mask merge. Onset gate is immediate on observed force; no future onset input. Sensor threshold1e-6N is a simulator contact proxy, not validated real noisy contact sensing.
+
+Student input: only frozen-normalized actor state,last_action,history_actor plus measured last3 XYZ force/20. No clock, anchor, world wrist, Jacobian, desired residual, previous latent or label lookup. Shared MLP128-tanh-128-tanh-256 with zero output initialization, per-input training-trace scaling floor.1. tanh residual -> standing tangent -> scale.3 -> original norm16 sphere; no execution mask. 10Hz raw decisions, 50Hz gate fade/BFM, original200Hz PD/physics.
+
+Training: deliberate one-trace overfit; Adam lr.001, fixed2000 updates, random12-of60 decisions per minibatch, seed0, clip grad norm1. Loss arm q_PD MSE +.1 nonarm MSE +1e-6 tanh(raw)^2; sample weights active5/release2/pre1. Report all phase residuals, finite gradients, frozen BFMs, constraints. Evaluate final fixed checkpoint; no outcome selection/long retraining.
+
+Physical evaluation: original baseline, exact teacher, student full6s same scenario, and student6s no Tether negative control; saved no-Tether baseline is the reference. Additional same-h zero/reversed-force input tests keep gate/proprio fixed to quantify contact-channel sensitivity; these alone cannot prove feedback generality. Log student-to-teacher observation distance and all physics. If closed-loop fails, diagnose recorded distribution shift and action representability; propose one minimal teacher-query aggregation, do not automatically train next stage.
+
+Resources: GPU5 only if free memory sufficient (other jobs preserved), ownVRAM<=4GiB,4 CPU, ownPGID RSSwatchdog<=12GiB,cumulative2400s in one ledger; no OS-isolation claim. Model/teacher traces unchanged. All attempts, state, training/checkpoint and ownPID cleanup retained in project-only run output. No Bridge,push,shared checkout edits,heldout reruns,PPO,new motion,WBC.

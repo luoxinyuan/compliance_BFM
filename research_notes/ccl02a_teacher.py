@@ -1,6 +1,5 @@
-"""CCL-02A: eight fixed 6s baseline/oracle episodes through the original BFM runtime.
-Issue19 bb08338 + Issue20 bounded right-arm Jacobian correction only.
-No PPO, projector, learned student, weight updates, or Bridge queue.
+"""CCL single-scene supervised projector using the validated CCL02A runtime.
+Original BFM/physics unchanged; one dev2 teacher trace, bounded latent MLP, 6s student.
 """
 import ast,copy,hashlib,json,math,os,sys,time
 from pathlib import Path
@@ -11,7 +10,8 @@ P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');RUNS=P/'bridge-v2-o
 OLD=RUNS/'issue20-ccl01-20261028T082201Z/attempt-04/outputs'
 MODEL=RUNS/'issue19-recovery-20261028T045520Z/model-view'
 STANDING=RUNS/'issue19-wrist-anchor-20261028T062503Z/attempt-02/outputs/standing_latent.json'
-TASKS=[dict(id=f'dev-{i}',direction=d,distance_m=x,onset_s=t,seed=0) for i,(d,x,t) in enumerate([(1,.025,.9),(-1,.025,.9),(1,.035,1.1),(-1,.035,1.1)])]
+TASKS=[dict(id='dev-2',direction=1,distance_m=.035,onset_s=1.1,seed=0)]
+TEACHER_SOURCE=RUNS/'issue21-ccl02a-20261029T153900Z/attempt-01/outputs'
 
 
 def ipc():
@@ -137,7 +137,7 @@ def main():
     assert all(digest(ROOT/f)==h for f,h in constants['PINS'].items())
     assert digest(MODEL/'checkpoint/model/model.safetensors')==constants['WEIGHT_SHA']
     assert digest('/mnt/data-oss/users/yi.gao/compliance_BFM/data/lafan_29dof.pkl')=='f3a0c2810363f5c50bf4146fa2db33c1ff5b90d00cb7c0bc2aa4622696375e11'
-    assert TASKS==[t for t in json.loads((OLD/'manifest.json').read_text())['dev'] if t['direction']!=0]
+    assert TASKS==[t for t in json.loads((OLD/'manifest.json').read_text())['dev'] if t['id']=='dev-2']
     import numpy as np,torch,mujoco
     from dataclasses import asdict
     from omegaconf import OmegaConf
@@ -145,6 +145,7 @@ def main():
     from humanoidverse.force_compliance.environment import ComplianceEnv
     from humanoidverse.agents import load_utils
     from frozen_bfm_placement import cpu_load_then_stage,tensor_digest,INFERENCE_MODULES
+    from contact_projector import ContactGate,deploy_input,constrained,fit
     torch.set_num_threads(1);torch.manual_seed(0);np.random.seed(0);torch.set_grad_enabled(False)
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     assert torch.cuda.device_count()==1
@@ -213,29 +214,33 @@ def main():
         contact_rule='At each 10Hz decision use last observed original Tether.active/anchor/force; pre-contact correction zero; active teacher queries current wrist/Jacobian exactly as Issue20; no extra Tether.measure calls',
         release_rule='On 10Hz observed active-to-inactive edge, linearly fade last correction over the same 0.2s, evaluated at each original 50Hz action; Jacobian still 10Hz; no future information or re-anchoring',
         phase_rule='Exact original floating Tether force_time: pre<onset, ramp<onset+2, hold<4.5, release>=4.5; inactive-anchor error is diagnostic geometry, not active tracking objective',
-        benefit_reference='Report both directions hold RMS improvement, with 15% exploratory reference only; no post-hoc PASS gate',
+        benefit_reference='Single chosen +X3.5cm smoke: report recovered teacher hold benefit; no heldout/pass threshold or outcome selection',
         safety='Original min root .4m/up cosine .4/nonfinite/warnings; report physical failure, limits, saturation, support loads, tangential contact speed and action continuity; no outcome retries',
         privilege='Current anchor/world wrist/Jacobian belong to oracle; not student inputs',contact_forces='Captured after native mj_step before removing wrench/mj_forward; contact tangential velocity uses corresponding pre-integration qvel',
-        policy_updates=0,projection_steps=0,terminal_reopened=False,resources=dict(cpus=4,rss_mib=8192,owned_gpu_mib=3072,cumulative_wall_seconds=1800)))
+        policy_updates='projector only; see dataset-manifest',projection_steps='sparse feasibility; see spot-checks',terminal_reopened=False,resources=dict(cpus=4,rss_mib=12288,owned_gpu_mib=4096,cumulative_wall_seconds=2400)))
+    net=None;train_h=None;raw_student=None;sensor_gate=ContactGate();executed_z=None
     mode='baseline';delta_action=torch.zeros(1,29,device='cuda');control=[];record=False;last_control=None
     def act(obs,z,mean=True):
-        nonlocal last_control
+        nonlocal last_control,executed_z
         nominal=original_act(obs,env.standing,mean=mean)
         applied_delta=delta_action
         if mode=='teacher' and fade.release_start is not None:
             applied_delta=torch.zeros_like(nominal)
             applied_delta[:,arm]=torch.as_tensor(fade.value(float(env.tether.time)),device='cuda',dtype=nominal.dtype)/scale[:,arm]
         action=nominal+applied_delta if mode=='teacher' else nominal
+        if mode.startswith('student'):
+            executed_z,_=constrained(model,env.standing,raw_student,sensor_gate.value(float(env.tether.time)))
+            action=original_act(obs,executed_z,mean=mean)
         q=qtarget(action);q0=qtarget(nominal);corr=q-q0
         if record:
             qlimits_t=torch.tensor(qlimits,device='cuda');excess=(qlimits_t[:,0]-q).clamp_min(0)+(q-qlimits_t[:,1]).clamp_min(0)
-            row=dict(time=env.steps*env.dt,tether_time=float(env.tether.time),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),action=action[0].tolist(),nominal=nominal[0].tolist(),q_PD=q[0].tolist(),
+            row=dict(bfm_obs={k:v.tolist() for k,v in obs.items()},executed_z=None if executed_z is None else executed_z.tolist(),gate=sensor_gate.value(float(env.tether.time)),time=env.steps*env.dt,tether_time=float(env.tether.time),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),action=action[0].tolist(),nominal=nominal[0].tolist(),q_PD=q[0].tolist(),
                 nominal_q_PD=q0[0].tolist(),teacher_delta_q=corr[0].tolist(),teacher_nonarm_action_delta_max=float((action[:,nonarm]-nominal[:,nonarm]).abs().max()),
                 action_saturation=float(((action*ratio).abs()>=clip).float().mean()),q_PD_limit_excess_max_rad=float(excess.max()),
                 q_PD_step_l2_rad=0. if last_control is None else float(np.linalg.norm(q[0].cpu().numpy()-last_control['q_PD'])),
                 action_step_l2=0. if last_control is None else float(np.linalg.norm(action[0].cpu().numpy()-last_control['action'])),
                 teacher_step_l2_rad=0. if last_control is None else float(np.linalg.norm(corr[0].cpu().numpy()-last_control['teacher_delta_q'])))
-            assert row['teacher_nonarm_action_delta_max']==0 and float(corr.abs().max())<.040001 and float(corr.norm())<.080001
+            if not mode.startswith('student'):assert row['teacher_nonarm_action_delta_max']==0 and float(corr.abs().max())<.040001 and float(corr.norm())<.080001
             control.append(row);last_control=row
         return action
     model.act=act
@@ -246,11 +251,15 @@ def main():
             common_step_counter=env.base.common_step_counter,history={k:v.tolist() for k,v in env.base.history_handler.history.items()},
             tether={k:(v.tolist() if isinstance(v,np.ndarray) else v) for k,v in vars(env.tether).items() if k in ['origin','delta','time','force','anchor','active','body']})
     result=dict(status='running',model_loaded=True,original_wrapper_used=True,policy_updates=0,projection_steps=0,episodes=[],first_physical_failure=None)
-    summaries={};references={};pairs={};write('result.json',result);print('MODEL_READY_CCL02A',flush=True)
+    summaries={};references={t['id']:json.loads((TEACHER_SOURCE/(t['id']+'-initial-state.json')).read_text()) for t in TASKS};pairs={};write('result.json',result);print('MODEL_READY_CCL02A',flush=True)
     try:
         for task in TASKS:
-            for label in ['baseline','teacher']:
-                record=False;mode='baseline';cfg.enabled=True;cfg.activation_time=task['onset_s']
+            for label in ['baseline','teacher','student','student-no-tether']:
+                if label=='student':
+                    net,train_h,fit_result=fit(model,env.standing,pairs[(task['id'],'teacher')],contract,env.keys,OUT,original_act)
+                    result['projector_training']=fit_result;write('result.json',result)
+                    record=False
+                record=False;mode='baseline';cfg.enabled=label!='student-no-tether';cfg.activation_time=task['onset_s']
                 env.reset(seed=0,trajectory=(anchors[task['id']],[task['direction']*task['distance_m'],0.,0.]))
                 if task['id'] in references:
                     ref=references[task['id']]
@@ -264,15 +273,22 @@ def main():
                     # mj_forward updates warm-start numerically; preserve the saved solver input too.
                     mujoco.mj_setState(env.sim.model,env.sim.data,np.asarray(ref['mj_integration']),mujoco.mjtState.mjSTATE_INTEGRATION)
                 state=snapshot()
+                if label=='baseline':write(task['id']+'-initial-state.json',state)
                 if task['id'] not in references:references[task['id']]=state;write(task['id']+'-initial-state.json',state)
                 if state!=references[task['id']]:
                     write('initial-state-mismatch.json',dict(task=task,label=label,reference=references[task['id']],actual=state))
                     raise AssertionError('Paired initial mechanical/controller/history state differs')
                 initial=dict(qpos=env.sim.data.qpos.tolist(),qvel=env.sim.data.qvel.tolist(),wrist=env.initial_point.tolist(),root=env.sim.data.qpos[:3].tolist(),feet_xyz=env.sim.data.xpos[env.feet].tolist())
-                mode=label;record=True;control=[];last_control=None;fade=ReleaseFade();decisions=[];delta_action=torch.zeros(1,29,device='cuda')
+                mode=label;record=True;control=[];last_control=None;fade=ReleaseFade();decisions=[];sensor_gate=ContactGate();raw_student=torch.zeros_like(env.standing);executed_z=None;delta_action=torch.zeros(1,29,device='cuda')
                 for high in range(60):
                     assert time.monotonic()<float(os.environ['CCL_DEADLINE_MONOTONIC'])
                     point=env.last_point.copy();force=env.tether.force.copy();active=bool(env.tether.active);now=float(env.tether.time)
+                    sensor_gate.update(now,force)
+                    student_diagnostic={}
+                    if label.startswith('student'):
+                        h=deploy_input(model,env.obs,env.history,env.keys);raw_student=net(h).detach()
+                        distances=(((h-train_h)/net.scale).square().mean(-1)).sqrt()
+                        nearest=int(distances.argmin());student_diagnostic=dict(student_h=h.tolist(),nearest_teacher_distance=float(distances.min()),same_time_teacher_distance=float(distances[high]),nearest_teacher_decision=nearest,raw=raw_student.tolist())
                     desired=np.zeros(7);error=env.tether.anchor-point;nominal=original_act(env.obs,env.standing,mean=True)
                     if label=='teacher' and active:
                         point,_=env.tether.point_state();error=env.tether.anchor-point
@@ -282,7 +298,7 @@ def main():
                     correction=fade.update(now,active,desired) if label=='teacher' else np.zeros(7)
                     assert abs(correction).max()<.040001 and np.linalg.norm(correction)<.080001
                     delta_action=torch.zeros_like(nominal);delta_action[:,arm]=torch.tensor(correction,device='cuda',dtype=nominal.dtype)/scale[:,arm]
-                    decisions.append(dict(time=env.steps*env.dt,tether_time=now,active=active,error_xyz_m=error.tolist(),force_xyz_n=force.tolist(),
+                    decisions.append(dict(**student_diagnostic,time=env.steps*env.dt,tether_time=now,active=active,error_xyz_m=error.tolist(),force_xyz_n=force.tolist(),
                         correction_rad=correction.tolist(),release_detected_at=fade.release_start,
                         bfm_obs={k:v.tolist() for k,v in env.obs.items()},force_history=env.history.tolist()))
                     _,reward,done,info=env.step(torch.zeros_like(env.standing),baseline=True)
@@ -298,7 +314,10 @@ def main():
                     assert len(episode['physics'])==len(old['physics'])==1200
                     differences={key:float(abs(np.array([r[key] for r in episode['physics']])-np.array([r[key] for r in old['physics']])).max()) for key in ['qpos','qvel','force','wrist','root']}
                     write(task['id']+'-baseline-replay.json',differences);assert max(differences.values())<1e-7
-                else:
+                elif label=='teacher':
+                    old_teacher=json.loads((TEACHER_SOURCE/(task['id']+'-teacher.json')).read_text())
+                    differences={key:float(abs(np.array([r[key] for r in episode['physics']])-np.array([r[key] for r in old_teacher['physics']])).max()) for key in ['qpos','qvel','force','wrist','root','torque']}
+                    write('teacher-recapture-parity.json',differences);assert max(differences.values())==0
                     before=[r for r in episode['physics'] if r['force_time']<task['onset_s']]
                     expected=pairs[(task['id'],'baseline')]['physics'][:len(before)]
                     assert before==expected,'Teacher changes pre-contact physics'
@@ -311,11 +330,11 @@ def main():
         assert all(p._version==versions[n] and p.grad is None for n,p in model.named_parameters())
         assert digest(MODEL/'checkpoint/model/model.safetensors')==constants['WEIGHT_SHA']
         improvements={}
-        for direction in [1,-1]:
+        for direction in [1]:
             subset=[t['id'] for t in TASKS if t['direction']==direction]
             improvements[str(direction)]=1.-sum(summaries[t]['teacher']['hold']['error_rms_mm'] for t in subset)/sum(summaries[t]['baseline']['hold']['error_rms_mm'] for t in subset)
         result.update(status='completed',all_complete=all(r['complete'] for r in result['episodes']),hold_relative_improvement=improvements,
-            frozen_bfm_unchanged=True,checkpoint_unchanged=True,total_simulated_seconds=sum(r['physics_samples'] for r in result['episodes'])*.005)
+            frozen_bfm_unchanged=True,checkpoint_unchanged=True,projector_updates=2000,policy_updates=2000,projection_steps=3200,ppo_updates=0,total_simulated_seconds=sum(r['physics_samples'] for r in result['episodes'])*.005)
         write('result.json',result);print('COMPLETED',json.dumps(result),flush=True)
     finally:env.close()
 
