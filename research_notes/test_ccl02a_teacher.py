@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from ccl02a_teacher import arm_ik,ReleaseFade,phase,TASKS
+from ccl02a_teacher import arm_ik,ReleaseFade,phase,TASKS,audit_episode
 
 class TeacherTests(unittest.TestCase):
     def test_jacobian_direction_bound_and_singular_case(self):
@@ -20,6 +20,17 @@ class TeacherTests(unittest.TestCase):
         np.testing.assert_array_equal(f.update(4.8,False),np.zeros(7))
         np.testing.assert_array_equal(f.update(5.2,False),np.zeros(7))
         np.testing.assert_array_equal(f.update(5.3,True,-d),-d)
+    def test_pd_audit_uses_actual_post_reset_refresh_state(self):
+        def pose(q):return [0.]*7+[q]*29
+        vel=[0.]*35
+        control=[dict(q_PD=[1.]*29,action=[.2]*29,pre_qpos=pose(q),pre_qvel=vel) for q in [0.,.5]]
+        rows=[dict(qpos=pose(q),qvel=vel,torque=[1.-q]*29) for q in [0.]*4+[.5]*4]
+        episode=dict(physics=rows,control=control)
+        contract=dict(q_PD_scale=[[5.]*29],q_PD_offset=[[0.]*29])
+        state=dict(base_tensors=dict(p_gains=[1.]*29,d_gains=[0.]*29,_kp_scale=[[1.]*29],_kd_scale=[[1.]*29],torque_limits=[10.]*29))
+        self.assertEqual(audit_episode(episode,contract,state)['torque_max_error'],0.)
+        control[1]['pre_qpos']=pose(0.)
+        with self.assertRaises(AssertionError):audit_episode(episode,contract,state)
     def test_fixed_task_and_stage_boundaries(self):
         self.assertEqual([(t['direction'],t['distance_m'],t['onset_s']) for t in TASKS],[(1,.025,.9),(-1,.025,.9),(1,.035,1.1),(-1,.035,1.1)])
         self.assertEqual([phase(t,.9) for t in [.899,.9,2.899,2.9,4.499,4.5,5.9]],['pre_contact','ramp','ramp','hold','hold','release','release'])

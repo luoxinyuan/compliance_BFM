@@ -207,6 +207,7 @@ def main():
         anchors[task['id']]=row['wrist']
     write('protocol.json',dict(base_commit='bb0833853c8e5cad1369d691b531972004635ff7',teacher_source_commit='53fae2df6a28c87b7d1be47b5b0f09178a3b6997',
         tasks=TASKS,config=asdict(cfg),absolute_anchors=anchors,state_source=str(OLD),standing_source=str(STANDING),standing_sha256=digest(STANDING),
+        pairing='Original seed0 reset; paired integration snapshot restores leftover warm-start/ctrl/time; restore torque/episode bookkeeping; verify full mechanical/obs/history equality',
         episode_s=6.,teacher_hz=10,bfm_hz=50,pd_physics_hz=200,teacher_bounds=dict(joint_abs_rad=.04,joint_l2_rad=.08,damping=.02),
         contact_rule='At each 10Hz decision use last observed original Tether.active/anchor/force; pre-contact correction zero; active teacher queries current wrist/Jacobian exactly as Issue20; no extra Tether.measure calls',
         release_rule='On observed active-to-inactive edge, hold last correction at detection then linearly scale to zero over 0.2s; no future time/trajectory or re-anchoring',
@@ -247,9 +248,13 @@ def main():
                 env.reset(seed=0,trajectory=(anchors[task['id']],[task['direction']*task['distance_m'],0.,0.]))
                 if task['id'] in references:
                     ref=references[task['id']]
-                    for name in ['rew_buf','push_robot_counter','push_robot_plot_counter','command_counter','average_episode_length']:
+                    for name in ['rew_buf','push_robot_counter','push_robot_plot_counter','command_counter','average_episode_length','torques','last_episode_length_buf']:
                         value=getattr(env.base,name);value.copy_(torch.as_tensor(ref['base_tensors'][name],device=value.device,dtype=value.dtype))
-                    env.base.common_step_counter=ref['common_step_counter'];env.sim.data.time=ref['mj_integration'][0]
+                    env.base.common_step_counter=ref['common_step_counter']
+                    # Original reset leaves warm-start/ctrl and bookkeeping from the prior episode.
+                    # qpos/qvel/observations/history already match; restore integration cache before pairing.
+                    mujoco.mj_setState(env.sim.model,env.sim.data,np.asarray(ref['mj_integration']),mujoco.mjtState.mjSTATE_INTEGRATION)
+                    mujoco.mj_forward(env.sim.model,env.sim.data)
                 state=snapshot()
                 if task['id'] not in references:references[task['id']]=state;write(task['id']+'-initial-state.json',state)
                 if state!=references[task['id']]:
