@@ -255,6 +255,8 @@ def main():
                     # qpos/qvel/observations/history already match; restore integration cache before pairing.
                     mujoco.mj_setState(env.sim.model,env.sim.data,np.asarray(ref['mj_integration']),mujoco.mjtState.mjSTATE_INTEGRATION)
                     mujoco.mj_forward(env.sim.model,env.sim.data)
+                    # mj_forward updates warm-start numerically; preserve the saved solver input too.
+                    mujoco.mj_setState(env.sim.model,env.sim.data,np.asarray(ref['mj_integration']),mujoco.mjtState.mjSTATE_INTEGRATION)
                 state=snapshot()
                 if task['id'] not in references:references[task['id']]=state;write(task['id']+'-initial-state.json',state)
                 if state!=references[task['id']]:
