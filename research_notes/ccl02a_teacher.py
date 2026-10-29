@@ -45,16 +45,17 @@ class ReleaseFade:
     def __init__(self):
         import numpy as np
         self.last=np.zeros(7);self.release_start=None;self.previous_active=False
+    def value(self,now):
+        factor=0. if self.release_start is None else max(0.,1.-(now-self.release_start)/.2)
+        if factor<1e-12:factor=0.
+        return self.last*factor
     def update(self,now,active,desired=None):
         import numpy as np
         if active:
             self.last=np.array(desired,copy=True);self.release_start=None;answer=self.last.copy()
         else:
             if self.previous_active:self.release_start=now
-            factor=0. if self.release_start is None else max(0.,1.-(now-self.release_start)/.2)
-            # Numerical residue is zero once the prescribed duration is reached.
-            if factor<1e-12:factor=0.
-            answer=self.last*factor
+            answer=self.value(now)
         self.previous_active=active
         return answer
 
@@ -210,7 +211,7 @@ def main():
         pairing='Original seed0 reset; paired integration snapshot restores leftover warm-start/ctrl/time; restore torque/episode bookkeeping; verify full mechanical/obs/history equality',
         episode_s=6.,teacher_hz=10,bfm_hz=50,pd_physics_hz=200,teacher_bounds=dict(joint_abs_rad=.04,joint_l2_rad=.08,damping=.02),
         contact_rule='At each 10Hz decision use last observed original Tether.active/anchor/force; pre-contact correction zero; active teacher queries current wrist/Jacobian exactly as Issue20; no extra Tether.measure calls',
-        release_rule='On observed active-to-inactive edge, hold last correction at detection then linearly scale to zero over 0.2s; no future time/trajectory or re-anchoring',
+        release_rule='On 10Hz observed active-to-inactive edge, linearly fade last correction over the same 0.2s, evaluated at each original 50Hz action; Jacobian still 10Hz; no future information or re-anchoring',
         phase_rule='Exact original floating Tether force_time: pre<onset, ramp<onset+2, hold<4.5, release>=4.5; inactive-anchor error is diagnostic geometry, not active tracking objective',
         benefit_reference='Report both directions hold RMS improvement, with 15% exploratory reference only; no post-hoc PASS gate',
         safety='Original min root .4m/up cosine .4/nonfinite/warnings; report physical failure, limits, saturation, support loads, tangential contact speed and action continuity; no outcome retries',
@@ -219,7 +220,12 @@ def main():
     mode='baseline';delta_action=torch.zeros(1,29,device='cuda');control=[];record=False;last_control=None
     def act(obs,z,mean=True):
         nonlocal last_control
-        nominal=original_act(obs,env.standing,mean=mean);action=nominal+delta_action if mode=='teacher' else nominal
+        nominal=original_act(obs,env.standing,mean=mean)
+        applied_delta=delta_action
+        if mode=='teacher' and fade.release_start is not None:
+            applied_delta=torch.zeros_like(nominal)
+            applied_delta[:,arm]=torch.as_tensor(fade.value(float(env.tether.time)),device='cuda',dtype=nominal.dtype)/scale[:,arm]
+        action=nominal+applied_delta if mode=='teacher' else nominal
         q=qtarget(action);q0=qtarget(nominal);corr=q-q0
         if record:
             qlimits_t=torch.tensor(qlimits,device='cuda');excess=(qlimits_t[:,0]-q).clamp_min(0)+(q-qlimits_t[:,1]).clamp_min(0)

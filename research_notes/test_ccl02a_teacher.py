@@ -20,6 +20,12 @@ class TeacherTests(unittest.TestCase):
         np.testing.assert_array_equal(f.update(4.8,False),np.zeros(7))
         np.testing.assert_array_equal(f.update(5.2,False),np.zeros(7))
         np.testing.assert_array_equal(f.update(5.3,True,-d),-d)
+    def test_release_interpolation_uses_low_level_clock_without_new_teacher_query(self):
+        f=ReleaseFade();d=np.array([.04,-.03,.02,0,0,0,0]);f.update(4.5,True,d);f.update(4.6,False)
+        values=[f.value(4.6+.02*i) for i in range(11)]
+        for i,v in enumerate(values):np.testing.assert_allclose(v,max(0.,1.-i/10.)*d,atol=1e-14)
+        self.assertLessEqual(max(np.linalg.norm(b-a) for a,b in zip(values,values[1:])),np.linalg.norm(d)/10.+1e-14)
+        np.testing.assert_array_equal(f.last,d)
     def test_pd_audit_uses_actual_post_reset_refresh_state(self):
         def pose(q):return [0.]*7+[q]*29
         vel=[0.]*35
