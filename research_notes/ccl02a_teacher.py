@@ -118,7 +118,7 @@ def audit_episode(episode,contract,state):
     for j,row in enumerate(episode['physics']):
         c=episode['control'][j//4];q=np.array(c['q_PD']);a=np.array(c['action'])
         errors['q_PD_max_error']=max(errors['q_PD_max_error'],float(abs(offset+np.clip(a*5,-5,5)*scale/5-q).max()))
-        before=episode['initial'] if j==0 else episode['physics'][j-1]
+        before=dict(qpos=c['pre_qpos'],qvel=c['pre_qvel']) if j%4==0 else episode['physics'][j-1]
         tau=kp*pg*(q.astype(np.float32)-np.array(before['qpos'][7:],dtype=np.float32))-kd*dg*np.array(before['qvel'][6:],dtype=np.float32)
         errors['torque_max_error']=max(errors['torque_max_error'],float(abs(np.clip(tau,-limits,limits)-np.array(row['torque'])).max()))
     assert errors['q_PD_max_error']<1e-6 and errors['torque_max_error']<1e-4
@@ -208,7 +208,7 @@ def main():
     write('protocol.json',dict(base_commit='bb0833853c8e5cad1369d691b531972004635ff7',teacher_source_commit='53fae2df6a28c87b7d1be47b5b0f09178a3b6997',
         tasks=TASKS,config=asdict(cfg),absolute_anchors=anchors,state_source=str(OLD),standing_source=str(STANDING),standing_sha256=digest(STANDING),
         episode_s=6.,teacher_hz=10,bfm_hz=50,pd_physics_hz=200,teacher_bounds=dict(joint_abs_rad=.04,joint_l2_rad=.08,damping=.02),
-        contact_rule='At each 10Hz decision sample current original Tether.measure (also baseline); pre-contact correction zero; use only current error/Jacobian while active',
+        contact_rule='At each 10Hz decision use last observed original Tether.active/anchor/force; pre-contact correction zero; active teacher queries current wrist/Jacobian exactly as Issue20; no extra Tether.measure calls',
         release_rule='On observed active-to-inactive edge, hold last correction at detection then linearly scale to zero over 0.2s; no future time/trajectory or re-anchoring',
         phase_rule='Exact original floating Tether force_time: pre<onset, ramp<onset+2, hold<4.5, release>=4.5; inactive-anchor error is diagnostic geometry, not active tracking objective',
         benefit_reference='Report both directions hold RMS improvement, with 15% exploratory reference only; no post-hoc PASS gate',
@@ -222,7 +222,7 @@ def main():
         q=qtarget(action);q0=qtarget(nominal);corr=q-q0
         if record:
             qlimits_t=torch.tensor(qlimits,device='cuda');excess=(qlimits_t[:,0]-q).clamp_min(0)+(q-qlimits_t[:,1]).clamp_min(0)
-            row=dict(time=env.steps*env.dt,tether_time=float(env.tether.time),action=action[0].tolist(),nominal=nominal[0].tolist(),q_PD=q[0].tolist(),
+            row=dict(time=env.steps*env.dt,tether_time=float(env.tether.time),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),action=action[0].tolist(),nominal=nominal[0].tolist(),q_PD=q[0].tolist(),
                 nominal_q_PD=q0[0].tolist(),teacher_delta_q=corr[0].tolist(),teacher_nonarm_action_delta_max=float((action[:,nonarm]-nominal[:,nonarm]).abs().max()),
                 action_saturation=float(((action*ratio).abs()>=clip).float().mean()),q_PD_limit_excess_max_rad=float(excess.max()),
                 q_PD_step_l2_rad=0. if last_control is None else float(np.linalg.norm(q[0].cpu().numpy()-last_control['q_PD'])),
@@ -259,9 +259,10 @@ def main():
                 mode=label;record=True;control=[];last_control=None;fade=ReleaseFade();decisions=[];delta_action=torch.zeros(1,29,device='cuda')
                 for high in range(60):
                     assert time.monotonic()<float(os.environ['CCL_DEADLINE_MONOTONIC'])
-                    point,force=env.tether.measure();active=bool(env.tether.active);now=float(env.tether.time)
+                    point=env.last_point.copy();force=env.tether.force.copy();active=bool(env.tether.active);now=float(env.tether.time)
                     desired=np.zeros(7);error=env.tether.anchor-point;nominal=original_act(env.obs,env.standing,mean=True)
                     if label=='teacher' and active:
+                        point,_=env.tether.point_state();error=env.tether.anchor-point
                         desired=arm_ik(env.tether.jac[:,vadr[arm]],error)
                         q0=qtarget(nominal).cpu().numpy().reshape(-1)
                         desired=np.clip(q0[arm]+desired,qlimits[arm,0],qlimits[arm,1])-q0[arm]
