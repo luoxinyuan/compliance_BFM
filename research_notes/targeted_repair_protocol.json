@@ -1,0 +1,96 @@
+{
+  "study": "Targeted supervised repair, exactly one warm-start fit if gates support it",
+  "base_commit": "6281d3122c08e3cf68f6d4b0425436858b36a0b1",
+  "student_sha256": "a5daf853276d55f5b8c099df4f48917f572a32c48e548d2c90f39e593d4a809d",
+  "prechecks": {
+    "states": "minus teacher and old Student decision indices2,4,5 at3.2/3.4/3.5s;5 actual50Hz observations per held10Hz raw latent",
+    "projection": {
+      "steps": 200,
+      "lr": 0.05,
+      "initialization": "zero raw",
+      "loss": "unchanged arm q MSE +.1 nonarm MSE +1e-6 tanh(raw)^2",
+      "gate": "original ContactGate on recorded actual force",
+      "decision": "Inspect achieved arm/other error, Cartesian direction, bounds and gate; no implicit radius enlargement. Stop before fit on material action infeasibility."
+    },
+    "identifiability": "Frozen input center/scale; matched-time and nearest opposite-direction input distances and oracle target conflict; distinguish finite-data separability from sensor robustness"
+  },
+  "fit": {
+    "init": "specified shared checkpoint; freeze its center/scale buffers",
+    "updates": 2000,
+    "optimizer": "Adam",
+    "lr": 0.0003,
+    "seed": 0,
+    "grad_clip": 1.0,
+    "batch_decisions": 16,
+    "composition": "8 old(4+4),4 new teacher(2+2),4 Student visited(2+2);50/25/25 with balanced signs",
+    "loss": "original q_PD arm MSE +.1 nonarm MSE +1e-6 tanh(raw)^2; phase active5/release2/pre1",
+    "final": "contact-projector-repaired-final.pt, final step2000 only; no checkpoint selection or further fit"
+  },
+  "evaluations": [
+    {
+      "id": "dev3-plus",
+      "prefix": 3.0,
+      "direction": 1,
+      "seconds": 1.0
+    },
+    {
+      "id": "dev3-minus",
+      "prefix": 3.0,
+      "direction": -1,
+      "seconds": 1.0
+    },
+    {
+      "id": "dev-2",
+      "onset": 1.1,
+      "direction": 1,
+      "seconds": 6.0
+    },
+    {
+      "id": "dev-3",
+      "onset": 1.1,
+      "direction": -1,
+      "seconds": 6.0
+    },
+    {
+      "id": "holdout-plus",
+      "onset": 1.25,
+      "direction": 1,
+      "seconds": 6.0
+    },
+    {
+      "id": "holdout-minus",
+      "onset": 1.25,
+      "direction": -1,
+      "seconds": 6.0
+    },
+    {
+      "id": "new27-plus",
+      "prefix": 2.7,
+      "direction": 1,
+      "seconds": 1.0
+    },
+    {
+      "id": "new27-minus",
+      "prefix": 2.7,
+      "direction": -1,
+      "seconds": 1.0
+    }
+  ],
+  "evaluation_order": "After final checkpoint freeze: t3 repairedStudent2; old6s regression4 repairedStudent, reuse old baseline/teacher/Student; t2.7 new baseline+teacher+repairedStudent each sign, exactly once, no tuning",
+  "partner": {
+    "displacement_m": 0.035,
+    "K": 80,
+    "D": 8,
+    "force_cap_n": 5,
+    "ramp_seconds": 2,
+    "release_s": 4.5,
+    "seed": 0
+  },
+  "restrictions": "No PPO/new motion/controller. Original BFM/teacher/gate/input/latent/PD/physics and shared checkout unchanged. No testing-time latent optimization. No second aggregation or fit. Teacher anchor/Jacobian privileged labels only.",
+  "resources": {
+    "cpus": 4,
+    "rss_gib": 12,
+    "gpu_mib": 4096,
+    "cumulative_wall_seconds": 2400
+  }
+}
