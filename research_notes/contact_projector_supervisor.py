@@ -3,7 +3,7 @@ import argparse, datetime, fcntl, hashlib, json, os, resource, signal, subproces
 from pathlib import Path
 PROJECT = Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM')
 SOURCE = PROJECT / 'repo'
-WORKTREE = PROJECT / 'bridge-v2-owned/trees/issue-21-contact-projector/repo'
+WORKTREE = PROJECT / 'bridge-v2-owned/trees/issue-21-bidirectional/repo'
 MODEL_VIEW = PROJECT / 'bridge-v2-owned/runs/issue19-recovery-20261028T045520Z/model-view'
 LAUNCHER = 'research_notes/ccl02a_teacher.py'
 BASE = '6023c6e257fab8fe58d13d9207fb5e85c32ee9c3'
@@ -53,9 +53,9 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run-id',required=True)
     args=parser.parse_args()
-    assert args.run_id.startswith('issue21-projector-') and all(c.isalnum() or c=='-' for c in args.run_id)
+    assert args.run_id.startswith('issue21-bidirectional-') and all(c.isalnum() or c=='-' for c in args.run_id)
     assert WORKTREE.resolve()==WORKTREE and SOURCE.resolve()==SOURCE
-    assert git(WORKTREE,'branch','--show-current')=='gaoe05/contact-projector-single-scene'
+    assert git(WORKTREE,'branch','--show-current')=='gaoe05/contact-projector-bidirectional'
     assert git(WORKTREE,'merge-base',RECOVERED,'HEAD')==RECOVERED
     assert not git(WORKTREE,'status','--porcelain'), 'Runtime worktree must be clean'
     before=snapshot()
@@ -67,7 +67,7 @@ def main():
     ledger_path=run/'ledger.json'
     if ledger_path.exists():ledger=json.loads(ledger_path.read_text())
     else:
-        ledger={'run_id':args.run_id,'authorization':'Owner explicitly approved single standing +X3.5cm supervised Contact Projector overfit and full6s physical comparison, minimal no-tether negative control; no PPO, no original weight updates; GPU sharing with sufficient VRAM; CPU4/RSS12GiB/VRAM4GiB/cumulative2400s',
+        ledger={'run_id':args.run_id,'authorization':'Owner explicitly approved single standing balanced +/-3.5cm supervised Contact Projector, old minus diagnostic, full6s paired development and presealed1.25s heldout, force-feature ablation; no PPO, no original weight updates; GPU sharing with sufficient VRAM; CPU4/RSS12GiB/VRAM4GiB/cumulative2400s',
             'resources':{'cpu_count':4,'memory_mib':12288,'gpu_count':1,'gpu_physical_index':5,'gpu_memory_mib':4096,'wall_seconds':2400},'attempts':[],
             'os_isolation':False,'memory_enforcement':'Owned process-group RSS sum watchdog, 0.1 s, not OS hard quota'}
         write(run/'source-before.json',before)
@@ -83,13 +83,13 @@ def main():
     attempt=run/f'attempt-{number:02d}';attempt.mkdir()
     outputs=attempt/'outputs';outputs.mkdir()
     (attempt/'source').mkdir()
-    for f in ['research_notes/'+n for n in ['ccl02a_teacher.py','contact_projector.py','test_contact_projector.py','contact_projector_supervisor.py','frozen_bfm_placement.py']]:
+    for f in ['research_notes/'+n for n in ['ccl02a_teacher.py','contact_projector.py','test_contact_projector.py','contact_projector_supervisor.py','frozen_bfm_placement.py','bidirectional_projector.py','bidirectional_protocol.json','test_bidirectional.py']]:
         target=attempt/'source'/f;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes((WORKTREE/f).read_bytes())
     write(attempt/'manifest.json',{'worktree_head':git(WORKTREE,'rev-parse','HEAD'),
         'worktree_status':git(WORKTREE,'status','--porcelain'),
         'source_hashes':{f:sha((WORKTREE/f).read_bytes()) for f in git(WORKTREE,'ls-files').splitlines()},
         'launcher_sha256':sha((WORKTREE/LAUNCHER).read_bytes()),
-        'protocol':'Issue19/21 frozen BFM+teacher, only dev2 6s, original teacher replay parity, sparse gate projection checks, 2000 supervised MLP updates, full6s student and no-tether control; terminal sealed',
+        'protocol':'Issue19/21 frozen BFM+teacher, two balanced teacher traces, original teacher replay parity, 2000 supervised MLP updates, old-student-minus diagnostic, paired dev and presealed1.25s heldout with frozen student, force-feature ablation; terminal sealed',
         'model_view':str(MODEL_VIEW),'source_before':before})
     cache=outputs/'cache';cache.mkdir()
     env={'PATH':str(PROJECT/'.venv/bin')+':/usr/bin:/bin',

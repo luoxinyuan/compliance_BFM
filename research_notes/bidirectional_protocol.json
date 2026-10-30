@@ -1,0 +1,49 @@
+{
+  "study": "CCL-02 bidirectional shared Contact Projector",
+  "base_commit": "0ec6f804ccbcf5f3c8b9950414a6315a457a0c58",
+  "tasks": [
+    {
+      "id": "dev-2",
+      "direction": 1,
+      "distance_m": 0.035,
+      "onset_s": 1.1,
+      "seed": 0
+    },
+    {
+      "id": "dev-3",
+      "direction": -1,
+      "distance_m": 0.035,
+      "onset_s": 1.1,
+      "seed": 0
+    },
+    {
+      "id": "holdout-plus",
+      "direction": 1,
+      "distance_m": 0.035,
+      "onset_s": 1.25,
+      "seed": 0
+    },
+    {
+      "id": "holdout-minus",
+      "direction": -1,
+      "distance_m": 0.035,
+      "onset_s": 1.25,
+      "seed": 0
+    }
+  ],
+  "training": "Only dev-2/dev-3 teacher trajectories,60 decisions each,300 controls each, balanced6+6 batch,2000 Adam updates lr.001 seed0; from zero-output same architecture",
+  "heldout": "Both directions at onset1.25s,never included in training/normalization/tuning; evaluate only final2000 checkpoint; no model selection from heldout",
+  "historical_onsets": "1.1s training;0.9s seen in earlier studies,not new blind evaluation; do not repeat it",
+  "diagnostic": "Old frozen +X student at minus3.5cm1.1s before fit, reuse original baseline/teacher",
+  "force_dependence": "Same-h measured-force zero/reverse offline, then one6s force-feature-zero closed loop per trained direction; actual-force contact gate untouched; diagnostic only,never tune against this",
+  "success": "Both directions improved actual3D tracking versus paired standing with no new instability; preserved benefit on predeclared new timing; report negative cases,not numeric pass threshold fitting",
+  "invariants": "BFM/Tether/teacher/gate/residual/projector architecture/physics unchanged; no direction/anchor/clock/future target input; no PPO",
+  "aggregation": "At most one small student-state teacher-query aggregation only if offline fits but dev physical fails; heldout only after development is finished",
+  "resources": {
+    "cpu": 4,
+    "rss_gib": 12,
+    "gpu_mib": 4096,
+    "cumulative_seconds": 2400
+  },
+  "old_student_sha256": "14b5a32798586d0810ff5e5461ce745890a90c717d1e6de2e8d6dc3f2a296fd8"
+}

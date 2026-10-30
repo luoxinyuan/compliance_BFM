@@ -1,5 +1,5 @@
-"""CCL single-scene supervised projector using the validated CCL02A runtime.
-Original BFM/physics unchanged; one dev2 teacher trace, bounded latent MLP, 6s student.
+"""CCL bidirectional supervised projector using the validated CCL02A runtime.
+Original BFM/physics unchanged; two balanced teacher traces, unchanged bounded MLP, presealed heldout.
 """
 import ast,copy,hashlib,json,math,os,sys,time
 from pathlib import Path
@@ -10,7 +10,9 @@ P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');RUNS=P/'bridge-v2-o
 OLD=RUNS/'issue20-ccl01-20261028T082201Z/attempt-04/outputs'
 MODEL=RUNS/'issue19-recovery-20261028T045520Z/model-view'
 STANDING=RUNS/'issue19-wrist-anchor-20261028T062503Z/attempt-02/outputs/standing_latent.json'
-TASKS=[dict(id='dev-2',direction=1,distance_m=.035,onset_s=1.1,seed=0)]
+TASKS=[{'id': 'dev-2', 'direction': 1, 'distance_m': 0.035, 'onset_s': 1.1, 'seed': 0}, {'id': 'dev-3', 'direction': -1, 'distance_m': 0.035, 'onset_s': 1.1, 'seed': 0}, {'id': 'holdout-plus', 'direction': 1, 'distance_m': 0.035, 'onset_s': 1.25, 'seed': 0}, {'id': 'holdout-minus', 'direction': -1, 'distance_m': 0.035, 'onset_s': 1.25, 'seed': 0}]
+TRAIN_SOURCE=RUNS/'issue21-projector-20261030T004000Z/attempt-01/outputs'
+STUDENT_SHA='14b5a32798586d0810ff5e5461ce745890a90c717d1e6de2e8d6dc3f2a296fd8'
 TEACHER_SOURCE=RUNS/'issue21-ccl02a-20261029T153900Z/attempt-01/outputs'
 
 
@@ -137,7 +139,9 @@ def main():
     assert all(digest(ROOT/f)==h for f,h in constants['PINS'].items())
     assert digest(MODEL/'checkpoint/model/model.safetensors')==constants['WEIGHT_SHA']
     assert digest('/mnt/data-oss/users/yi.gao/compliance_BFM/data/lafan_29dof.pkl')=='f3a0c2810363f5c50bf4146fa2db33c1ff5b90d00cb7c0bc2aa4622696375e11'
-    assert TASKS==[t for t in json.loads((OLD/'manifest.json').read_text())['dev'] if t['id']=='dev-2']
+    assert TASKS[:2]==[t for t in json.loads((OLD/'manifest.json').read_text())['dev'] if t['id'] in ['dev-2','dev-3']]
+    sealed=json.loads((ROOT/'research_notes/bidirectional_protocol.json').read_text());assert sealed['tasks']==TASKS
+    write('sealed-protocol.json',sealed);assert digest(TRAIN_SOURCE/'contact-projector-final.pt')==STUDENT_SHA
     import numpy as np,torch,mujoco
     from dataclasses import asdict
     from omegaconf import OmegaConf
@@ -145,7 +149,8 @@ def main():
     from humanoidverse.force_compliance.environment import ComplianceEnv
     from humanoidverse.agents import load_utils
     from frozen_bfm_placement import cpu_load_then_stage,tensor_digest,INFERENCE_MODULES
-    from contact_projector import ContactGate,deploy_input,constrained,fit
+    from contact_projector import ContactGate,deploy_input,constrained,Projector
+    from bidirectional_projector import fit_balanced
     torch.set_num_threads(1);torch.manual_seed(0);np.random.seed(0);torch.set_grad_enabled(False)
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     assert torch.cuda.device_count()==1
@@ -214,11 +219,14 @@ def main():
         contact_rule='At each 10Hz decision use last observed original Tether.active/anchor/force; pre-contact correction zero; active teacher queries current wrist/Jacobian exactly as Issue20; no extra Tether.measure calls',
         release_rule='On 10Hz observed active-to-inactive edge, linearly fade last correction over the same 0.2s, evaluated at each original 50Hz action; Jacobian still 10Hz; no future information or re-anchoring',
         phase_rule='Exact original floating Tether force_time: pre<onset, ramp<onset+2, hold<4.5, release>=4.5; inactive-anchor error is diagnostic geometry, not active tracking objective',
-        benefit_reference='Single chosen +X3.5cm smoke: report recovered teacher hold benefit; no heldout/pass threshold or outcome selection',
+        benefit_reference='Balanced +/- training at1.1s; untouched +/-1.25s eval after final checkpoint freeze; see sealed-protocol',
         safety='Original min root .4m/up cosine .4/nonfinite/warnings; report physical failure, limits, saturation, support loads, tangential contact speed and action continuity; no outcome retries',
         privilege='Current anchor/world wrist/Jacobian belong to oracle; not student inputs',contact_forces='Captured after native mj_step before removing wrench/mj_forward; contact tangential velocity uses corresponding pre-integration qvel',
-        policy_updates='projector only; see dataset-manifest',projection_steps='sparse feasibility; see spot-checks',terminal_reopened=False,resources=dict(cpus=4,rss_mib=12288,owned_gpu_mib=4096,cumulative_wall_seconds=2400)))
-    net=None;train_h=None;raw_student=None;sensor_gate=ContactGate();executed_z=None
+        policy_updates='projector only; see dataset-manifest',projection_steps='none; supervised MLP only',terminal_reopened=False,resources=dict(cpus=4,rss_mib=12288,owned_gpu_mib=4096,cumulative_wall_seconds=2400)))
+    train_h=torch.load(TRAIN_SOURCE/'teacher-dataset.pt',map_location='cuda',weights_only=True)['h']
+    net=Projector(train_h).to('cuda');net.load_state_dict(torch.load(TRAIN_SOURCE/'contact-projector-final.pt',map_location='cuda',weights_only=True)['state_dict'],strict=True)
+    net.eval().requires_grad_(False);old_net_hash=tensor_digest(net);new_net_hash=None;fit_result=None
+    raw_student=None;sensor_gate=ContactGate();executed_z=None
     mode='baseline';delta_action=torch.zeros(1,29,device='cuda');control=[];record=False;last_control=None
     def act(obs,z,mean=True):
         nonlocal last_control,executed_z
@@ -251,15 +259,37 @@ def main():
             common_step_counter=env.base.common_step_counter,history={k:v.tolist() for k,v in env.base.history_handler.history.items()},
             tether={k:(v.tolist() if isinstance(v,np.ndarray) else v) for k,v in vars(env.tether).items() if k in ['origin','delta','time','force','anchor','active','body']})
     result=dict(status='running',model_loaded=True,original_wrapper_used=True,policy_updates=0,projection_steps=0,episodes=[],first_physical_failure=None)
-    summaries={};references={t['id']:json.loads((TEACHER_SOURCE/(t['id']+'-initial-state.json')).read_text()) for t in TASKS};pairs={};write('result.json',result);print('MODEL_READY_CCL02A',flush=True)
+    summaries={};pairs={};references={}
+    for task in TASKS:
+        sourceid='dev-2' if task['direction']==1 else 'dev-3'
+        ref=json.loads((TEACHER_SOURCE/(sourceid+'-initial-state.json')).read_text())
+        for k in ['origin','anchor']:ref['tether'][k]=anchors[task['id']]
+        ref['tether']['delta']=[task['direction']*.035,0.,0.];references[task['id']]=ref
+    reused={}
+    for task in TASKS[:2]:
+        summaries[task['id']]={}
+        for label in ['baseline','teacher']:
+            source=TRAIN_SOURCE if task['id']=='dev-2' else TEACHER_SOURCE
+            path=source/(task['id']+'-'+label+'.json');ep=json.loads(path.read_text())
+            pairs[(task['id'],label)]=ep;summaries[task['id']][label]=summarize(ep)
+            reused[str(path)]=digest(path)
+    write('reused-inputs.json',reused);write('summary.json',summaries);write('result.json',result)
+    print('MODEL_READY_BIDIRECTIONAL',flush=True)
+    schedule=[(TASKS[1],['student-old']),(TASKS[1],['teacher']),
+              (TASKS[0],['student']),(TASKS[1],['student']),
+              (TASKS[0],['student-force-zero']),(TASKS[1],['student-force-zero']),
+              (TASKS[2],['baseline','teacher','student']),(TASKS[3],['baseline','teacher','student'])]
     try:
-        for task in TASKS:
-            for label in ['baseline','teacher','student','student-no-tether']:
-                if label=='student':
-                    net,train_h,fit_result=fit(model,env.standing,pairs[(task['id'],'teacher')],contract,env.keys,OUT,original_act)
-                    result['projector_training']=fit_result;write('result.json',result)
-                    record=False
-                record=False;mode='baseline';cfg.enabled=label!='student-no-tether';cfg.activation_time=task['onset_s']
+        for task,labels in schedule:
+            for label in labels:
+                if label=='student' and fit_result is None:
+                    assert tensor_digest(net)==old_net_hash
+                    net,train_h,fit_result=fit_balanced(model,env.standing,[pairs[('dev-2','teacher')],pairs[('dev-3','teacher')]],contract,env.keys,OUT,original_act)
+                    new_net_hash=tensor_digest(net);result['projector_training']=fit_result;result['projector_updates']=2000;write('result.json',result)
+                    write('checkpoint-frozen-before-evaluation.json',dict(sha256=digest(OUT/'contact-projector-final.pt'),tensor_hash=new_net_hash,updates=2000))
+                if task['id'].startswith('holdout'):
+                    assert fit_result is not None and tensor_digest(net)==new_net_hash
+                record=False;mode='baseline';cfg.enabled=True;cfg.activation_time=task['onset_s']
                 env.reset(seed=0,trajectory=(anchors[task['id']],[task['direction']*task['distance_m'],0.,0.]))
                 if task['id'] in references:
                     ref=references[task['id']]
@@ -286,9 +316,11 @@ def main():
                     sensor_gate.update(now,force)
                     student_diagnostic={}
                     if label.startswith('student'):
-                        h=deploy_input(model,env.obs,env.history,env.keys);raw_student=net(h).detach()
+                        h=deploy_input(model,env.obs,env.history,env.keys);fed_h=h.clone()
+                        if label=='student-force-zero':fed_h[:,-9:]=0.
+                        raw_student=net(fed_h).detach()
                         distances=(((h-train_h)/net.scale).square().mean(-1)).sqrt()
-                        nearest=int(distances.argmin());student_diagnostic=dict(student_h=h.tolist(),nearest_teacher_distance=float(distances.min()),same_time_teacher_distance=float(distances[high]),nearest_teacher_decision=nearest,raw=raw_student.tolist())
+                        nearest=int(distances.argmin());student_diagnostic=dict(student_h=h.tolist(),student_fed_h=fed_h.tolist(),nearest_teacher_distance=float(distances.min()),same_time_teacher_distance=float(distances[high]),nearest_teacher_decision=nearest,raw=raw_student.tolist())
                     desired=np.zeros(7);error=env.tether.anchor-point;nominal=original_act(env.obs,env.standing,mean=True)
                     if label=='teacher' and active:
                         point,_=env.tether.point_state();error=env.tether.anchor-point
@@ -309,18 +341,18 @@ def main():
                 name=task['id']+'-'+label+'.json';write(name,episode)
                 summary=summarize(episode);summaries.setdefault(task['id'],{})[label]=summary;pairs[(task['id'],label)]=episode
                 audit=audit_episode(episode,contract,state);write(task['id']+'-'+label+'-audit.json',audit)
-                if label=='baseline':
-                    old=json.loads((OLD/('dev_baseline-'+task['id']+'.json')).read_text())
-                    assert len(episode['physics'])==len(old['physics'])==1200
-                    differences={key:float(abs(np.array([r[key] for r in episode['physics']])-np.array([r[key] for r in old['physics']])).max()) for key in ['qpos','qvel','force','wrist','root']}
-                    write(task['id']+'-baseline-replay.json',differences);assert max(differences.values())<1e-7
-                elif label=='teacher':
+                if label=='teacher' and task['id']=='dev-3':
                     old_teacher=json.loads((TEACHER_SOURCE/(task['id']+'-teacher.json')).read_text())
                     differences={key:float(abs(np.array([r[key] for r in episode['physics']])-np.array([r[key] for r in old_teacher['physics']])).max()) for key in ['qpos','qvel','force','wrist','root','torque']}
-                    write('teacher-recapture-parity.json',differences);assert max(differences.values())==0
-                    before=[r for r in episode['physics'] if r['force_time']<task['onset_s']]
+                    write('minus-teacher-recapture-parity.json',differences);assert max(differences.values())==0
+                before=[r for r in episode['physics'] if r['force_time']<task['onset_s']]
+                old_zero=zero[:len(before)]
+                differences={key:float(abs(np.array([r[key] for r in before])-np.array([r[key] for r in old_zero])).max()) for key in ['qpos','qvel','force','wrist','root']}
+                write(task['id']+'-'+label+'-precontact-audit.json',differences);assert max(differences.values())==0
+                if label!='baseline':
                     expected=pairs[(task['id'],'baseline')]['physics'][:len(before)]
-                    assert before==expected,'Teacher changes pre-contact physics'
+                    # Compare dynamics only: historical records have fewer observational fields.
+                    assert all(r['qpos']==e['qpos'] and r['force']==e['force'] for r,e in zip(before,expected))
                 if episode['failed'] and result['first_physical_failure'] is None:
                     result['first_physical_failure']=dict(file=name,time=next((r['force_time'] for r in env.trace if r['failed']),env.trace[-1]['force_time']))
                 result['episodes'].append(dict(file=name,complete=len(env.trace)==1200 and not episode['failed'],physics_samples=len(env.trace),audit=audit))
@@ -329,12 +361,15 @@ def main():
         assert {n:tensor_digest(getattr(model,n)) for n in INFERENCE_MODULES}==frozen
         assert all(p._version==versions[n] and p.grad is None for n,p in model.named_parameters())
         assert digest(MODEL/'checkpoint/model/model.safetensors')==constants['WEIGHT_SHA']
+        assert digest(TRAIN_SOURCE/'contact-projector-final.pt')==STUDENT_SHA
+        assert tensor_digest(net)==new_net_hash and all(p.grad is None and not p.requires_grad for p in net.parameters())
+        assert all(digest(path)==sha for path,sha in reused.items())
         improvements={}
-        for direction in [1]:
+        for direction in [1,-1]:
             subset=[t['id'] for t in TASKS if t['direction']==direction]
             improvements[str(direction)]=1.-sum(summaries[t]['teacher']['hold']['error_rms_mm'] for t in subset)/sum(summaries[t]['baseline']['hold']['error_rms_mm'] for t in subset)
         result.update(status='completed',all_complete=all(r['complete'] for r in result['episodes']),hold_relative_improvement=improvements,
-            frozen_bfm_unchanged=True,checkpoint_unchanged=True,projector_updates=2000,policy_updates=2000,projection_steps=3200,ppo_updates=0,total_simulated_seconds=sum(r['physics_samples'] for r in result['episodes'])*.005)
+            frozen_bfm_unchanged=True,checkpoint_unchanged=True,projector_updates=2000,policy_updates=2000,projection_steps=0,ppo_updates=0,total_simulated_seconds=sum(r['physics_samples'] for r in result['episodes'])*.005)
         write('result.json',result);print('COMPLETED',json.dumps(result),flush=True)
     finally:env.close()
 
