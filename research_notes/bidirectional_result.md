@@ -21,7 +21,7 @@ B=原standing BFM；T=特权教师；S=同一个共享Student。以下E为三维
 | −X / 新留出1.25s | 移动 | 22.510 / 17.477 / 17.736 | 1.883 / 1.474 / 1.489 | 21.21% | 94.85% |
 | −X / 新留出1.25s | 保持 | 26.633 / 22.657 / 21.710 | 2.108 / 1.790 / 1.717 | 18.48% | 123.82% |
 
-教师收益恢复>100%仅表示此单seed闭环的误差略小于教师，不是统计显著优越。每条件预定的4个半秒移动窗口与整个保持窗口，S均优于B；新留出−X早期1.75–2.25s仍明显落后教师：B/T/S=19.516/12.638/16.575mm，后段追上。没有只挑有利窗口。
+教师收益恢复>100%仅表示此单seed闭环的误差略小于教师，不是统计显著优越。离线分析按固定4个半秒移动窗口与整个保持窗口复核（窗口在分析时定义，未用于训练或模型选择），S均优于B；新留出−X早期1.75–2.25s仍明显落后教师：B/T/S=19.516/12.638/16.575mm，后段追上。没有只挑有利窗口。
 
 实际方向响应（移动阶段末−初；这里位置用cm，均为世界系X，正负号不随任务翻转）：
 
@@ -63,7 +63,7 @@ B=原standing BFM；T=特权教师；S=同一个共享Student。以下E为三维
 - 运行入口SHA256：`50d44c732550c60000ee9437955896d6267c81d5bb3a028b0761ca05309c7c00`。
 - P=`/mnt/data/temp_user/yi.gao/projects/compliance_BFM`；worktree=`P/bridge-v2-owned/trees/issue-21-bidirectional/repo`。
 - R=`P/bridge-v2-owned/runs/issue21-bidirectional-20261030T012400Z/attempt-01`；目录ID只是唯一标识，真实启动UTC为2026-10-30T01:17:34.763886。
-- `R/outputs/`包含`contact-projector-final.pt`、`teacher-dataset.pt`、`sealed-protocol.json`、`checkpoint-frozen-before-evaluation.json`、`reused-inputs.json`、`fit-{before,after,trace}.json`、`summary.json`、`bidirectional-analysis.json`、`result.json`、`dev-*/holdout-*`全轨迹及审计。`R/{manifest.json,stdout.log,stderr.log,telemetry.jsonl,supervisor-result.json}`和上级`ledger.json`保存来源、版本、资源、退出；所有完整日志/权重留服务器，GitHub只存摘要。
+- `R/outputs/`包含`contact-projector-final.pt`、`teacher-dataset.pt`、`sealed-protocol.json`、`checkpoint-frozen-before-evaluation.json`、`reused-inputs.json`、`fit-{before,after,trace}.json`、`summary.json`、`bidirectional-analysis.json`、`result.json`、`dev-*/holdout-*`全轨迹及审计。`R/{manifest.json,stdout.log,stderr.log,telemetry.jsonl,supervisor-result.json}`和上级`ledger.json`保存来源、版本、资源、退出；所有完整日志/权重留服务器，GitHub只存摘要。Student分条件收益以`bidirectional-analysis.json.gains`为准；`result.json`继承的`hold_relative_improvement`字段实际汇总的是教师收益，不是Student收益。
 - 1次实际启动、2000次监督更新、12个新回合/72模拟秒，墙钟213.643s，4 CPU，RSS峰值7.346GiB，自有GPU5峰值632MiB；PID/PGID3808079及子进程已退出，GPU5回到1MiB，无剩余自有进程/资源越界。
 - 共享checkout仍干净`gaoe05/research@6023c6e257fab8fe58d13d9207fb5e85c32ee9c3`；原BFM推理模块/参数/权重及复用数据哈希前后不变。未操作其他任务、未push、未启动Bridge。
 
