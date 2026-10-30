@@ -5,6 +5,21 @@ from locomotion_saved_audit import magnitude_summary
 
 
 class AuditRegression(unittest.TestCase):
+    def test_native_target_retains_source_arithmetic(self):
+        import torch
+        from types import SimpleNamespace as NS
+        from locomotion_rollout import native_target
+        class Config(dict):
+            __getattr__=dict.__getitem__
+        actions=torch.tensor([[.321531,-.728932,.891247]])
+        b=NS(config=NS(robot=NS(control=Config(action_scale=.25,action_rescale=True),
+             dof_effort_limit_list=[139.,88.,25.])),device='cpu',p_gains=torch.tensor([[99.09843,40.17924,28.50125]]),
+             default_dof_pos=torch.tensor([[-.1,.3,-.2]]),default_dof_pos_offset=torch.zeros(1,3))
+        expected=actions*.25
+        expected=expected*torch.tensor([139.,88.,25.])/b.p_gains
+        expected=expected+b.default_dof_pos+b.default_dof_pos_offset
+        self.assertTrue(torch.equal(native_target(actions,b),expected))
+
     def test_deployment_target_clips_position_without_mutating_action(self):
         import torch
         from locomotion_rollout import deployed_target

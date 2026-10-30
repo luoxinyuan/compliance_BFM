@@ -1,0 +1,13 @@
+{
+  "reason": "First target-clipping comparison recomputed an algebraically equivalent PD target with different FP32 operation order, introducing tiny pre-clipping state differences. Preserve that run; correct the implementation, not the physical parameters.",
+  "registered_before_corrected_execution": true,
+  "additional_branches": 1,
+  "branch": "deploy_target_clip_exact",
+  "baseline": "Already recorded native_50hz, exact replay of original branch",
+  "change": "Compute native target using original source operation order, apply existing limits, return original torque bit-for-bit for every unclipped joint. Original gains, model, z, histories, timing, limits and initial state remain fixed.",
+  "required_check": "State, velocity and BFM action must remain bitwise identical up to first clipped command",
+  "protocol": "locomotion_physical_protocol.json",
+  "resource_budget": "Same cumulative 3600s, 64GiB RSS, 4GiB owned VRAM; total three 6s physical branches",
+  "selection": "Corrected branch is the primary interface comparison; retain and report prior arithmetic-limited branch",
+  "no_parameter_tuning": true
+}

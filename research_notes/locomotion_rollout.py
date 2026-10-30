@@ -13,6 +13,16 @@ def deployed_target(actions, offset, scale, lower, upper):
     return (offset+actions*scale/5).clamp(lower,upper)
 
 
+def native_target(actions, base):
+    """Preserve the original source operation order, including offsets."""
+    import torch
+    scaled=actions*base.config.robot.control.action_scale
+    if base.config.robot.control.get('action_rescale',False):
+        effort=torch.tensor(base.config.robot.dof_effort_limit_list,dtype=torch.float,device=base.device)
+        scaled=scaled*effort/base.p_gains
+    return scaled+base.default_dof_pos+base.default_dof_pos_offset
+
+
 class UnsafePhysics(RuntimeError):
     def __init__(self, row):
         self.row = copy.deepcopy(row)
@@ -93,17 +103,20 @@ def run_study(env, model, contract, out):
     offset=torch.tensor(contract['q_PD_offset'],device=dev)
     qtarget=lambda a: offset+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5
     original_torque=env.base._compute_torques
+    exact=os.environ.get('BFM_TARGET_CLIP_EXACT')=='1'
     ids=[mujoco.mj_name2id(m,mujoco.mjtObj.mjOBJ_JOINT,n) for n in contract['dof_names']]
     qlo=torch.tensor(m.jnt_range[ids,0],device=dev,dtype=torch.float32)
     qhi=torch.tensor(m.jnt_range[ids,1],device=dev,dtype=torch.float32)
     assert not env.base.config.domain_rand.randomize_torque_rfi
     def deployment_torque(actions):
         original=original_torque(actions)
-        if not record or label!='deploy_target_clip':return original
+        if not record or label not in ['deploy_target_clip','deploy_target_clip_exact']:return original
         base=env.base
-        target=deployed_target(actions,offset,scale,qlo,qhi)
+        raw=native_target(actions,base) if exact else None
+        target=raw.clamp(qlo,qhi) if exact else deployed_target(actions,offset,scale,qlo,qhi)
         torque=base._kp_scale*base.p_gains*(target-base.simulator.dof_pos)-base._kd_scale*base.d_gains*base.simulator.dof_vel
-        return torque.clamp(-base.torque_limits,base.torque_limits)
+        clipped=torque.clamp(-base.torque_limits,base.torque_limits)
+        return torch.where(target!=raw,clipped,original) if exact else clipped
     env.base._compute_torques=deployment_torque
     original_act=model.act
     record=False
@@ -118,8 +131,8 @@ def run_study(env, model, contract, out):
         actual_z=spherical(env.standing,chosen,alpha)
         action=original_act(obs,actual_z,mean=True)
         if record:
-            raw_q=qtarget(action)
-            q=raw_q.clamp(qlo,qhi) if label=='deploy_target_clip' else raw_q
+            raw_q=native_target((action*5).clamp(-contract['clip'],contract['clip']),env.base) if exact else qtarget(action)
+            q=raw_q.clamp(qlo,qhi) if label in ['deploy_target_clip','deploy_target_clip_exact'] else raw_q
             row=dict(time=float(env.tether.time),relative_time=relative,alpha=alpha,
                 executed_z=actual_z.tolist(),z_angle_deg=float(torch.rad2deg(torch.acos(((actual_z*env.standing).sum()/256.).clamp(-1,1)))),
                 action=action[0].tolist(),q_PD=q[0].tolist(),raw_q_PD=raw_q[0].tolist(),target_clip_fraction=float((abs(q-raw_q)>1e-8).float().mean()),bfm_obs={k:v.tolist() for k,v in obs.items()},
@@ -131,12 +144,13 @@ def run_study(env, model, contract, out):
     model.act=act
     result=dict(status='running',episodes=[],first_failure=None)
     save('protocol.json',protocol)
-    save('interface-intervention.json',dict(branches=['native_50hz','deploy_target_clip'],
+    branches=['deploy_target_clip_exact'] if exact else ['native_50hz','deploy_target_clip']
+    save('interface-intervention.json',dict(branches=branches,
         source='LeCAR-Lab/BFM-Zero deploy rl_policy/bfm_zero.py final q_target clip',
         only_change='final position target clipping to existing joint limits; original raw action and history retained',
         q_lower=qlo.tolist(),q_upper=qhi.tolist(),new_reward_z=False,new_training=False))
     try:
-        for label in ['native_50hz','deploy_target_clip']:
+        for label in branches:
             env.qualification_active=False;record=False;chosen=env.standing
             env.cfg.enabled=False;env.cfg.activation_time=3.;env.cfg.ramp_duration=4.;env.cfg.release_time=8.
             env.reset(seed=0,trajectory=(zero[0]['wrist'],[0,0,0]))
@@ -192,6 +206,13 @@ def run_study(env, model, contract, out):
             episode=dict(label=label,initial=initial,physics=rows,control=control,boundary=boundary,
                          common_state_sha256=hashlib.sha256(json.dumps(state,sort_keys=True).encode()).hexdigest())
             save(label+'.json',episode)
+            if exact:
+                reference=read(runs/'issue21-locomotion-audit-20261030A/physics-attempt-01/outputs/native_50hz.json')
+                first=next((i for i,c in enumerate(control) if c['target_clip_fraction']>0),len(control))
+                checks={k:float(abs(np.asarray([c[k] for c in control[:first+1]])-np.asarray([c[k] for c in reference['control'][:first+1]])).max()) for k in ['pre_qpos','pre_qvel','action']}
+                checks['physics_qpos']=float(abs(np.asarray([r['qpos'] for r in rows[:first*4]])-np.asarray([r['qpos'] for r in reference['physics'][:first*4]])).max()) if first else 0.
+                save('pre-intervention-parity.json',dict(first_clip_control_index=first,first_clip_relative_time=control[first]['relative_time'] if first<len(control) else None,max_absolute_error=checks))
+                assert max(checks.values())==0., 'No-clipping arithmetic was not bitwise equivalent'
             if label=='native_50hz':
                 old=read(runs/'issue21-reward-stage-20261030A/physics-attempt-01/outputs/move-ego-0-0.3.json')
                 parity={k:float(abs(np.asarray([r[k] for r in rows])-np.asarray([r[k] for r in old['physics']])).max()) for k in ['qpos','qvel','root','force']}

@@ -20,7 +20,7 @@ def main():
     assert RUN != P/'bridge-v2-owned/runs/issue21-reward-stage-20261030A'
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gpu-index',type=int)
-    parser.add_argument('--stage',choices=['audit','physics'],default='audit')
+    parser.add_argument('--stage',choices=['audit','physics','physics-exact'],default='audit')
     parser.add_argument('--execute-after-owner-gpu-notice',action='store_true')
     args=parser.parse_args()
     protocol=json.loads((ROOT/'research_notes/reward_skill_protocol.json').read_text())
@@ -49,6 +49,9 @@ def main():
     env=dict(os.environ);env.update(CUDA_VISIBLE_DEVICES=before['uuid'],MUJOCO_GL='disable',BFM_STAGE_SUPERVISED='1',BFM_STAGE_DEADLINE_MONOTONIC=str(time.monotonic()+remaining),PYTHONPATH=str(ROOT),TORCHDYNAMO_DISABLE='1',OMP_NUM_THREADS='8',MKL_NUM_THREADS='8',OPENBLAS_NUM_THREADS='1',PYTHONDONTWRITEBYTECODE='1',HF_HUB_OFFLINE='1',WANDB_MODE='disabled')
     (attempt/'outputs').mkdir()
     env.update(BFM_RECOVERY_OUTPUT=str(attempt/'outputs'),BFM_REWARD_INFERENCE_OUTPUT=str(inference_output))
+    if args.stage=='physics-exact':
+        assert sum(len(json.loads((Path(a['path'])/'outputs/physical-result.json').read_text())['episodes']) for a in ledger['attempts'] if a.get('stage')=='physics' and a.get('result_status')=='completed')==2
+        env['BFM_TARGET_CLIP_EXACT']='1'
     launcher='locomotion_saved_audit.py' if args.stage=='audit' else 'locomotion_physics.py'
     command=[str(P/'.venv/bin/python'),'-u',str(ROOT/'research_notes'/launcher)]
     entry['command']=command;write(ledger_path,ledger)
