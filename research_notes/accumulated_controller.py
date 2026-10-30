@@ -2,6 +2,14 @@
 import numpy as np
 
 
+def executable_bounds(base_q, joint_limits, scale, offset, clip, joint_margin=.02):
+    """Intersect original mechanical and normalized-action ranges, in PD-target radians."""
+    action_radius = (clip/5.-1e-4)*np.asarray(scale)
+    lower = np.maximum(joint_limits[:,0]+joint_margin, offset-action_radius)-base_q
+    upper = np.minimum(joint_limits[:,1]-joint_margin, offset+action_radius)-base_q
+    return lower, upper
+
+
 class AccumulatedCorrection:
     def __init__(self, caps, total_norm=.40, velocity=.40, norm_velocity=.80, release_s=.80):
         self.caps = np.asarray(caps, dtype=float)

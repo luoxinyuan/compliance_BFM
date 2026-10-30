@@ -3,6 +3,7 @@ import hashlib
 import numpy as np
 import torch
 from wholebody_physics import read,save,RUNS
+from accumulated_controller import executable_bounds
 
 SOURCE=RUNS/'issue21-goalcalibration-20261030A/attempt-01/outputs'
 
@@ -27,8 +28,12 @@ def build_and_check(env,model,contract,common,out,protocol):
         expected=np.array(c['q_PD']);expected[22:]-=correction
         errors.append(float(abs(q-expected).max()))
         limits=np.array([x['limits_rad'] for x in protocol['margins']])
-        envelope_clearance.append(float(np.minimum(q[22:]-caps-limits[:,0],limits[:,1]-q[22:]-caps).min()))
-        clip_margin.append(float(np.min(contract['clip']/5-np.abs(a[0].cpu().numpy()[22:])-caps/scale[0,22:].cpu().numpy())))
+        lower,upper=executable_bounds(q[22:],limits,scale[0,22:].cpu().numpy(),offset[0,22:].cpu().numpy(),contract['clip'])
+        assert np.all(lower<=0) and np.all(upper>=0)
+        lo=np.maximum(lower,-caps);hi=np.minimum(upper,caps)
+        envelope_clearance.append(float(np.minimum(q[22:]+lo-limits[:,0],limits[:,1]-q[22:]-hi).min()))
+        extrema=np.maximum(abs((q[22:]+lo-offset[0,22:].cpu().numpy())/scale[0,22:].cpu().numpy()),abs((q[22:]+hi-offset[0,22:].cpu().numpy())/scale[0,22:].cpu().numpy()))
+        clip_margin.append(float(np.min(contract['clip']/5-extrema)))
         rows.append(dict(time=c['tether_time'],bfm_q_PD=q.tolist(),old_teacher_q_PD=correction.tolist()))
     assert max(errors)<2e-6, 'Original B model/normalizer/observation output changed'
     permitted=min(envelope_clearance)>.02 and min(clip_margin)>0

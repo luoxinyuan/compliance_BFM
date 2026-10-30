@@ -7,7 +7,7 @@ import mujoco
 from ccl02a_teacher import arm_ik,audit_episode
 from wholebody_physics import save,read,REF,ZERO,INITIAL
 from accumulated_precheck import build_and_check,SOURCE
-from accumulated_controller import AccumulatedCorrection
+from accumulated_controller import AccumulatedCorrection,executable_bounds
 
 def run_study(env,model,contract,out):
  root=Path(__file__).resolve().parents[1];protocol=read(root/'research_notes/accumulated_protocol.json');save(out,'protocol.json',protocol)
@@ -31,7 +31,7 @@ def run_study(env,model,contract,out):
   applied=torch.zeros_like(base);correction=np.zeros(7);accumulation=None
   if mode=='accumulated':
    base_q=qtarget(base)[0].cpu().numpy();margin=settings['online_joint_margin_rad']
-   lower=limits[arm,0]+margin-base_q[arm];upper=limits[arm,1]-margin-base_q[arm]
+   lower,upper=executable_bounds(base_q[arm],limits[arm],scale[0,arm].cpu().numpy(),offset[0,arm].cpu().numpy(),contract['clip'],margin)
    correction,accumulation=controller.tick(float(env.tether.time),bool(env.tether.active),lower,upper)
    applied[:,arm]=torch.as_tensor(correction,device=dev,dtype=base.dtype)/scale[:,arm]
   action=base+applied if mode!='baseline' else base;q=qtarget(action);q0=qtarget(nominal)
@@ -76,7 +76,8 @@ def run_study(env,model,contract,out):
     point,_=env.tether.point_state();error=env.tether.anchor-point;desired=arm_ik(env.tether.jac[:,vadr[chosen_indices]],error)
     q0=qtarget(nominal).cpu().numpy().reshape(-1);desired=np.clip(q0[chosen_indices]+desired,limits[chosen_indices,0],limits[chosen_indices,1])-q0[chosen_indices]
    q0=qtarget(nominal).cpu().numpy().reshape(-1);margin=settings['online_joint_margin_rad']
-   controller.propose(desired,active,limits[arm,0]+margin-q0[arm],limits[arm,1]-margin-q0[arm])
+   lower,upper=executable_bounds(q0[arm],limits[arm],scale[0,arm].cpu().numpy(),offset[0,arm].cpu().numpy(),contract['clip'],margin)
+   controller.propose(desired,active,lower,upper)
    decisions.append(dict(time=now,active=active,correction=controller.applied.tolist(),increment=desired.tolist(),proposal=copy.deepcopy(controller.last_proposal),z=command_z.tolist()))
    try:_,_,done,info=env.step(torch.zeros_like(env.standing),baseline=True)
    except ValueError as exc:

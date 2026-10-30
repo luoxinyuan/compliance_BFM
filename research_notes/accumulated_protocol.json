@@ -187,5 +187,6 @@
     "rss_gib": 12,
     "gpu_mib": 4096,
     "cumulative_wall_s": 2400
-  }
+  },
+  "implementation_amendment": "Attempt01 precheck rejected a full +/-0.2rad box because original wrist normalized-action bounds are narrower than joint bounds. Before any contact rollout, intersect online correction with BOTH original joint and original action ranges (1e-4 normalized-action numerical margin). No nominal limits raised; preserve Attempt01 and its evidence."
 }

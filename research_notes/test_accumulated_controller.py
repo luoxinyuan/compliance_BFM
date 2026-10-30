@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from accumulated_controller import AccumulatedCorrection
+from accumulated_controller import AccumulatedCorrection,executable_bounds
 
 
 class ControllerTests(unittest.TestCase):
@@ -62,5 +62,17 @@ class ControllerTests(unittest.TestCase):
         c=AccumulatedCorrection(np.full(7,.2));c.applied[:]=.1
         with self.assertRaisesRegex(ValueError,'velocity constraints'):
             c.tick(0,True,-np.ones(7),np.full(7,.01))
+
+    def test_action_range_is_tighter_than_joint_range(self):
+        q=np.full(7,.05);scale=np.full(7,.128);offset=np.zeros(7)
+        lower,upper=executable_bounds(q,np.tile([-2.,2.],(7,1)),scale,offset,5.)
+        self.assertLess(max(upper),.08)
+        c=AccumulatedCorrection(np.full(7,.2));t=0
+        for h in range(30):
+            c.propose(np.full(7,.02),True,lower,upper)
+            for _ in range(5):
+                a,_=c.tick(t,True,lower,upper);t+=.02
+                self.assertLess(max(abs((q+a)/scale)),1.)
+        np.testing.assert_allclose(c.applied,upper)
 
 if __name__=='__main__':unittest.main()
