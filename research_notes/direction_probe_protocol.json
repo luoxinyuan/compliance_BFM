@@ -1,0 +1,52 @@
+{
+  "base_commit": "66e894967995685cefd55bf5dbfd6cf9ec5b7ac9",
+  "student_sha256": "a5daf853276d55f5b8c099df4f48917f572a32c48e548d2c90f39e593d4a809d",
+  "common_state": "Original seed0 zero-force standing prefix t=3.0s; full mechanical/BFM observation/action/force history verified identical on all6 branches; deterministic replay reconstructs saved snapshot",
+  "branch_seconds": 1.0,
+  "directions": [
+    1,
+    -1
+  ],
+  "modes": [
+    "baseline",
+    "student",
+    "student-force-zero"
+  ],
+  "partner": {
+    "onset": 3.0,
+    "anchor": "common snapshot wrist world coordinate; zero spring preload, record damping preload",
+    "displacement_m": 0.035,
+    "ramp_seconds": 2.0,
+    "trajectory": "original smoothstep",
+    "K": 80,
+    "D": 8,
+    "cap_n": 5,
+    "release_s": 4.5
+  },
+  "windows_relative_s": [
+    [
+      0,
+      0.2
+    ],
+    [
+      0.2,
+      0.5
+    ],
+    [
+      0.5,
+      1.0
+    ],
+    [
+      0,
+      1.0
+    ]
+  ],
+  "attribution": "Student minus standing response under same partner law; same-observation nominal BFM action subtracts native feedback; force-feature-zero keeps actual force and gate; compute actualXYZ forces and kinematic J*delta_q separately from observed motion",
+  "stop": "Six branches only; no training, optimizer, new motion or outcome-based retries; if force signs insufficient report lack of identification",
+  "resources": {
+    "cpus": 4,
+    "rss_gib": 12,
+    "gpu_mib": 4096,
+    "cumulative_wall_seconds": 900
+  }
+}
