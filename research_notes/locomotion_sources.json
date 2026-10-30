@@ -1,0 +1,56 @@
+{
+  "files": [
+    {
+      "file": "official-0.txt",
+      "sha_git_blob": "9258f32f922c0b4e18d9841e6fcf611738ab21d9",
+      "url": "https://github.com/LeCAR-Lab/BFM-Zero/blob/05ad6119a25b06c341c191a72ccf936e987f59cf/humanoidverse/config/robot/g1/g1_29dof_hard_waist.yaml"
+    },
+    {
+      "file": "official-1.txt",
+      "sha_git_blob": "bfeb2e722a0cc38236a81d99b0045c6ffb1aaef8",
+      "url": "https://github.com/LeCAR-Lab/BFM-Zero/blob/05ad6119a25b06c341c191a72ccf936e987f59cf/humanoidverse/agents/fb/model.py"
+    },
+    {
+      "file": "official-2.txt",
+      "sha_git_blob": "209c30bdad89e1177a2b4024af66fc08395b83ec",
+      "url": "https://github.com/LeCAR-Lab/BFM-Zero/blob/de9e248ce8b315508aafaecc8f15def3e057fccc/config/robot/g1.yaml"
+    },
+    {
+      "file": "official-3.txt",
+      "sha_git_blob": "1f368bd70fd5ecadd08848a590bc2dd84a095f33",
+      "url": "https://github.com/LeCAR-Lab/BFM-Zero/blob/de9e248ce8b315508aafaecc8f15def3e057fccc/rl_policy/bfm_zero.py"
+    },
+    {
+      "file": "official-4.txt",
+      "sha_git_blob": "17dd1e445e0623cb2aedade49454004bb7c9a4fb",
+      "url": "https://github.com/LeCAR-Lab/BFM-Zero/blob/de9e248ce8b315508aafaecc8f15def3e057fccc/rl_policy/observations/bfm_zero.py"
+    },
+    {
+      "file": "official-5.txt",
+      "sha_git_blob": "3ff92cd6e25d73786b25148f50263977c6aebdd6",
+      "url": "https://github.com/LeCAR-Lab/BFM-Zero/blob/de9e248ce8b315508aafaecc8f15def3e057fccc/config/exp/reward/locomotion.yaml"
+    },
+    {
+      "file": "official-6.txt",
+      "sha_git_blob": "1126eb31c36c86ef3f1220433b198d03bac3a6cb",
+      "url": "https://github.com/LeCAR-Lab/BFM-Zero/blob/de9e248ce8b315508aafaecc8f15def3e057fccc/config/policy/motivo_newG1.yaml"
+    },
+    {
+      "file": "official-7.txt",
+      "sha_git_blob": "c4f5fd743fb28168896b96fc56c50f71d1bb62d2",
+      "url": "https://github.com/LeCAR-Lab/BFM-Zero/blob/05ad6119a25b06c341c191a72ccf936e987f59cf/humanoidverse/agents/envs/humanoidverse_isaac.py"
+    },
+    {
+      "file": "official-8.txt",
+      "sha_git_blob": "5cecd19f685763e04306e5d0362d5af43d44d239",
+      "url": "https://github.com/LeCAR-Lab/BFM-Zero/blob/05ad6119a25b06c341c191a72ccf936e987f59cf/humanoidverse/envs/legged_base_task/legged_robot_base.py"
+    },
+    {
+      "file": "official-9.txt",
+      "sha_git_blob": "334b8540026899c63f318f7f162b730b2b7721ea",
+      "url": "https://github.com/LeCAR-Lab/BFM-Zero/blob/05ad6119a25b06c341c191a72ccf936e987f59cf/humanoidverse/simulator/mujoco/mujoco.py"
+    }
+  ],
+  "author_hard_waist": "https://github.com/LeCAR-Lab/BFM-Zero/issues/17#issuecomment-4035650943",
+  "author_inference": "https://github.com/LeCAR-Lab/BFM-Zero/issues/26#issuecomment-4966553366"
+}
