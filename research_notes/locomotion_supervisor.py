@@ -5,7 +5,7 @@ from causal_supervisor import processes
 
 P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM')
 ROOT=Path(__file__).resolve().parents[1]
-RUN=P/'bridge-v2-owned/runs/issue21-reward-stage-20261030A'
+RUN=P/'bridge-v2-owned/runs/issue21-locomotion-audit-20261030A'
 
 
 def git(*args):return subprocess.check_output(['git','-C',str(ROOT),*args],text=True).strip()
@@ -16,6 +16,8 @@ def gpu(index):
 
 
 def main():
+    assert RUN.name == 'issue21-locomotion-audit-20261030A'
+    assert RUN != P/'bridge-v2-owned/runs/issue21-reward-stage-20261030A'
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gpu-index',type=int)
     parser.add_argument('--stage',choices=['audit','physics'],default='audit')

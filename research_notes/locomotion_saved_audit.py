@@ -9,6 +9,12 @@ MODEL=P/'bridge-v2-owned/runs/issue19-recovery-20261028T045520Z/model-view'
 BUFFER=Path('/mnt/data-oss/users/yi.gao/compliance_BFM/native_reward_assets/62b4206d68e026de5e5dc7efb1529bccfb95164c/train')
 
 
+def magnitude_summary(values):
+    import numpy as np
+    x=np.abs(np.asarray(values,dtype=float))
+    return [float(np.quantile(x,.99)),float(x.max())]
+
+
 def main():
     assert os.environ.get('BFM_STAGE_SUPERVISED')=='1'
     deadline=float(os.environ['BFM_STAGE_DEADLINE_MONOTONIC'])
@@ -35,6 +41,7 @@ def main():
     scale=np.asarray(contract['q_PD_scale'])[0];offset=np.asarray(contract['q_PD_offset'])[0]
     target=lambda a:offset+np.clip(a*5,-contract['clip'],contract['clip'])*scale/5
     keys=model.cfg.archi.actor.input_filter.key
+    assert len(keys)==3
     tensor_obs=lambda o:{k:torch.as_tensor(v,dtype=torch.float32,device='cuda') for k,v in o.items()}
     original_z=torch.tensor(read(OLD/'inference-attempt-01/outputs/move-ego-0-0.3-latent.json')['z'],device='cuda')
     quat=lambda q:math.atan2(2*(q[0]*q[3]+q[1]*q[2]),1-2*(q[2]**2+q[3]**2))
@@ -66,7 +73,7 @@ def main():
                 'heading_minmax_deg':np.degrees([np.min(np.asarray(heading)[mask]),np.max(np.asarray(heading)[mask])]).tolist()}
         replay[name]={'actor_replay_max_error':max(errors),'last_action_scaled_history_max_error':max(last_errors),
             'actor_dt_minmax':np.asarray(np.diff([c['time'] for c in cs]))[[np.argmin(np.diff([c['time'] for c in cs])),np.argmax(np.diff([c['time'] for c in cs]))]].tolist(),
-            'phases':phases,'normalized_abs_p99_max':[float(np.quantile(abs(norm),.99)),float(np.max(abs(norm)))]}
+            'phases':phases,'normalized_abs_p99_max':magnitude_summary(norm)}
     save('saved_trace_replay.json',replay)
     print('SAVED_ACTOR_AND_NATIVE_REWARD_AUDIT_COMPLETE',flush=True)
     # Exact three-input-block Shapley differences on saved adjacent observations.
@@ -149,4 +156,7 @@ def main():
 if __name__=='__main__':
     try:main()
     except Exception as e:
-        out=Path(os.environ['BFM_RECOVERY_OUTPUT']);(out/'failure.json').write_text(json.dumps({'type':type(e).__name__,'boundary':str(e)},indent=2));raise
+        out=Path(os.environ['BFM_RECOVERY_OUTPUT']);failure={'type':type(e).__name__,'boundary':str(e)}
+        (out/'failure.json').write_text(json.dumps(failure,indent=2))
+        p=out/'result.json';r=json.loads(p.read_text()) if p.exists() else {}
+        r.update(status='failed',first_boundary=failure);p.write_text(json.dumps(r,indent=2));raise
