@@ -1,0 +1,25 @@
+{
+  "checked": "2026-10-30",
+  "team_head": "c002f394f0b77d2f8a85356667fec5eda0f4a1af",
+  "team_reports": [
+    "WHOLE_BODY_RUN_REPORT.md",
+    "REPORT.md",
+    "ACCUMULATING_TRAINING.md"
+  ],
+  "team_evidence": "Smoke tests and launch records; no demonstrated learned force reduction, no matched validated locomotion z package found in reachable tracked files or scoped personal assets",
+  "author_issue_url": "https://github.com/LeCAR-Lab/BFM-Zero/issues/26",
+  "author_comment_ids": [
+    4622701104,
+    4623831933,
+    4623853354,
+    4623904871,
+    4638619677,
+    4966553366,
+    4966582338
+  ],
+  "author_reference": "https://github.com/LeCAR-Lab/BFM-Zero/issues/26#issuecomment-4966553366",
+  "hf_recheck": "web API open failed; fixed prior immutable manifest reused, live release inventory not claimed exhaustive",
+  "source_scope": "Current connected GitHub repositories, author public issue, personal compliance_BFM pretrained/native_reward_assets. No browsing others' private server directories or contacting people.",
+  "reference_outcome": "No accessible independent same-weight locomotion positive reference with state/history/PD/physical trace. This does not prove none exists privately.",
+  "candidate_source": "Existing pinned native goal endpoint from earlier A/B experiment; same frozen weights; test without any direct joint correction."
+}
