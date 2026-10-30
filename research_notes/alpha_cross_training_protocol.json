@@ -1,0 +1,632 @@
+{
+  "stage": "Bounded crossed interruption diagnosis and at most one conditional paired coverage fit",
+  "base_commit": "fa26ed60717e1194fc709c2077a9ddf696274429",
+  "model_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "teacher_gate_sha256": "4d9f1027cec3b4b678af1c875c1a29554758e7f843ab31b589e6b386b59b1bae",
+  "old_checkpoint_sha256": {
+    "A": "7861de69f82b128f4496c21f7f425a3b69fa9f8a0fd89bc89a9da298e5036f46",
+    "B": "5d6e0e70c4ad7d433b5067092ccaab155aadd90e872eba57150e78838a09a7ea"
+  },
+  "memory": {
+    "force_samples": 320,
+    "dt": 0.02,
+    "force_scale_n": 5.0,
+    "keys": [
+      "state",
+      "last_action",
+      "history_actor"
+    ],
+    "student_dim": 1425,
+    "contract": "Only past/current completed actual force XYZ FIFO and original frozen-normalized actor deployment inputs. No alpha/teacher state, event counter, anchor, active, global time, onset, direction label, previous_z or future reference. FIFO initialized with zeros, no padding mask or length feature."
+  },
+  "network": {
+    "hidden": [
+      128,
+      128
+    ],
+    "activation": "tanh",
+    "output": "sigmoid scalar alpha",
+    "initial_alpha": 0.01,
+    "seed": 0,
+    "normalization": "Training-only per-feature center/std with std floor0.1, shared A/B; force divided by5N before this transform"
+  },
+  "initialization": {
+    "source": "issue21-alpha-repair-20261031A/train-attempt-01/outputs/repair_A_final.pt",
+    "sha256": "0049d66b62226fca64997ddaa74b21e27ce0a0b8f32f1415b4519e9b1907c9ce",
+    "contract": "If coverage gate passes, A2/B2 start from exactly identical A1 weights and normalization. B1 is a frozen historical reference, not B2 initialization."
+  },
+  "training_sources": [
+    {
+      "name": "dev_early",
+      "path": "issue21-contact-gate-20261030A/physics-attempt-01/outputs/dev_early__contact.json",
+      "sha256": "dc53439e262f7e57acb34b10bc6aa3d752a3e25903fae9c169926a1b934c1e4a",
+      "kind": "normal",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "dev_late",
+      "path": "issue21-contact-gate-20261030A/physics-attempt-01/outputs/dev_late__contact.json",
+      "sha256": "7e61fba39a7ba2653d9102a3f27cfffbaa6f84d76cbf8e466125da3986ec2df6",
+      "kind": "normal",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "no_contact",
+      "path": "issue21-contact-gate-20261030A/physics-attempt-01/outputs/no_contact__contact.json",
+      "sha256": "2cc709bd62b30ec28bda87813efbea9b627ccfd6e42b866df8d92603b5ec4511",
+      "kind": "normal",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "pulse",
+      "path": "issue21-contact-gate-20261030A/physics-attempt-01/outputs/pulse__contact.json",
+      "sha256": "5edeb8207e98f7d497ae73f479817a25ec90802574517d48bd778194cdf514a5",
+      "kind": "normal",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "short02__contact",
+      "path": "issue21-alpha-interruption-20261030A/physics-attempt-01/outputs/short02__contact.json",
+      "sha256": "10810c0f5b5bf641669193ae661b8e5676a9da9f5a93b34fea9b2bde5dea46a3",
+      "kind": "interruption",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "short02__A",
+      "path": "issue21-alpha-interruption-20261030A/physics-attempt-01/outputs/short02__A.json",
+      "sha256": "1a2edb096d920e39332523ad85710b84c841318a82962691564317cd218ad3ec",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "short02__B",
+      "path": "issue21-alpha-interruption-20261030A/physics-attempt-01/outputs/short02__B.json",
+      "sha256": "129aa9e8c638df8eab62c0dbf068b594a2722af79c5749a4aab679892940286d",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "long08__contact",
+      "path": "issue21-alpha-interruption-20261030A/physics-attempt-01/outputs/long08__contact.json",
+      "sha256": "c4359e6a4880910acc1a8d20235aa8a64ef508998d7271c8f71563d0efa0ea48",
+      "kind": "interruption",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "long08__A",
+      "path": "issue21-alpha-interruption-20261030A/physics-attempt-01/outputs/long08__A.json",
+      "sha256": "f396627cd942abeefd2c1dd6e9981890f45d9dc05c5c294b7b8521afea030a83",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "long08__B",
+      "path": "issue21-alpha-interruption-20261030A/physics-attempt-01/outputs/long08__B.json",
+      "sha256": "1f1cc7a6f6f3ac6e10e24e951275433b19376b27a3d9d3780d864944d3dc8df1",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "cross_new_short03__contact",
+      "path": "issue21-alpha-repair-20261031A/physics-attempt-01/outputs/new_short03__contact.json",
+      "sha256": "2c35bde042eecd61cb8d1b77f8d3c6b96f45242994e2a90aeecb0ef84345f226",
+      "kind": "interruption",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "cross_new_short03__A",
+      "path": "issue21-alpha-repair-20261031A/physics-attempt-01/outputs/new_short03__A.json",
+      "sha256": "5fd83434faa6950b157412fcc0dbfc8cc25f67bd5ba97efe68121f850e2eb764",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "cross_new_short03__B",
+      "path": "issue21-alpha-repair-20261031A/physics-attempt-01/outputs/new_short03__B.json",
+      "sha256": "d2d119a266d5c5e2063b79e0e609e4bfb7177c4016c121a89765ac1e6082a024",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "cross_early_long07__contact",
+      "path": "issue21-alpha-cross-20261031A/diagnostic-attempt-01/outputs/early_long07__contact.json",
+      "sha256": "00a0d92ea8463e0fb2ab0335ae1166321904bb29d7915388324614a6122a6500",
+      "kind": "interruption",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "cross_early_long07__A",
+      "path": "issue21-alpha-cross-20261031A/diagnostic-attempt-01/outputs/early_long07__A.json",
+      "sha256": "7b5e239e380632434d0b40dcb4cbf7225780bf3fc9b27af8364fbd49d167eb65",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "cross_early_long07__B",
+      "path": "issue21-alpha-cross-20261031A/diagnostic-attempt-01/outputs/early_long07__B.json",
+      "sha256": "401b725ca9c757a326d467152e6b887c35fa6f7307e41d5e0e729e7b2b936b01",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "cross_late_short03__contact",
+      "path": "issue21-alpha-cross-20261031A/diagnostic-attempt-01/outputs/late_short03__contact.json",
+      "sha256": "ed27e612a458184570bc185738919c9b274295a5aeb68b0f7dc5a20e4bf9d1ab",
+      "kind": "interruption",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "cross_late_short03__A",
+      "path": "issue21-alpha-cross-20261031A/diagnostic-attempt-01/outputs/late_short03__A.json",
+      "sha256": "7c280dde0881d835550363be806717bc5a69645d7183d67bef2793f5cce2b9ca",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "cross_late_short03__B",
+      "path": "issue21-alpha-cross-20261031A/diagnostic-attempt-01/outputs/late_short03__B.json",
+      "sha256": "8883a0c244d155c75026e32036880784290ac13875ac34019317e01cbe1ae41f",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "cross_new_long07__contact",
+      "path": "issue21-alpha-repair-20261031A/physics-attempt-01/outputs/new_long07__contact.json",
+      "sha256": "85ae776edd8717523adeb7899f677ae0a8a0dd58a9815c2539b3190750674023",
+      "kind": "interruption",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "cross_new_long07__A",
+      "path": "issue21-alpha-repair-20261031A/physics-attempt-01/outputs/new_long07__A.json",
+      "sha256": "4e89f8592c3959344d3516d768ae66d233ce88869da2d6fbc8d304aab251e6bd",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "cross_new_long07__B",
+      "path": "issue21-alpha-repair-20261031A/physics-attempt-01/outputs/new_long07__B.json",
+      "sha256": "3bdc221985b58f83875a18a7411164d430360a4d26c3c2c9abf215c43e519caa",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    }
+  ],
+  "training_samples": 10020,
+  "optimization": {
+    "optimizer": "Adam",
+    "lr": 0.0003,
+    "grad_clip": 1.0,
+    "batch_size": 256,
+    "updates": 2000,
+    "batch_seed": 2026103102,
+    "sampling": "128 slots identical old normal/old-gap stratification;128 slots four crossed cells equally,each teacher16,A1visited8,B1visited8;four temporal phases equal within each gap source.",
+    "A": "Original alpha MSE",
+    "B": "Original 29D q_PD MSE divided by (0.1rad)^2 through frozen actor",
+    "rationale": "Exactly one conditional paired fit, same A1 initialization and fixed2000 updates; no second fit or result-selected checkpoint."
+  },
+  "final_checkpoints": {
+    "A": "cross_A_final.pt",
+    "B": "cross_B_final.pt",
+    "selection": "fixed update2000 regardless of final results"
+  },
+  "physical": {
+    "common_state_s": 3.0,
+    "seed": 0,
+    "actor_hz": 50,
+    "physics_hz": 200,
+    "K": 80,
+    "D": 8,
+    "force_cap_n": 5,
+    "ramp_s": 4,
+    "final_release_s": 10.4,
+    "recovery_s": 2,
+    "partner": "Identical original +X geometry.delta_x_m18.6819cm path, aligned once from existing unforced standing wrist at5.4. Anchor continues its original smoothstep during both disconnects; no reset, pause, chasing wrist or modified target.",
+    "disconnect": "Harness toggles original Tether cfg.enabled BEFORE each actual physics application, using integer200Hz ticks; original measure/apply computes and applies zero wrench. Sensor sees that real force after original causal delay. Student and gate never receive connection flag, time, onset or anchor.",
+    "reconnect": "Re-enable original capped spring-damper at same ongoing world anchor; no new force smoothing, stiffness, model or PD changes. This is an ideal detach/regrasp external task perturbation, not fake zero sensor input."
+  },
+  "conditions": [
+    {
+      "name": "dev_early",
+      "split": "old_regression",
+      "onset": 3.0,
+      "duration": 5.0,
+      "end": 10.0,
+      "enabled": true,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-contact-gate-20261030A/physics-attempt-01/outputs"
+    },
+    {
+      "name": "dev_late",
+      "split": "old_regression",
+      "onset": 3.8,
+      "duration": 5.0,
+      "end": 10.8,
+      "enabled": true,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-contact-gate-20261030A/physics-attempt-01/outputs"
+    },
+    {
+      "name": "no_contact",
+      "split": "old_regression",
+      "onset": 3.0,
+      "duration": 5.0,
+      "end": 11.6,
+      "enabled": false,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-contact-gate-20261030A/physics-attempt-01/outputs"
+    },
+    {
+      "name": "pulse",
+      "split": "old_regression",
+      "onset": 3.8,
+      "duration": 0.8,
+      "end": 10.8,
+      "enabled": true,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-contact-gate-20261030A/physics-attempt-01/outputs"
+    },
+    {
+      "name": "heldout",
+      "split": "old_regression",
+      "onset": 4.6,
+      "duration": 5.0,
+      "end": 11.6,
+      "enabled": true,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-contact-gate-20261030A/physics-attempt-01/outputs"
+    },
+    {
+      "name": "final_new",
+      "split": "old_regression",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-student-20261030A/physics-attempt-01/outputs"
+    },
+    {
+      "name": "short02",
+      "split": "old_gap_regression",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 7.8,
+      "disconnect_end": 8.0,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-interruption-20261030A/physics-attempt-01/outputs"
+    },
+    {
+      "name": "long08",
+      "split": "old_gap_regression",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 7.8,
+      "disconnect_end": 8.6,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-interruption-20261030A/physics-attempt-01/outputs"
+    },
+    {
+      "name": "new_short03",
+      "split": "cross_development",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 7.4,
+      "disconnect_end": 7.7,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-repair-20261031A/physics-attempt-01/outputs"
+    },
+    {
+      "name": "early_long07",
+      "split": "cross_development",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 7.4,
+      "disconnect_end": 8.1,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-cross-20261031A/diagnostic-attempt-01/outputs"
+    },
+    {
+      "name": "late_short03",
+      "split": "cross_development",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 8.2,
+      "disconnect_end": 8.5,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-cross-20261031A/diagnostic-attempt-01/outputs"
+    },
+    {
+      "name": "new_long07",
+      "split": "cross_development",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 8.2,
+      "disconnect_end": 8.9,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-repair-20261031A/physics-attempt-01/outputs"
+    },
+    {
+      "name": "sealed_midlow_short025",
+      "split": "sealed_final",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 7.6,
+      "disconnect_end": 7.85,
+      "controllers": [
+        "standing",
+        "contact",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "sealed_midlow_long065",
+      "split": "sealed_final",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 7.6,
+      "disconnect_end": 8.25,
+      "controllers": [
+        "standing",
+        "contact",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "sealed_midhigh_short025",
+      "split": "sealed_final",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 8.0,
+      "disconnect_end": 8.25,
+      "controllers": [
+        "standing",
+        "contact",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "sealed_midhigh_long065",
+      "split": "sealed_final",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 8.0,
+      "disconnect_end": 8.65,
+      "controllers": [
+        "standing",
+        "contact",
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "qualification": {
+    "short_alpha_plateau_abs_change_max": 0.05,
+    "long_fraction_alpha_reduction_at_gap_end_min": 0.2,
+    "alpha_shadow_rms_gap_and_first_1s_after_resume_max": 0.05,
+    "criteria_rationale": "0.05 alpha is5% of the fixed skill path (~3.35deg latent angle), larger than prior full-fit alpha RMS and comparable to prior maximum fit error. Long20% decay is a loose directional exit check, not exact imitation. Same-state shadow teacher uses student's real force history; no labels enter actuation.",
+    "physical": "No original safety boundary, falls, support loss or actual joint-limit violation; root speed release+2s<=0.02m/s. Report all action/torque jumps and saturation, no new smoother.",
+    "task": "For each Student and condition report active-only XYZ error/force and post-reconnect gain versus paired standing and teacher. Qualification additionally requires post-reconnect3D error below standing. Prior30%/5% criteria reported as historical reference, not silently assumed to apply to changed interruption task.",
+    "old_hold_cm": 1.0,
+    "old_hold_preserved": true,
+    "decision": "No expansion recommendation unless both timing/retention and physical task criteria hold. A failed criterion is retained; do not tune thresholds or checkpoints."
+  },
+  "old_regression": {
+    "normal_onsets": [
+      3.0,
+      3.8,
+      4.6,
+      5.4
+    ],
+    "negative": [
+      "no_contact",
+      "pulse"
+    ],
+    "absolute_normal_qualification": {
+      "error_reduction_min": 0.3,
+      "force_reduction_min": 0.05,
+      "recovery_speed_max_mps": 0.02,
+      "no_contact_alpha_max": 0.01
+    },
+    "material_regression": "Per matched old checkpoint report error/force/qPD/alpha/recovery; >5% worsening in normal tracking or force RMS is flagged, not averaged away. Old5.4/4.6 now regression, never called new final."
+  },
+  "resources": {
+    "compute_cumulative_wall_seconds": 3600,
+    "cpus": 8,
+    "rss_gib": 32,
+    "owned_gpu_mib": 8192,
+    "max_full_branches": 48,
+    "diagnostic_branches": 8,
+    "final_branches": 40,
+    "output_budget_gib": 4
+  },
+  "post_test": "Saved-record diagnosis only, no additional fit or physical search. Frozen A1/B1 retained. No automatic next-stage execution.",
+  "stop": "Original physics safety boundaries or resource limits stop stage; no CPU model fallback; no shared code/weights/gate modifications; no push/Bridge/PPO",
+  "original_assets": "All teacher traces/checkpoints are immutable. New output root issue21-alpha-repair-20261031A.",
+  "matrix": [
+    {
+      "name": "new_short03",
+      "split": "cross_development",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 7.4,
+      "disconnect_end": 7.7,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-repair-20261031A/physics-attempt-01/outputs"
+    },
+    {
+      "name": "early_long07",
+      "split": "cross_development",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 7.4,
+      "disconnect_end": 8.1,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-cross-20261031A/diagnostic-attempt-01/outputs"
+    },
+    {
+      "name": "late_short03",
+      "split": "cross_development",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 8.2,
+      "disconnect_end": 8.5,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-cross-20261031A/diagnostic-attempt-01/outputs"
+    },
+    {
+      "name": "new_long07",
+      "split": "cross_development",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 8.2,
+      "disconnect_end": 8.9,
+      "controllers": [
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-repair-20261031A/physics-attempt-01/outputs"
+    }
+  ],
+  "diagnostic_conditions": [
+    {
+      "name": "early_long07",
+      "split": "cross_development",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 7.4,
+      "disconnect_end": 8.1,
+      "controllers": [
+        "standing",
+        "contact",
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-cross-20261031A/diagnostic-attempt-01/outputs"
+    },
+    {
+      "name": "late_short03",
+      "split": "cross_development",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 8.2,
+      "disconnect_end": 8.5,
+      "controllers": [
+        "standing",
+        "contact",
+        "A",
+        "B"
+      ],
+      "reference_dir": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-alpha-cross-20261031A/diagnostic-attempt-01/outputs"
+    }
+  ],
+  "frozen_checkpoints": {
+    "A": "0049d66b62226fca64997ddaa74b21e27ce0a0b8f32f1415b4519e9b1907c9ce",
+    "B": "bcc70d0d7771de688a5268f0537516740e7a40ce1f303d7bfd70f381245208c5"
+  },
+  "conditional_training_gate": "Proceed only if matrix shows reproducible alpha error dependence on progress/duration; actual teacher is safe and follows operational target; FIFO320 reconstructs shadow exactly; original forward/PD checks pass; no loss of real task/safety fundamentals. Save explicit evidence and decision before any optimizer. If contradicting information or safety failure, stop without fit.",
+  "stage_stop": "After frozen cross diagnosis and at most one paired fit/fixed final test, stop regardless of pass/fail. Unsafe physics, model mismatch, resource boundary stop immediately. Pure alpha-imitation residual is not automatically a fundamental blocker to future multi-behavior feasibility; judge safety, usable physical benefit, negative control and deployment information separately.",
+  "interpretation": "2x2 schedule timing factor corresponds to skill progress and associated physical state/force; it does NOT isolate alpha from state. No single-seed statistical significance claim. Preserve teacher tradeoff versus continuously advancing anchor; 400ms is an operational rule, not intent ground truth. Motion continuity/feet are proxies, not human naturalness assessment.",
+  "final_seal": "New7.6/8.0 x .25/.65 combinations fixed before diagnostic and training. Never collect/read those physical records for fitting, tuning or checkpoint selection. Old .30/.70 now development."
+}
