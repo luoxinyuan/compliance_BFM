@@ -1,4 +1,4 @@
-"""Manual GPU-only reward-inference launcher; never watches or auto-starts jobs."""
+"""Manual GPU-only inference/qualification supervisor; never watches for tasks."""
 import argparse,datetime,json,os,resource,signal,subprocess,time
 from pathlib import Path
 from causal_supervisor import processes
@@ -18,6 +18,7 @@ def gpu(index):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gpu-index',type=int)
+    parser.add_argument('--stage',choices=['inference','physics'],default='inference')
     parser.add_argument('--execute-after-owner-gpu-notice',action='store_true')
     args=parser.parse_args()
     protocol=json.loads((ROOT/'research_notes/reward_skill_protocol.json').read_text())
@@ -33,13 +34,28 @@ def main():
     ledger_path=RUN/'compute-ledger.json'
     ledger=json.loads(ledger_path.read_text()) if ledger_path.exists() else {'attempts':[],'no_os_sandbox':True}
     assert not any(a['status']=='running' for a in ledger['attempts'])
-    assert not any(a.get('inference_status')=='completed' for a in ledger['attempts']), 'No repeat sampling after a completed inference'
+    assert not any(a.get('resource_boundary') for a in ledger['attempts']), 'Stage stopped at resource boundary'
+    assert not any(a.get('result_status')=='physical-stopped' for a in ledger['attempts']), 'Unsafe physical control ends this stage'
+    stage_attempts=[a for a in ledger['attempts'] if a.get('stage','inference')==args.stage]
+    assert not any(a.get('result_status',a.get('inference_status'))=='completed' for a in stage_attempts), 'No repeat completed stage for selection'
+    inference_output=None
+    if args.stage=='physics':
+        completed=[a for a in ledger['attempts'] if a.get('stage','inference')=='inference' and a.get('inference_status')=='completed']
+        assert len(completed)==1
+        inference_output=Path(completed[0]['path'])/'outputs'
     remaining=protocol['resources']['compute_cumulative_wall_seconds']-sum(a.get('wall_seconds',0) for a in ledger['attempts'])
     assert remaining>0
-    attempt=RUN/f'inference-attempt-{len(ledger["attempts"])+1:02d}';attempt.mkdir()
-    entry={'status':'running','started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'commit':git('rev-parse','HEAD'),'path':str(attempt),'gpu_before':before,'remaining_seconds':remaining,'peak_rss_bytes':0,'peak_gpu_mib':0}
+    attempt=RUN/f'{args.stage}-attempt-{len(stage_attempts)+1:02d}';attempt.mkdir()
+    entry={'stage':args.stage,'status':'running','started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'commit':git('rev-parse','HEAD'),'path':str(attempt),'gpu_before':before,'remaining_seconds':remaining,'peak_rss_bytes':0,'peak_gpu_mib':0}
     ledger['attempts'].append(entry);write(ledger_path,ledger)
     env=dict(os.environ);env.update(CUDA_VISIBLE_DEVICES=before['uuid'],MUJOCO_GL='disable',BFM_STAGE_SUPERVISED='1',BFM_STAGE_DEADLINE_MONOTONIC=str(time.monotonic()+remaining),PYTHONPATH=str(ROOT),TORCHDYNAMO_DISABLE='1',OMP_NUM_THREADS='8',MKL_NUM_THREADS='8',OPENBLAS_NUM_THREADS='1',PYTHONDONTWRITEBYTECODE='1',HF_HUB_OFFLINE='1',WANDB_MODE='disabled')
+    if args.stage=='physics':
+        (attempt/'outputs').mkdir()
+        env.update(BFM_RECOVERY_OUTPUT=str(attempt/'outputs'),BFM_REWARD_INFERENCE_OUTPUT=str(inference_output))
+    launcher='reward_skill_infer.py' if args.stage=='inference' else 'reward_skill_physics.py'
+    command=[str(P/'.venv/bin/python'),'-u',str(ROOT/'research_notes'/launcher)]
+    if args.stage=='inference':command+=['--output',str(attempt/'outputs'),'--execute-after-owner-gpu-notice']
+    entry['command']=command;write(ledger_path,ledger)
     cache=attempt/'cache';cache.mkdir()
     for k in ['TMPDIR','TEMP','TMP','XDG_CACHE_HOME','MPLCONFIGDIR','TORCHINDUCTOR_CACHE_DIR','TRITON_CACHE_DIR','HF_HOME','PYTHONPYCACHEPREFIX']:
         d=cache/k;d.mkdir();env[k]=str(d)
@@ -51,7 +67,7 @@ def main():
     start=time.monotonic();child=None;boundary=None
     try:
         with (attempt/'stdout.log').open('wb') as stdout,(attempt/'stderr.log').open('wb') as stderr:
-            child=subprocess.Popen([str(P/'.venv/bin/python'),'-u',str(ROOT/'research_notes/reward_skill_infer.py'),'--output',str(attempt/'outputs'),'--execute-after-owner-gpu-notice'],cwd=attempt,env=env,stdout=stdout,stderr=stderr,start_new_session=True,preexec_fn=limits)
+            child=subprocess.Popen(command,cwd=attempt,env=env,stdout=stdout,stderr=stderr,start_new_session=True,preexec_fn=limits)
             entry['pid']=child.pid;entry['initial_processes']=processes(child.pid);write(ledger_path,ledger)
             next_gpu=0
             while child.poll() is None:
@@ -84,7 +100,9 @@ def main():
             entry.update(exit_code=child.returncode,remaining_processes=processes(child.pid))
         entry.update(status='finished',wall_seconds=time.monotonic()-start,resource_boundary=boundary)
         result_path=attempt/'outputs/result.json'
-        if result_path.exists():entry['inference_status']=json.loads(result_path.read_text())['status']
+        if result_path.exists():
+            entry['result_status']=json.loads(result_path.read_text())['status']
+            if args.stage=='inference':entry['inference_status']=entry['result_status']
         entry['gpu_after']=gpu(args.gpu_index);write(ledger_path,ledger)
         print(json.dumps(entry,indent=2))
 
