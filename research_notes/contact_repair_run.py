@@ -129,7 +129,17 @@ def main():
             assert tensor_digest(net)==old_student_hash
             result['status']='prechecked'
         else:
-            raise RuntimeError('Repair entry is prepared only after scientific gate review')
+            from repair_evaluation import run_evaluations
+            run=OUT.parents[1];decision=json.loads((run/'precheck-decision.json').read_text())
+            assert decision['proceed_to_one_fixed_fit'] and decision['protocol_sha256']==sha(ROOT/'research_notes/targeted_repair_protocol.json')
+            source=Path(decision['precheck_outputs']);assert sha(source/'repair-dataset.pt')==decision['dataset_sha256']
+            data=torch.load(source/'repair-dataset.pt',map_location='cuda',weights_only=True)
+            result['fit']=fit_repair(model,env.standing,contract,net,data,OUT);result['projector_updates']=2000
+            write('result.json',result);trained_hash=tensor_digest(net)
+            result['evaluation']=run_evaluations(env,model,net,contract,OUT,protocol)
+            assert tensor_digest(net)==trained_hash and all(p.grad is None for p in net.parameters())
+            result['status']='completed'
+            result['checkpoint_sha256']=sha(OUT/'contact-projector-repaired-final.pt')
         assert {n:tensor_digest(getattr(model,n)) for n in INFERENCE_MODULES}==frozen
         assert all(p._version==versions[n] and p.grad is None for n,p in model.named_parameters())
         assert digest(SOURCE/'contact-projector-final.pt')==STUDENT_SHA

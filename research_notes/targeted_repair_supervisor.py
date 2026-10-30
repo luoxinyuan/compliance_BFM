@@ -88,7 +88,7 @@ def main():
     attempt=run/f'attempt-{number:02d}';attempt.mkdir()
     outputs=attempt/'outputs';outputs.mkdir()
     (attempt/'source').mkdir()
-    for f in ['research_notes/'+n for n in ['ccl02a_teacher.py','contact_projector.py','test_contact_projector.py','targeted_repair_supervisor.py','frozen_bfm_placement.py','contact_repair_run.py','targeted_repair_protocol.json','test_targeted_repair.py','targeted_repair.py']]:
+    for f in ['research_notes/'+n for n in ['ccl02a_teacher.py','contact_projector.py','test_contact_projector.py','targeted_repair_supervisor.py','frozen_bfm_placement.py','contact_repair_run.py','targeted_repair_protocol.json','test_targeted_repair.py','targeted_repair.py','repair_evaluation.py']]:
         target=attempt/'source'/f;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes((WORKTREE/f).read_bytes())
     write(attempt/'manifest.json',{'worktree_head':git(WORKTREE,'rev-parse','HEAD'),
         'worktree_status':git(WORKTREE,'status','--porcelain'),

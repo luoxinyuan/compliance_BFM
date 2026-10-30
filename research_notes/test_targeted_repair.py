@@ -22,4 +22,10 @@ class Tests(unittest.TestCase):
   for name in ['_physics_step','sample_native_contacts']:
    get=lambda t:next(n for n in ast.walk(t) if isinstance(n,ast.FunctionDef) and n.name==name)
    self.assertEqual(ast.dump(get(old)),ast.dump(get(new)))
+ def test_eval_has_no_optimizer_and_exact_state_capture(self):
+  source=(HERE/'repair_evaluation.py').read_text()
+  self.assertNotIn('backward(',source);self.assertNotIn('Adam(',source);self.assertNotIn('fit_repair(',source)
+  old=ast.parse((HERE/'contact_direction_teacher.py').read_text());new=ast.parse(source)
+  find=lambda t:next(n for n in ast.walk(t) if isinstance(n,ast.FunctionDef) and n.name=='snapshot')
+  self.assertEqual(ast.dump(find(old)),ast.dump(find(new)))
 if __name__=='__main__':unittest.main()
