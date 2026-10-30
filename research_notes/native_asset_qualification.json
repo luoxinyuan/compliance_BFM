@@ -1,0 +1,104 @@
+{
+  "hf_revision": "62b4206d68e026de5e5dc7efb1529bccfb95164c",
+  "tree_entries": 47,
+  "assets": [
+    {
+      "path": "new_model_for_training_code_inference/checkpoint/model/model.safetensors",
+      "bytes": 3384968272,
+      "release_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361"
+    },
+    {
+      "path": "new_model_for_training_code_inference/checkpoint/buffers/train/buffer.hdf5",
+      "bytes": 26675212288,
+      "release_sha256": "46eac53f603e45921d25504fcf7d3eea861f2a9f8ea503046855e701493b546b"
+    },
+    {
+      "path": "model/checkpoint/model/model.safetensors",
+      "bytes": 3384968272,
+      "release_sha256": "d8d07d7b83ad030286f44d55a48899dc42db4b48000132fffad063653a6eb49e"
+    },
+    {
+      "path": "model/reward_inference/reward_locomotion.pkl",
+      "bytes": 541950,
+      "release_sha256": "1b974e7278ab6183d809d11fbd77cca817f3714a4808737cd69f96606ab77718"
+    },
+    {
+      "path": "new_model_for_training_code_inference/exported/zs_25.pkl",
+      "bytes": 13377777,
+      "release_sha256": "af515e9fa747c07addab6810deb39ce236e2a39050b116e8084bdc6a122f0c75"
+    },
+    {
+      "path": "new_model_for_training_code_inference/exported/zs_7.pkl",
+      "bytes": 6730993,
+      "release_sha256": "f41c44c9eea4655842dd333a83fcf7b60522d6feed1ee2ca676d9deaae7dde49"
+    }
+  ],
+  "metadata_blob_checks": [
+    {
+      "path": "new_model_for_training_code_inference/checkpoint/model/init_kwargs.json",
+      "git_blob_matches_listing": true,
+      "sha256": "b8df2d6006fbeda9a0bb9a9eb3f21dcccadf165f2252fce108714f81655a0094"
+    },
+    {
+      "path": "new_model_for_training_code_inference/config.json",
+      "git_blob_matches_listing": true,
+      "sha256": "96889c351a919a907f1f6e3001c5213fe5469ffc4fc2d87c0ef52e422eba7d0f"
+    },
+    {
+      "path": "model/checkpoint/model/config.json",
+      "git_blob_matches_listing": true,
+      "sha256": "aee5e94fd089979cb31d1f1a5fa4905e926398231d46dc8eb2047e25b8d2935b"
+    },
+    {
+      "path": "new_model_for_training_code_inference/checkpoint/model/config.json",
+      "git_blob_matches_listing": true,
+      "sha256": "52f94d2946ed8912fc12ac9c25b4bf0e68ccdc669a05ea104e8b6c178e91fb46"
+    },
+    {
+      "path": "new_model_for_training_code_inference/checkpoint/buffers/train/config.json",
+      "git_blob_matches_listing": true,
+      "sha256": "5f6ba56ad7c4ec281c75f8bc488f02b7d702fdfa5cf2224aee5f6c94c4d38c20"
+    }
+  ],
+  "local_weights_match_official_lfs_sha": true,
+  "reward_latent_in_current_model_prefix": false,
+  "original_buffer_status": "officially published; only first 8192 bytes fetched; full contents/hash not locally verified",
+  "buffer_header": {
+    "source": "https://huggingface.co/LeCAR-Lab/BFM-Zero/resolve/62b4206d68e026de5e5dc7efb1529bccfb95164c/new_model_for_training_code_inference/checkpoint/buffers/train/buffer.hdf5",
+    "status": 206,
+    "headers": {
+      "etag": "\"bf83f889c85befb7ce3e5034d2ea5cda019665ed52ae2e614f011242f4272093\"",
+      "content-length": "8192",
+      "content-range": "bytes 0-8191/26675212288"
+    },
+    "bytes": 8192,
+    "sha256": "b6776f965d65b56f82872be50b0a200f53e5b1e6cc432bf9b5f68c4fba0b098a",
+    "hdf5_signature": "894844460d0a1a0a"
+  },
+  "qualification": "no current-checkpoint reward z available locally; physical qualification not run",
+  "model_forwards": 0,
+  "physical_steps": 0,
+  "policy_updates": 0,
+  "github_trees": {
+    "official-main": {
+      "response_sha": "05ad6119a25b06c341c191a72ccf936e987f59cf",
+      "entries": 324,
+      "truncated": false
+    },
+    "official-deploy": {
+      "response_sha": "de9e248ce8b315508aafaecc8f15def3e057fccc",
+      "entries": 122,
+      "truncated": false
+    },
+    "official-minimal": {
+      "response_sha": "df9c4a9633aa155c727419e82c906010b1e1845f",
+      "entries": 94,
+      "truncated": false
+    },
+    "team-main": {
+      "response_sha": "c002f394f0b77d2f8a85356667fec5eda0f4a1af",
+      "entries": 339,
+      "truncated": false
+    }
+  }
+}
