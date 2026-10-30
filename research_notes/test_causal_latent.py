@@ -9,6 +9,12 @@ class Sphere:
     def project_z(self,z):return 16*torch.nn.functional.normalize(z,dim=-1)
 
 class Tests(unittest.TestCase):
+    def test_physical_stop_is_not_reported_as_complete(self):
+        from causal_run import final_status
+        self.assertEqual(final_status(dict(physical_executed=True,episodes=[{'complete':False}])), 'physical-stopped')
+        self.assertEqual(final_status(dict(physical_executed=True,episodes=[{'complete':True}])), 'completed')
+        self.assertEqual(final_status(dict(physical_executed=False,episodes=[])), 'precheck-stopped')
+
     def test_gate_reconstructs_causal_release(self):
         ep=dict(initial={'force':[0,0,0]},decisions=[{'time':3+i*.1} for i in range(60)],
           control=[{'tether_time':3+i*.02} for i in range(300)],

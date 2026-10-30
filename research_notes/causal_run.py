@@ -35,6 +35,11 @@ def digest(path):
     return h.hexdigest()
 
 
+def final_status(study):
+    if not study['physical_executed']:return 'precheck-stopped'
+    return 'completed' if study['episodes'] and all(e['complete'] for e in study['episodes']) else 'physical-stopped'
+
+
 def main():
     import multiprocessing as mp
     mp.set_start_method('forkserver',force=True);(OUT/'ipc').mkdir();mp.current_process()._config['tempdir']='ipc'
@@ -131,7 +136,7 @@ def main():
         assert all(p._version==versions[n] and p.grad is None for n,p in model.named_parameters())
         assert digest(SOURCE/'contact-projector-final.pt')==STUDENT_SHA
         assert digest(MODEL/'checkpoint/model/model.safetensors')==constants['WEIGHT_SHA']
-        result.update(status='completed' if result['study']['physical_executed'] else 'precheck-stopped',original_bfm_unchanged=True,original_student_unchanged=True)
+        result.update(status=final_status(result['study']),original_bfm_unchanged=True,original_student_unchanged=True)
         write('result.json',result);print('COMPLETED',json.dumps(result),flush=True)
     finally:env.close()
 
