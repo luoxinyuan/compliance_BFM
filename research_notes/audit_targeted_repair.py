@@ -28,6 +28,12 @@ for task in protocol['evaluations']:
   if 'student'in mode:
    z=arr(c,'executed_z').reshape(-1,256);g=arr(c,'gate');check.update(norm_error_max=float(abs(np.linalg.norm(z,axis=-1)-16).max()),angle_max_deg=float(np.rad2deg(np.arccos(np.clip((z*standing).sum(-1)/256,-1,1))).max()),zero_gate_standing_exact=bool(np.array_equal(z[g==0],np.broadcast_to(standing,z[g==0].shape))))
    assert check['zero_gate_standing_exact'] and check['norm_error_max']<1e-4
+  post=[r for r in p if r['force_time']>=onset]
+  check['postcontact']=dict(root_min_m=min(r['height'] for r in post),tilt_max_deg=max(r['tilt_deg'] for r in post),both_feet_loaded=float(np.mean([all(f>1e-6 for f in r['foot_normal_force_n']) for r in post])),foot_speed_peak_mps=max(r['contact_tangent_speed_max_mps'] for r in post))
+  if not short:
+   pre=[r for r in p if r['force_time']<onset];bpre=bp[:len(pre)]
+   check['precontact_parity']={k:float(abs(arr(pre,k)-arr(bpre,k)).max()) for k in ['qpos','qvel','force','wrist','root']}
+   assert max(check['precontact_parity'].values())==0
   checks[key][mode]=check
   extra_w=w-arr(bp,'wrist');extra_root=root-arr(bp,'root');extra_rel=extra_w-extra_root;inc=np.diff(extra_rel,axis=0,prepend=np.zeros((1,3)))
   be=arr(bp,'anchor')-arr(bp,'wrist');bn=np.linalg.norm(be,axis=-1);unit=np.divide(be,bn[:,None],out=np.zeros_like(be),where=bn[:,None]>1e-6)
@@ -37,7 +43,7 @@ for task in protocol['evaluations']:
    pt=arr(p,'force_time');ct=arr(c,'time');tol=1e-9 if short else 0
    mask=(pt>=lo-tol)&(pt<hi-tol);cmask=(ct>=lo-tol)&(ct<hi-tol);ix=np.flatnonzero(mask);start=ix[0];end=ix[-1]
    before=initial if start==0 else p[start-1];err=arr(p,'error')[mask];force=f[mask];wr=w[end]-before['wrist'];rd=root[end]-before['root']
-   metric=dict(error_rms_cm=float(np.sqrt(np.mean(err**2))*100),force_rms_n=float(np.sqrt(np.mean(np.sum(force*force,axis=-1)))),force_peak_n=float(np.linalg.norm(force,axis=-1).max()),force_mean_xyz_n=force.mean(0).tolist(),
+   metric=dict(error_xyz_rms_cm=(100*np.sqrt(np.mean((arr(p,'anchor')[mask]-w[mask])**2,axis=0))).tolist(),error_rms_cm=float(np.sqrt(np.mean(err**2))*100),force_rms_n=float(np.sqrt(np.mean(np.sum(force*force,axis=-1)))),force_peak_n=float(np.linalg.norm(force,axis=-1).max()),force_mean_xyz_n=force.mean(0).tolist(),
     wrist_delta_xyz_cm=(wr*100).tolist(),root_delta_xyz_cm=(rd*100).tolist(),relative_delta_xyz_cm=((wr-rd)*100).tolist(),
     extra_relative_end_xyz_cm=(extra_rel[end]*100).tolist(),extra_relative_toward_common_baseline_error_cm=float((inc[mask]*unit[mask]).sum()*100),
     action_step_max_joint_deg=float(np.rad2deg(abs(np.diff(q,axis=0,prepend=q[:1]))[cmask].max())))
