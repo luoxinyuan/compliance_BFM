@@ -1,0 +1,33 @@
+{
+  "base": "e598c9349308f304eaeaaa3dad88c74ec6242656",
+  "question": "Does native goal_inference remove Y error caused by anchored latent difference?",
+  "labels": [
+    "anchored",
+    "native"
+  ],
+  "prefix_s": 3,
+  "branch_s": 6,
+  "ramp_s": 4,
+  "hold_s": 1,
+  "release_s": 8,
+  "horizon_s": 9,
+  "K": 80,
+  "D": 8,
+  "max_force_n": 5,
+  "seed": 0,
+  "goal_poses": "Immutable previous goal-path.json, no IK recomputation",
+  "native": "model.goal_inference(goal_observation(saved_pose,zero_velocity)); returns projected z by original contract",
+  "anchored": "Exact saved project_z(standing+goal(pose)-goal(initial)); formula reproduced before execution",
+  "right_arm": "Identical original arm_ik/limits/10Hz/.2s causal50Hz ReleaseFade; own actual wrist errors, not forced identical corrections after states diverge",
+  "precheck_max_command_step_deg": 10,
+  "precheck": "Single identical saved mechanical state and full actor history. All41 target poses, onset and release command changes; finite, joint targets inside original limits and no original action saturation before physical rollout.",
+  "success": "Exploratory hold3D RMS<1cm, no falls/limit violations, Y error lower and report continuity relativeB. No tolerance retuning.",
+  "physical_stop": "Preserve original failure thresholds plus previous20deg pelvis tilt/root<.65m/nonfootground/actual joint excess>.02rad",
+  "policy_updates": 0,
+  "resources": {
+    "cpu": 4,
+    "rss_gib": 12,
+    "gpu_mib": 4096,
+    "cumulative_wall_s": 2400
+  }
+}
