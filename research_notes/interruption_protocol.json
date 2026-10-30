@@ -1,0 +1,32 @@
+{
+ "stage": "Frozen alpha students under physical contact interruption and reconnection",
+ "base_commit": "e9178d9ae955476b3c4f15c2c19865f26e1f447c",
+ "model_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+ "teacher_gate_sha256": "4d9f1027cec3b4b678af1c875c1a29554758e7f843ab31b589e6b386b59b1bae",
+ "checkpoints": {"A":"7861de69f82b128f4496c21f7f425a3b69fa9f8a0fd89bc89a9da298e5036f46", "B":"5d6e0e70c4ad7d433b5067092ccaab155aadd90e872eba57150e78838a09a7ea"},
+ "training_output": "issue21-alpha-student-20261030A/train-attempt-01/outputs",
+ "uninterrupted_source": "issue21-alpha-student-20261030A/physics-attempt-01/outputs",
+ "controllers": ["standing","contact","A","B"],
+ "conditions": [
+   {"name":"short02","split":"frozen_qualification","onset":5.4,"duration":5.0,"end":12.4,"enabled":true,"disconnect_start":7.8,"disconnect_end":8.0},
+   {"name":"long08","split":"frozen_qualification","onset":5.4,"duration":5.0,"end":12.4,"enabled":true,"disconnect_start":7.8,"disconnect_end":8.6}
+ ],
+ "physical": {"common_state_s":3.0,"seed":0,"actor_hz":50,"physics_hz":200,"K":80,"D":8,"force_cap_n":5,"ramp_s":4,"final_release_s":10.4,"recovery_s":2,
+   "partner":"Identical original +X geometry.delta_x_m18.6819cm path, aligned once from existing unforced standing wrist at5.4. Anchor continues its original smoothstep during both disconnects; no reset, pause, chasing wrist or modified target.",
+   "disconnect":"Harness toggles original Tether cfg.enabled BEFORE each actual physics application, using integer200Hz ticks; original measure/apply computes and applies zero wrench. Sensor sees that real force after original causal delay. Student and gate never receive connection flag, time, onset or anchor.",
+   "reconnect":"Re-enable original capped spring-damper at same ongoing world anchor; no new force smoothing, stiffness, model or PD changes. This is an ideal detach/regrasp external task perturbation, not fake zero sensor input."},
+ "expectations": {"short":"After filter settling, teacher pauses alpha and stays active; Student should retain progress instead of treating0.2s as terminal release or progressing through absent force.",
+   "long":"Teacher starts original return after400ms low-force evidence, then reenters continuously from current alpha when real forward force returns. Correct exit/reentry is not an erroneous fresh restart.",
+   "timing_tolerance":"Sensor sample +3-frame filter must be accounted for; evaluate short plateau from disconnect+0.06s through reconnect, and trace actual filtered-force events."},
+ "qualification": {"short_alpha_plateau_abs_change_max":0.05,"long_fraction_alpha_reduction_at_gap_end_min":0.20,
+   "alpha_shadow_rms_gap_and_first_1s_after_resume_max":0.05,
+   "criteria_rationale":"0.05 alpha is5% of the fixed skill path (~3.35deg latent angle), larger than prior full-fit alpha RMS and comparable to prior maximum fit error. Long20% decay is a loose directional exit check, not exact imitation. Same-state shadow teacher uses student's real force history; no labels enter actuation.",
+   "physical":"No original safety boundary, falls, support loss or actual joint-limit violation; root speed release+2s<=0.02m/s. Report all action/torque jumps and saturation, no new smoother.",
+   "task":"For each Student and condition report active-only XYZ error/force and post-reconnect gain versus paired standing and teacher. Qualification additionally requires post-reconnect3D error below standing. Prior30%/5% criteria reported as historical reference, not silently assumed to apply to changed interruption task.",
+   "old_hold_cm":1.0,"old_hold_preserved":true,
+   "decision":"No expansion recommendation unless both timing/retention and physical task criteria hold. A failed criterion is retained; do not tune thresholds or checkpoints."},
+ "diagnosis":"Compare shadow-gate labels/action on visited states, replay gate from320-frame force suffix to test finite sensor-memory sufficiency, and compare training vs visited feature distribution. Saved-data diagnosis only unless a concrete implementation bug needs correction. No retraining or collection for optimization.",
+ "resources":{"compute_cumulative_wall_seconds":1800,"cpus":8,"rss_gib":32,"owned_gpu_mib":2048,"max_full_branches":8},
+ "stop":"Original physical unsafe boundary ends stage. Ordinary source/path/logging bugs may be repaired with preserved records; never tune gate, task, network or model to pass. CUDA model execution only; no CPU fallback.",
+ "policy_updates":0,"no_training":true,"no_push":true
+}
