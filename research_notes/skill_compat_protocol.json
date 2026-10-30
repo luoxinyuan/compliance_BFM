@@ -1,0 +1,90 @@
+{
+  "stage": "Frozen S1 local / A2 native-goal compatibility qualification",
+  "base_commit": "d5325887603bb11d7e6c19075ed5b9d29c68f5f7",
+  "model_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "S1": {
+    "path": "issue21-targetedrepair-20261030A/attempt-02/outputs/contact-projector-repaired-final.pt",
+    "sha256": "4c2eb34fa37bc560013fa3b93e13dfda663ce277d7b7aeed2013aabaa2552dac"
+  },
+  "A2": {
+    "path": "issue21-alpha-cross-20261031A/train-attempt-01/outputs/cross_A_final.pt",
+    "sha256": "3cc125a0504a360db2a9472ce115b3ab6fafcbb624f9460a07fd9991fe171163"
+  },
+  "definitions": {
+    "local": "Exact frozen S1, original 10Hz raw latent, 3 completed 50Hz forces /20, original 50Hz .2s release gate; not arm masking or direct joint correction",
+    "native": "Exact frozen A2 direct alpha Student, 50Hz, 320 completed forces /5, original native goal slerp and learned exit; not fixed full goal or retrained rule",
+    "standing": "Original verified standing latent, live frozen BFM feedback"
+  },
+  "conditions": [
+    {
+      "name": "small",
+      "onset": 3.8,
+      "duration": 5.0,
+      "end": 10.8,
+      "enabled": true,
+      "delta_x_m": 0.035,
+      "controllers": [
+        "standing",
+        "local",
+        "native"
+      ]
+    },
+    {
+      "name": "large",
+      "onset": 3.8,
+      "duration": 5.0,
+      "end": 10.8,
+      "enabled": true,
+      "delta_x_m": 0.18681928110688906,
+      "controllers": [
+        "standing",
+        "local",
+        "native"
+      ]
+    }
+  ],
+  "physical": {
+    "initial": "full original t3 standing snapshot",
+    "anchor": "unforced wrist world xyz at3.8s; once aligned, identical partner per task",
+    "ramp_s": 4.0,
+    "hold_s": 1.0,
+    "recovery_s": 2.0,
+    "K": 80,
+    "D": 8,
+    "cap_n": 5.0,
+    "seed": 0,
+    "actor_hz": 50,
+    "physics_hz": 200
+  },
+  "complementarity_gate": {
+    "small_local_error_vs_native_improvement_min": 0.05,
+    "large_native_error_vs_local_improvement_min": 0.05,
+    "each_winner_error_vs_standing_improvement_min": 0.05,
+    "winner_force_vs_standing_max_ratio": 1.05,
+    "local_small_torso_less_than_native": true,
+    "all_safe": true,
+    "recovery_max_mps": 0.02,
+    "qPD_step_qualification_max_deg": 3.0
+  },
+  "transition": {
+    "conditional_only": true,
+    "task": "large",
+    "start_local_to_native": 5.3,
+    "blend_s": 1.0,
+    "release_to_standing_start": 8.8,
+    "release_blend_s": 1.0,
+    "end": 10.8,
+    "formula": "spherical(local_z,native_z,smoothstep((t-5.3)/1)); from8.8 spherical(current_blend,standing,smoothstep((t-8.8)/1))",
+    "histories": "Both frozen skills warmed continuously fromt3 on same actually executed physical history; never reset at handoff. Each original controller frequency/gate unchanged.",
+    "qualification": "Fixed scheduler only, not learned contact-dependent selection. No additive latents, no qPD interpolation or direct joints."
+  },
+  "resources": {
+    "compute_cumulative_wall_seconds": 1800,
+    "cpus": 8,
+    "rss_gib": 32,
+    "owned_gpu_mib": 8192,
+    "pair_branches": 6,
+    "transition_branches": 1
+  },
+  "stop": "No policy training, no optimizer, no changing frozen skills/thresholds/endpoints. At first physical unsafe boundary stop; if no complementarity stop before transition. No parameter tuning after results. One seed qualification, not statistical generalization."
+}
