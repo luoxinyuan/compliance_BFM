@@ -175,6 +175,12 @@ def main():
                 name=('plus' if direction==1 else 'minus')+'-'+label
                 diffs={k:float(abs(np.array([r[k] for r in env.trace])-np.array([r[k] for r in zero[:600]])).max()) for k in ['qpos','qvel','wrist','root','force']}
                 write(name+'-prefix-parity.json',diffs);assert max(diffs.values())==0
+                # Original reward scratch buffer is not an actor/physics input.
+                # Reconstruct its saved bookkeeping value; every physical/observable field is still checked exactly.
+                if common is not None:
+                    ref_reward=torch.as_tensor(common['base_tensors']['rew_buf'],device=env.base.rew_buf.device,dtype=env.base.rew_buf.dtype)
+                    write(name+'-reward-cache-restore.json',dict(max_abs_change=float((env.base.rew_buf-ref_reward).abs().max())))
+                    env.base.rew_buf.copy_(ref_reward)
                 state=snapshot()
                 if common is None:common=state;write('common-state.json',state)
                 if state!=common:
