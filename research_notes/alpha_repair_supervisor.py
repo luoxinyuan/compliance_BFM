@@ -20,7 +20,7 @@ def main():
     assert RUN != P/'bridge-v2-owned/runs/issue21-reward-stage-20261030A'
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gpu-index',type=int)
-    parser.add_argument('--stage',choices=['train','physics'],required=True)
+    parser.add_argument('--stage',choices=['train','physics','diagnosis'],required=True)
     parser.add_argument('--execute-after-owner-gpu-notice',action='store_true')
     args=parser.parse_args()
     protocol=json.loads((ROOT/'research_notes/alpha_repair_protocol.json').read_text())
@@ -47,11 +47,11 @@ def main():
     env=dict(os.environ);env.update(CUDA_VISIBLE_DEVICES=before['uuid'],MUJOCO_GL='disable',BFM_STAGE_SUPERVISED='1',BFM_STAGE_DEADLINE_MONOTONIC=str(time.monotonic()+remaining),PYTHONPATH=str(ROOT),TORCHDYNAMO_DISABLE='1',OMP_NUM_THREADS='8',MKL_NUM_THREADS='8',OPENBLAS_NUM_THREADS='1',PYTHONDONTWRITEBYTECODE='1',HF_HUB_OFFLINE='1',WANDB_MODE='disabled')
     (attempt/'outputs').mkdir()
     env.update(BFM_RECOVERY_OUTPUT=str(attempt/'outputs'),ALPHA_STAGE=args.stage)
-    if args.stage=='physics':
+    if args.stage in ('physics','diagnosis'):
         training=[a for a in ledger['attempts'] if a['stage']=='train' and a.get('result_status')=='completed']
         assert len(training)==1
         env['ALPHA_TRAIN_OUTPUT']=str(Path(training[0]['path'])/'outputs')
-    launcher='alpha_repair_physics.py'
+    launcher='repair_diagnostic_launcher.py' if args.stage=='diagnosis' else 'alpha_repair_physics.py'
     command=[str(P/'.venv/bin/python'),'-u',str(ROOT/'research_notes'/launcher)]
     entry['command']=command;write(ledger_path,ledger)
     cache=attempt/'cache';cache.mkdir()
