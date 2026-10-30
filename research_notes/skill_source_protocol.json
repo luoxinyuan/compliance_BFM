@@ -1,0 +1,46 @@
+{
+  "stage": "Native BFM skill source qualification, no Student training",
+  "model_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "source_sha256": "e1c0dae3356f566a4769c473c89e1eeeffa0a035a1fd0ed80ea77ac45e7af85d",
+  "baseline_sha256": "6ee93e55f6a5f35db3c34876ef95334b7824c43ae48119a0ce67457888932c2a",
+  "candidate": "Original native goal_inference of final saved A target pose (index40); no new IK, anchored difference, joint correction, or latent search",
+  "branches": [
+    "goal_free",
+    "standing_contact",
+    "goal_contact"
+  ],
+  "conditional_execution": "Run contacts only if goal_free completes and passes fixed basic skill criteria; stop stage at physical safety boundary",
+  "resources": {
+    "compute_cumulative_wall_seconds": 3600,
+    "cpus": 8,
+    "rss_gib": 64,
+    "owned_gpu_mib": 4096,
+    "max_full_branches": 3
+  },
+  "physical": {
+    "seed": 0,
+    "common_standing_seconds": 3,
+    "branch_seconds": 6,
+    "actor_hz": 50,
+    "physics_hz": 200,
+    "noforce_schedule": "0-.75 entry; .75-3.25 hold; 3.25-4 return; 4-6 settle; original smoothstep spherical interpolation",
+    "contact_schedule": "original 4s smoothstep +X geometric task from t3; hold t7-8; release t8; spherical return over .75s",
+    "K": 80,
+    "D": 8,
+    "max_force_n": 5,
+    "contact": "right wrist; original geometry target +18.6819cm, exact saved value read at runtime"
+  },
+  "basic_skill_criteria": {
+    "full_episode_no_native_or_safety_failure": true,
+    "hold_mean_wrist_forward_cm_min": 5,
+    "hold_mean_shoulder_forward_cm_min": 3,
+    "hold_torso_rotation_deg_min": 5,
+    "hold_waist_qPD_delta_rms_vs_same_obs_standing_deg_min": 1,
+    "final_root_speed_mps_max": 0.02,
+    "last_second_qPD_step_deg_max": 2
+  },
+  "contact_interpretation": "Compare actual XYZ tracking/force, body participation/support/continuity with standing. Old hold<1cm criterion remains and is reported separately; no redefining exact task success. No claim of contact conditioning from privileged time schedule.",
+  "no_parameter_tuning": true,
+  "no_training": true,
+  "no_interface_change": "Original act(obs,z) norm16 256D interface. Existing Student remains unchanged; possible future skill progress parameterization is recommendation only."
+}
