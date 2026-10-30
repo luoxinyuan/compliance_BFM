@@ -1,0 +1,60 @@
+{
+  "base_commit": "acc93ac51b4729267b1dad63a5f5dd7b925c7b47",
+  "student_sha256": "a5daf853276d55f5b8c099df4f48917f572a32c48e548d2c90f39e593d4a809d",
+  "common_state": "Reconstruct saved t3s snapshot from last direction probe. Compare ALL full state/history numerically and saved hash; only restore non-input reward scratch buffer as documented previously.",
+  "branch_seconds": 1.0,
+  "directions": [
+    1,
+    -1
+  ],
+  "modes": [
+    "teacher"
+  ],
+  "partner": {
+    "onset": 3.0,
+    "anchor": "common snapshot wrist world coordinate; zero spring preload, record damping preload",
+    "displacement_m": 0.035,
+    "ramp_seconds": 2.0,
+    "trajectory": "original smoothstep",
+    "K": 80,
+    "D": 8,
+    "cap_n": 5,
+    "release_s": 4.5
+  },
+  "windows_relative_s": [
+    [
+      0,
+      0.2
+    ],
+    [
+      0.2,
+      0.5
+    ],
+    [
+      0.5,
+      1.0
+    ],
+    [
+      0,
+      1.0
+    ]
+  ],
+  "attribution": "Same-observation nominal BFM subtraction; J_arm delta_q is a kinematic proxy, actual wrist/root motion from physics; compare actual extra motion against same baseline error axis.",
+  "stop": "Two teacher branches only; reuse pinned baselines; no Student execution/training/PPO/projection; preserve all failures; no outcome retries.",
+  "resources": {
+    "cpus": 4,
+    "rss_gib": 12,
+    "gpu_mib": 4096,
+    "cumulative_wall_seconds": 900
+  },
+  "reused_modes": [
+    "baseline"
+  ],
+  "teacher_source_sha256": "50d44c732550c60000ee9437955896d6267c81d5bb3a028b0761ca05309c7c00",
+  "reference_sha256": {
+    "common-state.json": "abbe3260a8daf253923d14bd50a750eba5e2060c7701748f1e1070933e1acdfd",
+    "plus-baseline.json": "11f9553653406471a8ec55136298f179f9c7e5845c6cd8800c6a614dac15d3f0",
+    "minus-baseline.json": "db259216c2728419f7db0cb0a3e7fe53d89f7b614e49b441b0d439b13d6c6a7d"
+  },
+  "teacher": "UNCHANGED imported arm_ik/ReleaseFade and exact original 10Hz teacher decision block; 50Hz original BFM plus rightarm correction; .04rad per joint/.08rad L2/.02 damping; anchor/Jacobian privileged oracle only."
+}
