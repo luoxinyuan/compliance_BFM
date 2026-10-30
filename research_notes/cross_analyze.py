@@ -9,14 +9,19 @@ def metric(path):
  ep=json.loads(Path(path).read_text());gp=json.loads(Path(__file__).with_name('contact_gate_protocol.json').read_text())['gate']
  assert ep['boundary'] is None
  c=ep['condition'];cs=ep['control'];ph=ep['physics'];v=summarize(ep,gp)
- t=np.array([r['time'] for r in cs]);alpha=np.array([r['alpha'] for r in cs]);force=np.array([r['force'] for r in ph]);pt=np.array([r['force_time'] for r in ph]);wrench=np.array([r['applied_wrist_wrench'] for r in ph])
- assert len(ph)==round((c['end']-3)*200) and np.array_equal(force,wrench[:,:3])
+ t=np.array([r['time'] for r in cs]);alpha=np.array([r['alpha'] for r in cs]);force=np.array([r['force'] for r in ph]);pt=np.array([r['force_time'] for r in ph]);wrench=np.array([r['applied_wrist_wrench'] for r in ph]) if 'applied_wrist_wrench' in ph[0] else None
+ assert len(ph)==round((c['end']-3)*200)
+ if 'issue21-alpha-cross-20261031A' in str(path):assert wrench is not None
+ if wrench is not None:assert np.array_equal(force,wrench[:,:3])
  prior=[ep['initial']]+ph[3::4][:-1]
  assert all(np.array_equal(r['measured_force_xyz'],p['force']) for r,p in zip(cs,prior))
  whole=v['phases']['whole']
  v.update(safe=whole['failed_samples']==0 and whole['samples_without_either_foot_load']==0 and whole['actual_joint_limit_excess_max_deg']==0 and whole['undesired_contacts_max']==0,alpha_peak=float(alpha.max()),alpha_step_max=float(abs(np.diff(alpha)).max()),source=str(path),sha256=hashlib.sha256(Path(path).read_bytes()).hexdigest(),common_state_sha256=ep['common_state_sha256'])
  v['torque_step_max_Nm']=float(abs(np.diff(np.array([p['torque'] for p in ph]),axis=0)).max())
- if not c['enabled']:assert not force.any() and not any(p['connection_enabled'] for p in ph)
+ v['actual_wrench_log_verified']=wrench is not None
+ if not c['enabled']:
+  assert not force.any()
+  if 'connection_enabled' in ph[0]:assert not any(p['connection_enabled'] for p in ph)
  if ep['controller'] in ('contact','A','B'):
   shadow=np.array([r.get('shadow_alpha',r['alpha']) for r in cs]);g=ContactGate(gp)
   assert max(abs(g.step(r['measured_force_xyz'])['alpha']-s) for r,s in zip(cs,shadow))==0
