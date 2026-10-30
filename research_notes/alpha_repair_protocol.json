@@ -1,0 +1,327 @@
+{
+  "stage": "Single bounded supervised repair of interruption behavior; paired A/B",
+  "base_commit": "06a9ab8ca53cc72409b2d314dfd5dd72caed5a62",
+  "model_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "teacher_gate_sha256": "4d9f1027cec3b4b678af1c875c1a29554758e7f843ab31b589e6b386b59b1bae",
+  "old_checkpoint_sha256": {
+    "A": "7861de69f82b128f4496c21f7f425a3b69fa9f8a0fd89bc89a9da298e5036f46",
+    "B": "5d6e0e70c4ad7d433b5067092ccaab155aadd90e872eba57150e78838a09a7ea"
+  },
+  "memory": {
+    "force_samples": 320,
+    "dt": 0.02,
+    "force_scale_n": 5.0,
+    "keys": [
+      "state",
+      "last_action",
+      "history_actor"
+    ],
+    "student_dim": 1425,
+    "contract": "Only past/current completed actual force XYZ FIFO and original frozen-normalized actor deployment inputs. No alpha/teacher state, event counter, anchor, active, global time, onset, direction label, previous_z or future reference. FIFO initialized with zeros, no padding mask or length feature."
+  },
+  "network": {
+    "hidden": [
+      128,
+      128
+    ],
+    "activation": "tanh",
+    "output": "sigmoid scalar alpha",
+    "initial_alpha": 0.01,
+    "seed": 0,
+    "normalization": "Training-only per-feature center/std with std floor0.1, shared A/B; force divided by5N before this transform"
+  },
+  "initialization": {
+    "source": "issue21-alpha-student-20261030A/train-attempt-01/outputs/alpha_A_final.pt",
+    "sha256": "7861de69f82b128f4496c21f7f425a3b69fa9f8a0fd89bc89a9da298e5036f46",
+    "contract": "Both A and B warm start from identical old A parameters AND normalization buffers; old B preserved only for paired historical regression. No separate starts, normalization refit or teacher-state features."
+  },
+  "training_sources": [
+    {
+      "name": "dev_early",
+      "path": "issue21-contact-gate-20261030A/physics-attempt-01/outputs/dev_early__contact.json",
+      "sha256": "dc53439e262f7e57acb34b10bc6aa3d752a3e25903fae9c169926a1b934c1e4a",
+      "kind": "normal",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "dev_late",
+      "path": "issue21-contact-gate-20261030A/physics-attempt-01/outputs/dev_late__contact.json",
+      "sha256": "7e61fba39a7ba2653d9102a3f27cfffbaa6f84d76cbf8e466125da3986ec2df6",
+      "kind": "normal",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "no_contact",
+      "path": "issue21-contact-gate-20261030A/physics-attempt-01/outputs/no_contact__contact.json",
+      "sha256": "2cc709bd62b30ec28bda87813efbea9b627ccfd6e42b866df8d92603b5ec4511",
+      "kind": "normal",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "pulse",
+      "path": "issue21-contact-gate-20261030A/physics-attempt-01/outputs/pulse__contact.json",
+      "sha256": "5edeb8207e98f7d497ae73f479817a25ec90802574517d48bd778194cdf514a5",
+      "kind": "normal",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "short02__contact",
+      "path": "issue21-alpha-interruption-20261030A/physics-attempt-01/outputs/short02__contact.json",
+      "sha256": "10810c0f5b5bf641669193ae661b8e5676a9da9f5a93b34fea9b2bde5dea46a3",
+      "kind": "interruption",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "short02__A",
+      "path": "issue21-alpha-interruption-20261030A/physics-attempt-01/outputs/short02__A.json",
+      "sha256": "1a2edb096d920e39332523ad85710b84c841318a82962691564317cd218ad3ec",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "short02__B",
+      "path": "issue21-alpha-interruption-20261030A/physics-attempt-01/outputs/short02__B.json",
+      "sha256": "129aa9e8c638df8eab62c0dbf068b594a2722af79c5749a4aab679892940286d",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "long08__contact",
+      "path": "issue21-alpha-interruption-20261030A/physics-attempt-01/outputs/long08__contact.json",
+      "sha256": "c4359e6a4880910acc1a8d20235aa8a64ef508998d7271c8f71563d0efa0ea48",
+      "kind": "interruption",
+      "label": "teacher",
+      "batch_count": 16
+    },
+    {
+      "name": "long08__A",
+      "path": "issue21-alpha-interruption-20261030A/physics-attempt-01/outputs/long08__A.json",
+      "sha256": "f396627cd942abeefd2c1dd6e9981890f45d9dc05c5c294b7b8521afea030a83",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    },
+    {
+      "name": "long08__B",
+      "path": "issue21-alpha-interruption-20261030A/physics-attempt-01/outputs/long08__B.json",
+      "sha256": "1f1cc7a6f6f3ac6e10e24e951275433b19376b27a3d9d3780d864944d3dc8df1",
+      "kind": "interruption",
+      "label": "shadow",
+      "batch_count": 8
+    }
+  ],
+  "training_samples": 4380,
+  "optimization": {
+    "optimizer": "Adam",
+    "lr": 0.0003,
+    "grad_clip": 1.0,
+    "batch_size": 128,
+    "updates": 2000,
+    "batch_seed": 20261031,
+    "sampling": "50% four old normal/negative conditions equally;50% two old gaps equally; within each gap half teacher, quarter A0-visited, quarter B0-visited; each interruption episode equally sampled across pre-gap active, gap, reconnect1s, rest. Exactly shared sampled indices for A/B.",
+    "A": "Original alpha MSE",
+    "B": "Original 29D q_PD MSE divided by (0.1rad)^2 through frozen actor",
+    "rationale": "One conservative warm-start repair at3e-4 to retain prior mapping; no schedules, early stop, extra fit, best selection or post-test optimization."
+  },
+  "final_checkpoints": {
+    "A": "repair_A_final.pt",
+    "B": "repair_B_final.pt",
+    "selection": "fixed update2000 for both, regardless of development/final results"
+  },
+  "physical": {
+    "common_state_s": 3.0,
+    "seed": 0,
+    "actor_hz": 50,
+    "physics_hz": 200,
+    "K": 80,
+    "D": 8,
+    "force_cap_n": 5,
+    "ramp_s": 4,
+    "final_release_s": 10.4,
+    "recovery_s": 2,
+    "partner": "Identical original +X geometry.delta_x_m18.6819cm path, aligned once from existing unforced standing wrist at5.4. Anchor continues its original smoothstep during both disconnects; no reset, pause, chasing wrist or modified target.",
+    "disconnect": "Harness toggles original Tether cfg.enabled BEFORE each actual physics application, using integer200Hz ticks; original measure/apply computes and applies zero wrench. Sensor sees that real force after original causal delay. Student and gate never receive connection flag, time, onset or anchor.",
+    "reconnect": "Re-enable original capped spring-damper at same ongoing world anchor; no new force smoothing, stiffness, model or PD changes. This is an ideal detach/regrasp external task perturbation, not fake zero sensor input."
+  },
+  "conditions": [
+    {
+      "name": "dev_early",
+      "split": "old_regression",
+      "onset": 3.0,
+      "duration": 5.0,
+      "end": 10.0,
+      "enabled": true,
+      "controllers": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "dev_late",
+      "split": "old_regression",
+      "onset": 3.8,
+      "duration": 5.0,
+      "end": 10.8,
+      "enabled": true,
+      "controllers": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "no_contact",
+      "split": "old_regression",
+      "onset": 3.0,
+      "duration": 5.0,
+      "end": 11.6,
+      "enabled": false,
+      "controllers": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "pulse",
+      "split": "old_regression",
+      "onset": 3.8,
+      "duration": 0.8,
+      "end": 10.8,
+      "enabled": true,
+      "controllers": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "heldout",
+      "split": "old_regression",
+      "onset": 4.6,
+      "duration": 5.0,
+      "end": 11.6,
+      "enabled": true,
+      "controllers": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "final_new",
+      "split": "old_regression",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "controllers": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "short02",
+      "split": "old_gap_regression",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 7.8,
+      "disconnect_end": 8.0,
+      "controllers": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "long08",
+      "split": "old_gap_regression",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 7.8,
+      "disconnect_end": 8.6,
+      "controllers": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "new_short03",
+      "split": "sealed_new_gap",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 7.4,
+      "disconnect_end": 7.7,
+      "controllers": [
+        "standing",
+        "contact",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "new_long07",
+      "split": "sealed_new_gap",
+      "onset": 5.4,
+      "duration": 5.0,
+      "end": 12.4,
+      "enabled": true,
+      "disconnect_start": 8.2,
+      "disconnect_end": 8.9,
+      "controllers": [
+        "standing",
+        "contact",
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "qualification": {
+    "short_alpha_plateau_abs_change_max": 0.05,
+    "long_fraction_alpha_reduction_at_gap_end_min": 0.2,
+    "alpha_shadow_rms_gap_and_first_1s_after_resume_max": 0.05,
+    "criteria_rationale": "0.05 alpha is5% of the fixed skill path (~3.35deg latent angle), larger than prior full-fit alpha RMS and comparable to prior maximum fit error. Long20% decay is a loose directional exit check, not exact imitation. Same-state shadow teacher uses student's real force history; no labels enter actuation.",
+    "physical": "No original safety boundary, falls, support loss or actual joint-limit violation; root speed release+2s<=0.02m/s. Report all action/torque jumps and saturation, no new smoother.",
+    "task": "For each Student and condition report active-only XYZ error/force and post-reconnect gain versus paired standing and teacher. Qualification additionally requires post-reconnect3D error below standing. Prior30%/5% criteria reported as historical reference, not silently assumed to apply to changed interruption task.",
+    "old_hold_cm": 1.0,
+    "old_hold_preserved": true,
+    "decision": "No expansion recommendation unless both timing/retention and physical task criteria hold. A failed criterion is retained; do not tune thresholds or checkpoints."
+  },
+  "old_regression": {
+    "normal_onsets": [
+      3.0,
+      3.8,
+      4.6,
+      5.4
+    ],
+    "negative": [
+      "no_contact",
+      "pulse"
+    ],
+    "absolute_normal_qualification": {
+      "error_reduction_min": 0.3,
+      "force_reduction_min": 0.05,
+      "recovery_speed_max_mps": 0.02,
+      "no_contact_alpha_max": 0.01
+    },
+    "material_regression": "Per matched old checkpoint report error/force/qPD/alpha/recovery; >5% worsening in normal tracking or force RMS is flagged, not averaged away. Old5.4/4.6 now regression, never called new final."
+  },
+  "resources": {
+    "compute_cumulative_wall_seconds": 3600,
+    "cpus": 8,
+    "rss_gib": 32,
+    "owned_gpu_mib": 8192,
+    "max_full_branches": 24
+  },
+  "post_test": "Only saved-record diagnosis, no new policy updates or rollout collection for repair. Final tested once; source/implementation bugs recorded and corrected without result-dependent checkpoint selection.",
+  "stop": "Original physics safety boundaries or resource limits stop stage; no CPU model fallback; no shared code/weights/gate modifications; no push/Bridge/PPO",
+  "original_assets": "All teacher traces/checkpoints are immutable. New output root issue21-alpha-repair-20261031A."
+}
