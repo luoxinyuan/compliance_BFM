@@ -1,0 +1,40 @@
+{
+  "base": "d968c3f42a9a3d867c01226167ab020d01134ba5",
+  "question": "Can a safe BFM-assisted teacher follow a hand target provably outside fixed-shoulder reach?",
+  "prefix_s": 3.0,
+  "branch_s": 6.0,
+  "ramp_s": 4.0,
+  "hold_s": 1.0,
+  "release_s": 8.0,
+  "horizon_s": 9.0,
+  "K": 80,
+  "D": 8,
+  "max_force_n": 5,
+  "seed": 0,
+  "delta_rule": "fixed-shoulder chain-length sphere intersection at original wrist yz, plus 0.02m in world X",
+  "labels": [
+    "baseline",
+    "arm",
+    "goal_bfm",
+    "waist_dls"
+  ],
+  "policy_updates": 0,
+  "goal_candidate": "Original goal_inference of regularized arm+waist IK waypoints in separate MjData; anchored latent differences relative to initial pose, project_z; smooth release; same original arm correction on top. Frozen BFM handles all joints. Privileged oracle, not deployable Student.",
+  "waist_candidate": "Same original damped bounded Jacobian operator over waist+right arm (10 DOFs), same .04rad perjoint/.08rad total correction; original BFM handles legs. Not claimed WBC.",
+  "goal_ik": {
+    "joints": "original 7 arm+3 waist ranges",
+    "posture_regularization_m_per_rad": 0.005,
+    "waist_weight": 1.0,
+    "max_nfev": 150
+  },
+  "tracking_success": "Hold 3D RMS <1cm and no fall/nonfoot ground contact/actual joint violation; requires crossing rigorous fixed-shoulder lower bound. Improved error alone not success.",
+  "early_stop": "Original failure thresholds; additional conservative abort at 20deg pelvis tilt, root<0.65m, undesired ground contact, actual joint excess>0.02rad. Failed branches retained, no teacher tuning.",
+  "resources": {
+    "cpu": 4,
+    "rss_gib": 12,
+    "gpu_mib": 4096,
+    "wall_s": 2400
+  },
+  "no_student": true,
+  "no_training": true
+}
