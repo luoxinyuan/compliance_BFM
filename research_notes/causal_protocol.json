@@ -1,0 +1,55 @@
+{
+  "base": "2222ec3212c1215809ee6387fc3a0b0953ccc710",
+  "question": "D standing plus unchanged accumulator; actual C action reachability inside original Student latent map",
+  "C_source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-accumulated-20261030A/attempt-02/outputs",
+  "C_episode_sha256": "d8c5a4b357c93c40aca4cec349f11930ebe0ac9a6e05d20e108ad3a977a29394",
+  "C_state_sha256": "abbe3260a8daf253923d14bd50a750eba5e2060c7701748f1e1070933e1acdfd",
+  "controller_sha256": "ac9c2f3288388c871f140617e224fecbfb3f35e38bbf3a12ab040dc73d326a98",
+  "D": "Only goal latent replaced with exact verified standing at every frame; inherited accumulator bytes and bounds unchanged. One6s branch plus3s prefix. Reuse C.",
+  "selected_times_s": [
+    3.5,
+    4.8,
+    6.5,
+    7.5,
+    8.1,
+    8.2,
+    8.4,
+    8.8
+  ],
+  "selection": "Predefined early movement, first cap window, late movement, hold, release initiation/fade/zero-gate/residual-end; eight nonoverlapping100ms windows; no result-based reselection",
+  "reachability": {
+    "frames": 5,
+    "hz": 50,
+    "raw_hz": 10,
+    "updates": 300,
+    "lr": 0.05,
+    "starts": [
+      "zero",
+      "seed0_normal_std0.25"
+    ],
+    "objectives": [
+      "arm_MSE_plus_0.1_nonarm_MSE",
+      "arm_MSE_plus_nonarm_MSE"
+    ],
+    "mapping": "Exact existing constrained(): 256D tanh, tangent to norm16 standing, residual.3, original project_z; one raw vector per five actual observations",
+    "gate": "Existing ContactGate reconstructed from latest actual recorded force at10Hz, release evaluated at50Hz. Additional gate=1 diagnostic only at release; same latent bound; never physically executed",
+    "frozen": "All BFM weights require_grad=False, no network trained, temporary raw vectors only",
+    "interpretation": "Finite local search failure is not global impossibility. Teacher C z only for forward parity, not an expanded optimization domain",
+    "tolerances": {
+      "arm_RMS_deg": 1,
+      "nonarm_RMS_deg": 1,
+      "max_joint_deg": 3
+    },
+    "tolerance_note": "Screen for useful action labels, NOT physical safety guarantee or whole-task success; report continuous errors regardless of pass",
+    "optimization_throttle_sleep_s": 0.05
+  },
+  "policy_updates": 0,
+  "resources": {
+    "cpu": 4,
+    "rss_gib": 12,
+    "gpu_mib": 4096,
+    "cumulative_wall_s": 2400,
+    "gpu_selection": "All GPUs eligible. Select least sampled load with ample free VRAM for bounded short shared work; defer if none suitable. Record UUID and live stats, do not displace others."
+  },
+  "inherited_accumulator_protocol_sha256": "7252e067b1395a425e5990dcf81866942794136a30d6055349eef9181b22b8cd"
+}
