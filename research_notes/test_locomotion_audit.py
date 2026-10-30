@@ -5,6 +5,14 @@ from locomotion_saved_audit import magnitude_summary
 
 
 class AuditRegression(unittest.TestCase):
+    def test_deployment_target_clips_position_without_mutating_action(self):
+        import torch
+        from locomotion_rollout import deployed_target
+        a=torch.tensor([[2.,-2.,.2]]);copy=a.clone()
+        q=deployed_target(a,torch.tensor([[.5,.5,.5]]),torch.tensor([[5.,5.,5.]]),torch.tensor([[-1.,-1.,-1.]]),torch.tensor([[1.,1.,1.]]))
+        torch.testing.assert_close(q,torch.tensor([[1.,-1.,.7]]))
+        torch.testing.assert_close(a,copy)
+
     def test_list_and_negative_array_statistics(self):
         self.assertEqual(magnitude_summary([[-2.,2.],[-2.,2.]]),[2.,2.])
 

@@ -1,0 +1,16 @@
+{
+  "hypothesis": "Original main MuJoCo and author deploy differ in final joint-target clipping; test its causal contribution without changing BFM/reward/z/history/PD gains.",
+  "registered_before_physical_execution": true,
+  "baseline": "native_50hz must reproduce the saved original 6s branch before intervention",
+  "intervention": "deploy_target_clip; sole added final joint target clipping at existing physical joint bounds, as author deploy",
+  "initial_state": "original full t=3 standing snapshot; prefix must reproduce exactly",
+  "z": "same move-ego-0-0.3 from reward_locomotion.pkl SHA 4c4b811584807f2e6c0ddd9f6cb32f79ea2274781449b005e4c7e8e670f67374",
+  "schedule_seconds": {"entry": [0,0.75], "execute": [0.75,3.25], "exit": [3.25,4], "settle": [4,6]},
+  "actor_hz": 50,
+  "physics_hz": 200,
+  "control": "native hard-waist PD, same torque limits, raw actor action and histories unchanged",
+  "outcomes": ["native torso-subtree ego velocity and reward", "root XYZ and heading", "q_PD jump versus realized joint movement and torques", "feet support and stability", "entry and recovery"],
+  "stops": ["same original pre-registered physical safety bounds", "baseline parity failure", "existing cumulative resource budget"],
+  "no_parameter_tuning": true,
+  "no_training": true
+}
