@@ -1,0 +1,191 @@
+{
+  "base": "a3f0aaad8d605ef0407ca2b2846c33e65b235951",
+  "question": "Can bounded accumulated wrist-error correction remove persistent error on fixed B goal path?",
+  "method_change": "Privileged teacher algorithm modification; not an engineering bug fix or latent-only policy",
+  "baseline_source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/issue21-goalcalibration-20261030A/attempt-01/outputs",
+  "pins": {
+    "anchored.json": "41ff98a883781aa8c46535fe1865ef8dedee17b065286b364eb177250df8e8a8",
+    "anchored-initial-state.json": "abbe3260a8daf253923d14bd50a750eba5e2060c7701748f1e1070933e1acdfd",
+    "goal-path.json": "2465366666a6ebe4868884fa84a88610507170d5cf5c01a7fdc57d3703f053e7",
+    "geometry.json": "8af3657086e250ab9476d5ed2fe186f15ff816f105756517f0ca1a8df5c4d6bb",
+    "action-contract.json": "705fa1d4072b31523ef943c1121c8652f2ab09ba4d1bd4066b57adf8f30b36dd"
+  },
+  "source_teacher_sha256": "50d44c732550c60000ee9437955896d6267c81d5bb3a028b0761ca05309c7c00",
+  "labels": [
+    "accumulated"
+  ],
+  "seed": 0,
+  "onset_s": 3.0,
+  "ramp_s": 4.0,
+  "release_s": 8.0,
+  "horizon_s": 9.0,
+  "K": 80,
+  "D": 8,
+  "max_force_n": 5,
+  "increment": {
+    "hz": 10,
+    "per_joint_rad": 0.04,
+    "norm_rad": 0.08,
+    "damping": 0.02
+  },
+  "accumulated": {
+    "per_joint_caps_rad": [
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.2
+    ],
+    "norm_cap_rad": 0.4,
+    "per_joint_velocity_rad_s": 0.4,
+    "norm_velocity_rad_s": 0.8,
+    "hz": 50,
+    "release_duration_s": 0.8,
+    "release_shape": "1-smoothstep; snapshot last applied at first inactive 50Hz sample; then zero",
+    "anti_windup": "Integrate from applied correction, project into total/joint limits, discard rejected increment; no hidden accumulator; loss of contact stops all integration",
+    "online_joint_margin_rad": 0.02
+  },
+  "bound_rationale": "Original10Hz .04/.08 steps imply .4/.8 rad/s; cubic.8s release permits <=.2133/.4267rad, rounded down to.20/.40. Per-joint caps additionally <=half observed actual/command clearance. No joint-specific20deg target.",
+  "margins": [
+    {
+      "joint": "right_shoulder_pitch_joint",
+      "limits_rad": [
+        -3.0892,
+        2.6704
+      ],
+      "observed_actual_range_rad": [
+        -0.5941021151510228,
+        0.022978490394272227
+      ],
+      "observed_command_range_rad": [
+        -0.8151296973228455,
+        -0.0892547219991684
+      ],
+      "min_actual_and_command_margin_rad": 2.2740703026771545,
+      "total_cap_rad": 0.2,
+      "observed_command_step_max_deg": 3.050519577678605
+    },
+    {
+      "joint": "right_shoulder_roll_joint",
+      "limits_rad": [
+        -2.2515,
+        1.5882
+      ],
+      "observed_actual_range_rad": [
+        -0.15128943187079893,
+        0.009733058607097172
+      ],
+      "observed_command_range_rad": [
+        -0.15740421414375305,
+        0.007758533116430044
+      ],
+      "min_actual_and_command_margin_rad": 1.578466941392903,
+      "total_cap_rad": 0.2,
+      "observed_command_step_max_deg": 1.0459884029872695
+    },
+    {
+      "joint": "right_shoulder_yaw_joint",
+      "limits_rad": [
+        -2.618,
+        2.618
+      ],
+      "observed_actual_range_rad": [
+        -0.2643418053318617,
+        0.006424219929198613
+      ],
+      "observed_command_range_rad": [
+        -0.2555142343044281,
+        1.609320861462038e-05
+      ],
+      "min_actual_and_command_margin_rad": 2.3536581946681383,
+      "total_cap_rad": 0.2,
+      "observed_command_step_max_deg": 1.4197461727672993
+    },
+    {
+      "joint": "right_elbow_joint",
+      "limits_rad": [
+        -1.0472,
+        2.0944
+      ],
+      "observed_actual_range_rad": [
+        0.016831147490669177,
+        0.20454810822197939
+      ],
+      "observed_command_range_rad": [
+        -0.12103243917226791,
+        0.09909173101186752
+      ],
+      "min_actual_and_command_margin_rad": 0.926167560827732,
+      "total_cap_rad": 0.2,
+      "observed_command_step_max_deg": 1.0613465102228663
+    },
+    {
+      "joint": "right_wrist_roll_joint",
+      "limits_rad": [
+        -1.97222,
+        1.97222
+      ],
+      "observed_actual_range_rad": [
+        -0.21497711179500073,
+        0.1132791142879725
+      ],
+      "observed_command_range_rad": [
+        -0.2299949675798416,
+        0.11485373228788376
+      ],
+      "min_actual_and_command_margin_rad": 1.7422250324201585,
+      "total_cap_rad": 0.2,
+      "observed_command_step_max_deg": 1.4679702965153512
+    },
+    {
+      "joint": "right_wrist_pitch_joint",
+      "limits_rad": [
+        -1.61443,
+        1.61443
+      ],
+      "observed_actual_range_rad": [
+        0.05444112531142182,
+        0.20563984756586676
+      ],
+      "observed_command_range_rad": [
+        0.018348408862948418,
+        0.19003887474536896
+      ],
+      "min_actual_and_command_margin_rad": 1.4087901524341333,
+      "total_cap_rad": 0.2,
+      "observed_command_step_max_deg": 0.8803627189168073
+    },
+    {
+      "joint": "right_wrist_yaw_joint",
+      "limits_rad": [
+        -1.61443,
+        1.61443
+      ],
+      "observed_actual_range_rad": [
+        -0.2691363622010346,
+        0.20113344832964267
+      ],
+      "observed_command_range_rad": [
+        -0.32206180691719055,
+        0.25464117527008057
+      ],
+      "min_actual_and_command_margin_rad": 1.2923681930828095,
+      "total_cap_rad": 0.2,
+      "observed_command_step_max_deg": 3.992712370613541
+    }
+  ],
+  "goal_path": "Exact archived B latent at every50Hz sample including unchanged original.2s latent release",
+  "success": "Original hold3D RMS<1cm AND complete stable rollout; report ramp XYZ, force and release independently. Do not tune after observing this run.",
+  "physical_stop": "Original failure or root<.65m or pelvis tilt>20deg or nonfootground or actual joint excess>.02rad; stop on nonfinite/invalid command or conflicting correction bounds",
+  "attribution": "Log BFM goal q_PD, same-state standing q_PD and applied joint correction separately. RMS correction / RMS BFM-goal-minus-standing is descriptive command attribution, not motion causality. If ratio>=1 mark direct correction as dominant in that joint group.",
+  "branch_if_failed": "Stop current manual goal/IK calibration line; do not raise caps or train",
+  "policy_updates": 0,
+  "resources": {
+    "cpu": 4,
+    "rss_gib": 12,
+    "gpu_mib": 4096,
+    "cumulative_wall_s": 2400
+  }
+}
