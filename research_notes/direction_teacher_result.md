@@ -2,7 +2,7 @@
 
 **结论：原教师在新的 t=3.0s 共同起点正反两向均有效。** +X 三维跟随误差 RMS 比 standing 降低 **41.38%**；−X 降低 **34.30%**，且相对 standing 新增腕−root X 位移为 **−0.7206cm**，不是把原BFM/外力已有的反向位移算成教师收益。两分支都稳定。因此上轮 Student 的 −X 退步10.66%不能解释为这个任务在此状态下不存在有效右臂控制；下一步值得一次定向监督修复。教师使用关节动作修正，**本轮并未证明这些目标在受限BFM latent内必然可拟合**。
 
-协议保持上轮完全一致：无力standing到t=3.0s，原Tether ±X3.5cm、K80/D8、5N cap、2s smoothstep、原4.5s release；只执行3.0–4.0s前半程，anchor约移动±1.75cm，没有覆盖release。每支10个教师决策、50个BFM动作、200个物理步。直接复用上轮已完成的±X standing轨迹，**没有重跑Student或standing对照**。两个新的无力前缀只用于重建快照：qpos/qvel/wrist/root/force与原前缀最大差0，完整机械、BFM观测、本体/动作/力历史与原common-state逐值一致，四条比较轨迹的初始记录及伙伴anchor轨迹一致。仍只恢复原非输入reward scratch缓存，不放松其他相等检查。
+协议保持上轮完全一致：无力standing到t=3.0s，原Tether ±X3.5cm、K80/D8、5N cap、2s smoothstep、原4.5s release；只执行3.0–4.0s前半程，anchor约移动±1.75cm，没有覆盖release。每支10个教师决策、50个BFM动作、200个物理步。直接复用上轮已完成的±X standing轨迹，**没有重跑Student或standing对照**。两个新的无力前缀只用于重建快照：qpos/qvel/wrist/root/force与原前缀最大差0，完整机械、BFM观测、本体/动作/力历史与原common-state逐值一致，四条比较轨迹的初始记录一致，各方向内B/T伙伴anchor轨迹逐样本一致。仍只恢复原非输入reward scratch缓存，不放松其他相等检查。
 
 以下E为实际三维腕−anchor误差；位移是分支末−初；B=上轮原standing，T=本轮原教师。实际力随机器人响应变化，没有强行共享力波形。
 
