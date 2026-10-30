@@ -44,7 +44,7 @@ def run_evaluations(env,model,net,contract,out,protocol):
         spec=mujoco.mjtState.mjSTATE_INTEGRATION;state=np.empty(mujoco.mj_stateSize(env.sim.model,spec));mujoco.mj_getState(env.sim.model,env.sim.data,state,spec)
         tensors=lambda obj:{k:v.tolist() for k,v in vars(obj).items() if torch.is_tensor(v)}
         return dict(mj_integration=state.tolist(),base_tensors=tensors(env.base),sim_tensors=tensors(env.sim),wrapped_tensors=tensors(env.wrapped),
-            bfm_obs={k:v.tolist() for k,v in env.obs.items()},previous_z=env.previous_z.tolist(),previous_action=env.previous_action.tolist(),
+            bfm_obs={k:v.tolist() for k,v in env.obs.items()},previous_z=env.previous_z.tolist(),previous_action=None if env.previous_action is None else env.previous_action.tolist(),
             force_history=env.history.tolist(),steps=env.steps,common_step_counter=env.base.common_step_counter,
             history={k:v.tolist() for k,v in env.base.history_handler.history.items()},
             env_bookkeeping=dict(done=bool(env.done),failed=bool(env.failed),last_qpos=env.last_qpos.tolist(),last_point=env.last_point.tolist(),last_support=env.last_support),
@@ -70,6 +70,19 @@ def run_evaluations(env,model,net,contract,out,protocol):
             reused[str(path)]=sha(path)
             if label=='baseline':baseline=read(path)
         for label in labels:
+            name=key+'-'+label
+            resume=Path(os.environ['REPAIR_TRAINED_OUTPUT']) if 'REPAIR_TRAINED_OUTPUT' in os.environ else None
+            if resume is not None and (resume/(name+'.json')).exists():
+                prior=read(resume/'evaluation-result.json');entry=next(e for e in prior['episodes'] if e['name']==name)
+                assert entry['complete'];ep=read(resume/(name+'.json'))
+                assert len(ep['physics'])==round(task['seconds']*200) and not ep['failed']
+                reused[str(resume/(name+'.json'))]=sha(resume/(name+'.json'))
+                save(out,name+'.json',ep);summary[key][label]=summarize(ep)
+                save(out,name+'-pd-audit.json',read(resume/(name+'-pd-audit.json')))
+                result['episodes'].append(dict(**entry,reused_completed=True))
+                result['total_branch_seconds']+=len(ep['physics'])*.005
+                save(out,'evaluation-result.json',result);save(out,'summary.json',summary)
+                print('REUSE_COMPLETED_NO_RERUN',name,flush=True);continue
             check_deadline();record=False;mode='baseline';cfg.activation_time=onset
             if short:
                 cfg.enabled=False;env.reset(seed=0,trajectory=(zero[0]['wrist'],[0.,0.,0.]));reset_integration(initial0)

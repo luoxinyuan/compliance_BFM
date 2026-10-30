@@ -52,7 +52,7 @@ def gpu_snapshot():
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run-id',required=True)
-    parser.add_argument('--stage',choices=['precheck','repair'],required=True)
+    parser.add_argument('--stage',choices=['precheck','repair','evaluation'],required=True)
     args=parser.parse_args()
     assert args.run_id.startswith('issue21-targetedrepair-') and all(c.isalnum() or c=='-' for c in args.run_id)
     assert WORKTREE.resolve()==WORKTREE and SOURCE.resolve()==SOURCE
@@ -82,6 +82,11 @@ def main():
         approved=run/'precheck-decision.json'
         assert approved.exists() and json.loads(approved.read_text())['proceed_to_one_fixed_fit']
         assert not any((Path(x['path'])/'outputs/contact-projector-repaired-final.pt').exists() for x in ledger['attempts']), 'A final repair checkpoint exists; resume evaluation explicitly, never retrain'
+    trained_output=None
+    if args.stage=='evaluation':
+        candidates=[Path(x['path'])/'outputs' for x in ledger['attempts'] if x.get('stage')=='repair' and (Path(x['path'])/'outputs/contact-projector-repaired-final.pt').exists()]
+        assert len(candidates)==1,'Resume only the uniquely fixed original repair checkpoint'
+        trained_output=candidates[0]
     remaining=2400-sum(x.get('wall_seconds',0) for x in ledger['attempts'])
     assert remaining>0
     number=len(ledger['attempts'])+1
@@ -104,6 +109,7 @@ def main():
          'REPAIR_STAGE':args.stage,'HF_HUB_OFFLINE':'1','TRANSFORMERS_OFFLINE':'1','WANDB_MODE':'disabled',
          'CCL_OUTPUT':str(outputs),'CCL_DEADLINE_MONOTONIC':str(time.monotonic()+remaining),
          'PYTORCH_CUDA_ALLOC_CONF':'expandable_segments:True'}
+    if trained_output is not None:env['REPAIR_TRAINED_OUTPUT']=str(trained_output)
     for name in ['TMPDIR','TEMP','TMP','XDG_CACHE_HOME','XDG_CONFIG_HOME','MPLCONFIGDIR','NUMBA_CACHE_DIR',
                  'TORCH_HOME','TORCHINDUCTOR_CACHE_DIR','TRITON_CACHE_DIR','HF_HOME','PYTHONPYCACHEPREFIX']:
         directory=cache/name;directory.mkdir();env[name]=str(directory)

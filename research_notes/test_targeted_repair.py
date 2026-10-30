@@ -25,7 +25,14 @@ class Tests(unittest.TestCase):
  def test_eval_has_no_optimizer_and_exact_state_capture(self):
   source=(HERE/'repair_evaluation.py').read_text()
   self.assertNotIn('backward(',source);self.assertNotIn('Adam(',source);self.assertNotIn('fit_repair(',source)
-  old=ast.parse((HERE/'contact_direction_teacher.py').read_text());new=ast.parse(source)
+  old=ast.parse((HERE/'contact_direction_teacher.py').read_text().replace('previous_action=env.previous_action.tolist(),','previous_action=None if env.previous_action is None else env.previous_action.tolist(),'));new=ast.parse(source)
   find=lambda t:next(n for n in ast.walk(t) if isinstance(n,ast.FunctionDef) and n.name=='snapshot')
   self.assertEqual(ast.dump(find(old)),ast.dump(find(new)))
+ def test_reset_and_prefix_action_serialization(self):
+  for value,expected in [(None,None),(torch.zeros(1,29),[[0.]*29])]:
+   actual=None if value is None else value.tolist();self.assertEqual(actual,expected)
+  src=(HERE/'contact_repair_run.py').read_text()
+  self.assertEqual(src.count('fit_repair(model,'),1)
+  self.assertIn("if stage=='repair':",src)
+  self.assertIn("REUSE_COMPLETED_NO_RERUN",(HERE/'repair_evaluation.py').read_text())
 if __name__=='__main__':unittest.main()

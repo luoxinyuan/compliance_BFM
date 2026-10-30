@@ -134,12 +134,21 @@ def main():
             assert decision['proceed_to_one_fixed_fit'] and decision['protocol_sha256']==sha(ROOT/'research_notes/targeted_repair_protocol.json')
             source=Path(decision['precheck_outputs']);assert sha(source/'repair-dataset.pt')==decision['dataset_sha256']
             data=torch.load(source/'repair-dataset.pt',map_location='cuda',weights_only=True)
-            result['fit']=fit_repair(model,env.standing,contract,net,data,OUT);result['projector_updates']=2000
+            if stage=='repair':
+                result['fit']=fit_repair(model,env.standing,contract,net,data,OUT);trained=OUT;result['updates_this_attempt']=2000
+            else:
+                trained=Path(os.environ['REPAIR_TRAINED_OUTPUT']);pinned=json.loads((trained/'checkpoint-frozen-before-evaluation.json').read_text())
+                assert sha(trained/'contact-projector-repaired-final.pt')==pinned['sha256']
+                net.load_state_dict(torch.load(trained/'contact-projector-repaired-final.pt',map_location='cuda',weights_only=True)['state_dict'],strict=True)
+                net.eval().requires_grad_(False);result['updates_this_attempt']=0
+                result['fit']=json.loads((trained/'result.json').read_text())['fit']
+                for name in ['fit-before.json','fit-after.json','fit-trace.json','checkpoint-frozen-before-evaluation.json']:write(name,json.loads((trained/name).read_text()))
+            result['projector_updates']=2000;result['training_outputs']=str(trained);result['checkpoint_path']=str(trained/'contact-projector-repaired-final.pt')
             write('result.json',result);trained_hash=tensor_digest(net)
             result['evaluation']=run_evaluations(env,model,net,contract,OUT,protocol)
             assert tensor_digest(net)==trained_hash and all(p.grad is None for p in net.parameters())
             result['status']='completed'
-            result['checkpoint_sha256']=sha(OUT/'contact-projector-repaired-final.pt')
+            result['checkpoint_sha256']=sha(trained/'contact-projector-repaired-final.pt')
         assert {n:tensor_digest(getattr(model,n)) for n in INFERENCE_MODULES}==frozen
         assert all(p._version==versions[n] and p.grad is None for n,p in model.named_parameters())
         assert digest(SOURCE/'contact-projector-final.pt')==STUDENT_SHA
