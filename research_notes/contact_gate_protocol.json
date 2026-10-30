@@ -1,0 +1,43 @@
+{
+  "stage": "Causal native-goal contact gate qualification, no learning",
+  "base_commit": "b6bfafae5102830c3f39685556d558b794ed7f23",
+  "model_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "source_sha256": "e1c0dae3356f566a4769c473c89e1eeeffa0a035a1fd0ed80ea77ac45e7af85d",
+  "baseline_sha256": "6ee93e55f6a5f35db3c34876ef95334b7824c43ae48119a0ce67457888932c2a",
+  "controllers": ["standing", "clock", "contact"],
+  "conditions": [
+    {"name": "dev_early", "split": "development", "onset": 3.0, "duration": 5.0, "end": 10.0, "enabled": true},
+    {"name": "dev_late", "split": "development", "onset": 3.8, "duration": 5.0, "end": 10.8, "enabled": true},
+    {"name": "no_contact", "split": "negative_control", "onset": 3.0, "duration": 5.0, "end": 11.6, "enabled": false},
+    {"name": "pulse", "split": "negative_control", "onset": 3.8, "duration": 0.8, "end": 10.8, "enabled": true},
+    {"name": "heldout", "split": "sealed_test", "onset": 4.6, "duration": 5.0, "end": 11.6, "enabled": true}
+  ],
+  "gate": {
+    "dt": 0.02, "filter_samples": 3,
+    "entry_forward_force_n": 0.5, "entry_samples": 4,
+    "exit_force_norm_n": 0.2, "exit_samples": 20,
+    "entry_transition_s": 4.0, "return_transition_s": 0.75
+  },
+  "gate_rationale": "Fixed 0.5N forward evidence is 10% of cap; 0.2N all-axis exit is 4% of cap. Three past samples and 80ms entry suppress spikes. 400ms continuous low force retains posture through brief unloading; progression pauses during that dropout. Exit is the original 750ms smoothstep to standing. Four-second smoothstep entry and spherical path are unchanged. Only force history plus internal past command state; no clock/onset/anchor/active flag or future reference enters gate. Persistent zero-force maintained grasp and actual release are not identifiable from force alone; finite hysteresis is a declared assumption, not a contact sensor.",
+  "physical": {
+    "seed": 0, "common_state_time": 3.0, "actor_hz": 50, "physics_hz": 200,
+    "K": 80, "D": 8, "max_force_n": 5, "partner_ramp_s": 4.0,
+    "anchor": "Once aligned to no-force standing wrist at each actual onset; same anchor/trajectory across three controllers; read only in task/evaluator",
+    "delta": "Exact prior geometry.delta_x_m, +X18.6819cm",
+    "clock": "Fixed original onset=3, move4s, hold1s, release=8, smoothstep return0.75s in every condition",
+    "pulse": "Original 4s partner ramp cut off after0.8s; not an artificially large instantaneous force pulse",
+    "recovery": "Report exactly release+2s for every contact; pulse also continues to its fixed episode end"
+  },
+  "pass_criteria": {
+    "heldout_all_contact_error_reduction_min": 0.30,
+    "heldout_all_contact_force_rms_reduction_min": 0.05,
+    "no_contact_entries_max": 0,
+    "falls_max": 0, "samples_without_either_foot_load_max": 0,
+    "root_speed_release_plus_2s_max_mps": 0.02,
+    "old_hold_tracking_rms_cm": 1.0,
+    "old_hold_criterion_is_separate_and_must_be_reported": true
+  },
+  "resources": {"compute_cumulative_wall_seconds": 3600, "cpus": 8, "rss_gib": 64, "owned_gpu_mib": 4096, "max_full_branches": 16},
+  "execution": "One no-force anchor reference then fixed15 comparisons serially; sealed test last. Freeze gate and all conditions before model start; no tuning after development. A physical safety boundary stops stage. Preserve failures; only ordinary implementation bugs may be repaired with explicit version records.",
+  "no_training": true, "no_parameter_tuning": true, "no_direct_joint_correction": true
+}
