@@ -23,6 +23,9 @@ def physical_state_digest(state):
  # Reward accumulator is not consumed by BFM, PD, physics or Student. Preserve full raw snapshot separately.
  state=copy.deepcopy(state);state['base_tensors'].pop('rew_buf')
  return hashlib.sha256(json.dumps(state,sort_keys=True).encode()).hexdigest()
+def cached_point(env):
+ # Original wrapper has already forwarded the physical state. A measurement must not re-solve warmstarts.
+ d=env.sim.data;return (d.xpos[env.tether.body]+d.xmat[env.tether.body].reshape(3,3)@np.asarray(env.cfg.local_point)).copy()
 def enter_progress(t):return smooth((t-3.)/.75)
 def command_handoff(start,target,t,onset):return spherical(start,target,smooth((t-onset)/.75))
 def make_goal(env,model,configuration,point,delta,forward):
@@ -79,7 +82,7 @@ def run_study(env,model,contract,out):
   base=orig(obs,command,mean=True);base_q=qtarget(base);qbase=base_q[0].cpu().numpy();q0=qtarget(nominal);action=base
   expert=controller.startswith('teacher_') or controller=='accumulated_goal'
   if expert:
-   point,_=env.tether.point_state();error=env.tether.anchor-point;active=bool(env.tether.active);bounds=None
+   point=cached_point(env);error=env.tether.anchor-point;active=bool(env.tether.active);bounds=None
    if controller=='accumulated_goal':bounds=executable_bounds(qbase[arm],limits[arm],sc[arm],off[arm],contract['clip'])
    if tick%5==0:
     desired=np.zeros(7)
@@ -96,7 +99,7 @@ def run_study(env,model,contract,out):
   q=qtarget(action)
   assert torch.isfinite(action).all() and abs(float(command.norm())-16)<1e-4
   cs.append(dict(time=t,tether_time=t,alpha=alpha,gate=None,local_gate=lg,executed_z=command.tolist(),measured_force_xyz=force.tolist(),bfm_obs={k:v.tolist() for k,v in obs.items()},
-    base_action=base[0].tolist(),base_q_PD=base_q[0].tolist(),teacher_correction=corr.tolist(),pre_anchor=env.tether.anchor.tolist(),pre_wrist=env.tether.point_state()[0].tolist(),active=bool(env.tether.active),action=action[0].tolist(),standing_action=nominal[0].tolist(),nominal=nominal[0].tolist(),q_PD=q[0].tolist(),standing_q_PD=q0[0].tolist(),nominal_q_PD=q0[0].tolist(),delta_q_PD=(q-q0)[0].tolist(),
+    base_action=base[0].tolist(),base_q_PD=base_q[0].tolist(),teacher_correction=corr.tolist(),pre_anchor=env.tether.anchor.tolist(),pre_wrist=cached_point(env).tolist(),active=bool(env.tether.active),action=action[0].tolist(),standing_action=nominal[0].tolist(),nominal=nominal[0].tolist(),q_PD=q[0].tolist(),standing_q_PD=q0[0].tolist(),nominal_q_PD=q0[0].tolist(),delta_q_PD=(q-q0)[0].tolist(),
     pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),action_saturation_fraction=float(((action*5).abs()>=contract['clip']).float().mean()),q_PD_step_max_rad=float(abs(q-last_q).max()),z_step_deg=float(torch.rad2deg(torch.acos(((command*last_z).sum()/256).clamp(-1,1))))))
   last_q=q.clone();last_z=command.clone();tick+=1;return action
  model.act=act;results=dict(status='running',episodes=[],student_optimizer_updates=0);pair_start={};pair_anchor={}

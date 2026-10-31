@@ -17,6 +17,11 @@ class Contract(unittest.TestCase):
   a={'base_tensors':{'rew_buf':[0.0],'actions':[0.]},'qpos':[1.]};b=copy.deepcopy(a);b['base_tensors']['rew_buf']=[1e-9]
   self.assertEqual(digest(a),digest(b));self.assertIn('rew_buf',a['base_tensors'])
   b['qpos']=[1.01];self.assertNotEqual(digest(a),digest(b));b=copy.deepcopy(a);b['base_tensors']['actions']=[.01];self.assertNotEqual(digest(a),digest(b))
+ def test_measurements_do_not_forward_live_physics(self):
+  t=ast.parse((D/'m1_stage.py').read_text());f=next(n for n in t.body if isinstance(n,ast.FunctionDef) and n.name=='cached_point')
+  self.assertNotIn('mj_forward',ast.unparse(f));self.assertNotIn('point_state',ast.unparse(f))
+  calls=[n for n in ast.walk(t) if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and n.func.attr=='point_state']
+  self.assertEqual(len(calls),1) # Original once-only anchor initialization; no logging side effect.
  def test_entry_is_bumpless(self):
   t=ast.parse((D/'m1_stage.py').read_text());f=next(n for n in t.body if isinstance(n,ast.FunctionDef) and n.name=='enter_progress')
   def smooth(x):x=min(1,max(0,x));return x*x*(3-2*x)
