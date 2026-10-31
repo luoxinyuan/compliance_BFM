@@ -1,0 +1,30 @@
+{
+  "recorded_utc": "2026-10-31T06:49:17.120505+00:00",
+  "reason": "One additional real-contact replay of frozen new Student no-contact executed z. Preserve online frozen BFM proprio feedback and PD. Separate policy command benefit from physical/BFM response. Fixed before reading new Student final metrics. No training or condition selection.",
+  "source_stage": "final-attempt-01",
+  "source": "u625__m3_student__free.json.gz",
+  "u": 0.625,
+  "onset": 13.15,
+  "release": 18.15,
+  "end": 26.15,
+  "new_physical_episodes": 1,
+  "total_milestone_physical_episodes": 35,
+  "original_budget_max_episodes": 36,
+  "same_compute_budget_seconds": 3600,
+  "no_checkpoint_updates": true,
+  "post_final_diagnostic": {
+    "selection": "Added after seeing aggregate contact error (M3 3.147cm, native4.531,rule2.856); explicitly diagnostic, no training or test reclassification.",
+    "source": "u625__m3_student.json.gz",
+    "times": [
+      13.4,
+      15.15,
+      17.95,
+      18.35,
+      24.75
+    ],
+    "frames_each": 5,
+    "temporary_z_steps": 160,
+    "same_original_bounds": true,
+    "purpose": "Can original qualified goal teacher actions be expressed at actual frozen Student states? Separate learned mapping failure from legal interface limits."
+  }
+}

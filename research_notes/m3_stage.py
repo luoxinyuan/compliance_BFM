@@ -29,7 +29,7 @@ def run_study(env,model,contract,out):
  if stage in ['representation','train']:
   from m3_learning import representation,train
   return (representation if stage=='representation' else train)(env,model,contract,out)
- assert stage in ['preparation','qualification','ablation','final']
+ assert stage in ['preparation','qualification','ablation','final','contact_ablation']
  dev=env.standing.device;m=env.sim.model;orig=model.act;spec=dict(protocol['contact']);
  if stage=='ablation':spec['end']=23.4
  onset=spec['onset'];release=spec['release'];end=spec['end'];ready=protocol['preparation']['control_ready_s'];delta=np.asarray(spec['delta_xyz']);ends=endpoints(env)
@@ -49,6 +49,7 @@ def run_study(env,model,contract,out):
  if stage=='ablation':jobs=[(.5,c,True) for c in protocol['causal_physical_ablation']['controllers']]
  if stage=='final':
   plan=read(Path(__file__).with_name('m3_training_plan.json'));jobs=[(protocol['held_out']['u'],c,True) for c in plan['final_methods']]+[(protocol['held_out']['u'],c,False) for c in plan['final_negatives']]+[(u,'m3_student',enabled) for u in plan['regression_configurations'] for enabled in [True,False]]
+ if stage=='contact_ablation':jobs=[(protocol['held_out']['u'],'m3_student_z_replay',True)]
  replay=None
  native_cfg=read(Path(__file__).with_name('contact_gate_protocol.json'))['gate']
  mode='prefix';controller='native_hold';enabled=False;cs=[];tick=0;last_q=None;last_z=None;anchor=None;contact_initial=None;contact_state=None;ready_state=None;ready_initial=None;geo=None
@@ -110,14 +111,14 @@ def run_study(env,model,contract,out):
  model.act=act;results=dict(status='running',episodes=[],student_optimizer_updates=0);paired={}
  try:
   for u,controller,enabled in jobs:
-   check_deadline();assert stage=='final' or u!=protocol['held_out']['u']
-   if stage=='final':
+   check_deadline();assert stage in ['final','contact_ablation'] or u!=protocol['held_out']['u']
+   if stage in ['final','contact_ablation']:
     spec=dict(protocol['contact'])
     if u==protocol['held_out']['u']:spec.update({k:protocol['held_out'][k] for k in ['onset','release','end','delta_xyz']})
     onset=spec['onset'];release=spec['release'];end=spec['end'];delta=np.asarray(spec['delta_xyz'])
    configuration=f'u{round(u*1000):03d}';pose=spherical(ends[0],ends[1],u);goal=spherical(ends[2],ends[3],u);label=configuration+'__'+controller+('' if enabled else '__free');mode='prefix';env.qualification_active=False;env.interruption_window=None
    if controller.endswith('_z_replay'):
-    path=R/'m2-unseen-body-20261031A/comparison-attempt-01/outputs'/('midpoint__'+controller.removesuffix('_z_replay')+'__free.json.gz');replay=json.loads(gzip.decompress(path.read_bytes()));save(out,label+'-replay-source.json',dict(path=str(path),sha256=sha(path),scope='Executedlatentonly;BFMstillreactsonline'))
+    path=(RUN/'final-attempt-01/outputs/u625__m3_student__free.json.gz') if stage=='contact_ablation' else R/'m2-unseen-body-20261031A/comparison-attempt-01/outputs'/('midpoint__'+controller.removesuffix('_z_replay')+'__free.json.gz');replay=json.loads(gzip.decompress(path.read_bytes()));save(out,label+'-replay-source.json',dict(path=str(path),sha256=sha(path),scope='Executedlatentonly;BFMstillreactsonline'))
    for cfg in (env.cfg,env.tether.cfg):cfg.enabled=False;cfg.activation_time=onset;cfg.ramp_duration=spec['ramp'];cfg.release_time=release
    env.reset(seed=0,trajectory=(zero[0]['wrist'],[0,0,0]))
    for name in ['rew_buf','push_robot_counter','push_robot_plot_counter','command_counter','average_episode_length','torques','last_episode_length_buf']:
@@ -149,5 +150,9 @@ def run_study(env,model,contract,out):
    if not entry['complete']:results['status']='capability-stopped' if boundary and boundary['kind']=='teacher_query_bound' else 'physical-stopped';return results
    if configuration not in paired:paired[configuration]=ep['ready_physical_state_sha256']
    else:assert ep['ready_physical_state_sha256']==paired[configuration]
-  results['status']='completed';assert {k:tensor_digest(v) for k,v in nets.items()}==identities;save(out,'physical-result.json',results);return results
+  results['status']='completed';assert {k:tensor_digest(v) for k,v in nets.items()}==identities;save(out,'physical-result.json',results)
+  if stage=='contact_ablation':
+   from m3_saved_diagnostic import run
+   results['saved_state_diagnostic']=run(env,model,contract,out)
+  return results
  finally:model.act=orig;env.qualification_active=False;env.m1_anchor_hook=None
