@@ -1,0 +1,27 @@
+import ast,json,unittest
+from pathlib import Path
+from m7_partner import segment,install,uninstall
+import numpy as np
+from types import SimpleNamespace
+P=json.loads(Path(__file__).with_name('m7_protocol.json').read_text())
+class Test(unittest.TestCase):
+ def test_segments(self):
+  s=P['conditions']['dev_short'];tr=s['transition']
+  self.assertTrue(segment(s,9.9)[4]);self.assertFalse(segment(s,10.1)[4]);self.assertTrue(segment(s,10.2)[4])
+  self.assertEqual(segment(s,10.2)[:2],(.15,-.185))
+ def test_original_force_implementation_preserved(self):
+  class Fake:
+   def measure(self):
+    c=self.cfg;u=np.clip((self.time-c.activation_time)/c.ramp_duration,0,1);self.anchor=self.origin+(3*u*u-2*u**3)*self.delta;self.active=c.enabled and c.activation_time<=self.time<c.release_time
+    return self.anchor,self.active
+  s=P['conditions']['dev_short'];x=Fake();x.origin=np.zeros(3);x.delta=np.ones(3);x.cfg=SimpleNamespace(activation_time=5.,ramp_duration=4.,enabled=True,release_time=s['release']);x.time=0
+  original=x.measure;install(x,s,np.zeros(3))
+  for t,expected in [(5,0),(9,.15),(10.2,.15),(14.2,-.035)]:
+   x.time=t;p,_=x.measure();self.assertAlmostEqual(p[0],expected);self.assertEqual(x.cfg.activation_time,5.)
+  x.time=10.1;self.assertFalse(x.measure()[1]);x.time=s['release'];self.assertFalse(x.measure()[1]);uninstall(x);self.assertEqual(x.measure,original)
+ def test_sealed(self):
+  for phase,jobs in P['schedule'].items():
+   if phase!='final':self.assertFalse(any(c.startswith('sealed') for c,_ in jobs))
+ def test_syntax(self):
+  for f in Path(__file__).parent.glob('m7_*.py'):ast.parse(f.read_text())
+if __name__=='__main__':unittest.main()

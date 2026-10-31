@@ -1,0 +1,423 @@
+{
+  "resources": {
+    "compute_cumulative_wall_seconds": 5400,
+    "cpus": 8,
+    "rss_gib": 32,
+    "owned_gpu_mib": 8192,
+    "expected_output_gib": 6
+  },
+  "training": {
+    "steps": [
+      2500,
+      2000,
+      2000
+    ],
+    "batch": 64,
+    "lr": 0.0003,
+    "seed": 0,
+    "hidden": [
+      128,
+      128
+    ],
+    "projection_steps": 160,
+    "rounds": 2,
+    "final_checkpoint": "round2 fixed; no test selection",
+    "methods": [
+      "alignment",
+      "distill"
+    ],
+    "loss": "alignment: arm qPD MSE + 0.1 nonarm MSE + 0.01 projected-z MSE; distill: projected-z MSE; common 500-step initial projected-z warmstart counts within3000",
+    "input": "465 native + 320x3 actual force history; no teacher state/clock/anchor/config/target",
+    "output": "one learned forward progress plus 256D original native-centered tangent residual; norm16; original contact residual gate; 50Hz",
+    "semantic": "projected native-command prior, not exact FIBER B(s) regularization; BFM-Zero unchanged, not AH-BFM",
+    "initial": "M6 final per-method; paired extension, not same initial weights",
+    "sampling": "40% transitions,20% old positive,20% old negative,20% no-contact; group-balanced"
+  },
+  "stage": "M7 continuous contact transitions",
+  "base_commit": "2d3ed08bfc859223c59e2fa132d7349cb177a161",
+  "conditions": {
+    "early": {
+      "onset": 5,
+      "release": 12.0,
+      "end": 20.0,
+      "ramp": 4.0,
+      "delta_xyz": [
+        0.15,
+        0,
+        0
+      ],
+      "enabled": true
+    },
+    "neg_early": {
+      "onset": 5,
+      "release": 8.5,
+      "end": 16.5,
+      "ramp": 2,
+      "delta_xyz": [
+        -0.035,
+        0,
+        0
+      ],
+      "enabled": true
+    },
+    "test_pos_small": {
+      "onset": 7.1,
+      "release": 10.8,
+      "end": 18.8,
+      "ramp": 1.7,
+      "delta_xyz": [
+        0.03,
+        0,
+        0
+      ],
+      "enabled": true
+    },
+    "free": {
+      "onset": 5,
+      "release": 12.0,
+      "end": 20.0,
+      "ramp": 4.0,
+      "delta_xyz": [
+        0.15,
+        0,
+        0
+      ],
+      "enabled": false
+    },
+    "pulse": {
+      "onset": 6.2,
+      "release": 7.0,
+      "end": 15.0,
+      "ramp": 4.0,
+      "delta_xyz": [
+        0.15,
+        0,
+        0
+      ],
+      "enabled": true
+    },
+    "dev_short": {
+      "onset": 5,
+      "release": 15.7,
+      "end": 23.7,
+      "ramp": 4.0,
+      "delta_xyz": [
+        0.15,
+        0,
+        0
+      ],
+      "enabled": true,
+      "transition": {
+        "unload": 10.0,
+        "restart": 10.2,
+        "reverse_end": 14.2,
+        "reverse_target": -0.035
+      }
+    },
+    "dev_long": {
+      "onset": 6.2,
+      "release": 17.5,
+      "end": 25.5,
+      "ramp": 4.0,
+      "delta_xyz": [
+        0.15,
+        0,
+        0
+      ],
+      "enabled": true,
+      "transition": {
+        "unload": 11.2,
+        "restart": 12.0,
+        "reverse_end": 16.0,
+        "reverse_target": -0.035
+      }
+    },
+    "sealed_mid": {
+      "onset": 6.65,
+      "release": 17.35,
+      "end": 25.35,
+      "ramp": 4.0,
+      "delta_xyz": [
+        0.14,
+        0,
+        0
+      ],
+      "enabled": true,
+      "transition": {
+        "unload": 11.65,
+        "restart": 12.15,
+        "reverse_end": 15.850000000000001,
+        "reverse_target": -0.03
+      }
+    },
+    "sealed_late": {
+      "onset": 7.1,
+      "release": 18.799999999999997,
+      "end": 26.799999999999997,
+      "ramp": 4.0,
+      "delta_xyz": [
+        0.165,
+        0,
+        0
+      ],
+      "enabled": true,
+      "transition": {
+        "unload": 11.799999999999999,
+        "restart": 12.799999999999999,
+        "reverse_end": 17.299999999999997,
+        "reverse_target": -0.025
+      }
+    }
+  },
+  "schedule": {
+    "qualification": [
+      [
+        "dev_short",
+        "native_hold"
+      ],
+      [
+        "dev_short",
+        "force_rule"
+      ],
+      [
+        "dev_short",
+        "teacher"
+      ],
+      [
+        "dev_short",
+        "m6_alignment"
+      ],
+      [
+        "dev_short",
+        "m6_distill"
+      ],
+      [
+        "dev_long",
+        "native_hold"
+      ],
+      [
+        "dev_long",
+        "force_rule"
+      ],
+      [
+        "dev_long",
+        "teacher"
+      ],
+      [
+        "dev_long",
+        "m6_alignment"
+      ],
+      [
+        "dev_long",
+        "m6_distill"
+      ]
+    ],
+    "projected": [
+      [
+        "dev_short",
+        "projected"
+      ]
+    ],
+    "collect1": [
+      [
+        "dev_short",
+        "alignment"
+      ],
+      [
+        "dev_short",
+        "distill"
+      ],
+      [
+        "dev_long",
+        "alignment"
+      ],
+      [
+        "dev_long",
+        "distill"
+      ],
+      [
+        "early",
+        "alignment"
+      ],
+      [
+        "early",
+        "distill"
+      ],
+      [
+        "neg_early",
+        "alignment"
+      ],
+      [
+        "neg_early",
+        "distill"
+      ],
+      [
+        "test_pos_small",
+        "alignment"
+      ],
+      [
+        "test_pos_small",
+        "distill"
+      ],
+      [
+        "free",
+        "alignment"
+      ],
+      [
+        "free",
+        "distill"
+      ]
+    ],
+    "collect2": [
+      [
+        "dev_short",
+        "alignment"
+      ],
+      [
+        "dev_short",
+        "distill"
+      ],
+      [
+        "dev_long",
+        "alignment"
+      ],
+      [
+        "dev_long",
+        "distill"
+      ],
+      [
+        "early",
+        "alignment"
+      ],
+      [
+        "early",
+        "distill"
+      ],
+      [
+        "neg_early",
+        "alignment"
+      ],
+      [
+        "neg_early",
+        "distill"
+      ],
+      [
+        "test_pos_small",
+        "alignment"
+      ],
+      [
+        "test_pos_small",
+        "distill"
+      ],
+      [
+        "free",
+        "alignment"
+      ],
+      [
+        "free",
+        "distill"
+      ]
+    ],
+    "final": [
+      [
+        "sealed_mid",
+        "native_hold"
+      ],
+      [
+        "sealed_mid",
+        "force_rule"
+      ],
+      [
+        "sealed_mid",
+        "teacher"
+      ],
+      [
+        "sealed_mid",
+        "m6_alignment"
+      ],
+      [
+        "sealed_mid",
+        "m6_distill"
+      ],
+      [
+        "sealed_mid",
+        "alignment"
+      ],
+      [
+        "sealed_mid",
+        "distill"
+      ],
+      [
+        "sealed_late",
+        "native_hold"
+      ],
+      [
+        "sealed_late",
+        "force_rule"
+      ],
+      [
+        "sealed_late",
+        "teacher"
+      ],
+      [
+        "sealed_late",
+        "m6_alignment"
+      ],
+      [
+        "sealed_late",
+        "m6_distill"
+      ],
+      [
+        "sealed_late",
+        "alignment"
+      ],
+      [
+        "sealed_late",
+        "distill"
+      ],
+      [
+        "early",
+        "alignment"
+      ],
+      [
+        "early",
+        "distill"
+      ],
+      [
+        "neg_early",
+        "alignment"
+      ],
+      [
+        "neg_early",
+        "distill"
+      ],
+      [
+        "test_pos_small",
+        "alignment"
+      ],
+      [
+        "test_pos_small",
+        "distill"
+      ],
+      [
+        "free",
+        "alignment"
+      ],
+      [
+        "free",
+        "distill"
+      ],
+      [
+        "pulse",
+        "alignment"
+      ],
+      [
+        "pulse",
+        "distill"
+      ]
+    ]
+  },
+  "protocol": "Fixed physical partner: forward smoothstep, hold, true disconnect with anchor held, reconnect and smoothstep from forward anchor to reverse target, hold, final release8s. No re-anchoring to each controller, no reset between phases. Final sealed combinations never training/tuning.",
+  "evaluation": "Report forward/reverse/hold and true gap separately; full XYZ force; contact error excludes inactive; first recontact may initially positive force. Real negative-force proportion and response timing are required. Preserved M6 single-task references.",
+  "fiber": "LPP physical qPD alignment/on-policy expert query reused. Projected-z auxiliary is not B(s) semantic loss. SF-guided reward B(s)^T zN belongs to expert adapter acquisition; not equated to physical quality, not introduced as requirement."
+}
