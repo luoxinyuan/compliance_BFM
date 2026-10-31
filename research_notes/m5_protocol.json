@@ -1,0 +1,294 @@
+{
+  "stage": "M5 causal contact LPP",
+  "base_commit": "f538511b9b9aa8ca7b6751aef5f2f5959b730726",
+  "resources": {
+    "compute_cumulative_wall_seconds": 5400,
+    "cpus": 8,
+    "rss_gib": 32,
+    "owned_gpu_mib": 8192,
+    "expected_output_gib": 6
+  },
+  "training": {
+    "steps": [
+      3000,
+      2000,
+      2000
+    ],
+    "batch": 64,
+    "lr": 0.0003,
+    "seed": 0,
+    "hidden": [
+      128,
+      128
+    ],
+    "projection_steps": 160,
+    "rounds": 2,
+    "final_checkpoint": "round2 regardless of final-test outcome",
+    "methods": [
+      "alignment",
+      "distill"
+    ],
+    "loss": "alignment: arm qPD MSE + 0.1 nonarm MSE + 0.01 projected-z MSE; distill: projected-z MSE; common 500-step initial projected-z warmstart counts within3000",
+    "input": "465 native + 320x3 actual force history; no teacher state/clock/anchor/config/target",
+    "output": "one learned forward progress plus 256D original native-centered tangent residual; norm16; original contact residual gate; 50Hz",
+    "semantic": "projected native-command prior, not exact FIBER B(s) regularization; BFM-Zero unchanged, not AH-BFM"
+  },
+  "conditions": {
+    "early": {
+      "onset": 5,
+      "release": 12.0,
+      "end": 20.0,
+      "ramp": 4.0,
+      "delta_xyz": [
+        0.15,
+        0,
+        0
+      ],
+      "enabled": true
+    },
+    "late": {
+      "onset": 6.2,
+      "release": 13.2,
+      "end": 21.2,
+      "ramp": 4.0,
+      "delta_xyz": [
+        0.15,
+        0,
+        0
+      ],
+      "enabled": true
+    },
+    "free": {
+      "onset": 5,
+      "release": 12.0,
+      "end": 20.0,
+      "ramp": 4.0,
+      "delta_xyz": [
+        0.15,
+        0,
+        0
+      ],
+      "enabled": false
+    },
+    "pulse": {
+      "onset": 6.2,
+      "release": 7.0,
+      "end": 15.0,
+      "ramp": 4.0,
+      "delta_xyz": [
+        0.15,
+        0,
+        0
+      ],
+      "enabled": true
+    },
+    "test_timing_size": {
+      "onset": 7.1,
+      "release": 13.6,
+      "end": 21.6,
+      "ramp": 3.5,
+      "delta_xyz": [
+        0.135,
+        0,
+        0
+      ],
+      "enabled": true
+    },
+    "test_longer_larger": {
+      "onset": 5.7,
+      "release": 13.2,
+      "end": 21.2,
+      "ramp": 4.5,
+      "delta_xyz": [
+        0.165,
+        0,
+        0
+      ],
+      "enabled": true
+    }
+  },
+  "schedule": {
+    "qualification": [
+      [
+        "early",
+        "native_hold"
+      ],
+      [
+        "early",
+        "rule"
+      ],
+      [
+        "early",
+        "teacher"
+      ],
+      [
+        "late",
+        "teacher"
+      ],
+      [
+        "free",
+        "teacher"
+      ],
+      [
+        "pulse",
+        "teacher"
+      ]
+    ],
+    "collect1": [
+      [
+        "early",
+        "alignment"
+      ],
+      [
+        "early",
+        "distill"
+      ],
+      [
+        "late",
+        "alignment"
+      ],
+      [
+        "late",
+        "distill"
+      ],
+      [
+        "free",
+        "alignment"
+      ],
+      [
+        "free",
+        "distill"
+      ]
+    ],
+    "collect2": [
+      [
+        "early",
+        "alignment"
+      ],
+      [
+        "early",
+        "distill"
+      ],
+      [
+        "late",
+        "alignment"
+      ],
+      [
+        "late",
+        "distill"
+      ],
+      [
+        "free",
+        "alignment"
+      ],
+      [
+        "free",
+        "distill"
+      ]
+    ],
+    "final": [
+      [
+        "early",
+        "native_hold"
+      ],
+      [
+        "early",
+        "rule"
+      ],
+      [
+        "early",
+        "teacher"
+      ],
+      [
+        "early",
+        "alignment"
+      ],
+      [
+        "early",
+        "distill"
+      ],
+      [
+        "test_timing_size",
+        "native_hold"
+      ],
+      [
+        "test_timing_size",
+        "rule"
+      ],
+      [
+        "test_timing_size",
+        "teacher"
+      ],
+      [
+        "test_timing_size",
+        "alignment"
+      ],
+      [
+        "test_timing_size",
+        "distill"
+      ],
+      [
+        "test_longer_larger",
+        "native_hold"
+      ],
+      [
+        "test_longer_larger",
+        "rule"
+      ],
+      [
+        "test_longer_larger",
+        "teacher"
+      ],
+      [
+        "test_longer_larger",
+        "alignment"
+      ],
+      [
+        "test_longer_larger",
+        "distill"
+      ],
+      [
+        "free",
+        "native_hold"
+      ],
+      [
+        "free",
+        "rule"
+      ],
+      [
+        "free",
+        "teacher"
+      ],
+      [
+        "free",
+        "alignment"
+      ],
+      [
+        "free",
+        "distill"
+      ],
+      [
+        "pulse",
+        "native_hold"
+      ],
+      [
+        "pulse",
+        "rule"
+      ],
+      [
+        "pulse",
+        "teacher"
+      ],
+      [
+        "pulse",
+        "alignment"
+      ],
+      [
+        "pulse",
+        "distill"
+      ]
+    ]
+  },
+  "safety": "Inherited MuJoCo stops; no relaxed bounds; exact-owned process cleanup; no CPU BFM fallback",
+  "scope": "Single standing forward-guidance skill; not unseen-body/multi-skill/general compliance claim"
+}
