@@ -79,7 +79,7 @@ def dataset(env,model,contract,episodes,out):
  for k in ['gate','target_q','target_action','nominal_q','weights']:data[k]=torch.tensor([r[k] for r in records],device=dev,dtype=torch.float32)
  data['group']=torch.tensor([r['group'] for r in records],device=dev);data['metadata']=[{'group':r['group'],'time':r['time']} for r in records]
  torch.save({k:({kk:vv.cpu() for kk,vv in v.items()} if k=='obs' else v.cpu() if torch.is_tensor(v) else v) for k,v in data.items()},out/'aggregation-dataset.pt')
- save(out,'dataset-manifest.json',dict(sources=manifests,query_audits=query_audits,decisions=len(records),control_samples=5*len(records),student_inputs='Frozen normalized465D proprio/action-history plus3 measured forces /20N; no time,anchor,direction,Jacobian,teacher state or latent label'))
+ save(out,'dataset-manifest.json',dict(sources=manifests,query_audits=query_audits,decisions=len(records),control_samples=5*len(records),student_inputs='Frozen normalized465D proprio/action-history plus last3 measured force XYZ (9D)/20N; no time,anchor,direction,Jacobian,teacher state or latent label'))
  return data
 
 class Alignment:
