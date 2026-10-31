@@ -1,6 +1,10 @@
-# M5 active milestone — first causal contact LPP
+# M5 completed — first causal contact LPP
 
-Issue26. User authorizes autonomous meaningful task-specific LPP, not a generic expert gate. M0–M4 preserved; M4 teacher/real recovery are useful starting evidence. No shared code, BFM/PD/weights or hardware changes. No push/PPO/Bridge.
+Issue26 milestone complete; read m5_results.md and M5_EXPERIMENT_INDEX.md. No more training or simulation is running. Final source/weight/owned-process audit is recorded in analysis/final-audit.json.
+
+Outcome: two7000-update policies, two real aggregation rounds, 6825samples,45completephysics/893.2seconds. Newconditions Alignment error2.650/3.423cm andforce2.146/2.769N vsStanding7.942/9.953cm and4.408/4.415N. ResidualOFF worsensT1 to3.625cm/2.941N; no-contact exactlynative. Full8s return stable butshortreleaseprogressrebound remains. Aggregation did not improve developed physical error; allversions/failures retained. Singleforwardskill only, no sharedmulti-skill planner, no claimu=.5/generalstatefix.
+
+Historical authorization/protocol: User authorizes autonomous meaningful task-specific LPP, not a generic expert gate. M0–M4 preserved; M4 teacher/real recovery are useful starting evidence. No shared code, BFM/PD/weights or hardware changes. No push/PPO/Bridge.
 
 Method: [FIBER III-C, Appendix C-D](https://arxiv.org/html/2610.24675v1) motivates physical q_PD alignment through frozen actor and on-policy expert requery. This is an inspired small implementation, not AH-BFM/Flow Planner reproduction. We retain native goal endpoint and bounded .04rad/7-joint .08norm expert. Replace time-based high-level goal progress with the EXISTING causal force gate. It is a skill-specific operational intent convention, not a universal human intent estimator. No clock, teacher state, anchor, future or task ID enters Student.
 

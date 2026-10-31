@@ -18,6 +18,8 @@ def main():
    x['source']=str(p);x['recovery']=window(e,rel,end);x['late_recovery']=window(e,rel+6.4,end);x['precontact']=window(e,3,on);x['recovery_speed_2_4_6_8']=[float(np.linalg.norm(rows[int(np.argmin(abs(times-rel-t)))]['qvel'][:3])) for t in [2,4,6,8]]
    x['qPD_peak']=dict(time=cs[i+1]['time'],joint_index=int(j),target_step_deg=float(np.degrees(dq[i,j])),actual_next_20ms_deg=float(np.degrees(cs[min(i+2,len(cs)-1)]['pre_qpos'][7+j]-cs[i+1]['pre_qpos'][7+j])))
    z=np.array([c['executed_z'][0] for c in cs]);x['z_norm_error']=float(abs(np.linalg.norm(z,axis=1)-16).max());x['expert_query_valid_fraction']=float(np.mean([c['oracle_query_valid'] for c in cs])) if 'oracle_query_valid' in cs[0] else None
+   rc=[c for c in cs if c['time']>=rel-1e-8];aa=np.array([c['alpha'] for c in rc]);late=[c['alpha'] for c in rc if c['time']>=rel+2-1e-8]
+   x['release_progress']=dict(max_rebound_after_running_min=float((aa-np.minimum.accumulate(aa)).max()),last_alpha_over_0_01_delay=next((c['time']-rel for c in reversed(rc) if c['alpha']>.01),None),max_alpha_after_2s=max(late,default=0.))
    x['events']=[dict(time=c['time'],**c['rule_record']) for c in cs if c.get('rule_record') and c['rule_record'].get('event')];res[a['stage']+'/'+e['label']]=x
   for label,e in raw.items():
    key=a['stage']+'/'+label;x=res[key];name=e['condition']['name'];base=raw.get(name+'__native_hold');teacher=raw.get(name+'__teacher')

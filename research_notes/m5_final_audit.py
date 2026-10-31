@@ -27,7 +27,12 @@ def main():
   f=out/'new-data-projection.json'
   if f.exists():
    for s in json.loads(f.read_text())['source']:assert not s['condition']['name'].startswith('test_')
- summary=dict(records=records,total_wall=sum(x.get('wall_seconds',0) for x in a),peak_rss=max(x.get('peak_rss_bytes',0) for x in a),peak_owned_gpu_mib=max(x.get('peak_gpu_mib',0) for x in a),owned_alive=alive,core_pins=pins,bfm_weight_sha256=constants['WEIGHT_SHA'],checkpoints=ck,shared_head=git(P/'repo','rev-parse','HEAD'),shared_status=git(P/'repo','status','--porcelain'),private_head=git(ROOT,'rev-parse','HEAD'),private_status=git(ROOT,'status','--porcelain'),changed_files=git(ROOT,'diff','--name-only','f538511b9b9aa8ca7b6751aef5f2f5959b730726','HEAD').splitlines())
+ old_ck={
+  'm1-state-response-20261031A/aggregate-attempt-01/outputs/distill-final.pt':'c9036c46a0559c57fc2897419f06c66ef6113cb0fe4d57762df9a59c8b9e1ac7',
+  'm1-state-response-20261031A/aggregate-attempt-01/outputs/alignment-final.pt':'e8121fbeb048de67a8147d03b8adbb7d8f302e3d6506bd1a1e0b54d41656683f',
+  'm3-continuous-body-20261031A/train-attempt-01/outputs/projected-z-final.pt':'81300c1a1d4abcf25eb58a36a0a92924f92526771ac2c2bbbf9c8eb8f578cf81'}
+ preserved={k:sha(RUN.parent/k)==v for k,v in old_ck.items()};assert all(preserved.values())
+ summary=dict(preserved_checkpoints=preserved,records=records,total_wall=sum(x.get('wall_seconds',0) for x in a),peak_rss=max(x.get('peak_rss_bytes',0) for x in a),peak_owned_gpu_mib=max(x.get('peak_gpu_mib',0) for x in a),owned_alive=alive,core_pins=pins,bfm_weight_sha256=constants['WEIGHT_SHA'],checkpoints=ck,shared_head=git(P/'repo','rev-parse','HEAD'),shared_status=git(P/'repo','status','--porcelain'),private_head=git(ROOT,'rev-parse','HEAD'),private_status=git(ROOT,'status','--porcelain'),changed_files=git(ROOT,'diff','--name-only','f538511b9b9aa8ca7b6751aef5f2f5959b730726','HEAD').splitlines())
  assert not summary['shared_status'];assert all(f.startswith('research_notes/m5_') or f.startswith('research_notes/M5_') or f=='research_notes/test_m5.py' for f in summary['changed_files'])
  (RUN/'analysis/final-audit.json').write_text(json.dumps(summary,indent=2));print(json.dumps(summary,indent=2))
 if __name__=='__main__':main()
