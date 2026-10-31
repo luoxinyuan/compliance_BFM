@@ -26,6 +26,9 @@ def run_study(env,model,contract,out):
  if stage=='causal':
   from m3_causal import run
   return run(env,model,contract,out)
+ if stage=='regression_expression':
+  from m3_saved_diagnostic import run
+  return dict(status='completed',student_optimizer_updates=0,diagnostic=run(env,model,contract,out,configuration='u500',times=[13.2,14.4,16.,19.4]))
  if stage in ['representation','train']:
   from m3_learning import representation,train
   return (representation if stage=='representation' else train)(env,model,contract,out)

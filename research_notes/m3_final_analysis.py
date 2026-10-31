@@ -24,6 +24,11 @@ def main():
   q.update(source=str(p),configuration_u=u,ready_sha=e['ready_physical_state_sha256'],deployment_audit=audit_episode(e,contract,initial),requested_end_s=end,actual_end_s=e['actual_end_s'])
   ready.setdefault(e['configuration'],set()).add(q['ready_sha'])
   q['windows']={k:window(e,lo,hi) for k,(lo,hi) in dict(ready=(rd-1,rd),precontact=(rd,on),handoff=(rd,rd+.75),post_handoff=(rd+.75,on),full_recovery=(rel,end),late_recovery=(rel+6.4,end),no_contact_deployed=(rd,end)).items()}
+  # Post-step position at release belongs to the last contact integration;
+  # wrench attribution must use its own application timestamp instead.
+  for name in ['full_recovery','late_recovery']:
+   w=q['windows'][name];fr=[r for r in rows if w['start']-1e-8<=r['force_time']<w['end']-1e-8]
+   w['force_peak_n']=max(float(np.linalg.norm(r['force'])) for r in fr);w['force_selection']='force_time; body windows use post-step time'
   target=np.asarray([c['q_PD'] for c in cs]);actual=np.asarray([c['pre_qpos'][7:] for c in cs]);dq=np.abs(np.diff(target,axis=0));dq[ct[1:]<rd-1e-8]=-1;i,j=np.unravel_index(dq.argmax(),dq.shape)
   q['command_peak']=dict(time=cs[i+1]['time'],joint=contract['dof_names'][j],target_step_deg=float(np.degrees(dq[i,j])),actual_20ms_motion_deg=float(np.degrees(actual[i+1,j]-actual[i,j])),latent_step_deg=cs[i+1]['z_step_deg'])
   z=np.asarray([c['executed_z'][0] for c in cs]);q['latent_norm_max_error']=float(abs(np.linalg.norm(z,axis=-1)-16).max());assert q['latent_norm_max_error']<1e-4

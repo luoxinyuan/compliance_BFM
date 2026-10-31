@@ -12,7 +12,7 @@ def sha(p):
 def git(path,*args):return subprocess.check_output(['git','-C',str(path),*args],text=True).strip()
 def main():
  protocol=read(ROOT/'research_notes/m3_protocol.json');ledger=read(R/'compute-ledger.json');final=read(R/'analysis/final-summary.json');prior=read(R/'analysis/qualification-analysis.json');checks={};updates=0
- assert len(ledger['attempts'])==8
+ assert len(ledger['attempts'])==9
  for a in ledger['attempts']:
   assert a['status']=='finished' and a['exit_code']==0 and a['result_status']=='completed' and not a['remaining_processes'] and a['resource_boundary'] is None
   proc=Path('/proc')/str(a['pid'])/'stat';assert not proc.exists() or proc.read_text().split()[21]!=a['initial_processes'][0]['start_ticks']

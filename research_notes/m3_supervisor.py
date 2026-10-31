@@ -20,7 +20,7 @@ def main():
     assert RUN != P/'bridge-v2-owned/runs/issue21-reward-stage-20261030A'
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gpu-index',type=int)
-    parser.add_argument('--stage',choices=['causal','ablation','preparation','qualification','representation','collect','train','final','contact_ablation'],required=True)
+    parser.add_argument('--stage',choices=['causal','ablation','preparation','qualification','representation','collect','train','final','contact_ablation','regression_expression'],required=True)
     parser.add_argument('--execute-after-owner-gpu-notice',action='store_true')
     args=parser.parse_args()
     protocol=json.loads((ROOT/'research_notes/m3_protocol.json').read_text())
