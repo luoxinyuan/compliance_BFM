@@ -1,0 +1,21 @@
+{
+  "milestone": "M2 Unseen Natural Body Configuration Generalization",
+  "base_commit": "8b75abbb0646db254d538f01280ab7c48a2b347b",
+  "issue": 23,
+  "no_training": true,
+  "model_selection": "Freeze both M1 final1500 checkpoints; no update, checkpoint selection, threshold tuning or final-data reuse for fitting",
+  "checkpoints": {"alignment": "e8121fbeb048de67a8147d03b8adbb7d8f302e3d6506bd1a1e0b54d41656683f", "distill": "c9036c46a0559c57fc2897419f06c66ef6113cb0fe4d57762df9a59c8b9e1ac7"},
+  "resources": {"compute_cumulative_wall_seconds": 3600, "cpus": 8, "rss_gib": 32, "owned_gpu_mib": 8192, "expected_output_gib_max": 2},
+  "configuration": {"u": 0.5, "source": "M1 fixed midpoint of original standing and same-checkpoint raised reward z", "unseen_meaning": "Not present in either Student training or aggregation. Previously physically qualified by M1; not a never-observed blind body state."},
+  "preparation": {"prefix_s": 3.0, "entry_s": 0.75, "control_ready_s": 10.4, "handoff_s": 0.75, "real_force_history_s": 6.4, "contact_after_handoff_s": 1.25, "method": "Original complete standing initial0, exact3s physical prefix then natural slerp entry and hold. No arbitrary qpos/history reset. All histories updated before ready. Student runs for2s before contact; negative controls expose drift."},
+  "contact": {"onset": 12.4, "ramp": 4.0, "release": 17.4, "end": 23.4, "delta_xyz": [0.15,0,0], "K":80,"D":8,"cap_n":5,"seed":0,"anchor":"Once at actual onset wrist for each independent closed loop; relative task shared, absolute anchor and actual force may differ after real precontact divergence"},
+  "preparation_jobs": ["native_hold", "native_exit"],
+  "comparison_controllers": ["native_hold", "teacher", "rule", "distill", "alignment"],
+  "negative_controls": "Same five controllers, actual Tether disabled, identical physical partner timing placeholders. No time-driven return for native_hold, rule or Student. Teacher remains native pose without contact.",
+  "native_hold": "Constant prepared pose for entire contact and recovery; evaluates passive/native feedback and return to its own prepared pose. It is not forced to standing on a clock. All other controllers may naturally return to standing; report equilibrium difference.",
+  "continuous_rule": "At fixed ready, project actual7Dright-arm proprio onto piecewise-linear joint-pose curve through existing M1 natural reference states u=0,0.5,1. Continuous u, not nearest-label selector; freeze inferred initial context. Use unchanged original causal force gate/progress/return. Midpoint template is existing physics evidence, disclosed advantage vs Students never trained there. No task tag, anchor or onset enters rule.",
+  "teacher": "Original bounded10HzJacobian .04rad/joint/.08norm/damping.02 and50Hz .2sReleaseFade; known fixedu=.5 nativegoal path and privileged task progression/anchor. Same M1 goal endpoints; no new goal/IK optimization. Query labels at Student states for diagnosis only.",
+  "evaluation": "FullXYZ active-contact errors/forces, saturation, real arm/shoulder/waist/root/feet, actual PD targets/angles/torques, negative differences and complete6s recovery. Report +2,+4,+6 speed and recovery curves, not a single2s veto. Compare Students mainly with native_hold and strong continuous rule; teacher quality evaluated separately. No arbitrary winner threshold, no changing conditions after results.",
+  "safety": "Original root<.65m,tilt>20deg,nonfootground,actualjoint excess>.02rad or native failure stops the stage. Temporary single support is not automatically failure or stepping qualification. No unsafe resume by loosening threshold.",
+  "bounded_diagnosis": "If failure, use saved observations and actual visited-state expert labels for finite frozen-network action/latent/observation audits. At most12 fixed five-frameblocks and160 temporary-z optimization steps perblock, no deployment tuning or Student learning. At most2 predefined physics diagnostic branches if evidence specifically requires isolating native interface; preserve all. No reward/latent/random-state sweep."
+}
