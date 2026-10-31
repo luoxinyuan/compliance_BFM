@@ -44,6 +44,7 @@ def build(env,model,contract,out,rnd):
  write(out,'new-data-projection.json',dict(groups=report,source=manifest,steps=160,samples=len(rows),selection='Every second actual 50Hz frame; complete actual force history and actual oracle query; no final test',prior='original native-centered tangent, global executable z labels'))
  if True:
   oldpath=done('train'+str(rnd-1))/'dataset.pt' if rnd else RUN.parent/'m5-contact-lpp-20261031A/train2-attempt-01/outputs/dataset.pt'
+  write(out,'prior-dataset.json',dict(path=str(oldpath),sha256=sha(oldpath)))
   old=torch.load(oldpath,map_location=dev,weights_only=True);d['group']+=int(old['group'].max())+1
   for k in ['h','base','q','base_q','gate','group','z']:d[k]=torch.cat([old[k],d[k]])
   d['obs']={k:torch.cat([old['obs'][k],d['obs'][k]]) for k in env.keys};d['manifest']=old['manifest']+manifest
@@ -51,7 +52,7 @@ def build(env,model,contract,out,rnd):
  return d
 
 def train(env,model,contract,out,rnd):
- plan=read(Path(__file__).with_name('m6_protocol.json'))['training'];dev,qof=support(env,model,contract);ends=endpoints(env);d=build(env,model,contract,out,rnd);norm={k:v.detach() for k,v in model._normalize(d['obs']).items()};groups=[(d['group']==g).nonzero().flatten() for g in d['group'].unique()];reports={}
+ plan=read(Path(__file__).with_name('m6_protocol.json'))['training'];dev,qof=support(env,model,contract);ends=endpoints(env);assert sha(RUN.parent/'m5-contact-lpp-20261031A/train2-attempt-01/outputs/distill-final.pt')=='6475261f6109a348bfd50bab1c29f09d94f7f9f0602e7bdb44f507bb4b8c4891';d=build(env,model,contract,out,rnd);norm={k:v.detach() for k,v in model._normalize(d['obs']).items()};groups=[(d['group']==g).nonzero().flatten() for g in d['group'].unique()];reports={}
  family=[]
  for m in d['manifest']:family.append('negative' if m['condition']['delta_xyz'][0]<0 else 'positive' if m['condition']['enabled'] else 'free')
  assert len(family)==len(groups)
@@ -76,6 +77,6 @@ def train(env,model,contract,out,rnd):
     assert torch.isfinite(loss);loss.backward();grad=float(torch.nn.utils.clip_grad_norm_(net.parameters(),1));opt.step()
    if step%250==0:
     row=dict(step=step,loss=float(loss),q_loss=float(la),z_loss=float(lz),gradient_norm=grad);logs.append(row);print('M6_TRAIN',rnd,method,row,flush=True)
-  after=metrics();ck=out/(method+'-final.pt');torch.save(dict(state_dict={k:v.detach().cpu() for k,v in net.state_dict().items()},round=rnd,total_updates=sum(plan['steps'][:rnd+1]),method=method,input='1425D causal native/force history; no privilege',fixed_final=True),ck)
+  after=metrics();ck=out/(method+'-final.pt');torch.save(dict(state_dict={k:v.detach().cpu() for k,v in net.state_dict().items()},round=rnd,m6_updates=sum(plan['steps'][:rnd+1]),inherited_m5_updates=7000,total_updates=7000+sum(plan['steps'][:rnd+1]),method=method,input='1425D causal native/force history; no privilege',fixed_final=True),ck)
   reports[method]=dict(before=before,after=after,updates=plan['steps'][rnd],total_updates=sum(plan['steps'][:rnd+1]),checkpoint=str(ck),sha256=sha(ck),logs=logs);write(out,'training.json',reports)
  return dict(status='completed',student_optimizer_updates=3*plan['steps'][rnd],reports=reports,aggregation_round=rnd,samples=len(d['h']))
