@@ -1,4 +1,4 @@
-"""Bounded upward-contact qualification of existing frozen native endpoints.
+"""M1 natural-state forward-contact qualification with frozen BFM and original PD.
 """
 import ast,copy,hashlib,json,math,os,sys,time
 from pathlib import Path
