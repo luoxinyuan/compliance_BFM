@@ -20,7 +20,7 @@ class Projector(torch.nn.Module):
   super().__init__();self.register_buffer('center',h.mean(0));self.register_buffer('scale',h.std(0,unbiased=False).clamp_min(.1));self.net=torch.nn.Sequential(torch.nn.Linear(h.shape[1],128),torch.nn.Tanh(),torch.nn.Linear(128,128),torch.nn.Tanh(),torch.nn.Linear(128,257));torch.nn.init.zeros_(self.net[-1].weight);torch.nn.init.zeros_(self.net[-1].bias)
  def forward(self,h):return self.net((h-self.center)/self.scale)
 def load_net(p,dev):
- x=torch.load(p,map_location=dev,weights_only=True);net=Projector(torch.zeros(2,len(x['state_dict']['center']),device=dev));net.load_state_dict(x['state_dict']);return net.eval().requires_grad_(False)
+ x=torch.load(p,map_location=dev,weights_only=True);net=Projector(torch.zeros(2,len(x['state_dict']['center']),device=dev)).to(dev);net.load_state_dict(x['state_dict']);return net.eval().requires_grad_(False)
 def policy_latent(model,ends,raw,gate):return constrained(model,slerp(ends[0],ends[2],raw[:,0].clamp(0,1)),raw[:,1:],gate)[0]
 def build(env,model,contract,out,rnd):
  dev,qof=support(env,model,contract);src=done('qualification' if rnd==0 else 'collect'+str(rnd));rows=[];manifest=[]
