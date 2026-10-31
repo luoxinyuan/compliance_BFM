@@ -31,10 +31,10 @@ def build_dataset(env,model,contract,out,aggregate=False):
   obs={k:torch.tensor([cs[i]['bfm_obs'][k][0] for i in ix],device=dev) for k in env.keys};h=student_input(model,obs,[hist[i] for i in ix],env.keys).detach();assert h.shape[1]==1425
   for j,i in enumerate(ix):
    c=cs[i];oracle=kind=='visited';base=c['oracle_z'] if oracle else c['executed_z'];action=c['oracle_action'] if oracle else c['action'];q=c['oracle_q_PD'] if oracle else c['q_PD']
-   rows.append(dict(h=h[j],obs={k:obs[k][j] for k in env.keys},base=base[0],action=action,q=q,gate=gs[i],group=group,configuration=ep['configuration'],kind=kind,time=c['time']))
+   rows.append(dict(h=h[j],obs={k:obs[k][j] for k in env.keys},base=base[0],action=action,q=q,base_q=c['oracle_base_q_PD'] if oracle else c.get('base_q_PD',c['q_PD']),gate=gs[i],group=group,configuration=ep['configuration'],kind=kind,time=c['time']))
   manifest.append(dict(file=str(path),sha256=hashlib.sha256(path.read_bytes()).hexdigest(),kind=kind,group=group,samples=len(ix),configuration=ep['configuration']))
  data=dict(h=torch.stack([r['h'] for r in rows]),obs={k:torch.stack([r['obs'][k] for r in rows]) for k in env.keys},metadata=[{k:r[k] for k in ['configuration','kind','time','group']} for r in rows])
- for k in ['base','action','q','gate']:data[k]=torch.tensor([r[k] for r in rows],device=dev,dtype=torch.float32)
+ for k in ['base','action','q','base_q','gate']:data[k]=torch.tensor([r[k] for r in rows],device=dev,dtype=torch.float32)
  data['group']=torch.tensor([r['group'] for r in rows],device=dev);save(out,'dataset-manifest.json',dict(sources=manifest,samples=len(rows),student_inputs='OriginalA2:normalized465Dproprio/action history +320realforceXYZ/5N. No time,anchor,configurationtag,targetpose,oracleprogress. Negative labels stop before artificialclockreturn; no impossible no-contact timedexit label.'))
  torch.save({k:({kk:vv.cpu() for kk,vv in v.items()} if k=='obs' else v.cpu() if torch.is_tensor(v) else v) for k,v in data.items()},out/'dataset.pt');return data
 
@@ -56,8 +56,9 @@ def train(env,model,contract,out,aggregate=False):
  targets=torch.cat(target_z);err=torch.cat(errors);torch.save(targets.cpu(),out/'projected-global-z.pt')
  represent=[]
  for group in d['group'].unique().tolist():
-  mask=d['group']==group;represent.append(dict(group=group,arm_rms_rad=float(err[mask,22:].square().mean().sqrt()),nonarm_rms_rad=float(err[mask,:22].square().mean().sqrt())))
+  mask=d['group']==group;arm=float(err[mask,22:].square().mean().sqrt());nonarm=float(err[mask,:22].square().mean().sqrt());ref=float((d['q'][mask,22:]-d['base_q'][mask,22:]).square().mean().sqrt());represent.append(dict(group=group,arm_rms_rad=arm,nonarm_rms_rad=nonarm,teacher_delta_arm_rms_rad=ref,passed=arm<=max(.5*ref,.001) and nonarm<=.005))
  save(out,'label-projection.json',dict(groups=represent,steps=160,init='zero local raw',oracle_base_not_student_input=True))
+ if not all(x['passed'] for x in represent):return dict(status='capability-stopped',student_optimizer_updates=0,reason='Visited-state local action expression failed fixedM0criterion',representation=represent)
  torch.manual_seed(0)
  if aggregate:nets={k:load_net(completed('fit')/(k+'-final.pt'),dev) for k in ['alignment','distill']}
  else:

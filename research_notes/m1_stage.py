@@ -48,13 +48,13 @@ def run_study(env,model,contract,out):
  if stage=='representation':
   from m1_representability import run
   return run(env,model,contract,out)
- assert stage in ['qualification','teachers','repair_teacher','interface','visits','final']
+ assert stage in ['qualification','teachers','repair_teacher','interface','visits','regression','final']
  nets={};ends=None
- if stage in ['visits','final']:
+ if stage in ['visits','regression','final']:
   from m1_learning import completed,load_net as load_shared
   from m1_interface import endpoints,policy_latent
   nets={k:load_shared(completed('fit' if stage=='visits' else 'aggregate')/(k+'-final.pt'),env.standing.device) for k in ['alignment','distill']};ends=endpoints(env)
- dev=env.standing.device;m=env.sim.model;orig=model.act;spec=protocol['contact'];onset=spec['onset'];release=spec['release'];end=spec['end'];delta=np.asarray(spec['delta_xyz'])
+ dev=env.standing.device;m=env.sim.model;orig=model.act;spec=protocol['learning']['heldout'] if stage=='final' else protocol['contact'];onset=spec['onset'];release=spec['release'];end=spec['end'];delta=np.asarray(spec['delta_xyz'])
  sp=read(Path(__file__).with_name('skill_compat_protocol.json'));s1path=R/sp['S1']['path'];a2path=R/sp['A2']['path'];assert sha(s1path)==sp['S1']['sha256'] and sha(a2path)==sp['A2']['sha256']
  s1=load_net(s1path,dev);a2,_=load_student(a2path,dev);digests=[tensor_digest(s1),tensor_digest(a2)]
  raisedpath=R/'issue21-reward-stage-20261030A/inference-attempt-01/outputs/raisearms-l-m-latent.json';raiseddata=read(raisedpath);assert sha(raisedpath)=='3a542d7e836ea557a90c14d5d953537a05f415c8a8401050a65e26c35b2d760c'
@@ -63,17 +63,27 @@ def run_study(env,model,contract,out):
  scale=torch.tensor(contract['q_PD_scale'],device=dev);offset=torch.tensor(contract['q_PD_offset'],device=dev);qtarget=lambda a:offset+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5
  zero=read(R/'issue20-ccl01-20261028T082201Z/attempt-04/outputs/anchor-reference.json')['physics'];initial0=read(R/'issue21-ccl02a-20261029T153900Z/attempt-01/outputs/dev-2-initial-state.json');common=read(R/'issue21-direction-20261030T020000Z/attempt-02/outputs/common-state.json')
  jobs=[(cfg,'pose_hold',False) for cfg in protocol['configurations']]+[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in protocol['qualification']['controllers'][cfg]]
+ if stage=='regression':jobs=[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in ['alignment','distill']]
+ if stage=='final':jobs=[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in (['standing','S1','A2','goal','teacher_goal','rule','alignment','distill']+(['pose_hold'] if cfg=='raised' else []))]+[(cfg,ctl,False) for cfg in protocol['configurations'] for ctl in ['no_contact_hold','rule','alignment','distill']]
  if stage=='visits':jobs=[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in ['alignment','distill']]
  if stage=='interface':jobs=[('midpoint','goal',False),('midpoint','goal',True)]
  if stage=='teachers':jobs=[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in ['teacher_pose','teacher_goal']]
  if stage=='repair_teacher':jobs=[(cfg,'accumulated_goal',True) for cfg in protocol['configurations']]
  ids=[mujoco.mj_name2id(m,mujoco.mjtObj.mjOBJ_JOINT,n) for n in contract['dof_names']];vadr=m.jnt_dofadr[ids];limits=m.jnt_range[ids];arm=np.arange(22,29);sc=np.asarray(contract['q_PD_scale'])[0];off=np.asarray(contract['q_PD_offset'])[0]
  oracle_fade=ReleaseFade();oracle_corr=np.zeros(7);fade=ReleaseFade();accum=AccumulatedCorrection([.2]*7);corr=np.zeros(7);teacher_decisions=[]
+ from contact_gate import ContactGate as NativeGate
+ native_gate_cfg=read(Path(__file__).with_name('contact_gate_protocol.json'))['gate'];native_gate=NativeGate(native_gate_cfg);rule_u=None
  mode='prefix';pose=env.standing;configuration='standing';controller='standing';enabled=False;target_z=forward
  cs=[];ds=[];gate=ContactGate();memory=ForceMemory(320);raw=torch.zeros_like(env.standing);tick=0;last_q=None;last_z=None;contact_initial=None;contact_state=None;anchor=None;pose_info=None;goal_info=None
+ def align_anchor(t):
+  nonlocal anchor,contact_initial,contact_state,pose_info,target_z,goal_info
+  if anchor is not None or t<onset-1e-8:return
+  point,_=env.tether.point_state();anchor=point.copy();env.tether.origin=anchor.copy();env.tether.anchor=anchor.copy();env.tether.delta=delta.copy()
+  contact_initial=copy.deepcopy(env.trace[-1]);contact_initial['wrist']=point.tolist();contact_state=snapshot(env)
+  pose_info=geometry(m,env.sim.data.qpos.copy(),delta[0]);target_z,goal_info=make_goal(env,model,configuration,anchor,delta,forward)
  def act(obs,z,mean=True):
-  nonlocal raw,tick,last_q,last_z,anchor,contact_initial,contact_state,pose_info,target_z,goal_info,corr,oracle_corr
-  t=float(env.tether.time);force=env.tether.force.copy();alpha=0.;lg=0.;nominal=orig(obs,env.standing,mean=True)
+  nonlocal raw,tick,last_q,last_z,anchor,contact_initial,contact_state,pose_info,target_z,goal_info,corr,oracle_corr,rule_u
+  t=float(env.tether.time);force=env.tether.force.copy();student_coords=None;alpha=0.;lg=0.;nominal=orig(obs,env.standing,mean=True)
   if mode=='prefix':return nominal
   # Natural state entry and all controller histories are physically warmed; no sensor reset at handoff.
   if tick%5==0:
@@ -82,17 +92,20 @@ def run_study(env,model,contract,out):
   deployable_h=student_input(model,obs,[memory.append(force.tolist())],env.keys);alpha=float(a2(deployable_h).item());lg=gate.value(t)
   if t<onset-1e-8:command=spherical(env.standing,pose,enter_progress(t))
   else:
-   if anchor is None:
-    point,_=env.tether.point_state();anchor=point.copy();env.tether.origin=anchor.copy();env.tether.anchor=anchor.copy();env.tether.delta=delta.copy()
-    contact_initial=copy.deepcopy(env.trace[-1]);contact_initial['wrist']=point.tolist();contact_state=snapshot(env)
-    pose_info=geometry(m,env.sim.data.qpos.copy(),delta[0])
-    # Static FK only: build exactly one fixed candidate from actual natural state, never retune it.
-    target_z,goal_info=make_goal(env,model,configuration,anchor,delta,forward)
-   if controller in nets:desired=policy_latent(model,ends,nets[controller](deployable_h),lg)
+   align_anchor(t)
+   if controller in nets:
+    student_raw=nets[controller](deployable_h);student_coords=student_raw[0,:3].sigmoid().tolist();desired=policy_latent(model,ends,student_raw,lg)
+   elif controller=='rule':
+    from m1_interface import base_latent
+    if rule_u is None:
+     from m1_learning import completed
+     q=np.asarray(env.sim.data.qpos[29:36]);source=completed('qualification');ref=[np.asarray(read(source/(c+'__pose_hold__free.json'))['initial']['qpos'])[29:36] for c in ['standing','raised']];rule_u=float(np.argmin([np.linalg.norm(q-x) for x in ref]))
+    gate_result=native_gate.step(force.tolist());rr=smooth(native_gate.return_count*native_gate_cfg['dt']/native_gate_cfg['return_transition_s']) if native_gate.state=='returning' else 1. if native_gate.entries>0 and native_gate.state=='standing' else 0.
+    desired=base_latent(ends,rule_u,gate_result['alpha'],rr)
    elif controller=='standing':desired=env.standing
    elif controller=='S1':desired=constrained(model,env.standing,raw,lg)[0]
    elif controller=='A2':desired=spherical(env.standing,forward,alpha)
-   elif controller in ['pose_hold','teacher_pose']:desired=pose
+   elif controller in ['pose_hold','teacher_pose','no_contact_hold']:desired=pose
    elif controller in ['goal','teacher_goal','accumulated_goal']:desired=spherical(pose,target_z,smooth((t-onset)/spec['ramp']))
    else:raise AssertionError(controller)
    command=command_handoff(pose,desired,t,onset)
@@ -132,14 +145,14 @@ def run_study(env,model,contract,out):
    da=torch.zeros_like(oracle_base);da[0,22:]=torch.tensor(oracle_corr/sc[arm],device=dev,dtype=oracle_base.dtype);oracle_action=oracle_base+da
    oracle=dict(oracle_z=oracle_command.tolist(),oracle_base_action=oracle_base[0].tolist(),oracle_base_q_PD=oracle_qbase.tolist(),oracle_action=oracle_action[0].tolist(),oracle_q_PD=qtarget(oracle_action)[0].tolist(),oracle_correction=oracle_corr.tolist())
   assert torch.isfinite(action).all() and abs(float(command.norm())-16)<1e-4
-  cs.append(dict(**oracle,time=t,tether_time=t,alpha=alpha,gate=None,local_gate=lg,executed_z=command.tolist(),measured_force_xyz=force.tolist(),bfm_obs={k:v.tolist() for k,v in obs.items()},
+  cs.append(dict(**oracle,native_coords=student_coords,alpha_source='original_A2_monitor_not_SharedProjector',time=t,tether_time=t,alpha=alpha,gate=None,local_gate=lg,executed_z=command.tolist(),measured_force_xyz=force.tolist(),bfm_obs={k:v.tolist() for k,v in obs.items()},
     base_action=base[0].tolist(),base_q_PD=base_q[0].tolist(),teacher_correction=corr.tolist(),pre_anchor=env.tether.anchor.tolist(),pre_wrist=cached_point(env).tolist(),active=bool(env.tether.active),action=action[0].tolist(),standing_action=nominal[0].tolist(),nominal=nominal[0].tolist(),q_PD=q[0].tolist(),standing_q_PD=q0[0].tolist(),nominal_q_PD=q0[0].tolist(),delta_q_PD=(q-q0)[0].tolist(),
     pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),action_saturation_fraction=float(((action*5).abs()>=contract['clip']).float().mean()),q_PD_step_max_rad=float(abs(q-last_q).max()),z_step_deg=float(torch.rad2deg(torch.acos(((command*last_z).sum()/256).clamp(-1,1))))))
   last_q=q.clone();last_z=command.clone();tick+=1;return action
  model.act=act;results=dict(status='running',episodes=[],student_optimizer_updates=0);pair_start={};pair_anchor={}
  try:
   for configuration,controller,enabled in jobs:
-   check_deadline();label=configuration+'__'+controller+('' if enabled else '__free');mode='prefix';env.qualification_active=False;env.interruption_window=None
+   check_deadline();label=('heldout_' if stage=='final' else 'regression_' if stage=='regression' else '')+configuration+'__'+controller+('' if enabled else '__free');mode='prefix';env.qualification_active=False;env.interruption_window=None
    for cfg in (env.cfg,env.tether.cfg):cfg.enabled=False;cfg.activation_time=onset;cfg.ramp_duration=spec['ramp'];cfg.release_time=release
    env.reset(seed=0,trajectory=(zero[0]['wrist'],[0,0,0]))
    for name in ['rew_buf','push_robot_counter','push_robot_plot_counter','command_counter','average_episode_length','torques','last_episode_length_buf']:
@@ -150,9 +163,10 @@ def run_study(env,model,contract,out):
    env.base.rew_buf.copy_(torch.as_tensor(common['base_tensors']['rew_buf'],device=dev,dtype=env.base.rew_buf.dtype));assert snapshot(env)==common
    pose=env.standing if configuration=='standing' else spherical(env.standing,raised,.5) if configuration=='midpoint' else raised;cs=[];ds=[];tick=0;gate=ContactGate();memory=ForceMemory(320);raw=torch.zeros_like(env.standing);last_q=qtarget(env.previous_action).clone();last_z=env.standing.clone()
    oracle_fade=ReleaseFade();oracle_corr=np.zeros(7);fade=ReleaseFade();accum=AccumulatedCorrection([.2]*7);corr=np.zeros(7);teacher_decisions=[]
+   native_gate=NativeGate(native_gate_cfg);rule_u=None
    preparation_initial=copy.deepcopy(env.trace[-1]);start=len(env.trace);anchor=None;contact_initial=None;contact_state=None;pose_info=None;goal_info=None;boundary=None
    for cfg in (env.cfg,env.tether.cfg):cfg.enabled=enabled;cfg.activation_time=onset;cfg.ramp_duration=spec['ramp'];cfg.release_time=release
-   env.tether.delta=np.zeros(3);mode='record';env.qualification_active=True;steps=round((end-3)*50)
+   env.tether.delta=np.zeros(3);env.m1_anchor_hook=align_anchor;mode='record';env.qualification_active=True;steps=round((end-3)*50)
    for i in range(steps):
     check_deadline()
     try:
@@ -163,16 +177,16 @@ def run_study(env,model,contract,out):
      if str(exc) not in ['Original BFM command outside reserved joint range','Joint envelope and correction velocity constraints conflict']:raise
      boundary=dict(kind='control_envelope',time=float(env.tether.time),message=str(exc));break
    mode='prefix';env.qualification_active=False
-   condition=dict(name=configuration,onset=onset,ramp=spec['ramp'],duration=release-onset,release=release,end=end,enabled=enabled,delta_xyz=delta.tolist())
+   condition=dict(split=stage,name=configuration,onset=onset,ramp=spec['ramp'],duration=release-onset,release=release,end=end,enabled=enabled,delta_xyz=delta.tolist())
    ep=dict(label=label,controller=controller,configuration=configuration,condition=condition,initial=contact_initial or preparation_initial,preparation_initial=preparation_initial,physics=copy.deepcopy(env.trace[start:]),control=cs,decisions=ds,teacher_decisions=teacher_decisions,boundary=boundary,geometry=pose_info,goal_candidate=goal_info,contact_state_sha256=hashlib.sha256(json.dumps(contact_state,sort_keys=True).encode()).hexdigest() if contact_state else None,physical_state_sha256=physical_state_digest(contact_state) if contact_state else None)
    save(out,label+'.json',ep);save(out,label+'-contact-state.json',contact_state)
    entry=dict(label=label,seconds=len(ep['physics'])/200,complete=len(ep['physics'])==steps*4 and boundary is None,boundary=boundary);results['episodes'].append(entry);save(out,'physical-result.json',results);print('M1_PHYSICS',entry,flush=True)
    if not entry['complete']:results['status']='capability-stopped' if boundary and boundary['kind']=='control_envelope' else 'physical-stopped';return results
    if configuration not in pair_start:pair_start[configuration]=ep['physical_state_sha256'];pair_anchor[configuration]=anchor.tolist()
    else:assert ep['physical_state_sha256']==pair_start[configuration] and anchor.tolist()==pair_anchor[configuration]
-  if stage in ['teachers','repair_teacher','visits']:
+  if stage in ['teachers','repair_teacher','visits','regression']:
    qa=[x for x in read(RUN/'compute-ledger.json')['attempts'] if x['stage']=='qualification' and x.get('result_status')=='completed'];assert len(qa)==1
    for cfg in protocol['configurations']:
     source=read(Path(qa[0]['path'])/'outputs'/(cfg+'__pose_hold__free.json'));assert pair_start[cfg]==source['physical_state_sha256']
   results['status']='completed';assert [tensor_digest(s1),tensor_digest(a2)]==digests;save(out,'physical-result.json',results);return results
- finally:model.act=orig;env.qualification_active=False
+ finally:model.act=orig;env.qualification_active=False;env.m1_anchor_hook=None

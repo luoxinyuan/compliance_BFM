@@ -22,6 +22,11 @@ class Contract(unittest.TestCase):
   self.assertNotIn('mj_forward',ast.unparse(f));self.assertNotIn('point_state',ast.unparse(f))
   calls=[n for n in ast.walk(t) if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and n.func.attr=='point_state']
   self.assertEqual(len(calls),1) # Original once-only anchor initialization; no logging side effect.
+ def test_heldout_physics_onset_is_not_rounded(self):
+  p=json.loads((D/'m1_protocol.json').read_text())['learning']['heldout'];self.assertEqual(p['onset'],6.55)
+  self.assertAlmostEqual(p['onset']*200,round(p['onset']*200));self.assertNotEqual(p['onset']*50,round(p['onset']*50))
+  t=ast.parse((D/'m1_physics.py').read_text());f=next(n for n in ast.walk(t) if isinstance(n,ast.FunctionDef) and n.name=='_physics_step');body=ast.unparse(f)
+  self.assertLess(body.index('self.m1_anchor_hook(force_time)'),body.index('super()._physics_step()'))
  def test_entry_is_bumpless(self):
   t=ast.parse((D/'m1_stage.py').read_text());f=next(n for n in t.body if isinstance(n,ast.FunctionDef) and n.name=='enter_progress')
   def smooth(x):x=min(1,max(0,x));return x*x*(3-2*x)

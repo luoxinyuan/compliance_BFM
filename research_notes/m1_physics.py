@@ -64,6 +64,7 @@ def main():
             return obs
         def _physics_step(self):
             force_time=float(self.tether.time)
+            if getattr(self,'qualification_active',False) and getattr(self,'m1_anchor_hook',None) is not None:self.m1_anchor_hook(force_time)
             if getattr(self,'qualification_active',False) and self.interruption_window is not None:
                 from contact_interruption import apply_connection
                 apply_connection(self.tether,force_time,self.interruption_window)

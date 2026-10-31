@@ -1,0 +1,11 @@
+{
+ "checkpoint": "Exactly step1500 each afteroneaggregation; noresultbasedselection, nofurthertraining",
+ "order": "4developmentregressions then25sealedfinalepisodes; stoponactualunsafe; no tuning",
+ "sealed": {"onset":6.55,"delta_xyz":[0.15,0,0],"ramp":4,"release":11.55,"end":13.56,"recovery_evaluation":13.55},
+ "onset_precision": "6.55s is on200Hzphysicsgrid but between50Hzactor ticks. Once-onlyanchorinitialization now runsatphysicalonset beforeoriginalTether, withsamecompletephysicalstateacrosscontrollers; no rounding or changingseal. Privateobserverhook; originalTether/BFM/PD unchanged. Atactor-aligned6.2 this is a no-op because originalactinitialization alreadyran.",
+ "final_controllers": {"standing_state":["standing","S1","A2","goal","teacher_goal","rule","alignment","distill"],"raised_state":["standing","S1","A2","goal","teacher_goal","rule","alignment","distill","pose_hold"]},
+ "negative_controllers_each_state":["no_contact_hold","rule","alignment","distill"],
+ "negative_meaning": "No contact meansmaintainpreparedpose, no arbitraryglobal-timeexit. Recoverytargetonlyafteractualcontact. Originalsafeexternalposeexit wasalreadyqualified. Do notcallzero-forceanchorerror tracking.",
+ "rule": "Existing originalcontact_gate thresholdsunchanged. Inferpreparedposecoordinate oncefromcurrentrightarm proprio nearesttwo developmentreferenceposes, no configtag/anchor/time input. Fixedknownnativeendpoints; causalforceprogress andreturn, zeroresidual. A baseline, notlearnedstatechoice. Student has noneofthisrule'sdiscretedecision.",
+ "comparisons": "RealXYZ fullcontact/hold, actualXYZforce/5Ncap, arm/shoulder/waist/root, support/softjointlimits, qPDcontinuity and2srootrecovery. Hold<1cm retained. Relativebenefits are notprecisioncompletion. Allotherfailures retained; nofinaldatafeeds training."
+}
