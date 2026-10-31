@@ -1,0 +1,20 @@
+{
+  "source": "Final paired teachers stage only",
+  "representative_times": [
+    7.0,
+    8.2,
+    10.4,
+    11.3,
+    11.6
+  ],
+  "interfaces": [
+    "old_standing_gate",
+    "native_base_oracle_gate",
+    "native_base_oracle_ungated"
+  ],
+  "steps_per_interface": 160,
+  "optimizer": "Adam lr=.05 raw0",
+  "gate": "OriginalContactGate, realforces10Hz, evaluated50Hz. Nativeoraclebase includesoriginal.75sbodyreturn; residualgateoriginal.2s. Ungateddiagnosticnotdeploymentpermission.",
+  "pass_perblock": "arm RMS <=max(.5*truecorrectionRMS,.001rad), nonarm<=.005rad; no successbasedonlyaggregatemean",
+  "scope": "Ten5-frameblocks, allattempts retained. Existing.3tanh tangent/norm16 recentered at physicallyqualifiednativebase versusoldstanding. NoStudenttraining,noBFMupdate,nophysics,noexpansionofcontrolauthority."
+}

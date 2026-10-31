@@ -38,7 +38,11 @@ def make_goal(env,model,configuration,point,delta,forward):
  return z,dict(source='ONE fixed nativegoal from original-range arm geometric feasible example',new_optimization=True,max_nfev=150,nfev=fit.nfev,geometric_error_m=error,target=target.tolist(),target_pose=pose.tolist(),z=z.tolist(),no_physical_IK=True)
 
 def run_study(env,model,contract,out):
- protocol=read(Path(__file__).with_name('m1_protocol.json'));save(out,'protocol.json',protocol);stage=os.environ['M1_STAGE'];assert stage in ['qualification','teachers','repair_teacher']
+ protocol=read(Path(__file__).with_name('m1_protocol.json'));save(out,'protocol.json',protocol);stage=os.environ['M1_STAGE']
+ if stage=='representation':
+  from m1_representability import run
+  return run(env,model,contract,out)
+ assert stage in ['qualification','teachers','repair_teacher']
  dev=env.standing.device;m=env.sim.model;orig=model.act;spec=protocol['contact'];onset=spec['onset'];release=spec['release'];end=spec['end'];delta=np.asarray(spec['delta_xyz'])
  sp=read(Path(__file__).with_name('skill_compat_protocol.json'));s1path=R/sp['S1']['path'];a2path=R/sp['A2']['path'];assert sha(s1path)==sp['S1']['sha256'] and sha(a2path)==sp['A2']['sha256']
  s1=load_net(s1path,dev);a2,_=load_student(a2path,dev);digests=[tensor_digest(s1),tensor_digest(a2)]
