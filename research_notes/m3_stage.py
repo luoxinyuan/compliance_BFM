@@ -26,6 +26,9 @@ def run_study(env,model,contract,out):
  if stage=='causal':
   from m3_causal import run
   return run(env,model,contract,out)
+ if stage in ['representation','train']:
+  from m3_learning import representation,train
+  return (representation if stage=='representation' else train)(env,model,contract,out)
  assert stage in ['preparation','qualification','ablation']
  dev=env.standing.device;m=env.sim.model;orig=model.act;spec=dict(protocol['contact']);
  if stage=='ablation':spec['end']=23.4

@@ -1,0 +1,64 @@
+{
+  "initial_sha256": "c9036c46a0559c57fc2897419f06c66ef6113cb0fe4d57762df9a59c8b9e1ac7",
+  "teacher_sources": [
+    "u250__teacher.json.gz",
+    "u500__local_teacher.json.gz",
+    "u750__teacher.json.gz"
+  ],
+  "teacher_selection": "Fixed after developmentphysics BEFOREfit orheldout. .25/.75 originalgoal gains60.42/68.36%; .5weakgoal excluded, predeclaredpose-feedbackcandidate gains24.62% whole/23.21%hold and20.64/17.85%force. No otherteachercandidates.",
+  "negative_sources": [
+    [
+      "preparation",
+      "u250__native_hold__free.json.gz"
+    ],
+    [
+      "qualification",
+      "u500__native_hold__free.json.gz"
+    ],
+    [
+      "preparation",
+      "u750__native_hold__free.json.gz"
+    ]
+  ],
+  "old_sources": "M1aggregate2600alreadyprojectedtargets reusedunchanged;alloldgroups retained",
+  "sample_rule": "newteacher actualcontact+first2srelease50Hz;precontact/laterrelease/negative10Hz. ALLhistory reconstructedat50Hz.8srelease includescleared6.4sforcememory. No globalclock/anchor/configtag infeatures.",
+  "updates": 1500,
+  "lr": 0.0003,
+  "batch": 16,
+  "seed": 0,
+  "groups": "Uniform source-group sampling asM1",
+  "checkpoint": "projected-z-final.pt atstep1500 only",
+  "normalization": "FreezeM1Studentcenter/scale; samenetwork1425-128-128-259",
+  "heldout": {
+    "u": 0.625,
+    "onset": 13.15,
+    "release": 18.15,
+    "end": 26.15
+  },
+  "final_methods": [
+    "native_hold",
+    "teacher",
+    "local_teacher",
+    "rule",
+    "distill",
+    "alignment",
+    "m3_student"
+  ],
+  "final_negatives": [
+    "native_hold",
+    "rule",
+    "distill",
+    "alignment",
+    "m3_student"
+  ],
+  "regression_configurations": [
+    0,
+    0.5,
+    1
+  ],
+  "regression_methods": [
+    "m3_student"
+  ],
+  "regression_contact_and_free": true,
+  "no_additional_student_visit_aggregation": "Oneextensiononly. M1oldvisitedstatedata retained; no M3testlabels fed back."
+}

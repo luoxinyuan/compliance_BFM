@@ -84,14 +84,14 @@
     ],
     "teacher": "Unchanged bounded feedback on original nativegoal interpolation; M2 .5 weak is diagnostic, not accepted training target.",
     "alternative": "One predeclared source-level ablation: same original bounded feedback, holding the prepared native pose base (a=0) during contact, original release tostanding. No newcontroller, gain, IK tuning or extraactuation. Select only if actualbenefit, no scan.",
-    "acceptance": "Check wholecontact ANDhold3D/force benefit versus ownnativehold, response direction, stability/continuity andno arbitraryforcedpose. Modestbenefit reported asmodest; no1cmgoal. If originalgoal AND fixedbasefeedback fail practicaltaskbenefit at a developmentbody, stop beforetraining; do notrepairbyreward/latentsearch."
+    "acceptance": "The preselected newdevelopmentu=.25 AND.75 need actualwholecontact andhold3D gain withforce notworse, plusstablequeryablelegalactions. Equalityofcappedholdforceisnotautomaticfailure. Knownu=.5 isregression; ifitsteacherisweak do notuseitspositivecontactlabels, butdo notrequirefixingitbeforetrainingonthetwoqualifiednewstates. No1cmprecisionveto, noheldoutselection."
   },
   "conditional_training": {
     "updates": 1500,
     "seed": 0,
     "init": "M1 distill-final.pt",
     "architecture": "same1425-128-128-259MLP",
-    "data": "oldM1 balanced plus qualified continuousbody teacher/negative/release; only predeclared developmentconfigurations",
+    "data": "OldM1balanced plus BOTHpreselectedqualifiednewu=.25/.75 teachercontact/release, andnativeholdnegativeu=.25/.5/.75. Knownweaku=.5positive labels excluded unlessalreadyphysicalqualified; no testdata.",
     "model": "frozenBFM, sameglobalnativeparameterization+.3tangent/norm16",
     "method": "projected-zsupervision; labels fromboundedactionprojection, onefixedbudgetextension; noneuntilqualification",
     "final": "step1500 only, no earlyselection; baseline M1distill/Alignment/continuousrule/native/teacher, contact/no-contact, qualifieddevregression andnewsealedu/onset"
