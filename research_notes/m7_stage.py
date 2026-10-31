@@ -49,10 +49,11 @@ def run_study(env,model,contract,out):
   from m6_rule import calibration,command as force_rule_command
   rule_template,rule_force,rule_info=calibration(dev);save(out,'force-rule-calibration.json',rule_info)
 
+ from m7_gate import DirectionalGate
  gate_class=NativeGate
  native_cfg=read(Path(__file__).with_name('contact_gate_protocol.json'))['gate']
  mode='prefix';controller='native_hold';enabled=False;cs=[];tick=0;last_q=None;last_z=None;anchor=None;contact_initial=None;contact_state=None;ready_state=None;ready_initial=None;geo=None
- memory=ForceMemory(320);gate=ContactGate();native=gate_class(native_cfg);rule_context=None;fade=ReleaseFade();corr=np.zeros(7)
+ memory=ForceMemory(320);gate=ContactGate();native=gate_class(native_cfg);signed_native=DirectionalGate(native_cfg);rule_context=None;fade=ReleaseFade();corr=np.zeros(7)
  def align_anchor(t):
   nonlocal anchor,contact_initial,contact_state,geo
   if anchor is not None or t<onset-1e-8:return
@@ -76,11 +77,13 @@ def run_study(env,model,contract,out):
   effective_controller=controller
   if '_then_' in controller:
    first,second=controller.split('_then_');effective_controller=first if t<spec['transition']['restart']-1e-8 else second
-  student_key=effective_controller.replace('_no_residual','').replace('_no_force','');student_coords=None;rule_record=native.step(force.tolist());raw=None;projection_record=None
+  student_key=effective_controller.replace('_no_residual','').replace('_no_force','');student_coords=None;rule_record=(signed_native if effective_controller=='signed_rule' else native).step(force.tolist());raw=None;projection_record=None
   oracle_progress=rule_record['alpha']
-  if stage!='qualification':oracle_progress=float(nets['m6_alignment'](deployable_h)[0,0].clamp(0,1))
+  m6_raw=nets['m6_alignment'](deployable_h)
+  if stage!='qualification':oracle_progress=float(m6_raw[0,0].clamp(0,1))
   oracle_command=spherical(pose,goal,oracle_progress)
   rule_command=spherical(pose,goal,rule_record['alpha'])
+  feedback_command=oracle_command if stage in ['qualification','expert'] else policy_latent(model,ends,m6_raw,lg)
   if ready_state is None:
    ready_state=snapshot(env);ready_initial=copy.deepcopy(env.trace[-1]);ready_initial['wrist']=cached_point(env).tolist()
   if student_key in nets:
@@ -89,14 +92,14 @@ def run_study(env,model,contract,out):
    student_raw=nets[student_key](net_h);
    if effective_controller.endswith('_no_residual'):student_raw=student_raw.clone();student_raw[:,1:]=0.
    raw=student_raw[0].tolist();student_coords=[float(student_raw[0,0].clamp(0,1))];command=policy_latent(model,ends,student_raw,lg)
-  elif effective_controller=='force_rule':command=force_rule_command(model,rule_command,deployable_h,lg,rule_template,rule_force)
-  elif effective_controller in ['teacher','projected']:command=oracle_command
+  elif effective_controller in ['force_rule','signed_rule']:command=force_rule_command(model,rule_command,deployable_h,lg,rule_template,rule_force)
+  elif effective_controller in ['teacher','projected']:command=feedback_command
   elif effective_controller=='rule':command=rule_command
   else:assert effective_controller=='native_hold';command=pose
   base=orig(obs,command,mean=True);base_q=qtarget(base);action=base;oracle={}
   # Original queryable feedback, privileged labels only. No extra actuator for a Student.
   if effective_controller in ['teacher','projected'] or (student_key in nets and stage!='final'):
-   oracle_base=base if effective_controller in ['teacher','projected'] else orig(obs,oracle_command,mean=True);oq=qtarget(oracle_base)[0].cpu().numpy();point=cached_point(env)
+   oracle_base=base if effective_controller in ['teacher','projected'] else orig(obs,feedback_command,mean=True);oq=qtarget(oracle_base)[0].cpu().numpy();point=cached_point(env)
    if tick%5==0:
     desired=np.zeros(7)
     if env.tether.active:
@@ -106,11 +109,11 @@ def run_study(env,model,contract,out):
    oracle_valid=bool(abs(corr).max()<=.040001 and np.linalg.norm(corr)<=.080001)
    if effective_controller in ['teacher','projected'] and not oracle_valid:raise ValueError('Teacher bound conflicts with native target; do not expand bounds')
    da=torch.zeros_like(oracle_base);da[0,22:]=torch.tensor(corr/sc[arm],device=dev,dtype=base.dtype);oa=oracle_base+da
-   oracle=dict(oracle_query_valid=oracle_valid,oracle_z=oracle_command.tolist(),oracle_base_action=oracle_base[0].tolist(),oracle_base_q_PD=oq.tolist(),oracle_action=oa[0].tolist(),oracle_q_PD=qtarget(oa)[0].tolist(),oracle_correction=corr.tolist())
-   if effective_controller=='teacher':action=oa;command=oracle_command
+   oracle=dict(oracle_feedback_z=feedback_command.tolist(),oracle_query_valid=oracle_valid,oracle_z=oracle_command.tolist(),oracle_base_action=oracle_base[0].tolist(),oracle_base_q_PD=oq.tolist(),oracle_action=oa[0].tolist(),oracle_q_PD=qtarget(oa)[0].tolist(),oracle_correction=corr.tolist())
+   if effective_controller=='teacher':action=oa;command=feedback_command
    elif effective_controller=='projected':
     from m3_learning import project
-    if lg>0 and abs(corr).max()>1e-10:
+    if lg>0:
      command,pe=project(model,obs,oracle_command,lg,qtarget(oa),qtarget)
     else:command=oracle_command;pe=qtarget(orig(obs,command,mean=True))-qtarget(oa)
     action=orig(obs,command,mean=True);projection_record=dict(arm_rms_deg=float(torch.rad2deg(pe[:,22:].square().mean().sqrt())),nonarm_rms_deg=float(torch.rad2deg(pe[:,:22].square().mean().sqrt())))
@@ -132,7 +135,7 @@ def run_study(env,model,contract,out):
    for _ in range(30):_,_,done,_=env.step(torch.zeros_like(env.standing),baseline=True);assert not done
    parity={k:float(abs(np.asarray([r[k] for r in env.trace])-np.asarray([r[k] for r in zero[:600]])).max()) for k in ['qpos','qvel','wrist','root','force']};assert max(parity.values())==0;save(out,label+'-prefix.json',parity)
    env.base.rew_buf.copy_(torch.as_tensor(common['base_tensors']['rew_buf'],device=dev,dtype=env.base.rew_buf.dtype));assert snapshot(env)==common
-   cs=[];tick=0;gate=ContactGate();memory=ForceMemory(320);native=gate_class(native_cfg);rule_context=None;fade=ReleaseFade();corr=np.zeros(7);last_q=qtarget(env.previous_action).clone();last_z=env.standing.clone()
+   cs=[];tick=0;gate=ContactGate();memory=ForceMemory(320);native=gate_class(native_cfg);signed_native=DirectionalGate(native_cfg);rule_context=None;fade=ReleaseFade();corr=np.zeros(7);last_q=qtarget(env.previous_action).clone();last_z=env.standing.clone()
    preparation_initial=copy.deepcopy(env.trace[-1]);start=len(env.trace);anchor=None;contact_initial=None;contact_state=None;geo=None;boundary=None;ready_state=None;ready_initial=None
    for cfg in (env.cfg,env.tether.cfg):cfg.enabled=enabled;cfg.activation_time=onset;cfg.ramp_duration=spec['ramp'];cfg.release_time=release
    env.tether.delta=np.zeros(3);env.m1_anchor_hook=partner_hook;mode='record';env.qualification_active=True;steps=math.ceil((end-3)*50-1e-8)

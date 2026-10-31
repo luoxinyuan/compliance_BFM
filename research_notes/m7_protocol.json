@@ -391,6 +391,14 @@
       [
         "sealed_mid",
         "distill_no_force"
+      ],
+      [
+        "sealed_mid",
+        "signed_rule"
+      ],
+      [
+        "sealed_late",
+        "signed_rule"
       ]
     ],
     "expert": [
@@ -402,10 +410,30 @@
         "dev_long",
         "teacher"
       ]
+    ],
+    "expert_refined": [
+      [
+        "dev_short",
+        "teacher"
+      ],
+      [
+        "dev_short",
+        "signed_rule"
+      ],
+      [
+        "dev_long",
+        "teacher"
+      ],
+      [
+        "dev_long",
+        "signed_rule"
+      ]
     ]
   },
   "protocol": "Fixed physical partner: forward smoothstep, hold, true disconnect with anchor held, reconnect and smoothstep from forward anchor to reverse target, hold, final release8s. No re-anchoring to each controller, no reset between phases. Final sealed combinations never training/tuning.",
   "evaluation": "Report forward/reverse/hold and true gap separately; full XYZ force; contact error excludes inactive; first recontact may initially positive force. Real negative-force proportion and response timing are required. Preserved M6 single-task references.",
   "fiber": "LPP physical qPD alignment/on-policy expert query reused. Projected-z auxiliary is not B(s) semantic loss. SF-guided reward B(s)^T zN belongs to expert adapter acquisition; not equated to physical quality, not introduced as requirement.",
-  "expert_revision": "After frozen qualification: original norm-only gate remains atalpha1 despite reverse force; frozen M6 Alignment physically exits successfully. Candidate teacher now uses frozen M6 Alignment deployable-input progress for native base, retaining original bounded privileged arm feedback. Not a bug fix; no teacher internal state is given to Student. Legacy force_rule remains unchanged. No teacher direct residual from Student is added."
+  "expert_revision": "After frozen qualification: original norm-only gate remains atalpha1 despite reverse force; frozen M6 Alignment physically exits successfully. Candidate teacher now uses frozen M6 Alignment deployable-input progress for native base, retaining original bounded privileged arm feedback. Not a bug fix; no teacher internal state is given to Student. Legacy force_rule remains unchanged. No teacher direct residual from Student is added.",
+  "expert_refinement": "Progress-only teacher was physically valid but short reverse1.926cm/hold1.404 vs M6Alignment1.867/1.144. It discards useful learned residual feedback. One bounded refinement retains full frozen M6 Alignment executable latent as BFM feedback base, adds original bounded local privileged correction. Projection remains centered on original native path at M6 progress, so not silently enlarging latent range; target actual qPD must be expressed. No taskID/clock mode switches. Progress-only results retained.",
+  "signed_rule": "Fair reverse-aware rule baseline: original positive/low-force behavior plus symmetric -.5N/4sample reversal evidence retraces original path at same4s rate. Original force-calibrated negative tangent retained. Fixed once before new tests; no tuning, no deployment Student gate changes."
 }

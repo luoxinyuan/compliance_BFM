@@ -22,6 +22,15 @@ class Test(unittest.TestCase):
  def test_sealed(self):
   for phase,jobs in P['schedule'].items():
    if phase!='final':self.assertFalse(any(c.startswith('sealed') for c,_ in jobs))
+ def test_signed_rule(self):
+  from m7_gate import DirectionalGate
+  from contact_gate import ContactGate
+  cfg=dict(dt=.02,filter_samples=3,entry_forward_force_n=.5,entry_samples=4,exit_force_norm_n=.2,exit_samples=20,entry_transition_s=4.,return_transition_s=.75)
+  a,b=DirectionalGate(cfg),ContactGate(cfg)
+  for _ in range(230):self.assertEqual(a.step([2.,0,0])['alpha'],b.step([2.,0,0])['alpha'])
+  values=[a.step([-2.,0,0])['alpha'] for _ in range(230)]
+  self.assertEqual(values[-1],0.);self.assertTrue(all(y<=x+1e-10 for x,y in zip(values[6:],values[7:])))
+  for _ in range(100):self.assertEqual(a.step([0.,0,0])['alpha'],0.)
  def test_syntax(self):
   for f in Path(__file__).parent.glob('m7_*.py'):ast.parse(f.read_text())
 if __name__=='__main__':unittest.main()

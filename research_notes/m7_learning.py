@@ -23,7 +23,7 @@ def load_net(p,dev):
  x=torch.load(p,map_location=dev,weights_only=True);net=Projector(torch.zeros(2,len(x['state_dict']['center']),device=dev)).to(dev);net.load_state_dict(x['state_dict']);return net.eval().requires_grad_(False)
 def policy_latent(model,ends,raw,gate):return constrained(model,slerp(ends[0],ends[2],raw[:,0].clamp(0,1)),raw[:,1:],gate)[0]
 def build(env,model,contract,out,rnd):
- dev,qof=support(env,model,contract);src=done('expert' if rnd==0 else 'collect'+str(rnd));rows=[];manifest=[]
+ dev,qof=support(env,model,contract);src=done('expert_refined' if rnd==0 else 'collect'+str(rnd));rows=[];manifest=[]
  for path in sorted(src.glob('*.json.gz')):
   e=read(path)
   if e['controller'] not in ['teacher','alignment','distill','m6_alignment','m6_distill']:continue
