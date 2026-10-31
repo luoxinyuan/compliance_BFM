@@ -42,6 +42,9 @@ def make_goal(env,model,configuration,point,delta,forward):
 
 def run_study(env,model,contract,out):
  protocol=read(Path(__file__).with_name('m1_protocol.json'));save(out,'protocol.json',protocol);stage=os.environ['M1_STAGE']
+ if stage in ['fit','aggregate']:
+  from m1_learning import train
+  return train(env,model,contract,out,aggregate=stage=='aggregate')
  if stage=='representation':
   from m1_representability import run
   return run(env,model,contract,out)
