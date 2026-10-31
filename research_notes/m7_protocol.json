@@ -32,7 +32,7 @@
     "semantic": "projected native-command prior, not exact FIBER B(s) regularization; BFM-Zero unchanged, not AH-BFM",
     "initial": "M6 final per-method; paired extension, not same initial weights",
     "sampling": "40% transitions,20% old positive,20% old negative,20% no-contact; group-balanced",
-    "regression": "M6 full17837 samples retained; small+3 is now known development regression, not new blind test. New student-state aggregation includes two transitions/small+3/free; old +15/-3.5 evaluated final without selecting weights."
+    "regression": "Before training, concentrate each on-policy collection on two genuinely new transition episodes x2methods. Full17837 M6 samples retained with fixedold-family sampling. Old+15/-3.5/small+3/free/pulse are finalregressions, not selection; do not spend scarce sharedGPU repeating old tasks per round. Sealed combinations unchanged."
   },
   "stage": "M7 continuous contact transitions",
   "base_commit": "2d3ed08bfc859223c59e2fa132d7349cb177a161",
@@ -239,22 +239,6 @@
       [
         "dev_long",
         "distill"
-      ],
-      [
-        "test_pos_small",
-        "alignment"
-      ],
-      [
-        "test_pos_small",
-        "distill"
-      ],
-      [
-        "free",
-        "alignment"
-      ],
-      [
-        "free",
-        "distill"
       ]
     ],
     "collect2": [
@@ -272,22 +256,6 @@
       ],
       [
         "dev_long",
-        "distill"
-      ],
-      [
-        "test_pos_small",
-        "alignment"
-      ],
-      [
-        "test_pos_small",
-        "distill"
-      ],
-      [
-        "free",
-        "alignment"
-      ],
-      [
-        "free",
         "distill"
       ]
     ],
