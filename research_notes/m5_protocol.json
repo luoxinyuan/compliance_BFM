@@ -286,9 +286,22 @@
       [
         "pulse",
         "distill"
+      ],
+      [
+        "test_timing_size",
+        "alignment_no_residual"
+      ],
+      [
+        "test_timing_size",
+        "distill_no_residual"
       ]
     ]
   },
   "safety": "Inherited MuJoCo stops; no relaxed bounds; exact-owned process cleanup; no CPU BFM fallback",
-  "scope": "Single standing forward-guidance skill; not unseen-body/multi-skill/general compliance claim"
+  "scope": "Single standing forward-guidance skill; not unseen-body/multi-skill/general compliance claim",
+  "residual_ablation": "Precommitted before final checkpoint/test exposure: same frozen policy, learned progress retained, raw local residual zero; one sealed condition eachmethod. True physical rerun, not same-state causal decomposition.",
+  "final_checkpoint_sha256": {
+    "alignment": "0e14d9f699540b3f5db979d70450fda80e07b307c9a087f8f140fe164d12fe86",
+    "distill": "6475261f6109a348bfd50bab1c29f09d94f7f9f0602e7bdb44f507bb4b8c4891"
+  }
 }

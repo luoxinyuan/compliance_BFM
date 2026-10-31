@@ -13,7 +13,7 @@ def main():
   for p in sorted(src.glob('*.json.gz')):
    e=read(p);raw[e['label']]=e
    for c in e['control']:
-    c['oracle_alpha']=c['alpha'];c['alpha']=c['native_coords'][0] if e['controller'] in ['alignment','distill'] else 0. if e['controller']=='native_hold' else c['alpha']
+    c['oracle_alpha']=c['alpha'];c['alpha']=c['native_coords'][0] if c.get('native_coords') is not None else 0. if e['controller']=='native_hold' else c['alpha']
    x=summarize(e,{});rel=e['condition']['release'];end=e['condition']['end'];on=e['condition']['onset'];rows=e['physics'];cs=e['control'];times=np.array([r['time'] for r in rows]);ct=np.array([c['time'] for c in cs]);q=np.array([c['q_PD'] for c in cs]);dq=abs(np.diff(q,axis=0));i,j=np.unravel_index(dq.argmax(),dq.shape)
    x['source']=str(p);x['recovery']=window(e,rel,end);x['late_recovery']=window(e,rel+6.4,end);x['precontact']=window(e,3,on);x['recovery_speed_2_4_6_8']=[float(np.linalg.norm(rows[int(np.argmin(abs(times-rel-t)))]['qvel'][:3])) for t in [2,4,6,8]]
    x['qPD_peak']=dict(time=cs[i+1]['time'],joint_index=int(j),target_step_deg=float(np.degrees(dq[i,j])),actual_next_20ms_deg=float(np.degrees(cs[min(i+2,len(cs)-1)]['pre_qpos'][7+j]-cs[i+1]['pre_qpos'][7+j])))
@@ -29,6 +29,15 @@ def main():
    if free and name=='early':
     n=sum(r['force_time']<e['condition']['onset']-1e-8 for r in e['physics']);parity[key]={k:float(abs(np.array([r[k] for r in e['physics'][:n]])-np.array([r[k] for r in free['physics'][:n]])).max()) for k in ['qpos','qvel','force']}
     t=e['condition']['release'];i=min(range(len(e['physics'])),key=lambda i:abs(e['physics'][i]['time']-t));x['contact_minus_free_end_cm']={k:((np.array(e['physics'][i][k])-free['physics'][i][k])*100).tolist() for k in ['wrist','shoulder_xyz','root']}
+  if 'free__native_hold' in raw:
+   base=raw['free__native_hold'];bw=np.array([r['wrist'] for r in base['physics']]);bq=np.array([r['qpos'] for r in base['physics']])
+   for ctl in ['rule','teacher','alignment','distill']:
+    e=raw['free__'+ctl];v=np.array([r['wrist'] for r in e['physics']])-bw;dq=np.array([r['qpos'] for r in e['physics']])-bq
+    res[a['stage']+'/free__'+ctl]['relative_to_native_free']=dict(wrist_rms_cm=float(np.sqrt(np.mean(np.sum(v*v,axis=1)))*100),wrist_max_cm=float(np.linalg.norm(v,axis=1).max()*100),qpos_max_difference=float(abs(dq).max()))
+  for label,e in raw.items():
+   key=a['stage']+'/'+label;rule=raw.get(e['condition']['name']+'__rule')
+   if key in comparisons and rule:
+    comparisons[key]['error_gain_vs_rule']=1-res[key]['phases']['all_contact']['tracking_rms_cm']/res[a['stage']+'/'+rule['label']]['phases']['all_contact']['tracking_rms_cm']
  result=dict(episodes=res,comparisons=comparisons,precontact_pair_parity=parity,ledger=ledger,scope='Only true contact contributes tracking; full8s release; allfailedattempts preserved; one seed with two fixed unseen condition combinations; no unseen body or universal compliance claim')
  d=RUN/'analysis';d.mkdir(exist_ok=True);(d/'physical-summary.json').write_text(json.dumps(result,indent=2,allow_nan=False))
  for k,x in res.items():

@@ -34,6 +34,8 @@ def run_study(env,model,contract,out):
  if stage!='qualification':
   rnd=2 if stage=='final' else int(stage[-1])-1
   nets={k:load_net(done('train'+str(rnd))/(k+'-final.pt'),dev) for k in ['alignment','distill']}
+ if stage=='final':
+  assert {k:sha(done('train2')/(k+'-final.pt')) for k in nets}==protocol['final_checkpoint_sha256']
  anchor_reference=None if stage=='qualification' else read_gz(done('qualification')/'free__teacher.json.gz')['control']
  identities={k:tensor_digest(v) for k,v in nets.items()};pose=env.standing;goal=ends[2]
  save(out,'references.json',dict(endpoints=[z.tolist() for z in ends],teacher='causal native force gate + original bounded arm feedback',input='force/proprio/action history only',checkpoint_hashes={k:sha(done('train'+str(rnd))/(k+'-final.pt')) for k in nets}))
@@ -60,17 +62,19 @@ def run_study(env,model,contract,out):
   if mode=='prefix':return nominal
   if tick%5==0:gate.update(t,force)
   lg=gate.value(t);deployable_h=student_input(model,obs,[memory.append(force.tolist())],env.keys)
-  student_coords=None;rule_record=native.step(force.tolist());raw=None;projection_record=None
+  student_key=controller.replace('_no_residual','');student_coords=None;rule_record=native.step(force.tolist());raw=None;projection_record=None
   oracle_command=spherical(pose,goal,rule_record['alpha'])
   if ready_state is None:
    ready_state=snapshot(env);ready_initial=copy.deepcopy(env.trace[-1]);ready_initial['wrist']=cached_point(env).tolist()
-  if controller in nets:
-   student_raw=nets[controller](deployable_h);raw=student_raw[0].tolist();student_coords=[float(student_raw[0,0].clamp(0,1))];command=policy_latent(model,ends,student_raw,lg)
+  if student_key in nets:
+   student_raw=nets[student_key](deployable_h);
+   if controller.endswith('_no_residual'):student_raw=student_raw.clone();student_raw[:,1:]=0.
+   raw=student_raw[0].tolist();student_coords=[float(student_raw[0,0].clamp(0,1))];command=policy_latent(model,ends,student_raw,lg)
   elif controller in ['teacher','rule']:command=oracle_command
   else:assert controller=='native_hold';command=pose
   base=orig(obs,command,mean=True);base_q=qtarget(base);action=base;oracle={}
   # Original queryable feedback, privileged labels only. No extra actuator for a Student.
-  if controller=='teacher' or (controller in nets and stage!='final'):
+  if controller=='teacher' or (student_key in nets and stage!='final'):
    oracle_base=base if controller=='teacher' else orig(obs,oracle_command,mean=True);oq=qtarget(oracle_base)[0].cpu().numpy();point=cached_point(env)
    if tick%5==0:
     desired=np.zeros(7)
