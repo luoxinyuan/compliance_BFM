@@ -29,11 +29,17 @@ def replay_query(ep,model,contract):
 def main():
  m=mujoco.MjModel.from_xml_path(str(ROOT/'humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml'));results=[]
  for run in json.loads((RUN/'compute-ledger.json').read_text())['attempts']:
-  if run['stage'] not in ['teachers','repair_teacher']:continue
+  if run['stage'] not in ['teachers','repair_teacher','visits']:continue
   out=Path(run['path'])/'outputs';contract=json.loads((out/'action-contract.json').read_text())
   for f in sorted(out.glob('*__*.json')):
    ep=json.loads(f.read_text())
    if not isinstance(ep,dict) or not ep.get('control'):continue
+   if run['stage']=='visits':
+    if ep['controller'] not in ['alignment','distill']:continue
+    ep['controller']='teacher_goal'
+    for c in ep['control']:
+     for field in ['action','q_PD','base_action','base_q_PD']:c[field]=c['oracle_'+field]
+     c['teacher_correction']=c['oracle_correction']
    targets,pe=replay_query(ep,m,contract);a=float(abs(np.array([c['action'] for c in ep['control']])-np.array([c['action'] for c in targets])).max());q=float(abs(np.array([c['q_PD'] for c in ep['control']])-np.array([c['q_PD'] for c in targets])).max());corr=float(abs(np.array([c['teacher_correction'] for c in ep['control']])-np.array([c['correction'] for c in targets])).max());assert pe<1e-10 and a<1e-6 and q<1e-6 and corr<1e-10,(pe,a,q,corr)
    results.append(dict(file=str(f),point_parity_m=pe,action_parity=a,q_PD_parity_rad=q,correction_parity_rad=corr,release_included=True))
  (RUN/'analysis/query-parity.json').write_text(json.dumps(results,indent=2));print(json.dumps(results,indent=2))
