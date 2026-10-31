@@ -184,7 +184,8 @@
       14.4
     ],
     "method": "Rerun frozen M3 to switch with exact complete physical/control/history parity; never reset isolated qpos. Preserve original online oracle and fade from prefix; switch to same pose-base expert or 160step per50Hzframe original bounded projection. No fitted policy or extra control smoothing.",
-    "qualification": "Remaining-contact XYZ/3D and force versus frozen continuation and native, true wrist recovery, safe support and full8sreturn. Failure of late boundary alone is reported by recoverable basin, not arbitrary allstates-veto."
+    "qualification": "Remaining-contact XYZ/3D and force versus frozen continuation and native, true wrist recovery, safe support and full8sreturn. Failure of late boundary alone is reported by recoverable basin, not arbitrary allstates-veto.",
+    "zero_gate": "Analytic original constrained() identity when gate exactlyzero: executebase, log q_PD residual with0optimizationsteps. This changes no legalinterface/action. Activegates fixed160steps."
   },
   "audit_contract": {
     "samples": [

@@ -103,9 +103,11 @@ def run_study(env,model,contract,out):
     action=oa;command=oracle_command
     if controller=='recover_projected':
      from m3_learning import project
-     pz,err=project(model,obs,oracle_command,torch.tensor([lg],device=dev),qtarget(oa),qtarget)
+     if lg==0:
+      pz=oracle_command;err=qtarget(orig(obs,pz,mean=True))-qtarget(oa)
+     else:pz,err=project(model,obs,oracle_command,torch.tensor([lg],device=dev),qtarget(oa),qtarget)
      command=pz;action=orig(obs,command,mean=True)
-     projection_record=dict(steps=160,arm_rms_deg=float(torch.rad2deg(err[:,22:].square().mean().sqrt())),nonarm_rms_deg=float(torch.rad2deg(err[:,:22].square().mean().sqrt())),z=pz.tolist())
+     projection_record=dict(steps=0 if lg==0 else 160,arm_rms_deg=float(torch.rad2deg(err[:,22:].square().mean().sqrt())),nonarm_rms_deg=float(torch.rad2deg(err[:,:22].square().mean().sqrt())),z=pz.tolist())
   if recovering and abs(t-switch_time)<1e-8:
    ref=recovery_ref['control'][tick]
    parity={k:float(abs(np.asarray(v)-np.asarray(ref[k])).max()) for k,v in [('pre_qpos',env.sim.data.qpos),('pre_qvel',env.sim.data.qvel),('student_input',deployable_h[0].tolist()),('measured_force_xyz',force)]}
