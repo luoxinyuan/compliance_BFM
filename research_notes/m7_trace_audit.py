@@ -15,8 +15,8 @@ def main():
    for c in cs:
     i=int(np.argmin(abs(post-c['time'])));last=rr[i]['force'] if abs(post[i]-c['time'])<1e-7 else [0,0,0]
     sensors.append(float(abs(np.array(c['measured_force_xyz'])-last).max()));fifo=np.roll(fifo,-1,axis=0);fifo[-1]=c['measured_force_xyz'];history.append(float(abs(np.array(c['student_input'][465:]).reshape(320,3)-fifo/5).max()))
-   v=dict(source=str(p),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),actual_wrench_force_max_error=float(abs(f-wrench[:,:3]).max()),off_force_max=float(abs(f[~active]).max()) if (~active).any() else 0.,active_contract_mismatch_times=ts[mismatches].tolist(),sensor_last_physics_max_error=max(sensors),network_force_history_max_error=max(history),ready_sha=e['ready_physical_state_sha256'],bfm_input_keys=sorted(cs[0]['bfm_obs']),feature_dimension=len(cs[0]['student_input']),boundary=e['boundary'])
-   assert v['actual_wrench_force_max_error']==0 and v['off_force_max']==0 and v['sensor_last_physics_max_error']<1e-6 and v['network_force_history_max_error']<1e-6
+   v=dict(source=str(p),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),actual_wrench_force_max_error=float(abs(f-wrench[:,:3]).max()),off_force_max=float(abs(f[~active]).max()) if (~active).any() else 0.,active_contract_mismatch_times=ts[mismatches].tolist(),sensor_last_physics_max_error=max(sensors),recorded_preablation_history_max_error=max(history),ready_sha=e['ready_physical_state_sha256'],bfm_input_keys=sorted(cs[0]['bfm_obs']),feature_dimension=len(cs[0]['student_input']),boundary=e['boundary'],network_force_history_rule=('explicit net_h[:,465:]=0; archived student_input is pre-mask deployable history' if e['controller'].endswith('_no_force') else 'unchanged recorded deployable history'))
+   assert v['actual_wrench_force_max_error']==0 and v['off_force_max']==0 and v['sensor_last_physics_max_error']<1e-6 and v['recorded_preablation_history_max_error']<1e-6
    assert len(mismatches)==0,v
    if s['name']=='free':
     old=read(RUN.parent/'m5-contact-lpp-20261031A/final-attempt-01/outputs/free__native_hold.json.gz')

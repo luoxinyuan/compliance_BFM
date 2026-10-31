@@ -13,6 +13,10 @@ def summarize_transition(e):
  release_force=force[(ts>=s['release'])&(ts<s['end'])]
  result['recovery_full']['force_peak_n']=float(np.linalg.norm(release_force,axis=1).max())
  result['recovery_full']['force_scope']='actual force_time >= release; no last pre-release force included'
+ post=np.array([r['time'] for r in rows]);release_cs=[c for c in cs if c['time']>=s['release']-1e-8];aa=np.array([c['alpha'] for c in release_cs])
+ result['release_speed_2_4_6_8']=[float(np.linalg.norm(rows[int(np.argmin(abs(post-(s['release']+dt))))]['qvel'][:3])) for dt in [2,4,6,8]]
+ result['release_progress']=dict(max_rebound_after_running_min=float((aa-np.minimum.accumulate(aa)).max()),max_alpha_after_2s=max(c['alpha'] for c in release_cs if c['time']>=s['release']+2-1e-8),last_alpha_over_0_01_delay=next((c['time']-s['release'] for c in reversed(release_cs) if c['alpha']>.01),None))
+ result['late_release']=window(e,s['release']+6.4,s['end'])
  spans=dict(forward=(s['onset'],tr['unload']),gap=(tr['unload'],tr['restart']),reverse=(tr['restart'],s['release']),reverse_move=(tr['restart'],tr['reverse_end']),reverse_hold=(tr['reverse_end'],s['release'])) if tr else {}
  for k,(lo,hi) in spans.items():
   mask=(ts>=lo-1e-8)&(ts<hi-1e-8);track=mask&active;rr=[r for r,v in zip(rows,mask) if v];cc=[c for c in cs if lo-1e-8<=c['time']<hi-1e-8]

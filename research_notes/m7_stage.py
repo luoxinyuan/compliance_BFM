@@ -33,9 +33,9 @@ def run_study(env,model,contract,out):
  nets={}
  M6=R/'m6-multibehavior-20261031A/train2-attempt-01/outputs'
  nets={k:load_net(M6/(v+'-final.pt'),dev) for k,v in [('m6_alignment','alignment'),('m6_distill','distill')]}
- if stage.startswith('collect') or stage=='final':
-  rnd=2 if stage=='final' else int(stage[-1])-1
-  if stage=='final':
+ if stage.startswith('collect') or stage in ['final','counterfactual']:
+  rnd=2 if stage in ['final','counterfactual'] else int(stage[-1])-1
+  if stage in ['final','counterfactual']:
    actual={k:sha(done('train2')/(k+'-final.pt')) for k in ['alignment','distill']}
    assert actual==protocol['final_checkpoint_sha256'],actual
   nets.update({k:load_net(done('train'+str(rnd))/(k+'-final.pt'),dev) for k in ['alignment','distill']})

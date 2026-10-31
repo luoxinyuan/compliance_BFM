@@ -46,6 +46,12 @@ class Test(unittest.TestCase):
     for i in range(100):write(p,dict(n=i,payload='x'*10000))
    finally:stop.set();t.join()
    self.assertEqual(errors,[]);self.assertEqual(json.loads(p.read_text())['n'],99)
+ def test_counterfactual_only_changes_future_partner(self):
+  import copy
+  a=copy.deepcopy(P['conditions']['sealed_mid']);b=P['conditions']['posthoc_mid_hold']
+  a['transition']['reverse_target']=a['delta_xyz'][0]
+  self.assertEqual(a,b);self.assertEqual(segment(b,b['transition']['restart'])[1],0.)
+  self.assertEqual(P['schedule']['counterfactual'],[['posthoc_mid_hold','distill']])
  def test_syntax(self):
   for f in Path(__file__).parent.glob('m7_*.py'):ast.parse(f.read_text())
 if __name__=='__main__':unittest.main()

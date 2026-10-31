@@ -168,6 +168,24 @@
         "reverse_end": 17.299999999999997,
         "reverse_target": -0.025
       }
+    },
+    "posthoc_mid_hold": {
+      "onset": 6.65,
+      "release": 17.35,
+      "end": 25.35,
+      "ramp": 4.0,
+      "delta_xyz": [
+        0.14,
+        0,
+        0
+      ],
+      "enabled": true,
+      "transition": {
+        "unload": 11.65,
+        "restart": 12.15,
+        "reverse_end": 15.850000000000001,
+        "reverse_target": 0.14
+      }
     }
   },
   "schedule": {
@@ -396,6 +414,12 @@
         "dev_long",
         "signed_rule"
       ]
+    ],
+    "counterfactual": [
+      [
+        "posthoc_mid_hold",
+        "distill"
+      ]
     ]
   },
   "protocol": "Fixed physical partner: forward smoothstep, hold, true disconnect with anchor held, reconnect and smoothstep from forward anchor to reverse target, hold, final release8s. No re-anchoring to each controller, no reset between phases. Final sealed combinations never training/tuning.",
@@ -408,5 +432,6 @@
   "final_checkpoint_sha256": {
     "alignment": "4366d30071814a31dd9295fa58b8b8f0ee8046ae6ddb4092e7ebe6c5c4970b1e",
     "distill": "ba3aa67e3d452579e1cb2e40848aebc4d50fce7bb6d428e0b23b9e6726ac316e"
-  }
+  },
+  "counterfactual_rationale": "Post-final saved XYZ audit: reverse-phase force is not always negative, especially after longer unloading. One fixed no-training physical partner-hold branch, identical M7-Pz prefix to sealed_mid until restart12.15s; same frozen round2, no parameter selection. Anchor remains at forward endpoint through original release17.35. This is a posthoc mechanism test, not another blind generalization result."
 }

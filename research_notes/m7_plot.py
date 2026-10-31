@@ -1,7 +1,8 @@
 """Inspect full physical transition and release; no model invocation."""
-import gzip,json
+import gzip,json,os
 from pathlib import Path
 import numpy as np
+os.environ['MPLCONFIGDIR']='/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m7-continuous-20261101A/analysis/mpl-cache'
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
