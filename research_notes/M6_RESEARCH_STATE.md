@@ -17,3 +17,5 @@ Initial policy for all new methods is frozen M5 final Projected-z (7000 inherite
 Training fixed round2 complete:7531 initial samples (6825M5+706negative); two actual13-episode Student state-query rounds add5153 each; final17837, each method3000+2000+2000 new updates. No test data. All training runtime b9e165a. Final source adds only presealed evaluation baselines and audits, not model/training changes.
 
 Signed-force rule fairness baseline calibrated from train0 negative projected labels only. No anchor, taskID or direct joint control, one fixed template scaled by measured force. No tuning from final outcomes.
+
+Engineering recovery: final-attempt01 six completed episodes preserved; onset6.65 incompatible with inherited50Hz-only anchor lookup. Fix exact200Hz physical-state reference with parity atold5/6.2/7.1s, unchanged task/weights. No re-training or repeat of completed evaluations. Old failure traceback retained; original handler did not save partial interrupted trajectory. Future exception capture added.

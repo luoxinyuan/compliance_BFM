@@ -28,6 +28,11 @@ class Tests(unittest.TestCase):
   self.assertGreater(float(z[0,1]),0);self.assertAlmostEqual(float(z.norm()),16,places=4)
   self.assertTrue(torch.equal(command(FakeModel(),base,h,0.,template,1.),base))
   h=-h;self.assertTrue(torch.equal(command(FakeModel(),base,h,1.,template,1.),base))
+ def test_anchor_uses_physical_not_actor_grid(self):
+  from m6_reference import wrist_at_time
+  rows=[dict(time=6.64,wrist=[1,2,3]),dict(time=6.65,wrist=[4,5,6])]
+  self.assertEqual(wrist_at_time(rows,6.65),[4,5,6])
+  with self.assertRaises(ValueError):wrist_at_time(rows,6.655)
  def test_test_conditions_not_collected(self):
   p=json.loads(Path(__file__).with_name('m6_protocol.json').read_text());self.assertTrue(all(not c.startswith('test') for s in ['qualification','collect1','collect2'] for c,_ in p['schedule'][s]));self.assertEqual(p['training']['steps'],[3000,2000,2000])
 if __name__=='__main__':unittest.main()

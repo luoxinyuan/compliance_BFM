@@ -14,7 +14,8 @@ def main():
   src=Path(a['path'])/'outputs';r=read(src/'result.json') if (src/'result.json').exists() else {}
   if a['stage'].startswith('train') and a.get('result_status')=='completed':
    t=read(src/'training.json');p=read(src/'new-data-projection.json');out['training'][a['stage']]=dict(samples=r['study']['samples'],new_samples=p['samples'],max_group_projection_arm_deg=max(g['arm_rms_deg'] for g in p['groups']),max_group_projection_nonarm_deg=max(g['nonarm_rms_deg'] for g in p['groups']),methods={k:{q:v[q] for q in ['before','after','updates','checkpoint','sha256']} for k,v in t.items()})
-  if 'episodes' in r.get('study',{}):out['real_physics'][a['stage']]=dict(episodes=len(r['study']['episodes']),complete=sum(e['complete'] for e in r['study']['episodes']),seconds=sum(e['seconds']+3 for e in r['study']['episodes']),boundaries=[e['boundary'] for e in r['study']['episodes'] if e['boundary']])
+  pr=read(src/'physical-result.json') if (src/'physical-result.json').exists() else {}
+  if 'episodes' in pr:out['real_physics'][Path(a['path']).name]=dict(episodes=len(pr['episodes']),complete=sum(e['complete'] for e in pr['episodes']),seconds=sum(e['seconds']+3 for e in pr['episodes']),boundaries=[e['boundary'] for e in pr['episodes'] if e['boundary']])
  out['resource']=dict(wall=sum(a.get('wall_seconds',0) for a in ledger['attempts']),peak_rss_gib=max(a.get('peak_rss_bytes',0) for a in ledger['attempts'])/1024**3,peak_gpu_mib=max(a.get('peak_gpu_mib',0) for a in ledger['attempts']),attempts=len(ledger['attempts']),noncompleted=[a['stage'] for a in ledger['attempts'] if a.get('result_status')!='completed'])
  out['precontact_parity']=s['precontact_pair_parity'];(RUN/'analysis/report-data.json').write_text(json.dumps(out,indent=2,allow_nan=False))
  for k,x in out['final'].items():print(k,x['tracking_rms_cm'],x['force_rms_n'],x['force_cap_fraction'])

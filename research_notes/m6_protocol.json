@@ -305,30 +305,6 @@
     ],
     "final": [
       [
-        "early",
-        "alignment"
-      ],
-      [
-        "early",
-        "distill"
-      ],
-      [
-        "neg_early",
-        "m5"
-      ],
-      [
-        "neg_early",
-        "alignment"
-      ],
-      [
-        "neg_early",
-        "distill"
-      ],
-      [
-        "neg_early",
-        "single_negative"
-      ],
-      [
         "test_pos",
         "native_hold"
       ],
@@ -536,6 +512,36 @@
       "condition": "pulse",
       "controller": "m5",
       "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/pulse__distill.json.gz"
+    },
+    {
+      "condition": "early",
+      "controller": "alignment",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m6-multibehavior-20261031A/final-attempt-01/outputs/early__alignment.json.gz"
+    },
+    {
+      "condition": "early",
+      "controller": "distill",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m6-multibehavior-20261031A/final-attempt-01/outputs/early__distill.json.gz"
+    },
+    {
+      "condition": "neg_early",
+      "controller": "m5",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m6-multibehavior-20261031A/final-attempt-01/outputs/neg_early__m5.json.gz"
+    },
+    {
+      "condition": "neg_early",
+      "controller": "alignment",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m6-multibehavior-20261031A/final-attempt-01/outputs/neg_early__alignment.json.gz"
+    },
+    {
+      "condition": "neg_early",
+      "controller": "distill",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m6-multibehavior-20261031A/final-attempt-01/outputs/neg_early__distill.json.gz"
+    },
+    {
+      "condition": "neg_early",
+      "controller": "single_negative",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m6-multibehavior-20261031A/final-attempt-01/outputs/neg_early__single_negative.json.gz"
     }
   ],
   "reuse_rationale": "Avoid repeating unchanged exact seed0 standing prefix/anchor/Tether/BFM/teacher controls; archive source identities and verify full resolved condition equality. New test combinations all physically executed. No metric selection.",
@@ -544,5 +550,6 @@
     "alignment": "605bed10d1c543e7c399ee14b993c2b8fa5a6fdcddc24c1169404837d8a72053",
     "distill": "4c97a85346092956b47823a90f6643fb133d13b193a9a54faa0b687d2a41f694",
     "single_negative": "98678b6ea9356ffb3174d8862e00c18ad63582c1f812f400741167b10bbd1062"
-  }
+  },
+  "engineering_recovery": "Final attempt1 completed6 episodes, then assert at onset6.65 not on old50Hz reference grid, before contact in test_pos/native. Use existing200Hz no-force physics state at exact6.65, not interpolation or onset rounding. Old aligned times checked identical. Preserve failed attempt and its6 complete traces; only remaining tests run. Checkpoints and all task conditions unchanged. Partial failed rollout was not saved by old handler; new exception handler preserves future partial traces."
 }

@@ -36,7 +36,7 @@ def run_study(env,model,contract,out):
   nets={k:load_net(done('train'+str(rnd))/(k+'-final.pt'),dev) for k in ['alignment','distill','single_negative']}
  if stage=='final':
   assert {k:sha(done('train2')/(k+'-final.pt')) for k in nets}==protocol['final_checkpoint_sha256']
- anchor_reference=read_gz(R/'m5-contact-lpp-20261031A/qualification-attempt-01/outputs/free__teacher.json.gz')['control']
+ anchor_reference=read_gz(R/'m5-contact-lpp-20261031A/qualification-attempt-01/outputs/free__teacher.json.gz')['physics']
  if stage=='final':nets['m5']=load_net(R/'m5-contact-lpp-20261031A/train2-attempt-01/outputs/distill-final.pt',dev)
  identities={k:tensor_digest(v) for k,v in nets.items()};pose=env.standing;goal=ends[2]
  save(out,'references.json',dict(endpoints=[z.tolist() for z in ends],teacher='causal native force gate + original bounded arm feedback',input='force/proprio/action history only',checkpoint_hashes=identities))
@@ -57,7 +57,8 @@ def run_study(env,model,contract,out):
   if anchor is not None or t<onset-1e-8:return
   point,_=env.tether.point_state();anchor=point.copy()
   if anchor_reference is not None:
-   rr=min(anchor_reference,key=lambda c:abs(c['time']-onset));assert abs(rr['time']-onset)<1e-6;anchor=np.asarray(rr['pre_wrist']).copy()
+   from m6_reference import wrist_at_time
+   anchor=np.asarray(wrist_at_time(anchor_reference,onset)).copy()
   env.tether.origin=anchor.copy();env.tether.anchor=anchor.copy();env.tether.delta=delta.copy()
   contact_initial=copy.deepcopy(env.trace[-1]);contact_initial['wrist']=point.tolist();contact_state=snapshot(env);geo=geometry(m,env.sim.data.qpos.copy(),delta[0])
  def act(obs,z,mean=True):
@@ -139,4 +140,6 @@ def run_study(env,model,contract,out):
    else:assert ep['ready_physical_state_sha256']==paired[configuration]
   results['status']='completed';assert {k:tensor_digest(v) for k,v in nets.items()}==identities;save(out,'physical-result.json',results)
   return results
+ except Exception as exc:
+  save(out,'failure-partial.json',dict(label=locals().get('label'),time=float(env.tether.time),exception_type=type(exc).__name__,message=str(exc),physical_trace=env.trace,control=cs));raise
  finally:model.act=orig;env.qualification_active=False;env.m1_anchor_hook=None
