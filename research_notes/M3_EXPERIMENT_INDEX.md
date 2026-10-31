@@ -9,3 +9,7 @@ GPUlivecheck:allcardsused but~60GiBfree;selectleastbusycard4 ifstillappropriate.
 
 - M2pairaudit: no-contactreconfigurationdoesnotexplainawayalllatercontactresponse. TotalcontactendwristincrementProjected-z20.47cmX/native8.97cmX; totalincludesphysics/BFMfeedback. Toavoidclaimingactorfunctionaldecompositionisphysicalcausality, predefine2M2same-condition realforce branchesreplayingno-contactzonly, retainingonlineBFM/PD. No training/targetchanges; exactprecontactparityrequired.
 - CausalCUDA@04d62cc completed12x5frameblocks,8factorialcombinations,105.16s/582MiB/RSS6.90GiB,owned504179exited. NoStudentupdates.
+
+- Physicalcommandablation@855648d:2/2exactprecontactparity; Projected-z normal/error1.366cm versusno-contact-zreplay4.821cm; Alignment2.630vs4.668cm. Bothrealforce/BFMonline/PDpreserved; Studentcommandchangeshaveactualtaskvalue,butdoesnotfixprecontactconfigurationcollapse.159.94s,584MiB,RSS7.15GiB,owned505333exited.
+- Naturalpreparation@855648d:4/4complete .25/.75 hold/exit. Readyrootvelocitypeak .000790/.001298m/s,wrists~1mm drift,originalsafetypass.223.31s,584MiB/RSS7.28GiB,owned506387exited. GPU4otherjobendednaturallyandnowidle.
+- Beforeteacherstage correctinheritedM2descriptionstringsinprotocol (teacheru=.5/samefivecontrollers); actualnewconfigurationlistsandtimingunchanged. Renamequalification-no-training fieldtoclearconditionalmeaning.No change to experimentnumerics.
