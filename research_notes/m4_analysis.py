@@ -18,7 +18,7 @@ def main():
   src=Path(a['path'])/'outputs';contract=read(src/'action-contract.json')
   for p in src.glob('*.json.gz'):
    e=read(p);raw[e['label']]=e;x=summarize(e,{});x['source']=str(p);x['audit']=audit_episode(e,contract,initial);rel=e['condition']['release'];on=e['condition']['onset'];end=e['condition']['end'];cs=e['control'];rows=e['physics'];ct=np.array([c['time'] for c in cs]);ts=np.array([r['time'] for r in rows]);q=np.array([c['q_PD'] for c in cs]);dq=abs(np.diff(q,axis=0));dq[ct[1:]<10.4-1e-8]=-1;i,j=np.unravel_index(dq.argmax(),dq.shape)
-   x['command_peak']=dict(time=cs[i+1]['time'],joint=contract['dof_names'][j],qPD_step_deg=float(np.degrees(dq[i,j])),actual_20ms_deg=float(np.degrees(cs[i+1]['pre_qpos'][7+j]-cs[i]['pre_qpos'][7+j])),z_step_deg=cs[i+1]['z_step_deg'])
+   x['command_peak']=dict(time=cs[i+1]['time'],joint=contract['dof_names'][j],qPD_step_deg=float(np.degrees(dq[i,j])),actual_preceding_20ms_deg=float(np.degrees(cs[i+1]['pre_qpos'][7+j]-cs[i]['pre_qpos'][7+j])),actual_next_20ms_deg=float(np.degrees(cs[min(i+2,len(cs)-1)]['pre_qpos'][7+j]-cs[i+1]['pre_qpos'][7+j])),z_step_deg=cs[i+1]['z_step_deg'])
    x['recovery']=window(e,rel,end);x['recovery']['force_peak_n']=max(np.linalg.norm(r['force']) for r in rows if r['force_time']>=rel-1e-8)
    x['late_recovery']=window(e,rel+6.4,end);x['precontact']=window(e,10.4,on)
    x['recovery_speed_2_4_6_8']=[float(np.linalg.norm(rows[int(np.argmin(abs(ts-rel-t)))]['qvel'][:3])) for t in [2,4,6,8]]
