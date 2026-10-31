@@ -1,5 +1,5 @@
 """M1 natural configuration qualification. No Student or BFM training in this stage."""
-import copy,hashlib,json,os,time
+import copy,hashlib,json,os,time,gzip
 from pathlib import Path
 import numpy as np
 import torch,mujoco
@@ -18,7 +18,11 @@ from accumulated_controller import AccumulatedCorrection,executable_bounds
 P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');R=P/'bridge-v2-owned/runs';RUN=R/'m1-state-response-20261031A'
 read=lambda p:json.loads(Path(p).read_text())
 sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
-def save(out,name,x):(out/name).write_text(json.dumps(x,indent=2,allow_nan=False))
+def save(out,name,x):
+ content=json.dumps(x,indent=2,allow_nan=False)
+ if isinstance(x,dict) and 'physics' in x and 'control' in x:
+  with gzip.open(out/(name+'.gz'),'wt',encoding='utf-8',compresslevel=6) as f:f.write(content)
+ else:(out/name).write_text(content)
 def physical_state_digest(state):
  # Reward accumulator is not consumed by BFM, PD, physics or Student. Preserve full raw snapshot separately.
  state=copy.deepcopy(state);state['base_tensors'].pop('rew_buf')
@@ -56,7 +60,7 @@ def run_study(env,model,contract,out):
   nets={k:load_shared(completed('fit' if stage=='visits' else 'aggregate')/(k+'-final.pt'),env.standing.device) for k in ['alignment','distill']};ends=endpoints(env)
  dev=env.standing.device;m=env.sim.model;orig=model.act;spec=protocol['learning']['heldout'] if stage=='final' else protocol['contact'];onset=spec['onset'];release=spec['release'];end=spec['end'];delta=np.asarray(spec['delta_xyz'])
  sp=read(Path(__file__).with_name('skill_compat_protocol.json'));s1path=R/sp['S1']['path'];a2path=R/sp['A2']['path'];assert sha(s1path)==sp['S1']['sha256'] and sha(a2path)==sp['A2']['sha256']
- s1=load_net(s1path,dev);a2,_=load_student(a2path,dev);digests=[tensor_digest(s1),tensor_digest(a2)]
+ s1=load_net(s1path,dev);a2,_=load_student(a2path,dev);digests=[tensor_digest(s1),tensor_digest(a2)];shared_identity={k:tensor_digest(v) for k,v in nets.items()}
  raisedpath=R/'issue21-reward-stage-20261030A/inference-attempt-01/outputs/raisearms-l-m-latent.json';raiseddata=read(raisedpath);assert sha(raisedpath)=='3a542d7e836ea557a90c14d5d953537a05f415c8a8401050a65e26c35b2d760c'
  raised=torch.tensor(raiseddata['z'],device=dev,dtype=torch.float32).reshape(1,256)
  forward=torch.tensor(read(R/'issue21-goalcalibration-20261030A/attempt-01/outputs/same-state-forward.json')['states'][-1]['per_mode']['native']['z'],device=dev,dtype=torch.float32)
@@ -188,5 +192,5 @@ def run_study(env,model,contract,out):
    qa=[x for x in read(RUN/'compute-ledger.json')['attempts'] if x['stage']=='qualification' and x.get('result_status')=='completed'];assert len(qa)==1
    for cfg in protocol['configurations']:
     source=read(Path(qa[0]['path'])/'outputs'/(cfg+'__pose_hold__free.json'));assert pair_start[cfg]==source['physical_state_sha256']
-  results['status']='completed';assert [tensor_digest(s1),tensor_digest(a2)]==digests;save(out,'physical-result.json',results);return results
+  results['status']='completed';assert {k:tensor_digest(v) for k,v in nets.items()}==shared_identity;assert [tensor_digest(s1),tensor_digest(a2)]==digests;save(out,'physical-result.json',results);return results
  finally:model.act=orig;env.qualification_active=False;env.m1_anchor_hook=None

@@ -1,5 +1,5 @@
 """Read-only deployment/trajectory audit; neither BFM inference nor physics steps."""
-import json
+import json,gzip
 from pathlib import Path
 import numpy as np
 from ccl02a_teacher import audit_episode
@@ -10,8 +10,8 @@ def main():
   out=Path(attempt['path'])/'outputs';contract_path=out/'action-contract.json'
   if not contract_path.exists():continue
   contract=json.loads(contract_path.read_text())
-  for path in sorted(out.glob('*__*.json')):
-   e=json.loads(path.read_text())
+  for path in sorted(list(out.glob('*__*.json'))+list(out.glob('*__*.json.gz'))):
+   e=json.loads(gzip.decompress(path.read_bytes()).decode()) if path.suffix=='.gz' else json.loads(path.read_text())
    if not isinstance(e,dict) or not e.get('physics'):continue
    rows=e['physics'];cs=e['control'];tt=np.array([r['force_time'] for r in rows]);ct=e['condition'];on=ct['onset'];rel=ct['release'];q=np.array([c['q_PD'] for c in cs]);z=np.array([c['executed_z'][0] for c in cs]);force=np.array([r['force'] for r in rows]);fn=np.linalg.norm(force,axis=-1)
    # On an unsafe interrupt the final control tick can be partial, but every captured physics sample remains auditable.
