@@ -6,3 +6,6 @@ Preseal devu=.25,.5,.75,finalu=.625+onset13.15; M2 .5 known. Ready10.4independen
 Two teacher candidates only: existinggoalbasefeedback; existingpreparedposebasefeedback as predeclared goalpathablation. Sameboundedalgorithm/limits. Do not pretend weakgoalteacher qualified. Stop ifneitherprovides useful wholecontact/hold3D andforce gain atrequireddevstate.
 M2 pairing CPUphysicsanalysis first; CUDA3factorfunctional decomposition planned, no newrollout required tointerpretpairedcontactintervention. Functionaldecompositiondoesnotprovebodymotioncausalityofindividualfactors.
 GPUlivecheck:allcardsused but~60GiBfree;selectleastbusycard4 ifstillappropriate. Additional~.6GiBVRAM,8CPU,32GiBRSS,3600s cumulative. Explicituserpermitsmemorysufficientcoexistence; nottouchotherPIDs. No BFMonCPU.
+
+- M2pairaudit: no-contactreconfigurationdoesnotexplainawayalllatercontactresponse. TotalcontactendwristincrementProjected-z20.47cmX/native8.97cmX; totalincludesphysics/BFMfeedback. Toavoidclaimingactorfunctionaldecompositionisphysicalcausality, predefine2M2same-condition realforce branchesreplayingno-contactzonly, retainingonlineBFM/PD. No training/targetchanges; exactprecontactparityrequired.
+- CausalCUDA@04d62cc completed12x5frameblocks,8factorialcombinations,105.16s/582MiB/RSS6.90GiB,owned504179exited. NoStudentupdates.

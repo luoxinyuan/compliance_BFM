@@ -96,5 +96,16 @@
     "model": "frozenBFM, sameglobalnativeparameterization+.3tangent/norm16",
     "method": "projected-zsupervision; labels fromboundedactionprojection, onefixedbudgetextension; noneuntilqualification",
     "final": "step1500 only, no earlyselection; baseline M1distill/Alignment/continuousrule/native/teacher, contact/no-contact, qualifieddevregression andnewsealedu/onset"
+  },
+  "causal_physical_ablation": {
+    "controllers": [
+      "distill_z_replay",
+      "alignment_z_replay"
+    ],
+    "u": 0.5,
+    "source": "M2 paired no-contact executed_z at every50Hzframe",
+    "contact": "ExactM2onset12.4/release17.4/end23.4; samecommonready andprecontactcommand/physicalparity required",
+    "retained": "TrueTether contact, originalBFMonlineproprio/actionfeedback andPD; no replayofjointaction orstates",
+    "interpretation": "CompareM2normalStudent withnocontact-zreplay underrealcontact isolates aggregatevalue ofStudent contact-dependentcommand changes. Doesnotseparatenative/localphysicaleffects."
   }
 }
