@@ -14,6 +14,8 @@ def main():
   for p,reuse in sources:
    e=read(p)
    if reuse:e['controller']=reuse['controller'];e['label']=reuse['condition']+'__'+reuse['controller']
+   e['control']=[{k:c[k] for k in ['time','q_PD','standing_q_PD','native_coords','alpha','projection']} for c in e['control']]
+   e['physics']=[{k:r[k] for k in ['time','force_time','active','force','wrist','root','shoulder_xyz']} for r in e['physics']]
    eps[e['label']]=e
   for label,e in eps.items():
    cs=e['control'];rows=e['physics'];on=e['condition']['onset'];rel=e['condition']['release'];active=[r for r in rows if on-1e-8<=r['force_time']<rel-1e-8 and r['active']]

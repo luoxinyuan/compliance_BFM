@@ -18,7 +18,8 @@ def main():
     expected=read(Path(__file__).with_name('m6_protocol.json'))['conditions'][reuse['condition']]
     assert all(e['condition'][k]==expected[k] for k in expected)
     e['controller']=reuse['controller'];e['label']=reuse['condition']+'__'+reuse['controller']
-   raw[e['label']]=e
+   raw[e['label']]={k:e[k] for k in ['label','controller','condition']}
+   raw[e['label']]['physics']=[{k:r[k] for k in ['force_time','time','qpos','qvel','force','wrist','shoulder_xyz','root']} for r in e['physics']]
    for c in e['control']:
     c['oracle_alpha']=c['alpha'];c['alpha']=c['native_coords'][0] if c.get('native_coords') is not None else 0. if e['controller']=='native_hold' else c['alpha']
    x=summarize(e,{});rel=e['condition']['release'];end=e['condition']['end'];on=e['condition']['onset'];rows=e['physics'];cs=e['control'];times=np.array([r['time'] for r in rows]);ct=np.array([c['time'] for c in cs]);q=np.array([c['q_PD'] for c in cs]);dq=abs(np.diff(q,axis=0));i,j=np.unravel_index(dq.argmax(),dq.shape)
