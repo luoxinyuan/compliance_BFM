@@ -1,0 +1,202 @@
+{
+  "milestone": "M4 continuous contact feedback and real recovery qualification",
+  "base_commit": "72851904c2c6c2fbfe8970ea316abab63f9ea338",
+  "issue": 25,
+  "checkpoints": {
+    "alignment": "e8121fbeb048de67a8147d03b8adbb7d8f302e3d6506bd1a1e0b54d41656683f",
+    "distill": "c9036c46a0559c57fc2897419f06c66ef6113cb0fe4d57762df9a59c8b9e1ac7"
+  },
+  "resources": {
+    "compute_cumulative_wall_seconds": 3600,
+    "cpus": 8,
+    "rss_gib": 32,
+    "owned_gpu_mib": 8192,
+    "expected_output_gib_max": 3
+  },
+  "preparation": {
+    "prefix_s": 3.0,
+    "entry_s": 0.75,
+    "control_ready_s": 10.4,
+    "handoff_s": 0.75,
+    "real_force_history_s": 6.4,
+    "contact_after_handoff_s": 1.25,
+    "method": "Original fullstanding initial0 + exact3sprefix, .75s naturalentry andholdtofixed10.4; truehistories. Allcontrollersrun2sbeforecontact. No onsettiedinitialization."
+  },
+  "contact": {
+    "onset": 12.4,
+    "ramp": 4.0,
+    "release": 19.4,
+    "end": 27.4,
+    "delta_xyz": [
+      0.15,
+      0,
+      0
+    ],
+    "K": 80,
+    "D": 8,
+    "cap_n": 5,
+    "seed": 0,
+    "anchor": "Once at actual onset wrist for each independent closed loop; relative task shared, absolute anchor and actual force may differ after real precontact divergence"
+  },
+  "negative_controls": "Actualnativeholdfree fornewu=.25/.75 inpreparation, knownu=.5 extendedfree inqualification. No-contactteachercommand is samepose withzerocorrection. Conditionaltrainedfinal requires actualStudentnegativebranches.",
+  "native_hold": "Constant prepared pose for entire contact and recovery; evaluates passive/native feedback and return to its own prepared pose. It is not forced to standing on a clock. All other controllers may naturally return to standing; report equilibrium difference.",
+  "continuous_rule": "At fixed ready, project actual7Dright-arm proprio onto piecewise-linear joint-pose curve through existing M1 natural reference states u=0,0.5,1. Continuous u, not nearest-label selector; freeze inferred initial context. Use unchanged original causal force gate/progress/return. Midpoint template is existing physics evidence, disclosed advantage vs Students never trained there. No task tag, anchor or onset enters rule.",
+  "teacher": "Per preregistered developmentu: original bounded10HzJacobian .04rad/joint,.08norm,damping.02 and50Hz .2sReleaseFade on oneof two fixednativebases. Nativegoal interpolation orpreparedpose base; no gains/limits changed.",
+  "evaluation": "Contact/no-contact physicalincrements separated from precontactreconfiguration. Factorial frozenactorO/native/local functional decomposition NOT independent physicalcausality. FullXYZ wrist/shoulder/waist/root/foot/force/qPDactual;8srelease exceeds6.4sforcehistory. Singlefixedseed proof-of-concept, no statisticalgeneralizationclaim.",
+  "safety": "Original root<.65m,tilt>20deg,nonfootground,actualjoint excess>.02rad or native failure stops the stage. Temporary single support is not automatically failure or stepping qualification. No unsafe resume by loosening threshold.",
+  "bounded_diagnosis": "10continuous episodes +6same-state recovery branches; finite savedlabel audit. Up to2 fixed aggregation rounds ONLY ifqualified. Total3600s, no latent/reward/goal sweep.",
+  "conditional_training": {
+    "rounds": 2,
+    "updates_per_round": 750,
+    "total_updates": 1500,
+    "seed": 0,
+    "init": "frozenM3final",
+    "method": "Projected-z only, sameMLP and originallegalinterface; balanced old/new, only after three qualifications. Fixed final round2checkpoint, no final selection. No memory/representation change silently.",
+    "heldout_if_qualified": {
+      "u": 0.375,
+      "onset": 13.3,
+      "release": 20.3,
+      "end": 28.3,
+      "delta_xyz": [
+        0.15,
+        0,
+        0
+      ]
+    },
+    "regression": [
+      "oldM3u500failure",
+      "old0/.625/1",
+      "nocontact",
+      "fullrelease"
+    ],
+    "stop": "If teacher lacks feedback capability or physical recovery, do not train."
+  },
+  "qualification_no_training": true,
+  "schedule": {
+    "continuous": [
+      [
+        0.25,
+        "native_hold",
+        true,
+        0
+      ],
+      [
+        0.25,
+        "teacher",
+        true,
+        0
+      ],
+      [
+        0.25,
+        "local_teacher",
+        true,
+        0
+      ],
+      [
+        0.25,
+        "rule",
+        true,
+        0
+      ],
+      [
+        0.25,
+        "distill",
+        true,
+        0
+      ],
+      [
+        0.25,
+        "m3_student",
+        true,
+        0
+      ],
+      [
+        0.25,
+        "native_hold",
+        false,
+        0
+      ],
+      [
+        0.25,
+        "teacher",
+        false,
+        0
+      ],
+      [
+        0.25,
+        "rule",
+        false,
+        0
+      ],
+      [
+        0.25,
+        "m3_student",
+        false,
+        0
+      ]
+    ],
+    "recovery": [
+      [
+        0.5,
+        "recover_teacher",
+        true,
+        13.2
+      ],
+      [
+        0.5,
+        "recover_projected",
+        true,
+        13.2
+      ],
+      [
+        0.5,
+        "recover_teacher",
+        true,
+        13.6
+      ],
+      [
+        0.5,
+        "recover_projected",
+        true,
+        13.6
+      ],
+      [
+        0.5,
+        "recover_teacher",
+        true,
+        14.4
+      ],
+      [
+        0.5,
+        "recover_projected",
+        true,
+        14.4
+      ]
+    ]
+  },
+  "recovery_contract": {
+    "source": "M3 final u500__m3_student.json.gz",
+    "end": 25.4,
+    "release": 17.4,
+    "switch_times": [
+      13.2,
+      13.6,
+      14.4
+    ],
+    "method": "Rerun frozen M3 to switch with exact complete physical/control/history parity; never reset isolated qpos. Preserve original online oracle and fade from prefix; switch to same pose-base expert or 160step per50Hzframe original bounded projection. No fitted policy or extra control smoothing.",
+    "qualification": "Remaining-contact XYZ/3D and force versus frozen continuation and native, true wrist recovery, safe support and full8sreturn. Failure of late boundary alone is reported by recoverable basin, not arbitrary allstates-veto."
+  },
+  "audit_contract": {
+    "samples": [
+      12.4,
+      13.2,
+      13.6,
+      14.4,
+      16.0,
+      19.4,
+      24.0
+    ],
+    "labels": "Compare executed global z and q_PD under identical actual observation; initial-context swaps are causal sensitivity, NOT proof of dataset conflict. Search deployed histories and compare original teacher targets, context reconstructed from precontact proprio and retained memory.",
+    "decision": "Teacher local feedback and frozenBFM statefeedback distinguished from scheduled nativegoal. Continuous state-dependent wholebody recovery must have actual evidence before aggregation."
+  }
+}
