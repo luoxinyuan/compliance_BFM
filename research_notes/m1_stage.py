@@ -52,13 +52,13 @@ def run_study(env,model,contract,out):
  if stage=='representation':
   from m1_representability import run
   return run(env,model,contract,out)
- assert stage in ['qualification','teachers','repair_teacher','interface','visits','regression','final']
+ assert stage in ['qualification','teachers','repair_teacher','interface','visits','regression','final','causal_final']
  nets={};ends=None
- if stage in ['visits','regression','final']:
+ if stage in ['visits','regression','final','causal_final']:
   from m1_learning import completed,load_net as load_shared
   from m1_interface import endpoints,policy_latent
   nets={k:load_shared(completed('fit' if stage=='visits' else 'aggregate')/(k+'-final.pt'),env.standing.device) for k in ['alignment','distill']};ends=endpoints(env)
- dev=env.standing.device;m=env.sim.model;orig=model.act;spec=protocol['learning']['heldout'] if stage=='final' else protocol['contact'];onset=spec['onset'];release=spec['release'];end=spec['end'];delta=np.asarray(spec['delta_xyz'])
+ dev=env.standing.device;m=env.sim.model;orig=model.act;spec=protocol['learning']['heldout'] if stage in ['final','causal_final'] else protocol['contact'];onset=spec['onset'];release=spec['release'];end=spec['end'];delta=np.asarray(spec['delta_xyz']);control_ready=protocol['contact']['onset'] if stage=='causal_final' else onset
  sp=read(Path(__file__).with_name('skill_compat_protocol.json'));s1path=R/sp['S1']['path'];a2path=R/sp['A2']['path'];assert sha(s1path)==sp['S1']['sha256'] and sha(a2path)==sp['A2']['sha256']
  s1=load_net(s1path,dev);a2,_=load_student(a2path,dev);digests=[tensor_digest(s1),tensor_digest(a2)];shared_identity={k:tensor_digest(v) for k,v in nets.items()}
  raisedpath=R/'issue21-reward-stage-20261030A/inference-attempt-01/outputs/raisearms-l-m-latent.json';raiseddata=read(raisedpath);assert sha(raisedpath)=='3a542d7e836ea557a90c14d5d953537a05f415c8a8401050a65e26c35b2d760c'
@@ -68,7 +68,7 @@ def run_study(env,model,contract,out):
  zero=read(R/'issue20-ccl01-20261028T082201Z/attempt-04/outputs/anchor-reference.json')['physics'];initial0=read(R/'issue21-ccl02a-20261029T153900Z/attempt-01/outputs/dev-2-initial-state.json');common=read(R/'issue21-direction-20261030T020000Z/attempt-02/outputs/common-state.json')
  jobs=[(cfg,'pose_hold',False) for cfg in protocol['configurations']]+[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in protocol['qualification']['controllers'][cfg]]
  if stage=='regression':jobs=[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in ['alignment','distill']]
- if stage=='final':jobs=[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in (['standing','S1','A2','goal','teacher_goal','rule','alignment','distill']+(['pose_hold'] if cfg=='raised' else []))]+[(cfg,ctl,False) for cfg in protocol['configurations'] for ctl in ['no_contact_hold','rule','alignment','distill']]
+ if stage in ['final','causal_final']:jobs=[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in (['standing','S1','A2','goal','teacher_goal','rule','alignment','distill']+(['pose_hold'] if cfg=='raised' else []))]+[(cfg,ctl,False) for cfg in protocol['configurations'] for ctl in ['no_contact_hold','rule','alignment','distill']]
  if stage=='visits':jobs=[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in ['alignment','distill']]
  if stage=='interface':jobs=[('midpoint','goal',False),('midpoint','goal',True)]
  if stage=='teachers':jobs=[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in ['teacher_pose','teacher_goal']]
@@ -78,7 +78,7 @@ def run_study(env,model,contract,out):
  from contact_gate import ContactGate as NativeGate
  native_gate_cfg=read(Path(__file__).with_name('contact_gate_protocol.json'))['gate'];native_gate=NativeGate(native_gate_cfg);rule_u=None
  mode='prefix';pose=env.standing;configuration='standing';controller='standing';enabled=False;target_z=forward
- cs=[];ds=[];gate=ContactGate();memory=ForceMemory(320);raw=torch.zeros_like(env.standing);tick=0;last_q=None;last_z=None;contact_initial=None;contact_state=None;anchor=None;pose_info=None;goal_info=None
+ cs=[];ds=[];gate=ContactGate();memory=ForceMemory(320);raw=torch.zeros_like(env.standing);tick=0;last_q=None;last_z=None;contact_initial=None;contact_state=None;anchor=None;pose_info=None;goal_info=None;ready_state=None;ready_initial=None
  def align_anchor(t):
   nonlocal anchor,contact_initial,contact_state,pose_info,target_z,goal_info
   if anchor is not None or t<onset-1e-8:return
@@ -86,7 +86,7 @@ def run_study(env,model,contract,out):
   contact_initial=copy.deepcopy(env.trace[-1]);contact_initial['wrist']=point.tolist();contact_state=snapshot(env)
   pose_info=geometry(m,env.sim.data.qpos.copy(),delta[0]);target_z,goal_info=make_goal(env,model,configuration,anchor,delta,forward)
  def act(obs,z,mean=True):
-  nonlocal raw,tick,last_q,last_z,anchor,contact_initial,contact_state,pose_info,target_z,goal_info,corr,oracle_corr,rule_u
+  nonlocal raw,tick,last_q,last_z,anchor,contact_initial,contact_state,pose_info,target_z,goal_info,corr,oracle_corr,rule_u,ready_state,ready_initial
   t=float(env.tether.time);force=env.tether.force.copy();student_coords=None;alpha=0.;lg=0.;nominal=orig(obs,env.standing,mean=True)
   if mode=='prefix':return nominal
   # Natural state entry and all controller histories are physically warmed; no sensor reset at handoff.
@@ -94,8 +94,10 @@ def run_study(env,model,contract,out):
    gate.update(t,force);raw=s1(deploy_input(model,obs,env.history,env.keys)).detach()
    ds.append(dict(time=t,tether_time=t,force_history=env.history.tolist(),force_xyz_n=force.tolist(),bfm_obs={k:v.tolist() for k,v in obs.items()},raw=raw.tolist(),active=bool(env.tether.active)))
   deployable_h=student_input(model,obs,[memory.append(force.tolist())],env.keys);alpha=float(a2(deployable_h).item());lg=gate.value(t)
-  if t<onset-1e-8:command=spherical(env.standing,pose,enter_progress(t))
+  if t<control_ready-1e-8:command=spherical(env.standing,pose,enter_progress(t))
   else:
+   if ready_state is None:
+    ready_state=snapshot(env);ready_initial=copy.deepcopy(env.trace[-1]);ready_initial['wrist']=cached_point(env).tolist()
    align_anchor(t)
    if controller in nets:
     student_raw=nets[controller](deployable_h);student_coords=student_raw[0,:3].sigmoid().tolist();desired=policy_latent(model,ends,student_raw,lg)
@@ -112,7 +114,7 @@ def run_study(env,model,contract,out):
    elif controller in ['pose_hold','teacher_pose','no_contact_hold']:desired=pose
    elif controller in ['goal','teacher_goal','accumulated_goal']:desired=spherical(pose,target_z,smooth((t-onset)/spec['ramp']))
    else:raise AssertionError(controller)
-   command=command_handoff(pose,desired,t,onset)
+   command=command_handoff(pose,desired,t,control_ready)
    if controller in ['pose_hold','goal','teacher_pose','teacher_goal','accumulated_goal'] and t>=release-1e-8:command=spherical(command,env.standing,smooth((t-release)/.75))
   base=orig(obs,command,mean=True);base_q=qtarget(base);qbase=base_q[0].cpu().numpy();q0=qtarget(nominal);action=base
   expert=controller.startswith('teacher_') or controller=='accumulated_goal'
@@ -134,9 +136,9 @@ def run_study(env,model,contract,out):
   q=qtarget(action)
   oracle={}
   if controller in nets:
-   oracle_command=command
+   oracle_command=spherical(env.standing,pose,enter_progress(t))
    if t>=onset-1e-8:
-    oracle_command=command_handoff(pose,spherical(pose,target_z,smooth((t-onset)/spec['ramp'])),t,onset)
+    oracle_command=command_handoff(pose,spherical(pose,target_z,smooth((t-onset)/spec['ramp'])),t,control_ready)
     if t>=release-1e-8:oracle_command=spherical(oracle_command,env.standing,smooth((t-release)/.75))
    oracle_base=orig(obs,oracle_command,mean=True);oracle_qbase=qtarget(oracle_base)[0].cpu().numpy();point=cached_point(env);active=bool(env.tether.active)
    if tick%5==0:
@@ -156,7 +158,7 @@ def run_study(env,model,contract,out):
  model.act=act;results=dict(status='running',episodes=[],student_optimizer_updates=0);pair_start={};pair_anchor={}
  try:
   for configuration,controller,enabled in jobs:
-   check_deadline();label=('heldout_' if stage=='final' else 'regression_' if stage=='regression' else '')+configuration+'__'+controller+('' if enabled else '__free');mode='prefix';env.qualification_active=False;env.interruption_window=None
+   check_deadline();label=('causal_heldout_' if stage=='causal_final' else 'heldout_' if stage=='final' else 'regression_' if stage=='regression' else '')+configuration+'__'+controller+('' if enabled else '__free');mode='prefix';env.qualification_active=False;env.interruption_window=None
    for cfg in (env.cfg,env.tether.cfg):cfg.enabled=False;cfg.activation_time=onset;cfg.ramp_duration=spec['ramp'];cfg.release_time=release
    env.reset(seed=0,trajectory=(zero[0]['wrist'],[0,0,0]))
    for name in ['rew_buf','push_robot_counter','push_robot_plot_counter','command_counter','average_episode_length','torques','last_episode_length_buf']:
@@ -168,7 +170,7 @@ def run_study(env,model,contract,out):
    pose=env.standing if configuration=='standing' else spherical(env.standing,raised,.5) if configuration=='midpoint' else raised;cs=[];ds=[];tick=0;gate=ContactGate();memory=ForceMemory(320);raw=torch.zeros_like(env.standing);last_q=qtarget(env.previous_action).clone();last_z=env.standing.clone()
    oracle_fade=ReleaseFade();oracle_corr=np.zeros(7);fade=ReleaseFade();accum=AccumulatedCorrection([.2]*7);corr=np.zeros(7);teacher_decisions=[]
    native_gate=NativeGate(native_gate_cfg);rule_u=None
-   preparation_initial=copy.deepcopy(env.trace[-1]);start=len(env.trace);anchor=None;contact_initial=None;contact_state=None;pose_info=None;goal_info=None;boundary=None
+   preparation_initial=copy.deepcopy(env.trace[-1]);start=len(env.trace);anchor=None;contact_initial=None;contact_state=None;pose_info=None;goal_info=None;boundary=None;ready_state=None;ready_initial=None
    for cfg in (env.cfg,env.tether.cfg):cfg.enabled=enabled;cfg.activation_time=onset;cfg.ramp_duration=spec['ramp'];cfg.release_time=release
    env.tether.delta=np.zeros(3);env.m1_anchor_hook=align_anchor;mode='record';env.qualification_active=True;steps=round((end-3)*50)
    for i in range(steps):
@@ -182,12 +184,15 @@ def run_study(env,model,contract,out):
      boundary=dict(kind='control_envelope',time=float(env.tether.time),message=str(exc));break
    mode='prefix';env.qualification_active=False
    condition=dict(split=stage,name=configuration,onset=onset,ramp=spec['ramp'],duration=release-onset,release=release,end=end,enabled=enabled,delta_xyz=delta.tolist())
-   ep=dict(label=label,controller=controller,configuration=configuration,condition=condition,initial=contact_initial or preparation_initial,preparation_initial=preparation_initial,physics=copy.deepcopy(env.trace[start:]),control=cs,decisions=ds,teacher_decisions=teacher_decisions,boundary=boundary,geometry=pose_info,goal_candidate=goal_info,contact_state_sha256=hashlib.sha256(json.dumps(contact_state,sort_keys=True).encode()).hexdigest() if contact_state else None,physical_state_sha256=physical_state_digest(contact_state) if contact_state else None)
+   ep=dict(control_ready_s=control_ready,task_onset_handoff=(stage!='causal_final'),ready_initial=ready_initial,ready_physical_state_sha256=physical_state_digest(ready_state) if ready_state else None,label=label,controller=controller,configuration=configuration,condition=condition,initial=contact_initial or preparation_initial,preparation_initial=preparation_initial,physics=copy.deepcopy(env.trace[start:]),control=cs,decisions=ds,teacher_decisions=teacher_decisions,boundary=boundary,geometry=pose_info,goal_candidate=goal_info,contact_state_sha256=hashlib.sha256(json.dumps(contact_state,sort_keys=True).encode()).hexdigest() if contact_state else None,physical_state_sha256=physical_state_digest(contact_state) if contact_state else None)
    save(out,label+'.json',ep);save(out,label+'-contact-state.json',contact_state)
    entry=dict(label=label,seconds=len(ep['physics'])/200,complete=len(ep['physics'])==steps*4 and boundary is None,boundary=boundary);results['episodes'].append(entry);save(out,'physical-result.json',results);print('M1_PHYSICS',entry,flush=True)
    if not entry['complete']:results['status']='capability-stopped' if boundary and boundary['kind']=='control_envelope' else 'physical-stopped';return results
-   if configuration not in pair_start:pair_start[configuration]=ep['physical_state_sha256'];pair_anchor[configuration]=anchor.tolist()
-   else:assert ep['physical_state_sha256']==pair_start[configuration] and anchor.tolist()==pair_anchor[configuration]
+   paired_hash=ep['ready_physical_state_sha256'] if stage=='causal_final' else ep['physical_state_sha256']
+   if configuration not in pair_start:pair_start[configuration]=paired_hash;pair_anchor[configuration]=anchor.tolist()
+   else:
+    assert paired_hash==pair_start[configuration]
+    if stage!='causal_final':assert anchor.tolist()==pair_anchor[configuration]
   if stage in ['teachers','repair_teacher','visits','regression']:
    qa=[x for x in read(RUN/'compute-ledger.json')['attempts'] if x['stage']=='qualification' and x.get('result_status')=='completed'];assert len(qa)==1
    for cfg in protocol['configurations']:

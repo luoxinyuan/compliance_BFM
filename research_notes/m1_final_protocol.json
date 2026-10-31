@@ -46,5 +46,15 @@
   "negative_meaning": "No contact meansmaintainpreparedpose, no arbitraryglobal-timeexit. Recoverytargetonlyafteractualcontact. Originalsafeexternalposeexit wasalreadyqualified. Do notcallzero-forceanchorerror tracking.",
   "rule": "Existing originalcontact_gate thresholdsunchanged. Inferpreparedposecoordinate oncefromcurrentrightarm proprio nearesttwo developmentreferenceposes, no configtag/anchor/time input. Fixedknownnativeendpoints; causalforceprogress andreturn, zeroresidual. A baseline, notlearnedstatechoice. Student has noneofthisrule'sdiscretedecision.",
   "comparisons": "RealXYZ fullcontact/hold, actualXYZforce/5Ncap, arm/shoulder/waist/root, support/softjointlimits, qPDcontinuity and2srootrecovery. Hold<1cm retained. Relativebenefits are notprecisioncompletion. Allotherfailures retained; nofinaldatafeeds training.",
-  "archive": "New regression/final fulltraces written directly as lossless.json.gz to keep totalprojectoutput within2GiB; oldrecordsuntouched, allsamplesretained."
+  "archive": "New regression/final fulltraces written directly as lossless.json.gz to keep totalprojectoutput within2GiB; oldrecordsuntouched, allsamplesretained.",
+  "causal_execution_correction": {
+    "discovered": "Duringfinal code self-review, notcheckpoint selection. Stoporiginalfinal preserveevidence; those episodes are onset-assisted andinvalid forautonomousonset claim.",
+    "fixed_ready_s": 6.2,
+    "initial_handoff_s": 0.75,
+    "student_initialization": "Samefixedready regardlesscontactonset6.55 ordisabledcontact; policy actsbeforeactualcontact. No onset input or gating in Student/rule execution. Genericstartupblend still exists, disclosed.",
+    "paired_state": "Exactcompletephysicalstate atfixedready6.2, notforce-contactonsetafterpolicieshavealreadyacted. No forcedreset. Anchoroncealignedtoeachactualwristat6.55, identicalrelative+15cm protocol; actualforcereal. Logprecontactdriftandnegativecontrols, donotcountanchorreset aspolicybenefit.",
+    "unchanged": "Both1500stepSHA/models/training, goal/amplitude/onset/force/PD/metrics; nooptimization basedonoldtest.",
+    "canonical_stage": "causal_final",
+    "limitation": "Onset only.35safterfixedready; initialization stillongoing. Evidenceisfinite, notarbitraryonsetgeneralization."
+  }
 }

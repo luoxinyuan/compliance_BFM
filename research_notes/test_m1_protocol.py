@@ -27,6 +27,10 @@ class Contract(unittest.TestCase):
   self.assertAlmostEqual(p['onset']*200,round(p['onset']*200));self.assertNotEqual(p['onset']*50,round(p['onset']*50))
   t=ast.parse((D/'m1_physics.py').read_text());f=next(n for n in ast.walk(t) if isinstance(n,ast.FunctionDef) and n.name=='_physics_step');body=ast.unparse(f)
   self.assertLess(body.index('self.m1_anchor_hook(force_time)'),body.index('super()._physics_step()'))
+ def test_causal_ready_independent_of_sealed_onset(self):
+  p=json.loads((D/'m1_final_protocol.json').read_text())['causal_execution_correction'];self.assertEqual(p['fixed_ready_s'],6.2);self.assertNotEqual(p['fixed_ready_s'],6.55)
+  t=ast.parse((D/'m1_stage.py').read_text());calls=[n for n in ast.walk(t) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='command_handoff']
+  self.assertTrue(all(isinstance(n.args[-1],ast.Name) and n.args[-1].id=='control_ready' for n in calls))
  def test_entry_is_bumpless(self):
   t=ast.parse((D/'m1_stage.py').read_text());f=next(n for n in t.body if isinstance(n,ast.FunctionDef) and n.name=='enter_progress')
   def smooth(x):x=min(1,max(0,x));return x*x*(3-2*x)
