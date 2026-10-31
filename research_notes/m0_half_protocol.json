@@ -1,0 +1,65 @@
+{
+  "model_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "A2": {
+    "path": "issue21-alpha-cross-20261031A/train-attempt-01/outputs/cross_A_final.pt",
+    "sha256": "3cc125a0504a360db2a9472ce115b3ab6fafcbb624f9460a07fd9991fe171163"
+  },
+  "physical": {
+    "initial": "full original t3 standing snapshot",
+    "anchor": "unforced wrist world xyz at3.8s; once aligned, identical partner per task",
+    "ramp_s": 4.0,
+    "hold_s": 1.0,
+    "recovery_s": 2.0,
+    "K": 80,
+    "D": 8,
+    "cap_n": 5.0,
+    "seed": 0,
+    "actor_hz": 50,
+    "physics_hz": 200
+  },
+  "resources": {
+    "compute_cumulative_wall_seconds": 1800,
+    "cpus": 8,
+    "rss_gib": 32,
+    "owned_gpu_mib": 8192,
+    "branches": 4
+  },
+  "stage": "M0 Track A fixed half-progress probe",
+  "base_commit": "5cadad33f1ff0f6c27c08b494941c1932e85aaca",
+  "raised": {
+    "path": "issue21-reward-stage-20261030A/inference-attempt-01/outputs/raisearms-l-m-latent.json",
+    "sha256": "3a542d7e836ea557a90c14d5d953537a05f415c8a8401050a65e26c35b2d760c"
+  },
+  "conditions": [
+    {
+      "name": "up30",
+      "onset": 3.8,
+      "duration": 5.0,
+      "end": 10.8,
+      "enabled": true,
+      "delta_xyz_m": [
+        0,
+        0,
+        0.3
+      ],
+      "controllers": [
+        "raise_clock"
+      ]
+    }
+  ],
+  "schedule": {
+    "enter": "smoothstep((t-3.8)/4)",
+    "hold": "alpha1 from7.8 to8.8",
+    "exit": "1-smoothstep((t-8.8)/.75)",
+    "information": "Privileged fixed timing, qualification only; same schedule for both endpoints. A2 unchanged, force/proprio/history only.",
+    "max_alpha": 0.5
+  },
+  "qualification": {
+    "evidence": "Report all-contact and hold XYZ error/force, direction, active same-state qPD, actual body, foot forces, saturation and recovery. No selected favorable phase.",
+    "usefulness_min_error_reduction": 0.1,
+    "force_max_ratio": 1.05,
+    "recovery_max_mps": 0.02,
+    "note": "Operational screening, not statistical significance or proof all possible alpha schedules fail."
+  },
+  "stop": "One seed/four finite branches. At unsafe physical boundary stop. No training, latent search, amplitude/reward tuning, repeated result selection, direct joint corrections, or old timing tests."
+}

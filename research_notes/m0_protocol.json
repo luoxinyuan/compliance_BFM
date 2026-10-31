@@ -1,0 +1,120 @@
+{
+  "milestone": "M0 Contact-Conditioned Multi-Behavior LPP minimal loop",
+  "base_commit": "377a7d2c198cae612f3c79451614f87eecc2d0fe",
+  "resources": {
+    "compute_cumulative_wall_seconds": 3600,
+    "cpus": 8,
+    "rss_gib": 32,
+    "owned_gpu_mib": 8192,
+    "expected_output_gib_max": 2
+  },
+  "track_A": {
+    "first": "One fixed alpha=.5 up30 probe, same original BFM/PD/Tether and previous partner; reuse original standing/full-alpha records",
+    "controllable_screen": {
+      "hold_vertical_displacement_cm": [
+        8,
+        35
+      ],
+      "hold_horizontal_error_rms_cm_max": 5,
+      "force_vs_standing_max": 1.0,
+      "root_recovery_mps_max": 0.02
+    },
+    "after": "Only if controllable, at most3 additional bounded teacher-qualification episodes with a separately frozen causal progress rule. Otherwise stop this native path; audit existing task-expert assets without downloads/new WBC."
+  },
+  "track_B": {
+    "expert": "Existing unchanged bounded Jacobian right-arm correction .04rad per joint/.08rad norm,10Hz plus original .2s50Hz ReleaseFade, on standing frozen BFM. BFM-assisted independent local feedback target, not a fully independent WBC.",
+    "student": "Original 474->128->128->256 MLP and deploy_input;10Hz raw projected to norm16 with original .3 standing tangent bound and ContactGate,50Hz actor/PD; no privileged anchor/time/direction inputs",
+    "initial_checkpoint": "issue21-projector-20261030T004000Z/attempt-01/outputs/contact-projector-final.pt",
+    "old_expert_data": "issue21-projector-20261030T004000Z/attempt-01/outputs/dev-2-teacher.json",
+    "development": {
+      "name": "dev",
+      "onset": 3.2,
+      "ramp": 2.0,
+      "release": 6.6,
+      "end": 8.6,
+      "delta_xyz": [
+        0.035,
+        0,
+        0
+      ]
+    },
+    "heldout": {
+      "name": "unseen",
+      "onset": 3.55,
+      "ramp": 2.0,
+      "release": 6.95,
+      "end": 8.95,
+      "delta_xyz": [
+        0.035,
+        0,
+        0
+      ],
+      "sealed_before_training": true
+    },
+    "negative": {
+      "name": "no_contact",
+      "onset": 3.55,
+      "ramp": 2.0,
+      "release": 6.95,
+      "end": 8.95,
+      "delta_xyz": [
+        0.035,
+        0,
+        0
+      ],
+      "enabled": false
+    },
+    "data": "Old actual expert + new dev actual expert + actual P0 visited dev states relabeled with same expert + no-contact P0 states; equal group minibatches, no heldout labels/data",
+    "representability": {
+      "optimizer": "Adam",
+      "steps": 160,
+      "lr": 0.05,
+      "batch_decisions": 16,
+      "gate": "Exact original per-frame ContactGate,5 observations per10Hz decision",
+      "accept_mean_active_arm_error_vs_nominal_ratio_max": 0.5,
+      "accept_active_nonarm_rms_rad_max": 0.005,
+      "meaning": "Feasibility/latent-label construction only, not itself LPP"
+    },
+    "fit": {
+      "updates_each": 1000,
+      "lr": 0.0003,
+      "batch_decisions": 16,
+      "seed": 0,
+      "gradient_clip": 1.0,
+      "initialization": "Same frozen old single-scene P0 for both methods, normalization frozen",
+      "alignment": "Teacher actual29D q_PD rightarm MSE +.1 nonarm MSE +1e-6 tanh(raw)^2, active5/release2/pre1",
+      "direct_latent": "Match constrained temporary teacher-projected z at same5 frame gates; no BFM action loss",
+      "checkpoint": "Final step1000 only, no tuning/test selection",
+      "aggregation_iterations": 1
+    },
+    "evaluation": {
+      "dev": [
+        "alignment",
+        "distill"
+      ],
+      "unseen": [
+        "standing",
+        "expert",
+        "P0",
+        "alignment",
+        "distill",
+        "rule",
+        "A2"
+      ],
+      "no_contact": [
+        "alignment",
+        "distill",
+        "rule",
+        "A2"
+      ],
+      "rule": "Fixed mean projected active tangent from dev/oldexpert labels, original causal contact gate; no learned state conditioning",
+      "retain_all": true
+    },
+    "qualification": "Real unseen full-contact XYZ error improves>=10% vs standing; force not worse>5%; no fall/support loss/limits,2s recovery<=.02m/s. Report learning/aggregation effects and all baseline failures separately."
+  },
+  "track_C": {
+    "gate": "Two independently useful behaviorally qualified and frozen-BFM representable skills; forward/local alone do not automatically establish a needed second behavior. If unavailable, do not train a selector or multi-behavior policy.",
+    "budget": "Only within remaining global time/memory; baseline/heldout protocol frozen before any conditional training."
+  },
+  "stops": "Unsafe physical control, identity mismatch, resource exceed, essential expert asset missing, or unrepresentable/unidentifiable target ends affected track. Finish independent authorized work. No shared edits, new WBC/PD, PPO, large downloads, latent/reward search or push."
+}
