@@ -45,6 +45,9 @@ def run_study(env,model,contract,out):
  zero=read(R/'issue20-ccl01-20261028T082201Z/attempt-04/outputs/anchor-reference.json')['physics'];initial0=read(R/'issue21-ccl02a-20261029T153900Z/attempt-01/outputs/dev-2-initial-state.json');common=read(R/'issue21-direction-20261030T020000Z/attempt-02/outputs/common-state.json')
  jobs=protocol['schedule'][stage]
  replay=None
+ if stage=='final':
+  from m6_rule import calibration,command as force_rule_command
+  rule_template,rule_force,rule_info=calibration(dev);save(out,'force-rule-calibration.json',rule_info)
 
  native_cfg=read(Path(__file__).with_name('contact_gate_protocol.json'))['gate']
  mode='prefix';controller='native_hold';enabled=False;cs=[];tick=0;last_q=None;last_z=None;anchor=None;contact_initial=None;contact_state=None;ready_state=None;ready_initial=None;geo=None
@@ -73,6 +76,7 @@ def run_study(env,model,contract,out):
    student_raw=nets[student_key](net_h);
    if controller.endswith('_no_residual'):student_raw=student_raw.clone();student_raw[:,1:]=0.
    raw=student_raw[0].tolist();student_coords=[float(student_raw[0,0].clamp(0,1))];command=policy_latent(model,ends,student_raw,lg)
+  elif controller=='force_rule':command=force_rule_command(model,oracle_command,deployable_h,lg,rule_template,rule_force)
   elif controller in ['teacher','rule','projected']:command=oracle_command
   else:assert controller=='native_hold';command=pose
   base=orig(obs,command,mean=True);base_q=qtarget(base);action=base;oracle={}

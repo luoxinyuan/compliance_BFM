@@ -13,3 +13,7 @@ Failure and progress evidence: compute-ledger.json, each attempt logs/outputs. S
 Qualification complete: native/negative teacher/projected negative full-contact RMS1.65148/1.14107/1.08221cm; force1.34739/.93168/.88307N; two teacher onsets consistent. Projected per-frame arm RMSmax.000578deg/nonarm.035398deg. Teacher wrist-root extraX relative native -1.04025cm, native progress0. Same interface can express negative arm response; proceed fixed training.
 
 Initial policy for all new methods is frozen M5 final Projected-z (7000 inherited updates); each M6 method receives7000 additional updates. Main shared methods same available data and balance, independent negative-only control excludes positive updates by design. No target label is an input. Final new tests remain unopened.
+
+Training fixed round2 complete:7531 initial samples (6825M5+706negative); two actual13-episode Student state-query rounds add5153 each; final17837, each method3000+2000+2000 new updates. No test data. All training runtime b9e165a. Final source adds only presealed evaluation baselines and audits, not model/training changes.
+
+Signed-force rule fairness baseline calibrated from train0 negative projected labels only. No anchor, taskID or direct joint control, one fixed template scaled by measured force. No tuning from final outcomes.

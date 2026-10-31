@@ -431,6 +431,30 @@
       [
         "test_pos_small",
         "distill"
+      ],
+      [
+        "early",
+        "force_rule"
+      ],
+      [
+        "neg_early",
+        "force_rule"
+      ],
+      [
+        "test_pos",
+        "force_rule"
+      ],
+      [
+        "test_neg",
+        "force_rule"
+      ],
+      [
+        "test_pos_small",
+        "force_rule"
+      ],
+      [
+        "free",
+        "force_rule"
       ]
     ]
   },
@@ -514,5 +538,11 @@
       "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/pulse__distill.json.gz"
     }
   ],
-  "reuse_rationale": "Avoid repeating unchanged exact seed0 standing prefix/anchor/Tether/BFM/teacher controls; archive source identities and verify full resolved condition equality. New test combinations all physically executed. No metric selection."
+  "reuse_rationale": "Avoid repeating unchanged exact seed0 standing prefix/anchor/Tether/BFM/teacher controls; archive source identities and verify full resolved condition equality. New test combinations all physically executed. No metric selection.",
+  "force_rule": "Before sealed evaluation: calibrate one negative tangent template and force reference only from train0 negative teacher labels; interpolate by measured signed force, retain causal forward native path, no anchor/clock or direct joint output. Fix once, no result-driven retuning. Old forward rule retained as historical comparator.",
+  "final_checkpoint_sha256": {
+    "alignment": "605bed10d1c543e7c399ee14b993c2b8fa5a6fdcddc24c1169404837d8a72053",
+    "distill": "4c97a85346092956b47823a90f6643fb133d13b193a9a54faa0b687d2a41f694",
+    "single_negative": "98678b6ea9356ffb3174d8862e00c18ad63582c1f812f400741167b10bbd1062"
+  }
 }

@@ -40,7 +40,7 @@ def main():
     t=e['condition']['release'];i=min(range(len(e['physics'])),key=lambda i:abs(e['physics'][i]['time']-t));x['contact_minus_free_end_cm']={k:((np.array(e['physics'][i][k])-free['physics'][i][k])*100).tolist() for k in ['wrist','shoulder_xyz','root']}
   if 'free__native_hold' in raw:
    base=raw['free__native_hold'];bw=np.array([r['wrist'] for r in base['physics']]);bq=np.array([r['qpos'] for r in base['physics']])
-   for ctl in ['rule','teacher','alignment','distill','single_negative','m5']:
+   for ctl in ['rule','teacher','alignment','distill','single_negative','m5','force_rule']:
     if 'free__'+ctl not in raw:continue
     e=raw['free__'+ctl];v=np.array([r['wrist'] for r in e['physics']])-bw;dq=np.array([r['qpos'] for r in e['physics']])-bq
     res[a['stage']+'/free__'+ctl]['relative_to_native_free']=dict(wrist_rms_cm=float(np.sqrt(np.mean(np.sum(v*v,axis=1)))*100),wrist_max_cm=float(np.linalg.norm(v,axis=1).max()*100),qpos_max_difference=float(abs(dq).max()))
