@@ -34,6 +34,7 @@ def run_study(env,model,contract,out):
  if stage!='qualification':
   rnd=2 if stage=='final' else int(stage[-1])-1
   nets={k:load_net(done('train'+str(rnd))/(k+'-final.pt'),dev) for k in ['alignment','distill']}
+ anchor_reference=None if stage=='qualification' else read_gz(done('qualification')/'free__teacher.json.gz')['control']
  identities={k:tensor_digest(v) for k,v in nets.items()};pose=env.standing;goal=ends[2]
  save(out,'references.json',dict(endpoints=[z.tolist() for z in ends],teacher='causal native force gate + original bounded arm feedback',input='force/proprio/action history only',checkpoint_hashes={k:sha(done('train'+str(rnd))/(k+'-final.pt')) for k in nets}))
  scale=torch.tensor(contract['q_PD_scale'],device=dev);offset=torch.tensor(contract['q_PD_offset'],device=dev);qtarget=lambda a:offset+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5
@@ -48,7 +49,10 @@ def run_study(env,model,contract,out):
  def align_anchor(t):
   nonlocal anchor,contact_initial,contact_state,geo
   if anchor is not None or t<onset-1e-8:return
-  point,_=env.tether.point_state();anchor=point.copy();env.tether.origin=anchor.copy();env.tether.anchor=anchor.copy();env.tether.delta=delta.copy()
+  point,_=env.tether.point_state();anchor=point.copy()
+  if anchor_reference is not None:
+   rr=min(anchor_reference,key=lambda c:abs(c['time']-onset));assert abs(rr['time']-onset)<1e-6;anchor=np.asarray(rr['pre_wrist']).copy()
+  env.tether.origin=anchor.copy();env.tether.anchor=anchor.copy();env.tether.delta=delta.copy()
   contact_initial=copy.deepcopy(env.trace[-1]);contact_initial['wrist']=point.tolist();contact_state=snapshot(env);geo=geometry(m,env.sim.data.qpos.copy(),delta[0])
  def act(obs,z,mean=True):
   nonlocal tick,last_q,last_z,ready_state,ready_initial,rule_context,corr
@@ -66,7 +70,7 @@ def run_study(env,model,contract,out):
   else:assert controller=='native_hold';command=pose
   base=orig(obs,command,mean=True);base_q=qtarget(base);action=base;oracle={}
   # Original queryable feedback, privileged labels only. No extra actuator for a Student.
-  if controller=='teacher' or controller in nets:
+  if controller=='teacher' or (controller in nets and stage!='final'):
    oracle_base=base if controller=='teacher' else orig(obs,oracle_command,mean=True);oq=qtarget(oracle_base)[0].cpu().numpy();point=cached_point(env)
    if tick%5==0:
     desired=np.zeros(7)
