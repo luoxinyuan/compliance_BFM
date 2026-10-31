@@ -404,5 +404,9 @@
   "expert_revision": "After frozen qualification: original norm-only gate remains atalpha1 despite reverse force; frozen M6 Alignment physically exits successfully. Candidate teacher now uses frozen M6 Alignment deployable-input progress for native base, retaining original bounded privileged arm feedback. Not a bug fix; no teacher internal state is given to Student. Legacy force_rule remains unchanged. No teacher direct residual from Student is added.",
   "expert_refinement": "Progress-only teacher was physically valid but short reverse1.926cm/hold1.404 vs M6Alignment1.867/1.144. It discards useful learned residual feedback. One bounded refinement retains full frozen M6 Alignment executable latent as BFM feedback base, adds original bounded local privileged correction. Projection remains centered on original native path at M6 progress, so not silently enlarging latent range; target actual qPD must be expressed. No taskID/clock mode switches. Progress-only results retained.",
   "signed_rule": "Fair reverse-aware rule baseline: original positive/low-force behavior plus symmetric -.5N/4sample reversal evidence retraces original path at same4s rate. Original force-calibrated negative tangent retained. Fixed once before new tests; no tuning, no deployment Student gate changes.",
-  "final_diagnostic_queries": "After fixed final checkpoint, shadow-query expert on final newStudent visited states for physical qPD feedback-retention audit. Never control Student or return these rows to training; dataset builder excludes final stage and sealed identifiers. No queries needed for frozen M6 baselines."
+  "final_diagnostic_queries": "After fixed final checkpoint, shadow-query expert on final newStudent visited states for physical qPD feedback-retention audit. Never control Student or return these rows to training; dataset builder excludes final stage and sealed identifiers. No queries needed for frozen M6 baselines.",
+  "final_checkpoint_sha256": {
+    "alignment": "4366d30071814a31dd9295fa58b8b8f0ee8046ae6ddb4092e7ebe6c5c4970b1e",
+    "distill": "ba3aa67e3d452579e1cb2e40848aebc4d50fce7bb6d428e0b23b9e6726ac316e"
+  }
 }

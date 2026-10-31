@@ -20,3 +20,5 @@ Analysis: python research_notes/m7_analysis.py [--stage stage]; saved physics on
 FIBER Appendix B/C distinction documented in M7_RESEARCH_STATE.md. This is frozenBFMZero/smallMLP LPP, not AH-BFM/FlowPlanner/SF-adapter replication.
 
 Engineering failure retained: train2-attempt-01 exited before projection/update because concurrent supervisor ledger truncate/write exposed an empty JSON to done(). No extra optimizer updates. m7_io atomic same-directory replace plus concurrent-reader regression fixes the IO race; retry uses the same completed collect2, same prior train1, fixedseed/budget. Original failed directory/ledger record retained.
+
+train2-attempt-02 completed at0f4a4b8: samefixed2000/method; totalnew6500/method, no update in failedattempt01. Final checkpoint hashes pinned in protocol before any sealed execution. Final shadow expert labels are diagnostic only, not replayed into training.
