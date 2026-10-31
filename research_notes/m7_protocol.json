@@ -26,12 +26,13 @@
       "alignment",
       "distill"
     ],
-    "loss": "alignment: arm qPD MSE + 0.1 nonarm MSE + 0.01 projected-z MSE; distill: projected-z MSE; common 500-step initial projected-z warmstart counts within3000",
+    "loss": "Alignment: physical arm qPD MSE+0.1 nonarm+0.01 projected global-z MSE; Projected-z: projected global-z MSE. No new warmstart; inherit each own frozen M6 final. Same new data, capacity, optimizer and updates, not identical initialization.",
     "input": "465 native + 320x3 actual force history; no teacher state/clock/anchor/config/target",
     "output": "one learned forward progress plus 256D original native-centered tangent residual; norm16; original contact residual gate; 50Hz",
     "semantic": "projected native-command prior, not exact FIBER B(s) regularization; BFM-Zero unchanged, not AH-BFM",
     "initial": "M6 final per-method; paired extension, not same initial weights",
-    "sampling": "40% transitions,20% old positive,20% old negative,20% no-contact; group-balanced"
+    "sampling": "40% transitions,20% old positive,20% old negative,20% no-contact; group-balanced",
+    "regression": "M6 full17837 samples retained; small+3 is now known development regression, not new blind test. New student-state aggregation includes two transitions/small+3/free; old +15/-3.5 evaluated final without selecting weights."
   },
   "stage": "M7 continuous contact transitions",
   "base_commit": "2d3ed08bfc859223c59e2fa132d7349cb177a161",
@@ -215,7 +216,11 @@
     "projected": [
       [
         "dev_short",
-        "projected"
+        "m6_alignment_then_teacher"
+      ],
+      [
+        "dev_short",
+        "m6_alignment_then_projected"
       ]
     ],
     "collect1": [
@@ -233,22 +238,6 @@
       ],
       [
         "dev_long",
-        "distill"
-      ],
-      [
-        "early",
-        "alignment"
-      ],
-      [
-        "early",
-        "distill"
-      ],
-      [
-        "neg_early",
-        "alignment"
-      ],
-      [
-        "neg_early",
         "distill"
       ],
       [
@@ -283,22 +272,6 @@
       ],
       [
         "dev_long",
-        "distill"
-      ],
-      [
-        "early",
-        "alignment"
-      ],
-      [
-        "early",
-        "distill"
-      ],
-      [
-        "neg_early",
-        "alignment"
-      ],
-      [
-        "neg_early",
         "distill"
       ],
       [
@@ -414,10 +387,25 @@
       [
         "pulse",
         "distill"
+      ],
+      [
+        "sealed_mid",
+        "distill_no_force"
+      ]
+    ],
+    "expert": [
+      [
+        "dev_short",
+        "teacher"
+      ],
+      [
+        "dev_long",
+        "teacher"
       ]
     ]
   },
   "protocol": "Fixed physical partner: forward smoothstep, hold, true disconnect with anchor held, reconnect and smoothstep from forward anchor to reverse target, hold, final release8s. No re-anchoring to each controller, no reset between phases. Final sealed combinations never training/tuning.",
   "evaluation": "Report forward/reverse/hold and true gap separately; full XYZ force; contact error excludes inactive; first recontact may initially positive force. Real negative-force proportion and response timing are required. Preserved M6 single-task references.",
-  "fiber": "LPP physical qPD alignment/on-policy expert query reused. Projected-z auxiliary is not B(s) semantic loss. SF-guided reward B(s)^T zN belongs to expert adapter acquisition; not equated to physical quality, not introduced as requirement."
+  "fiber": "LPP physical qPD alignment/on-policy expert query reused. Projected-z auxiliary is not B(s) semantic loss. SF-guided reward B(s)^T zN belongs to expert adapter acquisition; not equated to physical quality, not introduced as requirement.",
+  "expert_revision": "After frozen qualification: original norm-only gate remains atalpha1 despite reverse force; frozen M6 Alignment physically exits successfully. Candidate teacher now uses frozen M6 Alignment deployable-input progress for native base, retaining original bounded privileged arm feedback. Not a bug fix; no teacher internal state is given to Student. Legacy force_rule remains unchanged. No teacher direct residual from Student is added."
 }
