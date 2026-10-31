@@ -17,6 +17,10 @@ P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');R=P/'bridge-v2-owne
 read=lambda p:json.loads(Path(p).read_text())
 sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def save(out,name,x):(out/name).write_text(json.dumps(x,indent=2,allow_nan=False))
+def physical_state_digest(state):
+ # Reward accumulator is not consumed by BFM, PD, physics or Student. Preserve full raw snapshot separately.
+ state=copy.deepcopy(state);state['base_tensors'].pop('rew_buf')
+ return hashlib.sha256(json.dumps(state,sort_keys=True).encode()).hexdigest()
 def enter_progress(t):return smooth((t-3.)/.75)
 def command_handoff(start,target,t,onset):return spherical(start,target,smooth((t-onset)/.75))
 def make_goal(env,model,configuration,point,delta,forward):
@@ -96,11 +100,11 @@ def run_study(env,model,contract,out):
     except UnsafePhysics as exc:boundary=dict(kind='unsafe_physics',physics=exc.row);break
    mode='prefix';env.qualification_active=False
    condition=dict(name=configuration,onset=onset,ramp=spec['ramp'],duration=release-onset,release=release,end=end,enabled=enabled,delta_xyz=delta.tolist())
-   ep=dict(label=label,controller=controller,configuration=configuration,condition=condition,initial=contact_initial or preparation_initial,preparation_initial=preparation_initial,physics=copy.deepcopy(env.trace[start:]),control=cs,decisions=ds,boundary=boundary,geometry=pose_info,goal_candidate=goal_info,contact_state_sha256=hashlib.sha256(json.dumps(contact_state,sort_keys=True).encode()).hexdigest() if contact_state else None)
+   ep=dict(label=label,controller=controller,configuration=configuration,condition=condition,initial=contact_initial or preparation_initial,preparation_initial=preparation_initial,physics=copy.deepcopy(env.trace[start:]),control=cs,decisions=ds,boundary=boundary,geometry=pose_info,goal_candidate=goal_info,contact_state_sha256=hashlib.sha256(json.dumps(contact_state,sort_keys=True).encode()).hexdigest() if contact_state else None,physical_state_sha256=physical_state_digest(contact_state) if contact_state else None)
    save(out,label+'.json',ep);save(out,label+'-contact-state.json',contact_state)
    entry=dict(label=label,seconds=len(ep['physics'])/200,complete=len(ep['physics'])==steps*4 and boundary is None,boundary=boundary);results['episodes'].append(entry);save(out,'physical-result.json',results);print('M1_PHYSICS',entry,flush=True)
    if not entry['complete']:results['status']='physical-stopped';return results
-   if configuration not in pair_start:pair_start[configuration]=ep['contact_state_sha256'];pair_anchor[configuration]=anchor.tolist()
-   else:assert ep['contact_state_sha256']==pair_start[configuration] and anchor.tolist()==pair_anchor[configuration]
+   if configuration not in pair_start:pair_start[configuration]=ep['physical_state_sha256'];pair_anchor[configuration]=anchor.tolist()
+   else:assert ep['physical_state_sha256']==pair_start[configuration] and anchor.tolist()==pair_anchor[configuration]
   results['status']='completed';assert [tensor_digest(s1),tensor_digest(a2)]==digests;save(out,'physical-result.json',results);return results
  finally:model.act=orig;env.qualification_active=False

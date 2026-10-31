@@ -10,6 +10,13 @@ class Contract(unittest.TestCase):
   t=ast.parse((D/'m1_stage.py').read_text());calls=[n for n in ast.walk(t) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id in ['deploy_input','student_input']]
   self.assertEqual(len(calls),2)
   for call in calls:self.assertFalse(any(x in ast.unparse(call) for x in ['anchor','target_z','configuration','onset']))
+ def test_pairing_ignores_only_unused_reward(self):
+  import copy,hashlib
+  t=ast.parse((D/'m1_stage.py').read_text());f=next(n for n in t.body if isinstance(n,ast.FunctionDef) and n.name=='physical_state_digest')
+  scope=dict(copy=copy,hashlib=hashlib,json=json);exec(compile(ast.Module(body=[f],type_ignores=[]),'test','exec'),scope);digest=scope['physical_state_digest']
+  a={'base_tensors':{'rew_buf':[0.0],'actions':[0.]},'qpos':[1.]};b=copy.deepcopy(a);b['base_tensors']['rew_buf']=[1e-9]
+  self.assertEqual(digest(a),digest(b));self.assertIn('rew_buf',a['base_tensors'])
+  b['qpos']=[1.01];self.assertNotEqual(digest(a),digest(b));b=copy.deepcopy(a);b['base_tensors']['actions']=[.01];self.assertNotEqual(digest(a),digest(b))
  def test_entry_is_bumpless(self):
   t=ast.parse((D/'m1_stage.py').read_text());f=next(n for n in t.body if isinstance(n,ast.FunctionDef) and n.name=='enter_progress')
   def smooth(x):x=min(1,max(0,x));return x*x*(3-2*x)
