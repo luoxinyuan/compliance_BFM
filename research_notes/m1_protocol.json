@@ -1,0 +1,114 @@
+{
+  "milestone": "M1 State-Conditioned Contact-Driven Whole-Body Responses",
+  "base_commit": "cba2a3340c28063ee7721dd4da192e99005dfa64",
+  "issue": 22,
+  "resources": {
+    "compute_cumulative_wall_seconds": 3600,
+    "cpus": 8,
+    "rss_gib": 32,
+    "owned_gpu_mib": 8192,
+    "expected_output_gib_max": 2
+  },
+  "configurations": [
+    "standing",
+    "raised"
+  ],
+  "configuration_selection": "Saved natural physical states: standing +X forward sphere margin16.68cm versus raised33.46cm; native forward pose15.51cm is not a substantially more extended arm. Raised arm has a valid original-range fixed-shoulder IK example for same+X18.6819cm; no physical constraints changed.",
+  "contact": {
+    "onset": 6.2,
+    "ramp": 4.0,
+    "release": 11.2,
+    "end": 13.2,
+    "delta_xyz": [
+      0.18681928110688906,
+      0,
+      0
+    ],
+    "K": 80,
+    "D": 8,
+    "cap_n": 5,
+    "seed": 0,
+    "anchor": "Actual wrist immediately before activation, frozen origin; identical prehistory within each configuration, no fake matched force"
+  },
+  "preparation": {
+    "standing_prefix_s": 3.0,
+    "enter_s": 0.75,
+    "settle_until": 6.2,
+    "method": "Original verified spherical standing->pose command, actual physics every step. No arbitraryqpos/historyreset. Replay exact originalinitial0 andt3 commonstate only."
+  },
+  "qualification": {
+    "free": [
+      "standing",
+      "raised"
+    ],
+    "controllers": {
+      "standing": [
+        "standing",
+        "S1",
+        "A2",
+        "goal"
+      ],
+      "raised": [
+        "standing",
+        "S1",
+        "A2",
+        "pose_hold",
+        "goal"
+      ]
+    },
+    "handoff": "At contactonset use fixed.75s original spherical pose_z->original controller command to avoid artificial85deg instant jump; actual network/force histories warmed fromt3. Label this qualification wrapper, not unchanged raw deployment. Native goal candidate follows original4s anchor progress; pose/native candidates .75s return afterrelease, S1/A2 retain originalrelease.",
+    "goal": "Standing reuses existing verifiedforward nativegoal. Raised uses ONE deterministic existing arm-geometry solver from actual contactstartq with originaljointlimits max150nfev, no newWBC: fixedendpoint originalgoal_inference; no onlineIK or directjointcontrol in PhaseA. Geometric solution is not physical success.",
+    "state_gate": "Both naturally entered and safely returned; actualcontactstart geometry must retain state difference, not pose label. Report range/margins and body participation.",
+    "physics_stop": "Nativefailure,root<.65m,pelvistilt>20deg,nonfootground,actualjointexcess>.02rad,nonfinite; stop whole milestone on real physicalunsafe condition.",
+    "usefulness": "State-dependent geometry PLUS actual response/limitation differences. If A2 is equally adequate or states not distinct, report; do not force crossover. 3Dhold<1cm remains precise task completion test; also report relativebenefits honestly."
+  },
+  "teachers": {
+    "primary": [
+      "teacher_pose",
+      "teacher_goal"
+    ],
+    "algorithm": "Unchanged existing10HzboundedJacobian .04rad/joint,.08radnorm and original50Hz.2srelease; baseBFM uses physically qualified pose/nativepath. Queryable on visited states with privilegedanchor; student never receivesprivilegedinformation.",
+    "optional_once": "Only if primary feedback leaves persistent error and nativepath safe, reuse UNCHANGED existing accumulatedcontroller .2rad/joint,.4radnorm,.4/.8rad/s,.8srelease and originalmechanical/action guards once perconfig. This is a new composition of existing teacher, not bugfix, no parameter tuning. Reject conflicting bounds rather than relax.",
+    "qualification": "Both states must have stable useful feedback teacher, fullcontacterror improves>=30% and forceRMS>=5% versus own nativeposehold, no newunsafe or excessive continuouscap; disclosehold1cmfailure. A fixedclock goal alone is not queryablefeedback expert."
+  },
+  "learning": {
+    "conditional": "No fitting until teacher task effects and corresponding legalBFM commandpath physically qualify. Do not silently extend oldstanding tangent interface; any new parameterization must be justified in preregistered supplement before training.",
+    "budget_each": {
+      "initial_updates": 1000,
+      "aggregation_updates": 500,
+      "batch": 16,
+      "seed": 0,
+      "lr": 0.0003
+    },
+    "same_initialization": true,
+    "same_network_capacity": true,
+    "same_data": true,
+    "checkpoint": "Fixed laststep, never choose onheldout",
+    "aggregation_rounds": 1,
+    "heldout": {
+      "onset": 6.55,
+      "delta_xyz": [
+        0.15,
+        0,
+        0
+      ],
+      "ramp": 4.0,
+      "release": 11.55,
+      "end": 13.56,
+      "configuration": [
+        "standing",
+        "raised"
+      ],
+      "meaning": "new timing+amplitude combination not used in labels/tuning; recoveryat13.55exact"
+    },
+    "baselines": [
+      "Standing",
+      "S1",
+      "A2",
+      "nativeposehold",
+      "simple contactrule",
+      "directlatentdistillation"
+    ]
+  },
+  "stopping": "Preserve all failures; noBFM/PD/sharedsourcechanges, noPPO/largeassets/WBC/unboundedsearch. MathematicalIK counterexample alone not physical qualification. No GPUfallback toBFM CPU. Milestone can stop at actual capability/safety/resource boundary; ordinary engineering retries stay in cumulativebudget."
+}
