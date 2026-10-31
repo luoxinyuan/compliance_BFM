@@ -35,7 +35,13 @@ def main():
   e,f=raw[key],raw[free];on=e['condition']['onset'];pre=np.array([r['force_time'] for r in e['physics']])<on-1e-8
   parity[key]={k:float(abs(np.array([r[k] for r in e['physics']])[pre]-np.array([r[k] for r in f['physics']])[pre]).max()) for k in ['qpos','qvel','wrist','force']};assert max(parity[key].values())==0
   ix=min(range(len(e['physics'])),key=lambda i:abs(e['physics'][i]['time']-e['condition']['release']));res[key]['contact_minus_free_end_cm']={k:((np.array(e['physics'][ix][k])-f['physics'][ix][k])*100).tolist() for k in ['wrist','shoulder_xyz','root']}
- result=dict(episodes=res,precontact_parity=parity,ledger=read(RUN/'compute-ledger.json'),scope='Realcontact XYZ errors only. Recovery compares fullcurves. Singlefixedseed notstatisticalproof; no outcome-selected training.')
+ # On identical timesteps, scheduled teacher base-z is state-invariant even when physical states differ.
+ global_audit={}
+ if 'u250__teacher' in raw and 'u250__m3_student' in raw:
+  a=raw['u250__teacher']['control'];b=raw['u250__m3_student']['control'];assert len(a)==len(b)
+  mask=np.array([12.4<=c['time']<19.4 for c in a]);za=np.array([c['oracle_z'][0] for c in a]);zb=np.array([c['oracle_z'][0] for c in b]);qa=np.array([c['oracle_q_PD'] for c in a]);qb=np.array([c['oracle_q_PD'] for c in b]);corr=np.array([c['oracle_correction'] for c in a])-np.array([c['oracle_correction'] for c in b])
+  global_audit=dict(same_time_global_z_max_difference=float(abs(za-zb).max()),right_arm_query_rms_deg=float(np.degrees(np.sqrt(np.mean((qa[mask,22:]-qb[mask,22:])**2)))),nonarm_query_rms_deg=float(np.degrees(np.sqrt(np.mean((qa[mask,:22]-qb[mask,:22])**2)))),feedback_correction_difference_rms_deg=float(np.degrees(np.sqrt(np.mean(corr[mask]**2)))),scope='Different true states at same task phase; equal global z does not imply equal BFM action. Nonarm query changes are frozen-BFM statefeedback, not adaptive highlevelgoal.')
+ result=dict(episodes=res,teacher_state_feedback_audit=global_audit,precontact_parity=parity,ledger=read(RUN/'compute-ledger.json'),scope='Realcontact XYZ errors only. Recovery compares fullcurves. Singlefixedseed notstatisticalproof; no outcome-selected training.')
  (dest/'physical-summary.json').write_text(json.dumps(result,indent=2,allow_nan=False))
  for k,x in res.items():
   q=x['phases'].get('all_contact',{});print(k,'3D/hold',q.get('tracking_rms_cm'),x['phases'].get('hold',{}).get('tracking_rms_cm'),'F',q.get('force_rms_n'),'cap',q.get('force_cap_fraction'),'recovery',x['recovery_speed_2_4_6_8'],'qPD',x['command_peak']);
