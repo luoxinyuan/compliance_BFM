@@ -19,3 +19,9 @@ Training fixed round2 complete:7531 initial samples (6825M5+706negative); two ac
 Signed-force rule fairness baseline calibrated from train0 negative projected labels only. No anchor, taskID or direct joint control, one fixed template scaled by measured force. No tuning from final outcomes.
 
 Engineering recovery: final-attempt01 six completed episodes preserved; onset6.65 incompatible with inherited50Hz-only anchor lookup. Fix exact200Hz physical-state reference with parity atold5/6.2/7.1s, unchanged task/weights. No re-training or repeat of completed evaluations. Old failure traceback retained; original handler did not save partial interrupted trajectory. Future exception capture added.
+
+## Final milestone decision
+
+M6 completed. Two shared final policies,7000 new updates each,17837 aggregated samples,69 complete new physical episodes/1297.88 simulated seconds. Sealed +14/-3cm Alignment error2.682/.821cm versus native8.275/1.491; Pz2.722/.914. Actual-force ablation Pz7.680/1.386. Small+3cm shared regresses5.78/7.51% versusM5 and has larger release transients; all complete branches stable and no-contact bitwise native. Not unseen-body or within-episode transition proof.
+
+Full evidence in m6_results.md and Issue27. Runtime training b9e165a; final resume c077fad. All model/physics work stopped; no push. Unique next proposal: real within-episode forward-unload-reverse contact, qualify expert at actual transfer states, then shared latent aggregation; preserve small+X quality regression, preseal new timings. Do not start until next milestone authorization.

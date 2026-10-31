@@ -21,5 +21,5 @@ def main():
   for row in range(4):axs[row,col].axvline(0,color='0.5',ls=':');axs[row,col].axvline(rel-on,color='0.5',ls=':');axs[row,col].grid(alpha=.2)
   axs[0,col].set_title(name);axs[3,col].set_xlabel('Time from contact onset (s)')
  for row,label in enumerate(['3D contact error (cm)','Actual force norm (N)','Wrist-root X increment (cm)','Native forward progress']):axs[row,0].set_ylabel(label)
- axs[0,0].legend(fontsize=8,ncol=2);fig.suptitle('M6 frozen final policies: sealed conditions, full release included');fig.tight_layout();fig.savefig(RUN/'analysis/m6-physical-curves.png',dpi=150)
+ axs[0,0].legend(fontsize=8,ncol=2);axs[0,1].legend(fontsize=8,ncol=2);fig.suptitle('M6 frozen final policies: sealed conditions, full release included');fig.tight_layout();fig.savefig(RUN/'analysis/m6-physical-curves.png',dpi=150)
 if __name__=='__main__':main()
