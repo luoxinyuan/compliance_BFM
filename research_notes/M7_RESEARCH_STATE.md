@@ -1,5 +1,9 @@
 # M7 — Contact-conditioned continuous transitions
 
+**COMPLETE — read m7_results.md first.** 54 complete physical episodes (including one posthoc real partner-hold counterfactual), two actual on-policy aggregation rounds, fixed final6500 updates/method. No next stage started. FinalM7-AA/PZ globalcontact errorsT1=1.713/1.645cm,T2=2.491/2.476cm; frozenM6=2.340/2.383,3.128/3.145. True-force benefit and same-prefix demand-dependent bodyreturn demonstrated; qPD re-entry jumps andAAoldnegative+5.72%regression preserved. Not generalcompliance or arbitrarybody/contactpoint qualification.
+
+Finalweights train2-attempt-02/outputs: AA4366d30071814a31dd9295fa58b8b8f0ee8046ae6ddb4092e7ebe6c5c4970b1e; PZba3aa67e3d452579e1cb2e40848aebc4d50fce7bb6d428e0b23b9e6726ac316e. Formalfinalruntime30f8d371; posthocphysicala6312c72. Full rawledger andall scientific/engineeringfailures remain. 4076.37s supervisedwall,1062MiB GPU,7.57GiB RSS,~2.5GiB outputs; all ownedprocesses exited. No push/Bridge/sharedmodification.
+
 User milestone authorization: same-episode forward/unload/reverse, frozen M6 baselines, queryable feedback/action projection, bounded aggregation if physically justified. No new controller/PD/weights, no PPO/large assets/push. Prior temporary gates are not global criteria.
 
 Independent source branch gaoe05/m7-continuous, base M6 2d3ed08bfc859223c59e2fa132d7349cb177a161. Issue28 information record, not queue. Run /mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m7-continuous-20261101A.
@@ -21,4 +25,4 @@ Subsequent bounded acquisition: progress-only expert (expert stage) discarded th
 
 Fixed training: each method inherits its own M6 final, same 2500+2000+2000 new updates and shared data; not an identical-initialization loss-only comparison. Two rounds each use four real transition trajectories; full old17837 dataset remains with fixed positive/negative/free sampling. Finalround2 is fixed before seeing the two sealed reversal combinations. Final-only expert shadow queries diagnose Student qPD retention but never control or retrain the Student.
 
-Resource continuation: GPU2 selected for projected/training after live free-memory check; GPU choice is not restricted to5. All runs GPU BFM, original MuJoCo CPU. Final runtime and results will be appended only after completion.
+Resource continuation: GPU2 selected for projected/training after live free-memory check; GPU choice is not restricted to5. All runs GPU BFM, original MuJoCo CPU. Completed final/resource state is recorded above and in m7_results.md.
