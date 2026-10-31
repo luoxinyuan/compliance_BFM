@@ -1,0 +1,7 @@
+{
+ "purpose": "Before any training, qualify finite interior of a continuous native command parameterization. Existing standing and raised pathways both physically qualify but are85.59degapart; oldstandingtube cannot coverboth.",
+ "map": "pose(u)=slerp(standing,raised,u); goal(u)=slerp(forward,raisedgoal,u); base=slerp(slerp(pose(u),goal(u),a),standing,r); norm16. u,a,r in[0,1]. Original.3tanh tangent andContactGate remain local aroundbase, notblind radius expansion.",
+ "physical_probe": "Exactly u=.5, original naturalentry.75s, fixed4ssmoothstep a, original.75sreturn r, one noforce andone actual+X18.6819cm branch. No scan or retune. Interiorpass is bounded evidence, notguaranteeofallcommands; learnedrollouts keeporiginalstops.",
+ "learning_if_pass": "One shared1425Ddeployableinput (originalA2 normalized465D plus6.4sactualforcehistory), two128Tanhhiddenlayers,259outputs(3continuousnativecoords+256localraw); equalbothmethods. Noanchor/configtag/time input. Actor/PD50Hz; originalresidualContactGate10Hz/.2srelease. ActualexpertqPD alignment vs projectedglobalz supervision, notteacher-alpha imitation. Fixed1000+500updates, oneaggregation, sameinit/data/seed. Hypothesishasnotyetbeenvalidated.",
+ "stop": "Anyactualphysicalunsafe or unqualifiedactioncapacity stops; nointeriorsearch, noBFM/PDmodification, nocommand smoother."
+}

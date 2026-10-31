@@ -29,6 +29,9 @@ def cached_point(env):
 def enter_progress(t):return smooth((t-3.)/.75)
 def command_handoff(start,target,t,onset):return spherical(start,target,smooth((t-onset)/.75))
 def make_goal(env,model,configuration,point,delta,forward):
+ if configuration=='midpoint':
+  from m1_interface import endpoints
+  ends=endpoints(env);return spherical(ends[2],ends[3],.5),{'source':'fixed midpoint of the two already qualified nativegoal endpoints; no optimization','new_optimization':False}
  if configuration=='standing':return forward,{'source':'existing verified forward nativegoal','new_optimization':False}
  m=env.sim.model;d=mujoco.MjData(m);q=env.sim.data.qpos.copy();ids=[mujoco.mj_name2id(m,mujoco.mjtObj.mjOBJ_JOINT,n) for n in env.sim.dof_names];arm=np.asarray(ids)[22:29];adr=m.jnt_qposadr[arm];lo,hi=m.jnt_range[arm].T;target=point+delta
  def residual(x):
@@ -42,7 +45,7 @@ def run_study(env,model,contract,out):
  if stage=='representation':
   from m1_representability import run
   return run(env,model,contract,out)
- assert stage in ['qualification','teachers','repair_teacher']
+ assert stage in ['qualification','teachers','repair_teacher','interface']
  dev=env.standing.device;m=env.sim.model;orig=model.act;spec=protocol['contact'];onset=spec['onset'];release=spec['release'];end=spec['end'];delta=np.asarray(spec['delta_xyz'])
  sp=read(Path(__file__).with_name('skill_compat_protocol.json'));s1path=R/sp['S1']['path'];a2path=R/sp['A2']['path'];assert sha(s1path)==sp['S1']['sha256'] and sha(a2path)==sp['A2']['sha256']
  s1=load_net(s1path,dev);a2,_=load_student(a2path,dev);digests=[tensor_digest(s1),tensor_digest(a2)]
@@ -52,6 +55,7 @@ def run_study(env,model,contract,out):
  scale=torch.tensor(contract['q_PD_scale'],device=dev);offset=torch.tensor(contract['q_PD_offset'],device=dev);qtarget=lambda a:offset+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5
  zero=read(R/'issue20-ccl01-20261028T082201Z/attempt-04/outputs/anchor-reference.json')['physics'];initial0=read(R/'issue21-ccl02a-20261029T153900Z/attempt-01/outputs/dev-2-initial-state.json');common=read(R/'issue21-direction-20261030T020000Z/attempt-02/outputs/common-state.json')
  jobs=[(cfg,'pose_hold',False) for cfg in protocol['configurations']]+[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in protocol['qualification']['controllers'][cfg]]
+ if stage=='interface':jobs=[('midpoint','goal',False),('midpoint','goal',True)]
  if stage=='teachers':jobs=[(cfg,ctl,True) for cfg in protocol['configurations'] for ctl in ['teacher_pose','teacher_goal']]
  if stage=='repair_teacher':jobs=[(cfg,'accumulated_goal',True) for cfg in protocol['configurations']]
  ids=[mujoco.mj_name2id(m,mujoco.mjtObj.mjOBJ_JOINT,n) for n in contract['dof_names']];vadr=m.jnt_dofadr[ids];limits=m.jnt_range[ids];arm=np.arange(22,29);sc=np.asarray(contract['q_PD_scale'])[0];off=np.asarray(contract['q_PD_offset'])[0]
@@ -118,7 +122,7 @@ def run_study(env,model,contract,out):
    for _ in range(30):_,_,done,_=env.step(torch.zeros_like(env.standing),baseline=True);assert not done
    parity={k:float(abs(np.asarray([r[k] for r in env.trace])-np.asarray([r[k] for r in zero[:600]])).max()) for k in ['qpos','qvel','wrist','root','force']};assert max(parity.values())==0;save(out,label+'-prefix.json',parity)
    env.base.rew_buf.copy_(torch.as_tensor(common['base_tensors']['rew_buf'],device=dev,dtype=env.base.rew_buf.dtype));assert snapshot(env)==common
-   pose=env.standing if configuration=='standing' else raised;cs=[];ds=[];tick=0;gate=ContactGate();memory=ForceMemory(320);raw=torch.zeros_like(env.standing);last_q=qtarget(env.previous_action).clone();last_z=env.standing.clone()
+   pose=env.standing if configuration=='standing' else spherical(env.standing,raised,.5) if configuration=='midpoint' else raised;cs=[];ds=[];tick=0;gate=ContactGate();memory=ForceMemory(320);raw=torch.zeros_like(env.standing);last_q=qtarget(env.previous_action).clone();last_z=env.standing.clone()
    fade=ReleaseFade();accum=AccumulatedCorrection([.2]*7);corr=np.zeros(7);teacher_decisions=[]
    preparation_initial=copy.deepcopy(env.trace[-1]);start=len(env.trace);anchor=None;contact_initial=None;contact_state=None;pose_info=None;goal_info=None;boundary=None
    for cfg in (env.cfg,env.tether.cfg):cfg.enabled=enabled;cfg.activation_time=onset;cfg.ramp_duration=spec['ramp'];cfg.release_time=release
@@ -140,7 +144,7 @@ def run_study(env,model,contract,out):
    if not entry['complete']:results['status']='capability-stopped' if boundary and boundary['kind']=='control_envelope' else 'physical-stopped';return results
    if configuration not in pair_start:pair_start[configuration]=ep['physical_state_sha256'];pair_anchor[configuration]=anchor.tolist()
    else:assert ep['physical_state_sha256']==pair_start[configuration] and anchor.tolist()==pair_anchor[configuration]
-  if stage!='qualification':
+  if stage in ['teachers','repair_teacher']:
    qa=[x for x in read(RUN/'compute-ledger.json')['attempts'] if x['stage']=='qualification' and x.get('result_status')=='completed'];assert len(qa)==1
    for cfg in protocol['configurations']:
     source=read(Path(qa[0]['path'])/'outputs'/(cfg+'__pose_hold__free.json'));assert pair_start[cfg]==source['physical_state_sha256']
