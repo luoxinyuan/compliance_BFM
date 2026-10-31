@@ -10,12 +10,12 @@ from m7_analysis import RUN,read
 def main():
  final=next(a for a in read(RUN/'compute-ledger.json')['attempts'] if a['stage']=='final' and a.get('result_status')=='completed');src=Path(final['path'])/'outputs'
  fig,axes=plt.subplots(5,2,figsize=(15,17),sharex='col')
- labels=['native_hold','force_rule','teacher','m6_alignment','m6_distill','alignment','distill'];colors=['.6','olive','black','cornflowerblue','violet','darkorange','teal']
+ labels=['native_hold','signed_rule','teacher','m6_alignment','m6_distill','alignment','distill'];colors=['.6','olive','black','cornflowerblue','violet','darkorange','teal']
  for col,name in enumerate(['sealed_mid','sealed_late']):
   for ctl,color in zip(labels,colors):
    e=read(src/(name+'__'+ctl+'.json.gz'));s=e['condition'];tr=s['transition'];rr=e['physics'];cs=e['control'];t=np.array([r['force_time'] for r in rr])-s['onset'];ct=np.array([c['time'] for c in cs])-s['onset'];active=np.array([r['active'] for r in rr]);err=np.array([r['error'] for r in rr])*100;err[~active]=np.nan
    f=np.linalg.norm(np.array([r['force'] for r in rr]),axis=1);w=np.array([r['wrist'] for r in rr])-np.array([r['root'] for r in rr]);i=np.argmin(abs(t));w=(w-w[i])*100
-   alpha=[c['native_coords'][0] if c['native_coords'] is not None else c['alpha'] if ctl=='teacher' else c['rule_record']['alpha'] if ctl=='force_rule' else 0 for c in cs]
+   alpha=[c['native_coords'][0] if c['native_coords'] is not None else c['alpha'] if ctl=='teacher' else c['rule_record']['alpha'] if ctl=='signed_rule' else 0 for c in cs]
    for row,y,tt in [(0,err,t),(1,f,t),(2,w[:,0],t),(3,alpha,ct),(4,np.linalg.norm(np.array([r['qvel'][:3] for r in rr]),axis=1),t)]:axes[row,col].plot(tt,y,color=color,label=ctl,lw=1.3)
   for ax in axes[:,col]:
    ax.axvspan(tr['unload']-s['onset'],tr['restart']-s['onset'],alpha=.12,color='grey')

@@ -18,6 +18,9 @@ def main():
    v=dict(source=str(p),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),actual_wrench_force_max_error=float(abs(f-wrench[:,:3]).max()),off_force_max=float(abs(f[~active]).max()) if (~active).any() else 0.,active_contract_mismatch_times=ts[mismatches].tolist(),sensor_last_physics_max_error=max(sensors),network_force_history_max_error=max(history),ready_sha=e['ready_physical_state_sha256'],bfm_input_keys=sorted(cs[0]['bfm_obs']),feature_dimension=len(cs[0]['student_input']),boundary=e['boundary'])
    assert v['actual_wrench_force_max_error']==0 and v['off_force_max']==0 and v['sensor_last_physics_max_error']<1e-6 and v['network_force_history_max_error']<1e-6
    assert len(mismatches)==0,v
+   if s['name']=='free':
+    old=read(RUN.parent/'m5-contact-lpp-20261031A/final-attempt-01/outputs/free__native_hold.json.gz')
+    v['free_vs_native']={k:float(abs(np.array([r[k] for r in rr])-np.array([r[k] for r in old['physics']])).max()) for k in ['qpos','qvel','wrist','force']}
    res[p.parent.parent.name+'/'+e['label']]=v
    if '_then_' in e['controller']:
     old=read(RUN/'qualification-attempt-01/outputs'/(s['name']+'__m6_alignment.json.gz'));base=[r for r in old['physics'] if r['force_time']<tr['restart']-1e-8];cur=[r for r in rr if r['force_time']<tr['restart']-1e-8]

@@ -31,6 +31,21 @@ class Test(unittest.TestCase):
   values=[a.step([-2.,0,0])['alpha'] for _ in range(230)]
   self.assertEqual(values[-1],0.);self.assertTrue(all(y<=x+1e-10 for x,y in zip(values[6:],values[7:])))
   for _ in range(100):self.assertEqual(a.step([0.,0,0])['alpha'],0.)
+ def test_atomic_ledger_concurrent_reader(self):
+  import tempfile,threading
+  from m7_io import write
+  with tempfile.TemporaryDirectory() as d:
+   p=Path(d)/'ledger.json';write(p,dict(n=0,payload='x'*10000));errors=[];stop=threading.Event()
+   def reader():
+    while not stop.is_set():
+     try:
+      x=json.loads(p.read_text());assert x['payload']=='x'*10000
+     except Exception as e:errors.append(str(e))
+   t=threading.Thread(target=reader);t.start()
+   try:
+    for i in range(100):write(p,dict(n=i,payload='x'*10000))
+   finally:stop.set();t.join()
+   self.assertEqual(errors,[]);self.assertEqual(json.loads(p.read_text())['n'],99)
  def test_syntax(self):
   for f in Path(__file__).parent.glob('m7_*.py'):ast.parse(f.read_text())
 if __name__=='__main__':unittest.main()

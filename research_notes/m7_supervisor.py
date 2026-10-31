@@ -9,7 +9,7 @@ RUN=P/'bridge-v2-owned/runs/m7-continuous-20261101A'
 
 
 def git(*args):return subprocess.check_output(['git','-C',str(ROOT),*args],text=True).strip()
-def write(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False))
+from m7_io import write
 def gpu(index):
     q=subprocess.check_output(['nvidia-smi','-i',str(index),'--query-gpu=uuid,memory.free,utilization.gpu','--format=csv,noheader,nounits'],text=True).strip().split(', ')
     return {'uuid':q[0],'free_mib':int(q[1]),'utilization':int(q[2])}

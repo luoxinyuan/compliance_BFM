@@ -35,11 +35,14 @@ def run_study(env,model,contract,out):
  nets={k:load_net(M6/(v+'-final.pt'),dev) for k,v in [('m6_alignment','alignment'),('m6_distill','distill')]}
  if stage.startswith('collect') or stage=='final':
   rnd=2 if stage=='final' else int(stage[-1])-1
+  if stage=='final':
+   actual={k:sha(done('train2')/(k+'-final.pt')) for k in ['alignment','distill']}
+   assert actual==protocol['final_checkpoint_sha256'],actual
   nets.update({k:load_net(done('train'+str(rnd))/(k+'-final.pt'),dev) for k in ['alignment','distill']})
  anchor_reference=read_gz(R/'m5-contact-lpp-20261031A/qualification-attempt-01/outputs/free__teacher.json.gz')['physics']
  
  identities={k:tensor_digest(v) for k,v in nets.items()};pose=env.standing;goal=ends[2]
- save(out,'references.json',dict(endpoints=[z.tolist() for z in ends],teacher='causal native force gate + original bounded arm feedback',input='force/proprio/action history only',checkpoint_hashes=identities))
+ save(out,'references.json',dict(endpoints=[z.tolist() for z in ends],teacher=('original force gate' if stage=='qualification' else 'frozen M6 deployable progress only' if stage=='expert' else 'frozen M6 full feedback')+' + original bounded arm correction',input='force/proprio/action history only',checkpoint_hashes=identities))
  scale=torch.tensor(contract['q_PD_scale'],device=dev);offset=torch.tensor(contract['q_PD_offset'],device=dev);qtarget=lambda a:offset+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5
  ids=[mujoco.mj_name2id(m,mujoco.mjtObj.mjOBJ_JOINT,n) for n in contract['dof_names']];vadr=m.jnt_dofadr[ids];limits=m.jnt_range[ids];arm=np.arange(22,29);sc=np.asarray(contract['q_PD_scale'])[0]
  zero=read(R/'issue20-ccl01-20261028T082201Z/attempt-04/outputs/anchor-reference.json')['physics'];initial0=read(R/'issue21-ccl02a-20261029T153900Z/attempt-01/outputs/dev-2-initial-state.json');common=read(R/'issue21-direction-20261030T020000Z/attempt-02/outputs/common-state.json')
@@ -98,7 +101,7 @@ def run_study(env,model,contract,out):
   else:assert effective_controller=='native_hold';command=pose
   base=orig(obs,command,mean=True);base_q=qtarget(base);action=base;oracle={}
   # Original queryable feedback, privileged labels only. No extra actuator for a Student.
-  if effective_controller in ['teacher','projected'] or (student_key in nets and stage!='final'):
+  if effective_controller in ['teacher','projected'] or (student_key in nets and (stage!='final' or student_key in ['alignment','distill'])):
    oracle_base=base if effective_controller in ['teacher','projected'] else orig(obs,feedback_command,mean=True);oq=qtarget(oracle_base)[0].cpu().numpy();point=cached_point(env)
    if tick%5==0:
     desired=np.zeros(7)
