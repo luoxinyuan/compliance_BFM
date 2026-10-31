@@ -40,7 +40,8 @@ def main():
   if basekey in raw:
    base=raw[basekey];mask=np.array([r['time'] for r in b['physics']])>=b['control_ready_s'];dw=np.array([r['wrist'] for r in b['physics']])-np.array([r['wrist'] for r in base['physics']]);report[nk]['extra_wrist_vs_native_rms_cm']=float(np.sqrt(np.mean(np.sum(dw[mask]**2,axis=-1)))*100);report[nk]['extra_wrist_vs_native_peak_cm']=float(np.linalg.norm(dw[mask],axis=-1).max()*100)
  if raw:
-  hashes={e['ready_physical_state_sha256'] for e in raw.values()};assert len(hashes)==1,hashes
+  for config in {e['configuration'] for e in raw.values()}:
+   hashes={e['ready_physical_state_sha256'] for e in raw.values() if e['configuration']==config};assert len(hashes)==1,hashes
  result=dict(episodes=report,precontact_parity=parity,no_training=True,scope='Actualbody previouslyphysicallyqualified but notStudenttraining. Recovery6s; no zero-forceanchorerrorcounted. Allphysical andqualitycosts retained.')
  dest=RUN/'analysis';dest.mkdir(exist_ok=True);(dest/'physical-summary.json').write_text(json.dumps(result,indent=2,allow_nan=False))
  for key,e in report.items():

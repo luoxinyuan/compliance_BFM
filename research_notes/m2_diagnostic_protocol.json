@@ -1,0 +1,9 @@
+{
+  "reason": "Frozen Students move toward a trained raised pose before force at the unseen midpoint; low tracking error alone does not establish unseen-state contact generalization. Full6s recovery also exposes possible temporal OOD, not necessarily a midpoint-specific failure.",
+  "unchanged": "No Student update, checkpoint selection, task change or permission expansion. Original10episodecomparison remains sealed and separate.",
+  "reference_physics": {"controllers": ["distill"], "configurations": ["standing","raised"], "episodes":2,"protocol":"Exactly M2 ready10.4/onset12.4/+X15cm/release17.4/end23.4. Only naturally prepared initialu changes to0 or1. Same frozenProjected-z and originalphysics. Diagnostic known-state controls, not newheldout results."},
+  "saved_state_cuda": {"student_blocks_each": [13.0,14.4,16.8,17.6,18.4,21.4],"frames_per_block":5,"temporary_steps":160,"interfaces":["original-size localresidual around oraclequalifiednativebase","same localresidual around frozenStudent's selectednativebase"],"gate":"Actualrecordedgate and50Hzperframelatent; no deployedoptimization","command_jump":"Two-order exact frozenBFM action decomposition at each10comparisontrace's peak target step; distinguish z vs obs contribution, not a physicalcounterfactual"},
+  "input_audit":"Savedexactdeployableh vs originalM1trainingfeatures, frozeninitialproprio inference, trainingconfigurationmanifest. CPUtensorstatistics only, noBFMCPUforward.",
+  "no_additional_physical_search":true,
+  "no_training":true
+}

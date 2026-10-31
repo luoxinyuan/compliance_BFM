@@ -26,7 +26,7 @@ def run_study(env,model,contract,out):
  if stage=='diagnostic':
   from m2_diagnostic import run
   return run(env,model,contract,out)
- assert stage in ['preparation','comparison']
+ assert stage in ['preparation','comparison','reference']
  dev=env.standing.device;m=env.sim.model;orig=model.act;spec=protocol['contact'];onset=spec['onset'];release=spec['release'];end=spec['end'];ready=protocol['preparation']['control_ready_s'];delta=np.asarray(spec['delta_xyz']);ends=endpoints(env)
  nets={k:load_net(completed('aggregate')/(k+'-final.pt'),dev) for k in ['alignment','distill']}
  for k in nets:assert sha(completed('aggregate')/(k+'-final.pt'))==protocol['checkpoints'][k]
@@ -36,7 +36,8 @@ def run_study(env,model,contract,out):
  scale=torch.tensor(contract['q_PD_scale'],device=dev);offset=torch.tensor(contract['q_PD_offset'],device=dev);qtarget=lambda a:offset+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5
  ids=[mujoco.mj_name2id(m,mujoco.mjtObj.mjOBJ_JOINT,n) for n in contract['dof_names']];vadr=m.jnt_dofadr[ids];limits=m.jnt_range[ids];arm=np.arange(22,29);sc=np.asarray(contract['q_PD_scale'])[0]
  zero=read(R/'issue20-ccl01-20261028T082201Z/attempt-04/outputs/anchor-reference.json')['physics'];initial0=read(R/'issue21-ccl02a-20261029T153900Z/attempt-01/outputs/dev-2-initial-state.json');common=read(R/'issue21-direction-20261030T020000Z/attempt-02/outputs/common-state.json')
- jobs=[(c,False) for c in protocol['preparation_jobs']] if stage=='preparation' else [(c,on) for on in [True,False] for c in protocol['comparison_controllers']]
+ jobs=[('midpoint',c,False) for c in protocol['preparation_jobs']] if stage=='preparation' else [('midpoint',c,on) for on in [True,False] for c in protocol['comparison_controllers']]
+ if stage=='reference':jobs=[(config,'distill',True) for config in ['standing','raised']]
  native_cfg=read(Path(__file__).with_name('contact_gate_protocol.json'))['gate']
  mode='prefix';controller='native_hold';enabled=False;cs=[];tick=0;last_q=None;last_z=None;anchor=None;contact_initial=None;contact_state=None;ready_state=None;ready_initial=None;geo=None
  memory=ForceMemory(320);gate=ContactGate();native=NativeGate(native_cfg);rule_context=None;fade=ReleaseFade();corr=np.zeros(7)
@@ -92,10 +93,10 @@ def run_study(env,model,contract,out):
   assert torch.isfinite(action).all() and abs(float(command.norm())-16)<1e-4
   cs.append(dict(**oracle,time=t,tether_time=t,alpha=0.,gate=None,local_gate=lg,native_coords=student_coords,student_raw=raw,student_input=deployable_h[0].tolist() if controller in nets else None,rule_context=rule_context,rule_record=rule_record,executed_z=command.tolist(),measured_force_xyz=force.tolist(),bfm_obs={k:v.tolist() for k,v in obs.items()},base_action=base[0].tolist(),base_q_PD=base_q[0].tolist(),teacher_correction=corr.tolist() if controller=='teacher' else [0.]*7,pre_anchor=env.tether.anchor.tolist(),pre_wrist=cached_point(env).tolist(),active=bool(env.tether.active),action=action[0].tolist(),standing_action=nominal[0].tolist(),nominal=nominal[0].tolist(),q_PD=q[0].tolist(),standing_q_PD=q0[0].tolist(),nominal_q_PD=q0[0].tolist(),delta_q_PD=(q-q0)[0].tolist(),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),action_saturation_fraction=float(((action*5).abs()>=contract['clip']).float().mean()),q_PD_step_max_rad=float(abs(q-last_q).max()),z_step_deg=float(torch.rad2deg(torch.acos(((command*last_z).sum()/(command.norm()*last_z.norm())).clamp(-1,1))))))
   last_q=q.clone();last_z=command.clone();tick+=1;return action
- model.act=act;results=dict(status='running',episodes=[],student_optimizer_updates=0);paired=None
+ model.act=act;results=dict(status='running',episodes=[],student_optimizer_updates=0);paired={}
  try:
-  for controller,enabled in jobs:
-   check_deadline();label='midpoint__'+controller+('' if enabled else '__free');mode='prefix';env.qualification_active=False;env.interruption_window=None
+  for configuration,controller,enabled in jobs:
+   check_deadline();u={'standing':0.,'midpoint':.5,'raised':1.}[configuration];pose=spherical(ends[0],ends[1],u);goal=spherical(ends[2],ends[3],u);label=configuration+'__'+controller+('' if enabled else '__free');mode='prefix';env.qualification_active=False;env.interruption_window=None
    for cfg in (env.cfg,env.tether.cfg):cfg.enabled=False;cfg.activation_time=onset;cfg.ramp_duration=spec['ramp'];cfg.release_time=release
    env.reset(seed=0,trajectory=(zero[0]['wrist'],[0,0,0]))
    for name in ['rew_buf','push_robot_counter','push_robot_plot_counter','command_counter','average_episode_length','torques','last_episode_length_buf']:
@@ -118,12 +119,12 @@ def run_study(env,model,contract,out):
      if str(exc)!='Teacher bound conflicts with native target; do not expand bounds':raise
      boundary=dict(kind='teacher_query_bound',time=float(env.tether.time),message=str(exc));break
    mode='prefix';env.qualification_active=False
-   condition=dict(split=stage,name='midpoint',onset=onset,ramp=spec['ramp'],duration=release-onset,release=release,end=end,enabled=enabled,delta_xyz=delta.tolist())
-   ep=dict(control_ready_s=ready,task_onset_handoff=False,ready_initial=ready_initial,ready_physical_state_sha256=physical_state_digest(ready_state) if ready_state else None,label=label,controller=controller,configuration='midpoint',condition=condition,initial=contact_initial or preparation_initial,preparation_initial=preparation_initial,physics=copy.deepcopy(env.trace[start:]),control=cs,decisions=[],teacher_decisions=[],boundary=boundary,geometry=geo,goal_candidate=dict(source='M1 fixed midpoint nativegoal; no new optimization',z=goal.tolist()),physical_state_sha256=physical_state_digest(contact_state) if contact_state else None,contact_state_sha256=hashlib.sha256(json.dumps(contact_state,sort_keys=True).encode()).hexdigest() if contact_state else None)
+   condition=dict(split=stage,name=configuration,onset=onset,ramp=spec['ramp'],duration=release-onset,release=release,end=end,enabled=enabled,delta_xyz=delta.tolist())
+   ep=dict(control_ready_s=ready,task_onset_handoff=False,ready_initial=ready_initial,ready_physical_state_sha256=physical_state_digest(ready_state) if ready_state else None,label=label,controller=controller,configuration=configuration,condition=condition,initial=contact_initial or preparation_initial,preparation_initial=preparation_initial,physics=copy.deepcopy(env.trace[start:]),control=cs,decisions=[],teacher_decisions=[],boundary=boundary,geometry=geo,goal_candidate=dict(source='M1 fixed midpoint nativegoal; no new optimization',z=goal.tolist()),physical_state_sha256=physical_state_digest(contact_state) if contact_state else None,contact_state_sha256=hashlib.sha256(json.dumps(contact_state,sort_keys=True).encode()).hexdigest() if contact_state else None)
    save(out,label+'.json',ep);save(out,label+'-contact-state.json',contact_state)
    entry=dict(label=label,seconds=len(ep['physics'])/200,complete=len(ep['physics'])==steps*4 and boundary is None,boundary=boundary);results['episodes'].append(entry);save(out,'physical-result.json',results);print('M2_PHYSICS',entry,flush=True)
    if not entry['complete']:results['status']='capability-stopped' if boundary and boundary['kind']=='teacher_query_bound' else 'physical-stopped';return results
-   if paired is None:paired=ep['ready_physical_state_sha256']
-   else:assert ep['ready_physical_state_sha256']==paired
+   if configuration not in paired:paired[configuration]=ep['ready_physical_state_sha256']
+   else:assert ep['ready_physical_state_sha256']==paired[configuration]
   results['status']='completed';assert {k:tensor_digest(v) for k,v in nets.items()}==identities;save(out,'physical-result.json',results);return results
  finally:model.act=orig;env.qualification_active=False;env.m1_anchor_hook=None
