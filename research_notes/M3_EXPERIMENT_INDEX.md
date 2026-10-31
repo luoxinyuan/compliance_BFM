@@ -33,3 +33,5 @@ GPUlivecheck:allcardsused but~60GiBfree;selectleastbusycard4 ifstillappropriate.
 - Closure:35completephysicalbranches,894.88simulatedseconds inclprefix,1500updates,8GPUstages1972.80s/710MiB/RSS7.45GiB. Allownedexited,sourceandoldSHApreserved. Results and next decision in m3_results.md/M3_RESEARCH_STATE.md. Read-only failed-state expression check below is the last finite diagnostic, no further physical or training run.
 
 - New substantial concern found in full regression analysis: knownu=.5 error28.273cm despite low teacher-data MSE. Before proposing on-policy aggregation, predefine4x5 failed-state GPU expression blocks13.2/14.4/16.0/19.4s using original pose-base query and160temporaryzsteps. No rollout/Studentupdates, same3600s resource budget. Do not inferu=.5reachability merely fromu=.625.
+
+- Final failed-state diagnosis@15302b72:4/4blocks13.2/14.4/16/19.4s pass; maxarm.01105deg/nonarm.19236deg versuscurrent3.419–35.559deg.97.26s/590MiB,owned523761exited. Grandtotal9GPUstages2070.07s,35physicalbranches,1500newStudentupdates,0BFMupdates. No further run.
