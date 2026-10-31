@@ -10,8 +10,15 @@ def main():
  ledger=read(RUN/'compute-ledger.json');res={};comparisons={};parity={}
  for a in ledger['attempts']:
   src=Path(a['path'])/'outputs';raw={}
-  for p in sorted(src.glob('*.json.gz')):
-   e=read(p);raw[e['label']]=e
+  sources=[(p,None) for p in sorted(src.glob('*.json.gz'))]
+  if a['stage']=='final':sources += [(Path(r['source']),r) for r in read(Path(__file__).with_name('m6_protocol.json'))['reused_exact_physical_controls']]
+  for p,reuse in sources:
+   e=read(p)
+   if reuse:
+    expected=read(Path(__file__).with_name('m6_protocol.json'))['conditions'][reuse['condition']]
+    assert all(e['condition'][k]==expected[k] for k in expected)
+    e['controller']=reuse['controller'];e['label']=reuse['condition']+'__'+reuse['controller']
+   raw[e['label']]=e
    for c in e['control']:
     c['oracle_alpha']=c['alpha'];c['alpha']=c['native_coords'][0] if c.get('native_coords') is not None else 0. if e['controller']=='native_hold' else c['alpha']
    x=summarize(e,{});rel=e['condition']['release'];end=e['condition']['end'];on=e['condition']['onset'];rows=e['physics'];cs=e['control'];times=np.array([r['time'] for r in rows]);ct=np.array([c['time'] for c in cs]);q=np.array([c['q_PD'] for c in cs]);dq=abs(np.diff(q,axis=0));i,j=np.unravel_index(dq.argmax(),dq.shape)

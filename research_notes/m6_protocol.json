@@ -156,6 +156,18 @@
         0
       ],
       "enabled": true
+    },
+    "test_pos_small": {
+      "onset": 7.1,
+      "release": 10.8,
+      "end": 18.8,
+      "ramp": 1.7,
+      "delta_xyz": [
+        0.03,
+        0,
+        0
+      ],
+      "enabled": true
     }
   },
   "schedule": {
@@ -294,39 +306,11 @@
     "final": [
       [
         "early",
-        "native_hold"
-      ],
-      [
-        "early",
-        "rule"
-      ],
-      [
-        "early",
-        "teacher"
-      ],
-      [
-        "early",
-        "m5"
-      ],
-      [
-        "early",
         "alignment"
       ],
       [
         "early",
         "distill"
-      ],
-      [
-        "neg_early",
-        "native_hold"
-      ],
-      [
-        "neg_early",
-        "rule"
-      ],
-      [
-        "neg_early",
-        "teacher"
       ],
       [
         "neg_early",
@@ -398,22 +382,6 @@
       ],
       [
         "free",
-        "native_hold"
-      ],
-      [
-        "free",
-        "rule"
-      ],
-      [
-        "free",
-        "teacher"
-      ],
-      [
-        "free",
-        "m5"
-      ],
-      [
-        "free",
         "alignment"
       ],
       [
@@ -423,22 +391,6 @@
       [
         "free",
         "single_negative"
-      ],
-      [
-        "pulse",
-        "native_hold"
-      ],
-      [
-        "pulse",
-        "rule"
-      ],
-      [
-        "pulse",
-        "teacher"
-      ],
-      [
-        "pulse",
-        "m5"
       ],
       [
         "pulse",
@@ -455,10 +407,112 @@
       [
         "test_neg",
         "distill_no_force"
+      ],
+      [
+        "test_pos_small",
+        "native_hold"
+      ],
+      [
+        "test_pos_small",
+        "rule"
+      ],
+      [
+        "test_pos_small",
+        "teacher"
+      ],
+      [
+        "test_pos_small",
+        "m5"
+      ],
+      [
+        "test_pos_small",
+        "alignment"
+      ],
+      [
+        "test_pos_small",
+        "distill"
       ]
     ]
   },
   "safety": "Inherited MuJoCo stops; no relaxed bounds; exact-owned process cleanup; no CPU BFM fallback",
   "scope": "Two meaningful contact response behaviors, not general direction/body/support transfer",
-  "precommitted_comparison": "Final new onset/amplitude/ramp combinations never labels or tuning. Explicit-force-history-zero Student ablation retains real tether/proprio/actions and residual gate; reports force-channel use, not total absence of contact information."
+  "precommitted_comparison": "Final new onset/amplitude/ramp combinations never labels or tuning. Explicit-force-history-zero Student ablation retains real tether/proprio/actions and residual gate; reports force-channel use, not total absence of contact information. Additional matched magnitude +3/-3cm pair at onset7.1,ramp1.7 distinguishes sign versus merely large/small demand; +3cm is outside main positive training amplitude and reported as a scope probe, never tuning data.",
+  "reused_exact_physical_controls": [
+    {
+      "condition": "early",
+      "controller": "native_hold",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/early__native_hold.json.gz"
+    },
+    {
+      "condition": "early",
+      "controller": "rule",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/early__rule.json.gz"
+    },
+    {
+      "condition": "early",
+      "controller": "teacher",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/early__teacher.json.gz"
+    },
+    {
+      "condition": "early",
+      "controller": "m5",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/early__distill.json.gz"
+    },
+    {
+      "condition": "neg_early",
+      "controller": "native_hold",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m6-multibehavior-20261031A/qualification-attempt-01/outputs/neg_early__native_hold.json.gz"
+    },
+    {
+      "condition": "neg_early",
+      "controller": "rule",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m6-multibehavior-20261031A/qualification-attempt-01/outputs/neg_early__rule.json.gz"
+    },
+    {
+      "condition": "neg_early",
+      "controller": "teacher",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m6-multibehavior-20261031A/qualification-attempt-01/outputs/neg_early__teacher.json.gz"
+    },
+    {
+      "condition": "free",
+      "controller": "native_hold",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/free__native_hold.json.gz"
+    },
+    {
+      "condition": "free",
+      "controller": "rule",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/free__rule.json.gz"
+    },
+    {
+      "condition": "free",
+      "controller": "teacher",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/free__teacher.json.gz"
+    },
+    {
+      "condition": "free",
+      "controller": "m5",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/free__distill.json.gz"
+    },
+    {
+      "condition": "pulse",
+      "controller": "native_hold",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/pulse__native_hold.json.gz"
+    },
+    {
+      "condition": "pulse",
+      "controller": "rule",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/pulse__rule.json.gz"
+    },
+    {
+      "condition": "pulse",
+      "controller": "teacher",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/pulse__teacher.json.gz"
+    },
+    {
+      "condition": "pulse",
+      "controller": "m5",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m5-contact-lpp-20261031A/final-attempt-01/outputs/pulse__distill.json.gz"
+    }
+  ],
+  "reuse_rationale": "Avoid repeating unchanged exact seed0 standing prefix/anchor/Tether/BFM/teacher controls; archive source identities and verify full resolved condition equality. New test combinations all physically executed. No metric selection."
 }
