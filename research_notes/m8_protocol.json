@@ -1,0 +1,47 @@
+{
+  "milestone": "M8",
+  "resources": {
+    "compute_cumulative_wall_seconds": 7200,
+    "cpu": 8,
+    "rss_gib": 32,
+    "vram_gib": 8,
+    "output_gib": 8
+  },
+  "qualification": {
+    "asset_audit": "asset-audit-static.json",
+    "candidates": 2,
+    "entry_start": 3.8,
+    "entry_duration": 3.0,
+    "hold_until": 9.0,
+    "return_duration": 2.0,
+    "end": 17.0,
+    "screen_qpd_step_deg": 10,
+    "root_safety_min_m": 0.45,
+    "tilt_safety_max_deg": 20,
+    "meaning": "Original MuJoCo native goal enter/hold/return; no live pose reset or new direct joint control"
+  },
+  "contact": {
+    "body": "torso_link",
+    "local_point": [
+      0.0,
+      0.0,
+      0.25
+    ],
+    "stiffness": 80.0,
+    "damping": 8.0,
+    "max_force": 5.0,
+    "semantics": "maintained-contact guidance, bilateral original Tether, not unilateral pressure"
+  },
+  "training": {
+    "method": "projected-z primary with same-state action diagnostics",
+    "steps": [
+      3000,
+      2000,
+      2000
+    ],
+    "batch": 128,
+    "lr": 0.0002,
+    "final_round": 2
+  },
+  "decision": "No new Student training until second feedback behavior physically effective and legal latent execution qualified. All candidate failures retained; at most two motion goal candidates then a justified existing fallback, no latent scan."
+}
