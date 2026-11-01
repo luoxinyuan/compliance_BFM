@@ -1,0 +1,32 @@
+{
+  "milestone": "M9",
+  "resources": {
+    "compute_cumulative_wall_seconds": 7200,
+    "cpu": 8,
+    "rss_gib": 32,
+    "vram_gib": 8,
+    "output_gib": 8
+  },
+  "base_commit": "554324f22ebedcee3498257c4348434c5d937d59",
+  "reward_tasks": [
+    "move-ego-0-0.15",
+    "move-ego-20-0.2",
+    "move-ego--20-0.2",
+    "rotate-z-0.35-0.65",
+    "rotate-z--0.35-0.65"
+  ],
+  "sampling": "Reuse original fixed seed20261030 150000 sample-indices, no seed search; original legacy alignment/global reward inference",
+  "qualification": {
+    "entry": 1.5,
+    "execute": 6.0,
+    "exit": 1.5,
+    "recover": 4.0,
+    "root_floor": 0.45,
+    "pelvis_review_deg": 30,
+    "support": "No bilateral-support requirement. Log actual forces, flight, foot motion, contact slip and undesired contacts.",
+    "notes": "Review actual behavior, not reward names. Candidate failure does not exclude whole family. No qPD smoothing/PD change; record full command and actual response."
+  },
+  "motion": "At most three existing natural6s walk windows from fixed geometry audit; native backward_map sequence, no online privileged z optimization or new WBC.",
+  "training": "Only after real feedback and legal execution effective. Fix development/held-out conditions before any training. M8PZ base and old regressions retained.",
+  "stop": "Resource exceed, actual fall/nonfoot-ground/actual joint violation, incompatible asset, or core architecture gap. Preserve partial trajectory and assess bounded independent alternatives; never pretend a safety event passed."
+}
