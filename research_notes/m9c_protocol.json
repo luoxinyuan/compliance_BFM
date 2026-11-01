@@ -4,7 +4,8 @@
     "CPU": 8,
     "RSS_GiB": 32,
     "VRAM_GiB": 8,
-    "output_GiB": 8
+    "output_GiB": 8,
+    "note": "7200s is this bounded execution allocation, not a scientific convergence threshold; no extension without user resource authorization"
   },
   "status": "bounded program, existing 7200s total resource envelope, lock actual RL samples after pilot",
   "seed": 23,
@@ -137,7 +138,18 @@
     "policy": "64x64 privileged MLP; 16 tangent residual + phase rate/turn/alpha residual, BFM and PD frozen",
     "physical_sample_plan": "48 full episodic rollouts, 50Hz BFM and 200Hz physics; Gaussian decisions10Hz; exact counts logged",
     "expert_selection": "Fixed final checkpoint; compare on development before transfer. No heldout selection; if learned adapter degrades use qualified projected feedback expert rather than call RL converged",
-    "reward": "actual XYZ force, extra YZ burden, 3D error, current partner speed/heading, relative wrist velocity, qPD jump, loaded foot slip, tilt; no cap or partner changes"
+    "reward": "actual XYZ force, extra YZ burden, 3D error, current partner speed/heading, relative wrist velocity, qPD jump, loaded foot slip, tilt; no cap or partner changes",
+    "decision_period_s": 0.1,
+    "latent_tangent_norm_max": 4.0,
+    "semantic_residual_bounds": {
+      "phase_rate": [
+        0.7788,
+        1.2841
+      ],
+      "turn_shift": 0.25,
+      "relative_alpha_shift": 0.15
+    },
+    "stopping": "Stop individual simulated trajectory at inherited unsafe boundary; keep partial trajectory and terminal penalty. Stop acquisition if all three episodes in an update fail; do not unboundedly retry."
   },
   "rl_evaluation": {
     "development_straight": {
@@ -209,5 +221,16 @@
       "family": "walking"
     }
   },
-  "sealed_status": "fixed before learning; never used to choose checkpoint"
+  "sealed_status": "fixed before learning; never used to choose checkpoint",
+  "throughput_pilot": {
+    "four_episodes_wall_seconds_excluding_load": 116.04068188893143,
+    "approx_control_samples_per_second": 29,
+    "planned_RL_episodes": 48,
+    "planned_10Hz_decisions_approx": 8500,
+    "planned_50Hz_controls_approx": 43000,
+    "planned_200Hz_physics_approx": 172000,
+    "expected_RL_wall_seconds": 1800,
+    "BFM_load_seconds_observed": 117,
+    "scope": "finite acquisition, not a convergence guarantee; 7200s total enforced"
+  }
 }

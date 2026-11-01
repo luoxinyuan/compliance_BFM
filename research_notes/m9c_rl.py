@@ -103,9 +103,11 @@ def run(env,model,contract,out,refs,stage):
  if stage=='rl':
   opt=torch.optim.Adam(net.parameters(),lr=3e-5);settings=plan['rl'];torch.save(dict(state_dict=net.state_dict(),basis=basis,input_dim=x.shape[1]),out/'initial.pt')
   for iteration in range(settings['iterations']):
-   episodes=[]
+   episodes=[];batch_stats=[]
    for j,spec in enumerate(settings['development']):
-    rows,stats=rollout(env,model,contract,refs,net,basis,spec,f'train-{iteration:02d}-{j}',out,True,True);episodes.append(rows);samples+=stats['rl_samples'];steps+=stats['physical_steps'];logs.append(stats);print('RL_ROLLOUT',iteration,j,stats['reward_mean'],stats['boundary'] and stats['boundary']['kind'],flush=True)
+    rows,stats=rollout(env,model,contract,refs,net,basis,spec,f'train-{iteration:02d}-{j}',out,True,True);episodes.append(rows);batch_stats.append(stats);samples+=stats['rl_samples'];steps+=stats['physical_steps'];logs.append(stats);print('RL_ROLLOUT',iteration,j,stats['reward_mean'],stats['boundary'] and stats['boundary']['kind'],flush=True)
+   if all(s['boundary'] is not None for s in batch_stats):
+    raise RuntimeError('All acquisition conditions fail early; preserve evidence and stop')
    u=update(net,opt,episodes);updates+=u['updates'];logs.append(dict(iteration=iteration,optimization=u));torch.save(dict(state_dict=net.state_dict(),basis=basis,input_dim=x.shape[1],iteration=iteration,rl_samples=samples,physical_steps=steps),out/f'iteration-{iteration:02d}.pt');(out/'progress.json').write_text(json.dumps(dict(logs=logs,rl_samples=samples,physical_steps=steps,updates=updates,wall_s=time.monotonic()-started),indent=2));print('RL_UPDATE',iteration,u,flush=True)
   ck=out/'expert-final.pt';torch.save(dict(state_dict=net.state_dict(),basis=basis,input_dim=x.shape[1],rl_samples=samples,physical_steps=steps,fixed_final=True),ck);result=dict(status='completed',rl_samples=samples,physical_steps=steps,optimizer_updates=updates,checkpoint=str(ck),sha256=sha(ck),logs=logs,student_optimizer_updates=0)
  else:
