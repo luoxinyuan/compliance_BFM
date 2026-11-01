@@ -20,7 +20,7 @@ def main():
     assert RUN != P/'bridge-v2-owned/runs/issue21-reward-stage-20261030A'
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gpu-index',type=int)
-    parser.add_argument('--stage',choices=['diagnose','expert','collect0','train0','collect1','train1','final'],required=True)
+    parser.add_argument('--stage',choices=['diagnose','expert','steering','collect0','train0','collect1','train1','final'],required=True)
     parser.add_argument('--execute-after-owner-gpu-notice',action='store_true')
     args=parser.parse_args()
     protocol=json.loads((ROOT/'research_notes/m9b_protocol.json').read_text())
@@ -63,7 +63,7 @@ def main():
         with (attempt/'stdout.log').open('wb') as stdout,(attempt/'stderr.log').open('wb') as stderr:
             child=subprocess.Popen(command,cwd=attempt,env=env,stdout=stdout,stderr=stderr,start_new_session=True,preexec_fn=limits)
             entry['pid']=child.pid;entry['initial_processes']=processes(child.pid);write(ledger_path,ledger)
-            next_gpu=0
+            next_gpu=0;next_storage=0
             while child.poll() is None:
                 ps=processes(child.pid);rss=sum(p['rss_bytes'] for p in ps)
                 entry['peak_rss_bytes']=max(entry['peak_rss_bytes'],rss)
@@ -80,6 +80,10 @@ def main():
                     if sum(usage.values())>8192:boundary='owned_VRAM_over_8192MiB'
                     if g['free_mib']<2048:boundary='GPU_free_below_2GiB'
                     write(ledger_path,ledger)
+                if time.monotonic()>next_storage:
+                    next_storage=time.monotonic()+30
+                    entry['output_bytes']=sum(f.stat().st_size for f in RUN.rglob('*') if f.is_file())
+                    if entry['output_bytes']>8*1024**3:boundary='continuation_outputs_over_8GiB'
                 if boundary:break
                 time.sleep(.5)
     finally:

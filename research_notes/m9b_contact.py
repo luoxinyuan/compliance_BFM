@@ -89,6 +89,9 @@ def run(env,model,contract,out,cycles=None,composition=False):
   if cycles is not None:
    from m9_cyclic import CyclicFeedback,sample
    feedback=CyclicFeedback({k:r['period'] for k,r in cycles.items()},ctl!='feedback')
+   if ctl=='filtered':
+    from m9b_feedback import GuideFilteredFeedback
+    feedback=GuideFilteredFeedback({k:r['period'] for k,r in cycles.items()},True)
    if ctl=='cadence':
     from m9b_feedback import CadenceFeedback
     feedback=CadenceFeedback({k:r['period'] for k,r in cycles.items()},True)

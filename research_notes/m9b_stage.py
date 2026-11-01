@@ -14,6 +14,9 @@ def run_study(env,model,contract,out):
   from m9b_learning import run
  else:
   from m9b_contact import run
+ if stage=='collect0':
+  from m9b_attribution import run as attribute
+  attribute(env,model,contract,out)
  if stage not in ['diagnose','train0','train1']:
   import torch
   refs=json.loads((OLD/'native-cycles.json').read_text())['cycles']
