@@ -34,4 +34,5 @@ class LatentInterface(unittest.TestCase):
   with torch.no_grad():raw[:,0]=.3;raw[:,1]=.4
   z=policy_latent(m,ends,raw,torch.ones(4));self.assertLess(float((z.norm(dim=-1)-16).abs().max()),1e-4)
   z[:,0].sum().backward();self.assertTrue(torch.isfinite(raw.grad).all());self.assertGreater(float(raw.grad.abs().sum()),0)
+  zero=torch.zeros(1,258,requires_grad=True);zz=policy_latent(m,ends,zero,torch.zeros(1));self.assertTrue(torch.equal(zz,ends[0]));(zz-ends[2]).square().sum().backward();self.assertGreater(float(zero.grad[:,1].abs().sum()),0)
 if __name__=='__main__':unittest.main()

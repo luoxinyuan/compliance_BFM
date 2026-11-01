@@ -9,7 +9,9 @@ from m8_stage import RUN,completed
 
 def blend(a,b,u):
  u=torch.as_tensor(u,device=a.device,dtype=a.dtype).reshape(-1,1);z=slerp(a,b,u)
- return torch.where(u==0,a.expand_as(z),torch.where(u==1,b.expand_as(z),z))
+ exact=torch.where(u==0,a.expand_as(z),torch.where(u==1,b.expand_as(z),z))
+ # Preserve endpoint bits AND the original smooth path derivative at initialization.
+ return z+(exact-z).detach()
 def policy_latent(model,ends,raw,gate):
  base=blend(blend(ends[0],ends[1],raw[:,0].clamp(0,1)),ends[2],raw[:,1].clamp(0,1))
  return constrained(model,base,raw[:,2:],gate)[0]
@@ -52,7 +54,7 @@ def build(env,model,contract,out,rnd):
  for path in sources:
   e=read(path);group=len(manifest);cs=e['control'];ix=list(range(0,len(cs),2));body=e['condition']['body']=='torso_link'
   for i in ix:
-   c=cs[i];assert c['oracle_query_valid'];rows.append(dict(h=c['student_input'],obs={k:c['bfm_obs'][k][0] for k in env.keys},base=c['oracle_z'][0],q=c['oracle_q_PD'],base_q=c['oracle_base_q_PD'],gate=c['local_gate'],group=group,body=body))
+   c=cs[i];assert c['oracle_query_valid'];c['student_input'][-5:]=[x*float(max(abs(v) for v in c['student_input'][465:1425])>1e-8) for x in c['student_input'][-5:]];rows.append(dict(h=c['student_input'],obs={k:c['bfm_obs'][k][0] for k in env.keys},base=c['oracle_z'][0],q=c['oracle_q_PD'],base_q=c['oracle_base_q_PD'],gate=c['local_gate'],group=group,body=body))
   manifest.append(dict(path=str(path),sha256=sha(path),samples=len(ix),controller=e['controller'],condition=e['condition'],group=group))
  d={k:torch.tensor([r[k] for r in rows],device=dev,dtype=torch.float32) for k in ['h','base','q','base_q','gate','body']};d['group']=torch.tensor([r['group'] for r in rows],device=dev);d['obs']={k:torch.tensor([r['obs'][k] for r in rows],device=dev) for k in env.keys};d['manifest']=manifest
  zs=torch.zeros_like(d['base']);ee=torch.zeros_like(d['q']);report=[]
@@ -64,7 +66,7 @@ def build(env,model,contract,out,rnd):
  d['z']=zs;write(out,'new-data-projection.json',dict(groups=report,source=manifest,samples=len(rows),steps_at_most=160,exact_native_action_shortcut=True,scope='Body expert queries original BFM at signed-force feedback latent; exact representability checked on actual observations. Wrist expert independently has original bounded right-arm correction. No direct alpha-only supervision.'))
  oldpath=completed('train'+str(rnd-1))/'dataset.pt' if rnd else RUN.parent/'m7-continuous-20261101A/train2-attempt-02/outputs/dataset.pt';old=torch.load(oldpath,map_location=dev,weights_only=True);write(out,'prior-dataset.json',dict(path=str(oldpath),sha256=sha(oldpath)))
  if rnd==0:
-  extra=torch.zeros(len(old['h']),5,device=dev);extra[:,0]=1.;old['h']=torch.cat([old['h'],extra],-1);old['body']=torch.zeros(len(old['h']),device=dev)
+  extra=torch.zeros(len(old['h']),5,device=dev);extra[:,0]=(old['h'][:,465:].abs().amax(-1)>1e-8).float();old['h']=torch.cat([old['h'],extra],-1);old['body']=torch.zeros(len(old['h']),device=dev)
  d['group']+=int(old['group'].max())+1
  for k in ['h','base','q','base_q','gate','group','z','body']:d[k]=torch.cat([old[k],d[k]])
  d['obs']={k:torch.cat([old['obs'][k],d['obs'][k]]) for k in env.keys};d['manifest']=old['manifest']+manifest

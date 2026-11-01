@@ -94,7 +94,7 @@ def contact_study(env,model,contract,out):
   body=spec['body'];local=np.asarray(spec['local_point']);isbody=body=='torso_link';env.cfg.body=body;env.cfg.local_point=local.tolist();env.tether.cfg.body=body;env.tether.cfg.local_point=local.tolist();env.tether.body=mujoco.mj_name2id(m,mujoco.mjtObj.mjOBJ_BODY,body);assert env.tether.body>0
   env.last_point=cached_point(env);initial=copy.deepcopy(env.trace[-1]);initial['wrist']=env.last_point.tolist();ready_sha=physical_state_digest(snapshot(env));start=len(env.trace);cs=[];boundary=None;lastq=qof(env.previous_action).clone();lastz=env.standing.clone();anchor=None
   for cfg in [env.cfg,env.tether.cfg]:cfg.enabled=spec['enabled'];cfg.activation_time=spec['onset'];cfg.ramp_duration=spec['ramp'];cfg.release_time=spec['release']
-  memory=ForceMemory(320);gate=ContactGate();feedback=BodyFeedback(plan['body_feedback']);fade=ReleaseFade();corr=np.zeros(7);tick=0
+  memory=ForceMemory(320);gate=ContactGate();feedback=BodyFeedback(plan['body_feedback']);fade=ReleaseFade();corr=np.zeros(7);tick=0;rule_alpha=0.
   def hook(t):
    nonlocal anchor
    if anchor is None and t>=spec['onset']-1e-8:
@@ -113,7 +113,7 @@ def contact_study(env,model,contract,out):
    for _ in range(round((spec['end']-3)*50)):
     check_deadline();t=float(env.tether.time);f=env.tether.force.copy()
     if tick%5==0:gate.update(t,f)
-    lg=gate.value(t);h0=student_input(model,env.obs,[memory.append(f.tolist())],env.keys);encoding=torch.tensor([[float(not isbody),float(isbody),*local]],device=dev,dtype=h0.dtype);h=torch.cat([h0,encoding],-1)
+    lg=gate.value(t);h0=student_input(model,env.obs,[memory.append(f.tolist())],env.keys);encoding=torch.tensor([[float(not isbody),float(isbody),*local]],device=dev,dtype=h0.dtype);encoding=encoding*(h0[:,465:].abs().amax(dim=-1,keepdim=True)>1e-8);h=torch.cat([h0,encoding],-1)
     ba=feedback.step(f);body_z=spherical(env.standing,body_goal,ba);oldraw=oldteacher(h0);oldbase=spherical(env.standing,ends[2],float(oldraw[0,0].clamp(0,1)));oldz=old_latent(model,ends,oldraw,lg)
     expertz=body_z if isbody else oldz;expertbase=body_z if isbody else oldbase;oa=orig(env.obs,expertz,mean=True);oq=qof(oa)
     if not isbody:
@@ -132,8 +132,11 @@ def contact_study(env,model,contract,out):
     elif ctl=='projected':
      from m8_learning import project
      z,pe=project(model,env.obs,expertbase,lg,qof(oa),qof,isbody);a=orig(env.obs,z,mean=True)
-    elif ctl=='rule':
-     alpha=float(np.clip(-f[2]/5.,0,1)) if isbody else float(np.clip(f[0]/5.,0,1));z=spherical(env.standing,body_goal if isbody else ends[2],alpha);a=orig(env.obs,z,mean=True)
+    elif ctl in ['rule','rule_bounded']:
+     alpha=float(np.clip(-f[2]/5.,0,1)) if isbody else float(np.clip(f[0]/5.,0,1))
+     if ctl=='rule_bounded':
+      rule_alpha=float(np.clip(alpha,rule_alpha-.5*.02,rule_alpha+.4*.02));alpha=rule_alpha
+     z=spherical(env.standing,body_goal if isbody else ends[2],alpha);a=orig(env.obs,z,mean=True)
     elif ctl=='m7':z=old_latent(model,ends,old(h0),lg);a=orig(env.obs,z,mean=True)
     else:assert ctl=='standing';z=env.standing;a=orig(env.obs,z,mean=True)
     q=qof(a);nom=orig(env.obs,env.standing,mean=True);assert torch.isfinite(a).all() and abs(float(z.norm())-16)<1e-4
