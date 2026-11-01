@@ -33,6 +33,7 @@ def build(env,model,out,rnd,old,ends):
  for source in sources:
   e=read(source)
   if not e.get('control') or e['control'][0]['controller'] in ['takeover','late_takeover']:continue
+  if e['label'].split('__')[0] in read(Path(__file__).with_name('m9b_protocol.json'))['training'].get('excluded_conditions',[]):continue
   history=ContactHistory();gate=ContactGate();rows=[];spec=e['condition'];site=spec.get('body','right_wrist_yaw_link');point=spec.get('local_point',[0,0,0]);prev=env.standing[0].cpu().numpy()
   for tick,c in enumerate(e['control']):
    check_deadline();R=Rotation.from_quat(np.array(c['pre_qpos'])[[4,5,6,3]]).as_matrix();f=c['measured_force_xyz'];history.append(f,site,point,R)

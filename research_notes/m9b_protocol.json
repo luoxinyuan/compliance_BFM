@@ -20,7 +20,11 @@
     "seed": 17,
     "checkpoint": "last update, no holdout selection",
     "replay": "M9 old dataset + newly exposed heading/straight teacher and actual visited-state queries; family-balanced",
-    "comparison": "Identical minibatches/2500 updates per round, paired own-command-memory and no-memory nets; no endpoint selection."
+    "comparison": "Identical minibatches/2500 updates per round, paired own-command-memory and no-memory nets; no endpoint selection.",
+    "excluded_conditions": [
+      "negative_heading"
+    ],
+    "exclusion_reason": "Before first update: -10deg/right developer expert translates .870m but drifts -.258m Y (17.75cm error/4.669N); not a reliable heading target. Keep complete evidence and Student gap45.80cm; do not use bad heading labels to hide expert quality problem. Training covers heading0,+8,+15 and old right curvature, new slow curvature-.15."
   },
   "stop": "Owned limits; retain unsafe partial branches and stop that candidate. No shared model/PD edits, no CPU BFM fallback.",
   "execution": {
