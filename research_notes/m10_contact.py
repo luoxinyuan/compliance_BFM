@@ -75,11 +75,13 @@ def run(env,model,contract,out,cycles=None,composition=False):
  oldrun=P/'bridge-v2-owned/runs/m8-contact-body-20261101A';qa=[a for a in json.loads((oldrun/'compute-ledger.json').read_text())['attempts'] if a['stage']=='qualification' and a.get('result_status')=='completed'];assert len(qa)==1;freepath=Path(qa[0]['path'])/'outputs/standing.json.gz'
  with gzip.open(freepath,'rt') as f:free=json.load(f)['physics']
  scale=torch.tensor(contract['q_PD_scale'],device=dev);offset=torch.tensor(contract['q_PD_offset'],device=dev);qof=lambda a:offset+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5;rows=[]
+ from m10_stage import completed as m10_completed
+ candidate_net=load_net(m10_completed('train' if stage=='collect' else 'train1')/'student-final.pt',dev) if stage in ['collect','final'] else None
  from m10_reference import load_variants
  variants,body_goals=load_variants(env,model)
  original_cycles=cycles
  for name,ctl in plan['schedule']:
-  cycles=variants['roundtrip' if ctl=='ref_roundtrip' else ('arm' if ctl=='ref_arm' else 'task')] if ctl in ['ref_roundtrip','ref_arm','ref_task','ref_projected'] else original_cycles
+  cycles=variants['roundtrip' if ctl=='ref_roundtrip' else ('arm' if ctl=='ref_arm' else 'task')] if ctl in ['candidate','ref_roundtrip','ref_arm','ref_task','ref_projected'] else original_cycles
   spec=plan['conditions'][name];label=name+'__'+ctl;parity=reset_common(env,model,orig);save(out,label+'-prefix.json',parity);rotation=None
   if spec.get('heading_deg'):
    from m9_heading import rotate_ready
@@ -142,11 +144,16 @@ def run(env,model,contract,out,cycles=None,composition=False):
      state={'alpha':body_feedback.step(f),'reference':'original' if ctl=='body_original' else 'neutral'}
      z=spherical(env.standing,body_goals[state['reference']],state['alpha']);oracle=z
     if ctl in ['ref_roundtrip','ref_arm','ref_task','ref_projected']:oracle=z
+    if ctl=='candidate':
+     if site=='torso_link':
+      state={'alpha':body_feedback.step(f),'reference':'neutral'}
+      oracle=spherical(env.standing,body_goals['neutral'],state['alpha'])
+     z=policy(model,old,ends,candidate_net,h,h8,lg)
     if not torch.isfinite(z).all() or abs(float(z.norm())-16)>1e-4:
      boundary=dict(kind='invalid_student_latent',time=t);break
     a=orig(env.obs,z,mean=True)
     correction=None;projection=None
-    if ctl in ['arm','projected','transfer','ref_projected'] and learned_query is None and spec.get('family')!='old':
+    if ctl in ['arm','projected','transfer','ref_projected','candidate'] and learned_query is None and spec.get('family')!='old':
      target,correction=arm_feedback.step(orig(env.obs,oracle,mean=True),t,tick)
      if ctl=='arm':a=target
      else:
@@ -164,4 +171,4 @@ def run(env,model,contract,out,cycles=None,composition=False):
   finally:env.qualification_active=False;env.tether.measure=original_measure
   ep=dict(label=label,initial=initial,physics=copy.deepcopy(env.trace[start:]),control=cs,boundary=boundary,condition=spec,anchor=anchor.tolist(),phases={'pre':[3,spec['onset']],'move':[spec['onset'],spec['onset']+spec['ramp']],'hold':[spec['onset']+spec['ramp'],spec['release']],'recover':[spec['release'],spec['end']]});save(out,label+'.json',ep)
   rows.append(dict(label=label,complete=boundary is None,seconds=len(ep['physics'])/200,boundary=boundary));save(out,'contact-summary.json',dict(episodes=rows));print('M9_CONTACT',label,'complete',boundary is None,flush=True)
- return dict(status='completed',episodes=rows,student_optimizer_updates=0,scope=('Frozen trained Student execution and same-state expert labeling; no online updates' if learning else 'Native feedback expert qualification; actual failures remain evidence'))
+ return dict(status='completed',episodes=rows,student_optimizer_updates=0,scope=('Frozen execution; reference ablation or Student same-state expert labeling, no online updates' if learning else 'Native feedback expert qualification; actual failures remain evidence'))

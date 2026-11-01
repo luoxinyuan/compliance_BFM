@@ -80,6 +80,48 @@
           "curvature": -0.23,
           "heading_deg": -6,
           "family": "walking"
+        },
+        "wrist_early": {
+          "onset": 5,
+          "release": 12.0,
+          "end": 20.0,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.15,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "wrist_neg_early": {
+          "onset": 5,
+          "release": 8.5,
+          "end": 16.5,
+          "ramp": 2,
+          "delta_xyz": [
+            -0.035,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
         }
       },
       "schedule": [
@@ -274,6 +316,313 @@
         ]
       ],
       "reason": "Saved reference reconstruction differs 2\u201314 deg latent; compare unchanged q/v through same FK backward-observation encoding. No claim isolated reference effect without this control."
+    },
+    "collect": {
+      "conditions": {
+        "held_straight": {
+          "onset": 4.25,
+          "ramp": 7.8,
+          "distance": 0.82,
+          "release": 14.05,
+          "end": 20.05,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": 0,
+          "family": "walking"
+        },
+        "held_heading": {
+          "onset": 5.1,
+          "ramp": 8.1,
+          "distance": 0.78,
+          "release": 15.2,
+          "end": 21.2,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": 11,
+          "family": "walking"
+        },
+        "down_test": {
+          "body": "torso_link",
+          "local_point": [
+            0,
+            0,
+            0.25
+          ],
+          "onset": 6.6,
+          "release": 12.1,
+          "end": 20.1,
+          "ramp": 3.5,
+          "delta_xyz": [
+            0,
+            0,
+            -0.09
+          ],
+          "enabled": true,
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "held_left": {
+          "onset": 4.55,
+          "ramp": 8.0,
+          "distance": 0.76,
+          "release": 14.55,
+          "end": 20.55,
+          "enabled": true,
+          "curvature": 0.4,
+          "heading_deg": 5,
+          "family": "walking"
+        },
+        "held_right": {
+          "onset": 4.65,
+          "ramp": 7.9,
+          "distance": 0.87,
+          "release": 14.55,
+          "end": 20.55,
+          "enabled": true,
+          "curvature": -0.23,
+          "heading_deg": -6,
+          "family": "walking"
+        },
+        "wrist_early": {
+          "onset": 5,
+          "release": 12.0,
+          "end": 20.0,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.15,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "wrist_neg_early": {
+          "onset": 5,
+          "release": 8.5,
+          "end": 16.5,
+          "ramp": 2,
+          "delta_xyz": [
+            -0.035,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        }
+      },
+      "schedule": [
+        [
+          "held_straight",
+          "candidate"
+        ],
+        [
+          "held_heading",
+          "candidate"
+        ],
+        [
+          "down_test",
+          "candidate"
+        ],
+        [
+          "wrist_early",
+          "candidate"
+        ],
+        [
+          "wrist_neg_early",
+          "candidate"
+        ]
+      ]
+    },
+    "final": {
+      "conditions": {
+        "new_straight": {
+          "onset": 4.7,
+          "ramp": 8.2,
+          "distance": 0.84,
+          "release": 14.9,
+          "end": 20.9,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": -6,
+          "family": "walking"
+        },
+        "new_body": {
+          "body": "torso_link",
+          "local_point": [
+            0,
+            0,
+            0.25
+          ],
+          "onset": 4.8,
+          "release": 11.8,
+          "end": 19.8,
+          "ramp": 3.8,
+          "delta_xyz": [
+            0,
+            0,
+            -0.085
+          ],
+          "enabled": true,
+          "family": "old",
+          "distance": 0.085,
+          "curvature": 0.0
+        },
+        "wrist_early": {
+          "onset": 5,
+          "release": 12.0,
+          "end": 20.0,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.15,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "wrist_neg_early": {
+          "onset": 5,
+          "release": 8.5,
+          "end": 16.5,
+          "ramp": 2,
+          "delta_xyz": [
+            -0.035,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "no_contact": {
+          "onset": 4.25,
+          "ramp": 7.8,
+          "distance": 0.82,
+          "release": 14.05,
+          "end": 20.05,
+          "enabled": false,
+          "curvature": 0,
+          "heading_deg": 0,
+          "family": "walking"
+        },
+        "held_left": {
+          "onset": 4.55,
+          "ramp": 8.0,
+          "distance": 0.76,
+          "release": 14.55,
+          "end": 20.55,
+          "enabled": true,
+          "curvature": 0.4,
+          "heading_deg": 5,
+          "family": "walking"
+        },
+        "held_right": {
+          "onset": 4.65,
+          "ramp": 7.9,
+          "distance": 0.87,
+          "release": 14.55,
+          "end": 20.55,
+          "enabled": true,
+          "curvature": -0.23,
+          "heading_deg": -6,
+          "family": "walking"
+        }
+      },
+      "schedule": [
+        [
+          "new_straight",
+          "expert"
+        ],
+        [
+          "new_straight",
+          "ablation"
+        ],
+        [
+          "new_straight",
+          "transfer"
+        ],
+        [
+          "new_straight",
+          "ref_projected"
+        ],
+        [
+          "new_straight",
+          "candidate"
+        ],
+        [
+          "new_body",
+          "standing"
+        ],
+        [
+          "new_body",
+          "m8"
+        ],
+        [
+          "new_body",
+          "body_neutral"
+        ],
+        [
+          "new_body",
+          "candidate"
+        ],
+        [
+          "wrist_early",
+          "candidate"
+        ],
+        [
+          "wrist_neg_early",
+          "candidate"
+        ],
+        [
+          "held_left",
+          "candidate"
+        ],
+        [
+          "held_right",
+          "candidate"
+        ],
+        [
+          "no_contact",
+          "standing"
+        ],
+        [
+          "no_contact",
+          "candidate"
+        ]
+      ],
+      "checkpoint": "train1/student-final.pt fixed; new straight/body not used for fitting or selection; other conditions explicitly regressions"
     }
   },
   "transfer": {
@@ -290,5 +639,23 @@
     "final_lock_utc": "2026-11-01T08:32:24.390440+00:00",
     "trained_rows": 33645
   },
-  "expert_final_sha256": "7f45da6785e49d34851a1236e1cc66898455adb43527494c658e5ff8c3efb4cf"
+  "expert_final_sha256": "7f45da6785e49d34851a1236e1cc66898455adb43527494c658e5ff8c3efb4cf",
+  "training": {
+    "seed": 41,
+    "lr": 3e-05,
+    "updates": [
+      1800,
+      1800
+    ],
+    "batch": 128,
+    "initialization": "M9B no-memory final; M9C transfer remains frozen negative baseline",
+    "pool_balance": "one third wrist, body, walking; old body-raise and old walking-hand-drop labels excluded from new supervision",
+    "sources": [
+      "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m10-task-appropriate-20261101/qualification-attempt-01/outputs/held_straight__ref_projected.json.gz",
+      "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m10-task-appropriate-20261101/qualification-attempt-01/outputs/held_heading__ref_projected.json.gz",
+      "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m10-task-appropriate-20261101/qualification-attempt-01/outputs/down_test__body_neutral.json.gz"
+    ],
+    "selection": "Fixed second-round endpoint, one actual Student visit aggregation. No final-test checkpoint selection.",
+    "teacher_choice": "Ref task with unchanged bounded arm-feedback action projection for walking; neutral-arm native goal with unchanged body feedback for torso. Walking feedback improves heading/hand but raises straight force relative to reference-only: retain this tradeoff."
+  }
 }
