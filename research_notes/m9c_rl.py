@@ -51,7 +51,8 @@ def rollout(env,model,contract,refs,net,basis,spec,label,out,stochastic=False,sa
  if spec.get('heading_deg'):
   from m9_heading import rotate_ready
   rotation,pivot,_=rotate_ready(env,model,spec['heading_deg'])
- free=read(P/'bridge-v2-owned/runs/m8-contact-body-20261101A/qualification-attempt-01/outputs/standing.json.gz')['physics'];rr=min(free,key=lambda r:abs(r['time']-spec['onset']));anchor=np.array(rr['wrist']);anchor=anchor if rotation is None else pivot+rotation@(anchor-pivot)
+ m8run=P/'bridge-v2-owned/runs/m8-contact-body-20261101A';qa=[a for a in read(m8run/'compute-ledger.json')['attempts'] if a['stage']=='qualification' and a.get('result_status')=='completed'];assert len(qa)==1
+ free=read(Path(qa[0]['path'])/'outputs/standing.json.gz')['physics'];rr=min(free,key=lambda r:abs(r['time']-spec['onset']));anchor=np.array(rr['wrist']);anchor=anchor if rotation is None else pivot+rotation@(anchor-pivot)
  for c in [env.cfg,env.tether.cfg]:c.enabled=spec['enabled'];c.activation_time=spec['onset'];c.release_time=spec['release'];c.ramp_duration=spec['ramp']
  oldmeasure=env.tether.measure;install_partner(env.tether,spec,anchor);initial=copy.deepcopy(env.trace[-1]);initial['wrist']=env.last_point.tolist();start=len(env.trace);env.qualification_active=True;fb=CyclicFeedback({k:r['period'] for k,r in refs.items()},True);prev=torch.zeros((1,19),device=env.standing.device);raw=prev.clone();records=[];cs=[];costs=[];boundary=None;block=None;rate=1.;oldq=None;scale=torch.tensor(contract['q_PD_scale'],device=prev.device);off=torch.tensor(contract['q_PD_offset'],device=prev.device);qof=lambda a:off+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5;oldq=qof(env.previous_action);blockq=oldq.clone();blockstart=len(env.trace)
  try:
