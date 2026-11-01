@@ -15,6 +15,9 @@ def main():
    row=dict(stage=a['stage'],label=e['label'],path=str(p),complete=m['complete'],boundary=m['boundary'],root=m['final_root_displacement_xyz_m'],heading_move=move.get('heading_from_ready_end_deg'),heading_end=m['final_heading_change_deg'],single_support=move.get('single_support_fraction'),slip_p95=move.get('contact_tangent_speed_p95_mps'),qpd_peak=max(x['q_PD_step_peak_deg'] for x in ph.values()),qpd_p95=max(x['q_PD_step_p95_deg'] for x in ph.values()),joint20ms_peak=max(x['actual_joint_20ms_peak_deg'] for x in ph.values()),tilt_max=max(x['pelvis_tilt_max_deg'] for x in ph.values()),height_min=min(x['root_height_min_m'] for x in ph.values()),joint_limit=m['all_joint_limit_excess_rad'],torque=max(x['torque_saturation_fraction'] for x in ph.values()),action_clip=max(c.get('action_saturation_fraction',0) for c in cs),recover_speed=rec.get('root_speed_last_second_mean_mps'),move_ego_v=move.get('root_ego_velocity_mean_mps'),condition=e['condition'])
    if active:
     F=np.array([r['force'] for r in active]);E=np.array([np.array(r['anchor'])-r['wrist'] for r in active]);row.update(error_cm=float(np.sqrt(np.mean(np.sum(E**2,1)))*100),error_xyz_cm=(np.sqrt(np.mean(E**2,0))*100).tolist(),force=float(np.sqrt(np.mean(np.sum(F**2,1)))),force_xyz=np.sqrt(np.mean(F**2,0)).tolist(),cap=float(np.mean(np.linalg.norm(F,axis=1)>=4.999)))
+    relative=np.array([np.array(r['wrist'])-r['root'] for r in active]);row['point_relative_root_range_xyz_m']=np.ptp(relative,axis=0).tolist()
+    row['point_relative_velocity_rms_mps']=float(np.sqrt(np.mean(np.sum((np.diff(relative,axis=0)/.005)**2,axis=1))))
+    row['recovery_speed_peak_mps']=rec.get('root_speed_peak_mps');row['recovery_heading_change_deg']=rec.get('heading_change_deg');row['recovery_qpd_peak_deg']=rec.get('q_PD_step_peak_deg')
    if cs and 'oracle_q_PD' in cs[0]:
     move_cs=[c for c in cs if e['condition']['onset']<=c['time']<e['condition']['release']]
     if move_cs:
