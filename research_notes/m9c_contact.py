@@ -107,6 +107,7 @@ def run(env,model,contract,out,cycles=None,composition=False):
   arm_feedback=ArmFeedback(env,contract);projection_previous=None;learned_query=None
   if whole.get('transfer',{}).get('teacher')=='rl' and ctl in ['transfer','learned_expert']:
    from m9c_rl import LearnedQuery
+   assert sha(new_completed('rl')/'expert-final.pt')==whole['expert_final_sha256']
    learned_query=LearnedQuery(env,model,cycles,new_completed('rl')/'expert-final.pt')
   boundary=None;last=qof(env.previous_action);previous_z=env.standing.clone();env.qualification_active=True
   try:
