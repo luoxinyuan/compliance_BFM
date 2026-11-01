@@ -1,4 +1,4 @@
-# M9 experiment index — in progress
+# M9 experiment index — bounded milestone finished (partial qualification)
 
 Private source: `gaoe05/m9-contact-locomotion`, inherited M8 commit `554324f22ebedcee3498257c4348434c5d937d59`.
 Run root: `/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m9-contact-locomotion-20261101A`.
@@ -31,3 +31,8 @@ Known support limitations: per-sample link/frame identity tested on real saved s
 11. `train1`: 2000 updates on 12346 accumulated samples; fixed last checkpoint `4974f8e71205d65946401f66fab3219397ac038c5e2b9406c449e3eddb9596d5`.
 12. `collect2`: seven further complete real Student trajectories. Right development root Y changed from +.129 to -.099m; move error .2125 to .1618m. Straight move error .1695 to .1960m and hold .1807 to .2596m: regression retained, not a reason to select train0 on final data.
 13. `train2`: predetermined2000 updates; final checkpoint pinned before opening final conditions: `f003afd8953b55e8f96ae1f47aea2beb80622f257cef24c451ea34fe28ab48a6` (18094 accumulated samples,8000 total updates). No extra gains, teacher variants or high-speed data introduced after speedcheck failure.
+
+14. `final`: 30/30 complete once under runtime `decf2929cbb87bb81ddcdf0db1d1d91237d3b90d`; full findings in `m9_results.md`. No further training after sealed evaluation. Original qualification failures remain in the same index. 83 complete physical trajectories including semantic/quality negatives; 1312.34 simulated seconds; one pre-physics model-run path failure preserved. Supervised compute4043.55/7200s.
+15. Saved-trace analyses: `m9_report.py`, `m9_final_audit.py`, `m9_plot.py`; outputs `m9-results.json`, `final-audit.json`, per-stage capability metrics and four full trajectory plots. Only plot labeling/layout adjusted after final; no model or physics changes.
+
+Final model `train2-attempt-01/outputs/projected-z-final.pt`, SHA `f003afd8953b55e8f96ae1f47aea2beb80622f257cef24c451ea34fe28ab48a6`; frozen M8-PZ dependency retained. Final pairing, native source/weight, no-force, contract and cleanup audit passed. Runtime has exited. Do not automatically start another round, overwrite old evidence, push, or replay consumed runs.
