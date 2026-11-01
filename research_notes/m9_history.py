@@ -19,7 +19,7 @@ class ContactHistory:
   for r in self.rows:
    # All old forces represented in the SAME current body frame; historical
    # orientation columns separately retain their relationship to current frame.
-   force=R.T@np.asarray(r['force_world']);rel=R.T@np.asarray(r['world_R_body']);link=[r['link']=='right_wrist_yaw_link',r['link']=='torso_link']
+   force=R.T@np.asarray(r['force_world']) if r['measurement_valid'] else np.zeros(3);rel=R.T@np.asarray(r['world_R_body']);link=[r['link']=='right_wrist_yaw_link',r['link']=='torso_link']
    rows.append(np.r_[force/5,link,r['local_point'],r['measurement_valid'],r['contact_detected'],rel[:2,:2].ravel()])
   a=np.zeros((self.length,14));
   if rows:a[-len(rows):]=rows

@@ -13,7 +13,7 @@ class History(unittest.TestCase):
  def test_empty_invalid_and_no_contact(self):
   import numpy as np
   from m9_history import ContactHistory
-  h=ContactHistory(2);self.assertEqual(h.features(np.eye(3)).sum(),0);h.append([0,0,0],'torso_link',[0,0,.25],np.eye(3));self.assertIsNone(h.rows[-1]['link']);h.append([1,0,0],'torso_link',[0,0,.25],np.eye(3),False);self.assertFalse(h.rows[-1]['contact_detected'])
+  h=ContactHistory(2);self.assertEqual(h.features(np.eye(3)).sum(),0);h.append([0,0,0],'torso_link',[0,0,.25],np.eye(3));self.assertIsNone(h.rows[-1]['link']);h.append([1,0,0],'torso_link',[0,0,.25],np.eye(3),False);self.assertFalse(h.rows[-1]['contact_detected']);np.testing.assert_array_equal(h.features(np.eye(3))[-1,:3],0)
  def test_source_budget(self):
   p=Path(__file__).parent
   for f in p.glob('m9_*.py'):ast.parse(f.read_text())
