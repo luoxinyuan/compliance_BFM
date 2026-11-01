@@ -38,7 +38,7 @@ def install_partner(tether,spec,anchor):
 def run(env,model,contract,out):
  plan=json.loads(Path(__file__).with_name('m9_protocol.json').read_text())['contact_pilot'];orig=model.act;dev=env.standing.device
  refs={k:torch.tensor(json.loads((completed('tracking')/(k+'-reference.json')).read_text())['z'],device=dev) for k in ['straight','left','right']}
- freepath=P/'bridge-v2-owned/runs/m8-contact-body-20261101A/qualification-attempt-01/outputs/standing.json.gz'
+ oldrun=P/'bridge-v2-owned/runs/m8-contact-body-20261101A';qa=[a for a in json.loads((oldrun/'compute-ledger.json').read_text())['attempts'] if a['stage']=='qualification' and a.get('result_status')=='completed'];assert len(qa)==1;freepath=Path(qa[0]['path'])/'outputs/standing.json.gz'
  with gzip.open(freepath,'rt') as f:free=json.load(f)['physics']
  scale=torch.tensor(contract['q_PD_scale'],device=dev);offset=torch.tensor(contract['q_PD_offset'],device=dev);qof=lambda a:offset+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5;rows=[]
  for name,ctl in plan['schedule']:
