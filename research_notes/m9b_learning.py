@@ -32,7 +32,7 @@ def build(env,model,out,rnd,old,ends):
  sources=sorted(completed('collect'+str(rnd)).glob('*.json.gz'))
  for source in sources:
   e=read(source)
-  if not e.get('control'):continue
+  if not e.get('control') or e['control'][0]['controller'] in ['takeover','late_takeover']:continue
   history=ContactHistory();gate=ContactGate();rows=[];spec=e['condition'];site=spec.get('body','right_wrist_yaw_link');point=spec.get('local_point',[0,0,0]);prev=env.standing[0].cpu().numpy()
   for tick,c in enumerate(e['control']):
    check_deadline();R=Rotation.from_quat(np.array(c['pre_qpos'])[[4,5,6,3]]).as_matrix();f=c['measured_force_xyz'];history.append(f,site,point,R)
@@ -55,6 +55,7 @@ def run(env,model,contract,out):
    if k in ['center','scale']:ns[k][:4945]=v;ns[k][4945:]=0 if k=='center' else 1
    elif k=='net.0.weight':ns[k][:,:4945]=v;ns[k][:,4945:]=0
    else:ns[k]=v
+  mem=torch.cat([g['previous_z']/16 for g in groups]);ns['center'][4945:]=mem.mean(0);ns['scale'][4945:]=mem.std(0,unbiased=False).clamp_min(.02)
   net.load_state_dict(ns)
   test=groups[0];assert torch.allclose(net(torch.cat([test['h'][:8],test['previous_z'][:8]/16],-1)),legacy(test['h'][:8]),atol=2e-6,rtol=2e-6)
  else:net=load_memory(completed('train0')/'memory-final.pt',dev)

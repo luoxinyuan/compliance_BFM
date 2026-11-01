@@ -326,6 +326,10 @@
         [
           "negative_heading",
           "legacy"
+        ],
+        [
+          "heading",
+          "late_takeover"
         ]
       ]
     },
@@ -530,6 +534,22 @@
         [
           "down_test",
           "student"
+        ],
+        [
+          "straight",
+          "ablation"
+        ],
+        [
+          "heading",
+          "ablation"
+        ],
+        [
+          "slow_heading",
+          "ablation"
+        ],
+        [
+          "negative_heading",
+          "ablation"
         ]
       ]
     },
@@ -985,5 +1005,6 @@
     "selection": "Final train1 last update; no test-conditioned selection. Earlier M9 final is now known development. Left remains capability probe, no claim supported family."
   },
   "own_command_memory": "Append previous executed legal-z/16 (own command, no teacher phase) to existing features. Zero-added first layer preserves M9 initial policy exactly. Labels queried by original feedback memory on actual Student force trace; takeover tests qualify local use. No expert true phase supplied.",
-  "steering_hypothesis": "Saved active expert wrist relative-root Y ranges .06-.10m, non-X force energy~49-64%; instantaneous current wrist-error guide can feed gait oscillations back into steering. One fixed half-native-stride=.71s guide filter, no alpha or turn-gain changes; compare physical outcomes, not assumed cause. No further filter scan."
+  "steering_hypothesis": "Saved active expert wrist relative-root Y ranges .06-.10m, non-X force energy~49-64%; instantaneous current wrist-error guide can feed gait oscillations back into steering. One fixed half-native-stride=.71s guide filter, no alpha or turn-gain changes; compare physical outcomes, not assumed cause. No further filter scan.",
+  "query_audit": "Early t6 and later t10 on exposed +15 development: student\u2192original expert using expert shadow memory advanced only on that actual rollout. Takeover branches excluded from training, retained as local query capability evidence."
 }

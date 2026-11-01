@@ -105,10 +105,10 @@ def run(env,model,contract,out,cycles=None,composition=False):
      if tick%5==0:oldgate.update(t,f)
      lg=oldgate.value(t);h,h8=inputs(model,env.obs,env.keys,history,R);world=np.zeros((320,3));world[-len(history.rows):]=np.array([r['force_world'] for r in history.rows]);legacy=student_input(model,env.obs,[world.tolist()],env.keys);enc=torch.tensor([[float(site=='right_wrist_yaw_link'),float(site=='torso_link'),*point]],device=dev,dtype=legacy.dtype)*(legacy[:,465:].abs().amax(-1,keepdim=True)>1e-8);oldz=old_latent(model,ends,old(torch.cat([legacy,enc],-1)),lg)
      if spec.get('family')=='old':oracle=oldz
-     if ctl in ['legacy','takeover']:z=policy(model,old,ends,legacy_net,h,h8,lg)
+     if ctl in ['legacy','takeover','late_takeover']:z=policy(model,old,ends,legacy_net,h,h8,lg)
      elif ctl=='ablation':z=policy(model,old,ends,ablation_net,h,h8,lg)
      elif ctl=='student':z=memory_policy(model,old,ends,memory_net,h,h8,lg,previous_z)
-     if ctl=='takeover' and t>=6.:z=oracle
+     if (ctl=='takeover' and t>=6.) or (ctl=='late_takeover' and t>=10.):z=oracle
      elif ctl=='m8':z=oldz
      elif ctl=='expert':z=oracle
      tick+=1
