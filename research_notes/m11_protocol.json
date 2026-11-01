@@ -2,7 +2,7 @@
   "seed": 71,
   "prior_sha256": "1742ba74e9ec871abf8577eb9a276d7a1e614cd3184330a008dd9c4a7031bcd8",
   "resources": {
-    "compute_cumulative_wall_seconds": 1800,
+    "compute_cumulative_wall_seconds": 14400,
     "cpu": 8,
     "rss_gib": 32,
     "vram_gib": 8,
@@ -160,5 +160,20 @@
       "enabled": false,
       "family": "walking"
     }
+  },
+  "training_budget": {
+    "rollout_workers": 3,
+    "decisions_per_worker_batch": 256,
+    "iterations": 160,
+    "target_RL_decisions": 122880,
+    "estimated_episodes": "roughly 650-750 complete finite episodes, actual count recorded",
+    "physics_steps_per_RL_decision": 20,
+    "control_steps_per_RL_decision": 5,
+    "throughput_probe_decisions": 1536,
+    "measured_sampling_decisions_per_second": [
+      12.191864079,
+      9.24
+    ],
+    "note": "Full-history feature batching is semantics-tested; actual formal throughput and cumulative wall budget decide remaining capacity. 1536 probe decisions/18 optimizer updates are not formal checkpoint training. No convergence claim from budget completion."
   }
 }

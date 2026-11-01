@@ -43,7 +43,7 @@ def main():
             rows=evaluate([(name+'__'+mode,spec,mode) for name,spec in plan['final'].items() for mode in ['prior','m10_expert','learned']],a.output/'evaluation');status='completed';atomic(a.output/'final-summary.json',rows)
         else:
             if a.stage=='train':
-                initial=evaluate([(name+'__learned',spec,'learned') for name,spec in plan['dev'].items()],a.output/'dev-initial');best=min(best,selection(initial));save('best.pt');atomic(a.output/'selection.json',dict(score=best,path=str(a.output/'best.pt'),rule=plan['selection']))
+                initial=evaluate([(name+'__learned',spec,'learned') for name,spec in plan['dev'].items()],a.output/'dev-initial');best=min(best,selection(initial));save('best.pt');save(f'best-at-{iteration:04d}.pt');atomic(a.output/'selection.json',dict(score=best,path=str(a.output/'best.pt'),rule=plan['selection']))
             status='running';iterations=2 if a.stage=='throughput' else a.iterations
             for local_it in range(iterations):
                 if time.monotonic()-started>a.max_seconds:status='time_budget';break
@@ -59,7 +59,7 @@ def main():
                 if iteration%5==0 or a.stage=='throughput':save('latest.pt')
                 if a.stage=='train' and iteration%plan['evaluate_every']==0:
                     rows=evaluate([(name+'__learned',spec,'learned') for name,spec in plan['dev'].items()],a.output/f'dev-{iteration:04d}');score=selection(rows)
-                    if score<best:best=score;save('best.pt');atomic(a.output/'selection.json',dict(score=score,iteration=iteration,decisions=decisions,path=str(a.output/'best.pt'),rule=plan['selection']))
+                    if score<best:best=score;save('best.pt');save(f'best-at-{iteration:04d}.pt');atomic(a.output/'selection.json',dict(score=score,iteration=iteration,decisions=decisions,path=str(a.output/'best.pt'),rule=plan['selection']))
                     atomic(a.output/f'dev-{iteration:04d}/score.json',dict(score=score,best=best));print('M11_DEV',iteration,score,best,flush=True)
                 if a.stage=='throughput' and local_it==0:torch.save({k:v.cpu() for k,v in batch.items()},a.output/'diagnostic-batch.pt')
             else:status='completed'

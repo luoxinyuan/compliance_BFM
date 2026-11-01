@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np,torch
 from m8_stage import reset_common,advance
 from m9_learning import old_context,load_net,inputs,policy,read,sha
-from m9_history import ContactHistory
+from m11_history import FastHistory as ContactHistory
 from contact_projector import ContactGate
 from m10_contact import install_partner
 from locomotion_rollout import UnsafePhysics,spherical

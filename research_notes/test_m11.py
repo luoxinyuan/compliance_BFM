@@ -20,5 +20,20 @@ def test_GAE_never_crosses_terminal_or_worker():
  a,ret=advantages(r,v,v,torch.ones_like(r),done,1.)
  assert torch.equal(a,torch.tensor([[3.,60.],[2.,50.],[3.,30.]]));assert torch.equal(a,ret)
 
+def test_history_same_physical_coordinates():
+ import numpy as np
+ from scipy.spatial.transform import Rotation
+ from m9_history import ContactHistory
+ from m11_history import FastHistory
+ a=ContactHistory();b=FastHistory();rng=np.random.default_rng(41)
+ for i in range(400):
+  f=rng.normal(size=3) if i%5 else np.zeros(3);R=Rotation.from_rotvec(rng.normal(size=3)).as_matrix()
+  args=(f,'right_wrist_yaw_link' if i%2 else 'torso_link',[.1,0,.2],R,i%7!=0)
+  a.append(*args);b.append(*args)
+  if i in [0,10,319,399]:
+   x=a.features(R);y=b.features(R)
+   assert np.allclose(x,y,atol=1e-15)
+   assert np.array_equal(x.astype(np.float32),y.astype(np.float32))
+
 if __name__=='__main__':
- test_raw_probability_and_legal_projection();test_GAE_never_crosses_terminal_or_worker();print('M11 mock/unit tests passed')
+ test_history_same_physical_coordinates();test_raw_probability_and_legal_projection();test_GAE_never_crosses_terminal_or_worker();print('M11 mock/unit tests passed')
