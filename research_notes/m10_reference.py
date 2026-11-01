@@ -15,12 +15,12 @@ def prepare(env,model,out):
  assert env.sim.dof_names[14]=='waist_pitch_joint'
  waist_shift=float(straight[:,7+14].mean()-left[:,7+14].mean())
  variants={};evidence=[]
- for variant in ['arm','task']:
+ for variant in ['roundtrip','arm','task']:
   refs=copy.deepcopy(original)
   for name,r in refs.items():
    raw=json.loads((OLD/'tracking-attempt-01/outputs'/(name+'-reference.json')).read_text());q=np.array(r['q']);v=np.array(raw['qvel_world_root_angular'])[r['start_index']:r['end_index']].copy();qnew=q.copy();vnew=v.copy()
-   qnew[:,22:]=standing_q[22:] # qpos7 + joint15: both free/reference arms
-   vnew[:,21:]=0. # qvel6 + joint15
+   if variant!='roundtrip':qnew[:,22:]=standing_q[22:] # qpos7 + joint15: both free/reference arms
+   if variant!='roundtrip':vnew[:,21:]=0. # qvel6 + joint15
    if variant=='task' and name=='straight':qnew[:,21]-=waist_shift
    zs=[];orig_errors=[]
    for i,(qi,vi) in enumerate(zip(qnew,vnew)):

@@ -9,7 +9,7 @@ def run_study(env,model,contract,out):
  from m10_reference import prepare
  from m10_contact import run
  stage=os.environ['M9_STAGE'];start=time.monotonic()
- if stage=='qualification':prepare(env,model,out)
+ if stage in ['qualification','source_control']:prepare(env,model,out)
  refs=json.loads((OLD/'native-cycles.json').read_text())['cycles']
  for r in refs.values():r['tensor']=torch.tensor(r['z'],device=env.standing.device)
  result=run(env,model,contract,out,cycles=refs)

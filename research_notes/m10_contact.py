@@ -79,7 +79,7 @@ def run(env,model,contract,out,cycles=None,composition=False):
  variants,body_goals=load_variants(env,model)
  original_cycles=cycles
  for name,ctl in plan['schedule']:
-  cycles=variants['arm' if ctl=='ref_arm' else 'task'] if ctl in ['ref_arm','ref_task','ref_projected'] else original_cycles
+  cycles=variants['roundtrip' if ctl=='ref_roundtrip' else ('arm' if ctl=='ref_arm' else 'task')] if ctl in ['ref_roundtrip','ref_arm','ref_task','ref_projected'] else original_cycles
   spec=plan['conditions'][name];label=name+'__'+ctl;parity=reset_common(env,model,orig);save(out,label+'-prefix.json',parity);rotation=None
   if spec.get('heading_deg'):
    from m9_heading import rotate_ready
@@ -141,7 +141,7 @@ def run(env,model,contract,out,cycles=None,composition=False):
     if ctl in ['body_original','body_neutral']:
      state={'alpha':body_feedback.step(f),'reference':'original' if ctl=='body_original' else 'neutral'}
      z=spherical(env.standing,body_goals[state['reference']],state['alpha']);oracle=z
-    if ctl in ['ref_arm','ref_task','ref_projected']:oracle=z
+    if ctl in ['ref_roundtrip','ref_arm','ref_task','ref_projected']:oracle=z
     if not torch.isfinite(z).all() or abs(float(z.norm())-16)>1e-4:
      boundary=dict(kind='invalid_student_latent',time=t);break
     a=orig(env.obs,z,mean=True)
