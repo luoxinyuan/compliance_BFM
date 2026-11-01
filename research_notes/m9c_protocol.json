@@ -1,0 +1,1 @@
+{"resources":{"compute_cumulative_wall_seconds":7200,"CPU":8,"RSS_GiB":32,"VRAM_GiB":8,"output_GiB":8},"status":"throughput and fixed positive control first; training budget locked after pilot","seed":23}
