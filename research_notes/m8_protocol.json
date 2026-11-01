@@ -486,5 +486,9 @@
     "not_for_training_or_checkpoint_selection": true
   },
   "evaluation_note": "Down-test and position variation sealed before contact qualification. Old wrist episodes are explicitly regressions. Fixed final round2. No teacher-label accuracy gate or required AA victory; task benefit and stable physical behavior determine conclusion.",
-  "rule_baseline": "Raw proportional native progress in first qualification has release jump15.81deg. Final comparator is same proportional target with SAME .4/s entry/.5/s return rate as feedback expert, no altered BFM/PD or joint smoother; preserves raw-rule negative result."
+  "rule_baseline": "Raw proportional native progress in first qualification has release jump15.81deg. Final comparator is same proportional target with SAME .4/s entry/.5/s return rate as feedback expert, no altered BFM/PD or joint smoother; preserves raw-rule negative result.",
+  "final_checkpoint_sha256": {
+    "distill": "74f624a96abc3fd4ea63da101dfb0177bf8f426d6fa4da8717d7b219aaee086a",
+    "alignment": "dddb6b536ca33410f300c59dba4b1a7e608d061ba7e9990ebb96b74c1d5ed1d9"
+  }
 }
