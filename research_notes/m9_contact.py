@@ -50,7 +50,11 @@ def run(env,model,contract,out,cycles=None,composition=False):
   from m8_learning import policy_latent as old_latent
   from contact_projector import ContactGate
   from alpha_student import student_input
-  old,ends=old_context(env);rnd=2 if stage=='final' else int(stage[-1])-1;net=load_net(completed('train'+str(rnd))/'projected-z-final.pt',dev)
+  old,ends=old_context(env);rnd=2 if stage=='final' else int(stage[-1])-1;checkpoint=completed('train'+str(rnd))/'projected-z-final.pt'
+  if stage=='final':
+   import hashlib
+   assert hashlib.sha256(checkpoint.read_bytes()).hexdigest()==whole['final_checkpoint_sha256']
+  net=load_net(checkpoint,dev)
  composition=composition or (learning and whole.get('use_composition_expert',False))
  if composition:turn_z=torch.tensor(json.loads((completed('infer')/'reward-candidates.json').read_text())['rotate-z-0.35-0.65']['z'],device=dev)
  refs={k:torch.tensor(json.loads((completed('tracking')/(k+'-reference.json')).read_text())['z'],device=dev) for k in ['straight','left','right']}

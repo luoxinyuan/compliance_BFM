@@ -1031,5 +1031,8 @@
         "privileged"
       ]
     ]
-  }
+  },
+  "final_checkpoint_sha256": "f003afd8953b55e8f96ae1f47aea2beb80622f257cef24c451ea34fe28ab48a6",
+  "final_checkpoint_locked_utc": "2026-11-01T04:46:56.381322+00:00",
+  "final_checkpoint_selection": "Predeclared round2 last update (8000 total); no final condition run before this SHA lock"
 }
