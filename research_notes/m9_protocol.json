@@ -28,5 +28,77 @@
   },
   "motion": "At most three existing natural6s walk windows from fixed geometry audit; native backward_map sequence, no online privileged z optimization or new WBC.",
   "training": "Only after real feedback and legal execution effective. Fix development/held-out conditions before any training. M8PZ base and old regressions retained.",
-  "stop": "Resource exceed, actual fall/nonfoot-ground/actual joint violation, incompatible asset, or core architecture gap. Preserve partial trajectory and assess bounded independent alternatives; never pretend a safety event passed."
+  "stop": "Resource exceed, actual fall/nonfoot-ground/actual joint violation, incompatible asset, or core architecture gap. Preserve partial trajectory and assess bounded independent alternatives; never pretend a safety event passed.",
+  "contact_pilot": {
+    "fixed_before_physics": true,
+    "controller": "Force-world LP tau .25s; body-forward target clamp((f_x-.25)/2,0,1), alpha slew +.6/-.9 per s; phase advances50Hz while alpha>.05; no force/anchor/time labels;6s reference budget recorded; turn f_y/max(abs(f_x),1), slew1/s; slerp native references then standing. This is a feedback hypothesis, not a qualified teacher.",
+    "conditions": {
+      "straight": {
+        "onset": 3.8,
+        "ramp": 7.0,
+        "distance": 0.8,
+        "release": 13.0,
+        "end": 18.0,
+        "enabled": true,
+        "curvature": 0
+      },
+      "left": {
+        "onset": 3.8,
+        "ramp": 7.0,
+        "distance": 0.8,
+        "release": 13.0,
+        "end": 18.0,
+        "enabled": true,
+        "curvature": 0.4363323129985824
+      },
+      "right": {
+        "onset": 3.8,
+        "ramp": 7.0,
+        "distance": 0.8,
+        "release": 13.0,
+        "end": 18.0,
+        "enabled": true,
+        "curvature": -0.4363323129985824
+      },
+      "free": {
+        "onset": 3.8,
+        "ramp": 7.0,
+        "distance": 0.8,
+        "release": 13.0,
+        "end": 18.0,
+        "enabled": false,
+        "curvature": 0
+      }
+    },
+    "schedule": [
+      [
+        "straight",
+        "standing"
+      ],
+      [
+        "straight",
+        "feedback"
+      ],
+      [
+        "left",
+        "standing"
+      ],
+      [
+        "left",
+        "feedback"
+      ],
+      [
+        "right",
+        "standing"
+      ],
+      [
+        "right",
+        "feedback"
+      ],
+      [
+        "free",
+        "feedback"
+      ]
+    ]
+  }
 }
