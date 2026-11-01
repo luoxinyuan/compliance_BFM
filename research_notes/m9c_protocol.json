@@ -552,6 +552,9 @@
       "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m9c-expert-20261101/rl_eval-attempt-01/outputs/development_heading__rl.json.gz"
     ],
     "selection_reason": "Final learned expert reduces straight force by19.1% and error8.8%, retains heading-domain error with modest force gain; less heading penalty than arm/projection. Slow curve excluded from labels because no proven improvement. Only development used.",
-    "final_test_policy": "all30 predefined complete trajectories, fixed final1000+1000 update checkpoint, no selection from sealed"
+    "final_test_policy": "all30 predefined complete trajectories, fixed final1000+1000 update checkpoint, no selection from sealed",
+    "final_sha256": "01ba43aa305496ac63bd25dba621920c48d1b2d8be2a977fdefc0bf940949f1a",
+    "final_lock_utc": "2026-11-01T08:32:24.390440+00:00",
+    "trained_rows": 33645
   }
 }

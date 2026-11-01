@@ -45,11 +45,14 @@ def main():
     overlays.append((screen(point),screen(anchor),screen(point+.065*force)))
    frame=Image.fromarray(np.concatenate(views,axis=1));d=ImageDraw.Draw(frame)
    for contact_px,anchor_px,force_px in overlays:
-    if contact_px is not None and force_px is not None:d.line([contact_px,force_px],fill=(255,220,0),width=3)
+    if contact_px is not None and force_px is not None:
+     d.line([contact_px,force_px],fill=(255,220,0),width=3);v=np.array(force_px)-contact_px;length=np.linalg.norm(v)
+     if length>8:
+      v=v/length;side=np.array([-v[1],v[0]]);tip=np.array(force_px);d.polygon([tuple(tip),tuple(tip-9*v+4*side),tuple(tip-9*v-4*side)],fill=(255,220,0))
     for xy,color,letter in [(contact_px,(0,255,255),'C'),(anchor_px,(255,40,40),'A')]:
      if xy is not None:
-      x,y=xy;d.ellipse((x-5,y-5,x+5,y+5),outline=color,width=2);d.text((x+7,y-10),letter,font=small,fill=color)
-   d.rectangle((0,0,1280,110),fill=(15,20,28));d.text((12,6),title,font=font,fill='white');d.text((12,31),f'ACTUAL qpos replay | 1x / 25fps | physics t={r["time"]:.2f}s | contact={r.get("active",False)}',font=small,fill='white');d.text((12,54),f'Force XYZ N: {force[0]:+.2f}, {force[1]:+.2f}, {force[2]:+.2f}   |F|={np.linalg.norm(force):.2f}   error={np.linalg.norm(anchor-point)*100:.1f}cm',font=small,fill='white');d.text((12,77),'Cyan: contact | red: anchor | yellow: ACTUAL force (0.065m/N) | blue: heading/root path',font=small,fill='white');d.text((12,115),'FIXED WORLD oblique',font=small,fill='black');d.text((652,115),'FIXED WORLD overhead',font=small,fill='black');w.append_data(np.asarray(frame))
+      x,y=xy;d.ellipse((x-5,y-5,x+5,y+5),outline=color,width=2);d.text((x+7,y-16 if letter=='A' else y+4),letter,font=small,fill=color)
+   d.rectangle((0,0,1280,126),fill=(15,20,28));d.text((12,6),title+(' | PHYSICS FAILURE / truncated' if e['boundary'] else ''),font=font,fill='white');d.text((12,31),f'ACTUAL qpos replay | 1x / 25fps | physics t={r["time"]:.2f}s | contact={r.get("active",False)}',font=small,fill='white');d.text((12,54),f'Force XYZ N: {force[0]:+.2f}, {force[1]:+.2f}, {force[2]:+.2f}   |F|={np.linalg.norm(force):.2f}   error={np.linalg.norm(anchor-point)*100:.1f}cm',font=small,fill='white');d.text((12,77),'Cyan: contact | red: anchor | yellow: ACTUAL force (0.065m/N) | blue: heading/root path',font=small,fill='white');d.text((12,100),f'Body yaw={np.degrees(np.arctan2(R[1,0],R[0,0])):+.1f}deg | foot normal N={r.get("foot_normal_force_n",[])}',font=small,fill='white');d.text((12,131),'FIXED WORLD oblique',font=small,fill='black');d.text((652,131),'FIXED WORLD overhead',font=small,fill='black');w.append_data(np.asarray(frame))
    if n in [0,len(times)//2,len(times)-1]:frame.save(out/(label+f'-frame{n}.jpg'))
   w.close();active=[r for r in rs if r.get('active')];F=np.array([r['force'] for r in active]);E=np.array([np.array(r['anchor'])-r['wrist'] for r in active]);manifest.append(dict(label=label,title=title,source=str(source),source_sha256=digest(source),video=str(path),video_sha256=digest(path),frames=len(times),fps=25,expected_duration=len(times)/25,physics_range=[float(ts[0]),float(ts[-1])],condition=e['condition'],error_cm=float(np.sqrt((E**2).sum(1).mean())*100),force_rms=float(np.sqrt((F**2).sum(1).mean())),boundary=e['boundary'],render_wall_s=time.monotonic()-started));(out/'manifest.json').write_text(json.dumps(manifest,indent=2));print(label,'DONE',manifest[-1]['render_wall_s'],flush=True)
  renderer.close()
