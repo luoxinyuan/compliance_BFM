@@ -12,6 +12,17 @@ P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');RUN=P/'bridge-v2-ow
 def completed(stage):
  a=[a for a in json.loads((RUN/'compute-ledger.json').read_text())['attempts'] if a['stage']==stage and a.get('result_status')=='completed'];assert len(a)==1;return Path(a[0]['path'])/'outputs'
 def run_study(env,model,contract,out):
+ stage=os.environ['M9_STAGE']
+ if stage.startswith('train'):
+  from m9_learning import train
+  return train(env,model,contract,out,int(stage[-1]))
+ if stage.startswith('collect') or stage=='final':
+  from m9_contact import run
+  import hashlib
+  assert hashlib.sha256((RUN/'native-cycles.json').read_bytes()).hexdigest()==json.loads((ROOT/'research_notes/m9_protocol.json').read_text())['native_cycles_sha256']
+  refs=json.loads((RUN/'native-cycles.json').read_text())['cycles']
+  for r in refs.values():r['tensor']=torch.tensor(r['z'],device=env.standing.device)
+  return run(env,model,contract,out,cycles=refs)
  if os.environ['M9_STAGE']=='infer':
   from m9_infer import run
   return run(env,model,contract,out)

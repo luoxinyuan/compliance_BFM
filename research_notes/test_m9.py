@@ -44,4 +44,12 @@ class History(unittest.TestCase):
   f=CyclicFeedback(dict(straight=1.42,left=1.24,right=1.52))
   for _ in range(1000):s=f.step([3,0,0],np.eye(3))
   self.assertGreater(s['phase'],10);self.assertEqual(s['alpha'],1);self.assertFalse(s['reference_exhausted'])
+ def test_legacy_adapter_does_not_relabel_other_link_history(self):
+  import numpy as np
+  from m9_history import ContactHistory
+  from m9_learning import sensor_features
+  h=ContactHistory();h.append([2,0,0],'right_wrist_yaw_link',[0,0,0],np.eye(3));h.append([0,0,-3],'torso_link',[0,0,.25],np.eye(3));new,old=sensor_features(h,np.eye(3));new=new.reshape(320,14)
+  self.assertEqual(new[-2,3],1);self.assertEqual(new[-1,4],1);np.testing.assert_array_equal(old[:960].reshape(320,3)[-2],0);np.testing.assert_allclose(old[-5:],[0,1,0,0,.25])
+ def test_fixed_final_not_model_selection(self):
+  x=json.loads(Path(__file__).with_name('m9_protocol.json').read_text());self.assertEqual(x['training_fixed']['steps'],[4000,2000,2000]);self.assertFalse(x['sealed_before_training']['opened']);self.assertNotIn('unsupported_left',x['execution']['collect1']['conditions']);self.assertEqual(len(x['execution']['final']['schedule']),25)
 if __name__=='__main__':unittest.main()

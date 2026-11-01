@@ -4,7 +4,7 @@ The partner specifies a real curved tether trajectory. The controller sees only
 measured force, pelvis orientation, and its own command/phase memory. Native
 reference exhaustion is recorded explicitly, not interpreted as learned intent.
 """
-import copy,json,math,types,gzip
+import copy,json,math,types,gzip,os
 from pathlib import Path
 import numpy as np,torch
 from m9_stage import RUN,P,completed
@@ -29,32 +29,62 @@ def install_partner(tether,spec,anchor):
  from humanoidverse.force_compliance.interaction import spring_force
  def measure(self):
   u=float(np.clip((self.time-spec['onset'])/spec['ramp'],0,1));s=spec['distance']*smooth(u);speed=spec['distance']*6*u*(1-u)/spec['ramp'] if 0<u<1 else 0.;k=spec['curvature']
-  displacement=np.array([s,0,0]) if abs(k)<1e-9 else np.array([np.sin(k*s)/k,(1-np.cos(k*s))/k,0])
-  self.anchor=anchor+displacement;self.partner_velocity=speed*np.array([np.cos(k*s),np.sin(k*s),0]);self.active=bool(spec['enabled'] and spec['onset']<=self.time<spec['release']);point,velocity=self.point_state()
+  displacement=np.array([s,0,0]) if abs(k)<1e-9 else np.array([np.sin(k*s)/k,(1-np.cos(k*s))/k,0]);velocity=speed*np.array([np.cos(k*s),np.sin(k*s),0])
+  if 'delta_xyz' in spec:displacement=smooth(u)*np.array(spec['delta_xyz']);velocity=6*u*(1-u)/spec['ramp']*np.array(spec['delta_xyz']) if 0<u<1 else np.zeros(3)
+  connected=spec['enabled']
+  if spec.get('transition'):
+   from m7_partner import segment
+   base,delta,start,ramp,connected=segment(spec,self.time);u=float(np.clip((self.time-start)/ramp,0,1));displacement=np.array([base+delta*smooth(u),0,0]);velocity=np.array([delta*6*u*(1-u)/ramp,0,0]) if 0<u<1 else np.zeros(3)
+  self.anchor=anchor+displacement;self.partner_velocity=velocity;self.active=bool(connected and spec['onset']<=self.time<spec['release']);point,velocity=self.point_state()
   self.force=spring_force(self.anchor,point,self.partner_velocity,velocity,self.cfg.stiffness,self.cfg.damping,self.cfg.max_force) if self.active else np.zeros(3)
   return point,self.force.copy()
  tether.measure=types.MethodType(measure,tether)
 
 def run(env,model,contract,out,cycles=None):
- plan=json.loads(Path(__file__).with_name('m9_protocol.json').read_text())['contact_pilot' if cycles is None else 'cyclic_pilot'];orig=model.act;dev=env.standing.device
+ whole=json.loads(Path(__file__).with_name('m9_protocol.json').read_text());stage=os.environ['M9_STAGE'];learning=stage.startswith('collect') or stage=='final';plan=whole['execution'][stage] if learning else whole['contact_pilot' if cycles is None else 'cyclic_pilot'];orig=model.act;dev=env.standing.device
+ if learning:
+  from m9_learning import old_context,inputs,policy,load_net
+  from m8_learning import policy_latent as old_latent
+  from contact_projector import ContactGate
+  from alpha_student import student_input
+  old,ends=old_context(env);rnd=2 if stage=='final' else int(stage[-1])-1;net=load_net(completed('train'+str(rnd))/'projected-z-final.pt',dev)
  refs={k:torch.tensor(json.loads((completed('tracking')/(k+'-reference.json')).read_text())['z'],device=dev) for k in ['straight','left','right']}
  oldrun=P/'bridge-v2-owned/runs/m8-contact-body-20261101A';qa=[a for a in json.loads((oldrun/'compute-ledger.json').read_text())['attempts'] if a['stage']=='qualification' and a.get('result_status')=='completed'];assert len(qa)==1;freepath=Path(qa[0]['path'])/'outputs/standing.json.gz'
  with gzip.open(freepath,'rt') as f:free=json.load(f)['physics']
  scale=torch.tensor(contract['q_PD_scale'],device=dev);offset=torch.tensor(contract['q_PD_offset'],device=dev);qof=lambda a:offset+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5;rows=[]
  for name,ctl in plan['schedule']:
-  spec=plan['conditions'][name];label=name+'__'+ctl;parity=reset_common(env,model,orig);save(out,label+'-prefix.json',parity);anchor=np.array(min(free,key=lambda r:abs(r['time']-spec['onset']))['wrist']);original_measure=env.tether.measure
+  spec=plan['conditions'][name];label=name+'__'+ctl;parity=reset_common(env,model,orig);save(out,label+'-prefix.json',parity);rr=min(free,key=lambda r:abs(r['time']-spec['onset']));site=spec.get('body','right_wrist_yaw_link');point=np.array(spec.get('local_point',[0,0,0]));anchor=np.array(rr['wrist']) if site=='right_wrist_yaw_link' else np.array(rr['body_positions']['torso_link'])+np.array(rr['torso_matrix'])@point;original_measure=env.tether.measure
+  if learning:
+   import mujoco
+   env.cfg.body=site;env.cfg.local_point=point.tolist();env.tether.cfg.body=site;env.tether.cfg.local_point=point.tolist();env.tether.body=mujoco.mj_name2id(env.sim.model,mujoco.mjtObj.mjOBJ_BODY,site);oldgate=ContactGate();tick=0
+   from m1_stage import cached_point
+   env.last_point=cached_point(env)
+   if spec.get('family')=='old' and site=='right_wrist_yaw_link':
+    from m6_reference import wrist_at_time
+    with gzip.open(P/'bridge-v2-owned/runs/m5-contact-lpp-20261031A/qualification-attempt-01/outputs/free__teacher.json.gz','rt') as f:oldfree=json.load(f)['physics']
+    anchor=np.asarray(wrist_at_time(oldfree,spec['onset']))
   for c in [env.cfg,env.tether.cfg]:c.enabled=spec['enabled'];c.activation_time=spec['onset'];c.ramp_duration=spec['ramp'];c.release_time=spec['release']
   install_partner(env.tether,spec,anchor);start=len(env.trace);initial=copy.deepcopy(env.trace[-1]);history=ContactHistory();feedback=NativeFeedback();cs=[]
+  initial['wrist']=env.last_point.tolist()
   if cycles is not None:
    from m9_cyclic import CyclicFeedback,sample
-   feedback=CyclicFeedback({k:r['period'] for k,r in cycles.items()},ctl=='privileged')
+   feedback=CyclicFeedback({k:r['period'] for k,r in cycles.items()},ctl in ['privileged','student','expert'])
   boundary=None;last=qof(env.previous_action);env.qualification_active=True
   try:
    for _ in range(round((spec['end']-3)*50)):
-    check_deadline();t=float(env.tether.time);R=env.sim.data.xmat[1].reshape(3,3).copy();f=env.tether.force.copy();sensor=history.append(f,'right_wrist_yaw_link',[0,0,0],R);guide=None if cycles is None else getattr(env.tether,'partner_velocity',np.zeros(3))+.5*(env.tether.anchor-env.last_point)
+    check_deadline();t=float(env.tether.time);R=env.sim.data.xmat[1].reshape(3,3).copy();f=env.tether.force.copy();sensor=history.append(f,site,point,R);guide=None if cycles is None else getattr(env.tether,'partner_velocity',np.zeros(3))+.5*(env.tether.anchor-env.last_point)
     state=feedback.step(f,R) if cycles is None else feedback.step(f,R,guide=guide)
-    idx=min(300,int(round(state['phase']/.02)));turn=state['turn'];base=refs['straight'][idx:idx+1] if cycles is None else sample(cycles['straight'],state['phase']);other=refs['left' if turn>=0 else 'right'][idx:idx+1] if cycles is None else sample(cycles['left' if turn>=0 else 'right'],state['phase']);native=spherical(base,other,abs(turn));z=env.standing if ctl=='standing' else spherical(env.standing,native,state['alpha']);a=orig(env.obs,z,mean=True);q=qof(a)
-    cs.append(dict(time=t,**state,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),q_PD_step_max_rad=float((q-last).abs().max()),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),sensor=sensor,measured_force_xyz=f.tolist(),bfm_obs={k:v.tolist() for k,v in env.obs.items()},action_saturation_fraction=float(((a*5).abs()>=contract['clip']).float().mean())))
+    idx=min(300,int(round(state['phase']/.02)));turn=state['turn'];base=refs['straight'][idx:idx+1] if cycles is None else sample(cycles['straight'],state['phase']);other=refs['left' if turn>=0 else 'right'][idx:idx+1] if cycles is None else sample(cycles['left' if turn>=0 else 'right'],state['phase']);native=spherical(base,other,abs(turn));oracle=spherical(env.standing,native,state['alpha']);z=env.standing if ctl=='standing' else oracle
+    if learning:
+     if tick%5==0:oldgate.update(t,f)
+     lg=oldgate.value(t);h,h8=inputs(model,env.obs,env.keys,history,R);world=np.zeros((320,3));world[-len(history.rows):]=np.array([r['force_world'] for r in history.rows]);legacy=student_input(model,env.obs,[world.tolist()],env.keys);enc=torch.tensor([[float(site=='right_wrist_yaw_link'),float(site=='torso_link'),*point]],device=dev,dtype=legacy.dtype)*(legacy[:,465:].abs().amax(-1,keepdim=True)>1e-8);oldz=old_latent(model,ends,old(torch.cat([legacy,enc],-1)),lg)
+     if spec.get('family')=='old':oracle=oldz
+     if ctl=='student':z=policy(model,old,ends,net,h,h8,lg)
+     elif ctl=='m8':z=oldz
+     elif ctl=='expert':z=oracle
+     tick+=1
+    a=orig(env.obs,z,mean=True);q=qof(a);oq=qof(orig(env.obs,oracle,mean=True))
+    cs.append(dict(time=t,**state,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),oracle_z=oracle.tolist(),oracle_q_PD=oq[0].tolist(),oracle_query_valid=True,q_PD_step_max_rad=float((q-last).abs().max()),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),sensor=sensor,measured_force_xyz=f.tolist(),bfm_obs={k:v.tolist() for k,v in env.obs.items()},action_saturation_fraction=float(((a*5).abs()>=contract['clip']).float().mean())))
     last=q.clone()
     try:
      if advance(env,a):boundary=dict(kind='native_termination',time=float(env.tether.time));break
