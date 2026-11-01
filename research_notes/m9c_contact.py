@@ -58,15 +58,16 @@ def run(env,model,contract,out,cycles=None,composition=False):
  memory_net=None;ablation_net=None
  if True:
   checkpoint=P/'bridge-v2-owned/runs/m9-feedback-continuation-20261101B/train1-attempt-01/outputs/memory-final.pt'
-  if False:
-   import hashlib
-   assert hashlib.sha256(checkpoint.read_bytes()).hexdigest()==whole['final_checkpoint_sha256']
-   assert hashlib.sha256(checkpoint.with_name('no-memory-final.pt').read_bytes()).hexdigest()==whole['final_no_memory_sha256']
+  import hashlib
+  assert hashlib.sha256(checkpoint.read_bytes()).hexdigest()=='57b346158c9ce1bbc18dc0be59991c5f4710bd4077746bf913d4a0c4d3f12634'
+  assert hashlib.sha256(checkpoint.with_name('no-memory-final.pt').read_bytes()).hexdigest()=='ad81e5736f165353a3d45afa3dc5f8a11b76c153f4ac7ddc6db5660f8dcbac78'
   memory_net=load_memory(checkpoint,dev)
   ablation_net=load_net(checkpoint.with_name('no-memory-final.pt'),dev)
  transfer_net=None
  if stage in ['collect','final']:
-  transfer_net=load_net(new_completed('train' if stage=='collect' else 'train1')/'student-final.pt',dev)
+  transfer_path=new_completed('train' if stage=='collect' else 'train1')/'student-final.pt'
+  if stage=='final':assert sha(transfer_path)==whole['transfer']['final_sha256']
+  transfer_net=load_net(transfer_path,dev)
  composition=False
  composition=composition or (learning and whole.get('use_composition_expert',False))
  if composition:turn_z=torch.tensor(json.loads((completed('infer')/'reward-candidates.json').read_text())['rotate-z-0.35-0.65']['z'],device=dev)
