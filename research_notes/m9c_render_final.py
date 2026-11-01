@@ -8,7 +8,8 @@ P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM')
 ROOT=Path(__file__).resolve().parents[1]
 RUN=P/'bridge-v2-owned/runs/m9c-expert-20261101'
 SRC=P/'bridge-v2-owned/runs/m9-feedback-continuation-20261101B/final-attempt-01/outputs'
-ITEMS=json.loads((RUN/'video-new-sources.json').read_text())
+FAILURES=os.environ.get('M9_STAGE')=='videos_failures'
+ITEMS=json.loads((RUN/('video-failure-sources.json' if FAILURES else 'video-new-sources.json')).read_text())
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def geom(scene,typ,pos,size,color,end=None):
  g=scene.geoms[scene.ngeom];mujoco.mjv_initGeom(g,typ,np.asarray(size,float),np.asarray(pos,float),np.eye(3).flatten(),np.asarray(color,np.float32))
@@ -16,7 +17,7 @@ def geom(scene,typ,pos,size,color,end=None):
  scene.ngeom+=1
 
 def main():
- out=RUN/'videos-new';out.mkdir(exist_ok=True);xml=ROOT/'humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml';model=mujoco.MjModel.from_xml_path(str(xml));model.vis.global_.offwidth=640;model.vis.global_.offheight=640
+ out=RUN/('videos-failures' if FAILURES else 'videos-new');out.mkdir(exist_ok=True);xml=ROOT/'humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml';model=mujoco.MjModel.from_xml_path(str(xml));model.vis.global_.offwidth=640;model.vis.global_.offheight=640
  model.site_rgba[:,3]=0 # Hide static XML debug markers, not recorded contact annotations.
  data=mujoco.MjData(model);renderer=mujoco.Renderer(model,height=640,width=640);font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',17);small=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',14)
  manifest=[]
