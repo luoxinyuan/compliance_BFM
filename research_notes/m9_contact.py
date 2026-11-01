@@ -55,7 +55,12 @@ def run(env,model,contract,out,cycles=None,composition=False):
  with gzip.open(freepath,'rt') as f:free=json.load(f)['physics']
  scale=torch.tensor(contract['q_PD_scale'],device=dev);offset=torch.tensor(contract['q_PD_offset'],device=dev);qof=lambda a:offset+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5;rows=[]
  for name,ctl in plan['schedule']:
-  spec=plan['conditions'][name];label=name+'__'+ctl;parity=reset_common(env,model,orig);save(out,label+'-prefix.json',parity);rr=min(free,key=lambda r:abs(r['time']-spec['onset']));site=spec.get('body','right_wrist_yaw_link');point=np.array(spec.get('local_point',[0,0,0]));anchor=np.array(rr['wrist']) if site=='right_wrist_yaw_link' else np.array(rr['body_positions']['torso_link'])+np.array(rr['torso_matrix'])@point;original_measure=env.tether.measure
+  spec=plan['conditions'][name];label=name+'__'+ctl;parity=reset_common(env,model,orig);save(out,label+'-prefix.json',parity);rotation=None
+  if spec.get('heading_deg'):
+   from m9_heading import rotate_ready
+   rotation,pivot,initialization=rotate_ready(env,model,spec['heading_deg']);save(out,label+'-heading.json',initialization)
+  rr=min(free,key=lambda r:abs(r['time']-spec['onset']));site=spec.get('body','right_wrist_yaw_link');point=np.array(spec.get('local_point',[0,0,0]));anchor=np.array(rr['wrist']) if site=='right_wrist_yaw_link' else np.array(rr['body_positions']['torso_link'])+np.array(rr['torso_matrix'])@point;original_measure=env.tether.measure
+  if rotation is not None:anchor=pivot+rotation@(anchor-pivot)
   if learning:
    import mujoco
    env.cfg.body=site;env.cfg.local_point=point.tolist();env.tether.cfg.body=site;env.tether.cfg.local_point=point.tolist();env.tether.body=mujoco.mj_name2id(env.sim.model,mujoco.mjtObj.mjOBJ_BODY,site);oldgate=ContactGate();tick=0
@@ -73,7 +78,7 @@ def run(env,model,contract,out,cycles=None,composition=False):
    feedback=CyclicFeedback({k:(cycles['straight']['period'] if composition else r['period']) for k,r in cycles.items()},ctl in ['privileged','student','expert'])
   boundary=None;last=qof(env.previous_action);env.qualification_active=True
   try:
-   for _ in range(round((spec['end']-3)*50)):
+   for _ in range(round((spec['end']-float(env.tether.time))*50)):
     check_deadline();t=float(env.tether.time);R=env.sim.data.xmat[1].reshape(3,3).copy();f=env.tether.force.copy();sensor=history.append(f,site,point,R);guide=None if cycles is None else getattr(env.tether,'partner_velocity',np.zeros(3))+.5*(env.tether.anchor-env.last_point)
     state=feedback.step(f,R) if cycles is None else feedback.step(f,R,guide=guide)
     idx=min(300,int(round(state['phase']/.02)));turn=state['turn'];base=refs['straight'][idx:idx+1] if cycles is None else sample(cycles['straight'],state['phase']);other=refs['left' if turn>=0 else 'right'][idx:idx+1] if cycles is None else sample(cycles['left' if turn>=0 else 'right'],state['phase']);native=spherical(base,other,abs(turn));native=model.project_z(sample(cycles['straight'],state['phase'])+(.03+.03*turn)*(turn_z-env.standing)) if composition else native;oracle=spherical(env.standing,native,state['alpha']);z=env.standing if ctl=='standing' else oracle
@@ -85,8 +90,12 @@ def run(env,model,contract,out,cycles=None,composition=False):
      elif ctl=='m8':z=oldz
      elif ctl=='expert':z=oracle
      tick+=1
-    a=orig(env.obs,z,mean=True);q=qof(a);oq=qof(orig(env.obs,oracle,mean=True))
-    cs.append(dict(time=t,**state,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),oracle_z=oracle.tolist(),oracle_q_PD=oq[0].tolist(),oracle_query_valid=True,q_PD_step_max_rad=float((q-last).abs().max()),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),sensor=sensor,measured_force_xyz=f.tolist(),bfm_obs={k:v.tolist() for k,v in env.obs.items()},action_saturation_fraction=float(((a*5).abs()>=contract['clip']).float().mean())))
+    if not torch.isfinite(z).all() or abs(float(z.norm())-16)>1e-4:
+     boundary=dict(kind='invalid_student_latent',time=t);break
+    a=orig(env.obs,z,mean=True)
+    if not torch.isfinite(a).all():boundary=dict(kind='nonfinite_actor_action',time=t);break
+    q=qof(a);oq=qof(orig(env.obs,oracle,mean=True))
+    cs.append(dict(time=t,controller=ctl,oracle_controller_state=state,native_execution_state=state if ctl in ['feedback','privileged'] or (ctl=='expert' and spec.get('family')!='old') else None,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),oracle_z=oracle.tolist(),oracle_q_PD=oq[0].tolist(),oracle_query_valid=True,q_PD_step_max_rad=float((q-last).abs().max()),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),sensor=sensor,measured_force_xyz=f.tolist(),bfm_obs={k:v.tolist() for k,v in env.obs.items()},action_saturation_fraction=float(((a*5).abs()>=contract['clip']).float().mean())))
     last=q.clone()
     try:
      if advance(env,a):boundary=dict(kind='native_termination',time=float(env.tether.time));break

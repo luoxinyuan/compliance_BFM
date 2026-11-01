@@ -60,7 +60,6 @@ def build(env,model,contract,out,rnd,old,ends,plan):
    check_deadline();R=Rotation.from_quat(np.array(c['pre_qpos'])[[4,5,6,3]]).as_matrix();f=c.get('measured_force_xyz',c.get('sensor',{}).get('force_world'));assert f is not None
    history.append(f,site,point,R)
    if tick%5==0:gate.update(c['time'],f)
-   if tick%2:continue
    x,l=sensor_features(history,R);rows.append(dict(x=x,l=l,obs={k:c['bfm_obs'][k][0] for k in env.keys},z=(c['oracle_z'] if rnd else c['executed_z'])[0],q=c['oracle_q_PD'] if rnd else c['q_PD'],gate=gate.value(c['time'])))
   ob={k:torch.tensor(np.array([r['obs'][k] for r in rows]),device=dev,dtype=torch.float32) for k in env.keys};norm=model._normalize(ob);pro=torch.cat([norm[k].reshape(len(rows),-1).float() for k in env.keys],-1);h=torch.cat([pro,torch.tensor(np.array([r['x'] for r in rows]),device=dev,dtype=torch.float32)],-1);h8=torch.cat([pro,torch.tensor(np.array([r['l'] for r in rows]),device=dev,dtype=torch.float32)],-1)
   group=dict(h=h,h8=h8,z=torch.tensor([r['z'] for r in rows],device=dev),q=torch.tensor([r['q'] for r in rows],device=dev),gate=torch.tensor([r['gate'] for r in rows],device=dev),obs=ob)

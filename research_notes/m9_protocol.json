@@ -195,7 +195,8 @@
       "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m8-contact-body-20261101A/final-attempt-01/outputs/wrist_sealed_mid__distill.json.gz",
       "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m8-contact-body-20261101A/final-attempt-01/outputs/wrist_free__distill.json.gz"
     ],
-    "sampler": "Equal update count old/walking; uniform group within family. Old M8 final traces are now explicit rehearsal/development sources, never new held-out claims."
+    "sampler": "Equal update count old/walking; uniform group within family. Old M8 final traces are now explicit rehearsal/development sources, never new held-out claims.",
+    "control_label_rate_hz": 50
   },
   "execution": {
     "collect1": {
@@ -700,6 +701,17 @@
           "family": "old",
           "distance": 0.0,
           "curvature": 0.0
+        },
+        "new_heading": {
+          "onset": 4.8,
+          "ramp": 7.5,
+          "distance": 0.8,
+          "release": 14.3,
+          "end": 20.3,
+          "enabled": true,
+          "curvature": 0,
+          "family": "walking",
+          "heading_deg": 15
         }
       },
       "schedule": [
@@ -802,6 +814,26 @@
         [
           "wrist_sealed_mid",
           "student"
+        ],
+        [
+          "new_heading",
+          "standing"
+        ],
+        [
+          "new_heading",
+          "feedback"
+        ],
+        [
+          "new_heading",
+          "expert"
+        ],
+        [
+          "new_heading",
+          "m8"
+        ],
+        [
+          "new_heading",
+          "student"
         ]
       ]
     }
@@ -847,9 +879,20 @@
         "enabled": false,
         "curvature": 0,
         "family": "walking"
+      },
+      "new_heading": {
+        "onset": 4.8,
+        "ramp": 7.5,
+        "distance": 0.8,
+        "release": 14.3,
+        "end": 20.3,
+        "enabled": true,
+        "curvature": 0,
+        "family": "walking",
+        "heading_deg": 15
       }
     },
-    "interpretation": "New speed/curvature/onset combinations. Left is a predeclared capability-boundary test, excluded from training, not expected to pass. Starting heading remains same verified standing; unseen initial heading NOT claimed.",
+    "interpretation": "New speed/curvature/onset combinations plus15deg initial heading relative to fixed world partner path. Initial heading is a rigid transform of the verified standing state with .4s real standing/history refresh, no joint-pose edit. Left is a capability-boundary condition excluded from training; none of these final physical conditions have run.",
     "opened": false
   },
   "native_cycles_sha256": "52a4d23cc723209c29851faffa5356245687561c62ead6f76549a0ad1db1a070",

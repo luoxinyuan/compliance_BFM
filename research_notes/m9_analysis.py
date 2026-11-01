@@ -19,8 +19,14 @@ def summarize(ep):
    errors=np.array([np.asarray(r['anchor'])-r['wrist'] for r in active]);x.update(contact_tracking_rms_m=float(np.sqrt(np.mean(np.sum(errors**2,axis=1)))),contact_error_xyz_mean_m=errors.mean(0).tolist(),contact_error_xyz_rms_m=np.sqrt(np.mean(errors**2,axis=0)).tolist())
   else:x['contact_tracking_rms_m']=None
   x['wrist_relative_root_delta_m']=((np.asarray(rr[-1]['wrist'])-rr[-1]['root'])-(np.asarray(rr[0]['wrist'])-rr[0]['root'])).tolist()
+  x['root_speed_peak_mps']=float(np.linalg.norm(v[mask,:3],axis=1).max())
+  x['root_path_length_xy_m']=float(np.linalg.norm(np.diff(q[mask,:2],axis=0),axis=1).sum())
+  x['root_speed_last_second_mean_mps']=float(np.linalg.norm(v[ids[-200:],:3],axis=1).mean())
+  x['heading_from_ready_end_deg']=float(np.degrees(yaw[b]-yaw[0]))
+  x['force_xyz_rms_N']=np.sqrt(np.mean(force**2,axis=0)).tolist()
+  x['force_peak_N']=float(np.linalg.norm(force,axis=1).max())
   x['joint_range_deg']=np.degrees(np.ptp(q[mask,7:],axis=0)).tolist()
-  if cc and 'alpha' in cc[0]:x.update(alpha_range=[min(c['alpha'] for c in cc),max(c['alpha'] for c in cc)],phase_range=[min(c['phase'] for c in cc),max(c['phase'] for c in cc)],reference_exhausted_fraction=float(np.mean([c['reference_exhausted'] for c in cc])))
+  if cc and 'alpha' in cc[0] and not ep['label'].endswith(('__standing','__student','__m8')):x.update(alpha_range=[min(c['alpha'] for c in cc),max(c['alpha'] for c in cc)],phase_range=[min(c['phase'] for c in cc),max(c['phase'] for c in cc)],reference_exhausted_fraction=float(np.mean([c['reference_exhausted'] for c in cc])))
  out.update(final_root_displacement_xyz_m=(q[-1,:3]-initialroot).tolist(),final_root_speed_mps=float(np.linalg.norm(v[-1,:3])),final_heading_change_deg=float(np.degrees(yaw[-1]-yaw[0])),all_joint_limit_excess_rad=max(r['joint_limit_excess_max_rad'] for r in rows))
  return out
 
