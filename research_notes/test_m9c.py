@@ -1,5 +1,6 @@
 import unittest,torch,numpy as np
 from m9c_rl import Adapter,update,command
+torch.set_num_threads(1)
 class M:
  def project_z(self,z):return 16*torch.nn.functional.normalize(z,dim=-1)
 class Test(unittest.TestCase):

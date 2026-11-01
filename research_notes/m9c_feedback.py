@@ -21,9 +21,11 @@ class ArmFeedback:
   return a+da,self.corr.tolist()
 def project_action(model,obs,base,target,contract,previous=None):
  scale=torch.tensor(contract['q_PD_scale'],device=base.device);off=torch.tensor(contract['q_PD_offset'],device=base.device);qof=lambda a:off+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5
+ norm={k:v.detach() for k,v in model._normalize(obs).items()};actor=lambda z:model._actor(norm,z,model.cfg.actor_std).mean.float()
+ assert float((actor(base)-model.act(obs,base,mean=True)).abs().max())<1e-6
  with torch.enable_grad():
   z=base.detach().clone().requires_grad_(True);opt=torch.optim.Adam([z],lr=.06);qt=qof(target).detach();weight=torch.ones_like(qt);weight[:,22:]=2
   for _ in range(16):
-   opt.zero_grad();p=model.project_z(z);q=qof(model.act(obs,p,mean=True));loss=((q-qt).square()*weight).mean()+.00002*(p-base).square().mean();z.grad=torch.autograd.grad(loss,z)[0];opt.step()
+   opt.zero_grad();p=model.project_z(z);q=qof(actor(p));loss=((q-qt).square()*weight).mean()+.00002*(p-base).square().mean();z.grad=torch.autograd.grad(loss,z)[0];gn=float(z.grad.norm());opt.step()
   result=model.project_z(z).detach()
- q=qof(model.act(obs,result,mean=True));return result,dict(qpd_rms_deg=float(torch.rad2deg((q-qt).square().mean().sqrt())),arm_rms_deg=float(torch.rad2deg((q[:,22:]-qt[:,22:]).square().mean().sqrt())),nonarm_rms_deg=float(torch.rad2deg((q[:,:22]-qt[:,:22]).square().mean().sqrt())),z_angle_deg=float(torch.rad2deg(torch.acos(((result*base).sum()/256).clamp(-1,1)))))
+ q=qof(model.act(obs,result,mean=True));return result,dict(gradient_norm=gn,qpd_rms_deg=float(torch.rad2deg((q-qt).square().mean().sqrt())),arm_rms_deg=float(torch.rad2deg((q[:,22:]-qt[:,22:]).square().mean().sqrt())),nonarm_rms_deg=float(torch.rad2deg((q[:,:22]-qt[:,:22]).square().mean().sqrt())),z_angle_deg=float(torch.rad2deg(torch.acos(((result*base).sum()/256).clamp(-1,1)))))

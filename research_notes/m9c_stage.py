@@ -8,7 +8,7 @@ def run_study(env,model,contract,out):
  import torch
  stage=os.environ['M9_STAGE'];start=time.monotonic();refs=json.loads((OLD/'native-cycles.json').read_text())['cycles']
  for r in refs.values():r['tensor']=torch.tensor(r['z'],device=env.standing.device)
- if stage in ['qualification','projection']:
+ if stage in ['qualification','projection','projection_fixed']:
   from m9c_contact import run
   result=run(env,model,contract,out,cycles=refs)
  else:

@@ -24,7 +24,7 @@ def basis_for(env,model,refs):
  # Existing motion variation plus action-sensitive upper-body directions. No random-z search.
  z=env.standing.detach().clone().requires_grad_(True)
  with torch.enable_grad():
-  a=model.act(env.obs,z,mean=True);grad=[torch.autograd.grad(a[0,j],z,retain_graph=True)[0][0] for j in range(15,29)]
+  a=model._actor({k:v.detach() for k,v in model._normalize(env.obs).items()},z,model.cfg.actor_std).mean.float();assert torch.allclose(a.detach(),model.act(env.obs,z,mean=True),atol=1e-6);grad=[torch.autograd.grad(a[0,j],z,retain_graph=True)[0][0] for j in range(15,29)]
  J=torch.stack(grad);J=J/J.norm(dim=1,keepdim=True).clamp_min(1e-6)
  motion=torch.cat([r['tensor'][::4] for r in refs.values()])-env.standing;motion=motion/motion.norm(dim=1,keepdim=True).clamp_min(1e-6)
  _,_,V=torch.linalg.svd(torch.cat([motion,J.repeat(4,1)]),full_matrices=False);return V[:16].detach()
