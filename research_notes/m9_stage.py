@@ -13,6 +13,9 @@ def completed(stage):
  a=[a for a in json.loads((RUN/'compute-ledger.json').read_text())['attempts'] if a['stage']==stage and a.get('result_status')=='completed'];assert len(a)==1;return Path(a[0]['path'])/'outputs'
 def run_study(env,model,contract,out):
  stage=os.environ['M9_STAGE']
+ if stage=='speedcheck':
+  from m9_speedcheck import run
+  return run(env,model,contract,out)
  if stage=='turncheck':
   from m9_turncheck import run
   return run(env,model,contract,out)

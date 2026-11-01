@@ -29,6 +29,9 @@ def install_partner(tether,spec,anchor):
  from humanoidverse.force_compliance.interaction import spring_force
  def measure(self):
   u=float(np.clip((self.time-spec['onset'])/spec['ramp'],0,1));s=spec['distance']*smooth(u);speed=spec['distance']*6*u*(1-u)/spec['ramp'] if 0<u<1 else 0.;k=spec['curvature']
+  if spec.get('sustained'):
+   from m9_speedcheck import sustained_profile
+   s,speed=sustained_profile(self.time,spec['onset'],**spec['sustained'])
   displacement=np.array([s,0,0]) if abs(k)<1e-9 else np.array([np.sin(k*s)/k,(1-np.cos(k*s))/k,0]);velocity=speed*np.array([np.cos(k*s),np.sin(k*s),0])
   if 'delta_xyz' in spec:displacement=smooth(u)*np.array(spec['delta_xyz']);velocity=6*u*(1-u)/spec['ramp']*np.array(spec['delta_xyz']) if 0<u<1 else np.zeros(3)
   connected=spec['enabled']
@@ -41,7 +44,7 @@ def install_partner(tether,spec,anchor):
  tether.measure=types.MethodType(measure,tether)
 
 def run(env,model,contract,out,cycles=None,composition=False):
- whole=json.loads(Path(__file__).with_name('m9_protocol.json').read_text());stage=os.environ['M9_STAGE'];learning=stage.startswith('collect') or stage=='final';plan=whole['execution'][stage] if learning else whole['composition_pilot'] if composition else whole['contact_pilot' if cycles is None else 'cyclic_pilot'];orig=model.act;dev=env.standing.device
+ whole=json.loads(Path(__file__).with_name('m9_protocol.json').read_text());stage=os.environ['M9_STAGE'];learning=stage.startswith('collect') or stage=='final';plan=whole['speedcheck'] if stage=='speedcheck' else whole['execution'][stage] if learning else whole['composition_pilot'] if composition else whole['contact_pilot' if cycles is None else 'cyclic_pilot'];orig=model.act;dev=env.standing.device
  if learning:
   from m9_learning import old_context,inputs,policy,load_net
   from m8_learning import policy_latent as old_latent
@@ -103,4 +106,4 @@ def run(env,model,contract,out,cycles=None,composition=False):
   finally:env.qualification_active=False;env.tether.measure=original_measure
   ep=dict(label=label,initial=initial,physics=copy.deepcopy(env.trace[start:]),control=cs,boundary=boundary,condition=spec,anchor=anchor.tolist(),phases={'pre':[3,spec['onset']],'move':[spec['onset'],spec['onset']+spec['ramp']],'hold':[spec['onset']+spec['ramp'],spec['release']],'recover':[spec['release'],spec['end']]});save(out,label+'.json',ep)
   rows.append(dict(label=label,complete=boundary is None,seconds=len(ep['physics'])/200,boundary=boundary));save(out,'contact-summary.json',dict(episodes=rows));print('M9_CONTACT',label,'complete',boundary is None,flush=True)
- return dict(status='completed',episodes=rows,student_optimizer_updates=0,scope='Native feedback pilot. No Student trained; actual failures remain evidence.')
+ return dict(status='completed',episodes=rows,student_optimizer_updates=0,scope=('Frozen trained Student execution and same-state expert labeling; no online updates' if learning else 'Native feedback expert qualification; actual failures remain evidence'))

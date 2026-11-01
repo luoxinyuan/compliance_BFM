@@ -954,5 +954,82 @@
       ]
     ],
     "fixed_before_run": "One evidence-based extension: +3% native-turn composition cancelled most complete-episode heading drift (-23.73deg base to -2.56deg), but did not create left turning. Predict +6% can cross to left, no further gain search. Then use one common gait phase and gain .03+.03*turn with same measured-force alpha and privileged current-guide steering; preserve all earlier pilots. This qualifies continuous native parameterization, no shared BFM or PD edit."
+  },
+  "speedcheck": {
+    "fixed_before_physics": true,
+    "hypothesis": "Native straight cyclic speed~.35m/s versus prior partner peak .171m/s. Under left demand, alpha mean .410 and59.1% requested-left samples alpha<.5; turning is gated while braking. Test one sustained .25m/s partner regime, same5N/K80/D8 and same .03+.03turn native controller. This tests operating range, not isolates speed from path length/profile. Preserve .8m low-demand cases and all prior failures. No further gain tuning.",
+    "conditions": {
+      "sustained_straight": {
+        "onset": 3.8,
+        "ramp": 8.0,
+        "distance": 1.75,
+        "release": 13.8,
+        "end": 19.8,
+        "enabled": true,
+        "curvature": 0.0,
+        "sustained": {
+          "vmax": 0.25,
+          "accel": 1.0,
+          "cruise": 6.0
+        },
+        "family": "walking"
+      },
+      "sustained_left": {
+        "onset": 3.8,
+        "ramp": 8.0,
+        "distance": 1.75,
+        "release": 13.8,
+        "end": 19.8,
+        "enabled": true,
+        "curvature": 0.19946620022792336,
+        "sustained": {
+          "vmax": 0.25,
+          "accel": 1.0,
+          "cruise": 6.0
+        },
+        "family": "walking"
+      },
+      "sustained_right": {
+        "onset": 3.8,
+        "ramp": 8.0,
+        "distance": 1.75,
+        "release": 13.8,
+        "end": 19.8,
+        "enabled": true,
+        "curvature": -0.19946620022792336,
+        "sustained": {
+          "vmax": 0.25,
+          "accel": 1.0,
+          "cruise": 6.0
+        },
+        "family": "walking"
+      }
+    },
+    "schedule": [
+      [
+        "sustained_straight",
+        "standing"
+      ],
+      [
+        "sustained_straight",
+        "privileged"
+      ],
+      [
+        "sustained_left",
+        "standing"
+      ],
+      [
+        "sustained_left",
+        "privileged"
+      ],
+      [
+        "sustained_right",
+        "standing"
+      ],
+      [
+        "sustained_right",
+        "privileged"
+      ]
+    ]
   }
 }

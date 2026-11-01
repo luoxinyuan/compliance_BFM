@@ -50,6 +50,12 @@ class History(unittest.TestCase):
   from m9_learning import sensor_features
   h=ContactHistory();h.append([2,0,0],'right_wrist_yaw_link',[0,0,0],np.eye(3));h.append([0,0,-3],'torso_link',[0,0,.25],np.eye(3));new,old=sensor_features(h,np.eye(3));new=new.reshape(320,14)
   self.assertEqual(new[-2,3],1);self.assertEqual(new[-1,4],1);np.testing.assert_array_equal(old[:960].reshape(320,3)[-2],0);np.testing.assert_allclose(old[-5:],[0,1,0,0,.25])
+ def test_sustained_partner_profile(self):
+  from m9_speedcheck import sustained_profile
+  for t in [.2,.8,1.2,6.8,7.2,7.8]:
+   x,v=sustained_profile(t,0);eps=1e-6
+   self.assertAlmostEqual((sustained_profile(t+eps,0)[0]-sustained_profile(t-eps,0)[0])/(2*eps),v,places=6)
+  self.assertEqual(sustained_profile(-1,0),(0.,0.));self.assertEqual(sustained_profile(8,0),(1.75,0.));self.assertEqual(sustained_profile(9,0),(1.75,0.))
  def test_fixed_final_not_model_selection(self):
   x=json.loads(Path(__file__).with_name('m9_protocol.json').read_text());self.assertEqual(x['training_fixed']['steps'],[4000,2000,2000]);self.assertFalse(x['sealed_before_training']['opened']);self.assertNotIn('unsupported_left',x['execution']['collect1']['conditions']);self.assertEqual(len(x['execution']['final']['schedule']),30)
 if __name__=='__main__':unittest.main()
