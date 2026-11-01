@@ -77,6 +77,7 @@ def run(env,model,contract,out,cycles=None,composition=False):
  scale=torch.tensor(contract['q_PD_scale'],device=dev);offset=torch.tensor(contract['q_PD_offset'],device=dev);qof=lambda a:offset+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5;rows=[]
  from m10_stage import completed as m10_completed
  candidate_net=load_net(m10_completed('train' if stage=='collect' else 'train1')/'student-final.pt',dev) if stage in ['collect','final'] else None
+ if stage=='final':assert sha(m10_completed('train1')/'student-final.pt')==whole['final_candidate_sha256']
  from m10_reference import load_variants
  variants,body_goals=load_variants(env,model)
  original_cycles=cycles

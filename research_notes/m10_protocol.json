@@ -657,5 +657,6 @@
     ],
     "selection": "Fixed second-round endpoint, one actual Student visit aggregation. No final-test checkpoint selection.",
     "teacher_choice": "Ref task with unchanged bounded arm-feedback action projection for walking; neutral-arm native goal with unchanged body feedback for torso. Walking feedback improves heading/hand but raises straight force relative to reference-only: retain this tradeoff."
-  }
+  },
+  "final_candidate_sha256": "1742ba74e9ec871abf8577eb9a276d7a1e614cd3184330a008dd9c4a7031bcd8"
 }
