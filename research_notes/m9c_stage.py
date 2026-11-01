@@ -8,9 +8,12 @@ def run_study(env,model,contract,out):
  import torch
  stage=os.environ['M9_STAGE'];start=time.monotonic();refs=json.loads((OLD/'native-cycles.json').read_text())['cycles']
  for r in refs.values():r['tensor']=torch.tensor(r['z'],device=env.standing.device)
- if stage in ['qualification','projection','projection_fixed']:
+ if stage in ['qualification','projection','projection_fixed','collect','final']:
   from m9c_contact import run
   result=run(env,model,contract,out,cycles=refs)
+ elif stage in ['train','train1']:
+  from m9c_transfer import run
+  result=run(env,model,contract,out,refs,stage)
  else:
   from m9c_rl import run
   result=run(env,model,contract,out,refs,stage)

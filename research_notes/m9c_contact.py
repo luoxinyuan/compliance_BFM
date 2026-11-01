@@ -64,6 +64,9 @@ def run(env,model,contract,out,cycles=None,composition=False):
    assert hashlib.sha256(checkpoint.with_name('no-memory-final.pt').read_bytes()).hexdigest()==whole['final_no_memory_sha256']
   memory_net=load_memory(checkpoint,dev)
   ablation_net=load_net(checkpoint.with_name('no-memory-final.pt'),dev)
+ transfer_net=None
+ if stage in ['collect','final']:
+  transfer_net=load_net(new_completed('train' if stage=='collect' else 'train1')/'student-final.pt',dev)
  composition=False
  composition=composition or (learning and whole.get('use_composition_expert',False))
  if composition:turn_z=torch.tensor(json.loads((completed('infer')/'reward-candidates.json').read_text())['rotate-z-0.35-0.65']['z'],device=dev)
@@ -100,38 +103,48 @@ def run(env,model,contract,out,cycles=None,composition=False):
     from m9b_feedback import CadenceFeedback
     feedback=CadenceFeedback({k:r['period'] for k,r in cycles.items()},True)
   from m9c_feedback import ArmFeedback
-  arm_feedback=ArmFeedback(env,contract);projection_previous=None
+  arm_feedback=ArmFeedback(env,contract);projection_previous=None;learned_query=None
+  if whole.get('transfer',{}).get('teacher')=='rl' and ctl in ['transfer','learned_expert']:
+   from m9c_rl import LearnedQuery
+   learned_query=LearnedQuery(env,model,cycles,new_completed('rl')/'expert-final.pt')
   boundary=None;last=qof(env.previous_action);previous_z=env.standing.clone();env.qualification_active=True
   try:
    for _ in range(round((spec['end']-float(env.tether.time))*50)):
     check_deadline();t=float(env.tether.time);R=env.sim.data.xmat[1].reshape(3,3).copy();f=env.tether.force.copy();sensor=history.append(f,site,point,R);guide=None if cycles is None else getattr(env.tether,'partner_velocity',np.zeros(3))+.5*(env.tether.anchor-env.last_point)
+    phase_before=feedback.phase
     state=feedback.step(f,R) if cycles is None else feedback.step(f,R,guide=guide)
+    if learned_query is not None:
+     feedback.phase=phase_before+(feedback.phase-phase_before)*learned_query.rate;state['phase']=feedback.phase
     idx=min(300,int(round(state['phase']/.02)));turn=state['turn'];base=refs['straight'][idx:idx+1] if cycles is None else sample(cycles['straight'],state['phase']);other=refs['left' if turn>=0 else 'right'][idx:idx+1] if cycles is None else sample(cycles['left' if turn>=0 else 'right'],state['phase']);native=spherical(base,other,abs(turn));native=model.project_z(sample(cycles['straight'],state['phase'])+(.03+.03*turn)*(turn_z-env.standing)) if composition else native;oracle=spherical(env.standing,native,state['alpha']);z=env.standing if ctl=='standing' else oracle
     if learning:
      if tick%5==0:oldgate.update(t,f)
      lg=oldgate.value(t);h,h8=inputs(model,env.obs,env.keys,history,R);world=np.zeros((320,3));world[-len(history.rows):]=np.array([r['force_world'] for r in history.rows]);legacy=student_input(model,env.obs,[world.tolist()],env.keys);enc=torch.tensor([[float(site=='right_wrist_yaw_link'),float(site=='torso_link'),*point]],device=dev,dtype=legacy.dtype)*(legacy[:,465:].abs().amax(-1,keepdim=True)>1e-8);oldz=old_latent(model,ends,old(torch.cat([legacy,enc],-1)),lg)
      if spec.get('family')=='old':oracle=oldz
+     elif learned_query is not None:oracle=learned_query.step(state,tick)
      if ctl in ['legacy','takeover','late_takeover']:z=policy(model,old,ends,legacy_net,h,h8,lg)
      elif ctl=='ablation':z=policy(model,old,ends,ablation_net,h,h8,lg)
+     elif ctl=='transfer':z=policy(model,old,ends,transfer_net,h,h8,lg)
      elif ctl=='student':z=memory_policy(model,old,ends,memory_net,h,h8,lg,previous_z)
      if (ctl=='takeover' and t>=6.) or (ctl=='late_takeover' and t>=10.):z=oracle
      elif ctl=='m8':z=oldz
      elif ctl=='expert':z=oracle
      tick+=1
+    if ctl=='learned_expert':z=oracle
     if not torch.isfinite(z).all() or abs(float(z.norm())-16)>1e-4:
      boundary=dict(kind='invalid_student_latent',time=t);break
     a=orig(env.obs,z,mean=True)
     correction=None;projection=None
-    if ctl in ['arm','projected']:
-     target,correction=arm_feedback.step(a,t,tick)
+    if ctl in ['arm','projected','transfer'] and learned_query is None and spec.get('family')!='old':
+     target,correction=arm_feedback.step(orig(env.obs,oracle,mean=True),t,tick)
      if ctl=='arm':a=target
      else:
       from m9c_feedback import project_action
-      z,projection=project_action(model,env.obs,z,target,contract,projection_previous)
-      projection_previous=z.clone();a=orig(env.obs,z,mean=True)
+      projected_z,projection=project_action(model,env.obs,oracle,target,contract,projection_previous)
+      projection_previous=projected_z.clone();oracle=projected_z
+      if ctl=='projected':z=projected_z;a=orig(env.obs,z,mean=True)
     if not torch.isfinite(a).all():boundary=dict(kind='nonfinite_actor_action',time=t);break
     q=qof(a);oq=qof(orig(env.obs,oracle,mean=True))
-    cs.append(dict(correction=correction,projection=projection,time=t,controller=ctl,expert_query_guide_world=None if guide is None else guide.tolist(),own_previous_z=previous_z.tolist(),oracle_controller_state=state,native_execution_state=state if ctl in ['feedback','privileged'] or (ctl=='expert' and spec.get('family')!='old') else None,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),oracle_z=oracle.tolist(),oracle_q_PD=oq[0].tolist(),oracle_query_valid=True,q_PD_step_max_rad=float((q-last).abs().max()),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),sensor=sensor,measured_force_xyz=f.tolist(),bfm_obs={k:v.tolist() for k,v in env.obs.items()},action_saturation_fraction=float(((a*5).abs()>=contract['clip']).float().mean())))
+    cs.append(dict(learned_query_raw=None if learned_query is None else learned_query.raw.tolist(),correction=correction,projection=projection,time=t,controller=ctl,expert_query_guide_world=None if guide is None else guide.tolist(),own_previous_z=previous_z.tolist(),oracle_controller_state=state,native_execution_state=state if ctl in ['feedback','privileged'] or (ctl=='expert' and spec.get('family')!='old') else None,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),oracle_z=oracle.tolist(),oracle_q_PD=oq[0].tolist(),oracle_query_valid=True,q_PD_step_max_rad=float((q-last).abs().max()),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),sensor=sensor,measured_force_xyz=f.tolist(),bfm_obs={k:v.tolist() for k,v in env.obs.items()},action_saturation_fraction=float(((a*5).abs()>=contract['clip']).float().mean())))
     last=q.clone();previous_z=z.detach().clone()
     try:
      if advance(env,a):boundary=dict(kind='native_termination',time=float(env.tether.time));break

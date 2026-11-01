@@ -14,6 +14,18 @@ class Test(unittest.TestCase):
     episodes.append(rows)
    result=update(net,opt,episodes)
   self.assertLess(result['preupdate_logprob_max_error'],2e-5);self.assertGreater(result['updates'],0);self.assertTrue(all(x['analytic_joint_kl']>=0 for x in result['logs']))
+ def test_detached_public_actor_does_not_silence_projection(self):
+  from types import SimpleNamespace
+  from m9c_feedback import project_action
+  class Fake(M):
+   cfg=SimpleNamespace(actor_std=.1)
+   def __init__(self):self.w=torch.randn(256,29)*.015
+   def _normalize(self,obs):return obs
+   def _actor(self,obs,z,std):return SimpleNamespace(mean=z@self.w)
+   def act(self,obs,z,mean=True):return (z@self.w).detach()
+  torch.manual_seed(2);m=Fake();z=m.project_z(torch.randn(1,256));target=m.act({},z).clone();target[:,22:]+=.02;contract=dict(q_PD_scale=[[1.]*29],q_PD_offset=[[0.]*29],clip=5.)
+  with torch.no_grad():p,metrics=project_action(m,{},z,target,contract)
+  self.assertGreater(float((p-z).norm()),.001);self.assertGreater(metrics['gradient_norm'],0);self.assertLess(metrics['arm_rms_deg'],1.14592)
  def test_legal_z_and_zero_contact(self):
   m=M();z=m.project_z(torch.randn(1,256));basis=torch.linalg.qr(torch.randn(256,16)).Q.T;r={'tensor':torch.cat([z,z],0),'phase_offset':0};refs={k:r for k in ['straight','left','right']}
   for alpha in [0.,1.]:

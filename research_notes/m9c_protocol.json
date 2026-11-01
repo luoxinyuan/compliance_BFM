@@ -255,6 +255,17 @@
       "curvature": -0.18,
       "heading_deg": -3,
       "family": "walking"
+    },
+    "no_contact": {
+      "onset": 4.4,
+      "ramp": 8.4,
+      "distance": 0.88,
+      "release": 14.8,
+      "end": 20.8,
+      "enabled": false,
+      "curvature": 0,
+      "heading_deg": 0,
+      "family": "walking"
     }
   },
   "sealed_status": "fixed before learning; never used to choose checkpoint",
@@ -271,5 +282,17 @@
   },
   "engineering_failures": [
     "projection-attempt-01 public model.act suppresses z gradient, zero latent change; preserve as invalid projection attempt, corrected _actor path qualified before scientific interpretation"
-  ]
+  ],
+  "transfer_plan_before_RL_results": {
+    "updates_per_round": 1000,
+    "rounds": 2,
+    "prior_checkpoint": "M9B no-memory-final (memory version retained as baseline)",
+    "old_new_minibatches": "alternating 50:50",
+    "new_sources": "Only development expert trajectories plus actual Student-visited expert labels",
+    "method": "Projected-z of action-qualified expert; same-state BFM action identity checked",
+    "checkpoint": "fixed final after second round; no heldout selection",
+    "choice_rule": "prefer actual joint force/tracking/stability improvements; do not select from heldout; explicitly record any heading tradeoff"
+  },
+  "expert_final_sha256": "7f45da6785e49d34851a1236e1cc66898455adb43527494c658e5ff8c3efb4cf",
+  "expert_final_lock": "Fixed iteration15 after48episodes, before deterministic development evaluation and all new tests"
 }

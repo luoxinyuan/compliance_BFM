@@ -20,7 +20,7 @@ def main():
     assert RUN != P/'bridge-v2-owned/runs/issue21-reward-stage-20261030A'
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gpu-index',type=int)
-    parser.add_argument('--stage',choices=['videos','videos_clean','qualification','projection','projection_fixed','rl','rl_eval','collect','train','final'],required=True)
+    parser.add_argument('--stage',choices=['videos','videos_clean','qualification','projection','projection_fixed','rl','rl_eval','collect','train','train1','final','videos_final'],required=True)
     parser.add_argument('--execute-after-owner-gpu-notice',action='store_true')
     args=parser.parse_args()
     protocol=json.loads((ROOT/'research_notes/m9c_protocol.json').read_text())
@@ -47,8 +47,8 @@ def main():
     env=dict(os.environ);env.update(CUDA_VISIBLE_DEVICES=before['uuid'],MUJOCO_GL='disable',BFM_STAGE_SUPERVISED='1',BFM_STAGE_DEADLINE_MONOTONIC=str(time.monotonic()+remaining),PYTHONPATH=str(ROOT),TORCHDYNAMO_DISABLE='1',OMP_NUM_THREADS='8',MKL_NUM_THREADS='8',OPENBLAS_NUM_THREADS='1',PYTHONDONTWRITEBYTECODE='1',HF_HUB_OFFLINE='1',WANDB_MODE='disabled')
     (attempt/'outputs').mkdir()
     env.update(BFM_RECOVERY_OUTPUT=str(attempt/'outputs'),M9_STAGE=args.stage,CCL_DEADLINE_MONOTONIC=env['BFM_STAGE_DEADLINE_MONOTONIC'])
-    launcher='m9c_render.py' if args.stage.startswith('videos') else 'm9c_physics.py'
-    if args.stage.startswith('videos'):env.update(MUJOCO_GL='egl',PYOPENGL_PLATFORM='egl',MUJOCO_EGL_DEVICE_ID='0')
+    launcher=('m9c_render_final.py' if args.stage=='videos_final' else 'm9c_render.py') if args.stage.startswith('videos') else 'm9c_physics.py'
+    if args.stage.startswith('videos'):env.update(MUJOCO_GL='egl',PYOPENGL_PLATFORM='egl',MUJOCO_EGL_DEVICE_ID=str(args.gpu_index))
     command=[str(P/'.venv/bin/python'),'-u',str(ROOT/'research_notes'/launcher)]
     entry['command']=command;write(ledger_path,ledger)
     cache=attempt/'cache';cache.mkdir()
