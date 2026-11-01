@@ -15,6 +15,11 @@ def main():
    row=dict(stage=a['stage'],label=e['label'],path=str(p),complete=m['complete'],boundary=m['boundary'],root=m['final_root_displacement_xyz_m'],heading_move=move.get('heading_from_ready_end_deg'),heading_end=m['final_heading_change_deg'],single_support=move.get('single_support_fraction'),slip_p95=move.get('contact_tangent_speed_p95_mps'),qpd_peak=max(x['q_PD_step_peak_deg'] for x in ph.values()),qpd_p95=max(x['q_PD_step_p95_deg'] for x in ph.values()),joint20ms_peak=max(x['actual_joint_20ms_peak_deg'] for x in ph.values()),tilt_max=max(x['pelvis_tilt_max_deg'] for x in ph.values()),height_min=min(x['root_height_min_m'] for x in ph.values()),joint_limit=m['all_joint_limit_excess_rad'],torque=max(x['torque_saturation_fraction'] for x in ph.values()),action_clip=max(c.get('action_saturation_fraction',0) for c in cs),recover_speed=rec.get('root_speed_last_second_mean_mps'),move_ego_v=move.get('root_ego_velocity_mean_mps'),condition=e['condition'])
    if active:
     F=np.array([r['force'] for r in active]);E=np.array([np.array(r['anchor'])-r['wrist'] for r in active]);row.update(error_cm=float(np.sqrt(np.mean(np.sum(E**2,1)))*100),error_xyz_cm=(np.sqrt(np.mean(E**2,0))*100).tolist(),force=float(np.sqrt(np.mean(np.sum(F**2,1)))),force_xyz=np.sqrt(np.mean(F**2,0)).tolist(),cap=float(np.mean(np.linalg.norm(F,axis=1)>=4.999)))
+   if cs and 'oracle_q_PD' in cs[0]:
+    move_cs=[c for c in cs if e['condition']['onset']<=c['time']<e['condition']['release']]
+    if move_cs:
+     dq=np.array([np.array(c['q_PD'])-c['oracle_q_PD'] for c in move_cs]);z=np.array([c['executed_z'][0] for c in move_cs]);oz=np.array([c['oracle_z'][0] for c in move_cs]);angle=np.degrees(np.arccos(np.clip(np.sum(z*oz,axis=1)/256,-1,1)))
+     row.update(visited_oracle_qpd_rms_deg=float(np.degrees(np.sqrt(np.mean(dq**2)))),visited_oracle_leg_waist_rms_deg=float(np.degrees(np.sqrt(np.mean(dq[:,:15]**2)))),visited_oracle_arm_rms_deg=float(np.degrees(np.sqrt(np.mean(dq[:,22:]**2)))),visited_oracle_z_angle_mean_deg=float(angle.mean()))
    if e['condition'].get('family')=='walking':
     rr=[r for r in rs if r['active'] and np.linalg.norm(r['anchor_velocity'][:2])>.02 and np.linalg.norm(r['qvel'][:2])>.05]
     if rr:
