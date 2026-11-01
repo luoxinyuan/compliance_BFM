@@ -1,1 +1,62 @@
-{"resources":{"compute_cumulative_wall_seconds":7200,"CPU":8,"RSS_GiB":32,"VRAM_GiB":8,"output_GiB":8},"status":"throughput and fixed positive control first; training budget locked after pilot","seed":23}
+{
+  "resources": {
+    "compute_cumulative_wall_seconds": 7200,
+    "CPU": 8,
+    "RSS_GiB": 32,
+    "VRAM_GiB": 8,
+    "output_GiB": 8
+  },
+  "status": "throughput and fixed positive control first; training budget locked after pilot",
+  "seed": 23,
+  "execution": {
+    "qualification": {
+      "conditions": {
+        "held_straight": {
+          "onset": 4.25,
+          "ramp": 7.8,
+          "distance": 0.82,
+          "release": 14.05,
+          "end": 20.05,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": 0,
+          "family": "walking"
+        },
+        "held_heading": {
+          "onset": 5.1,
+          "ramp": 8.1,
+          "distance": 0.78,
+          "release": 15.2,
+          "end": 21.2,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": 11,
+          "family": "walking"
+        }
+      },
+      "schedule": [
+        [
+          "held_straight",
+          "expert"
+        ],
+        [
+          "held_straight",
+          "arm"
+        ],
+        [
+          "held_heading",
+          "expert"
+        ],
+        [
+          "held_heading",
+          "arm"
+        ]
+      ]
+    }
+  },
+  "design": {
+    "arm_positive_control": "Existing 10Hz damped Jacobian .04 rad/joint, .08 norm; .2s causal release; no gain scan",
+    "evaluation_status": "M9B held conditions now exposed development; new final combinations locked before RL",
+    "teacher": "Pretrained frozen BFM and native backward motion latents plus handwritten alpha/phase/turn; arm correction handwritten, no learned expert yet"
+  }
+}
