@@ -34,7 +34,7 @@ def qualify(env,model,contract,out):
  goals=[]
  for i,row in enumerate(audit['selected']):
   z=model.goal_inference(goal_observation(env,np.asarray(row['qpos']),np.zeros(m.nv)))
-  goals.append(z);save(out,f'candidate-{i}.json',dict(**row,z=z.tolist(),norm=float(z.norm()),angle_deg=float(torch.rad2deg(torch.acos(((z*env.standing).sum()/256).clamp(-1,1)))),asset_sha256=audit['asset_sha256'],source='Existing natural motion frame, original goal_inference with zero velocity; no live pose reset')))
+  goals.append(z);save(out,f'candidate-{i}.json',dict(**row,z=z.tolist(),norm=float(z.norm()),angle_deg=float(torch.rad2deg(torch.acos(((z*env.standing).sum()/256).clamp(-1,1)))),asset_sha256=audit['asset_sha256'],source='Existing natural motion frame, original goal_inference with zero velocity; no live pose reset'))
  result=dict(status='completed',episodes=[],student_optimizer_updates=0)
  def alpha(t):return smooth((t-plan['entry_start'])/plan['entry_duration']) if t<plan['hold_until'] else 1.-smooth((t-plan['hold_until'])/plan['return_duration'])
  for idx in [-1]+list(range(len(goals))):
