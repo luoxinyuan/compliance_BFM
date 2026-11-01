@@ -1,4 +1,5 @@
 """Finite shared-GPU privileged expert acquisition; reuses force_compliance GAE/parallel contracts."""
+import m11_ipc  # also imported by forkserver/Manager children before Unix binding
 import argparse,os,json,time,signal,multiprocessing as mp,subprocess,hashlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];RUN=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m11-privileged-expert-20261101')
