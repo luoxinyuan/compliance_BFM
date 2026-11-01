@@ -76,13 +76,13 @@ def run(env,model,contract,out,cycles=None,composition=False):
  with gzip.open(freepath,'rt') as f:free=json.load(f)['physics']
  scale=torch.tensor(contract['q_PD_scale'],device=dev);offset=torch.tensor(contract['q_PD_offset'],device=dev);qof=lambda a:offset+(a*5).clamp(-contract['clip'],contract['clip'])*scale/5;rows=[]
  from m10_stage import completed as m10_completed
- candidate_net=load_net(m10_completed('train' if stage=='collect' else 'train1')/'student-final.pt',dev) if stage in ['collect','final'] else None
- if stage=='final':assert sha(m10_completed('train1')/'student-final.pt')==whole['final_candidate_sha256']
+ candidate_net=load_net(m10_completed('train' if stage=='collect' else 'train1')/'student-final.pt',dev) if stage in ['collect','final','handover'] else None
+ if stage in ['final','handover']:assert sha(m10_completed('train1')/'student-final.pt')==whole['final_candidate_sha256']
  from m10_reference import load_variants
  variants,body_goals=load_variants(env,model)
  original_cycles=cycles
  for name,ctl in plan['schedule']:
-  cycles=variants['roundtrip' if ctl=='ref_roundtrip' else ('arm' if ctl=='ref_arm' else 'task')] if ctl in ['candidate','ref_roundtrip','ref_arm','ref_task','ref_projected'] else original_cycles
+  cycles=variants['roundtrip' if ctl=='ref_roundtrip' else ('arm' if ctl=='ref_arm' else 'task')] if ctl in ['candidate','candidate_handover','ref_roundtrip','ref_arm','ref_task','ref_projected'] else original_cycles
   spec=plan['conditions'][name];label=name+'__'+ctl;parity=reset_common(env,model,orig);save(out,label+'-prefix.json',parity);rotation=None
   if spec.get('heading_deg'):
    from m9_heading import rotate_ready
@@ -145,7 +145,7 @@ def run(env,model,contract,out,cycles=None,composition=False):
      state={'alpha':body_feedback.step(f),'reference':'original' if ctl=='body_original' else 'neutral'}
      z=spherical(env.standing,body_goals[state['reference']],state['alpha']);oracle=z
     if ctl in ['ref_roundtrip','ref_arm','ref_task','ref_projected']:oracle=z
-    if ctl=='candidate':
+    if ctl in ['candidate','candidate_handover']:
      if site=='torso_link':
       state={'alpha':body_feedback.step(f),'reference':'neutral'}
       oracle=spherical(env.standing,body_goals['neutral'],state['alpha'])
@@ -154,7 +154,7 @@ def run(env,model,contract,out,cycles=None,composition=False):
      boundary=dict(kind='invalid_student_latent',time=t);break
     a=orig(env.obs,z,mean=True)
     correction=None;projection=None
-    if ctl in ['arm','projected','transfer','ref_projected','candidate'] and learned_query is None and spec.get('family')!='old':
+    if ctl in ['arm','projected','transfer','ref_projected','candidate','candidate_handover'] and learned_query is None and spec.get('family')!='old':
      target,correction=arm_feedback.step(orig(env.obs,oracle,mean=True),t,tick)
      if ctl=='arm':a=target
      else:
@@ -162,9 +162,13 @@ def run(env,model,contract,out,cycles=None,composition=False):
       projected_z,projection=project_action(model,env.obs,oracle,target,contract,projection_previous)
       projection_previous=projected_z.clone();oracle=projected_z
       if ctl in ['projected','ref_projected']:z=projected_z;a=orig(env.obs,z,mean=True)
+    handover_alpha=0.
+    if ctl=='candidate_handover':
+     handover_alpha=smooth((t-(spec['onset']+3.))/.6)
+     z=spherical(z,oracle,handover_alpha);a=orig(env.obs,z,mean=True)
     if not torch.isfinite(a).all():boundary=dict(kind='nonfinite_actor_action',time=t);break
     q=qof(a);oq=qof(orig(env.obs,oracle,mean=True))
-    cs.append(dict(learned_query_raw=None if learned_query is None else learned_query.raw.tolist(),correction=correction,projection=projection,time=t,controller=ctl,expert_query_guide_world=None if guide is None else guide.tolist(),own_previous_z=previous_z.tolist(),oracle_controller_state=state,native_execution_state=state if ctl in ['feedback','privileged'] or (ctl=='expert' and spec.get('family')!='old') else None,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),oracle_z=oracle.tolist(),oracle_q_PD=oq[0].tolist(),oracle_query_valid=True,q_PD_step_max_rad=float((q-last).abs().max()),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),sensor=sensor,measured_force_xyz=f.tolist(),bfm_obs={k:v.tolist() for k,v in env.obs.items()},action_saturation_fraction=float(((a*5).abs()>=contract['clip']).float().mean())))
+    cs.append(dict(diagnostic_handover_alpha=handover_alpha,learned_query_raw=None if learned_query is None else learned_query.raw.tolist(),correction=correction,projection=projection,time=t,controller=ctl,expert_query_guide_world=None if guide is None else guide.tolist(),own_previous_z=previous_z.tolist(),oracle_controller_state=state,native_execution_state=state if ctl in ['feedback','privileged'] or (ctl=='expert' and spec.get('family')!='old') else None,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),oracle_z=oracle.tolist(),oracle_q_PD=oq[0].tolist(),oracle_query_valid=True,q_PD_step_max_rad=float((q-last).abs().max()),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),sensor=sensor,measured_force_xyz=f.tolist(),bfm_obs={k:v.tolist() for k,v in env.obs.items()},action_saturation_fraction=float(((a*5).abs()>=contract['clip']).float().mean())))
     last=q.clone();previous_z=z.detach().clone()
     try:
      if advance(env,a):boundary=dict(kind='native_termination',time=float(env.tether.time));break

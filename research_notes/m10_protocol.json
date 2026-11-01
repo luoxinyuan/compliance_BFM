@@ -623,6 +623,28 @@
         ]
       ],
       "checkpoint": "train1/student-final.pt fixed; new straight/body not used for fitting or selection; other conditions explicitly regressions"
+    },
+    "handover": {
+      "conditions": {
+        "new_straight": {
+          "onset": 4.7,
+          "ramp": 8.2,
+          "distance": 0.84,
+          "release": 14.9,
+          "end": 20.9,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": -6,
+          "family": "walking"
+        }
+      },
+      "schedule": [
+        [
+          "new_straight",
+          "candidate_handover"
+        ]
+      ],
+      "purpose": "Post-evaluation diagnostic, not held-out model selection. Identical fixed Student prefix until onset+3s, then 0.6s legal-latent slerp to the same causal queried expert; no training or checkpoint changes. Tests real recovery from Student-visited state. Report handover transient separately."
     }
   },
   "transfer": {
