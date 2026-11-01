@@ -43,5 +43,134 @@
     "lr": 0.0002,
     "final_round": 2
   },
-  "decision": "No new Student training until second feedback behavior physically effective and legal latent execution qualified. All candidate failures retained; at most two motion goal candidates then a justified existing fallback, no latent scan."
+  "decision": "No new Student training until second feedback behavior physically effective and legal latent execution qualified. All candidate failures retained; at most two motion goal candidates then a justified existing fallback, no latent scan.",
+  "body_feedback": {
+    "dt": 0.02,
+    "force_integral_gain": 0.2,
+    "progress_rate": 0.4,
+    "return_rate": 0.5,
+    "disconnect_force_n": 1e-06,
+    "disconnect_samples": 5,
+    "meaning": "Signed measured world Fz integrates native crouch progress; return after 100ms exact simulator force absence; .4/s rate from prequalified3s entry. No privileged target or schedule; no wrist Jacobian applied at torso."
+  },
+  "conditions": {
+    "down_dev": {
+      "body": "torso_link",
+      "local_point": [
+        0,
+        0,
+        0.25
+      ],
+      "onset": 5,
+      "release": 10,
+      "end": 18,
+      "ramp": 3,
+      "delta_xyz": [
+        0,
+        0,
+        -0.08
+      ],
+      "enabled": true
+    },
+    "down_free": {
+      "body": "torso_link",
+      "local_point": [
+        0,
+        0,
+        0.25
+      ],
+      "onset": 5,
+      "release": 10,
+      "end": 18,
+      "ramp": 3,
+      "delta_xyz": [
+        0,
+        0,
+        -0.08
+      ],
+      "enabled": false
+    },
+    "down_dev2": {
+      "body": "torso_link",
+      "local_point": [
+        0,
+        0,
+        0.25
+      ],
+      "onset": 6,
+      "release": 12,
+      "end": 20,
+      "ramp": 4,
+      "delta_xyz": [
+        0,
+        0,
+        -0.1
+      ],
+      "enabled": true
+    },
+    "down_test": {
+      "body": "torso_link",
+      "local_point": [
+        0,
+        0,
+        0.25
+      ],
+      "onset": 6.6,
+      "release": 12.1,
+      "end": 20.1,
+      "ramp": 3.5,
+      "delta_xyz": [
+        0,
+        0,
+        -0.09
+      ],
+      "enabled": true
+    },
+    "down_position": {
+      "body": "torso_link",
+      "local_point": [
+        0.02,
+        0,
+        0.25
+      ],
+      "onset": 5.7,
+      "release": 10.5,
+      "end": 18.5,
+      "ramp": 2.8,
+      "delta_xyz": [
+        0,
+        0,
+        -0.07
+      ],
+      "enabled": true
+    }
+  },
+  "schedule": {
+    "contact": [
+      [
+        "down_dev",
+        "standing"
+      ],
+      [
+        "down_dev",
+        "rule"
+      ],
+      [
+        "down_dev",
+        "teacher"
+      ],
+      [
+        "down_free",
+        "teacher"
+      ]
+    ]
+  },
+  "sealed": {
+    "conditions": [
+      "down_test",
+      "down_position"
+    ],
+    "fixed_before_contact_qualification": true,
+    "not_for_training_or_checkpoint_selection": true
+  }
 }
