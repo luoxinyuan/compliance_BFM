@@ -6,7 +6,7 @@ from m9c_stage import RUN,OLD
 def main():
  refs=json.loads((OLD/'native-cycles.json').read_text())['cycles'];items=[]
  def wraps(a,b):return [k for k,r in refs.items() if int(a+r['phase_offset']/len(r['z']))!=int(b+r['phase_offset']/len(r['z']))]
- for stage,labels in [('qualification',['held_straight__expert','held_straight__arm']),('rl_eval',['development_straight__rl']),('final',['new_straight__expert','new_straight__learned_expert','new_straight__transfer','new_heading__transfer','new_right__transfer','wrist_early__ablation','wrist_early__transfer'])]:
+ for stage,labels in [('qualification',['held_straight__expert','held_straight__arm']),('final',['new_straight__expert','new_straight__learned_expert','new_straight__transfer','new_heading__transfer','new_right__transfer','wrist_early__ablation','wrist_early__transfer'])]:
   for label in labels:
    p=RUN/(stage+'-attempt-01')/'outputs'/(label+'.json.gz')
    if not p.exists():continue
