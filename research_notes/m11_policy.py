@@ -15,7 +15,8 @@ def legal_command(model,base,raw):
     d=d-(d*base).sum(-1,keepdim=True)*base/256
     norm=d.norm(dim=-1,keepdim=True)
     d=d*torch.clamp(8/norm.clamp_min(1e-8),max=1)
-    return model.project_z(base+d),norm
+    z=model.project_z(base+d)
+    return torch.where((raw==0).all(-1,keepdim=True),base,z),norm
 
 def update(net,opt,batch,epochs=6,minibatch=256,actor_lr=None):
     x=batch['obs'];raw=batch['action'];old=batch['logp'];adv=batch['advantages'];ret=batch['returns'];ov=batch['value']

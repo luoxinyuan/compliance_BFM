@@ -8,7 +8,7 @@ def launch(connection,gpu,index,output):
     global CONNECTION,WORKER_ID
     CONNECTION=connection;WORKER_ID=index
     os.environ.update(CUDA_VISIBLE_DEVICES=gpu,MUJOCO_GL='disable',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',BFM_RECOVERY_OUTPUT=str(output),PYTHONDONTWRITEBYTECODE='1')
-    output=Path(output);output.mkdir()
+    output=Path(output);output.mkdir();os.chdir(output) # per-worker short IPC paths used by original loader
     log=open(output/'worker.log','a',buffering=1);os.dup2(log.fileno(),1);os.dup2(log.fileno(),2)
     try:
         import m10_stage,m10_physics
