@@ -19,6 +19,8 @@ def run_study(env,model,contract,out):
   attribute(env,model,contract,out)
  if stage not in ['diagnose','train0','train1']:
   import torch
+  import hashlib
+  assert hashlib.sha256((OLD/'native-cycles.json').read_bytes()).hexdigest()=='52a4d23cc723209c29851faffa5356245687561c62ead6f76549a0ad1db1a070'
   refs=json.loads((OLD/'native-cycles.json').read_text())['cycles']
   for r in refs.values():r['tensor']=torch.tensor(r['z'],device=env.standing.device)
   return run(env,model,contract,out,cycles=refs)

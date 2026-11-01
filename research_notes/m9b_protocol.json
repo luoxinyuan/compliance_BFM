@@ -1010,5 +1010,8 @@
   },
   "own_command_memory": "Append previous executed legal-z/16 (own command, no teacher phase) to existing features. Zero-added first layer preserves M9 initial policy exactly. Labels queried by original feedback memory on actual Student force trace; takeover tests qualify local use. No expert true phase supplied.",
   "steering_hypothesis": "Saved active expert wrist relative-root Y ranges .06-.10m, non-X force energy~49-64%; instantaneous current wrist-error guide can feed gait oscillations back into steering. One fixed half-native-stride=.71s guide filter, no alpha or turn-gain changes; compare physical outcomes, not assumed cause. No further filter scan.",
-  "query_audit": "Early t6 and later t10 on exposed +15 development: student\u2192original expert using expert shadow memory advanced only on that actual rollout. Takeover branches excluded from training, retained as local query capability evidence."
+  "query_audit": "Early t6 and later t10 on exposed +15 development: student\u2192original expert using expert shadow memory advanced only on that actual rollout. Takeover branches excluded from training, retained as local query capability evidence.",
+  "final_checkpoint_sha256": "57b346158c9ce1bbc18dc0be59991c5f4710bd4077746bf913d4a0c4d3f12634",
+  "final_no_memory_sha256": "ad81e5736f165353a3d45afa3dc5f8a11b76c153f4ac7ddc6db5660f8dcbac78",
+  "final_checkpoint_locked_utc": "2026-11-01T06:30:59.677698+00:00"
 }

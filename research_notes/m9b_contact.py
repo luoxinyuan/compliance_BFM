@@ -51,13 +51,17 @@ def run(env,model,contract,out,cycles=None,composition=False):
  from contact_projector import ContactGate
  from alpha_student import student_input
  from m9b_learning import memory_policy,load_memory
- old,ends=old_context(env);legacy_net=load_net(completed('train2')/'projected-z-final.pt',dev)
+ old,ends=old_context(env)
+ from m9_learning import sha
+ assert sha(completed('train2')/'projected-z-final.pt')=='f003afd8953b55e8f96ae1f47aea2beb80622f257cef24c451ea34fe28ab48a6'
+ legacy_net=load_net(completed('train2')/'projected-z-final.pt',dev)
  memory_net=None;ablation_net=None
  if stage in ['collect1','final']:
   checkpoint=new_completed('train'+('0' if stage=='collect1' else '1'))/'memory-final.pt'
   if stage=='final':
    import hashlib
    assert hashlib.sha256(checkpoint.read_bytes()).hexdigest()==whole['final_checkpoint_sha256']
+   assert hashlib.sha256(checkpoint.with_name('no-memory-final.pt').read_bytes()).hexdigest()==whole['final_no_memory_sha256']
   memory_net=load_memory(checkpoint,dev)
   ablation_net=load_net(checkpoint.with_name('no-memory-final.pt'),dev)
  composition=False
