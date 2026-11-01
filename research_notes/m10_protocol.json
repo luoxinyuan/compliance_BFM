@@ -1,0 +1,184 @@
+{
+  "resources": {
+    "compute_cumulative_wall_seconds": 7200,
+    "CPU": 8,
+    "RSS_GiB": 32,
+    "VRAM_GiB": 8,
+    "output_GiB": 8,
+    "note": "7200s is this bounded execution allocation, not a scientific convergence threshold; no extension without user resource authorization"
+  },
+  "seed": 41,
+  "hypotheses": {
+    "body": "Incidental right arm raise is in dance goal. Replace reference arm joints with verified standing arm pose; do not constrain live joints. Keep legs/root/waist and feedback algorithm.",
+    "walking": "Walking reference lowers contact hand and straight clip has waist mean26.5deg vs left6.7deg. Test native reference arm replacement, then fixed waist mean centering to existing left walking reference. Preserve root, legs, period, dynamic feedback. No forced upright live constraint.",
+    "counterfactual": "No force cap, partner, onset, release, PD, BFM changes."
+  },
+  "execution": {
+    "qualification": {
+      "conditions": {
+        "held_straight": {
+          "onset": 4.25,
+          "ramp": 7.8,
+          "distance": 0.82,
+          "release": 14.05,
+          "end": 20.05,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": 0,
+          "family": "walking"
+        },
+        "held_heading": {
+          "onset": 5.1,
+          "ramp": 8.1,
+          "distance": 0.78,
+          "release": 15.2,
+          "end": 21.2,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": 11,
+          "family": "walking"
+        },
+        "down_test": {
+          "body": "torso_link",
+          "local_point": [
+            0,
+            0,
+            0.25
+          ],
+          "onset": 6.6,
+          "release": 12.1,
+          "end": 20.1,
+          "ramp": 3.5,
+          "delta_xyz": [
+            0,
+            0,
+            -0.09
+          ],
+          "enabled": true,
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        }
+      },
+      "schedule": [
+        [
+          "held_straight",
+          "ref_arm"
+        ],
+        [
+          "held_straight",
+          "ref_task"
+        ],
+        [
+          "held_straight",
+          "ref_projected"
+        ],
+        [
+          "held_heading",
+          "ref_arm"
+        ],
+        [
+          "held_heading",
+          "ref_task"
+        ],
+        [
+          "held_heading",
+          "ref_projected"
+        ],
+        [
+          "down_test",
+          "body_original"
+        ],
+        [
+          "down_test",
+          "body_neutral"
+        ]
+      ]
+    },
+    "validation": {
+      "conditions": {
+        "held_straight": {
+          "onset": 4.7,
+          "ramp": 8.2,
+          "distance": 0.84,
+          "release": 14.9,
+          "end": 20.9,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": -6,
+          "family": "walking"
+        },
+        "held_body": {
+          "body": "torso_link",
+          "local_point": [
+            0,
+            0,
+            0.25
+          ],
+          "onset": 4.8,
+          "release": 11.8,
+          "end": 19.8,
+          "ramp": 3.8,
+          "delta_xyz": [
+            0,
+            0,
+            -0.085
+          ],
+          "enabled": true,
+          "family": "old",
+          "distance": 0.085,
+          "curvature": 0.0
+        },
+        "wrist_early": {
+          "onset": 5,
+          "release": 12.0,
+          "end": 20.0,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.15,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "no_contact": {
+          "onset": 4.25,
+          "ramp": 7.8,
+          "distance": 0.82,
+          "release": 14.05,
+          "end": 20.05,
+          "enabled": false,
+          "curvature": 0,
+          "heading_deg": 0,
+          "family": "walking"
+        }
+      },
+      "schedule": [],
+      "selection": "New conditions are sealed now. Candidate selection uses qualification only; no checkpoint choosing from validation."
+    }
+  },
+  "transfer": {
+    "teacher": "rl",
+    "updates_per_round": 1000,
+    "rounds": 2,
+    "sources": [
+      "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m9c-expert-20261101/rl_eval-attempt-01/outputs/development_straight__rl.json.gz",
+      "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m9c-expert-20261101/rl_eval-attempt-01/outputs/development_heading__rl.json.gz"
+    ],
+    "selection_reason": "Final learned expert reduces straight force by19.1% and error8.8%, retains heading-domain error with modest force gain; less heading penalty than arm/projection. Slow curve excluded from labels because no proven improvement. Only development used.",
+    "final_test_policy": "all30 predefined complete trajectories, fixed final1000+1000 update checkpoint, no selection from sealed",
+    "final_sha256": "01ba43aa305496ac63bd25dba621920c48d1b2d8be2a977fdefc0bf940949f1a",
+    "final_lock_utc": "2026-11-01T08:32:24.390440+00:00",
+    "trained_rows": 33645
+  },
+  "expert_final_sha256": "7f45da6785e49d34851a1236e1cc66898455adb43527494c658e5ff8c3efb4cf"
+}
