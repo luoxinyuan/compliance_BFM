@@ -19,7 +19,885 @@
     "lr": 5e-05,
     "seed": 17,
     "checkpoint": "last update, no holdout selection",
-    "replay": "M9 old dataset + newly exposed heading/straight teacher and actual visited-state queries; family-balanced"
+    "replay": "M9 old dataset + newly exposed heading/straight teacher and actual visited-state queries; family-balanced",
+    "comparison": "Identical minibatches/2500 updates per round, paired own-command-memory and no-memory nets; no endpoint selection."
   },
-  "stop": "Owned limits; retain unsafe partial branches and stop that candidate. No shared model/PD edits, no CPU BFM fallback."
+  "stop": "Owned limits; retain unsafe partial branches and stop that candidate. No shared model/PD edits, no CPU BFM fallback.",
+  "execution": {
+    "expert": {
+      "conditions": {
+        "straight": {
+          "onset": 4.4,
+          "ramp": 8.2,
+          "distance": 0.9,
+          "release": 14.6,
+          "end": 20.6,
+          "enabled": true,
+          "curvature": 0,
+          "family": "walking"
+        },
+        "right": {
+          "onset": 4.7,
+          "ramp": 8.5,
+          "distance": 0.9,
+          "release": 15.2,
+          "end": 21.2,
+          "enabled": true,
+          "curvature": -0.3,
+          "family": "walking"
+        },
+        "left": {
+          "onset": 4.1,
+          "ramp": 6.5,
+          "distance": 0.7,
+          "release": 12.6,
+          "end": 18.6,
+          "enabled": true,
+          "curvature": 0.6,
+          "family": "walking"
+        },
+        "heading": {
+          "onset": 4.8,
+          "ramp": 7.5,
+          "distance": 0.8,
+          "release": 14.3,
+          "end": 20.3,
+          "enabled": true,
+          "curvature": 0,
+          "family": "walking",
+          "heading_deg": 15
+        },
+        "slow_heading": {
+          "onset": 4.2,
+          "ramp": 8.5,
+          "distance": 0.65,
+          "release": 14.7,
+          "end": 20.7,
+          "enabled": true,
+          "curvature": -0.15,
+          "heading_deg": 8,
+          "family": "walking"
+        },
+        "negative_heading": {
+          "onset": 4.5,
+          "ramp": 7.0,
+          "distance": 0.85,
+          "release": 13.5,
+          "end": 19.5,
+          "enabled": true,
+          "curvature": -0.3,
+          "heading_deg": -10,
+          "family": "walking"
+        }
+      },
+      "schedule": [
+        [
+          "straight",
+          "cadence"
+        ],
+        [
+          "heading",
+          "cadence"
+        ],
+        [
+          "left",
+          "cadence"
+        ],
+        [
+          "right",
+          "cadence"
+        ],
+        [
+          "heading",
+          "takeover"
+        ],
+        [
+          "right",
+          "takeover"
+        ]
+      ]
+    },
+    "collect0": {
+      "conditions": {
+        "straight": {
+          "onset": 4.4,
+          "ramp": 8.2,
+          "distance": 0.9,
+          "release": 14.6,
+          "end": 20.6,
+          "enabled": true,
+          "curvature": 0,
+          "family": "walking"
+        },
+        "right": {
+          "onset": 4.7,
+          "ramp": 8.5,
+          "distance": 0.9,
+          "release": 15.2,
+          "end": 21.2,
+          "enabled": true,
+          "curvature": -0.3,
+          "family": "walking"
+        },
+        "left": {
+          "onset": 4.1,
+          "ramp": 6.5,
+          "distance": 0.7,
+          "release": 12.6,
+          "end": 18.6,
+          "enabled": true,
+          "curvature": 0.6,
+          "family": "walking"
+        },
+        "heading": {
+          "onset": 4.8,
+          "ramp": 7.5,
+          "distance": 0.8,
+          "release": 14.3,
+          "end": 20.3,
+          "enabled": true,
+          "curvature": 0,
+          "family": "walking",
+          "heading_deg": 15
+        },
+        "slow_heading": {
+          "onset": 4.2,
+          "ramp": 8.5,
+          "distance": 0.65,
+          "release": 14.7,
+          "end": 20.7,
+          "enabled": true,
+          "curvature": -0.15,
+          "heading_deg": 8,
+          "family": "walking"
+        },
+        "negative_heading": {
+          "onset": 4.5,
+          "ramp": 7.0,
+          "distance": 0.85,
+          "release": 13.5,
+          "end": 19.5,
+          "enabled": true,
+          "curvature": -0.3,
+          "heading_deg": -10,
+          "family": "walking"
+        },
+        "wrist_early": {
+          "onset": 5,
+          "release": 12.0,
+          "end": 20.0,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.15,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "wrist_neg_early": {
+          "onset": 5,
+          "release": 8.5,
+          "end": 16.5,
+          "ramp": 2,
+          "delta_xyz": [
+            -0.035,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "down_test": {
+          "body": "torso_link",
+          "local_point": [
+            0,
+            0,
+            0.25
+          ],
+          "onset": 6.6,
+          "release": 12.1,
+          "end": 20.1,
+          "ramp": 3.5,
+          "delta_xyz": [
+            0,
+            0,
+            -0.09
+          ],
+          "enabled": true,
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "wrist_sealed_mid": {
+          "onset": 6.65,
+          "release": 17.35,
+          "end": 25.35,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.14,
+            0,
+            0
+          ],
+          "enabled": true,
+          "transition": {
+            "unload": 11.65,
+            "restart": 12.15,
+            "reverse_end": 15.850000000000001,
+            "reverse_target": -0.03
+          },
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "wrist_free": {
+          "onset": 5,
+          "release": 12.0,
+          "end": 20.0,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.15,
+            0,
+            0
+          ],
+          "enabled": false,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        }
+      },
+      "schedule": [
+        [
+          "straight",
+          "expert"
+        ],
+        [
+          "straight",
+          "legacy"
+        ],
+        [
+          "heading",
+          "expert"
+        ],
+        [
+          "heading",
+          "legacy"
+        ],
+        [
+          "slow_heading",
+          "expert"
+        ],
+        [
+          "slow_heading",
+          "legacy"
+        ],
+        [
+          "negative_heading",
+          "expert"
+        ],
+        [
+          "negative_heading",
+          "legacy"
+        ]
+      ]
+    },
+    "collect1": {
+      "conditions": {
+        "straight": {
+          "onset": 4.4,
+          "ramp": 8.2,
+          "distance": 0.9,
+          "release": 14.6,
+          "end": 20.6,
+          "enabled": true,
+          "curvature": 0,
+          "family": "walking"
+        },
+        "right": {
+          "onset": 4.7,
+          "ramp": 8.5,
+          "distance": 0.9,
+          "release": 15.2,
+          "end": 21.2,
+          "enabled": true,
+          "curvature": -0.3,
+          "family": "walking"
+        },
+        "left": {
+          "onset": 4.1,
+          "ramp": 6.5,
+          "distance": 0.7,
+          "release": 12.6,
+          "end": 18.6,
+          "enabled": true,
+          "curvature": 0.6,
+          "family": "walking"
+        },
+        "heading": {
+          "onset": 4.8,
+          "ramp": 7.5,
+          "distance": 0.8,
+          "release": 14.3,
+          "end": 20.3,
+          "enabled": true,
+          "curvature": 0,
+          "family": "walking",
+          "heading_deg": 15
+        },
+        "slow_heading": {
+          "onset": 4.2,
+          "ramp": 8.5,
+          "distance": 0.65,
+          "release": 14.7,
+          "end": 20.7,
+          "enabled": true,
+          "curvature": -0.15,
+          "heading_deg": 8,
+          "family": "walking"
+        },
+        "negative_heading": {
+          "onset": 4.5,
+          "ramp": 7.0,
+          "distance": 0.85,
+          "release": 13.5,
+          "end": 19.5,
+          "enabled": true,
+          "curvature": -0.3,
+          "heading_deg": -10,
+          "family": "walking"
+        },
+        "wrist_early": {
+          "onset": 5,
+          "release": 12.0,
+          "end": 20.0,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.15,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "wrist_neg_early": {
+          "onset": 5,
+          "release": 8.5,
+          "end": 16.5,
+          "ramp": 2,
+          "delta_xyz": [
+            -0.035,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "down_test": {
+          "body": "torso_link",
+          "local_point": [
+            0,
+            0,
+            0.25
+          ],
+          "onset": 6.6,
+          "release": 12.1,
+          "end": 20.1,
+          "ramp": 3.5,
+          "delta_xyz": [
+            0,
+            0,
+            -0.09
+          ],
+          "enabled": true,
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "wrist_sealed_mid": {
+          "onset": 6.65,
+          "release": 17.35,
+          "end": 25.35,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.14,
+            0,
+            0
+          ],
+          "enabled": true,
+          "transition": {
+            "unload": 11.65,
+            "restart": 12.15,
+            "reverse_end": 15.850000000000001,
+            "reverse_target": -0.03
+          },
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "wrist_free": {
+          "onset": 5,
+          "release": 12.0,
+          "end": 20.0,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.15,
+            0,
+            0
+          ],
+          "enabled": false,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        }
+      },
+      "schedule": [
+        [
+          "straight",
+          "student"
+        ],
+        [
+          "heading",
+          "student"
+        ],
+        [
+          "slow_heading",
+          "student"
+        ],
+        [
+          "negative_heading",
+          "student"
+        ],
+        [
+          "wrist_early",
+          "student"
+        ],
+        [
+          "down_test",
+          "student"
+        ]
+      ]
+    },
+    "final": {
+      "conditions": {
+        "held_straight": {
+          "onset": 4.25,
+          "ramp": 7.8,
+          "distance": 0.82,
+          "release": 14.05,
+          "end": 20.05,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": 0,
+          "family": "walking"
+        },
+        "held_heading": {
+          "onset": 5.1,
+          "ramp": 8.1,
+          "distance": 0.78,
+          "release": 15.2,
+          "end": 21.2,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": 11,
+          "family": "walking"
+        },
+        "held_right": {
+          "onset": 4.65,
+          "ramp": 7.9,
+          "distance": 0.87,
+          "release": 14.55,
+          "end": 20.55,
+          "enabled": true,
+          "curvature": -0.23,
+          "heading_deg": -6,
+          "family": "walking"
+        },
+        "held_left": {
+          "onset": 4.55,
+          "ramp": 8.0,
+          "distance": 0.76,
+          "release": 14.55,
+          "end": 20.55,
+          "enabled": true,
+          "curvature": 0.4,
+          "heading_deg": 5,
+          "family": "walking"
+        },
+        "held_free": {
+          "onset": 4.25,
+          "ramp": 7.8,
+          "distance": 0.82,
+          "release": 14.05,
+          "end": 20.05,
+          "enabled": false,
+          "curvature": 0,
+          "heading_deg": 0,
+          "family": "walking"
+        },
+        "wrist_early": {
+          "onset": 5,
+          "release": 12.0,
+          "end": 20.0,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.15,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "wrist_neg_early": {
+          "onset": 5,
+          "release": 8.5,
+          "end": 16.5,
+          "ramp": 2,
+          "delta_xyz": [
+            -0.035,
+            0,
+            0
+          ],
+          "enabled": true,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "down_test": {
+          "body": "torso_link",
+          "local_point": [
+            0,
+            0,
+            0.25
+          ],
+          "onset": 6.6,
+          "release": 12.1,
+          "end": 20.1,
+          "ramp": 3.5,
+          "delta_xyz": [
+            0,
+            0,
+            -0.09
+          ],
+          "enabled": true,
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "wrist_sealed_mid": {
+          "onset": 6.65,
+          "release": 17.35,
+          "end": 25.35,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.14,
+            0,
+            0
+          ],
+          "enabled": true,
+          "transition": {
+            "unload": 11.65,
+            "restart": 12.15,
+            "reverse_end": 15.850000000000001,
+            "reverse_target": -0.03
+          },
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        },
+        "wrist_free": {
+          "onset": 5,
+          "release": 12.0,
+          "end": 20.0,
+          "ramp": 4.0,
+          "delta_xyz": [
+            0.15,
+            0,
+            0
+          ],
+          "enabled": false,
+          "body": "right_wrist_yaw_link",
+          "local_point": [
+            0,
+            0,
+            0
+          ],
+          "family": "old",
+          "distance": 0.0,
+          "curvature": 0.0
+        }
+      },
+      "schedule": [
+        [
+          "held_straight",
+          "standing"
+        ],
+        [
+          "held_straight",
+          "feedback"
+        ],
+        [
+          "held_straight",
+          "expert"
+        ],
+        [
+          "held_straight",
+          "legacy"
+        ],
+        [
+          "held_straight",
+          "student"
+        ],
+        [
+          "held_heading",
+          "standing"
+        ],
+        [
+          "held_heading",
+          "feedback"
+        ],
+        [
+          "held_heading",
+          "expert"
+        ],
+        [
+          "held_heading",
+          "legacy"
+        ],
+        [
+          "held_heading",
+          "student"
+        ],
+        [
+          "held_right",
+          "standing"
+        ],
+        [
+          "held_right",
+          "feedback"
+        ],
+        [
+          "held_right",
+          "expert"
+        ],
+        [
+          "held_right",
+          "legacy"
+        ],
+        [
+          "held_right",
+          "student"
+        ],
+        [
+          "held_left",
+          "standing"
+        ],
+        [
+          "held_left",
+          "feedback"
+        ],
+        [
+          "held_left",
+          "expert"
+        ],
+        [
+          "held_left",
+          "legacy"
+        ],
+        [
+          "held_left",
+          "student"
+        ],
+        [
+          "held_free",
+          "legacy"
+        ],
+        [
+          "held_free",
+          "student"
+        ],
+        [
+          "wrist_early",
+          "m8"
+        ],
+        [
+          "wrist_early",
+          "student"
+        ],
+        [
+          "wrist_neg_early",
+          "m8"
+        ],
+        [
+          "wrist_neg_early",
+          "student"
+        ],
+        [
+          "down_test",
+          "m8"
+        ],
+        [
+          "down_test",
+          "student"
+        ],
+        [
+          "wrist_sealed_mid",
+          "m8"
+        ],
+        [
+          "wrist_sealed_mid",
+          "student"
+        ],
+        [
+          "held_straight",
+          "ablation"
+        ],
+        [
+          "held_heading",
+          "ablation"
+        ],
+        [
+          "held_right",
+          "ablation"
+        ]
+      ]
+    }
+  },
+  "sealed_before_new_training": {
+    "conditions": {
+      "held_straight": {
+        "onset": 4.25,
+        "ramp": 7.8,
+        "distance": 0.82,
+        "release": 14.05,
+        "end": 20.05,
+        "enabled": true,
+        "curvature": 0,
+        "heading_deg": 0,
+        "family": "walking"
+      },
+      "held_heading": {
+        "onset": 5.1,
+        "ramp": 8.1,
+        "distance": 0.78,
+        "release": 15.2,
+        "end": 21.2,
+        "enabled": true,
+        "curvature": 0,
+        "heading_deg": 11,
+        "family": "walking"
+      },
+      "held_right": {
+        "onset": 4.65,
+        "ramp": 7.9,
+        "distance": 0.87,
+        "release": 14.55,
+        "end": 20.55,
+        "enabled": true,
+        "curvature": -0.23,
+        "heading_deg": -6,
+        "family": "walking"
+      },
+      "held_left": {
+        "onset": 4.55,
+        "ramp": 8.0,
+        "distance": 0.76,
+        "release": 14.55,
+        "end": 20.55,
+        "enabled": true,
+        "curvature": 0.4,
+        "heading_deg": 5,
+        "family": "walking"
+      },
+      "held_free": {
+        "onset": 4.25,
+        "ramp": 7.8,
+        "distance": 0.82,
+        "release": 14.05,
+        "end": 20.05,
+        "enabled": false,
+        "curvature": 0,
+        "heading_deg": 0,
+        "family": "walking"
+      }
+    },
+    "opened": false,
+    "selection": "Final train1 last update; no test-conditioned selection. Earlier M9 final is now known development. Left remains capability probe, no claim supported family."
+  },
+  "own_command_memory": "Append previous executed legal-z/16 (own command, no teacher phase) to existing features. Zero-added first layer preserves M9 initial policy exactly. Labels queried by original feedback memory on actual Student force trace; takeover tests qualify local use. No expert true phase supplied."
 }

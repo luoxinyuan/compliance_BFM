@@ -14,4 +14,9 @@ def run_study(env,model,contract,out):
   from m9b_learning import run
  else:
   from m9b_contact import run
+ if stage not in ['diagnose','train0','train1']:
+  import torch
+  refs=json.loads((OLD/'native-cycles.json').read_text())['cycles']
+  for r in refs.values():r['tensor']=torch.tensor(r['z'],device=env.standing.device)
+  return run(env,model,contract,out,cycles=refs)
  return run(env,model,contract,out)
