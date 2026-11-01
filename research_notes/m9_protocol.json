@@ -100,5 +100,77 @@
         "feedback"
       ]
     ]
+  },
+  "cyclic_pilot": {
+    "fixed_before_physics": true,
+    "controller": "Same measured-force alpha rule, periodic native references from one kinematically selected stride per fixed clip; circular leg-phase alignment; no finite end timer, no PD/joint smoothing. Compare force-direction steering with training-only privileged instantaneous partner velocity + .5 current wrist error (world); relative desired direction/.35, same turn slew1/s. No new rewards or learned weights. Qualification tests each cyclic endpoint before composition.",
+    "conditions": {
+      "straight": {
+        "onset": 3.8,
+        "ramp": 7.0,
+        "distance": 0.8,
+        "release": 13.0,
+        "end": 18.0,
+        "enabled": true,
+        "curvature": 0
+      },
+      "left": {
+        "onset": 3.8,
+        "ramp": 7.0,
+        "distance": 0.8,
+        "release": 13.0,
+        "end": 18.0,
+        "enabled": true,
+        "curvature": 0.4363323129985824
+      },
+      "right": {
+        "onset": 3.8,
+        "ramp": 7.0,
+        "distance": 0.8,
+        "release": 13.0,
+        "end": 18.0,
+        "enabled": true,
+        "curvature": -0.4363323129985824
+      },
+      "free": {
+        "onset": 3.8,
+        "ramp": 7.0,
+        "distance": 0.8,
+        "release": 13.0,
+        "end": 18.0,
+        "enabled": false,
+        "curvature": 0
+      }
+    },
+    "schedule": [
+      [
+        "straight",
+        "feedback"
+      ],
+      [
+        "straight",
+        "privileged"
+      ],
+      [
+        "left",
+        "feedback"
+      ],
+      [
+        "left",
+        "privileged"
+      ],
+      [
+        "right",
+        "feedback"
+      ],
+      [
+        "right",
+        "privileged"
+      ],
+      [
+        "free",
+        "feedback"
+      ]
+    ]
   }
 }

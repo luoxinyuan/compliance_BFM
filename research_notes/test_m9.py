@@ -38,4 +38,10 @@ class History(unittest.TestCase):
   install_partner(tether,spec,np.zeros(3));_,f=tether.measure();self.assertGreater(f[0],0);self.assertGreater(f[1],0);self.assertAlmostEqual(np.linalg.norm(f),5)
   anchor=tether.anchor.copy();vel=tether.partner_velocity.copy();tether.time+=1e-5;tether.measure();np.testing.assert_allclose((tether.anchor-anchor)/1e-5,vel,rtol=1e-4,atol=1e-7)
   tether.time=14;_,f=tether.measure();np.testing.assert_array_equal(f,0)
+ def test_cycle_has_no_six_second_end_timer(self):
+  import numpy as np
+  from m9_cyclic import CyclicFeedback
+  f=CyclicFeedback(dict(straight=1.42,left=1.24,right=1.52))
+  for _ in range(1000):s=f.step([3,0,0],np.eye(3))
+  self.assertGreater(s['phase'],10);self.assertEqual(s['alpha'],1);self.assertFalse(s['reference_exhausted'])
 if __name__=='__main__':unittest.main()

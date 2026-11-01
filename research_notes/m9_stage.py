@@ -16,6 +16,9 @@ def run_study(env,model,contract,out):
   from m9_infer import run
   return run(env,model,contract,out)
  if os.environ['M9_STAGE']=='qualification':return qualify(env,model,contract,out)
+ if os.environ['M9_STAGE']=='expert':
+  from m9_cyclic import run
+  return run(env,model,contract,out)
  if os.environ['M9_STAGE']=='contact':
   from m9_contact import run
   return run(env,model,contract,out)

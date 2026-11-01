@@ -35,8 +35,8 @@ def install_partner(tether,spec,anchor):
   return point,self.force.copy()
  tether.measure=types.MethodType(measure,tether)
 
-def run(env,model,contract,out):
- plan=json.loads(Path(__file__).with_name('m9_protocol.json').read_text())['contact_pilot'];orig=model.act;dev=env.standing.device
+def run(env,model,contract,out,cycles=None):
+ plan=json.loads(Path(__file__).with_name('m9_protocol.json').read_text())['contact_pilot' if cycles is None else 'cyclic_pilot'];orig=model.act;dev=env.standing.device
  refs={k:torch.tensor(json.loads((completed('tracking')/(k+'-reference.json')).read_text())['z'],device=dev) for k in ['straight','left','right']}
  oldrun=P/'bridge-v2-owned/runs/m8-contact-body-20261101A';qa=[a for a in json.loads((oldrun/'compute-ledger.json').read_text())['attempts'] if a['stage']=='qualification' and a.get('result_status')=='completed'];assert len(qa)==1;freepath=Path(qa[0]['path'])/'outputs/standing.json.gz'
  with gzip.open(freepath,'rt') as f:free=json.load(f)['physics']
@@ -44,11 +44,16 @@ def run(env,model,contract,out):
  for name,ctl in plan['schedule']:
   spec=plan['conditions'][name];label=name+'__'+ctl;parity=reset_common(env,model,orig);save(out,label+'-prefix.json',parity);anchor=np.array(min(free,key=lambda r:abs(r['time']-spec['onset']))['wrist']);original_measure=env.tether.measure
   for c in [env.cfg,env.tether.cfg]:c.enabled=spec['enabled'];c.activation_time=spec['onset'];c.ramp_duration=spec['ramp'];c.release_time=spec['release']
-  install_partner(env.tether,spec,anchor);start=len(env.trace);initial=copy.deepcopy(env.trace[-1]);history=ContactHistory();feedback=NativeFeedback();cs=[];boundary=None;last=qof(env.previous_action);env.qualification_active=True
+  install_partner(env.tether,spec,anchor);start=len(env.trace);initial=copy.deepcopy(env.trace[-1]);history=ContactHistory();feedback=NativeFeedback();cs=[]
+  if cycles is not None:
+   from m9_cyclic import CyclicFeedback,sample
+   feedback=CyclicFeedback({k:r['period'] for k,r in cycles.items()},ctl=='privileged')
+  boundary=None;last=qof(env.previous_action);env.qualification_active=True
   try:
    for _ in range(round((spec['end']-3)*50)):
-    check_deadline();t=float(env.tether.time);R=env.sim.data.xmat[1].reshape(3,3).copy();f=env.tether.force.copy();sensor=history.append(f,'right_wrist_yaw_link',[0,0,0],R);state=feedback.step(f,R)
-    idx=min(300,int(round(state['phase']/.02)));turn=state['turn'];base=refs['straight'][idx:idx+1];other=refs['left' if turn>=0 else 'right'][idx:idx+1];native=spherical(base,other,abs(turn));z=env.standing if ctl=='standing' else spherical(env.standing,native,state['alpha']);a=orig(env.obs,z,mean=True);q=qof(a)
+    check_deadline();t=float(env.tether.time);R=env.sim.data.xmat[1].reshape(3,3).copy();f=env.tether.force.copy();sensor=history.append(f,'right_wrist_yaw_link',[0,0,0],R);guide=None if cycles is None else getattr(env.tether,'partner_velocity',np.zeros(3))+.5*(env.tether.anchor-env.last_point)
+    state=feedback.step(f,R) if cycles is None else feedback.step(f,R,guide=guide)
+    idx=min(300,int(round(state['phase']/.02)));turn=state['turn'];base=refs['straight'][idx:idx+1] if cycles is None else sample(cycles['straight'],state['phase']);other=refs['left' if turn>=0 else 'right'][idx:idx+1] if cycles is None else sample(cycles['left' if turn>=0 else 'right'],state['phase']);native=spherical(base,other,abs(turn));z=env.standing if ctl=='standing' else spherical(env.standing,native,state['alpha']);a=orig(env.obs,z,mean=True);q=qof(a)
     cs.append(dict(time=t,**state,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),q_PD_step_max_rad=float((q-last).abs().max()),pre_qpos=env.sim.data.qpos.tolist(),pre_qvel=env.sim.data.qvel.tolist(),sensor=sensor,measured_force_xyz=f.tolist(),bfm_obs={k:v.tolist() for k,v in env.obs.items()},action_saturation_fraction=float(((a*5).abs()>=contract['clip']).float().mean())))
     last=q.clone()
     try:
