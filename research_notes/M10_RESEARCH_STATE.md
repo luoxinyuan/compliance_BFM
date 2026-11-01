@@ -1,6 +1,10 @@
 # M10 — Task-appropriate whole-body compliance
 
-Status: in progress; no M10 physical result claimed at publication.
+Status: completed, partial scientific improvement; M10 Student is research-only.
+
+See [M10_RESULTS.md](M10_RESULTS.md) for the final physical comparisons,
+source attribution, failed same-state expert handover and next decision.
+The initial plan below is preserved as historical pre-execution context.
 
 This personal review branch inherits the actual M9C source commit
 `82f7eb7786ad569ae89473cdd4a1e42252daf79b`. All M0–M9C reports retain their
