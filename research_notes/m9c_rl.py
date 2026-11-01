@@ -42,7 +42,7 @@ def command(model,standing,refs,state,raw,basis):
 
 def reward(rows,oldq,newq):
  r=rows[-1];F=np.asarray([x['force'] for x in rows]);E=np.asarray([np.asarray(x['anchor'])-x['wrist'] for x in rows]);v=np.asarray([x['qvel'][:3] for x in rows]);vp=np.asarray([x['anchor_velocity'] for x in rows]);R=np.array(r['pelvis_matrix']);guide=vp[-1]+.5*E[-1];heading=np.arctan2(R[1,0],R[0,0]);desired=np.arctan2(guide[1],max(guide[0],.02));active=any(x['active'] for x in rows)
- wrist=np.array([x['wrist'] for x in rows]);root=np.array([x['root'] for x in rows]);relvel=np.diff(wrist-root,axis=0)/.005
+ wrist=np.array([x['wrist'] for x in rows]);root=np.array([x['root'] for x in rows]);relvel=np.diff(wrist-root,axis=0)/.005 if len(rows)>1 else np.zeros((1,3))
  terms=dict(force=1.5*float((F**2).sum(1).mean()/25),yz=.5*float((F[:,1:]**2).sum(1).mean()/25),tracking=.5*float(np.minimum((E**2).sum(1)/.04,16).mean()) if active else 0.,velocity=.3*float(np.minimum(((v[:,:2]-vp[:,:2])**2).sum(1)/.04,16).mean()),heading=.5*(1-math.cos(heading-desired)) if active else 0.,wrist=.1*float(np.minimum((relvel**2).sum(1)/.25,16).mean()),qpd=.05*float(torch.clamp((newq-oldq).square().mean()/.09,max=16)),slip=.1*min((max(x['contact_tangent_speed_max_mps'] for x in rows)/.1)**2,16),tilt=.1*min((r['tilt_deg']/15)**2,16))
  return -sum(terms.values())/10,terms
 
@@ -69,6 +69,8 @@ def rollout(env,model,contract,refs,net,basis,spec,label,out,stochastic=False,sa
     re,terms=reward(env.trace[blockstart:],blockq,q);re-=5 if boundary else 0;block.update(reward=re,done=boundary is not None);records.append(block);costs.append(terms)
    if boundary:break
  finally:env.qualification_active=False;env.tether.measure=oldmeasure
+ if boundary is None and tick%5!=4:
+  re,terms=reward(env.trace[blockstart:],blockq,q);block.update(reward=re*len(env.trace[blockstart:])/20,done=True);records.append(block);costs.append(terms)
  if save_full:
   ep=dict(label=label,initial=initial,physics=copy.deepcopy(env.trace[start:]),control=cs,boundary=boundary,condition=spec,anchor=anchor.tolist(),phases={'pre':[3,spec['onset']],'move':[spec['onset'],spec['onset']+spec['ramp']],'hold':[spec['onset']+spec['ramp'],spec['release']],'recover':[spec['release'],spec['end']]});save(out,label+'.json',ep)
  stats=dict(label=label,boundary=boundary,control_samples=len(env.trace[start:])//4,physical_steps=len(env.trace[start:]),rl_samples=len(records),reward_mean=float(np.mean([r['reward'] for r in records])),cost_terms={k:float(np.mean([r[k] for r in costs])) for k in costs[0]})
@@ -99,6 +101,8 @@ def update(net,opt,episodes):
  return dict(updates=updates,preupdate_logprob_max_error=pre,preupdate_ratio_max_error=float((d.log_prob(a).sum(-1)-old).exp().sub(1).abs().max()),old_value_EV=ev(ov),post_value_EV=ev(newv),logs=logs)
 
 def run(env,model,contract,out,refs,stage):
+ import functools,m8_stage
+ m8_stage.read=functools.lru_cache(maxsize=8)(m8_stage.read) # Immutable source documents, no changed reset semantics.
  plan=read(Path(__file__).with_name('m9c_protocol.json'));torch.manual_seed(plan['seed']);reset_common(env,model,model.act);basis=basis_for(env,model,refs);dummy=CyclicFeedback({k:r['period'] for k,r in refs.items()},True).step(np.zeros(3),np.eye(3),guide=np.zeros(3));x=features(env,model,dummy,torch.zeros(1,19,device=env.standing.device));net=Adapter(x.shape[1]).to(x.device);logs=[];samples=0;steps=0;updates=0;started=time.monotonic()
  if stage=='rl':
   opt=torch.optim.Adam(net.parameters(),lr=3e-5);settings=plan['rl'];torch.save(dict(state_dict=net.state_dict(),basis=basis,input_dim=x.shape[1]),out/'initial.pt')
@@ -116,3 +120,11 @@ def run(env,model,contract,out,refs,stage):
    _,st=rollout(env,model,contract,refs,net,basis,spec,name+'__rl',out,False,True);logs.append(st);print('RL_EVAL',name,st,flush=True)
   result=dict(status='completed',episodes=logs,student_optimizer_updates=0)
  (out/'rl-results.json').write_text(json.dumps(result,indent=2));return result
+
+
+class LearnedQuery:
+ def __init__(self,env,model,refs,path):
+  self.env=env;self.model=model;self.refs=refs;x=torch.load(path,map_location=env.standing.device,weights_only=True);self.net=Adapter(x['input_dim']).to(env.standing.device);self.net.load_state_dict(x['state_dict']);self.net.eval().requires_grad_(False);self.basis=x['basis'];self.prev=torch.zeros(1,19,device=env.standing.device);self.raw=self.prev.clone();self.rate=1.
+ def step(self,state,tick):
+  if tick%5==0:self.raw=self.net.distribution(features(self.env,self.model,state,self.prev)).mean;self.prev=self.raw.clone()
+  z,self.rate=command(self.model,self.env.standing,self.refs,state,self.raw,self.basis);return z
