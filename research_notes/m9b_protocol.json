@@ -1,0 +1,25 @@
+{
+  "milestone": "M9 continuation",
+  "resources": {
+    "compute_cumulative_wall_seconds": 7200,
+    "cpu": 8,
+    "rss_gib": 32,
+    "vram_gib": 8,
+    "output_gib": 8
+  },
+  "base_commit": "9644a74a7eaedf5cbc7848e8906f5f4bd642f537",
+  "diagnosis": "Separate qPD command/state contributions at same saved observations; correlate wrist Y/Z forces with alpha/turn/phase without treating correlation as causation. Audit causal query replay.",
+  "expert": "One fixed phase-rate feedback hypothesis after audit; no turn-gain search. Keep effective original straight and heading experts if candidate fails.",
+  "training": {
+    "steps": [
+      2500,
+      2500
+    ],
+    "batch": 128,
+    "lr": 5e-05,
+    "seed": 17,
+    "checkpoint": "last update, no holdout selection",
+    "replay": "M9 old dataset + newly exposed heading/straight teacher and actual visited-state queries; family-balanced"
+  },
+  "stop": "Owned limits; retain unsafe partial branches and stop that candidate. No shared model/PD edits, no CPU BFM fallback."
+}
