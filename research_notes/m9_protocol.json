@@ -852,5 +852,64 @@
     "interpretation": "New speed/curvature/onset combinations. Left is a predeclared capability-boundary test, excluded from training, not expected to pass. Starting heading remains same verified standing; unseen initial heading NOT claimed.",
     "opened": false
   },
-  "native_cycles_sha256": "52a4d23cc723209c29851faffa5356245687561c62ead6f76549a0ad1db1a070"
+  "native_cycles_sha256": "52a4d23cc723209c29851faffa5356245687561c62ead6f76549a0ad1db1a070",
+  "composition_pilot": {
+    "conditions": {
+      "straight": {
+        "onset": 3.8,
+        "ramp": 7.0,
+        "distance": 0.8,
+        "release": 13.0,
+        "end": 18.0,
+        "enabled": true,
+        "curvature": 0
+      },
+      "left": {
+        "onset": 3.8,
+        "ramp": 7.0,
+        "distance": 0.8,
+        "release": 13.0,
+        "end": 18.0,
+        "enabled": true,
+        "curvature": 0.4363323129985824
+      },
+      "right": {
+        "onset": 3.8,
+        "ramp": 7.0,
+        "distance": 0.8,
+        "release": 13.0,
+        "end": 18.0,
+        "enabled": true,
+        "curvature": -0.4363323129985824
+      },
+      "free": {
+        "onset": 3.8,
+        "ramp": 7.0,
+        "distance": 0.8,
+        "release": 13.0,
+        "end": 18.0,
+        "enabled": false,
+        "curvature": 0
+      }
+    },
+    "schedule": [
+      [
+        "straight",
+        "privileged"
+      ],
+      [
+        "left",
+        "privileged"
+      ],
+      [
+        "right",
+        "privileged"
+      ],
+      [
+        "free",
+        "privileged"
+      ]
+    ],
+    "fixed_before_run": "One evidence-based extension: +3% native-turn composition cancelled most complete-episode heading drift (-23.73deg base to -2.56deg), but did not create left turning. Predict +6% can cross to left, no further gain search. Then use one common gait phase and gain .03+.03*turn with same measured-force alpha and privileged current-guide steering; preserve all earlier pilots. This qualifies continuous native parameterization, no shared BFM or PD edit."
+  }
 }

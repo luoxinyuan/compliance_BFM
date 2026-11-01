@@ -40,14 +40,16 @@ def install_partner(tether,spec,anchor):
   return point,self.force.copy()
  tether.measure=types.MethodType(measure,tether)
 
-def run(env,model,contract,out,cycles=None):
- whole=json.loads(Path(__file__).with_name('m9_protocol.json').read_text());stage=os.environ['M9_STAGE'];learning=stage.startswith('collect') or stage=='final';plan=whole['execution'][stage] if learning else whole['contact_pilot' if cycles is None else 'cyclic_pilot'];orig=model.act;dev=env.standing.device
+def run(env,model,contract,out,cycles=None,composition=False):
+ whole=json.loads(Path(__file__).with_name('m9_protocol.json').read_text());stage=os.environ['M9_STAGE'];learning=stage.startswith('collect') or stage=='final';plan=whole['execution'][stage] if learning else whole['composition_pilot'] if composition else whole['contact_pilot' if cycles is None else 'cyclic_pilot'];orig=model.act;dev=env.standing.device
  if learning:
   from m9_learning import old_context,inputs,policy,load_net
   from m8_learning import policy_latent as old_latent
   from contact_projector import ContactGate
   from alpha_student import student_input
   old,ends=old_context(env);rnd=2 if stage=='final' else int(stage[-1])-1;net=load_net(completed('train'+str(rnd))/'projected-z-final.pt',dev)
+ composition=composition or (learning and whole.get('use_composition_expert',False))
+ if composition:turn_z=torch.tensor(json.loads((completed('infer')/'reward-candidates.json').read_text())['rotate-z-0.35-0.65']['z'],device=dev)
  refs={k:torch.tensor(json.loads((completed('tracking')/(k+'-reference.json')).read_text())['z'],device=dev) for k in ['straight','left','right']}
  oldrun=P/'bridge-v2-owned/runs/m8-contact-body-20261101A';qa=[a for a in json.loads((oldrun/'compute-ledger.json').read_text())['attempts'] if a['stage']=='qualification' and a.get('result_status')=='completed'];assert len(qa)==1;freepath=Path(qa[0]['path'])/'outputs/standing.json.gz'
  with gzip.open(freepath,'rt') as f:free=json.load(f)['physics']
@@ -68,13 +70,13 @@ def run(env,model,contract,out,cycles=None):
   initial['wrist']=env.last_point.tolist()
   if cycles is not None:
    from m9_cyclic import CyclicFeedback,sample
-   feedback=CyclicFeedback({k:r['period'] for k,r in cycles.items()},ctl in ['privileged','student','expert'])
+   feedback=CyclicFeedback({k:(cycles['straight']['period'] if composition else r['period']) for k,r in cycles.items()},ctl in ['privileged','student','expert'])
   boundary=None;last=qof(env.previous_action);env.qualification_active=True
   try:
    for _ in range(round((spec['end']-3)*50)):
     check_deadline();t=float(env.tether.time);R=env.sim.data.xmat[1].reshape(3,3).copy();f=env.tether.force.copy();sensor=history.append(f,site,point,R);guide=None if cycles is None else getattr(env.tether,'partner_velocity',np.zeros(3))+.5*(env.tether.anchor-env.last_point)
     state=feedback.step(f,R) if cycles is None else feedback.step(f,R,guide=guide)
-    idx=min(300,int(round(state['phase']/.02)));turn=state['turn'];base=refs['straight'][idx:idx+1] if cycles is None else sample(cycles['straight'],state['phase']);other=refs['left' if turn>=0 else 'right'][idx:idx+1] if cycles is None else sample(cycles['left' if turn>=0 else 'right'],state['phase']);native=spherical(base,other,abs(turn));oracle=spherical(env.standing,native,state['alpha']);z=env.standing if ctl=='standing' else oracle
+    idx=min(300,int(round(state['phase']/.02)));turn=state['turn'];base=refs['straight'][idx:idx+1] if cycles is None else sample(cycles['straight'],state['phase']);other=refs['left' if turn>=0 else 'right'][idx:idx+1] if cycles is None else sample(cycles['left' if turn>=0 else 'right'],state['phase']);native=spherical(base,other,abs(turn));native=model.project_z(sample(cycles['straight'],state['phase'])+(.03+.03*turn)*(turn_z-env.standing)) if composition else native;oracle=spherical(env.standing,native,state['alpha']);z=env.standing if ctl=='standing' else oracle
     if learning:
      if tick%5==0:oldgate.update(t,f)
      lg=oldgate.value(t);h,h8=inputs(model,env.obs,env.keys,history,R);world=np.zeros((320,3));world[-len(history.rows):]=np.array([r['force_world'] for r in history.rows]);legacy=student_input(model,env.obs,[world.tolist()],env.keys);enc=torch.tensor([[float(site=='right_wrist_yaw_link'),float(site=='torso_link'),*point]],device=dev,dtype=legacy.dtype)*(legacy[:,465:].abs().amax(-1,keepdim=True)>1e-8);oldz=old_latent(model,ends,old(torch.cat([legacy,enc],-1)),lg)
