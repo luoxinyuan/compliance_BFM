@@ -1,6 +1,6 @@
 # M10 — Task-appropriate whole-body compliance
 
-Status: completed, partial scientific improvement; M10 Student is research-only.
+Status: completed. Task-appropriate motion improved; interaction force and recovery remain mixed. M10 is a research successor, not an across-metric replacement of M8/M9B.
 
 See [M10_RESULTS.md](M10_RESULTS.md) for the final physical comparisons,
 source attribution, failed same-state expert handover and next decision.
