@@ -6,7 +6,7 @@
     "VRAM_GiB": 8,
     "output_GiB": 8
   },
-  "status": "throughput and fixed positive control first; training budget locked after pilot",
+  "status": "bounded program, existing 7200s total resource envelope, lock actual RL samples after pilot",
   "seed": 23,
   "execution": {
     "qualification": {
@@ -52,11 +52,162 @@
           "arm"
         ]
       ]
+    },
+    "projection": {
+      "conditions": {
+        "held_straight": {
+          "onset": 4.25,
+          "ramp": 7.8,
+          "distance": 0.82,
+          "release": 14.05,
+          "end": 20.05,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": 0,
+          "family": "walking"
+        },
+        "held_heading": {
+          "onset": 5.1,
+          "ramp": 8.1,
+          "distance": 0.78,
+          "release": 15.2,
+          "end": 21.2,
+          "enabled": true,
+          "curvature": 0,
+          "heading_deg": 11,
+          "family": "walking"
+        }
+      },
+      "schedule": [
+        [
+          "held_straight",
+          "projected"
+        ],
+        [
+          "held_heading",
+          "projected"
+        ]
+      ]
     }
   },
   "design": {
     "arm_positive_control": "Existing 10Hz damped Jacobian .04 rad/joint, .08 norm; .2s causal release; no gain scan",
     "evaluation_status": "M9B held conditions now exposed development; new final combinations locked before RL",
     "teacher": "Pretrained frozen BFM and native backward motion latents plus handwritten alpha/phase/turn; arm correction handwritten, no learned expert yet"
-  }
+  },
+  "rl": {
+    "iterations": 16,
+    "development": [
+      {
+        "onset": 4.25,
+        "ramp": 7.8,
+        "distance": 0.82,
+        "release": 14.05,
+        "end": 20.05,
+        "enabled": true,
+        "curvature": 0,
+        "heading_deg": 0,
+        "family": "walking"
+      },
+      {
+        "onset": 5.1,
+        "ramp": 8.1,
+        "distance": 0.78,
+        "release": 15.2,
+        "end": 21.2,
+        "enabled": true,
+        "curvature": 0,
+        "heading_deg": 11,
+        "family": "walking"
+      },
+      {
+        "onset": 4.8,
+        "ramp": 8.4,
+        "distance": 0.72,
+        "release": 15.2,
+        "end": 21.2,
+        "enabled": true,
+        "curvature": -0.1,
+        "heading_deg": 6,
+        "family": "walking"
+      }
+    ],
+    "optimizer": "PPO acquisition only, lr3e-5, clip .1, gamma .99, GAE .95, 4 epochs max, analytic KL stop .015",
+    "seed": 23,
+    "policy": "64x64 privileged MLP; 16 tangent residual + phase rate/turn/alpha residual, BFM and PD frozen",
+    "physical_sample_plan": "48 full episodic rollouts, 50Hz BFM and 200Hz physics; Gaussian decisions10Hz; exact counts logged",
+    "expert_selection": "Fixed final checkpoint; compare on development before transfer. No heldout selection; if learned adapter degrades use qualified projected feedback expert rather than call RL converged",
+    "reward": "actual XYZ force, extra YZ burden, 3D error, current partner speed/heading, relative wrist velocity, qPD jump, loaded foot slip, tilt; no cap or partner changes"
+  },
+  "rl_evaluation": {
+    "development_straight": {
+      "onset": 4.25,
+      "ramp": 7.8,
+      "distance": 0.82,
+      "release": 14.05,
+      "end": 20.05,
+      "enabled": true,
+      "curvature": 0,
+      "heading_deg": 0,
+      "family": "walking"
+    },
+    "development_heading": {
+      "onset": 5.1,
+      "ramp": 8.1,
+      "distance": 0.78,
+      "release": 15.2,
+      "end": 21.2,
+      "enabled": true,
+      "curvature": 0,
+      "heading_deg": 11,
+      "family": "walking"
+    },
+    "development_slow": {
+      "onset": 4.8,
+      "ramp": 8.4,
+      "distance": 0.72,
+      "release": 15.2,
+      "end": 21.2,
+      "enabled": true,
+      "curvature": -0.1,
+      "heading_deg": 6,
+      "family": "walking"
+    }
+  },
+  "sealed": {
+    "new_straight": {
+      "onset": 4.4,
+      "ramp": 8.4,
+      "distance": 0.88,
+      "release": 14.8,
+      "end": 20.8,
+      "enabled": true,
+      "curvature": 0,
+      "heading_deg": 0,
+      "family": "walking"
+    },
+    "new_heading": {
+      "onset": 4.9,
+      "ramp": 8.6,
+      "distance": 0.8,
+      "release": 15.5,
+      "end": 21.5,
+      "enabled": true,
+      "curvature": 0,
+      "heading_deg": 7,
+      "family": "walking"
+    },
+    "new_right": {
+      "onset": 4.6,
+      "ramp": 8.4,
+      "distance": 0.8,
+      "release": 15.0,
+      "end": 21.0,
+      "enabled": true,
+      "curvature": -0.18,
+      "heading_deg": -3,
+      "family": "walking"
+    }
+  },
+  "sealed_status": "fixed before learning; never used to choose checkpoint"
 }

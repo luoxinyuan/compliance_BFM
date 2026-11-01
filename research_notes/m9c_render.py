@@ -16,7 +16,8 @@ def geom(scene,typ,pos,size,color,end=None):
  scene.ngeom+=1
 
 def main():
- out=RUN/'videos';out.mkdir(exist_ok=True);xml=ROOT/'humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml';model=mujoco.MjModel.from_xml_path(str(xml));model.vis.global_.offwidth=640;model.vis.global_.offheight=640
+ out=RUN/'videos-clean';out.mkdir(exist_ok=True);xml=ROOT/'humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml';model=mujoco.MjModel.from_xml_path(str(xml));model.vis.global_.offwidth=640;model.vis.global_.offheight=640
+ model.site_rgba[:,3]=0 # Hide static XML debug markers, not recorded contact annotations.
  data=mujoco.MjData(model);renderer=mujoco.Renderer(model,height=640,width=640);font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',17);small=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',14)
  manifest=[]
  for label,title in ITEMS:
