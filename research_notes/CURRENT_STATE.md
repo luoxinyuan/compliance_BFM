@@ -1,10 +1,10 @@
 # CURRENT_STATE — 新会话先读
 
-**最后核对：2026-11-03，新迁移/窄分布阶段已授权，准备完成；启动与结果以独立ledger核验。**
+**最后核对：2026-11-03，新迁移/窄分布阶段已授权，三条工作线运行中；结果以独立ledger核验。**
 
 长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[窄域Expert #33](https://github.com/GaoE05/robot-research-bridge/issues/33)记录当前阶段，[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)保留旧训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
 
-## 1. 新授权：Direct Teacher→Student + 窄分布PPO（准备完成，尚未启动）
+## 1. 新授权：Direct Teacher→Student + 窄分布PPO（三条工作线已启动）
 
 2026-11-03用户授权两条主线并行。协议见[TRANSFER_PROTOCOL.md](TRANSFER_PROTOCOL.md)，机器可读条件见transfer_protocol.json。旧clean Expert20批/冻结终检完成，完整负结果见[CLEAN_EXPERT_RESULTS.md](CLEAN_EXPERT_RESULTS.md)，旧M11不重启。Direct初始化已有有效行为；旧PPO15开发收益未迁移到邻近条件，不能作为可靠新基线。
 
@@ -64,3 +64,5 @@ A：冻结初始化和PPO15分别迁移ideal-force-observation Student，先对�
 5. 本次授权structured/direct Expert架构对照及有界训练；旧A/B不重启。新资源按独立ledger累计，普通工程修复自主处理，超出新权限或重大方法偏离才交接。
 
 本次Mac关键视频：`~/Projects/compliance-bfm-diagnostics/videos/clean-contact-expert/INDEX.md`，三条分别是初始化、开发15/20批对比、新条件初始化/15批反例。均已同步并通过SHA、时长和完整解码验证。
+
+运行快照（不是重发车指令）：A GPU1 PID1725226 A-prepare-01; B1 GPU5 PID1725774 B1-train-02; B2 GPU6 PID1726159 B2-train-03。统一runtime `f736c9a34b1791eed5a24f9970c87f2383b8547a`；实际进度读各job/status或summaries。
