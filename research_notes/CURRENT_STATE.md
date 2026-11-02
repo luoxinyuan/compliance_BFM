@@ -8,9 +8,9 @@
 
 2026-11-02最新用户授权 supersedes旧单GPU窄域方案：最多3张实际空闲GPU，structured vs direct learned latent control；旧三奖励/初始化×两种子不执行。已只读核查GPU1/5/6空闲、2/3忙，CPU/内存/I/O有余量，未来启动必须刷新。
 
-旧`narrow_env`仍由CyclicFeedback决定alpha与phase，PPO仅残差。现新`clean_env/clean_policy`移除在线force-to-motion及M10 Student；A学习alpha/phase-rate/tangent，B直接合法global z。M10反馈专家只生成初始化数据/正控制。方法/权限/初始化/共同reward变化见[CLEAN_EXPERT_PROTOCOL.md](CLEAN_EXPERT_PROTOCOL.md)。4项纯tensor/源码合同测试通过。1500步初始化后direct为7.502cm/4.059N/46.45%cap，无接触root最大3.8mm；structured32.672cm/4.674N/84.48%cap，无接触root4.14cm。专家7.796cm/4.363N，教师tangent最大13.656/16，初始化物理全程无边界。direct表现是监督初始化结果，**不是RL收益**；structured离线拟合好但自身phase/alpha闭环偏离，不能宣称资格全面通过。详见[CLEAN_EXPERT_INITIAL.md](CLEAN_EXPERT_INITIAL.md)。
+旧`narrow_env`仍由CyclicFeedback决定alpha与phase，PPO仅残差。现新`clean_env/clean_policy`移除在线force-to-motion及M10 Student；A学习alpha/phase-rate/tangent，B直接合法global z。M10反馈专家只生成初始化数据/正控制。方法/权限/初始化/共同reward变化见[CLEAN_EXPERT_PROTOCOL.md](CLEAN_EXPERT_PROTOCOL.md)。4项纯tensor/源码合同测试通过。1500步初始化后direct为7.502cm/4.059N/46.45%cap，无接触root最大3.8mm；structured32.672cm/4.674N/84.48%cap，无接触root4.14cm。专家7.796cm/4.363N，教师tangent最大13.656/16，初始化物理全程无边界。direct表现是监督初始化结果，**不是RL收益**；structured离线拟合好但自身phase/alpha闭环偏离，不能宣称资格全面通过。详见[CLEAN_EXPERT_INITIAL.md](CLEAN_EXPERT_INITIAL.md)与[实时阶段更新](https://github.com/GaoE05/robot-research-bridge/issues/33#issuecomment-6581158772)。
 
-本阶段独立根`bridge-v2-owned/runs/clean-contact-expert-20261102`，ledger累计总监督job秒14400、RL决策122880、输出12GiB；每job8CPU/32GiBRSS/8GiBVRAM。先两组20batch有节点训练，不自动六组长训。初始化物理已完成；首次structured-train-03/direct-train-04各3批2304决策后停止：首批KL.383/.0377超出.02，旧实现只在步后停止。现事务式rollback/backtracking修正通过5项测试，准备从原initial.pt重启同一20批；旧失败和中断checkpoint保留，未宣称RL成功。两组runtime `999494f7a25224b27780f504af797c32b6ca6879`；sup PID1686552/1686565仅为本次记录，接力必须按ledger核验。旧窄域ledger不重置，旧A/B不恢复。当前代码在个人`gaoe05/clean-contact-expert`，每次运行固定commit；源集成HEAD不是runtime。
+本阶段独立根`bridge-v2-owned/runs/clean-contact-expert-20261102`，ledger累计总监督job秒14400、RL决策122880、输出12GiB；每job8CPU/32GiBRSS/8GiBVRAM。先两组20batch有节点训练，不自动六组长训。初始化物理已完成；首次structured-train-03/direct-train-04各3批2304决策后停止：首批KL.383/.0377超出.02，旧实现只在步后停止。事务式rollback/backtracking修正通过5项测试。现structured-train-06(GPU1,parent1690260)/direct-train-08(GPU5,parent1691149)已从原initial.pt启动各20批；核验至A4/B1，最近接受KL.01875/.01957，约14–16决策/s。两组实际runtime `05b313e6c4a14aff1d2e3ee08432f9d231c6822f`；初始runtime999494f只用于准备。一次direct旧runtime误发车0更新已停止保留，详见阶段Issue。旧失败和中断checkpoint保留，未宣称RL成功。接力必须按ledger核验源commit、parent PID、result和status；这些运行记录不是重发车授权。旧窄域ledger不重置，旧A/B不恢复。当前代码在个人`gaoe05/clean-contact-expert`，每次运行固定commit；源集成HEAD不是runtime。
 
 旧结果保留：gain16mean12.368cm/4.703N/84.94%cap，checkpoint017ac2ada5677277baf4cb07a69fe201055cb969b64afa269aae579d4f68774b；4x整体执行11.296cm/4.459N存在precontact重配置混杂，不是新基线。[NARROW_RESIDUAL_FINDINGS.md](NARROW_RESIDUAL_FINDINGS.md)及[Issue33](https://github.com/GaoE05/robot-research-bridge/issues/33)保留失败。旧M11停止；本轮不训练Student。
 
@@ -62,3 +62,5 @@
 3. 当前授权与预算以第1节及CLEAN_EXPERT_PROTOCOL为准；旧窄域单GPU预算仅约束旧ledger，不限制本次明确授权的有界并行。真实BFM不因无GPU改CPU，共享盘总剩余不等于个人配额。
 4. 共享BFM/PD/原权重、SoftSONIC和他人任务不动；只管理核验过的自有PID。代码/活动产物留个人CPFS目录，大资产`/mnt/data-oss/users/yi.gao/compliance_BFM/`；不自动下载大资产、启动Bridge/watch/真机或扩大预算。
 5. 本次授权structured/direct Expert架构对照及有界训练；旧A/B不重启。新资源按独立ledger累计，普通工程修复自主处理，超出新权限或重大方法偏离才交接。
+
+本次已同步Mac关键初始化视频：`~/Projects/compliance-bfm-diagnostics/videos/clean-contact-expert/01_initialization_teacher_structured_direct.mp4`及INDEX，上旧专家/中A/下B，17.08s真实qpos1×，完整解码与SHA验证；不是PPO后结果。SHA48aed9e6cf5f8525bbdc26b3d591785507e1b5968f02302ec98f549ff412d236。
