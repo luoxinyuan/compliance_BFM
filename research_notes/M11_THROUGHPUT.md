@@ -17,3 +17,7 @@ A is interrupted only while waiting for rollout, after a completed optimizer bat
 Old workers did not checkpoint their full live physics state. In-flight samples are discarded and new workers start fresh episodes. B restarts its worker processes at the same completed-batch count; this boundary is recorded before B runs. This is a documented protocol modification, not a claim of bitwise uninterrupted training. Schedule changes still occur only before sampling, and old log probabilities use the actual sampling distribution.
 
 The existing cumulative 28,800 s ledger and per-arm allowance include old attempts. No new GPU or broader CPU/memory permission is used. Shared BFM/PD, original weights, prior runtime and other users' jobs remain unchanged.
+
+## Verified adoption
+
+Four complete scenarios (straight/left/local/no-contact): 144.31065 s legacy vs 120.08489 s optimized, 1.2017x aggregate. All recorded physical/control arrays and total reward have zero difference. Ten focused tests passed (7 existing contract tests, 3 configuration/resume tests); pytest is unavailable, so the existing test functions were invoked directly and unittest ran the new tests. No package installation. Runtime `c98abd7912e173f1228afaca996ae43ed6009ac1`. A resumed from batch114; at 2026-11-02 13:32 CST, batch115, sampling 54.484 s /768 decisions. This is engineering throughput evidence, not improved Expert quality.

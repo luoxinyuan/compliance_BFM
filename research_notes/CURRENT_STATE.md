@@ -1,6 +1,6 @@
 # CURRENT_STATE — 新会话先读
 
-**最后核对：2026-11-02 11:26 CST（03:26 UTC）。这是带时间戳的快照，接力前必须刷新运行状态。**
+**最后核对：2026-11-02 13:32 CST。这是带时间戳的快照，接力前必须刷新运行状态。**
 
 长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)记录当前训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
 
@@ -10,13 +10,15 @@
 |---|---|
 |M11初轮|122,880 RL决策、783完成训练回合、18正式终检及24冻结诊断已结束；开发改善、均值部署严重失败，未推广新Expert或训练Student|
 |M11 continuation已完成|零均值residual＋同std/seed的6条真实物理对照；续训best分数/权重身份修正；初始checkpoint NumPy分数序列化修复及测试|
-|正在执行|固定探索A，`fixed-attempt-02`；核对时11批、8,448新增RL决策，状态running。序列PID1422760、训练PID1422772，启动11:10:37 CST；PID仅供核验，不是清理授权|
+|正在执行|固定探索A，`fixed-attempt-03`；从第114批断点接续，核对时115批/88,320新增RL决策。序列PID1486901、训练PID1486924；加速runtime `c98abd7912e173f1228afaca996ae43ed6009ac1`。PID仅供核验|
 |已授权并排队，尚未完成|渐进减噪B；选定模型的预封终检、3组真实视频与汇总。A/B各目标新增122,880决策；不等于已完成或已收敛|
-|本次维护|独立文档worktree，不动上述runtime，不启动/重启训练。未授权本次维护开展新实验、Student蒸馏或扩大资源|
+|本次性能优化|用户授权缓存静态配置与断点续训；10项测试、4完整物理场景逐项零差异，采样144.31→120.08s（约1.20×）。不是新科研结果；未改reward/cap/网络/PPO batch|
 
 A/B继承相同原best、optimizer和RNG；固定物理/reward/M10 prior/网络/任务分布。A保留约.08逐维std，B前20批保持，之后100批降到1/4，末40批约.02；外部std冻结于optimizer之外，只在采样批次边界改变。每批核验实际std、raw old logprob、解析KL、clip fraction、梯度及动作效果。每40批按预定均值/失败/尾部规则选择开发候选，采样结果保留；新封存6组合不用于重选。参数见 [M11_CONTINUATION.md](M11_CONTINUATION.md) 与 [protocol](m11_continuation_protocol.json)。
 
 `fixed-attempt-01`在24个初始评估后安全读checkpoint失败，当时0次PPO更新；修正只转换分数类型，完整失败保留。A/B复用对应的初始评估，失败耗时计入预算。不能将此解释为原从头训练失败原因。
+
+性能接续记录：旧A `fixed-attempt-02`在等待采样时收到授权SIGTERM，保存第114批/87,552新增RL决策，optimizer/RNG与历史best一致；断点SHA256 `5e033c8b593ae9a45335dc898679afd0b6db0d2dc794eee67fd5f2529a57cd28`。新attempt复制旧证据，不改旧文件。旧采样器未保存完整物理状态，丢弃在途样本；B预定在同一第114批重启worker进程，保留此协议变化，不声称逐位连续。总目标仍各160批，累计预算未重置。详情见 [M11_THROUGHPUT.md](M11_THROUGHPUT.md)，证据在`$P/bridge-v2-owned/runs/m11-throughput-20261102/`。
 
 ## 2. 可靠基线、实际结论与边界
 
@@ -30,11 +32,12 @@ A/B继承相同原best、optimizer和RNG；固定物理/reward/M10 prior/网络/
 
 ## 3. 源码与模型身份（不要把文档HEAD当runtime）
 
-长期集成/审查分支：[gaoe05/research](https://github.com/luoxinyuan/compliance_BFM/tree/gaoe05/research)。本次在严格快进后增加文档提交；文档提交身份以GitHub该文件的commit记录为准，避免自引用SHA。实验分支与运行源码保持不变：
+长期集成/审查分支：[gaoe05/research](https://github.com/luoxinyuan/compliance_BFM/tree/gaoe05/research)。本次在严格快进后增加文档提交；文档提交身份以GitHub该文件的commit记录为准，避免自引用SHA。旧实验分支保持不变；新性能runtime在独立worktree，长期分支只作快进及文档整合：
 
 |用途|精确commit|
 |---|---|
-|当前运行及本次整合的实验源码|`38c7b25dcb6a3a1124acd9cf44c4eb116364ac60`，`gaoe05/m11-privileged-expert`|
+|当前运行源码|`c98abd7912e173f1228afaca996ae43ed6009ac1`，`gaoe05/m11-throughput`|
+|续训前114批源码（完整保留）|`38c7b25dcb6a3a1124acd9cf44c4eb116364ac60`，`gaoe05/m11-privileged-expert`|
 |M11初轮完整报告/源码|`466266385fab2fec9852253d661ecd24cd675c64`|
 |M10完整报告/源码|`49639ed29d4cbf513c285633841426579d80d5bd`|
 |长期分支整合前的旧HEAD / 共享checkout基线|`6023c6e257fab8fe58d13d9207fb5e85c32ee9c3`|
@@ -49,7 +52,7 @@ A/B继承相同原best、optimizer和RNG；固定物理/reward/M10 prior/网络/
 
 服务器项目根记为 `P=/mnt/data/temp_user/yi.gao/projects/compliance_BFM`，SSH为`ssh pro5000`；项目环境`source "$P/env.sh"`，Python在`$P/.venv/bin/python`。不要使用共享Isaac环境。
 
-- 当前固定runtime：`$P/bridge-v2-owned/trees/m11-privileged-expert/repo`。
+- 当前固定runtime：`$P/bridge-v2-owned/trees/m11-throughput/repo`。旧`m11-privileged-expert/repo`及其结果保持不变。
 - continuation：`$P/bridge-v2-owned/runs/m11-continuation-20261102/`。首先读`sequence-status.json`、`compute-ledger.json`；实际成功/运行attempt以ledger为准，不能硬编码`attempt-01`。训练`outputs/job/{launch,status,training,selection}`相应JSON/JSONL记录身份与进度。
 - 初轮：`$P/bridge-v2-owned/runs/m11-privileged-expert-20261101/`；起点`train-attempt-01/outputs/job/best.pt`。完整索引见 [M11_RESULTS.md](M11_RESULTS.md)。M10见 [M10_RESULTS.md](M10_RESULTS.md)，旧M8/M9保留路径在Master/原报告。
 - Mac已有M10五视频：`~/Projects/compliance-bfm-diagnostics/videos/m10-task-appropriate/INDEX.md`；M11初轮三视频：`~/Projects/compliance-bfm-diagnostics/videos/m11-privileged-expert/INDEX.md`。
@@ -62,4 +65,4 @@ A/B继承相同原best、optimizer和RNG；固定物理/reward/M10 prior/网络/
 2. 只读核验服务器ledger、精确PID/启动命令、runtime SHA和工作区。进程在跑就不重启、不覆盖、不切分支；无进程也先读result/失败原因，不能默认重跑。
 3. 当前授权：一个GPU顺序执行、8 CPU、32GiB owned RSS、8GiB owned VRAM、8GiB本轮输出、28,800s累计监督墙钟（含失败/评估/渲染）。核对时GPU1，未来不固定GPU5，也不擅自沿用旧空闲状态；真实BFM实验不因无GPU改CPU。共享盘总剩余不等于个人配额。
 4. 共享BFM/PD/原权重、SoftSONIC和他人任务不动；只管理核验过的自有PID。代码/活动产物留个人CPFS目录，大资产`/mnt/data-oss/users/yi.gao/compliance_BFM/`；不自动下载大资产、启动Bridge/watch/真机或扩大预算。
-5. 当前维护完成即结束，不触发新实验。训练阶段最终核验后更新本摘要、#32和Master，再推进获准源码到`gaoe05/research`。保留runtime commit、checkpoint SHA、完整失败和关键1×视频；不要以训练步数/高EV/代码已推送宣称科学成功。
+5. 当前有限A/B序列继续运行；性能优化不触发额外科研实验。训练阶段最终核验后更新本摘要、#32和Master，再推进获准源码到`gaoe05/research`。保留runtime commit、checkpoint SHA、完整失败和关键1×视频；不要以训练步数/高EV/代码已推送宣称科学成功。
