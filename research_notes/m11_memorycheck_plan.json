@@ -1,0 +1,125 @@
+{
+  "purpose": "Frozen causal diagnosis: separate executed exploration from next own-command-memory input; no training or deployable performance claim for fictitious memory. Same eps seeds as prior diagnostic, original legacy observation reads for exact baseline reproduction.",
+  "cases": [
+    {
+      "label": "exposed_new_straight__execute1.0__memory0.0__seed101",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "cached_observation_reads": false,
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 101,
+        "diagnostic_std_scale": 1.0,
+        "diagnostic_memory_std_scale": 0.0
+      },
+      "mode": "learned"
+    },
+    {
+      "label": "exposed_new_straight__execute1.0__memory0.0__seed202",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "cached_observation_reads": false,
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 202,
+        "diagnostic_std_scale": 1.0,
+        "diagnostic_memory_std_scale": 0.0
+      },
+      "mode": "learned"
+    },
+    {
+      "label": "exposed_new_straight__execute1.0__memory0.0__seed303",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "cached_observation_reads": false,
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 303,
+        "diagnostic_std_scale": 1.0,
+        "diagnostic_memory_std_scale": 0.0
+      },
+      "mode": "learned"
+    },
+    {
+      "label": "exposed_new_straight__execute0.0__memory1.0__seed101",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "cached_observation_reads": false,
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 101,
+        "diagnostic_std_scale": 0.0,
+        "diagnostic_memory_std_scale": 1.0
+      },
+      "mode": "learned"
+    },
+    {
+      "label": "exposed_new_straight__execute0.0__memory1.0__seed202",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "cached_observation_reads": false,
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 202,
+        "diagnostic_std_scale": 0.0,
+        "diagnostic_memory_std_scale": 1.0
+      },
+      "mode": "learned"
+    },
+    {
+      "label": "exposed_new_straight__execute0.0__memory1.0__seed303",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "cached_observation_reads": false,
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 303,
+        "diagnostic_std_scale": 0.0,
+        "diagnostic_memory_std_scale": 1.0
+      },
+      "mode": "learned"
+    }
+  ]
+}

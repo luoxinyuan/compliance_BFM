@@ -45,8 +45,14 @@ def loop(env,model,contract,out):
                     if diagnostic:
                         if probe_times and float(task.e.tether.time)>=probe_times[0]:
                             probes.append(action_probe(task,net,obs));probe_times.pop(0)
-                        raw=raw+spec['diagnostic_std_scale']*dist.stddev*torch.randn(raw.shape,device=obs.device,generator=noise)
+                        epsilon=torch.randn(raw.shape,device=obs.device,generator=noise)
+                        raw=raw+spec['diagnostic_std_scale']*dist.stddev*epsilon
                     obs,_,_,_=task.step(raw,mode=mode)
+                    if diagnostic and 'diagnostic_memory_std_scale' in spec:
+                        # Causal audit only: override the policy's next own-command input.
+                        # Actual physics/control logs retain the command that was executed.
+                        # Fictitious memory is NOT a deployment candidate.
+                        obs=obs.clone();obs[:,-256:]=dist.mean+spec['diagnostic_memory_std_scale']*dist.stddev*epsilon
                 dest=Path(cmd['output']);dest.mkdir(exist_ok=True);row=task.save(dest)
                 if diagnostic:
                     row['point_read_audit']=read_audit
