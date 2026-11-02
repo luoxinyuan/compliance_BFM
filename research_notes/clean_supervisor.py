@@ -27,7 +27,7 @@ def main():
  with ledger() as d:
   used=sum(r.get('wall_seconds',r['reserved_seconds']) for r in d['attempts'])
   assert used+reservation<=plan['resources']['sum_supervised_process_wall_seconds']
-  assert sum(r.get('reserved_decisions',0) for r in d['attempts'])+decisions<=plan['training']['max_total_rl_decisions']
+  assert sum(r.get('result',{}).get('decisions',r.get('reserved_decisions',0)) for r in d['attempts'])+decisions<=plan['training']['max_total_rl_decisions']
   active=[r for r in d['attempts'] if r['status']=='running'];assert len(active)<3
   assert not any(r['gpu']==a.gpu_index or set(r['affinity'])&set(affinity) for r in active)
   index=len(d['attempts']);path=RUN/f'{a.kind}-{a.stage}-{index+1:02d}';path.mkdir()

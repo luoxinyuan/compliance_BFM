@@ -30,6 +30,13 @@ class Tests(unittest.TestCase):
   s=torch.randn(1,256);s=s/s.norm()*16
   torch.testing.assert_close(direct_command(s/16,s),s)
   torch.testing.assert_close(direct_command(torch.zeros_like(s),s),s)
+ def test_rejected_update_restores_weights_and_adam(self):
+  torch.manual_seed(4);n=Expert(12,'direct');x=torch.randn(64,12);d=n.distribution(x);a=d.sample();v=n.value(x).detach();ret=v+torch.randn(64)
+  b=dict(obs=x,action=a,logp=d.log_prob(a).sum(-1).detach(),advantages=ret-v,returns=ret,value=v,raw_adv_std=(ret-v).std())
+  before={k:p.clone() for k,p in n.state_dict().items()};opt=torch.optim.Adam([dict(params=n.actor.parameters(),lr=100.),dict(params=n.critic.parameters(),lr=3e-4)])
+  r=update(n,opt,b,epochs=1,minibatch=64);self.assertEqual(r['optimizer_updates'],0);self.assertEqual(len(r['rejected_candidates']),7)
+  for k,p in n.state_dict().items():torch.testing.assert_close(p,before[k],rtol=0,atol=0)
+  self.assertEqual(len(opt.state),0);self.assertLessEqual(r['epochs'][-1]['joint_gaussian_KL'],.02001)
  def test_no_legacy_online_controller(self):
   import ast
   t=ast.parse(Path(__file__).with_name('clean_env.py').read_text())
