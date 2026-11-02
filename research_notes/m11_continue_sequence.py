@@ -4,7 +4,7 @@ from pathlib import Path
 from m11_selection import atomic
 P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');ROOT=Path(__file__).resolve().parents[1];RUN=P/'bridge-v2-owned/runs/m11-continuation-20261102'
 def main():
- p=argparse.ArgumentParser();p.add_argument('--gpu-index',type=int,required=True);p.add_argument('--after-zero',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--gpu-index',type=int,required=True);p.add_argument('--after-zero',action='store_true');p.add_argument('--resume-fixed');p.add_argument('--matched-reset-batch',type=int,default=0);a=p.parse_args()
  import fcntl
  lock=(RUN/'sequence.lock').open('a+');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
  stages=['fixed','annealed','final-prior','final-fixed','final-annealed','videos','analysis'] if a.after_zero else ['zero','fixed','annealed','final-prior','final-fixed','final-annealed','videos','analysis']
@@ -16,6 +16,8 @@ def main():
   for stage in stages:
    record['current']=stage;atomic(RUN/'sequence-status.json',record)
    command=[str(P/'.venv/bin/python'),'-u',str(ROOT/'research_notes/m11_continue_supervisor.py'),'--stage',stage,'--gpu-index',str(a.gpu_index),'--execute-after-owner-gpu-notice']
+   if stage=='fixed' and a.resume_fixed:command+=['--resume',a.resume_fixed]
+   if stage in ['fixed','annealed'] and a.matched_reset_batch:command+=['--matched-reset-batch',str(a.matched_reset_batch)]
    with (RUN/('sequence-'+stage+'-'+str(time.time_ns())+'.log')).open('xb') as f:subprocess.run(command,stdout=f,stderr=subprocess.STDOUT,check=True)
    ledger=json.loads((RUN/'compute-ledger.json').read_text());entry=ledger['attempts'][-1]
    if entry.get('result_status')!='completed' or entry.get('resource_boundary') or entry.get('remaining_processes'):raise RuntimeError('Sequence stopped at '+stage+': '+str(entry.get('result_status'))+' '+str(entry.get('resource_boundary')))

@@ -11,7 +11,13 @@ def install(env):
    name=path+'.'+str(key)
    try:
     if OmegaConf.is_interpolation(node,key):
-     value=plain(node[key]);node[key]=value;assert plain(node[key])==value;resolved.append(dict(path=name,value=value))
+     value=node[key]
+     if OmegaConf.is_config(value):
+      # Materialize the container alias without forcing unused custom resolvers.
+      node[key]=OmegaConf.to_container(value,resolve=False)
+      resolved.append(dict(path=name,container_alias=True))
+     else:
+      node[key]=value;assert node[key]==value;resolved.append(dict(path=name,value=value))
     value=node[key]
    except (InterpolationResolutionError,MissingMandatoryValue) as exc:
     skipped.append(dict(path=name,error=type(exc).__name__));continue

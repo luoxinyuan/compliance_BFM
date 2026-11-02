@@ -24,13 +24,14 @@ def main():
     parser.add_argument('--execute-after-owner-gpu-notice',action='store_true')
     parser.add_argument('--iterations',type=int,default=160)
     parser.add_argument('--resume')
+    parser.add_argument('--matched-reset-batch',type=int,default=0)
     args=parser.parse_args()
     protocol=json.loads((ROOT/'research_notes/m11_continuation_protocol.json').read_text())
     if not args.execute_after_owner_gpu_notice:
         print(json.dumps({'status':'prepared_only_awaiting_owner_gpu_notice','resources':protocol['resources']}));return
     assert args.gpu_index is not None
     assert not git('status','--porcelain'), 'Commit the private runtime before execution'
-    assert git('branch','--show-current')=='gaoe05/m11-privileged-expert'
+    assert git('branch','--show-current')=='gaoe05/m11-throughput'
     before=gpu(args.gpu_index);assert before['free_mib']>=12288
     import fcntl
     lock=(RUN/'compute.lock').open('a+');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -42,7 +43,7 @@ def main():
     stage_attempts=[a for a in ledger['attempts'] if a.get('stage','inference')==args.stage]
     assert not any(a.get('result_status',a.get('inference_status'))=='completed' for a in stage_attempts), 'No repeat completed stage for selection'
     remaining=protocol['resources']['compute_cumulative_wall_seconds']-sum(a.get('wall_seconds',0) for a in ledger['attempts'])
-    if args.stage in ['fixed','annealed']:remaining=min(remaining,protocol['continuation']['train_seconds_each']+60)
+    if args.stage in ['fixed','annealed']:remaining=min(remaining,protocol['continuation']['train_seconds_each']+60-sum(x.get('wall_seconds',0) for x in stage_attempts))
     assert remaining>0
     attempt=RUN/f'{args.stage}-attempt-{len(stage_attempts)+1:02d}';attempt.mkdir()
     entry={'stage':args.stage,'status':'running','started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'commit':git('rev-parse','HEAD'),'path':str(attempt),'gpu_before':before,'remaining_seconds':remaining,'peak_rss_bytes':0,'peak_gpu_mib':0}
@@ -56,6 +57,7 @@ def main():
     if args.stage not in ['videos','analysis']:
         command+=['--job',args.stage,'--gpu',before['uuid'],'--output',str(attempt/'outputs/job'),'--iterations',str(args.iterations),'--max-seconds',str(max(60,remaining-60))]
         if args.resume:command+=['--resume',args.resume]
+        if args.matched_reset_batch:command+=['--matched-reset-batch',str(args.matched_reset_batch)]
     entry['command']=command;write(ledger_path,ledger)
     cache=attempt/'cache';cache.mkdir()
     for k in ['TMPDIR','TEMP','TMP','XDG_CACHE_HOME','MPLCONFIGDIR','TORCHINDUCTOR_CACHE_DIR','TRITON_CACHE_DIR','HF_HOME','PYTHONPYCACHEPREFIX']:

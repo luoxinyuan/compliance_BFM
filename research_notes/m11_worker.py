@@ -24,12 +24,17 @@ def loop(env,model,contract,out):
     import numpy as np,torch
     from m11_env import Task
     from m11_policy import Expert
+    from m11_runtime_speed import install
+    (out/'runtime-speed.json').write_text(json.dumps(install(env),indent=2))
     torch.set_num_threads(1);torch.manual_seed(1001+WORKER_ID);np.random.seed(1001+WORKER_ID)
-    task=Task(env,model,contract,1001+WORKER_ID);obs=task.reset(record=True,label=f'train-w{WORKER_ID}-0');net=Expert(obs.shape[-1]).to(obs.device).eval();episodes=0
+    task=Task(env,model,contract,1001+WORKER_ID);obs=task.reset(record=True,label=f'train-w{WORKER_ID}-0');net=Expert(obs.shape[-1]).to(obs.device).eval();episodes=0;reset_serial=0
     CONNECTION.send(dict(kind='ready',pid=os.getpid(),input_dim=obs.shape[-1],worker=WORKER_ID))
     while True:
         cmd=CONNECTION.recv()
         if cmd['op']=='close':break
+        if cmd['op']=='snapshot_partial':
+            task.label+='-before-matched-reset';partial=task.save(out)
+            CONNECTION.send(dict(kind='snapshot',worker=WORKER_ID,discarded_partial_episode=partial));continue
         net.load_state_dict({k:torch.from_numpy(v).to(obs.device) for k,v in cmd['policy'].items()})
         if cmd['op']=='evaluate':
             summaries=[]
@@ -58,7 +63,7 @@ def loop(env,model,contract,out):
                     row['point_read_audit']=read_audit
                     (dest/(label+'-action-probes.json')).write_text(json.dumps(probes,indent=2))
                 summaries.append(row)
-            obs=task.reset(record=True,label=f'train-w{WORKER_ID}-{episodes}')
+            obs=task.reset(record=True,label=f'train-r{reset_serial}-w{WORKER_ID}-{episodes}')
             CONNECTION.send(dict(kind='evaluate',summaries=summaries));continue
         assert cmd['op']=='rollout'
         generator=torch.Generator(device=obs.device).manual_seed(1001+WORKER_ID+100003*cmd['version'])
@@ -67,7 +72,7 @@ def loop(env,model,contract,out):
             if task.done:
                 result=task.summary();eps.append(result)
                 if task.boundary or episodes%50==0:task.save(out)
-                episodes+=1;obs=task.reset(record=True,label=f'train-w{WORKER_ID}-{episodes}')
+                episodes+=1;obs=task.reset(record=True,label=f'train-r{reset_serial}-w{WORKER_ID}-{episodes}')
             with torch.no_grad():
                 dist=net.distribution(obs);raw=dist.mean+dist.stddev*torch.randn(dist.mean.shape,device=obs.device,generator=generator);lp=dist.log_prob(raw).sum(-1);value=net.value(obs)
                 nxt,reward,done,st=task.step(raw);nv=net.value(nxt)
