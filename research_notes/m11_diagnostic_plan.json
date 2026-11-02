@@ -1,0 +1,219 @@
+{
+  "purpose": "Frozen selected checkpoint, mean-vs-stochastic physical execution diagnostic. No training, no checkpoint selection; final failure remains unchanged and exposed.",
+  "seeds": [
+    101,
+    202,
+    303
+  ],
+  "noise_scales": [
+    0.5,
+    1.0
+  ],
+  "physical_parameters_unchanged": true,
+  "cases": [
+    {
+      "label": "dev_straight__sigma0.5__seed101",
+      "spec": {
+        "distance": 0.82,
+        "ramp": 7.8,
+        "onset": 4.25,
+        "release": 14.05,
+        "end": 20.05,
+        "heading_deg": 0,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 101,
+        "diagnostic_std_scale": 0.5
+      }
+    },
+    {
+      "label": "dev_straight__sigma1.0__seed101",
+      "spec": {
+        "distance": 0.82,
+        "ramp": 7.8,
+        "onset": 4.25,
+        "release": 14.05,
+        "end": 20.05,
+        "heading_deg": 0,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 101,
+        "diagnostic_std_scale": 1.0
+      }
+    },
+    {
+      "label": "dev_straight__sigma0.5__seed202",
+      "spec": {
+        "distance": 0.82,
+        "ramp": 7.8,
+        "onset": 4.25,
+        "release": 14.05,
+        "end": 20.05,
+        "heading_deg": 0,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 202,
+        "diagnostic_std_scale": 0.5
+      }
+    },
+    {
+      "label": "dev_straight__sigma1.0__seed202",
+      "spec": {
+        "distance": 0.82,
+        "ramp": 7.8,
+        "onset": 4.25,
+        "release": 14.05,
+        "end": 20.05,
+        "heading_deg": 0,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 202,
+        "diagnostic_std_scale": 1.0
+      }
+    },
+    {
+      "label": "dev_straight__sigma0.5__seed303",
+      "spec": {
+        "distance": 0.82,
+        "ramp": 7.8,
+        "onset": 4.25,
+        "release": 14.05,
+        "end": 20.05,
+        "heading_deg": 0,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 303,
+        "diagnostic_std_scale": 0.5
+      }
+    },
+    {
+      "label": "dev_straight__sigma1.0__seed303",
+      "spec": {
+        "distance": 0.82,
+        "ramp": 7.8,
+        "onset": 4.25,
+        "release": 14.05,
+        "end": 20.05,
+        "heading_deg": 0,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 303,
+        "diagnostic_std_scale": 1.0
+      }
+    },
+    {
+      "label": "exposed_new_straight__sigma0.5__seed101",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 101,
+        "diagnostic_std_scale": 0.5
+      }
+    },
+    {
+      "label": "exposed_new_straight__sigma1.0__seed101",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 101,
+        "diagnostic_std_scale": 1.0
+      }
+    },
+    {
+      "label": "exposed_new_straight__sigma0.5__seed202",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 202,
+        "diagnostic_std_scale": 0.5
+      }
+    },
+    {
+      "label": "exposed_new_straight__sigma1.0__seed202",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 202,
+        "diagnostic_std_scale": 1.0
+      }
+    },
+    {
+      "label": "exposed_new_straight__sigma0.5__seed303",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 303,
+        "diagnostic_std_scale": 0.5
+      }
+    },
+    {
+      "label": "exposed_new_straight__sigma1.0__seed303",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 303,
+        "diagnostic_std_scale": 1.0
+      }
+    }
+  ]
+}

@@ -35,10 +35,23 @@ def loop(env,model,contract,out):
             summaries=[]
             for label,spec,mode in cmd['schedule']:
                 obs=task.reset(spec,record=True,label=label,query_reference=(mode=='m10_expert'))
+                diagnostic=bool(spec.get('diagnostic_sampling'))
+                if diagnostic:
+                    from m11_diagnostics import monitor_point_read,action_probe
+                    read_audit=monitor_point_read(task);probes=[];probe_times=[5.5,7.,8.,10.]
+                    noise=torch.Generator(device=obs.device).manual_seed(spec['diagnostic_seed'])
                 while not task.done:
-                    raw=net.distribution(obs).mean
+                    dist=net.distribution(obs);raw=dist.mean
+                    if diagnostic:
+                        if probe_times and float(task.e.tether.time)>=probe_times[0]:
+                            probes.append(action_probe(task,net,obs));probe_times.pop(0)
+                        raw=raw+spec['diagnostic_std_scale']*dist.stddev*torch.randn(raw.shape,device=obs.device,generator=noise)
                     obs,_,_,_=task.step(raw,mode=mode)
-                dest=Path(cmd['output']);dest.mkdir(exist_ok=True);summaries.append(task.save(dest))
+                dest=Path(cmd['output']);dest.mkdir(exist_ok=True);row=task.save(dest)
+                if diagnostic:
+                    row['point_read_audit']=read_audit
+                    (dest/(label+'-action-probes.json')).write_text(json.dumps(probes,indent=2))
+                summaries.append(row)
             obs=task.reset(record=True,label=f'train-w{WORKER_ID}-{episodes}')
             CONNECTION.send(dict(kind='evaluate',summaries=summaries));continue
         assert cmd['op']=='rollout'
