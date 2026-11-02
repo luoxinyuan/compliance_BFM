@@ -1,18 +1,18 @@
 # CURRENT_STATE — 新会话先读
 
-**最后核对：2026-11-02，窄域两轮及幅度诊断已结束。这是带时间戳的快照，接力前必须刷新运行状态。**
+**最后核对：2026-11-02，clean Expert接口准备。启动/完成需以新ledger核验；不沿用旧状态。**
 
 长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[窄域Expert #33](https://github.com/GaoE05/robot-research-bridge/issues/33)记录当前阶段，[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)保留旧训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
 
-## 1. 当前状态：两轮窄域训练及尺度诊断已完成，无训练运行
+## 1. 当前状态：重新建立 learned-control Expert，已实现，尚未启动物理/训练
 
-原独立Expert120批/92160决策未降力，完整保留。gain16修正80批/61440决策正常完成，runtime `51c653fa6b9cab0dd87a788394d842ddd9419d7a`，4452.97秒；选中80批mean12.368cm/4.703N，相对初始13.856cm/4.704N，仍未显著降力。checkpoint SHA256 `017ac2ada5677277baf4cb07a69fe201055cb969b64afa269aae579d4f68774b`。旧M11 A160/B114保持停止。
+2026-11-02最新用户授权 supersedes旧单GPU窄域方案：最多3张实际空闲GPU，structured vs direct learned latent control；旧三奖励/初始化×两种子不执行。已只读核查GPU1/5/6空闲、2/3忙，CPU/内存/I/O有余量，未来启动必须刷新。
 
-最新只做保存数据审计及冻结均值4x/16x/−4x真实物理对照，0训练更新。4x为11.296cm/4.459N/54.11%限幅；16x退至18.180cm/4.993N；−4x14.479cm/4.762N。三者完成、worker退出、GPU释放。4x尚不是可靠新Expert，存在接触前姿态变化和q_PD连续性代价，未做独立终检或Student。
+旧`narrow_env`仍由CyclicFeedback决定alpha与phase，PPO仅残差。现新`clean_env/clean_policy`移除在线force-to-motion及M10 Student；A学习alpha/phase-rate/tangent，B直接合法global z。M10反馈专家只生成初始化数据/正控制。方法/权限/初始化/共同reward变化见[CLEAN_EXPERT_PROTOCOL.md](CLEAN_EXPERT_PROTOCOL.md)。4项纯tensor/源码合同测试通过；没有新物理成功或训练收益可宣称。
 
-首个明确问题：均值修正仍小（2.19deg latent、.330deg q_PD RMS），但未触及合法上限。XYZ显示总误差改善来自Y，保持阶段却向前超出anchor约9.5cm并受到向后近5N拉力；不是简单前进不足。主force reward在限幅段缺乏区分度，prior项并未压住收益。完整证据、推断边界及下一建议见[NARROW_RESIDUAL_FINDINGS.md](NARROW_RESIDUAL_FINDINGS.md)，阶段[Issue33](https://github.com/GaoE05/robot-research-bridge/issues/33)。
+本阶段独立根`bridge-v2-owned/runs/clean-contact-expert-20261102`，ledger累计总监督job秒14400、RL决策122880、输出12GiB；每job8CPU/32GiBRSS/8GiBVRAM。先两组20batch有节点训练，不自动六组长训。准备/物理资格后才启动RL。旧窄域ledger不重置，旧A/B不恢复。当前代码在个人`gaoe05/clean-contact-expert`，每次运行固定commit；源集成HEAD不是runtime。
 
-当前无训练排队。下一建议未执行：固定contact-window-only scale4对照，排除precontact重配置贡献，再决定均值/探索独立标定或有效反馈专家热启动。不得自动继续旧长训练。结果根为`bridge-v2-owned/runs/narrow-contact-expert-20261102`，训练attempt02/03，幅度诊断amplitude-attempt-02；runtime `fc650c2984c8022b4baacd1951defabdbc9c77c4`。首次幅度诊断因sparse checkout缺源文件失败，已修复并保留证据。
+旧结果保留：gain16mean12.368cm/4.703N/84.94%cap，checkpoint017ac2ada5677277baf4cb07a69fe201055cb969b64afa269aae579d4f68774b；4x整体执行11.296cm/4.459N存在precontact重配置混杂，不是新基线。[NARROW_RESIDUAL_FINDINGS.md](NARROW_RESIDUAL_FINDINGS.md)及[Issue33](https://github.com/GaoE05/robot-research-bridge/issues/33)保留失败。旧M11停止；本轮不训练Student。
 
 ## 2. 可靠基线、实际结论与边界
 
@@ -59,6 +59,6 @@
 
 1. 先读本文件、纲领、Master和#33最新评论；区分M11初轮与continuation；当前两者均停止，旧运行中快照不是启动授权。
 2. 只读核验服务器ledger、精确PID/启动命令、runtime SHA和工作区。进程在跑就不重启、不覆盖、不切分支；无进程也先读result/失败原因，不能默认重跑。
-3. 当前授权：一个GPU顺序执行、8 CPU、32GiB owned RSS、8GiB owned VRAM、8GiB本轮输出、28,800s累计监督墙钟（含失败/评估/渲染）。核对时GPU1，未来不固定GPU5，也不擅自沿用旧空闲状态；真实BFM实验不因无GPU改CPU。共享盘总剩余不等于个人配额。
+3. 当前授权与预算以第1节及CLEAN_EXPERT_PROTOCOL为准；旧窄域单GPU预算仅约束旧ledger，不限制本次明确授权的有界并行。真实BFM不因无GPU改CPU，共享盘总剩余不等于个人配额。
 4. 共享BFM/PD/原权重、SoftSONIC和他人任务不动；只管理核验过的自有PID。代码/活动产物留个人CPFS目录，大资产`/mnt/data-oss/users/yi.gao/compliance_BFM/`；不自动下载大资产、启动Bridge/watch/真机或扩大预算。
-5. 本次授权仅窄域独立Expert及条件成立后的有限重复/邻域验证。旧A/B不重启；保留原结果。新资源使用按独立ledger累计，普通工程修复可自主处理，资源超限或核心架构改变须交接。
+5. 本次授权structured/direct Expert架构对照及有界训练；旧A/B不重启。新资源按独立ledger累计，普通工程修复自主处理，超出新权限或重大方法偏离才交接。

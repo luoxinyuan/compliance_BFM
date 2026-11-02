@@ -1,0 +1,97 @@
+{
+  "single": {
+    "enabled": true,
+    "distance": 0.82,
+    "ramp": 7.8,
+    "onset": 4.25,
+    "release": 14.05,
+    "end": 20.05,
+    "curvature": 0.0,
+    "heading_deg": 0.0,
+    "family": "walking"
+  },
+  "seed": 101,
+  "evaluate_every": 5,
+  "resources": {
+    "sum_supervised_process_wall_seconds": 14400,
+    "max_concurrent_gpus": 3,
+    "per_job_cpus": 8,
+    "per_job_rss_gib": 32,
+    "per_job_vram_gib": 8,
+    "stage_output_gib": 12
+  },
+  "max_rl_decisions": 200448,
+  "training": {
+    "steps": 256,
+    "workers": 3,
+    "actor_lr": 1e-05,
+    "critic_lr": 0.0003,
+    "first_batches": 20,
+    "warmstart_steps": 1500,
+    "max_total_rl_decisions": 122880
+  },
+  "selection": "mean single force_RMS + 3*error_m + cap_fraction + 20*boundary; no final reselection; report pre/post warmstart and all evaluations",
+  "source_student_online": false,
+  "final": {
+    "unseen_narrow": {
+      "enabled": true,
+      "distance": 0.8,
+      "ramp": 8.05,
+      "onset": 4.4,
+      "release": 14.45,
+      "end": 20.45,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  "dev": {
+    "single": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "no_contact": {
+      "enabled": false,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "local_regression": {
+      "enabled": true,
+      "distance": 0.15,
+      "ramp": 4.5,
+      "onset": 4.25,
+      "release": 10.75,
+      "end": 16.75,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  "native_reference": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m10-task-appropriate-20261101/source_control-attempt-01/outputs/references.json",
+    "sha256": "211a192ddf6e3d534a1ef273c22e9cf977510ccb235e1c88dc2f0b24e8d6f2c0",
+    "variant": "task",
+    "skill": "straight",
+    "period": 1.42,
+    "frames": 71
+  },
+  "interfaces": {
+    "structured": "learned alpha target/rate + sphere16 tangent residual; no contact state machine",
+    "direct": "absolute sphere16 latent, 10Hz targets interpolated at50Hz from previous own command; no native phase controller"
+  },
+  "reward_change": "soft_prior removed for BOTH interfaces: its nominal target previously depended on hand-coded gate; all task/force/PD/termination costs unchanged",
+  "initialization": "same single-task M10 feedback expert trajectory queried only to generate initialization data;1500 supervised updates each; fresh PPO optimizer; neither online M10 Student nor feedback expert during learned rollouts"
+}

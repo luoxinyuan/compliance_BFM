@@ -65,3 +65,5 @@ Student只能读部署可得的force/proprio/action history、合法接触位置
 - ChatGPT Library `/Humanoid_Compliance/Current_Project/` 中2026-10-28的PROJECT_STATE/SESSION_HANDOFF为历史快照。Library以后主要放笔记与长期insight；本文件与CURRENT_STATE、最新Issue是接力入口，不要求Codex自动编辑Library。
 
 窄域专家获取澄清：特权Expert可直接以同权重原生motion latent作为名义运动先验，独立初始化actor/critic/优化器，不要求在线依赖已蒸馏Student。参考相位与接触激活是明确的自身控制记忆，不是未来伙伴轨迹；学习收益仍须由真实闭环反馈证明。
+
+最新Expert方法澄清：原生motion可作为运动能力/初始化；force→walking参与、相位推进和停止应由学习策略决定。旧CyclicFeedback只作历史/初始化正控制，新Expert不在线依赖它。Structured与direct合法latent是本阶段对照，不将任一表示预先宣称正确或作为永久门槛。
