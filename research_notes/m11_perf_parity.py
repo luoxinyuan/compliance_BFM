@@ -30,7 +30,7 @@ def study(e,m,c,out):
    data=dict(physical=physical,controls=controls,episode_return=task.episode_return)
    if mode=='legacy':refs[case]=data;parity=None
    else:
-    prior=refs[case];parity={group:{k:float(np.max(np.abs(v-prior[group][k]))) for k,v in data[group].items()} for group in ['physical','controls']};parity['reward_max_abs']=float(abs(data['episode_return']-prior['episode_return']))
+    prior=refs[case];parity={group:{k:float(np.max(np.abs(v.astype(float)-prior[group][k].astype(float)))) for k,v in data[group].items()} for group in ['physical','controls']};parity['reward_max_abs']=float(abs(data['episode_return']-prior['episode_return']))
     assert all(v==0 for group in ['physical','controls'] for v in parity[group].values()) and parity['reward_max_abs']==0,parity
    row=dict(mode=mode,case=case,elapsed_s=elapsed,decisions=decisions,rate=decisions/elapsed,summary=summary,parity=parity);results.append(row);(out/'parity.json').write_text(json.dumps(results,indent=2));print('PERF_PARITY',mode,case,elapsed,parity,flush=True)
  return dict(status='completed',results=results,policy_updated=False,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest())
