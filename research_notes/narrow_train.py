@@ -39,7 +39,7 @@ def main():
    parent,child=ctx.Pipe();proc=ctx.Process(target=launch,args=(child,a.gpu,i,a.output/f'worker-{i}'));proc.start();child.close();ps.append(proc);cs.append(parent)
   ready=[receive(c,p,900) for c,p in zip(cs,ps)];n=ready[0]['input_dim'];assert all(r['input_dim']==n for r in ready);atomic(a.output/'workers.json',ready)
   net=Expert(n).cuda();net.log_std.requires_grad_(False)
-  opt=torch.optim.Adam([dict(params=net.actor.parameters(),lr=3e-5),dict(params=net.critic.parameters(),lr=3e-4)])
+  opt=torch.optim.Adam([dict(params=net.actor.parameters(),lr=plan['training']['actor_lr']),dict(params=net.critic.parameters(),lr=3e-4)])
   if a.resume:
    ck=torch.load(a.resume,map_location='cuda',weights_only=True);assert ck['source_student_online'] is False;net.load_state_dict(ck['state_dict'])
    # Only an explicitly recorded narrow-domain continuation inherits its optimizer.

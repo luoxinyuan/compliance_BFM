@@ -11,10 +11,10 @@ class Expert(torch.nn.Module):
     def value(self,x):return 10*self.critic(x).squeeze(-1)
 
 def legal_command(model,base,raw):
-    d=torch.tanh(raw)
+    d=raw
     d=d-(d*base).sum(-1,keepdim=True)*base/256
     norm=d.norm(dim=-1,keepdim=True)
-    d=d*torch.clamp(4/norm.clamp_min(1e-8),max=1)
+    d=d*torch.clamp(16/norm.clamp_min(1e-8),max=1)
     z=model.project_z(base+d)
     return torch.where((raw==0).all(-1,keepdim=True),base,z),norm
 

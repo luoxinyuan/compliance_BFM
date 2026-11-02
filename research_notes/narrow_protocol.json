@@ -26,11 +26,13 @@
     "neighborhood_batches": 60,
     "steps": 256,
     "workers": 3,
-    "actor_lr": 3e-05,
+    "actor_lr": 1e-05,
     "critic_lr": 0.0003,
     "std": 0.02,
-    "residual_tangent_cap": 4.0,
-    "independent_actor_critic_clipping": true
+    "residual_tangent_cap": 16.0,
+    "independent_actor_critic_clipping": true,
+    "representation": "raw Gaussian tangent residual, radial norm cap16 then sphere16 projection; no componentwise tanh. Initial std .02, initial mean0.",
+    "reason": "audit teacher effective legal z deviation reaches42.44deg; avoid artificial14deg bound. Conservative LR verified on same real batch: joint KL .05323 -> .005914."
   },
   "selection": "single-condition mean F_RMS + 3*error_m + cap_fraction + 20*boundary; no final reselection",
   "source_student_online": false,
@@ -92,5 +94,13 @@
       "heading_deg": 0.0,
       "family": "walking"
     }
+  },
+  "native_reference": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m10-task-appropriate-20261101/source_control-attempt-01/outputs/references.json",
+    "sha256": "211a192ddf6e3d534a1ef273c22e9cf977510ccb235e1c88dc2f0b24e8d6f2c0",
+    "variant": "task",
+    "skill": "straight",
+    "period": 1.42,
+    "frames": 71
   }
 }

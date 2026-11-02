@@ -19,6 +19,7 @@ class Task:
     def __init__(self,e,model,contract,seed):
         self.e=e;self.m=model;self.c=contract;self.rng=np.random.default_rng(seed)
         self.prior=None;self.old=None;self.ends=None
+        ref=read(Path(__file__).with_name('narrow_protocol.json'))['native_reference'];assert sha(Path(ref['path']))==ref['sha256']
         from m10_reference import load_variants
         self.refs=load_variants(e,model)[0]['task']
         import m8_stage
@@ -99,7 +100,8 @@ class Task:
         from m9_cyclic import CyclicFeedback,sample
         from m9c_feedback import ArmFeedback,project_action
         if self.refs is None:
-            from m10_reference import load_variants
+            ref=read(Path(__file__).with_name('narrow_protocol.json'))['native_reference'];assert sha(Path(ref['path']))==ref['sha256']
+        from m10_reference import load_variants
             self.refs=load_variants(self.e,self.m)[0]['task']
         if self.tick==0 or not hasattr(self,'fb'):
             self.fb=CyclicFeedback({k:r['period'] for k,r in self.refs.items()},True);self.arm=ArmFeedback(self.e,self.c)

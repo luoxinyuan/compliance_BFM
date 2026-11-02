@@ -8,7 +8,7 @@ class Tests(unittest.TestCase):
   z,_=legal_command(Model(),b,torch.zeros_like(b));self.assertTrue(torch.equal(b,z))
   z,_=legal_command(Model(),b,torch.randn_like(b)*5)
   self.assertLess(float((z.norm(dim=-1)-16).abs().max()),1e-4)
-  self.assertLessEqual(float(torch.rad2deg(torch.acos(((z*b).sum(-1)/256).clamp(-1,1))).max()),14.04)
+  self.assertLessEqual(float(torch.rad2deg(torch.acos(((z*b).sum(-1)/256).clamp(-1,1))).max()),45.01)
  def test_feedback_update(self):
   torch.manual_seed(4);n=Expert(12);n.log_std.requires_grad_(False);x=torch.randn(256,12)
   with torch.no_grad():
