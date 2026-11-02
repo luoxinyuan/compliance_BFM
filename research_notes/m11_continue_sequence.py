@@ -7,7 +7,7 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('--gpu-index',type=int,required=True);p.add_argument('--after-zero',action='store_true');a=p.parse_args()
  import fcntl
  lock=(RUN/'sequence.lock').open('a+');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
- stages=['fixed','annealed','final-prior','final-fixed','final-annealed','videos'] if a.after_zero else ['zero','fixed','annealed','final-prior','final-fixed','final-annealed','videos']
+ stages=['fixed','annealed','final-prior','final-fixed','final-annealed','videos','analysis'] if a.after_zero else ['zero','fixed','annealed','final-prior','final-fixed','final-annealed','videos','analysis']
  record=dict(pid=os.getpid(),status='running',started=time.time(),stages=stages,finished=[]);atomic(RUN/'sequence-status.json',record)
  try:
   for stage in stages:

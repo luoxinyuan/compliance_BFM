@@ -32,8 +32,8 @@ def main():
  def stop(sig,frame):raise KeyboardInterrupt(f'signal {sig}')
  signal.signal(signal.SIGTERM,stop)
  def weights():return {k:v.detach().cpu().numpy() for k,v in net.state_dict().items()}
- def save(name):
-  path=a.output/name;tmp=path.with_suffix('.tmp');torch.save(dict(state_dict={k:v.detach().cpu() for k,v in net.state_dict().items()},optimizer=opt.state_dict(),input_dim=ck['input_dim'],iteration=ck['iteration']+completed,decisions=ck['decisions']+decisions,optimizer_updates=ck['optimizer_updates']+updates,continuation_batches=completed,continuation_decisions=decisions,best_score=selection.record['rank'][1] if selection.record else None,selection_scope=selection.scope,prior_sha=plan['prior_sha256'],source_sha256=sha(source),runtime_commit=commit,plan_sha=sha(PLAN),torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state(),external_std=True),tmp);tmp.replace(path);return path
+ def save(name,evaluated_rank=None,evaluation=None):
+  path=a.output/name;tmp=path.with_suffix('.tmp');torch.save(dict(state_dict={k:v.detach().cpu() for k,v in net.state_dict().items()},optimizer=opt.state_dict(),input_dim=ck['input_dim'],iteration=ck['iteration']+completed,decisions=ck['decisions']+decisions,optimizer_updates=ck['optimizer_updates']+updates,continuation_batches=completed,continuation_decisions=decisions,best_score=evaluated_rank[1] if evaluated_rank is not None else (selection.record['rank'][1] if selection.record else None),evaluated_rank=evaluated_rank,evaluation_path=str(evaluation) if evaluation else None,evaluation_sha256=sha(evaluation) if evaluation else None,selection_scope=selection.scope,prior_sha=plan['prior_sha256'],source_sha256=sha(source),runtime_commit=commit,plan_sha=sha(PLAN),torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state(),external_std=True),tmp);tmp.replace(path);return path
  def evaluate(schedule,name):
   folder=a.output/name;folder.mkdir();w=weights()
   for i,c in enumerate(cs):c.send(dict(op='evaluate',policy=w,schedule=schedule[i::3],output=str(folder)))
@@ -51,7 +51,8 @@ def main():
   return out
  def development():
   rows,ev=evaluate(schedule(plan['dev'])+schedule(plan['dev'],samples=True),f'dev-{completed:04d}')
-  mean=[r for r in rows if r['label'].endswith('__mean')];rank,details=continuation_rank(mean,baseline);candidate=save(f'candidate-{completed:04d}.pt')
+  mean=[r for r in rows if r['label'].endswith('__mean')];rank,details=continuation_rank(mean,baseline);candidate=save(f'candidate-{completed:04d}.pt',rank,ev)
+  audit=torch.load(candidate,map_location='cpu',weights_only=True);assert audit['evaluated_rank']==rank and audit['best_score']==rank[1] and audit['evaluation_sha256']==sha(ev)
   selected=selection.consider(candidate,rank,ev,dict(batches=completed,added_decisions=decisions,source_sha256=sha(source),std_mean=float(net.log_std.exp().mean()),**details));atomic(ev.parent/'score.json',dict(rank=rank,selected=selected,checkpoint_sha256=sha(candidate),**details));print('M11_DEV',a.job,completed,rank,'selected',selected,flush=True)
  try:
   for i in range(3):
@@ -67,13 +68,13 @@ def main():
    rows,ev=evaluate(schedule(plan['dev'],mode='prior'),'baseline');baseline={r['case']:r for r in rows};development();status='running'
    for batch in range(a.iterations):
     if time.monotonic()-start>a.max_seconds:status='time_budget';break
-    factor=exploration_scale(a.job,batch);net.log_std.copy_(original_std+np.log(factor));sampled_std=net.log_std.exp().detach().clone();w=weights();version=ck['iteration']+batch;t=time.monotonic()
+    previous_std=net.log_std.exp().detach().clone();factor=exploration_scale(a.job,batch);net.log_std.copy_(original_std+np.log(factor));sampled_std=net.log_std.exp().detach().clone();schedule_KL=float((torch.log(sampled_std/previous_std)+(previous_std/sampled_std).square()/2-.5).sum());w=weights();version=ck['iteration']+batch;t=time.monotonic()
     for c in cs:c.send(dict(op='rollout',steps=256,version=version,policy=w))
     results=[receive(c,proc,timeout=1200) for c,proc in zip(cs,ps)];sampling=time.monotonic()-t
     assert all(x['version']==version and np.array_equal(x['executed_std'],sampled_std.cpu().numpy()) for x in results)
     data={k:v.cuda() for k,v in merge_rollouts(results,.95).items()};data['raw_adv_std']=(data['returns']-data['value']).std();t=time.monotonic();u=update(net,opt,data);assert torch.equal(sampled_std,net.log_std.exp())
     completed+=1;decisions+=len(data['reward']);updates+=u['optimizer_updates'];stats=[s for x in results for s in x['stats']];active=sum(s['active_steps'] for s in stats)
-    row=dict(arm=a.job,batch=completed,added_decisions=decisions,optimizer_updates=updates,sampling_seconds=sampling,optimization_seconds=time.monotonic()-t,decisions_per_second=len(data['reward'])/sampling,physics_steps=sum(s['physics_steps'] for s in stats),control_steps=sum(s['control_steps'] for s in stats),prefill_physics_steps=sum(x['prefill_physics_steps'] for x in results),force_rms=(sum(s['active_force_squared'] for s in stats)/max(active,1))**.5,cap_fraction=sum(s['cap_steps'] for s in stats)/max(active,1),reward=float(data['reward'].mean()),reward_terms={k:float(np.mean([s['terms'][k] for s in stats])) for k in stats[0]['terms']},std_factor=factor,actual_std_mean=float(sampled_std.mean()),actual_std_min=float(sampled_std.min()),actual_std_max=float(sampled_std.max()),execution={k:float(np.mean([s['execution'][k] for s in stats])) for k in stats[0]['execution']},execution_max={k:max(s['execution_max'][k] for s in stats) for k in stats[0]['execution_max']},completed_episodes=[e for x in results for e in x['episodes']],optimization=u,elapsed_s=time.monotonic()-start)
+    row=dict(arm=a.job,batch=completed,added_decisions=decisions,optimizer_updates=updates,sampling_seconds=sampling,optimization_seconds=time.monotonic()-t,decisions_per_second=len(data['reward'])/sampling,physics_steps=sum(s['physics_steps'] for s in stats),control_steps=sum(s['control_steps'] for s in stats),prefill_physics_steps=sum(x['prefill_physics_steps'] for x in results),force_rms=(sum(s['active_force_squared'] for s in stats)/max(active,1))**.5,cap_fraction=sum(s['cap_steps'] for s in stats)/max(active,1),reward=float(data['reward'].mean()),reward_terms={k:float(np.mean([s['terms'][k] for s in stats])) for k in stats[0]['terms']},std_factor=factor,schedule_joint_KL=schedule_KL,actual_std_mean=float(sampled_std.mean()),actual_std_min=float(sampled_std.min()),actual_std_max=float(sampled_std.max()),execution={k:float(np.mean([s['execution'][k] for s in stats])) for k in stats[0]['execution']},execution_max={k:max(s['execution_max'][k] for s in stats) for k in stats[0]['execution_max']},completed_episodes=[e for x in results for e in x['episodes']],optimization=u,elapsed_s=time.monotonic()-start)
     with (a.output/'training.jsonl').open('a') as f:f.write(json.dumps(row)+'\n')
     atomic(a.output/'status.json',dict(status=status,**row));print('M11_TRAIN',a.job,completed,decisions,'std',round(row['actual_std_mean'],5),'force',round(row['force_rms'],3),'KL',round(u['epochs'][-1]['joint_gaussian_KL'],5),'rate',round(row['decisions_per_second'],2),flush=True)
     if completed%5==0:save('latest.pt')

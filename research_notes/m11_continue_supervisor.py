@@ -20,7 +20,7 @@ def main():
     assert RUN != P/'bridge-v2-owned/runs/issue21-reward-stage-20261030A'
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gpu-index',type=int)
-    parser.add_argument('--stage',choices=['zero','fixed','annealed','final-prior','final-fixed','final-annealed','videos'],required=True)
+    parser.add_argument('--stage',choices=['zero','fixed','annealed','final-prior','final-fixed','final-annealed','videos','analysis'],required=True)
     parser.add_argument('--execute-after-owner-gpu-notice',action='store_true')
     parser.add_argument('--iterations',type=int,default=160)
     parser.add_argument('--resume')
@@ -50,10 +50,10 @@ def main():
     env=dict(os.environ);env.update(CUDA_VISIBLE_DEVICES=before['uuid'],MUJOCO_GL='disable',BFM_STAGE_SUPERVISED='1',BFM_STAGE_DEADLINE_MONOTONIC=str(time.monotonic()+remaining),PYTHONPATH=str(ROOT),TORCHDYNAMO_DISABLE='1',OMP_NUM_THREADS='8',MKL_NUM_THREADS='8',OPENBLAS_NUM_THREADS='1',PYTHONDONTWRITEBYTECODE='1',HF_HUB_OFFLINE='1',WANDB_MODE='disabled')
     (attempt/'outputs').mkdir()
     env.update(BFM_RECOVERY_OUTPUT=str(attempt/'outputs'),M9_STAGE=args.stage,CCL_DEADLINE_MONOTONIC=env['BFM_STAGE_DEADLINE_MONOTONIC'])
-    launcher='m11_continue_render.py' if args.stage=='videos' else 'm11_continue.py'
+    launcher='m11_continue_render.py' if args.stage=='videos' else ('m11_continue_analyze.py' if args.stage=='analysis' else 'm11_continue.py')
     if args.stage.startswith('videos'):env.update(MUJOCO_GL='egl',PYOPENGL_PLATFORM='egl',MUJOCO_EGL_DEVICE_ID=str(args.gpu_index))
     command=[str(P/'.venv/bin/python'),'-u',str(ROOT/'research_notes'/launcher)]
-    if args.stage!='videos':
+    if args.stage not in ['videos','analysis']:
         command+=['--job',args.stage,'--gpu',before['uuid'],'--output',str(attempt/'outputs/job'),'--iterations',str(args.iterations),'--max-seconds',str(max(60,remaining-60))]
         if args.resume:command+=['--resume',args.resume]
     entry['command']=command;write(ledger_path,ledger)
@@ -104,7 +104,7 @@ def main():
             if remaining_ps:os.killpg(child.pid,signal.SIGKILL);time.sleep(.2)
             entry.update(exit_code=child.returncode,remaining_processes=processes(child.pid))
         entry.update(status='finished',wall_seconds=time.monotonic()-start,resource_boundary=boundary)
-        result_path=attempt/('outputs/result.json' if args.stage=='videos' else 'outputs/job/result.json')
+        result_path=attempt/('outputs/result.json' if args.stage in ['videos','analysis'] else 'outputs/job/result.json')
         if result_path.exists():
             entry['result_status']=json.loads(result_path.read_text())['status']
             if args.stage=='inference':entry['inference_status']=entry['result_status']
