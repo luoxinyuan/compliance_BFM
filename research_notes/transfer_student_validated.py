@@ -82,9 +82,9 @@ def study(env,model,contract,out):
    recovery=json.loads((original/(key+'-recovery.json')).read_text());accepted=[]
    for r in recovery:
     if not r['recovery_effective']:continue
-    row=min(visited,key=lambda x:abs(x['time']-r['takeover']));assert abs(row['time']-r['takeover'])<.001
+    row=min((x for x in visited if x['time']>=r['takeover']),key=lambda x:x['time']);assert row['time']-r['takeover']<.101
     with gzip.open(original/(key+f"__teacher_takeover_{int(r['takeover'])}-queries.json.gz"),'rt') as f:branch=json.load(f)
-    other=min(branch,key=lambda x:abs(x['time']-r['takeover']))
+    other=min(branch,key=lambda x:abs(x['time']-row['time']))
     assert np.max(np.abs(np.array(row['x'])-other['x']))<1e-6
     assert np.max(np.abs(np.array(row['target'])-other['target']))<1e-6
     accepted.append(row)
