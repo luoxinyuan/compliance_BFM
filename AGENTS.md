@@ -1,0 +1,10 @@
+# Personal research branch handoff
+
+These instructions describe GaoE05's personal research workflow, not a new policy for team main.
+
+1. Read `research_notes/CURRENT_STATE.md`, then `research_notes/RESEARCH_OVERVIEW.md`, Project Master #18 and the latest stage Issue. Refresh live run/ledger, exact runtime commit and worktree status before acting; a dated status snapshot is not launch authorization.
+2. Preserve active experiment worktrees, environment, shared BFM/PD/weights and all other users' processes. Make maintenance changes in an independent worktree. Never restart a running or consumed task merely to resume a conversation. No Bridge/watch or extra experiments without applicable user authorization.
+3. `gaoe05/research` is the long-term personal integration/review branch. Fetch without LFS smudge/submodule recursion; verify ancestry and reviewed history, use fast-forward integration where possible and explicit ordinary push. Do not force push, write main, auto-merge team changes, or delete branches/worktrees without authorization.
+4. Do not publish checkpoints, raw trajectories, large assets, credentials or unauthorized team materials; inspect all newly published history, not just HEAD.
+5. At milestone completion update CURRENT_STATE and Project Master with evidence links, runtime commit, checkpoint SHA, failures and next decision. Distinguish authorized/planned, running, completed and scientifically validated. Keep the overview stable and state summary short. Do not call a source push a successful experiment.
+6. Within the user's milestone scope, handle routine engineering autonomously; do not introduce unrelated historical thresholds as global prerequisites. Stop for genuine research/architecture, resource, shared-system or safety boundaries. Preserve negative results and keep deployment inputs honest.
