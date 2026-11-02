@@ -1,16 +1,20 @@
 # CURRENT_STATE — 新会话先读
 
-**最后核对：2026-11-02 16:17 CST。这是带时间戳的快照，接力前必须刷新运行状态。**
+**最后核对：2026-11-02，新窄域任务准备阶段。这是带时间戳的快照，接力前必须刷新运行状态。**
 
 长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)记录当前训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
 
-## 1. 当前状态：M11 continuation已按用户要求提前结束
+## 1. 当前状态：窄域独立Expert已授权，准备完成，GPU尚未启动
 
-2026-11-02 16:17 CST：A完成160批/122,880新增RL决策；B停止在114批/87,552决策，断点与自有worker退出已核验，GPU1释放。序列及Mac有限等待脚本均停止。没有启动封存终检、视频或下一轮训练。
+2026-11-02，新任务见 [Issue #33](https://github.com/GaoE05/robot-research-bridge/issues/33)。旧M11 continuation保持停止，A160/B114不是等预算终检，全部模型/失败保留，不能据此宣称减噪无效。
 
-详见 [M11_CONTINUATION_CLOSEOUT.md](M11_CONTINUATION_CLOSEOUT.md)。A/B都按预定开发规则保留第40批候选；A最终160批与B最后114批不是等预算终检。B最新评估仅到80批。A暴露直行误差短暂改善至10.455cm，最终42.720cm；B在40批13.416cm、80批31.272cm。力仍约4.3–4.7N，未得到持续、可靠的低力专家。所有初轮、续训失败、随机执行及回归保留。
+新actor、critic和optimizer独立初始化；直接使用M10 task修正的原生直行motion作为名义先验，不在线调用M10 Student。BFM/PD/Tether冻结。先单条件真实反馈学习，出现收益后才进行窄邻域和独立重复。当前实现/准备，尚未开始物理或训练；确切runtime以本次新分支提交和随后launch.json为准。
 
-续训修复了best保存身份问题，并完成零均值加噪声对照和独立采样性能分析；这些不等于科研目标达成。运行源码及原物理/reward/共享BFM/PD未因本次收尾改变。
+独立预算：单GPU、CPU8–15共8核、32GiB RSS、8GiB VRAM、8GiB输出；累计计算28800秒，最多200448高层RL决策（包含一次768决策诊断）。GPU1实时核查为空，系统CPU/I/O pressure近0，内存余量约927GiB；此快照不替代每次启动复核。不是独占共享磁盘配额。
+
+独立代码 `bridge-v2-owned/trees/narrow-contact-expert/repo`，分支 `gaoe05/narrow-contact-expert`；输出 `bridge-v2-owned/runs/narrow-contact-expert-20261102/`；配置 `research_notes/narrow_protocol.json`。单条件 .82m / 7.8s ramp / onset4.25s / release14.05s / end20.05s；新最终组合预固定，见配置，不能用于选择checkpoint。
+
+旧轮收尾见 [M11_CONTINUATION_CLOSEOUT.md](M11_CONTINUATION_CLOSEOUT.md)。尚无新Expert成功结果；M10/M9B仍是对照，不会自动被替换。
 
 ## 2. 可靠基线、实际结论与边界
 
@@ -20,7 +24,7 @@
 - 同一冻结M11 checkpoint在失败条件完整采样9.329±1.167cm；仅记忆噪声未解决问题。force/GAE/raw logprob未发现对应硬错误；5N饱和压缩force惩罚，但已有误差/未限幅需求项把失败评得更差，没有force高斯sigma。
 - continuation零均值＋同噪声18.119±14.218cm、4.302±.477N，对应学习＋噪声9.329±1.167cm、4.298±.269N（三执行seed，不是三次训练）。学习反馈对误差/尾部有贡献，但力几乎相同，尚无可靠均值改进证据。
 
-**首要瓶颈：均值部署仍不可靠，实际交互力没有稳定降低。** 当前停止继续宽任务续训。建议下一次先收敛到可信直行运动上的有限反馈任务，验证确定性执行收益，再逐项扩分布；仅建议，尚未启动或排队。不能把这次提前结束解释为BFM/LPP不可行或已经证明减噪无效。
+**首要瓶颈：均值部署仍不可靠，实际交互力没有稳定降低。** 已停止宽任务续训；用户现已授权窄域独立Expert，按上方实时状态执行。不能把这次提前结束解释为BFM/LPP不可行或已经证明减噪无效。
 
 当前Student使用仿真实际Tether力及已知接触位置，尚无真机传感/估计验证；“可部署输入”是信息权限设计，不是已证明准确实机力可得。
 
@@ -59,4 +63,4 @@
 2. 只读核验服务器ledger、精确PID/启动命令、runtime SHA和工作区。进程在跑就不重启、不覆盖、不切分支；无进程也先读result/失败原因，不能默认重跑。
 3. 当前授权：一个GPU顺序执行、8 CPU、32GiB owned RSS、8GiB owned VRAM、8GiB本轮输出、28,800s累计监督墙钟（含失败/评估/渲染）。核对时GPU1，未来不固定GPU5，也不擅自沿用旧空闲状态；真实BFM实验不因无GPU改CPU。共享盘总剩余不等于个人配额。
 4. 共享BFM/PD/原权重、SoftSONIC和他人任务不动；只管理核验过的自有PID。代码/活动产物留个人CPFS目录，大资产`/mnt/data-oss/users/yi.gao/compliance_BFM/`；不自动下载大资产、启动Bridge/watch/真机或扩大预算。
-5. 当前无训练或终检排队。本次只收尾记录，不自动重启A/B、不启动窄域新训练。后续科研任务须依据新授权；保留已有模型、源码身份及全部失败。
+5. 本次授权仅窄域独立Expert及条件成立后的有限重复/邻域验证。旧A/B不重启；保留原结果。新资源使用按独立ledger累计，普通工程修复可自主处理，资源超限或核心架构改变须交接。

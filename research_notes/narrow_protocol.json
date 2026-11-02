@@ -1,0 +1,96 @@
+{
+  "single": {
+    "enabled": true,
+    "distance": 0.82,
+    "ramp": 7.8,
+    "onset": 4.25,
+    "release": 14.05,
+    "end": 20.05,
+    "curvature": 0.0,
+    "heading_deg": 0.0,
+    "family": "walking"
+  },
+  "seed": 101,
+  "evaluate_every": 10,
+  "resources": {
+    "compute_cumulative_wall_seconds": 28800,
+    "cpus": 8,
+    "rss_gib": 32,
+    "vram_gib": 8,
+    "output_gib": 8
+  },
+  "max_rl_decisions": 200448,
+  "training": {
+    "primary_batches": 120,
+    "repeat_batches": 80,
+    "neighborhood_batches": 60,
+    "steps": 256,
+    "workers": 3,
+    "actor_lr": 3e-05,
+    "critic_lr": 0.0003,
+    "std": 0.02,
+    "residual_tangent_cap": 4.0,
+    "independent_actor_critic_clipping": true
+  },
+  "selection": "single-condition mean F_RMS + 3*error_m + cap_fraction + 20*boundary; no final reselection",
+  "source_student_online": false,
+  "final": {
+    "heldout_slow": {
+      "enabled": true,
+      "distance": 0.79,
+      "ramp": 8.35,
+      "onset": 4.55,
+      "release": 14.899999999999999,
+      "end": 20.9,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "heldout_fast": {
+      "enabled": true,
+      "distance": 0.87,
+      "ramp": 7.25,
+      "onset": 4.0,
+      "release": 13.25,
+      "end": 19.25,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  "dev": {
+    "single": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "no_contact": {
+      "enabled": false,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "local_regression": {
+      "enabled": true,
+      "distance": 0.15,
+      "ramp": 4.5,
+      "onset": 4.25,
+      "release": 10.75,
+      "end": 16.75,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  }
+}

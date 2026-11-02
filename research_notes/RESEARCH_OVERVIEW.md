@@ -63,3 +63,5 @@ Student只能读部署可得的force/proprio/action history、合法接触位置
 - 每个里程碑结束：更新短小CURRENT_STATE、Project Master摘要/链接、阶段报告与代码；记录runtime commit、checkpoint SHA、失败和实际资源；整合获准代码。普通实验只追加阶段索引，不重写全史。
 - Git只存审核过的源码、配置及小型摘要；权重、原始轨迹、大数据、凭据和未获准资产不公开。已有服务器/其他用户任务保持原样。
 - ChatGPT Library `/Humanoid_Compliance/Current_Project/` 中2026-10-28的PROJECT_STATE/SESSION_HANDOFF为历史快照。Library以后主要放笔记与长期insight；本文件与CURRENT_STATE、最新Issue是接力入口，不要求Codex自动编辑Library。
+
+窄域专家获取澄清：特权Expert可直接以同权重原生motion latent作为名义运动先验，独立初始化actor/critic/优化器，不要求在线依赖已蒸馏Student。参考相位与接触激活是明确的自身控制记忆，不是未来伙伴轨迹；学习收益仍须由真实闭环反馈证明。
