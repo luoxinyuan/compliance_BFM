@@ -99,10 +99,6 @@ class Task:
         # Frozen M10 reference+projected-feedback comparator, no new rules.
         from m9_cyclic import CyclicFeedback,sample
         from m9c_feedback import ArmFeedback,project_action
-        if self.refs is None:
-            ref=read(Path(__file__).with_name('narrow_protocol.json'))['native_reference'];assert sha(Path(ref['path']))==ref['sha256']
-        from m10_reference import load_variants
-            self.refs=load_variants(self.e,self.m)[0]['task']
         if self.tick==0 or not hasattr(self,'fb'):
             self.fb=CyclicFeedback({k:r['period'] for k,r in self.refs.items()},True);self.arm=ArmFeedback(self.e,self.c)
         e=self.e;R=e.sim.data.xmat[1].reshape(3,3);guide=getattr(e.tether,'partner_velocity',np.zeros(3))+.5*(e.tether.anchor-e.last_point)
