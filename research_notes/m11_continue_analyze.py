@@ -3,13 +3,13 @@ import json,os,statistics
 from pathlib import Path
 import numpy as np
 from m11_metrics import summarize
-from m11_selection import sha,atomic
+from m11_selection import sha,atomic,completed_job
 RUN=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m11-continuation-20261102')
 def read(p):return json.loads(p.read_text())
 def main():
  out=Path(os.environ['BFM_RECOVERY_OUTPUT']);report=dict(arms={},final={},notes=['One learner seed per arm; common checkpoint and optimizer. Stochastic final has3 seeds, not3 independent training runs.','Selection frozen before final; exposed old final is development only.','Actual shared force/physics/model unchanged.'])
  for arm in ['fixed','annealed']:
-  p=RUN/(arm+'-attempt-01/outputs/job');logs=[json.loads(x) for x in (p/'training.jsonl').read_text().splitlines()];eps=[e for r in logs for e in r['completed_episodes']];sel=read(p/'selection.json');assert sha(p/'best.pt')==sel['checkpoint_sha256'] and sha(Path(sel['evaluation_path']))==sel['evaluation_sha256']
+  p=completed_job(RUN,arm);logs=[json.loads(x) for x in (p/'training.jsonl').read_text().splitlines()];eps=[e for r in logs for e in r['completed_episodes']];sel=read(p/'selection.json');assert sha(p/'best.pt')==sel['checkpoint_sha256'] and sha(Path(sel['evaluation_path']))==sel['evaluation_sha256']
   dev=[dict(batch=int(d.name.split('-')[1]),score=read(d/'score.json'),rows=read(d/'summary.json')) for d in sorted(p.glob('dev-*'))]
   o=[r['optimization'] for r in logs];g=[x for z in o for x in z['gradients']]
   report['arms'][arm]=dict(added_decisions=logs[-1]['added_decisions'],batches=len(logs),physics_steps=sum(r['physics_steps'] for r in logs),control_steps=sum(r['control_steps'] for r in logs),prefill_steps=sum(r['prefill_physics_steps'] for r in logs),optimizer_updates=logs[-1]['optimizer_updates'],completed_episodes=len(eps),failures=[e for e in eps if e['boundary']],selection=sel,dev=dev,max_old_logprob_error=max(x['pre_logprob_max_error'] for x in o),actual_std_first=logs[0]['actual_std_mean'],actual_std_last=logs[-1]['actual_std_mean'],gradients_mean={k:float(np.mean([x[k] for x in g])) for k in ['actor','critic','std','total','clip_scale']},last20_old_value_EV=float(np.mean([x['old_GAE_value_EV'] for x in o[-20:]])),last20_updated_value_EV=float(np.mean([x['updated_value_EV'] for x in o[-20:]])),last20_joint_KL=float(np.mean([x['epochs'][-1]['joint_gaussian_KL'] for x in o[-20:]])),last20_clip_fraction=float(np.mean([x['epochs'][-1]['clip_fraction'] for x in o[-20:]])))
@@ -21,7 +21,7 @@ def main():
  import matplotlib.pyplot as plt
  fig,axes=plt.subplots(3,2,figsize=(13,11))
  for arm in ['fixed','annealed']:
-  p=RUN/(arm+'-attempt-01/outputs/job');logs=[json.loads(x) for x in (p/'training.jsonl').read_text().splitlines()];xs=[r['added_decisions'] for r in logs];ds=report['arms'][arm]['dev']
+  p=completed_job(RUN,arm);logs=[json.loads(x) for x in (p/'training.jsonl').read_text().splitlines()];xs=[r['added_decisions'] for r in logs];ds=report['arms'][arm]['dev']
   axes[0,0].plot(xs,[r['actual_std_mean'] for r in logs],label=arm)
   axes[0,1].plot([d['batch']*768 for d in ds],[d['score']['rank'][1] for d in ds],'-o',label=arm)
   for sample,style in [('__mean','-'),('__sample202','--')]:

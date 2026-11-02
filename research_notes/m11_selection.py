@@ -27,7 +27,7 @@ def continuation_rank(mean_rows,baseline):
   return c
  ratios={r['case']:cost(r)/max(cost(baseline[r['case']]),.5) for r in mean_rows}
  values=sorted(ratios.values(),reverse=True);tail=sum(values[:2])/min(2,len(values));score=sum(values)/len(values)+.5*tail
- return [sum(r['boundary'] is not None for r in mean_rows),score],dict(relative_costs=ratios,worst_two_mean=tail,mean=sum(values)/len(values))
+ return [int(sum(r['boundary'] is not None for r in mean_rows)),float(score)],dict(relative_costs=ratios,worst_two_mean=tail,mean=sum(values)/len(values))
 
 def exploration_scale(arm,batch,total=160):
  assert arm in ['fixed','annealed'] and 0<=batch<total
@@ -37,3 +37,11 @@ def exploration_scale(arm,batch,total=160):
  import math
  progress=min(max((batch-20)/100,0.),1.)
  return math.exp(math.log(.25)*progress)
+
+
+def completed_job(run,stage):
+ """Resolve the one completed attempt, retaining earlier engineering failures."""
+ run=Path(run);ledger=json.loads((run/'compute-ledger.json').read_text())
+ entries=[a for a in ledger['attempts'] if a['stage']==stage and a.get('result_status')=='completed' and not a.get('resource_boundary')]
+ assert len(entries)==1,(stage,len(entries))
+ return Path(entries[0]['path'])/'outputs/job'

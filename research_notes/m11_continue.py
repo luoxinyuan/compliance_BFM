@@ -2,7 +2,7 @@
 import m11_ipc
 import argparse,json,os,time,signal,subprocess,multiprocessing as mp
 from pathlib import Path
-from m11_selection import Selection,atomic,sha,continuation_rank,exploration_scale
+from m11_selection import Selection,atomic,sha,continuation_rank,exploration_scale,completed_job
 ROOT=Path(__file__).resolve().parents[1]
 PLAN=Path(__file__).with_name('m11_continuation_protocol.json')
 RUN=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m11-continuation-20261102')
@@ -17,7 +17,7 @@ def main():
  plan=json.loads(PLAN.read_text());cfg=plan['continuation'];torch.set_num_threads(1);torch.set_grad_enabled(False)
  source=Path(cfg['source_checkpoint'])
  if a.job.startswith('final-') and a.job!='final-prior':
-  arm=a.job.split('-')[1];source=RUN/(arm+'-attempt-01/outputs/job/best.pt')
+  arm=a.job.split('-')[1];source=completed_job(RUN,arm)/'best.pt'
  if a.job in ['zero','fixed','annealed','final-prior']:assert sha(source)==cfg['source_sha256']
  ck=torch.load(source,map_location='cuda',weights_only=True);assert ck['prior_sha']==plan['prior_sha256']
  net=Expert(ck['input_dim']).cuda();net.load_state_dict(ck['state_dict']);opt=torch.optim.Adam([dict(params=net.actor.parameters(),lr=3e-5),dict(params=[net.log_std],lr=1e-5),dict(params=net.critic.parameters(),lr=3e-4)]);opt.load_state_dict(ck['optimizer'])
@@ -49,8 +49,12 @@ def main():
     s=dict(spec,diagnostic_sampling=True,diagnostic_std_scale=1.,diagnostic_seed=seed,diagnostic_action_probes=False,diagnostic_read_audit=False)
     out.append((name+'__sample'+str(seed),s,mode))
   return out
- def development():
-  rows,ev=evaluate(schedule(plan['dev'])+schedule(plan['dev'],samples=True),f'dev-{completed:04d}')
+ def development(cached=None):
+  if cached is None:rows,ev=evaluate(schedule(plan['dev'])+schedule(plan['dev'],samples=True),f'dev-{completed:04d}')
+  else:
+   import shutil
+   dest=a.output/f'dev-{completed:04d}';shutil.copytree(cached,dest,copy_function=os.link)
+   ev=dest/'summary.json';rows=json.loads(ev.read_text())
   mean=[r for r in rows if r['label'].endswith('__mean')];rank,details=continuation_rank(mean,baseline);candidate=save(f'candidate-{completed:04d}.pt',rank,ev)
   audit=torch.load(candidate,map_location='cpu',weights_only=True);assert audit['evaluated_rank']==rank and audit['best_score']==rank[1] and audit['evaluation_sha256']==sha(ev)
   selected=selection.consider(candidate,rank,ev,dict(batches=completed,added_decisions=decisions,source_sha256=sha(source),std_mean=float(net.log_std.exp().mean()),**details));atomic(ev.parent/'score.json',dict(rank=rank,selected=selected,checkpoint_sha256=sha(candidate),**details));print('M11_DEV',a.job,completed,rank,'selected',selected,flush=True)
@@ -65,7 +69,21 @@ def main():
    if a.job!='final-prior':sch+=schedule(plan['final'],samples=True,seeds=cfg['final_sample_seeds'])
    evaluate(sch,'evaluation');status='completed'
   else:
-   rows,ev=evaluate(schedule(plan['dev'],mode='prior'),'baseline');baseline={r['case']:r for r in rows};development();status='running'
+   # Reuse only the intact pre-update evaluations from the preserved serializer failure.
+   cached=RUN/'fixed-attempt-01/outputs/job'
+   if cached!=a.output and (cached/'failure.txt').exists():
+    old=json.loads((cached/'launch.json').read_text());result=json.loads((cached/'result.json').read_text())
+    assert result['added_decisions']==0 and result['added_optimizer_updates']==0
+    assert old['source_sha256']==sha(source) and old['plan_sha256']==sha(PLAN)
+    assert 'numpy.core.multiarray.scalar' in (cached/'failure.txt').read_text()
+    import shutil
+    shutil.copytree(cached/'baseline',a.output/'baseline',copy_function=os.link)
+    rows=json.loads((a.output/'baseline/summary.json').read_text());baseline={r['case']:r for r in rows}
+    atomic(a.output/'initial-evaluation-reuse.json',dict(source=str(cached),source_commit=old['commit'],policy_updates=0,baseline_sha=sha(cached/'baseline/summary.json'),dev_sha=sha(cached/'dev-0000/summary.json'),reason='Serializer-only fix; both arms retain identical initial evaluation and source optimizer/RNG'))
+    development(cached/'dev-0000')
+   else:
+    rows,ev=evaluate(schedule(plan['dev'],mode='prior'),'baseline');baseline={r['case']:r for r in rows};development()
+   status='running'
    for batch in range(a.iterations):
     if time.monotonic()-start>a.max_seconds:status='time_budget';break
     previous_std=net.log_std.exp().detach().clone();factor=exploration_scale(a.job,batch);net.log_std.copy_(original_std+np.log(factor));sampled_std=net.log_std.exp().detach().clone();schedule_KL=float((torch.log(sampled_std/previous_std)+(previous_std/sampled_std).square()/2-.5).sum());w=weights();version=ck['iteration']+batch;t=time.monotonic()

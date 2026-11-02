@@ -32,5 +32,15 @@ def test_tail_selection():
  def row(name,cost):return dict(case=name,force_rms=cost,error_cm=0,cap_fraction=0,boundary=None,condition=dict(enabled=True,family='walking'))
  b={n:row(n,2) for n in ['a','b','c']};good,_=continuation_rank([row('a',2),row('b',2),row('c',2)],b);tail,_=continuation_rank([row('a',0),row('b',0),row('c',6)],b);assert tail>good
 
+def test_live_metric_numpy_score_safe_checkpoint():
+ import numpy as np
+ row=dict(case='a',force_rms=np.float64(4.2),error_cm=np.float64(9.3),cap_fraction=np.float64(.7),boundary=None,condition=dict(enabled=True,family='walking'))
+ rank,_=continuation_rank([row],{'a':row})
+ assert type(rank[0]) is int and type(rank[1]) is float
+ with tempfile.TemporaryDirectory() as t:
+  f=Path(t)/'candidate.pt';net=Expert(11);opt=torch.optim.Adam(net.parameters())
+  torch.save(dict(state_dict=net.state_dict(),optimizer=opt.state_dict(),evaluated_rank=rank,best_score=rank[1],torch_rng=torch.get_rng_state()),f)
+  ck=torch.load(f,weights_only=True);assert ck['evaluated_rank']==rank and ck['best_score']==rank[1]
+
 if __name__=='__main__':
- test_selection_resume_scores_do_not_alias();test_external_std_batch_contract_and_resume();test_tail_selection();print('M11 continuation tests passed: score-weight-SHA binding, frozen std likelihood, clamp, gradients, tail selection')
+ test_selection_resume_scores_do_not_alias();test_external_std_batch_contract_and_resume();test_tail_selection();test_live_metric_numpy_score_safe_checkpoint();print('M11 continuation tests passed: score-weight-SHA binding, frozen std likelihood, clamp, gradients, tail selection')
