@@ -20,7 +20,7 @@ def main():
     assert RUN != P/'bridge-v2-owned/runs/issue21-reward-stage-20261030A'
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gpu-index',type=int)
-    parser.add_argument('--stage',choices=['audit','train','final','probe'],required=True)
+    parser.add_argument('--stage',choices=['audit','train','final','probe','amplitude'],required=True)
     parser.add_argument('--execute-after-owner-gpu-notice',action='store_true')
     parser.add_argument('--iterations',type=int,default=200)
     parser.add_argument('--execution-gain',type=float,default=1.0)
@@ -31,7 +31,7 @@ def main():
         print(json.dumps({'status':'prepared_only_awaiting_owner_gpu_notice','resources':protocol['resources']}));return
     assert args.gpu_index is not None
     assert not git('status','--porcelain'), 'Commit the private runtime before execution'
-    assert git('branch','--show-current')=='gaoe05/narrow-expert-diagnosis'
+    assert git('branch','--show-current')=='gaoe05/narrow-residual-audit'
     before=gpu(args.gpu_index);assert before['free_mib']>=12288
     import fcntl
     lock=(RUN/'compute.lock').open('a+');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)

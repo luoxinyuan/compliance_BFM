@@ -110,7 +110,7 @@ class Task:
         e=self.e;s=self.spec;self.raw=raw.detach().clone();re=0.;rows=[];terms=[];control=[]
         for _ in range(5):
             if self.done:break
-            base=self.prepare();t=float(e.tether.time);z,norm=legal_command(self.m,base,self.raw,float(os.environ.get("NARROW_EXECUTION_GAIN","1")))
+            base=self.prepare();t=float(e.tether.time);z,norm=legal_command(self.m,base,self.raw*self.spec.get("diagnostic_command_scale",1.0),float(os.environ.get("NARROW_EXECUTION_GAIN","1")))
             oracle=self.native_expert() if self.track_reference else None
             if mode in ['prior','m10_student'] or prefix:z=base
             elif mode=='standing':z=e.standing

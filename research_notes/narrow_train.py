@@ -7,7 +7,7 @@ def atomic(p,x):
  t=p.with_suffix('.tmp');t.write_text(json.dumps(x,indent=2,allow_nan=False));t.replace(p)
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- p=argparse.ArgumentParser();p.add_argument('--stage',choices=['audit','train','final','probe'],required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--gpu',required=True);p.add_argument('--iterations',type=int,default=120);p.add_argument('--seed',type=int,default=101);p.add_argument('--execution-gain',type=float,default=1.0);p.add_argument('--resume',type=Path);p.add_argument('--domain',default='single',choices=['single','neighborhood']);p.add_argument('--max-seconds',type=float,default=28000);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--stage',choices=['audit','train','final','probe','amplitude'],required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--gpu',required=True);p.add_argument('--iterations',type=int,default=120);p.add_argument('--seed',type=int,default=101);p.add_argument('--execution-gain',type=float,default=1.0);p.add_argument('--resume',type=Path);p.add_argument('--domain',default='single',choices=['single','neighborhood']);p.add_argument('--max-seconds',type=float,default=28000);a=p.parse_args()
  assert 0<a.execution_gain<=16
  assert not a.output.exists();a.output.mkdir();os.environ.update(CUDA_VISIBLE_DEVICES=a.gpu,NARROW_DOMAIN=a.domain,NARROW_SEED=str(a.seed),NARROW_EXECUTION_GAIN=str(a.execution_gain))
  import torch,numpy as np
@@ -47,6 +47,10 @@ def main():
    if a.stage=='train':opt.load_state_dict(ck['optimizer'])
    atomic(a.output/'resume.json',dict(path=str(a.resume),sha256=sha(a.resume),source_iteration=ck['iteration'],source_seed=ck['seed'],optimizer_loaded=a.stage=='train'))
   save('initial.pt')
+  if a.stage=='amplitude':
+   assert a.resume is not None and a.execution_gain==16
+   schedule=[(f'mean_scale{scale}',dict(plan['single'],diagnostic_command_scale=scale),'learned') for scale in [4,16,-4]]
+   evaluate(schedule,'amplitude');status='completed';return
   if a.stage=='probe':
    schedule=[]
    for gain,seeds in [(1,[501,502,503]),(4,[501]),(16,[501,502,503])]:
