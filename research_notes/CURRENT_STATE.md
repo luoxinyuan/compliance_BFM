@@ -1,16 +1,18 @@
 # CURRENT_STATE — 新会话先读
 
-**最后核对：2026-11-02，窄域首轮已结束，进入控制尺度诊断。这是带时间戳的快照，接力前必须刷新运行状态。**
+**最后核对：2026-11-02，窄域两轮及幅度诊断已结束。这是带时间戳的快照，接力前必须刷新运行状态。**
 
-长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)记录当前训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
+长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[窄域Expert #33](https://github.com/GaoE05/robot-research-bridge/issues/33)记录当前阶段，[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)保留旧训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
 
-## 1. 当前状态：窄域首轮完成，已授权定位并修复问题
+## 1. 当前状态：两轮窄域训练及尺度诊断已完成，无训练运行
 
-原独立Expert120批/92160决策已完成，耗时6604秒，全部进程退出。均值初始13.856cm/4.704N，开发选中80批13.507cm/4.703N，最后13.765cm/4.702N；未取得实质降力收益，未启动邻域、独立重复或Student。旧M11 A160/B114保持停止。
+原独立Expert120批/92160决策未降力，完整保留。gain16修正80批/61440决策正常完成，runtime `51c653fa6b9cab0dd87a788394d842ddd9419d7a`，4452.97秒；选中80批mean12.368cm/4.703N，相对初始13.856cm/4.704N，仍未显著降力。checkpoint SHA256 `017ac2ada5677277baf4cb07a69fe201055cb969b64afa269aae579d4f68774b`。旧M11 A160/B114保持停止。
 
-用户已授权问题定位及有依据的修复。保存轨迹显示：当前均值相对名义q_PD RMS .0232deg，采样.1124deg；同任务有效M10反馈专家2.4656deg（包含反馈航向和手臂投影，不应全归因于手臂）。先做同随机数、真实物理尺度1/4/16诊断，保持奖励、cap、伙伴和模型不变，不把它当新终检。尺度对照7回合全部完成；gain16三seed中一好两差，不能称控制器改善。已启动仅改变execution gain=16的80批/61440决策训练，保持奖励/物理/网络/优化器配置，fresh seed101。runtime `51c653fa6b9cab0dd87a788394d842ddd9419d7a`，train-attempt-03，2026-11-02 19:50 CST启动。已核对首批768决策：raw logprob最大误差0.000122，执行q_PD相对prior RMS1.461°、latent17.674°；joint KL .021触发原early stop，clip fraction .534，需继续观察更新幅度。该批随机轨迹force4.524N不构成学习收益。80批预计约80–100分钟；实际结果以Issue33及ledger为准。分析见[NARROW_EXPERT_DIAGNOSIS.md](NARROW_EXPERT_DIAGNOSIS.md)。
+最新只做保存数据审计及冻结均值4x/16x/−4x真实物理对照，0训练更新。4x为11.296cm/4.459N/54.11%限幅；16x退至18.180cm/4.993N；−4x14.479cm/4.762N。三者完成、worker退出、GPU释放。4x尚不是可靠新Expert，存在接触前姿态变化和q_PD连续性代价，未做独立终检或Student。
 
-新独立worktree `bridge-v2-owned/trees/narrow-expert-diagnosis/repo`，个人分支 `gaoe05/narrow-expert-diagnosis`。沿用同一阶段ledger/资源上限，不重置预算；开始诊断前剩余监督墙钟21531秒，剩余高层RL决策107520。GPU1刚核查空闲，内存927GiB available，I/O pressure0；未来发车需重新核对。阶段 [Issue33](https://github.com/GaoE05/robot-research-bridge/issues/33)。
+首个明确问题：均值修正仍小（2.19deg latent、.330deg q_PD RMS），但未触及合法上限。XYZ显示总误差改善来自Y，保持阶段却向前超出anchor约9.5cm并受到向后近5N拉力；不是简单前进不足。主force reward在限幅段缺乏区分度，prior项并未压住收益。完整证据、推断边界及下一建议见[NARROW_RESIDUAL_FINDINGS.md](NARROW_RESIDUAL_FINDINGS.md)，阶段[Issue33](https://github.com/GaoE05/robot-research-bridge/issues/33)。
+
+当前无训练排队。下一建议未执行：固定contact-window-only scale4对照，排除precontact重配置贡献，再决定均值/探索独立标定或有效反馈专家热启动。不得自动继续旧长训练。结果根为`bridge-v2-owned/runs/narrow-contact-expert-20261102`，训练attempt02/03，幅度诊断amplitude-attempt-02；runtime `fc650c2984c8022b4baacd1951defabdbc9c77c4`。首次幅度诊断因sparse checkout缺源文件失败，已修复并保留证据。
 
 ## 2. 可靠基线、实际结论与边界
 
@@ -30,7 +32,7 @@
 
 |用途|精确commit|
 |---|---|
-|本轮运行源码|`c98abd7912e173f1228afaca996ae43ed6009ac1`，`gaoe05/m11-throughput`|
+|旧M11 continuation运行源码|`c98abd7912e173f1228afaca996ae43ed6009ac1`，`gaoe05/m11-throughput`|
 |续训前114批源码（完整保留）|`38c7b25dcb6a3a1124acd9cf44c4eb116364ac60`，`gaoe05/m11-privileged-expert`|
 |M11初轮完整报告/源码|`466266385fab2fec9852253d661ecd24cd675c64`|
 |M10完整报告/源码|`49639ed29d4cbf513c285633841426579d80d5bd`|
@@ -46,7 +48,7 @@
 
 服务器项目根记为 `P=/mnt/data/temp_user/yi.gao/projects/compliance_BFM`，SSH为`ssh pro5000`；项目环境`source "$P/env.sh"`，Python在`$P/.venv/bin/python`。不要使用共享Isaac环境。
 
-- 当前固定runtime：`$P/bridge-v2-owned/trees/m11-throughput/repo`。旧`m11-privileged-expert/repo`及其结果保持不变。
+- 旧M11 continuation固定runtime：`$P/bridge-v2-owned/trees/m11-throughput/repo`。旧`m11-privileged-expert/repo`及其结果保持不变。
 - continuation：`$P/bridge-v2-owned/runs/m11-continuation-20261102/`。首先读`sequence-status.json`、`compute-ledger.json`；实际成功/运行attempt以ledger为准，不能硬编码`attempt-01`。训练`outputs/job/{launch,status,training,selection}`相应JSON/JSONL记录身份与进度。
 - 初轮：`$P/bridge-v2-owned/runs/m11-privileged-expert-20261101/`；起点`train-attempt-01/outputs/job/best.pt`。完整索引见 [M11_RESULTS.md](M11_RESULTS.md)。M10见 [M10_RESULTS.md](M10_RESULTS.md)，旧M8/M9保留路径在Master/原报告。
 - Mac已有M10五视频：`~/Projects/compliance-bfm-diagnostics/videos/m10-task-appropriate/INDEX.md`；M11初轮三视频：`~/Projects/compliance-bfm-diagnostics/videos/m11-privileged-expert/INDEX.md`。
@@ -55,7 +57,7 @@
 
 ## 5. 新会话接力与边界
 
-1. 先读本文件、纲领、Master和#32最新评论；区分M11初轮与continuation；当前两者均停止，旧运行中快照不是启动授权。
+1. 先读本文件、纲领、Master和#33最新评论；区分M11初轮与continuation；当前两者均停止，旧运行中快照不是启动授权。
 2. 只读核验服务器ledger、精确PID/启动命令、runtime SHA和工作区。进程在跑就不重启、不覆盖、不切分支；无进程也先读result/失败原因，不能默认重跑。
 3. 当前授权：一个GPU顺序执行、8 CPU、32GiB owned RSS、8GiB owned VRAM、8GiB本轮输出、28,800s累计监督墙钟（含失败/评估/渲染）。核对时GPU1，未来不固定GPU5，也不擅自沿用旧空闲状态；真实BFM实验不因无GPU改CPU。共享盘总剩余不等于个人配额。
 4. 共享BFM/PD/原权重、SoftSONIC和他人任务不动；只管理核验过的自有PID。代码/活动产物留个人CPFS目录，大资产`/mnt/data-oss/users/yi.gao/compliance_BFM/`；不自动下载大资产、启动Bridge/watch/真机或扩大预算。
