@@ -1,0 +1,37 @@
+{
+  "B2_selected_initial_tensor_identity": true,
+  "training": {
+    "B1": {
+      "decisions": 15360,
+      "updates": 56,
+      "physics_steps": 306504,
+      "control_steps": 76626,
+      "sampling_seconds": 1008.4541716820095,
+      "pre_logprob_max": 0.0001220703125,
+      "max_joint_KL": 0.01994917169213295,
+      "clip_fraction_mean": 0.48431582613424823,
+      "weighted_bc_mean": 0.0,
+      "weighted_bc_max": 0.0,
+      "old_EV_last": 0.6922241449356079,
+      "updated_EV_last": 0.7557098865509033,
+      "actor_grad_mean": 368.22711535862516,
+      "critic_grad_mean": 0.16798138791429146
+    },
+    "B2": {
+      "decisions": 15360,
+      "updates": 58,
+      "physics_steps": 306504,
+      "control_steps": 76626,
+      "sampling_seconds": 1004.3674190146849,
+      "pre_logprob_max": 0.0001220703125,
+      "max_joint_KL": 0.019733192399144173,
+      "clip_fraction_mean": 0.48916904763741925,
+      "weighted_bc_mean": 0.00905901925384321,
+      "weighted_bc_max": 0.019792490005493164,
+      "old_EV_last": 0.5855214595794678,
+      "updated_EV_last": 0.6213943362236023,
+      "actor_grad_mean": 369.4709830448545,
+      "critic_grad_mean": 0.18791256780768262
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "resource_wall_seconds": 4984.760897204047,
+  "stage_bytes": 2647451591,
+  "total_rl_decisions": 30720,
+  "initial_supervised_updates": 8000,
+  "invalid_broad_aggregation_updates_preserved": 2000,
+  "corrected_exact_query_updates": 2000,
+  "valid_teacher_training_labels": 1648,
+  "validated_visited_labels": 1,
+  "original_source": "f736c9a34b1791eed5a24f9970c87f2383b8547a",
+  "corrected_runtime": "2d6bfdd71ae960459c26f2a19a8eaad9007ee208",
+  "stop_driver_sha256": "5b722305c16fea42f3d82218dd794f5ba2eafdb2b4ac7319f4d9626873ece621",
+  "setup_failure": "First external stop-supervisor import path failed before GPU launch; corrected sys.path. Original driver retained. Removed redundant second point_state before any stop physics was launched.",
+  "metadata_correction": "Original A wrapper reported student_optimizer_updates=0 because return omitted the field. Per-training JSON records actual 10000 steps; corrected job adds2000 and reports correctly. Never zero training claimed.",
+  "stale_status": "Train status.json retains last running batch snapshot; result.json and ledger are completed and authoritative."
+}
