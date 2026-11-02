@@ -151,5 +151,5 @@ class Task:
     def save(self,out):
         e=dict(label=self.label,initial=self.initial,physics=self.physics,control=self.controls,boundary=self.boundary,condition=self.spec,anchor=self.anchor.tolist(),phases={'pre':[3,self.spec['onset']],'move':[self.spec['onset'],self.spec['onset']+self.spec['ramp']],'hold':[self.spec['onset']+self.spec['ramp'],self.spec['release']],'recover':[self.spec['release'],self.spec['end']]})
         e['rl_stats']=self.stats;e['scope']='independent Expert over M10 native task reference, no online Student except explicit comparator';
-        with gzip.open(out/(self.label+'.json.gz'),'wt') as f:json.dump(e,f)
+        with gzip.open(out/(self.label+'.json.gz'),'wt') as f:json.dump(e,f,default=lambda x:x.item() if isinstance(x,np.generic) else x.tolist() if isinstance(x,np.ndarray) else (_ for _ in ()).throw(TypeError(type(x).__name__)))
         return self.summary()
