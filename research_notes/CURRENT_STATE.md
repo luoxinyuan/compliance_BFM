@@ -1,6 +1,6 @@
 # CURRENT_STATE — 新会话先读
 
-**最后核对：2026-11-02 17:19 CST，新窄域任务已实际更新。这是带时间戳的快照，接力前必须刷新运行状态。**
+**最后核对：2026-11-02，窄域首轮已结束，进入控制尺度诊断。这是带时间戳的快照，接力前必须刷新运行状态。**
 
 长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)记录当前训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
 
@@ -8,7 +8,7 @@
 
 原独立Expert120批/92160决策已完成，耗时6604秒，全部进程退出。均值初始13.856cm/4.704N，开发选中80批13.507cm/4.703N，最后13.765cm/4.702N；未取得实质降力收益，未启动邻域、独立重复或Student。旧M11 A160/B114保持停止。
 
-用户已授权问题定位及有依据的修复。保存轨迹显示：当前均值相对名义q_PD RMS .0232deg，采样.1124deg；同任务有效M10反馈专家2.4656deg（包含反馈航向和手臂投影，不应全归因于手臂）。先做同随机数、真实物理尺度1/4/16诊断，保持奖励、cap、伙伴和模型不变，不把它当新终检。尚未启动修正训练。
+用户已授权问题定位及有依据的修复。保存轨迹显示：当前均值相对名义q_PD RMS .0232deg，采样.1124deg；同任务有效M10反馈专家2.4656deg（包含反馈航向和手臂投影，不应全归因于手臂）。先做同随机数、真实物理尺度1/4/16诊断，保持奖励、cap、伙伴和模型不变，不把它当新终检。尺度对照7回合全部完成；gain16三seed中一好两差，不能称控制器改善。已准备仅改变execution gain=16的80批/61440决策训练，保持奖励/物理/网络/优化器配置，fresh seed101。实际启动与结果以Issue33及train-attempt-03 ledger为准。分析见[NARROW_EXPERT_DIAGNOSIS.md](NARROW_EXPERT_DIAGNOSIS.md)。
 
 新独立worktree `bridge-v2-owned/trees/narrow-expert-diagnosis/repo`，个人分支 `gaoe05/narrow-expert-diagnosis`。沿用同一阶段ledger/资源上限，不重置预算；开始诊断前剩余监督墙钟21531秒，剩余高层RL决策107520。GPU1刚核查空闲，内存927GiB available，I/O pressure0；未来发车需重新核对。阶段 [Issue33](https://github.com/GaoE05/robot-research-bridge/issues/33)。
 

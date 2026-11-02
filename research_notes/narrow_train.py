@@ -7,8 +7,9 @@ def atomic(p,x):
  t=p.with_suffix('.tmp');t.write_text(json.dumps(x,indent=2,allow_nan=False));t.replace(p)
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- p=argparse.ArgumentParser();p.add_argument('--stage',choices=['audit','train','final','probe'],required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--gpu',required=True);p.add_argument('--iterations',type=int,default=120);p.add_argument('--seed',type=int,default=101);p.add_argument('--resume',type=Path);p.add_argument('--domain',default='single',choices=['single','neighborhood']);p.add_argument('--max-seconds',type=float,default=28000);a=p.parse_args()
- assert not a.output.exists();a.output.mkdir();os.environ.update(CUDA_VISIBLE_DEVICES=a.gpu,NARROW_DOMAIN=a.domain,NARROW_SEED=str(a.seed))
+ p=argparse.ArgumentParser();p.add_argument('--stage',choices=['audit','train','final','probe'],required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--gpu',required=True);p.add_argument('--iterations',type=int,default=120);p.add_argument('--seed',type=int,default=101);p.add_argument('--execution-gain',type=float,default=1.0);p.add_argument('--resume',type=Path);p.add_argument('--domain',default='single',choices=['single','neighborhood']);p.add_argument('--max-seconds',type=float,default=28000);a=p.parse_args()
+ assert 0<a.execution_gain<=16
+ assert not a.output.exists();a.output.mkdir();os.environ.update(CUDA_VISIBLE_DEVICES=a.gpu,NARROW_DOMAIN=a.domain,NARROW_SEED=str(a.seed),NARROW_EXECUTION_GAIN=str(a.execution_gain))
  import torch,numpy as np
  from humanoidverse.force_compliance.parallel import receive,merge_rollouts
  from narrow_policy import Expert,update
@@ -21,7 +22,7 @@ def main():
  signal.signal(signal.SIGTERM,stop)
  def weights():return {k:v.detach().cpu().numpy() for k,v in net.state_dict().items()}
  def save(name):
-  f=a.output/name;t=f.with_suffix('.tmp');torch.save(dict(state_dict={k:v.detach().cpu() for k,v in net.state_dict().items()},optimizer=opt.state_dict(),input_dim=n,iteration=iteration,decisions=decisions,optimizer_updates=updates,seed=a.seed,torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state(),runtime=commit,source_student_online=False),t);t.replace(f);return f
+  f=a.output/name;t=f.with_suffix('.tmp');torch.save(dict(state_dict={k:v.detach().cpu() for k,v in net.state_dict().items()},optimizer=opt.state_dict(),input_dim=n,iteration=iteration,decisions=decisions,optimizer_updates=updates,seed=a.seed,torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state(),runtime=commit,source_student_online=False,execution_gain=a.execution_gain),t);t.replace(f);return f
  def evaluate(schedule,name):
   d=a.output/name;d.mkdir();w=weights()
   for i,c in enumerate(cs):c.send(dict(op='evaluate',policy=w,schedule=schedule[i::len(cs)],output=str(d)))
@@ -41,7 +42,7 @@ def main():
   net=Expert(n).cuda();net.log_std.requires_grad_(False)
   opt=torch.optim.Adam([dict(params=net.actor.parameters(),lr=plan['training']['actor_lr']),dict(params=net.critic.parameters(),lr=3e-4)])
   if a.resume:
-   ck=torch.load(a.resume,map_location='cuda',weights_only=True);assert ck['source_student_online'] is False;net.load_state_dict(ck['state_dict'])
+   ck=torch.load(a.resume,map_location='cuda',weights_only=True);assert ck.get('execution_gain',1.0)==a.execution_gain;assert ck['source_student_online'] is False;net.load_state_dict(ck['state_dict'])
    # Only an explicitly recorded narrow-domain continuation inherits its optimizer.
    if a.stage=='train':opt.load_state_dict(ck['optimizer'])
    atomic(a.output/'resume.json',dict(path=str(a.resume),sha256=sha(a.resume),source_iteration=ck['iteration'],source_seed=ck['seed'],optimizer_loaded=a.stage=='train'))

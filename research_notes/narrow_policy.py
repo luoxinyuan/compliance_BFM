@@ -10,8 +10,9 @@ class Expert(torch.nn.Module):
     def distribution(self,x):return torch.distributions.Normal(self.actor(x),self.log_std.exp())
     def value(self,x):return 10*self.critic(x).squeeze(-1)
 
-def legal_command(model,base,raw):
-    d=raw
+def legal_command(model,base,raw,gain=1.0):
+    assert 0 < gain <= 16
+    d=raw*gain
     d=d-(d*base).sum(-1,keepdim=True)*base/256
     norm=d.norm(dim=-1,keepdim=True)
     d=d*torch.clamp(16/norm.clamp_min(1e-8),max=1)

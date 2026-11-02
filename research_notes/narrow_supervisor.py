@@ -23,6 +23,7 @@ def main():
     parser.add_argument('--stage',choices=['audit','train','final','probe'],required=True)
     parser.add_argument('--execute-after-owner-gpu-notice',action='store_true')
     parser.add_argument('--iterations',type=int,default=200)
+    parser.add_argument('--execution-gain',type=float,default=1.0)
     parser.add_argument('--resume');parser.add_argument('--seed',type=int,default=101);parser.add_argument('--domain',choices=['single','neighborhood'],default='single')
     args=parser.parse_args()
     protocol=json.loads((ROOT/'research_notes/narrow_protocol.json').read_text())
@@ -55,7 +56,7 @@ def main():
     if args.stage.startswith('videos'):env.update(MUJOCO_GL='egl',PYOPENGL_PLATFORM='egl',MUJOCO_EGL_DEVICE_ID=str(args.gpu_index))
     command=[str(P/'.venv/bin/python'),'-u',str(ROOT/'research_notes'/launcher)]
     if args.stage!='videos':
-        command+=['--stage',args.stage,'--gpu',before['uuid'],'--output',str(attempt/'outputs/job'),'--seed',str(args.seed),'--domain',args.domain,'--iterations',str(args.iterations),'--max-seconds',str(max(60,remaining-60))]
+        command+=['--execution-gain',str(args.execution_gain),'--stage',args.stage,'--gpu',before['uuid'],'--output',str(attempt/'outputs/job'),'--seed',str(args.seed),'--domain',args.domain,'--iterations',str(args.iterations),'--max-seconds',str(max(60,remaining-60))]
         if args.resume:command+=['--resume',args.resume]
     entry['command']=command;write(ledger_path,ledger)
     cache=attempt/'cache';cache.mkdir()

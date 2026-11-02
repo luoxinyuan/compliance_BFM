@@ -1,7 +1,7 @@
 """Reuse actual ComplianceEnv, M10 deployed prior, original 50Hz BFM/PD and Tether.
 No future partner data enters the expert; episode config is only environment state.
 """
-import copy,json,math,functools,gzip
+import copy,json,math,functools,gzip,os
 from pathlib import Path
 import numpy as np,torch
 from m8_stage import reset_common,advance
@@ -110,7 +110,7 @@ class Task:
         e=self.e;s=self.spec;self.raw=raw.detach().clone();re=0.;rows=[];terms=[];control=[]
         for _ in range(5):
             if self.done:break
-            base=self.prepare();t=float(e.tether.time);z,norm=legal_command(self.m,base,self.raw)
+            base=self.prepare();t=float(e.tether.time);z,norm=legal_command(self.m,base,self.raw,float(os.environ.get("NARROW_EXECUTION_GAIN","1")))
             oracle=self.native_expert() if self.track_reference else None
             if mode in ['prior','m10_student'] or prefix:z=base
             elif mode=='standing':z=e.standing
