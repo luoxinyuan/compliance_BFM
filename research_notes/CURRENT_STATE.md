@@ -1,6 +1,6 @@
 # CURRENT_STATE — 新会话先读
 
-**最后核对：2026-11-02 17:11 CST，新窄域任务已发车。这是带时间戳的快照，接力前必须刷新运行状态。**
+**最后核对：2026-11-02 17:19 CST，新窄域任务已实际更新。这是带时间戳的快照，接力前必须刷新运行状态。**
 
 长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)记录当前训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
 
@@ -14,7 +14,7 @@
 
 独立代码 `bridge-v2-owned/trees/narrow-contact-expert/repo`，分支 `gaoe05/narrow-contact-expert`；输出 `bridge-v2-owned/runs/narrow-contact-expert-20261102/`；配置 `research_notes/narrow_protocol.json`。单条件 .82m / 7.8s ramp / onset4.25s / release14.05s / end20.05s；新最终组合预固定，见配置，不能用于选择checkpoint。
 
-针对性检查已完成：七条物理对照和一次768决策诊断；独立reward复算误差<7e-10，较好M10反馈专家7.796cm/4.363N优于原生13.856cm/4.704N且回报排序正确。发现低std下单步KL偏大，依据同batch证据将actor LR降至1e-5；不改reward/cap。合法latent范围覆盖已执行专家偏角，未沿用任意14deg界。详见 [NARROW_EXPERT_START.md](NARROW_EXPERT_START.md)。一次日志序列化失败及所有诊断保留。首个正式训练attempt在新增SHA检查的导入缩进处退出，0次更新；已修复并通过全部新模块AST检查，失败耗时纳入同一预算。当前模型加载/初始评估中，不把发车称为训练成功。
+针对性检查已完成：七条物理对照和一次768决策诊断；独立reward复算误差<7e-10，较好M10反馈专家7.796cm/4.363N优于原生13.856cm/4.704N且回报排序正确。发现低std下单步KL偏大，依据同batch证据将actor LR降至1e-5；不改reward/cap。合法latent范围覆盖已执行专家偏角，未沿用任意14deg界。详见 [NARROW_EXPERT_START.md](NARROW_EXPERT_START.md)。一次日志序列化失败及所有诊断保留。首个正式训练attempt在新增SHA检查的导入缩进处退出，0次更新；已修复并通过全部新模块AST检查，失败耗时纳入同一预算。17:19 CST已确认正式完成2批/1536决策并保存latest，采样14.7–16.2决策/秒；尚无更新后的开发评估，不宣称学习收益。每10批评估，120批上限预计约1.7–2小时（按当前吞吐估算）。
 
 旧轮收尾见 [M11_CONTINUATION_CLOSEOUT.md](M11_CONTINUATION_CLOSEOUT.md)。尚无新Expert成功结果；M10/M9B仍是对照，不会自动被替换。
 
