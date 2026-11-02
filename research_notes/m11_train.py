@@ -37,7 +37,7 @@ def main():
         ready=[receive(c,p,timeout=900) for c,p in zip(cs,ps)];assert len({r['input_dim'] for r in ready})==1;n=ready[0]['input_dim'];atomic(a.output/'workers.json',ready)
         net=Expert(n).cuda();opt=torch.optim.Adam([dict(params=net.actor.parameters(),lr=3e-5),dict(params=[net.log_std],lr=1e-5),dict(params=net.critic.parameters(),lr=3e-4)])
         if a.resume:
-            ck=torch.load(a.resume,map_location='cuda',weights_only=True);assert ck['prior_sha']==plan['prior_sha256'];net.load_state_dict(ck['state_dict']);opt.load_state_dict(ck['optimizer']);decisions=ck['decisions'];iteration=ck['iteration'];updates=ck['optimizer_updates'];best=ck['best_score'];torch.set_rng_state(ck['torch_rng'].cpu());torch.cuda.set_rng_state(ck['cuda_rng'].cpu())
+            ck=torch.load(a.resume,map_location='cuda',weights_only=True);assert ck['prior_sha']==plan['prior_sha256'];net.load_state_dict(ck['state_dict']);opt.load_state_dict(ck['optimizer']);decisions=ck['decisions'];iteration=ck['iteration'];updates=ck['optimizer_updates'];best=ck['best_score'];atomic(a.output/'resume-provenance.json',dict(checkpoint=str(a.resume),checkpoint_sha256=sha(a.resume),historical_best_score=best,note='Historical score is provenance, not the new-output selection score. Source artifacts stay unchanged.'));torch.set_rng_state(ck['torch_rng'].cpu());torch.cuda.set_rng_state(ck['cuda_rng'].cpu())
         save('initial.pt')
         if a.stage in ['diagnostic','readcheck','memorycheck']:
             dp=json.loads(Path(__file__).with_name('m11_'+a.stage+'_plan.json').read_text())
@@ -46,7 +46,24 @@ def main():
             rows=evaluate([(name+'__'+mode,spec,mode) for name,spec in plan['final'].items() for mode in ['prior','m10_expert','learned']],a.output/'evaluation');status='completed';atomic(a.output/'final-summary.json',rows)
         else:
             if a.stage=='train':
-                initial=evaluate([(name+'__learned',spec,'learned') for name,spec in plan['dev'].items()],a.output/'dev-initial');best=min(best,selection(initial));save('best.pt');save(f'best-at-{iteration:04d}.pt');atomic(a.output/'selection.json',dict(score=best,path=str(a.output/'best.pt'),rule=plan['selection']))
+                initial=evaluate([(name+'__learned',spec,'learned') for name,spec in plan['dev'].items()],a.output/'dev-initial');best=selection(initial);save('best.pt');save(f'best-at-{iteration:04d}.pt');atomic(a.output/'selection.json',dict(score=best,path=str(a.output/'best.pt'),checkpoint_sha256=sha(a.output/'best.pt'),evaluation_path=str(a.output/'dev-initial/summary.json'),evaluation_sha256=sha(a.output/'dev-initial/summary.json'),rule=plan['selection'],scope='Fresh evaluation in new output directory; inherited historical best stays in original directory'))
+                # A resumed current checkpoint may be worse than its historical best.
+                # Re-evaluate that separate candidate under this output's actual scope;
+                # never bind its score to the current model or optimizer state.
+                inherited=a.resume.parent/'best.pt' if a.resume else None
+                if inherited is not None and inherited.is_file() and sha(inherited)!=sha(a.resume):
+                    current={k:v.detach().clone() for k,v in net.state_dict().items()}
+                    historical=torch.load(inherited,map_location='cuda',weights_only=True)
+                    assert historical['prior_sha']==plan['prior_sha256']
+                    net.load_state_dict(historical['state_dict'])
+                    rows=evaluate([(name+'__learned',spec,'learned') for name,spec in plan['dev'].items()],a.output/'dev-inherited-best')
+                    score=selection(rows)
+                    if score<best:
+                        best=score;historical=dict(historical);historical['best_score']=score
+                        historical['selection_evaluation']=str(a.output/'dev-inherited-best/summary.json')
+                        target=a.output/'best.pt';tmp=target.with_suffix('.tmp');torch.save(historical,tmp);tmp.replace(target)
+                        atomic(a.output/'selection.json',dict(score=score,path=str(target),checkpoint_sha256=sha(target),source_checkpoint=str(inherited),source_sha256=sha(inherited),evaluation_path=str(a.output/'dev-inherited-best/summary.json'),evaluation_sha256=sha(a.output/'dev-inherited-best/summary.json'),rule=plan['selection']))
+                    net.load_state_dict(current)
             status='running';iterations=2 if a.stage=='throughput' else a.iterations
             for local_it in range(iterations):
                 if time.monotonic()-started>a.max_seconds:status='time_budget';break
@@ -62,7 +79,7 @@ def main():
                 if iteration%5==0 or a.stage=='throughput':save('latest.pt')
                 if a.stage=='train' and iteration%plan['evaluate_every']==0:
                     rows=evaluate([(name+'__learned',spec,'learned') for name,spec in plan['dev'].items()],a.output/f'dev-{iteration:04d}');score=selection(rows)
-                    if score<best:best=score;save('best.pt');save(f'best-at-{iteration:04d}.pt');atomic(a.output/'selection.json',dict(score=score,iteration=iteration,decisions=decisions,path=str(a.output/'best.pt'),rule=plan['selection']))
+                    if score<best:best=score;save('best.pt');save(f'best-at-{iteration:04d}.pt');atomic(a.output/'selection.json',dict(score=score,iteration=iteration,decisions=decisions,path=str(a.output/'best.pt'),checkpoint_sha256=sha(a.output/'best.pt'),evaluation_path=str(a.output/f'dev-{iteration:04d}/summary.json'),evaluation_sha256=sha(a.output/f'dev-{iteration:04d}/summary.json'),rule=plan['selection']))
                     atomic(a.output/f'dev-{iteration:04d}/score.json',dict(score=score,best=best));print('M11_DEV',iteration,score,best,flush=True)
                 if a.stage=='throughput' and local_it==0:torch.save({k:v.cpu() for k,v in batch.items()},a.output/'diagnostic-batch.pt')
             else:status='completed'

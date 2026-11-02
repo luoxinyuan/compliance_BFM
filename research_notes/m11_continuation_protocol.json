@@ -1,0 +1,212 @@
+{
+  "seed": 71,
+  "prior_sha256": "1742ba74e9ec871abf8577eb9a276d7a1e614cd3184330a008dd9c4a7031bcd8",
+  "resources": {
+    "compute_cumulative_wall_seconds": 28800,
+    "cpu": 8,
+    "rss_gib": 32,
+    "vram_gib": 8,
+    "storage_gib": 8
+  },
+  "evaluate_every": 40,
+  "selection": "Mean execution only: failure count first; then average per-case cost ratio to paired M10 + .5*mean worst-two ratios. Cost=F_RMS+3*error_m+cap_fraction; no-contact adds100*root_max_m; local adds2*root_max_m. Denominator floor .5. Stochastic development retained but not used to select. Initial checkpoint eligible. No final reselection.",
+  "representation": "Full 256D Gaussian tangent residual over frozen M10 deployed prior; tanh then tangent norm cap8, sphere16. No fixed 19D basis. Initial std .08; changes assessed by observed physical/optimization behavior, not unlimited radius expansion.",
+  "reward": "1.5 XYZ force squared/25 + .15 log1p uncapped demand squared/25 + .15 tracking squared/.04 + .1 relative wrist velocity/.25 + .1 motion-weighted heading + .05 slip + .1 excess tilt + .05 target continuity + .02 soft prior + .2 no-contact root speed. Sum is rate integrated at50Hz. Absorbing failure tail. No root speed target forces small requests to walk.",
+  "dev": {
+    "straight": {
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "heading_deg": 0,
+      "curvature": 0,
+      "enabled": true,
+      "family": "walking"
+    },
+    "heading": {
+      "distance": 0.78,
+      "ramp": 8.1,
+      "onset": 5.1,
+      "release": 15.2,
+      "end": 21.2,
+      "heading_deg": 11,
+      "curvature": 0,
+      "enabled": true,
+      "family": "walking"
+    },
+    "left": {
+      "distance": 0.8,
+      "ramp": 8.2,
+      "onset": 4.4,
+      "release": 14.6,
+      "end": 20.6,
+      "heading_deg": 3,
+      "curvature": 0.2,
+      "enabled": true,
+      "family": "walking"
+    },
+    "right": {
+      "distance": 0.87,
+      "ramp": 8.3,
+      "onset": 4.6,
+      "release": 14.9,
+      "end": 20.9,
+      "heading_deg": -6,
+      "curvature": -0.23,
+      "enabled": true,
+      "family": "walking"
+    },
+    "local": {
+      "distance": 0.15,
+      "ramp": 4.0,
+      "onset": 5.0,
+      "release": 11.0,
+      "end": 17.0,
+      "heading_deg": 0,
+      "curvature": 0,
+      "enabled": true,
+      "family": "old"
+    },
+    "recovery": {
+      "distance": 0.84,
+      "ramp": 8.2,
+      "onset": 4.7,
+      "release": 14.899999999999999,
+      "end": 20.9,
+      "heading_deg": -6,
+      "curvature": 0,
+      "enabled": true,
+      "family": "walking",
+      "prefix_until": 7.7
+    },
+    "no_contact": {
+      "distance": 0.8,
+      "ramp": 8.0,
+      "onset": 4.5,
+      "release": 14.5,
+      "end": 20.5,
+      "heading_deg": 0,
+      "curvature": 0,
+      "enabled": false,
+      "family": "walking"
+    },
+    "exposed_straight": {
+      "distance": 0.91,
+      "ramp": 8.6,
+      "onset": 4.85,
+      "release": 15.45,
+      "end": 21.45,
+      "heading_deg": -8,
+      "curvature": 0,
+      "enabled": true,
+      "family": "walking"
+    }
+  },
+  "final": {
+    "sealed_straight": {
+      "distance": 0.86,
+      "ramp": 8.25,
+      "onset": 4.62,
+      "release": 14.87,
+      "end": 20.87,
+      "heading_deg": -5,
+      "curvature": 0,
+      "enabled": true,
+      "family": "walking"
+    },
+    "sealed_left": {
+      "distance": 0.89,
+      "ramp": 8.05,
+      "onset": 4.43,
+      "release": 14.48,
+      "end": 20.48,
+      "heading_deg": 8,
+      "curvature": 0.145,
+      "enabled": true,
+      "family": "walking"
+    },
+    "sealed_right": {
+      "distance": 0.81,
+      "ramp": 7.65,
+      "onset": 4.92,
+      "release": 14.57,
+      "end": 20.57,
+      "heading_deg": -7,
+      "curvature": -0.155,
+      "enabled": true,
+      "family": "walking"
+    },
+    "sealed_local": {
+      "distance": 0.1,
+      "ramp": 4.25,
+      "onset": 4.38,
+      "release": 10.63,
+      "end": 16.63,
+      "heading_deg": -3,
+      "curvature": 0,
+      "enabled": true,
+      "family": "old"
+    },
+    "sealed_recovery": {
+      "distance": 0.93,
+      "ramp": 8.7,
+      "onset": 4.28,
+      "release": 14.98,
+      "end": 20.98,
+      "heading_deg": 5,
+      "curvature": -0.065,
+      "enabled": true,
+      "family": "walking",
+      "prefix_until": 7.88
+    },
+    "sealed_no_contact": {
+      "distance": 0.86,
+      "ramp": 8.25,
+      "onset": 4.62,
+      "release": 14.87,
+      "end": 20.87,
+      "heading_deg": -5,
+      "curvature": 0,
+      "enabled": false,
+      "family": "walking"
+    }
+  },
+  "training_budget": {
+    "rollout_workers": 3,
+    "decisions_per_worker_batch": 256,
+    "iterations": 160,
+    "target_RL_decisions": 122880,
+    "estimated_episodes": "roughly 650-750 complete finite episodes, actual count recorded",
+    "physics_steps_per_RL_decision": 20,
+    "control_steps_per_RL_decision": 5,
+    "throughput_probe_decisions": 1536,
+    "measured_sampling_decisions_per_second": [
+      12.191864079,
+      9.24
+    ],
+    "note": "Full-history feature batching is semantics-tested; actual formal throughput and cumulative wall budget decide remaining capacity. 1536 probe decisions/18 optimizer updates are not formal checkpoint training. No convergence claim from budget completion."
+  },
+  "continuation": {
+    "source_checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m11-privileged-expert-20261101/train-attempt-01/outputs/job/best.pt",
+    "source_sha256": "bc305de6917103c5fbc64a6c6639f91bb517d3c7a48d689e7158739a6168cc8f",
+    "iterations_each": 160,
+    "train_seconds_each": 12600,
+    "seed": 71,
+    "std": "Checkpoint per-dimension std vector held fixed for A; B factor1 first20 batches, log-linear to .25 at batch120, then held. Changes only before sampling, log_std frozen with optimizer lr0 and no in-update clamp. Actor/critic optimizer state loaded identically.",
+    "dev_sample_seed": 202,
+    "final_sample_seeds": [
+      401,
+      502,
+      603
+    ],
+    "selection": "Mean execution only: failure count first; then average per-case cost ratio to paired M10 + .5*mean worst-two ratios. Cost=F_RMS+3*error_m+cap_fraction; no-contact adds100*root_max_m; local adds2*root_max_m. Denominator floor .5. Stochastic development retained but not used to select. Initial checkpoint eligible. No final reselection.",
+    "resume_note": "Fresh selection scope/evaluation; preserve original historical best artifacts. Each selected file SHA bound to evaluation and score."
+  },
+  "notes": [
+    "M11 continuation, not a new milestone. No Student, contact point, reward, cap, BFM, PD or network changes.",
+    "A and B sequentially use one actually checked free GPU; same source model/optimizer/RNG; independent fresh physical workers. Common sampled task RNG streams diverge with episode lengths; distribution fixed, not claimed pathwise-identical training data.",
+    "Original final combinations are exposed development/diagnostic; this final set frozen before running new zero-mean probe or training.",
+    "Exact completed samples and tail families reported even if budget truncates; no claim of convergence from allotted time."
+  ]
+}

@@ -50,7 +50,7 @@ class Task:
         if rotation is not None:anchor=pivot+rotation@(anchor-pivot)
         for c in [e.cfg,e.tether.cfg]:c.enabled=s['enabled'];c.activation_time=s['onset'];c.ramp_duration=s['ramp'];c.release_time=s['release']
         install_partner(e.tether,s,anchor);self.anchor=anchor;self.initial=copy.deepcopy(e.trace[-1]);self.initial['wrist']=e.last_point.tolist()
-        self.h=ContactHistory();self.gate=ContactGate();self.tick=0;self.raw.zero_();self.prevz=e.standing.clone();self.lastq=self.qof(e.previous_action);self.done=False;self.boundary=None;self.physics=[];self.controls=[];self.stats=[];self.episode_return=0.;e.trace=[];e.qualification_active=True
+        self.h=ContactHistory();self.gate=ContactGate();self.tick=0;self.raw.zero_();self.prevz=e.standing.clone();self.lastq=self.qof(e.previous_action);self.done=False;self.boundary=None;self.physics=[];self.controls=[];self.stats=[];self.execution_stats=[];self.root_max=0.;self.episode_return=0.;e.trace=[];e.qualification_active=True
         self.prepared=False;self.base=self.prepare()
         # Legitimate visited deviations are obtained by actual frozen M10 rollout,
         # not by arbitrary qpos edits. Same prefix used in paired evaluation.
@@ -108,16 +108,19 @@ class Task:
             elif mode=='m10_expert':z=oracle
             a=self.m.act(e.obs,z,mean=True);q=self.qof(a);nom=self.qof(self.m.act(e.obs,base,mean=True));dq=q-self.lastq
             assert torch.isfinite(z).all() and abs(float(z.norm())-16)<1e-4
+            execution_diag=dict(raw_norm=float(self.raw.norm()),residual_norm=float(norm),latent_angle_deg=float(torch.rad2deg(torch.acos(((z*base).sum()/256).clamp(-1,1)))),qPD_vs_prior_rms_deg=float(torch.rad2deg(q-nom).square().mean().sqrt()),qPD_step_max_deg=float(torch.rad2deg(dq.abs()).max()))
             c=dict(bfm_obs={k:v.tolist() for k,v in e.obs.items()},time=t,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),q_PD_step_max_rad=float(dq.abs().max()),pre_qpos=e.sim.data.qpos.tolist(),pre_qvel=e.sim.data.qvel.tolist(),measured_force_xyz=e.tether.force.tolist(),action_saturation_fraction=float(((a*5).abs()>=self.c['clip']).float().mean()),residual_uncapped_norm=float(norm),prior_z=base.tolist()) if self.record else None
             start=len(e.trace)
             try:
                 if advance(e,a):self.boundary=dict(kind='native_termination',time=float(e.tether.time))
             except UnsafePhysics as exc:self.boundary=dict(kind='physics_review',time=float(e.tether.time),physics=exc.row)
-            rs=e.trace[start:];rows.extend(rs);self.total_steps+=len(rs);self.total_controls+=1
+            rs=e.trace[start:];rows.extend(rs);self.root_max=max(self.root_max,max(float(np.linalg.norm(np.array(r['root'])-self.initial['root'])) for r in rs));self.total_steps+=len(rs);self.total_controls+=1
             point,vel=self.read_point_state();vp=getattr(e.tether,'partner_velocity',np.zeros(3));active=bool(e.tether.active);err=e.tether.anchor-point;demand=80*err+8*(vp-vel) if active else np.zeros(3)
             F=np.array([r['force'] for r in rs]);E=np.array([np.array(r['anchor'])-r['wrist'] for r in rs]);vroot=e.sim.data.qvel[:3];R=e.sim.data.xmat[1].reshape(3,3);yaw=math.atan2(R[1,0],R[0,0]);direction=math.atan2(vp[1],vp[0]);motion_weight=min(np.linalg.norm(vroot[:2])/.12,1.) if active and np.linalg.norm(vp[:2])>.02 else 0.
             term=dict(force=1.5*float(np.mean(np.sum(F*F,1))/25),uncapped=.15*float(min(np.log1p(np.sum(demand*demand)/25),8)),tracking=.15*float(min(np.mean(np.sum(E*E,1))/.04,16)) if active else 0.,relative_velocity=.1*float(min(np.sum((vp-vel)**2)/.25,16)) if active else 0.,heading=.1*motion_weight*(1-math.cos(yaw-direction)),slip=.05*min((max(r['contact_tangent_speed_max_mps'] for r in rs)/.15)**2,16),tilt=.1*min((max(0,rs[-1]['tilt_deg']-15)/15)**2,16),continuity=.05*float(min(dq.square().mean()/.01,16)),soft_prior=.02*float(min((q-nom).square().mean()/.04,16)),idle=.2*float(min(np.sum(vroot*vroot)/.04,16)) if not active else 0.)
-            re-=.02*sum(term.values());terms.append(term)
+            re-=.02*sum(term.values());terms.append(term);term_diag=execution_diag
+            if not hasattr(self,'execution_stats'):self.execution_stats=[]
+            self.execution_stats.append(term_diag)
             if self.record:
                 c['uncapped_demand_xyz']=demand.tolist();control.append(c)
             self.lastq=q.clone();self.prevz=z.clone();self.tick+=1;self.prepared=False
@@ -128,12 +131,12 @@ class Task:
             if self.done:break
         e.trace=[]
         if self.record:self.physics.extend(rows);self.controls.extend(control)
-        stat=dict(force_squared=sum(np.dot(r['force'],r['force']) for r in rows),active_steps=sum(r['active'] for r in rows),active_force_squared=sum(np.dot(r['force'],r['force']) for r in rows if r['active']),cap_steps=sum(np.linalg.norm(r['force'])>=4.999 for r in rows),error_squared=sum(r['error']**2 for r in rows if r['active']),physics_steps=len(rows),control_steps=len(terms),prefix=prefix,reward=re,terms={k:float(np.mean([v[k] for v in terms])) for k in terms[0]},boundary=self.boundary)
+        stat=dict(force_squared=sum(np.dot(r['force'],r['force']) for r in rows),active_steps=sum(r['active'] for r in rows),active_force_squared=sum(np.dot(r['force'],r['force']) for r in rows if r['active']),cap_steps=sum(np.linalg.norm(r['force'])>=4.999 for r in rows),error_squared=sum(r['error']**2 for r in rows if r['active']),physics_steps=len(rows),control_steps=len(terms),prefix=prefix,reward=re,execution={k:float(np.mean([d[k] for d in self.execution_stats[-len(terms):]])) for k in execution_diag},execution_max={k:max(d[k] for d in self.execution_stats[-len(terms):]) for k in execution_diag},terms={k:float(np.mean([v[k] for v in terms])) for k in terms[0]},boundary=self.boundary)
         self.stats.append(stat);self.episode_return+=re
         if self.done:e.qualification_active=False
         return self.features(),re,self.done,stat
     def summary(self):
-        s=self.stats;active=sum(x['active_steps'] for x in s);return dict(label=self.label,condition=self.spec,boundary=self.boundary,complete=self.done and self.boundary is None,force_rms=(sum(x['active_force_squared'] for x in s)/max(active,1))**.5,error_cm=100*(sum(x['error_squared'] for x in s)/max(active,1))**.5,cap_fraction=sum(x['cap_steps'] for x in s)/max(active,1),episode_return=self.episode_return,physics_steps=sum(x['physics_steps'] for x in s),rl_decisions=sum(not x['prefix'] for x in s),prefill_steps=self.total_prefill)
+        s=self.stats;active=sum(x['active_steps'] for x in s);return dict(label=self.label,condition=self.spec,root_max_displacement=self.root_max,boundary=self.boundary,complete=self.done and self.boundary is None,force_rms=(sum(x['active_force_squared'] for x in s)/max(active,1))**.5,error_cm=100*(sum(x['error_squared'] for x in s)/max(active,1))**.5,cap_fraction=sum(x['cap_steps'] for x in s)/max(active,1),episode_return=self.episode_return,physics_steps=sum(x['physics_steps'] for x in s),rl_decisions=sum(not x['prefix'] for x in s),prefill_steps=self.total_prefill)
     def save(self,out):
         e=dict(label=self.label,initial=self.initial,physics=self.physics,control=self.controls,boundary=self.boundary,condition=self.spec,anchor=self.anchor.tolist(),phases={'pre':[3,self.spec['onset']],'move':[self.spec['onset'],self.spec['onset']+self.spec['ramp']],'hold':[self.spec['onset']+self.spec['ramp'],self.spec['release']],'recover':[self.spec['release'],self.spec['end']]})
         with gzip.open(out/(self.label+'.json.gz'),'wt') as f:json.dump(e,f)

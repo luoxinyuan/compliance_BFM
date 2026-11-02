@@ -1,0 +1,134 @@
+[
+  [
+    "straight__zero_noise__101",
+    {
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "heading_deg": 0,
+      "curvature": 0,
+      "enabled": true,
+      "family": "walking",
+      "cached_observation_reads": false,
+      "diagnostic_sampling": true,
+      "diagnostic_zero_mean": true,
+      "diagnostic_std_scale": 1.0,
+      "diagnostic_seed": 101,
+      "diagnostic_action_probes": false,
+      "diagnostic_read_audit": false
+    },
+    "learned"
+  ],
+  [
+    "straight__zero_noise__202",
+    {
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "heading_deg": 0,
+      "curvature": 0,
+      "enabled": true,
+      "family": "walking",
+      "cached_observation_reads": false,
+      "diagnostic_sampling": true,
+      "diagnostic_zero_mean": true,
+      "diagnostic_std_scale": 1.0,
+      "diagnostic_seed": 202,
+      "diagnostic_action_probes": false,
+      "diagnostic_read_audit": false
+    },
+    "learned"
+  ],
+  [
+    "straight__zero_noise__303",
+    {
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "heading_deg": 0,
+      "curvature": 0,
+      "enabled": true,
+      "family": "walking",
+      "cached_observation_reads": false,
+      "diagnostic_sampling": true,
+      "diagnostic_zero_mean": true,
+      "diagnostic_std_scale": 1.0,
+      "diagnostic_seed": 303,
+      "diagnostic_action_probes": false,
+      "diagnostic_read_audit": false
+    },
+    "learned"
+  ],
+  [
+    "exposed_straight__zero_noise__101",
+    {
+      "distance": 0.91,
+      "ramp": 8.6,
+      "onset": 4.85,
+      "release": 15.45,
+      "end": 21.45,
+      "heading_deg": -8,
+      "curvature": 0,
+      "enabled": true,
+      "family": "walking",
+      "cached_observation_reads": false,
+      "diagnostic_sampling": true,
+      "diagnostic_zero_mean": true,
+      "diagnostic_std_scale": 1.0,
+      "diagnostic_seed": 101,
+      "diagnostic_action_probes": false,
+      "diagnostic_read_audit": false
+    },
+    "learned"
+  ],
+  [
+    "exposed_straight__zero_noise__202",
+    {
+      "distance": 0.91,
+      "ramp": 8.6,
+      "onset": 4.85,
+      "release": 15.45,
+      "end": 21.45,
+      "heading_deg": -8,
+      "curvature": 0,
+      "enabled": true,
+      "family": "walking",
+      "cached_observation_reads": false,
+      "diagnostic_sampling": true,
+      "diagnostic_zero_mean": true,
+      "diagnostic_std_scale": 1.0,
+      "diagnostic_seed": 202,
+      "diagnostic_action_probes": false,
+      "diagnostic_read_audit": false
+    },
+    "learned"
+  ],
+  [
+    "exposed_straight__zero_noise__303",
+    {
+      "distance": 0.91,
+      "ramp": 8.6,
+      "onset": 4.85,
+      "release": 15.45,
+      "end": 21.45,
+      "heading_deg": -8,
+      "curvature": 0,
+      "enabled": true,
+      "family": "walking",
+      "cached_observation_reads": false,
+      "diagnostic_sampling": true,
+      "diagnostic_zero_mean": true,
+      "diagnostic_std_scale": 1.0,
+      "diagnostic_seed": 303,
+      "diagnostic_action_probes": false,
+      "diagnostic_read_audit": false
+    },
+    "learned"
+  ]
+]

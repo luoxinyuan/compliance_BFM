@@ -3,7 +3,7 @@ import os,json,gzip,hashlib,time
 from pathlib import Path
 import numpy as np,mujoco,imageio.v2 as imageio
 from PIL import Image,ImageDraw,ImageFont
-P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');RUN=P/'bridge-v2-owned/runs/m11-privileged-expert-20261101'
+P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');RUN=Path(os.environ.get('M11_VIDEO_RUN',str(P/'bridge-v2-owned/runs/m11-privileged-expert-20261101')))
 from m9c_render import geom
 ROOT=Path(__file__).resolve().parents[1]
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -14,7 +14,7 @@ def main():
   entries=[]
   for v in item['sides']:
    p=Path(v['path']);e=json.loads(gzip.decompress(p.read_bytes()));rs=[e['initial']]+e['physics'];entries.append(dict(**v,ep=e,rs=rs,ts=np.array([r['time'] for r in rs]),roots=np.array([r['root'] for r in rs]),sha256=digest(p)))
-  assert entries[0]['ep']['condition']==entries[1]['ep']['condition'],'Paired conditions must match exactly'
+  assert all(v['ep']['condition']==entries[0]['ep']['condition'] for v in entries),'Paired conditions must match exactly'
   start=min(v['ts'][0] for v in entries);end=max(v['ts'][-1] for v in entries);times=np.arange(start,end+1e-8,.04);path=out/(item['name']+'.mp4');assert not path.exists();writer=imageio.get_writer(str(path),fps=25,codec='libx264',quality=8,macro_block_size=16,ffmpeg_params=['-pix_fmt','yuv420p','-movflags','+faststart','-threads','2']);started=time.monotonic()
   center=np.array([.45,0,.6]) if entries[0]['ep']['condition'].get('family')=='walking' else np.array([0,0,.6]);cameras=[]
   for az,el in [(125,-18),(90,-82)]:

@@ -38,12 +38,12 @@ def loop(env,model,contract,out):
                 diagnostic=bool(spec.get('diagnostic_sampling'))
                 if diagnostic:
                     from m11_diagnostics import monitor_point_read,action_probe
-                    read_audit=monitor_point_read(task);probes=[];probe_times=[5.5,7.,8.,10.]
+                    read_audit=monitor_point_read(task) if spec.get('diagnostic_read_audit',True) else {};probes=[];probe_times=[5.5,7.,8.,10.]
                     noise=torch.Generator(device=obs.device).manual_seed(spec['diagnostic_seed'])
                 while not task.done:
-                    dist=net.distribution(obs);raw=dist.mean
+                    dist=net.distribution(obs);raw=torch.zeros_like(dist.mean) if spec.get('diagnostic_zero_mean') else dist.mean
                     if diagnostic:
-                        if probe_times and float(task.e.tether.time)>=probe_times[0]:
+                        if spec.get('diagnostic_action_probes',True) and probe_times and float(task.e.tether.time)>=probe_times[0]:
                             probes.append(action_probe(task,net,obs));probe_times.pop(0)
                         epsilon=torch.randn(raw.shape,device=obs.device,generator=noise)
                         raw=raw+spec['diagnostic_std_scale']*dist.stddev*epsilon
@@ -75,6 +75,6 @@ def loop(env,model,contract,out):
             batch['reward'].append(reward);batch['discount'].append(.99**(st['control_steps']/5));batch['done'].append(done)
             stats.append(st);obs=nxt
         a={k:np.asarray(v,dtype=bool if k=='done' else np.float32) for k,v in batch.items()}
-        CONNECTION.send(dict(kind='rollout',version=cmd['version'],batch=a,stats=stats,episodes=eps,seconds=time.monotonic()-start,prefill_physics_steps=task.total_prefill-presteps))
+        CONNECTION.send(dict(kind='rollout',version=cmd['version'],executed_std=net.log_std.exp().detach().cpu().numpy(),batch=a,stats=stats,episodes=eps,seconds=time.monotonic()-start,prefill_physics_steps=task.total_prefill-presteps))
     if task.boundary:task.save(out)
     return dict(status='completed',episodes=episodes,physical_steps=task.total_steps,prefill_steps=task.total_prefill,student_optimizer_updates=0)
