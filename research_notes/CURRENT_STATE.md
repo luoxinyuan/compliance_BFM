@@ -1,24 +1,16 @@
 # CURRENT_STATE — 新会话先读
 
-**最后核对：2026-11-02 13:32 CST。这是带时间戳的快照，接力前必须刷新运行状态。**
+**最后核对：2026-11-02 16:17 CST。这是带时间戳的快照，接力前必须刷新运行状态。**
 
 长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)记录当前训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
 
-## 1. 当前状态：M11初轮完成，continuation正在训练
+## 1. 当前状态：M11 continuation已按用户要求提前结束
 
-|对象|已经核实的状态|
-|---|---|
-|M11初轮|122,880 RL决策、783完成训练回合、18正式终检及24冻结诊断已结束；开发改善、均值部署严重失败，未推广新Expert或训练Student|
-|M11 continuation已完成|零均值residual＋同std/seed的6条真实物理对照；续训best分数/权重身份修正；初始checkpoint NumPy分数序列化修复及测试|
-|正在执行|固定探索A，`fixed-attempt-03`；从第114批断点接续，核对时115批/88,320新增RL决策。序列PID1486901、训练PID1486924；加速runtime `c98abd7912e173f1228afaca996ae43ed6009ac1`。PID仅供核验|
-|已授权并排队，尚未完成|渐进减噪B；选定模型的预封终检、3组真实视频与汇总。A/B各目标新增122,880决策；不等于已完成或已收敛|
-|本次性能优化|用户授权缓存静态配置与断点续训；10项测试、4完整物理场景逐项零差异，采样144.31→120.08s（约1.20×）。不是新科研结果；未改reward/cap/网络/PPO batch|
+2026-11-02 16:17 CST：A完成160批/122,880新增RL决策；B停止在114批/87,552决策，断点与自有worker退出已核验，GPU1释放。序列及Mac有限等待脚本均停止。没有启动封存终检、视频或下一轮训练。
 
-A/B继承相同原best、optimizer和RNG；固定物理/reward/M10 prior/网络/任务分布。A保留约.08逐维std，B前20批保持，之后100批降到1/4，末40批约.02；外部std冻结于optimizer之外，只在采样批次边界改变。每批核验实际std、raw old logprob、解析KL、clip fraction、梯度及动作效果。每40批按预定均值/失败/尾部规则选择开发候选，采样结果保留；新封存6组合不用于重选。参数见 [M11_CONTINUATION.md](M11_CONTINUATION.md) 与 [protocol](m11_continuation_protocol.json)。
+详见 [M11_CONTINUATION_CLOSEOUT.md](M11_CONTINUATION_CLOSEOUT.md)。A/B都按预定开发规则保留第40批候选；A最终160批与B最后114批不是等预算终检。B最新评估仅到80批。A暴露直行误差短暂改善至10.455cm，最终42.720cm；B在40批13.416cm、80批31.272cm。力仍约4.3–4.7N，未得到持续、可靠的低力专家。所有初轮、续训失败、随机执行及回归保留。
 
-`fixed-attempt-01`在24个初始评估后安全读checkpoint失败，当时0次PPO更新；修正只转换分数类型，完整失败保留。A/B复用对应的初始评估，失败耗时计入预算。不能将此解释为原从头训练失败原因。
-
-性能接续记录：旧A `fixed-attempt-02`在等待采样时收到授权SIGTERM，保存第114批/87,552新增RL决策，optimizer/RNG与历史best一致；断点SHA256 `5e033c8b593ae9a45335dc898679afd0b6db0d2dc794eee67fd5f2529a57cd28`。新attempt复制旧证据，不改旧文件。旧采样器未保存完整物理状态，丢弃在途样本；B预定在同一第114批重启worker进程，保留此协议变化，不声称逐位连续。总目标仍各160批，累计预算未重置。详情见 [M11_THROUGHPUT.md](M11_THROUGHPUT.md)，证据在`$P/bridge-v2-owned/runs/m11-throughput-20261102/`。
+续训修复了best保存身份问题，并完成零均值加噪声对照和独立采样性能分析；这些不等于科研目标达成。运行源码及原物理/reward/共享BFM/PD未因本次收尾改变。
 
 ## 2. 可靠基线、实际结论与边界
 
@@ -28,7 +20,9 @@ A/B继承相同原best、optimizer和RNG；固定物理/reward/M10 prior/网络/
 - 同一冻结M11 checkpoint在失败条件完整采样9.329±1.167cm；仅记忆噪声未解决问题。force/GAE/raw logprob未发现对应硬错误；5N饱和压缩force惩罚，但已有误差/未限幅需求项把失败评得更差，没有force高斯sigma。
 - continuation零均值＋同噪声18.119±14.218cm、4.302±.477N，对应学习＋噪声9.329±1.167cm、4.298±.269N（三执行seed，不是三次训练）。学习反馈对误差/尾部有贡献，但力几乎相同，尚无可靠均值改进证据。
 
-**首要瓶颈：随机训练取得的反馈，能否在均值执行中可靠发挥作用，并真实降低交互负担。** 先完成既定A/B，分开判断Expert质量、合法BFM表达与Student差距。若均值差距改善但力不降，再依据分项物理证据选择下一目标；本轮不同时调reward/cap，也不默认更多数据或BFM无能力是答案。
+**首要瓶颈：均值部署仍不可靠，实际交互力没有稳定降低。** 当前停止继续宽任务续训。建议下一次先收敛到可信直行运动上的有限反馈任务，验证确定性执行收益，再逐项扩分布；仅建议，尚未启动或排队。不能把这次提前结束解释为BFM/LPP不可行或已经证明减噪无效。
+
+当前Student使用仿真实际Tether力及已知接触位置，尚无真机传感/估计验证；“可部署输入”是信息权限设计，不是已证明准确实机力可得。
 
 ## 3. 源码与模型身份（不要把文档HEAD当runtime）
 
@@ -36,7 +30,7 @@ A/B继承相同原best、optimizer和RNG；固定物理/reward/M10 prior/网络/
 
 |用途|精确commit|
 |---|---|
-|当前运行源码|`c98abd7912e173f1228afaca996ae43ed6009ac1`，`gaoe05/m11-throughput`|
+|本轮运行源码|`c98abd7912e173f1228afaca996ae43ed6009ac1`，`gaoe05/m11-throughput`|
 |续训前114批源码（完整保留）|`38c7b25dcb6a3a1124acd9cf44c4eb116364ac60`，`gaoe05/m11-privileged-expert`|
 |M11初轮完整报告/源码|`466266385fab2fec9852253d661ecd24cd675c64`|
 |M10完整报告/源码|`49639ed29d4cbf513c285633841426579d80d5bd`|
@@ -46,7 +40,7 @@ A/B继承相同原best、optimizer和RNG；固定物理/reward/M10 prior/网络/
 - 冻结BFM：`33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
 - M10部署Student / M11 prior：`1742ba74e9ec871abf8577eb9a276d7a1e614cd3184330a008dd9c4a7031bcd8`。
 - M11初轮best / A、B共同起点：`bc305de6917103c5fbc64a6c6639f91bb517d3c7a48d689e7158739a6168cc8f`，原iteration60/46,080决策。
-- continuation最终模型**尚未选定完成**；不要把滚动`best.pt`当正式交付。核对对应`selection.json`、evaluation SHA与训练量。
+- continuation开发候选A40：`e979f44d60f16abfe3c3644d64eb410717c1717a3f0a4ebb879843f1313da601`；B40：`9c4196065365cfd5219caf6308e97ed21e0852eb9d99616bb511598bf5d84a10`。均未完成新封存终检，不推广为可靠新Expert。B114停止断点：`aca42857e291f023a52cdf90ce6d5a83bc4c2417365c3989c0856ad5e39d514f`。
 
 ## 4. 证据、运行路径与视频
 
@@ -56,13 +50,13 @@ A/B继承相同原best、optimizer和RNG；固定物理/reward/M10 prior/网络/
 - continuation：`$P/bridge-v2-owned/runs/m11-continuation-20261102/`。首先读`sequence-status.json`、`compute-ledger.json`；实际成功/运行attempt以ledger为准，不能硬编码`attempt-01`。训练`outputs/job/{launch,status,training,selection}`相应JSON/JSONL记录身份与进度。
 - 初轮：`$P/bridge-v2-owned/runs/m11-privileged-expert-20261101/`；起点`train-attempt-01/outputs/job/best.pt`。完整索引见 [M11_RESULTS.md](M11_RESULTS.md)。M10见 [M10_RESULTS.md](M10_RESULTS.md)，旧M8/M9保留路径在Master/原报告。
 - Mac已有M10五视频：`~/Projects/compliance-bfm-diagnostics/videos/m10-task-appropriate/INDEX.md`；M11初轮三视频：`~/Projects/compliance-bfm-diagnostics/videos/m11-privileged-expert/INDEX.md`。
-- continuation三视频**尚未交付**；目标为后者的`continuation/`子目录，预设有限传输脚本等待序列完成。最终需核非空、SHA、时长、完整解码和视觉内容，不能把服务器文件称已到Mac。
+- continuation未新增视频：用户提前结束，后续终检/渲染取消，有限等待脚本已退出。旧视频不变。
 - [M11初轮完整结论](https://github.com/GaoE05/robot-research-bridge/issues/32#issuecomment-6567497953)；[续训协议及零均值结果](https://github.com/GaoE05/robot-research-bridge/issues/32#issuecomment-6568052677)；[续训工程失败/修复](https://github.com/GaoE05/robot-research-bridge/issues/32#issuecomment-6568170510)；[M10报告](https://github.com/GaoE05/robot-research-bridge/issues/31#issuecomment-6558767622)。
 
 ## 5. 新会话接力与边界
 
-1. 先读本文件、纲领、Master和#32最新评论；区分旧结项与当前continuation，旧Library/Issue历史中的“停止”不是当前事实。
+1. 先读本文件、纲领、Master和#32最新评论；区分M11初轮与continuation；当前两者均停止，旧运行中快照不是启动授权。
 2. 只读核验服务器ledger、精确PID/启动命令、runtime SHA和工作区。进程在跑就不重启、不覆盖、不切分支；无进程也先读result/失败原因，不能默认重跑。
 3. 当前授权：一个GPU顺序执行、8 CPU、32GiB owned RSS、8GiB owned VRAM、8GiB本轮输出、28,800s累计监督墙钟（含失败/评估/渲染）。核对时GPU1，未来不固定GPU5，也不擅自沿用旧空闲状态；真实BFM实验不因无GPU改CPU。共享盘总剩余不等于个人配额。
 4. 共享BFM/PD/原权重、SoftSONIC和他人任务不动；只管理核验过的自有PID。代码/活动产物留个人CPFS目录，大资产`/mnt/data-oss/users/yi.gao/compliance_BFM/`；不自动下载大资产、启动Bridge/watch/真机或扩大预算。
-5. 当前有限A/B序列继续运行；性能优化不触发额外科研实验。训练阶段最终核验后更新本摘要、#32和Master，再推进获准源码到`gaoe05/research`。保留runtime commit、checkpoint SHA、完整失败和关键1×视频；不要以训练步数/高EV/代码已推送宣称科学成功。
+5. 当前无训练或终检排队。本次只收尾记录，不自动重启A/B、不启动窄域新训练。后续科研任务须依据新授权；保留已有模型、源码身份及全部失败。
