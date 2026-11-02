@@ -1,18 +1,20 @@
 # CURRENT_STATE — 新会话先读
 
-**最后核对：2026-11-02，新窄域任务准备阶段。这是带时间戳的快照，接力前必须刷新运行状态。**
+**最后核对：2026-11-02 17:11 CST，新窄域任务已发车。这是带时间戳的快照，接力前必须刷新运行状态。**
 
 长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)记录当前训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
 
-## 1. 当前状态：窄域独立Expert已授权，准备完成，GPU尚未启动
+## 1. 当前状态：窄域独立Expert主训练已启动
 
 2026-11-02，新任务见 [Issue #33](https://github.com/GaoE05/robot-research-bridge/issues/33)。旧M11 continuation保持停止，A160/B114不是等预算终检，全部模型/失败保留，不能据此宣称减噪无效。
 
-新actor、critic和optimizer独立初始化；直接使用M10 task修正的原生直行motion作为名义先验，不在线调用M10 Student。BFM/PD/Tether冻结。先单条件真实反馈学习，出现收益后才进行窄邻域和独立重复。当前实现/准备，尚未开始物理或训练；确切runtime以本次新分支提交和随后launch.json为准。
+新actor、critic和optimizer独立初始化；直接使用M10 task修正的原生直行motion作为名义先验，不在线调用M10 Student。BFM/PD/Tether冻结。先单条件真实反馈学习，出现收益后才进行窄邻域和独立重复。2026-11-02 17:11 CST主训练启动：seed101，最多120批/92160高层决策。runtime `5c7c1ec899c5435c125e711ad0a4694ddd2b8a4e`，supervisor PID1573134（仅供核验），`train-attempt-01`。新actor/critic/optimizer，未加载M11或诊断更新权重。
 
 独立预算：单GPU、CPU8–15共8核、32GiB RSS、8GiB VRAM、8GiB输出；累计计算28800秒，最多200448高层RL决策（包含一次768决策诊断）。GPU1实时核查为空，系统CPU/I/O pressure近0，内存余量约927GiB；此快照不替代每次启动复核。不是独占共享磁盘配额。
 
 独立代码 `bridge-v2-owned/trees/narrow-contact-expert/repo`，分支 `gaoe05/narrow-contact-expert`；输出 `bridge-v2-owned/runs/narrow-contact-expert-20261102/`；配置 `research_notes/narrow_protocol.json`。单条件 .82m / 7.8s ramp / onset4.25s / release14.05s / end20.05s；新最终组合预固定，见配置，不能用于选择checkpoint。
+
+针对性检查已完成：七条物理对照和一次768决策诊断；独立reward复算误差<7e-10，较好M10反馈专家7.796cm/4.363N优于原生13.856cm/4.704N且回报排序正确。发现低std下单步KL偏大，依据同batch证据将actor LR降至1e-5；不改reward/cap。合法latent范围覆盖已执行专家偏角，未沿用任意14deg界。详见 [NARROW_EXPERT_START.md](NARROW_EXPERT_START.md)。一次日志序列化失败及所有诊断保留。
 
 旧轮收尾见 [M11_CONTINUATION_CLOSEOUT.md](M11_CONTINUATION_CLOSEOUT.md)。尚无新Expert成功结果；M10/M9B仍是对照，不会自动被替换。
 
