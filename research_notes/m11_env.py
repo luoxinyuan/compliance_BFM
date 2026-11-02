@@ -36,8 +36,8 @@ class Task:
         spec=dict(enabled=enabled,distance=dist,ramp=ramp,onset=onset,release=release,end=release+6.,curvature=curve,heading_deg=yaw,family='walking' if not local else 'old')
         if not local and r.random()<.25:spec['prefix_until']=round(onset+float(r.uniform(2.,4.5)),2)
         return spec
-    def reset(self,spec=None,record=False,label='train'):
-        e=self.e;self.spec=copy.deepcopy(spec or self.sample_spec());s=self.spec;self.record=record;self.label=label
+    def reset(self,spec=None,record=False,label='train',query_reference=False):
+        e=self.e;self.spec=copy.deepcopy(spec or self.sample_spec());s=self.spec;self.record=record;self.label=label;self.track_reference=query_reference
         reset_common(e,self.m,self.m.act);self.total_prefill+=600
         rotation=None
         if s.get('heading_deg'):
@@ -93,12 +93,13 @@ class Task:
         for _ in range(5):
             if self.done:break
             base=self.prepare();t=float(e.tether.time);z,norm=legal_command(self.m,base,self.raw)
+            oracle=self.native_expert() if self.track_reference else None
             if mode=='prior' or prefix:z=base
             elif mode=='standing':z=e.standing
-            elif mode=='m10_expert':z=self.native_expert()
+            elif mode=='m10_expert':z=oracle
             a=self.m.act(e.obs,z,mean=True);q=self.qof(a);nom=self.qof(self.m.act(e.obs,base,mean=True));dq=q-self.lastq
             assert torch.isfinite(z).all() and abs(float(z.norm())-16)<1e-4
-            c=dict(time=t,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),q_PD_step_max_rad=float(dq.abs().max()),pre_qpos=e.sim.data.qpos.tolist(),pre_qvel=e.sim.data.qvel.tolist(),measured_force_xyz=e.tether.force.tolist(),action_saturation_fraction=float(((a*5).abs()>=self.c['clip']).float().mean()),residual_uncapped_norm=float(norm),prior_z=base.tolist()) if self.record else None
+            c=dict(bfm_obs={k:v.tolist() for k,v in e.obs.items()},time=t,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),q_PD_step_max_rad=float(dq.abs().max()),pre_qpos=e.sim.data.qpos.tolist(),pre_qvel=e.sim.data.qvel.tolist(),measured_force_xyz=e.tether.force.tolist(),action_saturation_fraction=float(((a*5).abs()>=self.c['clip']).float().mean()),residual_uncapped_norm=float(norm),prior_z=base.tolist()) if self.record else None
             start=len(e.trace)
             try:
                 if advance(e,a):self.boundary=dict(kind='native_termination',time=float(e.tether.time))
@@ -109,7 +110,6 @@ class Task:
             term=dict(force=1.5*float(np.mean(np.sum(F*F,1))/25),uncapped=.15*float(min(np.log1p(np.sum(demand*demand)/25),8)),tracking=.15*float(min(np.mean(np.sum(E*E,1))/.04,16)) if active else 0.,relative_velocity=.1*float(min(np.sum((vp-vel)**2)/.25,16)) if active else 0.,heading=.1*motion_weight*(1-math.cos(yaw-direction)),slip=.05*min((max(r['contact_tangent_speed_max_mps'] for r in rs)/.15)**2,16),tilt=.1*min((max(0,rs[-1]['tilt_deg']-15)/15)**2,16),continuity=.05*float(min(dq.square().mean()/.01,16)),soft_prior=.02*float(min((q-nom).square().mean()/.04,16)),idle=.2*float(min(np.sum(vroot*vroot)/.04,16)) if not active else 0.)
             re-=.02*sum(term.values());terms.append(term)
             if self.record:
-                c['bfm_obs']={k:v.tolist() for k,v in e.obs.items()} if False else None
                 c['uncapped_demand_xyz']=demand.tolist();control.append(c)
             self.lastq=q.clone();self.prevz=z.clone();self.tick+=1;self.prepared=False
             self.done=self.boundary is not None or e.tether.time>=s['end']-1e-8

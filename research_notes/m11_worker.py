@@ -34,7 +34,7 @@ def loop(env,model,contract,out):
         if cmd['op']=='evaluate':
             summaries=[]
             for label,spec,mode in cmd['schedule']:
-                obs=task.reset(spec,record=True,label=label)
+                obs=task.reset(spec,record=True,label=label,query_reference=(mode=='m10_expert'))
                 while not task.done:
                     raw=net.distribution(obs).mean
                     obs,_,_,_=task.step(raw,mode=mode)

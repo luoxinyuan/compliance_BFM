@@ -78,5 +78,6 @@ def main():
         for p in ps:
             p.join(timeout=10)
             if p.is_alive():p.terminate();p.join(timeout=10)
+        atomic(a.output/'status.json',dict(status=status,rl_decisions=decisions,iteration=iteration,optimizer_updates=updates))
         atomic(a.output/'result.json',dict(status=status,rl_decisions=decisions,optimizer_updates=updates,elapsed_s=time.monotonic()-started,workers=[dict(pid=p.pid,exitcode=p.exitcode) for p in ps],bfm_updated=False,student_updated=False))
 if __name__=='__main__':main()
