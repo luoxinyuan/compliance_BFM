@@ -1,0 +1,234 @@
+[
+  {
+    "kind": "structured",
+    "runtime": "999494f7a25224b27780f504af797c32b6ca6879",
+    "initial_sha": "de653d2962af5378d32375cfc9dbc86b49b3003bd74dc2dac870bf9724d7a539",
+    "summary": [
+      {
+        "label": "single__mean",
+        "condition": {
+          "enabled": true,
+          "distance": 0.82,
+          "ramp": 7.8,
+          "onset": 4.25,
+          "release": 14.05,
+          "end": 20.05,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking"
+        },
+        "root_max_displacement": 0.3042018122182043,
+        "boundary": null,
+        "complete": true,
+        "force_rms": 4.673655476515774,
+        "error_cm": 32.67242387475468,
+        "cap_fraction": 0.844818785094436,
+        "episode_return": -20.650734139863605,
+        "physics_steps": 3412,
+        "rl_decisions": 171,
+        "prefill_steps": 2400
+      },
+      {
+        "label": "local_regression__mean",
+        "condition": {
+          "enabled": true,
+          "distance": 0.15,
+          "ramp": 4.5,
+          "onset": 4.25,
+          "release": 10.75,
+          "end": 16.75,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking"
+        },
+        "root_max_displacement": 0.07024424015759814,
+        "boundary": null,
+        "complete": true,
+        "force_rms": 3.6975530254539364,
+        "error_cm": 4.853238674538247,
+        "cap_fraction": 0.1993841416474211,
+        "episode_return": -5.889280328487512,
+        "physics_steps": 2752,
+        "rl_decisions": 138,
+        "prefill_steps": 3000
+      },
+      {
+        "label": "single__sample",
+        "condition": {
+          "enabled": true,
+          "distance": 0.82,
+          "ramp": 7.8,
+          "onset": 4.25,
+          "release": 14.05,
+          "end": 20.05,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "diagnostic_sampling": true,
+          "diagnostic_seed": 501,
+          "diagnostic_std_scale": 1,
+          "diagnostic_action_probes": false,
+          "diagnostic_read_audit": false
+        },
+        "root_max_displacement": 0.0666318352046046,
+        "boundary": null,
+        "complete": true,
+        "force_rms": 4.714716467869838,
+        "error_cm": 53.01158065781023,
+        "cap_fraction": 0.8402246043899949,
+        "episode_return": -28.54944952884254,
+        "physics_steps": 3412,
+        "rl_decisions": 171,
+        "prefill_steps": 2400,
+        "point_read_audit": {}
+      },
+      {
+        "label": "no_contact__mean",
+        "condition": {
+          "enabled": false,
+          "distance": 0.82,
+          "ramp": 7.8,
+          "onset": 4.25,
+          "release": 14.05,
+          "end": 20.05,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking"
+        },
+        "root_max_displacement": 0.04139236047487686,
+        "boundary": null,
+        "complete": true,
+        "force_rms": 0.0,
+        "error_cm": 0.0,
+        "cap_fraction": 0.0,
+        "episode_return": -0.18341109928320812,
+        "physics_steps": 3412,
+        "rl_decisions": 171,
+        "prefill_steps": 2400
+      }
+    ],
+    "expression": {
+      "teacher_complete": true,
+      "max_tangent_norm": 13.655604362487793,
+      "max_teacher_angle": 40.47993469238281,
+      "samples": 171,
+      "scope": "algebraic own-state teacher coverage; physical learned execution follows"
+    }
+  },
+  {
+    "kind": "direct",
+    "runtime": "999494f7a25224b27780f504af797c32b6ca6879",
+    "initial_sha": "a86ff5f9ca71ed2ae8dc95ceeab0ac980f82ab6ed8d3759c039eb03a62efe488",
+    "summary": [
+      {
+        "label": "single__mean",
+        "condition": {
+          "enabled": true,
+          "distance": 0.82,
+          "ramp": 7.8,
+          "onset": 4.25,
+          "release": 14.05,
+          "end": 20.05,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking"
+        },
+        "root_max_displacement": 0.8471649645864293,
+        "boundary": null,
+        "complete": true,
+        "force_rms": 4.059357155660254,
+        "error_cm": 7.501810723977879,
+        "cap_fraction": 0.46452271567126086,
+        "episode_return": -11.2006238167142,
+        "physics_steps": 3412,
+        "rl_decisions": 171,
+        "prefill_steps": 2400
+      },
+      {
+        "label": "local_regression__mean",
+        "condition": {
+          "enabled": true,
+          "distance": 0.15,
+          "ramp": 4.5,
+          "onset": 4.25,
+          "release": 10.75,
+          "end": 16.75,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking"
+        },
+        "root_max_displacement": 0.1556637445721157,
+        "boundary": null,
+        "complete": true,
+        "force_rms": 3.3948571972726196,
+        "error_cm": 4.351591690734492,
+        "cap_fraction": 0.11624326404926867,
+        "episode_return": -4.988032761321723,
+        "physics_steps": 2752,
+        "rl_decisions": 138,
+        "prefill_steps": 3000
+      },
+      {
+        "label": "single__sample",
+        "condition": {
+          "enabled": true,
+          "distance": 0.82,
+          "ramp": 7.8,
+          "onset": 4.25,
+          "release": 14.05,
+          "end": 20.05,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "diagnostic_sampling": true,
+          "diagnostic_seed": 501,
+          "diagnostic_std_scale": 1,
+          "diagnostic_action_probes": false,
+          "diagnostic_read_audit": false
+        },
+        "root_max_displacement": 0.8256331330675867,
+        "boundary": null,
+        "complete": true,
+        "force_rms": 4.10194569242293,
+        "error_cm": 8.713742362928697,
+        "cap_fraction": 0.484430832057172,
+        "episode_return": -11.68571263691844,
+        "physics_steps": 3412,
+        "rl_decisions": 171,
+        "prefill_steps": 2400,
+        "point_read_audit": {}
+      },
+      {
+        "label": "no_contact__mean",
+        "condition": {
+          "enabled": false,
+          "distance": 0.82,
+          "ramp": 7.8,
+          "onset": 4.25,
+          "release": 14.05,
+          "end": 20.05,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking"
+        },
+        "root_max_displacement": 0.0037643385385220463,
+        "boundary": null,
+        "complete": true,
+        "force_rms": 0.0,
+        "error_cm": 0.0,
+        "cap_fraction": 0.0,
+        "episode_return": -4.6827096173541364e-05,
+        "physics_steps": 3412,
+        "rl_decisions": 171,
+        "prefill_steps": 2400
+      }
+    ],
+    "expression": {
+      "teacher_complete": true,
+      "max_tangent_norm": 13.655604362487793,
+      "max_teacher_angle": 40.47993469238281,
+      "samples": 171,
+      "scope": "algebraic own-state teacher coverage; physical learned execution follows"
+    }
+  }
+]
