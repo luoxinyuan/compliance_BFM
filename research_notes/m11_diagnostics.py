@@ -1,13 +1,21 @@
 """Frozen-policy diagnostic instrumentation, never used to update parameters."""
-import numpy as np,torch,mujoco
+import numpy as np,torch,mujoco,sys
 from m11_policy import legal_command
 
 def monitor_point_read(task):
  t=task.e.tether;m,d=t.model,t.data;kind=mujoco.mjtState.mjSTATE_INTEGRATION
  before=np.empty(mujoco.mj_stateSize(m,kind));after=np.empty_like(before);original=t.point_state
- result=dict(calls=0,integration_state_max_change=0.)
+ result=dict(calls=0,integration_state_max_change=0.,callers={})
  def checked():
+  caller=sys._getframe(1).f_code.co_name
+  fields={k:getattr(d,k).copy() for k in ['qpos','qvel','qacc_warmstart','ctrl','xfrc_applied']}
+  point=d.xpos[t.body]+d.xmat[t.body].reshape(3,3)@np.asarray(t.cfg.local_point)
+  mujoco.mj_jac(m,d,t.jac,None,point,t.body);velocity=t.jac@d.qvel
   mujoco.mj_getState(m,d,before,kind);out=original();mujoco.mj_getState(m,d,after,kind)
+  row=result['callers'].setdefault(caller,dict(calls=0,point_difference=0.,velocity_difference=0.,**{k:0. for k in fields}))
+  row['calls']+=1
+  for k,v in fields.items():row[k]=max(row[k],float(np.abs(getattr(d,k)-v).max()))
+  row['point_difference']=max(row['point_difference'],float(np.abs(out[0]-point).max()));row['velocity_difference']=max(row['velocity_difference'],float(np.abs(out[1]-velocity).max()))
   result['calls']+=1;result['integration_state_max_change']=max(result['integration_state_max_change'],float(np.abs(before-after).max()));return out
  t.point_state=checked
  return result

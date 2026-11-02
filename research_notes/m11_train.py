@@ -7,7 +7,7 @@ def atomic(path,obj):
     tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(obj,indent=2,allow_nan=False));tmp.replace(path)
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--stage',choices=['throughput','train','final','diagnostic'],required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--gpu',required=True);p.add_argument('--workers',type=int,default=3);p.add_argument('--iterations',type=int,default=200);p.add_argument('--steps',type=int,default=256);p.add_argument('--resume',type=Path);p.add_argument('--max-seconds',type=float,default=14400);a=p.parse_args();assert not a.output.exists();a.output.mkdir()
+    p=argparse.ArgumentParser();p.add_argument('--stage',choices=['throughput','train','final','diagnostic','readcheck'],required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--gpu',required=True);p.add_argument('--workers',type=int,default=3);p.add_argument('--iterations',type=int,default=200);p.add_argument('--steps',type=int,default=256);p.add_argument('--resume',type=Path);p.add_argument('--max-seconds',type=float,default=14400);a=p.parse_args();assert not a.output.exists();a.output.mkdir()
     os.environ['CUDA_VISIBLE_DEVICES']=a.gpu
     import torch,numpy as np
     from humanoidverse.force_compliance.parallel import receive,merge_rollouts
@@ -39,9 +39,9 @@ def main():
         if a.resume:
             ck=torch.load(a.resume,map_location='cuda',weights_only=True);assert ck['prior_sha']==plan['prior_sha256'];net.load_state_dict(ck['state_dict']);opt.load_state_dict(ck['optimizer']);decisions=ck['decisions'];iteration=ck['iteration'];updates=ck['optimizer_updates'];best=ck['best_score'];torch.set_rng_state(ck['torch_rng'].cpu());torch.cuda.set_rng_state(ck['cuda_rng'].cpu())
         save('initial.pt')
-        if a.stage=='diagnostic':
-            dp=json.loads(Path(__file__).with_name('m11_diagnostic_plan.json').read_text())
-            rows=evaluate([(c['label'],c['spec'],'learned') for c in dp['cases']],a.output/'evaluation');status='completed';atomic(a.output/'diagnostic-summary.json',rows)
+        if a.stage in ['diagnostic','readcheck']:
+            dp=json.loads(Path(__file__).with_name('m11_'+a.stage+'_plan.json').read_text())
+            rows=evaluate([(c['label'],c['spec'],c.get('mode','learned')) for c in dp['cases]],a.output/'evaluation');status='completed';atomic(a.output/'diagnostic-summary.json',rows)
         elif a.stage=='final':
             rows=evaluate([(name+'__'+mode,spec,mode) for name,spec in plan['final'].items() for mode in ['prior','m10_expert','learned']],a.output/'evaluation');status='completed';atomic(a.output/'final-summary.json',rows)
         else:

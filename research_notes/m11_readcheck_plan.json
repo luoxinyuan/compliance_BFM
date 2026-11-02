@@ -1,0 +1,119 @@
+{
+  "purpose": "Identify integration-state mutation from redundant measurement solves; paired old/new read implementation with fixed checkpoint. No training or final-test selection.",
+  "cases": [
+    {
+      "label": "dev_straight__learned__legacy",
+      "mode": "learned",
+      "spec": {
+        "distance": 0.82,
+        "ramp": 7.8,
+        "onset": 4.25,
+        "release": 14.05,
+        "end": 20.05,
+        "heading_deg": 0,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "cached_observation_reads": false,
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 101,
+        "diagnostic_std_scale": 0.0
+      }
+    },
+    {
+      "label": "dev_straight__learned__cached",
+      "mode": "learned",
+      "spec": {
+        "distance": 0.82,
+        "ramp": 7.8,
+        "onset": 4.25,
+        "release": 14.05,
+        "end": 20.05,
+        "heading_deg": 0,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "cached_observation_reads": true,
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 101,
+        "diagnostic_std_scale": 0.0
+      }
+    },
+    {
+      "label": "dev_straight__prior__cached",
+      "mode": "prior",
+      "spec": {
+        "distance": 0.82,
+        "ramp": 7.8,
+        "onset": 4.25,
+        "release": 14.05,
+        "end": 20.05,
+        "heading_deg": 0,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "cached_observation_reads": true,
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 101,
+        "diagnostic_std_scale": 0.0
+      }
+    },
+    {
+      "label": "exposed_new_straight__learned__legacy",
+      "mode": "learned",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "cached_observation_reads": false,
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 101,
+        "diagnostic_std_scale": 0.0
+      }
+    },
+    {
+      "label": "exposed_new_straight__learned__cached",
+      "mode": "learned",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "cached_observation_reads": true,
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 101,
+        "diagnostic_std_scale": 0.0
+      }
+    },
+    {
+      "label": "exposed_new_straight__prior__cached",
+      "mode": "prior",
+      "spec": {
+        "distance": 0.91,
+        "ramp": 8.6,
+        "onset": 4.85,
+        "release": 15.45,
+        "end": 21.45,
+        "heading_deg": -8,
+        "curvature": 0,
+        "enabled": true,
+        "family": "walking",
+        "cached_observation_reads": true,
+        "diagnostic_sampling": true,
+        "diagnostic_seed": 101,
+        "diagnostic_std_scale": 0.0
+      }
+    }
+  ]
+}

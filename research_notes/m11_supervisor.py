@@ -20,7 +20,7 @@ def main():
     assert RUN != P/'bridge-v2-owned/runs/issue21-reward-stage-20261030A'
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--gpu-index',type=int)
-    parser.add_argument('--stage',choices=['throughput','train','final','videos','diagnostic'],required=True)
+    parser.add_argument('--stage',choices=['throughput','train','final','videos','diagnostic','readcheck'],required=True)
     parser.add_argument('--execute-after-owner-gpu-notice',action='store_true')
     parser.add_argument('--iterations',type=int,default=200)
     parser.add_argument('--resume')

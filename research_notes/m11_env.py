@@ -69,8 +69,17 @@ class Task:
         self.base=policy(self.m,self.old,self.ends,self.prior,h,h8,self.gate.value(t)).detach()
         self.pro=h[:,:465];self.prepared=True
         return self.base
+    def read_point_state(self):
+        # Measurement must not run another dynamics solve or alter warmstart.
+        # Explicit legacy mode exists only for paired regression of old runs.
+        e=self.e;t=e.tether
+        if not self.spec.get('cached_observation_reads',True):return t.point_state()
+        import mujoco
+        point=t.data.xpos[t.body]+t.data.xmat[t.body].reshape(3,3)@np.asarray(t.cfg.local_point)
+        mujoco.mj_jac(t.model,t.data,t.jac,None,point,t.body)
+        return point.copy(),t.jac@t.data.qvel
     def features(self):
-        e=self.e;self.prepare();R=e.sim.data.xmat[1].reshape(3,3);point,vel=e.tether.point_state();vp=getattr(e.tether,'partner_velocity',np.zeros(3));active=bool(e.tether.active)
+        e=self.e;self.prepare();R=e.sim.data.xmat[1].reshape(3,3);point,vel=self.read_point_state();vp=getattr(e.tether,'partner_velocity',np.zeros(3));active=bool(e.tether.active)
         err=R.T@(e.tether.anchor-point) if active else np.zeros(3);rv=R.T@(vp-vel) if active else np.zeros(3)
         extra=np.r_[err/.25,rv/.5,R.T@e.tether.force/5,R.T@e.sim.data.qvel[:3]/.5,e.sim.data.qvel[3:6]/2,R.T@(point-e.sim.data.qpos[:3]),e.sim.data.qpos[2],R[2,:],e.last_support,float(active)]
         return torch.cat([self.pro.clamp(-10,10),torch.tensor(extra,device=e.standing.device,dtype=torch.float32)[None].clamp(-10,10),self.base/16,self.raw.detach()],-1)
@@ -105,7 +114,7 @@ class Task:
                 if advance(e,a):self.boundary=dict(kind='native_termination',time=float(e.tether.time))
             except UnsafePhysics as exc:self.boundary=dict(kind='physics_review',time=float(e.tether.time),physics=exc.row)
             rs=e.trace[start:];rows.extend(rs);self.total_steps+=len(rs);self.total_controls+=1
-            point,vel=e.tether.point_state();vp=getattr(e.tether,'partner_velocity',np.zeros(3));active=bool(e.tether.active);err=e.tether.anchor-point;demand=80*err+8*(vp-vel) if active else np.zeros(3)
+            point,vel=self.read_point_state();vp=getattr(e.tether,'partner_velocity',np.zeros(3));active=bool(e.tether.active);err=e.tether.anchor-point;demand=80*err+8*(vp-vel) if active else np.zeros(3)
             F=np.array([r['force'] for r in rs]);E=np.array([np.array(r['anchor'])-r['wrist'] for r in rs]);vroot=e.sim.data.qvel[:3];R=e.sim.data.xmat[1].reshape(3,3);yaw=math.atan2(R[1,0],R[0,0]);direction=math.atan2(vp[1],vp[0]);motion_weight=min(np.linalg.norm(vroot[:2])/.12,1.) if active and np.linalg.norm(vp[:2])>.02 else 0.
             term=dict(force=1.5*float(np.mean(np.sum(F*F,1))/25),uncapped=.15*float(min(np.log1p(np.sum(demand*demand)/25),8)),tracking=.15*float(min(np.mean(np.sum(E*E,1))/.04,16)) if active else 0.,relative_velocity=.1*float(min(np.sum((vp-vel)**2)/.25,16)) if active else 0.,heading=.1*motion_weight*(1-math.cos(yaw-direction)),slip=.05*min((max(r['contact_tangent_speed_max_mps'] for r in rs)/.15)**2,16),tilt=.1*min((max(0,rs[-1]['tilt_deg']-15)/15)**2,16),continuity=.05*float(min(dq.square().mean()/.01,16)),soft_prior=.02*float(min((q-nom).square().mean()/.04,16)),idle=.2*float(min(np.sum(vroot*vroot)/.04,16)) if not active else 0.)
             re-=.02*sum(term.values());terms.append(term)
