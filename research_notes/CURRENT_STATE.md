@@ -1,20 +1,18 @@
 # CURRENT_STATE — 新会话先读
 
-**最后核对：2026-11-03，clean Expert首轮及冻结终检已完成，无训练运行。**
+**最后核对：2026-11-03，新迁移/窄分布阶段已授权，准备完成；启动与结果以独立ledger核验。**
 
 长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[窄域Expert #33](https://github.com/GaoE05/robot-research-bridge/issues/33)记录当前阶段，[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)保留旧训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
 
-## 1. 当前状态：clean Expert首轮训练与冻结终检完成；无运行训练
+## 1. 新授权：Direct Teacher→Student + 窄分布PPO（准备完成，尚未启动）
 
-2026-11-03：A Structured与B Direct各20批/15360决策完成，旧M11不重启，无新Student训练。真实完整报告见[CLEAN_EXPERT_RESULTS.md](CLEAN_EXPERT_RESULTS.md)。新接口已去掉在线CyclicFeedback和M10 Student：A学alpha/phase-rate/tangent，B直接合法global z；监督初始化不等于RL收益。
+2026-11-03用户授权两条主线并行。协议见[TRANSFER_PROTOCOL.md](TRANSFER_PROTOCOL.md)，机器可读条件见transfer_protocol.json。旧clean Expert20批/冻结终检完成，完整负结果见[CLEAN_EXPERT_RESULTS.md](CLEAN_EXPERT_RESULTS.md)，旧M11不重启。Direct初始化已有有效行为；旧PPO15开发收益未迁移到邻近条件，不能作为可靠新基线。
 
-Direct第15批在开发条件6.713cm/3.684N，优于自身初始化7.502cm/4.059N；但预封存新条件8.291cm/4.200N，差于初始化6.954cm/4.066N及旧专家7.445cm/4.036N。第20批开发也退化至8.541cm/4.261N。Structured20开发29.033cm，新条件48.306cm，不能作为有效新专家。首个明确边界是PPO改进未迁移到邻近条件，不能宣称稳定学习成功。
+A：冻结初始化和PPO15分别迁移ideal-force-observation Student，先对齐决策时刻真实标签，再物理闭环/有条件一次访问状态聚合。无anchor、伙伴速度、时钟、仿真active或教师隐藏状态输入。B1/B2：相同初始化、窄任务分布/seed/预算，B2仅加初始化行为保持；每5批多条件均值开发评估，封存新组合。暂定各20×768决策。无Structured长训，无新BFM训练。
 
-新条件已暴露，不再作为新盲测。保持全部初始/最佳/末轮和旧失败。下一建议：保留Direct可用初始化与接口，预固定窄任务分布和多条件均值开发选择，新的未见组合终检；不是继续当前单轨无界训练或扩大force cap。尚未启动该后续实验。
+阶段独立根`$P/bridge-v2-owned/runs/direct-transfer-20261103`，累计监督job21600秒/新增12GiB，最多3GPU，每job8CPU/32GiB RSS/8GiB VRAM。当前只读核验GPU1/5/6空闲、内存911GiB及CPU/I/O压力0；每次启动再核验。各实验独立worktree和输出，实际runtime/状态以该ledger为准，准备不等于已启动/成功。旧目录及所有原权重保持不变。
 
-实际runtime `05b313e6c4a14aff1d2e3ee08432f9d231c6822f`；Direct15 SHA `92692be758d04386c32bea3108b3b155d4c37b0c2b70679e78cf849f593112fe`，Structured20 SHA `74f2590f6c344ee96e8839c43f5bd1ecf17520e3665954c401aaec95983d00fe`。数据根 `$P/bridge-v2-owned/runs/clean-contact-expert-20261102`，精确checkpoint/轨迹身份见报告及JSON。全部ledger已结束，无保留待执行任务；后续启动须重新核对GPU/CPU/内存/I/O，不沿用旧空闲状态。
-
-总预算14400累计job秒/122880决策/12GiB输出未超限；实际总35328决策包含4608中断，修复了步后才停止导致KL超限的问题，事务回滚测试5项通过。文档集成在独立maintenance worktree，不覆盖运行源码；仅个人research分支推送小型源码与统计。
+冻结Teacher身份：initial SHA a86ff5f9ca71ed2ae8dc95ceeab0ac980f82ab6ed8d3759c039eb03a62efe488；PPO15 SHA92692be758d04386c32bea3108b3b155d4c37b0c2b70679e78cf849f593112fe，原runtime05b313e6c4a14aff1d2e3ee08432f9d231c6822f。来源`clean-contact-expert-20261102/direct-prepare-02/job/initial.pt`及`direct-train-08/job/best.pt`，使用前校验SHA。B1/B2不得覆盖A的冻结Teacher。
 
 ## 2. 可靠基线、实际结论与边界
 

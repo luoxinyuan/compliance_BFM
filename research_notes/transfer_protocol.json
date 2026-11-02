@@ -1,0 +1,155 @@
+{
+  "resources": {
+    "sum_supervised_process_wall_seconds": 21600,
+    "max_concurrent_gpus": 3,
+    "stage_output_gib": 12
+  },
+  "training": {
+    "max_total_rl_decisions": 61440,
+    "actor_lr": 1e-05,
+    "warmstart_steps": 1500
+  },
+  "evaluate_every": 5,
+  "seed": 202,
+  "selection": "max relative score over three dev contact conditions + mean relative score; boundary +20; no final reselection",
+  "single": {
+    "enabled": true,
+    "distance": 0.82,
+    "ramp": 7.8,
+    "onset": 4.25,
+    "release": 14.05,
+    "end": 20.05,
+    "curvature": 0.0,
+    "heading_deg": 0.0,
+    "family": "walking"
+  },
+  "dev": {
+    "single": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "slower": {
+      "enabled": true,
+      "distance": 0.78,
+      "ramp": 8.15,
+      "onset": 4.1,
+      "release": 14.25,
+      "end": 20.25,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "faster": {
+      "enabled": true,
+      "distance": 0.86,
+      "ramp": 7.55,
+      "onset": 4.5,
+      "release": 14.05,
+      "end": 20.05,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  "regression": {
+    "no_contact": {
+      "enabled": false,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "local": {
+      "enabled": true,
+      "distance": 0.15,
+      "ramp": 4.5,
+      "onset": 4.25,
+      "release": 10.75,
+      "end": 16.75,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  "final": {
+    "heldout_slow": {
+      "enabled": true,
+      "distance": 0.805,
+      "ramp": 8.28,
+      "onset": 4.62,
+      "release": 14.899999999999999,
+      "end": 20.9,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "heldout_fast": {
+      "enabled": true,
+      "distance": 0.855,
+      "ramp": 7.62,
+      "onset": 4.02,
+      "release": 13.64,
+      "end": 19.64,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  "teachers": {
+    "initial": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/clean-contact-expert-20261102/direct-prepare-02/job/initial.pt",
+      "sha256": "a86ff5f9ca71ed2ae8dc95ceeab0ac980f82ab6ed8d3759c039eb03a62efe488"
+    },
+    "ppo15": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/clean-contact-expert-20261102/direct-train-08/job/best.pt",
+      "sha256": "92692be758d04386c32bea3108b3b155d4c37b0c2b70679e78cf849f593112fe"
+    }
+  },
+  "train_distribution": {
+    "distance": [
+      0.76,
+      0.88
+    ],
+    "ramp": [
+      7.4,
+      8.2
+    ],
+    "onset": [
+      4.05,
+      4.45
+    ]
+  },
+  "student": {
+    "seed": 303,
+    "steps": 4000,
+    "batch": 128,
+    "lr": 0.0003,
+    "aggregation_steps": 2000,
+    "max_aggregation_rounds": 1
+  },
+  "bc_weight": 0.02,
+  "student_probe": {
+    "early_stop": {
+      "enabled": true,
+      "distance": 0.38,
+      "ramp": 3.8,
+      "onset": 4.35,
+      "release": 10.149999999999999,
+      "end": 16.15,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  }
+}
