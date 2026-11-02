@@ -1,18 +1,20 @@
 # CURRENT_STATE — 新会话先读
 
-**最后核对：2026-11-02，clean Expert两组首轮20批已启动。进度以ledger/status核验；不沿用旧状态。**
+**最后核对：2026-11-03，clean Expert首轮及冻结终检已完成，无训练运行。**
 
 长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[窄域Expert #33](https://github.com/GaoE05/robot-research-bridge/issues/33)记录当前阶段，[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)保留旧训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
 
-## 1. 当前状态：clean Expert初始化物理完成，两组20批PPO已启动
+## 1. 当前状态：clean Expert首轮训练与冻结终检完成；无运行训练
 
-2026-11-02最新用户授权 supersedes旧单GPU窄域方案：最多3张实际空闲GPU，structured vs direct learned latent control；旧三奖励/初始化×两种子不执行。已只读核查GPU1/5/6空闲、2/3忙，CPU/内存/I/O有余量，未来启动必须刷新。
+2026-11-03：A Structured与B Direct各20批/15360决策完成，旧M11不重启，无新Student训练。真实完整报告见[CLEAN_EXPERT_RESULTS.md](CLEAN_EXPERT_RESULTS.md)。新接口已去掉在线CyclicFeedback和M10 Student：A学alpha/phase-rate/tangent，B直接合法global z；监督初始化不等于RL收益。
 
-旧`narrow_env`仍由CyclicFeedback决定alpha与phase，PPO仅残差。现新`clean_env/clean_policy`移除在线force-to-motion及M10 Student；A学习alpha/phase-rate/tangent，B直接合法global z。M10反馈专家只生成初始化数据/正控制。方法/权限/初始化/共同reward变化见[CLEAN_EXPERT_PROTOCOL.md](CLEAN_EXPERT_PROTOCOL.md)。4项纯tensor/源码合同测试通过。1500步初始化后direct为7.502cm/4.059N/46.45%cap，无接触root最大3.8mm；structured32.672cm/4.674N/84.48%cap，无接触root4.14cm。专家7.796cm/4.363N，教师tangent最大13.656/16，初始化物理全程无边界。direct表现是监督初始化结果，**不是RL收益**；structured离线拟合好但自身phase/alpha闭环偏离，不能宣称资格全面通过。详见[CLEAN_EXPERT_INITIAL.md](CLEAN_EXPERT_INITIAL.md)与[实时阶段更新](https://github.com/GaoE05/robot-research-bridge/issues/33#issuecomment-6581158772)。
+Direct第15批在开发条件6.713cm/3.684N，优于自身初始化7.502cm/4.059N；但预封存新条件8.291cm/4.200N，差于初始化6.954cm/4.066N及旧专家7.445cm/4.036N。第20批开发也退化至8.541cm/4.261N。Structured20开发29.033cm，新条件48.306cm，不能作为有效新专家。首个明确边界是PPO改进未迁移到邻近条件，不能宣称稳定学习成功。
 
-本阶段独立根`bridge-v2-owned/runs/clean-contact-expert-20261102`，ledger累计总监督job秒14400、RL决策122880、输出12GiB；每job8CPU/32GiBRSS/8GiBVRAM。先两组20batch有节点训练，不自动六组长训。初始化物理已完成；首次structured-train-03/direct-train-04各3批2304决策后停止：首批KL.383/.0377超出.02，旧实现只在步后停止。事务式rollback/backtracking修正通过5项测试。现structured-train-06(GPU1,parent1690260)/direct-train-08(GPU5,parent1691149)已从原initial.pt启动各20批；核验至A4/B1，最近接受KL.01875/.01957，约14–16决策/s。两组实际runtime `05b313e6c4a14aff1d2e3ee08432f9d231c6822f`；初始runtime999494f只用于准备。一次direct旧runtime误发车0更新已停止保留，详见阶段Issue。旧失败和中断checkpoint保留，未宣称RL成功。接力必须按ledger核验源commit、parent PID、result和status；这些运行记录不是重发车授权。旧窄域ledger不重置，旧A/B不恢复。当前代码在个人`gaoe05/clean-contact-expert`，每次运行固定commit；源集成HEAD不是runtime。
+新条件已暴露，不再作为新盲测。保持全部初始/最佳/末轮和旧失败。下一建议：保留Direct可用初始化与接口，预固定窄任务分布和多条件均值开发选择，新的未见组合终检；不是继续当前单轨无界训练或扩大force cap。尚未启动该后续实验。
 
-旧结果保留：gain16mean12.368cm/4.703N/84.94%cap，checkpoint017ac2ada5677277baf4cb07a69fe201055cb969b64afa269aae579d4f68774b；4x整体执行11.296cm/4.459N存在precontact重配置混杂，不是新基线。[NARROW_RESIDUAL_FINDINGS.md](NARROW_RESIDUAL_FINDINGS.md)及[Issue33](https://github.com/GaoE05/robot-research-bridge/issues/33)保留失败。旧M11停止；本轮不训练Student。
+实际runtime `05b313e6c4a14aff1d2e3ee08432f9d231c6822f`；Direct15 SHA `92692be758d04386c32bea3108b3b155d4c37b0c2b70679e78cf849f593112fe`，Structured20 SHA `74f2590f6c344ee96e8839c43f5bd1ecf17520e3665954c401aaec95983d00fe`。数据根 `$P/bridge-v2-owned/runs/clean-contact-expert-20261102`，精确checkpoint/轨迹身份见报告及JSON。全部ledger已结束，无保留待执行任务；后续启动须重新核对GPU/CPU/内存/I/O，不沿用旧空闲状态。
+
+总预算14400累计job秒/122880决策/12GiB输出未超限；实际总35328决策包含4608中断，修复了步后才停止导致KL超限的问题，事务回滚测试5项通过。文档集成在独立maintenance worktree，不覆盖运行源码；仅个人research分支推送小型源码与统计。
 
 ## 2. 可靠基线、实际结论与边界
 
@@ -22,7 +24,7 @@
 - 同一冻结M11 checkpoint在失败条件完整采样9.329±1.167cm；仅记忆噪声未解决问题。force/GAE/raw logprob未发现对应硬错误；5N饱和压缩force惩罚，但已有误差/未限幅需求项把失败评得更差，没有force高斯sigma。
 - continuation零均值＋同噪声18.119±14.218cm、4.302±.477N，对应学习＋噪声9.329±1.167cm、4.298±.269N（三执行seed，不是三次训练）。学习反馈对误差/尾部有贡献，但力几乎相同，尚无可靠均值改进证据。
 
-**首要瓶颈：均值部署仍不可靠，实际交互力没有稳定降低。** 已停止宽任务续训；用户现已授权窄域独立Expert，按上方实时状态执行。不能把这次提前结束解释为BFM/LPP不可行或已经证明减噪无效。
+**首要瓶颈：均值部署仍不可靠，实际交互力没有稳定降低。** 已停止宽任务续训；clean Expert本轮结果见上方；下一实验尚未启动。不能把这次提前结束解释为BFM/LPP不可行或已经证明减噪无效。
 
 当前Student使用仿真实际Tether力及已知接触位置，尚无真机传感/估计验证；“可部署输入”是信息权限设计，不是已证明准确实机力可得。
 
@@ -63,4 +65,4 @@
 4. 共享BFM/PD/原权重、SoftSONIC和他人任务不动；只管理核验过的自有PID。代码/活动产物留个人CPFS目录，大资产`/mnt/data-oss/users/yi.gao/compliance_BFM/`；不自动下载大资产、启动Bridge/watch/真机或扩大预算。
 5. 本次授权structured/direct Expert架构对照及有界训练；旧A/B不重启。新资源按独立ledger累计，普通工程修复自主处理，超出新权限或重大方法偏离才交接。
 
-本次已同步Mac关键初始化视频：`~/Projects/compliance-bfm-diagnostics/videos/clean-contact-expert/01_initialization_teacher_structured_direct.mp4`及INDEX，上旧专家/中A/下B，17.08s真实qpos1×，完整解码与SHA验证；不是PPO后结果。SHA48aed9e6cf5f8525bbdc26b3d591785507e1b5968f02302ec98f549ff412d236。
+本次Mac关键视频：`~/Projects/compliance-bfm-diagnostics/videos/clean-contact-expert/INDEX.md`，三条分别是初始化、开发15/20批对比、新条件初始化/15批反例。均已同步并通过SHA、时长和完整解码验证。
