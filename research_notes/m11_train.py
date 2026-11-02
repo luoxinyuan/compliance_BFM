@@ -41,7 +41,7 @@ def main():
         save('initial.pt')
         if a.stage in ['diagnostic','readcheck']:
             dp=json.loads(Path(__file__).with_name('m11_'+a.stage+'_plan.json').read_text())
-            rows=evaluate([(c['label'],c['spec'],c.get('mode','learned')) for c in dp['cases]],a.output/'evaluation');status='completed';atomic(a.output/'diagnostic-summary.json',rows)
+            rows=evaluate([(c['label'],c['spec'],c.get('mode','learned')) for c in dp['cases']],a.output/'evaluation');status='completed';atomic(a.output/'diagnostic-summary.json',rows)
         elif a.stage=='final':
             rows=evaluate([(name+'__'+mode,spec,mode) for name,spec in plan['final'].items() for mode in ['prior','m10_expert','learned']],a.output/'evaluation');status='completed';atomic(a.output/'final-summary.json',rows)
         else:
