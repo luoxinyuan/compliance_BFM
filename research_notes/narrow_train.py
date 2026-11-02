@@ -7,7 +7,7 @@ def atomic(p,x):
  t=p.with_suffix('.tmp');t.write_text(json.dumps(x,indent=2,allow_nan=False));t.replace(p)
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- p=argparse.ArgumentParser();p.add_argument('--stage',choices=['audit','train','final'],required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--gpu',required=True);p.add_argument('--iterations',type=int,default=120);p.add_argument('--seed',type=int,default=101);p.add_argument('--resume',type=Path);p.add_argument('--domain',default='single',choices=['single','neighborhood']);p.add_argument('--max-seconds',type=float,default=28000);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--stage',choices=['audit','train','final','probe'],required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--gpu',required=True);p.add_argument('--iterations',type=int,default=120);p.add_argument('--seed',type=int,default=101);p.add_argument('--resume',type=Path);p.add_argument('--domain',default='single',choices=['single','neighborhood']);p.add_argument('--max-seconds',type=float,default=28000);a=p.parse_args()
  assert not a.output.exists();a.output.mkdir();os.environ.update(CUDA_VISIBLE_DEVICES=a.gpu,NARROW_DOMAIN=a.domain,NARROW_SEED=str(a.seed))
  import torch,numpy as np
  from humanoidverse.force_compliance.parallel import receive,merge_rollouts
@@ -43,9 +43,16 @@ def main():
   if a.resume:
    ck=torch.load(a.resume,map_location='cuda',weights_only=True);assert ck['source_student_online'] is False;net.load_state_dict(ck['state_dict'])
    # Only an explicitly recorded narrow-domain continuation inherits its optimizer.
-   if a.stage!='final':opt.load_state_dict(ck['optimizer'])
-   atomic(a.output/'resume.json',dict(path=str(a.resume),sha256=sha(a.resume),source_iteration=ck['iteration'],source_seed=ck['seed'],optimizer_loaded=a.stage!='final'))
+   if a.stage=='train':opt.load_state_dict(ck['optimizer'])
+   atomic(a.output/'resume.json',dict(path=str(a.resume),sha256=sha(a.resume),source_iteration=ck['iteration'],source_seed=ck['seed'],optimizer_loaded=a.stage=='train'))
   save('initial.pt')
+  if a.stage=='probe':
+   schedule=[]
+   for gain,seeds in [(1,[501,502,503]),(4,[501]),(16,[501,502,503])]:
+    for seed in seeds:
+     spec=dict(plan['single'],diagnostic_sampling=True,diagnostic_seed=seed,diagnostic_std_scale=gain,diagnostic_zero_mean=True,diagnostic_action_probes=False,diagnostic_read_audit=False)
+     schedule.append((f'zero_gain{gain}_seed{seed}',spec,'learned'))
+   rows=evaluate(schedule,'scale-probe');status='completed';return
   if a.stage=='final':
    rows=evaluate([(k+'__'+m,v,m) for k,v in plan['final'].items() for m in ['prior','m10_expert','learned']], 'evaluation');status='completed';return
   if a.stage=='audit':

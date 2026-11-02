@@ -4,19 +4,13 @@
 
 长期目标及方法见 [RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)保留完整历史；[M11 #32](https://github.com/GaoE05/robot-research-bridge/issues/32)记录当前训练。Library中2026-10-28的PROJECT_STATE/SESSION_HANDOFF仅是历史快照。Bridge仓库`handbook/`先前副本不是第二个实时维护源；以本目录和最新Issue为准。
 
-## 1. 当前状态：窄域独立Expert主训练已启动
+## 1. 当前状态：窄域首轮完成，已授权定位并修复问题
 
-2026-11-02，新任务见 [Issue #33](https://github.com/GaoE05/robot-research-bridge/issues/33)。旧M11 continuation保持停止，A160/B114不是等预算终检，全部模型/失败保留，不能据此宣称减噪无效。
+原独立Expert120批/92160决策已完成，耗时6604秒，全部进程退出。均值初始13.856cm/4.704N，开发选中80批13.507cm/4.703N，最后13.765cm/4.702N；未取得实质降力收益，未启动邻域、独立重复或Student。旧M11 A160/B114保持停止。
 
-新actor、critic和optimizer独立初始化；直接使用M10 task修正的原生直行motion作为名义先验，不在线调用M10 Student。BFM/PD/Tether冻结。先单条件真实反馈学习，出现收益后才进行窄邻域和独立重复。2026-11-02 17:14 CST主训练修复后启动：seed101，最多120批/92160高层决策。runtime `fc8dc3b9cb92132b6c49d2c4df0d2e6d97fa22b1`，supervisor PID1574126 / trainer PID1574133（仅供核验），`train-attempt-02`。新actor/critic/optimizer，未加载M11或诊断更新权重。
+用户已授权问题定位及有依据的修复。保存轨迹显示：当前均值相对名义q_PD RMS .0232deg，采样.1124deg；同任务有效M10反馈专家2.4656deg（包含反馈航向和手臂投影，不应全归因于手臂）。先做同随机数、真实物理尺度1/4/16诊断，保持奖励、cap、伙伴和模型不变，不把它当新终检。尚未启动修正训练。
 
-独立预算：单GPU、CPU8–15共8核、32GiB RSS、8GiB VRAM、8GiB输出；累计计算28800秒，最多200448高层RL决策（包含一次768决策诊断）。GPU1实时核查为空，系统CPU/I/O pressure近0，内存余量约927GiB；此快照不替代每次启动复核。不是独占共享磁盘配额。
-
-独立代码 `bridge-v2-owned/trees/narrow-contact-expert/repo`，分支 `gaoe05/narrow-contact-expert`；输出 `bridge-v2-owned/runs/narrow-contact-expert-20261102/`；配置 `research_notes/narrow_protocol.json`。单条件 .82m / 7.8s ramp / onset4.25s / release14.05s / end20.05s；新最终组合预固定，见配置，不能用于选择checkpoint。
-
-针对性检查已完成：七条物理对照和一次768决策诊断；独立reward复算误差<7e-10，较好M10反馈专家7.796cm/4.363N优于原生13.856cm/4.704N且回报排序正确。发现低std下单步KL偏大，依据同batch证据将actor LR降至1e-5；不改reward/cap。合法latent范围覆盖已执行专家偏角，未沿用任意14deg界。详见 [NARROW_EXPERT_START.md](NARROW_EXPERT_START.md)。一次日志序列化失败及所有诊断保留。首个正式训练attempt在新增SHA检查的导入缩进处退出，0次更新；已修复并通过全部新模块AST检查，失败耗时纳入同一预算。17:19 CST已确认正式完成2批/1536决策并保存latest，采样14.7–16.2决策/秒；尚无更新后的开发评估，不宣称学习收益。每10批评估，120批上限预计约1.7–2小时（按当前吞吐估算）。
-
-旧轮收尾见 [M11_CONTINUATION_CLOSEOUT.md](M11_CONTINUATION_CLOSEOUT.md)。尚无新Expert成功结果；M10/M9B仍是对照，不会自动被替换。
+新独立worktree `bridge-v2-owned/trees/narrow-expert-diagnosis/repo`，个人分支 `gaoe05/narrow-expert-diagnosis`。沿用同一阶段ledger/资源上限，不重置预算；开始诊断前剩余监督墙钟21531秒，剩余高层RL决策107520。GPU1刚核查空闲，内存927GiB available，I/O pressure0；未来发车需重新核对。阶段 [Issue33](https://github.com/GaoE05/robot-research-bridge/issues/33)。
 
 ## 2. 可靠基线、实际结论与边界
 
