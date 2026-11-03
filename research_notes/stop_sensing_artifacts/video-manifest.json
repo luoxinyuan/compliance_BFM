@@ -1,0 +1,158 @@
+[
+  {
+    "name": "01_matched_updates_stop_coverage",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/videos-student/01_matched_updates_stop_coverage.mp4",
+    "sha256": "a1db4d4194d48faf6f1f709ce1b7934fab0e04825cc6298df2a1e63145168a2a",
+    "frames": 435,
+    "fps": 25,
+    "duration": 17.4,
+    "seconds": 13.862518911948428,
+    "sides": [
+      {
+        "title": "TOP: frozen original r0 | late unseen stop",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/r0_stop_unseen_late.json.gz",
+        "sha256": "c26c7a6355402509879c4da7f08783d9b5620ce7a740dbe0524d948c4566f52c"
+      },
+      {
+        "title": "MIDDLE: +4000 original-data updates",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/A505_stop_unseen_late.json.gz",
+        "sha256": "491687242bcf994d93eb2b4e4e7590f260cffe990a2da40316b647bf175074d4"
+      },
+      {
+        "title": "BOTTOM: +4000 mixed stop-coverage updates",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/B505_stop_unseen_late.json.gz",
+        "sha256": "a1fc49ea843f06db62f1821dd335df200acf867a6af5c56dccf73b557c2b3a15"
+      }
+    ],
+    "condition": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.08,
+      "release": 14.35,
+      "end": 20.35,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 9.45,
+      "deceleration": 0.55
+    }
+  },
+  {
+    "name": "02_force_sensing_limits",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/videos-student/02_force_sensing_limits.mp4",
+    "sha256": "8193a877f3d61b2b3d18b9ae1687265f261e8539684262d608d38466fd12b56b",
+    "frames": 435,
+    "fps": 25,
+    "duration": 17.4,
+    "seconds": 13.495416748104617,
+    "sides": [
+      {
+        "title": "TOP: covered B505 | ideal force observation",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/B505_stop_unseen_late.json.gz",
+        "sha256": "a1fc49ea843f06db62f1821dd335df200acf867a6af5c56dccf73b557c2b3a15"
+      },
+      {
+        "title": "MIDDLE: SAME weights | noisy biased delayed force",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/C-final-05/job/B505_strong_stop_unseen_late.json.gz",
+        "sha256": "ff6c4df139d31e19b902f34a14faf5466c3eb2d5c1e5894633d684ad10c0d4df"
+      },
+      {
+        "title": "BOTTOM: RETRAINED no-force Student N505",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/C-final-05/job/N505_stop_unseen_late.json.gz",
+        "sha256": "768787ea17456e24ad16fed34a411a445aa7c995a4e8652506bc4c73fdd94d7a"
+      }
+    ],
+    "condition": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.08,
+      "release": 14.35,
+      "end": 20.35,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 9.45,
+      "deceleration": 0.55
+    }
+  },
+  {
+    "name": "03_teacher_stopping_initial_vs_selected",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/videos-final/03_teacher_stopping_initial_vs_selected.mp4",
+    "sha256": "b9a474f8b2d83cc7d62e098d1808a7062250df50d719b3605ae82563eb2d269e",
+    "frames": 422,
+    "fps": 25,
+    "duration": 16.88,
+    "seconds": 13.107607576996088,
+    "sides": [
+      {
+        "title": "TOP: Direct supervised initialization | dev late stop",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/dev-0000/late_stop__mean.json.gz",
+        "sha256": "58d0890f03e1ac8354309721042b20041e1844992ae756a8dbddfbfc0ae46571"
+      },
+      {
+        "title": "MIDDLE: PPO batch30 | preselected by 3-condition dev",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/dev-0030/late_stop__mean.json.gz",
+        "sha256": "eacabc3bccd6bbb621fd4e3f7df9a10fbe6b0cd0cc8293d688a204da623d406e"
+      },
+      {
+        "title": "BOTTOM: PPO last batch40 | not selected",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/dev-0040/late_stop__mean.json.gz",
+        "sha256": "593c831da597f8a5865651c66a912bf8aa787720bf465df571b3620fb31caef5"
+      }
+    ],
+    "condition": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 13.849999999999998,
+      "end": 19.849999999999998,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 9.2,
+      "deceleration": 0.85
+    }
+  },
+  {
+    "name": "04_no_force_actual_cap_comparison",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/videos-final/04_no_force_actual_cap_comparison.mp4",
+    "sha256": "bbf4ad4a8a80aab26e32c5b328013a5680485d5ad7622785391a1e3cd6e7d331",
+    "frames": 435,
+    "fps": 25,
+    "duration": 17.4,
+    "seconds": 14.062476254999638,
+    "sides": [
+      {
+        "title": "TOP: frozen no-force N505 | physical cap 5N",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/F-final-07/job/N505_cap5.json.gz",
+        "sha256": "59f1575ce5600c89378d845aa2b562fdf65a60e6842e0fcb93b2af9c1b2b0e87"
+      },
+      {
+        "title": "MIDDLE: SAME weights and partner | physical cap 7.5N",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/F-final-07/job/N505_cap7.5.json.gz",
+        "sha256": "5917cdefa1578c9efd93831eb8ee4e38de544584fe190dc2e2192cc8ee52086f"
+      },
+      {
+        "title": "BOTTOM: SAME weights and partner | physical cap 10N",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/F-final-07/job/N505_cap10.json.gz",
+        "sha256": "943d6f1e7bd2a1ac33695b8f77d77a88ead833d1c4c18e89d1ed503d86cb82c8"
+      }
+    ],
+    "condition": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.08,
+      "release": 14.35,
+      "end": 20.35,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 9.45,
+      "deceleration": 0.55
+    }
+  }
+]

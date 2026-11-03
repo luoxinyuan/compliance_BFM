@@ -1,0 +1,38 @@
+{
+  "A505": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/A505.pt",
+    "sha256": "c908575f558c5b6a67368a90f468bdfe29cc0aad2e469d999205f75998634142"
+  },
+  "A506": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/A506.pt",
+    "sha256": "6a2b01038e204ae710d63ee0b96bddcebe4eda6f0248818b9243da9e223d7fbf"
+  },
+  "B505": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/B505.pt",
+    "sha256": "78c818478b059cfd8aeec868918c275b9429a3863aac53dd1eb84e08dd62d4ff"
+  },
+  "B506": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/B506.pt",
+    "sha256": "0362c950b583ed5977d3e3e8fac7c1d26f3d8c31e6f9dd8d4c3281ee8b1cd1c3"
+  },
+  "N505": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/C-final-05/job/N505.pt",
+    "sha256": "038c218829f85ce0b661e38397c19121d5e49ec3ac38fde8c483d87f151893d6"
+  },
+  "N506": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/C-final-05/job/N506.pt",
+    "sha256": "3102a118e304106b9ba5fc032f74f87e58491677ce93444fd56d571a26e74e06"
+  },
+  "stopTeacher_initial": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/initial.pt",
+    "sha256": "c884f3937e44409268cbcccafb4ec15101ccc0d2c8198e4086ac1f3f1d426e34"
+  },
+  "stopTeacher_best": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/best.pt",
+    "sha256": "c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33"
+  },
+  "stopTeacher_last": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/last.pt",
+    "sha256": "fcda12ee84fb6564c0602ab20671aecf8889951e38fedb6676f33772fbd928df"
+  }
+}

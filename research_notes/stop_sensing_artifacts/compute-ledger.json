@@ -1,0 +1,597 @@
+{
+  "attempts": [
+    {
+      "kind": "direct",
+      "arm": "A",
+      "stage": "prepare",
+      "status": "finished",
+      "supervisor": 1844239,
+      "gpu": 1,
+      "gpu_before": {
+        "uuid": "GPU-0cd3457d-8b3f-656a-cacf-0fd505369fe3",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "affinity": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "source": "32c87b4db3aba007e4d6cf15ed5495cdffdfcb75",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-01",
+      "reserved_seconds": 6000,
+      "reserved_decisions": 0,
+      "started_utc": "2026-11-03T02:29:46.180340+00:00",
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "-u",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/trees/stop-sensing-dev/repo/research_notes/stop_student.py",
+        "--kind",
+        "direct",
+        "--stage",
+        "prepare",
+        "--gpu",
+        "GPU-0cd3457d-8b3f-656a-cacf-0fd505369fe3",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-01/job",
+        "--iterations",
+        "60",
+        "--seed",
+        "505",
+        "--max-seconds",
+        "5880"
+      ],
+      "pid": 1844265,
+      "peak_rss_bytes": 147615744,
+      "peak_gpu_mib": 0,
+      "elapsed_seconds": 3.8449574389960617,
+      "exit_code": 1,
+      "remaining_processes": [],
+      "wall_seconds": 6.403074896894395,
+      "resource_boundary": null,
+      "gpu_after": {
+        "uuid": "GPU-0cd3457d-8b3f-656a-cacf-0fd505369fe3",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      }
+    },
+    {
+      "kind": "direct",
+      "arm": "B1",
+      "stage": "train",
+      "status": "finished",
+      "supervisor": 1845008,
+      "gpu": 5,
+      "gpu_before": {
+        "uuid": "GPU-71345fda-5d4b-86df-ca85-6f66299aa7b0",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "affinity": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "source": "32c87b4db3aba007e4d6cf15ed5495cdffdfcb75",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02",
+      "reserved_seconds": 6000,
+      "reserved_decisions": 46080,
+      "started_utc": "2026-11-03T02:32:47.671586+00:00",
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "-u",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/trees/stop-sensing-teacher/repo/research_notes/stop_train.py",
+        "--kind",
+        "direct",
+        "--stage",
+        "train",
+        "--gpu",
+        "GPU-71345fda-5d4b-86df-ca85-6f66299aa7b0",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job",
+        "--iterations",
+        "60",
+        "--seed",
+        "606",
+        "--max-seconds",
+        "5880",
+        "--arm",
+        "B1",
+        "--resume",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/clean-contact-expert-20261102/direct-prepare-02/job/initial.pt"
+      ],
+      "pid": 1845030,
+      "peak_rss_bytes": 24218861568,
+      "peak_gpu_mib": 2216,
+      "elapsed_seconds": 2741.1698457240127,
+      "exit_code": 0,
+      "remaining_processes": [],
+      "wall_seconds": 2742.2224203329533,
+      "resource_boundary": null,
+      "gpu_after": {
+        "uuid": "GPU-71345fda-5d4b-86df-ca85-6f66299aa7b0",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "result": {
+        "status": "completed_predefined_no_extension",
+        "iterations": 40,
+        "decisions": 30720,
+        "updates": 123,
+        "elapsed_s": 2722.6877706940286,
+        "workers": [
+          {
+            "pid": 1845184,
+            "exitcode": 0
+          },
+          {
+            "pid": 1845185,
+            "exitcode": 0
+          },
+          {
+            "pid": 1845186,
+            "exitcode": 0
+          }
+        ],
+        "bfm_updated": false,
+        "student_updated": false
+      }
+    },
+    {
+      "kind": "direct",
+      "arm": "A",
+      "stage": "prepare",
+      "status": "finished",
+      "supervisor": 1845077,
+      "gpu": 1,
+      "gpu_before": {
+        "uuid": "GPU-0cd3457d-8b3f-656a-cacf-0fd505369fe3",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "affinity": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "source": "32c87b4db3aba007e4d6cf15ed5495cdffdfcb75",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03",
+      "reserved_seconds": 6000,
+      "reserved_decisions": 0,
+      "started_utc": "2026-11-03T02:32:59.427488+00:00",
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "-u",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/trees/stop-sensing-dev/repo/research_notes/stop_student.py",
+        "--kind",
+        "direct",
+        "--stage",
+        "prepare",
+        "--gpu",
+        "GPU-0cd3457d-8b3f-656a-cacf-0fd505369fe3",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job",
+        "--iterations",
+        "60",
+        "--seed",
+        "505",
+        "--max-seconds",
+        "5880"
+      ],
+      "pid": 1845112,
+      "peak_rss_bytes": 7599677440,
+      "peak_gpu_mib": 604,
+      "elapsed_seconds": 1589.6919019259512,
+      "exit_code": 0,
+      "remaining_processes": [],
+      "wall_seconds": 1590.2369137380738,
+      "resource_boundary": null,
+      "gpu_after": {
+        "uuid": "GPU-0cd3457d-8b3f-656a-cacf-0fd505369fe3",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 1
+      },
+      "result": {
+        "status": "completed",
+        "model_loaded": true,
+        "original_wrapper_used": true,
+        "bfm_updates": 0,
+        "student_optimizer_updates": 16000,
+        "study": {
+          "status": "completed",
+          "decisions": 0,
+          "student_optimizer_updates": 16000,
+          "bfm_updated": false,
+          "elapsed_s": 1586.1350180148147
+        },
+        "original_bfm_unchanged": true
+      }
+    },
+    {
+      "kind": "direct",
+      "arm": "C",
+      "stage": "final",
+      "status": "finished",
+      "supervisor": 1846956,
+      "gpu": 6,
+      "gpu_before": {
+        "uuid": "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "affinity": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "source": "5172832d1f2a75c47114a8357bf5903fca4dd482",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/C-final-04",
+      "reserved_seconds": 4000,
+      "reserved_decisions": 0,
+      "started_utc": "2026-11-03T02:38:25.512819+00:00",
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "-u",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/trees/stop-sensing-sensor/repo/research_notes/stop_student.py",
+        "--kind",
+        "direct",
+        "--stage",
+        "final",
+        "--gpu",
+        "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/C-final-04/job",
+        "--iterations",
+        "20",
+        "--seed",
+        "505",
+        "--max-seconds",
+        "3880"
+      ],
+      "pid": 1846967,
+      "peak_rss_bytes": 6723964928,
+      "peak_gpu_mib": 582,
+      "elapsed_seconds": 94.42516906000674,
+      "exit_code": 1,
+      "remaining_processes": [],
+      "wall_seconds": 97.01385016413406,
+      "resource_boundary": null,
+      "gpu_after": {
+        "uuid": "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "result": {
+        "status": "running",
+        "model_loaded": true,
+        "original_wrapper_used": true,
+        "bfm_updates": 0,
+        "student_optimizer_updates": 0
+      }
+    },
+    {
+      "kind": "direct",
+      "arm": "C",
+      "stage": "final",
+      "status": "finished",
+      "supervisor": 1848023,
+      "gpu": 6,
+      "gpu_before": {
+        "uuid": "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "affinity": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "source": "a9f80be24f32175a41d7c36fd67549a0b82445c1",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/C-final-05",
+      "reserved_seconds": 4000,
+      "reserved_decisions": 0,
+      "started_utc": "2026-11-03T02:41:21.940162+00:00",
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "-u",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/trees/stop-sensing-sensor/repo/research_notes/stop_student.py",
+        "--kind",
+        "direct",
+        "--stage",
+        "final",
+        "--gpu",
+        "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/C-final-05/job",
+        "--iterations",
+        "20",
+        "--seed",
+        "505",
+        "--max-seconds",
+        "3880"
+      ],
+      "pid": 1848045,
+      "peak_rss_bytes": 7605784576,
+      "peak_gpu_mib": 600,
+      "elapsed_seconds": 812.8240974238142,
+      "exit_code": 0,
+      "remaining_processes": [],
+      "wall_seconds": 815.4188030308578,
+      "resource_boundary": null,
+      "gpu_after": {
+        "uuid": "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "result": {
+        "status": "completed",
+        "model_loaded": true,
+        "original_wrapper_used": true,
+        "bfm_updates": 0,
+        "student_optimizer_updates": 8000,
+        "study": {
+          "status": "completed",
+          "decisions": 0,
+          "student_optimizer_updates": 8000,
+          "bfm_updated": false,
+          "elapsed_s": 810.9602602131199
+        },
+        "original_bfm_unchanged": true
+      }
+    },
+    {
+      "kind": "video",
+      "arm": "video",
+      "stage": "saved-physics-render",
+      "status": "finished",
+      "source": "619837f564f09441a3169d793e0bd662fe5a8d59",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/videos-student",
+      "gpu": 6,
+      "affinity": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "reserved_seconds": 600,
+      "reserved_decisions": 0,
+      "gpu_before": {
+        "uuid": "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "pid": 1853142,
+      "wall_seconds": 38.13196445000358,
+      "exit_code": 0,
+      "remaining_processes": [],
+      "gpu_after": {
+        "uuid": "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      }
+    },
+    {
+      "kind": "direct",
+      "arm": "F",
+      "stage": "final",
+      "status": "finished",
+      "supervisor": 1863227,
+      "gpu": 6,
+      "gpu_before": {
+        "uuid": "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "affinity": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "source": "52f5b398078295b865a3dc542a0d6ac7306865c5",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/F-final-07",
+      "reserved_seconds": 1200,
+      "reserved_decisions": 0,
+      "started_utc": "2026-11-03T03:14:13.703446+00:00",
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "-u",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/trees/stop-sensing-force-cap/repo/research_notes/force_cap_probe.py",
+        "--kind",
+        "direct",
+        "--stage",
+        "final",
+        "--gpu",
+        "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/F-final-07/job",
+        "--iterations",
+        "20",
+        "--seed",
+        "707",
+        "--max-seconds",
+        "1080"
+      ],
+      "pid": 1863251,
+      "peak_rss_bytes": 7311523840,
+      "peak_gpu_mib": 586,
+      "elapsed_seconds": 426.38237554510124,
+      "exit_code": 0,
+      "remaining_processes": [],
+      "wall_seconds": 426.99030612502247,
+      "resource_boundary": null,
+      "gpu_after": {
+        "uuid": "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "result": {
+        "status": "completed",
+        "model_loaded": true,
+        "original_wrapper_used": true,
+        "bfm_updates": 0,
+        "student_optimizer_updates": 0,
+        "study": {
+          "status": "completed",
+          "decisions": 0,
+          "student_optimizer_updates": 0,
+          "episodes": 12,
+          "elapsed_s": 421.66016616509296
+        },
+        "original_bfm_unchanged": true
+      }
+    },
+    {
+      "kind": "direct",
+      "arm": "E",
+      "stage": "final",
+      "status": "finished",
+      "supervisor": 1865457,
+      "gpu": 1,
+      "gpu_before": {
+        "uuid": "GPU-0cd3457d-8b3f-656a-cacf-0fd505369fe3",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "affinity": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "source": "619837f564f09441a3169d793e0bd662fe5a8d59",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/E-final-08",
+      "reserved_seconds": 1200,
+      "reserved_decisions": 0,
+      "started_utc": "2026-11-03T03:18:59.947545+00:00",
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "-u",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/trees/stop-sensing-eval/repo/research_notes/stop_teacher_final.py",
+        "--kind",
+        "direct",
+        "--stage",
+        "final",
+        "--gpu",
+        "GPU-0cd3457d-8b3f-656a-cacf-0fd505369fe3",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/E-final-08/job",
+        "--iterations",
+        "20",
+        "--seed",
+        "707",
+        "--max-seconds",
+        "1080"
+      ],
+      "pid": 1865503,
+      "peak_rss_bytes": 7271514112,
+      "peak_gpu_mib": 586,
+      "elapsed_seconds": 347.4425125280395,
+      "exit_code": 0,
+      "remaining_processes": [],
+      "wall_seconds": 347.9861199730076,
+      "resource_boundary": null,
+      "gpu_after": {
+        "uuid": "GPU-0cd3457d-8b3f-656a-cacf-0fd505369fe3",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "result": {
+        "status": "completed",
+        "model_loaded": true,
+        "original_wrapper_used": true,
+        "bfm_updates": 0,
+        "student_optimizer_updates": 0,
+        "study": {
+          "status": "completed",
+          "decisions": 0,
+          "student_optimizer_updates": 0,
+          "elapsed_s": 343.3807426469866
+        },
+        "original_bfm_unchanged": true
+      }
+    },
+    {
+      "kind": "video",
+      "arm": "video",
+      "stage": "saved-physics-render",
+      "status": "finished",
+      "source": "619837f564f09441a3169d793e0bd662fe5a8d59",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/videos-final",
+      "gpu": 6,
+      "affinity": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "reserved_seconds": 600,
+      "reserved_decisions": 0,
+      "gpu_before": {
+        "uuid": "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      },
+      "pid": 1866382,
+      "wall_seconds": 36.94687328697182,
+      "exit_code": 0,
+      "remaining_processes": [],
+      "gpu_after": {
+        "uuid": "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+        "used_mib": 1,
+        "free_mib": 72831,
+        "utilization": 0
+      }
+    }
+  ]
+}

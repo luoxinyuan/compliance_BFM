@@ -1,55 +1,46 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-03。**上轮Direct迁移阶段已完成；新授权停止覆盖/传感阶段已启动；结果尚未验证。** 旧M11 continuation仍停止；A160/B114不是完整等预算终检。
+核对：2026-11-03。**停止覆盖、Teacher停止PPO、传感约束及追加力上限诊断全部完成；无本项目任务仍在训练。** 旧M11 continuation A160/B114仍停止，未重启，不作为等预算终检。下一研究阶段尚未启动。
 
-## 新授权执行入口
+## 入口与科学状态
 
-[Issue #34](https://github.com/GaoE05/robot-research-bridge/issues/34)、[STOP_SENSING_PROTOCOL.md](STOP_SENSING_PROTOCOL.md)和stop_protocol.json固定本轮计划。主线为匹配更新的停止覆盖对照、Teacher停止分布PPO、重新训练无显式力Student及力观测压力。预算新登记18000累计进程秒/10GiB/最多3GPU，不能套用旧账本。未来椅子/多接触/全方向demo不在本轮。
+纲领：[RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)。当前报告：[STOP_SENSING_RESULTS.md](STOP_SENSING_RESULTS.md)、[FORCE_CAP_DIAGNOSTIC.md](FORCE_CAP_DIAGNOSTIC.md)，[Issue34](https://github.com/GaoE05/robot-research-bridge/issues/34)。完整历史与决策：[Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。上轮[TRANSFER_RESULTS.md](TRANSFER_RESULTS.md)/Issue33的Teacher→ideal-force Student最小迁移成功保留。
 
-运行身份：runtime `32c87b4db3aba007e4d6cf15ed5495cdffdfcb75`；新账本 `bridge-v2-owned/runs/stop-sensing-20261103/compute-ledger.json`，A-prepare-03 GPU1/PID1845112，B1-train-02 GPU5/PID1845030。快照不能当未来空闲/重启依据；C等待冻结停止数据。A-prepare-01稀疏检出缺源码在加载前失败，完整记录后仅展开新worktree，不改BFM。
+- **停止数据覆盖有价值，但新Student不是全面升级。** 同原r0/4000更新，B混合6条停止Teacher回合，比A只增加旧数据更新更好，两个更新seed一致支持总体趋势。新晚停止B误差6.929cm/力3.872N，原r0为7.015/4.313；新早停止B7.874/4.312反而差于r0 6.587/3.580。保留r0，不按终检挑统一赢家。
+- **Teacher本轮有限域训练有真实收益。** Direct初始化、原reward/BFM/PD/5N保持；40批30720RL决策/123优化步，75%停止窄分布。开发预选30批，三个封存条件均改善：新早7.491/4.085→6.486/3.866，新晚7.113/4.400→5.980/3.716，新正常8.424/4.145→5.638/3.435（cm/N）。开发综合改善1.51%不足预定2%续训标准，因此结束40，不以新测试延长或重选。
+- Teacher保持质量也改善，但q_PD连续性未全面解决：新早最大单控制步37.94→53.92°，局部25.18→41.75°；未见双足同时失去支撑或物理安全终止。此模型尚未查询Student偏离恢复域，也未迁移给本轮Student。
+- **无力路线不能判死刑。** 删除300力列重新训练725维Student，在部分时段可跟随，但5N下总体弱于力输入，停止/释放有再动作。输入没有新增本体测量噪声；“弱接触被自身步态掩盖”是解释假设，不是已确认传感噪声根因。
+- 用户授权冻结5/7.5/10N诊断：同一个已暴露条件12回合。两个无力seed误差5→7.5N分别12.223→7.629、14.684→9.721cm；力4.531→4.443、4.430→5.924N，负担不一致改善。10N不一致更好、力更高，起步不一致提前。Standing无主动迈步，但不能完全分离被动动力学辅助与可观测性。正式训练cap仍5N，不自动提高。
+- 传感压力仅改输入：B505新晚强噪声/偏置/100ms/20%丢测变10.348cm/4.250N；单噪声实现不足统计结论。G1实际力传感硬件未知；ideal-force与无力模型均未获真机验证。
 
-## 上轮已验证科学结论
+## 当前瓶颈与下一研究决策
 
-目标仍是Contact-Conditioned Whole-Body Motion Transitions / General Compliance。纲领见[RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)，完整历史见[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)，当前阶段见[Issue33](https://github.com/GaoE05/robot-research-bridge/issues/33)及[TRANSFER_RESULTS.md](TRANSFER_RESULTS.md)。旧Library2026-10-28快照不是实时状态。
+主要瓶颈是停止/释放访问状态恢复、不同观测权限下闭环分布，以及控制连续性；不是缺少可训练Student，也不是已证明BFM或无力方案不可行。新Teacher30改善了有限任务域，可作为后续独立冻结标签源；先验证少量代表Student访问状态的恢复，不以Teacher自己轨迹成功推广全部状态。
 
-- Direct初始化已有可用右腕直行反馈，不在线调用CyclicFeedback/M10 Student。旧PPO15单条件收益未保住邻近条件，见[CLEAN_EXPERT_RESULTS.md](CLEAN_EXPERT_RESULTS.md)。
-- **本轮Teacher→ideal-force Student最小迁移成立。** 两个冻结Teacher各824标签/4000监督步，合法z直接蒸馏，无多余逐状态投影。Student只读本体/真实动作、力历史、固定腕部位置和自身命令，不读anchor、伙伴速度、clock、active或Teacher隐藏状态。未验证G1实际力传感。
-- PPO15的纯模仿Student：新慢条件7.407cm/3.990N，新快6.912cm/3.913N；Teacher对应6.243/3.648和8.966/4.198。不是每个条件都优于Teacher，不把最终测试用于选择统一部署模型。
-- 真正同前缀伙伴停止：8s前1001个物理点完全相同，Student在8.10s改变z，最终root X由.812变.503m；误差6.596cm/力3.842N。证明响应物理反馈，而非始终播放相同z轨迹；不区分显式力与本体反馈各自贡献。
-- 初始Teacher Student的短行程启动/较早停止仍失败（16.263cm/4.435N）；该条件同时改变加速度，不能只称停止失败。同前缀停止为7.136cm/4.184N。
-- **窄分布Teacher PPO仍未可靠升级。** B1/B2各15360决策，B1选10批，新快8.111cm/4.284N劣于初始化7.455/4.055；B2最优仍初始化。全部模型和负结果保留，不无界续训。
-- 一次聚合实现范围错误已更正：有效7s接管不能验证其后所有状态。旧r1留作未充分验证结果；修正版仅接受实际7.10s一个查询点，固定2000更新，未证明聚合独立收益。PPO15接管未改善，不聚合。修正版原终检已暴露，明确为复测，不称新盲测。
+**建议下一阶段优先围绕新Teacher30做有力/无力Student的停止恢复迁移；若纳入力强度，将5/7.5N作为明确训练/评估因素并保留5N基线，避免把加力收益误记成学习收益。尚未授权或启动新的追加训练。** 平面行为扩展最有依据为现有缓弯/heading；下沉/恢复为备选高度技能。侧移/后走/低姿态行走尚无可靠接触组合证据，见[能力清单](STOP_CAPABILITY_REVIEW.md)。椅子/多接触/真机仅远期候选。
 
-## 已有瓶颈与本轮优先级
+## 身份、源代码与证据位置
 
-迁移接口可用，主要瓶颈仍是Teacher优化稳健性及恢复覆盖，而不是缺少可训练Student。无接触漂移约3–4mm，但局部15cm请求仍有约14–15cm root移动；部分q_PD峰值36–58°和短行程失败保留，不称自然全身协调已完成。
+长期个人分支[gaoe05/research](https://github.com/luoxinyuan/compliance_BFM/tree/gaoe05/research)；该文件提交是文档集成身份，不替代运行SHA。
 
-本轮用户已调整优先级：先区分停止覆盖与额外训练量，并检验传感约束；raw-z与action/q_PD保持保留为有依据时的方法对照，不再唯一主线。保留上轮迁移成功；Teacher未完美不阻塞Student优化。当前A采集/匹配更新与Teacher训练已启动；多接触/椅子仅远期候选。
+- A及Teacher runtime `32c87b4db3aba007e4d6cf15ed5495cdffdfcb75`；C `a9f80be24f32175a41d7c36fd67549a0b82445c1`；冻结Teacher终检 `619837f564f09441a3169d793e0bd662fe5a8d59`；加力诊断 `52f5b398078295b865a3dc542a0d6ac7306865c5`。
+- BFM SHA `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
+- 本轮主标签Teacher旧PPO15 `92692be758d04386c32bea3108b3b155d4c37b0c2b70679e78cf849f593112fe`；r0 Student `0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12`。
+- 新Teacher30 `c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33`，与Student采集期间旧Teacher身份分开。
+- B505 `78c818478b059cfd8aeec868918c275b9429a3863aac53dd1eb84e08dd62d4ff`；N505 `038c218829f85ce0b661e38397c19121d5e49ec3ac38fde8c483d87f151893d6`。全部模型/末轮身份见[清单](stop_sensing_artifacts/model-identities.json)。
 
-## 可靠旧能力与边界
+`P=/mnt/data/temp_user/yi.gao/projects/compliance_BFM`；`R=$P/bridge-v2-owned/runs/stop-sensing-20261103`。
+A-prepare-03/job（A/B模型、标签、物理）；C-final-05/job（N/传感）；B1-train-02/job（Teacher初始/最佳/末轮/曲线）；E-final-08/job（冻结终检）；F-final-07/job（cap）；analysis/（分阶段XYZ、身体/支撑、完整恢复曲线）。原始轨迹和权重不进Git。
 
-M5–M8有限接触LPP/共享策略和访问聚合、M7同回合转接、M8下沉保留；M9主动行走/有限转弯、M10任务适配行为仍是可靠历史对照。M1–M4中间姿态/恢复失败、M11均值执行失败及提前结束的continuation完整保留。新直行模型未证明保留全部旧腕/躯干技能，不替代M8/M9B/M10。未开展真机、PPO-vs-LPP正式比较或general compliance验收。
+Mac视频：`~/Projects/compliance-bfm-diagnostics/videos/stop-sensing-20261103/`，4条MP4+INDEX。01覆盖vs额外更新，02理想力/退化力/重训无力，03Teacher初始化/30/40，04同N505真实5/7.5/10N。已本地完整解码、时长、SHA和画面核验，实际qpos1×。
 
-## 身份和位置
+本轮实际6101.35累计受监督进程秒、约2.81GiB输出；24000监督更新，30720RL决策、612996物理步另107400预填步，179完整训练回合。全部完成；18000秒/10GiB是本轮封闭预算，不能当下次新授权。两次启动工程失败保留，未改运行中源码。无需为了满预算继续计算。
 
-个人长期分支[gaoe05/research](https://github.com/luoxinyuan/compliance_BFM/tree/gaoe05/research)，报告/文档HEAD以该文件Git记录为准，不混作runtime。
+## 可靠旧能力与跨会话接力
 
-- 本轮初次训练runtime `f736c9a34b1791eed5a24f9970c87f2383b8547a`；查询范围修正版 `2d6bfdd71ae960459c26f2a19a8eaad9007ee208`。
-- 冻结BFM SHA `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
-- Direct Teacher初始化SHA `a86ff5f9ca71ed2ae8dc95ceeab0ac980f82ab6ed8d3759c039eb03a62efe488`；旧PPO15 `92692be758d04386c32bea3108b3b155d4c37b0c2b70679e78cf849f593112fe`，源runtime05b313e。
-- PPO15纯模仿Student SHA `0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12`；初始化Teacher Student r0 `97235f33dc3ac3fd9d21eefbc1c57197d7b86126fa957857b9ee58a486fe8303`；修正版`8ff5a5435702738b39df91340f8278720e7f850cab97d5c5479bb1e12d5738ec`。
-- B1选10批SHA `d18529b96b8343ac6bb3d0484de5fb8f29934bed28af71ddec4709dcfffa6bd0`；仅研究候选，不推广。
+M5–M8有限LPP/共享策略、M7连续转换、M8躯干下沉、M9行走/有限转弯、M10任务合适行为及M1–M4负结果均保留。当前右腕直行新模型没有证明保留全部旧部位/技能，不替代M8/M9B/M10。旧Library2026-10-28文件仅历史快照。
 
-`P=/mnt/data/temp_user/yi.gao/projects/compliance_BFM`，SSH `pro5000`，`source $P/env.sh` / `$P/.venv/bin/python`。本轮`R=$P/bridge-v2-owned/runs/direct-transfer-20261103`，A原始`A-prepare-01/job`、修正版`A-final-04/job`、B1/B2 `B1-train-02/job`/`B2-train-03/job`、B1终检`B1-final-05/job/evaluation`、同前缀停止`A-final-07/job`。每项launch/ledger/model SHA齐全；原始A wrapper漏记监督次数，实际以training.json统计，报告已纠正。
-
-Mac仅4条关键视频+INDEX：`~/Projects/compliance-bfm-diagnostics/videos/direct-transfer-20261103/`。旧clean-contact-expert、m10-task-appropriate和m11视频不变。新视频实际qpos1×，已同步并校验。
-
-## 接力与权限
-
-1. 先读本文件、纲领、TRANSFER_RESULTS和Issue33最新回复；报告是完成事实，不是下一轮启动指令。
-2. 核验ledger/result、精确PID、runtime与工作树；status.json可能保留末批running快照，以completed result/ledger为准。不要自动重播旧任务。
-3. 本阶段上限3GPU/21600累计job秒/12GiB输出；启动前重新查GPU、CPU、RAM、I/O，不能继承旧空闲卡状态或因无GPU改CPU运行BFM。共享盘剩余不是个人配额。
-4. 仅个人worktree/输出，代码获准整合个人research；不改main、共享BFM/PD/权重、SoftSONIC或其他用户进程。无自动下载大资产、Bridge/watch、真机或扩大资源。
-5. 阶段结尾源码/报告、CURRENT_STATE、Master、准确runtime/模型/失败/视频同步；普通实验不重写全史。
-
-本轮累计受监督计算4984.76秒、新输出2.466GiB；RL30720决策，监督共12000步（含保留的错误聚合2000），已全部退出。
+1. 先读本文件、纲领、当前报告及Issue34/18；核对ledger/result和精确SHA，不重启已消费任务。
+2. SSH pro5000，`source $P/env.sh` / `$P/.venv/bin/python`。每次GPU前实时查GPU/CPU/RAM/I/O；无GPU不擅自改CPU跑BFM，共享空余不是个人独占配额。
+3. 仅个人worktree/输出。不可改main、共享BFM/PD/原权重、SoftSONIC/他人任务，无Bridge/watch、真机或自动大资产下载。
+4. 重要方法/里程碑将获准源码普通push至个人research，记录runtime/模型/失败/视频；不强推、合main、覆盖历史。下一阶段需用户科研决策，不自动扩展。

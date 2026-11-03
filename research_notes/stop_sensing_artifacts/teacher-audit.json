@@ -1,0 +1,84 @@
+{
+  "physical_steps": 612996,
+  "control_steps": 153249,
+  "prefill_physics_steps": 107400,
+  "sampling_seconds": 2029.2840784867294,
+  "optimization_seconds": 0.7363155980128795,
+  "episodes_completed": 179,
+  "updates": 123,
+  "decisions": 30720,
+  "old_GAE_value_EV": {
+    "first": -0.318192720413208,
+    "last": 0.7891591787338257,
+    "min": -0.318192720413208,
+    "max": 0.8137317299842834
+  },
+  "updated_value_EV": {
+    "first": -0.18059015274047852,
+    "last": 0.7954500913619995,
+    "min": -0.18059015274047852,
+    "max": 0.8278681039810181
+  },
+  "pre_logprob_max_error": {
+    "first": 0.0001220703125,
+    "last": 0.0001220703125,
+    "min": 0.0001220703125,
+    "max": 0.0001220703125
+  },
+  "pre_ratio_max_error": {
+    "first": 0.0001220703125,
+    "last": 0.0001220703125,
+    "min": 0.0001220703125,
+    "max": 0.0001220703125
+  },
+  "raw_mean_change_rms": {
+    "first": 9.622181096347049e-05,
+    "last": 9.41650359891355e-05,
+    "min": 8.688431262271479e-05,
+    "max": 9.922704339260235e-05
+  },
+  "std_mean": {
+    "first": 0.007999999448657036,
+    "last": 0.007999999448657036,
+    "min": 0.007999999448657036,
+    "max": 0.007999999448657036
+  },
+  "joint_gaussian_KL": {
+    "min": 0.012495890259742737,
+    "max": 0.01969200372695923,
+    "mean": 0.017074480355578535
+  },
+  "clip_fraction": {
+    "min": 0.3854166865348816,
+    "max": 0.5520833730697632,
+    "mean": 0.48841978070583747
+  },
+  "selection": {
+    "iteration": 30,
+    "score": 1.9697237454597611,
+    "sha256": "c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33",
+    "evaluation": "dev-0030/summary.json",
+    "rule": "max relative whole-contact force+3*error_m+cap+20*boundary plus mean, across 3 dev; additionally report decel/hold signed error and continued movement; initialization retained"
+  },
+  "extension": {
+    "extend": false,
+    "chosen": {
+      "iteration": 30,
+      "score": 1.9697237454597611,
+      "sha256": "c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33",
+      "evaluation": "dev-0030/summary.json",
+      "rule": "max relative whole-contact force+3*error_m+cap+20*boundary plus mean, across 3 dev; additionally report decel/hold signed error and continued movement; initialization retained"
+    },
+    "current_ratios": [
+      0.8500982374069301,
+      1.0258526602553226,
+      1.0231001114497735
+    ],
+    "rule": "after batch40 only if best dev score occurs >=30 and improves initial >=2%; no severe individual-family regression >15%; otherwise stop at40"
+  },
+  "checkpoints": {
+    "initial.pt": "c884f3937e44409268cbcccafb4ec15101ccc0d2c8198e4086ac1f3f1d426e34",
+    "best.pt": "c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33",
+    "last.pt": "fcda12ee84fb6564c0602ab20671aecf8889951e38fedb6676f33772fbd928df"
+  }
+}

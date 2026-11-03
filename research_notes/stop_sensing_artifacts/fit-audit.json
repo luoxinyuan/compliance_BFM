@@ -1,0 +1,485 @@
+{
+  "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/direct-transfer-20261103/A-prepare-01/job/ppo15-student-r0.pt": {
+    "old": {
+      "hold": {
+        "samples": 100,
+        "angle_mean": 0.585726261138916,
+        "angle_p95": 0.9540390372276306,
+        "latent_mse": 0.00011984068260062486,
+        "raw_norm_mean": 1.4324437379837036
+      },
+      "move": {
+        "samples": 357,
+        "angle_mean": 0.9213703274726868,
+        "angle_p95": 1.6615359783172607,
+        "latent_mse": 0.00035411343560554087,
+        "raw_norm_mean": 1.1516432762145996
+      },
+      "pre": {
+        "samples": 67,
+        "angle_mean": 0.34705886244773865,
+        "angle_p95": 0.3553675413131714,
+        "latent_mse": 3.6789624573430046e-05,
+        "raw_norm_mean": 1.2346631288528442
+      },
+      "recover": {
+        "samples": 300,
+        "angle_mean": 0.3780463635921478,
+        "angle_p95": 0.6491873860359192,
+        "latent_mse": 5.204325498198159e-05,
+        "raw_norm_mean": 1.3532664775848389
+      }
+    },
+    "stop": {
+      "decelerate": {
+        "samples": 41,
+        "angle_mean": 2.11934232711792,
+        "angle_p95": 4.034491062164307,
+        "latent_mse": 0.0017204858595505357,
+        "raw_norm_mean": 1.193462610244751
+      },
+      "hold": {
+        "samples": 206,
+        "angle_mean": 2.274831533432007,
+        "angle_p95": 4.849047660827637,
+        "latent_mse": 0.0020675186533480883,
+        "raw_norm_mean": 1.54490065574646
+      },
+      "move": {
+        "samples": 223,
+        "angle_mean": 1.1586452722549438,
+        "angle_p95": 1.8157458305358887,
+        "latent_mse": 0.0005394312320277095,
+        "raw_norm_mean": 1.0500984191894531
+      },
+      "pre": {
+        "samples": 78,
+        "angle_mean": 0.34685754776000977,
+        "angle_p95": 0.35553276538848877,
+        "latent_mse": 3.674658000818454e-05,
+        "raw_norm_mean": 1.2343655824661255
+      },
+      "recover": {
+        "samples": 360,
+        "angle_mean": 1.2486035823822021,
+        "angle_p95": 3.0660698413848877,
+        "latent_mse": 0.0006925608613528311,
+        "raw_norm_mean": 1.3178259134292603
+      }
+    }
+  },
+  "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/B506.pt": {
+    "old": {
+      "hold": {
+        "samples": 100,
+        "angle_mean": 0.6014947891235352,
+        "angle_p95": 1.1069525480270386,
+        "latent_mse": 0.00012523469922598451,
+        "raw_norm_mean": 2.075256586074829
+      },
+      "move": {
+        "samples": 357,
+        "angle_mean": 0.9449359178543091,
+        "angle_p95": 1.5192694664001465,
+        "latent_mse": 0.0003434416721574962,
+        "raw_norm_mean": 1.6744105815887451
+      },
+      "pre": {
+        "samples": 67,
+        "angle_mean": 0.4665760099887848,
+        "angle_p95": 0.47063812613487244,
+        "latent_mse": 6.631533324252814e-05,
+        "raw_norm_mean": 1.83572518825531
+      },
+      "recover": {
+        "samples": 300,
+        "angle_mean": 0.43325215578079224,
+        "angle_p95": 0.7139523029327393,
+        "latent_mse": 6.464411853812635e-05,
+        "raw_norm_mean": 1.9853991270065308
+      }
+    },
+    "stop": {
+      "decelerate": {
+        "samples": 41,
+        "angle_mean": 1.167057991027832,
+        "angle_p95": 1.5271342992782593,
+        "latent_mse": 0.0004319029685575515,
+        "raw_norm_mean": 1.7356294393539429
+      },
+      "hold": {
+        "samples": 206,
+        "angle_mean": 0.6013310551643372,
+        "angle_p95": 1.0745625495910645,
+        "latent_mse": 0.0001302559394389391,
+        "raw_norm_mean": 2.2840609550476074
+      },
+      "move": {
+        "samples": 223,
+        "angle_mean": 1.022018551826477,
+        "angle_p95": 1.5791715383529663,
+        "latent_mse": 0.0004141346726100892,
+        "raw_norm_mean": 1.5336517095565796
+      },
+      "pre": {
+        "samples": 78,
+        "angle_mean": 0.4662918150424957,
+        "angle_p95": 0.47063812613487244,
+        "latent_mse": 6.624183151870966e-05,
+        "raw_norm_mean": 1.8352887630462646
+      },
+      "recover": {
+        "samples": 360,
+        "angle_mean": 0.4654196500778198,
+        "angle_p95": 0.6655507683753967,
+        "latent_mse": 7.002090569585562e-05,
+        "raw_norm_mean": 1.9944822788238525
+      }
+    }
+  },
+  "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/A506.pt": {
+    "old": {
+      "hold": {
+        "samples": 100,
+        "angle_mean": 0.4053456485271454,
+        "angle_p95": 0.6847557425498962,
+        "latent_mse": 5.546072497963905e-05,
+        "raw_norm_mean": 2.0354723930358887
+      },
+      "move": {
+        "samples": 357,
+        "angle_mean": 0.6033155918121338,
+        "angle_p95": 0.9599336981773376,
+        "latent_mse": 0.00016448316455353051,
+        "raw_norm_mean": 1.6545048952102661
+      },
+      "pre": {
+        "samples": 67,
+        "angle_mean": 0.316538542509079,
+        "angle_p95": 0.35827404260635376,
+        "latent_mse": 3.0607548978878185e-05,
+        "raw_norm_mean": 1.7476251125335693
+      },
+      "recover": {
+        "samples": 300,
+        "angle_mean": 0.3061803877353668,
+        "angle_p95": 0.4870448708534241,
+        "latent_mse": 3.3014919608831406e-05,
+        "raw_norm_mean": 1.9226889610290527
+      }
+    },
+    "stop": {
+      "decelerate": {
+        "samples": 41,
+        "angle_mean": 1.9133877754211426,
+        "angle_p95": 4.161466121673584,
+        "latent_mse": 0.0016083810478448868,
+        "raw_norm_mean": 1.7121286392211914
+      },
+      "hold": {
+        "samples": 206,
+        "angle_mean": 2.3432765007019043,
+        "angle_p95": 5.228711128234863,
+        "latent_mse": 0.002298201434314251,
+        "raw_norm_mean": 2.1713650226593018
+      },
+      "move": {
+        "samples": 223,
+        "angle_mean": 0.7641106247901917,
+        "angle_p95": 1.0752015113830566,
+        "latent_mse": 0.00028273172210901976,
+        "raw_norm_mean": 1.5143001079559326
+      },
+      "pre": {
+        "samples": 78,
+        "angle_mean": 0.3167605698108673,
+        "angle_p95": 0.35827404260635376,
+        "latent_mse": 3.064640986849554e-05,
+        "raw_norm_mean": 1.7471282482147217
+      },
+      "recover": {
+        "samples": 360,
+        "angle_mean": 1.219496726989746,
+        "angle_p95": 3.0907669067382812,
+        "latent_mse": 0.0006851742509752512,
+        "raw_norm_mean": 1.8553903102874756
+      }
+    }
+  },
+  "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/B505.pt": {
+    "old": {
+      "hold": {
+        "samples": 100,
+        "angle_mean": 0.4539416432380676,
+        "angle_p95": 0.763511598110199,
+        "latent_mse": 7.200253457995132e-05,
+        "raw_norm_mean": 2.0864622592926025
+      },
+      "move": {
+        "samples": 357,
+        "angle_mean": 0.6072592735290527,
+        "angle_p95": 0.954577624797821,
+        "latent_mse": 0.00017520309484098107,
+        "raw_norm_mean": 1.6614068746566772
+      },
+      "pre": {
+        "samples": 67,
+        "angle_mean": 0.1807171106338501,
+        "angle_p95": 0.19382666051387787,
+        "latent_mse": 9.974942258850206e-06,
+        "raw_norm_mean": 1.837166666984558
+      },
+      "recover": {
+        "samples": 300,
+        "angle_mean": 0.28459814190864563,
+        "angle_p95": 0.5905311703681946,
+        "latent_mse": 3.4984463127329946e-05,
+        "raw_norm_mean": 1.989230990409851
+      }
+    },
+    "stop": {
+      "decelerate": {
+        "samples": 41,
+        "angle_mean": 0.8006258606910706,
+        "angle_p95": 1.2207714319229126,
+        "latent_mse": 0.00021148048108443618,
+        "raw_norm_mean": 1.716935634613037
+      },
+      "hold": {
+        "samples": 206,
+        "angle_mean": 0.5385928153991699,
+        "angle_p95": 0.8959646821022034,
+        "latent_mse": 9.786310693016276e-05,
+        "raw_norm_mean": 2.3003389835357666
+      },
+      "move": {
+        "samples": 223,
+        "angle_mean": 0.5978879928588867,
+        "angle_p95": 0.7570515871047974,
+        "latent_mse": 0.00021983860642649233,
+        "raw_norm_mean": 1.5145354270935059
+      },
+      "pre": {
+        "samples": 78,
+        "angle_mean": 0.18040719628334045,
+        "angle_p95": 0.19382666051387787,
+        "latent_mse": 9.939177289197687e-06,
+        "raw_norm_mean": 1.8367241621017456
+      },
+      "recover": {
+        "samples": 360,
+        "angle_mean": 0.29849928617477417,
+        "angle_p95": 0.5642320513725281,
+        "latent_mse": 3.30519033013843e-05,
+        "raw_norm_mean": 2.0006587505340576
+      }
+    }
+  },
+  "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/A505.pt": {
+    "old": {
+      "hold": {
+        "samples": 100,
+        "angle_mean": 0.40625762939453125,
+        "angle_p95": 0.6471611857414246,
+        "latent_mse": 5.604977559414692e-05,
+        "raw_norm_mean": 2.0302233695983887
+      },
+      "move": {
+        "samples": 357,
+        "angle_mean": 0.613886296749115,
+        "angle_p95": 1.011582851409912,
+        "latent_mse": 0.00017525059229228646,
+        "raw_norm_mean": 1.6505591869354248
+      },
+      "pre": {
+        "samples": 67,
+        "angle_mean": 0.2206060141324997,
+        "angle_p95": 0.24066273868083954,
+        "latent_mse": 1.487414374423679e-05,
+        "raw_norm_mean": 1.740891456604004
+      },
+      "recover": {
+        "samples": 300,
+        "angle_mean": 0.28463214635849,
+        "angle_p95": 0.49089670181274414,
+        "latent_mse": 2.9651315344381146e-05,
+        "raw_norm_mean": 1.9177240133285522
+      }
+    },
+    "stop": {
+      "decelerate": {
+        "samples": 41,
+        "angle_mean": 2.0343761444091797,
+        "angle_p95": 4.215099811553955,
+        "latent_mse": 0.001723331632092595,
+        "raw_norm_mean": 1.7119286060333252
+      },
+      "hold": {
+        "samples": 206,
+        "angle_mean": 2.3135900497436523,
+        "angle_p95": 5.191187858581543,
+        "latent_mse": 0.0022819209843873978,
+        "raw_norm_mean": 2.1670658588409424
+      },
+      "move": {
+        "samples": 223,
+        "angle_mean": 0.7561711072921753,
+        "angle_p95": 1.1668429374694824,
+        "latent_mse": 0.00028127426048740745,
+        "raw_norm_mean": 1.5111733675003052
+      },
+      "pre": {
+        "samples": 78,
+        "angle_mean": 0.22045376896858215,
+        "angle_p95": 0.24066273868083954,
+        "latent_mse": 1.4858916074445006e-05,
+        "raw_norm_mean": 1.740401268005371
+      },
+      "recover": {
+        "samples": 360,
+        "angle_mean": 1.215761423110962,
+        "angle_p95": 3.047720193862915,
+        "latent_mse": 0.0006785112782381475,
+        "raw_norm_mean": 1.8516151905059814
+      }
+    }
+  },
+  "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/C-final-05/job/N506.pt": {
+    "old": {
+      "hold": {
+        "samples": 100,
+        "angle_mean": 0.5386233925819397,
+        "angle_p95": 1.0164616107940674,
+        "latent_mse": 0.00011433236068114638,
+        "raw_norm_mean": 1.892402172088623
+      },
+      "move": {
+        "samples": 357,
+        "angle_mean": 0.7888896465301514,
+        "angle_p95": 1.305060863494873,
+        "latent_mse": 0.00026469366275705397,
+        "raw_norm_mean": 1.5767931938171387
+      },
+      "pre": {
+        "samples": 67,
+        "angle_mean": 0.2660873830318451,
+        "angle_p95": 0.2880355417728424,
+        "latent_mse": 2.1686973923351616e-05,
+        "raw_norm_mean": 1.7015044689178467
+      },
+      "recover": {
+        "samples": 300,
+        "angle_mean": 0.31140321493148804,
+        "angle_p95": 0.8255376219749451,
+        "latent_mse": 5.5577631428604946e-05,
+        "raw_norm_mean": 1.8323116302490234
+      }
+    },
+    "stop": {
+      "decelerate": {
+        "samples": 41,
+        "angle_mean": 1.0175906419754028,
+        "angle_p95": 1.337790608406067,
+        "latent_mse": 0.0003289520973339677,
+        "raw_norm_mean": 1.6592124700546265
+      },
+      "hold": {
+        "samples": 206,
+        "angle_mean": 0.5472225546836853,
+        "angle_p95": 1.1380960941314697,
+        "latent_mse": 0.00011552099749678746,
+        "raw_norm_mean": 2.0554635524749756
+      },
+      "move": {
+        "samples": 223,
+        "angle_mean": 0.8175218105316162,
+        "angle_p95": 1.3242855072021484,
+        "latent_mse": 0.0003151513810735196,
+        "raw_norm_mean": 1.4601855278015137
+      },
+      "pre": {
+        "samples": 78,
+        "angle_mean": 0.2651539146900177,
+        "angle_p95": 0.2880355417728424,
+        "latent_mse": 2.1527912394958548e-05,
+        "raw_norm_mean": 1.7010879516601562
+      },
+      "recover": {
+        "samples": 360,
+        "angle_mean": 0.3508853018283844,
+        "angle_p95": 0.7723868489265442,
+        "latent_mse": 5.327096369001083e-05,
+        "raw_norm_mean": 1.8269431591033936
+      }
+    }
+  },
+  "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/C-final-05/job/N505.pt": {
+    "old": {
+      "hold": {
+        "samples": 100,
+        "angle_mean": 0.5558228492736816,
+        "angle_p95": 0.9826390147209167,
+        "latent_mse": 0.00010969856521114707,
+        "raw_norm_mean": 1.8930130004882812
+      },
+      "move": {
+        "samples": 357,
+        "angle_mean": 0.7706728577613831,
+        "angle_p95": 1.206742286682129,
+        "latent_mse": 0.0002573912497609854,
+        "raw_norm_mean": 1.5781384706497192
+      },
+      "pre": {
+        "samples": 67,
+        "angle_mean": 0.265456885099411,
+        "angle_p95": 0.30325788259506226,
+        "latent_mse": 2.1459427443915047e-05,
+        "raw_norm_mean": 1.699775218963623
+      },
+      "recover": {
+        "samples": 300,
+        "angle_mean": 0.37890636920928955,
+        "angle_p95": 0.8228192925453186,
+        "latent_mse": 6.883894820930436e-05,
+        "raw_norm_mean": 1.829782485961914
+      }
+    },
+    "stop": {
+      "decelerate": {
+        "samples": 41,
+        "angle_mean": 0.9653800129890442,
+        "angle_p95": 1.3040131330490112,
+        "latent_mse": 0.0002969081688206643,
+        "raw_norm_mean": 1.6650792360305786
+      },
+      "hold": {
+        "samples": 206,
+        "angle_mean": 0.5839449167251587,
+        "angle_p95": 1.09814453125,
+        "latent_mse": 0.00012362479174043983,
+        "raw_norm_mean": 2.060857057571411
+      },
+      "move": {
+        "samples": 223,
+        "angle_mean": 0.8114756941795349,
+        "angle_p95": 1.1237874031066895,
+        "latent_mse": 0.00031845542252995074,
+        "raw_norm_mean": 1.4608992338180542
+      },
+      "pre": {
+        "samples": 78,
+        "angle_mean": 0.2656305432319641,
+        "angle_p95": 0.30325788259506226,
+        "latent_mse": 2.1483030650415458e-05,
+        "raw_norm_mean": 1.6993545293807983
+      },
+      "recover": {
+        "samples": 360,
+        "angle_mean": 0.3622719645500183,
+        "angle_p95": 0.8184496164321899,
+        "latent_mse": 5.2942257752874866e-05,
+        "raw_norm_mean": 1.829244613647461
+      }
+    }
+  }
+}

@@ -1,0 +1,798 @@
+[
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/A506-training.json",
+    "updates": 4000,
+    "seed": 506,
+    "old_labels": 824,
+    "new_labels": 0,
+    "independent_episodes": [
+      "ppo15__source_faster",
+      "ppo15__source_local",
+      "ppo15__source_no_contact",
+      "ppo15__source_single",
+      "ppo15__source_slower"
+    ],
+    "phase_counts": {
+      "pre": 67,
+      "move": 357,
+      "hold": 100,
+      "recover": 300
+    },
+    "curve": [
+      {
+        "step": 0,
+        "loss": 0.0001988187723327428,
+        "gradient": 0.018428897485136986
+      },
+      {
+        "step": 200,
+        "loss": 5.9442601923365146e-05,
+        "gradient": 0.007743577938526869
+      },
+      {
+        "step": 400,
+        "loss": 0.00014970451593399048,
+        "gradient": 0.014492405578494072
+      },
+      {
+        "step": 600,
+        "loss": 0.00010827324149431661,
+        "gradient": 0.012329083867371082
+      },
+      {
+        "step": 800,
+        "loss": 0.00015193769650068134,
+        "gradient": 0.01442073192447424
+      },
+      {
+        "step": 1000,
+        "loss": 0.00013618121738545597,
+        "gradient": 0.008238029666244984
+      },
+      {
+        "step": 1200,
+        "loss": 0.00020121395937167108,
+        "gradient": 0.01698928140103817
+      },
+      {
+        "step": 1400,
+        "loss": 0.00016890859114937484,
+        "gradient": 0.01620778813958168
+      },
+      {
+        "step": 1600,
+        "loss": 0.00010652867786120623,
+        "gradient": 0.020046986639499664
+      },
+      {
+        "step": 1800,
+        "loss": 0.0001427356037311256,
+        "gradient": 0.01283225230872631
+      },
+      {
+        "step": 2000,
+        "loss": 7.707744953222573e-05,
+        "gradient": 0.01066858321428299
+      },
+      {
+        "step": 2200,
+        "loss": 0.0001449122792109847,
+        "gradient": 0.015850640833377838
+      },
+      {
+        "step": 2400,
+        "loss": 0.00012968704686500132,
+        "gradient": 0.011188027448952198
+      },
+      {
+        "step": 2600,
+        "loss": 6.10630086157471e-05,
+        "gradient": 0.008613599464297295
+      },
+      {
+        "step": 2800,
+        "loss": 0.00013845940702594817,
+        "gradient": 0.01334276795387268
+      },
+      {
+        "step": 3000,
+        "loss": 9.949524246621877e-05,
+        "gradient": 0.00895950011909008
+      },
+      {
+        "step": 3200,
+        "loss": 7.347780046984553e-05,
+        "gradient": 0.009792476892471313
+      },
+      {
+        "step": 3400,
+        "loss": 7.574508344987407e-05,
+        "gradient": 0.01086043007671833
+      },
+      {
+        "step": 3600,
+        "loss": 5.349078855942935e-05,
+        "gradient": 0.009984560310840607
+      },
+      {
+        "step": 3800,
+        "loss": 7.69666803535074e-05,
+        "gradient": 0.013816053047776222
+      }
+    ],
+    "sha256": "6a2b01038e204ae710d63ee0b96bddcebe4eda6f0248818b9243da9e223d7fbf",
+    "initial": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/direct-transfer-20261103/A-prepare-01/job/ppo15-student-r0.pt",
+      "sha256": "0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12"
+    },
+    "force_columns_deleted": false
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/A505-training.json",
+    "updates": 4000,
+    "seed": 505,
+    "old_labels": 824,
+    "new_labels": 0,
+    "independent_episodes": [
+      "ppo15__source_faster",
+      "ppo15__source_local",
+      "ppo15__source_no_contact",
+      "ppo15__source_single",
+      "ppo15__source_slower"
+    ],
+    "phase_counts": {
+      "pre": 67,
+      "move": 357,
+      "hold": 100,
+      "recover": 300
+    },
+    "curve": [
+      {
+        "step": 0,
+        "loss": 0.00021632399875670671,
+        "gradient": 0.02257790043950081
+      },
+      {
+        "step": 200,
+        "loss": 0.00010990809823852032,
+        "gradient": 0.010975241661071777
+      },
+      {
+        "step": 400,
+        "loss": 0.0001116504572564736,
+        "gradient": 0.013461822643876076
+      },
+      {
+        "step": 600,
+        "loss": 0.00020493076590355486,
+        "gradient": 0.016822565346956253
+      },
+      {
+        "step": 800,
+        "loss": 0.00012378470273688436,
+        "gradient": 0.012869044207036495
+      },
+      {
+        "step": 1000,
+        "loss": 7.994406041689217e-05,
+        "gradient": 0.011653202585875988
+      },
+      {
+        "step": 1200,
+        "loss": 0.00015321534010581672,
+        "gradient": 0.018259650096297264
+      },
+      {
+        "step": 1400,
+        "loss": 0.00019880293984897435,
+        "gradient": 0.01096346415579319
+      },
+      {
+        "step": 1600,
+        "loss": 0.00014910276513546705,
+        "gradient": 0.023010917007923126
+      },
+      {
+        "step": 1800,
+        "loss": 7.452478166669607e-05,
+        "gradient": 0.009831735864281654
+      },
+      {
+        "step": 2000,
+        "loss": 6.277875218074769e-05,
+        "gradient": 0.009350910782814026
+      },
+      {
+        "step": 2200,
+        "loss": 0.00013104382378514856,
+        "gradient": 0.014461439102888107
+      },
+      {
+        "step": 2400,
+        "loss": 0.0002399330260232091,
+        "gradient": 0.02050826884806156
+      },
+      {
+        "step": 2600,
+        "loss": 0.00014778047625441104,
+        "gradient": 0.013415376655757427
+      },
+      {
+        "step": 2800,
+        "loss": 9.208449046127498e-05,
+        "gradient": 0.012173287570476532
+      },
+      {
+        "step": 3000,
+        "loss": 0.00011552797514013946,
+        "gradient": 0.012088252231478691
+      },
+      {
+        "step": 3200,
+        "loss": 8.842116221785545e-05,
+        "gradient": 0.012093866243958473
+      },
+      {
+        "step": 3400,
+        "loss": 0.00010143668623641133,
+        "gradient": 0.008947226218879223
+      },
+      {
+        "step": 3600,
+        "loss": 0.0002601748565211892,
+        "gradient": 0.020550336688756943
+      },
+      {
+        "step": 3800,
+        "loss": 6.096517972764559e-05,
+        "gradient": 0.010759484954178333
+      }
+    ],
+    "sha256": "c908575f558c5b6a67368a90f468bdfe29cc0aad2e469d999205f75998634142",
+    "initial": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/direct-transfer-20261103/A-prepare-01/job/ppo15-student-r0.pt",
+      "sha256": "0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12"
+    },
+    "force_columns_deleted": false
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/B505-training.json",
+    "updates": 4000,
+    "seed": 505,
+    "old_labels": 824,
+    "new_labels": 908,
+    "independent_episodes": [
+      "ppo15__source_faster",
+      "ppo15__source_local",
+      "ppo15__source_no_contact",
+      "ppo15__source_single",
+      "ppo15__source_slower",
+      "source_stop0",
+      "source_stop1",
+      "source_stop2",
+      "source_stop3",
+      "source_stop4",
+      "source_stop5"
+    ],
+    "phase_counts": {
+      "pre": 145,
+      "move": 580,
+      "hold": 306,
+      "recover": 660,
+      "decelerate": 41
+    },
+    "curve": [
+      {
+        "step": 0,
+        "loss": 0.0005449661985039711,
+        "gradient": 0.029116982594132423
+      },
+      {
+        "step": 200,
+        "loss": 0.00017769835540093482,
+        "gradient": 0.012012960389256477
+      },
+      {
+        "step": 400,
+        "loss": 0.00021018768893554807,
+        "gradient": 0.017560739070177078
+      },
+      {
+        "step": 600,
+        "loss": 0.00022569592692889273,
+        "gradient": 0.01731925457715988
+      },
+      {
+        "step": 800,
+        "loss": 0.000151043786900118,
+        "gradient": 0.016393188387155533
+      },
+      {
+        "step": 1000,
+        "loss": 0.0002478290116414428,
+        "gradient": 0.01589813083410263
+      },
+      {
+        "step": 1200,
+        "loss": 0.00020154265803284943,
+        "gradient": 0.018213219940662384
+      },
+      {
+        "step": 1400,
+        "loss": 0.00031326341559179127,
+        "gradient": 0.014562021940946579
+      },
+      {
+        "step": 1600,
+        "loss": 0.00011696359433699399,
+        "gradient": 0.015121165663003922
+      },
+      {
+        "step": 1800,
+        "loss": 0.00015912043454591185,
+        "gradient": 0.012719741091132164
+      },
+      {
+        "step": 2000,
+        "loss": 0.00019544106908142567,
+        "gradient": 0.014785504899919033
+      },
+      {
+        "step": 2200,
+        "loss": 0.00014167818881105632,
+        "gradient": 0.014687790535390377
+      },
+      {
+        "step": 2400,
+        "loss": 9.505870548309758e-05,
+        "gradient": 0.012296326458454132
+      },
+      {
+        "step": 2600,
+        "loss": 0.0001437115715816617,
+        "gradient": 0.01333205122500658
+      },
+      {
+        "step": 2800,
+        "loss": 0.00015427236212417483,
+        "gradient": 0.01048953551799059
+      },
+      {
+        "step": 3000,
+        "loss": 0.00014268099039327353,
+        "gradient": 0.014578916132450104
+      },
+      {
+        "step": 3200,
+        "loss": 0.0001944132091011852,
+        "gradient": 0.012119387276470661
+      },
+      {
+        "step": 3400,
+        "loss": 0.00011284752690698951,
+        "gradient": 0.010219425894320011
+      },
+      {
+        "step": 3600,
+        "loss": 0.0002284341026097536,
+        "gradient": 0.01937233842909336
+      },
+      {
+        "step": 3800,
+        "loss": 0.00011242098116781563,
+        "gradient": 0.01439205463975668
+      }
+    ],
+    "sha256": "78c818478b059cfd8aeec868918c275b9429a3863aac53dd1eb84e08dd62d4ff",
+    "initial": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/direct-transfer-20261103/A-prepare-01/job/ppo15-student-r0.pt",
+      "sha256": "0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12"
+    },
+    "force_columns_deleted": false
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/A-prepare-03/job/B506-training.json",
+    "updates": 4000,
+    "seed": 506,
+    "old_labels": 824,
+    "new_labels": 908,
+    "independent_episodes": [
+      "ppo15__source_faster",
+      "ppo15__source_local",
+      "ppo15__source_no_contact",
+      "ppo15__source_single",
+      "ppo15__source_slower",
+      "source_stop0",
+      "source_stop1",
+      "source_stop2",
+      "source_stop3",
+      "source_stop4",
+      "source_stop5"
+    ],
+    "phase_counts": {
+      "pre": 145,
+      "move": 580,
+      "hold": 306,
+      "recover": 660,
+      "decelerate": 41
+    },
+    "curve": [
+      {
+        "step": 0,
+        "loss": 0.0005529188201762736,
+        "gradient": 0.027604278177022934
+      },
+      {
+        "step": 200,
+        "loss": 0.00019478783360682428,
+        "gradient": 0.014582308009266853
+      },
+      {
+        "step": 400,
+        "loss": 0.0003096620785072446,
+        "gradient": 0.026134641841053963
+      },
+      {
+        "step": 600,
+        "loss": 0.00016598876391071826,
+        "gradient": 0.015004382468760014
+      },
+      {
+        "step": 800,
+        "loss": 0.00022770673967897892,
+        "gradient": 0.020657677203416824
+      },
+      {
+        "step": 1000,
+        "loss": 0.00019010883988812566,
+        "gradient": 0.015427865087985992
+      },
+      {
+        "step": 1200,
+        "loss": 0.00022200591047294438,
+        "gradient": 0.014585626311600208
+      },
+      {
+        "step": 1400,
+        "loss": 0.0001068392739398405,
+        "gradient": 0.012368268333375454
+      },
+      {
+        "step": 1600,
+        "loss": 0.000228184784646146,
+        "gradient": 0.012173455208539963
+      },
+      {
+        "step": 1800,
+        "loss": 0.00015431130304932594,
+        "gradient": 0.011243447661399841
+      },
+      {
+        "step": 2000,
+        "loss": 0.00015462840383406729,
+        "gradient": 0.01574406400322914
+      },
+      {
+        "step": 2200,
+        "loss": 0.00017894954362418503,
+        "gradient": 0.016001438722014427
+      },
+      {
+        "step": 2400,
+        "loss": 0.00010749224020401016,
+        "gradient": 0.011645935475826263
+      },
+      {
+        "step": 2600,
+        "loss": 0.00011962222924921662,
+        "gradient": 0.014140578918159008
+      },
+      {
+        "step": 2800,
+        "loss": 0.0001329481601715088,
+        "gradient": 0.009250983595848083
+      },
+      {
+        "step": 3000,
+        "loss": 0.00012302448158152401,
+        "gradient": 0.009100100956857204
+      },
+      {
+        "step": 3200,
+        "loss": 0.00017170861246995628,
+        "gradient": 0.01503796223551035
+      },
+      {
+        "step": 3400,
+        "loss": 0.00013117365597281605,
+        "gradient": 0.010131226852536201
+      },
+      {
+        "step": 3600,
+        "loss": 0.00010762736201286316,
+        "gradient": 0.014069839380681515
+      },
+      {
+        "step": 3800,
+        "loss": 0.00011445688869571313,
+        "gradient": 0.015077468007802963
+      }
+    ],
+    "sha256": "0362c950b583ed5977d3e3e8fac7c1d26f3d8c31e6f9dd8d4c3281ee8b1cd1c3",
+    "initial": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/direct-transfer-20261103/A-prepare-01/job/ppo15-student-r0.pt",
+      "sha256": "0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12"
+    },
+    "force_columns_deleted": false
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/C-final-05/job/N505-training.json",
+    "updates": 4000,
+    "seed": 505,
+    "old_labels": 824,
+    "new_labels": 908,
+    "independent_episodes": [
+      "ppo15__source_faster",
+      "ppo15__source_local",
+      "ppo15__source_no_contact",
+      "ppo15__source_single",
+      "ppo15__source_slower",
+      "source_stop0",
+      "source_stop1",
+      "source_stop2",
+      "source_stop3",
+      "source_stop4",
+      "source_stop5"
+    ],
+    "phase_counts": {
+      "pre": 145,
+      "move": 580,
+      "hold": 306,
+      "recover": 660,
+      "decelerate": 41
+    },
+    "curve": [
+      {
+        "step": 0,
+        "loss": 0.014307123608887196,
+        "gradient": 0.2520313858985901
+      },
+      {
+        "step": 200,
+        "loss": 0.000307945825625211,
+        "gradient": 0.013117624446749687
+      },
+      {
+        "step": 400,
+        "loss": 0.0002999524585902691,
+        "gradient": 0.014407929033041
+      },
+      {
+        "step": 600,
+        "loss": 0.0002601005253382027,
+        "gradient": 0.015531339682638645
+      },
+      {
+        "step": 800,
+        "loss": 0.00017825665418058634,
+        "gradient": 0.013080553151667118
+      },
+      {
+        "step": 1000,
+        "loss": 0.0002837319334503263,
+        "gradient": 0.014049746096134186
+      },
+      {
+        "step": 1200,
+        "loss": 0.00022563969832845032,
+        "gradient": 0.015581940300762653
+      },
+      {
+        "step": 1400,
+        "loss": 0.00035898020723834634,
+        "gradient": 0.013602168299257755
+      },
+      {
+        "step": 1600,
+        "loss": 0.00013272764044813812,
+        "gradient": 0.014676174148917198
+      },
+      {
+        "step": 1800,
+        "loss": 0.00018602862837724388,
+        "gradient": 0.010415036231279373
+      },
+      {
+        "step": 2000,
+        "loss": 0.00018622211064212024,
+        "gradient": 0.014859744347631931
+      },
+      {
+        "step": 2200,
+        "loss": 0.00016029513790272176,
+        "gradient": 0.013775183819234371
+      },
+      {
+        "step": 2400,
+        "loss": 0.0001318887952947989,
+        "gradient": 0.01296128798276186
+      },
+      {
+        "step": 2600,
+        "loss": 0.00015101410099305212,
+        "gradient": 0.009843030944466591
+      },
+      {
+        "step": 2800,
+        "loss": 0.0001745802874211222,
+        "gradient": 0.008885396644473076
+      },
+      {
+        "step": 3000,
+        "loss": 0.0001492529991082847,
+        "gradient": 0.011531995609402657
+      },
+      {
+        "step": 3200,
+        "loss": 0.00021602345805149525,
+        "gradient": 0.011570258997380733
+      },
+      {
+        "step": 3400,
+        "loss": 0.000115206916234456,
+        "gradient": 0.007259373087435961
+      },
+      {
+        "step": 3600,
+        "loss": 0.00017732367268763483,
+        "gradient": 0.012567219324409962
+      },
+      {
+        "step": 3800,
+        "loss": 0.00015493616228923202,
+        "gradient": 0.014253774657845497
+      }
+    ],
+    "sha256": "038c218829f85ce0b661e38397c19121d5e49ec3ac38fde8c483d87f151893d6",
+    "initial": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/direct-transfer-20261103/A-prepare-01/job/ppo15-student-r0.pt",
+      "sha256": "0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12"
+    },
+    "force_columns_deleted": true
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/C-final-05/job/N506-training.json",
+    "updates": 4000,
+    "seed": 506,
+    "old_labels": 824,
+    "new_labels": 908,
+    "independent_episodes": [
+      "ppo15__source_faster",
+      "ppo15__source_local",
+      "ppo15__source_no_contact",
+      "ppo15__source_single",
+      "ppo15__source_slower",
+      "source_stop0",
+      "source_stop1",
+      "source_stop2",
+      "source_stop3",
+      "source_stop4",
+      "source_stop5"
+    ],
+    "phase_counts": {
+      "pre": 145,
+      "move": 580,
+      "hold": 306,
+      "recover": 660,
+      "decelerate": 41
+    },
+    "curve": [
+      {
+        "step": 0,
+        "loss": 0.015720665454864502,
+        "gradient": 0.2814651429653168
+      },
+      {
+        "step": 200,
+        "loss": 0.00036180525785312057,
+        "gradient": 0.016091391444206238
+      },
+      {
+        "step": 400,
+        "loss": 0.0002760963106993586,
+        "gradient": 0.017356310039758682
+      },
+      {
+        "step": 600,
+        "loss": 0.00026763073401525617,
+        "gradient": 0.014192473143339157
+      },
+      {
+        "step": 800,
+        "loss": 0.00023121305275708437,
+        "gradient": 0.015124128200113773
+      },
+      {
+        "step": 1000,
+        "loss": 0.00021891779033467174,
+        "gradient": 0.015038891695439816
+      },
+      {
+        "step": 1200,
+        "loss": 0.00027428631437942386,
+        "gradient": 0.015561678446829319
+      },
+      {
+        "step": 1400,
+        "loss": 0.00017135895905084908,
+        "gradient": 0.016724271699786186
+      },
+      {
+        "step": 1600,
+        "loss": 0.00024995827698148787,
+        "gradient": 0.012546264566481113
+      },
+      {
+        "step": 1800,
+        "loss": 0.00019573273311834782,
+        "gradient": 0.010967561043798923
+      },
+      {
+        "step": 2000,
+        "loss": 0.00018094616825692356,
+        "gradient": 0.015003186650574207
+      },
+      {
+        "step": 2200,
+        "loss": 0.00017927218868862838,
+        "gradient": 0.010728809051215649
+      },
+      {
+        "step": 2400,
+        "loss": 0.00015541492030024529,
+        "gradient": 0.01134675182402134
+      },
+      {
+        "step": 2600,
+        "loss": 0.00013082499208394438,
+        "gradient": 0.011707732453942299
+      },
+      {
+        "step": 2800,
+        "loss": 0.00019683848950080574,
+        "gradient": 0.010000353679060936
+      },
+      {
+        "step": 3000,
+        "loss": 0.00014658053987659514,
+        "gradient": 0.009330298751592636
+      },
+      {
+        "step": 3200,
+        "loss": 0.0002294169826200232,
+        "gradient": 0.015061823651194572
+      },
+      {
+        "step": 3400,
+        "loss": 0.0001643061696086079,
+        "gradient": 0.011584487743675709
+      },
+      {
+        "step": 3600,
+        "loss": 0.0001245053281309083,
+        "gradient": 0.013879863545298576
+      },
+      {
+        "step": 3800,
+        "loss": 0.00010241522977594286,
+        "gradient": 0.010627246461808681
+      }
+    ],
+    "sha256": "3102a118e304106b9ba5fc032f74f87e58491677ce93444fd56d571a26e74e06",
+    "initial": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/direct-transfer-20261103/A-prepare-01/job/ppo15-student-r0.pt",
+      "sha256": "0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12"
+    },
+    "force_columns_deleted": true
+  }
+]
