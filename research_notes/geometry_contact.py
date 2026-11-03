@@ -42,8 +42,8 @@ def install(task):
   return self.geometry_wrench.copy()
  t.measure=types.MethodType(measure,t);t.apply=types.MethodType(apply,t);t.measure()
  # Existing ComplianceEnv finally subtracts this exact returned aggregate once.
- if not getattr(e,'geometry_logged',False):
-  original=e.sim.simulate_at_each_physics_step
+ if True: # ComplianceEnv.reset replaces both tether and callback; install each reset.
+  original=e._physics_step
   def wrapped():
    try:return original()
    finally:
