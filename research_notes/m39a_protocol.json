@@ -352,7 +352,7 @@
       "sha256": "c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33"
     }
   },
-  "selection": "min mean(relative task cost)+0.5max(relative task cost), all 14 dev tasks; cost=force+3error_m+cap+.04heading_deg+20boundary. Baseline per condition D2; all frozen final models once, no final reselection.",
+  "selection": "min mean(relative task cost)+0.5max(relative task cost), all 14 dev tasks; cost=force+3error_m+cap+.04heading_deg+20boundary. Baseline per condition D2; all frozen final models once, no final reselection. No-force cost=.5 root_max_m+.02 torso_excursion_deg+20boundary; no released anchor score.",
   "extension": "At batch64 extend only if last3 dev best improves >=2% over batch40 best and no boundary; otherwise stop. End sooner on wall limit; no convergence claim.",
   "reward": "unchanged geometry_env per-tick reward; audited before PPO; no anchor/cap changes",
   "distribution": "uniform14 dev families with independent onset +-0.12,ramp +-.25,distance *[.9,1.1]; rotation *[.85,1.15], random sign for combined/sequence; zero stays zero. No task ID or future input."
