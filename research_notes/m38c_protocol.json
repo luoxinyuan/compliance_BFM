@@ -103,6 +103,10 @@
   "recovery_points": [
     [
       "pair_left",
+      3.8
+    ],
+    [
+      "pair_left",
       4.5
     ],
     [
@@ -125,5 +129,6 @@
       "straight",
       5.0
     ]
-  ]
+  ],
+  "recovery_reason": "Saved source-vs-C2 trajectories already diverge before4.25 contact; added3.8s left takeover before training, in addition to4.5/5.5/7/10. No sealed results accessed."
 }

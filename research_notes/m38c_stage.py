@@ -51,11 +51,13 @@ def study(env,model,contract,out):
   if not spec.get('rotation_deg'):return None
   q=env.sim.data.qpos.copy();j=mujoco.mj_name2id(env.sim.model,mujoco.mjtObj.mjOBJ_JOINT,'waist_yaw_joint');q[env.sim.model.jnt_qposadr[j]]+=np.deg2rad(spec['rotation_deg'])
   return model.goal_inference(goal_observation(env,q,np.zeros(env.sim.model.nv)))
- def rollout(name,spec,net=None,source=False,takeover=None,save_labels=False):
-  task.reset(spec,record=True,label=name);goal=source_setup(spec) if source else None;last_a=0.;rt=None;rv=0.;samples=[]
+ def rollout(name,spec,net=None,source=False,takeover=None,save_labels=False,replay=None):
+  task.reset(spec,record=True,label=name);goal=source_setup(spec) if source else None;last_a=0.;rt=None;rv=0.;samples=[];decision_index=0
   while not task.done:
    t=float(env.tether.time);x=task.features();prev=task.last_command.clone();obs={k:v.cpu().tolist() for k,v in env.obs.items() if k in env.keys}
-   if net is not None and (takeover is None or t<takeover-1e-8):raw=net.distribution(x).mean;z=direct_command(raw,env.standing)
+   if replay is not None:
+    raw=torch.tensor([replay[decision_index]['raw']],device=device);z=direct_command(raw,env.standing)
+   elif net is not None and (takeover is None or t<takeover-1e-8):raw=net.distribution(x).mean;z=direct_command(raw,env.standing)
    else:
     z=direct_command(old.distribution(x).mean,env.standing)
     if goal is not None:
@@ -66,7 +68,7 @@ def study(env,model,contract,out):
      else:a=0.
      z=spherical(z,goal,a)
     raw=z/16
-   c=len(task.controls);task.step(raw)
+   c=len(task.controls);task.step(raw);decision_index+=1
    if save_labels and (takeover is None or t>=takeover-1e-8):
     cc=task.controls[c:];count=len(cc);cc=cc+[cc[-1]]*(5-count);samples.append(dict(x=x[0].cpu().tolist(),z=z[0].cpu().tolist(),time=t,episode=name,obs=obs,previous_z=prev[0].cpu().tolist(),sequence=cc,valid_steps=count))
   row=task.save(out);summary.append(row);runner.write(out/'summaries.json',summary)
@@ -83,6 +85,9 @@ def study(env,model,contract,out):
   # Saved full trajectories allow exact fork localization before recovery.
  elif runner.ARGS.stage=='probe':
   prepare=Path(runner.ARGS.resume);visited=[];recover=[]
+  for side in ['left','right']:
+   noforce=read(prepare/('C2_'+side+'_noforce.json.gz'))
+   rollout('C2_noforce_command_replay_'+side,PLAN['dev']['pair_'+side],replay=noforce['decisions'])
   for name,take in cfg['recovery_points']:
    spec=PLAN['dev'][name];saved=read(prepare/('C2_'+name+'.json.gz')) if name!='straight' else read(P/'bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_straight.json.gz')
    label='recovery_'+name+'_'+str(take).replace('.','p')

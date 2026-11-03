@@ -69,6 +69,9 @@ def train(env,model,task,load,c2path,ds,out,cfg):
      ii=blocks[:,k];xx=x[ii].clone();xx[:,565:821]=pp/16
      zz=direct_command(net.distribution(xx).mean,env.standing);qs.append(qpred(zz,ii,pp));zs.append(zz);pp=zz
     zz=torch.stack(zs,1).reshape(-1,256);qq=torch.stack(qs,1).reshape(-1,5,29)
+    if step==0:
+     future_grad=torch.autograd.grad(qs[-1].square().mean(),zs[0],retain_graph=True)[0];assert torch.isfinite(future_grad).all() and future_grad.norm()>0
+     runner.write(out/'own-history-gradient.json',dict(last_qpd_loss_gradient_to_first_command=float(future_grad.norm()),physical_graph=False))
    else:
     ii=blocks.reshape(-1);zz=direct_command(net.distribution(x[ii]).mean,env.standing);qq=qpred(zz,ii,prev[ii])
    ii=blocks.reshape(-1);lq=((qq-qt[ii])[mask[ii]]/np.deg2rad(1)).square().mean();lz=(zz-target[ii]).square().mean();loss=lq+.1*lz
