@@ -4,16 +4,18 @@ import json,gzip,math,numpy as np
 
 def read(p):
  with gzip.open(p,'rt') as f:return json.load(f)
+def applied_phase(r,s):
+ t=r.get('force_time',r['time'])
+ # Rows are logged after the 5ms physics step. The last pre-contact row can
+ # have time==onset while its applied force_time was still before onset.
+ # Never concatenate that row with release and count the whole walk as recovery.
+ if not r['active']:return 'free_recovery' if t>=s['release']-1e-8 else 'pre'
+ if 'stop_time' in s:return 'move' if t<s['stop_time'] else 'decelerate' if t<s['stop_time']+s['deceleration'] else 'hold'
+ return 'move' if t<s['onset']+s['ramp'] else 'hold'
+
 def metrics(ep):
  ph=ep['physics'];ctl=ep.get('control',[]);s=ep['condition'];out={}
- def stage(r):
-  t=r.get('force_time',r['time'])
-  # Rows are logged after the 5ms physics step. The last pre-contact row can
-  # have time==onset while its applied force_time was still before onset.
-  # Never concatenate that row with release and count the whole walk as recovery.
-  if not r['active']:return 'free_recovery' if t>=s['release']-1e-8 else 'pre'
-  if 'stop_time' in s:return 'move' if t<s['stop_time'] else 'decelerate' if t<s['stop_time']+s['deceleration'] else 'hold'
-  return 'move' if t<s['onset']+s['ramp'] else 'hold'
+ stage=lambda r:applied_phase(r,s)
  for name in ['contact','move','decelerate','hold','free_recovery','pre']:
   rs=[r for r in ph if (r['active'] if name=='contact' else stage(r)==name)]
   if not rs:continue
