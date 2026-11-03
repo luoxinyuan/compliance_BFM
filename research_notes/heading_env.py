@@ -27,6 +27,12 @@ def install():
    return point,tether.force.copy()
   tether.measure=measure
  class HeadingTask(Original):
+  def save(self,out):
+   result=super().save(out)
+   moving=[r for r in self.physics if r['active'] and np.linalg.norm(r['anchor_velocity'][:2])>.02]
+   e=[math.atan2(math.sin(math.atan2(np.array(r['pelvis_matrix'])[1,0],np.array(r['pelvis_matrix'])[0,0])-math.atan2(r['anchor_velocity'][1],r['anchor_velocity'][0])),math.cos(math.atan2(np.array(r['pelvis_matrix'])[1,0],np.array(r['pelvis_matrix'])[0,0])-math.atan2(r['anchor_velocity'][1],r['anchor_velocity'][0]))) for r in moving]
+   result['moving_heading_rms_deg']=float(np.degrees(np.sqrt(np.mean(np.square(e))))) if e else None
+   return result
   def sample_spec(self):
    plan=json.loads(Path(__file__).with_name('heading_protocol.json').read_text());spec=dict(list(plan['heading_sources'].values())[int(self.rng.integers(len(plan['heading_sources'])))])
    return spec

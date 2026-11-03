@@ -38,8 +38,9 @@ def main():
  cache=path/'cache';cache.mkdir()
  for k in ['TMPDIR','TEMP','TMP','XDG_CACHE_HOME','MPLCONFIGDIR','TORCHINDUCTOR_CACHE_DIR','TRITON_CACHE_DIR','HF_HOME','PYTHONPYCACHEPREFIX']:
   dest=cache/k;dest.mkdir();env[k]=str(dest)
- command=[str(P/'.venv/bin/python'),'-u',str(ROOT/('research_notes/heading_transfer.py' if a.arm=='A' else 'research_notes/heading_stage.py')),'--kind',a.kind,'--stage',a.stage,'--gpu',before['uuid'],'--output',str(path/'job'),'--iterations',str(a.iterations),'--seed',str(a.seed),'--max-seconds',str(max(60,reservation-120))]
+ command=[str(P/'.venv/bin/python'),'-u',str(ROOT/('research_notes/heading_transfer.py' if a.arm=='A' else ('research_notes/heading_train.py' if a.stage=='train' else 'research_notes/heading_final.py' if a.stage=='final' else 'research_notes/heading_reuse_stage.py'))),'--kind',a.kind,'--stage',a.stage,'--gpu',before['uuid'],'--output',str(path/'job'),'--iterations',str(a.iterations),'--seed',str(a.seed),'--max-seconds',str(max(60,reservation-120))]
  env['HEADING_ARM']=a.arm
+ if a.arm=='B' and a.stage=='train':command+=['--arm','B1']
  if a.resume:command+=['--resume',a.resume]
  row['command']=command
  def limits():
