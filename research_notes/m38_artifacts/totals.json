@@ -1,0 +1,18 @@
+{
+  "job_wall_seconds": 1514.769954668358,
+  "output_bytes": 982548090,
+  "expert_updates": 6000,
+  "rl_decisions": 0,
+  "student_updates": 0,
+  "owned_remaining": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "episodes": 47,
+  "scope": "All supervised physical/train/render attempts including failures; lightweight offline file analysis is not an additional GPU job."
+}

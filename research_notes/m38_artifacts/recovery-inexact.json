@@ -1,0 +1,59 @@
+[
+  {
+    "condition": "pair_left",
+    "takeover": 7.0,
+    "prefix_max_abs": {
+      "qpos": 5.76638526234019e-07,
+      "qvel": 5.908628854151693e-06,
+      "force": 5.272636489361826e-06
+    },
+    "continued": {
+      "error_cm": 2.3435668543066632,
+      "sum_force_rms": 3.5246316724953775
+    },
+    "takeover_result": {
+      "error_cm": 1.610481047931204,
+      "sum_force_rms": 2.501674140758281
+    },
+    "scope": "Non-exact prefix, redundant normalization; superseded by corrected A-goal-07, not accepted exact recovery evidence.",
+    "exact_validation_passed": false
+  },
+  {
+    "condition": "pair_right",
+    "takeover": 7.0,
+    "prefix_max_abs": {
+      "qpos": 1.4841047817348851e-06,
+      "qvel": 1.0366582028988741e-05,
+      "force": 1.2179526473338198e-05
+    },
+    "continued": {
+      "error_cm": 1.0284393487157912,
+      "sum_force_rms": 1.6567791458635144
+    },
+    "takeover_result": {
+      "error_cm": 0.9304664003426,
+      "sum_force_rms": 1.4933997630645426
+    },
+    "scope": "Non-exact prefix, redundant normalization; superseded by corrected A-goal-07, not accepted exact recovery evidence.",
+    "exact_validation_passed": false
+  },
+  {
+    "condition": "straight",
+    "takeover": 5.0,
+    "prefix_max_abs": {
+      "qpos": 5.709474295290118e-07,
+      "qvel": 5.0263745373924085e-06,
+      "force": 3.399835861950251e-06
+    },
+    "continued": {
+      "error_cm": 10.143627108388142,
+      "sum_force_rms": 4.362949082789455
+    },
+    "takeover_result": {
+      "error_cm": 6.112179132807348,
+      "sum_force_rms": 3.6713583957461497
+    },
+    "scope": "Non-exact prefix, redundant normalization; superseded by corrected A-goal-07, not accepted exact recovery evidence.",
+    "exact_validation_passed": false
+  }
+]

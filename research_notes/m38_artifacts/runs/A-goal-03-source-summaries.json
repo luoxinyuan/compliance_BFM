@@ -1,0 +1,304 @@
+[
+  {
+    "label": "causal_pair_left",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.01762425121863454,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.5815901015796088,
+    "error_cm": 1.3865054951401246,
+    "cap_fraction": 0.0,
+    "episode_return": -3.5161116800390775,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 1200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 4.288136228608484,
+    "moving_heading_rms_deg": 11.241644127823786,
+    "yaw_moment_rms": 0.19003345695199192,
+    "work_j": 0.02597093923501233,
+    "sum_force_norm_rms": 2.143190149926716,
+    "actual_pelvis_turn_deg": -0.2928290164666103,
+    "actual_torso_turn_deg": 10.174307601843847
+  },
+  {
+    "label": "causal_pair_right",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.012044135159322896,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.9219593966312244,
+    "error_cm": 0.8097578532936898,
+    "cap_fraction": 0.0,
+    "episode_return": -1.18144618202944,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 1800,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 0.8856544548901685,
+    "moving_heading_rms_deg": 7.677243989752644,
+    "yaw_moment_rms": 0.060737666485846865,
+    "work_j": 0.003301926432753142,
+    "sum_force_norm_rms": 1.298729037473295,
+    "actual_pelvis_turn_deg": -4.62748473074549,
+    "actual_torso_turn_deg": -14.700153179794405
+  },
+  {
+    "label": "retain_stop_early",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 10.0,
+      "end": 15.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 7.2,
+      "deceleration": 0.8
+    },
+    "root_max_displacement": 0.38457159107467254,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.8000827197242755,
+    "error_cm": 6.684307829468585,
+    "cap_fraction": 0.3124456048738033,
+    "episode_return": -5.871725701636245,
+    "physics_steps": 2400,
+    "rl_decisions": 120,
+    "prefill_steps": 2400,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 6.092168880985367,
+    "moving_heading_rms_deg": 5.961086421708197,
+    "yaw_moment_rms": 0.547873127156563,
+    "work_j": 0.43280208302116535,
+    "sum_force_norm_rms": 3.8000827197242755,
+    "actual_pelvis_turn_deg": -6.61472565185063,
+    "actual_torso_turn_deg": -6.8907126423952425
+  },
+  {
+    "label": "retain_stop_late",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 12.600000000000001,
+      "end": 17.6,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 9.8,
+      "deceleration": 0.8
+    },
+    "root_max_displacement": 0.7655416095877664,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.66740577423951,
+    "error_cm": 6.082811559094323,
+    "cap_fraction": 0.2953864589574596,
+    "episode_return": -7.906241896638486,
+    "physics_steps": 2920,
+    "rl_decisions": 146,
+    "prefill_steps": 3000,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 5.467393909822393,
+    "moving_heading_rms_deg": 5.360824925516299,
+    "yaw_moment_rms": 0.4140988351790429,
+    "work_j": 0.6032466596637163,
+    "sum_force_norm_rms": 3.66740577423951,
+    "actual_pelvis_turn_deg": -5.98659807841136,
+    "actual_torso_turn_deg": -5.907537193680022
+  }
+]

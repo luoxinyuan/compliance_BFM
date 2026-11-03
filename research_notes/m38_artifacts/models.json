@@ -1,0 +1,12 @@
+{
+  "retained-r1": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-02/job/retained-r1.pt",
+    "sha256": "7e09d30f8bda647b49c85124c6121af6c632547d1c135d032ebe960277e6e68a",
+    "runtime": "fa11b4cc54bc5a57f3e15f58ad903efad01819b7"
+  },
+  "retained-r2": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/retained-r2.pt",
+    "sha256": "310f744427bbe48ab914699044d678fe97d729b6bac96b98173b02dd6cba47f1",
+    "runtime": "02751071de6ebdc2e292c46c85833146caec6c58"
+  }
+}

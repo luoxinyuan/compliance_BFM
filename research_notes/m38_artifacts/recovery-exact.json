@@ -1,0 +1,56 @@
+[
+  {
+    "condition": "pair_left",
+    "takeover": 7.0,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 2.3435668543066632,
+      "sum_force_rms": 3.5246316724953775
+    },
+    "takeover_result": {
+      "error_cm": 1.6053165370031979,
+      "sum_force_rms": 2.490696011410242
+    },
+    "scope": "Only this exact real prefix/state; no claim all later states recoverable."
+  },
+  {
+    "condition": "pair_right",
+    "takeover": 7.0,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 1.0284393487157912,
+      "sum_force_rms": 1.6567791458635144
+    },
+    "takeover_result": {
+      "error_cm": 0.9321502689349751,
+      "sum_force_rms": 1.4960890838823115
+    },
+    "scope": "Only this exact real prefix/state; no claim all later states recoverable."
+  },
+  {
+    "condition": "straight",
+    "takeover": 5.0,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 10.143627108388142,
+      "sum_force_rms": 4.362949082789455
+    },
+    "takeover_result": {
+      "error_cm": 6.376241793716278,
+      "sum_force_rms": 4.14824749285038
+    },
+    "scope": "Only this exact real prefix/state; no claim all later states recoverable."
+  }
+]

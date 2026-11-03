@@ -1,0 +1,16 @@
+{
+  "status": "completed",
+  "model_loaded": true,
+  "original_wrapper_used": true,
+  "bfm_updates": 0,
+  "student_optimizer_updates": 0,
+  "study": {
+    "status": "completed",
+    "decisions": 0,
+    "expert_supervised_updates": 0,
+    "student_optimizer_updates": 0,
+    "episodes": 3,
+    "elapsed_s": 153.44839911302552
+  },
+  "original_bfm_unchanged": true
+}

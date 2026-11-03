@@ -1,0 +1,121 @@
+{
+  "r1": {
+    "qPD_over1deg_for100ms": {
+      "time": 4.879999999999918,
+      "value": 1.1242824345563027
+    },
+    "actual_q_over1deg_for100ms": {
+      "time": 4.929999999999917,
+      "value": 1.0088404529238493
+    },
+    "root_over1cm_for100ms": {
+      "time": 6.354999999999887,
+      "value": 1.025669775185298
+    },
+    "caveat": "Descriptive thresholds; diverged closed-loop paths no longer same-state. Same-state counterqueries logged separately."
+  },
+  "r2": {
+    "qPD_over1deg_for100ms": {
+      "time": 4.31999999999993,
+      "value": 1.072363605354097
+    },
+    "actual_q_over1deg_for100ms": {
+      "time": 4.914999999999917,
+      "value": 1.0662007284956716
+    },
+    "root_over1cm_for100ms": {
+      "time": 6.244999999999889,
+      "value": 1.0201760758028942
+    },
+    "caveat": "Descriptive thresholds; diverged closed-loop paths no longer same-state. Same-state counterqueries logged separately."
+  },
+  "r2_T30prefix": {
+    "qPD_over1deg_for100ms": {
+      "time": 5.0999999999999135,
+      "value": 1.1041346571652344
+    },
+    "actual_q_over1deg_for100ms": {
+      "time": 5.159999999999912,
+      "value": 1.016337191802298
+    },
+    "root_over1cm_for100ms": {
+      "time": 5.979999999999895,
+      "value": 1.0134726612592029
+    },
+    "caveat": "Descriptive thresholds; diverged closed-loop paths no longer same-state. Same-state counterqueries logged separately."
+  },
+  "exact_label_consistency": {
+    "old_goal_vs_T30": {
+      "input_max_abs": 0.0,
+      "bfm_obs_max_abs": 0.0,
+      "target_z_max_abs": 0.11989498138427734,
+      "target_angle_deg": 2.2362654951430736
+    },
+    "causal_source_vs_T30": {
+      "input_max_abs": 0.0,
+      "bfm_obs_max_abs": 0.0,
+      "target_z_max_abs": 0.0,
+      "target_angle_deg": 0.0
+    }
+  },
+  "T30_straight_same_state": {
+    "contact_onset": 4.25,
+    "pre": {
+      "z_angle_deg": 1.0716948784314668,
+      "qpd_rms_deg": 0.009640177783484642,
+      "first_tick_qpd_rms_deg": 0.0018967298271421057,
+      "nearest_train_input_rms": 0.00017077865889475035
+    },
+    "later": {
+      "z_angle_deg": 2.3254791409582705,
+      "qpd_rms_deg": 0.047757615926801354,
+      "first_tick_qpd_rms_deg": 0.011439461239796082,
+      "nearest_train_input_rms": 0.00021850809866304485
+    }
+  },
+  "T30_prefix_straight_same_state": {
+    "contact_onset": 4.25,
+    "pre": {
+      "z_angle_deg": 1.0716948784314668,
+      "qpd_rms_deg": 0.009640177783484642,
+      "first_tick_qpd_rms_deg": 0.0018967298271421057,
+      "nearest_train_input_rms": 0.00017077865889475035
+    },
+    "later": {
+      "z_angle_deg": 4.499571433743915,
+      "qpd_rms_deg": 0.2965981259539321,
+      "first_tick_qpd_rms_deg": 0.05237214201494951,
+      "nearest_train_input_rms": 0.348917633625427
+    }
+  },
+  "sealed_left_r2_same_state": {
+    "contact_onset": 4.8,
+    "pre": {
+      "z_angle_deg": 1.8712811658256931,
+      "qpd_rms_deg": 0.0612300394200965,
+      "first_tick_qpd_rms_deg": 0.012242774148226568,
+      "nearest_train_input_rms": 0.028891476637095605
+    },
+    "later": {
+      "z_angle_deg": 16.695115096228463,
+      "qpd_rms_deg": 0.9094722623271602,
+      "first_tick_qpd_rms_deg": 0.1804824651351997,
+      "nearest_train_input_rms": 0.16992554409163338
+    }
+  },
+  "sealed_right_r2_same_state": {
+    "contact_onset": 4.8,
+    "pre": {
+      "z_angle_deg": 1.8712811658256931,
+      "qpd_rms_deg": 0.0612300394200965,
+      "first_tick_qpd_rms_deg": 0.012242774148226568,
+      "nearest_train_input_rms": 0.028891476637095605
+    },
+    "later": {
+      "z_angle_deg": 18.261731358936856,
+      "qpd_rms_deg": 0.976056982576847,
+      "first_tick_qpd_rms_deg": 0.19519340516999364,
+      "nearest_train_input_rms": 0.15655885008828982
+    }
+  }
+}

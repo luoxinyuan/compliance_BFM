@@ -1,0 +1,19 @@
+{
+  "old_goal_vs_T30": {
+    "time_a": 2.9999999999999583,
+    "time_b": 2.9999999999999583,
+    "input_max_abs": 0.0,
+    "bfm_obs_max_abs": 0.0,
+    "target_z_max_abs": 0.11989498138427734,
+    "target_angle_deg": 2.2362654951430736
+  },
+  "causal_source_vs_T30": {
+    "time_a": 2.9999999999999583,
+    "time_b": 2.9999999999999583,
+    "input_max_abs": 0.0,
+    "bfm_obs_max_abs": 0.0,
+    "target_z_max_abs": 0.0,
+    "target_angle_deg": 0.0
+  },
+  "note": "Elementwise raw input/BFM observation verification supersedes tiny nonzero CUDA cdist nearest-distance numerical cancellation. Identical input with different old labels; corrected source first labels identical."
+}

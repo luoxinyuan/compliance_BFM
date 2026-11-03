@@ -1,0 +1,104 @@
+[
+  {
+    "name": "01-left-rotation-source-vs-learned",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/videos/01-left-rotation-source-vs-learned.mp4",
+    "sha256": "2261ee519a0377bad930e56f822205292904e9e63ee90cc7dc5a32f43f4835c9",
+    "frames": 402,
+    "fps": 25,
+    "duration": 16.08,
+    "seconds": 8.378020138014108,
+    "sides": [
+      {
+        "title": "Causal native-goal source | left 15 deg | total cap 5N",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/causal_pair_left.json.gz",
+        "sha256": "281bc5e029024108ab12a3544c046588b03019278a1e5ad2e998882a2b393141"
+      },
+      {
+        "title": "M38 learned Direct r2 | left 15 deg | inspect torso AND pelvis",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/retained_pair_left.json.gz",
+        "sha256": "a315f1f78b8d16aa2cad157857d7afcabe3f5decb551a8469045d80a233a2a56"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "02-right-rotation-source-vs-learned",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/videos/02-right-rotation-source-vs-learned.mp4",
+    "sha256": "4153989380a1eef77e4c9f854c37ff48c320b1c47735b4e1a4cd602c5ca2959b",
+    "frames": 402,
+    "fps": 25,
+    "duration": 16.08,
+    "seconds": 9.462724000914022,
+    "sides": [
+      {
+        "title": "Causal native-goal source | right 15 deg | total cap 5N",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/causal_pair_right.json.gz",
+        "sha256": "46852dfe377e1ef718086ae173cc8fc2d515a40321fd545b5ad147b854d979c2"
+      },
+      {
+        "title": "M38 learned Direct r2 | right 15 deg | inspect torso AND pelvis",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/retained_pair_right.json.gz",
+        "sha256": "0685f7f693e4d374ccea37335fb6755efbc41bf2d57e134ddddd3eb0e5777cea"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "03-old-walking-retention-boundary",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/videos/03-old-walking-retention-boundary.mp4",
+    "sha256": "732013874a1bdd03666b0faa02b116c48b444d5e5c334ddbfcc15636d053def8",
+    "frames": 402,
+    "fps": 25,
+    "duration": 16.08,
+    "seconds": 8.435059824027121,
+    "sides": [
+      {
+        "title": "Frozen T30 | original straight baseline",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-04/job/T30_straight.json.gz",
+        "sha256": "43a7178224bd5cca6f8abcaf16d836ca0f661d3f82dfb48bd484cadd9766bf14"
+      },
+      {
+        "title": "M38 r2 | old walking retention failure | NOT promoted",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/retained_straight.json.gz",
+        "sha256": "90b79ebd03bf56ae493c0a6d08f31cf62094b0d01aba738b74efb7dafa9e87cd"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  }
+]
