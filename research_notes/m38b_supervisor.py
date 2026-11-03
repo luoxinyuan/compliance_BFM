@@ -18,8 +18,8 @@ def ledger():
   yield data
   write(path,data)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--kind',choices=['structured','direct'],required=True);p.add_argument('--stage',choices=['prepare','train','final','probe'],required=True);p.add_argument('--gpu-index',type=int,required=True);p.add_argument('--seed',type=int,default=101);p.add_argument('--iterations',type=int,default=20);p.add_argument('--seconds',type=int,default=2400);p.add_argument('--resume');a=p.parse_args()
- assert not git('status','--porcelain');assert git('branch','--show-current').startswith('gaoe05/m38b-rotation')
+ p=argparse.ArgumentParser();p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--kind',choices=['structured','direct'],required=True);p.add_argument('--stage',choices=['prepare','train','final','probe','diagnose'],required=True);p.add_argument('--gpu-index',type=int,required=True);p.add_argument('--seed',type=int,default=101);p.add_argument('--iterations',type=int,default=20);p.add_argument('--seconds',type=int,default=2400);p.add_argument('--resume');a=p.parse_args()
+ assert not git('status','--porcelain');assert git('branch','--show-current').startswith('gaoe05/m38b-')
  plan=json.loads((ROOT/'research_notes/m38b_protocol.json').read_text());RUN.mkdir(exist_ok=True)
  before=snapshot(a.gpu_index);assert before['used_mib']<100 and before['utilization']<5, 'Use an actually idle GPU'
  offset={'A':8,'B':24,'C':40}[a.arm];affinity=sorted(os.sched_getaffinity(0))[offset:offset+8]
@@ -38,7 +38,7 @@ def main():
  cache=path/'cache';cache.mkdir()
  for k in ['TMPDIR','TEMP','TMP','XDG_CACHE_HOME','MPLCONFIGDIR','TORCHINDUCTOR_CACHE_DIR','TRITON_CACHE_DIR','HF_HOME','PYTHONPYCACHEPREFIX']:
   dest=cache/k;dest.mkdir();env[k]=str(dest)
- command=[str(P/'.venv/bin/python'),'-u',str(ROOT/'research_notes/m38b_stage.py'),'--kind','direct','--stage',a.stage,'--gpu',before['uuid'],'--output',str(path/'job'),'--iterations','0','--seed',str(a.seed),'--max-seconds',str(max(60,reservation-120))]
+ command=[str(P/'.venv/bin/python'),'-u',str(ROOT/('research_notes/m38b_diagnostics.py' if a.stage=='diagnose' else 'research_notes/m38b_stage.py')),'--kind','direct','--stage',a.stage,'--gpu',before['uuid'],'--output',str(path/'job'),'--iterations','0','--seed',str(a.seed),'--max-seconds',str(max(60,reservation-120))]
  env['M38B_ARM']={'A':'C0','B':'C1','C':'C2'}[a.arm]
  if a.resume:command+=['--resume',a.resume]
  row['command']=command
