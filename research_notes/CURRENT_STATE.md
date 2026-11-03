@@ -1,3 +1,17 @@
+# M39-A 当前执行入口（2026-11-04）
+
+用户新授权 **需求分配与真实闭环优化**，不是继续左转资格检查。M38-C双向能力有限成立的结论及旧失败保留，下方为前阶段快照。
+
+[当前阶段 Issue39](https://github.com/GaoE05/robot-research-bridge/issues/39)。独立分支 gaoe05/m39a-demand-allocation；seed3901/3902独立worktree。D2 SHA 9e4630896f9849c7ae1f68fa0058d6e23e1792095ef2a362dfd30c17baccf7f5 已实核。T30/S0/D0/D1/D2及原权重均保留。
+
+已启动：GPU1上的冻结D2/T30需求分布物理与奖励复算、有效覆盖数据采集，runtime 1f2cccab6286171904900ddd4b97a2494040bd0c。尚未启动：3000更新覆盖监督、两个独立seed真实PPO及新封存终检；方案存在不代表训练成功。
+
+预算：24000累计job秒/15GiB，最多3空闲GPU，PPO每seed≤98304决策，监督总≤6000。本轮初始核验GPU1–4空闲、CPU98%idle、RAM912GiB、IOwait0。新job必须再次核验。运行根 bridge-v2-owned/runs/m39a-demand-20261104；查看compute-ledger.json确定实时进程，不重启已消费任务。
+
+固定1088D特权Direct、BFM/PD/总5N。零需求、无接触、小角度旋转、平移、组合和同回合需求变化；无未来轨迹/任务ID/clock输入。训练期可读当前特权需求，不能称部署Student。当前不做Student/PPO方法对比或真机。完成后统一结项；不将旧阶段停止说明解释为禁止本轮已授权PPO。
+
+---
+
 # CURRENT_STATE — 新会话先读
 
 最后核对：2026-11-04（北京时间）。**M38-C已完成并停止。D0/D2在同一个checkpoint实现开发及新±12°正确接触转腰；完整双向保旧与连续转换仍未证明。** 无训练排队，无PPO、Student蒸馏或M39训练。旧T30/S0、C0/C1/C2及全部失败不覆盖。

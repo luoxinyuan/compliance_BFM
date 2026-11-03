@@ -39,7 +39,7 @@ def main():
  cache=path/'cache';cache.mkdir()
  for k in ['TMPDIR','TEMP','TMP','XDG_CACHE_HOME','MPLCONFIGDIR','TORCHINDUCTOR_CACHE_DIR','TRITON_CACHE_DIR','HF_HOME','PYTHONPYCACHEPREFIX']:
   dest=cache/k;dest.mkdir();env[k]=str(dest)
- command=[str(P/'.venv/bin/python'),'-u',str(ROOT/('research_notes/m39a_ppo.py' if a.stage=='ppo' else 'research_notes/m39a_stage.py')),'--kind','direct','--stage',a.stage,'--gpu',before['uuid'],'--output',str(path/'job'),'--iterations',str(a.iterations),'--seed',str(a.seed),'--max-seconds',str(max(60,reservation-120))]
+ command=[str(P/'.venv/bin/python'),'-u',str(ROOT/('research_notes/m39a_ppo.py' if a.stage=='ppo' else 'research_notes/m39a_coverage.py' if a.stage=='train' else 'research_notes/m39a_stage.py')),'--kind','direct','--stage',a.stage,'--gpu',before['uuid'],'--output',str(path/'job'),'--iterations',str(a.iterations),'--seed',str(a.seed),'--max-seconds',str(max(60,reservation-120))]
  env['M39A_ARM']=a.arm
  if a.resume:command+=['--resume',a.resume]
  row['command']=command

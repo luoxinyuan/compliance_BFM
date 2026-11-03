@@ -61,7 +61,7 @@ def main():
   import gzip
   ds=Path(os.environ['M39A_DATA'])
   with gzip.open(ds/'coverage-data.json.gz','rt') as f:data=json.load(f)
-  data=[r for r in data if not r['episode'].startswith('D2_') or sum(v*v for v in r['x'][1041:1050])**.5>.02]
+  data=[r for r in data if not r['episode'].startswith('D2_') or (all(c['post_active'] for c in r['sequence']) and sum(v*v for v in r['x'][1041:1050])**.5>.02)]
   rx=torch.tensor([r['x'] for r in data],device='cuda');ry=torch.tensor([r['raw'] for r in data],device='cuda');replay=(rx,ry)
   atomic(a.output/'replay.json',dict(samples=len(rx),data_sha=sha(ds/'coverage-data.json.gz'),weight=plan['training']['bc_weight'],scope='T30 reliable source domains and D2 rotation under actual load; no combined labels'))
   history=[]
