@@ -1,0 +1,129 @@
+{
+  "resources": {
+    "sum_supervised_process_wall_seconds": 18000,
+    "max_concurrent_gpus": 3,
+    "stage_output_gib": 10
+  },
+  "training": {
+    "max_total_rl_decisions": 0
+  },
+  "seed": 3803,
+  "lr": 1e-05,
+  "expert_supervised_limit": 9000,
+  "updates_per_arm": 3000,
+  "batch": 160,
+  "arms": {
+    "D0": "C2 continuation of original causal data, five-tick qPD+.1z; independent frames sampled in five-decision blocks",
+    "D1": "D0 with18.75% validated C2 recovery data; same160 frames and3000updates",
+    "D2": "D1 exact same batches, five-decision own-predicted-z recurrence; physical/proprio/force/action observations remain recorded, NOT differentiable physics"
+  },
+  "selection": "All three fixed3000 endpoints evaluated once; no checkpoint selection or further training based on sealed tests.",
+  "sealed": {
+    "left_new": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 12.0,
+      "curvature": 0,
+      "onset": 4.45,
+      "ramp": 8.05,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "right_new": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -12.0,
+      "curvature": 0,
+      "onset": 4.45,
+      "ramp": 8.05,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "combined_new": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.17,
+      "rotation_deg": 10.0,
+      "curvature": 0,
+      "onset": 4.45,
+      "ramp": 8.05,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "zero_new": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 0.0,
+      "curvature": 0,
+      "onset": 4.45,
+      "ramp": 8.05,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "left_noforce_new": {
+      "geometry": "torso_pair",
+      "enabled": false,
+      "distance": 0,
+      "rotation_deg": 12.0,
+      "curvature": 0,
+      "onset": 4.45,
+      "ramp": 8.05,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "right_noforce_new": {
+      "geometry": "torso_pair",
+      "enabled": false,
+      "distance": 0,
+      "rotation_deg": -12.0,
+      "curvature": 0,
+      "onset": 4.45,
+      "ramp": 8.05,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  "scope": "Expert only; no PPO/Student. D2 fixed physical replay with own command recurrence is not differentiable physical rollout. Contact causality in privileged policy is not force-only identifiability.",
+  "probe_scope": "Only native source qualification: torso-pair forward movement first, add smooth +/-10deg rotation8-10s, remove11-13s while forward movement continues. Not learned switching. No force/PD/BFM change.",
+  "recovery_points": [
+    [
+      "pair_left",
+      4.5
+    ],
+    [
+      "pair_left",
+      5.5
+    ],
+    [
+      "pair_left",
+      7.0
+    ],
+    [
+      "pair_left",
+      10.0
+    ],
+    [
+      "pair_right",
+      7.0
+    ],
+    [
+      "straight",
+      5.0
+    ]
+  ]
+}
