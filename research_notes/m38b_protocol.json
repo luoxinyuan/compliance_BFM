@@ -1,0 +1,91 @@
+{
+  "resources": {
+    "sum_supervised_process_wall_seconds": 18000,
+    "max_concurrent_gpus": 3,
+    "stage_output_gib": 10
+  },
+  "training": {
+    "max_total_rl_decisions": 0
+  },
+  "seed": 3801,
+  "lr": 1e-05,
+  "expert_supervised_limit": 9000,
+  "updates_per_arm": 3000,
+  "batch": 160,
+  "arms": {
+    "C0": "original endpoint qPD/(1deg)^2 + .1 z MSE",
+    "C1": "five native substeps mean qPD/(1deg)^2 + same .1 z MSE; no other change",
+    "C2": "C1 + fixed20% physically successful actual recovery trajectory labels; same total batch and updates"
+  },
+  "selection": "All fixed3000 endpoints reported. Presealed evaluate all, no test-dependent reselection/retraining. Development recommendation only: reject safety/wrong-direction; compare worst relative old-task error and force, then mean. No hard millimeter criterion.",
+  "sealed": {
+    "left_new": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 11.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "right_new": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -11.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "combined_new": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.18,
+      "rotation_deg": 9.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  "probes": {
+    "moving_left": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": 10.0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "moving_right": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": -10.0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  "scope": "Expert only, no PPO or Student. Teacher recovery branches not blanket validity of r2 states."
+}
