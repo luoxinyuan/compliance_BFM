@@ -13,7 +13,9 @@ for key,s in {**PLAN['dev'],**PLAN['sealed']}.items():
   p,v,a,w=frame(s,t);l=frame(s,t-1e-5);r=frame(s,t+1e-5);err+=[max(np.max(np.abs((r[0]-l[0])/2e-5-v)),abs((r[2]-l[2])/2e-5-w))]
  report['frame'][key]=max(err)
 assert max(report['frame'].values())<1e-4
-for path in sorted(out.glob('*.json.gz')):
+# Only committed summary entries: a concurrent gzip writer is not a finished episode.
+completed=json.loads((out/'summaries.json').read_text())
+for path in [out/(r['label']+'.json.gz') for r in completed]:
  if 'labels' in path.name or path.name=='coverage-data.json.gz':continue
  with gzip.open(path,'rt') as f:e=json.load(f)
  if 'physics' not in e:continue

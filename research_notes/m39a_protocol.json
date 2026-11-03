@@ -21,7 +21,8 @@
     "bc_weight": 0.002,
     "supervised_updates": 3000,
     "supervised_max": 6000,
-    "supervised_lr": 1e-05
+    "supervised_lr": 1e-05,
+    "rollback": "Preserve all candidates; restore development best parameters+Adam on physical boundary, wrong developed \u00b115 sign, or worst cost>1.75initial; halve actor nominal lr; after3 stop. No heldout use."
   },
   "dev": {
     "straight": {

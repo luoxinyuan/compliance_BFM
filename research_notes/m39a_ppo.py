@@ -64,10 +64,10 @@ def main():
   data=[r for r in data if not r['episode'].startswith('D2_') or (all(c['post_active'] for c in r['sequence']) and sum(v*v for v in r['x'][1041:1050])**.5>.02)]
   rx=torch.tensor([r['x'] for r in data],device='cuda');ry=torch.tensor([r['raw'] for r in data],device='cuda');replay=(rx,ry)
   atomic(a.output/'replay.json',dict(samples=len(rx),data_sha=sha(ds/'coverage-data.json.gz'),weight=plan['training']['bc_weight'],scope='T30 reliable source domains and D2 rotation under actual load; no combined labels'))
-  history=[]
+  history=[];rollbacks=0
   status='running'
   for it in range(iterations):
-   if time.monotonic()-started>a.max_seconds:status='time_budget';break
+   if time.monotonic()-started>a.max_seconds-240:status='time_budget';break
    t=time.monotonic();w=weights()
    for c in cs:c.send(dict(op='rollout',steps=256,version=it,policy=w))
    results=[receive(c,p,1200) for c,p in zip(cs,ps)];sample_s=time.monotonic()-t
@@ -79,10 +79,20 @@ def main():
    atomic(a.output/'status.json',dict(status=status,**row));save('latest.pt');print('NARROW_UPDATE',iteration,decisions,'force',round(row['force_rms'],3),'rate',round(row['decisions_per_second'],2),'KL',u['epochs'][-1]['joint_gaussian_KL'],flush=True)
    if iteration%plan['training']['evaluate_every']==0:
     rows,score=dev();candidate=save(f'candidate-{iteration:04d}.pt')
-    if score<best:
+    from m39a_metrics import cost
+    worst=max(cost(r)/max(baseline_scores[r['label']],.1) for r in rows)
+    reversed_rotation=any((r['label']=='pair_left__mean' and r['actual_torso_turn_deg']<=0) or (r['label']=='pair_right__mean' and r['actual_torso_turn_deg']>=0) for r in rows)
+    destructive=any(r['boundary'] for r in rows) or worst>1.75 or reversed_rotation
+    if score<best and not destructive:
      best=score;shutil.copyfile(candidate,a.output/'best.pt');atomic(a.output/'selection.json',dict(iteration=iteration,score=score,sha256=sha(a.output/'best.pt'),evaluation=f'dev-{iteration:04d}/summary.json',rule=plan['selection']))
     atomic(a.output/f'dev-{iteration:04d}/score.json',dict(score=score,best=best));print('NARROW_DEV',iteration,score,best,flush=True)
     history.append(dict(iteration=iteration,score=score,best=best))
+    if destructive:
+     prior=torch.load(a.output/'best.pt',map_location='cuda',weights_only=True);net.load_state_dict(prior['state_dict']);opt.load_state_dict(prior['optimizer']);rollbacks+=1
+     lr=plan['training']['actor_lr']*(.5**rollbacks);opt.param_groups[0]['lr']=lr;opt.param_groups[0]['nominal_actor_lr']=lr
+     atomic(a.output/f'rollback-{iteration:04d}.json',dict(reason='physical boundary, reversed developed rotation, or worst cost >1.75 initial',worst_ratio=worst,reversed_rotation=reversed_rotation,restored_iteration=prior['iteration'],restored_sha256=sha(a.output/'best.pt'),new_actor_lr=lr,sampler_history='real current states retained, new batch under restored distribution'))
+     if rollbacks>=3:status='completed_repeated_development_regression';break
+
     if iteration>=64:
      oldbest=min(r['best'] for r in history if r['iteration']<=40)
      extend=best<.98*oldbest and all(r['boundary'] is None for r in rows)
