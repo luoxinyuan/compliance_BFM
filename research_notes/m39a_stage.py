@@ -22,7 +22,16 @@ def study(env,model,contract,out):
  def load(ident):
   assert runner.sha(ident['path'])==ident['sha256'];ck=torch.load(ident['path'],map_location=device,weights_only=True);n=Expert(1088,'direct').to(device);expand(n,ck);return n.eval().requires_grad_(False)
  nets={k:load(v) for k,v in PLAN['teachers'].items()};summary=[];alllabels=[]
+ reused=Path(runner.ARGS.resume) if runner.ARGS.stage=='prepare' and runner.ARGS.resume else None
+ prior={r['label']:r for r in read(reused/'summaries.json')} if reused else {}
  def run(label,spec,net,labels=False,source=False,sampled=False):
+  if label in prior:
+   row=prior[label];assert row['condition']==spec
+   for suffix in ['.json.gz','-labels.json.gz']:
+    src=reused/(label+suffix)
+    if src.exists():(out/(label+suffix)).symlink_to(src)
+   summary.append(row);runner.write(out/'summaries.json',summary)
+   return row,read(reused/(label+'-labels.json.gz')) if labels else []
   task.reset(spec,record=True,label=label);goal=None;last_a=0.;rt=None;rv=0.;ss=[]
   if source:
    q=env.sim.data.qpos.copy();j=mujoco.mj_name2id(env.sim.model,mujoco.mjtObj.mjOBJ_JOINT,'waist_yaw_joint');q[env.sim.model.jnt_qposadr[j]]+=np.deg2rad(spec['rotation_deg']);goal=model.goal_inference(goal_observation(env,q,np.zeros(env.sim.model.nv)))
@@ -55,7 +64,7 @@ def study(env,model,contract,out):
    row,ss=run('source_'+key,PLAN['dev'][key],nets['T30'],labels=True,source=True)
    b=next(r for r in summary if r['label']=='T30_'+key)
    ok=row['boundary'] is None and row['actual_torso_turn_deg']*PLAN['dev'][key]['rotation_deg']>0 and row['error_cm']<b['error_cm'] and row['sum_force_norm_rms']<b['sum_force_norm_rms']
-   runner.write(out/(key+'-source-quality.json'),dict(accepted=ok,source=row,baseline=b))
+   runner.write(out/(key+'-source-quality.json'),dict(accepted=bool(ok),source=row,baseline=b))
    if ok:alllabels+=ss
   for key in ['zero','pair_left','pair_right','sequence']:run('D2_sampled_'+key,PLAN['dev'][key],nets['D2'],sampled=True)
   for key in ['zero','pair_left','pair_right','straight']:run('D0_'+key,PLAN['dev'][key],nets['D0'])
