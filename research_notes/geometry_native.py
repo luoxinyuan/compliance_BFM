@@ -11,7 +11,7 @@ def study(env,model,contract,out):
  from m11_runtime_speed import install
  from m9_cyclic import sample
  from locomotion_rollout import spherical
- runner.write(out/'runtime-speed.json',install(env));torch.set_num_threads(1);torch.set_grad_enabled(False);task=Task(env,model,contract,1203);obs=task.reset();identity=PLAN['teachers']['initial'];assert runner.sha(identity['path'])==identity['sha256'];ck=torch.load(identity['path'],map_location=env.standing.device,weights_only=True)
+ runner.write(out/'runtime-speed.json',install(env));torch.set_num_threads(1);torch.set_grad_enabled(False);task=Task(env,model,contract,1203);obs=task.reset(PLAN["single"]);identity=PLAN['teachers']['initial'];assert runner.sha(identity['path'])==identity['sha256'];ck=torch.load(identity['path'],map_location=env.standing.device,weights_only=True)
  net=Expert(obs.shape[-1],'direct').to(obs.device);expand(net,ck);net.eval().requires_grad_(False);summary=[]
  if runner.ARGS.resume:
   ck=torch.load(runner.ARGS.resume,map_location=obs.device,weights_only=True);net.load_state_dict(ck['state_dict'])
