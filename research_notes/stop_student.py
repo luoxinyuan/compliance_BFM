@@ -98,14 +98,17 @@ def study(env,model,contract,out):
     label=f'{arm}{seed}';net=fit(data_old,extra,False,label,seed);steps+=PLAN['student']['steps']
     for name,spec in {**PLAN['dev'],**PLAN['regression'],**PLAN['final']}.items():run(label+'_'+name,spec,teacher,net)
  elif mode=='final':
-  ledger=json.loads((RUN/'compute-ledger.json').read_text());source=next(Path(r['path'])/'job' for r in ledger['attempts'] if r['arm']=='A' and r.get('result',{}).get('status')=='completed')
-  data_new=read(source/'stop-dataset.json.gz');data_old=olddata()
+  ledger=json.loads((RUN/'compute-ledger.json').read_text());source=next(Path(r['path'])/'job' for r in ledger['attempts'] if r['arm']=='A' and (Path(r['path'])/'job/dataset-identity.json').exists())
+  identity=json.loads((source/'dataset-identity.json').read_text());assert runner.sha(source/'stop-dataset.json.gz')==identity['sha256'];data_new=read(source/'stop-dataset.json.gz');data_old=olddata();runner.write(out/'frozen-data-identity.json',identity)
   for seed in PLAN['student']['seeds']:
    label=f'N{seed}';net=fit(data_old,data_new,True,label,seed);steps+=PLAN['student']['steps']
    for name,spec in {**PLAN['dev'],**PLAN['regression'],**PLAN['final']}.items():run(label+'_'+name,spec,teacher,net,noforce=True)
   # Fixed first update seed, never choose by final test.
-  bpath=source/'B505.pt';covered=load(dict(path=str(bpath),sha256=runner.sha(bpath)));r0=load(PLAN['r0']['ppo15'])
-  for label,net in [('r0',r0),('B505',covered)]:
+  bpath=source/'B505.pt';r0=load(PLAN['r0']['ppo15']);stress_models=[('r0',r0)]
+  if (source/'B505-training.json').exists():
+   bsha=json.loads((source/'B505-training.json').read_text())['sha256'];stress_models.append(('B505',load(dict(path=str(bpath),sha256=bsha))))
+  else:runner.write(out/'pending-pressure.json',dict(model='B505',reason='not yet atomically declared trained; evaluate later without refit'))
+  for label,net in stress_models:
    for noise in ['stress','strong']:
     for name in ['early_stop','stop_unseen_late','no_contact']:
      spec={**PLAN['dev'],**PLAN['regression'],**PLAN['final']}[name];run(label+'_'+noise+'_'+name,spec,teacher,net,sensor=noise)
