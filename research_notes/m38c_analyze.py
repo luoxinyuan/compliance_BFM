@@ -38,5 +38,13 @@ def main():
      for a,b in zip(allcurves[k],allcurves[off]):
       contrasts.append(dict(model=model,direction=sign,time=a['time'],contact_torso=a['torso_deg'],no_force_torso=b['torso_deg'],increment_torso=a['torso_deg']-b['torso_deg'],contact_waist=a['waist_relative_deg'],increment_waist=a['waist_relative_deg']-b['waist_relative_deg'],contact_pelvis=a['pelvis_deg'],increment_pelvis=a['pelvis_deg']-b['pelvis_deg'],force_xyz=a['force_xyz'],moment_com=a['moment_com']))
   if 'C2_pair_left' in names and 'source_pair_left' in names:allforks['C2_vs_source_left']=forks(p.parent/'C2_pair_left.json.gz',p.parent/'source_pair_left.json.gz')
+ # One row per model/direction/real timestamp; include new matched no-force cases.
+ for model in ['C2','T30','source','D0','D1','D2']:
+  for side in ['left','right']:
+   key=model+'_'+side+'_new';off=model+'_'+side+'_noforce_new'
+   if key in allcurves and off in allcurves:
+    for a,b in zip(allcurves[key],allcurves[off]):
+     contrasts.append(dict(model=model,direction=side+'_new',time=a['time'],contact_torso=a['torso_deg'],no_force_torso=b['torso_deg'],increment_torso=a['torso_deg']-b['torso_deg'],contact_waist=a['waist_relative_deg'],increment_waist=a['waist_relative_deg']-b['waist_relative_deg'],contact_pelvis=a['pelvis_deg'],increment_pelvis=a['pelvis_deg']-b['pelvis_deg'],force_xyz=a['force_xyz'],moment_com=a['moment_com']))
+ contrasts=list({(r['model'],r['direction'],r['time']):r for r in contrasts}.values())
  for name,obj in [('time-curves',allcurves),('contact-contrasts',contrasts),('first-forks',allforks)]: (dest/(name+'.json')).write_text(json.dumps(obj,indent=2,allow_nan=False))
 if __name__=='__main__':main()

@@ -24,7 +24,7 @@ def main():
    panels=[]
    for side in entries:
     ix=int(np.argmin(abs(side['ts']-t)));r=side['rs'][ix];d.qpos[:]=r['qpos'];d.qvel[:]=r['qvel'];mujoco.mj_forward(m,d);point=np.array(r['wrist']);anchor=np.array(r.get('anchor',side['ep']['anchor']));force=np.array(r['force']);root=np.array(r['root']);R=np.array(r['pelvis_matrix']);views=[];marks=[]
-    for vi,cam in enumerate(cameras):
+    for vi,cam in enumerate([cameras[1]] if item.get('grid4') else cameras):
      renderer.update_scene(d,camera=cam);sc=renderer.scene
      contacts=r.get('contacts',[])
      for contact in contacts:
@@ -49,11 +49,11 @@ def main():
       if xy is not None:
        x,y=xy;draw.ellipse((x-5,y-5,x+5,y+5),outline=color,width=2);draw.text((x+7,y-16 if label=='A' else y+4),label,font=small,fill=color)
     draw.rectangle((0,0,1280,126),fill=(15,20,28));draw.text((12,5),side['title'],font=font,fill='white')
-    draw.text((12,29),f'ACTUAL qpos | 1x | t={r["time"]:.2f}s | attached force active={r.get("active",False)} | net yaw moment COM={r.get("net_yaw_moment_com",0):+.3f}Nm',font=small,fill='white')
+    draw.text((12,29),f'Actual qpos 1x | t={r["time"]:.2f}s | active={r.get("active",False)} | Mz={r.get("net_yaw_moment_com",0):+.3f}Nm',font=small,fill='white')
     for j,contact in enumerate(r.get('contacts',[])[:2]):
-     ff=contact['force'];error=100*np.linalg.norm(np.array(contact['anchor'])-contact['point']);draw.text((12,51+j*21),f'Point {contact["slot"]} {contact["link"]}: Fxyz=({ff[0]:+.2f},{ff[1]:+.2f},{ff[2]:+.2f})N | '+('tracking' if r.get('active') else 'non-task geometry')+f' {error:.1f}cm',font=small,fill='white')
-    T=np.array(r['torso_matrix']);draw.text((12,100),f'Blue pelvis {np.degrees(np.arctan2(R[1,0],R[0,0])):+.1f}deg | torso {np.degrees(np.arctan2(T[1,0],T[0,0])):+.1f}deg | green target {np.degrees(r.get("target_yaw",0)):+.1f}deg | yellow real force',font=small,fill='white');panels.append(np.asarray(frame))
-   full=np.concatenate(panels,axis=0);writer.append_data(full)
+     ff=contact['force'];error=100*np.linalg.norm(np.array(contact['anchor'])-contact['point']);draw.text((12,51+j*21),f'Point {contact["slot"]} : Fxyz=({ff[0]:+.2f},{ff[1]:+.2f},{ff[2]:+.2f})N | '+('tracking' if r.get('active') else 'non-task geometry')+f' {error:.1f}cm',font=small,fill='white')
+    T=np.array(r['torso_matrix']);draw.text((12,100),f'Pelvis {np.degrees(np.arctan2(R[1,0],R[0,0])):+.1f} | torso {np.degrees(np.arctan2(T[1,0],T[0,0])):+.1f} | target {np.degrees(r.get("target_yaw",0)):+.1f} deg | yellow=force',font=small,fill='white');panels.append(np.asarray(frame))
+   full=np.concatenate([np.concatenate(panels[:2],axis=1),np.concatenate(panels[2:],axis=1)],axis=0) if item.get('grid4') else np.concatenate(panels,axis=0);writer.append_data(full)
    if n in [0,len(times)//2,len(times)-1]:Image.fromarray(full).save(out/(item['name']+f'-check{n}.jpg'))
   writer.close();row=dict(name=item['name'],path=str(path),sha256=digest(path),frames=len(times),fps=25,duration=len(times)/25,seconds=time.monotonic()-started,sides=[{k:v[k] for k in ['title','path','sha256']} for v in entries],condition=entries[0]['ep']['condition']);manifest.append(row);(out/'manifest.json').write_text(json.dumps(manifest,indent=2));print('M11_VIDEO',item['name'],row['seconds'],flush=True)
  renderer.close();(out/'result.json').write_text(json.dumps(dict(status='completed',videos=manifest,no_physics_rerun=True)))
