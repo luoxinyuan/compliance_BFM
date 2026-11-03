@@ -9,7 +9,7 @@ p=argparse.ArgumentParser();p.add_argument('--spec',required=True);p.add_argumen
 out.mkdir();write(out/'video-pairs.json',items)
 with ledger() as d:
  assert sum(x.get('wall_seconds',x['reserved_seconds']) for x in d['attempts'])+900<=21600
- active=[x for x in d['attempts'] if x['status']=='running'];affinity=[24,25,26,27];assert len(active)<3 and not any(x['gpu']==a.gpu or set(x['affinity'])&set(affinity) for x in active)
+ active=[x for x in d['attempts'] if x['status']=='running'];affinity=sorted(os.sched_getaffinity(0))[56:60];assert len(active)<3 and not any(x['gpu']==a.gpu or set(x['affinity'])&set(affinity) for x in active)
  idx=len(d['attempts']);row=dict(kind='video',arm='video',stage='saved-physics-render',status='running',source=subprocess.check_output(['git','-C',str(repo),'rev-parse','HEAD'],text=True).strip(),launcher_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),path=str(out),gpu=a.gpu,affinity=affinity,reserved_seconds=900,reserved_decisions=0,reserved_updates=0,gpu_before=before);d['attempts'].append(row)
 env=dict(os.environ,CUDA_VISIBLE_DEVICES=before['uuid'],MUJOCO_GL='egl',MUJOCO_EGL_DEVICE_ID=str(a.gpu),PYOPENGL_PLATFORM='egl',M11_VIDEO_RUN=str(out),BFM_RECOVERY_OUTPUT=str(out),OMP_NUM_THREADS='2',PYTHONDONTWRITEBYTECODE='1')
 for k in ['TMPDIR','XDG_CACHE_HOME','MPLCONFIGDIR']:
