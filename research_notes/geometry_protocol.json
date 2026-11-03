@@ -1,0 +1,265 @@
+{
+  "resources": {
+    "sum_supervised_process_wall_seconds": 21600,
+    "max_concurrent_gpus": 3,
+    "stage_output_gib": 15
+  },
+  "training": {
+    "max_total_rl_decisions": 61440,
+    "actor_lr": 1e-05
+  },
+  "teachers": {
+    "initial": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/best.pt",
+      "sha256": "c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33"
+    }
+  },
+  "dev": {
+    "straight": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "left": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0.55,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "right": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": -0.55,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "pair_left": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "pair_right": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "pair_translate": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.2,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "pair_combined": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": 12,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "local": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "no_contact": {
+      "geometry": "wrist",
+      "enabled": false,
+      "distance": 0,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  "final": {
+    "left_new": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0.48,
+      "onset": 4.4,
+      "ramp": 8.1,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "right_new": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": -0.48,
+      "onset": 4.4,
+      "ramp": 8.1,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "pair_left_new": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 18,
+      "curvature": 0,
+      "onset": 4.4,
+      "ramp": 8.1,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "pair_right_new": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -18,
+      "curvature": 0,
+      "onset": 4.4,
+      "ramp": 8.1,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "pair_combined_new": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.26,
+      "rotation_deg": -10,
+      "curvature": 0,
+      "onset": 4.4,
+      "ramp": 8.1,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "prefix_-1": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "change_time": 8.0,
+      "after_curvature": -0.6
+    },
+    "prefix_1": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "change_time": 8.0,
+      "after_curvature": 0.6
+    }
+  },
+  "train_A": [
+    "straight",
+    "left",
+    "right",
+    "local"
+  ],
+  "train_B": [
+    "pair_left",
+    "pair_right",
+    "pair_translate",
+    "pair_combined",
+    "straight",
+    "local"
+  ],
+  "evaluate_every": 5,
+  "seed": 1203,
+  "selection": "max relative plus mean of sum_force_norm_rms +3*error_m + .04*orientation_RMS_deg +cap +20*boundary; preset arm dev, no sealed reselection",
+  "regression": {},
+  "single": {
+    "geometry": "wrist",
+    "enabled": true,
+    "distance": 0.82,
+    "rotation_deg": 0,
+    "curvature": 0,
+    "onset": 4.25,
+    "ramp": 7.8,
+    "release": 14.05,
+    "end": 19.05,
+    "heading_deg": 0.0,
+    "family": "walking"
+  },
+  "bc_weight": 0.0
+}
