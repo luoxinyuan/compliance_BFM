@@ -63,29 +63,38 @@
     "moving_left": {
       "geometry": "torso_pair",
       "enabled": true,
-      "distance": 0.3,
+      "distance": 0.6,
       "rotation_deg": 10.0,
       "curvature": 0,
       "onset": 4.25,
-      "ramp": 7.8,
-      "release": 14.05,
-      "end": 19.05,
+      "ramp": 9.0,
+      "release": 15.25,
+      "end": 20.25,
       "heading_deg": 0.0,
-      "family": "walking"
+      "family": "walking",
+      "rotation_onset": 8.0,
+      "rotation_ramp": 2.0,
+      "rotation_return": 11.0,
+      "rotation_return_ramp": 2.0
     },
     "moving_right": {
       "geometry": "torso_pair",
       "enabled": true,
-      "distance": 0.3,
+      "distance": 0.6,
       "rotation_deg": -10.0,
       "curvature": 0,
       "onset": 4.25,
-      "ramp": 7.8,
-      "release": 14.05,
-      "end": 19.05,
+      "ramp": 9.0,
+      "release": 15.25,
+      "end": 20.25,
       "heading_deg": 0.0,
-      "family": "walking"
+      "family": "walking",
+      "rotation_onset": 8.0,
+      "rotation_ramp": 2.0,
+      "rotation_return": 11.0,
+      "rotation_return_ramp": 2.0
     }
   },
-  "scope": "Expert only, no PPO or Student. Teacher recovery branches not blanket validity of r2 states."
+  "scope": "Expert only, no PPO or Student. Teacher recovery branches not blanket validity of r2 states.",
+  "probe_scope": "Only native source qualification: torso-pair forward movement first, add smooth +/-10deg rotation8-10s, remove11-13s while forward movement continues. Not learned switching. No force/PD/BFM change."
 }

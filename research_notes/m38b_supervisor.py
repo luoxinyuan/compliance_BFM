@@ -80,6 +80,7 @@ def main():
   row['actual_updates']=json.loads((path/'job/progress.json').read_text())['updates'] if (path/'job/progress.json').exists() else 0
   row.update(status='finished',wall_seconds=time.monotonic()-start,resource_boundary=boundary,peak_rss_bytes=peakrss,peak_gpu_mib=peakgpu,gpu_after=snapshot(a.gpu_index))
   if (path/'job/result.json').exists():row['result']=json.loads((path/'job/result.json').read_text())
+  if row.get('exit_code')!=0:row['failure']='child_nonzero_exit; see stderr; running result is stale, not success'
   with ledger() as d:d['attempts'][index]=row
   write(path/'resources.json',row);print(json.dumps(row,indent=2))
 if __name__=='__main__':main()

@@ -27,7 +27,17 @@ def study(env,model,contract,out):
  from locomotion_rollout import spherical
  from wholebody_physics import goal_observation
  from m11_runtime_speed import install
- cfg=read(CONFIG);runner.write(out/'runtime-speed.json',install(env));torch.set_num_threads(1);torch.set_grad_enabled(False)
+ cfg=read(CONFIG)
+ # Optional preregistered partner-frame probe only; actual spring law unchanged.
+ import geometry_contact
+ native_frame=geometry_contact.frame
+ def probe_frame(spec,t):
+  p,v,a,w=native_frame(spec,t)
+  if 'rotation_onset' in spec:
+   u,du=geometry_contact.smooth(t,spec['rotation_onset'],spec['rotation_ramp']);r,dr=geometry_contact.smooth(t,spec['rotation_return'],spec['rotation_return_ramp']);angle=np.deg2rad(spec['rotation_deg']);a=angle*u*(1-r);w=angle*(du*(1-r)-u*dr)
+  return p,v,a,w
+ geometry_contact.frame=probe_frame
+ runner.write(out/'runtime-speed.json',install(env));torch.set_num_threads(1);torch.set_grad_enabled(False)
  task=Task(env,model,contract,3801);task.reset(PLAN['single']);device=env.standing.device
  ident=PLAN['teachers']['initial'];assert runner.sha(ident['path'])==ident['sha256']
  ck=torch.load(ident['path'],map_location=device,weights_only=True)
@@ -88,7 +98,7 @@ def study(env,model,contract,out):
     v=[a for a in rr if a['active'] and a['force_time']>=take-1e-8]
     return dict(error_cm=100*np.sqrt(np.mean([np.mean([np.sum((np.array(c['anchor'])-c['point'])**2) for c in a['contacts']]) for a in v])),force_rms=np.sqrt(np.mean([a['sum_force_norm']**2 for a in v])))
    before,after=tail(saved),tail(now);valid=not row['boundary'] and after['error_cm']<before['error_cm'] and after['force_rms']<before['force_rms']
-   recover.append(dict(condition=name,takeover=take,prefix_max_abs=dif,continued=before,recovery=after,accepted=valid,samples=len(ss),scope='Only actual successful recovery branch labels; no labels from other r2 states'))
+   recover.append(dict(condition=name,takeover=take,prefix_max_abs=dif,continued=before,recovery=after,accepted=bool(valid),samples=len(ss),scope='Only actual successful recovery branch labels; no labels from other r2 states'))
    if valid:visited+=ss
   assert len(recover)==3 and all(v['accepted'] for v in recover)
   gz(out/'visited-data.json.gz',visited);runner.write(out/'recovery.json',recover)
@@ -146,7 +156,7 @@ def study(env,model,contract,out):
   runner.write(out/'model.json',dict(path=str(path),sha256=runner.sha(path),arm=arm,updates=3000,interpolation_parity=interpolation_error,teacher_sequence_replay_max_rad=replay_error,data=manifest))
   audit=[]
   for e,g in groups.items():
-   zz=direct_command(net.distribution(x[g]).mean,env.standing);err=torch.rad2deg(sequence(zz,g)-qtarget[g]);audit.append(dict(episode=e,sequence_qpd_rms_deg=float(err.square().mean().sqrt()),per_substep_rms_deg=err.square().mean((0,2)).sqrt().tolist(),z_angle_mean_deg=float(torch.rad2deg(torch.acos(((zz*target[g]).sum(-1)/256).clamp(-1,1))).mean())))
+   zz=direct_command(net.distribution(x[g]).mean,env.standing);err=torch.rad2deg(sequence(zz,g)-qtarget[g]);audit.append(dict(episode=e,sequence_qpd_rms_deg=float(err[mask[g]].square().mean().sqrt()),per_substep_rms_deg=[float(err[:,k][mask[g,k]].square().mean().sqrt()) for k in range(5)],z_angle_mean_deg=float(torch.rad2deg(torch.acos(((zz*target[g]).sum(-1)/256).clamp(-1,1))).mean())))
   runner.write(out/'alignment.json',audit)
   for name,spec in dev_specs(PLAN).items():rollout(arm+'_'+name,spec,net)
  elif runner.ARGS.stage=='final':
