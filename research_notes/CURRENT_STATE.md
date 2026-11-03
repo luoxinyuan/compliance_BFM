@@ -1,3 +1,9 @@
+# M38 当前执行入口
+
+2026-11-03：用户已授权M38保旧旋转Expert，Issue38。独立工作区从cd336bc继承；尚未启动训练。预算18000累计job秒/10GiB/最多3卡，Expert监督≤6000、Student≤4000、PPO先20×768。先审计旧goal真实数据并运行3000更新同状态q_PD保旧实验，固定网络/物理/reward不变；开发结果决定后续，封存±13°/onset4.8/ramp7.1和16cm/−8°组合不用于选择。S0/T30与旧模型不覆盖，所有失败保留。
+
+以下为上一阶段完整状态快照，历史完成结论不代表本轮已经完成：
+
 # CURRENT_STATE — 新会话先读
 
 最后核对2026-11-03。**Contact Geometry → Translation / Rotation（Issue37）有界阶段完成，全部owned任务退出，未启动下一阶段。** Issue36及此前历史完整保留；M11 continuation仍停止，不重启旧A/B。
