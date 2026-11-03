@@ -1,0 +1,397 @@
+{
+  "resources": {
+    "sum_supervised_process_wall_seconds": 18000,
+    "max_concurrent_gpus": 3,
+    "stage_output_gib": 10
+  },
+  "training": {
+    "max_total_rl_decisions": 0,
+    "actor_lr": 1e-05,
+    "warmstart_steps": 1500
+  },
+  "evaluate_every": 5,
+  "seed": 202,
+  "selection": "max relative whole-contact force+3*error_m+cap+20*boundary plus mean, across 3 dev; additionally report decel/hold signed error and continued movement; initialization retained",
+  "single": {
+    "enabled": true,
+    "distance": 0.82,
+    "ramp": 7.8,
+    "onset": 4.25,
+    "release": 14.05,
+    "end": 20.05,
+    "curvature": 0.0,
+    "heading_deg": 0.0,
+    "family": "walking"
+  },
+  "dev": {
+    "normal": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "early_stop": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 10.9,
+      "end": 16.9,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 7.2,
+      "deceleration": 0.5
+    },
+    "late_stop": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 13.849999999999998,
+      "end": 19.849999999999998,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 9.2,
+      "deceleration": 0.85
+    }
+  },
+  "regression": {
+    "no_contact": {
+      "enabled": false,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "local": {
+      "enabled": true,
+      "distance": 0.15,
+      "ramp": 4.5,
+      "onset": 4.25,
+      "release": 10.75,
+      "end": 16.75,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  "final": {
+    "sealed_early": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.31,
+      "release": 11.65,
+      "end": 17.65,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 7.65,
+      "deceleration": 0.9
+    },
+    "sealed_late": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.16,
+      "release": 13.649999999999999,
+      "end": 19.65,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 9.65,
+      "deceleration": 0.7
+    }
+  },
+  "teachers": {
+    "initial": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/clean-contact-expert-20261102/direct-prepare-02/job/initial.pt",
+      "sha256": "a86ff5f9ca71ed2ae8dc95ceeab0ac980f82ab6ed8d3759c039eb03a62efe488"
+    },
+    "ppo15": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/clean-contact-expert-20261102/direct-train-08/job/best.pt",
+      "sha256": "92692be758d04386c32bea3108b3b155d4c37b0c2b70679e78cf849f593112fe"
+    },
+    "t30": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/best.pt",
+      "sha256": "c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33"
+    }
+  },
+  "train_distribution": {
+    "distance": [
+      0.76,
+      0.88
+    ],
+    "ramp": [
+      7.4,
+      8.2
+    ],
+    "onset": [
+      4.05,
+      4.45
+    ]
+  },
+  "student": {
+    "seed": 805,
+    "steps": 4000,
+    "extra_steps": 3000,
+    "batch": 128,
+    "lr": 0.0003
+  },
+  "bc_weight": 0.02,
+  "student_probe": {
+    "early_stop": {
+      "enabled": true,
+      "distance": 0.38,
+      "ramp": 3.8,
+      "onset": 4.35,
+      "release": 10.149999999999999,
+      "end": 16.15,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  "stop_sources": {
+    "stop0": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 10.0,
+      "end": 16.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 6.8,
+      "deceleration": 0.4
+    },
+    "stop1": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 12.0,
+      "end": 18.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 6.8,
+      "deceleration": 1.0
+    },
+    "stop2": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 13.0,
+      "end": 19.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 8.4,
+      "deceleration": 0.4
+    },
+    "stop3": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 12.2,
+      "end": 18.2,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 8.4,
+      "deceleration": 1.0
+    },
+    "stop4": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 13.899999999999999,
+      "end": 19.9,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 9.7,
+      "deceleration": 0.7
+    },
+    "stop5": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 11.7,
+      "end": 17.7,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 7.5,
+      "deceleration": 0.7
+    }
+  },
+  "exposed_stop": {
+    "enabled": true,
+    "distance": 0.82,
+    "ramp": 7.8,
+    "onset": 4.25,
+    "release": 14.05,
+    "end": 20.05,
+    "curvature": 0.0,
+    "heading_deg": 0.0,
+    "family": "walking",
+    "stop_time": 8.0,
+    "deceleration": 0.6
+  },
+  "sensing": {
+    "ideal": {},
+    "stress": {
+      "noise_std": 0.15,
+      "bias": [
+        0.15,
+        -0.1,
+        0.1
+      ],
+      "delay_samples": 3,
+      "drop_probability": 0.1
+    },
+    "strong": {
+      "noise_std": 0.4,
+      "bias": [
+        0.4,
+        -0.3,
+        0.2
+      ],
+      "delay_samples": 5,
+      "drop_probability": 0.2
+    }
+  },
+  "teacher_stop_training": {
+    "probability": 0.75,
+    "stop_time": [
+      6.6,
+      9.9
+    ],
+    "deceleration": [
+      0.35,
+      1.1
+    ],
+    "hold": [
+      2.6,
+      4.6
+    ],
+    "first_batches": 40,
+    "max_batches": 60,
+    "extension": "after batch40 only if best dev score occurs >=30 and improves initial >=2%; no severe individual-family regression >15%; otherwise stop at40",
+    "reward": "unchanged",
+    "bc_weight": 0
+  },
+  "bfm_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "r0": {
+    "initial": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/direct-transfer-20261103/A-prepare-01/job/initial-student-r0.pt",
+      "sha256": "97235f33dc3ac3fd9d21eefbc1c57197d7b86126fa957857b9ee58a486fe8303"
+    },
+    "ppo15": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/direct-transfer-20261103/A-prepare-01/job/ppo15-student-r0.pt",
+      "sha256": "0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12"
+    }
+  },
+  "max_student_updates": 16000,
+  "sources": {
+    "normal": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "early_stop": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 10.9,
+      "end": 16.9,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 7.2,
+      "deceleration": 0.5
+    },
+    "late_stop": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 13.849999999999998,
+      "end": 19.849999999999998,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 9.2,
+      "deceleration": 0.85
+    },
+    "no_contact": {
+      "enabled": false,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "local": {
+      "enabled": true,
+      "distance": 0.15,
+      "ramp": 4.5,
+      "onset": 4.25,
+      "release": 10.75,
+      "end": 16.75,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "middle_stop": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 12.45,
+      "end": 18.45,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 8.2,
+      "deceleration": 0.65
+    }
+  },
+  "recovery": {
+    "conditions": [
+      "early_stop",
+      "late_stop"
+    ],
+    "window_seconds": 0.4,
+    "points": "entry6.0; prestop stop-.5; decel stop+.2; hold stop+decel+1; release release+.2",
+    "accept": "both endpoint takeovers safe; tail active force+3*error_m lower than continuation; release root path <= continuation+.03m. For released-only tail use root path + wrist speed RMS lower. Report all component tradeoffs; representative local region, not universal guarantee."
+  }
+}
