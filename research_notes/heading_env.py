@@ -35,5 +35,10 @@ def install():
    return result
   def sample_spec(self):
    plan=json.loads(Path(__file__).with_name('heading_protocol.json').read_text());spec=dict(list(plan['heading_sources'].values())[int(self.rng.integers(len(plan['heading_sources'])))])
+   import os
+   if os.environ.get('NARROW_DOMAIN')=='neighborhood':
+    spec=dict(plan['single']);spec.update(curvature=float(self.rng.uniform(-.23,.3)),distance=float(self.rng.uniform(.78,.84)),ramp=float(self.rng.uniform(7.7,8.1)),onset=float(self.rng.uniform(4.15,4.4)))
+    spec['release']=spec['onset']+spec['ramp']+2;spec['end']=spec['release']+6
+    if self.rng.random()<.35:spec.update(after_curvature=spec['curvature'],curvature=0.,change_time=float(self.rng.uniform(7.8,8.2)))
    return spec
  clean_env.Task=HeadingTask;clean_env.install_partner=partner;clean_env.HEADING_INSTALLED=True
