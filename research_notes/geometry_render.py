@@ -8,7 +8,7 @@ from m9c_render import geom
 ROOT=Path(__file__).resolve().parents[1]
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- out=Path(os.environ['BFM_RECOVERY_OUTPUT']);specs=json.loads((RUN/'video-pairs.json').read_text());m=mujoco.MjModel.from_xml_path(str(ROOT/'humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml'));m.vis.global_.offwidth=640;m.vis.global_.offheight=640;m.site_rgba[:,3]=0
+ out=Path(os.environ['BFM_RECOVERY_OUTPUT']);specs=json.loads((RUN/'video-pairs.json').read_text());m=mujoco.MjModel.from_xml_path(str(Path(os.environ.get("BFM_RENDER_ASSET_ROOT",str(ROOT)))/'humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml'));m.vis.global_.offwidth=640;m.vis.global_.offheight=640;m.site_rgba[:,3]=0
  d=mujoco.MjData(m);renderer=mujoco.Renderer(m,height=640,width=640);font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',17);small=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',14);manifest=[]
  for item in specs:
   entries=[]
