@@ -77,7 +77,7 @@ def main():
     except subprocess.TimeoutExpired:os.killpg(child.pid,signal.SIGKILL);child.wait()
    else:child.wait()
    row.update(exit_code=child.returncode,remaining_processes=processes(child.pid))
-  row['actual_updates']=sum(json.loads(f.read_text())['updates'] for f in (path/'job').glob('*-training.json'))
+  row['actual_updates']=sum(json.loads(f.read_text())['updates'] for f in (path/'job').glob('*-training.json') if json.loads(f.read_text()).get('role') is None)
   row.update(status='finished',wall_seconds=time.monotonic()-start,resource_boundary=boundary,peak_rss_bytes=peakrss,peak_gpu_mib=peakgpu,gpu_after=snapshot(a.gpu_index))
   if (path/'job/result.json').exists():row['result']=json.loads((path/'job/result.json').read_text())
   with ledger() as d:d['attempts'][index]=row
