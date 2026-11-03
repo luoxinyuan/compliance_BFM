@@ -1,6 +1,10 @@
 # CURRENT_STATE — 新会话先读
 
-核对2026-11-03。**Contact-Guided Heading / Turning有界阶段已完成，全部任务退出；没有启动下一阶段。** M11 continuation A160/B114仍停止，非等预算终检。
+核对2026-11-03。**Issue36已结项；用户新授权Contact Geometry→Translation/Rotation阶段现已启动，Issue37。** 保留S0/T30，不原样续训旧HeadingPPO10。M11 continuation仍停止。
+
+[Issue37](https://github.com/GaoE05/robot-research-bridge/issues/37)：单腕曲线与刚性torso左右双点；每点2.5N，总sum norms≤5N。先真实几何/原生资格，再Direct privileged学习，成功部分才做共享传感表示迁移。阶段root `bridge-v2-owned/runs/contact-geometry-20261103`，worktree `gaoe05/contact-geometry`；预算21600累计job秒/15GiB/最多3张实时空闲GPU，预登记RL≤61440决策、源监督≤8000及Student≤8000更新。GPU1物理准备已发车，当前没有新Teacher成功或Student迁移结论。新授权优先于下方上轮“建议”。
+
+长期方向：单/双点平面引导→多部位分别/组合→高度与移动→未见接触配置和身体状态泛化。不建设Bridge，不改共享BFM/PD。
 
 入口：[研究纲领](RESEARCH_OVERVIEW.md) · [本阶段完整结果](HEADING_TRANSFER_RESULTS.md) · [Issue36](https://github.com/GaoE05/robot-research-bridge/issues/36) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。上一阶段[T30迁移](T30_TRANSFER_RESULTS.md)/Issue35完整保留。
 

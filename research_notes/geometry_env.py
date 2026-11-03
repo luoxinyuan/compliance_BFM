@@ -66,6 +66,9 @@ class Task(Original):
   new['uncapped']=.15*np.mean([np.mean([min(np.log1p(np.dot(c['raw_force'],c['raw_force'])/25),8) for c in r['contacts']]) for r in rows])
   new['relative_velocity']=.1*np.mean([np.mean([min(np.sum((np.array(c['anchor_velocity'])-c['velocity'])**2)/.25,16) for c in r['contacts']]) if r['active'] else 0 for r in rows])
   delta=-.02*st['control_steps']*(sum(new.values())-sum(old.values()));re+=delta;self.episode_return+=delta;st.update(terms=new,reward=re,active_force_squared=fs,error_squared=sum(np.mean([np.sum((np.array(c['anchor'])-c['point'])**2) for c in r['contacts']]) for r in active),cap_steps=sum(any(np.linalg.norm(c['force'])>=c['cap']-.001 for c in r['contacts']) for r in active))
+  for c in self.controls[-st['control_steps']:]:
+   if 'reward_terms' in c:c['legacy_reward_terms_not_used']=c.pop('reward_terms');c['legacy_reward_integral_not_used']=c.pop('reward_integral')
+  st['reward_source']='per-tick per-contact geometry reward in rl_stats; legacy per-control terms are not optimized'
   return x,re,done,st
  def save(self,out):
   row=super().save(out);active=[r for r in self.physics if r['active']];moving=[r for r in active if r['force_time']<self.spec['onset']+self.spec['ramp']]
