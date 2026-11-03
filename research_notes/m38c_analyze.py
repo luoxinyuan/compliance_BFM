@@ -9,7 +9,7 @@ read=old.read
 
 def curve(path):
  e=read(path);rr=e['physics'];initial=e['initial'];s=e['condition'];out=[]
- for t in [3.,4.2,4.5,5.,5.5,6.,7.,8.,10.,12.05,14.,14.05,16.,19.]:
+ for t in sorted(set([3.,4.2,4.5,5.,5.5,6.,7.,8.,10.,12.05,14.,14.05,16.,19.,s['onset'],s['onset']+s['ramp'],s['release'],s['end']-.005])):
   r=min(rr,key=lambda r:abs(r['force_time']-t));T=np.rad2deg(old.wrap(old.yaw(r,'torso_matrix')-old.yaw(initial,'torso_matrix')));P=np.rad2deg(old.wrap(old.yaw(r,'pelvis_matrix')-old.yaw(initial,'pelvis_matrix')))
   out.append(dict(time=r['force_time'],torso_deg=float(T),pelvis_deg=float(P),waist_relative_deg=float(old.wrap(np.deg2rad(T-P))*180/np.pi),root_delta_cm=(100*(np.array(r['root'])-initial['root'])).tolist(),active=r['active'],force_xyz=[c['force'] for c in r['contacts']],moment_com=r['net_yaw_moment_com'],sum_force=r['sum_force_norm']))
  return out

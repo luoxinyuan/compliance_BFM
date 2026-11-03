@@ -117,6 +117,7 @@ def study(env,model,contract,out):
   selection=read(Path(runner.ARGS.resume));nets={k:load(v['path']) for k,v in selection['models'].items()}
   for v in selection['models'].values():assert runner.sha(v['path'])==v['sha256']
   for key,spec in cfg['sealed'].items():
+   if key not in selection.get('keys',cfg['sealed']):continue
    for name,n in nets.items():rollout(name+'_'+key,spec,n)
    rollout('source_'+key,spec,source=True)
  else:raise ValueError(runner.ARGS.stage)
