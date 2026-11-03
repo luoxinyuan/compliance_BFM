@@ -7,9 +7,13 @@ def read(p):
 def metrics(ep):
  ph=ep['physics'];ctl=ep.get('control',[]);s=ep['condition'];out={}
  def stage(r):
-  if not r['active']:return 'pre' if r['time']<s['onset'] else 'free_recovery'
-  if 'stop_time' in s:return 'move' if r['time']<s['stop_time'] else 'decelerate' if r['time']<s['stop_time']+s['deceleration'] else 'hold'
-  return 'move' if r['time']<s['onset']+s['ramp'] else 'hold'
+  t=r.get('force_time',r['time'])
+  # Rows are logged after the 5ms physics step. The last pre-contact row can
+  # have time==onset while its applied force_time was still before onset.
+  # Never concatenate that row with release and count the whole walk as recovery.
+  if not r['active']:return 'free_recovery' if t>=s['release']-1e-8 else 'pre'
+  if 'stop_time' in s:return 'move' if t<s['stop_time'] else 'decelerate' if t<s['stop_time']+s['deceleration'] else 'hold'
+  return 'move' if t<s['onset']+s['ramp'] else 'hold'
  for name in ['contact','move','decelerate','hold','free_recovery','pre']:
   rs=[r for r in ph if (r['active'] if name=='contact' else stage(r)==name)]
   if not rs:continue
@@ -25,4 +29,4 @@ if __name__=='__main__':
   if 'queries' in f.name or 'source' in f.name or 'accepted' in f.name or 'data' in f.name:continue
   ep=read(f)
   if isinstance(ep,dict) and 'physics' in ep:result[str(f.relative_to(root))]=metrics(ep)
- (root/'physical-metrics.json').write_text(json.dumps(result,indent=2,allow_nan=False));print('episodes',len(result))
+ (root/'physical-metrics-v2.json').write_text(json.dumps(result,indent=2,allow_nan=False));print('episodes',len(result))
