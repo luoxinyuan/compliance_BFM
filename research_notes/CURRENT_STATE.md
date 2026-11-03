@@ -1,8 +1,12 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-03。**Direct Teacher→Student / 窄分布PPO阶段完成，无训练运行或待自动重发车任务。** 旧M11 continuation仍停止；A160/B114不是完整等预算终检。
+最后核对：2026-11-03。**上轮Direct迁移阶段已完成；新授权停止覆盖/传感阶段已登记、准备启动，尚未发车。** 旧M11 continuation仍停止；A160/B114不是完整等预算终检。
 
-## 当前科学结论
+## 新授权执行入口
+
+[Issue #34](https://github.com/GaoE05/robot-research-bridge/issues/34)、[STOP_SENSING_PROTOCOL.md](STOP_SENSING_PROTOCOL.md)和stop_protocol.json固定本轮计划。主线为匹配更新的停止覆盖对照、Teacher停止分布PPO、重新训练无显式力Student及力观测压力。预算新登记18000累计进程秒/10GiB/最多3GPU，不能套用旧账本。未来椅子/多接触/全方向demo不在本轮。
+
+## 上轮已验证科学结论
 
 目标仍是Contact-Conditioned Whole-Body Motion Transitions / General Compliance。纲领见[RESEARCH_OVERVIEW.md](RESEARCH_OVERVIEW.md)，完整历史见[Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)，当前阶段见[Issue33](https://github.com/GaoE05/robot-research-bridge/issues/33)及[TRANSFER_RESULTS.md](TRANSFER_RESULTS.md)。旧Library2026-10-28快照不是实时状态。
 
@@ -14,11 +18,11 @@
 - **窄分布Teacher PPO仍未可靠升级。** B1/B2各15360决策，B1选10批，新快8.111cm/4.284N劣于初始化7.455/4.055；B2最优仍初始化。全部模型和负结果保留，不无界续训。
 - 一次聚合实现范围错误已更正：有效7s接管不能验证其后所有状态。旧r1留作未充分验证结果；修正版仅接受实际7.10s一个查询点，固定2000更新，未证明聚合独立收益。PPO15接管未改善，不聚合。修正版原终检已暴露，明确为复测，不称新盲测。
 
-## 当前瓶颈和唯一下一建议
+## 已有瓶颈与本轮优先级
 
 迁移接口可用，主要瓶颈仍是Teacher优化稳健性及恢复覆盖，而不是缺少可训练Student。无接触漂移约3–4mm，但局部15cm请求仍有约14–15cm root移动；部分q_PD峰值36–58°和短行程失败保留，不称自然全身协调已完成。
 
-下一建议：固定窄域/初始化，受控比较raw-z保持与同状态BFM action/q_PD保持。检验执行空间约束能否保住有效动作，不把该假设当已证实原因，不同时改reward/force cap。尚未启动新训练或多接触扩展。无需修好全部旧反例才允许研究，但当前不把弱Teacher推广成新基线。
+本轮用户已调整优先级：先区分停止覆盖与额外训练量，并检验传感约束；raw-z与action/q_PD保持保留为有依据时的方法对照，不再唯一主线。保留上轮迁移成功；Teacher未完美不阻塞Student优化。尚未开始新阶段训练，多接触/椅子仅远期候选。
 
 ## 可靠旧能力与边界
 
