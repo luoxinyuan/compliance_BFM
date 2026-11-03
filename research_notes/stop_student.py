@@ -5,7 +5,7 @@ import transfer_student_validated as runner
 from stop_env import PLAN,phase,install
 ROOT=Path(__file__).resolve().parents[1]
 OLD=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/direct-transfer-20261103/A-prepare-01/job')
-RUN=OLD.parents[1]/'stop-sensing-20261103'
+RUN=OLD.parents[2]/'stop-sensing-20261103'
 def read(p):
  with gzip.open(p,'rt') as f:return json.load(f)
 def study(env,model,contract,out):
