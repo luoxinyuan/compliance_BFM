@@ -33,7 +33,7 @@ def main():
  def select(rows):
   values={r['label']:r.get('sum_force_norm_rms',r['force_rms'])+3*r['error_cm']/100+r['cap_fraction']+.04*(r.get('torso_heading_rms_deg') if r['condition'].get('geometry')=='torso_pair' else r.get('moving_heading_rms_deg') or 0)+20*bool(r['boundary']) for r in rows if r['label'].split('__')[0] in plan['dev']}
   if not baseline_scores:baseline_scores.update(values)
-  relative=[v/baseline_scores[k] for k,v in values.items()]
+  relative=[v/max(baseline_scores[k],.1) for k,v in values.items()]
   return max(relative)+sum(relative)/len(relative)
  def dev():
   schedule=[(k+'__mean',v,'learned') for k,v in plan['dev'].items()]
