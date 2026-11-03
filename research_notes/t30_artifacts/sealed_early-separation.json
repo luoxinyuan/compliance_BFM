@@ -1,0 +1,30 @@
+[
+  {
+    "student": "S0",
+    "first_wrist_separation_over_2cm_for_200ms": 6.744999999999878,
+    "max_wrist_separation": 0.13008430762139128,
+    "max_root_separation": 0.12677433042956573,
+    "interpretation": "comparison with Teacher own rollout; not proof of failure or information insufficiency"
+  },
+  {
+    "student": "S1warm",
+    "first_wrist_separation_over_2cm_for_200ms": 6.7899999999998775,
+    "max_wrist_separation": 0.026981669651943995,
+    "max_root_separation": 0.03727257830272455,
+    "interpretation": "comparison with Teacher own rollout; not proof of failure or information insufficiency"
+  },
+  {
+    "student": "S1matched",
+    "first_wrist_separation_over_2cm_for_200ms": 7.414999999999864,
+    "max_wrist_separation": 0.11203436187103086,
+    "max_root_separation": 0.10084528674822389,
+    "interpretation": "comparison with Teacher own rollout; not proof of failure or information insufficiency"
+  },
+  {
+    "student": "S2",
+    "first_wrist_separation_over_2cm_for_200ms": 6.839999999999876,
+    "max_wrist_separation": 0.05226568219233221,
+    "max_root_separation": 0.040434629368144785,
+    "interpretation": "comparison with Teacher own rollout; not proof of failure or information insufficiency"
+  }
+]

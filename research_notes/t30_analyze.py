@@ -38,7 +38,7 @@ for condition in ['normal','early_stop','late_stop','sealed_early','sealed_late'
  te=read(tf);tp=te['physics'];tt=np.array([x['time'] for x in tp]);tw=np.array([x['wrist'] for x in tp]);tr=np.array([x['root'] for x in tp]);div=[]
  for lab in ['S0','S1warm','S1matched','S2']:
   sf=job/(lab+'_'+condition+'.json.gz')
-  if not sf.exists():continue
+  if not sf.exists() or lab+'_'+condition not in {x['label'] for x in rows}:continue
   se=read(sf);sp=se['physics'];st=np.array([x['time'] for x in sp]); n=min(len(st),len(tt));assert np.max(abs(st[:n]-tt[:n]))<1e-8
   wd=np.linalg.norm(np.array([x['wrist'] for x in sp[:n]])-tw[:n],axis=1);rd=np.linalg.norm(np.array([x['root'] for x in sp[:n]])-tr[:n],axis=1);first=None
   for i in range(n):

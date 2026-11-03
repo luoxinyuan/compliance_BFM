@@ -1,0 +1,50 @@
+[
+  {
+    "condition": "stop_unseen_early",
+    "time": 7.15999999999987,
+    "joint": "right_ankle_pitch_joint",
+    "reconstruction_max_rad": 0.0,
+    "actual_jump_deg": -53.923789978027344,
+    "z_only_at_previous_obs_deg": -1.4768133163452148,
+    "obs_only_at_previous_z_deg": -53.47149658203125,
+    "remaining_obs_after_z_deg": -52.44697570800781,
+    "remaining_z_after_obs_deg": -0.4522968530654907,
+    "scope": "frozen computational same-observation decomposition, not independent physical causality"
+  },
+  {
+    "condition": "stop_unseen_late",
+    "time": 6.779999999999878,
+    "joint": "right_ankle_pitch_joint",
+    "reconstruction_max_rad": 0.0,
+    "actual_jump_deg": -49.0115852355957,
+    "z_only_at_previous_obs_deg": -1.5367106199264526,
+    "obs_only_at_previous_z_deg": -48.455284118652344,
+    "remaining_obs_after_z_deg": -47.474876403808594,
+    "remaining_z_after_obs_deg": -0.5563018321990967,
+    "scope": "frozen computational same-observation decomposition, not independent physical causality"
+  },
+  {
+    "condition": "normal_new",
+    "time": 7.13999999999987,
+    "joint": "right_ankle_pitch_joint",
+    "reconstruction_max_rad": 0.0,
+    "actual_jump_deg": -46.18406677246094,
+    "z_only_at_previous_obs_deg": -0.44437211751937866,
+    "obs_only_at_previous_z_deg": -45.74551773071289,
+    "remaining_obs_after_z_deg": -45.73969268798828,
+    "remaining_z_after_obs_deg": -0.43854767084121704,
+    "scope": "frozen computational same-observation decomposition, not independent physical causality"
+  },
+  {
+    "condition": "local",
+    "time": 7.339999999999866,
+    "joint": "right_ankle_pitch_joint",
+    "reconstruction_max_rad": 0.0,
+    "actual_jump_deg": -41.752628326416016,
+    "z_only_at_previous_obs_deg": -1.3806031942367554,
+    "obs_only_at_previous_z_deg": -41.3760986328125,
+    "remaining_obs_after_z_deg": -40.37202453613281,
+    "remaining_z_after_obs_deg": -0.3765312433242798,
+    "scope": "frozen computational same-observation decomposition, not independent physical causality"
+  }
+]
