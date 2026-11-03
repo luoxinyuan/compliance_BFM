@@ -71,7 +71,14 @@ class Task(Original):
   st['reward_source']='per-tick per-contact geometry reward in rl_stats; legacy per-control terms are not optimized'
   return x,re,done,st
  def save(self,out):
-  row=super().save(out);active=[r for r in self.physics if r['active']];moving=[r for r in active if r['force_time']<self.spec['onset']+self.spec['ramp']]
+  row=super().save(out)
+  if 'stop_time' in self.spec:
+   import gzip
+   p=out/(self.label+'.json.gz')
+   with gzip.open(p,'rt') as f:ep=json.load(f)
+   ss=self.spec;ep['phases']={'pre':[3,ss['onset']],'move':[ss['onset'],ss['stop_time']],'decelerate':[ss['stop_time'],ss['stop_time']+ss['deceleration']],'hold':[ss['stop_time']+ss['deceleration'],ss['release']],'recover':[ss['release'],ss['end']]}
+   with gzip.open(p,'wt') as f:json.dump(ep,f)
+  active=[r for r in self.physics if r['active']];moving=[r for r in active if r['force_time']<self.spec['onset']+self.spec['ramp']]
   yaw=lambda r,key:math.atan2(np.array(r[key])[1,0],np.array(r[key])[0,0])
   row.update(geometry_contract=self.geometry_contract,torso_heading_rms_deg=float(np.degrees(np.sqrt(np.mean([wrap(r['target_yaw']-yaw(r,'torso_matrix'))**2 for r in active])))) if active else 0.,moving_heading_rms_deg=float(np.degrees(np.sqrt(np.mean([wrap(r['target_yaw']-yaw(r,'pelvis_matrix'))**2 for r in active])))) if active else 0.,yaw_moment_rms=float(np.sqrt(np.mean([r['net_yaw_moment_com']**2 for r in active]))) if active else 0.,work_j=sum(r['external_power']*.005 for r in self.physics),sum_force_norm_rms=float(np.sqrt(np.mean([r['sum_force_norm']**2 for r in active]))) if active else 0.,actual_pelvis_turn_deg=float(np.degrees(wrap(yaw(moving[-1],'pelvis_matrix')-yaw(self.physics[0],'pelvis_matrix')))) if moving else 0.,actual_torso_turn_deg=float(np.degrees(wrap(yaw(moving[-1],'torso_matrix')-yaw(self.physics[0],'torso_matrix')))) if moving else 0.)
   return row

@@ -10,6 +10,9 @@ def smooth(t,start,ramp):
 def frame(spec,t):
  from heading_env import pose
  if spec.get('geometry','wrist')=='wrist':
+  if 'stop_time' in spec and t>=spec['stop_time']:
+   from stop_env import braking
+   x,xd=braking(spec,t);return np.array([x,0.,0.]),np.array([xd,0.,0.]),0.,0.
   p,v=pose(spec,t);s,_=smooth(t,spec['onset'],spec['ramp']);angle=spec['curvature']*spec['distance']*s
   if 'change_time' in spec:
    uc,_=smooth(spec['change_time'],spec['onset'],spec['ramp']);angle=spec['curvature']*spec['distance']*min(s,uc)+spec['after_curvature']*spec['distance']*max(0,s-uc)
