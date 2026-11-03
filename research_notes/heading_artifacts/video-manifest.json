@@ -1,0 +1,68 @@
+[
+  {
+    "name": "01_midcourse_right_guidance",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/heading-transfer-20261103/videos-01/01_midcourse_right_guidance.mp4",
+    "sha256": "cb578b4953e26a9d9c28b59aadef9743d0695187d562aa3312b7670b35777302",
+    "frames": 427,
+    "fps": 25,
+    "duration": 17.08,
+    "seconds": 8.30356011306867,
+    "sides": [
+      {
+        "title": "Frozen Teacher30 | original direct prior",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/heading-transfer-20261103/B-final-06/job/T30_prefix_right.json.gz",
+        "sha256": "2b6cd5260063913145c99b40f086acc8619c2086a315a8f788c81443588e1b72"
+      },
+      {
+        "title": "Heading PPO batch10 | dev-selected, not universal replacement",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/heading-transfer-20261103/B-final-06/job/HeadingPPO_prefix_right.json.gz",
+        "sha256": "267bfd13a48cb28c1f174070df1289f34a7c89674c58d126d05c68874225cb55"
+      }
+    ],
+    "condition": {
+      "enabled": true,
+      "distance": 0.82,
+      "ramp": 7.8,
+      "onset": 4.25,
+      "release": 14.05,
+      "end": 20.05,
+      "curvature": 0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "change_time": 8.6,
+      "after_curvature": -0.3
+    }
+  },
+  {
+    "name": "02_left_heading_limit",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/heading-transfer-20261103/videos-01/02_left_heading_limit.mp4",
+    "sha256": "793607d6f2019b9e464d33abc555d30c599cf9ac3b1319e5d788f4e8c2db576e",
+    "frames": 436,
+    "fps": 25,
+    "duration": 17.44,
+    "seconds": 9.375996310031042,
+    "sides": [
+      {
+        "title": "Frozen Teacher30 | original direct prior",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/heading-transfer-20261103/B-final-06/job/T30_new_left.json.gz",
+        "sha256": "dffecba8e9c8c3961cb5ceaf6f083cb684826491b412f8c61603897b40219ff5"
+      },
+      {
+        "title": "Heading PPO batch10 | dev-selected, not universal replacement",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/heading-transfer-20261103/B-final-06/job/HeadingPPO_new_left.json.gz",
+        "sha256": "ad9faf52cc5e5eebcf4808f56c9d4c93ed483f7033da4ad70f297f9a73832540"
+      }
+    ],
+    "condition": {
+      "enabled": true,
+      "distance": 0.79,
+      "ramp": 8.05,
+      "onset": 4.37,
+      "release": 14.42,
+      "end": 20.42,
+      "curvature": 0.26,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  }
+]
