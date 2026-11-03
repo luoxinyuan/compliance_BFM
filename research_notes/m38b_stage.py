@@ -55,7 +55,7 @@ def study(env,model,contract,out):
     raw=z/16
    c=len(task.controls);task.step(raw)
    if save_labels and (takeover is None or t>=takeover-1e-8):
-    cc=task.controls[c:];samples.append(dict(x=x[0].cpu().tolist(),z=z[0].cpu().tolist(),time=t,episode=name,obs=obs,previous_z=prev[0].cpu().tolist(),sequence=cc))
+    cc=task.controls[c:];count=len(cc);cc=cc+[cc[-1]]*(5-count);samples.append(dict(x=x[0].cpu().tolist(),z=z[0].cpu().tolist(),time=t,episode=name,obs=obs,previous_z=prev[0].cpu().tolist(),sequence=cc,valid_steps=count))
   row=task.save(out);summary.append(row);runner.write(out/'summaries.json',summary)
   if save_labels:gz(out/(name+'-labels.json.gz'),samples)
   print('M38B_PHYSICS',name,row['error_cm'],row['sum_force_norm_rms'],row['actual_torso_turn_deg'],row['boundary'],flush=True)
@@ -67,12 +67,12 @@ def study(env,model,contract,out):
   for p in paths:
    labels=read(p);epath=Path(str(p).replace('-labels.json.gz','.json.gz'));ep=read(epath);controls=ep['control'];bytime={round(c['time'],6):i for i,c in enumerate(controls)}
    for r in labels:
-    idx=bytime[round(r['time'],6)];cc=controls[idx:idx+5];assert len(cc)==5
+    idx=bytime[round(r['time'],6)];cc=controls[idx:idx+5];count=len(cc);assert 1<=count<=5;cc=cc+[cc[-1]]*(5-count)
     prev=np.array(ep['decisions'][idx//5]['obs'][565:821])*16
     # Full input includes last executed z at fixed documented slots, not oracle memory.
     assert np.max(np.abs(prev-np.array(r['x'][565:821])*16))<1e-6
     assert max(np.max(np.abs(np.array(r['obs'][k])-cc[0]['bfm_obs'][k])) for k in env.keys)<1e-6
-    r.update(previous_z=prev.tolist(),sequence=cc);data.append(r)
+    r.update(previous_z=prev.tolist(),sequence=cc,valid_steps=count);data.append(r)
    manifest.append(dict(path=str(p),sha256=runner.sha(p),physical_path=str(epath),physical_sha256=runner.sha(epath),samples=len(labels)))
   assert len(data)==1554
   gz(out/'base-data.json.gz',data)
@@ -107,6 +107,7 @@ def study(env,model,contract,out):
   x=torch.tensor([r['x'] for r in data],device=device);target=torch.tensor([r['z'] for r in data],device=device);prev=torch.tensor([r['previous_z'] for r in data],device=device)
   obs={k:torch.tensor([r['obs'][k][0] for r in data],device=device) for k in env.keys};norm={k:v.detach() for k,v in model._normalize(obs).items()}
   seq={k:torch.tensor([[c['bfm_obs'][k][0] for c in r['sequence']] for r in data],device=device) for k in env.keys};sh={k:v.shape[2:] for k,v in seq.items()};seqnorm=model._normalize({k:v.reshape(-1,*sh[k]) for k,v in seq.items()});seqnorm={k:v.detach().reshape(len(data),5,*v.shape[1:]) for k,v in seqnorm.items()}
+  mask=torch.arange(5,device=device)[None,:]<torch.tensor([r['valid_steps'] for r in data],device=device)[:,None]
   qtarget=torch.tensor([[c['q_PD'] for c in r['sequence']] for r in data],device=device)
   def endpoint(z,ix):return task.qof(model._actor({k:v[ix] for k,v in norm.items()},z,model.cfg.actor_std).mean.float())
   qt=torch.cat([endpoint(target[i:i+128],slice(i,i+128)) for i in range(0,len(data),128)])
@@ -120,7 +121,7 @@ def study(env,model,contract,out):
    zz=zslerp(prev[ix] if p is None else p,z);ob={k:v[ix].reshape(-1,*v.shape[2:]) for k,v in seqnorm.items()}
    q=task.qof(model._actor(ob,zz.reshape(-1,256),model.cfg.actor_std).mean.float());return q.reshape(-1,5,29)
   idx=torch.arange(min(16,len(data)),device=device);interpolation_error=max(float((zslerp(prev[idx],target[idx])[j,k]-spherical(prev[idx[j]][None],target[idx[j]][None],(k+1)/5)[0]).abs().max()) for j in range(len(idx)) for k in range(5))
-  replay_error=float((sequence(target[idx],idx)-qtarget[idx]).abs().max());assert interpolation_error<1e-4 and replay_error<1e-5,(interpolation_error,replay_error)
+  replay_error=float((sequence(target[idx],idx)-qtarget[idx])[mask[idx]].abs().max());assert interpolation_error<1e-4 and replay_error<1e-5,(interpolation_error,replay_error)
   groups={e:torch.tensor([i for i,r in enumerate(base) if r['episode']==e],device=device) for e in sorted(set(r['episode'] for r in base))};vg={e:torch.tensor([i+len(base) for i,r in enumerate(visited) if r['episode']==e],device=device) for e in sorted(set(r['episode'] for r in visited))}
   # Separate sampling RNG: identical base draws in C0/C1; C2 keeps first128/160
   # base samples and replaces32 with qualified visit data, fixed20% proportion.
@@ -135,7 +136,7 @@ def study(env,model,contract,out):
     vi=torch.cat([g[torch.randint(len(g),(11,),device=device,generator=vgen)] for g in vg.values()]);ix=torch.cat([ix[keep],vi[torch.randperm(len(vi),device=device,generator=vgen)[:32]]])
    with torch.enable_grad():
     z=direct_command(net.distribution(x[ix]).mean,env.standing)
-    lq=((endpoint(z,ix)-qt[ix])/np.deg2rad(1.)).square().mean() if arm=='C0' else ((sequence(z,ix)-qtarget[ix])/np.deg2rad(1.)).square().mean()
+    lq=((endpoint(z,ix)-qt[ix])/np.deg2rad(1.)).square().mean() if arm=='C0' else ((sequence(z,ix)-qtarget[ix])[mask[ix]]/np.deg2rad(1.)).square().mean()
     lz=(z-target[ix]).square().mean();loss=lq+.1*lz;opt.zero_grad();loss.backward();gn=float(torch.nn.utils.clip_grad_norm_(net.actor.parameters(),1));opt.step()
    # Count every completed update, including partial failures, in supervisor ledger.
    runner.write(out/'progress.json',dict(updates=step+1,arm=arm)) if step%25==0 or step==2999 else None
