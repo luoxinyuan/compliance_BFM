@@ -1,6 +1,6 @@
 # CURRENT_STATE — 新会话先读
 
-核对：2026-11-03。**Teacher30阶段已结项；新授权Contact-Guided Heading / Turning阶段准备中，尚未启动训练。** M11 continuation A160/B114仍停止，不重启、不当等预算终检。
+核对：2026-11-03。**Teacher30阶段已结项；新授权Contact-Guided Heading / Turning阶段已启动，Issue36记录实时进展。** M11 continuation A160/B114仍停止，不重启、不当等预算终检。
 
 ## 当前入口
 
@@ -19,7 +19,7 @@
 
 [Issue36](https://github.com/GaoE05/robot-research-bridge/issues/36)：新主线为已有缓弯/heading的Direct特权反馈获取；并行科学工作包是有限访问状态覆盖/采样比例对照，保留S0，不直接续训S2。实时仅GPU1空闲，因此物理任务串行；旧GPU5/6已被其他任务使用。
 
-预算18000累计job秒/10GiB/12000 Student更新，Heading PPO最多20×768决策；已登记协议，尚未启动。研究源码独立worktree gaoe05/contact-heading（实际分支无空格）。不在线引入force-to-motion规则；M10仅作初始化/对照。历史20标签高重采样是待检验假设，不是已证实唯一原因。
+预算18000累计job秒/10GiB/12000 Student更新，Heading PPO最多20×768决策；已完成两类M10行为来源及各4000步Direct初始化，未优于Teacher30，负结果保留。Heading PPO已启动，runtime `ee45292`，从Teacher30权重、新优化器开始，最多20×768决策；GPU1，run `heading-transfer-20261103/B-train-04`。A访问覆盖/比例对照已准备，因单卡串行尚未运行。资格与训练分别使用独立contact-heading、contact-heading-next、contact-heading-train worktree；普通推送仅个人research分支。不在线引入force-to-motion规则；M10仅作初始化/对照。历史20标签高重采样是待检验假设，不是已证实唯一原因。
 
 释放后不再把旧anchor几何距离或合理收步判为主动跟随失败；保持期仍有接触的偏差/牵拉必须保留。有限域Teacher→ideal-force Student成果已固定；S2早停止/正常退化不抹去旧成果，也不阻塞缓弯资格。原0.1s平滑负结果保留，不重复调参。
 
@@ -39,3 +39,5 @@
 本轮完成14000监督更新，0RL；76回合/236888记录物理步/11866高层决策（非RL样本）；含视频2293.69累计job秒，约1.39GiB。授权上限18000秒/10GiB/16000更新/最多3张实时空闲卡，**剩余额度不自动授权下一阶段**。执行结束核对ledger和ownedPID，不沿用GPU空闲快照、不重放队列、不启动Bridge/watch。
 
 新会话先读本文件、纲领、Issue35及协议，再只读核对ledger/Git/模型SHA。普通工程在用户授权内自主处理；不改共享BFM/PD/权重、团队main、SoftSONIC/他人任务，不下载大资产，不做真机。推送仅个人分支、无force/main/模型大数据。2026-10-28 Library PROJECT_STATE/SESSION_HANDOFF是历史快照，实时状态以GitHub/本文件为准。
+
+当前进度补充：Teacher30在统一条件移动期左/右弯yaw变化+5.49°/−8.66°，左弯幅度不足。旧M10报告较好的左右弯数字来自其共享Student，不应笼统当作原规则专家证据。本轮两种来源迁移失败不抹去旧条件成功，也不宣布整个BFM不能转向。Student迁移本轮尚无新结果。运行期间本文件状态以Issue36/ledger为准。
