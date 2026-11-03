@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/A-train-04/job/initial.pt",
+    "sha256": "0bad078d7f6c9acb52b2a2ddf7e637d2f2e71b780797129a6bc70ed4eb93bef6",
+    "bytes": 1400496
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/A-train-04/job/last.pt",
+    "sha256": "cdc01711353bbc3d0d7a506c26306cce4dc3f1e102a2c8272c5d0f9ed7a19205",
+    "bytes": 4167891
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/A-train-04/job/best.pt",
+    "sha256": "189e2fa24b6a2fdb3cecb8c14fb4f51071334d27ab487fab73e81248e3fbd610",
+    "bytes": 4170849
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/B-train-05/job/initial.pt",
+    "sha256": "0bad078d7f6c9acb52b2a2ddf7e637d2f2e71b780797129a6bc70ed4eb93bef6",
+    "bytes": 1400496
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/B-train-05/job/last.pt",
+    "sha256": "eb590b699c08c18bd89c060c811567a45cd9d99dbdbf115c48b3c64e29f69643",
+    "bytes": 4167891
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/B-train-05/job/best.pt",
+    "sha256": "62004810623df6ef8d5164ed04d3793cec5998fc57c6486012a5b5abdfc0fce8",
+    "bytes": 4170849
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-final-08/job/shared-r0.pt",
+    "sha256": "c055315215615f496f86f22fbbf7df5fbc20f0dc119892cf01cbe03c29157001",
+    "bytes": 1963808
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/goal-initialized.pt",
+    "sha256": "2059302f4b72c204b020309f316d17d46dd8cb7718d1ceaa655185eca592941e",
+    "bytes": 1395315
+  }
+]

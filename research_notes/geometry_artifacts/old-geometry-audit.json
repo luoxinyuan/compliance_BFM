@@ -1,0 +1,344 @@
+{
+  "T30_new_left": {
+    "path_terminal_tangent_deg": 11.76855311198711,
+    "force_xyz_mean": [
+      1.4365621194657976,
+      -1.230254107618119,
+      0.9992083251748307
+    ],
+    "force_xyz_rms": [
+      1.9442937838919208,
+      1.9732826928164873,
+      1.889293015795337
+    ],
+    "yaw_moment_reference": "saved whole-body subtree COM; force applied pre-step, positions saved post-step, \u22645ms stagger",
+    "yaw_moment_mean": 0.03688620621086114,
+    "yaw_moment_rms": 0.34882430898601957,
+    "yaw_moment_positive_fraction": 0.6426082628173221,
+    "work_j_finite_difference_estimate": 0.4617421385140769,
+    "root_delta": [
+      0.7642662520647576,
+      0.08997611788926281,
+      -0.0001594666415191126
+    ],
+    "wrist_delta": [
+      0.7738618713224029,
+      0.07517266918859786,
+      0.0013736466261082825
+    ],
+    "angles": {
+      "pelvis_matrix": {
+        "delta_deg": -6.586431525911471,
+        "range_deg": [
+          -12.110911995764596,
+          3.4687057735043476
+        ]
+      },
+      "torso_matrix": {
+        "delta_deg": -5.487847738857608,
+        "range_deg": [
+          -11.161283427881493,
+          4.334675156605431
+        ]
+      }
+    },
+    "reward_terms_all_control": {
+      "force": 0.389006210662392,
+      "uncapped": 0.0376924503283928,
+      "tracking": 0.005893244403066639,
+      "relative_velocity": 0.0035144301152273388,
+      "heading": 0.00047760083150171563,
+      "slip": 0.0042728811961015275,
+      "tilt": 0.0,
+      "continuity": 0.0018818333363811864,
+      "soft_prior": 0.0,
+      "idle": 1.816971740061358e-05
+    },
+    "small_angle_heading_cost_at_terminal_max": 0.00210205206671632
+  },
+  "T30_new_right": {
+    "path_terminal_tangent_deg": -8.600096504913658,
+    "force_xyz_mean": [
+      1.392385872194493,
+      -2.905339711252513,
+      1.3774959366720398
+    ],
+    "force_xyz_rms": [
+      1.7914120146613977,
+      3.313475780610207,
+      1.796317722195609
+    ],
+    "yaw_moment_reference": "saved whole-body subtree COM; force applied pre-step, positions saved post-step, \u22645ms stagger",
+    "yaw_moment_mean": -0.1983498220568812,
+    "yaw_moment_rms": 0.4195140516524017,
+    "yaw_moment_positive_fraction": 0.2966650074664012,
+    "work_j_finite_difference_estimate": 0.7404375179576824,
+    "root_delta": [
+      0.7711579224559912,
+      0.03200449002230999,
+      -0.03245049187838456
+    ],
+    "wrist_delta": [
+      0.7740048880894304,
+      -0.02900776542395886,
+      -0.028689778973199576
+    ],
+    "angles": {
+      "pelvis_matrix": {
+        "delta_deg": -6.023164590706213,
+        "range_deg": [
+          -11.547645060559594,
+          3.726731472729019
+        ]
+      },
+      "torso_matrix": {
+        "delta_deg": -6.256538606660163,
+        "range_deg": [
+          -11.929974295684538,
+          4.567503044764258
+        ]
+      }
+    },
+    "reward_terms_all_control": {
+      "force": 0.6025282586642076,
+      "uncapped": 0.059686035365450814,
+      "tracking": 0.009739534982849393,
+      "relative_velocity": 0.0036585092265945954,
+      "heading": 7.633430172748046e-05,
+      "slip": 0.003586762884320487,
+      "tilt": 0.0,
+      "continuity": 0.0015630665620577633,
+      "soft_prior": 0.0,
+      "idle": 0.0006769691710116379
+    },
+    "small_angle_heading_cost_at_terminal_max": 0.0011243870821035507
+  },
+  "T30_prefix_left": {
+    "path_terminal_tangent_deg": 5.833054924521364,
+    "force_xyz_mean": [
+      1.1420711402333508,
+      -1.4809608371763967,
+      0.9728582343241181
+    ],
+    "force_xyz_rms": [
+      2.117196438612025,
+      2.1135595226830355,
+      1.8645724668980912
+    ],
+    "yaw_moment_reference": "saved whole-body subtree COM; force applied pre-step, positions saved post-step, \u22645ms stagger",
+    "yaw_moment_mean": -0.06696438933469387,
+    "yaw_moment_rms": 0.37214230651402885,
+    "yaw_moment_positive_fraction": 0.45380296069423176,
+    "work_j_finite_difference_estimate": 0.7087511265538206,
+    "root_delta": [
+      0.8406472578896144,
+      0.046300934925179685,
+      -0.00039981202747851885
+    ],
+    "wrist_delta": [
+      0.8219652021751983,
+      0.015196249830734226,
+      0.0076363535478759514
+    ],
+    "angles": {
+      "pelvis_matrix": {
+        "delta_deg": -10.956100242253449,
+        "range_deg": [
+          -16.417857302181254,
+          4.033365956365623
+        ]
+      },
+      "torso_matrix": {
+        "delta_deg": -10.266353765992339,
+        "range_deg": [
+          -15.874045751704905,
+          5.156290264241064
+        ]
+      }
+    },
+    "reward_terms_all_control": {
+      "force": 0.42807313911002975,
+      "uncapped": 0.042744775332127866,
+      "tracking": 0.007042804136619978,
+      "relative_velocity": 0.003693801808530139,
+      "heading": 0.00016801488034547888,
+      "slip": 0.0030487691356127604,
+      "tilt": 0.0,
+      "continuity": 0.0017244117775350042,
+      "soft_prior": 0.0,
+      "idle": 8.455536336915389e-06
+    },
+    "small_angle_heading_cost_at_terminal_max": 0.0005177757855577058
+  },
+  "T30_prefix_right": {
+    "path_terminal_tangent_deg": -5.833054924521364,
+    "force_xyz_mean": [
+      1.2147216704625046,
+      -2.084017074289736,
+      1.0171765949234368
+    ],
+    "force_xyz_rms": [
+      2.083245042492212,
+      2.4770637878449895,
+      1.8186851903646593
+    ],
+    "yaw_moment_reference": "saved whole-body subtree COM; force applied pre-step, positions saved post-step, \u22645ms stagger",
+    "yaw_moment_mean": -0.13485516526526042,
+    "yaw_moment_rms": 0.4068620229252013,
+    "yaw_moment_positive_fraction": 0.37570188871873406,
+    "work_j_finite_difference_estimate": 0.7949884384281322,
+    "root_delta": [
+      0.8447394352838066,
+      0.048903701030701324,
+      -0.0020649831002700347
+    ],
+    "wrist_delta": [
+      0.821693753310869,
+      -0.0003753252006145069,
+      0.004226719218946795
+    ],
+    "angles": {
+      "pelvis_matrix": {
+        "delta_deg": -12.004164493058719,
+        "range_deg": [
+          -17.465921552986526,
+          4.033365956365623
+        ]
+      },
+      "torso_matrix": {
+        "delta_deg": -11.587792866649968,
+        "range_deg": [
+          -17.195484852362533,
+          5.156290264241064
+        ]
+      }
+    },
+    "reward_terms_all_control": {
+      "force": 0.474823387021643,
+      "uncapped": 0.04645882699879506,
+      "tracking": 0.007557940588247865,
+      "relative_velocity": 0.00370503427088424,
+      "heading": 2.5573290726068843e-05,
+      "slip": 0.003022129637963364,
+      "tilt": 0.0,
+      "continuity": 0.0018729090058225587,
+      "soft_prior": 0.0,
+      "idle": 1.868346063936684e-05
+    },
+    "small_angle_heading_cost_at_terminal_max": 0.0005177757855577058
+  },
+  "HeadingPPO_new_left": {
+    "path_terminal_tangent_deg": 11.76855311198711,
+    "force_xyz_mean": [
+      1.5841624258480593,
+      -0.9521669995758106,
+      1.232368150608474
+    ],
+    "force_xyz_rms": [
+      2.0055949736713368,
+      2.1163693016161114,
+      1.779723803788273
+    ],
+    "yaw_moment_reference": "saved whole-body subtree COM; force applied pre-step, positions saved post-step, \u22645ms stagger",
+    "yaw_moment_mean": 0.09625103335889891,
+    "yaw_moment_rms": 0.3610140389938446,
+    "yaw_moment_positive_fraction": 0.6893977103036336,
+    "work_j_finite_difference_estimate": 0.2762601091146757,
+    "root_delta": [
+      0.7718431109924572,
+      0.0747037938741586,
+      -0.002879726734103416
+    ],
+    "wrist_delta": [
+      0.7767416178951696,
+      0.06516936280667204,
+      -0.017595037762925925
+    ],
+    "angles": {
+      "pelvis_matrix": {
+        "delta_deg": -6.663500518066113,
+        "range_deg": [
+          -13.047218389613999,
+          3.7033894157479166
+        ]
+      },
+      "torso_matrix": {
+        "delta_deg": -5.47834480453023,
+        "range_deg": [
+          -13.893663605077476,
+          4.707980871243703
+        ]
+      }
+    },
+    "reward_terms_all_control": {
+      "force": 0.403720672170239,
+      "uncapped": 0.043663327756621094,
+      "tracking": 0.0075632722354794955,
+      "relative_velocity": 0.005160115464710978,
+      "heading": 0.0006321902713814123,
+      "slip": 0.006990822950876627,
+      "tilt": 0.0,
+      "continuity": 0.002475036324465742,
+      "soft_prior": 0.0,
+      "idle": 0.00029324387604487683
+    },
+    "small_angle_heading_cost_at_terminal_max": 0.00210205206671632
+  },
+  "HeadingPPO_new_right": {
+    "path_terminal_tangent_deg": -8.600096504913658,
+    "force_xyz_mean": [
+      1.4709868878480898,
+      -2.6839862305638325,
+      1.5388030658380556
+    ],
+    "force_xyz_rms": [
+      1.836494600137627,
+      3.1261868948220495,
+      2.025977907990883
+    ],
+    "yaw_moment_reference": "saved whole-body subtree COM; force applied pre-step, positions saved post-step, \u22645ms stagger",
+    "yaw_moment_mean": -0.13456362540660438,
+    "yaw_moment_rms": 0.39403483497547387,
+    "yaw_moment_positive_fraction": 0.39920358387257343,
+    "work_j_finite_difference_estimate": 0.5722077044985262,
+    "root_delta": [
+      0.7714750353539499,
+      0.032836630755358594,
+      -0.0490366544278652
+    ],
+    "wrist_delta": [
+      0.7678117437506949,
+      -0.03759350654121105,
+      -0.04936714597131475
+    ],
+    "angles": {
+      "pelvis_matrix": {
+        "delta_deg": -7.892035732857998,
+        "range_deg": [
+          -13.380066149360301,
+          3.576032959905096
+        ]
+      },
+      "torso_matrix": {
+        "delta_deg": -7.66012611612221,
+        "range_deg": [
+          -13.722173737892644,
+          4.60009218791218
+        ]
+      }
+    },
+    "reward_terms_all_control": {
+      "force": 0.5968301933409311,
+      "uncapped": 0.05576179649395038,
+      "tracking": 0.00869166603518739,
+      "relative_velocity": 0.0037226523370772215,
+      "heading": 5.590848185389876e-05,
+      "slip": 0.0037981589926317514,
+      "tilt": 0.0,
+      "continuity": 0.0014810926889035458,
+      "soft_prior": 0.0,
+      "idle": 0.001352699912404
+    },
+    "small_angle_heading_cost_at_terminal_max": 0.0011243870821035507
+  }
+}

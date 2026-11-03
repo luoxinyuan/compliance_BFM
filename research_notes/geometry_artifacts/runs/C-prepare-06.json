@@ -1,0 +1,9 @@
+{
+  "result.json": {
+    "status": "running",
+    "model_loaded": true,
+    "original_wrapper_used": true,
+    "bfm_updates": 0,
+    "student_optimizer_updates": 0
+  }
+}

@@ -9,7 +9,7 @@ def collect(out):
  for p in sorted(R.iterdir()):
   if not p.is_dir() or not (p/'job').exists():continue
   job=p/'job';d={}
-  for name in ['result.json','summaries.json','selection.json','resume.json','shared-r0-training.json','shared-r0-alignment.json','goal-initialized-training.json','goal-initialized-alignment.json','takeover-prefix-check.json','observation-audit.json','geometry-metrics.json']:
+  for name in ['result.json','summaries.json','selection.json','resume.json','shared-r0-training.json','shared-r0-alignment.json','goal-initialized-training.json','goal-initialized-alignment.json','takeover-prefix-check.json','first-divergence.json','observation-audit.json','geometry-metrics.json']:
    if (job/name).exists():d[name]=json.loads((job/name).read_text())
   if (job/'training.jsonl').exists():
    curves=[json.loads(x) for x in (job/'training.jsonl').read_text().splitlines()];d['learning_curve']=curves
@@ -19,7 +19,11 @@ def collect(out):
    if f.name not in ['best.pt','initial.pt','last.pt','shared-r0.pt','goal-initialized.pt']:continue
    identities.append(dict(path=str(f),sha256=hashlib.sha256(f.read_bytes()).hexdigest(),bytes=f.stat().st_size))
   runs[p.name]=d
- (out/'results.json').write_text(json.dumps(runs,indent=2));(out/'models.json').write_text(json.dumps(identities,indent=2))
+ (out/'runs').mkdir(exist_ok=True)
+ index={}
+ for name,d in runs.items():
+  f=out/'runs'/(name+'.json');f.write_text(json.dumps(d,indent=2));index[name]=dict(file='runs/'+f.name,result=d.get('result.json'),selection=d.get('selection.json'),summaries=d.get('summaries.json'),has_physical_metrics='geometry-metrics.json' in d)
+ (out/'results.json').write_text(json.dumps(index,indent=2));(out/'models.json').write_text(json.dumps(identities,indent=2))
  (out/'resources.json').write_text((R/'compute-ledger.json').read_text());(out/'old-geometry-audit.json').write_text((R/'old-geometry-audit.json').read_text())
  import matplotlib;matplotlib.use('Agg');import matplotlib.pyplot as plt
  fig,ax=plt.subplots(1,2,figsize=(11,4))

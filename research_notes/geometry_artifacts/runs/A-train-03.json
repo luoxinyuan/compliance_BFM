@@ -1,0 +1,25 @@
+{
+  "result.json": {
+    "status": "interrupted",
+    "iterations": 0,
+    "decisions": 0,
+    "updates": 0,
+    "elapsed_s": 59.3958459389396,
+    "workers": [
+      {
+        "pid": 2001732,
+        "exitcode": -15
+      },
+      {
+        "pid": 2001733,
+        "exitcode": -15
+      },
+      {
+        "pid": 2001734,
+        "exitcode": -15
+      }
+    ],
+    "bfm_updated": false,
+    "student_updated": false
+  }
+}

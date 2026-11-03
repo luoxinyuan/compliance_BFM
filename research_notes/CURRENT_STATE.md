@@ -1,45 +1,44 @@
 # CURRENT_STATE — 新会话先读
 
-核对2026-11-03。**Issue36已结项；用户新授权Contact Geometry→Translation/Rotation阶段现已启动，Issue37。** 保留S0/T30，不原样续训旧HeadingPPO10。M11 continuation仍停止。
+最后核对2026-11-03。**Contact Geometry → Translation / Rotation（Issue37）有界阶段完成，全部owned任务退出，未启动下一阶段。** Issue36及此前历史完整保留；M11 continuation仍停止，不重启旧A/B。
 
-[Issue37](https://github.com/GaoE05/robot-research-bridge/issues/37)：单腕曲线与刚性torso左右双点；每点2.5N，总sum norms≤5N。先真实几何/原生资格，再Direct privileged学习，成功部分才做共享传感表示迁移。阶段root `bridge-v2-owned/runs/contact-geometry-20261103`，worktree `gaoe05/contact-geometry`；预算21600累计job秒/15GiB/最多3张实时空闲GPU，预登记RL≤61440决策、源监督≤8000及Student≤8000更新。GPU1物理准备已发车，当前没有新Teacher成功或Student迁移结论。新授权优先于下方上轮“建议”。
+入口：[研究纲领](RESEARCH_OVERVIEW.md) · [本轮完整报告](CONTACT_GEOMETRY_RESULTS.md) · [Issue37](https://github.com/GaoE05/robot-research-bridge/issues/37) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。上一轮[HEADING_TRANSFER_RESULTS](HEADING_TRANSFER_RESULTS.md)/Issue36与[T30迁移](T30_TRANSFER_RESULTS.md)/Issue35不覆盖。
 
-长期方向：单/双点平面引导→多部位分别/组合→高度与移动→未见接触配置和身体状态泛化。不建设Bridge，不改共享BFM/PD。
+## 可靠基线与本轮科学结论
 
-入口：[研究纲领](RESEARCH_OVERVIEW.md) · [本阶段完整结果](HEADING_TRANSFER_RESULTS.md) · [Issue36](https://github.com/GaoE05/robot-research-bridge/issues/36) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。上一阶段[T30迁移](T30_TRANSFER_RESULTS.md)/Issue35完整保留。
+- 有限域Direct Teacher→ideal-force Student直行、减速、保持与释放已经成立；**S0和Teacher30继续是基线**。不再以释放后旧anchor几何距离否认正常收步。准确外力的真机来源未知。
+- 旧左路径末端切线11.769°、同前缀改向5.833°；旧heading项确实小，但不是唯一原因。新单腕对称曲线±22.55°终检：A20左误差8.682→6.629cm、力4.249→4.141N，但pelvis heading RMS16.89→18.60°。B20左位置也改善却朝向更差。**手沿曲线跟随≠身体可靠转向**，两组新PPO不替换T30。
+- 新增真实刚性torso双点，locals `[0,±.13,.15]`m，各2.5N、sum norms≤5N，与单腕5N匹配总作用预算。共同SE(2)伙伴框架，逐tick累加force/COM torque一次并正确减除；每点历史保留身份与坐标。它是保持接触Tether，不是单向按压。相同总力不等于相同力矩/做功。
+- 一个共享1639维ideal-force Student已训练4000更新（8独立回合/1227标签），同时能执行旧腕和双点。新24cm双点平移Standing/T30/Student为14.761/3.960/4.740cm，sum-force RMS4.556/3.333/3.495N。新26cm/−10°组合Teacher/Student4.718/4.178cm、4.226/4.018N，但Student实际torso转角约+0.66°，**组合收益主要是平移，不能称旋转通过**。
+- 共享Student旧正常6.530→7.280cm、早停止7.330→7.719、晚6.892→7.646、局部3.680→4.445cm，均保留失败，不能替换S0。无接触只有毫米级root漂移，没有完整新动作自动播放。
+- 当前原生motion左右调用在纠正各自period/进入退出后仍不适合作为原地旋转源；不能据此否定全部BFM。仅两项明确native waist-yaw goal正控制证实小幅左右转腰可执行：±15°下1.576/0.678cm，sum-force2.535/1.089N，torso约+9.23/−14.52°。主要腰相对pelvis约±10°，**不是新迈步转身能力**。
+- 将goal与旧T30行为混合做4000更新Direct监督初始化，右向有部分效果，新−12°为1.072cm/1.696N，但左不足、旧直行退化至53.310cm。该研究模型未推广。专家状态q_PD平均对齐约0.044–0.078°，却在接触前已闭环偏离；离线拟合不等于保住稳定域与运动能力。详见first-divergence和视频3。
 
-## 已固定能力与当前结论
+## 当前瓶颈、下一决策与未执行项
 
-- 有限域Direct Teacher→ideal-force Student直行、减速、保持及释放链成立。S0仍是旧能力基线，Teacher30是较稳特权基线；S1matched/S2和本轮新模型都是研究对照，不能全面替换。准确外力真机来源未知，不称已实机部署。
-- 本轮A：6个独立Student回合、36次完整状态接管，13有效局部窗口/5回合取得65标签。两组相同数据/初始化/seed/各3000更新，仅访问标签8/128与32/128比例不同。正常S0/低/高为6.505/7.006/8.441cm，新早6.456/8.331/6.921cm，新晚6.785/7.006/5.941cm。低比例较保旧，高比例较改善晚停止，均非全面升级；不能将旧S2失败唯一归因于重采样。
-- 本轮B：两种M10来源的Direct初始化都未优于T30，负结果保留。转用T30权重+新优化器，20×768窄曲率PPO，开发预定规则选batch10；并未根据终检重选。执行仍是特权当前反馈→学习z→冻结BFM→原PD，无在线手写force-to-motion/M10 Student。
-- 新右弯T30→PPO10误差6.711→6.340cm、力4.173→4.153N、heading4.13→3.74°；同前缀转右5.925→5.543cm、3.713→3.350N，但heading3.20→3.64°。新左5.220→5.914cm、heading10.28→13.34°，局部请求也退化。故存在真实反馈及部分收益，不宣称可靠对称转向或general策略。
-- 正反曲率分支在8.6s之前qpos/qvel/force/anchor完全一致，之后真实伙伴变化产生不同响应；变化后状态也不同，不能称隔离出的同状态actor因果效应。
-- 释放后旧anchor距离不是任务误差；正常收步允许。仍保留释放前牵拉、自由恢复root/手腕速度/支撑及q_PD连续性。旧右踝观察反馈大跳变与0.1s平滑退化不重复修补。本阶段离线分期边界bug已修正，只用physical-metrics-v2；物理、训练和选择未受影响。
+**首要瓶颈：** 不是仅把heading权重加大或继续加力；已有有限旋转能力在Direct闭环中的获取、保旧与真实接触条件调用仍不可靠。旧T30对纯力偶近乎无响应，新PPO未学出；goal监督初始化暴露接触前稳定域/分布敏感，不能唯一归因网络或数据量。
 
-## 执行、资源与下一决策
+**唯一推荐下一步（尚未执行）：** 用已验证的小幅原生转腰作为行为源，针对接触前偏离做保留无接触稳定域和旧运动能力的同状态动作约束、有限真实访问状态聚合，先得到保旧左右旋转反馈专家，再迁移到现有共享contact slots。不要扩force cap、更多点或大角度迈步，不无界搜索latent。
 
-累计4844.92 job秒、约2.80GiB；Student6000更新，另Expert初始化8000监督更新，PPO15360决策/306572physics步/76643control步，初始化另50400physics步。实际GPU1/2在实时资源检查后使用，owned均退出；不沿用空闲快照。共享代码/BFM/PD/权重/他人进程未改。
+已完成：两组40批PPO、原生motion/goal有限资格、共享Student训练、goal监督初始化、冻结终检、视频。**没有**继续聚合混合质量的接管标签、把goal研究模型升级基线、启动下一轮PPO/Student、Bridge/watch或真机。Teacher接管4次前缀物理逐值相同，部分改善、部分变差，未笼统判全部标签有效。
 
-**唯一建议**：下一授权阶段以冻结T30为主，做有限曲线引导ideal-force Student迁移与同前缀方向变化，PPO10仅作其已证明有益域的独立比较，保留S0直行/局部回归。不继续无界停止打磨，也不把有退化的PPO10推广成全局Teacher。此建议尚未执行。
+## 精确身份与数据
 
-本阶段源码runtime：A `094d4492f7097d9f7ccabb64fefd6b359dcb8a6c`，B `ee45292eb204e370b002470400b6f443c9f0c65c`。文档提交不等于runtime。
-结果根：`/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/heading-transfer-20261103`；完整SHA、选择、曲线、资源与物理分项见报告和`heading_artifacts/`。Heading选中SHA `31963f604b56a500b004a1ed6019f3784a44871c6d840eba254ef06b4762ebc9`。
-Mac仅2条新视频与INDEX：`~/Projects/compliance-bfm-diagnostics/videos/heading-turning-20261103/`；同前缀转右收益和新左局限，实际qpos、1×、完整接触/6s恢复，SHA/时长/解码已验证。
+长期个人分支：[gaoe05/research](https://github.com/luoxinyuan/compliance_BFM/tree/gaoe05/research)。文档/整合commit不等于运行commit。
 
-## 精确身份与位置
-
-长期个人分支：[gaoe05/research](https://github.com/luoxinyuan/compliance_BFM/tree/gaoe05/research)。以下为上一T30阶段身份；本阶段runtime见上方报告。上一阶段物理runtime主A/C `8af5a87cf6684469d28a99a11e156ecdb0ba9575`，质量D `23309461185f0b10cdc6dfc291c8665f6213fa80`，此前源码已推送`290c458e3a8c5861f3c13a1a532840300108ecea`。不以文档commit替代runtime。
-
+- PPO runtime `b96fe456fb77d3d98602772d98d23652d0613c42`；共享Student `596b598749db82d17b2bc97e08dec76d013095c1`；goal初始化 `704de7e00736cc6845222672c17cc6e5350d8770`；终检 `940377c1fb3271abb7ca3ec5aae2f04a70e9c422`。所有source pins见[resources](geometry_artifacts/resources.json)。
 - BFM SHA `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
-- Teacher30 SHA `c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33`，`bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/best.pt`。
-- PPO15 SHA `92692be758d04386c32bea3108b3b155d4c37b0c2b70679e78cf849f593112fe`；原r0 SHA `0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12`。
-- S1warm SHA `2a4e8babb81cad35a127d8feeb4bfe594bb93915d476375b37d87bcc2e8e9cff`；S1matched `11b82954b10f68961d05f32a74b16fb30e79efc58f428b9852572268974744ad`；S2 `2ecfff8e3ff8ee70e2b8889cea85820552747a9c69f47f616294401339a27b1d`；N30 `49d9aa94114b3e5eadb679796b43160725d72830da5353a63b4d4db2d809bf83`。
-- 完整服务器root `/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/t30-transfer-20261103/`。前三Student在`A-prepare-01/job/`、N30在`C-final-02/job/`；协议、阶段分项、所有失败见报告和`t30_artifacts/results.json`。原B505/N505等均保留，不覆盖。
-- Mac视频：`~/Projects/compliance-bfm-diagnostics/videos/teacher30-transfer-20261103/`，3条完整1×真实qpos对照＋INDEX。旧视频目录原样保留。
+- T30 SHA `c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33`：`bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/best.pt`。
+- S0 SHA `0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12`：`bridge-v2-owned/runs/direct-transfer-20261103/A-prepare-01/job/ppo15-student-r0.pt`。
+- A20 SHA `189e2fa24b6a2fdb3cecb8c14fb4f51071334d27ab487fab73e81248e3fbd610`；B20 `62004810623df6ef8d5164ed04d3793cec5998fc57c6486012a5b5abdfc0fce8`。
+- 共享Student SHA `c055315215615f496f86f22fbbf7df5fbc20f0dc119892cf01cbe03c29157001`；goal研究模型 `2059302f4b72c204b020309f316d17d46dd8cb7718d1ceaa655185eca592941e`。
+- 本轮服务器根 `/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/`；A/B模型分别在`A-train-04/job/best.pt`、`B-train-05/job/best.pt`；共享`C-final-08/job/shared-r0.pt`；goal`C-goal-10/job/goal-initialized.pt`。初始/末轮/失败全部保留。[结果索引](geometry_artifacts/results.json)、[模型SHA清单](geometry_artifacts/models.json)可审查。
+- Mac `~/Projects/compliance-bfm-diagnostics/videos/contact-geometry-20261103/`：仅3条MP4＋INDEX。左曲线收益/heading局限、双点共享Student、左转腰来源/学习失败；真实qpos、1×、完整接触＋5秒释放恢复，SHA/时长/解码/画面已验证。旧视频不删除。
 
-## 成本与接力规则
+## 资源、安全与跨会话接力
 
-上一T30阶段完成14000监督更新，0RL；76回合/236888记录物理步/11866高层决策（非RL样本）；含视频2293.69累计job秒，约1.39GiB。授权上限18000秒/10GiB/16000更新/最多3张实时空闲卡，**剩余额度不自动授权下一阶段**。执行结束核对ledger和ownedPID，不沿用GPU空闲快照、不重放队列、不启动Bridge/watch。
+本轮累计8990.33受监督实验/渲染job秒（含失败），约4.29GiB；RL61440高层决策，新增Expert监督4000及Student4000更新。授权上限21600秒/15GiB/最多3卡，**余额不是下一阶段授权**。使用GPU1/2/3，结束后均退出，其他用户GPU0/5/6任务未操作。共享repo保持clean，BFM/PD/权重未改；所有工作在个人worktree，没有push main/强推。
 
-新会话先读本文件、纲领、Issue36及协议，再只读核对ledger/Git/模型SHA。普通工程在用户授权内自主处理；不改共享BFM/PD/权重、团队main、SoftSONIC/他人任务，不下载大资产，不做真机。推送仅个人分支、无force/main/模型大数据。2026-10-28 Library PROJECT_STATE/SESSION_HANDOFF是历史快照，实时状态以GitHub/本文件为准。
+Student input仅本体/动作/自身z记忆、每点理想力历史与已知mount身份，没有anchor、伙伴速度、目标朝向、active真值或任务clock。未知G1传感配置仍未知，不等于实机部署。双点同时接触已测，但未验证任意接触配置或同回合腕↔躯干切换。
+
+新会话先读本文件、纲领、Issue37与协议，再核对Git、模型SHA、ledger/进程及实际资源，不重放已消费任务。普通工程按新授权自主处理，不改main/共享BFM/PD/权重、SoftSONIC或他人任务，不下载大资产，不做真机。Library中2026-10-28 PROJECT_STATE/SESSION_HANDOFF是历史快照；实时入口以GitHub和本文件为准。

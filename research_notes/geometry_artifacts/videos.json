@@ -1,0 +1,104 @@
+[
+  {
+    "name": "01-wrist-left-curve",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/videos-attempt02/01-wrist-left-curve.mp4",
+    "sha256": "8603c084d85c6b1676892c6bfe3967ddcca94da3e74a41edb3320428d020dc4d",
+    "frames": 413,
+    "fps": 25,
+    "duration": 16.52,
+    "seconds": 8.724328047828749,
+    "sides": [
+      {
+        "title": "Frozen T30 | single wrist left curve | 5N",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-final-12/job/T30_left_new.json.gz",
+        "sha256": "04028c349ed66a387257d658c92b9460624be5e0a8e6847b79be9b587d882aef"
+      },
+      {
+        "title": "New A PPO batch20 | same curve | inspect heading, not hand path alone",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/A-final-11/job/selected_left_new.json.gz",
+        "sha256": "38c86664cfbaecb8ca43247646c72723c4b801feadcc90eec8c2f359fe6aec8d"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0.48,
+      "onset": 4.4,
+      "ramp": 8.1,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "02-two-point-shared-student",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/videos-attempt02/02-two-point-shared-student.mp4",
+    "sha256": "acbf63dd756005964951daac79727340d4f058bec967b775ed55dcfc422d71ff",
+    "frames": 413,
+    "fps": 25,
+    "duration": 16.52,
+    "seconds": 8.849567119963467,
+    "sides": [
+      {
+        "title": "Frozen T30 privileged Teacher | two torso points | total cap 5N",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-final-08/job/Teacher_final_pair_combined_new.json.gz",
+        "sha256": "039dede9dfe0762b68cde21bf759015ada082b3d81a7b18a760abb5eaa47990a"
+      },
+      {
+        "title": "Shared ideal-force Student | unseen translation + rotation | no target input",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-final-08/job/Student_final_pair_combined_new.json.gz",
+        "sha256": "85a00c96f21c4ca073d9b8ea2ec6220e66ad690ca424a8bc63ee114e0563b517"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.26,
+      "rotation_deg": -10,
+      "curvature": 0,
+      "onset": 4.4,
+      "ramp": 8.1,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "03-rotation-source-and-learning-boundary",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/videos-attempt02/03-rotation-source-and-learning-boundary.mp4",
+    "sha256": "a6883a5e6c01e1bfdbb8d74672ab9d8797d82138d4dfeaa348e555de70e0b4b0",
+    "frames": 402,
+    "fps": 25,
+    "duration": 16.08,
+    "seconds": 9.175518812146038,
+    "sides": [
+      {
+        "title": "Native goal source | left waist rotation | capability probe, not learned feedback",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/source_pair_left.json.gz",
+        "sha256": "955b5600f995a62725dc7f0b388060151645f7c58d3eb89cc4ff6ffdfeee98d4"
+      },
+      {
+        "title": "Direct goal-supervised initialization | left response shortfall | NOT promoted",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/direct_pair_left.json.gz",
+        "sha256": "910aa2774632bc03b3db0ab1a76f748e1cf277ce88d036e6d27b714bb8680518"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  }
+]

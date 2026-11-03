@@ -1,0 +1,23 @@
+{
+  "teacher": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/best.pt",
+    "sha256": "c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33"
+  },
+  "qualified_dev": [
+    "pair_translate",
+    "pair_combined"
+  ],
+  "rotation_qualified": false,
+  "scope": "Frozen T30 reused where actual paired translation/combination lowers load and error vs Standing; not new PPO or pure rotation teacher. Old wrist retention labels from frozen S0.",
+  "evidence": "B-prepare-02/job/summaries.json",
+  "student_updates": 4000,
+  "seed": 1307,
+  "final_translation": {
+    "distance": 0.24,
+    "onset": 4.45,
+    "ramp": 8.05,
+    "release": 14.5,
+    "end": 19.5
+  },
+  "selection_before_student_training": true
+}
