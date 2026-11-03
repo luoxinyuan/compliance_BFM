@@ -93,13 +93,18 @@ def study(env,model,contract,out):
  assert len(old)==824
  def points(s):return dict(entry=6.,pre_deceleration=s['stop_time']-.5,deceleration=s['stop_time']+.2,hold=s['stop_time']+s['deceleration']+1,release=s['release']+.2)
  source=P/'bridge-v2-owned/runs/t30-transfer-20261103/A-prepare-01/job'
- data=read(source/'teacher30-data.json.gz')
+ all_data=read(source/'teacher30-data.json.gz')
+ # Prior own-trajectory comparison supports normal/late/local; early T30 is not
+ # better than S0 on force+3*error. Do not impose that worse source on S0.
+ data=[q for q in all_data if q['episode'] in ['source_normal','source_late_stop','source_local','source_no_contact']]
+ runner.write(out/'own-data-selection.json',dict(included=['normal','late_stop','local','no_contact'],excluded=['early_stop','middle_stop'],reason='existing paired S0/T30 evidence; early composite worse, middle no matched S0 control; before any new test'))
  warmid=dict(path=str(source/'S1warm.pt'),sha256='2a4e8babb81cad35a127d8feeb4bfe594bb93915d476375b37d87bcc2e8e9cff');warm=load(warmid)
  gathered=[]
- for name,spec in PLAN['student_coverage'].items():
-  qs,_=run('visit_'+name,spec,warm,collect=True)
+ for index,(name,spec) in enumerate(PLAN['student_coverage'].items()):
+  visitor=r0 if index%2==0 else warm
+  qs,_=run('visit_'+name,spec,visitor,collect=True)
   pts=dict(entry=6.,deceleration=spec['stop_time']+.1,hold=spec['stop_time']+spec['deceleration']+.8)
-  regions=recover('take_'+name,spec,warm,'visit_'+name,pts,True)
+  regions=recover('take_'+name,spec,visitor,'visit_'+name,pts,True)
   gathered += [q for q in qs if any(a-1e-8<=q['time']<=b+1e-8 for a,b in regions)]
  write_gz(out/'accepted-visited.json.gz',gathered)
  runner.write(out/'coverage.json',dict(labels=len(gathered),episodes=sorted(set(x['episode'] for x in gathered)),scope='only endpoint-bracketed0.4s intervals; matching executed history and actual Student prefix; no blanket trajectory label validity',selection='safe lower active force+3*error_m; active error<=1.1 continuation; released root motion descriptive, not rigid anchor target'))

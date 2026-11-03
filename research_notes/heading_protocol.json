@@ -671,5 +671,6 @@
       "deceleration": 1.0
     }
   },
-  "precommit": "Same valid visited dataset, seed906, r0 initialization, 3000 updates each, batch128; 64 old labels, visited fractions8/128 or32/128 replace Teacher30-own labels. Optional third arm8/128 plus S0 preservation only if justified before sealed tests. No final-based checkpoint selection. Heading sources7 fixed; initial4000 supervised expert updates distinct from Student budget; PPO max20x768 with dev every5, unchanged reward. OneGPU serial initially."
+  "precommit": "Same valid visited dataset, seed805, r0 initialization, 3000 updates each, batch128; 64 old labels, visited fractions8/128 or32/128 replace Teacher30-own labels. Optional third arm8/128 plus S0 preservation only if justified before sealed tests. No final-based checkpoint selection. Heading sources7 fixed; initial4000 supervised expert updates distinct from Student budget; PPO max20x768 with dev every5, unchanged reward. OneGPU serial initially.",
+  "student_coverage_protocol": "Six real independent episodes, alternating S0/S1warm for natural visited-state diversity, three endpoint-bracketed windows each. Only normal/late/local/no-contact prior ownTeacher data; earlyworse and unpairedmiddle excluded before training. Same valid dataset and oldlabels for both ratios."
 }
