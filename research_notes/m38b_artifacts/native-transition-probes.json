@@ -1,0 +1,98 @@
+[
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-probe-07/job/source_moving_left.json.gz",
+    "samples": [
+      {
+        "time": 7.9,
+        "torso_delta_deg": 2.0976804830254974,
+        "pelvis_delta_deg": 3.6196337187860994,
+        "root_x_delta_m": 0.21182482785202025,
+        "target_delta_deg": 0.0
+      },
+      {
+        "time": 10.0,
+        "torso_delta_deg": 7.3637287953003865,
+        "pelvis_delta_deg": 1.0649954840310394,
+        "root_x_delta_m": 0.3006180866557043,
+        "target_delta_deg": 9.999812812500014
+      },
+      {
+        "time": 11.0,
+        "torso_delta_deg": 8.781530012780266,
+        "pelvis_delta_deg": 2.195299573994685,
+        "root_x_delta_m": 0.3037073416127052,
+        "target_delta_deg": 10.0
+      },
+      {
+        "time": 13.0,
+        "torso_delta_deg": 5.978652486189389,
+        "pelvis_delta_deg": 6.466167572054997,
+        "root_x_delta_m": 0.30125383357544755,
+        "target_delta_deg": 0.00018718749995374787
+      },
+      {
+        "time": 15.25,
+        "torso_delta_deg": -5.076311321759198,
+        "pelvis_delta_deg": -6.236497550240764,
+        "root_x_delta_m": 0.6777207379442158,
+        "target_delta_deg": 0.0
+      },
+      {
+        "time": 20.25,
+        "torso_delta_deg": -16.156793640392316,
+        "pelvis_delta_deg": -16.941788261971134,
+        "root_x_delta_m": 0.6833739238004961,
+        "target_delta_deg": 0.0
+      }
+    ],
+    "scope": "Native source qualification, not learned autonomous switching; partner rotation starts8s returns11-13s while forward demand continues."
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-probe-07/job/source_moving_right.json.gz",
+    "samples": [
+      {
+        "time": 7.9,
+        "torso_delta_deg": 2.0976804830254974,
+        "pelvis_delta_deg": 3.6196337187860994,
+        "root_x_delta_m": 0.21182482785202025,
+        "target_delta_deg": 0.0
+      },
+      {
+        "time": 10.0,
+        "torso_delta_deg": -2.347515083059924,
+        "pelvis_delta_deg": 4.257436139459384,
+        "root_x_delta_m": 0.28902832331851247,
+        "target_delta_deg": -9.999812812500014
+      },
+      {
+        "time": 11.0,
+        "torso_delta_deg": -2.899410097617225,
+        "pelvis_delta_deg": 4.005172767497895,
+        "root_x_delta_m": 0.29305059654089677,
+        "target_delta_deg": -9.999999999999998
+      },
+      {
+        "time": 13.0,
+        "torso_delta_deg": 9.957657166627978,
+        "pelvis_delta_deg": 9.840366617691483,
+        "root_x_delta_m": 0.30887482885170003,
+        "target_delta_deg": -0.00018718749995374787
+      },
+      {
+        "time": 15.25,
+        "torso_delta_deg": 8.704731930471532,
+        "pelvis_delta_deg": 8.496992987544031,
+        "root_x_delta_m": 0.44259614805398423,
+        "target_delta_deg": 0.0
+      },
+      {
+        "time": 20.25,
+        "torso_delta_deg": -15.71896068550322,
+        "pelvis_delta_deg": -16.55534914783025,
+        "root_x_delta_m": 0.5879691068394383,
+        "target_delta_deg": 0.0
+      }
+    ],
+    "scope": "Native source qualification, not learned autonomous switching; partner rotation starts8s returns11-13s while forward demand continues."
+  }
+]

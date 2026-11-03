@@ -1,0 +1,91 @@
+{
+  "exact_duplicate_inputs": 117,
+  "conflicting_exact_labels": [],
+  "matched_clock_direction_pairs": [
+    {
+      "time": 3,
+      "full_input_rms": 0.0,
+      "contact_extra_rms": 0.0,
+      "direction_sin_cos_left": [
+        0.0,
+        1.0
+      ],
+      "direction_sin_cos_right": [
+        0.0,
+        1.0
+      ],
+      "target_z_angle_deg": 0.0
+    },
+    {
+      "time": 4.3,
+      "full_input_rms": 3.812917638440133e-05,
+      "contact_extra_rms": 7.754037306141866e-05,
+      "direction_sin_cos_left": [
+        0.013695286586880684,
+        0.9999062418937683
+      ],
+      "direction_sin_cos_right": [
+        0.013643687590956688,
+        0.9999068975448608
+      ],
+      "target_z_angle_deg": 0.0
+    },
+    {
+      "time": 5,
+      "full_input_rms": 0.00597917013463147,
+      "contact_extra_rms": 0.007634937980747332,
+      "direction_sin_cos_left": [
+        0.018663659691810608,
+        0.9998258352279663
+      ],
+      "direction_sin_cos_right": [
+        0.007918783463537693,
+        0.9999686479568481
+      ],
+      "target_z_angle_deg": 2.7334342308598387
+    },
+    {
+      "time": 7,
+      "full_input_rms": 0.12553486302571137,
+      "contact_extra_rms": 0.0940242021297038,
+      "direction_sin_cos_left": [
+        0.06436189264059067,
+        0.997926652431488
+      ],
+      "direction_sin_cos_right": [
+        -0.006870968732982874,
+        0.999976396560669
+      ],
+      "target_z_angle_deg": 28.43052809882191
+    },
+    {
+      "time": 10,
+      "full_input_rms": 0.2912762648846556,
+      "contact_extra_rms": 0.11929649028864847,
+      "direction_sin_cos_left": [
+        0.08858372271060944,
+        0.9960687160491943
+      ],
+      "direction_sin_cos_right": [
+        -0.02718152478337288,
+        0.9996305108070374
+      ],
+      "target_z_angle_deg": 64.07832846775062
+    },
+    {
+      "time": 12,
+      "full_input_rms": 0.3719014679620324,
+      "contact_extra_rms": 0.0998902896827724,
+      "direction_sin_cos_left": [
+        0.08432256430387497,
+        0.9964385032653809
+      ],
+      "direction_sin_cos_right": [
+        -0.005730130709707737,
+        0.9999836087226868
+      ],
+      "target_z_angle_deg": 74.76644695319064
+    }
+  ],
+  "scope": "Exact full-input comparison confirms no recurrence of prior contradictory identical-input labels in this dataset. Does NOT prove global identifiability; nearby nonidentical inputs are not label conflicts. No statistical replicate claims."
+}

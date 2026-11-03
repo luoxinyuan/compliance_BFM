@@ -1,0 +1,104 @@
+[
+  {
+    "name": "01-left-direction-failure",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/videos/01-left-direction-failure.mp4",
+    "sha256": "b148d4df97fb6b828ce9f75133eb6186c48dbbc487a4b4b7793d4b8e42f3a05e",
+    "frames": 402,
+    "fps": 25,
+    "duration": 16.08,
+    "seconds": 8.729172006016597,
+    "sides": [
+      {
+        "title": "TOP | +15deg rotation: correct source vs learned C2 WRONG direction | SOURCE",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/causal_pair_left.json.gz",
+        "sha256": "281bc5e029024108ab12a3544c046588b03019278a1e5ad2e998882a2b393141"
+      },
+      {
+        "title": "BOTTOM | C2 Privileged Expert (NOT deployable Student)",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_pair_left.json.gz",
+        "sha256": "a686f901dde17a6964937daf1b927a969b135425903ad7274a060f5fc2f7f630"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "02-right-rotation-preserved",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/videos/02-right-rotation-preserved.mp4",
+    "sha256": "9e39dc4934f23f750691804348eb73bd1dca5a6d8979ecdfb43131e362c1d3f3",
+    "frames": 402,
+    "fps": 25,
+    "duration": 16.08,
+    "seconds": 8.905783127062023,
+    "sides": [
+      {
+        "title": "TOP | -15deg rotation: source vs learned C2 effective response | SOURCE",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/causal_pair_right.json.gz",
+        "sha256": "46852dfe377e1ef718086ae173cc8fc2d515a40321fd545b5ad147b854d979c2"
+      },
+      {
+        "title": "BOTTOM | C2 Privileged Expert (NOT deployable Student)",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_pair_right.json.gz",
+        "sha256": "7a8e286d10232a81b8986b52ee1ad896163da62e384ea5d1d5f41ea4c9b04690"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "03-walking-retention",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/videos/03-walking-retention.mp4",
+    "sha256": "3ef3b251f3207864f54dd08bef51ea0a40e2c32708d1d86361b7993fb8ec6a95",
+    "frames": 402,
+    "fps": 25,
+    "duration": 16.08,
+    "seconds": 8.901505283080041,
+    "sides": [
+      {
+        "title": "TOP | 82cm straight: frozen T30 vs learned C2 | SOURCE",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_straight.json.gz",
+        "sha256": "e5cf5a9664a94e983ba45868d666981fc843e1ae4f2cc3d76e554fa5f5e2a2a6"
+      },
+      {
+        "title": "BOTTOM | C2 Privileged Expert (NOT deployable Student)",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_straight.json.gz",
+        "sha256": "81872f75307f584d83b11f9f2b5cd9f64b3f81041695b8edb0f4169b7a76200f"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  }
+]

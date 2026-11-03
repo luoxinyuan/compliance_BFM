@@ -1,0 +1,182 @@
+{
+  "base_samples": 1554,
+  "base_episodes": 10,
+  "visited_samples": 383,
+  "source": [
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_local-labels.json.gz",
+      "sha256": "33aa536685f6e4b8b4d4814cd3e453918b4e48442edb58fe2ff9ec0ce0fa2e93",
+      "physical_path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_local.json.gz",
+      "physical_sha256": "6095c2e3afa8924bac31c60f4da406fdf16203668dba9803e023209b349e9f52",
+      "samples": 161
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_no_contact-labels.json.gz",
+      "sha256": "a7bd19f2c6628e0f5e9cb9fa082903970e01853c5a51c65d5b7eff4bfd3cffde",
+      "physical_path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_no_contact.json.gz",
+      "physical_sha256": "da82288dafa09b390b4ac849fedf9c6f96af3f73a1a6b401a95aa67fef14543d",
+      "samples": 161
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_pair_combined-labels.json.gz",
+      "sha256": "8a1aeef86fa229deb4b49459e514209455246bd47235faffb2e0a4f77c7726a8",
+      "physical_path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_pair_combined.json.gz",
+      "physical_sha256": "d4482eb1566e8cfe644afab0142c76e9a94151a16ed7deaf49cd2521c2b7ebf6",
+      "samples": 161
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_pair_no_contact-labels.json.gz",
+      "sha256": "3c0a3a311089001c4fddabafc27f8874c3b498b24aff2417af5131997e58cc0a",
+      "physical_path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_pair_no_contact.json.gz",
+      "physical_sha256": "254a7cf84b72a2d65ba301d9e84f33da1e4db86aa2268dac20a7642ddafe1818",
+      "samples": 161
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_pair_translate-labels.json.gz",
+      "sha256": "5e96223efe632c1e0a7687bc7b4e8b8be005bb82f5c329c7223463470e8d500d",
+      "physical_path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_pair_translate.json.gz",
+      "physical_sha256": "4aadb9ed8b01a13e9aa08b4e747f8cdac90cd189e32e0d1662e9ff445a6d0d91",
+      "samples": 161
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_straight-labels.json.gz",
+      "sha256": "7acec39b123c0a6363431e10b1d24abdb77d214ae4b3dc0e9f96a0cad38574e3",
+      "physical_path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/contact-geometry-20261103/C-goal-10/job/retain_straight.json.gz",
+      "physical_sha256": "e5cf5a9664a94e983ba45868d666981fc843e1ae4f2cc3d76e554fa5f5e2a2a6",
+      "samples": 161
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/causal_pair_left-labels.json.gz",
+      "sha256": "6bdfa89d15393ba20a7b25d489f8d29474e66f2bd2a393d5b170fb94a02f5de2",
+      "physical_path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/causal_pair_left.json.gz",
+      "physical_sha256": "281bc5e029024108ab12a3544c046588b03019278a1e5ad2e998882a2b393141",
+      "samples": 161
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/causal_pair_right-labels.json.gz",
+      "sha256": "e9107c6864247615fa85ac1a57e7a3a40d4afd7524ede3b1433fbbcf7b2c7833",
+      "physical_path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/causal_pair_right.json.gz",
+      "physical_sha256": "46852dfe377e1ef718086ae173cc8fc2d515a40321fd545b5ad147b854d979c2",
+      "samples": 161
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/retain_stop_early-labels.json.gz",
+      "sha256": "d74ba0593883b0179bbe1b66d255442b98e370e4a245cad22153737f0b95e608",
+      "physical_path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/retain_stop_early.json.gz",
+      "physical_sha256": "a46ce87644f760284f8172fb45bd1396e360149be5713bde79a8c96c38c0c037",
+      "samples": 120
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/retain_stop_late-labels.json.gz",
+      "sha256": "ad5322ed5b3210e4d099633e6b4e534fc64de6b2f9a999e73c394e7825ff4c15",
+      "physical_path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-03/job/retain_stop_late.json.gz",
+      "physical_sha256": "ce2b61ede57c604aff572ed8747402d0391c436bcc0a2635826f60e4397c3905",
+      "samples": 146
+    }
+  ],
+  "base_sha256": "7d260d4e4cbb062972ae0108d048ff82dcf56bcdba683362987c314d322b156b",
+  "visited_sha256": "f27ccefbbf6974305055bfe1d1293d7632bfd54bd674169082a3dcb7befd97da",
+  "identical_input_pairs": [
+    {
+      "a": "causal_pair_left",
+      "b": "causal_pair_right",
+      "target_max": 0.0
+    },
+    {
+      "a": "causal_pair_left",
+      "b": "retain_pair_combined",
+      "target_max": 0.0
+    },
+    {
+      "a": "causal_pair_left",
+      "b": "retain_pair_no_contact",
+      "target_max": 0.0
+    },
+    {
+      "a": "causal_pair_left",
+      "b": "retain_pair_translate",
+      "target_max": 0.0
+    },
+    {
+      "a": "causal_pair_right",
+      "b": "retain_pair_combined",
+      "target_max": 0.0
+    },
+    {
+      "a": "causal_pair_right",
+      "b": "retain_pair_no_contact",
+      "target_max": 0.0
+    },
+    {
+      "a": "causal_pair_right",
+      "b": "retain_pair_translate",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_local",
+      "b": "retain_no_contact",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_local",
+      "b": "retain_stop_early",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_local",
+      "b": "retain_stop_late",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_local",
+      "b": "retain_straight",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_no_contact",
+      "b": "retain_stop_early",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_no_contact",
+      "b": "retain_stop_late",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_no_contact",
+      "b": "retain_straight",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_pair_combined",
+      "b": "retain_pair_no_contact",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_pair_combined",
+      "b": "retain_pair_translate",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_pair_no_contact",
+      "b": "retain_pair_translate",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_stop_early",
+      "b": "retain_stop_late",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_stop_early",
+      "b": "retain_straight",
+      "target_max": 0.0
+    },
+    {
+      "a": "retain_stop_late",
+      "b": "retain_straight",
+      "target_max": 0.0
+    }
+  ],
+  "completion_note": "Physics/data complete; numpy.bool serialization failed only metadata; this offline independent manifest recovers existing evidence without rerunning physics."
+}

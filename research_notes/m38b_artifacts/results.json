@@ -1,0 +1,3842 @@
+[
+  {
+    "label": "C2_left_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 11.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.01210867378291544,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.0008923633982127,
+    "error_cm": 3.48078833480117,
+    "cap_fraction": 0.5974025974025974,
+    "episode_return": -14.136816153751372,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 1200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 14.721098388479238,
+    "moving_heading_rms_deg": 8.721920062660176,
+    "yaw_moment_rms": 0.49741072029332567,
+    "work_j": -0.06403879834053941,
+    "sum_force_norm_rms": 4.242149371850746,
+    "actual_pelvis_turn_deg": -1.1810693454291994,
+    "actual_torso_turn_deg": -8.679798573774656,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/C2_left_new.json.gz"
+  },
+  {
+    "label": "C1_left_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 11.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.01288523342338276,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.0366168765046386,
+    "error_cm": 3.534132229308696,
+    "cap_fraction": 0.6344396344396345,
+    "episode_return": -14.448372772633153,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 1800,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 14.845361952614569,
+    "moving_heading_rms_deg": 8.51735063907337,
+    "yaw_moment_rms": 0.4970495635776765,
+    "work_j": -0.05874852764329796,
+    "sum_force_norm_rms": 4.292468453072102,
+    "actual_pelvis_turn_deg": -0.9150313339039928,
+    "actual_torso_turn_deg": -8.596496211345318,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/C1_left_new.json.gz"
+  },
+  {
+    "label": "C0_left_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 11.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.013128432695111728,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 2.9434738729929397,
+    "error_cm": 3.317592678655082,
+    "cap_fraction": 0.5661375661375662,
+    "episode_return": -13.461580212822035,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 2400,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 14.012192031511303,
+    "moving_heading_rms_deg": 8.705091000844817,
+    "yaw_moment_rms": 0.48541356746698944,
+    "work_j": -0.06422653649078328,
+    "sum_force_norm_rms": 4.160928048932402,
+    "actual_pelvis_turn_deg": -1.2635250243913845,
+    "actual_torso_turn_deg": -8.114946738187557,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/C0_left_new.json.gz"
+  },
+  {
+    "label": "T30_left_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 11.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.004314353354909127,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 2.2673623977503965,
+    "error_cm": 1.9869339368478793,
+    "cap_fraction": 0.0,
+    "episode_return": -7.585471095076426,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 3000,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 8.741136449385552,
+    "moving_heading_rms_deg": 9.063906020691975,
+    "yaw_moment_rms": 0.41676703797990367,
+    "work_j": 0.005691705693794205,
+    "sum_force_norm_rms": 3.2043540125856294,
+    "actual_pelvis_turn_deg": -1.5161527286800707,
+    "actual_torso_turn_deg": -0.99238065439025,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/T30_left_new.json.gz"
+  },
+  {
+    "label": "source_left_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 11.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.01777504243148938,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.5205187017297228,
+    "error_cm": 1.3331450123624804,
+    "cap_fraction": 0.0,
+    "episode_return": -3.342594838105273,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 3600,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 3.9834365780423844,
+    "moving_heading_rms_deg": 8.976794105939643,
+    "yaw_moment_rms": 0.17220390552286222,
+    "work_j": 0.01023369624550772,
+    "sum_force_norm_rms": 2.0815617868752754,
+    "actual_pelvis_turn_deg": -1.1252999494805662,
+    "actual_torso_turn_deg": 6.526971068601666,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/source_left_new.json.gz"
+  },
+  {
+    "label": "C2_right_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -11.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.00979040237625686,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.0357251602303448,
+    "error_cm": 0.9099683244066487,
+    "cap_fraction": 0.0,
+    "episode_return": -1.4853997895562145,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 4200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 1.7542756522173153,
+    "moving_heading_rms_deg": 5.5019509134143005,
+    "yaw_moment_rms": 0.06868412389319277,
+    "work_j": -0.029335120835335956,
+    "sum_force_norm_rms": 1.4601108159907796,
+    "actual_pelvis_turn_deg": -3.1186412724833583,
+    "actual_torso_turn_deg": -11.119366782717995,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/C2_right_new.json.gz"
+  },
+  {
+    "label": "C1_right_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -11.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.009827809995582346,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.096369194459863,
+    "error_cm": 0.9652238469249299,
+    "cap_fraction": 0.0,
+    "episode_return": -1.6623341545430999,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 4800,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 1.9939414032024294,
+    "moving_heading_rms_deg": 5.571932184665137,
+    "yaw_moment_rms": 0.07886324119465114,
+    "work_j": -0.028852271897416588,
+    "sum_force_norm_rms": 1.5458529984156728,
+    "actual_pelvis_turn_deg": -3.0161802419423176,
+    "actual_torso_turn_deg": -11.04052165039729,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/C1_right_new.json.gz"
+  },
+  {
+    "label": "C0_right_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -11.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.011064628518654654,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.9564122847182839,
+    "error_cm": 0.8399641969051947,
+    "cap_fraction": 0.0,
+    "episode_return": -1.2597659337742493,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 5400,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 1.289847294010336,
+    "moving_heading_rms_deg": 5.193641350576975,
+    "yaw_moment_rms": 0.048287359772946244,
+    "work_j": -0.022052022807389493,
+    "sum_force_norm_rms": 1.3488310595832391,
+    "actual_pelvis_turn_deg": -3.6650360262624746,
+    "actual_torso_turn_deg": -11.105675867354163,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/C0_right_new.json.gz"
+  },
+  {
+    "label": "T30_right_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -11.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.005985544711522652,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.2035830761645292,
+    "error_cm": 1.0552732613115317,
+    "cap_fraction": 0.0,
+    "episode_return": -2.1243926893256964,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 6000,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 4.537379991978659,
+    "moving_heading_rms_deg": 4.569695458485208,
+    "yaw_moment_rms": 0.21006514803230764,
+    "work_j": 0.012280175211983725,
+    "sum_force_norm_rms": 1.7009471312815638,
+    "actual_pelvis_turn_deg": -4.427888663001513,
+    "actual_torso_turn_deg": -4.428277949139412,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/T30_right_new.json.gz"
+  },
+  {
+    "label": "source_right_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -11.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.010496824957760775,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.8931520754848902,
+    "error_cm": 0.7839044645483002,
+    "cap_fraction": 0.0,
+    "episode_return": -1.1001741376797773,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 6600,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 0.39903446397947745,
+    "moving_heading_rms_deg": 5.348539756244916,
+    "yaw_moment_rms": 0.029330230105463054,
+    "work_j": -0.009426203840046308,
+    "sum_force_norm_rms": 1.2607676460160064,
+    "actual_pelvis_turn_deg": -3.4430011008261565,
+    "actual_torso_turn_deg": -10.856957069040151,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/source_right_new.json.gz"
+  },
+  {
+    "label": "C2_combined_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.18,
+      "rotation_deg": 9.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.2674737117711641,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.1806866496799087,
+    "error_cm": 8.069202325768057,
+    "cap_fraction": 0.8114478114478114,
+    "episode_return": -15.527931302637954,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 7200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 10.820013946871907,
+    "moving_heading_rms_deg": 6.100598103317372,
+    "yaw_moment_rms": 0.16923334141579807,
+    "work_j": -0.06552487141157692,
+    "sum_force_norm_rms": 4.471448616096445,
+    "actual_pelvis_turn_deg": 5.062697753549936,
+    "actual_torso_turn_deg": 1.8022940893422856,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/C2_combined_new.json.gz"
+  },
+  {
+    "label": "C1_combined_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.18,
+      "rotation_deg": 9.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.19067637225786305,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.190536438708383,
+    "error_cm": 8.076788625480148,
+    "cap_fraction": 0.8181818181818182,
+    "episode_return": -15.319294994064137,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 7800,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 9.812961012792774,
+    "moving_heading_rms_deg": 4.96667211449612,
+    "yaw_moment_rms": 0.19616105848770893,
+    "work_j": 0.2364145693773517,
+    "sum_force_norm_rms": 4.4852536267467045,
+    "actual_pelvis_turn_deg": 2.646017860000538,
+    "actual_torso_turn_deg": -0.20340735231763515,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/C1_combined_new.json.gz"
+  },
+  {
+    "label": "C0_combined_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.18,
+      "rotation_deg": 9.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.1981192201943262,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.1695692511697104,
+    "error_cm": 9.927518268139695,
+    "cap_fraction": 0.81000481000481,
+    "episode_return": -15.568999534260401,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 8400,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 9.639998345041553,
+    "moving_heading_rms_deg": 4.636844014710687,
+    "yaw_moment_rms": 0.18200039927870248,
+    "work_j": 0.1826653522052208,
+    "sum_force_norm_rms": 4.456327167735894,
+    "actual_pelvis_turn_deg": 3.121589348041165,
+    "actual_torso_turn_deg": -3.023709442631346,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/C0_combined_new.json.gz"
+  },
+  {
+    "label": "T30_combined_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.18,
+      "rotation_deg": 9.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.18321268963551438,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 2.968302351302752,
+    "error_cm": 3.628296044985138,
+    "cap_fraction": 0.5281385281385281,
+    "episode_return": -12.590607844325879,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 9000,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 8.971783955850722,
+    "moving_heading_rms_deg": 9.322431617291059,
+    "yaw_moment_rms": 0.40823942024373666,
+    "work_j": -0.4383148992791916,
+    "sum_force_norm_rms": 4.147834949778077,
+    "actual_pelvis_turn_deg": -4.947411665151128,
+    "actual_torso_turn_deg": -4.449117217300789,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/T30_combined_new.json.gz"
+  },
+  {
+    "label": "source_combined_new",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.18,
+      "rotation_deg": 9.0,
+      "curvature": 0,
+      "onset": 4.6,
+      "ramp": 8.4,
+      "release": 15.0,
+      "end": 20.0,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.030712202825591617,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.107651163256213,
+    "error_cm": 10.686213314982734,
+    "cap_fraction": 0.7498797498797499,
+    "episode_return": -14.630420413412088,
+    "physics_steps": 3400,
+    "rl_decisions": 170,
+    "prefill_steps": 9600,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 4.641472968481661,
+    "moving_heading_rms_deg": 8.626346364790793,
+    "yaw_moment_rms": 0.05475777346487901,
+    "work_j": 0.018362583438066366,
+    "sum_force_norm_rms": 4.382864847848873,
+    "actual_pelvis_turn_deg": -2.8046827581325724,
+    "actual_torso_turn_deg": 3.106513071000105,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-final-06/job/source_combined_new.json.gz"
+  },
+  {
+    "label": "recovery_pair_left",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.01773441451972164,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.6094002985781009,
+    "error_cm": 1.4108233698789905,
+    "cap_fraction": 0.0,
+    "episode_return": -3.647585091346196,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 1200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 4.535907332741241,
+    "moving_heading_rms_deg": 11.294174634819234,
+    "yaw_moment_rms": 0.20104898844408572,
+    "work_j": 0.028120850849655772,
+    "sum_force_norm_rms": 2.2010157256975265,
+    "actual_pelvis_turn_deg": -0.3566131053446061,
+    "actual_torso_turn_deg": 10.102008704893107,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-prepare-02/job/recovery_pair_left.json.gz"
+  },
+  {
+    "label": "recovery_pair_right",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.012087930995613137,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.9148162791454156,
+    "error_cm": 0.8034501518980098,
+    "cap_fraction": 0.0,
+    "episode_return": -1.1657456347230737,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 1800,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 0.9636589670979055,
+    "moving_heading_rms_deg": 7.641812856443384,
+    "yaw_moment_rms": 0.06269876747805583,
+    "work_j": 0.003991283528574242,
+    "sum_force_norm_rms": 1.2877562548135013,
+    "actual_pelvis_turn_deg": -4.619743403847588,
+    "actual_torso_turn_deg": -14.690528677049576,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-prepare-02/job/recovery_pair_right.json.gz"
+  },
+  {
+    "label": "recovery_straight",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.8019116562480045,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.993597154575345,
+    "error_cm": 6.132663315176389,
+    "cap_fraction": 0.3333333333333333,
+    "episode_return": -11.020033309779063,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 2400,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 6.546778208102929,
+    "moving_heading_rms_deg": 6.652710737455187,
+    "yaw_moment_rms": 0.41118401073687455,
+    "work_j": 0.4721143758669247,
+    "sum_force_norm_rms": 3.9935971545753457,
+    "actual_pelvis_turn_deg": -6.12002750451792,
+    "actual_torso_turn_deg": -5.01458911568456,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-prepare-02/job/recovery_straight.json.gz"
+  },
+  {
+    "label": "C0_pair_left",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.013298290929143839,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 2.815265992186574,
+    "error_cm": 3.495944716527001,
+    "cap_fraction": 0.5288412455334355,
+    "episode_return": -12.287951415955941,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 1200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 15.065593434840839,
+    "moving_heading_rms_deg": 11.559019885930775,
+    "yaw_moment_rms": 0.47959982907697507,
+    "work_j": -0.0736226061751718,
+    "sum_force_norm_rms": 3.9779030542143365,
+    "actual_pelvis_turn_deg": -0.9584018334598605,
+    "actual_torso_turn_deg": -6.612551839239205,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-train-03/job/C0_pair_left.json.gz"
+  },
+  {
+    "label": "C0_pair_right",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.011076414792008944,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.0086310992321972,
+    "error_cm": 0.8846713984663066,
+    "cap_fraction": 0.0,
+    "episode_return": -1.434696714805828,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 1800,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 2.3758341491872836,
+    "moving_heading_rms_deg": 7.85204282809231,
+    "yaw_moment_rms": 0.13320999358371768,
+    "work_j": 0.0096447545010074,
+    "sum_force_norm_rms": 1.4239142417792185,
+    "actual_pelvis_turn_deg": -4.041791577479807,
+    "actual_torso_turn_deg": -11.414478677744468,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-train-03/job/C0_pair_right.json.gz"
+  },
+  {
+    "label": "C0_straight",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.8093302151573714,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.636205022739849,
+    "error_cm": 6.99293838210711,
+    "cap_fraction": 0.35834609494640124,
+    "episode_return": -9.203852404824358,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 2400,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 5.029959766604861,
+    "moving_heading_rms_deg": 4.819748882107022,
+    "yaw_moment_rms": 0.3669722120416147,
+    "work_j": 1.1426147924781416,
+    "sum_force_norm_rms": 3.636205022739849,
+    "actual_pelvis_turn_deg": -2.300729701187508,
+    "actual_torso_turn_deg": -2.988472382248301,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-train-03/job/C0_straight.json.gz"
+  },
+  {
+    "label": "C0_local",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.03217180780547063,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.792763077115766,
+    "error_cm": 4.740447038237071,
+    "cap_fraction": 0.12353241449719245,
+    "episode_return": -9.222446961136486,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 3000,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 5.066557929556684,
+    "moving_heading_rms_deg": 5.401185710770864,
+    "yaw_moment_rms": 0.1538598570680377,
+    "work_j": 0.1568111107939327,
+    "sum_force_norm_rms": 3.792763077115766,
+    "actual_pelvis_turn_deg": -0.5923326685106817,
+    "actual_torso_turn_deg": 9.834062240500682,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-train-03/job/C0_local.json.gz"
+  },
+  {
+    "label": "C0_pair_translate",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.2,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.3066471983962209,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.1892826921550217,
+    "error_cm": 10.61719844081557,
+    "cap_fraction": 0.7983665135273098,
+    "episode_return": -14.314165619034108,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 3600,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 3.6910490057667453,
+    "moving_heading_rms_deg": 2.548526475935024,
+    "yaw_moment_rms": 0.09508217250694877,
+    "work_j": 0.12191753558201028,
+    "sum_force_norm_rms": 4.496888327267313,
+    "actual_pelvis_turn_deg": 2.4079501246525394,
+    "actual_torso_turn_deg": -0.4231461667539489,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-train-03/job/C0_pair_translate.json.gz"
+  },
+  {
+    "label": "C0_pair_combined",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": 12,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.19059350260725924,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.2665214571104535,
+    "error_cm": 11.181712674016921,
+    "cap_fraction": 0.8417559979581419,
+    "episode_return": -15.619167137147489,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 4200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 8.063892910764883,
+    "moving_heading_rms_deg": 8.36565221143919,
+    "yaw_moment_rms": 0.09168563577337235,
+    "work_j": 0.7936972237541016,
+    "sum_force_norm_rms": 4.602044074544395,
+    "actual_pelvis_turn_deg": -1.7685470472269833,
+    "actual_torso_turn_deg": 2.2840745465818584,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-train-03/job/C0_pair_combined.json.gz"
+  },
+  {
+    "label": "C0_no_contact",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": false,
+      "distance": 0,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.0047618706284562225,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.0,
+    "error_cm": 0.0,
+    "cap_fraction": 0.0,
+    "episode_return": -0.00012728313461216149,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 4800,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 0.0,
+    "moving_heading_rms_deg": 0.0,
+    "yaw_moment_rms": 0.0,
+    "work_j": 0.0,
+    "sum_force_norm_rms": 0.0,
+    "actual_pelvis_turn_deg": 0.0,
+    "actual_torso_turn_deg": 0.0,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-train-03/job/C0_no_contact.json.gz"
+  },
+  {
+    "label": "C0_early",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 10.0,
+      "end": 15.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 7.2,
+      "deceleration": 0.8
+    },
+    "root_max_displacement": 0.39273099471057354,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.802567306623193,
+    "error_cm": 7.843348822778435,
+    "cap_fraction": 0.3359442993907746,
+    "episode_return": -5.996582883384641,
+    "physics_steps": 2400,
+    "rl_decisions": 120,
+    "prefill_steps": 5400,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 6.167574391092897,
+    "moving_heading_rms_deg": 6.137475702575576,
+    "yaw_moment_rms": 0.5405903465154267,
+    "work_j": 0.666819928991348,
+    "sum_force_norm_rms": 3.8025673066231933,
+    "actual_pelvis_turn_deg": -7.421967494405337,
+    "actual_torso_turn_deg": -8.091215526967911,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-train-03/job/C0_early.json.gz"
+  },
+  {
+    "label": "C0_late",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 12.600000000000001,
+      "end": 17.6,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 9.8,
+      "deceleration": 0.8
+    },
+    "root_max_displacement": 0.7785303561352953,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 4.028838512198189,
+    "error_cm": 7.645943824829766,
+    "cap_fraction": 0.4200119832234871,
+    "episode_return": -9.548222122186814,
+    "physics_steps": 2920,
+    "rl_decisions": 146,
+    "prefill_steps": 6000,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 5.099954849284718,
+    "moving_heading_rms_deg": 4.815749546933067,
+    "yaw_moment_rms": 0.5125349695642903,
+    "work_j": 1.0870693627014747,
+    "sum_force_norm_rms": 4.028838512198189,
+    "actual_pelvis_turn_deg": -2.59815358881264,
+    "actual_torso_turn_deg": -4.085852481168664,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-train-03/job/C0_late.json.gz"
+  },
+  {
+    "label": "C0_pair_no_contact",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": false,
+      "distance": 0.0,
+      "rotation_deg": 0.0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.00976915998731974,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.0,
+    "error_cm": 0.0,
+    "cap_fraction": 0.0,
+    "episode_return": -0.0001902195507725099,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 6600,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 0.0,
+    "moving_heading_rms_deg": 0.0,
+    "yaw_moment_rms": 0.0,
+    "work_j": 0.0,
+    "sum_force_norm_rms": 0.0,
+    "actual_pelvis_turn_deg": 0.0,
+    "actual_torso_turn_deg": 0.0,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/A-train-03/job/C0_pair_no_contact.json.gz"
+  },
+  {
+    "label": "source_moving_left",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.6,
+      "rotation_deg": 10.0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 9.0,
+      "release": 15.25,
+      "end": 20.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "rotation_onset": 8.0,
+      "rotation_ramp": 2.0,
+      "rotation_return": 11.0,
+      "rotation_return_ramp": 2.0
+    },
+    "root_max_displacement": 0.6862580097075698,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.2923165488989494,
+    "error_cm": 14.016324693875355,
+    "cap_fraction": 0.8308321964529332,
+    "episode_return": -17.61440732692565,
+    "physics_steps": 3452,
+    "rl_decisions": 173,
+    "prefill_steps": 1200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 3.2967801653029696,
+    "moving_heading_rms_deg": 4.825303702253542,
+    "yaw_moment_rms": 0.05519355479285429,
+    "work_j": 0.6237555478639268,
+    "sum_force_norm_rms": 4.646151038951024,
+    "actual_pelvis_turn_deg": 9.312084064588124,
+    "actual_torso_turn_deg": 10.554607803696868,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-probe-07/job/source_moving_left.json.gz"
+  },
+  {
+    "label": "source_moving_right",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.6,
+      "rotation_deg": -10.0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 9.0,
+      "release": 15.25,
+      "end": 20.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "rotation_onset": 8.0,
+      "rotation_ramp": 2.0,
+      "rotation_return": 11.0,
+      "rotation_return_ramp": 2.0
+    },
+    "root_max_displacement": 0.58922507051602,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.3086386574796554,
+    "error_cm": 16.42423461966211,
+    "cap_fraction": 0.8431105047748977,
+    "episode_return": -19.227006608457096,
+    "physics_steps": 3452,
+    "rl_decisions": 173,
+    "prefill_steps": 1800,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 6.840968425336397,
+    "moving_heading_rms_deg": 8.835335375300295,
+    "yaw_moment_rms": 0.0662121574531167,
+    "work_j": 0.8760615281574019,
+    "sum_force_norm_rms": 4.67236700656718,
+    "actual_pelvis_turn_deg": 9.723826933942732,
+    "actual_torso_turn_deg": 11.303332341290188,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-probe-07/job/source_moving_right.json.gz"
+  },
+  {
+    "label": "C1_pair_left",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.01317387386630083,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 2.9711573155345037,
+    "error_cm": 3.9504602826639266,
+    "cap_fraction": 0.6089841755997958,
+    "episode_return": -14.017546472227142,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 1200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 16.915655813625033,
+    "moving_heading_rms_deg": 11.34605075493245,
+    "yaw_moment_rms": 0.4975946940972221,
+    "work_j": -0.07318157698523294,
+    "sum_force_norm_rms": 4.200119962709638,
+    "actual_pelvis_turn_deg": -0.9704129158872646,
+    "actual_torso_turn_deg": -8.261873709366578,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-train-05/job/C1_pair_left.json.gz"
+  },
+  {
+    "label": "C1_pair_right",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.010068340883142315,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.0464152176872594,
+    "error_cm": 0.9181079483676885,
+    "cap_fraction": 0.0,
+    "episode_return": -1.5334047044251322,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 1800,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 2.1663015502898886,
+    "moving_heading_rms_deg": 8.2172049211297,
+    "yaw_moment_rms": 0.12124236736939274,
+    "work_j": -0.005938194742722959,
+    "sum_force_norm_rms": 1.4736304514420482,
+    "actual_pelvis_turn_deg": -3.4530200899396273,
+    "actual_torso_turn_deg": -11.462024220468539,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-train-05/job/C1_pair_right.json.gz"
+  },
+  {
+    "label": "C1_straight",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.8859327295383034,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 4.1012350672697275,
+    "error_cm": 10.603620683648627,
+    "cap_fraction": 0.4267483409903012,
+    "episode_return": -12.302463920401848,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 2400,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 7.625896627456339,
+    "moving_heading_rms_deg": 7.245082637635726,
+    "yaw_moment_rms": 0.42252972441476294,
+    "work_j": 1.1878366740831239,
+    "sum_force_norm_rms": 4.1012350672697275,
+    "actual_pelvis_turn_deg": -3.6655996862219333,
+    "actual_torso_turn_deg": -2.9364549371508573,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-train-05/job/C1_straight.json.gz"
+  },
+  {
+    "label": "C1_local",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.14419939903862355,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 2.702068586817452,
+    "error_cm": 3.3850225846231896,
+    "cap_fraction": 0.08014293006636039,
+    "episode_return": -4.790784914780223,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 3000,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 7.546429100322682,
+    "moving_heading_rms_deg": 6.529343475453685,
+    "yaw_moment_rms": 0.4111429825845216,
+    "work_j": -0.07831510294503122,
+    "sum_force_norm_rms": 2.7020685868174517,
+    "actual_pelvis_turn_deg": -3.8942399252214615,
+    "actual_torso_turn_deg": -4.104854770675687,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-train-05/job/C1_local.json.gz"
+  },
+  {
+    "label": "C1_pair_translate",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.2,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.32438654237018055,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.2018398885275983,
+    "error_cm": 9.602407657403187,
+    "cap_fraction": 0.810617662072486,
+    "episode_return": -14.234795635866647,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 3600,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 4.761283048647123,
+    "moving_heading_rms_deg": 2.9269978378677792,
+    "yaw_moment_rms": 0.10156661212958157,
+    "work_j": -0.08622141063588996,
+    "sum_force_norm_rms": 4.509145718977624,
+    "actual_pelvis_turn_deg": 0.9107717860281105,
+    "actual_torso_turn_deg": 0.5953051808383514,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-train-05/job/C1_pair_translate.json.gz"
+  },
+  {
+    "label": "C1_pair_combined",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": 12,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.2951438031441586,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.2399581150817562,
+    "error_cm": 7.768098819689993,
+    "cap_fraction": 0.8489025012761613,
+    "episode_return": -15.15460936742288,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 4200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 10.409359257220878,
+    "moving_heading_rms_deg": 11.054387350396684,
+    "yaw_moment_rms": 0.26634877486355935,
+    "work_j": 0.31252986790966775,
+    "sum_force_norm_rms": 4.552428254938495,
+    "actual_pelvis_turn_deg": -5.585956001198697,
+    "actual_torso_turn_deg": -2.5703861562445645,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-train-05/job/C1_pair_combined.json.gz"
+  },
+  {
+    "label": "C1_no_contact",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": false,
+      "distance": 0,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.0034243943902475637,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.0,
+    "error_cm": 0.0,
+    "cap_fraction": 0.0,
+    "episode_return": -9.118398336897705e-05,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 4800,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 0.0,
+    "moving_heading_rms_deg": 0.0,
+    "yaw_moment_rms": 0.0,
+    "work_j": 0.0,
+    "sum_force_norm_rms": 0.0,
+    "actual_pelvis_turn_deg": 0.0,
+    "actual_torso_turn_deg": 0.0,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-train-05/job/C1_no_contact.json.gz"
+  },
+  {
+    "label": "C1_early",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 10.0,
+      "end": 15.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 7.2,
+      "deceleration": 0.8
+    },
+    "root_max_displacement": 0.39786959542244726,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.576270329873174,
+    "error_cm": 5.885855818134856,
+    "cap_fraction": 0.2924281984334204,
+    "episode_return": -5.266445427072678,
+    "physics_steps": 2400,
+    "rl_decisions": 120,
+    "prefill_steps": 5400,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 7.952866675435038,
+    "moving_heading_rms_deg": 7.222428233627313,
+    "yaw_moment_rms": 0.5495965123264386,
+    "work_j": 0.22054437315633388,
+    "sum_force_norm_rms": 3.5762703298731746,
+    "actual_pelvis_turn_deg": -8.534693865834798,
+    "actual_torso_turn_deg": -9.288814452958288,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-train-05/job/C1_early.json.gz"
+  },
+  {
+    "label": "C1_late",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 12.600000000000001,
+      "end": 17.6,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 9.8,
+      "deceleration": 0.8
+    },
+    "root_max_displacement": 0.750611306579876,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 4.01992854850078,
+    "error_cm": 10.756027933363663,
+    "cap_fraction": 0.4823247453565009,
+    "episode_return": -10.36097127863743,
+    "physics_steps": 2920,
+    "rl_decisions": 146,
+    "prefill_steps": 6000,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 8.663477002051323,
+    "moving_heading_rms_deg": 8.756064191220151,
+    "yaw_moment_rms": 0.4848355805862583,
+    "work_j": 0.9624336106458367,
+    "sum_force_norm_rms": 4.01992854850078,
+    "actual_pelvis_turn_deg": -12.856144258700285,
+    "actual_torso_turn_deg": -10.283181392095726,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-train-05/job/C1_late.json.gz"
+  },
+  {
+    "label": "C1_pair_no_contact",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": false,
+      "distance": 0.0,
+      "rotation_deg": 0.0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.007825763228926738,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.0,
+    "error_cm": 0.0,
+    "cap_fraction": 0.0,
+    "episode_return": -0.0002115305540504749,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 6600,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 0.0,
+    "moving_heading_rms_deg": 0.0,
+    "yaw_moment_rms": 0.0,
+    "work_j": 0.0,
+    "sum_force_norm_rms": 0.0,
+    "actual_pelvis_turn_deg": 0.0,
+    "actual_torso_turn_deg": 0.0,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/B-train-05/job/C1_pair_no_contact.json.gz"
+  },
+  {
+    "label": "C2_pair_left",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.012135851810730435,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 2.991875293658471,
+    "error_cm": 3.94760740883332,
+    "cap_fraction": 0.6161306789178153,
+    "episode_return": -14.19129071494491,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 1200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 16.966892465857715,
+    "moving_heading_rms_deg": 11.5408327994461,
+    "yaw_moment_rms": 0.5043348719043727,
+    "work_j": -0.06945070056635462,
+    "sum_force_norm_rms": 4.2296640110903665,
+    "actual_pelvis_turn_deg": -1.1619894645700795,
+    "actual_torso_turn_deg": -8.219451891564747,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_pair_left.json.gz"
+  },
+  {
+    "label": "C2_pair_right",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -15,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.010031922757065936,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.026692971297786,
+    "error_cm": 0.9001765493186207,
+    "cap_fraction": 0.0,
+    "episode_return": -1.4796444718481705,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 1800,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 2.100761701527928,
+    "moving_heading_rms_deg": 8.174821378414789,
+    "yaw_moment_rms": 0.11734026646752838,
+    "work_j": -0.007765821430153199,
+    "sum_force_norm_rms": 1.4398935667222883,
+    "actual_pelvis_turn_deg": -3.482971823154799,
+    "actual_torso_turn_deg": -11.538908408145197,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_pair_right.json.gz"
+  },
+  {
+    "label": "C2_straight",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.8434983456194743,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.806183332420275,
+    "error_cm": 6.327377126257826,
+    "cap_fraction": 0.3215926493108729,
+    "episode_return": -10.089395138553778,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 2400,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 6.445563838778096,
+    "moving_heading_rms_deg": 6.542250550272728,
+    "yaw_moment_rms": 0.4621277693413823,
+    "work_j": 0.7877872203300536,
+    "sum_force_norm_rms": 3.8061833324202756,
+    "actual_pelvis_turn_deg": -4.319566471033946,
+    "actual_torso_turn_deg": -2.8266857807236963,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_straight.json.gz"
+  },
+  {
+    "label": "C2_local",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.14631192224151124,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 2.2148915240770535,
+    "error_cm": 3.1176912622805344,
+    "cap_fraction": 0.08065339458907606,
+    "episode_return": -3.310352226928444,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 3000,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 6.532421706607917,
+    "moving_heading_rms_deg": 7.104429193738083,
+    "yaw_moment_rms": 0.38308620546661226,
+    "work_j": -0.2976576467142354,
+    "sum_force_norm_rms": 2.214891524077054,
+    "actual_pelvis_turn_deg": -4.132504266301115,
+    "actual_torso_turn_deg": -2.997984000197569,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_local.json.gz"
+  },
+  {
+    "label": "C2_pair_translate",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.2,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.3185775845034141,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.1969936953829468,
+    "error_cm": 8.171165988386111,
+    "cap_fraction": 0.8085758039816233,
+    "episode_return": -13.873687681112818,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 3600,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 4.719117012160795,
+    "moving_heading_rms_deg": 2.490492357297678,
+    "yaw_moment_rms": 0.10863950464126616,
+    "work_j": -0.22632143837224714,
+    "sum_force_norm_rms": 4.50406909927564,
+    "actual_pelvis_turn_deg": -3.3365629611209835,
+    "actual_torso_turn_deg": -2.4711967267482255,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_pair_translate.json.gz"
+  },
+  {
+    "label": "C2_pair_combined",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": 12,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.3425387583841436,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.148830553466229,
+    "error_cm": 7.440167571682811,
+    "cap_fraction": 0.8412455334354262,
+    "episode_return": -14.378397079896715,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 4200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 10.871915955718825,
+    "moving_heading_rms_deg": 10.27774124244579,
+    "yaw_moment_rms": 0.2480522004561989,
+    "work_j": 0.1815945089337252,
+    "sum_force_norm_rms": 4.41949985202115,
+    "actual_pelvis_turn_deg": -4.433841082893442,
+    "actual_torso_turn_deg": -3.124734996621974,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_pair_combined.json.gz"
+  },
+  {
+    "label": "C2_no_contact",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": false,
+      "distance": 0,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.0029386286309595073,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.0,
+    "error_cm": 0.0,
+    "cap_fraction": 0.0,
+    "episode_return": -6.88852290104921e-05,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 4800,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 0.0,
+    "moving_heading_rms_deg": 0.0,
+    "yaw_moment_rms": 0.0,
+    "work_j": 0.0,
+    "sum_force_norm_rms": 0.0,
+    "actual_pelvis_turn_deg": 0.0,
+    "actual_torso_turn_deg": 0.0,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_no_contact.json.gz"
+  },
+  {
+    "label": "C2_early",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 10.0,
+      "end": 15.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 7.2,
+      "deceleration": 0.8
+    },
+    "root_max_displacement": 0.38241580520806545,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.8923909510863086,
+    "error_cm": 7.072694604966201,
+    "cap_fraction": 0.3342036553524804,
+    "episode_return": -6.159416648779756,
+    "physics_steps": 2400,
+    "rl_decisions": 120,
+    "prefill_steps": 5400,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 6.0899693006863185,
+    "moving_heading_rms_deg": 5.739489214852235,
+    "yaw_moment_rms": 0.5758993628576561,
+    "work_j": 0.45651317180474293,
+    "sum_force_norm_rms": 3.892390951086309,
+    "actual_pelvis_turn_deg": -6.625312816608815,
+    "actual_torso_turn_deg": -7.878102929206276,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_early.json.gz"
+  },
+  {
+    "label": "C2_late",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 12.600000000000001,
+      "end": 17.6,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "stop_time": 9.8,
+      "deceleration": 0.8
+    },
+    "root_max_displacement": 0.7376922110338411,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.827217914069882,
+    "error_cm": 6.5585928582823,
+    "cap_fraction": 0.31935290593169563,
+    "episode_return": -8.583624730638887,
+    "physics_steps": 2920,
+    "rl_decisions": 146,
+    "prefill_steps": 6000,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 4.992394699241609,
+    "moving_heading_rms_deg": 4.775561942314091,
+    "yaw_moment_rms": 0.44421232233086244,
+    "work_j": 0.67180886278639,
+    "sum_force_norm_rms": 3.8272179140698817,
+    "actual_pelvis_turn_deg": -5.338224208065606,
+    "actual_torso_turn_deg": -5.284223453777026,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_late.json.gz"
+  },
+  {
+    "label": "C2_pair_no_contact",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": false,
+      "distance": 0.0,
+      "rotation_deg": 0.0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    },
+    "root_max_displacement": 0.006201403589524862,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.0,
+    "error_cm": 0.0,
+    "cap_fraction": 0.0,
+    "episode_return": -0.00017281813920703813,
+    "physics_steps": 3212,
+    "rl_decisions": 161,
+    "prefill_steps": 6600,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 2.5,
+      "total_norm_budget": 5.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 0.0,
+    "moving_heading_rms_deg": 0.0,
+    "yaw_moment_rms": 0.0,
+    "work_j": 0.0,
+    "sum_force_norm_rms": 0.0,
+    "actual_pelvis_turn_deg": 0.0,
+    "actual_torso_turn_deg": 0.0,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2_pair_no_contact.json.gz"
+  }
+]

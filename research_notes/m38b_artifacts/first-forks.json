@@ -1,0 +1,26 @@
+[
+  {
+    "model": "C2_straight.json",
+    "first_z_over2deg_100ms": 3.5599999999999463,
+    "first_qpd_over1deg_100ms": 4.939999999999917,
+    "first_actual_q_over1deg_100ms": 5.369999999999908,
+    "first_root_over1cm_100ms": 5.619999999999902,
+    "scope": "Descriptive fork markers against T30 closed-loop trajectory; after fork not same-state causal evidence."
+  },
+  {
+    "model": "C1_straight.json",
+    "first_z_over2deg_100ms": 3.5999999999999455,
+    "first_qpd_over1deg_100ms": 4.9599999999999165,
+    "first_actual_q_over1deg_100ms": 5.234999999999911,
+    "first_root_over1cm_100ms": 5.544999999999904,
+    "scope": "Descriptive fork markers against T30 closed-loop trajectory; after fork not same-state causal evidence."
+  },
+  {
+    "model": "C0_straight.json",
+    "first_z_over2deg_100ms": 3.8199999999999408,
+    "first_qpd_over1deg_100ms": 5.219999999999911,
+    "first_actual_q_over1deg_100ms": 5.639999999999902,
+    "first_root_over1cm_100ms": 6.244999999999889,
+    "scope": "Descriptive fork markers against T30 closed-loop trajectory; after fork not same-state causal evidence."
+  }
+]

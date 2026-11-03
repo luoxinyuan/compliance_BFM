@@ -1,0 +1,62 @@
+[
+  {
+    "condition": "pair_left",
+    "takeover": 7.0,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 2.342972493791471,
+      "force_rms": 3.523817103659984
+    },
+    "recovery": {
+      "error_cm": 1.6050929111582866,
+      "force_rms": 2.4904289069080994
+    },
+    "accepted": true,
+    "samples": 121,
+    "trace_sha": "4caa40c8d5ddb609d67d707f18fd0412a5801a6dd42bda9cc0717df6ca7e4843"
+  },
+  {
+    "condition": "pair_right",
+    "takeover": 7.0,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 1.028131347259046,
+      "force_rms": 1.6562922045752568
+    },
+    "recovery": {
+      "error_cm": 0.9318822812030818,
+      "force_rms": 1.4956699472120478
+    },
+    "accepted": true,
+    "samples": 121,
+    "trace_sha": "93e50c7d1982e0599e7fa7dc228fce12b7d646437690b73ae04e3be6c8cea52d"
+  },
+  {
+    "condition": "straight",
+    "takeover": 5.0,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 10.140888630725561,
+      "force_rms": 4.361887751868451
+    },
+    "recovery": {
+      "error_cm": 6.374581997446435,
+      "force_rms": 4.147252936353802
+    },
+    "accepted": true,
+    "samples": 141,
+    "trace_sha": "15fa93e6fb7350a37ab3f88aedc6c1e88df9f88152e02ec11d80141c72569e6f"
+  }
+]

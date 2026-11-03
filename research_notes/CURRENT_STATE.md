@@ -1,43 +1,48 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对2026-11-03。**M38有界实验已收尾，全部owned任务退出；保旧左右旋转Expert的完整目标尚未达成。** 未启动PPO或新Student，未自动进入M39。M11 continuation及其他旧训练保持停止。
+最后核对2026-11-03。**M38-B授权对照已完成并停止；C2部分保旧改善，但未得到可靠双向Expert。** 所有owned GPU任务退出，未启动PPO、Student蒸馏或M39训练。不要重放旧任务。
 
-入口：[研究纲领](RESEARCH_OVERVIEW.md) · [M38完整报告](M38_ROTATION_RESULTS.md) · [Issue38](https://github.com/GaoE05/robot-research-bridge/issues/38) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。上轮[Contact Geometry报告](CONTACT_GEOMETRY_RESULTS.md)/Issue37、T30迁移/Issue35和heading/Issue36不覆盖。
+入口：[研究纲领](RESEARCH_OVERVIEW.md) · [M38-B完整报告](M38B_RESULTS.md) · [Issue38](https://github.com/GaoE05/robot-research-bridge/issues/38) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。[M38原报告](M38_ROTATION_RESULTS.md)及所有M0–M37结果保留。
 
-## 可靠基线与本轮结论
+## 已有成果与本轮真实边界
 
-- **S0 / T30不替换。** 有限域右腕直行、减速、保持和释放Teacher→ideal-force Student成果成立。释放后旧anchor距离不算任务跟随失败。理想仿真力不等于已确认G1传感能力。
-- 旧1639D共享contact-slot Student已具备双点平移收益，但旧腕退化；保留其研究身份。双点仍是同torso_link的`[0,±.13,.15]`m，各2.5N、总5N，不是单向按压。所有原BFM/PD/权重保持冻结。
-- **找到并修正真实标签冲突。** 旧旋转源和T30保留数据在t=3s完整输入/BFM观测逐值相同，目标z却差2.236°、q_PD RMS约0.246°。统一接触前来源后目标逐值一致。最初极小非零cdist数值由逐元素检查纠正；冲突不是仅凭冗余表示推测。
-- 新因果一致native-goal源真实左右±15°：1.387/0.810cm、sum-force2.143/1.299N、torso+10.17/−14.70°，主要转腰，不是迈步转身。
-- 同网络、同T30初始化，两轮各3000更新的同状态q_PD保旧监督完成。r1左较好/右不足；r2开发左+4.85°、右−11.15°。但旧直行T30 5.826cm/3.599N→r2 9.751/4.200，双点平移4.998/3.997→9.188/4.417，**没有可靠保旧**。
-- **封存新±13°失败边界明确。** r2左3.446cm/4.139N、torso−7.18°反向；右0.773/1.241、−10.75°有效。相同新左native源1.369/2.130、+8.41°有效。r1/r2不能按方向拼选冒充共享成功。新16cm/−8°组合r2也退化。
-- 源状态r2平均q_PD约0.05°仍不足以保证闭环。旧goal接触前大分叉缓解，r2旧直行持续q_PD差>1°首次4.32s（接触4.25s）；实际访问域偏离仍在。T30前缀只能部分改善直行，右旋转反而弱化。
-- **有限精确接管有效。** 左/右7s及直行5s，接管前qpos/qvel/force最大差均0。接管后接触段左2.344cm/3.525N→1.605/2.491；右1.028/1.657→0.932/1.496；直行10.144/4.363→6.376/4.148。只界定这三处恢复域，不认定全部标签有效。旧三条多次归一化的非精确前缀结果保留并被正确重跑替代。
-- 无真实力时没有按虚拟框架方向播放完整旋转，但有几度非任务yaw漂移；不得用无接触error=0声称无动作。纯旋转没有支撑丢失、力矩饱和；走路q_PD峰仍约46.7°/20ms，实际q峰约1.93°/5ms，未改PD或加入无依据平滑。
+- 冻结T30/S0仍是有限域直行/停止Teacher→ideal-force Student基线。用户已认可可执行行走及小幅上半身转动，不要求本轮迈步转身，不用毫米误差否定有效行为。ideal-force不是已确认G1真机传感能力。
+- 旧torso双点平移共享Student成果保留，但旧腕退化；不直接替换S0。torso_link两点[0,±.13,.15]m，各2.5N/总5N，双向保持接触Tether，非单向按压。
+- M38原生因果旋转源左右±15°有效，r1/r2有不同方向的正例；r2新左+13°却反向。历史保留，不按方向拼模型。
+- **M38-B三组匹配各3000更新：**C0原终点q_PD+.1z；C1只改为真实上一z出发的5子步动作保持；C2同C1加固定20%有效恢复轨迹。原10回合1554标签一致；新增383标签来自3条精确接管后实际成功轨迹，不是全部r2离线查询。
+- C2直行6.327cm/3.806N（T30 5.826/3.599），局部3.118/2.215（T30 4.121/3.107），晚停6.559/3.827（T30 6.083/3.667）；比C1在这些条件改善，但早停退化。双点平移仍8.171/4.504（T30 4.998/3.997）。行走仍可用，不是“什么都没学会”。
+- **同一个C2：**开发左/右torso−8.22/−11.54°；新封存±11°左反向−8.68°、3.481cm/4.242N，右−11.12°、0.910/1.460。新左原生源+6.53°有效。C0/C1也没有修好左向；没有终检重选/补训。
+- 源状态C2左右5子步动作RMS仅.039/.055°，自身左向访问状态对同状态专家误差却约1.239°，z角40.78°。单独替换上一z输入的离线干预仅把误差降到1.115°；自身记忆有影响，但不是已证实唯一原因，也不是物理恢复实验。
+- 原数据117次完整输入逐值重复，没有不同目标；左右接触后可区分。未复发旧标签冲突，但不证明全域可辨识。真实访问域覆盖、记忆反馈与物理状态偏离仍需区分。
+- 50完整回合未跌倒/记录到双足同时失去支撑。C2纯旋转q_PD最大约.4°/20ms；直行43.52°/20ms，但真实q为2.42°/5ms，不能混称。双点无力torso仍漂移约−10.76°，root仅约.56cm；空接触error=0不是无动作证明。释放后旧anchor不计任务失败。
+- M39前置原生源探针：移动中±10°确有不同腰响应，但goal参与时root停在约30cm、伙伴继续前移；全接触误差14.02/16.42cm、力4.65/4.67N。能进出转腰不等于移动＋旋转协调合格；未继续调混合或训练M39。
 
-## 当前瓶颈与下一决策
+## 首要瓶颈与唯一下一决策
 
-当前瓶颈是**旋转动作学习后，旧运动与真实访问域的行为保持不可靠**；不是BFM完全不能转、必须增力或再加接触点。当前r2有部分真实收益，但不是可推广Teacher。两轮数据/采样还不同，不能把结果唯一归因loss或标签修正，也没有多seed统计结论。
+当前不是“BFM完全不能转”，而是**静态监督的小动作误差不能稳定保持模型自身闭环历史与正确旋转方向**。5子步对齐及旧r2三条恢复轨迹已经实测，不能原样反复重训。
 
-唯一建议：下一次明确监督预算中，利用已验证接管域做受控真实访问状态聚合，对比仅增加原数据更新，重点量化旧行为与自身z记忆的闭环稳定性。先不进入M39连续切换或M40共享Student。现有6000监督更新已用完；总墙钟剩余不是额外监督授权。没有自动追加训练。
+建议下一次有限实验在C2首次左向分叉前后获取实际接管证据，采用模型自身生成z历史的短序列监督对照，检验闭环历史一致性；与当前独立帧teacher-forcing比较。尚未授权/启动新更新，本轮9000已用满。保留T30/S0及C2有限收益，未把C2推广为统一Teacher，也没有蒸馏反向标签。M39原生组合功能冲突是另一个已知边界，不新增手工force-to-yaw控制器。
 
-长期路线已写入纲领：M38保旧旋转Expert→M39连续平移/旋转→M40跨腕/躯干共享Student→M41同需求跨身体状态→M42多部位/高度/未见组合→M43真机传感与Sim-to-Real；后续是规划，不是自动执行授权。
+## 精确身份与复现入口
 
-## 精确身份、数据与视频
+长期个人分支`gaoe05/research`，最终文档commit见Issue38 M38-B结项链接。实际训练/开发/终检/原生探针runtime **aa69aa7cbe344319b08cde65a326575f2b96b4cb**；诊断/渲染 **8768a0b3ee8ec8136afc01b1d6d13ffd5e70fe18**。
 
-长期个人分支：[gaoe05/research](https://github.com/luoxinyuan/compliance_BFM/tree/gaoe05/research)。最终文档整合commit见Issue38结项链接；以下是实际运行源码身份。
+服务器根`/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/`。
 
-- r1 runtime `fa11b4cc54bc5a57f3e15f58ad903efad01819b7`；r2 `02751071de6ebdc2e292c46c85833146caec6c58`；冻结终检 `0f390e10c4399f1db7a4eeebf36297f27ffc224f`；精确接管 `3352e2bc35e9b3313a0109f69a54f7c6eb34fbf9`。
-- BFM SHA `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
-- T30 SHA `c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33`：`bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/best.pt`。
-- S0 SHA `0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12`：`bridge-v2-owned/runs/direct-transfer-20261103/A-prepare-01/job/ppo15-student-r0.pt`。
-- r1 SHA `7e09d30f8bda647b49c85124c6121af6c632547d1c135d032ebe960277e6e68a`，`A-goal-02/job/retained-r1.pt`；r2 SHA `310f744427bbe48ab914699044d678fe97d729b6bac96b98173b02dd6cba47f1`，`A-goal-03/job/retained-r2.pt`。均为研究模型，未推广。
-- 服务器本轮根：`/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/`。[结果索引](m38_artifacts/results.json)、[全部资源与失败](m38_artifacts/resources.json)、[精确接管](m38_artifacts/recovery-exact.json)。旧所有checkpoint/轨迹原样。
-- Mac：`~/Projects/compliance-bfm-diagnostics/videos/m38-rotation-retention/`，仅3条MP4＋INDEX：左右旋转源/r2及旧直行退化。真实qpos、1×、16.08s，SHA/时长/全解码/画面检查完成。
+|模型|相对本轮根路径|SHA256|
+|---|---|---|
+|C0|A-train-03/job/C0.pt|f8676d14df554dd8fccfbe903a2cacfdf643015782c4e60eb9cdbe1f55b1d45a|
+|C1|B-train-05/job/C1.pt|5cdf95c4ac6c5aae2ba705efacc7a45cdfe969538c3ad56fbb47c17743aaaab5|
+|C2|C-train-04/job/C2.pt|ff471b60c0bfc53c1d582a82fd3562416216c67c480e0e8039dee3d09277782c|
 
-## 资源与交接
+T30 SHA `c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33`，位于`bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/best.pt`；S0 SHA `0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12`，位于`direct-transfer-20261103/A-prepare-01/job/ppo15-student-r0.pt`；BFM SHA `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`，均未修改。
 
-本轮1514.77累计受监督实验/渲染job秒，约0.92GiB，Expert6000更新、PPO0、Student0，47完整物理回合含3条已标记非精确前缀；首次sparse源码缺失在加载前失败并修复。轻量离线分析未作为额外GPU任务计数。训练用GPU1，渲染短用GPU2；全部owned已退出，GPU0/5/6其他用户任务未操作。共享repo clean，main/BFM/PD/权重/共享环境不改，无新资产下载、无Bridge/watch、无真机。
+[结果](m38b_artifacts/results.json) · [分阶段物理](m38b_artifacts/physics.json) · [账本](m38b_artifacts/resources.json) · [恢复](m38b_artifacts/recovery.json) · [同状态诊断](m38b_artifacts/same-state.json) · [曲线](m38b_artifacts/learning-curves.png)。原始轨迹/权重仅服务器，Git不上传。
 
-新会话先读本文件、纲领及Issue38，再实时检查Git、ledger、模型SHA、资源。不得凭旧空闲快照启动，不重放旧任务；普通工程在新授权内自主推进。Student继续排除anchor/伙伴速度/目标yaw/clock/active真值等特权；当前T30/r1/r2是特权Expert，不混淆部署权限。Library中2026-10-28快照属历史，实时状态以本文件及GitHub为准。
+Mac：`~/Projects/compliance-bfm-diagnostics/videos/m38b-rotation-retention/`，仅3条MP4＋INDEX：左反向失败、右向保留、T30/C2直行。真实qpos，1×，16.08s，SHA/全解码/画面已核验。视频里的C2是特权Expert，不是新Student。
+
+## 成本、安全与接力
+
+累计2000.803受监督job秒，约1.31GiB，Expert9000更新、PPO0、Student0。首次尾部不足5步、第二次numpy.bool元数据序列化失败均保留；后者从已成功保存的3条物理轨迹恢复索引，没有重跑。模型/物理成功以退出码和证据判定，失败wrapper残留running字段不是正在训练。
+
+GPU1/2/3已释放；GPU0/5/6他人任务未操作。共享checkout clean、main/共享BFM/PD/权重/环境不改，无新资产下载、无Bridge/watch、无真机。新会话先读本文件和报告，再核对Git/模型SHA/ledger/资源，不沿用空闲快照发车。Library 2026-10-28快照是历史；实时状态以这里、Issue38和Master为准。
