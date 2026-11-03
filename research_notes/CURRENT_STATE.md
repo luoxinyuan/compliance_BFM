@@ -1,10 +1,12 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-03。**上轮Direct迁移阶段已完成；新授权停止覆盖/传感阶段已登记、准备启动，尚未发车。** 旧M11 continuation仍停止；A160/B114不是完整等预算终检。
+最后核对：2026-11-03。**上轮Direct迁移阶段已完成；新授权停止覆盖/传感阶段已启动；结果尚未验证。** 旧M11 continuation仍停止；A160/B114不是完整等预算终检。
 
 ## 新授权执行入口
 
 [Issue #34](https://github.com/GaoE05/robot-research-bridge/issues/34)、[STOP_SENSING_PROTOCOL.md](STOP_SENSING_PROTOCOL.md)和stop_protocol.json固定本轮计划。主线为匹配更新的停止覆盖对照、Teacher停止分布PPO、重新训练无显式力Student及力观测压力。预算新登记18000累计进程秒/10GiB/最多3GPU，不能套用旧账本。未来椅子/多接触/全方向demo不在本轮。
+
+运行身份：runtime `32c87b4db3aba007e4d6cf15ed5495cdffdfcb75`；新账本 `bridge-v2-owned/runs/stop-sensing-20261103/compute-ledger.json`，A-prepare-03 GPU1/PID1845112，B1-train-02 GPU5/PID1845030。快照不能当未来空闲/重启依据；C等待冻结停止数据。A-prepare-01稀疏检出缺源码在加载前失败，完整记录后仅展开新worktree，不改BFM。
 
 ## 上轮已验证科学结论
 
@@ -22,7 +24,7 @@
 
 迁移接口可用，主要瓶颈仍是Teacher优化稳健性及恢复覆盖，而不是缺少可训练Student。无接触漂移约3–4mm，但局部15cm请求仍有约14–15cm root移动；部分q_PD峰值36–58°和短行程失败保留，不称自然全身协调已完成。
 
-本轮用户已调整优先级：先区分停止覆盖与额外训练量，并检验传感约束；raw-z与action/q_PD保持保留为有依据时的方法对照，不再唯一主线。保留上轮迁移成功；Teacher未完美不阻塞Student优化。尚未开始新阶段训练，多接触/椅子仅远期候选。
+本轮用户已调整优先级：先区分停止覆盖与额外训练量，并检验传感约束；raw-z与action/q_PD保持保留为有依据时的方法对照，不再唯一主线。保留上轮迁移成功；Teacher未完美不阻塞Student优化。当前A采集/匹配更新与Teacher训练已启动；多接触/椅子仅远期候选。
 
 ## 可靠旧能力与边界
 
