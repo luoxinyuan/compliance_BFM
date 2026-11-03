@@ -1,8 +1,17 @@
-## 新授权执行覆盖｜2026-11-03
-
-Teacher30迁移/恢复与质量阶段已授权，正在准备；尚未启动。Issue35、T30_TRANSFER_PROTOCOL.md/t30_protocol.json为当前计划。上轮结果如下完整保留。新预算18000累计job秒/10GiB/16000监督更新/最多3GPU，不RL。计划S1warm4000+匹配续训3000+条件成立的S2聚合3000+无力4000。不得将下方上轮已结束状态当作本轮无授权。
-
 # CURRENT_STATE — 新会话先读
+
+核对：2026-11-03。**Teacher-30迁移/恢复与质量阶段正在执行，尚未结项。** [Issue35](https://github.com/GaoE05/robot-research-bridge/issues/35)与[T30_TRANSFER_PROTOCOL.md](T30_TRANSFER_PROTOCOL.md)为当前授权和固定协议。下方Issue34结果仅为上轮快照；其中“尚未授权/无任务运行”不适用于当前阶段。
+
+- 主线A：GPU1，独立runtime `8af5a87cf6684469d28a99a11e156ecdb0ba9575`；已取得6条Teacher30真实回合、943条标签，正进行完整Student历史的接管比较，随后按预定协议训练/评估S1及有恢复证据才训练S2。
+- 无力C：同runtime，GPU5，4000次更新已完成，当前结果不能声称新标签改善无力表现，待与同预算S1warm正式比较。
+- 连续性D：GPU6任务已结束，runtime `23309461185f0b10cdc6dfc291c8665f6213fa80`。保存状态计算分解显示最大踝q_PD变化主要来自BFM观测响应；固定0.1s高层平滑使整体跟随更差，不采用、不改PD。
+- 当前预算：18000累计job秒/10GiB/16000监督更新/最多3GPU；计划实际14000更新，无RL。以服务器实时 `bridge-v2-owned/runs/t30-transfer-20261103/compute-ledger.json` 为准，不凭本文件PID或GPU快照重新启动。
+- Teacher30 SHA `c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33`；r0与BFM身份见协议。运行与输出均在个人worktree，不改变共享BFM/PD、旧模型或他人任务。
+- 下一步：完成恢复域、匹配预算迁移/无力终检、运动质量分析及少量真实qpos视频。不得以训练已完成代替物理资格，不按封存结果重选模型。
+
+---
+
+# 上轮结项快照（Issue34，以下并非当前运行状态）
 
 核对：2026-11-03。**停止覆盖、Teacher停止PPO、传感约束及追加力上限诊断全部完成；无本项目任务仍在训练。** 旧M11 continuation A160/B114仍停止，未重启，不作为等预算终检。下一研究阶段尚未启动。
 
