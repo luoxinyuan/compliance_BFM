@@ -19,5 +19,5 @@ for col,side in enumerate(['left','right']):
    ax[0,col].plot(time,np.degrees(y),'--' if no else '-',color=c,label=model+(' no force' if no else ' contact'))
    if not no:ax[1,col].plot(time,[r['sum_force_norm'] for r in rr],color=c,label=model)
  for a in ax[:,col]:a.axvline(4.45,c='black',lw=.6);a.axvline(14.5,c='black',lw=.6);a.grid(alpha=.2);a.set_xlabel('physical time (s)')
- ax[0,col].set_title(side+' new: +12 / -12 deg');ax[0,col].set_ylabel('actual torso change (deg)');ax[1,col].set_ylabel('sum point force norms (N)');ax[0,col].legend(fontsize=8,ncol=2)
+ ax[0,col].set_title(side+(' new: +12 deg' if side=='left' else ' new: -12 deg'));ax[0,col].set_ylabel('actual torso change (deg)');ax[1,col].set_ylabel('sum point force norms (N)');ax[0,col].legend(fontsize=8,ncol=2)
 fig.tight_layout();fig.savefig(out/'sealed-contact-curves.png',dpi=150)

@@ -1,0 +1,62 @@
+[
+  {
+    "path": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/m38c-history-consistency/01-left-heldout-success-and-failure.mp4",
+    "sha256": "e9dbd7cec18dc65aa19e9e2c2db308a0843fce862c2e571bfa5d404a361b26db",
+    "bytes": 3807159,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1280,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "16.520000"
+      }
+    },
+    "full_decode": true
+  },
+  {
+    "path": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/m38c-history-consistency/02-right-contact-versus-bias.mp4",
+    "sha256": "87698e03ccca39236dbf4c1aa3857342830e4b22e17c6c93a6912465a3c5071c",
+    "bytes": 3398343,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1280,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "16.520000"
+      }
+    },
+    "full_decode": true
+  },
+  {
+    "path": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/m38c-history-consistency/03-walking-retention-tradeoff.mp4",
+    "sha256": "22e89f02ec168f717072fd578eb0e9183c2e5491b859b1ec3df66dd57ad550cc",
+    "bytes": 7363795,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1280,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "16.080000"
+      }
+    },
+    "full_decode": true
+  }
+]

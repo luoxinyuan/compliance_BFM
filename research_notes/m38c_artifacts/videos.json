@@ -1,0 +1,124 @@
+[
+  {
+    "name": "01-left-heldout-success-and-failure",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/videos/01-left-heldout-success-and-failure.mp4",
+    "sha256": "e9dbd7cec18dc65aa19e9e2c2db308a0843fce862c2e571bfa5d404a361b26db",
+    "frames": 413,
+    "fps": 25,
+    "duration": 16.52,
+    "seconds": 10.833233864977956,
+    "sides": [
+      {
+        "title": "C2 old Expert | LEFT +12 contact: wrong turn",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/A-final-09/job/C2_left_new.json.gz",
+        "sha256": "90f97f1c9fe20c248a6c8642eecef1c6469317198a57b5b22e177e448c8254a4"
+      },
+      {
+        "title": "D1 visit-data Expert | LEFT +12: failure",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/A-final-09/job/D1_left_new.json.gz",
+        "sha256": "3ccc6cda3dd433129fa2d66bf08f65de8007eec5d476dee986b3b5fa85e3794a"
+      },
+      {
+        "title": "D2 sequence Expert | LEFT +12: correct turn",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/A-final-09/job/D2_left_new.json.gz",
+        "sha256": "9c26f59c161b4991b0e4d4dbb1d1491c6d29c5b6c1401b8ee1632fa88172fcb6"
+      },
+      {
+        "title": "D2 same LEFT frame | NO FORCE",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/A-final-09/job/D2_left_noforce_new.json.gz",
+        "sha256": "c74a31ded8d7bf8f977d4ab39542fa57c09e97bf0c2e0e4ffe59c5935e443ee8"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 12.0,
+      "curvature": 0,
+      "onset": 4.45,
+      "ramp": 8.05,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "02-right-contact-versus-bias",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/videos/02-right-contact-versus-bias.mp4",
+    "sha256": "87698e03ccca39236dbf4c1aa3857342830e4b22e17c6c93a6912465a3c5071c",
+    "frames": 413,
+    "fps": 25,
+    "duration": 16.52,
+    "seconds": 9.920928589068353,
+    "sides": [
+      {
+        "title": "C2 old Expert | RIGHT -12 contact",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/B-final-07/job/C2_right_new.json.gz",
+        "sha256": "f221ba9c261f27b32d0b255e7e701adb340e5349fcc2b41ee2bfa2d03c4bd0b6"
+      },
+      {
+        "title": "C2 same RIGHT frame | NO FORCE",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/B-final-07/job/C2_right_noforce_new.json.gz",
+        "sha256": "c14ebf9e71903e8104d5f807d3248995377d208572abd9761ef74a2b0b542a03"
+      },
+      {
+        "title": "D2 sequence Expert | RIGHT -12 contact",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/B-final-07/job/D2_right_new.json.gz",
+        "sha256": "c29d1bffa85a7a4893d7f2b9aa2054fbeb8535240f936599f8377e2d9d27897d"
+      },
+      {
+        "title": "D2 same RIGHT frame | NO FORCE",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/B-final-07/job/D2_right_noforce_new.json.gz",
+        "sha256": "89a7a9b1737a2ecf7b52047c0323efd67d95ffcde8a7830a087248a983a4990b"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -12.0,
+      "curvature": 0,
+      "onset": 4.45,
+      "ramp": 8.05,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "03-walking-retention-tradeoff",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/videos/03-walking-retention-tradeoff.mp4",
+    "sha256": "22e89f02ec168f717072fd578eb0e9183c2e5491b859b1ec3df66dd57ad550cc",
+    "frames": 402,
+    "fps": 25,
+    "duration": 16.08,
+    "seconds": 7.664478731108829,
+    "sides": [
+      {
+        "title": "Frozen T30 | original straight82cm baseline",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38-rotation-20261103/A-goal-04/job/T30_straight.json.gz",
+        "sha256": "43a7178224bd5cca6f8abcaf16d836ca0f661d3f82dfb48bd484cadd9766bf14"
+      },
+      {
+        "title": "D2 sequence Expert | same straight82cm condition",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/C-train-05/job/D2_straight.json.gz",
+        "sha256": "aa0b92931dd98e52cb4ae01ce3a4f6f59b48d72bb3aaea92aff5c57b3f189774"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.82,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 19.05,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  }
+]

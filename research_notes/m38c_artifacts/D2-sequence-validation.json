@@ -1,0 +1,9 @@
+{
+  "actual_previous_z_max_error": 2.384185791015625e-07,
+  "teacher_qpd_replay_max_rad": 1.0281801223754883e-06,
+  "slerp_max": 4.76837158203125e-07,
+  "teacher_forced_batch_parity": 4.76837158203125e-07,
+  "length": 5,
+  "physical_observations": "fixed real recorded observations, not differentiable rollout",
+  "sampler": "D0 26base+6oldvisit blocks; D1/D2 20base+6oldvisit+6newvisit; 32x5=160 frames; identical D1/D2 blocks"
+}

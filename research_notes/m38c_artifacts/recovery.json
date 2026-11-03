@@ -1,0 +1,149 @@
+[
+  {
+    "condition": "pair_left",
+    "takeover": 3.8,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 3.94760740883332,
+      "force_rms": 4.2296640110903665
+    },
+    "recovery": {
+      "error_cm": 1.383542976329102,
+      "force_rms": 2.1371739097037845
+    },
+    "accepted": true,
+    "samples": 153,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/A-probe-03/job/recovery_pair_left_3p8.json.gz",
+    "scope": "Only actually executed successful recovery successors, not all C2 states"
+  },
+  {
+    "condition": "pair_left",
+    "takeover": 4.5,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 3.9971961412917,
+      "force_rms": 4.282511351594715
+    },
+    "recovery": {
+      "error_cm": 1.4001020650379987,
+      "force_rms": 2.164510660057829
+    },
+    "accepted": true,
+    "samples": 146,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/A-probe-03/job/recovery_pair_left_4p5.json.gz",
+    "scope": "Only actually executed successful recovery successors, not all C2 states"
+  },
+  {
+    "condition": "pair_left",
+    "takeover": 5.5,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 4.2218511611661835,
+      "force_rms": 4.51897444710506
+    },
+    "recovery": {
+      "error_cm": 1.4830375059899952,
+      "force_rms": 2.2947615509808097
+    },
+    "accepted": true,
+    "samples": 136,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/A-probe-03/job/recovery_pair_left_5p5.json.gz",
+    "scope": "Only actually executed successful recovery successors, not all C2 states"
+  },
+  {
+    "condition": "pair_left",
+    "takeover": 7.0,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 4.616140503220779,
+      "force_rms": 4.8854722403371165
+    },
+    "recovery": {
+      "error_cm": 1.6385739310410607,
+      "force_rms": 2.5356907213246096
+    },
+    "accepted": true,
+    "samples": 121,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/A-probe-03/job/recovery_pair_left_7p0.json.gz",
+    "scope": "Only actually executed successful recovery successors, not all C2 states"
+  },
+  {
+    "condition": "pair_left",
+    "takeover": 10.0,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 5.273419736054352,
+      "force_rms": 5.0
+    },
+    "recovery": {
+      "error_cm": 2.015077554374774,
+      "force_rms": 2.9528984174503634
+    },
+    "accepted": true,
+    "samples": 91,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/A-probe-03/job/recovery_pair_left_10p0.json.gz",
+    "scope": "Only actually executed successful recovery successors, not all C2 states"
+  },
+  {
+    "condition": "pair_right",
+    "takeover": 7.0,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 1.030757170459966,
+      "force_rms": 1.6502336933398827
+    },
+    "recovery": {
+      "error_cm": 0.9479680522633139,
+      "force_rms": 1.519734513299495
+    },
+    "accepted": true,
+    "samples": 121,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/A-probe-03/job/recovery_pair_right_7p0.json.gz",
+    "scope": "Only actually executed successful recovery successors, not all C2 states"
+  },
+  {
+    "condition": "straight",
+    "takeover": 5.0,
+    "prefix_max_abs": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0
+    },
+    "continued": {
+      "error_cm": 6.576992143853044,
+      "force_rms": 3.951262919086119
+    },
+    "recovery": {
+      "error_cm": 6.319988381209442,
+      "force_rms": 4.053990891703128
+    },
+    "accepted": false,
+    "samples": 141,
+    "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/A-probe-03/job/recovery_straight_5p0.json.gz",
+    "scope": "Only actually executed successful recovery successors, not all C2 states"
+  }
+]
