@@ -1,0 +1,5 @@
+[
+{"name":"01-small-5cm.mp4","bytes":4448706,"sha256":"14583dfe04f511f7a28f66e36de2f863d21d1534d8dde941af99726c67914e5b","probe":{"programs":[],"stream_groups":[],"streams":[{"width":1280,"height":1280,"r_frame_rate":"25/1"}],"format":{"duration":"14.080000"}},"decode":"passed"},
+{"name":"02-native-reach-positive-control.mp4","bytes":1842870,"sha256":"4a92c9711a18f0debcc53262da8993ca439f5cdb17fbc90f901050d1083708cb","probe":{"programs":[],"stream_groups":[],"streams":[{"width":1280,"height":1280,"r_frame_rate":"25/1"}],"format":{"duration":"9.280000"}},"decode":"passed"},
+{"name":"03-large-80cm.mp4","bytes":6984957,"sha256":"16fcf0fbb2f7901313bfaea92ebe3bf6d48e7bc77b30b8d8b07a7d29c4bc3d53","probe":{"programs":[],"stream_groups":[],"streams":[{"width":1280,"height":1280,"r_frame_rate":"25/1"}],"format":{"duration":"14.080000"}},"decode":"passed"}
+]

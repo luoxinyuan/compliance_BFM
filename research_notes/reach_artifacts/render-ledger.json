@@ -1,0 +1,1 @@
+{"status":"finished","pid":2560792,"supervisor":2560773,"gpu":"GPU-71345fda-5d4b-86df-ca85-6f66299aa7b0","before":"1, 0","affinity":[84,85,86,87],"reserved_seconds":300,"no_physics_rerun":true,"exit_code":0,"job_wall":27.39430162520148}
