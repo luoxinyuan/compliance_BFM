@@ -29,7 +29,7 @@ def loop(env,model,contract,out):
     (out/'runtime-speed.json').write_text(json.dumps(install(env),indent=2))
     torch.set_num_threads(1);torch.manual_seed(1001+WORKER_ID+int(os.environ['NARROW_SEED'])*997);np.random.seed(1001+WORKER_ID+int(os.environ['NARROW_SEED'])*997)
     task=Task(env,model,contract,1001+WORKER_ID+int(os.environ['NARROW_SEED'])*997);task.neighborhood=os.environ.get('NARROW_DOMAIN')=='neighborhood';obs=task.reset(record=True,label=f'train-w{WORKER_ID}-0');net=Expert(obs.shape[-1]).to(obs.device).eval();episodes=0;reset_serial=0
-    CONNECTION.send(dict(kind='ready',pid=os.getpid(),input_dim=obs.shape[-1],worker=WORKER_ID,standing=env.standing[0].cpu().tolist(),contract=contract))
+    CONNECTION.send(dict(kind='ready',pid=os.getpid(),input_dim=obs.shape[-1],worker=WORKER_ID,standing=env.standing[0].cpu().tolist(),contract=contract,initial_source_physics_steps=task.source_physics_total))
     while True:
         cmd=CONNECTION.recv()
         if cmd['op']=='close':break
@@ -86,4 +86,4 @@ def loop(env,model,contract,out):
         a={k:np.asarray(v,dtype=bool if k=='done' else np.float32) for k,v in batch.items()}
         CONNECTION.send(dict(kind='rollout',version=cmd['version'],executed_std=net.log_std.exp().detach().cpu().numpy(),batch=a,stats=stats,episodes=eps,seconds=time.monotonic()-start,prefill_physics_steps=task.total_prefill-presteps,source_physics_steps=task.source_physics_total-source_presteps))
     if task.boundary:task.save(out)
-    return dict(status='completed',episodes=episodes,physical_steps=task.total_steps,prefill_steps=task.total_prefill,student_optimizer_updates=0)
+    return dict(status='completed',episodes=episodes,physical_steps=task.total_steps,prefill_steps=task.total_prefill,source_prefix_physics_steps=task.source_physics_total,student_optimizer_updates=0)
