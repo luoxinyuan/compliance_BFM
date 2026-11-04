@@ -1,0 +1,312 @@
+{
+  "raw": {
+    "selection": {
+      "iteration": 64,
+      "score": 1.493337531445895,
+      "sha256": "cce7e0fedcd4bb3c6e821d933c06d29c96ebb12d4473a64cd03f5df072cd3aac",
+      "evaluation": "dev-0064/summary.json",
+      "rule": "Identical all16 development tasks: mean relative cost + .5 worst relative cost, normalized to common initial policy per task; reject physical boundary, reversed \u00b115 developed rotation or worst>1.75initial; sealed tests never select. All segment and worst metrics reported separately."
+    },
+    "result": {
+      "status": "completed",
+      "iterations": 64,
+      "decisions": 49152,
+      "updates": 446,
+      "elapsed_s": 5175.433358547976,
+      "workers": [
+        {
+          "pid": 2280545,
+          "exitcode": 0
+        },
+        {
+          "pid": 2280546,
+          "exitcode": 0
+        },
+        {
+          "pid": 2280547,
+          "exitcode": 0
+        }
+      ],
+      "bfm_updated": false,
+      "student_updated": false
+    },
+    "coverage": {
+      "decisions_by_phase": {
+        "pre_contact": 3895,
+        "moving": 14426,
+        "contact_hold": 3821,
+        "released_recovery": 14056,
+        "decelerating": 120,
+        "translation_before_rotation": 1989,
+        "rotation_entry": 2034,
+        "rotation_hold": 1055,
+        "rotation_withdrawal": 1921,
+        "translation_after_rotation": 3108,
+        "no_actual_contact": 2727
+      },
+      "decisions_by_family": {
+        "straight": 2670,
+        "combined": 13186,
+        "early": 1083,
+        "pair_right": 958,
+        "sequence": 16286,
+        "zero": 3753,
+        "late": 877,
+        "pair_noforce": 1761,
+        "small_right": 1610,
+        "no_contact": 966,
+        "pair_translate": 3179,
+        "local": 1257,
+        "small_left": 485,
+        "pair_left": 1081
+      },
+      "completed_episodes_by_family": {
+        "straight": 15,
+        "early": 9,
+        "sequence": 94,
+        "combined": 77,
+        "pair_right": 6,
+        "zero": 23,
+        "late": 6,
+        "pair_noforce": 10,
+        "small_right": 10,
+        "no_contact": 6,
+        "pair_translate": 19,
+        "local": 7,
+        "small_left": 3,
+        "pair_left": 6
+      }
+    },
+    "weighted_retention_to_ppo_gradient_ratio": {
+      "min": 0.00210815598256886,
+      "median": 0.002933782758191228,
+      "max": 0.0038776355795562267
+    },
+    "development": [
+      {
+        "iteration": 8,
+        "score": 2.5039919136566553,
+        "best": 1.5
+      },
+      {
+        "iteration": 16,
+        "score": 1.7165468093999197,
+        "best": 1.5
+      },
+      {
+        "iteration": 24,
+        "score": 1.7375742084765655,
+        "best": 1.5
+      },
+      {
+        "iteration": 32,
+        "score": 1.889033574935329,
+        "best": 1.5
+      },
+      {
+        "iteration": 40,
+        "score": 1.9601086561210954,
+        "best": 1.5
+      },
+      {
+        "iteration": 48,
+        "score": 2.638801692815167,
+        "best": 1.5
+      },
+      {
+        "iteration": 56,
+        "score": 1.522518928200007,
+        "best": 1.5
+      },
+      {
+        "iteration": 64,
+        "score": 1.493337531445895,
+        "best": 1.493337531445895
+      }
+    ],
+    "rollbacks": [
+      {
+        "reason": "physical boundary, reversed developed rotation, or worst cost >1.75 initial",
+        "worst_ratio": 2.7147346502815206,
+        "reversed_rotation": false,
+        "restored_iteration": 0,
+        "restored_sha256": "458734927dae8fb63e02ab359be0894c24f99af8b8d2aa42e97c312cf859a1aa",
+        "new_actor_lr": 5e-06,
+        "sampler_history": "real current states retained, new batch under restored distribution"
+      },
+      {
+        "reason": "physical boundary, reversed developed rotation, or worst cost >1.75 initial",
+        "worst_ratio": 1.793122885106054,
+        "reversed_rotation": false,
+        "restored_iteration": 0,
+        "restored_sha256": "458734927dae8fb63e02ab359be0894c24f99af8b8d2aa42e97c312cf859a1aa",
+        "new_actor_lr": 2.5e-06,
+        "sampler_history": "real current states retained, new batch under restored distribution"
+      },
+      {
+        "reason": "physical boundary, reversed developed rotation, or worst cost >1.75 initial",
+        "worst_ratio": 2.8558958502048184,
+        "reversed_rotation": false,
+        "restored_iteration": 0,
+        "restored_sha256": "458734927dae8fb63e02ab359be0894c24f99af8b8d2aa42e97c312cf859a1aa",
+        "new_actor_lr": 1.25e-06,
+        "sampler_history": "real current states retained, new batch under restored distribution"
+      }
+    ]
+  },
+  "action": {
+    "selection": {
+      "iteration": 56,
+      "score": 1.4805769654624845,
+      "sha256": "49cc22b8df7f08ea4b57125f5366a19e32856f9ec6d38d14f5aea7c4364427fe",
+      "evaluation": "dev-0056/summary.json",
+      "rule": "Identical all16 development tasks: mean relative cost + .5 worst relative cost, normalized to common initial policy per task; reject physical boundary, reversed \u00b115 developed rotation or worst>1.75initial; sealed tests never select. All segment and worst metrics reported separately."
+    },
+    "result": {
+      "status": "completed",
+      "iterations": 64,
+      "decisions": 49152,
+      "updates": 472,
+      "elapsed_s": 5189.80010813009,
+      "workers": [
+        {
+          "pid": 2280535,
+          "exitcode": 0
+        },
+        {
+          "pid": 2280536,
+          "exitcode": 0
+        },
+        {
+          "pid": 2280537,
+          "exitcode": 0
+        }
+      ],
+      "bfm_updated": false,
+      "student_updated": false
+    },
+    "coverage": {
+      "decisions_by_phase": {
+        "pre_contact": 3895,
+        "moving": 14426,
+        "contact_hold": 3821,
+        "released_recovery": 14056,
+        "decelerating": 120,
+        "translation_before_rotation": 1989,
+        "rotation_entry": 2034,
+        "rotation_hold": 1055,
+        "rotation_withdrawal": 1921,
+        "translation_after_rotation": 3108,
+        "no_actual_contact": 2727
+      },
+      "decisions_by_family": {
+        "straight": 2670,
+        "combined": 13186,
+        "early": 1083,
+        "pair_right": 958,
+        "sequence": 16286,
+        "zero": 3753,
+        "late": 877,
+        "pair_noforce": 1761,
+        "small_right": 1610,
+        "no_contact": 966,
+        "pair_translate": 3179,
+        "local": 1257,
+        "small_left": 485,
+        "pair_left": 1081
+      },
+      "completed_episodes_by_family": {
+        "straight": 15,
+        "early": 9,
+        "sequence": 94,
+        "combined": 77,
+        "pair_right": 6,
+        "zero": 23,
+        "late": 6,
+        "pair_noforce": 10,
+        "small_right": 10,
+        "no_contact": 6,
+        "pair_translate": 19,
+        "local": 7,
+        "small_left": 3,
+        "pair_left": 6
+      }
+    },
+    "weighted_retention_to_ppo_gradient_ratio": {
+      "min": 0.002180590759962797,
+      "median": 0.004017796833068132,
+      "max": 0.0541207380592823
+    },
+    "development": [
+      {
+        "iteration": 8,
+        "score": 2.564638332790129,
+        "best": 1.5
+      },
+      {
+        "iteration": 16,
+        "score": 1.7168980969115444,
+        "best": 1.5
+      },
+      {
+        "iteration": 24,
+        "score": 1.7363550502171545,
+        "best": 1.5
+      },
+      {
+        "iteration": 32,
+        "score": 1.9782676965363857,
+        "best": 1.5
+      },
+      {
+        "iteration": 40,
+        "score": 1.5127892474547413,
+        "best": 1.5
+      },
+      {
+        "iteration": 48,
+        "score": 2.251785211074856,
+        "best": 1.5
+      },
+      {
+        "iteration": 56,
+        "score": 1.4805769654624845,
+        "best": 1.4805769654624845
+      },
+      {
+        "iteration": 64,
+        "score": 1.672797023616619,
+        "best": 1.4805769654624845
+      }
+    ],
+    "rollbacks": [
+      {
+        "reason": "physical boundary, reversed developed rotation, or worst cost >1.75 initial",
+        "worst_ratio": 2.7777959634271734,
+        "reversed_rotation": false,
+        "restored_iteration": 0,
+        "restored_sha256": "458734927dae8fb63e02ab359be0894c24f99af8b8d2aa42e97c312cf859a1aa",
+        "new_actor_lr": 5e-06,
+        "sampler_history": "real current states retained, new batch under restored distribution"
+      },
+      {
+        "reason": "physical boundary, reversed developed rotation, or worst cost >1.75 initial",
+        "worst_ratio": 1.7967981671223363,
+        "reversed_rotation": false,
+        "restored_iteration": 0,
+        "restored_sha256": "458734927dae8fb63e02ab359be0894c24f99af8b8d2aa42e97c312cf859a1aa",
+        "new_actor_lr": 2.5e-06,
+        "sampler_history": "real current states retained, new batch under restored distribution"
+      },
+      {
+        "reason": "physical boundary, reversed developed rotation, or worst cost >1.75 initial",
+        "worst_ratio": 2.29955998376926,
+        "reversed_rotation": false,
+        "restored_iteration": 0,
+        "restored_sha256": "458734927dae8fb63e02ab359be0894c24f99af8b8d2aa42e97c312cf859a1aa",
+        "new_actor_lr": 1.25e-06,
+        "sampler_history": "real current states retained, new batch under restored distribution"
+      }
+    ]
+  }
+}

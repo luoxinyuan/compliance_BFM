@@ -1,6 +1,6 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-04。**M39-A完成；M39-B已获新授权，校准与实际PPO更新测试通过，两臂训练进程已启动，初始16条件开发及首批真实PPO更新已通过，正在训练；尚无M39-B科研结果。** M38-C有限域双向转腰成立；M39-A进一步降低零需求牵拉，但连续平移/旋转需求分配与旧能力泛化仍未统一解决。不得回到重复BFM左转资格，也不自动续训。
+最后核对：2026-11-04。**M39-A完成；M39-B两臂各64批/49,152决策正常训练完成，开发best已锁定。开发分阶段分析完成，封存终检/视频未执行：当前全部GPU有其他任务，等待可用资源，不追加训练。** M38-C有限域双向转腰成立；M39-A进一步降低零需求牵拉，但连续平移/旋转需求分配与旧能力泛化仍未统一解决。不得回到重复BFM左转资格，也不自动续训。
 
 入口：[研究纲领](RESEARCH_OVERVIEW.md) · [M39-A完整报告](M39A_RESULTS.md) · [Issue39](https://github.com/GaoE05/robot-research-bridge/issues/39) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。旧[M38-C](M38C_RESULTS.md)和所有阶段报告/失败保留。
 
@@ -48,8 +48,16 @@ Mac：`~/Projects/compliance-bfm-diagnostics/videos/m39a-demand-allocation/`，4
 
 新会话先读本文件/纲领/报告/Issue，实时核查Git、SHA、ledger和GPU，不能按旧PID重启。main、共享BFM/PD/权重、SoftSONIC不改，无Bridge/watch、无真机。Library2026-10-28为历史快照。完成阶段后停止，下一研究建议不等于新授权。
 
-## M39-B active handoff
+## M39-B 当前接力（本段优先于历史已完成状态）
 
-[Issue40](https://github.com/GaoE05/robot-research-bridge/issues/40) / [预登记](M39B_PROTOCOL.md)。共同初始化为上表PPO3901 best64，actor/critic/normalization/std完全继承，两臂fresh Adam。seed3911，各64×768；原奖励/物理不改，56%组合课程共同改变。A raw保持，B同状态5子步q_PD保持；正式训练前固定梯度标定和新封存组合。准备worktree `bridge-v2-owned/trees/m39b-action-retention/repo`；新run根`bridge-v2-owned/runs/m39b-retention-20261104`。本段优先于历史完成段的无任务状态。运行源码 `11b40db7897580916d55da0afaaea7e8ab646d33`。A raw：GPU1 / supervisor2280380 / child2280416 / `A-ppo-04/job`；B action：GPU2 / supervisor2280381 / child2280420 / `B-ppo-05/job`。各3worker，CPU8–15 /24–31，每臂墙钟预留8500秒；达到64批自动停止。启动/校准共约399.7秒，768物理校准决策，smoke仅副本4优化步，无新正式训练结果。数据身份首轮失败保留。校准B系数4845.037013683694（qPD rad²），A .002；初始梯度规模约PPO的0.2–0.6%，不可先宣称强保旧。实时状态请读新账本，不根据本快照重复启动。新上限24000累计job-wall、196608决策、15GiB；实际运行身份由新账本/Issue记录，不能沿用旧PID。
+[Issue40](https://github.com/GaoE05/robot-research-bridge/issues/40) / [预登记](M39B_PROTOCOL.md) / [训练完成与开发分析](M39B_DEVELOPMENT_STATUS.md)。阶段尚未结项。
 
-M39-B首批核验：两臂各768真实PPO决策；16初始开发条件核心指标差为0，直行3212物理tick的qpos/qvel/force逐点差为0。raw/action实际类型正确，初始tensor摘要一致；每批采样约51.5秒，优化0.19/0.22秒。预计2026-11-04北京时间约13:45–14:00完成训练（以实际账本为准），随后仍需一次封存评价/真实视频和阶段结论，不把进行中当成功。保留两臂共同比较，不因终检给单臂加训。
+两臂runtime `11b40db7897580916d55da0afaaea7e8ab646d33`，同初始化PPO3901 best64、seed3911、fresh Adam，共同组合课程。各64×768=49,152决策，A446/B472接受优化更新，各3次预定开发退化回滚。原训练所有进程正常退出，不能按旧PID重启。
+
+A raw选batch64 SHA `cce7e0fedcd4bb3c6e821d933c06d29c96ebb12d4473a64cd03f5df072cd3aac`，路径新run根`A-ppo-04/job/best.pt`；B action选batch56 SHA `49cc22b8df7f08ea4b57125f5366a19e32856f9ec6d38d14f5aea7c4364427fe`，`B-ppo-05/job/best.pt`。新run根`bridge-v2-owned/runs/m39b-retention-20261104`。
+
+开发：A两条连续组合误差9.627→6.674cm、7.133→5.932cm；B9.792/7.130cm。B直行负担3.536→3.314N，小右转更准确；两臂旧±15°方向保留。不能宣称B全面胜出。完整物理曲线显示组合进入时仍移动迟滞，正向需求早期仍右偏；A主要改善后期追赶，B正向将更多移动拖至旋转撤销后。无力偏转、局部请求附带yaw仍存在。保持梯度中位数仅PPO的A0.293%/B0.402%，是弱保持尺度上的单seed对照。
+
+截至UTC06:25附近，累计job-wall10,802.90秒，另已保存轨迹CPU分析86.12秒；输出约5.62GiB。训练98,304决策，校准另768；上限24,000秒/196,608决策/15GiB未耗尽。7张GPU均有其他项目进程，未抢占，未因无GPU改用CPU执行模型。
+
+待执行：`development-closeout/final-config.json`已核验initial/A/B/T30 SHA并固定13个预先封存组合，尚未跑；可用GPU出现后刷新资源，用原supervisor final完成52回合，再完成2–4条真实qpos 1×视频至Mac `videos/m39b-action-retention/`和阶段报告。配置存在不等于评价完成。无watch/自动新训练，不按终检再挑模型。准备/文档worktree `bridge-v2-owned/trees/m39b-action-retention/repo`；两臂原运行worktree保持不动。
