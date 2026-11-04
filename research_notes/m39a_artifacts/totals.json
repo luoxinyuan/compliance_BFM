@@ -1,0 +1,7 @@
+{
+  "job_wall": 15504.634955042042,
+  "supervised_updates": 3000,
+  "rl_decisions": 122880,
+  "evaluated_episodes": 414,
+  "new_output_bytes": 9058201605
+}

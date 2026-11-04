@@ -1,0 +1,206 @@
+[
+  {
+    "name": "01-zero-demand",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/videos/01-zero-demand.mp4",
+    "sha256": "e67bbd765064cea2e716223a0109010d9d10ada3a3cb525c9546b7af59218aca",
+    "frames": 413,
+    "fps": 25,
+    "duration": 16.52,
+    "seconds": 8.544926130911335,
+    "sides": [
+      {
+        "title": "Frozen D2 - connected zero demand",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/C-final-06/job/D2_zero_new.json.gz",
+        "sha256": "c375be7361274019bd54c5c4862b193b083b12c664599d20c3918bab3c6dbf03"
+      },
+      {
+        "title": "PPO3901 best64 - same zero demand",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/C-final-06/job/ppo3901_zero_new.json.gz",
+        "sha256": "87972254fa8891e41d4a6ff5dc90b7b2a12ba3b2c5156ceb6dd35c4949f2cae3"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 0.0,
+      "curvature": 0,
+      "onset": 4.4,
+      "ramp": 8.1,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "02a-left-9deg",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/videos/02a-left-9deg.mp4",
+    "sha256": "5116dd0f35154b6025028c89034500480c4c7dfaf907e19acffdc9293c76b4ad",
+    "frames": 413,
+    "fps": 25,
+    "duration": 16.52,
+    "seconds": 9.796444352949038,
+    "sides": [
+      {
+        "title": "Frozen D2",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/A-final-08/job/D2_left_new.json.gz",
+        "sha256": "ecd671f45739bc747974e653eb0306c4fe2e2cc05af7fc8b09eb4bc56fb3bdfe"
+      },
+      {
+        "title": "Coverage supervision",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/A-final-08/job/coverage_left_new.json.gz",
+        "sha256": "485f5b0474f8eb3a81442562d7c5c3d52d572da292d80a760389893a902a5bd1"
+      },
+      {
+        "title": "PPO seed3901 dev-best64",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/A-final-08/job/ppo3901_left_new.json.gz",
+        "sha256": "48001363ebffee607f8d763361e66bcb762aa1944f0619b4aa253252c619f21e"
+      },
+      {
+        "title": "PPO seed3902 dev-best16",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/A-final-08/job/ppo3902_left_new.json.gz",
+        "sha256": "c5b4ee81dcc71f6526098a3372662c5fa48fcfd641b10bf3b841841b4a3b7ad6"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 9.0,
+      "curvature": 0,
+      "onset": 4.4,
+      "ramp": 8.1,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "02b-right-9deg",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/videos/02b-right-9deg.mp4",
+    "sha256": "9c4247ef7ac921558833cea4c8a06d371d7c53532bf48bc2862de79c48d49e91",
+    "frames": 413,
+    "fps": 25,
+    "duration": 16.52,
+    "seconds": 9.938482641009614,
+    "sides": [
+      {
+        "title": "Frozen D2",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-final-07/job/D2_right_new.json.gz",
+        "sha256": "2b37be3fbb456b336d8712aa905478888b3996b61bef1bb785319736038d105b"
+      },
+      {
+        "title": "Coverage supervision",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-final-07/job/coverage_right_new.json.gz",
+        "sha256": "be5eb375c18034045c2c32e2c352338166eef56f1a8926400b28676a6e3f7436"
+      },
+      {
+        "title": "PPO seed3901 dev-best64",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-final-07/job/ppo3901_right_new.json.gz",
+        "sha256": "8a9635b69bffae461a34b1ff5dbce148b094cc09c7f3e08f05eaa59d0cf51b05"
+      },
+      {
+        "title": "PPO seed3902 dev-best16",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-final-07/job/ppo3902_right_new.json.gz",
+        "sha256": "c5c6e5886850a9b27af8ba1eabe95e6446960705bae3e5b73c357ac0294a20ff"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -9.0,
+      "curvature": 0,
+      "onset": 4.4,
+      "ramp": 8.1,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "03-translation-rotation-return",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/videos/03-translation-rotation-return.mp4",
+    "sha256": "d493cbf09a32938ae878a210f03866ec0d128a070b990b8201c0f18d63ec46da",
+    "frames": 413,
+    "fps": 25,
+    "duration": 16.52,
+    "seconds": 10.42343329405412,
+    "sides": [
+      {
+        "title": "Frozen D2",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-final-07/job/D2_sequence_new.json.gz",
+        "sha256": "9ba593e27f11c944e542b638f03e542cfdf2f4a4c1f303d4249bb9ae4c46a6da"
+      },
+      {
+        "title": "Coverage supervision",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-final-07/job/coverage_sequence_new.json.gz",
+        "sha256": "b7fa80bc870a13387da6af49367a22de7ee8990c85326b5f1ca5b42428688124"
+      },
+      {
+        "title": "PPO seed3901 dev-best64",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-final-07/job/ppo3901_sequence_new.json.gz",
+        "sha256": "58e151a0b79894a74437b3d3d145091201e9b6cd2913aa325e9d4d2efac967cf"
+      },
+      {
+        "title": "PPO seed3902 dev-best16",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-final-07/job/ppo3902_sequence_new.json.gz",
+        "sha256": "89b6e5c2d5125df2cc3227775df148171187022df122ece6911583d9f0ea92cc"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.27,
+      "rotation_deg": -8.0,
+      "curvature": 0,
+      "onset": 4.4,
+      "ramp": 8.1,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "rotation_onset": 6.35,
+      "rotation_ramp": 2.15,
+      "rotation_return": 9.4,
+      "rotation_return_ramp": 1.9
+    }
+  },
+  {
+    "name": "04-straight-regression",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/videos/04-straight-regression.mp4",
+    "sha256": "ef663017b1dbb9bdad2523045dd3b8db1aaa6037fe1a5b4feda37b1948819fb6",
+    "frames": 413,
+    "fps": 25,
+    "duration": 16.52,
+    "seconds": 7.919625595910475,
+    "sides": [
+      {
+        "title": "Frozen T30 - new straight",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/C-final-06/job/T30_straight_new.json.gz",
+        "sha256": "fe90f4a16ea70e020d0ed0d2a0ef2c6b4709e7b019a0474783ebb929b2b94145"
+      },
+      {
+        "title": "PPO3901 best64 - straight tradeoff",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/C-final-06/job/ppo3901_straight_new.json.gz",
+        "sha256": "ef394048afbf9d63e5c67eaf40526ee46cca4dd9b9cb10e7061afb5719975c1a"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.79,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.4,
+      "ramp": 8.1,
+      "release": 14.5,
+      "end": 19.5,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  }
+]

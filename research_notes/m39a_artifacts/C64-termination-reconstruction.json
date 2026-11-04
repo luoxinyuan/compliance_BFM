@@ -1,0 +1,12 @@
+{
+  "original_status": "failed",
+  "error": "numpy.bool_ serialization at completed batch64 extension decision",
+  "best": 1.4443798112264319,
+  "best_through40": 1.4443798112264319,
+  "extension_condition": false,
+  "intended_status": "completed_development_plateau",
+  "retrained": false,
+  "old_files_unchanged": true,
+  "latest_sha256": "43e87de6cc04c8998c836900e517d8cbf3cc47404d82e1a9b71458a67b2e54c7",
+  "candidate64_sha256": "5f32c503a4655d60952c8ddae90099cce938383faff21ac66674de74cfe01cc5"
+}

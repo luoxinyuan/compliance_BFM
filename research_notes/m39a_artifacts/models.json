@@ -1,0 +1,77 @@
+{
+  "B-ppo-03": {
+    "selection": {
+      "iteration": 64,
+      "score": 1.4361333418308377,
+      "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+      "evaluation": "dev-0064/summary.json",
+      "rule": "min mean(relative task cost)+0.5max(relative task cost), all 14 dev tasks; cost=force+3error_m+cap+.04heading_deg+20boundary. Baseline per condition D2; all frozen final models once, no final reselection. No-force cost=.5 root_max_m+.02 torso_excursion_deg+20boundary; no released anchor score."
+    },
+    "result": {
+      "status": "completed_repeated_development_regression",
+      "iterations": 96,
+      "decisions": 73728,
+      "updates": 592,
+      "elapsed_s": 7285.497833588859,
+      "workers": [
+        {
+          "pid": 2109009,
+          "exitcode": 0
+        },
+        {
+          "pid": 2109010,
+          "exitcode": 0
+        },
+        {
+          "pid": 2109011,
+          "exitcode": 0
+        }
+      ],
+      "bfm_updated": false,
+      "student_updated": false
+    },
+    "files": {
+      "initial.pt": "e384740ae222492c9edac381b83111fd7834cdf96848613c36bfd4540e626f0a",
+      "best.pt": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+      "latest.pt": "ae61c17f1af4cc7de596f1175959dfb2439ea9ed13359af74ba823535503269c",
+      "last.pt": "c1ef961753bef7c48ed49776defbb791709d7badfc5faa691d86bb773767aeb2"
+    }
+  },
+  "C-ppo-04": {
+    "selection": {
+      "iteration": 16,
+      "score": 1.4443798112264319,
+      "sha256": "d4c2fedf27d0bdf3f7a4fa44e5863e99bb9acfa7039f690623a64c899aacc76d",
+      "evaluation": "dev-0016/summary.json",
+      "rule": "min mean(relative task cost)+0.5max(relative task cost), all 14 dev tasks; cost=force+3error_m+cap+.04heading_deg+20boundary. Baseline per condition D2; all frozen final models once, no final reselection. No-force cost=.5 root_max_m+.02 torso_excursion_deg+20boundary; no released anchor score."
+    },
+    "result": {
+      "status": "failed",
+      "iterations": 64,
+      "decisions": 49152,
+      "updates": 210,
+      "elapsed_s": 5030.832427605055,
+      "workers": [
+        {
+          "pid": 2109031,
+          "exitcode": 0
+        },
+        {
+          "pid": 2109032,
+          "exitcode": 0
+        },
+        {
+          "pid": 2109033,
+          "exitcode": 0
+        }
+      ],
+      "bfm_updated": false,
+      "student_updated": false
+    },
+    "files": {
+      "initial.pt": "f01a55934a20e9828af67cd6c8cf3db5dae241c121d2f25ae54bb96d6b23eb46",
+      "best.pt": "d4c2fedf27d0bdf3f7a4fa44e5863e99bb9acfa7039f690623a64c899aacc76d",
+      "latest.pt": "43e87de6cc04c8998c836900e517d8cbf3cc47404d82e1a9b71458a67b2e54c7"
+    }
+  }
+}
