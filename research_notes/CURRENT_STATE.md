@@ -1,6 +1,6 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-04。**M39-A完成并停止，当前没有训练/评估/渲染任务排队。** M38-C有限域双向转腰成立；M39-A进一步降低零需求牵拉，但连续平移/旋转需求分配与旧能力泛化仍未统一解决。不得回到重复BFM左转资格，也不自动续训。
+最后核对：2026-11-04。**M39-A完成；M39-B已获新授权，当前准备/校准，尚未启动A/B训练。** M38-C有限域双向转腰成立；M39-A进一步降低零需求牵拉，但连续平移/旋转需求分配与旧能力泛化仍未统一解决。不得回到重复BFM左转资格，也不自动续训。
 
 入口：[研究纲领](RESEARCH_OVERVIEW.md) · [M39-A完整报告](M39A_RESULTS.md) · [Issue39](https://github.com/GaoE05/robot-research-bridge/issues/39) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。旧[M38-C](M38C_RESULTS.md)和所有阶段报告/失败保留。
 
@@ -20,7 +20,7 @@ T30→S0仍是有限域右腕直行/停止Teacher→ideal-force Student基线。
 
 已有可执行左右能力，训练也能降低零需求负担；问题不再是是否能左转。一个模型对步态、转腰、进入/撤销的共同反馈仍不可靠，覆盖监督与PPO表现出明确取舍。奖励能给已知坏行为较差回报，但不能由此证明当前优化与保旧约束充分；没有证据将唯一原因归为数据不足或BFM不可表达。
 
-**建议下一轮仅做真实组合PPO中raw-z保持 vs 同状态完整50Hz BFM action保持的有界对照**，可靠旧域保留动作，组合域仍按真实任务反馈学习。沿用已暴露条件为开发，另封存；不加方向状态机、不只再做3000离线监督。新授权前不执行，不先蒸馏尚未统一有效的专家；T30/S0不替换。
+**建议下一轮仅做真实组合PPO中raw-z保持 vs 同状态完整50Hz BFM action保持的有界对照**，可靠旧域保留动作，组合域仍按真实任务反馈学习。沿用已暴露条件为开发，另封存；不加方向状态机、不只再做3000离线监督。M39-B已获新授权，执行该匹配对照；不先蒸馏尚未统一有效的专家，T30/S0不替换。
 
 ## 精确身份、数据和视频
 
@@ -47,3 +47,7 @@ Mac：`~/Projects/compliance-bfm-diagnostics/videos/m39a-demand-allocation/`，4
 累计受监督job-wall15504.635秒（含失败/渲染），reward复算54.443秒；CPU离线分析/验证另保守占用1200秒预算余量而非冒充实测，仍小于24000。约8.5GiB/15GiB；3000监督/6000，122880决策/196608；未新增Student。所有owned任务退出，GPU释放；0/5/6他人任务不操作。
 
 新会话先读本文件/纲领/报告/Issue，实时核查Git、SHA、ledger和GPU，不能按旧PID重启。main、共享BFM/PD/权重、SoftSONIC不改，无Bridge/watch、无真机。Library2026-10-28为历史快照。完成阶段后停止，下一研究建议不等于新授权。
+
+## M39-B active handoff
+
+[Issue40](https://github.com/GaoE05/robot-research-bridge/issues/40) / [预登记](M39B_PROTOCOL.md)。共同初始化为上表PPO3901 best64，actor/critic/normalization/std完全继承，两臂fresh Adam。seed3911，各64×768；原奖励/物理不改，56%组合课程共同改变。A raw保持，B同状态5子步q_PD保持；正式训练前固定梯度标定和新封存组合。准备worktree `bridge-v2-owned/trees/m39b-action-retention/repo`；新run根`bridge-v2-owned/runs/m39b-retention-20261104`。本段优先于历史完成段的无任务状态。新上限24000累计job-wall、196608决策、15GiB；实际运行身份由新账本/Issue记录，不能沿用旧PID。
