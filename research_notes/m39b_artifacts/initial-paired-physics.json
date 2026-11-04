@@ -1,0 +1,20 @@
+{
+  "qpos": 0.0,
+  "qvel": 0.0,
+  "force": 0.0,
+  "physical_ticks": 3212,
+  "condition": {
+    "geometry": "wrist",
+    "enabled": true,
+    "distance": 0.82,
+    "rotation_deg": 0,
+    "curvature": 0,
+    "onset": 4.25,
+    "ramp": 7.8,
+    "release": 14.05,
+    "end": 19.05,
+    "heading_deg": 0.0,
+    "family": "walking"
+  },
+  "checkpoint_state_sha": "c1fdf3c196fc0feb62cc5b7a1bc630397c642de0b1da13d8243d4e2ebb2e470d"
+}

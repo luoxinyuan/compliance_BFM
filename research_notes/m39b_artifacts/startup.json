@@ -1,0 +1,228 @@
+{
+  "A": {
+    "job": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/A-ppo-04/job",
+    "retention": {
+      "kind": "raw",
+      "weight": 0.002,
+      "calibration": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-calibrate-02/job/calibration.json",
+      "calibration_sha256": "7153076ebd811276cf124312260dfb2f4eab4495a7ce7ed2aac9a772822b65a3",
+      "same_initial_state_sha": "c1fdf3c196fc0feb62cc5b7a1bc630397c642de0b1da13d8243d4e2ebb2e470d"
+    },
+    "iteration": 2,
+    "decisions": 1536,
+    "sampling_seconds": 51.667591381818056,
+    "optimization_seconds": 0.019416396971791983,
+    "optimization": {
+      "optimizer_updates": 2,
+      "pre_logprob_max_error": 0.0001220703125,
+      "pre_ratio_max_error": 0.0001220703125,
+      "old_GAE_value_EV": 0.6956406831741333,
+      "updated_value_EV": 0.7425014972686768,
+      "returns_mean": -3.090837001800537,
+      "returns_std": 2.020580530166626,
+      "old_value_mean": -3.323490858078003,
+      "raw_adv_std": 1.1147295236587524,
+      "std_mean": 0.007999999448657036,
+      "raw_mean_change_rms": 9.530344686936587e-05,
+      "gradient_components": [
+        {
+          "ppo": 434.5075378417969,
+          "weighted_retention": 1.1749151945114136,
+          "ratio": 0.002704015700146556,
+          "cosine": 0.037660740315914154
+        }
+      ],
+      "gradients": [
+        {
+          "actor": 434.5533752441406,
+          "critic": 0.2082023173570633,
+          "std": 0.0,
+          "actor_preclip": 434.5533752441406,
+          "critic_preclip": 0.2082023173570633,
+          "actor_clip_scale": 0.0011506066423234895,
+          "actor_lr": 5e-06,
+          "backtracks": 1
+        },
+        {
+          "actor": 356.33721923828125,
+          "critic": 0.23693756759166718,
+          "std": 0.0,
+          "actor_preclip": 356.33721923828125,
+          "critic_preclip": 0.23693756759166718,
+          "actor_clip_scale": 0.0014031652406919974,
+          "actor_lr": 2.5e-06,
+          "backtracks": 1
+        }
+      ],
+      "epochs": [
+        {
+          "epoch": 0,
+          "joint_gaussian_KL": 0.018165484070777893,
+          "sample_KL": 0.037798985838890076,
+          "clip_fraction": 0.4752604365348816,
+          "value_loss": 0.011443431489169598,
+          "retention_loss": 11.560001373291016,
+          "retention_kind": "raw",
+          "bc_weight": 0.002,
+          "positive_adv_logprob_change": 0.08696103096008301,
+          "negative_adv_logprob_change": -0.11171859502792358
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "epoch": 0,
+          "retry": 0,
+          "joint_KL": 0.040540728718042374,
+          "candidate_actor_lr": 1e-05
+        },
+        {
+          "epoch": 0,
+          "retry": 0,
+          "joint_KL": 0.02955164574086666,
+          "candidate_actor_lr": 5e-06
+        }
+      ],
+      "actor_lr_after": 2.5e-06
+    },
+    "coverage": {
+      "decisions_by_phase": {
+        "contact_hold": 57,
+        "released_recovery": 276,
+        "pre_contact": 84,
+        "moving": 236,
+        "translation_before_rotation": 18,
+        "rotation_entry": 18,
+        "rotation_hold": 7,
+        "rotation_withdrawal": 16,
+        "translation_after_rotation": 56
+      },
+      "decisions_by_family": {
+        "combined": 287,
+        "pair_right": 183,
+        "sequence": 229,
+        "zero": 69
+      },
+      "completed_episodes_by_family": {
+        "combined": 2,
+        "pair_right": 2,
+        "sequence": 2
+      }
+    }
+  },
+  "B": {
+    "job": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/B-ppo-05/job",
+    "retention": {
+      "kind": "action",
+      "weight": 4845.037013683694,
+      "calibration": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-calibrate-02/job/calibration.json",
+      "calibration_sha256": "7153076ebd811276cf124312260dfb2f4eab4495a7ce7ed2aac9a772822b65a3",
+      "same_initial_state_sha": "c1fdf3c196fc0feb62cc5b7a1bc630397c642de0b1da13d8243d4e2ebb2e470d"
+    },
+    "iteration": 2,
+    "decisions": 1536,
+    "sampling_seconds": 52.05149571597576,
+    "optimization_seconds": 0.035349771147593856,
+    "optimization": {
+      "optimizer_updates": 2,
+      "pre_logprob_max_error": 0.0001220703125,
+      "pre_ratio_max_error": 0.0001220703125,
+      "old_GAE_value_EV": 0.6958604454994202,
+      "updated_value_EV": 0.7426639199256897,
+      "returns_mean": -3.090024709701538,
+      "returns_std": 2.020279884338379,
+      "old_value_mean": -3.3228511810302734,
+      "raw_adv_std": 1.1141611337661743,
+      "std_mean": 0.007999999448657036,
+      "raw_mean_change_rms": 9.534416312817484e-05,
+      "gradient_components": [
+        {
+          "ppo": 434.2747802734375,
+          "weighted_retention": 1.085453987121582,
+          "ratio": 0.002499463502317667,
+          "cosine": -0.02236730419099331
+        }
+      ],
+      "gradients": [
+        {
+          "actor": 434.2518615722656,
+          "critic": 0.20800761878490448,
+          "std": 0.0,
+          "actor_preclip": 434.2518615722656,
+          "critic_preclip": 0.20800761878490448,
+          "actor_clip_scale": 0.0011514055419122088,
+          "actor_lr": 5e-06,
+          "backtracks": 1
+        },
+        {
+          "actor": 356.2563781738281,
+          "critic": 0.2369709461927414,
+          "std": 0.0,
+          "actor_preclip": 356.2563781738281,
+          "critic_preclip": 0.2369709461927414,
+          "actor_clip_scale": 0.0014034836444557213,
+          "actor_lr": 2.5e-06,
+          "backtracks": 1
+        }
+      ],
+      "epochs": [
+        {
+          "epoch": 0,
+          "joint_gaussian_KL": 0.01818099617958069,
+          "sample_KL": 0.03779178112745285,
+          "clip_fraction": 0.4739583432674408,
+          "value_loss": 0.01142866164445877,
+          "retention_loss": 3.7211711401141656e-07,
+          "retention_kind": "action",
+          "bc_weight": 4845.037013683694,
+          "positive_adv_logprob_change": 0.08744828402996063,
+          "negative_adv_logprob_change": -0.11129806935787201
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "epoch": 0,
+          "retry": 0,
+          "joint_KL": 0.040460843592882156,
+          "candidate_actor_lr": 1e-05
+        },
+        {
+          "epoch": 0,
+          "retry": 0,
+          "joint_KL": 0.029622290283441544,
+          "candidate_actor_lr": 5e-06
+        }
+      ],
+      "actor_lr_after": 2.5e-06
+    },
+    "coverage": {
+      "decisions_by_phase": {
+        "contact_hold": 57,
+        "released_recovery": 276,
+        "pre_contact": 84,
+        "moving": 236,
+        "translation_before_rotation": 18,
+        "rotation_entry": 18,
+        "rotation_hold": 7,
+        "rotation_withdrawal": 16,
+        "translation_after_rotation": 56
+      },
+      "decisions_by_family": {
+        "combined": 287,
+        "pair_right": 183,
+        "sequence": 229,
+        "zero": 69
+      },
+      "completed_episodes_by_family": {
+        "combined": 2,
+        "pair_right": 2,
+        "sequence": 2
+      }
+    }
+  },
+  "initial_16_dev_max_differences": {
+    "error_cm": 0.0,
+    "sum_force_norm_rms": 0.0,
+    "actual_torso_turn_deg": 0.0,
+    "qpd_max_deg": 0.0
+  }
+}
