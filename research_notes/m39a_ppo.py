@@ -95,7 +95,7 @@ def main():
 
     if iteration>=64:
      oldbest=min(r['best'] for r in history if r['iteration']<=40)
-     extend=best<.98*oldbest and all(r['boundary'] is None for r in rows)
+     extend=bool(best<.98*oldbest and all(r['boundary'] is None for r in rows))
      atomic(a.output/'extension-decision.json',dict(extend=extend,oldbest=oldbest,best=best,rule=plan['extension']))
      if not extend:status='completed_development_plateau';break
   else:status='completed'
