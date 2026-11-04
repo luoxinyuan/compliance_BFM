@@ -1,0 +1,58 @@
+{
+  "models": {
+    "I": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+      "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+      "selection_reason": "M39-A best64 shared M39-B initialization; chosen before this stage evidence; avoids selecting an arm by final M39-B outcomes"
+    },
+    "T30": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/best.pt",
+      "sha256": "c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33"
+    }
+  },
+  "query_models": [
+    "I",
+    "A16",
+    "A32",
+    "B16",
+    "B32",
+    "B48"
+  ],
+  "switch_times": [
+    4.0,
+    4.5,
+    5.0,
+    5.5,
+    6.0,
+    6.5
+  ],
+  "switch_ticks": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    25
+  ],
+  "max_job_wall": 5000,
+  "max_output_bytes": 3221225472,
+  "rl_training_decisions": 0,
+  "supervised_updates": 0,
+  "distances_m": [
+    0,
+    0.05,
+    0.15,
+    0.3,
+    0.8
+  ],
+  "common_ramp": 7.8,
+  "common_peak_speed": 0.15,
+  "minimum_ramp": 0.5,
+  "goal_distances_m": [
+    0.05,
+    0.15
+  ],
+  "seed": 0,
+  "anchor_mode": "onset_actual",
+  "scope": "finite frozen diagnosis; not blind-test model selection"
+}
