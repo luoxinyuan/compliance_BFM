@@ -1,6 +1,8 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-04。**Transition-centered privileged latent RL已完成有界训练、48回合封存评价和视频交付；未获得优于初始化的开发选定模型。当前本阶段无训练，未启动下一实验。**
+最后核对：2026-11-04。**用户新授权M41启动因果诊断已开始准备；新增RL=0，累计job-wall≤5000秒/输出≤3GiB/最多2卡。既有训练结项不变。新目录runs/m41-startup-causal-20261104；接管/单命令/三种子冻结评估，未启动下一轮PPO。**
+
+此前结项：**Transition-centered privileged latent RL已完成有界训练、48回合封存评价和视频交付；未获得优于初始化的开发选定模型。当前本阶段无训练，未启动下一实验。**
 
 入口：[完整结项与归因边界](TRANSITION_RESULTS.md) · [Issue41](https://github.com/GaoE05/robot-research-bridge/issues/41) · [预登记](TRANSITION_PROTOCOL.md) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。旧“执行中”记录为历史。
 

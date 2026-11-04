@@ -1,0 +1,72 @@
+{
+  "models": {
+    "A16": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/transition-curriculum-20261104/A-ppo-03/job/candidate-0016.pt",
+      "sha256": "a81bdaaf59f2215b5788b6194c25a06a306a7848d3dc66063016a7e4e5d54f7d"
+    },
+    "A32": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/transition-curriculum-20261104/A-ppo-03/job/candidate-0032.pt",
+      "sha256": "39ba9ee3a39020992358f3eefd1251fa79de7c372b771ae65f5be4477da433d5"
+    },
+    "A48": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/transition-curriculum-20261104/A-ppo-03/job/candidate-0048.pt",
+      "sha256": "ee09ce36ad1536cc6d8502b2f4368f40b6078e012cc8c2b4f4640e4d39b6f165"
+    },
+    "A64": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/transition-curriculum-20261104/A-ppo-03/job/candidate-0064.pt",
+      "sha256": "1f550813dd4cfb76d6245683ce7088b6db55b5dab1c58a9e5833c5095055bb0b"
+    },
+    "B16": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/transition-curriculum-20261104/B-ppo-04/job/candidate-0016.pt",
+      "sha256": "6319821c073bea358febf31dcc1c529d2b94b7b217a8edcb1d91022a914704b2"
+    },
+    "B32": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/transition-curriculum-20261104/B-ppo-04/job/candidate-0032.pt",
+      "sha256": "3ca49d5cecab308b6e405aa70a0aff6a7f1c35440867f8f2dd274e3c3c1329de"
+    },
+    "B48": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/transition-curriculum-20261104/B-ppo-04/job/candidate-0048.pt",
+      "sha256": "39fcdd605d49b03a589152e6cf5bbfcb41a982a39f218a372890b040ec92cd5f"
+    },
+    "B64": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/transition-curriculum-20261104/B-ppo-04/job/candidate-0064.pt",
+      "sha256": "c23f93e787cf289ba571bb8a9d4bcba4893d5aa3fcfd879b9bad68a4a6eba149"
+    },
+    "I": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+      "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+      "selection_reason": "M39-A best64 shared M39-B initialization; chosen before this stage evidence; avoids selecting an arm by final M39-B outcomes"
+    },
+    "T30": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/best.pt",
+      "sha256": "c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33"
+    }
+  },
+  "query_models": [
+    "I",
+    "A16",
+    "A32",
+    "B16",
+    "B32",
+    "B48"
+  ],
+  "switch_times": [
+    4.0,
+    4.5,
+    5.0,
+    5.5,
+    6.0,
+    6.5
+  ],
+  "switch_ticks": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    25
+  ],
+  "max_job_wall": 5000,
+  "max_output_bytes": 3221225472,
+  "rl_training_decisions": 0
+}
