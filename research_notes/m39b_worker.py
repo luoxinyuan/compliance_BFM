@@ -71,15 +71,18 @@ def loop(env,model,contract,out):
         batch={k:[] for k in ['obs','action','logp','value','next_value','reward','discount','done']};stats=[];eps=[];start=time.monotonic();presteps=task.total_prefill
         for _ in range(cmd['steps']):
             if task.done:
-                result=task.summary();eps.append(result)
-                if task.boundary or episodes%50==0:task.save(out)
-                episodes+=1;obs=task.reset(record=True,label=f'train-r{reset_serial}-w{WORKER_ID}-{episodes}')
+                obs=task.reset(record=True,label=f'train-r{reset_serial}-w{WORKER_ID}-{episodes}')
             with torch.no_grad():
                 dist=net.distribution(obs);raw=dist.mean+dist.stddev*torch.randn(dist.mean.shape,device=obs.device,generator=generator);lp=dist.log_prob(raw).sum(-1);value=net.value(obs)
                 nxt,reward,done,st=task.step(raw);nv=net.value(nxt)
             for k,v in dict(obs=obs[0],action=raw[0],logp=lp[0],value=value[0],next_value=nv[0]).items():batch[k].append(v.detach().cpu().numpy())
             batch['reward'].append(reward);batch['discount'].append(.99**(st['control_steps']/5));batch['done'].append(done)
             stats.append(st);obs=nxt
+            if done:
+                # Count completion now, including the last step before a dev reset.
+                eps.append(task.summary())
+                if task.boundary or episodes%50==0:task.save(out)
+                episodes+=1
         a={k:np.asarray(v,dtype=bool if k=='done' else np.float32) for k,v in batch.items()}
         CONNECTION.send(dict(kind='rollout',version=cmd['version'],executed_std=net.log_std.exp().detach().cpu().numpy(),batch=a,stats=stats,episodes=eps,seconds=time.monotonic()-start,prefill_physics_steps=task.total_prefill-presteps))
     if task.boundary:task.save(out)

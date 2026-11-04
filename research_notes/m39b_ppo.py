@@ -57,7 +57,7 @@ def main():
   assert a.resume is not None, 'Initialize from separately verified preparation; not random latent exploration'
   save('initial.pt')
   from m39b_replay import Replay,calibrate
-  replay=Replay(plan,ready[0]['contract'],ready[0]['standing'],a.output,os.environ.get('M39B_ARM','A'))
+  replay=Replay(plan,ready[0]['contract'],ready[0]['standing'],a.output,os.environ['M39B_ARM'])
   if a.stage=='calibrate':
    w=weights()
    for c in cs:c.send(dict(op='rollout',steps=256,version=0,policy=w))
@@ -67,6 +67,8 @@ def main():
    atomic(a.output/'calibration-coverage.json',dict(episodes=[e for r in results for e in r['episodes']],decisions=decisions,phase_counts=replay.count_phases(results)))
    calibrate(net,replay,batch,a.output,plan);status='completed_calibration';return
   calibration_path=Path(os.environ['M39B_CALIBRATION']);cal=json.loads(calibration_path.read_text());assert cal['passed'] and cal['initial_sha256']==plan['initial']['sha256'] and cal['data_sha256']==replay.data_sha
+  assert os.environ['M39B_ARM'] in ('A','B')
+  assert replay.kind=={'A':'raw','B':'action'}[os.environ['M39B_ARM']]
   weight=plan['replay']['raw_weight'] if replay.kind=='raw' else cal['action_weight']
   atomic(a.output/'retention.json',dict(kind=replay.kind,weight=weight,calibration=str(calibration_path),calibration_sha256=sha(calibration_path),same_initial_state_sha=replay.state_sha(net)))
   rows,best=dev();save('best.pt');atomic(a.output/'selection.json',dict(iteration=0,score=best,sha256=sha(a.output/'best.pt'),evaluation='dev-0000/summary.json',rule=plan['selection']));iterations=a.iterations

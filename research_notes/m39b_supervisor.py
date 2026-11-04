@@ -18,7 +18,7 @@ def ledger():
   yield data
   write(path,data)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--kind',choices=['structured','direct'],required=True);p.add_argument('--stage',choices=['calibrate','final','ppo'],required=True);p.add_argument('--gpu-index',type=int,required=True);p.add_argument('--seed',type=int,default=101);p.add_argument('--iterations',type=int,default=20);p.add_argument('--seconds',type=int,default=2400);p.add_argument('--resume');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--kind',choices=['structured','direct'],required=True);p.add_argument('--stage',choices=['calibrate','smoke','final','ppo'],required=True);p.add_argument('--gpu-index',type=int,required=True);p.add_argument('--seed',type=int,default=101);p.add_argument('--iterations',type=int,default=20);p.add_argument('--seconds',type=int,default=2400);p.add_argument('--resume');a=p.parse_args()
  assert not git('status','--porcelain');assert git('branch','--show-current').startswith('gaoe05/m39b-')
  plan=json.loads((ROOT/'research_notes/m39b_protocol.json').read_text());RUN.mkdir(exist_ok=True)
  before=snapshot(a.gpu_index);assert before['used_mib']<100 and before['utilization']<5, 'Use an actually idle GPU'
@@ -32,15 +32,15 @@ def main():
   active=[r for r in d['attempts'] if r['status']=='running'];assert len(active)<3
   assert not any(r['gpu']==a.gpu_index or set(r['affinity'])&set(affinity) for r in active)
   index=len(d['attempts']);path=RUN/f'{a.arm}-{a.stage}-{index+1:02d}';path.mkdir()
-  reserved_updates=3000 if a.stage=='train' else 0
+  reserved_updates=0
   assert sum(r.get('actual_updates',r.get('reserved_updates',0)) for r in d['attempts'])+reserved_updates<=6000
   row=dict(reserved_updates=reserved_updates,kind=a.kind,arm=a.arm,stage=a.stage,status='running',supervisor=os.getpid(),gpu=a.gpu_index,gpu_before=before,affinity=affinity,source=git('rev-parse','HEAD'),path=str(path),reserved_seconds=reservation,reserved_decisions=decisions,started_utc=datetime.datetime.now(datetime.timezone.utc).isoformat());d['attempts'].append(row)
  env=dict(os.environ);env.update(PYTHONPATH=str(ROOT),CUDA_VISIBLE_DEVICES=before['uuid'],MUJOCO_GL='disable',BFM_STAGE_SUPERVISED='1',BFM_STAGE_DEADLINE_MONOTONIC=str(time.monotonic()+reservation),CCL_DEADLINE_MONOTONIC=str(time.monotonic()+reservation),TORCHDYNAMO_DISABLE='1',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',PYTHONDONTWRITEBYTECODE='1',HF_HUB_OFFLINE='1',WANDB_MODE='disabled')
  cache=path/'cache';cache.mkdir()
  for k in ['TMPDIR','TEMP','TMP','XDG_CACHE_HOME','MPLCONFIGDIR','TORCHINDUCTOR_CACHE_DIR','TRITON_CACHE_DIR','HF_HOME','PYTHONPYCACHEPREFIX']:
   dest=cache/k;dest.mkdir();env[k]=str(dest)
- command=[str(P/'.venv/bin/python'),'-u',str(ROOT/('research_notes/m39b_ppo.py' if a.stage in ('ppo','calibrate') else 'research_notes/m39b_coverage.py' if a.stage=='train' else 'research_notes/m39b_stage.py')),'--kind','direct','--stage',a.stage,'--gpu',before['uuid'],'--output',str(path/'job'),'--iterations',str(a.iterations),'--seed',str(a.seed),'--max-seconds',str(max(60,reservation-120))]
- env['M39A_ARM']=a.arm
+ command=[str(P/'.venv/bin/python'),'-u',str(ROOT/('research_notes/m39b_smoke.py' if a.stage=='smoke' else 'research_notes/m39b_ppo.py' if a.stage in ('ppo','calibrate') else 'research_notes/m39b_coverage.py' if a.stage=='train' else 'research_notes/m39b_stage.py')),'--kind','direct','--stage',a.stage,'--gpu',before['uuid'],'--output',str(path/'job'),'--iterations',str(a.iterations),'--seed',str(a.seed),'--max-seconds',str(max(60,reservation-120))]
+ env['M39B_ARM']=a.arm
  if a.resume:command+=['--resume',a.resume]
  row['command']=command
  def limits():
