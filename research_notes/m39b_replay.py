@@ -45,7 +45,7 @@ class Replay:
    norm=self.model._normalize({k:v.reshape(-1,*v.shape[2:]) for k,v in obs.items()})
    self.obs={k:v.detach().reshape(self.n,5,*v.shape[1:]) for k,v in norm.items()}
   self.gen=torch.Generator(device='cuda').manual_seed(391101)
-  self.fixed=torch.arange(min(128,self.n),device='cuda')
+  self.fixed=torch.linspace(0,self.n-1,min(128,self.n),device='cuda').round().long()
   (out/'replay.json').write_text(json.dumps(dict(samples=self.n,data_sha256=self.data_sha,episodes=dict(Counter(r['episode'] for r in rows)),kind=self.kind,placement=self.placement,scope='real source trajectories only; no failed combination labels; fixed measured observations not physical unroll'),indent=2))
  def sample(self,n):return torch.randint(self.n,(n,),device='cuda',generator=self.gen)
  def actions(self,z,ix):

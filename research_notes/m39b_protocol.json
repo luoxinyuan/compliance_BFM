@@ -458,7 +458,7 @@
     "raw_weight": 0.002,
     "action_units": "mean squared q_PD radians over valid five substeps and all29 joints",
     "calibration": "fixed 8x128 replay minibatches seed3939; B coefficient=.002*median(raw actor gradient norm)/median(action actor gradient norm), before optimization, immutable; log PPO norms and cosines on first common real batch",
-    "sha256": "4e72f76a476b43746de90922539df989d60e6dbffd79eac165a9d22472401095"
+    "sha256": "c42d211827a22236f12f8e625c6426102e738d8395634dffeadc4631cb87bef2"
   },
   "curriculum_weights": {
     "combined": 0.22,

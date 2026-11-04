@@ -8,7 +8,7 @@ A uses existing raw Gaussian command retention, coefficient.002. B uses mean squ
 
 Before optimization, fixed8 replay minibatches (seed3939) calibrate B coefficient to match median A actor-gradient norm. Log PPO gradients and ratios/cosines on common initial real768-decision batch. No test-driven coefficient changes. Verify all saved source actions/qPD and analytic gradient; positive raw rescaling mean invariance does not imply stochastic equivalence with fixedrawnoise. Original raw logprob, .15 clip, analytic joint KL/transactional Adam backtracking retained. Replay losses do not change probability coordinates.
 
-Replay dataset SHA `4e72f76a476b43746de90922539df989d60e6dbffd79eac165a9d22472401095`; existing reliable T30 source trajectories and actually-loaded D2 rotations. No failed combination labels and no claim of broad recovery-domain coverage.
+Replay dataset SHA `c42d211827a22236f12f8e625c6426102e738d8395634dffeadc4631cb87bef2`; existing reliable T30 source trajectories and actually-loaded D2 rotations. No failed combination labels and no claim of broad recovery-domain coverage.
 
 Shared curriculum56% combination/entry/withdrawal, other44% old tasks/zero/noforce/puretranslation/rotation. Exact probabilities, bounded continuous variation,16 dev and13 new sealed combinations in m39b_protocol.json. Realized episode/decision/stage coverage logged. Increasing curriculum relative to M39-A is common to both arms, cannot be attributed to loss difference.
 
