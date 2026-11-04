@@ -1,0 +1,196 @@
+[
+  {
+    "name": "01-zero-demand",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/videos-final/01-zero-demand.mp4",
+    "sha256": "2867d0dd0f66462217b78bc8d80ad8a680ec35a3df96859c8372d3db6bb0f653",
+    "frames": 408,
+    "fps": 25,
+    "duration": 16.32,
+    "seconds": 7.6188892491627485,
+    "sides": [
+      {
+        "title": "M39B A raw best64",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/raw_zero_new.json.gz",
+        "sha256": "70ba4abd273a3f849c13118a91172074f7b3c5bf62b4896089f4d094633ac817"
+      },
+      {
+        "title": "M39B B action best56",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/action_zero_new.json.gz",
+        "sha256": "7c871165dd7192f049145093c54bc7a65a9e97960374b9dc054acd267a9236b5"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 0.0,
+      "curvature": 0,
+      "onset": 4.57,
+      "ramp": 7.53,
+      "release": 14.3,
+      "end": 19.3,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "02a-left",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/videos-final/02a-left.mp4",
+    "sha256": "d8ffd9df8b7d50bdcebd6dfcdacef81daff7b90792c98f75ee4040d3ea7058e3",
+    "frames": 408,
+    "fps": 25,
+    "duration": 16.32,
+    "seconds": 8.272565694060177,
+    "sides": [
+      {
+        "title": "M39B A raw best64",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/raw_left_new.json.gz",
+        "sha256": "6d45fd9cf0bf0a12dc423681fb41a116503e72cd20c496cdb87a484988ac8658"
+      },
+      {
+        "title": "M39B B action best56",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/action_left_new.json.gz",
+        "sha256": "f4e520eff5cda1e7f3791d6c78f077f61e5fa436aac5f8956fe5833bf6081ce4"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 10.5,
+      "curvature": 0,
+      "onset": 4.57,
+      "ramp": 7.53,
+      "release": 14.3,
+      "end": 19.3,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "02b-right",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/videos-final/02b-right.mp4",
+    "sha256": "d12ffd7f892868f7eaed393461a399f1ce1376db66b58cafcfde8fbd4d95cf1c",
+    "frames": 408,
+    "fps": 25,
+    "duration": 16.32,
+    "seconds": 8.61804540688172,
+    "sides": [
+      {
+        "title": "M39B A raw best64",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/raw_right_new.json.gz",
+        "sha256": "521bf1f61a5109e8a5203d79d0636573f6f420de8617b4491f2f6832d31c0b73"
+      },
+      {
+        "title": "M39B B action best56",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/action_right_new.json.gz",
+        "sha256": "9833141fe93bf63f7d9ee8e7f20d0f8a81a9ee7c64728fa6884c4815405cc2a9"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": -10.5,
+      "curvature": 0,
+      "onset": 4.57,
+      "ramp": 7.53,
+      "release": 14.3,
+      "end": 19.3,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  },
+  {
+    "name": "03-continuous-transition",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/videos-final/03-continuous-transition.mp4",
+    "sha256": "ec1116365f91e1a1b1554ef3af9d3fd081286c9c4a05c57d1bc7ca23834fd11e",
+    "frames": 408,
+    "fps": 25,
+    "duration": 16.32,
+    "seconds": 9.682290622033179,
+    "sides": [
+      {
+        "title": "M39A initial best64",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/initial_sequence_left_new.json.gz",
+        "sha256": "b77f302d0ee9e5f11c43d1e59e150daa11f59bb15ab37ada153191fdd8c34716"
+      },
+      {
+        "title": "M39B A raw best64",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/raw_sequence_left_new.json.gz",
+        "sha256": "9e398897d523cecb4bf43e9d90b24eaa5c68f0179d6832005c47249fdb2e80c9"
+      },
+      {
+        "title": "M39B B action best56",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/action_sequence_left_new.json.gz",
+        "sha256": "8bfaa3610289d43506742e2b45d45ed5c7b40a689273adfad880891aa8dc4acd"
+      },
+      {
+        "title": "Frozen T30",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/T30_sequence_left_new.json.gz",
+        "sha256": "0644de1036b17d9f5f9c2250d19c67b3f50ea586724b7cbf59c8d10de5d23c6a"
+      }
+    ],
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.259,
+      "rotation_deg": 6.2,
+      "curvature": 0,
+      "onset": 4.57,
+      "ramp": 7.53,
+      "release": 14.3,
+      "end": 19.3,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "rotation_onset": 6.72,
+      "rotation_ramp": 1.83,
+      "rotation_return": 9.67,
+      "rotation_return_ramp": 1.71
+    }
+  },
+  {
+    "name": "04-straight",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/videos-final/04-straight.mp4",
+    "sha256": "f04541ea79858152c4a8fcc13e55c7f8e81c3268bbee9fbaad128e316a84c013",
+    "frames": 408,
+    "fps": 25,
+    "duration": 16.32,
+    "seconds": 9.268133207922801,
+    "sides": [
+      {
+        "title": "M39A initial best64",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/initial_straight_new.json.gz",
+        "sha256": "8845b11aa74f784c380672aac4ce8ff816832cb0652c59efe8f681819ccab444"
+      },
+      {
+        "title": "M39B A raw best64",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/raw_straight_new.json.gz",
+        "sha256": "daca298a09b3a65b9f94092eb9f5ffa72d38dddd5005d10fae11cef1087ba801"
+      },
+      {
+        "title": "M39B B action best56",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/action_straight_new.json.gz",
+        "sha256": "e64e40024c333bfa044d8f15de31b4fffdbe518d953052e15155ba28818bcf3f"
+      },
+      {
+        "title": "Frozen T30",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06/job/T30_straight_new.json.gz",
+        "sha256": "db50cdad4dd33bddcf14f43a599e2d63bc65edb48d3132abc1546ad39e5a0ce1"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.805,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.57,
+      "ramp": 7.53,
+      "release": 14.3,
+      "end": 19.3,
+      "heading_deg": 0.0,
+      "family": "walking"
+    }
+  }
+]

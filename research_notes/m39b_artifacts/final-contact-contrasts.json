@@ -1,0 +1,66 @@
+[
+  {
+    "model": "initial",
+    "key": "left_new",
+    "time": 12.095000000000491,
+    "contact_deg": 9.296114909879515,
+    "noforce_deg": -5.290010279191328,
+    "increment_deg": 14.586125189070845
+  },
+  {
+    "model": "initial",
+    "key": "right_new",
+    "time": 12.095000000000491,
+    "contact_deg": -11.283442542279213,
+    "noforce_deg": -5.290010279191328,
+    "increment_deg": -5.993432263087885
+  },
+  {
+    "model": "raw",
+    "key": "left_new",
+    "time": 12.095000000000491,
+    "contact_deg": 9.422595940006838,
+    "noforce_deg": -5.236700010992222,
+    "increment_deg": 14.659295950999061
+  },
+  {
+    "model": "raw",
+    "key": "right_new",
+    "time": 12.095000000000491,
+    "contact_deg": -11.148435493082639,
+    "noforce_deg": -5.236700010992222,
+    "increment_deg": -5.911735482090416
+  },
+  {
+    "model": "action",
+    "key": "left_new",
+    "time": 12.095000000000491,
+    "contact_deg": 9.256081904667873,
+    "noforce_deg": -5.231028293863331,
+    "increment_deg": 14.487110198531205
+  },
+  {
+    "model": "action",
+    "key": "right_new",
+    "time": 12.095000000000491,
+    "contact_deg": -11.130540447966453,
+    "noforce_deg": -5.231028293863331,
+    "increment_deg": -5.899512154103123
+  },
+  {
+    "model": "T30",
+    "key": "left_new",
+    "time": 12.095000000000491,
+    "contact_deg": -1.0469897524103386,
+    "noforce_deg": -3.98704412730244,
+    "increment_deg": 2.940054374892102
+  },
+  {
+    "model": "T30",
+    "key": "right_new",
+    "time": 12.095000000000491,
+    "contact_deg": -4.135542841748262,
+    "noforce_deg": -3.98704412730244,
+    "increment_deg": -0.148498714445822
+  }
+]

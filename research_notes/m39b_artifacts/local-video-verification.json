@@ -1,0 +1,78 @@
+[
+  {
+    "file": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/m39b-action-retention/01-zero-demand.mp4",
+    "sha256": "2867d0dd0f66462217b78bc8d80ad8a680ec35a3df96859c8372d3db6bb0f653",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1280,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "16.320000",
+        "size": "3743479"
+      }
+    }
+  },
+  {
+    "file": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/m39b-action-retention/02-left-and-right.mp4",
+    "sha256": "8d0e0ee6b9e46dc2b0e9fc0a61b567412a8adf74da37f2eb108152d4469bfb45",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1280,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "32.640000",
+        "size": "8870135"
+      }
+    }
+  },
+  {
+    "file": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/m39b-action-retention/03-continuous-transition.mp4",
+    "sha256": "ec1116365f91e1a1b1554ef3af9d3fd081286c9c4a05c57d1bc7ca23834fd11e",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1280,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "16.320000",
+        "size": "6078774"
+      }
+    }
+  },
+  {
+    "file": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/m39b-action-retention/04-straight.mp4",
+    "sha256": "f04541ea79858152c4a8fcc13e55c7f8e81c3268bbee9fbaad128e316a84c013",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1280,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "16.320000",
+        "size": "6288528"
+      }
+    }
+  }
+]

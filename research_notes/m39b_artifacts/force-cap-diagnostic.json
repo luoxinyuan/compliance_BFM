@@ -1,0 +1,222 @@
+{
+  "scope": "Saved trajectories only; no counterfactual higher-force simulation. Raw force is unexecuted spring-damper demand, not human force or predicted 20N outcome.",
+  "wall_seconds": 6.905203134985641,
+  "results": [
+    {
+      "model": "initial",
+      "condition": "straight",
+      "first_any_cap_after_onset_s": 1.6949999999998955,
+      "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/A-ppo-04/job/dev-0000/straight__mean.json.gz",
+      "stages": {
+        "first_3s": {
+          "seconds": 3.0,
+          "sum_raw_force_rms": 6.307144626006309,
+          "sum_real_force_rms": 3.7121398089166275,
+          "any_cap_fraction": 0.43666666666666665,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 12.984225556446336
+        },
+        "full_contact": {
+          "seconds": 9.795,
+          "sum_raw_force_rms": 4.675342895632717,
+          "sum_real_force_rms": 3.5364370493908877,
+          "any_cap_fraction": 0.24808575803981622,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 12.984225556446336
+        }
+      }
+    },
+    {
+      "model": "initial",
+      "condition": "sequence",
+      "first_any_cap_after_onset_s": 1.8399999999998924,
+      "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/A-ppo-04/job/dev-0000/sequence__mean.json.gz",
+      "stages": {
+        "first_3s": {
+          "seconds": 3.0,
+          "sum_raw_force_rms": 4.905833910161138,
+          "sum_real_force_rms": 3.196209947972161,
+          "any_cap_fraction": 0.3883333333333333,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 10.503586987638796
+        },
+        "full_contact": {
+          "seconds": 9.795,
+          "sum_raw_force_rms": 15.308153776689778,
+          "sum_real_force_rms": 4.51125423457081,
+          "any_cap_fraction": 0.8126595201633486,
+          "raw_total_over20_fraction": 0.19806023481368046,
+          "raw_total_peak": 25.466693154743766
+        }
+      }
+    },
+    {
+      "model": "initial",
+      "condition": "sequence_right",
+      "first_any_cap_after_onset_s": 1.859999999999892,
+      "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/A-ppo-04/job/dev-0000/sequence_right__mean.json.gz",
+      "stages": {
+        "first_3s": {
+          "seconds": 3.0,
+          "sum_raw_force_rms": 4.581149708274578,
+          "sum_real_force_rms": 3.2524055723581555,
+          "any_cap_fraction": 0.38166666666666665,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 9.562272062562272
+        },
+        "full_contact": {
+          "seconds": 9.795,
+          "sum_raw_force_rms": 11.395154455292792,
+          "sum_real_force_rms": 4.516426424592359,
+          "any_cap_fraction": 0.810617662072486,
+          "raw_total_over20_fraction": 0.05666156202143951,
+          "raw_total_peak": 21.397113765582525
+        }
+      }
+    },
+    {
+      "model": "A_raw",
+      "condition": "straight",
+      "first_any_cap_after_onset_s": 1.6999999999998954,
+      "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/A-ppo-04/job/dev-0064/straight__mean.json.gz",
+      "stages": {
+        "first_3s": {
+          "seconds": 3.0,
+          "sum_raw_force_rms": 6.301973102266345,
+          "sum_real_force_rms": 3.700959046587485,
+          "any_cap_fraction": 0.435,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 12.670391645321263
+        },
+        "full_contact": {
+          "seconds": 9.795,
+          "sum_raw_force_rms": 4.500712414202021,
+          "sum_real_force_rms": 3.441754771370644,
+          "any_cap_fraction": 0.2169474221541603,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 12.670391645321263
+        }
+      }
+    },
+    {
+      "model": "A_raw",
+      "condition": "sequence",
+      "first_any_cap_after_onset_s": 1.899999999999891,
+      "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/A-ppo-04/job/dev-0064/sequence__mean.json.gz",
+      "stages": {
+        "first_3s": {
+          "seconds": 3.0,
+          "sum_raw_force_rms": 4.7567162213059735,
+          "sum_real_force_rms": 3.143165221459137,
+          "any_cap_fraction": 0.36833333333333335,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 10.50047206193778
+        },
+        "full_contact": {
+          "seconds": 9.795,
+          "sum_raw_force_rms": 10.520508456293534,
+          "sum_real_force_rms": 4.394017147978937,
+          "any_cap_fraction": 0.8065339458907606,
+          "raw_total_over20_fraction": 0.04543134252169474,
+          "raw_total_peak": 21.020101249013162
+        }
+      }
+    },
+    {
+      "model": "A_raw",
+      "condition": "sequence_right",
+      "first_any_cap_after_onset_s": 1.9399999999998903,
+      "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/A-ppo-04/job/dev-0064/sequence_right__mean.json.gz",
+      "stages": {
+        "first_3s": {
+          "seconds": 3.0,
+          "sum_raw_force_rms": 4.457088624346116,
+          "sum_real_force_rms": 3.21080014074823,
+          "any_cap_fraction": 0.355,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 9.756377691602145
+        },
+        "full_contact": {
+          "seconds": 9.795,
+          "sum_raw_force_rms": 9.51070665213571,
+          "sum_real_force_rms": 4.433434581229678,
+          "any_cap_fraction": 0.8024502297090352,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 19.470712058154103
+        }
+      }
+    },
+    {
+      "model": "B_action",
+      "condition": "straight",
+      "first_any_cap_after_onset_s": 1.6999999999998954,
+      "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/B-ppo-05/job/dev-0056/straight__mean.json.gz",
+      "stages": {
+        "first_3s": {
+          "seconds": 3.0,
+          "sum_raw_force_rms": 6.310611112346061,
+          "sum_real_force_rms": 3.7063720613556757,
+          "any_cap_fraction": 0.435,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 12.89379468903466
+        },
+        "full_contact": {
+          "seconds": 9.795,
+          "sum_raw_force_rms": 4.610701473843604,
+          "sum_real_force_rms": 3.3136482558341527,
+          "any_cap_fraction": 0.24655436447166923,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 12.89379468903466
+        }
+      }
+    },
+    {
+      "model": "B_action",
+      "condition": "sequence",
+      "first_any_cap_after_onset_s": 1.8949999999998912,
+      "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/B-ppo-05/job/dev-0056/sequence__mean.json.gz",
+      "stages": {
+        "first_3s": {
+          "seconds": 3.0,
+          "sum_raw_force_rms": 4.634166100440273,
+          "sum_real_force_rms": 3.158670326463282,
+          "any_cap_fraction": 0.37,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 10.105010760321147
+        },
+        "full_contact": {
+          "seconds": 9.795,
+          "sum_raw_force_rms": 15.684082512598938,
+          "sum_real_force_rms": 4.516507013076235,
+          "any_cap_fraction": 0.8070444104134763,
+          "raw_total_over20_fraction": 0.25880551301684535,
+          "raw_total_peak": 23.374577053528043
+        }
+      }
+    },
+    {
+      "model": "B_action",
+      "condition": "sequence_right",
+      "first_any_cap_after_onset_s": 1.9349999999998904,
+      "trace": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/B-ppo-05/job/dev-0056/sequence_right__mean.json.gz",
+      "stages": {
+        "first_3s": {
+          "seconds": 3.0,
+          "sum_raw_force_rms": 4.358355556242233,
+          "sum_real_force_rms": 3.237985325799865,
+          "any_cap_fraction": 0.3566666666666667,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 9.450387624134958
+        },
+        "full_contact": {
+          "seconds": 9.795,
+          "sum_raw_force_rms": 11.463073666833836,
+          "sum_real_force_rms": 4.533135125297665,
+          "any_cap_fraction": 0.8029606942317509,
+          "raw_total_over20_fraction": 0,
+          "raw_total_peak": 19.97706288352734
+        }
+      }
+    }
+  ]
+}

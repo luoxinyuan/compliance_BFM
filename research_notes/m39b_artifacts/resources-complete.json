@@ -1,0 +1,95 @@
+{
+  "gpu_jobs_wall_seconds": 12084.917340125889,
+  "cpu_analysis_wall_seconds": 178.92367755412124,
+  "output_bytes": 7093077876,
+  "rl_training_decisions": 98304,
+  "calibration_physics_decisions": 768,
+  "new_student_updates": 0,
+  "evaluation_episodes": 52,
+  "attempts": [
+    {
+      "stage": "calibrate",
+      "arm": "C",
+      "source": "e8d5f290c8c9ff8406b352d8fe73dc11c0f74fa4",
+      "gpu": 3,
+      "pid": 2275376,
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-calibrate-01",
+      "wall_seconds": 147.20721300505102,
+      "exit_code": 1,
+      "resource_boundary": null,
+      "remaining_processes": []
+    },
+    {
+      "stage": "calibrate",
+      "arm": "C",
+      "source": "d4ee307a898e0b14b58136c7894cdcb651e563dd",
+      "gpu": 3,
+      "pid": 2277147,
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-calibrate-02",
+      "wall_seconds": 202.03606601711363,
+      "exit_code": 0,
+      "resource_boundary": null,
+      "remaining_processes": []
+    },
+    {
+      "stage": "smoke",
+      "arm": "C",
+      "source": "11b40db7897580916d55da0afaaea7e8ab646d33",
+      "gpu": 3,
+      "pid": 2279188,
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-smoke-03",
+      "wall_seconds": 50.430281708948314,
+      "exit_code": 0,
+      "resource_boundary": null,
+      "remaining_processes": []
+    },
+    {
+      "stage": "ppo",
+      "arm": "A",
+      "source": "11b40db7897580916d55da0afaaea7e8ab646d33",
+      "gpu": 1,
+      "pid": 2280416,
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/A-ppo-04",
+      "wall_seconds": 5194.498454172863,
+      "exit_code": 0,
+      "resource_boundary": null,
+      "remaining_processes": []
+    },
+    {
+      "stage": "ppo",
+      "arm": "B",
+      "source": "11b40db7897580916d55da0afaaea7e8ab646d33",
+      "gpu": 2,
+      "pid": 2280420,
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/B-ppo-05",
+      "wall_seconds": 5208.725016138051,
+      "exit_code": 0,
+      "resource_boundary": null,
+      "remaining_processes": []
+    },
+    {
+      "stage": "final",
+      "arm": "C",
+      "source": "568a8e5e664dd12d9c7b1c6ac60c75b189196d11",
+      "gpu": 5,
+      "pid": 2378582,
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/C-final-06",
+      "wall_seconds": 1221.3972542369738,
+      "exit_code": 0,
+      "resource_boundary": null,
+      "remaining_processes": []
+    },
+    {
+      "stage": "saved-physics-render",
+      "arm": "video",
+      "source": "c6d448cef4745d891570120a0c3e973ef47b7a1e",
+      "gpu": 5,
+      "pid": 2406731,
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39b-retention-20261104/videos-final",
+      "wall_seconds": 60.62305484688841,
+      "exit_code": 0,
+      "resource_boundary": null,
+      "remaining_processes": []
+    }
+  ]
+}

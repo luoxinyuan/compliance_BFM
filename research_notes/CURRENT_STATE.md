@@ -1,6 +1,6 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-04。**M39-A完成；M39-B两臂各64批/49,152决策正常训练完成，开发best已锁定。开发分阶段分析完成，封存终检/视频未执行：当前全部GPU有其他任务，等待可用资源，不追加训练。** M38-C有限域双向转腰成立；M39-A进一步降低零需求牵拉，但连续平移/旋转需求分配与旧能力泛化仍未统一解决。不得回到重复BFM左转资格，也不自动续训。
+最后核对：2026-11-04。**M39-B完成并停止：两臂各64批，52新封存回合与真实视频已交付；尚未获得可靠连续平移/旋转反馈，action保持不全面优于raw。** M38双向转腰和直行成果保留；下方M39-A为历史基线，最新结论见本文件末段M39-B及最终报告。新增力上限实验仅提出、尚未执行。
 
 入口：[研究纲领](RESEARCH_OVERVIEW.md) · [M39-A完整报告](M39A_RESULTS.md) · [Issue39](https://github.com/GaoE05/robot-research-bridge/issues/39) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。旧[M38-C](M38C_RESULTS.md)和所有阶段报告/失败保留。
 
@@ -48,16 +48,22 @@ Mac：`~/Projects/compliance-bfm-diagnostics/videos/m39a-demand-allocation/`，4
 
 新会话先读本文件/纲领/报告/Issue，实时核查Git、SHA、ledger和GPU，不能按旧PID重启。main、共享BFM/PD/权重、SoftSONIC不改，无Bridge/watch、无真机。Library2026-10-28为历史快照。完成阶段后停止，下一研究建议不等于新授权。
 
-## M39-B 当前接力（本段优先于历史已完成状态）
+## M39-B最终接力（本段优先于历史M39-A结果）
 
-[Issue40](https://github.com/GaoE05/robot-research-bridge/issues/40) / [预登记](M39B_PROTOCOL.md) / [训练完成与开发分析](M39B_DEVELOPMENT_STATUS.md)。阶段尚未结项。
+[Issue40](https://github.com/GaoE05/robot-research-bridge/issues/40) / [最终报告](M39B_RESULTS.md) / [预登记](M39B_PROTOCOL.md)。**2026-11-04完成训练、一次52回合封存、视频及Mac核验；停止，不自动新增训练。**
 
-两臂runtime `11b40db7897580916d55da0afaaea7e8ab646d33`，同初始化PPO3901 best64、seed3911、fresh Adam，共同组合课程。各64×768=49,152决策，A446/B472接受优化更新，各3次预定开发退化回滚。原训练所有进程正常退出，不能按旧PID重启。
+同起点M39-A best64，seed3911，各64×768=49,152真实RL决策，A446/B472接受更新，各3次预定开发退化回滚。A raw best64 SHA `cce7e0fedcd4bb3c6e821d933c06d29c96ebb12d4473a64cd03f5df072cd3aac`；B action best56 SHA `49cc22b8df7f08ea4b57125f5366a19e32856f9ec6d38d14f5aea7c4364427fe`。先开发选择再锁定一次终检，未按终检补训。
 
-A raw选batch64 SHA `cce7e0fedcd4bb3c6e821d933c06d29c96ebb12d4473a64cd03f5df072cd3aac`，路径新run根`A-ppo-04/job/best.pt`；B action选batch56 SHA `49cc22b8df7f08ea4b57125f5366a19e32856f9ec6d38d14f5aea7c4364427fe`，`B-ppo-05/job/best.pt`。新run根`bridge-v2-owned/runs/m39b-retention-20261104`。
+**已保留：**新±10.5°实际torso A+9.42/−11.15°、B+9.26/−11.13°；相对同刻自身无力增量约+14.5/−5.9°。有限转腰成立，不等于迈步转身。正常直行可执行：初始/A/B误差5.698/5.854/5.732cm、力3.509/3.592/3.454N。原T30/S0等不覆盖，新模型均是特权Expert，非新Student。
 
-开发：A两条连续组合误差9.627→6.674cm、7.133→5.932cm；B9.792/7.130cm。B直行负担3.536→3.314N，小右转更准确；两臂旧±15°方向保留。不能宣称B全面胜出。完整物理曲线显示组合进入时仍移动迟滞，正向需求早期仍右偏；A主要改善后期追赶，B正向将更多移动拖至旋转撤销后。无力偏转、局部请求附带yaw仍存在。保持梯度中位数仅PPO的A0.293%/B0.402%，是弱保持尺度上的单seed对照。
+**主要边界：**正向连续组合全接触误差初始8.895→A7.376/B6.727cm，但进入阶段root仅移动0.62/0.52/0.34cm且torso仍反向。B撤销后仍接触的yaw RMS10.15°；反向组合B误差8.047→8.527cm。A新早/晚停止退化，局部请求仍附带+12°，无力约−7°偏置。动作保持没有全面优于raw。保持梯度中位数仅PPO的A0.293%/B0.402%，单seed弱保持实验不能否定该机制。T30同5N平移更及时但旋转差，不能简单归为BFM不能移动或5N唯一原因。
 
-截至UTC06:25附近，累计job-wall10,802.90秒，另已保存轨迹CPU分析86.12秒；输出约5.62GiB。训练98,304决策，校准另768；上限24,000秒/196,608决策/15GiB未耗尽。7张GPU均有其他项目进程，未抢占，未因无GPU改用CPU执行模型。
+52新终检无安全boundary/支撑丢失/关节越界；q_PD峰与真实q变化严格分开。释放后自然收步不按旧anchor误差判失败。4条真实qpos1×MP4+INDEX已同步Mac `~/Projects/compliance-bfm-diagnostics/videos/m39b-action-retention/`，SHA/全解码/画面验证。四格左上初始、右上A、左下B、右下T30。
 
-待执行：`development-closeout/final-config.json`已核验initial/A/B/T30 SHA并固定13个预先封存组合，尚未跑；可用GPU出现后刷新资源，用原supervisor final完成52回合，再完成2–4条真实qpos 1×视频至Mac `videos/m39b-action-retention/`和阶段报告。配置存在不等于评价完成。无watch/自动新训练，不按终检再挑模型。准备/文档worktree `bridge-v2-owned/trees/m39b-action-retention/repo`；两臂原运行worktree保持不动。
+运行源码：训练`11b40db7897580916d55da0afaaea7e8ab646d33`，封存`568a8e5e664dd12d9c7b1c6ac60c75b189196d11`，渲染`c6d448cef4745d891570120a0c3e973ef47b7a1e`。服务器run根`bridge-v2-owned/runs/m39b-retention-20261104`；模型`A-ppo-04/job/best.pt`、`B-ppo-05/job/best.pt`；终检`C-final-06/job`；全分析`final-analysis`。源/模型/视频摘要见`m39b_artifacts`。原训练worktree不动。
+
+成本：累计job-wall12,084.92秒，另实测CPU分析178.92秒，文档/本地验证保守占用600秒余量而非实测；仍低于24,000。约6.61GiB/15GiB；98,304RL决策、768校准、smoke副本4更新、0新Student。所有本阶段GPU进程结束，其他用户任务不动。
+
+**唯一下一建议/待决策：**用户提出5N可能过小。保存轨迹组合约80%接触tick饱和，限幅前总弹簧需求RMS9.5–15.7N；但首次限幅在onset后1.7–1.94秒，特权误差/速度及辅助奖励仍可用，不能解释全部迟滞。建议独立冻结模型5/10/20N短程物理对照并配原生BFM/T30，区分限幅、主动反馈与被动拖动；已提问，**截至结项未获确认且未执行**。不默认20N是标准，不变更原5N正式结果，不自动继续PPO/Student。
+
+新会话先读本文件、M39B_RESULTS、Issue40，再刷新Git、模型SHA、资源/ledger与用户新授权。Library旧快照不作实时依据；不按旧PID重启，无Bridge/watch，不改main/共享BFM/PD/权重，无真机。
