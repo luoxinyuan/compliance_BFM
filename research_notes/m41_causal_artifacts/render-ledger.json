@@ -1,0 +1,17 @@
+{
+  "status": "finished",
+  "pid": 2538848,
+  "supervisor": 2538844,
+  "gpu": "GPU-71345fda-5d4b-86df-ca85-6f66299aa7b0",
+  "before": "1, 0",
+  "affinity": [
+    84,
+    85,
+    86,
+    87
+  ],
+  "reserved_seconds": 300,
+  "rl_training_decisions": 0,
+  "exit_code": 0,
+  "job_wall": 24.195969694992527
+}

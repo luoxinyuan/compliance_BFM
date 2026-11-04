@@ -1,0 +1,142 @@
+{
+  "A": {
+    "scope": "Exact decision-grid reconstruction for logged completed episodes using actual handoff time, condition and decision count. Partial episodes missing; first2s is a time window, not demonstrated physical startup.",
+    "completed_episode_decisions": 48345,
+    "all_decisions": 49152,
+    "completed_family_cross": {
+      "walk_stop": {
+        "pre_contact": 561,
+        "first_2s_of_contact": 860,
+        "remaining_contact": 2299,
+        "released": 2150
+      },
+      "neutral_left": {
+        "pre_contact": 299,
+        "first_2s_of_contact": 460,
+        "remaining_contact": 1794,
+        "released": 1150
+      },
+      "walk_keep": {
+        "pre_contact": 411,
+        "first_2s_of_contact": 640,
+        "remaining_contact": 2496,
+        "released": 1600
+      },
+      "right_return": {
+        "pre_contact": 321,
+        "first_2s_of_contact": 500,
+        "remaining_contact": 1950,
+        "released": 1250
+      },
+      "no_contact": {
+        "no_contact": 1608
+      },
+      "local": {
+        "pre_contact": 92,
+        "first_2s_of_contact": 140,
+        "remaining_contact": 546,
+        "released": 350
+      },
+      "walk_add_left": {
+        "pre_contact": 447,
+        "first_2s_of_contact": 680,
+        "remaining_contact": 2977,
+        "released": 1700
+      },
+      "neutral_right": {
+        "pre_contact": 260,
+        "first_2s_of_contact": 400,
+        "remaining_contact": 1560,
+        "released": 1000
+      },
+      "stand_walk": {
+        "pre_contact": 592,
+        "first_2s_of_contact": 900,
+        "remaining_contact": 3510,
+        "released": 2250
+      },
+      "walk_add_right": {
+        "pre_contact": 390,
+        "first_2s_of_contact": 600,
+        "remaining_contact": 2625,
+        "released": 1500
+      },
+      "left_return": {
+        "pre_contact": 315,
+        "first_2s_of_contact": 480,
+        "remaining_contact": 1872,
+        "released": 1200
+      },
+      "zero": {
+        "pre_contact": 130,
+        "first_2s_of_contact": 200,
+        "remaining_contact": 780,
+        "released": 500
+      }
+    }
+  },
+  "B": {
+    "scope": "Exact decision-grid reconstruction for logged completed episodes using actual handoff time, condition and decision count. Partial episodes missing; first2s is a time window, not demonstrated physical startup.",
+    "completed_episode_decisions": 48309,
+    "all_decisions": 49152,
+    "completed_family_cross": {
+      "walk_stop": {
+        "remaining_contact": 2418,
+        "released": 2750
+      },
+      "walk_keep": {
+        "remaining_contact": 2938,
+        "released": 2150
+      },
+      "neutral_left": {
+        "pre_contact": 70,
+        "first_2s_of_contact": 540,
+        "remaining_contact": 2106,
+        "released": 1350
+      },
+      "right_return": {
+        "remaining_contact": 1662,
+        "released": 1500
+      },
+      "no_contact": {
+        "no_contact": 1498
+      },
+      "walk_add_left": {
+        "remaining_contact": 2974,
+        "released": 1900
+      },
+      "neutral_right": {
+        "pre_contact": 85,
+        "first_2s_of_contact": 620,
+        "remaining_contact": 2418,
+        "released": 1550
+      },
+      "local": {
+        "pre_contact": 17,
+        "first_2s_of_contact": 160,
+        "remaining_contact": 624,
+        "released": 400
+      },
+      "stand_walk": {
+        "pre_contact": 139,
+        "first_2s_of_contact": 1060,
+        "remaining_contact": 4134,
+        "released": 2650
+      },
+      "walk_add_right": {
+        "remaining_contact": 3209,
+        "released": 2050
+      },
+      "left_return": {
+        "remaining_contact": 1780,
+        "released": 1600
+      },
+      "zero": {
+        "pre_contact": 33,
+        "first_2s_of_contact": 260,
+        "remaining_contact": 1014,
+        "released": 650
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "rl_training_decisions": 0,
+  "supervised_updates": 0,
+  "physical_evaluation_episodes": 41,
+  "evaluation_high_level_commands": 6191,
+  "suffix_physics_steps": 123492,
+  "source_prefix_steps": 8200,
+  "standing_warmup_steps": 24600,
+  "physics_job_wall": 973.9868817378301,
+  "render_job_wall": 24.195969694992527,
+  "aggregation_cpu_wall": 28.186828676844016,
+  "other_read_only_audits": "small separate commands; no GPU or physical sampling",
+  "output_bytes": 820526217,
+  "limits": {
+    "job_wall": 5000,
+    "output_bytes": 3221225472,
+    "gpus": 2,
+    "rl_training": 0
+  },
+  "owned_pids": [
+    2534614,
+    2534617,
+    2538844,
+    2538848
+  ],
+  "all_owned_exited": true
+}

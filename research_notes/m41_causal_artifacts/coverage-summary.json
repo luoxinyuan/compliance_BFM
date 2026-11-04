@@ -1,0 +1,106 @@
+{
+  "A": {
+    "decisions": 49152,
+    "family": {
+      "walk_stop": 6061,
+      "walk_keep": 5298,
+      "neutral_left": 3767,
+      "right_return": 4064,
+      "local": 1128,
+      "no_contact": 1608,
+      "walk_add_left": 5804,
+      "neutral_right": 3272,
+      "stand_walk": 7352,
+      "walk_add_right": 5218,
+      "left_return": 3970,
+      "zero": 1610
+    },
+    "phase": {
+      "pre_contact": 3955,
+      "moving": 12604,
+      "decelerating": 360,
+      "contact_hold": 4028,
+      "released_recovery": 14717,
+      "rotation_entry": 2838,
+      "rotation_hold": 1641,
+      "rotation_withdrawal": 2295,
+      "translation_after_rotation": 2536,
+      "no_actual_contact": 1608,
+      "source_translation": 2570
+    },
+    "completed": {
+      "walk_stop": 43,
+      "neutral_left": 23,
+      "walk_keep": 32,
+      "right_return": 25,
+      "no_contact": 10,
+      "local": 7,
+      "walk_add_left": 34,
+      "neutral_right": 20,
+      "stand_walk": 45,
+      "walk_add_right": 30,
+      "left_return": 24,
+      "zero": 10
+    },
+    "retention_ppo_ratio_median": 0.00275062071159482,
+    "retention_ppo_ratio_range": [
+      0.0020175580866634846,
+      0.003627053927630186
+    ],
+    "retention_ppo_cos_median": 0.0019045721273869276,
+    "stand_fraction": 0.14957682291666666,
+    "release_fraction": 0.2994181315104167
+  },
+  "B": {
+    "decisions": 49152,
+    "family": {
+      "walk_stop": 5307,
+      "walk_keep": 5088,
+      "neutral_left": 4081,
+      "right_return": 3264,
+      "no_contact": 1498,
+      "walk_add_left": 5032,
+      "local": 1201,
+      "neutral_right": 4760,
+      "stand_walk": 8204,
+      "walk_add_right": 5259,
+      "left_return": 3430,
+      "zero": 2028
+    },
+    "phase": {
+      "moving": 13138,
+      "decelerating": 457,
+      "contact_hold": 5159,
+      "released_recovery": 18693,
+      "pre_contact": 351,
+      "rotation_hold": 1286,
+      "rotation_withdrawal": 2888,
+      "translation_after_rotation": 3231,
+      "no_actual_contact": 1498,
+      "source_translation": 831,
+      "rotation_entry": 1620
+    },
+    "completed": {
+      "walk_stop": 55,
+      "walk_keep": 43,
+      "neutral_left": 27,
+      "right_return": 30,
+      "no_contact": 10,
+      "walk_add_left": 38,
+      "neutral_right": 31,
+      "local": 8,
+      "stand_walk": 53,
+      "walk_add_right": 41,
+      "left_return": 32,
+      "zero": 13
+    },
+    "retention_ppo_ratio_median": 0.002688743988983333,
+    "retention_ppo_ratio_range": [
+      0.0020792814902961254,
+      0.0035552368499338627
+    ],
+    "retention_ppo_cos_median": -0.002396887051872909,
+    "stand_fraction": 0.16691080729166666,
+    "release_fraction": 0.38031005859375
+  }
+}

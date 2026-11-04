@@ -1,0 +1,40 @@
+{
+  "status": "finished",
+  "pid": 2534617,
+  "supervisor": 2534614,
+  "gpu": "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+  "gpu_before": "1, 0",
+  "affinity": [
+    80,
+    81,
+    82,
+    83
+  ],
+  "command": [
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+    "-u",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/trees/m41-startup-causal/repo/research_notes/m41_causal_stage.py",
+    "--kind",
+    "direct",
+    "--stage",
+    "diagnostic",
+    "--gpu",
+    "GPU-153627e8-1972-f066-ce93-3ce86a2a6168",
+    "--output",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m41-startup-causal-20261104/physical-01",
+    "--seed",
+    "4111",
+    "--max-seconds",
+    "2100",
+    "--resume",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m41-startup-causal-20261104/config.json"
+  ],
+  "runtime": "9e3771a8db036763152895748564bb1b302d597b",
+  "rl_training_decisions": 0,
+  "reserved_job_wall": 2200,
+  "stage_cap": 5000,
+  "started": 1793805412.5402112,
+  "exit_code": 0,
+  "job_wall": 973.9868817378301,
+  "peak_stage_output_bytes": 820212475
+}

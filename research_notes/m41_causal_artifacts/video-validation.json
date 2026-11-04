@@ -1,0 +1,42 @@
+[
+  {
+    "file": "02-early-recovery.mp4",
+    "sha256": "2eee04ca07cb0cfe6773def85e6252db40a352aaa9815ecbb0cb1e3b00efbf07",
+    "bytes": 6627115,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1280,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "15.080000"
+      }
+    },
+    "full_decode": true
+  },
+  {
+    "file": "01-history-dependent-startup.mp4",
+    "sha256": "7c4fcab4c287c9435e2a2eb92d57a77c19de427ce1f14a2e57224777cded506d",
+    "bytes": 6033279,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1280,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "15.080000"
+      }
+    },
+    "full_decode": true
+  }
+]
