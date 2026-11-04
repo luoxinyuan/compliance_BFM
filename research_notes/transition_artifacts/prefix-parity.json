@@ -1,0 +1,23 @@
+[
+  {
+    "condition": "walk_keep",
+    "exact_handoff_sha": "56bdf4eafddfccdb11b86eeea27f02ac67ab1464d9b485d39b462a82b2c38665",
+    "next100ms_max_abs": 0.0,
+    "history_length": 100,
+    "physical_source_seconds": 4.199999999999869
+  },
+  {
+    "condition": "left_return",
+    "exact_handoff_sha": "169fdda61ec59c9eb8f76fc6ed4e8c07b9c1c28f0c9d7f7c26034cd4852e66f8",
+    "next100ms_max_abs": 0.0,
+    "history_length": 100,
+    "physical_source_seconds": 5.499999999999929
+  },
+  {
+    "condition": "walk_add_right",
+    "exact_handoff_sha": "4041d16f0d1f2ce9b6652fd3f30ffdc18351821cf21c272028a0811049122b94",
+    "next100ms_max_abs": 0.0,
+    "history_length": 100,
+    "physical_source_seconds": 4.199999999999869
+  }
+]
