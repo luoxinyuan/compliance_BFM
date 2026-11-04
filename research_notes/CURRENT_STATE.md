@@ -1,6 +1,6 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-04。**M39-A完成；M39-B已获新授权，当前准备/校准，尚未启动A/B训练。** M38-C有限域双向转腰成立；M39-A进一步降低零需求牵拉，但连续平移/旋转需求分配与旧能力泛化仍未统一解决。不得回到重复BFM左转资格，也不自动续训。
+最后核对：2026-11-04。**M39-A完成；M39-B已获新授权，校准与实际PPO更新测试通过，两臂训练进程已启动，正在初始化/开发基线阶段；尚无M39-B科研结果。** M38-C有限域双向转腰成立；M39-A进一步降低零需求牵拉，但连续平移/旋转需求分配与旧能力泛化仍未统一解决。不得回到重复BFM左转资格，也不自动续训。
 
 入口：[研究纲领](RESEARCH_OVERVIEW.md) · [M39-A完整报告](M39A_RESULTS.md) · [Issue39](https://github.com/GaoE05/robot-research-bridge/issues/39) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。旧[M38-C](M38C_RESULTS.md)和所有阶段报告/失败保留。
 
@@ -50,4 +50,4 @@ Mac：`~/Projects/compliance-bfm-diagnostics/videos/m39a-demand-allocation/`，4
 
 ## M39-B active handoff
 
-[Issue40](https://github.com/GaoE05/robot-research-bridge/issues/40) / [预登记](M39B_PROTOCOL.md)。共同初始化为上表PPO3901 best64，actor/critic/normalization/std完全继承，两臂fresh Adam。seed3911，各64×768；原奖励/物理不改，56%组合课程共同改变。A raw保持，B同状态5子步q_PD保持；正式训练前固定梯度标定和新封存组合。准备worktree `bridge-v2-owned/trees/m39b-action-retention/repo`；新run根`bridge-v2-owned/runs/m39b-retention-20261104`。本段优先于历史完成段的无任务状态。新上限24000累计job-wall、196608决策、15GiB；实际运行身份由新账本/Issue记录，不能沿用旧PID。
+[Issue40](https://github.com/GaoE05/robot-research-bridge/issues/40) / [预登记](M39B_PROTOCOL.md)。共同初始化为上表PPO3901 best64，actor/critic/normalization/std完全继承，两臂fresh Adam。seed3911，各64×768；原奖励/物理不改，56%组合课程共同改变。A raw保持，B同状态5子步q_PD保持；正式训练前固定梯度标定和新封存组合。准备worktree `bridge-v2-owned/trees/m39b-action-retention/repo`；新run根`bridge-v2-owned/runs/m39b-retention-20261104`。本段优先于历史完成段的无任务状态。运行源码 `11b40db7897580916d55da0afaaea7e8ab646d33`。A raw：GPU1 / supervisor2280380 / child2280416 / `A-ppo-04/job`；B action：GPU2 / supervisor2280381 / child2280420 / `B-ppo-05/job`。各3worker，CPU8–15 /24–31，每臂墙钟预留8500秒；达到64批自动停止。启动/校准共约399.7秒，768物理校准决策，smoke仅副本4优化步，无新正式训练结果。数据身份首轮失败保留。校准B系数4845.037013683694（qPD rad²），A .002；初始梯度规模约PPO的0.2–0.6%，不可先宣称强保旧。实时状态请读新账本，不根据本快照重复启动。新上限24000累计job-wall、196608决策、15GiB；实际运行身份由新账本/Issue记录，不能沿用旧PID。

@@ -1,0 +1,194 @@
+{
+  "status": "completed",
+  "passed": true,
+  "decisions": 0,
+  "new_physics": 0,
+  "diagnostic_optimizer_steps": 4,
+  "rows": [
+    {
+      "kind": "raw",
+      "weight": 0.002,
+      "initial_state_sha": "c1fdf3c196fc0feb62cc5b7a1bc630397c642de0b1da13d8243d4e2ebb2e470d",
+      "update": {
+        "optimizer_updates": 2,
+        "pre_logprob_max_error": 0.0001220703125,
+        "pre_ratio_max_error": 0.0001220703125,
+        "old_GAE_value_EV": 0.652558445930481,
+        "updated_value_EV": 0.8001737594604492,
+        "returns_mean": -3.7827725410461426,
+        "returns_std": 2.8957462310791016,
+        "old_value_mean": -3.4244801998138428,
+        "raw_adv_std": 1.7068736553192139,
+        "std_mean": 0.007999999448657036,
+        "raw_mean_change_rms": 9.395878441864625e-05,
+        "gradient_components": [
+          {
+            "ppo": 472.9049072265625,
+            "weighted_retention": 1.1876403093338013,
+            "ratio": 0.002511372324079275,
+            "cosine": 1.8353108316659927e-05
+          }
+        ],
+        "gradients": [
+          {
+            "actor": 472.9064025878906,
+            "critic": 0.27690961956977844,
+            "std": 0.0,
+            "actor_preclip": 472.9064025878906,
+            "critic_preclip": 0.27690961956977844,
+            "actor_clip_scale": 0.0010572916696916024,
+            "actor_lr": 5e-06,
+            "backtracks": 1
+          },
+          {
+            "actor": 389.4676208496094,
+            "critic": 0.1657491773366928,
+            "std": 0.0,
+            "actor_preclip": 389.4676208496094,
+            "critic_preclip": 0.1657491773366928,
+            "actor_clip_scale": 0.0012838037701549316,
+            "actor_lr": 1.25e-06,
+            "backtracks": 2
+          }
+        ],
+        "epochs": [
+          {
+            "epoch": 0,
+            "joint_gaussian_KL": 0.017656484618782997,
+            "sample_KL": 0.06762000918388367,
+            "clip_fraction": 0.3919270932674408,
+            "value_loss": 0.016884680837392807,
+            "retention_loss": 11.11933708190918,
+            "retention_kind": "raw",
+            "bc_weight": 0.002,
+            "positive_adv_logprob_change": 0.08729497343301773,
+            "negative_adv_logprob_change": -0.21531035006046295
+          }
+        ],
+        "rejected_candidates": [
+          {
+            "epoch": 0,
+            "retry": 0,
+            "joint_KL": 0.05530526489019394,
+            "candidate_actor_lr": 1e-05
+          },
+          {
+            "epoch": 0,
+            "retry": 0,
+            "joint_KL": 0.03637336194515228,
+            "candidate_actor_lr": 5e-06
+          },
+          {
+            "epoch": 0,
+            "retry": 1,
+            "joint_KL": 0.02269376814365387,
+            "candidate_actor_lr": 2.5e-06
+          }
+        ],
+        "actor_lr_after": 1.25e-06
+      },
+      "diagnostics": {
+        "raw_norm_mean": 0.9603036642074585,
+        "raw_target_norm_mean": 0.9667197465896606,
+        "raw_rms": 0.002324072178453207,
+        "z_angle_deg": 1.838939905166626,
+        "qpd_rms_deg": 0.0354868546128273,
+        "action_rms": 0.0006201288779266179
+      }
+    },
+    {
+      "kind": "action",
+      "weight": 4845.037013683694,
+      "initial_state_sha": "c1fdf3c196fc0feb62cc5b7a1bc630397c642de0b1da13d8243d4e2ebb2e470d",
+      "update": {
+        "optimizer_updates": 2,
+        "pre_logprob_max_error": 0.0001220703125,
+        "pre_ratio_max_error": 0.0001220703125,
+        "old_GAE_value_EV": 0.652558445930481,
+        "updated_value_EV": 0.8001737594604492,
+        "returns_mean": -3.7827725410461426,
+        "returns_std": 2.8957462310791016,
+        "old_value_mean": -3.4244801998138428,
+        "raw_adv_std": 1.7068736553192139,
+        "std_mean": 0.007999999448657036,
+        "raw_mean_change_rms": 9.397927351528779e-05,
+        "gradient_components": [
+          {
+            "ppo": 472.9049072265625,
+            "weighted_retention": 1.0846285820007324,
+            "ratio": 0.0022935448214411736,
+            "cosine": -0.011071791872382164
+          }
+        ],
+        "gradients": [
+          {
+            "actor": 472.89410400390625,
+            "critic": 0.27690961956977844,
+            "std": 0.0,
+            "actor_preclip": 472.89410400390625,
+            "critic_preclip": 0.27690961956977844,
+            "actor_clip_scale": 0.0010573191667364705,
+            "actor_lr": 5e-06,
+            "backtracks": 1
+          },
+          {
+            "actor": 387.306396484375,
+            "critic": 0.1657491773366928,
+            "std": 0.0,
+            "actor_preclip": 387.306396484375,
+            "critic_preclip": 0.1657491773366928,
+            "actor_clip_scale": 0.0012909675764163926,
+            "actor_lr": 1.25e-06,
+            "backtracks": 2
+          }
+        ],
+        "epochs": [
+          {
+            "epoch": 0,
+            "joint_gaussian_KL": 0.017664194107055664,
+            "sample_KL": 0.06758873164653778,
+            "clip_fraction": 0.390625,
+            "value_loss": 0.016884680837392807,
+            "retention_loss": 3.4799830928022857e-07,
+            "retention_kind": "action",
+            "bc_weight": 4845.037013683694,
+            "positive_adv_logprob_change": 0.08731827139854431,
+            "negative_adv_logprob_change": -0.21502645313739777
+          }
+        ],
+        "rejected_candidates": [
+          {
+            "epoch": 0,
+            "retry": 0,
+            "joint_KL": 0.05527306720614433,
+            "candidate_actor_lr": 1e-05
+          },
+          {
+            "epoch": 0,
+            "retry": 0,
+            "joint_KL": 0.03646698221564293,
+            "candidate_actor_lr": 5e-06
+          },
+          {
+            "epoch": 0,
+            "retry": 1,
+            "joint_KL": 0.022723732516169548,
+            "candidate_actor_lr": 2.5e-06
+          }
+        ],
+        "actor_lr_after": 1.25e-06
+      },
+      "diagnostics": {
+        "raw_norm_mean": 0.9602867364883423,
+        "raw_target_norm_mean": 0.9667197465896606,
+        "raw_rms": 0.0023245885968208313,
+        "z_angle_deg": 1.839138150215149,
+        "qpd_rms_deg": 0.035459090024232864,
+        "action_rms": 0.0006199855706654489
+      }
+    }
+  ],
+  "elapsed_s": 48.83430875884369,
+  "frozen_bfm_unchanged": true,
+  "source_checkpoint_unchanged": true
+}

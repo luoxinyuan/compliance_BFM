@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "action_weight": 4845.037013683694,
+  "raw_weight": 0.002,
+  "initial_sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+  "initial_state_sha": "c1fdf3c196fc0feb62cc5b7a1bc630397c642de0b1da13d8243d4e2ebb2e470d",
+  "data_sha256": "c42d211827a22236f12f8e625c6426102e738d8395634dffeadc4631cb87bef2",
+  "gradient_batches": [
+    {
+      "raw_loss": 11.126441955566406,
+      "action_qpd_rad2": 3.220783355573076e-07,
+      "ppo_grad": 450.2467956542969,
+      "raw_grad": 557.0299682617188,
+      "action_grad": 0.00020393612794578075,
+      "raw_ppo_cos": -0.0016484735533595085,
+      "action_ppo_cos": -0.016987070441246033,
+      "old_logprob_error": 0.0001220703125,
+      "weighted_raw_ppo_ratio": 0.0024743317382292305,
+      "weighted_action_ppo_ratio": 0.0021945255310229805
+    },
+    {
+      "raw_loss": 10.60014533996582,
+      "action_qpd_rad2": 3.331332436573575e-07,
+      "ppo_grad": 514.4832153320312,
+      "raw_grad": 565.2853393554688,
+      "action_grad": 0.00022462157357949764,
+      "raw_ppo_cos": 0.006133095361292362,
+      "action_ppo_cos": -0.031221996992826462,
+      "old_logprob_error": 0.0001220703125,
+      "weighted_raw_ppo_ratio": 0.0021974879743769733,
+      "weighted_action_ppo_ratio": 0.00211532622568102
+    },
+    {
+      "raw_loss": 13.97799301147461,
+      "action_qpd_rad2": 4.927101713292359e-07,
+      "ppo_grad": 428.1675109863281,
+      "raw_grad": 662.7069702148438,
+      "action_grad": 0.0003395685344003141,
+      "raw_ppo_cos": 0.007612437941133976,
+      "action_ppo_cos": -0.001339128240942955,
+      "old_logprob_error": 0.0001220703125,
+      "weighted_raw_ppo_ratio": 0.0030955500041945257,
+      "weighted_action_ppo_ratio": 0.003842473040660902
+    },
+    {
+      "raw_loss": 10.089041709899902,
+      "action_qpd_rad2": 3.729965385446121e-07,
+      "ppo_grad": 477.1993103027344,
+      "raw_grad": 529.2329711914062,
+      "action_grad": 0.00024153680715244263,
+      "raw_ppo_cos": -0.056374624371528625,
+      "action_ppo_cos": -0.017599157989025116,
+      "old_logprob_error": 0.0001220703125,
+      "weighted_raw_ppo_ratio": 0.0022180793633404952,
+      "weighted_action_ppo_ratio": 0.0024523396106296913
+    },
+    {
+      "raw_loss": 12.798851013183594,
+      "action_qpd_rad2": 5.538976779462246e-07,
+      "ppo_grad": 454.87054443359375,
+      "raw_grad": 567.2312622070312,
+      "action_grad": 0.0005775230238214135,
+      "raw_ppo_cos": 0.023741383105516434,
+      "action_ppo_cos": -0.005850757006555796,
+      "old_logprob_error": 0.0001220703125,
+      "weighted_raw_ppo_ratio": 0.002494033826320187,
+      "weighted_action_ppo_ratio": 0.0061514654244176365
+    },
+    {
+      "raw_loss": 12.539641380310059,
+      "action_qpd_rad2": 3.484762203243008e-07,
+      "ppo_grad": 398.1776123046875,
+      "raw_grad": 573.4271850585938,
+      "action_grad": 0.00022595873451791704,
+      "raw_ppo_cos": -0.02057816833257675,
+      "action_ppo_cos": -0.023778174072504044,
+      "old_logprob_error": 0.0001220703125,
+      "weighted_raw_ppo_ratio": 0.002880258293476352,
+      "weighted_action_ppo_ratio": 0.0027494725933177415
+    },
+    {
+      "raw_loss": 12.608609199523926,
+      "action_qpd_rad2": 4.2605017824826064e-07,
+      "ppo_grad": 448.5721740722656,
+      "raw_grad": 564.0952758789062,
+      "action_grad": 0.00025391820236109197,
+      "raw_ppo_cos": 0.01888464391231537,
+      "action_ppo_cos": 0.0105404332280159,
+      "old_logprob_error": 0.0001220703125,
+      "weighted_raw_ppo_ratio": 0.00251507029853363,
+      "weighted_action_ppo_ratio": 0.002742575576454109
+    },
+    {
+      "raw_loss": 13.839624404907227,
+      "action_qpd_rad2": 3.827481691587309e-07,
+      "ppo_grad": 367.28515625,
+      "raw_grad": 652.3684692382812,
+      "action_grad": 0.00019038973550777882,
+      "raw_ppo_cos": -0.07214970886707306,
+      "action_ppo_cos": -0.03363011032342911,
+      "old_logprob_error": 0.0001220703125,
+      "weighted_raw_ppo_ratio": 0.0035523813480457327,
+      "weighted_action_ppo_ratio": 0.00251152353930894
+    }
+  ],
+  "max_replay_qpd_rad": 3.039836883544922e-06,
+  "max_replay_action": 1.9669532775878906e-06,
+  "interpolation_error": 4.76837158203125e-07,
+  "positive_raw_scale_mean_qpd_error": 0.0,
+  "note": "Positive raw scaling preserves mean direction, not the fixed-noise stochastic policy; frozen observation replay is not physical rollout",
+  "physical_calibration_decisions": 768
+}
