@@ -21,7 +21,7 @@ def study(env,model,contract,out):
   assert runner.sha(ident['path'])==ident['sha256'],name
   ck=torch.load(ident['path'],map_location=env.standing.device,weights_only=True)
   net=Expert(1088,'direct').to(env.standing.device);expand(net,ck);nets[name]=net.eval().requires_grad_(False)
-  identities[name]=dict(**ident,runtime=ck.get('runtime'),iteration=ck.get('iteration'),input_dim=ck['input_dim'],std=float(net.log_std.exp().mean()))
+  identities[name]={**ident,'runtime':ck.get('runtime'),'iteration':ck.get('iteration'),'input_dim':ck['input_dim'],'std':float(net.log_std.exp().mean())}
  runner.write(out/'identities.json',identities)
  def norm(v):
   if torch.is_tensor(v):return v.detach().cpu().tolist()
