@@ -1,0 +1,8 @@
+{
+  "wall_seconds": 7.687103505944833,
+  "physics_rollouts": 0,
+  "RL_decisions": 0,
+  "policy_inferences": 0,
+  "BFM_inferences": 0,
+  "GPU_jobs": 0
+}

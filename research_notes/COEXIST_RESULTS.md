@@ -87,3 +87,10 @@ F4501/R4501也用同一新条件冻结评估：6cm4.300/4.168cm，72cm5.873/7.22
 Mac仅3条MP4+INDEX：`~/Projects/compliance-bfm-diagnostics/videos/feedback-coexistence/`。01新6cm、02新72cm：左上I、右上C0、左下4601末轮、右下4602末轮；03同4601共同前缀停止/继续，固定世界＋俯视。1×真实qpos，从4s高层接管开始包含全部交互和释放；初始稳定前缀另存。视频服务器/Mac SHA一致，ffprobe时长8.16/14.96/15.00秒、25fps、完整解码及图像检查通过。没有按seed重跑美化；画面“research negative”指未选中模型对照，不否认继续分支的正收益。
 
 全部owned进程结束，GPU2/5/6释放。共享checkout保持`6023c6e257fab8fe58d13d9207fb5e85c32ee9c3`干净；两运行worktree仍为冻结runtime且干净。未操作其他用户任务、SoftSONIC、main、BFM/PD/原权重或真机。
+
+
+## 结项后用户视频复审与新授权（2026-11-05）
+
+[补充评论6655621491](https://github.com/GaoE05/robot-research-bridge/issues/46#issuecomment-6655621491)已正式同步长期记录：C0不是只会伸臂，72cm后段已有真实迈步/追赶，但时机偏晚。用户认可其局部→身体参与的组织价值，不能仅以平均长距误差将其概括为无效来源。原数值、开发选择及失败不变。
+
+用户随后授权[Issue47](https://github.com/GaoE05/robot-research-bridge/issues/47)，优先C0机制/接管与有条件小预算反馈学习。上文reward-prompting为当时建议，现为后备路线。当前保存轨迹新时序分析和资源暂缓见[C0_ENGAGEMENT_RESULTS](C0_ENGAGEMENT_RESULTS.md)；未启动GPU实验或PPO，不将新授权当成已取得成果。

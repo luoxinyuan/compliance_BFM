@@ -1,0 +1,23 @@
+{
+  "known_completed_analysis_job_seconds": 21.906098834006116,
+  "unledgered_preparation_upper_allowance_seconds": 120,
+  "accounted_upper_total_seconds": 141.90609883400612,
+  "GPU_jobs": 0,
+  "physical_rollouts": 0,
+  "BFM_inferences": 0,
+  "RL_decisions": 0,
+  "supervised_updates": 0,
+  "output_bytes": 30919469,
+  "authorized": {
+    "job_wall_seconds": 14000,
+    "RL_decisions": 49152,
+    "output_GiB": 9
+  },
+  "failures": [
+    "attempt1 saved analysis: empty late_move stage in short task; retained, fixed guard",
+    "attempt3 numerical phase audit found one boundary active tick in recovery; fixed actual-active mask and final attempt4 verified zero release force; original training/runtime unchanged",
+    "documentation helper final unused expression NameError after all intended writes; inspected diff, no repeated append; no model/physics affected"
+  ],
+  "stage_status": "resource blocked after saved-data analysis; not scientifically complete",
+  "last_check_utc": "2026-11-05T11:05:34Z"
+}

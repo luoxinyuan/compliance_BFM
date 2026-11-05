@@ -1,0 +1,2339 @@
+{
+  "scope": "saved-data numerical analysis only; no GPU, BFM or physics rollout",
+  "identities": {
+    "I": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+      "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+      "mean_function_sha256": "0df24d941f014240dc54035d15bfefc58033adf27c256b2c6b3d0d526cf0ddd1"
+    },
+    "C0": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/correct-C0/C0.pt",
+      "sha256": "ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c",
+      "mean_function_sha256": "b997c168a2e63f0d442839bbff94678f661768533e1890e1977289ef5046057e"
+    },
+    "seed4601_last": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4601/last.pt",
+      "sha256": "8fa4759d3766568dee8fbba0367e772a97977694d19a503868708efa6d8c9228",
+      "role": "last",
+      "mean_function_sha256": "f9eab402889e03feb2ea1b6c2ee4a2d9d42aa6be8700167d8bffae5a8472629b"
+    }
+  },
+  "joint_limits_source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/repo/humanoidverse/data/robots/g1/g1_29dof_mujoco.xml",
+  "joint_limits_sha256": "82d5265d8a47a49bf0fc84bbe768de20f1487c9ec9bd0fdbda909085e77a6d55",
+  "rows": [
+    {
+      "label": "C0__holdout_long72",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/final-reference/C0__holdout_long72.json.gz",
+      "sha256": "c73a44b18427a243322368322c3d7a96dc93e86a1eb3362328293a0830bc2184",
+      "condition": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.72,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "onset": 4.93,
+        "ramp": 8.0,
+        "release": 14.93,
+        "end": 18.93,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "standing",
+        "source_until": 4.0,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual",
+        "demand_family": "holdout_long72",
+        "handoff_time": 3.999999999999937
+      },
+      "events": {
+        "first_cap_50ms": 8.179999999999879,
+        "first_raw_demand_above_cap_50ms": 8.179999999999879,
+        "root_speed_X_gt_005_200ms": 12.425000000000542,
+        "first_any_foot_path_2cm": 10.265000000000205,
+        "left_unload_below_5N_50ms": 10.225000000000199,
+        "left_unload_below_30N_50ms": 10.225000000000199,
+        "left_lift_1cm_speed_005_50ms": 10.215000000000197,
+        "right_unload_below_5N_50ms": 12.565000000000564,
+        "right_unload_below_30N_50ms": 12.565000000000564,
+        "right_lift_1cm_speed_005_50ms": 12.585000000000568
+      },
+      "key_times": [
+        {
+          "time": 4.929999999999917,
+          "force_time": 4.924999999999917,
+          "active": false,
+          "partner_displacement_cm": 0.06470546825504686,
+          "error_xyz_cm": null,
+          "force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "raw_force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "root_delta_cm": [
+            0.0005224894756315768,
+            -0.0006261162791829089,
+            0.00015683682851319602
+          ],
+          "root_vx": -0.0005368207040435413,
+          "wrist_relative_shoulder_delta_cm": [
+            0.00026280493802544047,
+            0.0018347480365832336,
+            -0.00041772335491740975
+          ],
+          "foot_load_n": [
+            129.05302628673394,
+            215.39339185365466
+          ],
+          "foot_xy_path_cm": [
+            -0.0006290608069407593,
+            -0.0007830402433514584
+          ],
+          "foot_lift_cm": [
+            -7.5905843416324e-08,
+            1.1813109095093477e-06
+          ],
+          "shoulder_elbow_q_deg": [
+            1.2459138780974819,
+            -0.9874481376527081,
+            0.19111120211322838,
+            0.697519858927652
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 60.69766016502746
+        },
+        {
+          "time": 5.999999999999894,
+          "force_time": 5.994999999999894,
+          "active": true,
+          "partner_displacement_cm": 3.488189203124345,
+          "error_xyz_cm": [
+            1.5104628018668298,
+            -0.27839147341343906,
+            0.6478343575065271
+          ],
+          "force_xyz": [
+            1.444172168409759,
+            -0.1788615620618935,
+            0.6781296622491576
+          ],
+          "raw_force_xyz": [
+            1.444172168409759,
+            -0.1788615620618935,
+            0.6781296622491576
+          ],
+          "root_delta_cm": [
+            -0.018309638401498365,
+            -0.034805277438584165,
+            -0.4498684521792806
+          ],
+          "root_vx": 0.013168481271310605,
+          "wrist_relative_shoulder_delta_cm": [
+            0.9436421038097692,
+            0.4984918599922533,
+            -0.05774010573160737
+          ],
+          "foot_load_n": [
+            123.91456086786299,
+            221.71861531477654
+          ],
+          "foot_xy_path_cm": [
+            0.06351763792349706,
+            0.07128609174146053
+          ],
+          "foot_lift_cm": [
+            0.002504491731460806,
+            0.00035434695938932337
+          ],
+          "shoulder_elbow_q_deg": [
+            -2.795056865300061,
+            -1.0741595614717703,
+            -0.7591842803732685,
+            2.4274283155904635
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 62.42756862169026
+        },
+        {
+          "time": 7.499999999999862,
+          "force_time": 7.494999999999862,
+          "active": true,
+          "partner_displacement_cm": 17.458505999998383,
+          "error_xyz_cm": [
+            7.022770340199242,
+            0.5612536656284112,
+            0.12850673771519494
+          ],
+          "force_xyz": [
+            6.234102570206418,
+            0.5239009338918857,
+            0.1986605014730472
+          ],
+          "raw_force_xyz": [
+            6.234102570206418,
+            0.5239009338918857,
+            0.1986605014730472
+          ],
+          "root_delta_cm": [
+            1.608640195758506,
+            2.2063134900766377,
+            0.044374457680318447
+          ],
+          "root_vx": 0.03407992900698602,
+          "wrist_relative_shoulder_delta_cm": [
+            9.748248854288052,
+            -2.2563364737238967,
+            -0.031426112576193876
+          ],
+          "foot_load_n": [
+            148.05219777904648,
+            194.46562449043387
+          ],
+          "foot_xy_path_cm": [
+            0.19824265844845188,
+            0.3285548561938071
+          ],
+          "foot_lift_cm": [
+            -0.0009217114111760571,
+            0.01373493159409142
+          ],
+          "shoulder_elbow_q_deg": [
+            -31.809093240505625,
+            2.7635440589998095,
+            -28.90867285551615,
+            41.00811236802346
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 78.99216824417614
+        },
+        {
+          "time": 9.000000000000007,
+          "force_time": 8.995000000000006,
+          "active": true,
+          "partner_displacement_cm": 36.877338421875095,
+          "error_xyz_cm": [
+            22.319556545832754,
+            0.9813359963209145,
+            -1.2423967061916952
+          ],
+          "force_xyz": [
+            9.986600555546694,
+            0.22432112156993592,
+            -0.4663575649349697
+          ],
+          "raw_force_xyz": [
+            18.86326243731503,
+            0.4237105672616852,
+            -0.8808828477784196
+          ],
+          "root_delta_cm": [
+            4.453083705629931,
+            2.884885680076113,
+            -0.3610134909261986
+          ],
+          "root_vx": -0.006586741878677344,
+          "wrist_relative_shoulder_delta_cm": [
+            12.165906176125294,
+            -3.037968048431948,
+            1.8984677597574051
+          ],
+          "foot_load_n": [
+            153.47037125904336,
+            188.61592911592928
+          ],
+          "foot_xy_path_cm": [
+            0.3534826589916683,
+            0.831560818785477
+          ],
+          "foot_lift_cm": [
+            0.013830925219616291,
+            0.1071842820137281
+          ],
+          "shoulder_elbow_q_deg": [
+            -41.85282627733424,
+            2.741571648035629,
+            -34.15694171665265,
+            51.652307118750024
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 68.34797349344959
+        },
+        {
+          "time": 10.30000000000021,
+          "force_time": 10.29500000000021,
+          "active": true,
+          "partner_displacement_cm": 53.71211193750253,
+          "error_xyz_cm": [
+            37.103566289222755,
+            -1.1046003507214797,
+            0.35424191002938477
+          ],
+          "force_xyz": [
+            9.99208379068668,
+            -0.3915390042178129,
+            -0.07041823679004416
+          ],
+          "raw_force_xyz": [
+            29.800024320725235,
+            -1.167711569740702,
+            -0.21001276739911057
+          ],
+          "root_delta_cm": [
+            4.552571828665364,
+            2.5609647008853416,
+            -0.7121531438655238
+          ],
+          "root_vx": -0.019585550028439525,
+          "wrist_relative_shoulder_delta_cm": [
+            12.186977982531563,
+            0.1691591963991046,
+            1.0023186456474487
+          ],
+          "foot_load_n": [
+            0.0,
+            304.8249096619758
+          ],
+          "foot_xy_path_cm": [
+            4.358550681366877,
+            1.56570788041827
+          ],
+          "foot_lift_cm": [
+            1.2775025793336898,
+            0.013611312595901426
+          ],
+          "shoulder_elbow_q_deg": [
+            -41.37577871318807,
+            2.609264872632707,
+            -31.09599849956891,
+            50.46235985537439
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 69.53792075682522
+        },
+        {
+          "time": 11.00000000000032,
+          "force_time": 10.995000000000319,
+          "active": true,
+          "partner_displacement_cm": 61.40083373437818,
+          "error_xyz_cm": [
+            42.45041145587178,
+            -5.032856254311019,
+            -0.9242281995001544
+          ],
+          "force_xyz": [
+            9.897858857786138,
+            -1.2499007653888168,
+            -0.6856661782711067
+          ],
+          "raw_force_xyz": [
+            33.57079923429218,
+            -4.2393176403650354,
+            -2.325590003172893
+          ],
+          "root_delta_cm": [
+            4.299980755186973,
+            4.934654780771185,
+            -1.4004263983967813
+          ],
+          "root_vx": 0.0087571398553572,
+          "wrist_relative_shoulder_delta_cm": [
+            14.112627763016219,
+            2.099134158466773,
+            3.161704880902283
+          ],
+          "foot_load_n": [
+            161.9673580858049,
+            176.18525701432876
+          ],
+          "foot_xy_path_cm": [
+            6.794710993176063,
+            2.163560936806869
+          ],
+          "foot_lift_cm": [
+            -0.0024328617818536458,
+            0.03128008616480951
+          ],
+          "shoulder_elbow_q_deg": [
+            -51.061195337518555,
+            5.913514335707225,
+            -34.44687406344283,
+            52.75394841185337
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 67.24633220034623
+        },
+        {
+          "time": 12.930000000000621,
+          "force_time": 12.92500000000062,
+          "active": true,
+          "partner_displacement_cm": 71.99983132031252,
+          "error_xyz_cm": [
+            48.28912271720033,
+            -4.547936541383257,
+            -0.836208631794999
+          ],
+          "force_xyz": [
+            9.948003890736777,
+            -1.0011871485102852,
+            0.18666248563585802
+          ],
+          "raw_force_xyz": [
+            36.033379857895405,
+            -3.626471926162701,
+            0.6761236046961039
+          ],
+          "root_delta_cm": [
+            14.050847687092899,
+            7.731099761021873,
+            -3.66135874849437
+          ],
+          "root_vx": 0.19293194053844576,
+          "wrist_relative_shoulder_delta_cm": [
+            10.840412631647386,
+            -2.5150526320225683,
+            4.729011286060391
+          ],
+          "foot_load_n": [
+            220.78357586163406,
+            500.4993976968256
+          ],
+          "foot_xy_path_cm": [
+            18.758270596996418,
+            27.632933489417415
+          ],
+          "foot_lift_cm": [
+            -0.012924423289600168,
+            -0.19148156982426584
+          ],
+          "shoulder_elbow_q_deg": [
+            -38.94034262719174,
+            2.840432147971125,
+            -7.645244813398566,
+            31.854071590892264
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 88.14620902130733
+        },
+        {
+          "time": 14.930000000000934,
+          "force_time": 14.925000000000933,
+          "active": true,
+          "partner_displacement_cm": 71.99991566015626,
+          "error_xyz_cm": [
+            15.523820777694496,
+            1.7299708184607772,
+            1.5768140694610189
+          ],
+          "force_xyz": [
+            9.879592673192718,
+            1.1381558559684104,
+            1.0479741692053184
+          ],
+          "raw_force_xyz": [
+            11.24884074657313,
+            1.2958969455600884,
+            1.1932166563809663
+          ],
+          "root_delta_cm": [
+            48.40010938776844,
+            -6.194598540465677,
+            -0.5941313343020171
+          ],
+          "root_vx": 0.09830974452013823,
+          "wrist_relative_shoulder_delta_cm": [
+            7.7633233819241285,
+            6.926536524117982,
+            0.12939755907692696
+          ],
+          "foot_load_n": [
+            0.0,
+            307.2802650785022
+          ],
+          "foot_xy_path_cm": [
+            55.48457687804065,
+            54.26798745523279
+          ],
+          "foot_lift_cm": [
+            1.233637423096818,
+            -0.029600467901669952
+          ],
+          "shoulder_elbow_q_deg": [
+            -27.492787267108778,
+            2.1832610364828926,
+            12.790089302403205,
+            29.001876900741326
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 88.81389598619445
+        }
+      ],
+      "stages": {
+        "early": {
+          "seconds": 2.565,
+          "root_delta_cm": [
+            1.608640195758506,
+            2.2063134900766377,
+            0.044374457680318447
+          ],
+          "error_rms_cm": 3.3627346778045957,
+          "force_rms": 2.9311111249165895,
+          "cap_fraction": 0.0,
+          "external_work_J": 0.3108429508679718,
+          "mechanical_work_proxy_J": 8.766410508010472
+        },
+        "late_move": {
+          "seconds": 5.43,
+          "root_delta_cm": [
+            12.425359781079777,
+            5.524260985645195,
+            -3.705215328437461
+          ],
+          "error_rms_cm": 36.75816610521604,
+          "force_rms": 9.799817550979272,
+          "cap_fraction": 0.8747697974217311,
+          "external_work_J": 0.9337532961966213,
+          "mechanical_work_proxy_J": 91.59268725546448
+        },
+        "hold": {
+          "seconds": 2.0,
+          "root_delta_cm": [
+            34.26600473636709,
+            -13.842352538131426,
+            3.185474312903114
+          ],
+          "error_rms_cm": 32.93168293497476,
+          "force_rms": 10.0,
+          "cap_fraction": 1.0,
+          "external_work_J": 3.0551715136165822,
+          "mechanical_work_proxy_J": 66.45790558429609
+        },
+        "recovery": {
+          "seconds": 4.01,
+          "root_delta_cm": [
+            5.260129608066288,
+            -2.4431113650008998,
+            0.7472642094414672
+          ],
+          "error_rms_cm": null,
+          "force_rms": 0.0,
+          "cap_fraction": 0.0,
+          "external_work_J": 0.0,
+          "mechanical_work_proxy_J": 15.827397466874235
+        }
+      },
+      "foot_unload_bouts": [
+        {
+          "side": "left",
+          "unload_time": 10.225000000000199,
+          "unloaded_duration_s": 0.12,
+          "loaded_landing_time": 10.345000000000217,
+          "foot_delta_xyz_cm": [
+            5.904824204682635,
+            0.7619037846117047,
+            -0.2684182419285065
+          ],
+          "root_delta_xyz_cm": [
+            -0.06461739932686304,
+            0.26290163037564673,
+            0.10708414777569342
+          ]
+        },
+        {
+          "side": "left",
+          "unload_time": 12.365000000000533,
+          "unloaded_duration_s": 0.15,
+          "loaded_landing_time": 12.515000000000557,
+          "foot_delta_xyz_cm": [
+            10.8306026618695,
+            0.13373692461232378,
+            -0.37531350797514806
+          ],
+          "root_delta_xyz_cm": [
+            1.2782580134033847,
+            1.4549184108991309,
+            -1.2829201431466486
+          ]
+        },
+        {
+          "side": "right",
+          "unload_time": 12.565000000000564,
+          "unloaded_duration_s": 0.36,
+          "loaded_landing_time": 12.92500000000062,
+          "foot_delta_xyz_cm": [
+            21.64576230401575,
+            -5.494358138720659,
+            -0.05106854540451733
+          ],
+          "root_delta_xyz_cm": [
+            4.348496095270475,
+            -0.9180928747615176,
+            -0.8478482627796047
+          ]
+        },
+        {
+          "side": "left",
+          "unload_time": 13.36500000000069,
+          "unloaded_duration_s": 0.33,
+          "loaded_landing_time": 13.695000000000741,
+          "foot_delta_xyz_cm": [
+            30.14184874749909,
+            -7.625957769020491,
+            -0.14273377122883887
+          ],
+          "root_delta_xyz_cm": [
+            9.343602740833301,
+            -2.9245537564333874,
+            -0.6591619206948174
+          ]
+        },
+        {
+          "side": "right",
+          "unload_time": 14.00500000000079,
+          "unloaded_duration_s": 0.265,
+          "loaded_landing_time": 14.270000000000831,
+          "foot_delta_xyz_cm": [
+            21.748518259121216,
+            -6.389684436753809,
+            -4.3307711282382435
+          ],
+          "root_delta_xyz_cm": [
+            6.383150695913409,
+            -2.4460039224958003,
+            -0.14430836255815427
+          ]
+        },
+        {
+          "side": "left",
+          "unload_time": 14.875000000000925,
+          "unloaded_duration_s": 0.06,
+          "loaded_landing_time": 15.005000000000946,
+          "foot_delta_xyz_cm": [
+            13.035814051602717,
+            -3.0812877886732424,
+            0.11500435001112336
+          ],
+          "root_delta_xyz_cm": [
+            1.7540930682141576,
+            0.098719369220375,
+            -0.42252877709146874
+          ]
+        }
+      ],
+      "time_alignment": "physics time is post-tick; force_time is load timestamp; decision logged time is POST decision; table time is true first 50Hz control start",
+      "limitations": [
+        "No BFM or policy inference performed; no same-state I counterfactual action.",
+        "Joint scalar margins do not establish Cartesian reachability; no step onset single threshold.",
+        "Different closed-loop trajectories are descriptive, not same-state causal interventions."
+      ]
+    },
+    {
+      "label": "I__holdout_long72",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/final-reference/I__holdout_long72.json.gz",
+      "sha256": "0eceffb30a0d4881b83c544a0e665425540f8c96cd1dca1c87b32257cd962f02",
+      "condition": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.72,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "onset": 4.93,
+        "ramp": 8.0,
+        "release": 14.93,
+        "end": 18.93,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "standing",
+        "source_until": 4.0,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual",
+        "demand_family": "holdout_long72",
+        "handoff_time": 3.999999999999937
+      },
+      "events": {
+        "first_cap_50ms": 10.255000000000203,
+        "first_raw_demand_above_cap_50ms": 10.255000000000203,
+        "root_speed_X_gt_005_200ms": 7.284999999999867,
+        "first_any_foot_path_2cm": 7.244999999999868,
+        "left_unload_below_5N_50ms": 7.184999999999869,
+        "left_unload_below_30N_50ms": 7.179999999999869,
+        "left_lift_1cm_speed_005_50ms": 7.204999999999869,
+        "right_unload_below_5N_50ms": 7.764999999999857,
+        "right_unload_below_30N_50ms": 7.764999999999857,
+        "right_lift_1cm_speed_005_50ms": 7.719999999999858
+      },
+      "key_times": [
+        {
+          "time": 4.929999999999917,
+          "force_time": 4.924999999999917,
+          "active": false,
+          "partner_displacement_cm": 0.29032342817849055,
+          "error_xyz_cm": null,
+          "force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "raw_force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "root_delta_cm": [
+            0.0015262170441152773,
+            0.0004840056337898635,
+            5.7773174766406754e-05
+          ],
+          "root_vx": -0.0015876879395756592,
+          "wrist_relative_shoulder_delta_cm": [
+            0.00034451134743040956,
+            0.0015197328659316556,
+            -0.0006597305210909177
+          ],
+          "foot_load_n": [
+            128.26299410813854,
+            216.15779016343612
+          ],
+          "foot_xy_path_cm": [
+            -0.0006220159172760941,
+            -0.0007651977787214597
+          ],
+          "foot_lift_cm": [
+            -6.3681162121298485e-06,
+            1.1693074489227406e-05
+          ],
+          "shoulder_elbow_q_deg": [
+            1.3486830072221605,
+            -0.9967475068161121,
+            0.22750466309266526,
+            0.6444248422621166
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 60.64456514836193
+        },
+        {
+          "time": 5.999999999999894,
+          "force_time": 5.994999999999894,
+          "active": true,
+          "partner_displacement_cm": 3.488189203124345,
+          "error_xyz_cm": [
+            1.4590155901565844,
+            0.010073151421538529,
+            0.9436097063072579
+          ],
+          "force_xyz": [
+            1.3994708854787128,
+            0.02479187322841643,
+            0.8814320047220802
+          ],
+          "raw_force_xyz": [
+            1.3994708854787128,
+            0.02479187322841643,
+            0.8814320047220802
+          ],
+          "root_delta_cm": [
+            0.18510385733867646,
+            -0.18020459748018525,
+            -0.5663066388303051
+          ],
+          "root_vx": 0.02067489486713961,
+          "wrist_relative_shoulder_delta_cm": [
+            0.6840551689640512,
+            0.34662951822935495,
+            -0.23929094561367936
+          ],
+          "foot_load_n": [
+            119.97796771129428,
+            226.03586231427158
+          ],
+          "foot_xy_path_cm": [
+            0.06566221727694185,
+            0.06866236919229592
+          ],
+          "foot_lift_cm": [
+            0.003416722994095678,
+            0.0005399056756311138
+          ],
+          "shoulder_elbow_q_deg": [
+            -2.240880499535389,
+            -1.031513756438548,
+            -1.0695302572543268,
+            2.3159621200700187
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 62.31610242616982
+        },
+        {
+          "time": 7.499999999999862,
+          "force_time": 7.494999999999862,
+          "active": true,
+          "partner_displacement_cm": 17.458505999998387,
+          "error_xyz_cm": [
+            7.2676490942992,
+            -2.222802723507486,
+            7.70873713688961
+          ],
+          "force_xyz": [
+            4.755125318262034,
+            -2.914486010303123,
+            5.891464198593312
+          ],
+          "raw_force_xyz": [
+            4.755125318262034,
+            -2.914486010303123,
+            5.891464198593312
+          ],
+          "root_delta_cm": [
+            1.3172568320356595,
+            1.8096088098516327,
+            -4.777315653198466
+          ],
+          "root_vx": 0.2068622015779366,
+          "wrist_relative_shoulder_delta_cm": [
+            1.986898374137644,
+            2.946670638494109,
+            -0.6410635493423689
+          ],
+          "foot_load_n": [
+            0.0,
+            309.3650289819707
+          ],
+          "foot_xy_path_cm": [
+            18.35643859821351,
+            0.61721460263316
+          ],
+          "foot_lift_cm": [
+            2.2695047385883473,
+            -0.017828043537129745
+          ],
+          "shoulder_elbow_q_deg": [
+            -14.27669187115029,
+            -2.8638627512484653,
+            -8.030360818146677,
+            2.695140077443136
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 62.69528038354294
+        },
+        {
+          "time": 9.000000000000007,
+          "force_time": 8.995000000000006,
+          "active": true,
+          "partner_displacement_cm": 36.877338421875095,
+          "error_xyz_cm": [
+            1.1804091256589877,
+            -3.344277952966626,
+            1.3043725643888893
+          ],
+          "force_xyz": [
+            2.0447236040146937,
+            -3.0637577399962086,
+            0.9480965629079424
+          ],
+          "raw_force_xyz": [
+            2.0447236040146937,
+            -3.0637577399962086,
+            0.9480965629079424
+          ],
+          "root_delta_cm": [
+            34.34250168774326,
+            4.915374127967988,
+            -1.0332250108239904
+          ],
+          "root_vx": 0.12921978528774594,
+          "wrist_relative_shoulder_delta_cm": [
+            0.09848373805188826,
+            0.018617253857700078,
+            0.5379911235792512
+          ],
+          "foot_load_n": [
+            216.11503983558242,
+            118.3726959641511
+          ],
+          "foot_xy_path_cm": [
+            48.558870070014386,
+            37.67241350001322
+          ],
+          "foot_lift_cm": [
+            -0.06517794749272415,
+            0.010129260224095438
+          ],
+          "shoulder_elbow_q_deg": [
+            -0.9601249400916686,
+            -2.270671284089405,
+            -3.7330999500913418,
+            -2.4182833165620936
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 57.58185698953771
+        },
+        {
+          "time": 10.30000000000021,
+          "force_time": 10.29500000000021,
+          "active": true,
+          "partner_displacement_cm": 53.71211193750253,
+          "error_xyz_cm": [
+            9.369002265751213,
+            -0.3239446972814558,
+            6.962809653499857
+          ],
+          "force_xyz": [
+            8.347972793490781,
+            -0.6975451998439468,
+            5.461206911783548
+          ],
+          "raw_force_xyz": [
+            8.949736849289266,
+            -0.7478277820881245,
+            5.854878297889655
+          ],
+          "root_delta_cm": [
+            36.490887383485415,
+            3.598485835328069,
+            -6.30625442980689
+          ],
+          "root_vx": -0.027186501003481082,
+          "wrist_relative_shoulder_delta_cm": [
+            3.9537323406650087,
+            -0.3536342597457276,
+            1.0731910345835871
+          ],
+          "foot_load_n": [
+            113.36909059638548,
+            228.3751408031663
+          ],
+          "foot_xy_path_cm": [
+            48.85125640616986,
+            38.0846965382975
+          ],
+          "foot_lift_cm": [
+            0.012228497613514522,
+            0.0074016535441284725
+          ],
+          "shoulder_elbow_q_deg": [
+            -19.3720292067087,
+            -2.262144761600671,
+            -9.397495655324809,
+            5.489243339640118
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 65.48938364573992
+        },
+        {
+          "time": 11.00000000000032,
+          "force_time": 10.995000000000319,
+          "active": true,
+          "partner_displacement_cm": 61.40083373437818,
+          "error_xyz_cm": [
+            11.857641608118573,
+            -7.516227795692587,
+            4.280516992218053
+          ],
+          "force_xyz": [
+            8.00752458532418,
+            -5.422081589392304,
+            2.545698578662014
+          ],
+          "raw_force_xyz": [
+            9.859496127316023,
+            -6.676094698551671,
+            3.134464966068649
+          ],
+          "root_delta_cm": [
+            38.126383725533714,
+            7.871426285750331,
+            -7.361148355620861
+          ],
+          "root_vx": 0.08285220037087922,
+          "wrist_relative_shoulder_delta_cm": [
+            7.57663905339144,
+            1.9034543544875633,
+            4.4631880575012435
+          ],
+          "foot_load_n": [
+            276.17532465873853,
+            109.97302248136825
+          ],
+          "foot_xy_path_cm": [
+            49.00764042071127,
+            38.748547264796116
+          ],
+          "foot_lift_cm": [
+            -0.022137400990301925,
+            0.9659318940467593
+          ],
+          "shoulder_elbow_q_deg": [
+            -29.68516024556592,
+            -0.181403664199845,
+            -4.29385764280337,
+            8.086457994706489
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 68.08659830080629
+        },
+        {
+          "time": 12.930000000000621,
+          "force_time": 12.92500000000062,
+          "active": true,
+          "partner_displacement_cm": 71.99983132031252,
+          "error_xyz_cm": [
+            -4.289006148539654,
+            -5.0949991066632085,
+            1.218708985355632
+          ],
+          "force_xyz": [
+            -3.0710526191913305,
+            -4.521217903611078,
+            0.386576346162003
+          ],
+          "raw_force_xyz": [
+            -3.0710526191913305,
+            -4.521217903611078,
+            0.386576346162003
+          ],
+          "root_delta_cm": [
+            80.14947494527428,
+            11.100591589850037,
+            -0.8161325534276509
+          ],
+          "root_vx": 0.08047060110475793,
+          "wrist_relative_shoulder_delta_cm": [
+            -3.373851580151657,
+            -4.438190103280462,
+            0.2704020231706239
+          ],
+          "foot_load_n": [
+            188.38791817555045,
+            142.79365370475978
+          ],
+          "foot_xy_path_cm": [
+            94.83189673873586,
+            89.55380214738933
+          ],
+          "foot_lift_cm": [
+            -0.054471389367177075,
+            0.006139558517964661
+          ],
+          "shoulder_elbow_q_deg": [
+            4.77605909863346,
+            -2.1485660914288385,
+            -10.950143461542044,
+            -5.143871387997549
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 54.85626891810226
+        },
+        {
+          "time": 14.930000000000934,
+          "force_time": 14.925000000000933,
+          "active": true,
+          "partner_displacement_cm": 71.99991566015626,
+          "error_xyz_cm": [
+            -3.839983033258676,
+            -1.9909194956103633,
+            -0.36797439305076285
+          ],
+          "force_xyz": [
+            -3.028606400226774,
+            -1.5850237015391813,
+            -0.30436202087395914
+          ],
+          "raw_force_xyz": [
+            -3.028606400226774,
+            -1.5850237015391813,
+            -0.30436202087395914
+          ],
+          "root_delta_cm": [
+            82.81252304756548,
+            8.185368361775206,
+            -0.18114735794768633
+          ],
+          "root_vx": 0.0012421316944215045,
+          "wrist_relative_shoulder_delta_cm": [
+            -5.30423595632066,
+            -5.990902323978043,
+            0.6227874039410719
+          ],
+          "foot_load_n": [
+            114.09035799459798,
+            230.66415584356548
+          ],
+          "foot_xy_path_cm": [
+            95.06720675652033,
+            89.75631089066215
+          ],
+          "foot_lift_cm": [
+            0.002441960994012393,
+            -0.005501031832615133
+          ],
+          "shoulder_elbow_q_deg": [
+            8.132718304383516,
+            -0.5786814946989836,
+            -10.636766390051653,
+            -6.665499011592305
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 53.33464129450749
+        }
+      ],
+      "stages": {
+        "early": {
+          "seconds": 2.565,
+          "root_delta_cm": [
+            1.3172568320356595,
+            1.8096088098516327,
+            -4.777315653198466
+          ],
+          "error_rms_cm": 4.779560942772046,
+          "force_rms": 4.2496139062150835,
+          "cap_fraction": 0.0,
+          "external_work_J": -0.03652966011454567,
+          "mechanical_work_proxy_J": 27.561797190347676
+        },
+        "late_move": {
+          "seconds": 5.43,
+          "root_delta_cm": [
+            78.72706282761489,
+            9.21921019020898,
+            4.044550019422433
+          ],
+          "error_rms_cm": 9.286424506321024,
+          "force_rms": 6.986596637146384,
+          "cap_fraction": 0.24125230202578268,
+          "external_work_J": 0.6739802780732427,
+          "mechanical_work_proxy_J": 224.05186911329218
+        },
+        "hold": {
+          "seconds": 2.0,
+          "root_delta_cm": [
+            2.623926877207161,
+            -2.942635317035437,
+            0.6023215169989382
+          ],
+          "error_rms_cm": 5.25571745803914,
+          "force_rms": 4.110652113352548,
+          "cap_fraction": 0.0,
+          "external_work_J": 0.0877831411569808,
+          "mechanical_work_proxy_J": 3.5691938588273713
+        },
+        "recovery": {
+          "seconds": 4.01,
+          "root_delta_cm": [
+            0.9527510515392468,
+            0.17254359742358005,
+            0.1724835828502025
+          ],
+          "error_rms_cm": null,
+          "force_rms": 0.0,
+          "cap_fraction": 0.0,
+          "external_work_J": 0.0,
+          "mechanical_work_proxy_J": 2.0452919949507065
+        }
+      },
+      "foot_unload_bouts": [
+        {
+          "side": "left",
+          "unload_time": 7.184999999999869,
+          "unloaded_duration_s": 0.385,
+          "loaded_landing_time": 7.569999999999861,
+          "foot_delta_xyz_cm": [
+            19.40470918897689,
+            1.7340572769901779,
+            -0.12354939351603145
+          ],
+          "root_delta_xyz_cm": [
+            4.869837287002324,
+            2.350655194072801,
+            -3.0380289343923894
+          ]
+        },
+        {
+          "side": "right",
+          "unload_time": 7.764999999999857,
+          "unloaded_duration_s": 0.375,
+          "loaded_landing_time": 8.139999999999873,
+          "foot_delta_xyz_cm": [
+            34.14043801103877,
+            0.9665319495793869,
+            -0.648794826613279
+          ],
+          "root_delta_xyz_cm": [
+            12.332559202401384,
+            2.0488435960138607,
+            3.3607369988187252
+          ]
+        },
+        {
+          "side": "left",
+          "unload_time": 8.604999999999945,
+          "unloaded_duration_s": 0.33,
+          "loaded_landing_time": 8.934999999999997,
+          "foot_delta_xyz_cm": [
+            24.279820571082183,
+            -0.07356814262174938,
+            0.06225597471420652
+          ],
+          "root_delta_xyz_cm": [
+            4.107378066496708,
+            0.5788940876865543,
+            0.7365833002143329
+          ]
+        },
+        {
+          "side": "right",
+          "unload_time": 11.00500000000032,
+          "unloaded_duration_s": 0.16,
+          "loaded_landing_time": 11.165000000000346,
+          "foot_delta_xyz_cm": [
+            14.08888355896083,
+            -0.8610890402750454,
+            0.047487741874765316
+          ],
+          "root_delta_xyz_cm": [
+            2.531440676320557,
+            -0.7690616177366341,
+            1.8860933637018018
+          ]
+        },
+        {
+          "side": "left",
+          "unload_time": 11.235000000000356,
+          "unloaded_duration_s": 0.36,
+          "loaded_landing_time": 11.595000000000413,
+          "foot_delta_xyz_cm": [
+            17.484898592064773,
+            6.1872539406015665,
+            0.21715131315987804
+          ],
+          "root_delta_xyz_cm": [
+            7.834256285224872,
+            1.7441553160611758,
+            -2.6758819888220375
+          ]
+        },
+        {
+          "side": "right",
+          "unload_time": 11.845000000000452,
+          "unloaded_duration_s": 0.35000000000000003,
+          "loaded_landing_time": 12.195000000000507,
+          "foot_delta_xyz_cm": [
+            31.617587355830644,
+            7.1917134188794005,
+            -0.73656861588694
+          ],
+          "root_delta_xyz_cm": [
+            12.252531668678534,
+            2.5841584797882122,
+            4.187931212939655
+          ]
+        },
+        {
+          "side": "left",
+          "unload_time": 12.525000000000558,
+          "unloaded_duration_s": 0.335,
+          "loaded_landing_time": 12.86000000000061,
+          "foot_delta_xyz_cm": [
+            24.749620692109175,
+            0.4078635456060714,
+            -0.0514461958274981
+          ],
+          "root_delta_xyz_cm": [
+            4.677222639975831,
+            -0.3653777510125203,
+            1.1368238969101108
+          ]
+        }
+      ],
+      "time_alignment": "physics time is post-tick; force_time is load timestamp; decision logged time is POST decision; table time is true first 50Hz control start",
+      "limitations": [
+        "No BFM or policy inference performed; no same-state I counterfactual action.",
+        "Joint scalar margins do not establish Cartesian reachability; no step onset single threshold.",
+        "Different closed-loop trajectories are descriptive, not same-state causal interventions."
+      ]
+    },
+    {
+      "label": "seed4601_last__holdout_long72",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/final-learned/seed4601_last__holdout_long72.json.gz",
+      "sha256": "0f9610b853132e9c46527ac832be314a860d9b37306d961e2dfa4393efdd9096",
+      "condition": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.72,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "onset": 4.93,
+        "ramp": 8.0,
+        "release": 14.93,
+        "end": 18.93,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "standing",
+        "source_until": 4.0,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual",
+        "demand_family": "holdout_long72",
+        "handoff_time": 3.999999999999937
+      },
+      "events": {
+        "first_cap_50ms": null,
+        "first_raw_demand_above_cap_50ms": null,
+        "root_speed_X_gt_005_200ms": 6.954999999999874,
+        "first_any_foot_path_2cm": 6.809999999999877,
+        "left_unload_below_5N_50ms": 6.749999999999878,
+        "left_unload_below_30N_50ms": 6.724999999999879,
+        "left_lift_1cm_speed_005_50ms": 6.759999999999878,
+        "right_unload_below_5N_50ms": 7.464999999999863,
+        "right_unload_below_30N_50ms": 7.464999999999863,
+        "right_lift_1cm_speed_005_50ms": 7.434999999999864
+      },
+      "key_times": [
+        {
+          "time": 4.929999999999917,
+          "force_time": 4.924999999999917,
+          "active": false,
+          "partner_displacement_cm": 0.5945984587345493,
+          "error_xyz_cm": null,
+          "force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "raw_force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "root_delta_cm": [
+            0.00510687971789249,
+            -0.0005418214171791502,
+            -0.00021298652448376032
+          ],
+          "root_vx": -0.00511403238065752,
+          "wrist_relative_shoulder_delta_cm": [
+            -0.0008955126298476612,
+            0.0016830623617652973,
+            -0.0026608027344887653
+          ],
+          "foot_load_n": [
+            128.50320300557703,
+            215.8956518623418
+          ],
+          "foot_xy_path_cm": [
+            -0.0007091681824371678,
+            -0.0008638589351207208
+          ],
+          "foot_lift_cm": [
+            3.865018838311585e-06,
+            2.5513250261066656e-05
+          ],
+          "shoulder_elbow_q_deg": [
+            1.391097863253311,
+            -0.9847875194007257,
+            0.34574053365761737,
+            0.5318612226650185
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 60.53200152876482
+        },
+        {
+          "time": 5.999999999999894,
+          "force_time": 5.994999999999894,
+          "active": true,
+          "partner_displacement_cm": 3.488189203124345,
+          "error_xyz_cm": [
+            2.0278598080835235,
+            -0.03631187782099088,
+            0.920836789702284
+          ],
+          "force_xyz": [
+            1.913617561825099,
+            -0.010785520453096512,
+            0.8271754830478504
+          ],
+          "raw_force_xyz": [
+            1.913617561825099,
+            -0.010785520453096512,
+            0.8271754830478504
+          ],
+          "root_delta_cm": [
+            -0.0345796832095336,
+            -0.17358443204723364,
+            -0.4016274355606364
+          ],
+          "root_vx": 0.0002864759899648885,
+          "wrist_relative_shoulder_delta_cm": [
+            1.1313413106619763,
+            0.8123973048858063,
+            -0.24659461879419364
+          ],
+          "foot_load_n": [
+            123.3001702435638,
+            222.32135232990424
+          ],
+          "foot_xy_path_cm": [
+            0.06446543818112634,
+            0.08553255218857353
+          ],
+          "foot_lift_cm": [
+            0.0016160786939126148,
+            0.001209819037755605
+          ],
+          "shoulder_elbow_q_deg": [
+            -2.768847003068202,
+            -1.1511456737413943,
+            0.6224690777934311,
+            3.096321622017688
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 63.09646192811749
+        },
+        {
+          "time": 7.499999999999862,
+          "force_time": 7.494999999999862,
+          "active": true,
+          "partner_displacement_cm": 17.458505999998383,
+          "error_xyz_cm": [
+            3.0705174876683508,
+            -6.13140555933909,
+            0.3853125916495337
+          ],
+          "force_xyz": [
+            2.1864071907140055,
+            -5.515016262046291,
+            -1.8682379952791304
+          ],
+          "raw_force_xyz": [
+            2.1864071907140055,
+            -5.515016262046291,
+            -1.8682379952791304
+          ],
+          "root_delta_cm": [
+            7.452667620633174,
+            7.651196861646644,
+            -3.6644973568335737
+          ],
+          "root_vx": 0.25243688771601513,
+          "wrist_relative_shoulder_delta_cm": [
+            2.8888571999066888,
+            -1.972771390975496,
+            3.538601044505174
+          ],
+          "foot_load_n": [
+            283.34831307975287,
+            0.0
+          ],
+          "foot_xy_path_cm": [
+            17.090474920909283,
+            3.0803623823794704
+          ],
+          "foot_lift_cm": [
+            -0.027520638253444862,
+            4.283140185181885
+          ],
+          "shoulder_elbow_q_deg": [
+            -10.437650382074867,
+            -6.542888760375079,
+            -9.250424581909199,
+            -4.020893851346629
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 55.979246454753174
+        },
+        {
+          "time": 9.000000000000007,
+          "force_time": 8.995000000000006,
+          "active": true,
+          "partner_displacement_cm": 36.87733842187508,
+          "error_xyz_cm": [
+            2.139293670380332,
+            -4.179093080287141,
+            0.22446885490857715
+          ],
+          "force_xyz": [
+            1.7495839465022098,
+            -3.37193062117859,
+            0.27805544350425515
+          ],
+          "raw_force_xyz": [
+            1.7495839465022098,
+            -3.37193062117859,
+            0.27805544350425515
+          ],
+          "root_delta_cm": [
+            31.984944508664864,
+            6.008354193099012,
+            -0.6465298048796586
+          ],
+          "root_vx": 0.020430404603675435,
+          "wrist_relative_shoulder_delta_cm": [
+            1.7567229516609995,
+            -1.462201336272949,
+            0.602231599807812
+          ],
+          "foot_load_n": [
+            158.59564745817727,
+            184.69779214504894
+          ],
+          "foot_xy_path_cm": [
+            38.46823787380003,
+            35.99710932308457
+          ],
+          "foot_lift_cm": [
+            -0.0089146614463749,
+            0.007063320867321116
+          ],
+          "shoulder_elbow_q_deg": [
+            -4.631259593865891,
+            -1.9786841976862468,
+            -7.6376545207488675,
+            2.498868720223201
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 62.499009026323
+        },
+        {
+          "time": 10.30000000000021,
+          "force_time": 10.29500000000021,
+          "active": true,
+          "partner_displacement_cm": 53.71211193750251,
+          "error_xyz_cm": [
+            -0.38314820625932056,
+            -6.918044194045339,
+            -0.24175049934168635
+          ],
+          "force_xyz": [
+            -0.124653878446085,
+            -4.1347283717899925,
+            -0.12821369253986548
+          ],
+          "raw_force_xyz": [
+            -0.124653878446085,
+            -4.1347283717899925,
+            -0.12821369253986548
+          ],
+          "root_delta_cm": [
+            51.78837756858017,
+            9.848111385849846,
+            -1.4663838243245353
+          ],
+          "root_vx": 0.21172681169131158,
+          "wrist_relative_shoulder_delta_cm": [
+            -1.7733139668663411,
+            -4.097631841506394,
+            1.6511457324538625
+          ],
+          "foot_load_n": [
+            305.00010647237116,
+            0.0
+          ],
+          "foot_xy_path_cm": [
+            71.92607480508752,
+            54.84197803996644
+          ],
+          "foot_lift_cm": [
+            -0.039254335911305394,
+            1.9269712056547303
+          ],
+          "shoulder_elbow_q_deg": [
+            0.8470696904037596,
+            -1.9273035101319929,
+            -13.922598378278028,
+            -6.639883766159055
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 53.36025653994075
+        },
+        {
+          "time": 11.00000000000032,
+          "force_time": 10.995000000000319,
+          "active": true,
+          "partner_displacement_cm": 61.40083373437817,
+          "error_xyz_cm": [
+            0.9674701710439604,
+            -3.5355059411920022,
+            0.36979186424240806
+          ],
+          "force_xyz": [
+            1.0703462596898679,
+            -2.6465972359858263,
+            0.08359387092164502
+          ],
+          "raw_force_xyz": [
+            1.0703462596898679,
+            -2.6465972359858263,
+            0.08359387092164502
+          ],
+          "root_delta_cm": [
+            57.44958678363646,
+            5.587158369675621,
+            -0.6329193972293812
+          ],
+          "root_vx": 0.01743326032460734,
+          "wrist_relative_shoulder_delta_cm": [
+            1.276199859480276,
+            -0.8050477542014642,
+            0.8699513556178706
+          ],
+          "foot_load_n": [
+            127.36008230828315,
+            216.2182328639997
+          ],
+          "foot_xy_path_cm": [
+            72.09312376138006,
+            62.20126730976968
+          ],
+          "foot_lift_cm": [
+            -0.002114827605297076,
+            -0.0009935063969387925
+          ],
+          "shoulder_elbow_q_deg": [
+            -2.7559943653479717,
+            -2.226036050915426,
+            -9.43064154318178,
+            -0.5493841399056226
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 59.450756166194175
+        },
+        {
+          "time": 12.930000000000621,
+          "force_time": 12.92500000000062,
+          "active": true,
+          "partner_displacement_cm": 71.99983132031251,
+          "error_xyz_cm": [
+            0.9268242434235296,
+            -5.105566116522434,
+            3.643292192434988
+          ],
+          "force_xyz": [
+            0.0871957979009742,
+            -4.5282668520646245,
+            1.7686500456797367
+          ],
+          "raw_force_xyz": [
+            0.0871957979009742,
+            -4.5282668520646245,
+            1.7686500456797367
+          ],
+          "root_delta_cm": [
+            64.46845638270192,
+            8.261462258693506,
+            -5.4718613800875175
+          ],
+          "root_vx": 0.13932840211469508,
+          "wrist_relative_shoulder_delta_cm": [
+            1.7842215359640479,
+            -2.8047842924627977,
+            2.531368262261635
+          ],
+          "foot_load_n": [
+            148.95329278398833,
+            205.63565529462153
+          ],
+          "foot_xy_path_cm": [
+            90.746998213665,
+            62.57254475163294
+          ],
+          "foot_lift_cm": [
+            -0.007887050002172713,
+            0.0059663570109468045
+          ],
+          "shoulder_elbow_q_deg": [
+            -10.167419955509953,
+            -2.953087463196181,
+            -16.422950334466236,
+            -3.900333042484705
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 56.0998072636151
+        },
+        {
+          "time": 14.930000000000934,
+          "force_time": 14.925000000000933,
+          "active": true,
+          "partner_displacement_cm": 71.99991566015625,
+          "error_xyz_cm": [
+            -1.322960723848543,
+            -3.3155501893407076,
+            -0.9669849223294724
+          ],
+          "force_xyz": [
+            -0.9043765217616001,
+            -2.6607702867493135,
+            -0.6612661725054675
+          ],
+          "raw_force_xyz": [
+            -0.9043765217616001,
+            -2.6607702867493135,
+            -0.6612661725054675
+          ],
+          "root_delta_cm": [
+            74.1090134091835,
+            6.482022846669991,
+            -0.16085460282240227
+          ],
+          "root_vx": -0.006054877718763355,
+          "wrist_relative_shoulder_delta_cm": [
+            -1.3456689380743847,
+            -2.923412109836672,
+            1.2415152870138502
+          ],
+          "foot_load_n": [
+            130.69650608749663,
+            214.2084964111141
+          ],
+          "foot_xy_path_cm": [
+            91.18313995143146,
+            76.7105142913816
+          ],
+          "foot_lift_cm": [
+            -0.002316917890657355,
+            0.000761454709440057
+          ],
+          "shoulder_elbow_q_deg": [
+            3.018035206922448,
+            -0.7758915892937844,
+            -8.872102548571693,
+            -5.270488304374618
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 54.72965200172519
+        }
+      ],
+      "stages": {
+        "early": {
+          "seconds": 2.565,
+          "root_delta_cm": [
+            7.452667620633174,
+            7.651196861646644,
+            -3.6644973568335737
+          ],
+          "error_rms_cm": 4.994486773251099,
+          "force_rms": 4.2459334591796,
+          "cap_fraction": 0.0,
+          "external_work_J": 0.07549814158724556,
+          "mechanical_work_proxy_J": 48.42204581080801
+        },
+        "late_move": {
+          "seconds": 5.43,
+          "root_delta_cm": [
+            56.8879584312752,
+            0.5234574059714114,
+            -1.8924523106147562
+          ],
+          "error_rms_cm": 5.815185108110442,
+          "force_rms": 4.776024688430746,
+          "cap_fraction": 0.0,
+          "external_work_J": -0.18686135153191694,
+          "mechanical_work_proxy_J": 130.140747836896
+        },
+        "hold": {
+          "seconds": 2.0,
+          "root_delta_cm": [
+            9.570329776716878,
+            -1.8173706405878454,
+            5.308206171827057
+          ],
+          "error_rms_cm": 5.11553039928891,
+          "force_rms": 4.078563383147016,
+          "cap_fraction": 0.0,
+          "external_work_J": -0.07299604069407913,
+          "mechanical_work_proxy_J": 27.82051047839705
+        },
+        "recovery": {
+          "seconds": 4.01,
+          "root_delta_cm": [
+            -0.0789474903757803,
+            -0.823110971452137,
+            0.15851399886989137
+          ],
+          "error_rms_cm": null,
+          "force_rms": 0.0,
+          "cap_fraction": 0.0,
+          "external_work_J": 0.0,
+          "mechanical_work_proxy_J": 1.8937533642152296
+        }
+      },
+      "foot_unload_bouts": [
+        {
+          "side": "left",
+          "unload_time": 6.749999999999878,
+          "unloaded_duration_s": 0.38,
+          "loaded_landing_time": 7.12999999999987,
+          "foot_delta_xyz_cm": [
+            12.982130124456509,
+            1.4689205685708917,
+            0.21149572850139922
+          ],
+          "root_delta_xyz_cm": [
+            2.1135041893964046,
+            3.230687521051054,
+            -2.1152735705571635
+          ]
+        },
+        {
+          "side": "right",
+          "unload_time": 7.464999999999863,
+          "unloaded_duration_s": 0.335,
+          "loaded_landing_time": 7.799999999999856,
+          "foot_delta_xyz_cm": [
+            33.66629971043148,
+            3.5042351117779242,
+            0.014405722793557618
+          ],
+          "root_delta_xyz_cm": [
+            11.28166985300621,
+            2.8824913479727527,
+            3.127858218985413
+          ]
+        },
+        {
+          "side": "left",
+          "unload_time": 8.244999999999889,
+          "unloaded_duration_s": 0.28500000000000003,
+          "loaded_landing_time": 8.529999999999934,
+          "foot_delta_xyz_cm": [
+            20.52869338949112,
+            1.9031983494858518,
+            0.07844456235215
+          ],
+          "root_delta_xyz_cm": [
+            3.4442076973381806,
+            -0.21787844968428147,
+            1.0626595824283824
+          ]
+        },
+        {
+          "side": "left",
+          "unload_time": 9.450000000000077,
+          "unloaded_duration_s": 0.52,
+          "loaded_landing_time": 9.970000000000159,
+          "foot_delta_xyz_cm": [
+            24.257262203337476,
+            1.2039838540630425,
+            0.009541105757068097
+          ],
+          "root_delta_xyz_cm": [
+            9.558464881983692,
+            2.5673435441402526,
+            -3.051095012971461
+          ]
+        },
+        {
+          "side": "right",
+          "unload_time": 10.085000000000177,
+          "unloaded_duration_s": 0.265,
+          "loaded_landing_time": 10.350000000000218,
+          "foot_delta_xyz_cm": [
+            24.673224086601458,
+            -0.504640683716362,
+            -0.3714625166090523
+          ],
+          "root_delta_xyz_cm": [
+            9.02465798123895,
+            1.1686663145824498,
+            3.595556294430202
+          ]
+        },
+        {
+          "side": "left",
+          "unload_time": 12.485000000000552,
+          "unloaded_duration_s": 0.275,
+          "loaded_landing_time": 12.760000000000595,
+          "foot_delta_xyz_cm": [
+            17.63489114684148,
+            0.45897488178165413,
+            0.05848717474328663
+          ],
+          "root_delta_xyz_cm": [
+            3.6512010355483016,
+            2.453298944379852,
+            -1.6719453202886148
+          ]
+        },
+        {
+          "side": "right",
+          "unload_time": 13.195000000000663,
+          "unloaded_duration_s": 0.155,
+          "loaded_landing_time": 13.350000000000687,
+          "foot_delta_xyz_cm": [
+            13.32042638161849,
+            1.9286080977432687,
+            -0.10677679178089025
+          ],
+          "root_delta_xyz_cm": [
+            2.387675252762589,
+            0.8098230965138107,
+            2.692539435044705
+          ]
+        }
+      ],
+      "time_alignment": "physics time is post-tick; force_time is load timestamp; decision logged time is POST decision; table time is true first 50Hz control start",
+      "limitations": [
+        "No BFM or policy inference performed; no same-state I counterfactual action.",
+        "Joint scalar margins do not establish Cartesian reachability; no step onset single threshold.",
+        "Different closed-loop trajectories are descriptive, not same-state causal interventions."
+      ]
+    },
+    {
+      "label": "C0__holdout_local6",
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/final-reference/C0__holdout_local6.json.gz",
+      "sha256": "02a6503ea925139c4b8c99e86d7151611b00333d58251b16c8eb440a8a5bd39e",
+      "condition": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.06,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "onset": 4.93,
+        "ramp": 1.2,
+        "release": 8.129999999999999,
+        "end": 12.129999999999999,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "standing",
+        "source_until": 4.0,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual",
+        "demand_family": "holdout_local6",
+        "handoff_time": 3.999999999999937
+      },
+      "events": {
+        "first_cap_50ms": null,
+        "first_raw_demand_above_cap_50ms": null,
+        "root_speed_X_gt_005_200ms": null,
+        "first_any_foot_path_2cm": null,
+        "left_unload_below_5N_50ms": null,
+        "left_unload_below_30N_50ms": null,
+        "left_lift_1cm_speed_005_50ms": null,
+        "right_unload_below_5N_50ms": null,
+        "right_unload_below_30N_50ms": null,
+        "right_lift_1cm_speed_005_50ms": null
+      },
+      "key_times": [
+        {
+          "time": 4.929999999999917,
+          "force_time": 4.924999999999917,
+          "active": false,
+          "partner_displacement_cm": 0.06447817615436169,
+          "error_xyz_cm": null,
+          "force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "raw_force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "root_delta_cm": [
+            0.000521826748007756,
+            -0.000625933486591429,
+            0.00015683585298242875
+          ],
+          "root_vx": -0.0005368207040435413,
+          "wrist_relative_shoulder_delta_cm": [
+            0.0002638806300525598,
+            0.0018346504997795998,
+            -0.00041769817776815543
+          ],
+          "foot_load_n": [
+            129.05302628673394,
+            215.39339185365466
+          ],
+          "foot_xy_path_cm": [
+            -0.0006290799785713618,
+            -0.000783016342207005
+          ],
+          "foot_lift_cm": [
+            -5.589716467468975e-08,
+            1.1743598780922238e-06
+          ],
+          "shoulder_elbow_q_deg": [
+            1.2459138780974819,
+            -0.9874481376527081,
+            0.19111120211322838,
+            0.697519858927652
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 60.69766016502746
+        },
+        {
+          "time": 5.999999999999894,
+          "force_time": 5.994999999999894,
+          "active": true,
+          "partner_displacement_cm": 5.788961805555251,
+          "error_xyz_cm": [
+            2.2095086300419844,
+            0.25929535103675905,
+            1.404351661658576
+          ],
+          "force_xyz": [
+            1.7853734848393805,
+            0.44054679062480884,
+            1.1447027150419928
+          ],
+          "raw_force_xyz": [
+            1.7853734848393805,
+            0.44054679062480884,
+            1.1447027150419928
+          ],
+          "root_delta_cm": [
+            0.2652613065985694,
+            -0.006958141346116026,
+            -0.7308753737947704
+          ],
+          "root_vx": 0.02906438478160153,
+          "wrist_relative_shoulder_delta_cm": [
+            2.061088137090411,
+            -0.012598111925160582,
+            -0.4976913571696162
+          ],
+          "foot_load_n": [
+            114.11905652176385,
+            232.17307965233528
+          ],
+          "foot_xy_path_cm": [
+            0.07764583813421572,
+            0.07640554151708777
+          ],
+          "foot_lift_cm": [
+            0.005406629461544854,
+            0.0010089525013731726
+          ],
+          "shoulder_elbow_q_deg": [
+            -6.674237518517613,
+            -0.899684139827407,
+            -3.758209252853682,
+            7.167337829156487
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 67.16747813525629
+        },
+        {
+          "time": 7.499999999999862,
+          "force_time": 7.494999999999862,
+          "active": true,
+          "partner_displacement_cm": 5.999688368055567,
+          "error_xyz_cm": [
+            1.7511308664346443,
+            1.3284241224676334,
+            2.742089807618764
+          ],
+          "force_xyz": [
+            1.4841395116795315,
+            1.1076290582730564,
+            1.842495466511871
+          ],
+          "raw_force_xyz": [
+            1.4841395116795315,
+            1.1076290582730564,
+            1.842495466511871
+          ],
+          "root_delta_cm": [
+            0.49580630874642084,
+            1.197420111510087,
+            -0.21466897249947658
+          ],
+          "root_vx": 0.021397590828308565,
+          "wrist_relative_shoulder_delta_cm": [
+            2.5481461593449133,
+            -2.6804297901234646,
+            -2.540731774025473
+          ],
+          "foot_load_n": [
+            145.08511828422374,
+            197.78640932050885
+          ],
+          "foot_xy_path_cm": [
+            0.22015783926916527,
+            0.29771966165644964
+          ],
+          "foot_lift_cm": [
+            -0.0031841676134430896,
+            0.007105295358341562
+          ],
+          "shoulder_elbow_q_deg": [
+            -10.937718105522828,
+            0.8706311908582354,
+            -15.77748739742012,
+            18.9649838547032
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 78.965124160803
+        },
+        {
+          "time": 9.000000000000007,
+          "force_time": 8.995000000000006,
+          "active": false,
+          "partner_displacement_cm": 5.999688368055567,
+          "error_xyz_cm": null,
+          "force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "raw_force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "root_delta_cm": [
+            0.49233280323322215,
+            1.2863137744712574,
+            0.22114056377178226
+          ],
+          "root_vx": -0.009664213233408433,
+          "wrist_relative_shoulder_delta_cm": [
+            1.907748081064173,
+            -4.455170576674542,
+            -2.308033963389289
+          ],
+          "foot_load_n": [
+            143.88050739668142,
+            200.54925085745035
+          ],
+          "foot_xy_path_cm": [
+            0.32274207709442615,
+            0.4481717951304899
+          ],
+          "foot_lift_cm": [
+            -0.0034809714338689124,
+            0.0021600250176612157
+          ],
+          "shoulder_elbow_q_deg": [
+            -8.980693484216115,
+            1.500468010385102,
+            -15.198040342816181,
+            20.0508339729433
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 80.0509742790431
+        },
+        {
+          "time": 10.30000000000021,
+          "force_time": 10.29500000000021,
+          "active": false,
+          "partner_displacement_cm": 5.999688368055567,
+          "error_xyz_cm": null,
+          "force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "raw_force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "root_delta_cm": [
+            0.005583342563542787,
+            -0.011737575327409877,
+            0.07159880831412169
+          ],
+          "root_vx": 0.000848171380475934,
+          "wrist_relative_shoulder_delta_cm": [
+            0.5260883893548479,
+            -1.7099928861185998,
+            -0.642002982774037
+          ],
+          "foot_load_n": [
+            124.25387135085379,
+            220.4067659391884
+          ],
+          "foot_xy_path_cm": [
+            0.3905964622501818,
+            0.49855307471739985
+          ],
+          "foot_lift_cm": [
+            0.001835182769938104,
+            -0.002049981214597568
+          ],
+          "shoulder_elbow_q_deg": [
+            -1.2498409640699166,
+            -0.2639244487951343,
+            -3.27464090824373,
+            6.071063984930973
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 66.07120429103078
+        },
+        {
+          "time": 11.00000000000032,
+          "force_time": 10.995000000000319,
+          "active": false,
+          "partner_displacement_cm": 5.999688368055567,
+          "error_xyz_cm": null,
+          "force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "raw_force_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "root_delta_cm": [
+            0.0289143202734609,
+            -0.18891622293607524,
+            -0.023831091537096505
+          ],
+          "root_vx": 0.000119093011930836,
+          "wrist_relative_shoulder_delta_cm": [
+            -0.7539105585004091,
+            -1.7514250865633545,
+            -0.25809059739112516
+          ],
+          "foot_load_n": [
+            124.07338052630132,
+            220.48898814180404
+          ],
+          "foot_xy_path_cm": [
+            0.4133625114539019,
+            0.531315437512158
+          ],
+          "foot_lift_cm": [
+            0.001395464639836197,
+            -0.0019424325123841568
+          ],
+          "shoulder_elbow_q_deg": [
+            2.3028274636817834,
+            -0.4328709659937361,
+            -2.6743213516557547,
+            1.0907364951918996
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 61.09087680129171
+        },
+        {
+          "time": 6.1299999999998915,
+          "force_time": 6.124999999999892,
+          "active": true,
+          "partner_displacement_cm": 5.999376736111109,
+          "error_xyz_cm": [
+            2.09103939833295,
+            0.5102142597405518,
+            1.1649552703408617
+          ],
+          "force_xyz": [
+            1.5367823820714728,
+            0.4675229670652466,
+            0.6547304711303081
+          ],
+          "raw_force_xyz": [
+            1.5367823820714728,
+            0.4675229670652466,
+            0.6547304711303081
+          ],
+          "root_delta_cm": [
+            0.5757423035335684,
+            0.26596616140356216,
+            -0.8057337744674542
+          ],
+          "root_vx": 0.014727288625782499,
+          "wrist_relative_shoulder_delta_cm": [
+            2.107053026493946,
+            -0.9149900242834075,
+            -0.3341103913941268
+          ],
+          "foot_load_n": [
+            118.03120875690793,
+            229.26079333771187
+          ],
+          "foot_xy_path_cm": [
+            0.09491922963804,
+            0.10760620945638932
+          ],
+          "foot_lift_cm": [
+            0.0045771429938806785,
+            0.007854363962956495
+          ],
+          "shoulder_elbow_q_deg": [
+            -6.946308533046023,
+            -0.8996743747961311,
+            -5.475487424242986,
+            7.270566023187143
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 67.27070632928694
+        },
+        {
+          "time": 8.129999999999871,
+          "force_time": 8.12499999999987,
+          "active": true,
+          "partner_displacement_cm": 5.999688368055567,
+          "error_xyz_cm": [
+            1.3819702928851985,
+            0.9162219827956203,
+            0.056636197209825045
+          ],
+          "force_xyz": [
+            1.1791507059430604,
+            0.8545455765498137,
+            0.28548206662354103
+          ],
+          "raw_force_xyz": [
+            1.1791507059430604,
+            0.8545455765498137,
+            0.28548206662354103
+          ],
+          "root_delta_cm": [
+            0.747334812830297,
+            1.8570850579519238,
+            0.3274866607334337
+          ],
+          "root_vx": 0.0038211751209483095,
+          "wrist_relative_shoulder_delta_cm": [
+            4.32071350843331,
+            -2.916748741517086,
+            -0.466392499775814
+          ],
+          "foot_load_n": [
+            154.190579642751,
+            188.5898861858505
+          ],
+          "foot_xy_path_cm": [
+            0.2690279877202331,
+            0.38382669152538906
+          ],
+          "foot_lift_cm": [
+            -0.004887004907129511,
+            0.0068951257639435215
+          ],
+          "shoulder_elbow_q_deg": [
+            -13.17662951862475,
+            1.2775658901565143,
+            -14.411242277281978,
+            19.051968641496625
+          ],
+          "min_right_shoulder_elbow_joint_margin_deg": 79.05210894759642
+        }
+      ],
+      "stages": {
+        "early": {
+          "seconds": 1.195,
+          "root_delta_cm": [
+            0.5757423035335684,
+            0.26596616140356216,
+            -0.8057337744674542
+          ],
+          "error_rms_cm": 1.7532201366948812,
+          "force_rms": 1.5407417927061937,
+          "cap_fraction": 0.0,
+          "external_work_J": 0.045722322346083775,
+          "mechanical_work_proxy_J": 3.4323232985355245
+        },
+        "late_move": {
+          "seconds": 0,
+          "scope": "no such stage in this condition"
+        },
+        "hold": {
+          "seconds": 2.005,
+          "root_delta_cm": [
+            0.16655690965892667,
+            1.5725057094569148,
+            1.1317956553739905
+          ],
+          "error_rms_cm": 2.560929359966082,
+          "force_rms": 2.0776027239754704,
+          "cap_fraction": 0.0,
+          "external_work_J": -0.04130744236412789,
+          "mechanical_work_proxy_J": 8.284205598492829
+        },
+        "recovery": {
+          "seconds": 4.005,
+          "root_delta_cm": [
+            -0.699469519414551,
+            -2.0756231258263056,
+            -0.47520110210086397
+          ],
+          "error_rms_cm": null,
+          "force_rms": 0.0,
+          "cap_fraction": 0.0,
+          "external_work_J": 0.0,
+          "mechanical_work_proxy_J": 4.313563470500017
+        }
+      },
+      "foot_unload_bouts": [],
+      "time_alignment": "physics time is post-tick; force_time is load timestamp; decision logged time is POST decision; table time is true first 50Hz control start",
+      "limitations": [
+        "No BFM or policy inference performed; no same-state I counterfactual action.",
+        "Joint scalar margins do not establish Cartesian reachability; no step onset single threshold.",
+        "Different closed-loop trajectories are descriptive, not same-state causal interventions."
+      ]
+    }
+  ]
+}

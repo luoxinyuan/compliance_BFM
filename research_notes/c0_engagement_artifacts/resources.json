@@ -1,0 +1,19 @@
+{
+  "checked_utc": "2026-11-05T11:05:34Z",
+  "GPU": "index, memory.used [MiB], utilization.gpu [%]\n0, 7240 MiB, 1 %\n1, 13803 MiB, 2 %\n2, 13635 MiB, 1 %\n3, 13643 MiB, 1 %\n4, 13637 MiB, 1 %\n5, 13643 MiB, 1 %\n6, 13382 MiB, 0 %\n",
+  "free": "               total        used        free      shared  buff/cache   available\nMem:            1033         217         804         112          11         815\nSwap:              0           0           0\n",
+  "load": [
+    9.5126953125,
+    11.6142578125,
+    11.5322265625
+  ],
+  "io_pressure": "some avg10=8.30 avg60=4.63 avg300=1.63 total=2666528363\nfull avg10=8.29 avg60=4.60 avg300=1.62 total=2505777847\n",
+  "cpu_pressure": "some avg10=0.00 avg60=0.02 avg300=0.50 total=4519388218\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+  "launched_GPU_jobs": 0,
+  "resource_decision": "all GPUs occupied; brief1MiB interval was not used, new distributed job appeared before launch",
+  "events": [
+    "first check:GPU0 other training,1-6 SoftSONIC distributed",
+    "subsequent check:1-6 briefly1MiB/0%; no launch yet",
+    "mandatory prelaunch recheck:new distributed processes1-6; no launch; resource pause"
+  ]
+}

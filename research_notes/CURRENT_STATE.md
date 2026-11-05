@@ -1,6 +1,6 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-05 CST。**Issue46两seed真实反馈PPO及封存评估完成并停止。无训练、Student迁移、原生reward inference或下一阶段任务排队。**
+最后核对：2026-11-05 CST。**Issue46已结项；用户新授权Issue47：C0局部响应与延迟全身参与。已完成保存数据分析，GPU接管/PPO尚未启动，因没有稳定空闲GPU暂缓。没有后台训练或自动排队任务。**
 
 [完整结果](COEXIST_RESULTS.md) · [预登记协议](COEXIST_PROTOCOL.md) · [Issue46](https://github.com/GaoE05/robot-research-bridge/issues/46) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18) · [BFM原生复用最小路线](BFM_REWARD_REUSE_ROADMAP.md)。RESEARCH_OVERVIEW是长期纲领；ChatGPT Library2026-10-28是历史快照。
 
@@ -12,7 +12,7 @@ Contact-conditioned whole-body behavior selection/modulation/transition：依据
 - 实际行走基线I `72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a`。
 - T30 `c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33`；S0 `0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12`。
 - D2 `9e4630896f9849c7ae1f68fa0058d6e23e1792095ef2a362dfd30c17baccf7f5`。
-- C0局部有效但长距失败；C1恢复walking却失去局部优势。Issue45 F/R均未稳定共存，冻结I参数不等于闭环保旧。全部旧权重/失败保留；不按任务拼模型。
+- C0局部有效，72cm持续需求下也会真实迈步，但启动及持续推进迟到；不再仅概括为长距失败。C1恢复walking却失去局部优势。Issue45 F/R均未稳定共存，冻结I参数不等于闭环保旧。全部旧权重/失败保留；不按任务拼模型。
 
 ## Issue46实际结果
 
@@ -24,13 +24,19 @@ Contact-conditioned whole-body behavior selection/modulation/transition：依据
 6. 242完整审查回合无安全终止；seed4602中距有共10个无支撑标记tick（单段10–15ms），未隐去。最大q_PD20ms跳变68.29°不等于实际q5ms3.60°。无接触稳定，释放后不考核旧anchor跟随。
 7. 探索噪声能改变同状态BFM动作，未证明std太小；但单步方向覆盖不等于持续有效反馈。raw logprob复现≤.0001221，联合KL≤.01996，critic EV提高不能代替actor成功。每seed208完整采样回合，减速决策仅136/213；覆盖及优化共同限制尚无唯一根因。
 
-## 下一步唯一建议（尚未执行）
+## 当前授权：Issue47 C0局部→全身参与（进行中，资源暂缓）
 
-不原样无界续训或再次重复F/R监督。下一轮做一个小型**同权重BFM原生reward-prompting局部行为来源实验**：固定buffer/seed/采样预算和状态reward，取得少量局部伸臂/站立稳定候选，在同起点近/远任务进入、保持、退出中与I/C0物理比较，检验能否提供比独立高维噪声更连贯的有效行为来源。
+[详细记录](C0_ENGAGEMENT_RESULTS.md) · [Issue47](https://github.com/GaoE05/robot-research-bridge/issues/47) · [协议](c0_engagement_protocol.json)。用户观看C0后更认可其先局部、后身体参与的组织，当前优先研究delayed engagement；旧原生reward-prompting建议改为后备工具，未执行。
 
-这不是宣称当前任意force/anchor reward可零样本prompt；原B/回放不含外部伙伴信息。reward composition/F-SF候选后果排序已列路线，未运行；force-history0/1/2/4/8/16也未展开。若新来源不足，不扫描大量z或恢复手写分类器。需要用户下一阶段授权。
+C0精确SHA `ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c`，`runs/prior-recovery-20261105/correct-C0/C0.pt`。I起点、750条六类示范、2000监督更新；没有后续PPO，也没有在线先手后脚规则。仍是1088D特权Teacher，不是部署Student。
 
-## 身份、成本与接力
+已完成保存72cm轨迹100ms/50Hz分析：C0首次持续10N约8.18s，左足约10.22s卸载、10.35s落地，前进约5.90cm但root几乎未推进；约12.43s才建立持续root前向速度。最初至7.5sC0误差3.36cm/力2.93N，优于I4.77cm/4.25N；后续明显追赶不足。C0 7.5s目标z已偏离standing约52.6°，不能说高层一直没发命令。尚未隔离高层、BFM反馈和外力贡献，也没证明手臂已耗尽自然可达余量。
+
+待执行：C0/I完整历史双向接管（72cm的6/7.5/9/10.3/11s及少量近距/共同前缀）；仅有效恢复证据成立后，C0起点两seed4701/4702各16×768，开发共同收益可等预算延至32。新留出组合已固定。预算14000累计job秒/49152决策/9GiB/最多3张实际空闲GPU。原BFM/PD/Direct、reward/std/历史、10N/K80D8不变；5N回归。
+
+实时资源：初查全部卡有任务；1–6短暂空闲，但发车二次核验出现新多卡任务，故未发车。实际新增GPU任务/物理回合/BFM推断/RL/监督更新均0。不要CPU替代BFM、不要共用他人GPU或沿用这次快照。接管脚本仅语法验证，未声称物理通过；PPO尚未实现为已运行任务。Issue47开放，本阶段未完成/未科学否定。恢复时先重查资源，再核对协议与基线历史物理一致。
+
+## Issue46历史身份与成本（不表示当前GPU空闲）
 
 训练runtime `f6ca5c5f6c4de205b3457bef4a024345e2105009`；最终评估/渲染 `057f5c6bd302185097770c3c1ed4d10dfb2ce109`。长期个人分支`gaoe05/research`；最终文档commit见Issue46链接，勿混作训练runtime。
 
@@ -42,4 +48,4 @@ Contact-conditioned whole-body behavior selection/modulation/transition：依据
 - Mac：`~/Projects/compliance-bfm-diagnostics/videos/feedback-coexistence/`，仅3个1×真实qpos MP4＋INDEX；6cm、72cm四模型对照，以及同4601停止/继续。SHA/时长/完整解码/视图已核对；未挑seed重跑。
 - owned进程均结束，GPU2/5/6释放；共享checkout仍`6023c6e257fab8fe58d13d9207fb5e85c32ee9c3`干净。未改BFM/PD/原权重/main、SoftSONIC/他人任务，未做真机。
 
-新会话先读本文件、RESEARCH_OVERVIEW、COEXIST_RESULTS及Issue46；核验实际运行/模型SHA与新授权，再检查GPU/CPU/RAM/I/O，不复用旧空闲快照或PID。历史Issue44/45、M41仍有效，不能用这轮局部正例抹去停止与跨状态失败。
+新会话先读本文件、RESEARCH_OVERVIEW、C0_ENGAGEMENT_RESULTS及Issue47，再按需回顾COEXIST_RESULTS/Issue46；核验实际运行/模型SHA与新授权，再检查GPU/CPU/RAM/I/O，不复用旧空闲快照或PID。历史Issue44/45、M41仍有效，不能用这轮局部正例抹去停止与跨状态失败。
