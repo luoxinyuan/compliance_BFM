@@ -1,6 +1,6 @@
 # 当前新增授权：Issue45执行中
 
-2026-11-05：冻结I条件adapter R对照全参数F，两个配对seed各2000更新，另受限观测探针最多2000。协议adapter_protocol.json。独立conditional-adapter工作树/run；最多GPU2/5/6，16000job秒/10GiB；不启动PPO。先完成标签与零输出梯度检查，尚未开始训练。Issue44结论和旧模型完整保留，以下为已完成阶段快照。
+2026-11-05：冻结I条件adapter R对照全参数F，两个配对seed各2000更新，另受限观测探针最多2000。协议adapter_protocol.json。独立conditional-adapter工作树/run；最多GPU2/5/6，16000job秒/10GiB；不启动PPO。标签与初始输出/梯度检查通过。第一对F/R已完成2000更新、正在完成物理开发；第二seed及受限观测探针已安排在独立树，实际状态以run ledger为准。固定runtime2673837a1f92cdc9ff0861c7ac1be767a930374a，最终2000版本不按终检选择。Issue44结论和旧模型完整保留，以下为已完成阶段快照。
 
 # CURRENT_STATE — 新会话先读
 
