@@ -1,0 +1,12 @@
+[
+  {
+    "model": "I",
+    "identical": true,
+    "sha256": "4399546173b0cde7268b155bfb576835b924f68d9e93ee8fb6db0b44510791df"
+  },
+  {
+    "model": "student",
+    "identical": true,
+    "sha256": "03993dcb6a89a331137c92d1f37f85523fe704fa446f61cc36380a2c301e6bfc"
+  }
+]

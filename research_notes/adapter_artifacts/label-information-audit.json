@@ -1,0 +1,131 @@
+{
+  "samples": 750,
+  "counts": {
+    "zero": 141,
+    "arm5": 93,
+    "arm15": 93,
+    "walk": 141,
+    "left": 141,
+    "right": 141
+  },
+  "all_exact_float32_input_groups": [
+    {
+      "indices": [
+        0,
+        141,
+        234,
+        327
+      ],
+      "kinds": [
+        "zero",
+        "arm5",
+        "arm15",
+        "walk"
+      ],
+      "times": [
+        3.999999999999937,
+        3.999999999999937,
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "max_z_delta": 0.0
+    },
+    {
+      "indices": [
+        1,
+        142,
+        235,
+        328
+      ],
+      "kinds": [
+        "zero",
+        "arm5",
+        "arm15",
+        "walk"
+      ],
+      "times": [
+        4.099999999999935,
+        4.099999999999935,
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "max_z_delta": 0.0
+    },
+    {
+      "indices": [
+        2,
+        143,
+        236,
+        329
+      ],
+      "kinds": [
+        "zero",
+        "arm5",
+        "arm15",
+        "walk"
+      ],
+      "times": [
+        4.199999999999933,
+        4.199999999999933,
+        4.199999999999933,
+        4.199999999999933
+      ],
+      "max_z_delta": 0.0
+    },
+    {
+      "indices": [
+        468,
+        609
+      ],
+      "kinds": [
+        "left",
+        "right"
+      ],
+      "times": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "max_z_delta": 0.0
+    },
+    {
+      "indices": [
+        469,
+        610
+      ],
+      "kinds": [
+        "left",
+        "right"
+      ],
+      "times": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "max_z_delta": 0.0
+    },
+    {
+      "indices": [
+        470,
+        611
+      ],
+      "kinds": [
+        "left",
+        "right"
+      ],
+      "times": [
+        4.199999999999933,
+        4.199999999999933
+      ],
+      "max_z_delta": 0.0
+    }
+  ],
+  "source_rule_audit": {
+    "arm5_arm15": "same mapping from current realized partner displacement; no branching by future final distance within this source",
+    "left_right": "current target yaw selects sign, not future angle",
+    "walk": "I feedback; different source policy not a proof of conflict if states/observations differ",
+    "pre_contact": "all source2 use I before onset; exact shared-prefix actions agree",
+    "limitation": "source target uses displacement relative initial geometry_origin and stored fade; this memory is not explicitly exposed to actor; no exact conflict here does not establish global history identifiability",
+    "deployment": "F/R remain privileged, I hidden activations are privileged too; Student independently trained from legal features only"
+  },
+  "dataset_sha256": "3bcfc6e7ebcba3dbcf65eb0988ec379f9f3a22d1a09876b4704265c3792f2289",
+  "analysis_seconds": 3.980653407983482
+}

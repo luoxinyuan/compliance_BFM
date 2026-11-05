@@ -1,0 +1,41 @@
+{
+  "groups": [
+    {
+      "kind": "zero",
+      "fraction_outside_normalized_clip": 0.0,
+      "rows_any_clip": 0,
+      "rows": 141
+    },
+    {
+      "kind": "arm5",
+      "fraction_outside_normalized_clip": 0.0,
+      "rows_any_clip": 0,
+      "rows": 93
+    },
+    {
+      "kind": "arm15",
+      "fraction_outside_normalized_clip": 0.001808586297556758,
+      "rows_any_clip": 25,
+      "rows": 93
+    },
+    {
+      "kind": "walk",
+      "fraction_outside_normalized_clip": 1.3037129974691197e-05,
+      "rows_any_clip": 2,
+      "rows": 141
+    },
+    {
+      "kind": "left",
+      "fraction_outside_normalized_clip": 0.001851272420026362,
+      "rows_any_clip": 31,
+      "rows": 141
+    },
+    {
+      "kind": "right",
+      "fraction_outside_normalized_clip": 0.0,
+      "rows_any_clip": 0,
+      "rows": 141
+    }
+  ],
+  "seconds": 1.983792383922264
+}

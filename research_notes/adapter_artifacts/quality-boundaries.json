@@ -1,0 +1,13 @@
+{
+  "episodes": 132,
+  "safety_terminations": 0,
+  "support_loss_ticks": 0,
+  "qpd_peak": {
+    "label": "R4501__new65",
+    "joint_index": 10,
+    "time": 10.160000000000188,
+    "degree": 60.287190633683636
+  },
+  "actual_q_step_deg_max": 3.33150237620192,
+  "tilt_max": 12.500603706303746
+}

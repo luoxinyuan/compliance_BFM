@@ -1,0 +1,19 @@
+{
+  "coefficient": 2.473907620604606,
+  "replay_identity": [
+    {
+      "action_max": 1.0132789611816406e-06,
+      "qpd_max_rad": 1.341104507446289e-06
+    },
+    {
+      "action_max": 1.043081283569336e-06,
+      "qpd_max_rad": 1.1771917343139648e-06
+    },
+    {
+      "action_max": 4.023313522338867e-07,
+      "qpd_max_rad": 5.21540641784668e-07
+    }
+  ],
+  "records": 66,
+  "scope": "same loss/weight both arms; frozen BFM gradients retained"
+}

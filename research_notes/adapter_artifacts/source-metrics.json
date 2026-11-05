@@ -1,0 +1,1334 @@
+[
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/source-walking/F4501__walking8.json.gz",
+    "sha256": "9fdfc143eb6742efcd8962b21f3c2ae4016fadf72818b4714a927ec2c0d8fcd2",
+    "label": "F4501__walking8",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.65,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.85,
+      "ramp": 6.9642857142857135,
+      "release": 13.814285714285713,
+      "end": 17.814285714285713,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "walk",
+      "learned_handoff": 8.0,
+      "handoff_time": 3.999999999999937
+    },
+    "contact": {
+      "seconds": 8.96,
+      "force_rms": 4.524662142119023,
+      "sum_force_norm_rms": 4.524662142119023,
+      "force_xyz_rms": [
+        [
+          2.4617540939301445,
+          3.0792091931683996,
+          2.2205416064668784
+        ]
+      ],
+      "force_xyz_mean": [
+        [
+          1.2014120570191487,
+          -2.524766775139829,
+          1.1768493064609424
+        ]
+      ],
+      "per_point_force_peak": [
+        9.300436392496007
+      ],
+      "joint_limit_excess_max_rad": 0.0,
+      "cap_fraction": 0.0,
+      "error_cm": 5.493787579008521,
+      "signed_error_xyz_cm": [
+        [
+          1.4997403191969831,
+          -3.130788818581793,
+          1.4696135770114453
+        ]
+      ],
+      "root_delta_cm": [
+        64.31457309334535,
+        5.547433212187641,
+        -0.8911950524707835
+      ],
+      "root_xy_path_cm": 87.15502452980664,
+      "foot_xy_path_cm": [
+        75.33505957087058,
+        73.78613188751795
+      ],
+      "wrist_delta_cm": [
+        64.87316639797186,
+        2.1888600290661975,
+        -0.16159828306774315
+      ],
+      "relative_wrist_shoulder_delta_cm": [
+        -0.47472168815695936,
+        -2.807681051004934,
+        1.0264539569787345
+      ],
+      "shoulder_elbow_q_delta_deg": [
+        -0.012098798191746219,
+        -0.20347188790249657,
+        -12.360416698160417,
+        -4.98695292456569
+      ],
+      "joint_travel_rad": 33.07614978319583,
+      "absolute_mechanical_work_proxy_J": 159.67449073541275,
+      "max_tilt": 9.637108182822471,
+      "torso_pitch_deg_max": 15.323692658942942,
+      "pelvis_pitch_deg_max": 9.60628845626049,
+      "torso_yaw_delta_deg": 3.244796574322387,
+      "pelvis_yaw_delta_deg": 5.041653889799155,
+      "waist_final_deg": -2.075698139668964,
+      "slip_peak": 0.9073932391900534,
+      "support_loss_ticks": 0,
+      "torque_saturation_peak": 0.0,
+      "actual_q_max_step_deg": 2.54901558635104,
+      "root_final_speed": 0.003572380056707071,
+      "wrist_shoulder_in_torso_axes_delta_cm": [
+        -0.4040968022313657,
+        -4.29292582256679,
+        1.5418348026992796
+      ],
+      "wrist_torso_local_delta_cm": [
+        -0.4040968022313629,
+        -4.29292582256682,
+        1.5418348026993463
+      ]
+    },
+    "phase": {
+      "pre": {
+        "seconds": 0.855,
+        "force_rms": 0.0,
+        "sum_force_norm_rms": 0.0,
+        "force_xyz_rms": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "force_xyz_mean": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "per_point_force_peak": [
+          0.0
+        ],
+        "joint_limit_excess_max_rad": 0.0,
+        "cap_fraction": 0.0,
+        "error_cm": null,
+        "signed_error_xyz_cm": null,
+        "root_delta_cm": [
+          -0.14681059207422403,
+          0.058263730443414846,
+          -0.002267081591988962
+        ],
+        "root_xy_path_cm": 0.16716830323185425,
+        "foot_xy_path_cm": [
+          0.05357088083428013,
+          0.07080802279701442
+        ],
+        "wrist_delta_cm": [
+          -0.4106926868540556,
+          -0.1701813253058876,
+          0.12635589987798346
+        ],
+        "relative_wrist_shoulder_delta_cm": [
+          0.021734448286084285,
+          -0.23582508086373855,
+          0.11610679176635719
+        ],
+        "shoulder_elbow_q_delta_deg": [
+          0.04070125012145683,
+          -0.02099813563820407,
+          -0.0013772316971282913,
+          -0.09998695526728321
+        ],
+        "joint_travel_rad": 0.05385769545862465,
+        "absolute_mechanical_work_proxy_J": 0.12124160473808203,
+        "max_tilt": 2.4068118181903992,
+        "torso_pitch_deg_max": 4.7754994684863075,
+        "pelvis_pitch_deg_max": 2.378787520673129,
+        "torso_yaw_delta_deg": -0.7040855608862197,
+        "pelvis_yaw_delta_deg": -0.5146875538594397,
+        "waist_final_deg": -0.277865729654014,
+        "slip_peak": 0.0017810856491864086,
+        "support_loss_ticks": 0,
+        "torque_saturation_peak": 0.0,
+        "actual_q_max_step_deg": 0.006329632421100347,
+        "root_final_speed": 0.0021524588732125226,
+        "wrist_shoulder_in_torso_axes_delta_cm": [
+          -0.011637026566427289,
+          -0.011254161584258598,
+          0.02044488690099988
+        ],
+        "wrist_torso_local_delta_cm": [
+          -0.011637026566427289,
+          -0.011254161584239863,
+          0.02044488690096588
+        ]
+      },
+      "move": {
+        "seconds": 6.96,
+        "force_rms": 5.022775667776998,
+        "sum_force_norm_rms": 5.022775667776998,
+        "force_xyz_rms": [
+          [
+            2.7927681961985855,
+            3.3291731084016103,
+            2.5189933754200178
+          ]
+        ],
+        "force_xyz_mean": [
+          [
+            1.5444543346836228,
+            -2.6855823359429074,
+            1.5004856985829198
+          ]
+        ],
+        "per_point_force_peak": [
+          9.300436392496007
+        ],
+        "joint_limit_excess_max_rad": 0.0,
+        "cap_fraction": 0.0,
+        "error_cm": 6.084927983137463,
+        "signed_error_xyz_cm": [
+          [
+            1.9343094461686459,
+            -3.311963158194743,
+            1.8806716241231698
+          ]
+        ],
+        "root_delta_cm": [
+          64.85120304309442,
+          6.60487581895966,
+          -0.8226284252166205
+        ],
+        "root_xy_path_cm": 85.83802972049774,
+        "foot_xy_path_cm": [
+          75.19151735399367,
+          73.64407635981482
+        ],
+        "wrist_delta_cm": [
+          65.3102804396857,
+          3.066935535567139,
+          0.31523800933123125
+        ],
+        "relative_wrist_shoulder_delta_cm": [
+          -0.6172262284468599,
+          -2.999476344857921,
+          1.42386693940314
+        ],
+        "shoulder_elbow_q_delta_deg": [
+          0.4573640974034762,
+          -0.2945284017419228,
+          -12.658173583164352,
+          -6.126495850014351
+        ],
+        "joint_travel_rad": 32.633875259867196,
+        "absolute_mechanical_work_proxy_J": 158.75112972960073,
+        "max_tilt": 9.637108182822471,
+        "torso_pitch_deg_max": 15.323692658942942,
+        "pelvis_pitch_deg_max": 9.60628845626049,
+        "torso_yaw_delta_deg": 3.2476961291871436,
+        "pelvis_yaw_delta_deg": 5.305823064018008,
+        "waist_final_deg": -2.33696775902306,
+        "slip_peak": 0.9073932391900534,
+        "support_loss_ticks": 0,
+        "torque_saturation_peak": 0.0,
+        "actual_q_max_step_deg": 2.54901558635104,
+        "root_final_speed": 0.009592561477485741,
+        "wrist_shoulder_in_torso_axes_delta_cm": [
+          -0.5914686837379834,
+          -4.467544206275174,
+          1.9069460314891513
+        ],
+        "wrist_torso_local_delta_cm": [
+          -0.5914686837379779,
+          -4.467544206275187,
+          1.9069460314891935
+        ]
+      },
+      "hold": {
+        "seconds": 2.0,
+        "force_rms": 1.9805817273691089,
+        "sum_force_norm_rms": 1.9805817273691089,
+        "force_xyz_rms": [
+          [
+            0.08600123864517757,
+            1.9766237339109893,
+            0.09091963638113139
+          ]
+        ],
+        "force_xyz_mean": [
+          [
+            0.007624930746778882,
+            -1.9651286235451273,
+            0.0505946618764569
+          ]
+        ],
+        "per_point_force_peak": [
+          2.4545480851444617
+        ],
+        "joint_limit_excess_max_rad": 0.0,
+        "cap_fraction": 0.0,
+        "error_cm": 2.5223663109763903,
+        "signed_error_xyz_cm": [
+          [
+            -0.012560242664404225,
+            -2.5003021167287267,
+            0.039131573062643366
+          ]
+        ],
+        "root_delta_cm": [
+          -0.5319337036540861,
+          -1.0582097814328253,
+          -0.06885139778460836
+        ],
+        "root_xy_path_cm": 1.3122363132917831,
+        "foot_xy_path_cm": [
+          0.14321621632508444,
+          0.14156408185131672
+        ],
+        "wrist_delta_cm": [
+          -0.43294025444826634,
+          -0.8774673956246454,
+          -0.4710098535953722
+        ],
+        "relative_wrist_shoulder_delta_cm": [
+          0.14117363415323547,
+          0.19291227371948522,
+          -0.3913662166214027
+        ],
+        "shoulder_elbow_q_delta_deg": [
+          -0.4616330981633535,
+          0.09178612003851806,
+          0.3002839705450634,
+          1.1201279615943092
+        ],
+        "joint_travel_rad": 0.440002971751088,
+        "absolute_mechanical_work_proxy_J": 0.9233610058120073,
+        "max_tilt": 3.9259520710872735,
+        "torso_pitch_deg_max": 5.501561489222494,
+        "pelvis_pitch_deg_max": 3.8629281249787435,
+        "torso_yaw_delta_deg": 0.0002356931317572922,
+        "pelvis_yaw_delta_deg": -0.2626891288976284,
+        "waist_final_deg": -2.075698139668964,
+        "slip_peak": 0.005210136658345888,
+        "support_loss_ticks": 0,
+        "torque_saturation_peak": 0.0,
+        "actual_q_max_step_deg": 0.03830803658123636,
+        "root_final_speed": 0.003572380056707071,
+        "wrist_shoulder_in_torso_axes_delta_cm": [
+          0.18475502170607616,
+          0.1749763198137494,
+          -0.3594836877543389
+        ],
+        "wrist_torso_local_delta_cm": [
+          0.1847550217060845,
+          0.17497631981373551,
+          -0.3594836877543244
+        ]
+      },
+      "recover": {
+        "seconds": 4.005,
+        "force_rms": 0.0,
+        "sum_force_norm_rms": 0.0,
+        "force_xyz_rms": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "force_xyz_mean": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "per_point_force_peak": [
+          0.0
+        ],
+        "joint_limit_excess_max_rad": 0.0,
+        "cap_fraction": 0.0,
+        "error_cm": null,
+        "signed_error_xyz_cm": null,
+        "root_delta_cm": [
+          -0.576333462135048,
+          0.5073445021989632,
+          0.3690615708806466
+        ],
+        "root_xy_path_cm": 1.8175789083166611,
+        "foot_xy_path_cm": [
+          0.18331129901587562,
+          0.13954260296496207
+        ],
+        "wrist_delta_cm": [
+          -0.31050500706334416,
+          2.681522708395087,
+          -0.04148896877184116
+        ],
+        "relative_wrist_shoulder_delta_cm": [
+          0.46353546964339465,
+          1.7149559349746948,
+          -0.612125226771687
+        ],
+        "shoulder_elbow_q_delta_deg": [
+          0.23977885338318786,
+          0.5891790778210895,
+          5.258245033689767,
+          2.658784644638547
+        ],
+        "joint_travel_rad": 0.9149124661544524,
+        "absolute_mechanical_work_proxy_J": 2.400781360973224,
+        "max_tilt": 3.404870813526229,
+        "torso_pitch_deg_max": 5.463713283727624,
+        "pelvis_pitch_deg_max": 3.2469504006654666,
+        "torso_yaw_delta_deg": 0.3208354986843923,
+        "pelvis_yaw_delta_deg": -0.18052455612008517,
+        "waist_final_deg": -1.5733634197452837,
+        "slip_peak": 0.0037174424183762165,
+        "support_loss_ticks": 0,
+        "torque_saturation_peak": 0.0,
+        "actual_q_max_step_deg": 0.09371432582674454,
+        "root_final_speed": 0.0013331123407162324,
+        "wrist_shoulder_in_torso_axes_delta_cm": [
+          0.1985452411118832,
+          1.9502561285362847,
+          -0.9480669005083958
+        ],
+        "wrist_torso_local_delta_cm": [
+          0.19854524111188598,
+          1.9502561285362985,
+          -0.9480669005084479
+        ]
+      }
+    },
+    "boundary": null,
+    "reward_integrated_terms": {
+      "force": 11.006052288174775,
+      "uncapped": 0.6611795308987485,
+      "tracking": 0.10141051859658148,
+      "relative_velocity": 0.059483744077539424,
+      "heading": 0.06055332824721898,
+      "slip": 0.06599610914153171,
+      "tilt": 0.0,
+      "continuity": 0.01914872862362209,
+      "soft_prior": 0.0,
+      "idle": 0.0007070261753990433
+    },
+    "return_value": -11.974531273935433,
+    "root_contact_delta_cm": [
+      64.31352876405485,
+      5.547265808559924,
+      -0.8912003975986904
+    ],
+    "foot_xy2cm_time": 6.9299999999998745,
+    "qpd_max_step_deg": 37.964329256141085,
+    "qpd_p99_step_deg": 3.2167780531624564,
+    "physics_steps": 2764,
+    "control_steps": 691
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/source-walking/I__walking8.json.gz",
+    "sha256": "a76350b8663ded9aedd5973629a04e4bb23d3b6248f74a5afb44fd2f6be4ae19",
+    "label": "I__walking8",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.65,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.85,
+      "ramp": 6.9642857142857135,
+      "release": 13.814285714285713,
+      "end": 17.814285714285713,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "walk",
+      "learned_handoff": 8.0,
+      "handoff_time": 3.999999999999937
+    },
+    "contact": {
+      "seconds": 8.96,
+      "force_rms": 4.533706223261548,
+      "sum_force_norm_rms": 4.533706223261548,
+      "force_xyz_rms": [
+        [
+          2.3938940413130174,
+          3.129165562880997,
+          2.2432312225640514
+        ]
+      ],
+      "force_xyz_mean": [
+        [
+          1.1188138948746245,
+          -2.5580229919411326,
+          1.0693605674675606
+        ]
+      ],
+      "per_point_force_peak": [
+        9.300436392496007
+      ],
+      "joint_limit_excess_max_rad": 0.0,
+      "cap_fraction": 0.0,
+      "error_cm": 5.495352809374771,
+      "signed_error_xyz_cm": [
+        [
+          1.398579295496586,
+          -3.169874871718265,
+          1.3358804723601776
+        ]
+      ],
+      "root_delta_cm": [
+        64.26728940398205,
+        4.854534555710107,
+        -0.5366620930133514
+      ],
+      "root_xy_path_cm": 87.69449502033378,
+      "foot_xy_path_cm": [
+        77.25223167817047,
+        71.66048378222295
+      ],
+      "wrist_delta_cm": [
+        65.06088798193845,
+        2.4172382021325185,
+        -0.10548707377875388
+      ],
+      "relative_wrist_shoulder_delta_cm": [
+        -0.31138266789215163,
+        -2.0515879352300246,
+        0.6649939700466234
+      ],
+      "shoulder_elbow_q_delta_deg": [
+        0.4949787170586889,
+        -0.15445221795578204,
+        -10.73937072989402,
+        -3.9564475793131684
+      ],
+      "joint_travel_rad": 33.66229920310615,
+      "absolute_mechanical_work_proxy_J": 159.47143160051385,
+      "max_tilt": 9.637108182822471,
+      "torso_pitch_deg_max": 15.549483363121976,
+      "pelvis_pitch_deg_max": 9.60628845626049,
+      "torso_yaw_delta_deg": 4.32033040926802,
+      "pelvis_yaw_delta_deg": 5.328456643634662,
+      "waist_final_deg": -1.2869670585588375,
+      "slip_peak": 0.9137926124743075,
+      "support_loss_ticks": 0,
+      "torque_saturation_peak": 0.0,
+      "actual_q_max_step_deg": 2.54901558635104,
+      "root_final_speed": 0.002650120538522202,
+      "wrist_shoulder_in_torso_axes_delta_cm": [
+        -0.4830236580190439,
+        -3.769650625136461,
+        1.0406591317254437
+      ],
+      "wrist_torso_local_delta_cm": [
+        -0.48302365801903835,
+        -3.769650625136503,
+        1.0406591317255494
+      ]
+    },
+    "phase": {
+      "pre": {
+        "seconds": 0.855,
+        "force_rms": 0.0,
+        "sum_force_norm_rms": 0.0,
+        "force_xyz_rms": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "force_xyz_mean": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "per_point_force_peak": [
+          0.0
+        ],
+        "joint_limit_excess_max_rad": 0.0,
+        "cap_fraction": 0.0,
+        "error_cm": null,
+        "signed_error_xyz_cm": null,
+        "root_delta_cm": [
+          -0.14681059207422403,
+          0.058263730443414846,
+          -0.002267081591988962
+        ],
+        "root_xy_path_cm": 0.16716830323185425,
+        "foot_xy_path_cm": [
+          0.05357088083428013,
+          0.07080802279701442
+        ],
+        "wrist_delta_cm": [
+          -0.4106926868540556,
+          -0.1701813253058876,
+          0.12635589987798346
+        ],
+        "relative_wrist_shoulder_delta_cm": [
+          0.021734448286084285,
+          -0.23582508086373855,
+          0.11610679176635719
+        ],
+        "shoulder_elbow_q_delta_deg": [
+          0.04070125012145683,
+          -0.02099813563820407,
+          -0.0013772316971282913,
+          -0.09998695526728321
+        ],
+        "joint_travel_rad": 0.05385769545862465,
+        "absolute_mechanical_work_proxy_J": 0.12124160473808203,
+        "max_tilt": 2.4068118181903992,
+        "torso_pitch_deg_max": 4.7754994684863075,
+        "pelvis_pitch_deg_max": 2.378787520673129,
+        "torso_yaw_delta_deg": -0.7040855608862197,
+        "pelvis_yaw_delta_deg": -0.5146875538594397,
+        "waist_final_deg": -0.277865729654014,
+        "slip_peak": 0.0017810856491864086,
+        "support_loss_ticks": 0,
+        "torque_saturation_peak": 0.0,
+        "actual_q_max_step_deg": 0.006329632421100347,
+        "root_final_speed": 0.0021524588732125226,
+        "wrist_shoulder_in_torso_axes_delta_cm": [
+          -0.011637026566427289,
+          -0.011254161584258598,
+          0.02044488690099988
+        ],
+        "wrist_torso_local_delta_cm": [
+          -0.011637026566427289,
+          -0.011254161584239863,
+          0.02044488690096588
+        ]
+      },
+      "move": {
+        "seconds": 6.96,
+        "force_rms": 5.000954813616356,
+        "sum_force_norm_rms": 5.000954813616356,
+        "force_xyz_rms": [
+          [
+            2.7154944627212365,
+            3.3408990898557245,
+            2.544411944273983
+          ]
+        ],
+        "force_xyz_mean": [
+          [
+            1.4703793125153979,
+            -2.6540869100989846,
+            1.386867911104441
+          ]
+        ],
+        "per_point_force_peak": [
+          9.300436392496007
+        ],
+        "joint_limit_excess_max_rad": 0.0,
+        "cap_fraction": 0.0,
+        "error_cm": 6.0424938733880325,
+        "signed_error_xyz_cm": [
+          [
+            1.8409615575837175,
+            -3.266238977577541,
+            1.742499712233541
+          ]
+        ],
+        "root_delta_cm": [
+          64.27758875431199,
+          5.9510197173212935,
+          -0.43949466765770273
+        ],
+        "root_xy_path_cm": 86.52763133158025,
+        "foot_xy_path_cm": [
+          77.1698415620703,
+          71.5743863591903
+        ],
+        "wrist_delta_cm": [
+          65.26326575834432,
+          3.5176183670612646,
+          0.5822028329626638
+        ],
+        "relative_wrist_shoulder_delta_cm": [
+          -0.171515121703264,
+          -2.129029997788576,
+          1.2172614531757553
+        ],
+        "shoulder_elbow_q_delta_deg": [
+          0.6152563154468393,
+          -0.06129643107012019,
+          -11.306000477944139,
+          -5.124945028176366
+        ],
+        "joint_travel_rad": 33.26414032494975,
+        "absolute_mechanical_work_proxy_J": 158.7064698718795,
+        "max_tilt": 9.637108182822471,
+        "torso_pitch_deg_max": 15.549483363121976,
+        "pelvis_pitch_deg_max": 9.60628845626049,
+        "torso_yaw_delta_deg": 4.887008927275298,
+        "pelvis_yaw_delta_deg": 6.132404715815231,
+        "waist_final_deg": -1.524236612732129,
+        "slip_peak": 0.9137926124743075,
+        "support_loss_ticks": 0,
+        "torque_saturation_peak": 0.0,
+        "actual_q_max_step_deg": 2.54901558635104,
+        "root_final_speed": 0.006340521352018729,
+        "wrist_shoulder_in_torso_axes_delta_cm": [
+          -0.5494723883506469,
+          -3.950078126887882,
+          1.5056915093573875
+        ],
+        "wrist_torso_local_delta_cm": [
+          -0.5494723883506497,
+          -3.9500781268879126,
+          1.5056915093574736
+        ]
+      },
+      "hold": {
+        "seconds": 2.0,
+        "force_rms": 2.2474194103344316,
+        "sum_force_norm_rms": 2.2474194103344316,
+        "force_xyz_rms": [
+          [
+            0.11161126658908799,
+            2.241499962462469,
+            0.11880593166629241
+          ]
+        ],
+        "force_xyz_mean": [
+          [
+            -0.10463375851526241,
+            -2.223720556751818,
+            -0.03556498838878372
+          ]
+        ],
+        "per_point_force_peak": [
+          2.874436603145116
+        ],
+        "joint_limit_excess_max_rad": 0.0,
+        "cap_fraction": 0.0,
+        "error_cm": 2.8688421196035305,
+        "signed_error_xyz_cm": [
+          [
+            -0.1409109765666317,
+            -2.8345277833279785,
+            -0.07915448239912276
+          ]
+        ],
+        "root_delta_cm": [
+          -0.008063135878977334,
+          -1.098535453214315,
+          -0.09765379835380283
+        ],
+        "root_xy_path_cm": 1.1638298214643121,
+        "foot_xy_path_cm": [
+          0.08203033802688364,
+          0.08575951691310456
+        ],
+        "wrist_delta_cm": [
+          -0.20218868446157945,
+          -1.1021918018311427,
+          -0.6810367313960453
+        ],
+        "relative_wrist_shoulder_delta_cm": [
+          -0.14379157104635887,
+          0.07784332612481848,
+          -0.5448924852624715
+        ],
+        "shoulder_elbow_q_delta_deg": [
+          -0.10855819784997392,
+          -0.09203606583498332,
+          0.5681640191850275,
+          1.14102990722384
+        ],
+        "joint_travel_rad": 0.39473486277163006,
+        "absolute_mechanical_work_proxy_J": 0.7649617286343235,
+        "max_tilt": 3.152402569597425,
+        "torso_pitch_deg_max": 5.187327528123653,
+        "pelvis_pitch_deg_max": 3.085170569691221,
+        "torso_yaw_delta_deg": -0.5643598579748543,
+        "pelvis_yaw_delta_deg": -0.8014877885806235,
+        "waist_final_deg": -1.2869670585588375,
+        "slip_peak": 0.005070555408895089,
+        "support_loss_ticks": 0,
+        "torque_saturation_peak": 0.0,
+        "actual_q_max_step_deg": 0.0392961096370293,
+        "root_final_speed": 0.002650120538522202,
+        "wrist_shoulder_in_torso_axes_delta_cm": [
+          0.0625079185926164,
+          0.1800244635259518,
+          -0.4569996706895535
+        ],
+        "wrist_torso_local_delta_cm": [
+          0.06250791859262472,
+          0.18002446352594625,
+          -0.456999670689516
+        ]
+      },
+      "recover": {
+        "seconds": 4.005,
+        "force_rms": 0.0,
+        "sum_force_norm_rms": 0.0,
+        "force_xyz_rms": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "force_xyz_mean": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "per_point_force_peak": [
+          0.0
+        ],
+        "joint_limit_excess_max_rad": 0.0,
+        "cap_fraction": 0.0,
+        "error_cm": null,
+        "signed_error_xyz_cm": null,
+        "root_delta_cm": [
+          0.14903644693521345,
+          0.9190388203208619,
+          0.3205847007454743
+        ],
+        "root_xy_path_cm": 1.4917110912637732,
+        "foot_xy_path_cm": [
+          0.07048334815304778,
+          0.04233448154844895
+        ],
+        "wrist_delta_cm": [
+          0.5424655502760389,
+          3.6914816589593116,
+          0.3342413311205994
+        ],
+        "relative_wrist_shoulder_delta_cm": [
+          0.7687603843244961,
+          2.1955086082793076,
+          -0.24573679573723917
+        ],
+        "shoulder_elbow_q_delta_deg": [
+          -0.37802139305538424,
+          0.3638170691117214,
+          7.295567279868747,
+          2.5223406570923035
+        ],
+        "joint_travel_rad": 0.9184792179785491,
+        "absolute_mechanical_work_proxy_J": 2.186928825212775,
+        "max_tilt": 2.964480162127066,
+        "torso_pitch_deg_max": 5.243479863270671,
+        "pelvis_pitch_deg_max": 2.8149355984785474,
+        "torso_yaw_delta_deg": 0.016123688544130665,
+        "pelvis_yaw_delta_deg": -1.2483164524777213,
+        "waist_final_deg": -0.02187868845676601,
+        "slip_peak": 0.003780222951147536,
+        "support_loss_ticks": 0,
+        "torque_saturation_peak": 0.0,
+        "actual_q_max_step_deg": 0.05527493703925601,
+        "root_final_speed": 0.0007197890141382765,
+        "wrist_shoulder_in_torso_axes_delta_cm": [
+          0.42942547716714186,
+          2.6424858129305546,
+          -0.6648049468688078
+        ],
+        "wrist_torso_local_delta_cm": [
+          0.4294254771671391,
+          2.642485812930595,
+          -0.6648049468689237
+        ]
+      }
+    },
+    "boundary": null,
+    "reward_integrated_terms": {
+      "force": 11.050094963088652,
+      "uncapped": 0.6709718028615401,
+      "tracking": 0.10146831239833073,
+      "relative_velocity": 0.06291599949289182,
+      "heading": 0.057151646218098394,
+      "slip": 0.06317895483829863,
+      "tilt": 0.0,
+      "continuity": 0.017525728349863316,
+      "soft_prior": 0.0,
+      "idle": 0.0007861880175665734
+    },
+    "return_value": -12.024093595265242,
+    "root_contact_delta_cm": [
+      64.26624507469157,
+      4.854367152082391,
+      -0.5366674381412584
+    ],
+    "foot_xy2cm_time": 6.9299999999998745,
+    "qpd_max_step_deg": 36.12442826544868,
+    "qpd_p99_step_deg": 3.1943491035791785,
+    "physics_steps": 2764,
+    "control_steps": 691
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/source-walking/R4501__walking8.json.gz",
+    "sha256": "e9ebc678773ee0aa3b04ebd58154462ce823b5933224ce74aae3c00fa80eef1f",
+    "label": "R4501__walking8",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.65,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.85,
+      "ramp": 6.9642857142857135,
+      "release": 13.814285714285713,
+      "end": 17.814285714285713,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "walk",
+      "learned_handoff": 8.0,
+      "handoff_time": 3.999999999999937
+    },
+    "contact": {
+      "seconds": 8.96,
+      "force_rms": 5.396150963220464,
+      "sum_force_norm_rms": 5.396150963220464,
+      "force_xyz_rms": [
+        [
+          2.924792979909354,
+          3.750374892448479,
+          2.549258599795273
+        ]
+      ],
+      "force_xyz_mean": [
+        [
+          1.1535240171862073,
+          -3.1336122759066045,
+          1.454321563656866
+        ]
+      ],
+      "per_point_force_peak": [
+        10.000000000000002
+      ],
+      "joint_limit_excess_max_rad": 0.0,
+      "cap_fraction": 0.056361607142857144,
+      "error_cm": 6.645783188733407,
+      "signed_error_xyz_cm": [
+        [
+          1.4692626861303713,
+          -3.9102089572242273,
+          1.8241523766937613
+        ]
+      ],
+      "root_delta_cm": [
+        69.70469856575096,
+        9.538604815129725,
+        -0.2916529467728246
+      ],
+      "root_xy_path_cm": 93.63963406101831,
+      "foot_xy_path_cm": [
+        94.7609650377284,
+        73.5517516934458
+      ],
+      "wrist_delta_cm": [
+        66.12082763470059,
+        3.2608740303663564,
+        0.24985735394821296
+      ],
+      "relative_wrist_shoulder_delta_cm": [
+        -1.837236936547787,
+        -5.59825197879027,
+        0.7946511360349962
+      ],
+      "shoulder_elbow_q_delta_deg": [
+        -2.2419373685785,
+        -0.18198347707723517,
+        -9.03489556480897,
+        -0.9930816825588175
+      ],
+      "joint_travel_rad": 40.9965290310798,
+      "absolute_mechanical_work_proxy_J": 203.33985768000733,
+      "max_tilt": 11.668452621972696,
+      "torso_pitch_deg_max": 15.6360366092256,
+      "pelvis_pitch_deg_max": 11.180820106320862,
+      "torso_yaw_delta_deg": -10.583226760941473,
+      "pelvis_yaw_delta_deg": -8.893606845263037,
+      "waist_final_deg": -1.9684607398706329,
+      "slip_peak": 0.9705293000673687,
+      "support_loss_ticks": 0,
+      "torque_saturation_peak": 0.0,
+      "actual_q_max_step_deg": 2.54901558635104,
+      "root_final_speed": 0.0015648495015974592,
+      "wrist_shoulder_in_torso_axes_delta_cm": [
+        0.590150837676745,
+        -2.968132940152496,
+        1.2066663844870484
+      ],
+      "wrist_torso_local_delta_cm": [
+        0.590150837676745,
+        -2.9681329401525014,
+        1.206666384487047
+      ]
+    },
+    "phase": {
+      "pre": {
+        "seconds": 0.855,
+        "force_rms": 0.0,
+        "sum_force_norm_rms": 0.0,
+        "force_xyz_rms": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "force_xyz_mean": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "per_point_force_peak": [
+          0.0
+        ],
+        "joint_limit_excess_max_rad": 0.0,
+        "cap_fraction": 0.0,
+        "error_cm": null,
+        "signed_error_xyz_cm": null,
+        "root_delta_cm": [
+          -0.14681059207422403,
+          0.058263730443414846,
+          -0.002267081591988962
+        ],
+        "root_xy_path_cm": 0.16716830323185425,
+        "foot_xy_path_cm": [
+          0.05357088083428013,
+          0.07080802279701442
+        ],
+        "wrist_delta_cm": [
+          -0.4106926868540556,
+          -0.1701813253058876,
+          0.12635589987798346
+        ],
+        "relative_wrist_shoulder_delta_cm": [
+          0.021734448286084285,
+          -0.23582508086373855,
+          0.11610679176635719
+        ],
+        "shoulder_elbow_q_delta_deg": [
+          0.04070125012145683,
+          -0.02099813563820407,
+          -0.0013772316971282913,
+          -0.09998695526728321
+        ],
+        "joint_travel_rad": 0.05385769545862465,
+        "absolute_mechanical_work_proxy_J": 0.12124160473808203,
+        "max_tilt": 2.4068118181903992,
+        "torso_pitch_deg_max": 4.7754994684863075,
+        "pelvis_pitch_deg_max": 2.378787520673129,
+        "torso_yaw_delta_deg": -0.7040855608862197,
+        "pelvis_yaw_delta_deg": -0.5146875538594397,
+        "waist_final_deg": -0.277865729654014,
+        "slip_peak": 0.0017810856491864086,
+        "support_loss_ticks": 0,
+        "torque_saturation_peak": 0.0,
+        "actual_q_max_step_deg": 0.006329632421100347,
+        "root_final_speed": 0.0021524588732125226,
+        "wrist_shoulder_in_torso_axes_delta_cm": [
+          -0.011637026566427289,
+          -0.011254161584258598,
+          0.02044488690099988
+        ],
+        "wrist_torso_local_delta_cm": [
+          -0.011637026566427289,
+          -0.011254161584239863,
+          0.02044488690096588
+        ]
+      },
+      "move": {
+        "seconds": 6.96,
+        "force_rms": 5.8900432348127945,
+        "sum_force_norm_rms": 5.8900432348127945,
+        "force_xyz_rms": [
+          [
+            3.241533910388942,
+            3.9784716799900655,
+            2.890818276419252
+          ]
+        ],
+        "force_xyz_mean": [
+          [
+            1.845370808693051,
+            -3.231159017657451,
+            1.9126660150546058
+          ]
+        ],
+        "per_point_force_peak": [
+          10.000000000000002
+        ],
+        "joint_limit_excess_max_rad": 0.0,
+        "cap_fraction": 0.07255747126436782,
+        "error_cm": 7.219731742988222,
+        "signed_error_xyz_cm": [
+          [
+            2.3628440156999058,
+            -3.995348693914844,
+            2.4052852723843863
+          ]
+        ],
+        "root_delta_cm": [
+          69.45715095687234,
+          11.104309992997177,
+          -0.45636381396627623
+        ],
+        "root_xy_path_cm": 91.2008048731972,
+        "foot_xy_path_cm": [
+          94.35340694645151,
+          73.20998176664703
+        ],
+        "wrist_delta_cm": [
+          67.58333894600878,
+          5.6648386731023015,
+          0.6874635159924036
+        ],
+        "relative_wrist_shoulder_delta_cm": [
+          -1.3207941396879586,
+          -4.992172214010653,
+          1.301832855378593
+        ],
+        "shoulder_elbow_q_delta_deg": [
+          -0.7915829830651119,
+          -0.28047323272635477,
+          -11.900122686730287,
+          -2.9736904136779296
+        ],
+        "joint_travel_rad": 40.1538871819631,
+        "absolute_mechanical_work_proxy_J": 201.6272352267742,
+        "max_tilt": 11.668452621972696,
+        "torso_pitch_deg_max": 15.6360366092256,
+        "pelvis_pitch_deg_max": 11.180820106320862,
+        "torso_yaw_delta_deg": -4.064663191348593,
+        "pelvis_yaw_delta_deg": -4.339584596934675,
+        "waist_final_deg": -0.003919418606113916,
+        "slip_peak": 0.9705293000673687,
+        "support_loss_ticks": 0,
+        "torque_saturation_peak": 0.0,
+        "actual_q_max_step_deg": 2.54901558635104,
+        "root_final_speed": 0.040563317850951276,
+        "wrist_shoulder_in_torso_axes_delta_cm": [
+          -0.1062983097230491,
+          -4.139788057725748,
+          1.5485878572201683
+        ],
+        "wrist_torso_local_delta_cm": [
+          -0.10629830972304355,
+          -4.139788057725768,
+          1.5485878572202363
+        ]
+      },
+      "hold": {
+        "seconds": 2.0,
+        "force_rms": 3.1177482554435394,
+        "sum_force_norm_rms": 3.1177482554435394,
+        "force_xyz_rms": [
+          [
+            1.3257179672178565,
+            2.816084617760416,
+            0.18025948332937833
+          ]
+        ],
+        "force_xyz_mean": [
+          [
+            -1.2541028172576163,
+            -2.7941496146136706,
+            -0.14071712720726207
+          ]
+        ],
+        "per_point_force_peak": [
+          4.707654012705354
+        ],
+        "joint_limit_excess_max_rad": 0.0,
+        "cap_fraction": 0.0,
+        "error_cm": 4.058604829854976,
+        "signed_error_xyz_cm": [
+          [
+            -1.6404003407716135,
+            -3.6139226735408836,
+            -0.19819010030959835
+          ]
+        ],
+        "root_delta_cm": [
+          0.24624322162403178,
+          -1.5458717444340409,
+          0.16068301286196185
+        ],
+        "root_xy_path_cm": 2.418952907790202,
+        "foot_xy_path_cm": [
+          0.4063628056644476,
+          0.34084950574748424
+        ],
+        "wrist_delta_cm": [
+          -1.467105969568916,
+          -2.381713884735687,
+          -0.42799180978152496
+        ],
+        "relative_wrist_shoulder_delta_cm": [
+          -0.5164044727803296,
+          -0.6096020022068869,
+          -0.4957482156355608
+        ],
+        "shoulder_elbow_q_delta_deg": [
+          -1.4324176192341793,
+          0.09246492283811536,
+          2.8641781935256634,
+          1.950455223099395
+        ],
+        "joint_travel_rad": 0.8356985588701509,
+        "absolute_mechanical_work_proxy_J": 1.712622453233156,
+        "max_tilt": 4.4139759829482,
+        "torso_pitch_deg_max": 5.630242840691766,
+        "pelvis_pitch_deg_max": 4.409018906345674,
+        "torso_yaw_delta_deg": -6.50629443178237,
+        "pelvis_yaw_delta_deg": -4.548344779249967,
+        "waist_final_deg": -1.9684607398706329,
+        "slip_peak": 0.006982192771679998,
+        "support_loss_ticks": 0,
+        "torque_saturation_peak": 0.0,
+        "actual_q_max_step_deg": 0.106076307550944,
+        "root_final_speed": 0.0015648495015974592,
+        "wrist_shoulder_in_torso_axes_delta_cm": [
+          0.6900158478529622,
+          1.1676571562957623,
+          -0.33626487797113747
+        ],
+        "wrist_torso_local_delta_cm": [
+          0.6900158478529622,
+          1.1676571562957787,
+          -0.33626487797118954
+        ]
+      },
+      "recover": {
+        "seconds": 4.005,
+        "force_rms": 0.0,
+        "sum_force_norm_rms": 0.0,
+        "force_xyz_rms": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "force_xyz_mean": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "per_point_force_peak": [
+          0.0
+        ],
+        "joint_limit_excess_max_rad": 0.0,
+        "cap_fraction": 0.0,
+        "error_cm": null,
+        "signed_error_xyz_cm": null,
+        "root_delta_cm": [
+          0.6923304050913237,
+          1.5081996304101266,
+          0.4287538637022581
+        ],
+        "root_xy_path_cm": 1.8036947231570148,
+        "foot_xy_path_cm": [
+          0.7699263381314159,
+          0.5940157308962221
+        ],
+        "wrist_delta_cm": [
+          1.211624506343667,
+          3.8231610689877042,
+          0.34945088583593353
+        ],
+        "relative_wrist_shoulder_delta_cm": [
+          1.367780467344093,
+          1.5908118819172257,
+          -0.3306996940926954
+        ],
+        "shoulder_elbow_q_delta_deg": [
+          -1.7748986871960857,
+          0.5836883449687077,
+          8.419805514789669,
+          4.2646121041035085
+        ],
+        "joint_travel_rad": 1.1534552406849452,
+        "absolute_mechanical_work_proxy_J": 2.100691463039263,
+        "max_tilt": 3.670418294872741,
+        "torso_pitch_deg_max": 5.0095394561821465,
+        "pelvis_pitch_deg_max": 3.6641895042594217,
+        "torso_yaw_delta_deg": -2.860346725677052,
+        "pelvis_yaw_delta_deg": -4.133628779387048,
+        "waist_final_deg": -0.6949382090195758,
+        "slip_peak": 0.005512656848633316,
+        "support_loss_ticks": 0,
+        "torque_saturation_peak": 0.0,
+        "actual_q_max_step_deg": 0.08642404207745708,
+        "root_final_speed": 0.0003192219958108488,
+        "wrist_shoulder_in_torso_axes_delta_cm": [
+          0.7866292193262792,
+          3.2705222684351885,
+          -0.7897439387007904
+        ],
+        "wrist_torso_local_delta_cm": [
+          0.7866292193262736,
+          3.2705222684351636,
+          -0.7897439387007419
+        ]
+      }
+    },
+    "boundary": null,
+    "reward_integrated_terms": {
+      "force": 15.6540761491243,
+      "uncapped": 0.8880335686044811,
+      "tracking": 0.14839921888394927,
+      "relative_velocity": 0.07238000096201387,
+      "heading": 0.33395043659378454,
+      "slip": 0.049168099694069434,
+      "tilt": 0.0,
+      "continuity": 0.024802323846495857,
+      "soft_prior": 0.0,
+      "idle": 0.0010624735973460725
+    },
+    "return_value": -17.17187227130644,
+    "root_contact_delta_cm": [
+      69.70365423646048,
+      9.53843741150201,
+      -0.29165829190073156
+    ],
+    "foot_xy2cm_time": 6.9299999999998745,
+    "qpd_max_step_deg": 53.23634195724987,
+    "qpd_p99_step_deg": 3.684228114721699,
+    "physics_steps": 2764,
+    "control_steps": 691
+  }
+]

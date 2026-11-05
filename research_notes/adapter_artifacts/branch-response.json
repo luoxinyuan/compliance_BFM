@@ -1,0 +1,227 @@
+[
+  {
+    "model": "F4501",
+    "folder": "final-F",
+    "first_command_difference": {
+      "time": 7.099999999999869,
+      "obs_max": 0.016701355576515198,
+      "raw_rms": 0.0001314695241355888
+    },
+    "prefix_command_max": 0.0,
+    "after_branch_stop_continue": [
+      {
+        "root_forward_cm": 25.192754571254213,
+        "wrist_forward_cm": 11.647942541455217,
+        "force_rms": 3.780375501918672,
+        "error_cm": 4.7202419150134345
+      },
+      {
+        "root_forward_cm": 61.06932610236689,
+        "wrist_forward_cm": 56.75848881378271,
+        "force_rms": 4.781142258535279,
+        "error_cm": 5.890453012996098
+      }
+    ],
+    "scope": "matched deterministic real physical branches; differences do not identify force vs privileged geometry contribution"
+  },
+  {
+    "model": "F4502",
+    "folder": "final-F",
+    "first_command_difference": {
+      "time": 7.099999999999869,
+      "obs_max": 0.016707677394151688,
+      "raw_rms": 0.00012984007528231905
+    },
+    "prefix_command_max": 0.0,
+    "after_branch_stop_continue": [
+      {
+        "root_forward_cm": 19.35243185752552,
+        "wrist_forward_cm": 10.178455439427067,
+        "force_rms": 3.72504194767787,
+        "error_cm": 4.671202538272518
+      },
+      {
+        "root_forward_cm": 60.42891887518766,
+        "wrist_forward_cm": 56.855295494435445,
+        "force_rms": 5.021284747635639,
+        "error_cm": 6.1961128191811214
+      }
+    ],
+    "scope": "matched deterministic real physical branches; differences do not identify force vs privileged geometry contribution"
+  },
+  {
+    "model": "R4501",
+    "folder": "final-R",
+    "first_command_difference": {
+      "time": 7.099999999999869,
+      "obs_max": 0.0169975645840168,
+      "raw_rms": 0.00012747935782238747
+    },
+    "prefix_command_max": 0.0,
+    "after_branch_stop_continue": [
+      {
+        "root_forward_cm": 29.263134866904373,
+        "wrist_forward_cm": 14.985738027687459,
+        "force_rms": 4.530547666152821,
+        "error_cm": 5.649088627207892
+      },
+      {
+        "root_forward_cm": 72.9141402618455,
+        "wrist_forward_cm": 60.251144918985744,
+        "force_rms": 5.291159477894537,
+        "error_cm": 6.55132256801613
+      }
+    ],
+    "scope": "matched deterministic real physical branches; differences do not identify force vs privileged geometry contribution"
+  },
+  {
+    "model": "R4502",
+    "folder": "final-R",
+    "first_command_difference": {
+      "time": 7.099999999999869,
+      "obs_max": 0.017047293484210968,
+      "raw_rms": 0.00010854624095908446
+    },
+    "prefix_command_max": 0.0,
+    "after_branch_stop_continue": [
+      {
+        "root_forward_cm": 25.455658845057076,
+        "wrist_forward_cm": 15.514802088579707,
+        "force_rms": 4.728897208338103,
+        "error_cm": 5.925017686148485
+      },
+      {
+        "root_forward_cm": 76.1228460791201,
+        "wrist_forward_cm": 61.55388392436196,
+        "force_rms": 5.024892138489139,
+        "error_cm": 6.234956776115396
+      }
+    ],
+    "scope": "matched deterministic real physical branches; differences do not identify force vs privileged geometry contribution"
+  },
+  {
+    "model": "C0",
+    "folder": "final-reference",
+    "first_command_difference": {
+      "time": 7.099999999999869,
+      "obs_max": 0.016732297837734222,
+      "raw_rms": 0.0001146228967418619
+    },
+    "prefix_command_max": 0.0,
+    "after_branch_stop_continue": [
+      {
+        "root_forward_cm": 2.4910443242482994,
+        "wrist_forward_cm": 3.6890690299522575,
+        "force_rms": 4.767468243113123,
+        "error_cm": 5.947537786643419
+      },
+      {
+        "root_forward_cm": 49.586784012060484,
+        "wrist_forward_cm": 51.06057379510782,
+        "force_rms": 9.488588079725975,
+        "error_cm": 28.70072526518081
+      }
+    ],
+    "scope": "matched deterministic real physical branches; differences do not identify force vs privileged geometry contribution"
+  },
+  {
+    "model": "C1",
+    "folder": "final-reference",
+    "first_command_difference": {
+      "time": 7.099999999999869,
+      "obs_max": 0.016701117157936096,
+      "raw_rms": 0.0001322143074347908
+    },
+    "prefix_command_max": 0.0,
+    "after_branch_stop_continue": [
+      {
+        "root_forward_cm": 27.194854147300905,
+        "wrist_forward_cm": 12.201954055570665,
+        "force_rms": 4.121305548860228,
+        "error_cm": 5.128520938285998
+      },
+      {
+        "root_forward_cm": 58.169732238625436,
+        "wrist_forward_cm": 54.55055291471588,
+        "force_rms": 4.775353420412652,
+        "error_cm": 5.866478438266192
+      }
+    ],
+    "scope": "matched deterministic real physical branches; differences do not identify force vs privileged geometry contribution"
+  },
+  {
+    "model": "I",
+    "folder": "final-reference",
+    "first_command_difference": {
+      "time": 7.099999999999869,
+      "obs_max": 0.016745582222938538,
+      "raw_rms": 0.00012286313943881024
+    },
+    "prefix_command_max": 0.0,
+    "after_branch_stop_continue": [
+      {
+        "root_forward_cm": 24.388778901946758,
+        "wrist_forward_cm": 12.115498824901746,
+        "force_rms": 3.6343631417717615,
+        "error_cm": 4.514520815941112
+      },
+      {
+        "root_forward_cm": 71.9941169118099,
+        "wrist_forward_cm": 58.873403779439016,
+        "force_rms": 5.1026290607658575,
+        "error_cm": 6.244199874165482
+      }
+    ],
+    "scope": "matched deterministic real physical branches; differences do not identify force vs privileged geometry contribution"
+  },
+  {
+    "model": "I",
+    "folder": "probe",
+    "first_command_difference": {
+      "time": 7.099999999999869,
+      "obs_max": 0.016745582222938538,
+      "raw_rms": 0.00012286313943881024
+    },
+    "prefix_command_max": 0.0,
+    "after_branch_stop_continue": [
+      {
+        "root_forward_cm": 24.388778901946758,
+        "wrist_forward_cm": 12.115498824901746,
+        "force_rms": 3.6343631417717615,
+        "error_cm": 4.514520815941112
+      },
+      {
+        "root_forward_cm": 71.9941169118099,
+        "wrist_forward_cm": 58.873403779439016,
+        "force_rms": 5.1026290607658575,
+        "error_cm": 6.244199874165482
+      }
+    ],
+    "scope": "matched deterministic real physical branches; differences do not identify force vs privileged geometry contribution"
+  },
+  {
+    "model": "student",
+    "folder": "probe",
+    "first_command_difference": {
+      "time": 7.099999999999869,
+      "obs_max": 0.016796931624412537,
+      "raw_rms": 2.2242066821870663e-05
+    },
+    "prefix_command_max": 0.0,
+    "after_branch_stop_continue": [
+      {
+        "root_forward_cm": 25.571323900136978,
+        "wrist_forward_cm": 12.302050273414938,
+        "force_rms": 4.014307102702434,
+        "error_cm": 4.983733323124744
+      },
+      {
+        "root_forward_cm": 67.88955291707195,
+        "wrist_forward_cm": 57.85344213678532,
+        "force_rms": 5.010168748520984,
+        "error_cm": 6.122070325902536
+      }
+    ],
+    "scope": "matched deterministic real physical branches; differences do not identify force vs privileged geometry contribution"
+  }
+]

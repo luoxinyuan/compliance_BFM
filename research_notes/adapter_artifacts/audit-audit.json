@@ -1,0 +1,243 @@
+{
+  "samples": 750,
+  "pairs": [
+    {
+      "i": 0,
+      "j": 141,
+      "kind": [
+        "zero",
+        "arm5"
+      ],
+      "time": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 0,
+      "j": 234,
+      "kind": [
+        "zero",
+        "arm15"
+      ],
+      "time": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 0,
+      "j": 327,
+      "kind": [
+        "zero",
+        "walk"
+      ],
+      "time": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 1,
+      "j": 142,
+      "kind": [
+        "zero",
+        "arm5"
+      ],
+      "time": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 1,
+      "j": 235,
+      "kind": [
+        "zero",
+        "arm15"
+      ],
+      "time": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 1,
+      "j": 328,
+      "kind": [
+        "zero",
+        "walk"
+      ],
+      "time": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 141,
+      "j": 234,
+      "kind": [
+        "arm5",
+        "arm15"
+      ],
+      "time": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 141,
+      "j": 327,
+      "kind": [
+        "arm5",
+        "walk"
+      ],
+      "time": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 142,
+      "j": 235,
+      "kind": [
+        "arm5",
+        "arm15"
+      ],
+      "time": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 142,
+      "j": 328,
+      "kind": [
+        "arm5",
+        "walk"
+      ],
+      "time": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 234,
+      "j": 327,
+      "kind": [
+        "arm15",
+        "walk"
+      ],
+      "time": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 235,
+      "j": 328,
+      "kind": [
+        "arm15",
+        "walk"
+      ],
+      "time": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 468,
+      "j": 609,
+      "kind": [
+        "left",
+        "right"
+      ],
+      "time": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 470,
+      "j": 611,
+      "kind": [
+        "left",
+        "right"
+      ],
+      "time": [
+        4.199999999999933,
+        4.199999999999933
+      ],
+      "input_rms": 0.0,
+      "z_angle_deg": 0.0,
+      "same_state_five_qpd_rms_deg": 0.0
+    },
+    {
+      "i": 472,
+      "j": 613,
+      "kind": [
+        "left",
+        "right"
+      ],
+      "time": [
+        4.399999999999928,
+        4.399999999999928
+      ],
+      "input_rms": 0.00016747909830883145,
+      "z_angle_deg": 0.07661668211221695,
+      "same_state_five_qpd_rms_deg": 0.0022500697523355484
+    }
+  ],
+  "exact_conflicts": [],
+  "initial_I_parity": true,
+  "adapter_initial_gradients": {
+    "0.weight": 0.0,
+    "0.bias": 0.0,
+    "2.weight": 0.0,
+    "2.bias": 0.0,
+    "4.weight": 0.43357059359550476,
+    "4.bias": 0.14803679287433624
+  },
+  "first_layer_initial_zero_gradient_expected": "zero last layer, hidden layers receive gradient after first update; not all-layer zero initialization",
+  "label_source_scope": "arm5/15 share continuous current-displacement mapping within qualified source; walking uses I, not a general unified expert; near labels alone do not prove hidden future contradiction",
+  "decision": "same corrected dataset both arms"
+}

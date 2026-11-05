@@ -1,0 +1,19 @@
+{
+  "proprio465": "BFM normalized encoder positions29, velocities29, IMU gravity3/angularvelocity3; last_action29 and history372",
+  "last_z256": "actual combined policy command history",
+  "contact918": "100 measured force3 across3 slots in current body frame;18 known attachment/link/local mount encoding",
+  "excluded": [
+    "anchor/error",
+    "partner velocity",
+    "target yaw",
+    "clock",
+    "taskID",
+    "active",
+    "support truth",
+    "teacher base features/output"
+  ],
+  "hardware": "ideal force simulation; G1 force sensor availability unknown",
+  "split": "whole episodes; no random adjacent-frame train/test split",
+  "teacher": "preselected I, not selected F/R",
+  "privileged_teacher": "both F and R base read1088 privileged features; neither is a deployable Student"
+}

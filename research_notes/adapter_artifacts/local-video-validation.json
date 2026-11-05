@@ -1,0 +1,23 @@
+[
+  {
+    "file": "01-same-model-small-long.mp4",
+    "sha256": "17d32795c883b3440a3eb0665b4457674664e7cb122448b47bdcf5cc59e195e3",
+    "bytes": 6514479,
+    "duration": 13.84,
+    "fully_decoded": true
+  },
+  {
+    "file": "02-common-prefix-stop-continue.mp4",
+    "sha256": "c40c117d3e14b0340047f6821f1b94d003ea7fad26b620fb7583896dbfa1a881",
+    "bytes": 5683800,
+    "duration": 14.28,
+    "fully_decoded": true
+  },
+  {
+    "file": "03-natural-source-states.mp4",
+    "sha256": "fd69bc6d750f01072fda07d178f9be21d715eaa66fc9b374b48b856081f9e8b2",
+    "bytes": 4765744,
+    "duration": 11.72,
+    "fully_decoded": true
+  }
+]

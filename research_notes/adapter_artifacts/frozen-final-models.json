@@ -1,0 +1,31 @@
+{
+  "F4501": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/F4501/F4501-2000.pt",
+    "sha256": "52956080217e6346b1a8b196ad411cbc84a07e248a8e747eeedf2dcc775e12f6"
+  },
+  "R4501": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/R4501/R4501-2000.pt",
+    "sha256": "298af356d386f79377ca103b4fc82baecbf6e18a997a958633dade2cc7733a37"
+  },
+  "F4502": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/F4502/F4502-2000.pt",
+    "sha256": "9e009414dcac884f8bfc39566e5c8ea6a9ca3831f47f5e56e0a29ea0421f3462"
+  },
+  "R4502": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/R4502/R4502-2000.pt",
+    "sha256": "d940c66409c1cec7f6e1ffec7c25589c99abf227a597c3bdb67447d4ec9d0561"
+  },
+  "I": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+    "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+    "selection_reason": "M39-A best64 shared M39-B initialization; chosen before this stage evidence; avoids selecting an arm by final M39-B outcomes"
+  },
+  "C0": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/correct-C0/C0.pt",
+    "sha256": "ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c"
+  },
+  "C1": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/correct-C1/C1.pt",
+    "sha256": "8ead3da1a2844fa8ac4cae3543df7aae93021202a8d8335af2f164fd2076455d"
+  }
+}

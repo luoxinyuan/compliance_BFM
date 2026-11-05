@@ -1,0 +1,17 @@
+[
+  {
+    "model": "I",
+    "sha256": "f59f8c4291861202edf11a1459ebe8037e5c2500760a97e7b90f66f795a19cc4",
+    "physics_ticks": 800
+  },
+  {
+    "model": "F4501",
+    "sha256": "f59f8c4291861202edf11a1459ebe8037e5c2500760a97e7b90f66f795a19cc4",
+    "physics_ticks": 800
+  },
+  {
+    "model": "R4501",
+    "sha256": "f59f8c4291861202edf11a1459ebe8037e5c2500760a97e7b90f66f795a19cc4",
+    "physics_ticks": 800
+  }
+]
