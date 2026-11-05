@@ -1,6 +1,6 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-05 CST。**Issue46已结项；用户新授权Issue47：C0局部响应与延迟全身参与。已完成保存数据分析，GPU接管/PPO尚未启动，因没有稳定空闲GPU暂缓。没有后台训练或自动排队任务。**
+最后核对：2026-11-05 CST。**Issue46已结项；用户新授权Issue47：C0局部响应与延迟全身参与。已完成保存数据分析，GPU接管/PPO尚未启动，因没有稳定空闲GPU暂缓。没有后台训练或自动排队任务；等待用户通知GPU可用后再实时核验并恢复。**
 
 [完整结果](COEXIST_RESULTS.md) · [预登记协议](COEXIST_PROTOCOL.md) · [Issue46](https://github.com/GaoE05/robot-research-bridge/issues/46) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18) · [BFM原生复用最小路线](BFM_REWARD_REUSE_ROADMAP.md)。RESEARCH_OVERVIEW是长期纲领；ChatGPT Library2026-10-28是历史快照。
 
@@ -26,7 +26,9 @@ Contact-conditioned whole-body behavior selection/modulation/transition：依据
 
 ## 当前授权：Issue47 C0局部→全身参与（进行中，资源暂缓）
 
-[详细记录](C0_ENGAGEMENT_RESULTS.md) · [Issue47](https://github.com/GaoE05/robot-research-bridge/issues/47) · [协议](c0_engagement_protocol.json)。用户观看C0后更认可其先局部、后身体参与的组织，当前优先研究delayed engagement；旧原生reward-prompting建议改为后备工具，未执行。
+[详细记录](C0_ENGAGEMENT_RESULTS.md) · [Issue47](https://github.com/GaoE05/robot-research-bridge/issues/47) · [协议](c0_engagement_protocol.json)。[方法定位与自主学习思考](CONTACT_LEARNING_RATIONALE.md)。用户观看C0后更认可其先局部、后身体参与的组织，当前优先研究delayed engagement；旧原生reward-prompting建议改为后备工具，未执行。
+
+讨论结论：继续既定C0/I接管有价值，用有限同状态干预区分条件运动能力、启动/维持反馈与恢复域；证据支持后才进行原授权PPO。最终主线是接触/身体状态条件的自主行为选择，不是人工goal答案拼接。人工goal用于资格、初始化和探索；BFM风格先验及PPO均不保证任意状态/latent序列自然或全局收敛。此次仅文档澄清，不改实验变量、预算或封存设置，不启动多部位/新力范围训练。
 
 C0精确SHA `ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c`，`runs/prior-recovery-20261105/correct-C0/C0.pt`。I起点、750条六类示范、2000监督更新；没有后续PPO，也没有在线先手后脚规则。仍是1088D特权Teacher，不是部署Student。
 
