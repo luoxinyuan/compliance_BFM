@@ -1,0 +1,1808 @@
+{
+  "rows": [
+    {
+      "model": "I",
+      "condition": "new9",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-reference/I__new9.json.gz",
+      "max_reward_error": 1.1102230246251565e-16,
+      "return_sum": -3.452229161722851,
+      "discounted_return": -2.5956672185849494,
+      "integrated_costs": {
+        "force": 3.1538841678266127,
+        "uncapped": 0.22083304029856207,
+        "tracking": 0.028990011622757435,
+        "relative_velocity": 0.016606108601119815,
+        "heading": 0.010521921454232785,
+        "slip": 0.015379452284823573,
+        "tilt": 0.0,
+        "continuity": 0.0051074130657953005,
+        "soft_prior": 0.0,
+        "idle": 0.0009070465689474803
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.0002048337391249357,
+          "terms": {
+            "force": 2.6361988193399465e-05,
+            "uncapped": 2.635518062463794e-06,
+            "tracking": 9.57762364353051e-09,
+            "relative_velocity": 1.8282272707436616e-06,
+            "heading": 0.0001487814610408811,
+            "slip": 6.031865280895326e-06,
+            "tilt": 0.0,
+            "continuity": 3.1127526210639193e-07,
+            "soft_prior": 0.0,
+            "idle": 1.8873826390802445e-05
+          }
+        },
+        "move": {
+          "seconds": 1.6000000000000003,
+          "return_sum": -0.750039321555228,
+          "terms": {
+            "force": 0.6796539867178762,
+            "uncapped": 0.05611133426672524,
+            "tracking": 0.005466870976093748,
+            "relative_velocity": 0.0024725220739638624,
+            "heading": 0.005913320807842389,
+            "slip": 0.0003061506767464947,
+            "tilt": 0.0,
+            "continuity": 0.00011513603597995827,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -2.7004965426977243,
+          "terms": {
+            "force": 2.474203819120543,
+            "uncapped": 0.1647190705137744,
+            "tracking": 0.023523131069040044,
+            "relative_velocity": 0.014131758299885213,
+            "heading": 0.0044598191853495155,
+            "slip": 0.014462967837228087,
+            "tilt": 0.0,
+            "continuity": 0.004983132132983882,
+            "soft_prior": 0.0,
+            "idle": 1.2844538920234178e-05
+          }
+        },
+        "release": {
+          "seconds": 3.940000000000002,
+          "return_sum": -0.0014884637307738921,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 0.0006043019055680968,
+            "tilt": 0.0,
+            "continuity": 8.833621569351634e-06,
+            "soft_prior": 0.0,
+            "idle": 0.0008753282036364436
+          }
+        }
+      }
+    },
+    {
+      "model": "I",
+      "condition": "new65",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-reference/I__new65.json.gz",
+      "max_reward_error": 1.6653345369377348e-16,
+      "return_sum": -12.02409359526524,
+      "discounted_return": -7.56565306524092,
+      "integrated_costs": {
+        "force": 11.050094963088652,
+        "uncapped": 0.6709718028615401,
+        "tracking": 0.10146831239833073,
+        "relative_velocity": 0.06291599949289181,
+        "heading": 0.057151646218098394,
+        "slip": 0.06317895483829863,
+        "tilt": 0.0,
+        "continuity": 0.017525728349863316,
+        "soft_prior": 0.0,
+        "idle": 0.0007861880175665736
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.0011140503839212619,
+          "terms": {
+            "force": 1.2224061901388954e-05,
+            "uncapped": 1.2222797003715004e-06,
+            "tracking": 5.238430974126843e-09,
+            "relative_velocity": 8.233530480619921e-07,
+            "heading": 0.0010745580574822206,
+            "slip": 6.032223238347364e-06,
+            "tilt": 0.0,
+            "continuity": 3.113437290949151e-07,
+            "soft_prior": 0.0,
+            "idle": 1.8873826390802445e-05
+          }
+        },
+        "move": {
+          "seconds": 6.999999999999991,
+          "return_sum": -11.400232803353994,
+          "terms": {
+            "force": 10.485470096090692,
+            "uncapped": 0.6196518016571658,
+            "tracking": 0.09570226696539172,
+            "relative_velocity": 0.06286657425601468,
+            "heading": 0.05597265303486339,
+            "slip": 0.06304928514880873,
+            "tilt": 0.0,
+            "continuity": 0.017520126201059617,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -0.621928584552381,
+          "terms": {
+            "force": 0.5646126429360583,
+            "uncapped": 0.05131877892467384,
+            "tracking": 0.005766040194508057,
+            "relative_velocity": 4.860188382907658e-05,
+            "heading": 0.00010443512575279164,
+            "slip": 7.57760783932956e-05,
+            "tilt": 0.0,
+            "continuity": 7.805547605812536e-07,
+            "soft_prior": 0.0,
+            "idle": 1.528854405050065e-06
+          }
+        },
+        "release": {
+          "seconds": 3.920000000000002,
+          "return_sum": -0.0008181569749429678,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 4.7861387858233786e-05,
+            "tilt": 0.0,
+            "continuity": 4.5102503140128645e-06,
+            "soft_prior": 0.0,
+            "idle": 0.0007657853367707211
+          }
+        }
+      }
+    },
+    {
+      "model": "I",
+      "condition": "stop",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-reference/I__stop.json.gz",
+      "max_reward_error": 5.551115123125783e-17,
+      "return_sum": -7.65834575741974,
+      "discounted_return": -4.994904344872837,
+      "integrated_costs": {
+        "force": 6.967558872424925,
+        "uncapped": 0.48170719734211714,
+        "tracking": 0.06454106389096327,
+        "relative_velocity": 0.03304438910249967,
+        "heading": 0.08217431841823902,
+        "slip": 0.01938308050888283,
+        "tilt": 0.0,
+        "continuity": 0.00803914361517783,
+        "soft_prior": 0.0,
+        "idle": 0.001897692116936418
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.0011131600825874215,
+          "terms": {
+            "force": 1.1461765090504681e-05,
+            "uncapped": 1.1460668030977034e-06,
+            "tracking": 4.990296735762774e-09,
+            "relative_velocity": 7.700141474914303e-07,
+            "heading": 0.0010745598222431242,
+            "slip": 6.032248325692703e-06,
+            "tilt": 0.0,
+            "continuity": 3.113492899728954e-07,
+            "soft_prior": 0.0,
+            "idle": 1.8873826390802445e-05
+          }
+        },
+        "move": {
+          "seconds": 2.2000000000000006,
+          "return_sum": -1.5840960277868479,
+          "terms": {
+            "force": 1.4196378926052529,
+            "uncapped": 0.09490689539218466,
+            "tracking": 0.010540848435465976,
+            "relative_velocity": 0.0055598536417695915,
+            "heading": 0.051918515912818985,
+            "slip": 0.0004994708879297513,
+            "tilt": 0.0,
+            "continuity": 0.0010325509114263696,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "decelerate": {
+          "seconds": 0.7,
+          "return_sum": -2.49105168384332,
+          "terms": {
+            "force": 2.320982696670769,
+            "uncapped": 0.11987766122918038,
+            "tracking": 0.021447014035072754,
+            "relative_velocity": 0.01978299926030202,
+            "heading": 0.000463322467767757,
+            "slip": 0.0033635222040605548,
+            "tilt": 0.0,
+            "continuity": 0.005134467976167798,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 6.499999999999993,
+          "return_sum": -3.5801739582200076,
+          "terms": {
+            "force": 3.2269268213838096,
+            "uncapped": 0.2669214946539488,
+            "tracking": 0.032553196430127766,
+            "relative_velocity": 0.007700766186280561,
+            "heading": 0.028717920215409126,
+            "slip": 0.015498599655971518,
+            "tilt": 0.0,
+            "continuity": 0.00185424174328844,
+            "soft_prior": 0.0,
+            "idle": 9.179511713354678e-07
+          }
+        },
+        "release": {
+          "seconds": 3.960000000000002,
+          "return_sum": -0.0019109274869748504,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 1.5455512595316837e-05,
+            "tilt": 0.0,
+            "continuity": 1.7571635005253944e-05,
+            "soft_prior": 0.0,
+            "idle": 0.0018779003393742798
+          }
+        }
+      }
+    },
+    {
+      "model": "I",
+      "condition": "continue",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-reference/I__continue.json.gz",
+      "max_reward_error": 1.1102230246251565e-16,
+      "return_sum": -13.764083770421944,
+      "discounted_return": -8.20481144909824,
+      "integrated_costs": {
+        "force": 12.505504850596639,
+        "uncapped": 0.7493847201580055,
+        "tracking": 0.11524044536399933,
+        "relative_velocity": 0.06722604764375878,
+        "heading": 0.22170682268155534,
+        "slip": 0.07894695202320007,
+        "tilt": 0.0,
+        "continuity": 0.02567309819900261,
+        "soft_prior": 0.0,
+        "idle": 0.00040083375578286323
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.0011131600825874215,
+          "terms": {
+            "force": 1.1461765090504681e-05,
+            "uncapped": 1.1460668030977034e-06,
+            "tracking": 4.990296735762774e-09,
+            "relative_velocity": 7.700141474914303e-07,
+            "heading": 0.0010745598222431242,
+            "slip": 6.032248325692703e-06,
+            "tilt": 0.0,
+            "continuity": 3.113492899728954e-07,
+            "soft_prior": 0.0,
+            "idle": 1.8873826390802445e-05
+          }
+        },
+        "move": {
+          "seconds": 7.39999999999999,
+          "return_sum": -12.965640522803875,
+          "terms": {
+            "force": 11.884961937092456,
+            "uncapped": 0.6933206966581538,
+            "tracking": 0.10874288428623533,
+            "relative_velocity": 0.06693847868389294,
+            "heading": 0.10721222859439958,
+            "slip": 0.0788077571295601,
+            "tilt": 0.0,
+            "continuity": 0.02565654035917396,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -0.7968848849407464,
+          "terms": {
+            "force": 0.6205314517390871,
+            "uncapped": 0.05606287743304889,
+            "tracking": 0.006497556087467268,
+            "relative_velocity": 0.000286798945718345,
+            "heading": 0.11342003426491262,
+            "slip": 7.949126542588262e-05,
+            "tilt": 0.0,
+            "continuity": 6.280546880589101e-06,
+            "soft_prior": 0.0,
+            "idle": 3.946582054809248e-07
+          }
+        },
+        "release": {
+          "seconds": 3.960000000000002,
+          "return_sum": -0.00044520259473309145,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 5.3671379888402265e-05,
+            "tilt": 0.0,
+            "continuity": 9.965943658109209e-06,
+            "soft_prior": 0.0,
+            "idle": 0.00038156527118657986
+          }
+        }
+      }
+    },
+    {
+      "model": "C0",
+      "condition": "new9",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-reference/C0__new9.json.gz",
+      "max_reward_error": 2.0816681711721685e-17,
+      "return_sum": -1.2651649610743803,
+      "discounted_return": -0.954741669341812,
+      "integrated_costs": {
+        "force": 1.1287294456899075,
+        "uncapped": 0.10042800345658456,
+        "tracking": 0.010421303159095757,
+        "relative_velocity": 0.002928130618144964,
+        "heading": 0.019494376083793636,
+        "slip": 8.039046564139974e-05,
+        "tilt": 0.0,
+        "continuity": 0.0006612236922849489,
+        "soft_prior": 0.0,
+        "idle": 0.0024220879089272853
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.00018387869654955534,
+          "terms": {
+            "force": 1.5801688007882874e-05,
+            "uncapped": 1.5798931987867208e-06,
+            "tracking": 4.986794603329535e-09,
+            "relative_velocity": 1.1246389368191874e-06,
+            "heading": 0.0001522325694504132,
+            "slip": 6.147344844556397e-06,
+            "tilt": 0.0,
+            "continuity": 8.934816858641171e-08,
+            "soft_prior": 0.0,
+            "idle": 6.898227147907225e-06
+          }
+        },
+        "move": {
+          "seconds": 1.6000000000000003,
+          "return_sum": -0.4993518993911409,
+          "terms": {
+            "force": 0.44835034047616223,
+            "uncapped": 0.039740964398266306,
+            "tracking": 0.00380720958877,
+            "relative_velocity": 0.0011115432717378523,
+            "heading": 0.006219274387759975,
+            "slip": 3.147810495427539e-05,
+            "tilt": 0.0,
+            "continuity": 9.108916349032369e-05,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -0.7629827134464616,
+          "terms": {
+            "force": 0.6803633035257375,
+            "uncapped": 0.06068545916511948,
+            "tracking": 0.006614088583531153,
+            "relative_velocity": 0.0018154627074702932,
+            "heading": 0.013122869126583246,
+            "slip": 1.4633089573234332e-05,
+            "tilt": 0.0,
+            "continuity": 0.0003608919450489339,
+            "soft_prior": 0.0,
+            "idle": 6.005303397797211e-06
+          }
+        },
+        "release": {
+          "seconds": 3.940000000000002,
+          "return_sum": -0.002646469540228019,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 2.8131926269333626e-05,
+            "tilt": 0.0,
+            "continuity": 0.00020915323557710509,
+            "soft_prior": 0.0,
+            "idle": 0.002409184378381581
+          }
+        }
+      }
+    },
+    {
+      "model": "C0",
+      "condition": "new65",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-reference/C0__new65.json.gz",
+      "max_reward_error": 3.3306690738754696e-16,
+      "return_sum": -47.69228611095685,
+      "discounted_return": -25.195865269792563,
+      "integrated_costs": {
+        "force": 39.80461992041274,
+        "uncapped": 3.4118909621190494,
+        "tracking": 3.445748842575415,
+        "relative_velocity": 0.08374791405929181,
+        "heading": 0.760872478117473,
+        "slip": 0.0457310772100378,
+        "tilt": 0.0,
+        "continuity": 0.024280541555757425,
+        "soft_prior": 0.0,
+        "idle": 0.11539437490709105
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.0011186674611424125,
+          "terms": {
+            "force": 5.176484509651162e-06,
+            "uncapped": 5.176231058040939e-07,
+            "tracking": 1.9656916188543324e-09,
+            "relative_velocity": 3.5599072351621526e-07,
+            "heading": 0.00109948018756176,
+            "slip": 6.147620447106805e-06,
+            "tilt": 0.0,
+            "continuity": 8.93619550481617e-08,
+            "soft_prior": 0.0,
+            "idle": 6.898227147907225e-06
+          }
+        },
+        "move": {
+          "seconds": 6.999999999999991,
+          "return_sum": -33.10161039080668,
+          "terms": {
+            "force": 28.3146147439282,
+            "uncapped": 2.2780117615788327,
+            "tracking": 2.001642065577648,
+            "relative_velocity": 0.05465352750473892,
+            "heading": 0.4382249403845949,
+            "slip": 0.0035691240724170176,
+            "tilt": 0.0,
+            "continuity": 0.010894227760270953,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -14.459881349283007,
+          "terms": {
+            "force": 11.489999999999997,
+            "uncapped": 1.1338786829171112,
+            "tracking": 1.444106775032075,
+            "relative_velocity": 0.02909403056382939,
+            "heading": 0.3215480575453165,
+            "slip": 0.017113721021985072,
+            "tilt": 0.0,
+            "continuity": 0.009578281483845787,
+            "soft_prior": 0.0,
+            "idle": 0.01456180071884456
+          }
+        },
+        "release": {
+          "seconds": 3.920000000000002,
+          "return_sum": -0.12967570340597281,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 0.025042084495188622,
+            "tilt": 0.0,
+            "continuity": 0.0038079429496856395,
+            "soft_prior": 0.0,
+            "idle": 0.10082567596109858
+          }
+        }
+      }
+    },
+    {
+      "model": "C0",
+      "condition": "stop",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-reference/C0__stop.json.gz",
+      "max_reward_error": 5.551115123125783e-17,
+      "return_sum": -12.019762523925307,
+      "discounted_return": -6.6002274381784405,
+      "integrated_costs": {
+        "force": 10.59365785966185,
+        "uncapped": 0.75884083772554,
+        "tracking": 0.10174940885098735,
+        "relative_velocity": 0.004855117217784954,
+        "heading": 0.5489008918702877,
+        "slip": 0.00015666212329766674,
+        "tilt": 0.0,
+        "continuity": 0.005338182747917743,
+        "soft_prior": 0.0,
+        "idle": 0.006263563727643354
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.001118065493271922,
+          "terms": {
+            "force": 4.661282450810707e-06,
+            "uncapped": 4.6610809695924804e-07,
+            "tracking": 1.8098598720165297e-09,
+            "relative_velocity": 3.1927025490106824e-07,
+            "heading": 0.0010994817927030113,
+            "slip": 6.147639838310431e-06,
+            "tilt": 0.0,
+            "continuity": 8.936292014993797e-08,
+            "soft_prior": 0.0,
+            "idle": 6.898227147907225e-06
+          }
+        },
+        "move": {
+          "seconds": 2.2000000000000006,
+          "return_sum": -0.9852116721481443,
+          "terms": {
+            "force": 0.8464419954792498,
+            "uncapped": 0.06652774296752532,
+            "tracking": 0.006811256169816151,
+            "relative_velocity": 0.0013323964628384028,
+            "heading": 0.06395919090797993,
+            "slip": 2.7378356636235962e-05,
+            "tilt": 0.0,
+            "continuity": 0.0001117118040983769,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "decelerate": {
+          "seconds": 0.7,
+          "return_sum": -1.216947697359888,
+          "terms": {
+            "force": 1.1009500679376292,
+            "uncapped": 0.07520340242904246,
+            "tracking": 0.01043247931387602,
+            "relative_velocity": 0.00032478189749392554,
+            "heading": 0.029865038019001804,
+            "slip": 6.890377074543397e-06,
+            "tilt": 0.0,
+            "continuity": 0.00016503738577011975,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 6.499999999999993,
+          "return_sum": -9.80973143144682,
+          "terms": {
+            "force": 8.646261134962518,
+            "uncapped": 0.6171092262208754,
+            "tracking": 0.0845056715574353,
+            "relative_velocity": 0.003197619587197725,
+            "heading": 0.4539771811506028,
+            "slip": 6.997733942000732e-05,
+            "tilt": 0.0,
+            "continuity": 0.004601384222274646,
+            "soft_prior": 0.0,
+            "idle": 9.236406493590122e-06
+          }
+        },
+        "release": {
+          "seconds": 3.960000000000002,
+          "return_sum": -0.006753657477184874,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 4.6268410328569684e-05,
+            "tilt": 0.0,
+            "continuity": 0.0004599599728544491,
+            "soft_prior": 0.0,
+            "idle": 0.006247429094001856
+          }
+        }
+      }
+    },
+    {
+      "model": "C0",
+      "condition": "continue",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-reference/C0__continue.json.gz",
+      "max_reward_error": 2.220446049250313e-16,
+      "return_sum": -45.84545522708788,
+      "discounted_return": -23.98149945983741,
+      "integrated_costs": {
+        "force": 39.64903222314693,
+        "uncapped": 2.958651647733828,
+        "tracking": 2.2334616842391615,
+        "relative_velocity": 0.1262257262335435,
+        "heading": 0.611583484413108,
+        "slip": 0.11433113854016809,
+        "tilt": 0.0,
+        "continuity": 0.040582047207042955,
+        "soft_prior": 0.0,
+        "idle": 0.11158727557409205
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.001118065493271922,
+          "terms": {
+            "force": 4.661282450810707e-06,
+            "uncapped": 4.6610809695924804e-07,
+            "tracking": 1.8098598720165297e-09,
+            "relative_velocity": 3.1927025490106824e-07,
+            "heading": 0.0010994817927030113,
+            "slip": 6.147639838310431e-06,
+            "tilt": 0.0,
+            "continuity": 8.936292014993797e-08,
+            "soft_prior": 0.0,
+            "idle": 6.898227147907225e-06
+          }
+        },
+        "move": {
+          "seconds": 7.39999999999999,
+          "return_sum": -34.39351869348835,
+          "terms": {
+            "force": 29.62867233971935,
+            "uncapped": 2.3346116090732396,
+            "tracking": 1.896287079908622,
+            "relative_velocity": 0.06524777202312003,
+            "heading": 0.42819983046869187,
+            "slip": 0.02213058047703256,
+            "tilt": 0.0,
+            "continuity": 0.018369481818326674,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -11.32210608635578,
+          "terms": {
+            "force": 10.020355222145106,
+            "uncapped": 0.6240395725524925,
+            "tracking": 0.3371746025206799,
+            "relative_velocity": 0.06097763494016861,
+            "heading": 0.18228417215171314,
+            "slip": 0.06407817826265572,
+            "tilt": 0.0,
+            "continuity": 0.020290449515916416,
+            "soft_prior": 0.0,
+            "idle": 0.012906254267039783
+          }
+        },
+        "release": {
+          "seconds": 3.960000000000002,
+          "return_sum": -0.1287123817504257,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 0.028116232160641505,
+            "tilt": 0.0,
+            "continuity": 0.0019220265098797425,
+            "soft_prior": 0.0,
+            "idle": 0.09867412307990436
+          }
+        }
+      }
+    },
+    {
+      "model": "C1",
+      "condition": "new9",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-reference/C1__new9.json.gz",
+      "max_reward_error": 5.551115123125783e-17,
+      "return_sum": -3.7365889457818136,
+      "discounted_return": -2.8059987451814195,
+      "integrated_costs": {
+        "force": 3.433695165842942,
+        "uncapped": 0.2294638351195896,
+        "tracking": 0.03125118626456751,
+        "relative_velocity": 0.022554009482407784,
+        "heading": 0.012518755899219585,
+        "slip": 0.003400919663135626,
+        "tilt": 0.0,
+        "continuity": 0.0030263862477951306,
+        "soft_prior": 0.0,
+        "idle": 0.0006786872621561202
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.000186541050913061,
+          "terms": {
+            "force": 1.4782060009141662e-05,
+            "uncapped": 1.4779613979440668e-06,
+            "tracking": 4.5773433464254114e-09,
+            "relative_velocity": 1.0557394043755044e-06,
+            "heading": 0.00015341516510717113,
+            "slip": 6.140742932798293e-06,
+            "tilt": 0.0,
+            "continuity": 1.1314463893086214e-07,
+            "soft_prior": 0.0,
+            "idle": 9.551660079353071e-06
+          }
+        },
+        "move": {
+          "seconds": 1.6000000000000003,
+          "return_sum": -0.7681248918714307,
+          "terms": {
+            "force": 0.6961383811031141,
+            "uncapped": 0.05731982546220227,
+            "tracking": 0.005569074230265678,
+            "relative_velocity": 0.0027885257806643917,
+            "heading": 0.005840204323402851,
+            "slip": 0.00035618070817932903,
+            "tilt": 0.0,
+            "continuity": 0.00011270026360216435,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -2.967126880388329,
+          "terms": {
+            "force": 2.7375420026798185,
+            "uncapped": 0.17214253169598936,
+            "tracking": 0.025682107456958484,
+            "relative_velocity": 0.019764427962339015,
+            "heading": 0.006525136410709567,
+            "slip": 0.0025307274810728838,
+            "tilt": 0.0,
+            "continuity": 0.0029042719466669956,
+            "soft_prior": 0.0,
+            "idle": 3.5674754773628415e-05
+          }
+        },
+        "release": {
+          "seconds": 3.940000000000002,
+          "return_sum": -0.0011506324711407956,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 0.0005078707309506161,
+            "tilt": 0.0,
+            "continuity": 9.300892887040386e-06,
+            "soft_prior": 0.0,
+            "idle": 0.0006334608473031388
+          }
+        }
+      }
+    },
+    {
+      "model": "C1",
+      "condition": "new65",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-reference/C1__new65.json.gz",
+      "max_reward_error": 1.6653345369377348e-16,
+      "return_sum": -12.197687467880339,
+      "discounted_return": -8.105091372814481,
+      "integrated_costs": {
+        "force": 11.138856851191454,
+        "uncapped": 0.6252838232850418,
+        "tracking": 0.1046624070088835,
+        "relative_velocity": 0.04545862065841888,
+        "heading": 0.2404519746298737,
+        "slip": 0.02394459015134129,
+        "tilt": 0.0,
+        "continuity": 0.018756797447351828,
+        "soft_prior": 0.0,
+        "idle": 0.0002724035079737998
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.0011291601877662068,
+          "terms": {
+            "force": 4.560640894834058e-06,
+            "uncapped": 4.5604409809375875e-07,
+            "tracking": 1.6987166652324183e-09,
+            "relative_velocity": 3.147418705763479e-07,
+            "heading": 0.0011080212322438468,
+            "slip": 6.141015470002398e-06,
+            "tilt": 0.0,
+            "continuity": 1.1315439283521301e-07,
+            "soft_prior": 0.0,
+            "idle": 9.551660079353071e-06
+          }
+        },
+        "move": {
+          "seconds": 6.999999999999991,
+          "return_sum": -11.659123465331591,
+          "terms": {
+            "force": 10.694576779376838,
+            "uncapped": 0.5841135279819731,
+            "tracking": 0.10018424301803884,
+            "relative_velocity": 0.04533977483629867,
+            "heading": 0.19228515577684577,
+            "slip": 0.023903449963908856,
+            "tilt": 0.0,
+            "continuity": 0.018720534377694997,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -0.5371525174421437,
+          "terms": {
+            "force": 0.4442755111737165,
+            "uncapped": 0.04116983925897065,
+            "tracking": 0.004478162292128025,
+            "relative_velocity": 0.00011853108024965919,
+            "heading": 0.047058797620784035,
+            "slip": 2.00563538181097e-05,
+            "tilt": 0.0,
+            "continuity": 1.7250326895009497e-05,
+            "soft_prior": 0.0,
+            "idle": 1.4369335581692865e-05
+          }
+        },
+        "release": {
+          "seconds": 3.920000000000002,
+          "return_sum": -0.00028232491882605683,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 1.4942818144307558e-05,
+            "tilt": 0.0,
+            "continuity": 1.8899588368995526e-05,
+            "soft_prior": 0.0,
+            "idle": 0.00024848251231275386
+          }
+        }
+      }
+    },
+    {
+      "model": "C1",
+      "condition": "stop",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-reference/C1__stop.json.gz",
+      "max_reward_error": 1.1102230246251565e-16,
+      "return_sum": -10.26301458913109,
+      "discounted_return": -6.3549551310311765,
+      "integrated_costs": {
+        "force": 8.697216221969915,
+        "uncapped": 0.603342556275361,
+        "tracking": 0.08184428006970121,
+        "relative_velocity": 0.028438814186259584,
+        "heading": 0.8151377929644885,
+        "slip": 0.024740512065985404,
+        "tilt": 0.0,
+        "continuity": 0.011726570329184666,
+        "soft_prior": 0.0,
+        "idle": 0.0005678412701954313
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.0011285914207972893,
+          "terms": {
+            "force": 4.073848379651834e-06,
+            "uncapped": 4.0736921087707437e-07,
+            "tracking": 1.5528642189989112e-09,
+            "relative_velocity": 2.7996735941170046e-07,
+            "heading": 0.0011080228333861257,
+            "slip": 6.1410343474820875e-06,
+            "tilt": 0.0,
+            "continuity": 1.1315517016896594e-07,
+            "soft_prior": 0.0,
+            "idle": 9.551660079353071e-06
+          }
+        },
+        "move": {
+          "seconds": 2.2000000000000006,
+          "return_sum": -1.6733559843779107,
+          "terms": {
+            "force": 1.4978667615301955,
+            "uncapped": 0.10234813143932148,
+            "tracking": 0.011786033512731383,
+            "relative_velocity": 0.003100353367810031,
+            "heading": 0.058023920442514115,
+            "slip": 0.00014496650707490356,
+            "tilt": 0.0,
+            "continuity": 8.581757826323158e-05,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "decelerate": {
+          "seconds": 0.7,
+          "return_sum": -2.0032532766256543,
+          "terms": {
+            "force": 1.8594249254788857,
+            "uncapped": 0.10643466451793912,
+            "tracking": 0.018486794963341605,
+            "relative_velocity": 0.0016211440459691145,
+            "heading": 0.014949927820869936,
+            "slip": 0.0001711257075186178,
+            "tilt": 0.0,
+            "continuity": 0.0021646940911305137,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 6.499999999999993,
+          "return_sum": -6.584593488137626,
+          "terms": {
+            "force": 5.339920461112452,
+            "uncapped": 0.39455935294888944,
+            "tracking": 0.05157145004076405,
+            "relative_velocity": 0.023717036805121026,
+            "heading": 0.7410559218677184,
+            "slip": 0.024317041913331536,
+            "tilt": 0.0,
+            "continuity": 0.009451624584561622,
+            "soft_prior": 0.0,
+            "idle": 5.988647857620783e-07
+          }
+        },
+        "release": {
+          "seconds": 3.960000000000002,
+          "return_sum": -0.0006832485691022997,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 0.00010123690371285834,
+            "tilt": 0.0,
+            "continuity": 2.4320920059125228e-05,
+            "soft_prior": 0.0,
+            "idle": 0.0005576907453303161
+          }
+        }
+      }
+    },
+    {
+      "model": "C1",
+      "condition": "continue",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-reference/C1__continue.json.gz",
+      "max_reward_error": 2.220446049250313e-16,
+      "return_sum": -12.29276459523356,
+      "discounted_return": -7.78732986277734,
+      "integrated_costs": {
+        "force": 11.209209822432351,
+        "uncapped": 0.676084211391023,
+        "tracking": 0.10425442705190803,
+        "relative_velocity": 0.04428189470049589,
+        "heading": 0.21218085140661852,
+        "slip": 0.026456986380916737,
+        "tilt": 0.0,
+        "continuity": 0.016616557210199345,
+        "soft_prior": 0.0,
+        "idle": 0.0036798446600491757
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.0011285914207972893,
+          "terms": {
+            "force": 4.073848379651834e-06,
+            "uncapped": 4.0736921087707437e-07,
+            "tracking": 1.5528642189989112e-09,
+            "relative_velocity": 2.7996735941170046e-07,
+            "heading": 0.0011080228333861257,
+            "slip": 6.1410343474820875e-06,
+            "tilt": 0.0,
+            "continuity": 1.1315517016896594e-07,
+            "soft_prior": 0.0,
+            "idle": 9.551660079353071e-06
+          }
+        },
+        "move": {
+          "seconds": 7.39999999999999,
+          "return_sum": -10.846117597665925,
+          "terms": {
+            "force": 9.909516451701236,
+            "uncapped": 0.569010725898341,
+            "tracking": 0.0919115210607962,
+            "relative_velocity": 0.044197253264089055,
+            "heading": 0.18852008412886354,
+            "slip": 0.026406436138548723,
+            "tilt": 0.0,
+            "continuity": 0.016555125474049415,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -1.4418142476313769,
+          "terms": {
+            "force": 1.299689296882731,
+            "uncapped": 0.1070730781234712,
+            "tracking": 0.012342904438247614,
+            "relative_velocity": 8.436146904742484e-05,
+            "heading": 0.022552744444368854,
+            "slip": 1.0814352698688016e-05,
+            "tilt": 0.0,
+            "continuity": 4.6394045980378e-06,
+            "soft_prior": 0.0,
+            "idle": 5.64085162141071e-05
+          }
+        },
+        "release": {
+          "seconds": 3.960000000000002,
+          "return_sum": -0.0037041585154592824,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 3.359485532184683e-05,
+            "tilt": 0.0,
+            "continuity": 5.667917638172071e-05,
+            "soft_prior": 0.0,
+            "idle": 0.0036138844837557155
+          }
+        }
+      }
+    },
+    {
+      "model": "F4501",
+      "condition": "new9",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-F/F4501__new9.json.gz",
+      "max_reward_error": 8.326672684688674e-17,
+      "return_sum": -3.5191231069135815,
+      "discounted_return": -2.6394659189115663,
+      "integrated_costs": {
+        "force": 3.2263426079432773,
+        "uncapped": 0.2210583795761173,
+        "tracking": 0.02933704108766587,
+        "relative_velocity": 0.021678823973107747,
+        "heading": 0.01105762237906922,
+        "slip": 0.006010440755730713,
+        "tilt": 0.0,
+        "continuity": 0.0028157300149484143,
+        "soft_prior": 0.0,
+        "idle": 0.0008224611836648097
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.00018602563356244763,
+          "terms": {
+            "force": 1.4507557492306044e-05,
+            "uncapped": 1.4505192542363877e-06,
+            "tracking": 4.468827874645343e-09,
+            "relative_velocity": 1.0374148861407297e-06,
+            "heading": 0.00015342107358171065,
+            "slip": 5.9424799972999975e-06,
+            "tilt": 0.0,
+            "continuity": 1.2086418171008975e-07,
+            "soft_prior": 0.0,
+            "idle": 9.541255341169108e-06
+          }
+        },
+        "move": {
+          "seconds": 1.6000000000000003,
+          "return_sum": -0.7425223818941271,
+          "terms": {
+            "force": 0.6723594183408537,
+            "uncapped": 0.05578171887970324,
+            "tracking": 0.0054043265506316645,
+            "relative_velocity": 0.0026670112514625725,
+            "heading": 0.005916917249702331,
+            "slip": 0.0002881996437202471,
+            "tilt": 0.0,
+            "continuity": 0.00010478997805330436,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -2.775177413737219,
+          "terms": {
+            "force": 2.5539686820449314,
+            "uncapped": 0.16527521017715985,
+            "tracking": 0.023932710068206332,
+            "relative_velocity": 0.019010775306759032,
+            "heading": 0.004987284055785181,
+            "slip": 0.00524338797291304,
+            "tilt": 0.0,
+            "continuity": 0.002700306586979423,
+            "soft_prior": 0.0,
+            "idle": 5.9057524484890625e-05
+          }
+        },
+        "release": {
+          "seconds": 3.940000000000002,
+          "return_sum": -0.001237285648672856,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 0.00047291065910012853,
+            "tilt": 0.0,
+            "continuity": 1.0512585733977175e-05,
+            "soft_prior": 0.0,
+            "idle": 0.0007538624038387501
+          }
+        }
+      }
+    },
+    {
+      "model": "F4501",
+      "condition": "new65",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-F/F4501__new65.json.gz",
+      "max_reward_error": 1.1102230246251565e-16,
+      "return_sum": -13.856691978981502,
+      "discounted_return": -9.289025013487041,
+      "integrated_costs": {
+        "force": 12.875146924507835,
+        "uncapped": 0.6576130312839672,
+        "tracking": 0.12143456098162227,
+        "relative_velocity": 0.04379491020102741,
+        "heading": 0.10070130089539306,
+        "slip": 0.037021666287563926,
+        "tilt": 0.0,
+        "continuity": 0.020670198653530588,
+        "soft_prior": 0.0,
+        "idle": 0.0003093861705627645
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.00112886655142754,
+          "terms": {
+            "force": 4.444649252747313e-06,
+            "uncapped": 4.44445890871816e-07,
+            "tracking": 1.650752361190755e-09,
+            "relative_velocity": 3.0701291022283056e-07,
+            "heading": 0.0011080639238759441,
+            "slip": 5.942745148325486e-06,
+            "tilt": 0.0,
+            "continuity": 1.2086825589818775e-07,
+            "soft_prior": 0.0,
+            "idle": 9.541255341169108e-06
+          }
+        },
+        "move": {
+          "seconds": 6.999999999999991,
+          "return_sum": -13.741421463469473,
+          "terms": {
+            "force": 12.773490225620591,
+            "uncapped": 0.647625307627947,
+            "tracking": 0.12045347276401833,
+            "relative_velocity": 0.043735276700347,
+            "heading": 0.0984527158071856,
+            "slip": 0.03699751161158569,
+            "tilt": 0.0,
+            "continuity": 0.020666953337798992,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -0.11383641315846418,
+          "terms": {
+            "force": 0.10165225423799132,
+            "uncapped": 0.0099872792101294,
+            "tracking": 0.0009810865668516218,
+            "relative_velocity": 5.932648777019083e-05,
+            "heading": 0.0011405211643315091,
+            "slip": 1.1311958776186344e-05,
+            "tilt": 0.0,
+            "continuity": 8.819521032137346e-07,
+            "soft_prior": 0.0,
+            "idle": 3.7515805107383625e-06
+          }
+        },
+        "release": {
+          "seconds": 3.920000000000002,
+          "return_sum": -0.00030523580213706093,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 6.899972053718677e-06,
+            "tilt": 0.0,
+            "continuity": 2.2424953724851096e-06,
+            "soft_prior": 0.0,
+            "idle": 0.000296093334710857
+          }
+        }
+      }
+    },
+    {
+      "model": "F4501",
+      "condition": "stop",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-F/F4501__stop.json.gz",
+      "max_reward_error": 8.326672684688674e-17,
+      "return_sum": -8.687462290501287,
+      "discounted_return": -5.598606083409034,
+      "integrated_costs": {
+        "force": 7.499031706019881,
+        "uncapped": 0.5149385876357552,
+        "tracking": 0.0706802722467761,
+        "relative_velocity": 0.024787559086210643,
+        "heading": 0.5258768559597644,
+        "slip": 0.04233652555109696,
+        "tilt": 0.0,
+        "continuity": 0.009567753517456506,
+        "soft_prior": 0.0,
+        "idle": 0.00024303048434721065
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.0011283108105780903,
+          "terms": {
+            "force": 3.969017574941145e-06,
+            "uncapped": 3.9688689154142277e-07,
+            "tracking": 1.5091445020258615e-09,
+            "relative_velocity": 2.7298445144852756e-07,
+            "heading": 0.0011080655249140286,
+            "slip": 5.942763734804005e-06,
+            "tilt": 0.0,
+            "continuity": 1.2086852565573738e-07,
+            "soft_prior": 0.0,
+            "idle": 9.541255341169108e-06
+          }
+        },
+        "move": {
+          "seconds": 2.2000000000000006,
+          "return_sum": -1.6372816967997812,
+          "terms": {
+            "force": 1.46409317986837,
+            "uncapped": 0.10038692361920908,
+            "tracking": 0.011461176129684666,
+            "relative_velocity": 0.0029862847121376987,
+            "heading": 0.05813858412039481,
+            "slip": 0.00013746124075102712,
+            "tilt": 0.0,
+            "continuity": 7.808710923382024e-05,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "decelerate": {
+          "seconds": 0.7,
+          "return_sum": -2.216311377990021,
+          "terms": {
+            "force": 2.0632440600445707,
+            "uncapped": 0.11364380578851431,
+            "tracking": 0.020313011937613357,
+            "relative_velocity": 0.0008165908875563976,
+            "heading": 0.015104529721612744,
+            "slip": 0.0005237999576237025,
+            "tilt": 0.0,
+            "continuity": 0.0026655796525301414,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 6.499999999999993,
+          "return_sum": -4.832415410557731,
+          "terms": {
+            "force": 3.9716904970893627,
+            "uncapped": 0.30090746134114055,
+            "tracking": 0.03890608267033365,
+            "relative_velocity": 0.020984410502065103,
+            "heading": 0.4515256765928428,
+            "slip": 0.04158744749134128,
+            "tilt": 0.0,
+            "continuity": 0.006813122483749226,
+            "soft_prior": 0.0,
+            "idle": 7.123868954120249e-07
+          }
+        },
+        "release": {
+          "seconds": 3.960000000000002,
+          "return_sum": -0.0003254943431744135,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 8.187409764613138e-05,
+            "tilt": 0.0,
+            "continuity": 1.0843403417652551e-05,
+            "soft_prior": 0.0,
+            "idle": 0.00023277684211062954
+          }
+        }
+      }
+    },
+    {
+      "model": "F4501",
+      "condition": "continue",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-F/F4501__continue.json.gz",
+      "max_reward_error": 1.1102230246251565e-16,
+      "return_sum": -12.145467247971439,
+      "discounted_return": -8.009466122449277,
+      "integrated_costs": {
+        "force": 11.19787286119666,
+        "uncapped": 0.6265956301131261,
+        "tracking": 0.10473409572284668,
+        "relative_velocity": 0.04579116158664829,
+        "heading": 0.11886197340427344,
+        "slip": 0.03353507163730985,
+        "tilt": 0.0,
+        "continuity": 0.017249499241588643,
+        "soft_prior": 0.0,
+        "idle": 0.0008269550689880823
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.0011283108105780903,
+          "terms": {
+            "force": 3.969017574941145e-06,
+            "uncapped": 3.9688689154142277e-07,
+            "tracking": 1.5091445020258615e-09,
+            "relative_velocity": 2.7298445144852756e-07,
+            "heading": 0.0011080655249140286,
+            "slip": 5.942763734804005e-06,
+            "tilt": 0.0,
+            "continuity": 1.2086852565573738e-07,
+            "soft_prior": 0.0,
+            "idle": 9.541255341169108e-06
+          }
+        },
+        "move": {
+          "seconds": 7.39999999999999,
+          "return_sum": -11.812222506431766,
+          "terms": {
+            "force": 10.901372121888201,
+            "uncapped": 0.5984098952626552,
+            "tracking": 0.1018919865088641,
+            "relative_velocity": 0.04570740393537996,
+            "heading": 0.11409664248298856,
+            "slip": 0.03351078005414467,
+            "tilt": 0.0,
+            "continuity": 0.017233676299530997,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -0.3312791842370266,
+          "terms": {
+            "force": 0.2964967702908808,
+            "uncapped": 0.028185337963579405,
+            "tracking": 0.0028421077048380924,
+            "relative_velocity": 8.348466681688531e-05,
+            "heading": 0.003657265396370864,
+            "slip": 3.202731269601653e-06,
+            "tilt": 0.0,
+            "continuity": 6.414046244572091e-06,
+            "soft_prior": 0.0,
+            "idle": 4.601437026423285e-06
+          }
+        },
+        "release": {
+          "seconds": 3.960000000000002,
+          "return_sum": -0.0008372464920686782,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 1.5146088160777222e-05,
+            "tilt": 0.0,
+            "continuity": 9.288027287411181e-06,
+            "soft_prior": 0.0,
+            "idle": 0.0008128123766204899
+          }
+        }
+      }
+    },
+    {
+      "model": "R4501",
+      "condition": "new9",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-R/R4501__new9.json.gz",
+      "max_reward_error": 8.326672684688674e-17,
+      "return_sum": -3.349377384934213,
+      "discounted_return": -2.528237087109267,
+      "integrated_costs": {
+        "force": 3.069807300645227,
+        "uncapped": 0.2133447400612342,
+        "tracking": 0.028030288177190405,
+        "relative_velocity": 0.018308790431662336,
+        "heading": 0.012479228249930347,
+        "slip": 0.0027306343298994945,
+        "tilt": 0.0,
+        "continuity": 0.0032718648305732722,
+        "soft_prior": 0.0,
+        "idle": 0.0014045382084961237
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.00017619048679016965,
+          "terms": {
+            "force": 1.5833092417749478e-05,
+            "uncapped": 1.583033448208915e-06,
+            "tracking": 5.013893073229709e-09,
+            "relative_velocity": 1.1267179972245225e-06,
+            "heading": 0.0001487017450775947,
+            "slip": 5.469979693088658e-06,
+            "tilt": 0.0,
+            "continuity": 9.505547124177838e-08,
+            "soft_prior": 0.0,
+            "idle": 3.3758487919883663e-06
+          }
+        },
+        "move": {
+          "seconds": 1.6000000000000003,
+          "return_sum": -0.7698622526164419,
+          "terms": {
+            "force": 0.6981863888168014,
+            "uncapped": 0.05731762951215715,
+            "tracking": 0.005594129010117098,
+            "relative_velocity": 0.0026695974607617917,
+            "heading": 0.0057301491937369,
+            "slip": 0.00025240681780579823,
+            "tilt": 0.0,
+            "continuity": 0.00011195180506183532,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -2.577476088919801,
+          "terms": {
+            "force": 2.3716050787360077,
+            "uncapped": 0.15602552751562884,
+            "tracking": 0.022436154153180232,
+            "relative_velocity": 0.015638066252903322,
+            "heading": 0.006600377311115854,
+            "slip": 0.0019701312859103535,
+            "tilt": 0.0,
+            "continuity": 0.00314032888172369,
+            "soft_prior": 0.0,
+            "idle": 6.042478333155276e-05
+          }
+        },
+        "release": {
+          "seconds": 3.940000000000002,
+          "return_sum": -0.0018628529111793415,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 0.0005026262464902544,
+            "tilt": 0.0,
+            "continuity": 1.9489088316504428e-05,
+            "soft_prior": 0.0,
+            "idle": 0.0013407375763725825
+          }
+        }
+      }
+    },
+    {
+      "model": "R4501",
+      "condition": "new65",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-R/R4501__new65.json.gz",
+      "max_reward_error": 2.220446049250313e-16,
+      "return_sum": -17.567120770454675,
+      "discounted_return": -10.453002324126382,
+      "integrated_costs": {
+        "force": 15.944846386116254,
+        "uncapped": 0.923171410614998,
+        "tracking": 0.14890088594181144,
+        "relative_velocity": 0.06809733922253086,
+        "heading": 0.3894928136831435,
+        "slip": 0.06399228401602496,
+        "tilt": 0.0,
+        "continuity": 0.027267687820102388,
+        "soft_prior": 0.0,
+        "idle": 0.0013519630398080114
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.0010891079467193593,
+          "terms": {
+            "force": 5.292392021000347e-06,
+            "uncapped": 5.292129134960609e-07,
+            "tracking": 2.0263293963360645e-09,
+            "relative_velocity": 3.6364233528460333e-07,
+            "heading": 0.0010739795220488556,
+            "slip": 5.470241026900272e-06,
+            "tilt": 0.0,
+            "continuity": 9.506125243774478e-08,
+            "soft_prior": 0.0,
+            "idle": 3.3758487919883663e-06
+          }
+        },
+        "move": {
+          "seconds": 6.999999999999991,
+          "return_sum": -15.910488913792012,
+          "terms": {
+            "force": 14.66614657584365,
+            "uncapped": 0.8179876892231674,
+            "tracking": 0.13554838013821693,
+            "relative_velocity": 0.06756633223370907,
+            "heading": 0.132218345665418,
+            "slip": 0.06378581085897618,
+            "tilt": 0.0,
+            "continuity": 0.027235779828875824,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -1.6540904975084332,
+          "terms": {
+            "force": 1.278694517880584,
+            "uncapped": 0.10518319217891695,
+            "tracking": 0.013352503777265066,
+            "relative_velocity": 0.0005306433464864812,
+            "heading": 0.25620048849567667,
+            "slip": 0.0001071209397866119,
+            "tilt": 0.0,
+            "continuity": 1.2025679704265715e-05,
+            "soft_prior": 0.0,
+            "idle": 1.0005210013312506e-05
+          }
+        },
+        "release": {
+          "seconds": 3.920000000000002,
+          "return_sum": -0.00145225120750781,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 9.388197623524175e-05,
+            "tilt": 0.0,
+            "continuity": 1.9787250269857276e-05,
+            "soft_prior": 0.0,
+            "idle": 0.0013385819810027106
+          }
+        }
+      }
+    },
+    {
+      "model": "R4501",
+      "condition": "stop",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-R/R4501__stop.json.gz",
+      "max_reward_error": 8.326672684688674e-17,
+      "return_sum": -11.557532446217248,
+      "discounted_return": -7.067515323280437,
+      "integrated_costs": {
+        "force": 10.480871398225252,
+        "uncapped": 0.714159456521624,
+        "tracking": 0.09831540631143941,
+        "relative_velocity": 0.0348429217826817,
+        "heading": 0.18389432462498836,
+        "slip": 0.032816058129576914,
+        "tilt": 0.0,
+        "continuity": 0.011554524828436755,
+        "soft_prior": 0.0,
+        "idle": 0.0010783557932490067
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.001088512924817055,
+          "terms": {
+            "force": 4.783165156734058e-06,
+            "uncapped": 4.782954653833323e-07,
+            "tracking": 1.8728581038588326e-09,
+            "relative_velocity": 3.2731589813804566e-07,
+            "heading": 0.001073981105564151,
+            "slip": 5.470259231159256e-06,
+            "tilt": 0.0,
+            "continuity": 9.506185139684932e-08,
+            "soft_prior": 0.0,
+            "idle": 3.3758487919883663e-06
+          }
+        },
+        "move": {
+          "seconds": 2.2000000000000006,
+          "return_sum": -1.9953087697044918,
+          "terms": {
+            "force": 1.8121736002237747,
+            "uncapped": 0.11370017358203197,
+            "tracking": 0.013501514608970847,
+            "relative_velocity": 0.006823930014725268,
+            "heading": 0.047468990954713325,
+            "slip": 0.0005599689412458235,
+            "tilt": 0.0,
+            "continuity": 0.001080591379030011,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "decelerate": {
+          "seconds": 0.7,
+          "return_sum": -2.295993612198366,
+          "terms": {
+            "force": 2.1379556679629665,
+            "uncapped": 0.11208658446488015,
+            "tracking": 0.021288587816330144,
+            "relative_velocity": 0.014234968914057546,
+            "heading": 0.0011774462347353208,
+            "slip": 0.0019696256042238285,
+            "tilt": 0.0,
+            "continuity": 0.007280731201171876,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 6.499999999999993,
+          "return_sum": -7.264028489258795,
+          "terms": {
+            "force": 6.530737346873354,
+            "uncapped": 0.4883722201792463,
+            "tracking": 0.06352530201328034,
+            "relative_velocity": 0.013783695538000742,
+            "heading": 0.13417390632997564,
+            "slip": 0.03027090717068057,
+            "tilt": 0.0,
+            "continuity": 0.0031640984820100753,
+            "soft_prior": 0.0,
+            "idle": 1.0126722473125902e-06
+          }
+        },
+        "release": {
+          "seconds": 3.960000000000002,
+          "return_sum": -0.0011130621307785925,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 1.0086154195505046e-05,
+            "tilt": 0.0,
+            "continuity": 2.9008704373382e-05,
+            "soft_prior": 0.0,
+            "idle": 0.0010739672722097058
+          }
+        }
+      }
+    },
+    {
+      "model": "R4501",
+      "condition": "continue",
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/final-R/R4501__continue.json.gz",
+      "max_reward_error": 1.1102230246251565e-16,
+      "return_sum": -15.193437026043403,
+      "discounted_return": -9.204694532405886,
+      "integrated_costs": {
+        "force": 13.705889039265225,
+        "uncapped": 0.8386695274403156,
+        "tracking": 0.12829688400801537,
+        "relative_velocity": 0.0532148233128368,
+        "heading": 0.4153189317638886,
+        "slip": 0.029438500722766308,
+        "tilt": 0.0,
+        "continuity": 0.02176357750155964,
+        "soft_prior": 0.0,
+        "idle": 0.0008457420287953816
+      },
+      "phases": {
+        "pre": {
+          "seconds": 0.8999999999999999,
+          "return_sum": -0.001088512924817055,
+          "terms": {
+            "force": 4.783165156734058e-06,
+            "uncapped": 4.782954653833323e-07,
+            "tracking": 1.8728581038588326e-09,
+            "relative_velocity": 3.2731589813804566e-07,
+            "heading": 0.001073981105564151,
+            "slip": 5.470259231159256e-06,
+            "tilt": 0.0,
+            "continuity": 9.506185139684932e-08,
+            "soft_prior": 0.0,
+            "idle": 3.3758487919883663e-06
+          }
+        },
+        "move": {
+          "seconds": 7.39999999999999,
+          "return_sum": -14.192551157794819,
+          "terms": {
+            "force": 13.039558316303918,
+            "uncapped": 0.7787398670079899,
+            "tracking": 0.121405975559899,
+            "relative_velocity": 0.05302963809780201,
+            "heading": 0.14886163552320983,
+            "slip": 0.029209246835263727,
+            "tilt": 0.0,
+            "continuity": 0.021746478466744528,
+            "soft_prior": 0.0,
+            "idle": 0.0
+          }
+        },
+        "hold": {
+          "seconds": 2.0000000000000004,
+          "return_sum": -0.9988363258863208,
+          "terms": {
+            "force": 0.6663259397961502,
+            "uncapped": 0.05992918213686033,
+            "tracking": 0.006890906575258232,
+            "relative_velocity": 0.000184857899136647,
+            "heading": 0.2653833151351147,
+            "slip": 0.00011510051636216302,
+            "tilt": 0.0,
+            "continuity": 3.7130811174392883e-06,
+            "soft_prior": 0.0,
+            "idle": 3.310746321056155e-06
+          }
+        },
+        "release": {
+          "seconds": 3.960000000000002,
+          "return_sum": -0.0009610294374378708,
+          "terms": {
+            "force": 0.0,
+            "uncapped": 0.0,
+            "tracking": 0.0,
+            "relative_velocity": 0.0,
+            "heading": 0.0,
+            "slip": 0.00010868311190925141,
+            "tilt": 0.0,
+            "continuity": 1.329089184628174e-05,
+            "soft_prior": 0.0,
+            "idle": 0.000839055433682337
+          }
+        }
+      }
+    }
+  ],
+  "seconds": 11.704229781869799,
+  "physics_steps": 0,
+  "training_decisions": 0,
+  "scope": "same condition comparisons only; unchanged components checked against recorded per-control costs"
+}

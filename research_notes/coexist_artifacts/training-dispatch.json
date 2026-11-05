@@ -1,0 +1,16 @@
+[
+  {
+    "seed": 4601,
+    "gpu": "2",
+    "supervisor": 2859297,
+    "runtime": "f6ca5c5f6c4de205b3457bef4a024345e2105009",
+    "worktree": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/trees/coexist-4601/repo"
+  },
+  {
+    "seed": 4602,
+    "gpu": "5",
+    "supervisor": 2859547,
+    "runtime": "f6ca5c5f6c4de205b3457bef4a024345e2105009",
+    "worktree": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/trees/coexist-4602/repo"
+  }
+]
