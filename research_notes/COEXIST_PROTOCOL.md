@@ -33,3 +33,7 @@ arm-ready只在接管前由原生goal真实执行生成；保留真实q/dq、BFM
 总≤98304新增RL决策、18000累计job秒、12GiB、最多3实时空闲GPU。不训练Student、不运行reward prompting或SF planner。普通启动脚本引号故障在运行前修正，旧文件/日志保留，尚无RL样本因此不称训练失败。
 
 若缺乏共同收益，按reward排序、实际探索、更新和闭环阶段定位，不原样续训。下一阶段若证据支持探索来源不足，优先有界BFM reward prompting；具体来源研究见BFM_REWARD_REUSE_ROADMAP.md，当前不执行。
+
+终检模型安排补充（第8批开发后、未见任何封存结果时固定）：每seed评估开发best与last，并保留I/C0/F4501/R4501冻结参照。若best=iteration0或best/last确定性actor+normalization逐值相同，则只运行一次对应物理策略，保留全部checkpoint SHA与等价映射，不把重复初始化计成两个学习成功。last作为明确研究负例/末轮，不据其封存成绩反选best。
+
+Observation clarification: these are privileged Teachers, not deployable Students. `clean_env.Task.features` includes current anchor error/relative velocity and actual contact-active status; `geometry_env.contact_features(True)` adds current per-point geometry and yaw error. Final displacement, task ID, future anchor trajectory and episode clock are not concatenated. Direct alpha/phase fields are constant zero (cosine is one), not an online walking state machine. The arm-ready source alone uses a fixed pre-handoff native motion prefix, preserving actual histories. Two seeds have identical initialized actor/normalization/std, but independently seeded fresh critics and Adam; inherited legacy text saying 'identical fresh seed in both arms' in resume metadata is imprecise and does not override the actual `manual_seed(seed+17)` implementation.

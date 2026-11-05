@@ -39,3 +39,5 @@ arm+loco候选不是把两个独立控制器的关节动作相加；策略π(s,z
 如果本轮有“局部解真实有效、reward认可、但I附近探索未覆盖它”的一致证据，下一阶段优先做A的小型来源实验，再决定B/C是否值得。需要有限物理证据支持，不因一次离线z距离或零命中就声称整个BFM无能力。本轮不改变Direct动作空间，也不自动启动这些项目。
 
 实际checkpoint配置进一步核对：模型类FBcprAuxModel，z_dim256/norm_z=true/amp=false。B输入`state, privileged_state`；F输入`state, privileged_state, last_action, history_actor`，双forward heads；actor只用`state,last_action,history_actor`。其中privileged_state由原`max_local_self`身体状态构建，不是我们当前新增的伙伴误差/接触槽位。原FB训练discount=.98，不能与当前高层PPO .99直接当同一时间尺度。原FB model/reward入口与共享6023c6e基线无diff。本轮未执行F forward、未把F迁至GPU；后续若使用必须遵守原normalizer/设备合同并预算化。
+
+外部原作者来源已于本阶段核对：[LeCAR-Lab/BFM-Zero README](https://github.com/LeCAR-Lab/BFM-Zero)、[FB model实现](https://github.com/LeCAR-Lab/BFM-Zero/blob/main/humanoidverse/agents/fb/model.py)、[reward入口](https://github.com/LeCAR-Lab/BFM-Zero/blob/main/humanoidverse/reward_inference.py)。公开main与当前冻结运行版本必须区分；本记录的输入维度/权重/执行结论以本地固定checkpoint及runtime为准，未升级到公开main。
