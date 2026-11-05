@@ -64,7 +64,7 @@ def study(env,model,contract,out):
    if noise_seed is not None:raw=raw+dist.stddev*torch.randn(raw.shape,device=raw.device,generator=noise)
    previous=task.last_command.clone();z=direct_command(raw,env.standing);c=len(task.controls)
    task.step(raw)
-   if suffix=='I' and switch<=t<switch+1.0-1e-7:
+   if suffix=='I' and switch-1e-7<=t<switch+1.0-1e-7:
     labels.append(dict(x=x[0].cpu().tolist(),raw=raw[0].cpu().tolist(),z=z[0].cpu().tolist(),previous_z=previous[0].cpu().tolist(),time=t,episode=label,kind='walk',sequence=task.controls[c:],valid_steps=len(task.controls[c:])))
   row=task.save(out);row.update(extra(task));p=task.physics;active=[r for r in p if r['active']];qt=np.array([r['q_PD'] for r in task.controls]);initialx=p[0]['root'][0]
   root5=next((r['time'] for r in p if r['root'][0]-initialx>.05),None)

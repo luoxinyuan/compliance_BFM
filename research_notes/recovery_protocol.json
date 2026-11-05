@@ -115,5 +115,11 @@
     ],
     "arm_ready": "same proven real native prefix, new .5 progress, contact6.65"
   },
-  "stop": "No repeated fitting beyond matched C0/C1; no RL unless both local benefit and long recovery demonstrated on dev."
+  "stop": "No repeated fitting beyond matched C0/C1; no RL unless both local benefit and long recovery demonstrated on dev.",
+  "engineering_correction_before_final": {
+    "cause": "strict floating comparison skipped first takeover command in each of3 recovered windows",
+    "repair": "exact saved decision/5control reconstruction; first input verified identical to actual B",
+    "fixed_matching": "retain1500 versions, append500 fresh-Adam updates both arms, final2000 only; total4000; no final test read",
+    "retention_weight_fixed": 2.473907620604606
+  }
 }
