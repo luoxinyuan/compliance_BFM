@@ -1,6 +1,6 @@
 # BFM reward prompting / composition / F-SF：后续最小研究记录
 
-2026-11-05更新：Issue47已优先授权C0延迟全身参与诊断；本记录继续作为后备工具，不是其前置条件。原Issue46建议是历史阶段决策。此文是研究积压项，不启动新推断、FB训练或planner。本轮主线仍为I初始化、真实接触反馈PPO。保留0/1/2/4/8/16帧force-history独立消融，未运行。
+2026-11-05更新：Issue47已优先授权C0延迟全身参与诊断；本记录继续作为后备工具，不是其前置条件。原Issue46建议是历史阶段决策。此文是研究积压项，不启动新推断、FB训练或planner。当前主线为Issue47的C0机制接管与有条件反馈PPO；I初始化PPO是Issue46历史设置。保留0/1/2/4/8/16帧force-history独立消融，未运行。
 
 ## 当前实际接口与权重
 
@@ -41,3 +41,6 @@ arm+loco候选不是把两个独立控制器的关节动作相加；策略π(s,z
 实际checkpoint配置进一步核对：模型类FBcprAuxModel，z_dim256/norm_z=true/amp=false。B输入`state, privileged_state`；F输入`state, privileged_state, last_action, history_actor`，双forward heads；actor只用`state,last_action,history_actor`。其中privileged_state由原`max_local_self`身体状态构建，不是我们当前新增的伙伴误差/接触槽位。原FB训练discount=.98，不能与当前高层PPO .99直接当同一时间尺度。原FB model/reward入口与共享6023c6e基线无diff。本轮未执行F forward、未把F迁至GPU；后续若使用必须遵守原normalizer/设备合同并预算化。
 
 外部原作者来源已于本阶段核对：[LeCAR-Lab/BFM-Zero README](https://github.com/LeCAR-Lab/BFM-Zero)、[FB model实现](https://github.com/LeCAR-Lab/BFM-Zero/blob/main/humanoidverse/agents/fb/model.py)、[reward入口](https://github.com/LeCAR-Lab/BFM-Zero/blob/main/humanoidverse/reward_inference.py)。公开main与当前冻结运行版本必须区分；本记录的输入维度/权重/执行结论以本地固定checkpoint及runtime为准，未升级到公开main。
+
+
+方法讨论补充：原生候选可作为时间连贯探索的起点，候选来源检验与当前接触策略学习分工见[CONTACT_LEARNING_RATIONALE第8节](CONTACT_LEARNING_RATIONALE.md)。不因候选可推断就宣称覆盖当前全部接触/过渡状态；Issue46没有证明std=.008完全到不了有利单步方向。本记录不启动新的候选推断、planner或Student训练。
