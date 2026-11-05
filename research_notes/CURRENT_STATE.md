@@ -1,3 +1,7 @@
+# 当前新增授权：Issue45执行中
+
+2026-11-05：冻结I条件adapter R对照全参数F，两个配对seed各2000更新，另受限观测探针最多2000。协议adapter_protocol.json。独立conditional-adapter工作树/run；最多GPU2/5/6，16000job秒/10GiB；不启动PPO。先完成标签与零输出梯度检查，尚未开始训练。Issue44结论和旧模型完整保留，以下为已完成阶段快照。
+
 # CURRENT_STATE — 新会话先读
 
 最后核对：2026-11-05 CST。**Issue44（Issue43后续：负迁移与有效恢复）完成并停止；没有PPO/Student或下一阶段排队。**

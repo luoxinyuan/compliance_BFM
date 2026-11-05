@@ -1,0 +1,64 @@
+{
+  "issue": 45,
+  "seeds": [
+    4501,
+    4502
+  ],
+  "updates_per_model": 2000,
+  "final_selection": "fixed2000 all4; no final-based reselection",
+  "data": "exact corrected C1 750 labels, 30 recovery rows from3 actual starts; reliable66 retention sameboth",
+  "retention_weight": 2.473907620604606,
+  "lr": 1e-05,
+  "batch": 128,
+  "retention_batch": 16,
+  "normalization": "frozen I botharms",
+  "budget": {
+    "gpus": 3,
+    "job_wall": 16000,
+    "bytes": 10737418240,
+    "expert_updates": 8000,
+    "student_updates": 2000,
+    "rl": 0
+  },
+  "new_conditions": {
+    "distances_cm": [
+      9,
+      22,
+      65
+    ],
+    "peak_speeds": [
+      0.085,
+      0.115,
+      0.14
+    ],
+    "onset": 4.85,
+    "common_prefix": {
+      "distance": 0.65,
+      "ramp": 7.4,
+      "onset": 4.85,
+      "branch": 7.05,
+      "deceleration": 0.65,
+      "release": 14.25,
+      "end": 18.25
+    },
+    "arm_ready": {
+      "progress": 0.7,
+      "onset": 6.85,
+      "distance": 0.22
+    },
+    "moving": {
+      "source": "I actual current-contact rollout",
+      "until": 6.5,
+      "distance": 0.65
+    }
+  },
+  "probe": {
+    "teacher": "I frozen preselected, not winner F/R",
+    "updates": 2000,
+    "seed": 4511,
+    "train": "whole dev episodes walk/early/late/arm15/zero/no_contact plus a dev branch at6.8s",
+    "test": "whole new branch7.05 and9/65/armready22 episodes; no frame random split",
+    "input": "geometry student_features1639: normalized BFM465 + actual lastz256 + measured force history900 + known mount18",
+    "lr": 0.0001
+  }
+}
