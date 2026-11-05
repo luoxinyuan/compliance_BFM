@@ -81,3 +81,5 @@ M38-C补充：接触转角必须与同时刻、同框架的真实无力分支比
 最新主线：transition-centered Teacher获取→受限观测Student→代表性运动/接触组合泛化。源运动定义真实初态分布，目标由持续的任务物理质量定义；不以某帧B距离或命名技能替代成功。LPP/action alignment按实际来源需要使用，合法原生z无需重复近恒等投影。
 
 任务分配审查补充：长距离腕部跟随与学会自然arm-to-locomotion分配应分开评价。对同一实际初态同时记录腕相对肩/躯干、机械余量、真实力与足部参与；近/中/远及速度覆盖不能只靠最终root位移判断。原生goal伸臂正控制是能力证据，不是接触反馈学习；Teacher当前几何特权也不应被称为force-only。保留M41启动历史结论，但保旧不应把合理小请求强制变成walking。
+
+BFM原生行为复用积压项：reward prompting、投影前状态reward线性组合、F/SF候选后果排序，见[最小研究记录](BFM_REWARD_REUSE_ROADMAP.md)。B状态合同不含任意外部伙伴/接触reward；不能把reward_inference宣称为零样本通用contact policy。当前阶段不新建planner、不重训FB；先以真实物理检验来源。

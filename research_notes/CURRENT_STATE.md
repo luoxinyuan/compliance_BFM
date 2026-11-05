@@ -1,6 +1,6 @@
 # Issue46 新授权执行中
 
-2026-11-05：I初始化、真实反馈局部—行走共存两seed PPO。独立feedback-coexistence工作树；协议coexist_protocol.json，先reward/探索诊断，尚未发车。最多3GPU/18000job秒/12GiB/98304决策；不更换BFM/PD/网络/观测/reward/cap。Issue45结项完整保留，下文为上一阶段快照。
+2026-11-05：I初始化、真实反馈局部—行走共存两seed PPO。独立feedback-coexistence工作树；协议coexist_protocol.json，reward复算通过、原reward认可局部与长距有效行为；探索同状态动作有方向覆盖但随机长距退化。已登记两seed4601/4602首段各32×768，将启动；不预宣称训练成功。最多3GPU/18000job秒/12GiB/98304决策；不更换BFM/PD/网络/观测/reward/cap。Issue45结项完整保留，下文为上一阶段快照。
 
 # CURRENT_STATE — 新会话先读
 
