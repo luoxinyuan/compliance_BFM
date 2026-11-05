@@ -1,0 +1,236 @@
+{
+  "4601": {
+    "result": {
+      "status": "completed",
+      "iterations": 32,
+      "decisions": 24576,
+      "updates": 99,
+      "elapsed_s": 2755.4997355609667,
+      "workers": [
+        {
+          "pid": 2859372,
+          "exitcode": 0
+        },
+        {
+          "pid": 2859373,
+          "exitcode": 0
+        },
+        {
+          "pid": 2859374,
+          "exitcode": 0
+        }
+      ],
+      "bfm_updated": false,
+      "student_updated": false
+    },
+    "selection": {
+      "iteration": 0,
+      "score": 1.5,
+      "sha256": "a04001b13457e73664057b0d13efb044130fd5fee2bd914efa06344c5ee5208f",
+      "evaluation": "dev-0000/summary.json",
+      "rule": "0.5 worst relative original physical cost + mean relative cost; no safety boundary or any task cost>1.75 initial; fixed dev only, preserve0/every8/last"
+    },
+    "decisions_by_family": {
+      "no_contact": 1267,
+      "stop": 2198,
+      "mid18": 1690,
+      "local7": 2454,
+      "ready18": 1018,
+      "continue": 2819,
+      "mid22": 2585,
+      "zero": 1352,
+      "left": 281,
+      "long65": 3610,
+      "long80": 2507,
+      "local9": 1907,
+      "right": 562,
+      "early": 200,
+      "late": 126
+    },
+    "decisions_by_phase": {
+      "no_actual_contact": 1267,
+      "pre_contact": 1324,
+      "moving": 8900,
+      "decelerating": 136,
+      "contact_hold": 4805,
+      "released_recovery": 8144
+    },
+    "complete_episodes": {
+      "no_contact": 8,
+      "mid18": 17,
+      "local7": 29,
+      "continue": 19,
+      "mid22": 27,
+      "stop": 15,
+      "ready18": 10,
+      "zero": 8,
+      "long65": 26,
+      "left": 2,
+      "long80": 17,
+      "local9": 23,
+      "early": 2,
+      "right": 4,
+      "late": 1
+    },
+    "dev_scores": [
+      [
+        0,
+        null
+      ],
+      [
+        8,
+        {
+          "score": 1.5713107550906809,
+          "best": 1.5
+        }
+      ],
+      [
+        16,
+        {
+          "score": 1.6188716761342388,
+          "best": 1.5
+        }
+      ],
+      [
+        24,
+        {
+          "score": 1.580076677752819,
+          "best": 1.5
+        }
+      ],
+      [
+        32,
+        {
+          "score": 1.6192893765370882,
+          "best": 1.5
+        }
+      ]
+    ],
+    "physical_steps": 490028,
+    "control_steps": 122507,
+    "source_steps": 170800,
+    "logprob_max": 0.0001220703125,
+    "kl_max": 0.019860852509737015,
+    "retention_gradient_ratio_median": 0.0018143394263461232,
+    "actor_update_raw_rms_mean": 9.36263709263585e-05,
+    "critic_EV_last": 0.6640827655792236,
+    "actor_parameters_frozen": false
+  },
+  "4602": {
+    "result": {
+      "status": "completed",
+      "iterations": 32,
+      "decisions": 24576,
+      "updates": 95,
+      "elapsed_s": 2784.349117787089,
+      "workers": [
+        {
+          "pid": 2859628,
+          "exitcode": 0
+        },
+        {
+          "pid": 2859629,
+          "exitcode": 0
+        },
+        {
+          "pid": 2859630,
+          "exitcode": 0
+        }
+      ],
+      "bfm_updated": false,
+      "student_updated": false
+    },
+    "selection": {
+      "iteration": 0,
+      "score": 1.5,
+      "sha256": "92bc6ba6c42a6ef8c3c7ba7cea8cd04bc947b171e04f9d843063ec998a0ba3ee",
+      "evaluation": "dev-0000/summary.json",
+      "rule": "0.5 worst relative original physical cost + mean relative cost; no safety boundary or any task cost>1.75 initial; fixed dev only, preserve0/every8/last"
+    },
+    "decisions_by_family": {
+      "long80": 2697,
+      "no_contact": 1410,
+      "ready18": 1783,
+      "long65": 2538,
+      "local7": 1478,
+      "mid18": 2160,
+      "mid22": 1998,
+      "local9": 2211,
+      "zero": 284,
+      "continue": 3134,
+      "stop": 3808,
+      "right": 564,
+      "late": 169,
+      "left": 141,
+      "early": 201
+    },
+    "decisions_by_phase": {
+      "pre_contact": 1339,
+      "moving": 8333,
+      "contact_hold": 5255,
+      "released_recovery": 8026,
+      "no_actual_contact": 1410,
+      "decelerating": 213
+    },
+    "complete_episodes": {
+      "long80": 18,
+      "ready18": 19,
+      "local7": 18,
+      "no_contact": 10,
+      "long65": 18,
+      "mid18": 23,
+      "mid22": 20,
+      "local9": 26,
+      "zero": 2,
+      "continue": 19,
+      "stop": 27,
+      "right": 4,
+      "late": 1,
+      "left": 1,
+      "early": 2
+    },
+    "dev_scores": [
+      [
+        0,
+        null
+      ],
+      [
+        8,
+        {
+          "score": 1.686869932097089,
+          "best": 1.5
+        }
+      ],
+      [
+        16,
+        {
+          "score": 1.6181283093064933,
+          "best": 1.5
+        }
+      ],
+      [
+        24,
+        {
+          "score": 1.6492086308762506,
+          "best": 1.5
+        }
+      ],
+      [
+        32,
+        {
+          "score": 1.6123472718786795,
+          "best": 1.5
+        }
+      ]
+    ],
+    "physical_steps": 489952,
+    "control_steps": 122488,
+    "source_steps": 172400,
+    "logprob_max": 0.0001220703125,
+    "kl_max": 0.019952308386564255,
+    "retention_gradient_ratio_median": 0.0015255671460181475,
+    "actor_update_raw_rms_mean": 9.339270241071063e-05,
+    "critic_EV_last": 0.7508255243301392,
+    "actor_parameters_frozen": false
+  }
+}

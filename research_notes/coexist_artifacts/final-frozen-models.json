@@ -1,0 +1,87 @@
+{
+  "all": {
+    "I": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+      "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+      "mean_function_sha256": "0df24d941f014240dc54035d15bfefc58033adf27c256b2c6b3d0d526cf0ddd1"
+    },
+    "seed4601_best": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4601/best.pt",
+      "sha256": "a04001b13457e73664057b0d13efb044130fd5fee2bd914efa06344c5ee5208f",
+      "role": "best",
+      "mean_function_sha256": "0df24d941f014240dc54035d15bfefc58033adf27c256b2c6b3d0d526cf0ddd1"
+    },
+    "seed4601_last": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4601/last.pt",
+      "sha256": "8fa4759d3766568dee8fbba0367e772a97977694d19a503868708efa6d8c9228",
+      "role": "last",
+      "mean_function_sha256": "f9eab402889e03feb2ea1b6c2ee4a2d9d42aa6be8700167d8bffae5a8472629b"
+    },
+    "seed4602_best": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4602/best.pt",
+      "sha256": "92bc6ba6c42a6ef8c3c7ba7cea8cd04bc947b171e04f9d843063ec998a0ba3ee",
+      "role": "best",
+      "mean_function_sha256": "0df24d941f014240dc54035d15bfefc58033adf27c256b2c6b3d0d526cf0ddd1"
+    },
+    "seed4602_last": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4602/last.pt",
+      "sha256": "e9a1972166b25e3b915b8d75e97d3377e540583e215d91f269e8dba4550310c9",
+      "role": "last",
+      "mean_function_sha256": "726f4dd7765e4164799a53f554eccb983953b08083434a0b8485407ce368bbcc"
+    },
+    "C0": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/correct-C0/C0.pt",
+      "sha256": "ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c",
+      "mean_function_sha256": "b997c168a2e63f0d442839bbff94678f661768533e1890e1977289ef5046057e"
+    },
+    "F4501": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/F4501/F4501-2000.pt",
+      "sha256": "52956080217e6346b1a8b196ad411cbc84a07e248a8e747eeedf2dcc775e12f6",
+      "mean_function_sha256": "e318f70c60fb96424c568f01d83b52a6298261bb21e9f2ea7bf4bf143acfb4f7"
+    },
+    "R4501": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/R4501/R4501-2000.pt",
+      "sha256": "298af356d386f79377ca103b4fc82baecbf6e18a997a958633dade2cc7733a37",
+      "mean_function_sha256": "d416afe803d41a9cfb55b6a2f3dd256092712a70579ed8ecf8b981276bc842cf"
+    }
+  },
+  "unique": {
+    "I": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+      "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+      "mean_function_sha256": "0df24d941f014240dc54035d15bfefc58033adf27c256b2c6b3d0d526cf0ddd1"
+    },
+    "seed4601_last": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4601/last.pt",
+      "sha256": "8fa4759d3766568dee8fbba0367e772a97977694d19a503868708efa6d8c9228",
+      "role": "last",
+      "mean_function_sha256": "f9eab402889e03feb2ea1b6c2ee4a2d9d42aa6be8700167d8bffae5a8472629b"
+    },
+    "seed4602_last": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4602/last.pt",
+      "sha256": "e9a1972166b25e3b915b8d75e97d3377e540583e215d91f269e8dba4550310c9",
+      "role": "last",
+      "mean_function_sha256": "726f4dd7765e4164799a53f554eccb983953b08083434a0b8485407ce368bbcc"
+    },
+    "C0": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/correct-C0/C0.pt",
+      "sha256": "ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c",
+      "mean_function_sha256": "b997c168a2e63f0d442839bbff94678f661768533e1890e1977289ef5046057e"
+    },
+    "F4501": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/F4501/F4501-2000.pt",
+      "sha256": "52956080217e6346b1a8b196ad411cbc84a07e248a8e747eeedf2dcc775e12f6",
+      "mean_function_sha256": "e318f70c60fb96424c568f01d83b52a6298261bb21e9f2ea7bf4bf143acfb4f7"
+    },
+    "R4501": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105/R4501/R4501-2000.pt",
+      "sha256": "298af356d386f79377ca103b4fc82baecbf6e18a997a958633dade2cc7733a37",
+      "mean_function_sha256": "d416afe803d41a9cfb55b6a2f3dd256092712a70579ed8ecf8b981276bc842cf"
+    }
+  },
+  "aliases": {
+    "seed4601_best": "I",
+    "seed4602_best": "I"
+  },
+  "selection": "development only; last included as prespecified negative comparison"
+}

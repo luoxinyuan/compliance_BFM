@@ -1,0 +1,797 @@
+{
+  "rows": [
+    {
+      "seed": 4601,
+      "sampling_version": 0,
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4601/initial.pt",
+      "sha256": "b8cadb6ce358af8e0ae4fc45f8d6ef467dafd16bedfe118916540fe1d3c98923",
+      "groups": [
+        {
+          "worker": "worker-0",
+          "family": "no_contact",
+          "n": 141,
+          "mean_raw_norm": 1.0595135688781738,
+          "noise_l2": 0.12783575057983398,
+          "noise_coordinate_std": 0.00799605529755354,
+          "z_noise_angle_mean_deg": 6.874354839324951,
+          "z_noise_angle_max_deg": 8.104646682739258,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-0",
+          "family": "stop",
+          "n": 115,
+          "mean_raw_norm": 1.1460763216018677,
+          "noise_l2": 0.1278170347213745,
+          "noise_coordinate_std": 0.007996222004294395,
+          "z_noise_angle_mean_deg": 6.728448390960693,
+          "z_noise_angle_max_deg": 12.8728666305542,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "local7",
+          "n": 83,
+          "mean_raw_norm": 0.9438509941101074,
+          "noise_l2": 0.12775470316410065,
+          "noise_coordinate_std": 0.007994833402335644,
+          "z_noise_angle_mean_deg": 7.8741374015808105,
+          "z_noise_angle_max_deg": 11.498723030090332,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "mid18",
+          "n": 94,
+          "mean_raw_norm": 1.029065489768982,
+          "noise_l2": 0.12803836166858673,
+          "noise_coordinate_std": 0.008009233511984348,
+          "z_noise_angle_mean_deg": 7.331096172332764,
+          "z_noise_angle_max_deg": 11.594913482666016,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "ready18",
+          "n": 79,
+          "mean_raw_norm": 1.0185141563415527,
+          "noise_l2": 0.12820272147655487,
+          "noise_coordinate_std": 0.008019690401852131,
+          "z_noise_angle_mean_deg": 7.543528079986572,
+          "z_noise_angle_max_deg": 12.77649211883545,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "continue",
+          "n": 142,
+          "mean_raw_norm": 0.9772886633872986,
+          "noise_l2": 0.12799666821956635,
+          "noise_coordinate_std": 0.008009196259081364,
+          "z_noise_angle_mean_deg": 7.709737300872803,
+          "z_noise_angle_max_deg": 12.582443237304688,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "mid18",
+          "n": 19,
+          "mean_raw_norm": 0.839560329914093,
+          "noise_l2": 0.1286851465702057,
+          "noise_coordinate_std": 0.008053715340793133,
+          "z_noise_angle_mean_deg": 9.0026273727417,
+          "z_noise_angle_max_deg": 11.746971130371094,
+          "logprob_cpu_reproduction_max": 6.103515625e-05
+        },
+        {
+          "worker": "worker-2",
+          "family": "mid22",
+          "n": 95,
+          "mean_raw_norm": 1.0250201225280762,
+          "noise_l2": 0.1260511577129364,
+          "noise_coordinate_std": 0.007887140847742558,
+          "z_noise_angle_mean_deg": 7.272817611694336,
+          "z_noise_angle_max_deg": 13.397451400756836,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        }
+      ]
+    },
+    {
+      "seed": 4601,
+      "sampling_version": 8,
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4601/candidate-0008.pt",
+      "sha256": "a4217d7a84dc5e100a972ec03cbb1180b252a9e9815eb57cd19746047f6ea441",
+      "groups": [
+        {
+          "worker": "worker-0",
+          "family": "long65",
+          "n": 18,
+          "mean_raw_norm": 0.885259747505188,
+          "noise_l2": 0.12835486233234406,
+          "noise_coordinate_std": 0.008032144047319889,
+          "z_noise_angle_mean_deg": 8.437517166137695,
+          "z_noise_angle_max_deg": 11.288437843322754,
+          "logprob_cpu_reproduction_max": 6.103515625e-05
+        },
+        {
+          "worker": "worker-0",
+          "family": "long80",
+          "n": 142,
+          "mean_raw_norm": 0.8844459056854248,
+          "noise_l2": 0.1291952133178711,
+          "noise_coordinate_std": 0.008081111125648022,
+          "z_noise_angle_mean_deg": 8.489201545715332,
+          "z_noise_angle_max_deg": 12.836810111999512,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-0",
+          "family": "mid22",
+          "n": 96,
+          "mean_raw_norm": 0.9449570775032043,
+          "noise_l2": 0.12735514342784882,
+          "noise_coordinate_std": 0.007966666482388973,
+          "z_noise_angle_mean_deg": 7.81155252456665,
+          "z_noise_angle_max_deg": 11.709993362426758,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "local7",
+          "n": 81,
+          "mean_raw_norm": 0.9383863210678101,
+          "noise_l2": 0.12718695402145386,
+          "noise_coordinate_std": 0.007955387234687805,
+          "z_noise_angle_mean_deg": 8.009574890136719,
+          "z_noise_angle_max_deg": 12.134223937988281,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "mid22",
+          "n": 96,
+          "mean_raw_norm": 1.0307615995407104,
+          "noise_l2": 0.12762413918972015,
+          "noise_coordinate_std": 0.007983456365764141,
+          "z_noise_angle_mean_deg": 7.362941741943359,
+          "z_noise_angle_max_deg": 11.766127586364746,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "stop",
+          "n": 79,
+          "mean_raw_norm": 1.0588213205337524,
+          "noise_l2": 0.12731929123401642,
+          "noise_coordinate_std": 0.007963893003761768,
+          "z_noise_angle_mean_deg": 7.296483516693115,
+          "z_noise_angle_max_deg": 12.412586212158203,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "local7",
+          "n": 32,
+          "mean_raw_norm": 0.916684627532959,
+          "noise_l2": 0.1265581250190735,
+          "noise_coordinate_std": 0.007917087525129318,
+          "z_noise_angle_mean_deg": 8.1026029586792,
+          "z_noise_angle_max_deg": 11.85635757446289,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "local9",
+          "n": 83,
+          "mean_raw_norm": 0.9405622482299805,
+          "noise_l2": 0.1270553469657898,
+          "noise_coordinate_std": 0.007951061241328716,
+          "z_noise_angle_mean_deg": 7.824850559234619,
+          "z_noise_angle_max_deg": 10.214883804321289,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "zero",
+          "n": 141,
+          "mean_raw_norm": 0.959339439868927,
+          "noise_l2": 0.12734687328338623,
+          "noise_coordinate_std": 0.00796799547970295,
+          "z_noise_angle_mean_deg": 7.620588302612305,
+          "z_noise_angle_max_deg": 10.489424705505371,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        }
+      ]
+    },
+    {
+      "seed": 4601,
+      "sampling_version": 16,
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4601/candidate-0016.pt",
+      "sha256": "6c5335c41e8fd9864fcb2c93a685231b2ff750ccad46591ca073a37efa70a843",
+      "groups": [
+        {
+          "worker": "worker-0",
+          "family": "long65",
+          "n": 136,
+          "mean_raw_norm": 0.957098662853241,
+          "noise_l2": 0.12760359048843384,
+          "noise_coordinate_std": 0.00798299815505743,
+          "z_noise_angle_mean_deg": 7.827382564544678,
+          "z_noise_angle_max_deg": 12.431843757629395,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-0",
+          "family": "long80",
+          "n": 25,
+          "mean_raw_norm": 0.8021224737167358,
+          "noise_l2": 0.12624041736125946,
+          "noise_coordinate_std": 0.007894805632531643,
+          "z_noise_angle_mean_deg": 9.074579238891602,
+          "z_noise_angle_max_deg": 11.37435245513916,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-0",
+          "family": "mid22",
+          "n": 95,
+          "mean_raw_norm": 1.0564004182815552,
+          "noise_l2": 0.1285805106163025,
+          "noise_coordinate_std": 0.008043110370635986,
+          "z_noise_angle_mean_deg": 7.219894886016846,
+          "z_noise_angle_max_deg": 12.688807487487793,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "local9",
+          "n": 83,
+          "mean_raw_norm": 0.9315950274467468,
+          "noise_l2": 0.12786979973316193,
+          "noise_coordinate_std": 0.007999736815690994,
+          "z_noise_angle_mean_deg": 7.987123012542725,
+          "z_noise_angle_max_deg": 12.000404357910156,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "mid18",
+          "n": 94,
+          "mean_raw_norm": 1.0516811609268188,
+          "noise_l2": 0.12764424085617065,
+          "noise_coordinate_std": 0.007984490133821964,
+          "z_noise_angle_mean_deg": 7.180541515350342,
+          "z_noise_angle_max_deg": 12.47216796875,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "mid22",
+          "n": 79,
+          "mean_raw_norm": 1.032812237739563,
+          "noise_l2": 0.12711715698242188,
+          "noise_coordinate_std": 0.00795224029570818,
+          "z_noise_angle_mean_deg": 7.32381010055542,
+          "z_noise_angle_max_deg": 12.083037376403809,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "continue",
+          "n": 174,
+          "mean_raw_norm": 0.9060080647468567,
+          "noise_l2": 0.12726564705371857,
+          "noise_coordinate_std": 0.007960647344589233,
+          "z_noise_angle_mean_deg": 8.277444839477539,
+          "z_noise_angle_max_deg": 11.705280303955078,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "local9",
+          "n": 82,
+          "mean_raw_norm": 0.9583024978637695,
+          "noise_l2": 0.12754970788955688,
+          "noise_coordinate_std": 0.007982761599123478,
+          "z_noise_angle_mean_deg": 7.74891471862793,
+          "z_noise_angle_max_deg": 12.11913776397705,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        }
+      ]
+    },
+    {
+      "seed": 4601,
+      "sampling_version": 24,
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4601/candidate-0024.pt",
+      "sha256": "9451023bdd29daddc7ffbf2de1e199a7899f9eaed85571a5fcf78ef4bcd8caeb",
+      "groups": [
+        {
+          "worker": "worker-0",
+          "family": "continue",
+          "n": 141,
+          "mean_raw_norm": 0.9548095464706421,
+          "noise_l2": 0.12716984748840332,
+          "noise_coordinate_std": 0.007954978384077549,
+          "z_noise_angle_mean_deg": 7.760912895202637,
+          "z_noise_angle_max_deg": 11.748882293701172,
+          "logprob_cpu_reproduction_max": 0.00018310546875
+        },
+        {
+          "worker": "worker-0",
+          "family": "local7",
+          "n": 81,
+          "mean_raw_norm": 0.9939396977424622,
+          "noise_l2": 0.12822909653186798,
+          "noise_coordinate_std": 0.008021751418709755,
+          "z_noise_angle_mean_deg": 7.492156505584717,
+          "z_noise_angle_max_deg": 12.027966499328613,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-0",
+          "family": "mid22",
+          "n": 34,
+          "mean_raw_norm": 0.8653438091278076,
+          "noise_l2": 0.12943948805332184,
+          "noise_coordinate_std": 0.008098171092569828,
+          "z_noise_angle_mean_deg": 8.707832336425781,
+          "z_noise_angle_max_deg": 11.531620025634766,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "long80",
+          "n": 142,
+          "mean_raw_norm": 0.9171615242958069,
+          "noise_l2": 0.12808600068092346,
+          "noise_coordinate_std": 0.008013428188860416,
+          "z_noise_angle_mean_deg": 8.146965980529785,
+          "z_noise_angle_max_deg": 13.328327178955078,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "ready18",
+          "n": 114,
+          "mean_raw_norm": 0.9905949831008911,
+          "noise_l2": 0.1276429444551468,
+          "noise_coordinate_std": 0.007986397482454777,
+          "z_noise_angle_mean_deg": 7.548425674438477,
+          "z_noise_angle_max_deg": 11.77965259552002,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "continue",
+          "n": 34,
+          "mean_raw_norm": 0.8457242250442505,
+          "noise_l2": 0.12844790518283844,
+          "noise_coordinate_std": 0.008035687729716301,
+          "z_noise_angle_mean_deg": 8.78321361541748,
+          "z_noise_angle_max_deg": 12.511055946350098,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "local9",
+          "n": 82,
+          "mean_raw_norm": 0.9620425701141357,
+          "noise_l2": 0.12760375440120697,
+          "noise_coordinate_std": 0.007983795367181301,
+          "z_noise_angle_mean_deg": 7.7371697425842285,
+          "z_noise_angle_max_deg": 12.680455207824707,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "right",
+          "n": 140,
+          "mean_raw_norm": 0.9156252145767212,
+          "noise_l2": 0.1276070773601532,
+          "noise_coordinate_std": 0.007983429357409477,
+          "z_noise_angle_mean_deg": 7.981591701507568,
+          "z_noise_angle_max_deg": 9.547032356262207,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        }
+      ]
+    },
+    {
+      "seed": 4602,
+      "sampling_version": 0,
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4602/initial.pt",
+      "sha256": "ce817ac3b221a777dbb8c4746dd4e0995158ab1bc1dac739cfe24b4c316b6bd5",
+      "groups": [
+        {
+          "worker": "worker-0",
+          "family": "long80",
+          "n": 141,
+          "mean_raw_norm": 0.969457745552063,
+          "noise_l2": 0.12701894342899323,
+          "noise_coordinate_std": 0.007947271689772606,
+          "z_noise_angle_mean_deg": 7.771956443786621,
+          "z_noise_angle_max_deg": 11.881197929382324,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-0",
+          "family": "no_contact",
+          "n": 115,
+          "mean_raw_norm": 1.0070574283599854,
+          "noise_l2": 0.12851682305335999,
+          "noise_coordinate_std": 0.008039755746722221,
+          "z_noise_angle_mean_deg": 7.2843017578125,
+          "z_noise_angle_max_deg": 8.615797996520996,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "long65",
+          "n": 21,
+          "mean_raw_norm": 0.9130274653434753,
+          "noise_l2": 0.12993879616260529,
+          "noise_coordinate_std": 0.008124108426272869,
+          "z_noise_angle_mean_deg": 8.139887809753418,
+          "z_noise_angle_max_deg": 10.173822402954102,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "long80",
+          "n": 141,
+          "mean_raw_norm": 0.9785041809082031,
+          "noise_l2": 0.127456933259964,
+          "noise_coordinate_std": 0.007973378524184227,
+          "z_noise_angle_mean_deg": 7.6841912269592285,
+          "z_noise_angle_max_deg": 13.809040069580078,
+          "logprob_cpu_reproduction_max": 0.00018310546875
+        },
+        {
+          "worker": "worker-1",
+          "family": "ready18",
+          "n": 94,
+          "mean_raw_norm": 0.9823691248893738,
+          "noise_l2": 0.12880456447601318,
+          "noise_coordinate_std": 0.008057987317442894,
+          "z_noise_angle_mean_deg": 7.643636703491211,
+          "z_noise_angle_max_deg": 12.908626556396484,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "local7",
+          "n": 83,
+          "mean_raw_norm": 0.9495049715042114,
+          "noise_l2": 0.1286834478378296,
+          "noise_coordinate_std": 0.008050327189266682,
+          "z_noise_angle_mean_deg": 7.865236759185791,
+          "z_noise_angle_max_deg": 11.64301872253418,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "mid18",
+          "n": 79,
+          "mean_raw_norm": 1.0098609924316406,
+          "noise_l2": 0.12861476838588715,
+          "noise_coordinate_std": 0.008048375137150288,
+          "z_noise_angle_mean_deg": 7.6230244636535645,
+          "z_noise_angle_max_deg": 13.06558895111084,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "ready18",
+          "n": 94,
+          "mean_raw_norm": 1.0292624235153198,
+          "noise_l2": 0.12803207337856293,
+          "noise_coordinate_std": 0.008010896854102612,
+          "z_noise_angle_mean_deg": 7.340570449829102,
+          "z_noise_angle_max_deg": 11.635757446289062,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        }
+      ]
+    },
+    {
+      "seed": 4602,
+      "sampling_version": 8,
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4602/candidate-0008.pt",
+      "sha256": "0a88b9aee0824b18f71035b3a4169de427865527fea358352eb89099efd431d7",
+      "groups": [
+        {
+          "worker": "worker-0",
+          "family": "local7",
+          "n": 82,
+          "mean_raw_norm": 0.955742597579956,
+          "noise_l2": 0.12666212022304535,
+          "noise_coordinate_std": 0.007923375815153122,
+          "z_noise_angle_mean_deg": 7.714365005493164,
+          "z_noise_angle_max_deg": 11.213714599609375,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-0",
+          "family": "ready18",
+          "n": 94,
+          "mean_raw_norm": 1.0247799158096313,
+          "noise_l2": 0.12742124497890472,
+          "noise_coordinate_std": 0.0079730823636055,
+          "z_noise_angle_mean_deg": 7.400586128234863,
+          "z_noise_angle_max_deg": 12.883639335632324,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-0",
+          "family": "stop",
+          "n": 80,
+          "mean_raw_norm": 1.0497108697891235,
+          "noise_l2": 0.1279989629983902,
+          "noise_coordinate_std": 0.008007031865417957,
+          "z_noise_angle_mean_deg": 7.3841705322265625,
+          "z_noise_angle_max_deg": 13.716161727905273,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "continue",
+          "n": 141,
+          "mean_raw_norm": 0.875393271446228,
+          "noise_l2": 0.1283257156610489,
+          "noise_coordinate_std": 0.008029993623495102,
+          "z_noise_angle_mean_deg": 8.580174446105957,
+          "z_noise_angle_max_deg": 12.596779823303223,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "ready18",
+          "n": 94,
+          "mean_raw_norm": 1.0381125211715698,
+          "noise_l2": 0.12753355503082275,
+          "noise_coordinate_std": 0.007978809997439384,
+          "z_noise_angle_mean_deg": 7.306252956390381,
+          "z_noise_angle_max_deg": 11.631184577941895,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "stop",
+          "n": 21,
+          "mean_raw_norm": 0.906928300857544,
+          "noise_l2": 0.1267215460538864,
+          "noise_coordinate_std": 0.007922280579805374,
+          "z_noise_angle_mean_deg": 8.064167976379395,
+          "z_noise_angle_max_deg": 10.948465347290039,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "continue",
+          "n": 142,
+          "mean_raw_norm": 0.92509925365448,
+          "noise_l2": 0.12796829640865326,
+          "noise_coordinate_std": 0.008005932904779911,
+          "z_noise_angle_mean_deg": 8.123237609863281,
+          "z_noise_angle_max_deg": 13.01129150390625,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "long65",
+          "n": 21,
+          "mean_raw_norm": 0.94041907787323,
+          "noise_l2": 0.12791936099529266,
+          "noise_coordinate_std": 0.008002539165318012,
+          "z_noise_angle_mean_deg": 7.809021949768066,
+          "z_noise_angle_max_deg": 11.104557991027832,
+          "logprob_cpu_reproduction_max": 6.103515625e-05
+        },
+        {
+          "worker": "worker-2",
+          "family": "mid18",
+          "n": 93,
+          "mean_raw_norm": 1.0408673286437988,
+          "noise_l2": 0.128317728638649,
+          "noise_coordinate_std": 0.008029150776565075,
+          "z_noise_angle_mean_deg": 7.3138427734375,
+          "z_noise_angle_max_deg": 11.147845268249512,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        }
+      ]
+    },
+    {
+      "seed": 4602,
+      "sampling_version": 16,
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4602/candidate-0016.pt",
+      "sha256": "8a3247a8f4ec342c3893672f1aa486f02ef3d522ab72435accb1eb5c2ad7d2de",
+      "groups": [
+        {
+          "worker": "worker-0",
+          "family": "local9",
+          "n": 82,
+          "mean_raw_norm": 0.8848733901977539,
+          "noise_l2": 0.12759466469287872,
+          "noise_coordinate_std": 0.00798199512064457,
+          "z_noise_angle_mean_deg": 8.33724308013916,
+          "z_noise_angle_max_deg": 11.743195533752441,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-0",
+          "family": "mid18",
+          "n": 33,
+          "mean_raw_norm": 0.8359085917472839,
+          "noise_l2": 0.12794260680675507,
+          "noise_coordinate_std": 0.008005342446267605,
+          "z_noise_angle_mean_deg": 8.920814514160156,
+          "z_noise_angle_max_deg": 12.415349960327148,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-0",
+          "family": "no_contact",
+          "n": 141,
+          "mean_raw_norm": 1.0564213991165161,
+          "noise_l2": 0.12804950773715973,
+          "noise_coordinate_std": 0.008010165765881538,
+          "z_noise_angle_mean_deg": 6.923788547515869,
+          "z_noise_angle_max_deg": 7.835514545440674,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "local9",
+          "n": 83,
+          "mean_raw_norm": 0.943231999874115,
+          "noise_l2": 0.12723208963871002,
+          "noise_coordinate_std": 0.007960006594657898,
+          "z_noise_angle_mean_deg": 7.917687892913818,
+          "z_noise_angle_max_deg": 11.736432075500488,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "long80",
+          "n": 141,
+          "mean_raw_norm": 0.8871935606002808,
+          "noise_l2": 0.1280808448791504,
+          "noise_coordinate_std": 0.008013117127120495,
+          "z_noise_angle_mean_deg": 8.443029403686523,
+          "z_noise_angle_max_deg": 12.644342422485352,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "mid18",
+          "n": 32,
+          "mean_raw_norm": 0.8216085433959961,
+          "noise_l2": 0.12778915464878082,
+          "noise_coordinate_std": 0.007993240840733051,
+          "z_noise_angle_mean_deg": 9.078123092651367,
+          "z_noise_angle_max_deg": 12.981329917907715,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "local7",
+          "n": 82,
+          "mean_raw_norm": 0.9714491367340088,
+          "noise_l2": 0.12888893485069275,
+          "noise_coordinate_std": 0.008062743581831455,
+          "z_noise_angle_mean_deg": 7.6793928146362305,
+          "z_noise_angle_max_deg": 10.567194938659668,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "mid18",
+          "n": 34,
+          "mean_raw_norm": 0.8283360004425049,
+          "noise_l2": 0.12865395843982697,
+          "noise_coordinate_std": 0.008047139272093773,
+          "z_noise_angle_mean_deg": 9.093050956726074,
+          "z_noise_angle_max_deg": 12.67581844329834,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "stop",
+          "n": 140,
+          "mean_raw_norm": 0.9010242819786072,
+          "noise_l2": 0.12838192284107208,
+          "noise_coordinate_std": 0.008029849268496037,
+          "z_noise_angle_mean_deg": 8.282692909240723,
+          "z_noise_angle_max_deg": 12.563884735107422,
+          "logprob_cpu_reproduction_max": 0.00018310546875
+        }
+      ]
+    },
+    {
+      "seed": 4602,
+      "sampling_version": 24,
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4602/candidate-0024.pt",
+      "sha256": "ad421c1f7af4db6e102609e33c0deee5de8225b065fb1da99cd61bb914f4b68f",
+      "groups": [
+        {
+          "worker": "worker-0",
+          "family": "local9",
+          "n": 84,
+          "mean_raw_norm": 0.9478347301483154,
+          "noise_l2": 0.12861408293247223,
+          "noise_coordinate_std": 0.00804793369024992,
+          "z_noise_angle_mean_deg": 7.844625473022461,
+          "z_noise_angle_max_deg": 10.889998435974121,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-0",
+          "family": "no_contact",
+          "n": 78,
+          "mean_raw_norm": 1.0087950229644775,
+          "noise_l2": 0.1272505521774292,
+          "noise_coordinate_std": 0.007960270158946514,
+          "z_noise_angle_mean_deg": 7.195796012878418,
+          "z_noise_angle_max_deg": 8.418580055236816,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-0",
+          "family": "ready18",
+          "n": 94,
+          "mean_raw_norm": 1.0569590330123901,
+          "noise_l2": 0.12804913520812988,
+          "noise_coordinate_std": 0.00801079347729683,
+          "z_noise_angle_mean_deg": 7.208930492401123,
+          "z_noise_angle_max_deg": 12.112156867980957,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "continue",
+          "n": 141,
+          "mean_raw_norm": 0.8886377811431885,
+          "noise_l2": 0.12807339429855347,
+          "noise_coordinate_std": 0.008012227714061737,
+          "z_noise_angle_mean_deg": 8.422009468078613,
+          "z_noise_angle_max_deg": 13.609736442565918,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-1",
+          "family": "local9",
+          "n": 83,
+          "mean_raw_norm": 0.9600163698196411,
+          "noise_l2": 0.12857501208782196,
+          "noise_coordinate_std": 0.008045602589845657,
+          "z_noise_angle_mean_deg": 7.756035327911377,
+          "z_noise_angle_max_deg": 11.086669921875,
+          "logprob_cpu_reproduction_max": 0.00018310546875
+        },
+        {
+          "worker": "worker-1",
+          "family": "long65",
+          "n": 32,
+          "mean_raw_norm": 0.8046356439590454,
+          "noise_l2": 0.12983982264995575,
+          "noise_coordinate_std": 0.008121523074805737,
+          "z_noise_angle_mean_deg": 9.415074348449707,
+          "z_noise_angle_max_deg": 11.869796752929688,
+          "logprob_cpu_reproduction_max": 0.0001220703125
+        },
+        {
+          "worker": "worker-2",
+          "family": "stop",
+          "n": 256,
+          "mean_raw_norm": 1.1261636018753052,
+          "noise_l2": 0.12841981649398804,
+          "noise_coordinate_std": 0.008034261874854565,
+          "z_noise_angle_mean_deg": 6.792248725891113,
+          "z_noise_angle_max_deg": 12.43208122253418,
+          "logprob_cpu_reproduction_max": 0.00018310546875
+        }
+      ]
+    }
+  ],
+  "seconds": 1.8143366931471974,
+  "rl_decisions": 0,
+  "scope": "actual sampled batches at saved policy boundaries; only small actor inference on CPU; no new physical samples or optimization"
+}

@@ -1,51 +1,45 @@
-# Issue46 新授权执行中
-
-2026-11-05：I初始化、真实反馈局部—行走共存两seed PPO。独立feedback-coexistence工作树；协议coexist_protocol.json，reward复算通过、原reward认可局部与长距有效行为；探索同状态动作有方向覆盖但随机长距退化。两seed4601/4602已在GPU2/5独立runtime f6ca5c5f6c4de205b3457bef4a024345e2105009运行首段各32×768；当前实际进度以runs/feedback-coexistence-20261105各ledger/status为准，不预宣称训练成功。最多3GPU/18000job秒/12GiB/98304决策；不更换BFM/PD/网络/观测/reward/cap。Issue45结项完整保留，下文为上一阶段快照。
-
 # CURRENT_STATE — 新会话先读
 
-最后核对2026-11-05 CST。**Issue45冻结I adapter对照已完成并停止；没有PPO或后续训练排队。**
+最后核对：2026-11-05 CST。**Issue46两seed真实反馈PPO及封存评估完成并停止。无训练、Student迁移、原生reward inference或下一阶段任务排队。**
 
-[完整报告](ADAPTER_RESULTS.md) · [协议](adapter_protocol.json) · [聚合证据](adapter_artifacts/physical-metrics.json) · [Issue45](https://github.com/GaoE05/robot-research-bridge/issues/45) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。长期纲领RESEARCH_OVERVIEW不变；Library2026-10-28是历史快照。
+[完整结果](COEXIST_RESULTS.md) · [预登记协议](COEXIST_PROTOCOL.md) · [Issue46](https://github.com/GaoE05/robot-research-bridge/issues/46) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18) · [BFM原生复用最小路线](BFM_REWARD_REUSE_ROADMAP.md)。RESEARCH_OVERVIEW是长期纲领；ChatGPT Library2026-10-28是历史快照。
 
-## 目标与可靠基线
+## 科研目标与可靠基线
 
-Contact-conditioned whole-body behavior selection/modulation/transition：真实接触与身体状态决定合理局部手臂、躯干/root和支撑运动，不预设先臂后脚。冻结BFM/PD。有限直行Teacher→ideal-force Student、双向小转腰及历史失败全部保留；不宣称实机已具备精确力传感。
+Contact-conditioned whole-body behavior selection/modulation/transition：依据真实接触与身体状态，合理组织局部手臂、躯干/root及支撑响应；不预设先手后脚，不以root走远替代任务合适性。冻结BFM/PD。有限直行Teacher→ideal-force Student、原生局部伸臂、有限双向转腰均已成立；没有验证真机精确外力感知。
 
-- BFM `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
-- I `72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a`。
-- T30 `c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33`。
-- S0 `0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12`；D2 `9e4630896f9849c7ae1f68fa0058d6e23e1792095ef2a362dfd30c17baccf7f5`。
-- Issue44 C0局部有效但长距失败，C1救回walking却失去局部优势；[原报告](PRIOR_RECOVERY_RESULTS.md)保留，不按任务拼checkpoint。M41启动历史退化证据仍成立。
+- BFM SHA `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
+- 实际行走基线I `72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a`。
+- T30 `c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33`；S0 `0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12`。
+- D2 `9e4630896f9849c7ae1f68fa0058d6e23e1792095ef2a362dfd30c17baccf7f5`。
+- C0局部有效但长距失败；C1恢复walking却失去局部优势。Issue45 F/R均未稳定共存，冻结I参数不等于闭环保旧。全部旧权重/失败保留；不按任务拼模型。
 
-## Issue45实际结论
+## Issue46实际结果
 
-1. F全参数与R冻结I+raw条件adapter，两个配对seed，同750数据/恢复标签/损失/保持权重/批次顺序，每个固定2000更新。R初始确定性输出精确复现I，训练后I及归一化未变，无人为小半径。
-2. 冻结参数不等于闭环保旧。新9cm F1/F2/R1/R2误差4.671/4.820/4.566/4.780cm，C0为2.784cm；新65cm分别6.012/6.292/6.657/5.135cm，I5.495cm、C0失败32.024cm。两种参数化都未实现最佳局部/长距共存；R没有一致优势。不替换I/T30/S0。
-3. 新9cm R1左足路径29.33cm、腕相对肩前移1.79cm；C0仅.38cm足路径、相对腕前移8.07cm。允许合理迈步，但不能仅以root移动判断合适分配。
-4. 共同前缀stop/continue在7.05s前物理/观测/命令一致，7.1s出现首个命令差异；证明需求改变后反馈调整，不是预知最终距离。F/R仍读特权几何，不能称force-only。
-5. 自然arm-ready由真实native前缀执行，保留历史；身体组织改变但未证明更优可达性分配。原6.5s源其实为后向步态准备，已如实更名保留；补充8s真实前行发展诊断，不称盲测、不据此重选模型。
-6. 预固定Teacher I的独立ideal-force Student：883标签/7完整训练回合，2000更新。合法1639D输入无anchor/error/伙伴速度/clock/active/Teacher隐藏信息。新9cm4.232cm/3.471N，新65cm7.404cm/5.943N（I5.495cm/4.534N）。有限迁移可行，长距分布差距仍在。现实力传感未知。
-7. 132完整物理回合，无安全终止/失支撑tick；q_PD20ms峰60.287°与实际q5ms峰3.332°区分。全XYZ、支撑、滑移、恢复曲线保存；释放后不以旧anchor误差判失败。
+1. 原reward同条件复算认可C0局部和I长距有效解，未改reward/网络/历史/绝对z/BFM/PD。10N主物理、K80/D8、原观测尺度；5N回归。两个seed同I actor，独立fresh critic/Adam，std=.008，各32×768；无新增监督初始化/Student。
+2. 两组固定开发规则均选择iteration0。末轮分1.619/1.612，I1.500；预登记联合延长条件不成立，未追加训练。best两个文件不同critic SHA，但均值actor/归一化与I相同，最终评估去重，不能算新学习成功。
+3. **部分正结果保留**：同一4601末轮在新6/24/72cm误差4.190/4.617/5.478cm，I4.452/5.290/7.632cm；72cm真实力5.877→4.511N。4602长距改善但新6cm退化4.790cm。不是两个seed稳定共存。
+4. 停止取舍：新共同前缀停止4601为4.956cm/4.038N，I4.387/3.602；旧早停止6.062/4.967 vs4.707/3.889。退化发生在仍接触的移动/保持阶段，不能用释放后自然收步解释。共同前缀7.37s前实际physics/命令一致，分叉后可反馈调整，但不是最优行为分配。
+5. 动作质量限制：新6cm4601足部路径.33/.75cm，远少于I20.80/.80cm，却伴随root降低6.77cm；世界腕相对肩X仅+.90cm，C0+4.32cm且误差仅2.293cm。减少脚步不等于自然伸臂已经成功。继续保留XYZ、相对运动、滑移和连续性。
+6. 242完整审查回合无安全终止；seed4602中距有共10个无支撑标记tick（单段10–15ms），未隐去。最大q_PD20ms跳变68.29°不等于实际q5ms3.60°。无接触稳定，释放后不考核旧anchor跟随。
+7. 探索噪声能改变同状态BFM动作，未证明std太小；但单步方向覆盖不等于持续有效反馈。raw logprob复现≤.0001221，联合KL≤.01996，critic EV提高不能代替actor成功。每seed208完整采样回合，减速决策仅136/213；覆盖及优化共同限制尚无唯一根因。
 
-## 下一决策（未执行）
+## 下一步唯一建议（尚未执行）
 
-不把adapter作为已证实解法，也不再默认增加混合监督即可共存。唯一建议：下一次有界真实反馈优化围绕共同前缀及近/远请求，从明确固定的可行基线开始，保留可靠walking域并检验局部解能否保留。先用已有数据确认reward是否偏好有效局部解；若需运动经济性项，单独可审查对照，不和架构/课程一起静默改变。需要新授权，不自动启动。force-history网格/真机/扩大任务均未执行。
+不原样无界续训或再次重复F/R监督。下一轮做一个小型**同权重BFM原生reward-prompting局部行为来源实验**：固定buffer/seed/采样预算和状态reward，取得少量局部伸臂/站立稳定候选，在同起点近/远任务进入、保持、退出中与I/C0物理比较，检验能否提供比独立高维噪声更连贯的有效行为来源。
 
-## 版本、数据与成本
+这不是宣称当前任意force/anchor reward可零样本prompt；原B/回放不含外部伙伴信息。reward composition/F-SF候选后果排序已列路线，未运行；force-history0/1/2/4/8/16也未展开。若新来源不足，不扫描大量z或恢复手写分类器。需要用户下一阶段授权。
 
-训练/主评估runtime `2673837a1f92cdc9ff0861c7ac1be767a930374a`；补充源/渲染 `3f7a1e6be9d5f40326e01f0468cd3b8f2170a645`。个人长期分支`gaoe05/research`，本次文档最终SHA见Issue45；文档commit不是训练runtime。
+## 身份、成本与接力
 
-- F4501 `52956080217e6346b1a8b196ad411cbc84a07e248a8e747eeedf2dcc775e12f6`
-- F4502 `9e009414dcac884f8bfc39566e5c8ea6a9ca3831f47f5e56e0a29ea0421f3462`
-- R4501 `298af356d386f79377ca103b4fc82baecbf6e18a997a958633dade2cc7733a37`
-- R4502 `d940c66409c1cec7f6e1ffec7c25589c99abf227a597c3bdb67447d4ec9d0561`
-- Student `02f3c7685c41a3114814a537ae6a1bf861bdc686a65b89561bcda3cfe952fbae`
+训练runtime `f6ca5c5f6c4de205b3457bef4a024345e2105009`；最终评估/渲染 `057f5c6bd302185097770c3c1ed4d10dfb2ce109`。长期个人分支`gaoe05/research`；最终文档commit见Issue46链接，勿混作训练runtime。
 
-服务器run `/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/conditional-adapter-20261105`；Expert在各F/R目录`*-2000.pt`，Student在`probe/ideal-force-student.pt`。初始化/中间/最终及所有失败未覆盖。8000Expert+2000Student更新，0RL；ledger3735.67job秒（含保守故障收费），另约90秒CPU聚合及短审查；约2.03GiB，低于16000秒/10GiB。最多GPU2/5/6；本阶段进程已结束。
+- 4601 last32 `8fa4759d3766568dee8fbba0367e772a97977694d19a503868708efa6d8c9228`。
+- 4602 last32 `e9a1972166b25e3b915b8d75e97d3377e540583e215d91f269e8dba4550310c9`。
+- [完整模型清单与服务器路径](coexist_artifacts/final-frozen-models.json)；[资源账本](coexist_artifacts/resource-closeout.json)。
+- Run：`/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105`。初始/每8批候选/best/last、原始rollout、所有失败均保存。
+- 总49,152高层RL决策、194实际Adam更新；0新增Student/监督更新。7711.53 GPU-job秒＋165.02分析秒＋180秒保守CPU余量，约4.24GiB，低于授权18,000秒/12GiB/98,304决策。训练两独立worktree未修改。
+- Mac：`~/Projects/compliance-bfm-diagnostics/videos/feedback-coexistence/`，仅3个1×真实qpos MP4＋INDEX；6cm、72cm四模型对照，以及同4601停止/继续。SHA/时长/完整解码/视图已核对；未挑seed重跑。
+- owned进程均结束，GPU2/5/6释放；共享checkout仍`6023c6e257fab8fe58d13d9207fb5e85c32ee9c3`干净。未改BFM/PD/原权重/main、SoftSONIC/他人任务，未做真机。
 
-R4501监督器读临时空ledger出错，训练子进程正常完成；保留exit_code=null和reconciled_completed，不伪造OS退出码。原日志、677.53秒保守预算计费及原子写修正均保留；没有重复训练。
-
-Mac `~/Projects/compliance-bfm-diagnostics/videos/conditional-adapter/`：3条真实qpos1×MP4+INDEX，SHA与完整解码通过。01同模型短/长；02共同前缀停止/继续；03自然源状态。完整负例保留，不新增一堆重复视频。
-
-接力先读本文件、纲领、ADAPTER_RESULTS、Issue45；资源必须重新实时核查。共享checkout6023c6e、BFM/PD/权重/main/SoftSONIC及他人任务未改。无Bridge/watch/真机。M11初轮与continuation等历史实验身份不得合并改写。
+新会话先读本文件、RESEARCH_OVERVIEW、COEXIST_RESULTS及Issue46；核验实际运行/模型SHA与新授权，再检查GPU/CPU/RAM/I/O，不复用旧空闲快照或PID。历史Issue44/45、M41仍有效，不能用这轮局部正例抹去停止与跨状态失败。

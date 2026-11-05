@@ -1,0 +1,59 @@
+[
+  {
+    "file": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/feedback-coexistence/01-holdout_local6.mp4",
+    "sha256": "0ee73d1aadb67a5a744a011cb44c772838b731d2cda2eb8072fd164702a57fb5",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1280,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "8.160000"
+      }
+    },
+    "full_decode": true
+  },
+  {
+    "file": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/feedback-coexistence/02-holdout_long72.mp4",
+    "sha256": "cbd8314035b6ffb0ce90d63391d79e2fd441d96bcddf59bb68a2d84ea914839d",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1280,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "14.960000"
+      }
+    },
+    "full_decode": true
+  },
+  {
+    "file": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/feedback-coexistence/03-common-prefix-stop-continue.mp4",
+    "sha256": "00b16ef5640b0ae055268a00fab576e841be35003b1621772385ba45abc8bb4c",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 1280,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "15.000000"
+      }
+    },
+    "full_decode": true
+  }
+]

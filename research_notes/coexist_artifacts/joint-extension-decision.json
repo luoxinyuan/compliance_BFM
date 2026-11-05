@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "seed": 4601,
+      "selection": {
+        "iteration": 0,
+        "score": 1.5,
+        "sha256": "a04001b13457e73664057b0d13efb044130fd5fee2bd914efa06344c5ee5208f",
+        "evaluation": "dev-0000/summary.json",
+        "rule": "0.5 worst relative original physical cost + mean relative cost; no safety boundary or any task cost>1.75 initial; fixed dev only, preserve0/every8/last"
+      },
+      "score_improvement": 0.0,
+      "local_error_improvement": 0.0,
+      "long_worst_cost": 1.0,
+      "boundary": false,
+      "qualifies_extension": false
+    },
+    {
+      "seed": 4602,
+      "selection": {
+        "iteration": 0,
+        "score": 1.5,
+        "sha256": "92bc6ba6c42a6ef8c3c7ba7cea8cd04bc947b171e04f9d843063ec998a0ba3ee",
+        "evaluation": "dev-0000/summary.json",
+        "rule": "0.5 worst relative original physical cost + mean relative cost; no safety boundary or any task cost>1.75 initial; fixed dev only, preserve0/every8/last"
+      },
+      "score_improvement": 0.0,
+      "local_error_improvement": 0.0,
+      "long_worst_cost": 1.0,
+      "boundary": false,
+      "qualifies_extension": false
+    }
+  ],
+  "extend_both": false,
+  "final_unopened": true,
+  "time": 1793871606.3620684,
+  "rl_decisions": 49152
+}

@@ -1,0 +1,6 @@
+import json,pathlib,numpy as np
+r=pathlib.Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105');d=json.loads((r/'learning-curves.json').read_text());out={}
+for seed,c in d.items():
+ t=c['training'];g=[v['optimization']['gradient_components'][0] for v in t];rows=dict(result=json.loads((r/('ppo'+seed)/'result.json').read_text()),selection=c['selection'],decisions_by_family=c['decisions_by_family'],decisions_by_phase=c['decisions_by_phase'],complete_episodes=c['complete_episodes_by_family'],dev_scores=[(v['iteration'],v['score']) for v in c['development']],physical_steps=sum(v['physical_steps'] for v in t),control_steps=sum(v['control_steps'] for v in t),source_steps=sum(v['source_physics_steps']+v['prefill_physics_steps'] for v in t),logprob_max=max(v['optimization']['pre_logprob_max_error'] for v in t),kl_max=max(v['optimization']['epochs'][-1]['joint_gaussian_KL'] for v in t),retention_gradient_ratio_median=float(np.median([x['ratio'] for x in g])),actor_update_raw_rms_mean=float(np.mean([v['optimization']['raw_mean_change_rms'] for v in t])),critic_EV_last=t[-1]['optimization']['updated_value_EV'],actor_parameters_frozen=False)
+ out[seed]=rows
+(r/'training-summary.json').write_text(json.dumps(out,indent=2));print(json.dumps(out,indent=2))
