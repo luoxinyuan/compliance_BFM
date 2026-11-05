@@ -201,7 +201,23 @@
     "actor_lr": 1e-05,
     "evaluate_every": 8
   },
-  "initial": {},
+  "initial": {
+    "A": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/fit2-A/A.pt",
+      "sha256": "e761e57a042d738e8ada39de3f473813486fa7220f0793f14565cfec0bd5da51",
+      "runtime": "e5c9ccb3c267f3c1cd2ea2ef95e8eeb908a3ce8f",
+      "updates": 1500,
+      "samples": 750
+    },
+    "B": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/fit2-B/B.pt",
+      "sha256": "e1112cd0b20d1d8462ac3efbf183cb1289b5679612b37a286232e4a5eaedf00c",
+      "runtime": "e5c9ccb3c267f3c1cd2ea2ef95e8eeb908a3ce8f",
+      "updates": 1500,
+      "samples": 750
+    }
+  },
   "selection": "fixed development .5 worst relative cost + mean relative cost; preserve iteration0, every8 candidate and last; no final-test selection",
-  "scope": "same demand distribution, cap and reward A/B; only matched initialization differs; no PPO replay in either arm"
+  "scope": "same demand distribution, cap and reward A/B; only matched initialization differs; no PPO replay in either arm",
+  "preparation_revision": "First balanced initialization changed precontact source and degraded walking. Preserve it; common-I actual prefix data revision, same I start and1500updates/750samples per arm. Not heldout selection."
 }

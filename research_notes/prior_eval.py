@@ -14,6 +14,9 @@ def study(env,model,contract,out):
  runner.write(out/'runtime-speed.json',install(env));torch.set_num_threads(1);torch.set_grad_enabled(False)
  plan=json.loads(Path(__file__).with_name('prior_training.json').read_text());manifest=json.loads(Path(runner.ARGS.resume).read_text());nets={}
  for name,d in manifest.items():
+  if d.get('mode')=='standing':
+   from types import SimpleNamespace
+   nets[name]=SimpleNamespace(distribution=lambda x:SimpleNamespace(mean=env.standing/16));continue
   assert runner.sha(d['path'])==d['sha256'];n=Expert(1088,'direct').to(env.standing.device);expand(n,torch.load(d['path'],map_location=env.standing.device,weights_only=True));nets[name]=n.eval().requires_grad_(False)
  runner.write(out/'identities.json',manifest);task=Task(env,model,contract,0);rows=[];specs={}
  # Fixed before the matched PPO. 8/20/55cm, onset4.55, new9deg yaw.
@@ -29,6 +32,7 @@ def study(env,model,contract,out):
  native=json.loads((RUN/'qualify-02/native-sources.json').read_text());goal=torch.tensor(native['goals']['0.05'],device=env.standing.device)
  for name,s in specs.items():
   for who,net in nets.items():
+   if who=='Standing' and name not in ['reg_arm5','reg_walk']:continue
    if time.monotonic()-runner.START>runner.ARGS.max_seconds-60:raise TimeoutError('finite final evaluation')
    label=who+'__'+name;task.reset(s,record=True,label=label)
    while not task.done:
