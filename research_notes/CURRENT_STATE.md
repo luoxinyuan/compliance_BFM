@@ -1,5 +1,8 @@
 # CURRENT_STATE — 新会话先读
 
+2026-11-05 CST：Issue43已结项；用户新增授权Issue44，多行为负迁移与真实恢复。独立gaoe05/prior-recovery，run runs/prior-recovery-20261105。当前准备完成，即将启动冻结I/A/B接管；尚无新增训练。预算2GPU/10000job秒/6GiB/4000监督，RL仅共同收益后≤16384。协议recovery_protocol.json；旧模型与全部失败保留。
+
+
 最后核对：2026-11-05 CST。**Issue43（BFM latent先验去偏/reward审查）已完成并停止；无训练或下一阶段排队。**
 
 入口：[完整结果](LATENT_PRIOR_RESULTS.md) · [训练与选模](prior_artifacts/training-final.json) · [终检物理指标](prior_artifacts/final-metrics.json) · [Issue43](https://github.com/GaoE05/robot-research-bridge/issues/43) · [Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。长期纲领RESEARCH_OVERVIEW不变。旧Library2026-10-28仅历史快照。

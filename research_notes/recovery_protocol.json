@@ -1,0 +1,119 @@
+{
+  "models": {
+    "I": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+      "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+      "selection_reason": "M39-A best64 shared M39-B initialization; chosen before this stage evidence; avoids selecting an arm by final M39-B outcomes"
+    },
+    "A": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/fit2-A/A.pt",
+      "sha256": "e761e57a042d738e8ada39de3f473813486fa7220f0793f14565cfec0bd5da51",
+      "runtime": "e5c9ccb3c267f3c1cd2ea2ef95e8eeb908a3ce8f",
+      "updates": 1500,
+      "samples": 750
+    },
+    "B": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/fit2-B/B.pt",
+      "sha256": "e1112cd0b20d1d8462ac3efbf183cb1289b5679612b37a286232e4a5eaedf00c",
+      "runtime": "e5c9ccb3c267f3c1cd2ea2ef95e8eeb908a3ce8f",
+      "updates": 1500,
+      "samples": 750
+    }
+  },
+  "query_models": [
+    "I",
+    "A",
+    "B"
+  ],
+  "switch_times": [
+    4.0,
+    4.3,
+    4.5,
+    5.0,
+    5.5,
+    6.0,
+    7.0
+  ],
+  "switch_ticks": [
+    0,
+    3,
+    5,
+    10,
+    15,
+    20,
+    30
+  ],
+  "specs": {
+    "walk": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "walk"
+    },
+    "small": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.08,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.55,
+      "ramp": 1.0909090909090908,
+      "release": 7.640909090909091,
+      "end": 11.64090909090909,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "arm5"
+    }
+  },
+  "budgets": {
+    "gpu": 2,
+    "job_wall": 10000,
+    "output_bytes": 6442450944,
+    "supervised_updates": 4000,
+    "conditional_rl_decisions": 16384
+  },
+  "training": {
+    "updates_per_arm": 1500,
+    "batch": 128,
+    "lr": 1e-05,
+    "seed": 4301,
+    "C0": "exact fit2-B data/category schedule and loss from I",
+    "C1": "same categories and updates; replace at most half walk frames with verified 1s I recovery suffix, modest same-state five-substep qPD retention only reliable walking category",
+    "retention_calibration": "fixed batch median actor gradient ratio .25, bounded coefficient; fixed before training; no final test tuning"
+  },
+  "sealed": {
+    "distance_cm": [
+      7,
+      18,
+      60
+    ],
+    "onset": 4.65,
+    "peak_speeds": [
+      0.1,
+      0.095,
+      0.125
+    ],
+    "yaw_deg": [
+      -10.5,
+      10.5
+    ],
+    "arm_ready": "same proven real native prefix, new .5 progress, contact6.65"
+  },
+  "stop": "No repeated fitting beyond matched C0/C1; no RL unless both local benefit and long recovery demonstrated on dev."
+}
