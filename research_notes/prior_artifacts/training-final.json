@@ -1,0 +1,214 @@
+{
+  "A": {
+    "result": {
+      "status": "completed",
+      "iterations": 32,
+      "decisions": 24576,
+      "updates": 93,
+      "elapsed_s": 2513.901067640865,
+      "workers": [
+        {
+          "pid": 2744138,
+          "exitcode": 0
+        },
+        {
+          "pid": 2744140,
+          "exitcode": 0
+        },
+        {
+          "pid": 2744142,
+          "exitcode": 0
+        }
+      ],
+      "bfm_updated": false,
+      "student_updated": false
+    },
+    "selection": {
+      "iteration": 0,
+      "score": 1.5,
+      "sha256": "7cc9f2bda24fd1d382d8dc346f0845aa0211e98680eb5a8e38f1dcb20ab86804",
+      "evaluation": "dev-0000/summary.json",
+      "rule": "fixed development .5 worst relative cost + mean relative cost; preserve iteration0, every8 candidate and last; no final-test selection"
+    },
+    "coverage": {
+      "phase": {
+        "pre_contact": 579,
+        "moving": 11124,
+        "contact_hold": 3719,
+        "released_recovery": 7360,
+        "decelerating": 224,
+        "no_actual_contact": 1570
+      },
+      "family": {
+        "zero": 2250,
+        "early": 1005,
+        "late": 2222,
+        "arm15": 2968,
+        "walk": 3735,
+        "left": 2691,
+        "arm5": 2291,
+        "middle30": 4543,
+        "right": 1301,
+        "no_contact": 1570
+      },
+      "completed": {
+        "zero": 16,
+        "early": 10,
+        "late": 17,
+        "arm15": 31,
+        "walk": 26,
+        "arm5": 24,
+        "left": 19,
+        "middle30": 31,
+        "right": 8,
+        "no_contact": 11
+      }
+    },
+    "development_scores": [
+      {
+        "iteration": 0,
+        "score": 1.5
+      },
+      {
+        "iteration": 8,
+        "score": {
+          "score": 1.8232337757877393,
+          "best": 1.5
+        }
+      },
+      {
+        "iteration": 16,
+        "score": {
+          "score": 1.6723347720581598,
+          "best": 1.5
+        }
+      },
+      {
+        "iteration": 24,
+        "score": {
+          "score": 1.6363945071542312,
+          "best": 1.5
+        }
+      },
+      {
+        "iteration": 32,
+        "score": {
+          "score": 1.7251651856190486,
+          "best": 1.5
+        }
+      }
+    ],
+    "selected_actor_max_delta_from_prePPO": 0.0,
+    "rollbacks": [],
+    "physical_steps": 490016,
+    "control_steps": 122504,
+    "source_physics_steps": 38600,
+    "prefill_physics_steps": 115800
+  },
+  "B": {
+    "result": {
+      "status": "completed",
+      "iterations": 32,
+      "decisions": 24576,
+      "updates": 85,
+      "elapsed_s": 2540.551222292008,
+      "workers": [
+        {
+          "pid": 2744137,
+          "exitcode": 0
+        },
+        {
+          "pid": 2744139,
+          "exitcode": 0
+        },
+        {
+          "pid": 2744141,
+          "exitcode": 0
+        }
+      ],
+      "bfm_updated": false,
+      "student_updated": false
+    },
+    "selection": {
+      "iteration": 0,
+      "score": 1.486966343656952,
+      "sha256": "4380df4f8566b1bc2ac8d7849a633c6cda7da0c209029f987c24a3f02a07a24e",
+      "evaluation": "dev-0000/summary.json",
+      "rule": "fixed development .5 worst relative cost + mean relative cost; preserve iteration0, every8 candidate and last; no final-test selection"
+    },
+    "coverage": {
+      "phase": {
+        "pre_contact": 579,
+        "moving": 11124,
+        "contact_hold": 3719,
+        "released_recovery": 7360,
+        "decelerating": 224,
+        "no_actual_contact": 1570
+      },
+      "family": {
+        "zero": 2250,
+        "early": 1005,
+        "late": 2222,
+        "arm15": 2968,
+        "walk": 3735,
+        "left": 2691,
+        "arm5": 2291,
+        "middle30": 4543,
+        "right": 1301,
+        "no_contact": 1570
+      },
+      "completed": {
+        "zero": 16,
+        "early": 10,
+        "late": 17,
+        "arm15": 31,
+        "walk": 26,
+        "arm5": 24,
+        "left": 19,
+        "middle30": 31,
+        "right": 8,
+        "no_contact": 11
+      }
+    },
+    "development_scores": [
+      {
+        "iteration": 0,
+        "score": 1.486966343656952
+      },
+      {
+        "iteration": 8,
+        "score": {
+          "score": 1.7091644332976192,
+          "best": 1.486966343656952
+        }
+      },
+      {
+        "iteration": 16,
+        "score": {
+          "score": 1.5862837404277763,
+          "best": 1.486966343656952
+        }
+      },
+      {
+        "iteration": 24,
+        "score": {
+          "score": 1.5414560535985653,
+          "best": 1.486966343656952
+        }
+      },
+      {
+        "iteration": 32,
+        "score": {
+          "score": 1.5637312569038797,
+          "best": 1.486966343656952
+        }
+      }
+    ],
+    "selected_actor_max_delta_from_prePPO": 0.0,
+    "rollbacks": [],
+    "physical_steps": 490016,
+    "control_steps": 122504,
+    "source_physics_steps": 38600,
+    "prefill_physics_steps": 115800
+  }
+}

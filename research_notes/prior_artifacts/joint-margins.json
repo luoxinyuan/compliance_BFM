@@ -1,0 +1,662 @@
+[
+  {
+    "label": "A__new20",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 145.51409125827524,
+      "right_shoulder_roll_joint": 91.16885403547582,
+      "right_shoulder_yaw_joint": 137.29652796103204,
+      "right_elbow_joint": 52.05858341455017,
+      "right_wrist_roll_joint": 102.55398035648561,
+      "right_wrist_pitch_joint": 78.66481943032886,
+      "right_wrist_yaw_joint": 78.12273393571768
+    },
+    "all_joint_min_remaining_deg": 3.215181351579011,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__new20_armready",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 145.54396042400845,
+      "right_shoulder_roll_joint": 91.0183324207555,
+      "right_shoulder_yaw_joint": 135.65726466287677,
+      "right_elbow_joint": 50.675550411948215,
+      "right_wrist_roll_joint": 101.25689709937879,
+      "right_wrist_pitch_joint": 79.52852845048605,
+      "right_wrist_yaw_joint": 76.34047452212958
+    },
+    "all_joint_min_remaining_deg": 3.242986916248262,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__new55",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 147.0087644368665,
+      "right_shoulder_roll_joint": 91.29159068237858,
+      "right_shoulder_yaw_joint": 134.9006015004293,
+      "right_elbow_joint": 51.629310336345945,
+      "right_wrist_roll_joint": 101.01089499143656,
+      "right_wrist_pitch_joint": 75.56105477413296,
+      "right_wrist_yaw_joint": 76.32809806925474
+    },
+    "all_joint_min_remaining_deg": 3.1025869569901365,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__new8",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.67264696705044,
+      "right_shoulder_roll_joint": 91.39458386064429,
+      "right_shoulder_yaw_joint": 140.03945702449892,
+      "right_elbow_joint": 51.8378529448916,
+      "right_wrist_roll_joint": 102.27382480697159,
+      "right_wrist_pitch_joint": 82.77995161149863,
+      "right_wrist_yaw_joint": 75.659239447473
+    },
+    "all_joint_min_remaining_deg": 5.61415423554177,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__new8_armready",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 150.91888433737526,
+      "right_shoulder_roll_joint": 91.36220724617034,
+      "right_shoulder_yaw_joint": 137.497670852704,
+      "right_elbow_joint": 51.94543055899446,
+      "right_wrist_roll_joint": 101.02680539937109,
+      "right_wrist_pitch_joint": 79.41801200107003,
+      "right_wrist_yaw_joint": 76.06416535374584
+    },
+    "all_joint_min_remaining_deg": 9.668580054742204,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__newleft",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 147.05174458663248,
+      "right_shoulder_roll_joint": 91.21885302016119,
+      "right_shoulder_yaw_joint": 145.89583947645224,
+      "right_elbow_joint": 59.611873124899006,
+      "right_wrist_roll_joint": 104.59432178286518,
+      "right_wrist_pitch_joint": 86.38064959484312,
+      "right_wrist_yaw_joint": 83.0157134991744
+    },
+    "all_joint_min_remaining_deg": 9.446479906890229,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__newright",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.66866108298248,
+      "right_shoulder_roll_joint": 92.01734498692024,
+      "right_shoulder_yaw_joint": 148.38968249002997,
+      "right_elbow_joint": 60.855685918944694,
+      "right_wrist_roll_joint": 106.48284133234586,
+      "right_wrist_pitch_joint": 86.49583627419928,
+      "right_wrist_yaw_joint": 87.55008419051416
+    },
+    "all_joint_min_remaining_deg": 10.45788181231374,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__reg5N_small",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.67722355395415,
+      "right_shoulder_roll_joint": 91.62553875067636,
+      "right_shoulder_yaw_joint": 141.03283141033188,
+      "right_elbow_joint": 60.69937858484991,
+      "right_wrist_roll_joint": 105.07401094728783,
+      "right_wrist_pitch_joint": 84.2966642624459,
+      "right_wrist_yaw_joint": 82.40791783834283
+    },
+    "all_joint_min_remaining_deg": 10.315962219337447,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__reg5N_walk",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 145.46449063672586,
+      "right_shoulder_roll_joint": 91.05590483432611,
+      "right_shoulder_yaw_joint": 134.15584844448455,
+      "right_elbow_joint": 50.891070745321144,
+      "right_wrist_roll_joint": 99.85410493698497,
+      "right_wrist_pitch_joint": 77.8535252084941,
+      "right_wrist_yaw_joint": 75.2858967226017
+    },
+    "all_joint_min_remaining_deg": 4.101340041355026,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__reg_arm5",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.67722355395415,
+      "right_shoulder_roll_joint": 91.62553875067636,
+      "right_shoulder_yaw_joint": 141.03283141033188,
+      "right_elbow_joint": 60.69937858484991,
+      "right_wrist_roll_joint": 105.07401094728783,
+      "right_wrist_pitch_joint": 84.2966642624459,
+      "right_wrist_yaw_joint": 82.40791783834283
+    },
+    "all_joint_min_remaining_deg": 10.315962219337447,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__reg_early",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 149.7268481055702,
+      "right_shoulder_roll_joint": 91.31094804343411,
+      "right_shoulder_yaw_joint": 138.18249185775113,
+      "right_elbow_joint": 53.01246756680754,
+      "right_wrist_roll_joint": 101.80104935789352,
+      "right_wrist_pitch_joint": 77.84053602059974,
+      "right_wrist_yaw_joint": 78.61408488076978
+    },
+    "all_joint_min_remaining_deg": 3.2704262827117216,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__reg_late",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 148.16287370643266,
+      "right_shoulder_roll_joint": 91.31094804343411,
+      "right_shoulder_yaw_joint": 134.19050865377181,
+      "right_elbow_joint": 55.149429069588365,
+      "right_wrist_roll_joint": 101.58533331279777,
+      "right_wrist_pitch_joint": 77.28484053310352,
+      "right_wrist_yaw_joint": 78.41996601740662
+    },
+    "all_joint_min_remaining_deg": 3.2704262827117216,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__reg_no_contact",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 150.5818139662401,
+      "right_shoulder_roll_joint": 91.97346699231255,
+      "right_shoulder_yaw_joint": 149.6698162458272,
+      "right_elbow_joint": 58.77037261856161,
+      "right_wrist_roll_joint": 106.12642760870165,
+      "right_wrist_pitch_joint": 88.93973386391524,
+      "right_wrist_yaw_joint": 88.45924966171252
+    },
+    "all_joint_min_remaining_deg": 10.12115076942751,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "A__reg_walk",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.67966944232887,
+      "right_shoulder_roll_joint": 90.98448745506971,
+      "right_shoulder_yaw_joint": 134.19050865377181,
+      "right_elbow_joint": 53.6408893057358,
+      "right_wrist_roll_joint": 100.36408721038204,
+      "right_wrist_pitch_joint": 77.28486255423228,
+      "right_wrist_yaw_joint": 76.67745042261681
+    },
+    "all_joint_min_remaining_deg": 3.2704262827117216,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__new20",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 134.58342545475887,
+      "right_shoulder_roll_joint": 85.50440743222067,
+      "right_shoulder_yaw_joint": 110.11765327359018,
+      "right_elbow_joint": 60.71505401764397,
+      "right_wrist_roll_joint": 101.621051784606,
+      "right_wrist_pitch_joint": 85.28642019112336,
+      "right_wrist_yaw_joint": 77.52748048848318
+    },
+    "all_joint_min_remaining_deg": 10.701109036560961,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__new20_armready",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 135.1479649458423,
+      "right_shoulder_roll_joint": 85.31211984701362,
+      "right_shoulder_yaw_joint": 110.30684275405622,
+      "right_elbow_joint": 65.43633776534004,
+      "right_wrist_roll_joint": 102.52330469919762,
+      "right_wrist_pitch_joint": 85.07036653243959,
+      "right_wrist_yaw_joint": 77.63263515494732
+    },
+    "all_joint_min_remaining_deg": 10.488667966415152,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__new55",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 124.07579099641886,
+      "right_shoulder_roll_joint": 84.93116879677439,
+      "right_shoulder_yaw_joint": 111.54441692366704,
+      "right_elbow_joint": 60.71313116864571,
+      "right_wrist_roll_joint": 103.00180499160047,
+      "right_wrist_pitch_joint": 75.47811455735186,
+      "right_wrist_yaw_joint": 74.07406539764322
+    },
+    "all_joint_min_remaining_deg": 10.61115199192525,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__new8",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.74714455341615,
+      "right_shoulder_roll_joint": 87.34553575252122,
+      "right_shoulder_yaw_joint": 125.26870203710486,
+      "right_elbow_joint": 60.71863292409595,
+      "right_wrist_roll_joint": 105.81588999808515,
+      "right_wrist_pitch_joint": 84.5397576416947,
+      "right_wrist_yaw_joint": 81.9104375539471
+    },
+    "all_joint_min_remaining_deg": 10.739061091640554,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__new8_armready",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 149.58250407589438,
+      "right_shoulder_roll_joint": 87.02595698844392,
+      "right_shoulder_yaw_joint": 117.50339008746023,
+      "right_elbow_joint": 65.50952455441686,
+      "right_wrist_roll_joint": 105.48313945372875,
+      "right_wrist_pitch_joint": 82.44297084360815,
+      "right_wrist_yaw_joint": 82.81473622260633
+    },
+    "all_joint_min_remaining_deg": 10.157024067779373,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__newleft",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 146.25998870434674,
+      "right_shoulder_roll_joint": 91.76133043319527,
+      "right_shoulder_yaw_joint": 147.77225312945257,
+      "right_elbow_joint": 56.873604883176064,
+      "right_wrist_roll_joint": 104.29020036001354,
+      "right_wrist_pitch_joint": 86.5611562995044,
+      "right_wrist_yaw_joint": 82.82818033694772
+    },
+    "all_joint_min_remaining_deg": 9.23661339511431,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__newright",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 149.9247704550066,
+      "right_shoulder_roll_joint": 91.97982583526456,
+      "right_shoulder_yaw_joint": 146.1742262790102,
+      "right_elbow_joint": 60.56468251179537,
+      "right_wrist_roll_joint": 106.12929744139807,
+      "right_wrist_pitch_joint": 84.00000081027547,
+      "right_wrist_yaw_joint": 81.0175379883759
+    },
+    "all_joint_min_remaining_deg": 9.555109069220125,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__reg5N_small",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.7190524036208,
+      "right_shoulder_roll_joint": 91.97695361061608,
+      "right_shoulder_yaw_joint": 141.25285161216453,
+      "right_elbow_joint": 58.85186187357047,
+      "right_wrist_roll_joint": 105.5409339174027,
+      "right_wrist_pitch_joint": 84.69109946226764,
+      "right_wrist_yaw_joint": 84.3434842671795
+    },
+    "all_joint_min_remaining_deg": 9.900968927486524,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__reg5N_walk",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 135.5255100676563,
+      "right_shoulder_roll_joint": 84.79831201884373,
+      "right_shoulder_yaw_joint": 109.48809200459371,
+      "right_elbow_joint": 60.712369799127664,
+      "right_wrist_roll_joint": 101.12372077737719,
+      "right_wrist_pitch_joint": 84.25720407613164,
+      "right_wrist_yaw_joint": 75.00704684742581
+    },
+    "all_joint_min_remaining_deg": 10.699206889799934,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__reg_arm5",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.7190524036208,
+      "right_shoulder_roll_joint": 91.97695361061608,
+      "right_shoulder_yaw_joint": 141.25285161216453,
+      "right_elbow_joint": 58.85186187357047,
+      "right_wrist_roll_joint": 105.5409339174027,
+      "right_wrist_pitch_joint": 84.69109946226764,
+      "right_wrist_yaw_joint": 84.3434842671795
+    },
+    "all_joint_min_remaining_deg": 9.900968927486524,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__reg_early",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 126.88481552710304,
+      "right_shoulder_roll_joint": 85.40233177235916,
+      "right_shoulder_yaw_joint": 111.59495256947243,
+      "right_elbow_joint": 60.712369799127664,
+      "right_wrist_roll_joint": 103.60295419040315,
+      "right_wrist_pitch_joint": 79.09574996972779,
+      "right_wrist_yaw_joint": 74.40707524048084
+    },
+    "all_joint_min_remaining_deg": 10.699206889799934,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__reg_late",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 125.62231552832941,
+      "right_shoulder_roll_joint": 84.01838266220021,
+      "right_shoulder_yaw_joint": 111.9608852890236,
+      "right_elbow_joint": 60.712369799127664,
+      "right_wrist_roll_joint": 102.9525182523072,
+      "right_wrist_pitch_joint": 76.04028195670799,
+      "right_wrist_yaw_joint": 74.03790002496847
+    },
+    "all_joint_min_remaining_deg": 9.407843397326213,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__reg_no_contact",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 150.90192787825723,
+      "right_shoulder_roll_joint": 91.97344755344382,
+      "right_shoulder_yaw_joint": 149.30903102237332,
+      "right_elbow_joint": 58.80274814432651,
+      "right_wrist_roll_joint": 105.57201244031052,
+      "right_wrist_pitch_joint": 88.24457634010122,
+      "right_wrist_yaw_joint": 87.15859801488656
+    },
+    "all_joint_min_remaining_deg": 10.34971324576414,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "B__reg_walk",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 125.62231552832941,
+      "right_shoulder_roll_joint": 84.0177312610883,
+      "right_shoulder_yaw_joint": 111.9608852890236,
+      "right_elbow_joint": 60.712369799127664,
+      "right_wrist_roll_joint": 102.9525182523072,
+      "right_wrist_pitch_joint": 76.17220182624568,
+      "right_wrist_yaw_joint": 74.03790002496847
+    },
+    "all_joint_min_remaining_deg": 9.236032819043302,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__new20",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 144.46272814323547,
+      "right_shoulder_roll_joint": 91.19960678638262,
+      "right_shoulder_yaw_joint": 136.8266013717224,
+      "right_elbow_joint": 50.676612997333265,
+      "right_wrist_roll_joint": 102.31556280565016,
+      "right_wrist_pitch_joint": 78.61774495454434,
+      "right_wrist_yaw_joint": 78.68969611620034
+    },
+    "all_joint_min_remaining_deg": 3.231961809569089,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__new20_armready",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 145.1557845599907,
+      "right_shoulder_roll_joint": 91.02871905138447,
+      "right_shoulder_yaw_joint": 135.61161134672224,
+      "right_elbow_joint": 50.08933551173922,
+      "right_wrist_roll_joint": 101.1780386751939,
+      "right_wrist_pitch_joint": 79.50697216761168,
+      "right_wrist_yaw_joint": 75.8206366091139
+    },
+    "all_joint_min_remaining_deg": 3.26161844720036,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__new55",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 144.73964164161913,
+      "right_shoulder_roll_joint": 91.11541401853364,
+      "right_shoulder_yaw_joint": 137.08781198095087,
+      "right_elbow_joint": 52.19200121692463,
+      "right_wrist_roll_joint": 101.68052261489113,
+      "right_wrist_pitch_joint": 74.34466490232414,
+      "right_wrist_yaw_joint": 77.0938644052354
+    },
+    "all_joint_min_remaining_deg": 3.1588997488569435,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__new8",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.6725621802092,
+      "right_shoulder_roll_joint": 91.39343068134866,
+      "right_shoulder_yaw_joint": 139.25710886269792,
+      "right_elbow_joint": 51.669639184360335,
+      "right_wrist_roll_joint": 102.09400342349032,
+      "right_wrist_pitch_joint": 82.79348853613293,
+      "right_wrist_yaw_joint": 72.9227375296535
+    },
+    "all_joint_min_remaining_deg": 5.454483328588208,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__new8_armready",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 150.91716374519396,
+      "right_shoulder_roll_joint": 91.34319026795077,
+      "right_shoulder_yaw_joint": 137.74808261286697,
+      "right_elbow_joint": 52.16648530969091,
+      "right_wrist_roll_joint": 101.03671351176584,
+      "right_wrist_pitch_joint": 79.42933108798594,
+      "right_wrist_yaw_joint": 76.05115867011483
+    },
+    "all_joint_min_remaining_deg": 9.666890027774551,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__newleft",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 147.06294728610752,
+      "right_shoulder_roll_joint": 91.22019950045399,
+      "right_shoulder_yaw_joint": 145.91480466543436,
+      "right_elbow_joint": 59.61417905911582,
+      "right_wrist_roll_joint": 104.60206389683586,
+      "right_wrist_pitch_joint": 86.39226009924923,
+      "right_wrist_yaw_joint": 83.0139128633614
+    },
+    "all_joint_min_remaining_deg": 9.446424079505695,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__newright",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.66855405608916,
+      "right_shoulder_roll_joint": 92.01725811226324,
+      "right_shoulder_yaw_joint": 148.3933886382839,
+      "right_elbow_joint": 60.85515435894424,
+      "right_wrist_roll_joint": 106.48255758903886,
+      "right_wrist_pitch_joint": 86.5028522824198,
+      "right_wrist_yaw_joint": 87.56350683639248
+    },
+    "all_joint_min_remaining_deg": 10.458548561818153,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__reg5N_small",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.6771527664807,
+      "right_shoulder_roll_joint": 91.62531092938028,
+      "right_shoulder_yaw_joint": 141.06206270368065,
+      "right_elbow_joint": 60.699266807478196,
+      "right_wrist_roll_joint": 105.0954298212204,
+      "right_wrist_pitch_joint": 84.28936247406793,
+      "right_wrist_yaw_joint": 82.40808499818228
+    },
+    "all_joint_min_remaining_deg": 10.30363682747164,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__reg5N_walk",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.67960032179286,
+      "right_shoulder_roll_joint": 90.99827776304856,
+      "right_shoulder_yaw_joint": 139.82738643414524,
+      "right_elbow_joint": 54.75143043239669,
+      "right_wrist_roll_joint": 98.9804387665283,
+      "right_wrist_pitch_joint": 77.33822583674018,
+      "right_wrist_yaw_joint": 73.44763771184607
+    },
+    "all_joint_min_remaining_deg": 4.14592435895598,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__reg_arm5",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.6771527664807,
+      "right_shoulder_roll_joint": 91.62531092938028,
+      "right_shoulder_yaw_joint": 141.06206270368065,
+      "right_elbow_joint": 60.699266807478196,
+      "right_wrist_roll_joint": 105.0954298212204,
+      "right_wrist_pitch_joint": 84.28936247406793,
+      "right_wrist_yaw_joint": 82.40808499818228
+    },
+    "all_joint_min_remaining_deg": 10.30363682747164,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__reg_early",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 149.94270796463448,
+      "right_shoulder_roll_joint": 91.30895258229366,
+      "right_shoulder_yaw_joint": 138.1035957461622,
+      "right_elbow_joint": 53.18802866035084,
+      "right_wrist_roll_joint": 101.96158023655369,
+      "right_wrist_pitch_joint": 77.78239980392071,
+      "right_wrist_yaw_joint": 79.00209765606195
+    },
+    "all_joint_min_remaining_deg": 3.3089915836661574,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__reg_late",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 147.14233481528004,
+      "right_shoulder_roll_joint": 91.30895258229366,
+      "right_shoulder_yaw_joint": 134.10104495265276,
+      "right_elbow_joint": 54.09225711618034,
+      "right_wrist_roll_joint": 101.96158023655369,
+      "right_wrist_pitch_joint": 72.26620191560828,
+      "right_wrist_yaw_joint": 75.29948984481256
+    },
+    "all_joint_min_remaining_deg": 3.3089915836661574,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__reg_no_contact",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 150.591833557467,
+      "right_shoulder_roll_joint": 91.97346689581352,
+      "right_shoulder_yaw_joint": 149.66954778958407,
+      "right_elbow_joint": 58.782109026747804,
+      "right_wrist_roll_joint": 106.12591812488553,
+      "right_wrist_pitch_joint": 88.94019158895968,
+      "right_wrist_yaw_joint": 88.45924942572884
+    },
+    "all_joint_min_remaining_deg": 10.124644742322438,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "I__reg_walk",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.67960032179286,
+      "right_shoulder_roll_joint": 91.30895258229366,
+      "right_shoulder_yaw_joint": 134.2922199678541,
+      "right_elbow_joint": 54.97625835542552,
+      "right_wrist_roll_joint": 101.96158023655369,
+      "right_wrist_pitch_joint": 72.26620191560828,
+      "right_wrist_yaw_joint": 75.19710465479885
+    },
+    "all_joint_min_remaining_deg": 3.3089915836661574,
+    "minimum_joint": "left_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "Standing__reg_arm5",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.69837779419183,
+      "right_shoulder_roll_joint": 91.98450313494396,
+      "right_shoulder_yaw_joint": 149.78651005330218,
+      "right_elbow_joint": 60.26061226725959,
+      "right_wrist_roll_joint": 105.9433477688129,
+      "right_wrist_pitch_joint": 88.7385116400544,
+      "right_wrist_yaw_joint": 88.42475914846733
+    },
+    "all_joint_min_remaining_deg": 10.712145519235895,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  },
+  {
+    "label": "Standing__reg_walk",
+    "right_arm_min_remaining_deg": {
+      "right_shoulder_pitch_joint": 151.69840957453175,
+      "right_shoulder_roll_joint": 91.98450311126324,
+      "right_shoulder_yaw_joint": 148.71930572659815,
+      "right_elbow_joint": 60.453288270035614,
+      "right_wrist_roll_joint": 105.21212215869662,
+      "right_wrist_pitch_joint": 88.6371597093403,
+      "right_wrist_yaw_joint": 88.39143430113609
+    },
+    "all_joint_min_remaining_deg": 10.714413434992348,
+    "minimum_joint": "right_ankle_roll_joint",
+    "scope": "hard joint limits; not comfort margin or full Cartesian reachability"
+  }
+]

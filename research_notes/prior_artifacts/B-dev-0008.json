@@ -1,0 +1,2076 @@
+[
+  {
+    "label": "arm5__mean",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "arm5",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.017381201843930726,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.7441424130362726,
+    "error_cm": 2.1171405079468806,
+    "cap_fraction": 0.0,
+    "episode_return": -1.0145285483568636,
+    "physics_steps": 1852,
+    "rl_decisions": 93,
+    "prefill_steps": 13200,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 4.754884743097497,
+    "moving_heading_rms_deg": 6.008637549698164,
+    "yaw_moment_rms": 0.07803081340195704,
+    "work_j": -0.02459649159287186,
+    "sum_force_norm_rms": 1.7441424130362726,
+    "actual_pelvis_turn_deg": -1.5214484140159306,
+    "actual_torso_turn_deg": 3.9578074069177545,
+    "torso_excursion_deg": 12.312203977194978,
+    "pelvis_excursion_deg": 2.4480050195843517,
+    "final_torso_deg": -0.42880416930043985,
+    "final_pelvis_deg": -2.4480050195843517,
+    "recovery_root_displacement_cm": 2.0309418314153658,
+    "qpd_max_deg": 1.0648930859493955,
+    "phase_metrics": {
+      "pre_contact": {
+        "seconds": 0.255,
+        "root_displacement_cm": [
+          0.0010647741785305836,
+          0.009797324067342683,
+          -0.004779390672349226
+        ],
+        "root_mean_velocity_mps": [
+          4.2590967141223346e-05,
+          0.0003918929626937073,
+          -0.00019117562689396905
+        ],
+        "torso_yaw_change_deg": -0.1782980470908667,
+        "pelvis_yaw_change_deg": -0.16688990979654514,
+        "waist_relative_final_deg": -0.09986337169660972,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.0019385148944243624
+      },
+      "moving": {
+        "seconds": 3.0,
+        "root_displacement_cm": [
+          -0.03039144685891698,
+          1.1884205442978282,
+          -0.4205586081927004
+        ],
+        "root_mean_velocity_mps": [
+          -0.00010147394610656754,
+          0.003968015172947673,
+          -0.001404202364583307
+        ],
+        "torso_yaw_change_deg": 4.139930281265315,
+        "pelvis_yaw_change_deg": -1.3509623907025003,
+        "waist_relative_final_deg": 5.390800586531396,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.08447765495262542,
+        "external_work_j": 0.017377600913415284,
+        "max_actual_q_step_deg": 0.07552532579893946,
+        "point_error_rms_cm": 1.1028301835908496,
+        "point_error_xyz_mean_cm": [
+          [
+            0.8180876840267115,
+            -0.33631315234400844,
+            0.3400427720533563
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            0.7685199579214802,
+            0.33257560412585413,
+            0.39633786983276065
+          ]
+        ],
+        "sum_force_norm_rms_n": 0.9264519227930182,
+        "cap_fraction": 0.0,
+        "yaw_error_rms_deg": 4.430147120122896
+      },
+      "contact_hold": {
+        "seconds": 1.995,
+        "root_displacement_cm": [
+          -0.526550637182727,
+          -1.6630116292775339,
+          -1.1482493400302496
+        ],
+        "root_mean_velocity_mps": [
+          -0.0026459831014207387,
+          -0.008356842358178563,
+          -0.005770097186081656
+        ],
+        "torso_yaw_change_deg": 8.221097396026986,
+        "pelvis_yaw_change_deg": 2.591151534009234,
+        "waist_relative_final_deg": 11.048558706705437,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.06718161746861384,
+        "external_work_j": -0.04197409250628721,
+        "max_actual_q_step_deg": 0.041498277522060256,
+        "point_error_rms_cm": 3.0649040094033233,
+        "point_error_xyz_mean_cm": [
+          [
+            1.1954568075345255,
+            -1.1078122154941232,
+            2.4892214822065397
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            0.9801194184263143,
+            0.9182322470914049,
+            2.126508190128611
+          ]
+        ],
+        "sum_force_norm_rms_n": 2.515118608864983,
+        "cap_fraction": 0.0,
+        "yaw_error_rms_deg": 5.205211839578716
+      },
+      "released_recovery": {
+        "seconds": 4.01,
+        "root_displacement_cm": [
+          0.8062652549919881,
+          1.2224739528897604,
+          1.4072023648685317
+        ],
+        "root_mean_velocity_mps": [
+          0.002013146704099845,
+          0.0030523694204488403,
+          0.0035136138948028257
+        ],
+        "torso_yaw_change_deg": -12.627933508261671,
+        "pelvis_yaw_change_deg": -3.5125663078947897,
+        "waist_relative_final_deg": 1.9309095732262886,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.08795230171231261
+      }
+    },
+    "handoff_sha256": "3180ad53d4f1208e58314b3d5d4d7146a9203f6fb2ee966a914af78197a0575e"
+  },
+  {
+    "label": "walk__mean",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "walk",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.29953209513963,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 8.738179327482626,
+    "error_cm": 33.656693666300484,
+    "cap_fraction": 0.7054619703930577,
+    "episode_return": -54.62718829531592,
+    "physics_steps": 2812,
+    "rl_decisions": 141,
+    "prefill_steps": 13800,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 8.559730392806054,
+    "moving_heading_rms_deg": 13.091452731628253,
+    "yaw_moment_rms": 1.2814414710607431,
+    "work_j": 2.7602314936727246,
+    "sum_force_norm_rms": 8.738179327482626,
+    "actual_pelvis_turn_deg": -12.095028672151969,
+    "actual_torso_turn_deg": -2.9545838210860644,
+    "torso_excursion_deg": 25.0327571172349,
+    "pelvis_excursion_deg": 26.346740826907958,
+    "final_torso_deg": -25.0327571172349,
+    "final_pelvis_deg": -26.346740826907958,
+    "recovery_root_displacement_cm": 1.1161801261788846,
+    "qpd_max_deg": 50.91776935669193,
+    "phase_metrics": {
+      "pre_contact": {
+        "seconds": 0.255,
+        "root_displacement_cm": [
+          0.0010647741785305836,
+          0.009797324067342683,
+          -0.004779390672349226
+        ],
+        "root_mean_velocity_mps": [
+          4.2590967141223346e-05,
+          0.0003918929626937073,
+          -0.00019117562689396905
+        ],
+        "torso_yaw_change_deg": -0.1782980470908667,
+        "pelvis_yaw_change_deg": -0.16688990979654514,
+        "waist_relative_final_deg": -0.09986337169660972,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.0019385148944243624
+      },
+      "moving": {
+        "seconds": 7.795,
+        "root_displacement_cm": [
+          28.365301370657047,
+          1.3580324718765653,
+          -0.5395713308324002
+        ],
+        "root_mean_velocity_mps": [
+          0.036412453620869124,
+          0.0017433022745527154,
+          -0.0006926461243034662
+        ],
+        "torso_yaw_change_deg": -2.7724617745522373,
+        "pelvis_yaw_change_deg": -11.924543112563288,
+        "waist_relative_final_deg": 9.051989616663615,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 1.2666811151321102,
+        "external_work_j": 2.7947754359534636,
+        "max_actual_q_step_deg": 2.1413387656626033,
+        "point_error_rms_cm": 31.79809500862687,
+        "point_error_xyz_mean_cm": [
+          [
+            25.061906640478426,
+            -2.721555286664937,
+            0.7209485897856565
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            8.300739000953355,
+            1.004853646856487,
+            0.6142225339857641
+          ]
+        ],
+        "sum_force_norm_rms_n": 8.383869520382854,
+        "cap_fraction": 0.6298909557408595,
+        "yaw_error_rms_deg": 8.050845800281284
+      },
+      "contact_hold": {
+        "seconds": 2.0,
+        "root_displacement_cm": [
+          1.3673373634195574,
+          0.09633203745042368,
+          0.7690985612536339
+        ],
+        "root_mean_velocity_mps": [
+          0.006853821370524097,
+          0.00048286735564122144,
+          0.0038551306328502948
+        ],
+        "torso_yaw_change_deg": -4.054745588181137,
+        "pelvis_yaw_change_deg": -4.391477557055194,
+        "waist_relative_final_deg": 9.38742193646036,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 1.337416121264918,
+        "external_work_j": -0.0345439422807406,
+        "max_actual_q_step_deg": 0.10343413929143055,
+        "point_error_rms_cm": 40.08640922223435,
+        "point_error_xyz_mean_cm": [
+          [
+            39.986888953099,
+            -2.5514007251622326,
+            -0.4677202278961051
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            9.979841338538188,
+            0.6184226811147012,
+            0.14254909711134606
+          ]
+        ],
+        "sum_force_norm_rms_n": 10.0,
+        "cap_fraction": 1.0,
+        "yaw_error_rms_deg": 10.30601915350952
+      },
+      "released_recovery": {
+        "seconds": 4.01,
+        "root_displacement_cm": [
+          -0.2971309995666027,
+          -1.075098735523029,
+          -0.04164074987372812
+        ],
+        "root_mean_velocity_mps": [
+          -0.0007419001237618046,
+          -0.002684391349620547,
+          -0.00010397190979707397
+        ],
+        "torso_yaw_change_deg": -17.984075678986613,
+        "pelvis_yaw_change_deg": -9.842551622533504,
+        "waist_relative_final_deg": 1.2256924326154357,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.2546166908112691
+      }
+    },
+    "handoff_sha256": "3180ad53d4f1208e58314b3d5d4d7146a9203f6fb2ee966a914af78197a0575e"
+  },
+  {
+    "label": "left__mean",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.0,
+      "rotation_deg": 15.0,
+      "curvature": 0.0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "legacy",
+      "demand_family": "left",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.01616505935532894,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 2.1588097086900513,
+    "error_cm": 1.8965337163751428,
+    "cap_fraction": 0.0,
+    "episode_return": -6.549003627497804,
+    "physics_steps": 2812,
+    "rl_decisions": 141,
+    "prefill_steps": 14400,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 7.518231328020419,
+    "moving_heading_rms_deg": 12.349505212285838,
+    "yaw_moment_rms": 0.33477529046537724,
+    "work_j": 0.05483785908778516,
+    "sum_force_norm_rms": 3.046717192901556,
+    "actual_pelvis_turn_deg": -1.4119172449183497,
+    "actual_torso_turn_deg": 7.130400200709169,
+    "torso_excursion_deg": 10.129078139782061,
+    "pelvis_excursion_deg": 2.837792021658803,
+    "final_torso_deg": -2.005756530075189,
+    "final_pelvis_deg": -2.837792021658803,
+    "recovery_root_displacement_cm": 1.7920272170435132,
+    "qpd_max_deg": 1.0609332837780807,
+    "phase_metrics": {
+      "pre_contact": {
+        "seconds": 0.255,
+        "root_displacement_cm": [
+          0.029373654374565197,
+          -0.020028764638464064,
+          -0.0019023625892455875
+        ],
+        "root_mean_velocity_mps": [
+          0.001174946174982608,
+          -0.0008011505855385626,
+          -7.60945035698235e-05
+        ],
+        "torso_yaw_change_deg": -0.16915682635675816,
+        "pelvis_yaw_change_deg": -0.13821572110841177,
+        "waist_relative_final_deg": -0.11944984571006441,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.004443575536088664
+      },
+      "moving": {
+        "seconds": 7.795,
+        "root_displacement_cm": [
+          -0.4797739424812406,
+          -0.845688236475748,
+          -0.6155274488622187
+        ],
+        "root_mean_velocity_mps": [
+          -0.0006158843934290637,
+          -0.0010856074922666855,
+          -0.0007901507687576619
+        ],
+        "torso_yaw_change_deg": 7.303027593375141,
+        "pelvis_yaw_change_deg": -1.2709356526573952,
+        "waist_relative_final_deg": 8.453808705165802,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.34850012743027714,
+        "external_work_j": 0.04881640018628601,
+        "max_actual_q_step_deg": 0.07941499866858061,
+        "point_error_rms_cm": 1.849432305087033,
+        "point_error_xyz_mean_cm": [
+          [
+            -1.6726411454591952,
+            0.3906942150722377,
+            0.19272020777308968
+          ],
+          [
+            1.4381287369050002,
+            0.4413528681129852,
+            0.21564593227282972
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            1.5118154061219276,
+            0.35176841170663276,
+            0.19473186159871414
+          ],
+          [
+            1.3205402642348607,
+            0.46180513857592415,
+            0.24070958891845914
+          ]
+        ],
+        "sum_force_norm_rms_n": 2.9799654893929524,
+        "cap_fraction": 0.0,
+        "yaw_error_rms_deg": 7.738166588370396
+      },
+      "contact_hold": {
+        "seconds": 2.0,
+        "root_displacement_cm": [
+          -0.32019998243476844,
+          0.022284563211184827,
+          -0.49533650171694754
+        ],
+        "root_mean_velocity_mps": [
+          -0.0016050124432820472,
+          0.00011170207123400915,
+          -0.0024828897329170303
+        ],
+        "torso_yaw_change_deg": 2.9874428901818293,
+        "pelvis_yaw_change_deg": 0.8724447418161084,
+        "waist_relative_final_deg": 10.579314930311659,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.27481693767991644,
+        "external_work_j": 0.006021458901499126,
+        "max_actual_q_step_deg": 0.12248496866592894,
+        "point_error_rms_cm": 2.069907281256814,
+        "point_error_xyz_mean_cm": [
+          [
+            -1.6536789751546064,
+            0.7137363628227308,
+            0.838231236066733
+          ],
+          [
+            1.3563422280956463,
+            1.0669345856092038,
+            1.2315649625292278
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            1.3078139323480968,
+            0.5743421567068967,
+            0.6937621180981234
+          ],
+          [
+            1.0652313126848953,
+            0.8536170844537404,
+            1.0236871055877952
+          ]
+        ],
+        "sum_force_norm_rms_n": 3.2939969844892083,
+        "cap_fraction": 0.0,
+        "yaw_error_rms_deg": 6.591362032618472
+      },
+      "released_recovery": {
+        "seconds": 4.01,
+        "root_displacement_cm": [
+          0.930406262822106,
+          1.2077874910549151,
+          0.9417829416470624
+        ],
+        "root_mean_velocity_mps": [
+          0.0023231117673460826,
+          0.0030156991037575912,
+          0.0023515179566718164
+        ],
+        "torso_yaw_change_deg": -12.134834669857252,
+        "pelvis_yaw_change_deg": -2.3007580414967355,
+        "waist_relative_final_deg": 0.7437442145259913,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.1870529321880572
+      }
+    },
+    "handoff_sha256": "789f2cf46b670ecd1a019d32aa22322e94b8c50d109a586d22dbb7399f05cecb"
+  },
+  {
+    "label": "late__mean",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 12.600000000000001,
+      "end": 16.6,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "late",
+      "stop_time": 9.8,
+      "deceleration": 0.8,
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.27054264698592534,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 8.49984911656026,
+    "error_cm": 29.825287187143886,
+    "cap_fraction": 0.6542840023966447,
+    "episode_return": -43.07020168801347,
+    "physics_steps": 2520,
+    "rl_decisions": 126,
+    "prefill_steps": 15000,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 8.052664841404084,
+    "moving_heading_rms_deg": 11.236003129348534,
+    "yaw_moment_rms": 1.2559389705579758,
+    "work_j": 2.505540973905277,
+    "sum_force_norm_rms": 8.49984911656026,
+    "actual_pelvis_turn_deg": -12.084898068379779,
+    "actual_torso_turn_deg": -3.0116525520079507,
+    "torso_excursion_deg": 22.711175831900164,
+    "pelvis_excursion_deg": 23.660343070413518,
+    "final_torso_deg": -22.711175831900164,
+    "final_pelvis_deg": -23.660343070413518,
+    "recovery_root_displacement_cm": 0.7688246169694735,
+    "qpd_max_deg": 47.28563185043006,
+    "phase_metrics": {
+      "pre_contact": {
+        "seconds": 0.255,
+        "root_displacement_cm": [
+          0.0010647741785305836,
+          0.009797324067342683,
+          -0.004779390672349226
+        ],
+        "root_mean_velocity_mps": [
+          4.2590967141223346e-05,
+          0.0003918929626937073,
+          -0.00019117562689396905
+        ],
+        "torso_yaw_change_deg": -0.1782980470908667,
+        "pelvis_yaw_change_deg": -0.16688990979654514,
+        "waist_relative_final_deg": -0.09986337169660972,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.0019385148944243624
+      },
+      "moving": {
+        "seconds": 5.545,
+        "root_displacement_cm": [
+          6.5511292244002695,
+          6.76290110992562,
+          -1.0395872612029566
+        ],
+        "root_mean_velocity_mps": [
+          0.011825143004332616,
+          0.01220740272549751,
+          -0.0018765113018103911
+        ],
+        "torso_yaw_change_deg": -7.093083455019072,
+        "pelvis_yaw_change_deg": -9.96789594307314,
+        "waist_relative_final_deg": 2.7747207667066336,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 1.3015040412821894,
+        "external_work_j": 0.8022947897915708,
+        "max_actual_q_step_deg": 2.1413387656626033,
+        "point_error_rms_cm": 21.69225524962415,
+        "point_error_xyz_mean_cm": [
+          [
+            15.893802066437122,
+            -1.2054368953132464,
+            0.19935117562591845
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            7.574871941690498,
+            0.7318688461911792,
+            0.5649768658353879
+          ]
+        ],
+        "sum_force_norm_rms_n": 7.631088768974208,
+        "cap_fraction": 0.47971145175834085,
+        "yaw_error_rms_deg": 6.985319099688158
+      },
+      "decelerating": {
+        "seconds": 0.8,
+        "root_displacement_cm": [
+          3.4722281057780497,
+          3.6474994178117517,
+          -0.8543102070065811
+        ],
+        "root_mean_velocity_mps": [
+          0.04367582522991257,
+          0.04588049582153147,
+          -0.010746040339705422
+        ],
+        "torso_yaw_change_deg": 3.8601179198440447,
+        "pelvis_yaw_change_deg": 2.0047057044329133,
+        "waist_relative_final_deg": 4.5985827835106825,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 1.4450729261199362,
+        "external_work_j": 0.3172060800034047,
+        "max_actual_q_step_deg": 2.4441777791150043,
+        "point_error_rms_cm": 47.86322562343514,
+        "point_error_xyz_mean_cm": [
+          [
+            47.421801893899165,
+            -5.3917846055764205,
+            0.979855583130885
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            9.861046624246082,
+            1.6289885040855605,
+            0.32581578844799036
+          ]
+        ],
+        "sum_force_norm_rms_n": 10.0,
+        "cap_fraction": 1.0,
+        "yaw_error_rms_deg": 11.140805325287783
+      },
+      "contact_hold": {
+        "seconds": 2.0,
+        "root_displacement_cm": [
+          16.637596741680976,
+          -8.893572470790629,
+          1.7114665359651893
+        ],
+        "root_mean_velocity_mps": [
+          0.08339647489564399,
+          -0.044579310630529466,
+          0.008578779628898192
+        ],
+        "torso_yaw_change_deg": -1.0634517634962495,
+        "pelvis_yaw_change_deg": -5.06229252377422,
+        "waist_relative_final_deg": 8.617005488601086,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 1.0246764603236207,
+        "external_work_j": 1.3860401041102959,
+        "max_actual_q_step_deg": 2.092087373733262,
+        "point_error_rms_cm": 38.60922003399673,
+        "point_error_xyz_mean_cm": [
+          [
+            37.4418509338822,
+            -6.021978311305735,
+            1.706300153010347
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            9.846829605080128,
+            1.5481729886464022,
+            0.8019396023037964
+          ]
+        ],
+        "sum_force_norm_rms_n": 10.0,
+        "cap_fraction": 1.0,
+        "yaw_error_rms_deg": 9.25403705802214
+      },
+      "released_recovery": {
+        "seconds": 4.0,
+        "root_displacement_cm": [
+          -0.23952961753219426,
+          -0.6364168909903527,
+          0.35873443498681823
+        ],
+        "root_mean_velocity_mps": [
+          -0.0005995735107188842,
+          -0.0015930335193751006,
+          0.0008979585356365913
+        ],
+        "torso_yaw_change_deg": -18.014644273963334,
+        "pelvis_yaw_change_deg": -10.25631231312419,
+        "waist_relative_final_deg": 0.8608759614557331,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.2680256025259564
+      }
+    },
+    "handoff_sha256": "3180ad53d4f1208e58314b3d5d4d7146a9203f6fb2ee966a914af78197a0575e"
+  },
+  {
+    "label": "arm15__mean",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "arm15",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.03823133110965651,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.3119454309784984,
+    "error_cm": 4.0597047320461925,
+    "cap_fraction": 0.0,
+    "episode_return": -3.646559047627651,
+    "physics_steps": 1852,
+    "rl_decisions": 93,
+    "prefill_steps": 13800,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 7.9603713869629615,
+    "moving_heading_rms_deg": 8.24900502517728,
+    "yaw_moment_rms": 0.7804069547280794,
+    "work_j": 0.20616269434862128,
+    "sum_force_norm_rms": 3.311945430978498,
+    "actual_pelvis_turn_deg": -3.651332250064678,
+    "actual_torso_turn_deg": -3.579565800177946,
+    "torso_excursion_deg": 5.904723005097044,
+    "pelvis_excursion_deg": 5.712079187367371,
+    "final_torso_deg": -1.6391488132475567,
+    "final_pelvis_deg": -2.5305216051728974,
+    "recovery_root_displacement_cm": 2.861955650794292,
+    "qpd_max_deg": 4.07656425517626,
+    "phase_metrics": {
+      "pre_contact": {
+        "seconds": 0.255,
+        "root_displacement_cm": [
+          0.0010647741785305836,
+          0.009797324067342683,
+          -0.004779390672349226
+        ],
+        "root_mean_velocity_mps": [
+          4.2590967141223346e-05,
+          0.0003918929626937073,
+          -0.00019117562689396905
+        ],
+        "torso_yaw_change_deg": -0.1782980470908667,
+        "pelvis_yaw_change_deg": -0.16688990979654514,
+        "waist_relative_final_deg": -0.09986337169660972,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.0019385148944243624
+      },
+      "moving": {
+        "seconds": 3.0,
+        "root_displacement_cm": [
+          1.8921632217209914,
+          2.747202351671059,
+          -0.0507890823951751
+        ],
+        "root_mean_velocity_mps": [
+          0.00631774030624705,
+          0.00917262888704861,
+          -0.00016957957394048446
+        ],
+        "torso_yaw_change_deg": -3.3974441349568267,
+        "pelvis_yaw_change_deg": -3.4808469040797756,
+        "waist_relative_final_deg": -0.01668878451555633,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.6004694377997599,
+        "external_work_j": 0.19819766308564624,
+        "max_actual_q_step_deg": 0.6968984947407432,
+        "point_error_rms_cm": 3.4403538363724624,
+        "point_error_xyz_mean_cm": [
+          [
+            2.870909427313706,
+            0.04948978001803532,
+            0.12168255608015927
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            2.7989283090405976,
+            0.5972110712494194,
+            0.40523890879222235
+          ]
+        ],
+        "sum_force_norm_rms_n": 2.8904808105176643,
+        "cap_fraction": 0.0,
+        "yaw_error_rms_deg": 5.888633985059418
+      },
+      "contact_hold": {
+        "seconds": 1.995,
+        "root_displacement_cm": [
+          0.89448848750029,
+          -0.33404925116951656,
+          -0.2850316128835795
+        ],
+        "root_mean_velocity_mps": [
+          0.004494917022614522,
+          -0.0016786394531131488,
+          -0.0014323196627315552
+        ],
+        "torso_yaw_change_deg": -1.4573579108694141,
+        "pelvis_yaw_change_deg": -1.6163024313038266,
+        "waist_relative_final_deg": 0.13734204208294118,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.991300318844107,
+        "external_work_j": 0.007965031262975207,
+        "max_actual_q_step_deg": 0.7999978082770595,
+        "point_error_rms_cm": 4.844214852470447,
+        "point_error_xyz_mean_cm": [
+          [
+            4.603796040313731,
+            1.2681922006280129,
+            0.7234508913267405
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            3.658475421913533,
+            1.0627234607377851,
+            0.6214026548585688
+          ]
+        ],
+        "sum_force_norm_rms_n": 3.8600472569922215,
+        "cap_fraction": 0.0,
+        "yaw_error_rms_deg": 10.320495580250027
+      },
+      "released_recovery": {
+        "seconds": 4.01,
+        "root_displacement_cm": [
+          -2.3881018899036595,
+          -1.5577385368734395,
+          0.24740687397755146
+        ],
+        "root_mean_velocity_mps": [
+          -0.005962801223230112,
+          -0.00388948448657538,
+          0.000617745003689267
+        ],
+        "torso_yaw_change_deg": 3.4201075224543653,
+        "pelvis_yaw_change_deg": 2.7556453453549654,
+        "waist_relative_final_deg": 0.8030815148677183,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.710932696146968
+      }
+    },
+    "handoff_sha256": "3180ad53d4f1208e58314b3d5d4d7146a9203f6fb2ee966a914af78197a0575e"
+  },
+  {
+    "label": "zero__mean",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.0,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "zero",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.006734965205546858,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.2769292848435656,
+    "error_cm": 0.3430827665144551,
+    "cap_fraction": 0.0,
+    "episode_return": -0.050146360984408,
+    "physics_steps": 2812,
+    "rl_decisions": 141,
+    "prefill_steps": 14400,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 5.953239185374408,
+    "moving_heading_rms_deg": 7.155357289528543,
+    "yaw_moment_rms": 0.046036665994060116,
+    "work_j": -0.001354833094582011,
+    "sum_force_norm_rms": 0.2769292848435657,
+    "actual_pelvis_turn_deg": -2.5407075938560597,
+    "actual_torso_turn_deg": -1.0236872793069618,
+    "torso_excursion_deg": 3.153896317845311,
+    "pelvis_excursion_deg": 3.8040767522858316,
+    "final_torso_deg": -3.153896317845311,
+    "final_pelvis_deg": -3.8040767522858316,
+    "recovery_root_displacement_cm": 0.11462290201971474,
+    "qpd_max_deg": 0.4122463126398746,
+    "phase_metrics": {
+      "pre_contact": {
+        "seconds": 0.255,
+        "root_displacement_cm": [
+          0.0010647741785305836,
+          0.009797324067342683,
+          -0.004779390672349226
+        ],
+        "root_mean_velocity_mps": [
+          4.2590967141223346e-05,
+          0.0003918929626937073,
+          -0.00019117562689396905
+        ],
+        "torso_yaw_change_deg": -0.1782980470908667,
+        "pelvis_yaw_change_deg": -0.16688990979654514,
+        "waist_relative_final_deg": -0.09986337169660972,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.0019385148944243624
+      },
+      "moving": {
+        "seconds": 7.795,
+        "root_displacement_cm": [
+          0.08372848548531785,
+          0.4366044146891096,
+          -0.25767200946418267
+        ],
+        "root_mean_velocity_mps": [
+          0.00010748200960888042,
+          0.0005604677980604744,
+          -0.00033077279777173643
+        ],
+        "torso_yaw_change_deg": -0.8415638003961786,
+        "pelvis_yaw_change_deg": -2.3702212318783666,
+        "waist_relative_final_deg": 1.4285650801468095,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.049618225564502856,
+        "external_work_j": -0.0013366195355461869,
+        "max_actual_q_step_deg": 0.02825517051598048,
+        "point_error_rms_cm": 0.3613387623937986,
+        "point_error_xyz_mean_cm": [
+          [
+            -0.225982336917527,
+            -0.09354000231901251,
+            0.1061922888393119
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            0.2156996961223985,
+            0.08773111349441852,
+            0.17609864095287478
+          ]
+        ],
+        "sum_force_norm_rms_n": 0.29194834907516626,
+        "cap_fraction": 0.0,
+        "yaw_error_rms_deg": 5.800169048192578
+      },
+      "contact_hold": {
+        "seconds": 2.0,
+        "root_displacement_cm": [
+          0.07532719041305064,
+          0.04190264128196147,
+          0.0021820823816742774
+        ],
+        "root_mean_velocity_mps": [
+          0.00037757990181980266,
+          0.0002100383021652204,
+          1.0937756299119184e-05
+        ],
+        "torso_yaw_change_deg": -0.2565239057957842,
+        "pelvis_yaw_change_deg": -0.37152234854792576,
+        "waist_relative_final_deg": 1.5438389368243608,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.028002065995684073,
+        "external_work_j": -1.8213559035824424e-05,
+        "max_actual_q_step_deg": 0.0009401553207565298,
+        "point_error_rms_cm": 0.25996972902082693,
+        "point_error_xyz_mean_cm": [
+          [
+            -0.24378401798560773,
+            0.05292769603944247,
+            -0.06950312545724718
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            0.19480701918238855,
+            0.04883107910820774,
+            0.05527478535523695
+          ]
+        ],
+        "sum_force_norm_rms_n": 0.20830158642138819,
+        "cap_fraction": 0.0,
+        "yaw_error_rms_deg": 6.515599183524773
+      },
+      "released_recovery": {
+        "seconds": 4.01,
+        "root_displacement_cm": [
+          -0.04831090646219699,
+          0.05236129295399031,
+          0.08979287824993909
+        ],
+        "root_mean_velocity_mps": [
+          -0.00012062648305167787,
+          0.00013073980762544398,
+          0.00022420194319585293
+        ],
+        "torso_yaw_change_deg": -1.8696613690311208,
+        "pelvis_yaw_change_deg": -0.8873798965974685,
+        "waist_relative_final_deg": 0.5618891573828987,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.012916091857523163
+      }
+    },
+    "handoff_sha256": "3180ad53d4f1208e58314b3d5d4d7146a9203f6fb2ee966a914af78197a0575e"
+  },
+  {
+    "label": "right__mean",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.0,
+      "rotation_deg": -15.0,
+      "curvature": 0.0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "legacy",
+      "demand_family": "right",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.007988138436269854,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.0076689860125758,
+    "error_cm": 0.8835191249728976,
+    "cap_fraction": 0.0,
+    "episode_return": -1.424239446575694,
+    "physics_steps": 2812,
+    "rl_decisions": 141,
+    "prefill_steps": 15000,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 2.5859702921944323,
+    "moving_heading_rms_deg": 7.33795860639155,
+    "yaw_moment_rms": 0.12784514492415017,
+    "work_j": 0.023316140214615835,
+    "sum_force_norm_rms": 1.4049630676587097,
+    "actual_pelvis_turn_deg": -4.53221321151624,
+    "actual_torso_turn_deg": -14.5602852224847,
+    "torso_excursion_deg": 15.007082532318352,
+    "pelvis_excursion_deg": 5.059681605501256,
+    "final_torso_deg": -3.54868099265222,
+    "final_pelvis_deg": -2.952611243098189,
+    "recovery_root_displacement_cm": 0.8011025016647524,
+    "qpd_max_deg": 0.3818229425293453,
+    "phase_metrics": {
+      "pre_contact": {
+        "seconds": 0.255,
+        "root_displacement_cm": [
+          0.029373654374565197,
+          -0.020028764638464064,
+          -0.0019023625892455875
+        ],
+        "root_mean_velocity_mps": [
+          0.001174946174982608,
+          -0.0008011505855385626,
+          -7.60945035698235e-05
+        ],
+        "torso_yaw_change_deg": -0.16915682635675816,
+        "pelvis_yaw_change_deg": -0.13821572110841177,
+        "waist_relative_final_deg": -0.11944984571006441,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.004443575536088664
+      },
+      "moving": {
+        "seconds": 7.795,
+        "root_displacement_cm": [
+          -0.33970970393836614,
+          -0.41714914707229667,
+          -0.4792182297580605
+        ],
+        "root_mean_velocity_mps": [
+          -0.0004360843439516895,
+          -0.0005354931284625118,
+          -0.0006151710266470609
+        ],
+        "torso_yaw_change_deg": -14.387657566158623,
+        "pelvis_yaw_change_deg": -4.3912314658351645,
+        "waist_relative_final_deg": -10.116580751430178,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.14323133597800622,
+        "external_work_j": 0.022158987839231023,
+        "max_actual_q_step_deg": 0.08654781185851647,
+        "point_error_rms_cm": 0.8352189213119907,
+        "point_error_xyz_mean_cm": [
+          [
+            0.38398479969178484,
+            0.09817333720605799,
+            0.22938069854100154
+          ],
+          [
+            -0.6068444289375413,
+            0.3312155976685743,
+            0.17229131541400583
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            0.4947997600777037,
+            0.27475203729236614,
+            0.25718834213022995
+          ],
+          [
+            0.5829020745220113,
+            0.3997408101534877,
+            0.17363614657307505
+          ]
+        ],
+        "sum_force_norm_rms_n": 1.3336104722872906,
+        "cap_fraction": 0.0,
+        "yaw_error_rms_deg": 2.8924756511408667
+      },
+      "contact_hold": {
+        "seconds": 2.0,
+        "root_displacement_cm": [
+          -0.16669657176803243,
+          0.08725956867391138,
+          0.0009930790928702748
+        ],
+        "root_mean_velocity_mps": [
+          -0.0008355717883109394,
+          0.0004373913216737412,
+          4.977840064512655e-06
+        ],
+        "torso_yaw_change_deg": -0.09684944917533542,
+        "pelvis_yaw_change_deg": -0.3352201016900013,
+        "waist_relative_final_deg": -9.883387237439798,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0094102878838518,
+        "external_work_j": 0.001157152375384791,
+        "max_actual_q_step_deg": 0.02379196945937628,
+        "point_error_rms_cm": 1.0507894920641312,
+        "point_error_xyz_mean_cm": [
+          [
+            -0.5784339984481486,
+            0.663205389555904,
+            0.7997694984646814
+          ],
+          [
+            -0.47036816358437955,
+            0.6230290683225811,
+            0.3815583575056223
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            0.47537764546512995,
+            0.5309612278533037,
+            0.6400474793259738
+          ],
+          [
+            0.3794293849148793,
+            0.49707964706762614,
+            0.3057469011494241
+          ]
+        ],
+        "sum_force_norm_rms_n": 1.6539376035552997,
+        "cap_fraction": 0.0,
+        "yaw_error_rms_deg": 0.37771077218361143
+      },
+      "released_recovery": {
+        "seconds": 4.01,
+        "root_displacement_cm": [
+          0.4437158219236858,
+          0.5688417283179592,
+          0.3482823217913156
+        ],
+        "root_mean_velocity_mps": [
+          0.0011079046739667562,
+          0.0014203289096578258,
+          0.0008696187810020364
+        ],
+        "torso_yaw_change_deg": 11.123797763037395,
+        "pelvis_yaw_change_deg": 1.9238234998939674,
+        "waist_relative_final_deg": -0.684361026611654,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.05900132069610901
+      }
+    },
+    "handoff_sha256": "789f2cf46b670ecd1a019d32aa22322e94b8c50d109a586d22dbb7399f05cecb"
+  },
+  {
+    "label": "middle30__mean",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "middle30",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.36040108190745,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 6.875691303085809,
+    "error_cm": 8.666524225086004,
+    "cap_fraction": 0.12710566615620214,
+    "episode_return": -29.936458433308548,
+    "physics_steps": 2812,
+    "rl_decisions": 141,
+    "prefill_steps": 13800,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 7.438272732637961,
+    "moving_heading_rms_deg": 9.490337929300418,
+    "yaw_moment_rms": 1.1024297943093193,
+    "work_j": 0.4854609138242523,
+    "sum_force_norm_rms": 6.875691303085809,
+    "actual_pelvis_turn_deg": -9.83755890173225,
+    "actual_torso_turn_deg": -7.233150805344423,
+    "torso_excursion_deg": 17.593110884342924,
+    "pelvis_excursion_deg": 18.705977709963406,
+    "final_torso_deg": -17.593110884342924,
+    "final_pelvis_deg": -18.705977709963406,
+    "recovery_root_displacement_cm": 11.944652696787118,
+    "qpd_max_deg": 49.56846548615591,
+    "phase_metrics": {
+      "pre_contact": {
+        "seconds": 0.255,
+        "root_displacement_cm": [
+          0.0010647741785305836,
+          0.009797324067342683,
+          -0.004779390672349226
+        ],
+        "root_mean_velocity_mps": [
+          4.2590967141223346e-05,
+          0.0003918929626937073,
+          -0.00019117562689396905
+        ],
+        "torso_yaw_change_deg": -0.1782980470908667,
+        "pelvis_yaw_change_deg": -0.16688990979654514,
+        "waist_relative_final_deg": -0.09986337169660972,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.0019385148944243624
+      },
+      "moving": {
+        "seconds": 7.795,
+        "root_displacement_cm": [
+          6.624877147477656,
+          4.875251500726321,
+          -0.6632292980846666
+        ],
+        "root_mean_velocity_mps": [
+          0.008504335234246029,
+          0.006258345957286677,
+          -0.0008513854917646554
+        ],
+        "torso_yaw_change_deg": -7.0510278635749986,
+        "pelvis_yaw_change_deg": -9.667072840650436,
+        "waist_relative_final_deg": 2.515952861985537,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 1.051041222219019,
+        "external_work_j": 0.6806709791376523,
+        "max_actual_q_step_deg": 1.0229148555838135,
+        "point_error_rms_cm": 8.028180813597759,
+        "point_error_xyz_mean_cm": [
+          [
+            6.425059839073836,
+            -0.6494850982835983,
+            0.47232066813972307
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            6.28241960742664,
+            0.9380114860128096,
+            0.7965748953996113
+          ]
+        ],
+        "sum_force_norm_rms_n": 6.401811715104686,
+        "cap_fraction": 0.10840282232200128,
+        "yaw_error_rms_deg": 5.744912531434274
+      },
+      "contact_hold": {
+        "seconds": 2.0,
+        "root_displacement_cm": [
+          17.430331276430707,
+          1.0548583206713587,
+          -3.015835262351285
+        ],
+        "root_mean_velocity_mps": [
+          0.08737008158611882,
+          0.005287510379305056,
+          -0.015116968733590402
+        ],
+        "torso_yaw_change_deg": 4.676777628977002,
+        "pelvis_yaw_change_deg": 5.113400475678093,
+        "waist_relative_final_deg": 2.0634995106934935,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 1.2832239142607471,
+        "external_work_j": -0.19521006531340068,
+        "max_actual_q_step_deg": 1.6556472444654986,
+        "point_error_rms_cm": 10.800190930372358,
+        "point_error_xyz_mean_cm": [
+          [
+            9.088845333645645,
+            -2.4463382103609663,
+            2.041807003889263
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            7.6234172120866965,
+            2.48318801372297,
+            2.741394758674615
+          ]
+        ],
+        "sum_force_norm_rms_n": 8.473367566907838,
+        "cap_fraction": 0.2,
+        "yaw_error_rms_deg": 11.930432868171597
+      },
+      "released_recovery": {
+        "seconds": 4.01,
+        "root_displacement_cm": [
+          11.212330770887528,
+          -1.0209887555656239,
+          3.989479752058034
+        ],
+        "root_mean_velocity_mps": [
+          0.027995832137047507,
+          -0.0025492852823111706,
+          0.009961247820369622
+        ],
+        "torso_yaw_change_deg": -14.970701681438683,
+        "pelvis_yaw_change_deg": -13.940845959672492,
+        "waist_relative_final_deg": 1.024575548562863,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 1.0699520403060974
+      }
+    },
+    "handoff_sha256": "3180ad53d4f1208e58314b3d5d4d7146a9203f6fb2ee966a914af78197a0575e"
+  },
+  {
+    "label": "no_contact__mean",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": false,
+      "distance": 0.0,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "no_contact",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.0032333494469903796,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.0,
+    "error_cm": 0.0,
+    "cap_fraction": 0.0,
+    "episode_return": -6.941537232256983e-05,
+    "physics_steps": 2812,
+    "rl_decisions": 141,
+    "prefill_steps": 14400,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 0.0,
+    "moving_heading_rms_deg": 0.0,
+    "yaw_moment_rms": 0.0,
+    "work_j": 0.0,
+    "sum_force_norm_rms": 0.0,
+    "actual_pelvis_turn_deg": 0.0,
+    "actual_torso_turn_deg": 0.0,
+    "torso_excursion_deg": 4.19141462625214,
+    "pelvis_excursion_deg": 3.9878359112657056,
+    "final_torso_deg": -4.19141462625214,
+    "final_pelvis_deg": -3.9878359112657056,
+    "recovery_root_displacement_cm": 0.12284327752238813,
+    "qpd_max_deg": 0.25505292398661616,
+    "phase_metrics": {
+      "no_actual_contact": {
+        "seconds": 14.06,
+        "root_displacement_cm": [
+          -0.09584272219440478,
+          0.032479229905100354,
+          -0.2877705000629893
+        ],
+        "root_mean_velocity_mps": [
+          -6.819119330800767e-05,
+          2.310866588765589e-05,
+          -0.0002047459979103446
+        ],
+        "torso_yaw_change_deg": -4.188612073348283,
+        "pelvis_yaw_change_deg": -3.985197315706514,
+        "waist_relative_final_deg": -0.2918699920440574,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.060344144677292336
+      }
+    },
+    "handoff_sha256": "3180ad53d4f1208e58314b3d5d4d7146a9203f6fb2ee966a914af78197a0575e"
+  },
+  {
+    "label": "early__mean",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 10.0,
+      "end": 14.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "early",
+      "stop_time": 7.2,
+      "deceleration": 0.8,
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.27529344500954095,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 7.462159991495154,
+    "error_cm": 10.921515677055853,
+    "cap_fraction": 0.360313315926893,
+    "episode_return": -20.988352058975575,
+    "physics_steps": 2000,
+    "rl_decisions": 100,
+    "prefill_steps": 15000,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 6.406353320325359,
+    "moving_heading_rms_deg": 8.010876803378856,
+    "yaw_moment_rms": 1.222361058679072,
+    "work_j": 0.8425585911333187,
+    "sum_force_norm_rms": 7.462159991495154,
+    "actual_pelvis_turn_deg": -5.354644794101799,
+    "actual_torso_turn_deg": -4.571976775742477,
+    "torso_excursion_deg": 11.285695573023677,
+    "pelvis_excursion_deg": 10.204785631012296,
+    "final_torso_deg": -10.146557808921179,
+    "final_pelvis_deg": -10.204785631012296,
+    "recovery_root_displacement_cm": 9.018401952022659,
+    "qpd_max_deg": 41.172069543229625,
+    "phase_metrics": {
+      "pre_contact": {
+        "seconds": 0.255,
+        "root_displacement_cm": [
+          0.0010647741785305836,
+          0.009797324067342683,
+          -0.004779390672349226
+        ],
+        "root_mean_velocity_mps": [
+          4.2590967141223346e-05,
+          0.0003918929626937073,
+          -0.00019117562689396905
+        ],
+        "torso_yaw_change_deg": -0.1782980470908667,
+        "pelvis_yaw_change_deg": -0.16688990979654514,
+        "waist_relative_final_deg": -0.09986337169660972,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 0.0019385148944243624
+      },
+      "moving": {
+        "seconds": 2.95,
+        "root_displacement_cm": [
+          2.838714915757613,
+          2.7626250344248127,
+          -0.3378310850539745
+        ],
+        "root_mean_velocity_mps": [
+          0.00963909988372704,
+          0.009380730167826189,
+          -0.0011471344144447352
+        ],
+        "torso_yaw_change_deg": -2.4371899259016487,
+        "pelvis_yaw_change_deg": -3.146358427990023,
+        "waist_relative_final_deg": 0.6090767807409382,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.8399460093894261,
+        "external_work_j": 0.5502968646069807,
+        "max_actual_q_step_deg": 0.8729519821843348,
+        "point_error_rms_cm": 5.325450725058875,
+        "point_error_xyz_mean_cm": [
+          [
+            4.0522891020116925,
+            -0.25431699630471194,
+            -0.08728296957402192
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            4.588672829513694,
+            0.44025030956257805,
+            0.4933854099819076
+          ]
+        ],
+        "sum_force_norm_rms_n": 4.636072457821402,
+        "cap_fraction": 0.022033898305084745,
+        "yaw_error_rms_deg": 5.647967401730969
+      },
+      "decelerating": {
+        "seconds": 0.8,
+        "root_displacement_cm": [
+          1.4760261137370854,
+          0.06385475405648704,
+          -0.16262532871893498
+        ],
+        "root_mean_velocity_mps": [
+          0.018566366210529376,
+          0.0008032044535407174,
+          -0.0020456016191061003
+        ],
+        "torso_yaw_change_deg": -1.2570427964108877,
+        "pelvis_yaw_change_deg": -1.4339363143928343,
+        "waist_relative_final_deg": 0.8039943054132773,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 1.9593539523124965,
+        "external_work_j": 0.06432255243527835,
+        "max_actual_q_step_deg": 0.9115874607385261,
+        "point_error_rms_cm": 15.231403947427417,
+        "point_error_xyz_mean_cm": [
+          [
+            15.109036597679607,
+            0.0385938914282606,
+            -1.1737386630666513
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            9.951799328393639,
+            0.577552981864751,
+            0.7925419108937022
+          ]
+        ],
+        "sum_force_norm_rms_n": 10.0,
+        "cap_fraction": 1.0,
+        "yaw_error_rms_deg": 8.696079533355643
+      },
+      "contact_hold": {
+        "seconds": 1.995,
+        "root_displacement_cm": [
+          11.690113602335128,
+          0.6264862132947179,
+          -3.002149895645345
+        ],
+        "root_mean_velocity_mps": [
+          0.05874428945897049,
+          0.00314817192610411,
+          -0.015086180380127363
+        ],
+        "torso_yaw_change_deg": -0.7433300603093687,
+        "pelvis_yaw_change_deg": -0.6535090799928429,
+        "waist_relative_final_deg": 0.6942127839570337,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 1.3115030148115392,
+        "external_work_j": 0.22793917409105877,
+        "max_actual_q_step_deg": 2.2072859506134628,
+        "point_error_rms_cm": 14.440283504443993,
+        "point_error_xyz_mean_cm": [
+          [
+            13.336752358112811,
+            -2.7632158771562354,
+            2.0630763648136323
+          ]
+        ],
+        "point_force_xyz_rms_n": [
+          [
+            8.770174245072047,
+            2.7287799902214114,
+            2.026909961310955
+          ]
+        ],
+        "sum_force_norm_rms_n": 9.405879040005743,
+        "cap_fraction": 0.6040100250626567,
+        "yaw_error_rms_deg": 6.379068203483842
+      },
+      "released_recovery": {
+        "seconds": 4.0,
+        "root_displacement_cm": [
+          8.162548794129373,
+          -2.202250370079538,
+          3.139182100354765
+        ],
+        "root_mean_velocity_mps": [
+          0.02043191187516739,
+          -0.005512516570912485,
+          0.007857777472727822
+        ],
+        "torso_yaw_change_deg": -5.6311233889703685,
+        "pelvis_yaw_change_deg": -4.919105994182599,
+        "waist_relative_final_deg": -0.030063454966505133,
+        "support_loss_ticks": 0,
+        "yaw_moment_rms": 0.0,
+        "external_work_j": 0.0,
+        "max_actual_q_step_deg": 1.1479619247796524
+      }
+    },
+    "handoff_sha256": "3180ad53d4f1208e58314b3d5d4d7146a9203f6fb2ee966a914af78197a0575e"
+  }
+]

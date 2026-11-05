@@ -1,63 +1,41 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-05 CST。**Issue43正在执行：BFM latent初始化去偏、通用reward审查与匹配PPO。尚未结项，不启动其他训练。**
+最后核对：2026-11-05 CST。**Issue43（BFM latent先验去偏/reward审查）已完成并停止；无训练或下一阶段排队。**
 
-入口：[本阶段进行中报告](LATENT_PRIOR_RESULTS.md) · [固定协议](prior_protocol.json) · [实际训练配置](prior_training.json) · [Issue43](https://github.com/GaoE05/robot-research-bridge/issues/43) · [Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。Master仍保留Issue42结项，阶段完成后统一更新；下文Issue42是历史证据。
+入口：[完整结果](LATENT_PRIOR_RESULTS.md) · [训练与选模](prior_artifacts/training-final.json) · [终检物理指标](prior_artifacts/final-metrics.json) · [Issue43](https://github.com/GaoE05/robot-research-bridge/issues/43) · [Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。长期纲领RESEARCH_OVERVIEW不变。旧Library2026-10-28仅历史快照。
 
-## 本阶段已做与正在做
+## 总目标与可靠基线
 
-- 已复算43条旧物理轨迹reward，完成28条5/10N原生来源/I对照及4条来源前缀控制。局部伸臂有效，单一30cm躯干候选任务差、排除标签；10N不自动优于5N。
-- 两轮匹配初始化各1500更新/臂。第二轮采用实际完全一致I前缀；B15cm改善但80cm退化至34.85cm，A为6.02cm。保留全部负例，不将B提升为可靠基线。
-- A/B共同从I获得匹配监督后，实际PPO已启动，各32×768决策上限，同10N、reward、std、课程、新critic/Adam。运行源码982f5bf544d7027fb080cd57036bb6ee36561e13。GPU2/5启动时已实时核验；不凭此快照另启任务。
-- A初始SHA e761e57a042d738e8ada39de3f473813486fa7220f0793f14565cfec0bd5da51；B初始SHA e1112cd0b20d1d8462ac3efbf183cb1289b5679612b37a286232e4a5eaedf00c。只有开发0/8/16/24/32选模型，不看封存测试反选。
-- 原PPO资源记录器后缀错误退出，核实原进程后补接监控，没有重复发车。准确PID/存活状态以run下launch.json、ppo-A/B-ledger.json、result.json为准，勿复用历史PID进行操作。
-- 总上限16000累计job秒、10GiB新输出、49152RL决策；已完成6000监督更新（含失败初始化对照），没有Student训练。训练后只做预登记冻结终检、结果/视频交付，不自动扩下一阶段。
+Contact-conditioned whole-body behavior selection/modulation/transition。真实接触与身体状态应决定合适的局部手臂、躯干/root、支撑与步态响应。保持冻结BFM/PD。有限域直行Teacher→ideal-force Student、有限双向转腰等成果保留；不宣称general或G1具有精确力传感。
 
-run: `/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105`。本阶段视频尚未交付；不可把Issue42旧视频称为新模型结果。当前科学结论只到初始化取舍，PPO与新条件结果待核验。
+- BFM SHA 33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361。
+- I (M39-A best64) SHA72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a；T30 SHA c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33。
+- S0 SHA0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12；D2 SHA9e4630896f9849c7ae1f68fa0058d6e23e1792095ef2a362dfd30c17baccf7f5。
+- T30→C2→D2→I的实际actor/标签/replay/runtime见prior_artifacts/identity-chain.json。执行无在线CyclicFeedback/M10 Student；高层探索在已学raw均值附近，不是随机重学BFM。
 
-## 接力优先顺序
+## 本阶段结论
 
-读取上述run的ppo-A/B result、selection、ledger和final-evaluation状态；正在运行时不重复启动/改runtime。验证模型SHA与开发选择后再汇总封存评价。完成后更新本文件、Issue43和Master18，停止。本阶段源代码另在独立worktree；共享BFM/PD/main/其他任务不变。
+1. 复算43条旧轨迹reward；32条来源/共同前缀物理资格：原生局部伸臂、有限左右转腰、行走成立，额外30cm躯干候选效果差、排除标签。reward认可好的局部解，不能简单说只奖励walking；active阶段的运动经济性代价很弱。
+2. A为I旧数据自监督匹配控制，B为多行为初始化。两轮各1500更新/臂；第二轮严格统一I真实前缀仍未修复负迁移。局部改善不等于保住全身行为。
+3. A/B各32×768=24576真实RL决策，same10N/reward/std/课程/新critic/Adam。开发0/8/16/24/32后两臂best均iteration0，selected actor与pre-PPO逐值相同；没有可推广的新PPO收益。终检没有被用于选模型。
+4. 44条冻结终检/回归：新8cm，A5.174cm/4.298N→B2.993cm/2.474N；B几乎不调脚，确有局部价值。但新55cm A5.557cm/B22.692cm，80cm A6.019cm/B34.851cm，B长距启动严重退化。新arm-ready20cm A4.902/B6.740cm，未证明身体配置泛化。5N长距B48.081cm，物理域敏感性仍在。
+5. 44条没有安全终止或双足同时失去支撑tick；q_PD最大51.38°而实际物理步关节最大2.99°，不能混为实际瞬时转角。释放后不再评价旧anchor跟随，完整恢复保留。
 
-## 以下为Issue42及M41的保留历史
+## 当前瓶颈与下一决策（未授权执行）
 
-## 大目标与保留成果
+有效局部/行走来源均存在，reward也并非必然把局部排到后面；当前主要证据指向多行为监督的闭环负迁移，32批PPO未修复。尚不能唯一归因为latent loss、隐藏信息、奖励或优化。
 
-Contact-conditioned whole-body behavior selection/modulation/transition：局部接触与身体状态决定合理的手臂、躯干/root、支撑和步态响应，不以root走远或demo数量作为成功。有限域直行/停止Teacher→ideal-force Student、小幅双向转腰等旧成果保留；未证明general或真机精确力传感。
+唯一优先建议：在B真实早期起步偏离状态核实I接管的有效窗口，以有效恢复短段和局部数据联合形成匹配初始化对照；不能把后期不可恢复状态硬当正确标签。保旧仅限可靠运动域，不冻结全部身体。运动经济性reward独立方案见报告，暂不同时改reward/force/history，也不原样续训。
 
-冻结BFM/原PD；I/T30/S0/D2、M41 A/B和全部失败不覆盖。本轮没有新checkpoint，不把原生goal资格播放称为新学习型反馈策略。
+M41已证实启动失败具有闭环状态/历史积累，晚状态I不一定能救；Issue42已证实旧82cm先有手臂响应、80cm需身体参与。两项历史结论不被本阶段覆盖。已完成训练不代表“减噪无效”或“PPO不能学”。
 
-模型身份（runs前缀`/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/`）：
-- BFM `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
-- I M39-A best64 `72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a`，runs/m39a-demand-20261104/B-ppo-03/job/best.pt。
-- T30 `c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33`，runs/stop-sensing-20261103/B1-train-02/job/best.pt。
-- S0 `0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12`，runs/direct-transfer-20261103/A-prepare-01/job/ppo15-student-r0.pt。
-- D2 `9e4630896f9849c7ae1f68fa0058d6e23e1792095ef2a362dfd30c17baccf7f5`，runs/m38c-history-20261103/C-train-05/job/D2.pt。
-- A32/B32/其他节点身份见m41_causal_artifacts/identities.json；本轮直接分析保存轨迹，未重训或重新选模型。
+## 精确身份、成本和交付
 
-## 本轮真实发现
+PPO runtime982f5bf544d7027fb080cd57036bb6ee36561e13；终检/渲染runtime4f46fdc，完整值见ledger。长期个人分支gaoe05/research；最终文档commit见Issue43结项，非main。
+A selected SHA7cc9f2bda24fd1d382d8dc346f0845aa0211e98680eb5a8e38f1dcb20ab86804；B selected SHA4380df4f8566b1bc2ac8d7849a633c6cda7da0c209029f987c24a3f02a07a24e，均为各自PPO iteration0，序列化critic/metadata导致与监督文件SHA不同。
 
-1. 旧82cm任务确有先局部响应：I/T30腕相对肩2cm发生约onset后1.3/1.2s，脚明显移动约2.1/2.0s；当时目标已前移约13–14cm。初始anchor实际偏差约毫米及以下量级，不支持大预载冲击解释。
-2. 当前肩固定、腕Y/Z保持时继续前伸的宽松几何上界约16.75cm。80cm需要身体参与；15cm已近边界，不应强制不走。IK只是独立几何参考，未接真实控制。
-3. BFM通过锚定原生goal可局部伸臂：5cm/3s时Standing误差/力2.75cm/2.23N→goal1.42cm/1.15N，root约0、未明显调脚。无力时仍相对肩前伸2.97cm，证明主动动作来源。15cm仍有Y/Z和幅度不足，不宣称任意目标精确可达。
-4. 同7.8s慢引导：5cm时I不调脚(2.15cm/1.74N)，T30调脚并前移约4.69cm(1.72cm/1.42N)；15cm时I不走但误差5.01cm，T30走约13.79cm、误差2.74cm。30/80cm均可行走。不同需求存在任务收益/运动代价，不能仅凭脚动判失败。
-5. 同峰速.15m/s的短快请求明显更难；例如15cm误差I/T30为8.66/8.89cm。尚无证据证明连续距离/速度/可达性泛化。
-6. Teacher不是force-only：有当前anchor error/relative velocity。关闭实际力但保留目标时未走出原距离；干净遮蔽几何而保持真实力时I误差16.66cm、T30 6.96cm。四组反事实前缀qpos/qvel与anchor差均0。它们是已训策略敏感性/OOD诊断，不代表无力Student理论不可学。
+run `/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105`。frozen-final-manifest、ppo-A/B、final-eval、videos与所有失败完整保存。49152新增RL、6000监督更新、7748.37记录job秒加约28秒结项CPU及短检查、约4.0GiB。阶段GPU/monitor全部退出。没有Student训练。
 
-## M41仍然成立的边界
+Mac `~/Projects/compliance-bfm-diagnostics/videos/latent-prior-audit/`：01局部能力正控制；02 A/B长距成功/失败；03新自然arm-ready状态20cm。3条1×真实qpos MP4+INDEX，SHA/全解码/画面已核验。不是新PPO成功视频，不替换旧I/T30/S0。
 
-原Transition A/B各49152决策但开发best均iteration0，没有新学习胜出。A32/B32从standing失败；I先执行到6.5s再交失败模型仍能走，晚失败状态交I却不能救。单100ms替换不足，状态/动作历史积累重要。旧stand_walk实际决策约15–17%，奖励把失败评为更差，噪声有高方差救援但不可靠；未唯一定位优化根因。**本轮不为保住walking而压制合理局部响应，也不抹去历史退化。**
-
-## 下一决策（未执行）
-
-建议一次匹配reach-to-walk课程：同一I初始化、Direct/BFM/PD/5N/std/reward/预算，两臂共享旧域保持，比较旧长请求与近/中/远+有限真实源状态覆盖。完整32×768/臂建议、距离/速度分层、真实goal源前缀、预封组合与解释边界见本轮报告。源状态不能qpos-only重置，启动保持只用于其有效长请求域，不能把小请求强制学成walking。必要的少迈步偏好以后独立评价，不写force→motion规则。本轮不追加PPO/Student；0/1/2/4/8/16帧force-history消融仍未执行。
-
-## 代码、数据、视频、接力
-
-个人分支gaoe05/research；主runtime6ccfedf57b7bd7a546bbec9d86b69e0ccdc4f86f，补充runtime在reach_artifacts/ledger-02.json。最终源码/报告commit见Issue42链接。
-
-run `runs/arm-to-locomotion-20261105`：physical-01/02真实qpos与完整控制、timelines、offline-ik、saved-local、逐点final-metrics、validation、ledger；旧run不变。43回合/102116suffix物理样本/25529 BFM控制步，另有准备/前缀；0训练。物理777.86+229.17s、视频27.39s，另有短CPU审查；约720MiB。全部owned进程结束，GPU5/6释放，他人任务未改。
-
-Mac `~/Projects/compliance-bfm-diagnostics/videos/arm-to-locomotion/`仅3条1×真实qposMP4+INDEX：01小5cm I/T30差异；02Standing与原生伸臂；03大80cm先局部后脚步。非新训练，完整交互/保持/4s恢复；SHA/全解码/画面验证通过。
-
-新会话先读本文件、纲领、Issue42；查实时资源与准确身份再按新授权行动。共享checkout仍原6023c6e clean；不改共享BFM/PD/权重/main、SoftSONIC及他人任务，不启动Bridge/watch、真机或未授权训练。
+接力：先读本文件、报告、Issue43；用户决定下一阶段后再核验资源和模型。不复用PID/空闲GPU快照、不重开本阶段。共享checkout6023c6e clean；不改BFM/PD/权重/main、SoftSONIC或他人任务，不做真机。force-history消融仍未执行。

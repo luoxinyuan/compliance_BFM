@@ -1,0 +1,123 @@
+[
+  {
+    "name": "01-local-capability",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/videos/01-local-capability.mp4",
+    "sha256": "4e244f484736d1be2595873b20735954d73c0bec7df3dd5dd285264e1e3eb1e4",
+    "frames": 232,
+    "fps": 25,
+    "duration": 9.28,
+    "seconds": 4.340492493007332,
+    "sides": [
+      {
+        "title": "Frozen I | 5cm / 10N",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/qualify-02/10_I_arm5.json.gz",
+        "sha256": "61fbc41895a86003824cba18b2b661f66d528bad3b59f94bcb3cfcc5b096a558"
+      },
+      {
+        "title": "Native reach source | same task | NOT learned policy",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/qualify-02/10_source_arm5.json.gz",
+        "sha256": "a935cffa715fdafe857d4b3985cfa3bfa7d1b619645af326ceed0b73687f9f13"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "handoff_time": 3.999999999999937
+    }
+  },
+  {
+    "name": "02-long-pull",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/videos/02-long-pull.mp4",
+    "sha256": "1d1d697161c55dd2ee85430205faa7c67828d8106093fb3a1059301adc851fd6",
+    "frames": 352,
+    "fps": 25,
+    "duration": 14.08,
+    "seconds": 7.229529716074467,
+    "sides": [
+      {
+        "title": "A selected | old-data initialization | 80cm / 10N",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/final-eval/A__reg_walk.json.gz",
+        "sha256": "58109d56142e4ba4757d52fe0100464101a420c1535f7ab3f83d2873b0acf0e0"
+      },
+      {
+        "title": "B selected | diverse initialization | same task",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/final-eval/B__reg_walk.json.gz",
+        "sha256": "98f6c36c907f1d5fe70147d067e412ed6c784b7ab757c736c516ee8e7e53ab44"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "walk",
+      "handoff_time": 3.999999999999937
+    }
+  },
+  {
+    "name": "03-new-arm-state",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/videos/03-new-arm-state.mp4",
+    "sha256": "19e7d35a2b15922536aad714583fd21de45ed90877d068abc19a6031ca90a336",
+    "frames": 298,
+    "fps": 25,
+    "duration": 11.92,
+    "seconds": 6.575913983164355,
+    "sides": [
+      {
+        "title": "A selected | unseen 20cm / real arm-ready state",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/final-eval/A__new20_armready.json.gz",
+        "sha256": "3e5cc0eec3bb5b727239a18bda2f77a564ab6cd877ca4af3f26e3ef0cecc5ddf"
+      },
+      {
+        "title": "B selected | same physical prefix and partner",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/final-eval/B__new20_armready.json.gz",
+        "sha256": "644862338e73047615ef241c0cd99417349761385587b7b31b967f8074299e0b"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.2,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 6.55,
+      "ramp": 3.333333333333334,
+      "release": 11.883333333333333,
+      "end": 15.883333333333333,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "walk",
+      "arm_ready": true,
+      "handoff_time": 3.999999999999937
+    }
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "status": "frozen_evaluation_completed",
+  "pid": 2750359,
+  "started": 1793846441.170819,
+  "ended": 1793848616.6232924,
+  "episodes": 44,
+  "manifest_sha256": "848e3b570ea0ed1fabc6205aa025392e7b4a49ecaefd557a8c2760af8a49da10",
+  "next": "Human/agent analysis and 2-4 actual qpos videos; no further training"
+}

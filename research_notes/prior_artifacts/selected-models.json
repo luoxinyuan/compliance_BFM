@@ -1,0 +1,32 @@
+{
+  "A": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/ppo-A/best.pt",
+    "sha256": "7cc9f2bda24fd1d382d8dc346f0845aa0211e98680eb5a8e38f1dcb20ab86804",
+    "development_selection": {
+      "iteration": 0,
+      "score": 1.5,
+      "sha256": "7cc9f2bda24fd1d382d8dc346f0845aa0211e98680eb5a8e38f1dcb20ab86804",
+      "evaluation": "dev-0000/summary.json",
+      "rule": "fixed development .5 worst relative cost + mean relative cost; preserve iteration0, every8 candidate and last; no final-test selection"
+    }
+  },
+  "B": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/ppo-B/best.pt",
+    "sha256": "4380df4f8566b1bc2ac8d7849a633c6cda7da0c209029f987c24a3f02a07a24e",
+    "development_selection": {
+      "iteration": 0,
+      "score": 1.486966343656952,
+      "sha256": "4380df4f8566b1bc2ac8d7849a633c6cda7da0c209029f987c24a3f02a07a24e",
+      "evaluation": "dev-0000/summary.json",
+      "rule": "fixed development .5 worst relative cost + mean relative cost; preserve iteration0, every8 candidate and last; no final-test selection"
+    }
+  },
+  "I": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+    "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+    "selection_reason": "M39-A best64 shared M39-B initialization; chosen before this stage evidence; avoids selecting an arm by final M39-B outcomes"
+  },
+  "Standing": {
+    "mode": "standing"
+  }
+}
