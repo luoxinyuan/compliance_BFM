@@ -1,0 +1,947 @@
+{
+  "arm": "B",
+  "updates": 1500,
+  "samples": 747,
+  "manifest": [
+    {
+      "kind": "zero",
+      "samples": 141,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/qualify-02/10_source_zero-labels.json.gz",
+      "sha256": "8adcab2ac758fcbe845eb6bae75af9ae8515abdc5f9ffeace1fa4a5a780a8708"
+    },
+    {
+      "kind": "arm5",
+      "samples": 93,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/qualify-02/10_source_arm5-labels.json.gz",
+      "sha256": "c3e45e9ccd9e44ae4862cd1484edbbde526d04156c16121b8699881eb69924a8"
+    },
+    {
+      "kind": "arm15",
+      "samples": 93,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/qualify-02/10_source_arm15-labels.json.gz",
+      "sha256": "50a25ef88dbd31420e5eb7f9b289e9d19545bf9d3ed479a62c1e7b6e3be196a5"
+    },
+    {
+      "kind": "walk",
+      "samples": 138,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/qualify-02/10_source_walk-labels.json.gz",
+      "sha256": "7e7cdf2346a02d2932903366925c326c5ccdb856016b354d03fd9d23cdd0093e"
+    },
+    {
+      "kind": "left",
+      "samples": 141,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/qualify-02/10_source_left-labels.json.gz",
+      "sha256": "b1f86686207b429d3c8c3a52fab255d08aef77308048eedc35b61e52186f3b9f"
+    },
+    {
+      "kind": "right",
+      "samples": 141,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/qualify-02/10_source_right-labels.json.gz",
+      "sha256": "790d877fc73e91cc110dd07298dba5280e9f69d5e2af476acb178fa34e2834d6"
+    }
+  ],
+  "exact_input_conflicts": [],
+  "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/fit-B/B.pt",
+  "sha256": "92f73a1149d31ba23a59850d01ba44df3dbb0b12c54f6f58a3a0666b0c02b071",
+  "runtime": "fc9be159e6b745646aa75bb3d5789d49915c3ddd",
+  "checks": [
+    {
+      "kind": "zero",
+      "z_angle_deg": 1.1997519731521606,
+      "qpd_rms_deg": 0.08471395820379257,
+      "raw_norm": 1.0201598405838013,
+      "sample_angle_mean_deg": 7.10260009765625
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 1.0426770448684692,
+      "qpd_rms_deg": 0.05661835893988609,
+      "raw_norm": 0.9718143343925476,
+      "sample_angle_mean_deg": 7.51792573928833
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.983773410320282,
+      "qpd_rms_deg": 0.05779225006699562,
+      "raw_norm": 0.9733384847640991,
+      "sample_angle_mean_deg": 7.30179500579834
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.9581792950630188,
+      "qpd_rms_deg": 0.06105094775557518,
+      "raw_norm": 0.9746447205543518,
+      "sample_angle_mean_deg": 7.401417255401611
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.950181245803833,
+      "qpd_rms_deg": 0.06446842104196548,
+      "raw_norm": 0.9754418134689331,
+      "sample_angle_mean_deg": 7.4902753829956055
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.9507988691329956,
+      "qpd_rms_deg": 0.06908143311738968,
+      "raw_norm": 0.9760974049568176,
+      "sample_angle_mean_deg": 7.475614547729492
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.9579750299453735,
+      "qpd_rms_deg": 0.07412592321634293,
+      "raw_norm": 0.9764769673347473,
+      "sample_angle_mean_deg": 7.451300621032715
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.9695481657981873,
+      "qpd_rms_deg": 0.07936222106218338,
+      "raw_norm": 0.9766291975975037,
+      "sample_angle_mean_deg": 7.50595760345459
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.9839723110198975,
+      "qpd_rms_deg": 0.0845366045832634,
+      "raw_norm": 0.9766021966934204,
+      "sample_angle_mean_deg": 7.4495415687561035
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.9997552037239075,
+      "qpd_rms_deg": 0.08943375945091248,
+      "raw_norm": 0.9764400124549866,
+      "sample_angle_mean_deg": 7.465296268463135
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 1.0172181129455566,
+      "qpd_rms_deg": 0.09392824023962021,
+      "raw_norm": 0.9761798977851868,
+      "sample_angle_mean_deg": 7.50330924987793
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 1.0357098579406738,
+      "qpd_rms_deg": 0.09798455983400345,
+      "raw_norm": 0.9758528470993042,
+      "sample_angle_mean_deg": 7.458828926086426
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 1.0512744188308716,
+      "qpd_rms_deg": 0.10102875530719757,
+      "raw_norm": 0.9755445122718811,
+      "sample_angle_mean_deg": 7.504195213317871
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 1.0697263479232788,
+      "qpd_rms_deg": 0.10429766029119492,
+      "raw_norm": 0.9751448631286621,
+      "sample_angle_mean_deg": 7.500317573547363
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 1.0878652334213257,
+      "qpd_rms_deg": 0.10714996606111526,
+      "raw_norm": 0.9747248888015747,
+      "sample_angle_mean_deg": 7.615854263305664
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 1.1060606241226196,
+      "qpd_rms_deg": 0.10958126187324524,
+      "raw_norm": 0.9742966294288635,
+      "sample_angle_mean_deg": 7.397060394287109
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 1.1232649087905884,
+      "qpd_rms_deg": 0.11160939931869507,
+      "raw_norm": 0.9738745093345642,
+      "sample_angle_mean_deg": 7.520133018493652
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 1.140209436416626,
+      "qpd_rms_deg": 0.11324936896562576,
+      "raw_norm": 0.9734727144241333,
+      "sample_angle_mean_deg": 7.5400390625
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.9634742736816406,
+      "qpd_rms_deg": 0.0451706238090992,
+      "raw_norm": 1.041516900062561,
+      "sample_angle_mean_deg": 6.918706893920898
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.9462602734565735,
+      "qpd_rms_deg": 0.04874470457434654,
+      "raw_norm": 1.0432554483413696,
+      "sample_angle_mean_deg": 6.928868770599365
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.9448116421699524,
+      "qpd_rms_deg": 0.050381749868392944,
+      "raw_norm": 1.044419765472412,
+      "sample_angle_mean_deg": 6.920108795166016
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.9522385001182556,
+      "qpd_rms_deg": 0.05213656276464462,
+      "raw_norm": 1.0456475019454956,
+      "sample_angle_mean_deg": 7.007375717163086
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.9663134813308716,
+      "qpd_rms_deg": 0.053982656449079514,
+      "raw_norm": 1.0467652082443237,
+      "sample_angle_mean_deg": 6.8655290603637695
+    },
+    {
+      "kind": "zero",
+      "z_angle_deg": 0.9839723110198975,
+      "qpd_rms_deg": 0.05591420456767082,
+      "raw_norm": 1.0477957725524902,
+      "sample_angle_mean_deg": 6.902971267700195
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 1.1997519731521606,
+      "qpd_rms_deg": 0.08471395820379257,
+      "raw_norm": 1.0201598405838013,
+      "sample_angle_mean_deg": 7.0611572265625
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 1.1562293767929077,
+      "qpd_rms_deg": 0.076246477663517,
+      "raw_norm": 0.9635681509971619,
+      "sample_angle_mean_deg": 7.5869903564453125
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 1.3479911088943481,
+      "qpd_rms_deg": 0.09654528647661209,
+      "raw_norm": 0.9233261942863464,
+      "sample_angle_mean_deg": 8.02890396118164
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 1.6504307985305786,
+      "qpd_rms_deg": 0.06817265599966049,
+      "raw_norm": 0.8736609220504761,
+      "sample_angle_mean_deg": 8.39404296875
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 1.5774357318878174,
+      "qpd_rms_deg": 0.06611587107181549,
+      "raw_norm": 0.8204373121261597,
+      "sample_angle_mean_deg": 8.828829765319824
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 1.3297210931777954,
+      "qpd_rms_deg": 0.05552927404642105,
+      "raw_norm": 0.7775831818580627,
+      "sample_angle_mean_deg": 9.431187629699707
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 1.0826362371444702,
+      "qpd_rms_deg": 0.09417323023080826,
+      "raw_norm": 0.7675487995147705,
+      "sample_angle_mean_deg": 9.38058090209961
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 1.1064143180847168,
+      "qpd_rms_deg": 0.12667907774448395,
+      "raw_norm": 0.7647495269775391,
+      "sample_angle_mean_deg": 9.585451126098633
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 1.141924500465393,
+      "qpd_rms_deg": 0.13610360026359558,
+      "raw_norm": 0.7625055909156799,
+      "sample_angle_mean_deg": 9.525230407714844
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 2.662931203842163,
+      "qpd_rms_deg": 0.16570845246315002,
+      "raw_norm": 0.8334016799926758,
+      "sample_angle_mean_deg": 8.731243133544922
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 2.022940158843994,
+      "qpd_rms_deg": 0.20219813287258148,
+      "raw_norm": 0.9306840300559998,
+      "sample_angle_mean_deg": 7.759586334228516
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 1.6705838441848755,
+      "qpd_rms_deg": 0.09926071763038635,
+      "raw_norm": 1.0006904602050781,
+      "sample_angle_mean_deg": 7.252456188201904
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 1.1740320920944214,
+      "qpd_rms_deg": 0.04392639175057411,
+      "raw_norm": 1.0349950790405273,
+      "sample_angle_mean_deg": 7.045156955718994
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 1.0381630659103394,
+      "qpd_rms_deg": 0.05236223712563515,
+      "raw_norm": 1.0332255363464355,
+      "sample_angle_mean_deg": 7.034633159637451
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 0.9145018458366394,
+      "qpd_rms_deg": 0.05083484202623367,
+      "raw_norm": 1.0351581573486328,
+      "sample_angle_mean_deg": 6.99098014831543
+    },
+    {
+      "kind": "arm5",
+      "z_angle_deg": 0.8261419534683228,
+      "qpd_rms_deg": 0.051608528941869736,
+      "raw_norm": 1.0368144512176514,
+      "sample_angle_mean_deg": 7.003204822540283
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 1.1891030073165894,
+      "qpd_rms_deg": 0.08326954394578934,
+      "raw_norm": 1.020953893661499,
+      "sample_angle_mean_deg": 7.071659088134766
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 1.9228483438491821,
+      "qpd_rms_deg": 0.1626533716917038,
+      "raw_norm": 0.9302380084991455,
+      "sample_angle_mean_deg": 7.797392845153809
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 2.643010139465332,
+      "qpd_rms_deg": 0.08676041662693024,
+      "raw_norm": 0.7969211339950562,
+      "sample_angle_mean_deg": 9.124595642089844
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 2.8253540992736816,
+      "qpd_rms_deg": 0.17725703120231628,
+      "raw_norm": 0.7279777526855469,
+      "sample_angle_mean_deg": 9.843240737915039
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 2.5436055660247803,
+      "qpd_rms_deg": 0.15236146748065948,
+      "raw_norm": 0.7424972653388977,
+      "sample_angle_mean_deg": 9.901189804077148
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 2.225015640258789,
+      "qpd_rms_deg": 0.13213755190372467,
+      "raw_norm": 0.7104060053825378,
+      "sample_angle_mean_deg": 10.151134490966797
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 1.910902976989746,
+      "qpd_rms_deg": 0.1778002679347992,
+      "raw_norm": 0.7264920473098755,
+      "sample_angle_mean_deg": 10.062758445739746
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 1.6249783039093018,
+      "qpd_rms_deg": 0.14602774381637573,
+      "raw_norm": 0.7454267740249634,
+      "sample_angle_mean_deg": 9.812423706054688
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 2.0998432636260986,
+      "qpd_rms_deg": 0.21733421087265015,
+      "raw_norm": 0.6870782375335693,
+      "sample_angle_mean_deg": 10.574871063232422
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 2.8473012447357178,
+      "qpd_rms_deg": 0.38385680317878723,
+      "raw_norm": 0.7304459810256958,
+      "sample_angle_mean_deg": 9.944379806518555
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 2.8930647373199463,
+      "qpd_rms_deg": 0.19034267961978912,
+      "raw_norm": 0.8288346529006958,
+      "sample_angle_mean_deg": 8.717020034790039
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 2.258887767791748,
+      "qpd_rms_deg": 0.1806161105632782,
+      "raw_norm": 0.9026879072189331,
+      "sample_angle_mean_deg": 8.071632385253906
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 1.6321882009506226,
+      "qpd_rms_deg": 0.09543289244174957,
+      "raw_norm": 0.951217532157898,
+      "sample_angle_mean_deg": 7.718953609466553
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 1.341442584991455,
+      "qpd_rms_deg": 0.08960641920566559,
+      "raw_norm": 0.9758086800575256,
+      "sample_angle_mean_deg": 7.389793395996094
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 1.1281321048736572,
+      "qpd_rms_deg": 0.08896917849779129,
+      "raw_norm": 0.9912797808647156,
+      "sample_angle_mean_deg": 7.348073959350586
+    },
+    {
+      "kind": "arm15",
+      "z_angle_deg": 0.9299906492233276,
+      "qpd_rms_deg": 0.08191684633493423,
+      "raw_norm": 1.0028070211410522,
+      "sample_angle_mean_deg": 7.220951080322266
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 3.442758798599243,
+      "qpd_rms_deg": 0.2976306676864624,
+      "raw_norm": 0.9394213557243347,
+      "sample_angle_mean_deg": 7.6350507736206055
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 2.1515867710113525,
+      "qpd_rms_deg": 0.09545750170946121,
+      "raw_norm": 0.7400466799736023,
+      "sample_angle_mean_deg": 9.80898380279541
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 3.391883373260498,
+      "qpd_rms_deg": 0.22271235287189484,
+      "raw_norm": 0.635986864566803,
+      "sample_angle_mean_deg": 11.342052459716797
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 2.689336061477661,
+      "qpd_rms_deg": 0.19764915108680725,
+      "raw_norm": 0.777974009513855,
+      "sample_angle_mean_deg": 9.272022247314453
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 2.3253211975097656,
+      "qpd_rms_deg": 0.17445088922977448,
+      "raw_norm": 0.8687363862991333,
+      "sample_angle_mean_deg": 8.360039710998535
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 2.062509536743164,
+      "qpd_rms_deg": 0.13930663466453552,
+      "raw_norm": 0.9620333909988403,
+      "sample_angle_mean_deg": 7.50728178024292
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 2.975982666015625,
+      "qpd_rms_deg": 0.24457967281341553,
+      "raw_norm": 1.079331636428833,
+      "sample_angle_mean_deg": 6.787805557250977
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 3.4499738216400146,
+      "qpd_rms_deg": 0.11517419666051865,
+      "raw_norm": 0.6918584108352661,
+      "sample_angle_mean_deg": 10.536823272705078
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 1.778612732887268,
+      "qpd_rms_deg": 0.21064430475234985,
+      "raw_norm": 0.7248662114143372,
+      "sample_angle_mean_deg": 10.03400993347168
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 1.9276260137557983,
+      "qpd_rms_deg": 0.14572621881961823,
+      "raw_norm": 0.7593761086463928,
+      "sample_angle_mean_deg": 9.42793083190918
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 2.713897705078125,
+      "qpd_rms_deg": 0.1347026228904724,
+      "raw_norm": 1.0646042823791504,
+      "sample_angle_mean_deg": 6.859691143035889
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 2.351435899734497,
+      "qpd_rms_deg": 0.09377311170101166,
+      "raw_norm": 1.0788713693618774,
+      "sample_angle_mean_deg": 6.828075408935547
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 2.9905500411987305,
+      "qpd_rms_deg": 0.1725016087293625,
+      "raw_norm": 0.954205334186554,
+      "sample_angle_mean_deg": 7.60944938659668
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 1.1095932722091675,
+      "qpd_rms_deg": 0.038171928375959396,
+      "raw_norm": 0.9027791619300842,
+      "sample_angle_mean_deg": 8.044151306152344
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 1.2107923030853271,
+      "qpd_rms_deg": 0.06861146539449692,
+      "raw_norm": 0.9115324020385742,
+      "sample_angle_mean_deg": 7.900918960571289
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 1.3358876705169678,
+      "qpd_rms_deg": 0.12160057574510574,
+      "raw_norm": 0.8630545735359192,
+      "sample_angle_mean_deg": 8.409280776977539
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 1.5225142240524292,
+      "qpd_rms_deg": 0.0819665938615799,
+      "raw_norm": 0.8657689094543457,
+      "sample_angle_mean_deg": 8.334837913513184
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 1.9910528659820557,
+      "qpd_rms_deg": 0.11880889534950256,
+      "raw_norm": 1.2537928819656372,
+      "sample_angle_mean_deg": 5.781213760375977
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 2.001640796661377,
+      "qpd_rms_deg": 0.09073515981435776,
+      "raw_norm": 1.078360676765442,
+      "sample_angle_mean_deg": 6.757915496826172
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 1.1611270904541016,
+      "qpd_rms_deg": 0.051802560687065125,
+      "raw_norm": 1.0392305850982666,
+      "sample_angle_mean_deg": 7.096531867980957
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 1.5246976613998413,
+      "qpd_rms_deg": 0.06552932411432266,
+      "raw_norm": 1.0354331731796265,
+      "sample_angle_mean_deg": 7.089783191680908
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 1.3876209259033203,
+      "qpd_rms_deg": 0.05255161225795746,
+      "raw_norm": 1.048505425453186,
+      "sample_angle_mean_deg": 6.9837799072265625
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 1.6767810583114624,
+      "qpd_rms_deg": 0.06234221160411835,
+      "raw_norm": 1.042286992073059,
+      "sample_angle_mean_deg": 7.063238143920898
+    },
+    {
+      "kind": "walk",
+      "z_angle_deg": 1.855301856994629,
+      "qpd_rms_deg": 0.04417431727051735,
+      "raw_norm": 1.0361278057098389,
+      "sample_angle_mean_deg": 7.042811393737793
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.284051775932312,
+      "qpd_rms_deg": 0.06443414837121964,
+      "raw_norm": 0.9612933397293091,
+      "sample_angle_mean_deg": 7.437922477722168
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.2546061277389526,
+      "qpd_rms_deg": 0.07347072660923004,
+      "raw_norm": 0.9612026810646057,
+      "sample_angle_mean_deg": 7.535387992858887
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.3521945476531982,
+      "qpd_rms_deg": 0.07653394341468811,
+      "raw_norm": 0.9569406509399414,
+      "sample_angle_mean_deg": 7.507504463195801
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.4753843545913696,
+      "qpd_rms_deg": 0.05014624819159508,
+      "raw_norm": 0.9425051212310791,
+      "sample_angle_mean_deg": 7.71776819229126
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.759474515914917,
+      "qpd_rms_deg": 0.10068479180335999,
+      "raw_norm": 0.9169344305992126,
+      "sample_angle_mean_deg": 8.072643280029297
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.5609740018844604,
+      "qpd_rms_deg": 0.07949744164943695,
+      "raw_norm": 0.8942928910255432,
+      "sample_angle_mean_deg": 8.179546356201172
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.666831135749817,
+      "qpd_rms_deg": 0.08998698741197586,
+      "raw_norm": 0.8731909394264221,
+      "sample_angle_mean_deg": 8.271047592163086
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.527262568473816,
+      "qpd_rms_deg": 0.06883895397186279,
+      "raw_norm": 0.8622093200683594,
+      "sample_angle_mean_deg": 8.305683135986328
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.423265814781189,
+      "qpd_rms_deg": 0.0601169727742672,
+      "raw_norm": 0.8529998660087585,
+      "sample_angle_mean_deg": 8.495901107788086
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.0392934083938599,
+      "qpd_rms_deg": 0.04720177873969078,
+      "raw_norm": 0.8450143933296204,
+      "sample_angle_mean_deg": 8.518514633178711
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 0.7077590227127075,
+      "qpd_rms_deg": 0.03533586114645004,
+      "raw_norm": 0.8422302603721619,
+      "sample_angle_mean_deg": 8.599897384643555
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 0.7433580756187439,
+      "qpd_rms_deg": 0.04090757295489311,
+      "raw_norm": 0.8336167931556702,
+      "sample_angle_mean_deg": 8.751516342163086
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 0.9225968718528748,
+      "qpd_rms_deg": 0.04925433546304703,
+      "raw_norm": 0.8277279734611511,
+      "sample_angle_mean_deg": 8.817314147949219
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.1535183191299438,
+      "qpd_rms_deg": 0.05818731337785721,
+      "raw_norm": 0.8238548636436462,
+      "sample_angle_mean_deg": 8.90725326538086
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.2448982000350952,
+      "qpd_rms_deg": 0.0636419728398323,
+      "raw_norm": 0.8253788948059082,
+      "sample_angle_mean_deg": 8.75378131866455
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.3405671119689941,
+      "qpd_rms_deg": 0.07075493782758713,
+      "raw_norm": 0.8275647163391113,
+      "sample_angle_mean_deg": 8.755224227905273
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.4430646896362305,
+      "qpd_rms_deg": 0.07909046858549118,
+      "raw_norm": 0.8298267126083374,
+      "sample_angle_mean_deg": 8.729512214660645
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 2.795543670654297,
+      "qpd_rms_deg": 0.1935291737318039,
+      "raw_norm": 0.9103559851646423,
+      "sample_angle_mean_deg": 7.962972164154053
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 2.660062551498413,
+      "qpd_rms_deg": 0.08700621128082275,
+      "raw_norm": 0.9865220785140991,
+      "sample_angle_mean_deg": 7.452091217041016
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 2.1311135292053223,
+      "qpd_rms_deg": 0.07821091264486313,
+      "raw_norm": 1.0987143516540527,
+      "sample_angle_mean_deg": 6.711623191833496
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.5654807090759277,
+      "qpd_rms_deg": 0.12081105262041092,
+      "raw_norm": 1.0963886976242065,
+      "sample_angle_mean_deg": 6.654637813568115
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.44645094871521,
+      "qpd_rms_deg": 0.10741966217756271,
+      "raw_norm": 1.090070128440857,
+      "sample_angle_mean_deg": 6.821805000305176
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.3455209732055664,
+      "qpd_rms_deg": 0.09213609993457794,
+      "raw_norm": 1.083508014678955,
+      "sample_angle_mean_deg": 6.622105121612549
+    },
+    {
+      "kind": "left",
+      "z_angle_deg": 1.267640233039856,
+      "qpd_rms_deg": 0.051879920065402985,
+      "raw_norm": 1.0778634548187256,
+      "sample_angle_mean_deg": 6.815110206604004
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.29225492477417,
+      "qpd_rms_deg": 0.0645720586180687,
+      "raw_norm": 0.9609951376914978,
+      "sample_angle_mean_deg": 7.693168640136719
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.2860313653945923,
+      "qpd_rms_deg": 0.06550507992506027,
+      "raw_norm": 0.955223798751831,
+      "sample_angle_mean_deg": 7.599393844604492
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.3490070104599,
+      "qpd_rms_deg": 0.060293424874544144,
+      "raw_norm": 0.9463808536529541,
+      "sample_angle_mean_deg": 7.6381940841674805
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.4063915014266968,
+      "qpd_rms_deg": 0.14185096323490143,
+      "raw_norm": 0.924547553062439,
+      "sample_angle_mean_deg": 7.892111778259277
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.418997049331665,
+      "qpd_rms_deg": 0.09024317562580109,
+      "raw_norm": 0.9043053984642029,
+      "sample_angle_mean_deg": 8.05800724029541
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.6026661396026611,
+      "qpd_rms_deg": 0.11558935791254044,
+      "raw_norm": 0.8860985040664673,
+      "sample_angle_mean_deg": 8.183759689331055
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.7006535530090332,
+      "qpd_rms_deg": 0.09138289839029312,
+      "raw_norm": 0.8662565350532532,
+      "sample_angle_mean_deg": 8.429365158081055
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.7210146188735962,
+      "qpd_rms_deg": 0.06712952256202698,
+      "raw_norm": 0.8439096212387085,
+      "sample_angle_mean_deg": 8.640893936157227
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.433677077293396,
+      "qpd_rms_deg": 0.04876742139458656,
+      "raw_norm": 0.8241041898727417,
+      "sample_angle_mean_deg": 8.773104667663574
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 0.8350940346717834,
+      "qpd_rms_deg": 0.029758157208561897,
+      "raw_norm": 0.8056370615959167,
+      "sample_angle_mean_deg": 9.060824394226074
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.0379745960235596,
+      "qpd_rms_deg": 0.03680935502052307,
+      "raw_norm": 0.7927716970443726,
+      "sample_angle_mean_deg": 9.260781288146973
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 0.8146935701370239,
+      "qpd_rms_deg": 0.04633912071585655,
+      "raw_norm": 0.7901432514190674,
+      "sample_angle_mean_deg": 9.238449096679688
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 0.9202609658241272,
+      "qpd_rms_deg": 0.05189654976129532,
+      "raw_norm": 0.787377655506134,
+      "sample_angle_mean_deg": 9.19058609008789
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 0.984767496585846,
+      "qpd_rms_deg": 0.045748282223939896,
+      "raw_norm": 0.7854654788970947,
+      "sample_angle_mean_deg": 9.26228141784668
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 0.9312523603439331,
+      "qpd_rms_deg": 0.040163446217775345,
+      "raw_norm": 0.7831794023513794,
+      "sample_angle_mean_deg": 9.335599899291992
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 0.9553158283233643,
+      "qpd_rms_deg": 0.039459582418203354,
+      "raw_norm": 0.7805473804473877,
+      "sample_angle_mean_deg": 9.255086898803711
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.0298362970352173,
+      "qpd_rms_deg": 0.0402468703687191,
+      "raw_norm": 0.778530478477478,
+      "sample_angle_mean_deg": 9.346162796020508
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 2.80393385887146,
+      "qpd_rms_deg": 0.13743053376674652,
+      "raw_norm": 0.8414351344108582,
+      "sample_angle_mean_deg": 8.712757110595703
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 3.361384868621826,
+      "qpd_rms_deg": 0.14906759560108185,
+      "raw_norm": 0.9312419295310974,
+      "sample_angle_mean_deg": 7.762936592102051
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 3.049921989440918,
+      "qpd_rms_deg": 0.22972430288791656,
+      "raw_norm": 1.0268421173095703,
+      "sample_angle_mean_deg": 7.124451637268066
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.6563488245010376,
+      "qpd_rms_deg": 0.09039754420518875,
+      "raw_norm": 0.9952418804168701,
+      "sample_angle_mean_deg": 7.350892066955566
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.4557560682296753,
+      "qpd_rms_deg": 0.08682980388402939,
+      "raw_norm": 1.002151608467102,
+      "sample_angle_mean_deg": 7.34099006652832
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.3596991300582886,
+      "qpd_rms_deg": 0.08198263496160507,
+      "raw_norm": 1.0097743272781372,
+      "sample_angle_mean_deg": 7.228147506713867
+    },
+    {
+      "kind": "right",
+      "z_angle_deg": 1.2857270240783691,
+      "qpd_rms_deg": 0.05020352080464363,
+      "raw_norm": 1.0162829160690308,
+      "sample_angle_mean_deg": 7.02593469619751
+    }
+  ],
+  "normalization_and_critic": "unchanged I, only actor trained",
+  "A_scope": "old I self-supervision control; same data count and updates, not same nonzero gradient work"
+}

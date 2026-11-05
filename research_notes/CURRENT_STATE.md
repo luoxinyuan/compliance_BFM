@@ -1,10 +1,25 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-05 CST。本轮Issue43已获授权：初始化去偏/reward审查，先来源资格，匹配PPO有条件执行（最多49152决策、16000job秒、10GiB）。当前尚未启动PPO；Issue42以下为已完成历史。
+最后核对：2026-11-05 CST。**Issue43正在执行：BFM latent初始化去偏、通用reward审查与匹配PPO。尚未结项，不启动其他训练。**
 
-**Arm-to-Locomotion任务合理性审查（Issue42）完成并停止；43个新冻结物理回合，0 PPO/Student训练。没有后台或下一轮训练排队。**
+入口：[本阶段进行中报告](LATENT_PRIOR_RESULTS.md) · [固定协议](prior_protocol.json) · [实际训练配置](prior_training.json) · [Issue43](https://github.com/GaoE05/robot-research-bridge/issues/43) · [Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。Master仍保留Issue42结项，阶段完成后统一更新；下文Issue42是历史证据。
 
-入口：[本轮结果](ARM_TO_LOCOMOTION_RESULTS.md) · [M41启动因果结果](M41_STARTUP_CAUSAL_RESULTS.md) · [原Transition课程](TRANSITION_RESULTS.md) · [Issue42](https://github.com/GaoE05/robot-research-bridge/issues/42) · [Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。纲领见RESEARCH_OVERVIEW。旧Library2026-10-28只是历史快照。
+## 本阶段已做与正在做
+
+- 已复算43条旧物理轨迹reward，完成28条5/10N原生来源/I对照及4条来源前缀控制。局部伸臂有效，单一30cm躯干候选任务差、排除标签；10N不自动优于5N。
+- 两轮匹配初始化各1500更新/臂。第二轮采用实际完全一致I前缀；B15cm改善但80cm退化至34.85cm，A为6.02cm。保留全部负例，不将B提升为可靠基线。
+- A/B共同从I获得匹配监督后，实际PPO已启动，各32×768决策上限，同10N、reward、std、课程、新critic/Adam。运行源码982f5bf544d7027fb080cd57036bb6ee36561e13。GPU2/5启动时已实时核验；不凭此快照另启任务。
+- A初始SHA e761e57a042d738e8ada39de3f473813486fa7220f0793f14565cfec0bd5da51；B初始SHA e1112cd0b20d1d8462ac3efbf183cb1289b5679612b37a286232e4a5eaedf00c。只有开发0/8/16/24/32选模型，不看封存测试反选。
+- 原PPO资源记录器后缀错误退出，核实原进程后补接监控，没有重复发车。准确PID/存活状态以run下launch.json、ppo-A/B-ledger.json、result.json为准，勿复用历史PID进行操作。
+- 总上限16000累计job秒、10GiB新输出、49152RL决策；已完成6000监督更新（含失败初始化对照），没有Student训练。训练后只做预登记冻结终检、结果/视频交付，不自动扩下一阶段。
+
+run: `/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105`。本阶段视频尚未交付；不可把Issue42旧视频称为新模型结果。当前科学结论只到初始化取舍，PPO与新条件结果待核验。
+
+## 接力优先顺序
+
+读取上述run的ppo-A/B result、selection、ledger和final-evaluation状态；正在运行时不重复启动/改runtime。验证模型SHA与开发选择后再汇总封存评价。完成后更新本文件、Issue43和Master18，停止。本阶段源代码另在独立worktree；共享BFM/PD/main/其他任务不变。
+
+## 以下为Issue42及M41的保留历史
 
 ## 大目标与保留成果
 

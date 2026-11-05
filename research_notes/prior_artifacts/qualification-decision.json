@@ -1,0 +1,25 @@
+{
+  "proceed": true,
+  "cap": 10,
+  "kinds": [
+    "zero",
+    "arm5",
+    "arm15",
+    "walk",
+    "left",
+    "right"
+  ],
+  "reasons": [
+    "All28 original BFM/PD episodes complete; 10N I walking and source local/yaw stable",
+    "Native5cm source improves I and standing; native15cm source improves I; bilateral yaw correct",
+    "body30_pitch8 is physically stable but much poorer than I at30cm: exclude these labels, retain complete negative evidence",
+    "10N not called generally superior: I80 force increased3.55 to5.21N; fixed input/reward force scale5 stays unchanged"
+  ],
+  "excluded": [
+    "body30"
+  ],
+  "failures": [
+    "qualify first attempt5.21s: inherited sparse checkout missing pinned source; materialized tracked files only, no model/physics change"
+  ],
+  "source_runtime": "433cce752420c7a7d745bf8cf0bd57881eaf1e02"
+}

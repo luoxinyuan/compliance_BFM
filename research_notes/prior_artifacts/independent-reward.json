@@ -1,0 +1,733 @@
+[
+  {
+    "label": "I_duration_00",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 0.11395909221281865,
+      "tracking": 0.0010816819992521998,
+      "heading": 0.0,
+      "uncapped": 0.011342711776542027,
+      "relative_velocity": 0.0001873314771212842
+    }
+  },
+  {
+    "label": "I_duration_05",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 1.7776248642733838,
+      "tracking": 0.016980522266213497,
+      "heading": 0.018888361166743174,
+      "uncapped": 0.16154584205633749,
+      "relative_velocity": 0.0004868877100245265
+    }
+  },
+  {
+    "label": "I_duration_15",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 8.564664803749208,
+      "tracking": 0.09229335302980024,
+      "heading": 0.034454863419460205,
+      "uncapped": 0.6676521151835475,
+      "relative_velocity": 0.0010603519664346363
+    }
+  },
+  {
+    "label": "I_duration_30",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 6.1437386818513104,
+      "tracking": 0.06916860269597097,
+      "heading": 0.5768926275296893,
+      "uncapped": 0.5197135913383361,
+      "relative_velocity": 0.03443728141190717
+    }
+  },
+  {
+    "label": "I_duration_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 7.4103231300794565,
+      "tracking": 0.17403390858771584,
+      "heading": 1.2913642176803664,
+      "uncapped": 0.8825699539204859,
+      "relative_velocity": 0.101595827079013
+    }
+  },
+  {
+    "label": "I_mask_geometry_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 10.0318366131163,
+      "tracking": 1.4628900959182631,
+      "heading": 0.4143409745133716,
+      "uncapped": 2.35345984756777,
+      "relative_velocity": 0.1283785436258797
+    }
+  },
+  {
+    "label": "I_noforce_geometry_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 0.0,
+      "tracking": 12.5823394395107,
+      "heading": 0.3858183073594347,
+      "uncapped": 5.452370111773183,
+      "relative_velocity": 0.04537408507170606
+    }
+  },
+  {
+    "label": "I_oldanchor_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 9.113167327354601,
+      "tracking": 0.1257081170662717,
+      "heading": 0.5052047504398082,
+      "uncapped": 0.8311218300456739,
+      "relative_velocity": 0.07869985388502666
+    }
+  },
+  {
+    "label": "I_speed_05",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 1.5051192036487038,
+      "tracking": 0.013666020149180573,
+      "heading": 0.002961183620420602,
+      "uncapped": 0.1239913442718716,
+      "relative_velocity": 0.01293848443975529
+    }
+  },
+  {
+    "label": "I_speed_15",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 4.252366803772074,
+      "tracking": 0.0983549164923779,
+      "heading": 0.01165058721938616,
+      "uncapped": 0.5045491468920713,
+      "relative_velocity": 0.032885550622055094
+    }
+  },
+  {
+    "label": "I_speed_30",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 5.286186334327604,
+      "tracking": 0.1976855345798357,
+      "heading": 0.02873217739599429,
+      "uncapped": 0.7394795604127796,
+      "relative_velocity": 0.059339491271824606
+    }
+  },
+  {
+    "label": "I_speed_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 9.15941528450984,
+      "tracking": 0.13364295090506662,
+      "heading": 0.3210569093691486,
+      "uncapped": 0.862293590709802,
+      "relative_velocity": 0.08468325763587695
+    }
+  },
+  {
+    "label": "Standing_duration_00",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 0.16071216987622253,
+      "tracking": 0.0015389083050104564,
+      "heading": 0.0,
+      "uncapped": 0.01595445495733493,
+      "relative_velocity": 4.69341504121659e-06
+    }
+  },
+  {
+    "label": "Standing_duration_05",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 2.4832714139915404,
+      "tracking": 0.02382574727841577,
+      "heading": 0.021447212094841794,
+      "uncapped": 0.22156370312830417,
+      "relative_velocity": 7.649075852626043e-05
+    }
+  },
+  {
+    "label": "Standing_duration_15",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 9.925185410121717,
+      "tracking": 0.22627526617230692,
+      "heading": 0.049644088225613704,
+      "uncapped": 1.185659155929692,
+      "relative_velocity": 0.0007768920697943467
+    }
+  },
+  {
+    "label": "Standing_duration_30",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 11.640260804748833,
+      "tracking": 1.200006240575775,
+      "heading": 0.08790394690686024,
+      "uncapped": 2.600352977557279,
+      "relative_velocity": 0.004322405038149665
+    }
+  },
+  {
+    "label": "Standing_duration_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 13.011315201528763,
+      "tracking": 10.373202421156224,
+      "heading": 0.2063722245238508,
+      "uncapped": 5.046503617797523,
+      "relative_velocity": 0.03654299922557927
+    }
+  },
+  {
+    "label": "Standing_goalcontrol_05",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 1.4923805523049596,
+      "tracking": 0.014148211181831556,
+      "heading": 0.009269221425787262,
+      "uncapped": 0.13251118877937948,
+      "relative_velocity": 0.0001980645014050232
+    }
+  },
+  {
+    "label": "Standing_goalcontrol_15",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 5.8114654896792315,
+      "tracking": 0.15103252632369102,
+      "heading": 0.023004338034008094,
+      "uncapped": 0.753463766171668,
+      "relative_velocity": 0.002065044403351804
+    }
+  },
+  {
+    "label": "T30_duration_00",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 0.04148353216239199,
+      "tracking": 0.00039540637186527355,
+      "heading": 0.0,
+      "uncapped": 0.0041413052091395786,
+      "relative_velocity": 3.928531947046157e-05
+    }
+  },
+  {
+    "label": "T30_duration_05",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 1.1856408971697077,
+      "tracking": 0.010923181665351204,
+      "heading": 0.028278647675671217,
+      "uncapped": 0.10471975811644636,
+      "relative_velocity": 0.0064964040854524376
+    }
+  },
+  {
+    "label": "T30_duration_15",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 2.6123091220768924,
+      "tracking": 0.027488556326875083,
+      "heading": 0.022405391891927258,
+      "uncapped": 0.21963948391793636,
+      "relative_velocity": 0.017586363079221734
+    }
+  },
+  {
+    "label": "T30_duration_30",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 5.825251855443666,
+      "tracking": 0.07519522090727936,
+      "heading": 0.08737596125735174,
+      "uncapped": 0.5422896416941504,
+      "relative_velocity": 0.05193904016137135
+    }
+  },
+  {
+    "label": "T30_duration_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 7.637952902824254,
+      "tracking": 0.12407835352407479,
+      "heading": 0.7451469261428989,
+      "uncapped": 0.7595412627620611,
+      "relative_velocity": 0.06550093489595003
+    }
+  },
+  {
+    "label": "T30_mask_geometry_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 8.797594139090993,
+      "tracking": 0.17797138571753912,
+      "heading": 0.16662330725292704,
+      "uncapped": 0.9736674990438369,
+      "relative_velocity": 0.08689029995329019
+    }
+  },
+  {
+    "label": "T30_noforce_geometry_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 0.0,
+      "tracking": 11.467726955124462,
+      "heading": 0.41941379286526254,
+      "uncapped": 5.260903458751393,
+      "relative_velocity": 0.03858022334747077
+    }
+  },
+  {
+    "label": "T30_oldanchor_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 8.267813115701754,
+      "tracking": 0.1258983071594722,
+      "heading": 0.4055467189966488,
+      "uncapped": 0.8021897955601142,
+      "relative_velocity": 0.0672537826194175
+    }
+  },
+  {
+    "label": "T30_speed_05",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 1.8800096068453453,
+      "tracking": 0.018426664741656468,
+      "heading": 0.002674267572893257,
+      "uncapped": 0.15607111681716215,
+      "relative_velocity": 0.01727970474473392
+    }
+  },
+  {
+    "label": "T30_speed_15",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 4.016404478207245,
+      "tracking": 0.10380491412507163,
+      "heading": 0.010081612337013298,
+      "uncapped": 0.49685618636880996,
+      "relative_velocity": 0.037013213692983764
+    }
+  },
+  {
+    "label": "T30_speed_30",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 4.548738939917721,
+      "tracking": 0.19675145928562043,
+      "heading": 0.07466235390071506,
+      "uncapped": 0.6883951896176609,
+      "relative_velocity": 0.057922954250300515
+    }
+  },
+  {
+    "label": "T30_speed_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 7.9440181483563626,
+      "tracking": 0.12625224688362302,
+      "heading": 0.30142358621659293,
+      "uncapped": 0.7823706740816594,
+      "relative_velocity": 0.06604815745649693
+    }
+  },
+  {
+    "label": "goal_anchored_05",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 0.39924486238346857,
+      "tracking": 0.0037796202949645467,
+      "heading": 0.011631280200709561,
+      "uncapped": 0.038664663190070774,
+      "relative_velocity": 6.283542243980177e-05
+    }
+  },
+  {
+    "label": "goal_anchored_15",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 3.7354310811034157,
+      "tracking": 0.035559812485348424,
+      "heading": 0.05572686744962145,
+      "uncapped": 0.2903509603015266,
+      "relative_velocity": 0.0016826239087173798
+    }
+  },
+  {
+    "label": "goal_native_05",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 1.5849806441335281,
+      "tracking": 0.01493599310931668,
+      "heading": 0.011374208269150048,
+      "uncapped": 0.13830434293702326,
+      "relative_velocity": 0.00023523309634628544
+    }
+  },
+  {
+    "label": "goal_native_15",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 5.600852532415316,
+      "tracking": 0.06503822483906846,
+      "heading": 0.051686802243902964,
+      "uncapped": 0.4496571088872798,
+      "relative_velocity": 0.002036331966412625
+    }
+  },
+  {
+    "label": "I_goalcontrol_05",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 0.9557716239575653,
+      "tracking": 0.00887117037844943,
+      "heading": 0.008322269197403396,
+      "uncapped": 0.0867799401236121,
+      "relative_velocity": 0.000988869877355818
+    }
+  },
+  {
+    "label": "I_mask_error_velocity_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 10.163285971202512,
+      "tracking": 1.018970502234652,
+      "heading": 0.15471290187999703,
+      "uncapped": 2.0762907318008237,
+      "relative_velocity": 0.10764668890594023
+    }
+  },
+  {
+    "label": "T30_goalcontrol_05",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 1.7807769811329142,
+      "tracking": 0.016263065692596904,
+      "heading": 0.007081672120159748,
+      "uncapped": 0.14291002097207442,
+      "relative_velocity": 0.011716976492312622
+    }
+  },
+  {
+    "label": "T30_mask_error_velocity_80",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 8.797594139090993,
+      "tracking": 0.17797138571753912,
+      "heading": 0.16662330725292704,
+      "uncapped": 0.9736674990438369,
+      "relative_velocity": 0.08689029995329019
+    }
+  },
+  {
+    "label": "goal_free_anchored_05",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 0.0,
+      "tracking": 0.012440459812224912,
+      "heading": 0.013250761142902318,
+      "uncapped": 0.11862312187943863,
+      "relative_velocity": 0.00017149881791229317
+    }
+  },
+  {
+    "label": "goal_free_anchored_15",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 0.0,
+      "tracking": 0.15292132925555238,
+      "heading": 0.08593516042717865,
+      "uncapped": 0.7746087581412663,
+      "relative_velocity": 0.005412036464042043
+    }
+  },
+  {
+    "label": "goal_free_native_05",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 0.0,
+      "tracking": 0.061369743365430614,
+      "heading": 0.013971347876750284,
+      "uncapped": 0.41997329915286896,
+      "relative_velocity": 0.0008869611065987025
+    }
+  },
+  {
+    "label": "goal_free_native_15",
+    "max_errors": {
+      "force": 0,
+      "tracking": 0,
+      "heading": 0,
+      "uncapped": 0,
+      "relative_velocity": 0
+    },
+    "independent_cost_integrals": {
+      "force": 0.0,
+      "tracking": 0.28833670412954643,
+      "heading": 0.09181403768122103,
+      "uncapped": 1.064033768818976,
+      "relative_velocity": 0.007161251378853485
+    }
+  }
+]

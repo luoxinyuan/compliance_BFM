@@ -1,0 +1,51 @@
+[
+  {
+    "time": 4.0,
+    "z_deg": 0.33844307705066135,
+    "qpd_rms_deg": 0.04540856469387068,
+    "root_separation_cm": 1.5084716158540424e-05,
+    "scope": "Different evolving trajectories; descriptive, not same-state causal action comparison"
+  },
+  {
+    "time": 4.2,
+    "z_deg": 1.8336797960245796,
+    "qpd_rms_deg": 0.23994461786165466,
+    "root_separation_cm": 0.02569023569973232,
+    "scope": "Different evolving trajectories; descriptive, not same-state causal action comparison"
+  },
+  {
+    "time": 4.3,
+    "z_deg": 2.2806056616373347,
+    "qpd_rms_deg": 0.2672071847331893,
+    "root_separation_cm": 0.046687065546582696,
+    "scope": "Different evolving trajectories; descriptive, not same-state causal action comparison"
+  },
+  {
+    "time": 4.5,
+    "z_deg": 3.7242802894681053,
+    "qpd_rms_deg": 0.2456418973106384,
+    "root_separation_cm": 0.07088912023667726,
+    "scope": "Different evolving trajectories; descriptive, not same-state causal action comparison"
+  },
+  {
+    "time": 5.0,
+    "z_deg": 8.100247016224579,
+    "qpd_rms_deg": 0.9176955349259504,
+    "root_separation_cm": 0.22632130434611647,
+    "scope": "Different evolving trajectories; descriptive, not same-state causal action comparison"
+  },
+  {
+    "time": 6.0,
+    "z_deg": 44.34883148872634,
+    "qpd_rms_deg": 5.618625219782214,
+    "root_separation_cm": 2.238841397737727,
+    "scope": "Different evolving trajectories; descriptive, not same-state causal action comparison"
+  },
+  {
+    "time": 7.0,
+    "z_deg": 61.46942716065163,
+    "qpd_rms_deg": 21.315007214157436,
+    "root_separation_cm": 14.120956439377549,
+    "scope": "Different evolving trajectories; descriptive, not same-state causal action comparison"
+  }
+]

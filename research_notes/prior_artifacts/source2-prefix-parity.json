@@ -1,0 +1,46 @@
+[
+  {
+    "kind": "arm5",
+    "matched_before": 4.3,
+    "steps": 60,
+    "differences": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0,
+      "anchor": 0.0
+    }
+  },
+  {
+    "kind": "arm15",
+    "matched_before": 4.3,
+    "steps": 60,
+    "differences": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0,
+      "anchor": 0.0
+    }
+  },
+  {
+    "kind": "left",
+    "matched_before": 4.3,
+    "steps": 60,
+    "differences": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0,
+      "anchor": 0.0
+    }
+  },
+  {
+    "kind": "right",
+    "matched_before": 4.3,
+    "steps": 60,
+    "differences": {
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "force": 0.0,
+      "anchor": 0.0
+    }
+  }
+]

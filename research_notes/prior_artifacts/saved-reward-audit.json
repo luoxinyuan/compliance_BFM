@@ -1,0 +1,4689 @@
+[
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/I_duration_00.json.gz",
+    "sha256": "54ea358c1a8c1bc8d886e645a45e6d2b1f7ae74f3f354e25b58a991fa5d9697f",
+    "label": "I_duration_00",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -1.1789643762038867e-05,
+        "cost_integrals": {
+          "force": 6.505374319532438e-06,
+          "uncapped": 6.505042264415814e-07,
+          "tracking": 3.1292721995041203e-09,
+          "relative_velocity": 4.296395976870128e-07,
+          "heading": 0.0,
+          "slip": 1.9505546856932315e-06,
+          "tilt": 0.0,
+          "continuity": 2.067247924060212e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -0.0993638173254874,
+        "cost_integrals": {
+          "force": 0.08940854865249154,
+          "uncapped": 0.008897908822670034,
+          "tracking": 0.0008421872033181542,
+          "relative_velocity": 0.00018678580164455913,
+          "heading": 0.0,
+          "slip": 1.6892133203031772e-05,
+          "tilt": 0.0,
+          "continuity": 1.1494712160072142e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.027228953913040695,
+        "cost_integrals": {
+          "force": 0.02454403818600763,
+          "uncapped": 0.002444152449645552,
+          "tracking": 0.0002394916666618462,
+          "relative_velocity": 1.1603587903804785e-07,
+          "heading": 0.0,
+          "slip": 1.0812062420235095e-06,
+          "tilt": 0.0,
+          "continuity": 5.050698220543381e-09,
+          "soft_prior": 0.0,
+          "idle": 6.931790638658221e-08
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0007766865971799244,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 7.809548665507185e-06,
+          "tilt": 0.0,
+          "continuity": 1.6584858874637124e-05,
+          "soft_prior": 0.0,
+          "idle": 0.00075229218963978
+        }
+      }
+    },
+    "reward_sum": -0.12738124747947002,
+    "reward_integral_max_error": 1.3010426069826053e-18,
+    "foot_xy_path_m": [
+      0.005127925729195641,
+      0.0058596925025820035
+    ],
+    "root_xy_path_m": 0.04704871315383336,
+    "root_contact_end_delta_cm": [
+      0.3086854236231593,
+      0.691014079181572,
+      -0.23440281668325458
+    ],
+    "joint_travel_rad": 2.5419682114427014,
+    "joint_squared_speed_integral": 0.11391302140714,
+    "max_tilt": 3.909783507329893,
+    "qpd_max_deg": 0.6381795788737876,
+    "actual_q_max_deg": 0.09012261326633006,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/I_duration_05.json.gz",
+    "sha256": "f03af6c1935eca43215db16cf1ea7f26bbb083f91aec9bfbce1f8c1b60d79f87",
+    "label": "I_duration_05",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -8.451063556465799e-05,
+        "cost_integrals": {
+          "force": 6.788377174268275e-06,
+          "uncapped": 6.78801278490367e-07,
+          "tracking": 3.229601035354547e-09,
+          "relative_velocity": 4.489731862334265e-07,
+          "heading": 7.239026867611123e-05,
+          "slip": 1.950544232460934e-06,
+          "tilt": 0.0,
+          "continuity": 2.0672454797932008e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -1.2301330718945775,
+        "cost_integrals": {
+          "force": 1.1025939947308077,
+          "uncapped": 0.10080981471609933,
+          "tracking": 0.010370151539058767,
+          "relative_velocity": 0.00048543329007879764,
+          "heading": 0.015822744115666892,
+          "slip": 2.4079665707322554e-05,
+          "tilt": 0.0,
+          "continuity": 2.6853837158654402e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.7453673125531274,
+        "cost_integrals": {
+          "force": 0.6750240811654018,
+          "uncapped": 0.06073534853895965,
+          "tracking": 0.006610367497553701,
+          "relative_velocity": 1.0054467594954855e-06,
+          "heading": 0.002993226782400174,
+          "slip": 2.88674454420801e-06,
+          "tilt": 0.0,
+          "continuity": 4.4050672396878105e-08,
+          "soft_prior": 0.0,
+          "idle": 3.52326836000447e-07
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.003260695872060378,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 9.207933940055233e-06,
+          "tilt": 0.0,
+          "continuity": 2.627428109190078e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0032252136570284223
+        }
+      }
+    },
+    "reward_sum": -1.97884559095533,
+    "reward_integral_max_error": 1.3877787807814457e-17,
+    "foot_xy_path_m": [
+      0.00651889581300166,
+      0.007552559055600471
+    ],
+    "root_xy_path_m": 0.08391093090783983,
+    "root_contact_end_delta_cm": [
+      -0.353894530657315,
+      -0.8640160217819424,
+      -1.0566300573377485
+    ],
+    "joint_travel_rad": 5.380644234883777,
+    "joint_squared_speed_integral": 0.29285456459126524,
+    "max_tilt": 5.000661776425624,
+    "qpd_max_deg": 0.7356532085190396,
+    "actual_q_max_deg": 0.0790484187148997,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/I_duration_15.json.gz",
+    "sha256": "ff380358df347c3c84127f924afb73767895d05df309fc9d4b2bf37a1e74eb5e",
+    "label": "I_duration_15",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00022998344964017254,
+        "cost_integrals": {
+          "force": 7.380808587864751e-06,
+          "uncapped": 7.38037090760213e-07,
+          "tracking": 3.436549473204022e-09,
+          "relative_velocity": 4.896208284155021e-07,
+          "heading": 0.00021717058594862058,
+          "slip": 1.950519835162518e-06,
+          "tilt": 0.0,
+          "continuity": 2.0672393179665964e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -6.164803700647832,
+        "cost_integrals": {
+          "force": 5.639657422940615,
+          "uncapped": 0.4353084816134503,
+          "tracking": 0.05754225257662575,
+          "relative_velocity": 0.0010578674311535125,
+          "heading": 0.03113531522133889,
+          "slip": 5.825695381040064e-05,
+          "tilt": 0.0,
+          "continuity": 4.410391084275034e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -3.195207258831474,
+        "cost_integrals": {
+          "force": 2.9249999999999994,
+          "uncapped": 0.2323428955330066,
+          "tracking": 0.034751097016624995,
+          "relative_velocity": 1.9949144527087655e-06,
+          "heading": 0.0031023776121726996,
+          "slip": 6.895701812468854e-06,
+          "tilt": 0.0,
+          "continuity": 3.1521926982236436e-07,
+          "soft_prior": 0.0,
+          "idle": 1.682834134600253e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0021505060534102866,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 2.525888293793901e-05,
+          "tilt": 0.0,
+          "continuity": 7.995777318635078e-05,
+          "soft_prior": 0.0,
+          "idle": 0.002045289397285998
+        }
+      }
+    },
+    "reward_sum": -9.362391448982356,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.008391599289859566,
+      0.013036380115917519
+    ],
+    "root_xy_path_m": 0.07228554150644298,
+    "root_contact_end_delta_cm": [
+      0.5454734414703785,
+      -0.6510557078889728,
+      -1.2238579033850616
+    ],
+    "joint_travel_rad": 6.514863211901004,
+    "joint_squared_speed_integral": 0.601287396880966,
+    "max_tilt": 5.134350161890316,
+    "qpd_max_deg": 1.9618352353027624,
+    "actual_q_max_deg": 0.20110674719963206,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/I_duration_30.json.gz",
+    "sha256": "0db7c4f4c82826ad3827089cb827f7c8eaaffad6147b5b7697e1fe5bc7bbbc35",
+    "label": "I_duration_30",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0004482700736953,
+        "cost_integrals": {
+          "force": 8.335762153443539e-06,
+          "uncapped": 8.335190156170335e-07,
+          "tracking": 3.762751022751103e-09,
+          "relative_velocity": 5.555602442893802e-07,
+          "heading": 0.0004343405454453489,
+          "slip": 1.950484457586582e-06,
+          "tilt": 0.0,
+          "continuity": 2.067227599127364e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -6.458780814793983,
+        "cost_integrals": {
+          "force": 5.5772168328866725,
+          "uncapped": 0.46797774444653495,
+          "tracking": 0.0637421783854092,
+          "relative_velocity": 0.03441025032021933,
+          "heading": 0.27798323473054565,
+          "slip": 0.026001879517789376,
+          "tilt": 0.0,
+          "continuity": 0.011448694506812445,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.922317940295117,
+        "cost_integrals": {
+          "force": 0.5665135132024831,
+          "uncapped": 0.05173501337278562,
+          "tracking": 0.005426420547810753,
+          "relative_velocity": 2.6475531443561704e-05,
+          "heading": 0.29847505225369836,
+          "slip": 0.00013706770622167228,
+          "tilt": 0.0,
+          "continuity": 2.9598368917049807e-07,
+          "soft_prior": 0.0,
+          "idle": 4.101696984622212e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.000634390479134417,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.000183256051453367,
+          "tilt": 0.0,
+          "continuity": 1.826117152677398e-05,
+          "soft_prior": 0.0,
+          "idle": 0.00043287325615427614
+        }
+      }
+    },
+    "reward_sum": -7.382181415641928,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.5118910594856236,
+      0.28999416353068075
+    ],
+    "root_xy_path_m": 0.4824711293160382,
+    "root_contact_end_delta_cm": [
+      33.73114845472104,
+      0.1352243112626786,
+      0.1678356915449597
+    ],
+    "joint_travel_rad": 25.527221695013218,
+    "joint_squared_speed_integral": 15.513342637771729,
+    "max_tilt": 8.715704062363992,
+    "qpd_max_deg": 33.22389110420709,
+    "actual_q_max_deg": 2.1770686648089455,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/I_duration_80.json.gz",
+    "sha256": "fe972c94c73803d94b6f0ac2478510ddf6a623bba458e80d7023a029d27dcf09",
+    "label": "I_duration_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0011765617489448512,
+        "cost_integrals": {
+          "force": 1.2092688274726382e-05,
+          "uncapped": 1.2091388877913593e-06,
+          "tracking": 4.986637483743299e-09,
+          "relative_velocity": 8.183511041428943e-07,
+          "heading": 0.001158235779846985,
+          "slip": 1.950369624339486e-06,
+          "tilt": 0.0,
+          "continuity": 2.0671770130320514e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -8.684849695570664,
+        "cost_integrals": {
+          "force": 7.017573557128394,
+          "uncapped": 0.8457891919507455,
+          "tracking": 0.17025403938357125,
+          "relative_velocity": 0.10123128096298195,
+          "heading": 0.4542176504466288,
+          "slip": 0.06385639645940334,
+          "tilt": 0.0,
+          "continuity": 0.0319275792389417,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -1.2698222521677334,
+        "cost_integrals": {
+          "force": 0.39273748026278743,
+          "uncapped": 0.036779552830852824,
+          "tracking": 0.0037798642175070627,
+          "relative_velocity": 0.0003637277649268986,
+          "heading": 0.8359883314538906,
+          "slip": 0.00016229626229313999,
+          "tilt": 0.0,
+          "continuity": 7.854887849134686e-06,
+          "soft_prior": 0.0,
+          "idle": 3.1444876259277827e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0004920888735720486,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.00018050823419745783,
+          "tilt": 0.0,
+          "continuity": 1.2736011328797761e-05,
+          "soft_prior": 0.0,
+          "idle": 0.000298844628045793
+        }
+      }
+    },
+    "reward_sum": -9.95634059836091,
+    "reward_integral_max_error": 8.326672684688674e-17,
+    "foot_xy_path_m": [
+      1.3124025664352934,
+      0.8685507120396023
+    ],
+    "root_xy_path_m": 1.1930670336459828,
+    "root_contact_end_delta_cm": [
+      86.02579084469374,
+      2.121458380789458,
+      0.16101852708469977
+    ],
+    "joint_travel_rad": 48.353088399209305,
+    "joint_squared_speed_integral": 39.998113716743774,
+    "max_tilt": 12.152950133641218,
+    "qpd_max_deg": 43.97074980092611,
+    "actual_q_max_deg": 2.1954131397118055,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/I_mask_geometry_80.json.gz",
+    "sha256": "90c0b8d2e64921cf483e0ebd4da378a9fd824cfe56583d361ab84f9767149d72",
+    "label": "I_mask_geometry_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0011785087142111095,
+        "cost_integrals": {
+          "force": 1.2452807584609238e-05,
+          "uncapped": 1.2451437722192751e-06,
+          "tracking": 5.162591705490777e-09,
+          "relative_velocity": 8.420095696770943e-07,
+          "heading": 0.0011593944094124202,
+          "slip": 1.9808605988289462e-06,
+          "tilt": 0.0,
+          "continuity": 2.2880030678607004e-07,
+          "soft_prior": 0.0,
+          "idle": 2.3595203748630178e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -13.326864102316915,
+        "cost_integrals": {
+          "force": 9.233810503090963,
+          "uncapped": 2.283760807450743,
+          "tracking": 1.4552552806586385,
+          "relative_velocity": 0.12382307370562623,
+          "heading": 0.12491402407386407,
+          "slip": 0.07296612768649338,
+          "tilt": 0.0,
+          "continuity": 0.03233428565059149,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -1.18701419026971,
+        "cost_integrals": {
+          "force": 0.7980136572177499,
+          "uncapped": 0.06969779497325407,
+          "tracking": 0.007634810097033211,
+          "relative_velocity": 0.004554627910683852,
+          "heading": 0.2882675560300952,
+          "slip": 0.01707597052994465,
+          "tilt": 0.0,
+          "continuity": 0.0017458986566748535,
+          "soft_prior": 0.0,
+          "idle": 2.387485427430511e-05
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0015866263963710695,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 8.230934182305284e-05,
+          "tilt": 0.0,
+          "continuity": 2.5557153356913888e-05,
+          "soft_prior": 0.0,
+          "idle": 0.001478759901191103
+        }
+      }
+    },
+    "reward_sum": -14.516643427697206,
+    "reward_integral_max_error": 8.326672684688674e-17,
+    "foot_xy_path_m": [
+      1.0179162303914544,
+      0.9080814932351856
+    ],
+    "root_xy_path_m": 1.1475064676783686,
+    "root_contact_end_delta_cm": [
+      85.96883221835007,
+      -0.9054487063895438,
+      0.25442073641269713
+    ],
+    "joint_travel_rad": 48.131141216450146,
+    "joint_squared_speed_integral": 38.361582518005505,
+    "max_tilt": 11.385862091117957,
+    "qpd_max_deg": 57.1568910314047,
+    "actual_q_max_deg": 2.5984685493817428,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/I_noforce_geometry_80.json.gz",
+    "sha256": "c010a9f28edbd41ee4f2ad63c2487aae54288edd19b10438f745552b54aba3fe",
+    "label": "I_noforce_geometry_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": true,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0011646338472224365,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 1.274612535787208e-06,
+          "tracking": 5.203810118730282e-09,
+          "relative_velocity": 8.637777526648792e-07,
+          "heading": 0.0011582884587361287,
+          "slip": 1.9513233521647147e-06,
+          "tilt": 0.0,
+          "continuity": 2.0675416749327273e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -12.169899479483187,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 3.9283155073660128,
+          "tracking": 7.889155107226515,
+          "relative_velocity": 0.045368543896059745,
+          "heading": 0.30695575677642517,
+          "slip": 7.524622102011529e-05,
+          "tilt": 0.0,
+          "continuity": 2.9317997156994126e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -6.294956084191785,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 1.5240533297946346,
+          "tracking": 4.693184327080373,
+          "relative_velocity": 4.677397893659514e-06,
+          "heading": 0.07770426212427331,
+          "slip": 9.128738196826523e-06,
+          "tilt": 0.0,
+          "continuity": 5.305408727451779e-08,
+          "soft_prior": 0.0,
+          "idle": 3.0600232878063355e-07
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.00427850492649172,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 8.285514735762566e-05,
+          "tilt": 0.0,
+          "continuity": 7.408694173523144e-05,
+          "soft_prior": 0.0,
+          "idle": 0.004121562837398861
+        }
+      }
+    },
+    "reward_sum": -18.470298702448684,
+    "reward_integral_max_error": 1.6653345369377348e-16,
+    "foot_xy_path_m": [
+      0.008491326027400308,
+      0.007590863334810525
+    ],
+    "root_xy_path_m": 0.08952103986345769,
+    "root_contact_end_delta_cm": [
+      -0.723172278104408,
+      -1.2425045708147848,
+      -0.9391302567939519
+    ],
+    "joint_travel_rad": 5.549788228821291,
+    "joint_squared_speed_integral": 0.4996578533977855,
+    "max_tilt": 3.7573040625605847,
+    "qpd_max_deg": 1.6189836446302175,
+    "actual_q_max_deg": 0.20947437129043153,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/I_oldanchor_80.json.gz",
+    "sha256": "78548a2c380509dcdd3980d4b2f3e362ebede7585d5c0008af4326aec4ad15bb",
+    "label": "I_oldanchor_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "legacy",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0011885729849848412,
+        "cost_integrals": {
+          "force": 2.3002437861616605e-05,
+          "uncapped": 2.2998115875054807e-06,
+          "tracking": 4.645081077781807e-08,
+          "relative_velocity": 8.073784864329624e-07,
+          "heading": 0.0011582165047527326,
+          "slip": 1.950003743425535e-06,
+          "tilt": 0.0,
+          "continuity": 2.0668087427111464e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -8.799062659383852,
+        "cost_integrals": {
+          "force": 7.625810797756612,
+          "uncapped": 0.7135325134208328,
+          "tracking": 0.1121611682757669,
+          "relative_velocity": 0.07369701187916308,
+          "heading": 0.16796657144896338,
+          "slip": 0.07881234076929033,
+          "tilt": 0.0,
+          "continuity": 0.027082255833222005,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -1.9639480513447425,
+        "cost_integrals": {
+          "force": 1.487333527160127,
+          "uncapped": 0.11758701681325359,
+          "tracking": 0.013546902339693998,
+          "relative_velocity": 0.0050020346273771605,
+          "heading": 0.33607996248609207,
+          "slip": 0.0006338562914691196,
+          "tilt": 0.0,
+          "continuity": 0.00037187449593329813,
+          "soft_prior": 0.0,
+          "idle": 0.003392877130796479
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.06966670795790672,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.0011432439305424347,
+          "tilt": 0.0,
+          "continuity": 0.0004899389585239078,
+          "soft_prior": 0.0,
+          "idle": 0.06803352506884035
+        }
+      }
+    },
+    "reward_sum": -10.833865991671484,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      1.1826146228025667,
+      0.746747263172914
+    ],
+    "root_xy_path_m": 1.2898973274965857,
+    "root_contact_end_delta_cm": [
+      75.96433917311622,
+      9.422053742087884,
+      -4.726552008108753
+    ],
+    "joint_travel_rad": 55.190613181549885,
+    "joint_squared_speed_integral": 37.62363542270925,
+    "max_tilt": 9.736382832734625,
+    "qpd_max_deg": 41.55130896670541,
+    "actual_q_max_deg": 1.9373077613899006,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/I_speed_05.json.gz",
+    "sha256": "abfbb87556867d8f6ff62204c6bbf190bb0cfeff1746599c0e876ec7fe9ac067",
+    "label": "I_speed_05",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 0.5000000000000001,
+      "release": 6.75,
+      "end": 10.75,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00042881669749738846,
+        "cost_integrals": {
+          "force": 0.0003003081659065368,
+          "uncapped": 2.9922040094408556e-05,
+          "tracking": 8.261433165170237e-08,
+          "relative_velocity": 2.1929831824933207e-05,
+          "heading": 7.23773515250849e-05,
+          "slip": 1.9462935854100277e-06,
+          "tilt": 0.0,
+          "continuity": 2.0668336128437663e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 0.5,
+        "return_value": -0.14180700137705443,
+        "cost_integrals": {
+          "force": 0.126934712152009,
+          "uncapped": 0.011539874364246043,
+          "tracking": 0.0009162342807482321,
+          "relative_velocity": 0.0015376880505545735,
+          "heading": 0.0008380237313739814,
+          "slip": 4.951000360862545e-06,
+          "tilt": 0.0,
+          "continuity": 3.5517797761713154e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -1.531409691291861,
+        "cost_integrals": {
+          "force": 1.3778841833307882,
+          "uncapped": 0.11242154786753115,
+          "tracking": 0.012749703254100691,
+          "relative_velocity": 0.011378866557375784,
+          "heading": 0.002050782537521536,
+          "slip": 0.008474288069979212,
+          "tilt": 0.0,
+          "continuity": 0.0023895513162715365,
+          "soft_prior": 0.0,
+          "idle": 0.0040607683582931636
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.01832327421347153,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.0003191154203469657,
+          "tilt": 0.0,
+          "continuity": 0.0001150808761144617,
+          "soft_prior": 0.0,
+          "idle": 0.017889077917010093
+        }
+      }
+    },
+    "reward_sum": -1.691968783579884,
+    "reward_integral_max_error": 2.7755575615628914e-17,
+    "foot_xy_path_m": [
+      0.15040988360351243,
+      0.013841394554345356
+    ],
+    "root_xy_path_m": 0.1802043047248952,
+    "root_contact_end_delta_cm": [
+      2.7573462922356633,
+      3.242501220885525,
+      -3.130455046105385
+    ],
+    "joint_travel_rad": 14.210853612182587,
+    "joint_squared_speed_integral": 5.653603742588692,
+    "max_tilt": 6.945578248865588,
+    "qpd_max_deg": 16.62895443068417,
+    "actual_q_max_deg": 1.467339247457808,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/I_speed_15.json.gz",
+    "sha256": "f3bd215b0e5d2c27de978f1dab2346388194b64c50b344295b121f350af9842b",
+    "label": "I_speed_15",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 1.5,
+      "release": 7.75,
+      "end": 11.75,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00028785021801276423,
+        "cost_integrals": {
+          "force": 5.675754689331736e-05,
+          "uncapped": 5.6721705911245946e-06,
+          "tracking": 1.7804902140764413e-08,
+          "relative_velocity": 4.042642678227875e-06,
+          "heading": 0.00021716047105504768,
+          "slip": 1.949166903580343e-06,
+          "tilt": 0.0,
+          "continuity": 2.0669812124651804e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 1.5000000000000002,
+        "return_value": -1.5587792940767702,
+        "cost_integrals": {
+          "force": 1.3894538971135844,
+          "uncapped": 0.13874335910924562,
+          "tracking": 0.01892299524089134,
+          "relative_velocity": 0.004299376655950831,
+          "heading": 0.006636116405501852,
+          "slip": 0.00045799834206644785,
+          "tilt": 0.0,
+          "continuity": 0.0002655512095298036,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -3.3713953139104738,
+        "cost_integrals": {
+          "force": 2.8628561491115967,
+          "uncapped": 0.36580011561223474,
+          "tracking": 0.07943190344658442,
+          "relative_velocity": 0.02858213132342603,
+          "heading": 0.004797310342829263,
+          "slip": 0.013268857897976992,
+          "tilt": 0.0,
+          "continuity": 0.008159754822787364,
+          "soft_prior": 0.0,
+          "idle": 0.008499091353037594
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.06911737287357468,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.017759805544609042,
+          "tilt": 0.0,
+          "continuity": 0.001640547311486728,
+          "soft_prior": 0.0,
+          "idle": 0.0497170200174789
+        }
+      }
+    },
+    "reward_sum": -4.999579831078829,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.24652966562558395,
+      0.29256655347498894
+    ],
+    "root_xy_path_m": 0.40412010171936347,
+    "root_contact_end_delta_cm": [
+      18.016499427335827,
+      8.727455399676593,
+      -1.8180967203177745
+    ],
+    "joint_travel_rad": 20.604374320111702,
+    "joint_squared_speed_integral": 11.728322713894281,
+    "max_tilt": 10.328157095645622,
+    "qpd_max_deg": 40.42427994232912,
+    "actual_q_max_deg": 1.3723675691284192,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/I_speed_30.json.gz",
+    "sha256": "eb736f8b56feb18a73786b879b53f0c09a7a3326f72813025fb8c375f2848af0",
+    "label": "I_speed_30",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00046766403614554236,
+        "cost_integrals": {
+          "force": 2.4900847824276735e-05,
+          "uncapped": 2.4894588674090437e-06,
+          "tracking": 8.848031253583725e-09,
+          "relative_velocity": 1.732229070744491e-06,
+          "heading": 0.00043433220685493314,
+          "slip": 1.950018199180584e-06,
+          "tilt": 0.0,
+          "continuity": 2.067104296656908e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -4.167281844842084,
+        "cost_integrals": {
+          "force": 3.302038860260114,
+          "uncapped": 0.5699804604826955,
+          "tracking": 0.1691621682374394,
+          "relative_velocity": 0.0502203502796572,
+          "heading": 0.020514728576931627,
+          "slip": 0.0422507111682303,
+          "tilt": 0.0,
+          "continuity": 0.013114565837015108,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -2.219350476175583,
+        "cost_integrals": {
+          "force": 1.9841225732196677,
+          "uncapped": 0.16949661047121653,
+          "tracking": 0.02852335749436503,
+          "relative_velocity": 0.009117408763096671,
+          "heading": 0.00778311661220773,
+          "slip": 0.018143418699556938,
+          "tilt": 0.0,
+          "continuity": 0.0021392715659349047,
+          "soft_prior": 0.0,
+          "idle": 2.4719349537915273e-05
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0008138104044546017,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.00017699933811366375,
+          "tilt": 0.0,
+          "continuity": 2.7179152251932238e-05,
+          "soft_prior": 0.0,
+          "idle": 0.000609631914089006
+        }
+      }
+    },
+    "reward_sum": -6.387913795458265,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.5259655606999206,
+      0.345592957362803
+    ],
+    "root_xy_path_m": 0.4986714176969015,
+    "root_contact_end_delta_cm": [
+      33.42979232599653,
+      6.448829320686253,
+      -0.11930966367869056
+    ],
+    "joint_travel_rad": 24.444363698857735,
+    "joint_squared_speed_integral": 17.741792357350562,
+    "max_tilt": 10.277615619823797,
+    "qpd_max_deg": 40.027777215726125,
+    "actual_q_max_deg": 1.672418182623841,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/I_speed_80.json.gz",
+    "sha256": "bda86793e86817a0a4af0da2cfff0d929018a9e7ae028c6bf0d142cb3c0b945d",
+    "label": "I_speed_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 8.000000000000002,
+      "release": 14.250000000000002,
+      "end": 18.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0011761779286140817,
+        "cost_integrals": {
+          "force": 1.1764455852866528e-05,
+          "uncapped": 1.1763232853420585e-06,
+          "tracking": 4.882478037632451e-09,
+          "relative_velocity": 7.952330031668053e-07,
+          "heading": 0.0011582362198694148,
+          "slip": 1.9503779608454033e-06,
+          "tilt": 0.0,
+          "continuity": 2.0671929632953838e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 7.999999999999988,
+        "return_value": -8.37547091300547,
+        "cost_integrals": {
+          "force": 7.193236030689371,
+          "uncapped": 0.6939051735638433,
+          "tracking": 0.10981805046687854,
+          "relative_velocity": 0.07221788079793938,
+          "heading": 0.17381032280142225,
+          "slip": 0.1055167271399798,
+          "tilt": 0.0,
+          "continuity": 0.02696672754603424,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -2.3314931275386317,
+        "cost_integrals": {
+          "force": 1.9661674893646186,
+          "uncapped": 0.16838724082267348,
+          "tracking": 0.023824895555710057,
+          "relative_velocity": 0.01246458160493439,
+          "heading": 0.14608835034785705,
+          "slip": 0.0036008715599110852,
+          "tilt": 0.0,
+          "continuity": 0.0030733632972696798,
+          "soft_prior": 0.0,
+          "idle": 0.007886334985658026
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.03385259977314062,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.0006451393329569758,
+          "tilt": 0.0,
+          "continuity": 0.00034082053844690553,
+          "soft_prior": 0.0,
+          "idle": 0.032866639901736744
+        }
+      }
+    },
+    "reward_sum": -10.741992818245853,
+    "reward_integral_max_error": 8.326672684688674e-17,
+    "foot_xy_path_m": [
+      1.1769069595052841,
+      0.7918918731060086
+    ],
+    "root_xy_path_m": 1.2155665346249198,
+    "root_contact_end_delta_cm": [
+      81.39347751454618,
+      5.708060783381752,
+      -3.1526102296836944
+    ],
+    "joint_travel_rad": 54.397767777286596,
+    "joint_squared_speed_integral": 38.64528441265769,
+    "max_tilt": 10.078830048585859,
+    "qpd_max_deg": 37.28220850901567,
+    "actual_q_max_deg": 1.9272077727528834,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/Standing_duration_00.json.gz",
+    "sha256": "25b1d6412443eb8325ad0461cf6af30bd08a1ec60965705873d61d102b652aa9",
+    "label": "Standing_duration_00",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -4.5727307669778515e-06,
+        "cost_integrals": {
+          "force": 2.2815714506044362e-06,
+          "uncapped": 2.281531645597315e-07,
+          "tracking": 1.12831202025769e-09,
+          "relative_velocity": 1.5043052578257141e-07,
+          "heading": 0.0,
+          "slip": 1.8648536260262746e-06,
+          "tilt": 0.0,
+          "continuity": 1.531902519502637e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -0.1159264966373139,
+        "cost_integrals": {
+          "force": 0.1045172039301129,
+          "uncapped": 0.010388363229170106,
+          "tracking": 0.0009946986129477716,
+          "relative_velocity": 4.438866404847965e-06,
+          "heading": 0.0,
+          "slip": 2.1774135298387652e-05,
+          "tilt": 0.0,
+          "continuity": 1.786337988285425e-08,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.062304827968796765,
+        "cost_integrals": {
+          "force": 0.05619268437465897,
+          "uncapped": 0.005565863575000265,
+          "tracking": 0.0005442085637506644,
+          "relative_velocity": 1.0411811058605469e-07,
+          "heading": 0.0,
+          "slip": 1.9225594342206797e-06,
+          "tilt": 0.0,
+          "continuity": 2.373568945834848e-09,
+          "soft_prior": 0.0,
+          "idle": 4.2404273106087023e-08
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -2.002773208778446e-05,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 4.19704977077859e-06,
+          "tilt": 0.0,
+          "continuity": 6.927153005698016e-08,
+          "soft_prior": 0.0,
+          "idle": 1.5761410786948884e-05
+        }
+      }
+    },
+    "reward_sum": -0.1782559250689654,
+    "reward_integral_max_error": 8.673617379884035e-19,
+    "foot_xy_path_m": [
+      0.0055229689596610395,
+      0.0077409602972048136
+    ],
+    "root_xy_path_m": 0.005878219326180259,
+    "root_contact_end_delta_cm": [
+      0.2564304979942655,
+      0.27586578396389605,
+      -0.09895634272398812
+    ],
+    "joint_travel_rad": 0.3098839375187614,
+    "joint_squared_speed_integral": 0.0005006363193368146,
+    "max_tilt": 2.4068750470722278,
+    "qpd_max_deg": 0.0592962872794657,
+    "actual_q_max_deg": 0.00143587767409127,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/Standing_duration_05.json.gz",
+    "sha256": "d679311dd4b7b432a2bb4315790e40cc8426cee83d7c18755dce32ea92988345",
+    "label": "Standing_duration_05",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -7.674154624283673e-05,
+        "cost_integrals": {
+          "force": 2.387125568284145e-06,
+          "uncapped": 2.387081678756891e-07,
+          "tracking": 1.1660323272415049e-09,
+          "relative_velocity": 1.5762506118948357e-07,
+          "heading": 7.204548627263151e-05,
+          "slip": 1.8648415195411408e-06,
+          "tilt": 0.0,
+          "continuity": 1.5318355224280825e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -1.805050200837421,
+        "cost_integrals": {
+          "force": 1.6261049445665263,
+          "uncapped": 0.14639297311348787,
+          "tracking": 0.015425261571872566,
+          "relative_velocity": 7.596938855267752e-05,
+          "heading": 0.017032574944838567,
+          "slip": 1.8276060832579563e-05,
+          "tilt": 0.0,
+          "continuity": 2.0119131009721511e-07,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.9450816043110443,
+        "cost_integrals": {
+          "force": 0.8571640822994446,
+          "uncapped": 0.07517049130664841,
+          "tracking": 0.008400484540510874,
+          "relative_velocity": 3.6374491239345515e-07,
+          "heading": 0.004342591663730601,
+          "slip": 1.8798622133942954e-06,
+          "tilt": 0.0,
+          "continuity": 2.4662403244946062e-08,
+          "soft_prior": 0.0,
+          "idle": 1.6862311806669267e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.00038894405521091576,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 6.4915712716578315e-06,
+          "tilt": 0.0,
+          "continuity": 1.9172235980882133e-06,
+          "soft_prior": 0.0,
+          "idle": 0.00038053526034116956
+        }
+      }
+    },
+    "reward_sum": -2.7505974907499176,
+    "reward_integral_max_error": 2.0816681711721685e-17,
+    "foot_xy_path_m": [
+      0.005296893926924905,
+      0.00883282777707422
+    ],
+    "root_xy_path_m": 0.020572831168783813,
+    "root_contact_end_delta_cm": [
+      1.1136441365268246,
+      0.24898635731106303,
+      -0.07361252923573369
+    ],
+    "joint_travel_rad": 0.44731199099587865,
+    "joint_squared_speed_integral": 0.0017921941315729277,
+    "max_tilt": 2.8239178901791164,
+    "qpd_max_deg": 0.3340440617378136,
+    "actual_q_max_deg": 0.018013185407759175,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/Standing_duration_15.json.gz",
+    "sha256": "2c6a4d4df79a9c6f3a764f135b9515a90d00b0587296d8d2b89129fb4db667bc",
+    "label": "Standing_duration_15",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00022111014099380225,
+        "cost_integrals": {
+          "force": 2.624908514654838e-06,
+          "uncapped": 2.6248545186414686e-07,
+          "tracking": 1.247814951564785e-09,
+          "relative_velocity": 1.740133083405599e-07,
+          "heading": 0.00021613607550411557,
+          "slip": 1.8648168236451586e-06,
+          "tilt": 0.0,
+          "continuity": 1.531790765341157e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -7.943618438419862,
+        "cost_integrals": {
+          "force": 7.0001827852131955,
+          "uncapped": 0.7662973167828077,
+          "tracking": 0.13481003386790505,
+          "relative_velocity": 0.0007751436950722306,
+          "heading": 0.041530820430302436,
+          "slip": 2.141522929622021e-05,
+          "tilt": 0.0,
+          "continuity": 9.232012887414598e-07,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -3.443734089268889,
+        "cost_integrals": {
+          "force": 2.9249999999999994,
+          "uncapped": 0.4193615766614325,
+          "tracking": 0.09146523105658694,
+          "relative_velocity": 1.5743614137753054e-06,
+          "heading": 0.00789713171980715,
+          "slip": 4.9928156367461355e-06,
+          "tilt": 0.0,
+          "continuity": 1.1665877335387267e-07,
+          "soft_prior": 0.0,
+          "idle": 3.4659952378077763e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0012791170025624812,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 9.882426917664758e-06,
+          "tilt": 0.0,
+          "continuity": 6.741912402997488e-06,
+          "soft_prior": 0.0,
+          "idle": 0.001262492663241819
+        }
+      }
+    },
+    "reward_sum": -11.388852754832307,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.0058649012821309285,
+      0.011010847352778713
+    ],
+    "root_xy_path_m": 0.036562657029782945,
+    "root_contact_end_delta_cm": [
+      2.0010412705893508,
+      0.27195242945446185,
+      -0.06283127417481271
+    ],
+    "joint_travel_rad": 0.6350422631182626,
+    "joint_squared_speed_integral": 0.009914371351796791,
+    "max_tilt": 3.2726002574502235,
+    "qpd_max_deg": 0.647618046533099,
+    "actual_q_max_deg": 0.058951289370374596,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/Standing_duration_30.json.gz",
+    "sha256": "25ec10fdb8fe6e8ea2a1ed42b071f38ad75a378f3c2137e4bef3baeed3c2217d",
+    "label": "Standing_duration_30",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0004377404778623652,
+        "cost_integrals": {
+          "force": 3.048289537011222e-06,
+          "uncapped": 3.048214373573879e-07,
+          "tracking": 1.386340554363773e-09,
+          "relative_velocity": 2.0359505148097283e-07,
+          "heading": 0.0004322710116804919,
+          "slip": 1.8647804753096695e-06,
+          "tilt": 0.0,
+          "continuity": 1.5315546946226279e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -11.256014790252332,
+        "cost_integrals": {
+          "force": 8.71525775645929,
+          "uncapped": 1.752575638917422,
+          "tracking": 0.7097946125288156,
+          "relative_velocity": 0.0043207633159083655,
+          "heading": 0.07404244925301598,
+          "slip": 2.2050315748726343e-05,
+          "tilt": 0.0,
+          "continuity": 1.5194621397225386e-06,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -4.276427747444948,
+        "cost_integrals": {
+          "force": 2.9249999999999994,
+          "uncapped": 0.8477770338184205,
+          "tracking": 0.49021162666061896,
+          "relative_velocity": 1.4381271898186473e-06,
+          "heading": 0.013429226642163745,
+          "slip": 5.147043563366255e-06,
+          "tilt": 0.0,
+          "continuity": 1.2874505024118578e-07,
+          "soft_prior": 0.0,
+          "idle": 3.1464079417624736e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0012559180522808777,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 1.066114250314126e-05,
+          "tilt": 0.0,
+          "continuity": 6.717710696548804e-06,
+          "soft_prior": 0.0,
+          "idle": 0.0012385391990811876
+        }
+      }
+    },
+    "reward_sum": -15.534136196227424,
+    "reward_integral_max_error": 8.326672684688674e-17,
+    "foot_xy_path_m": [
+      0.005818480836624643,
+      0.011556044951181444
+    ],
+    "root_xy_path_m": 0.03691985302683071,
+    "root_contact_end_delta_cm": [
+      2.030956534952123,
+      0.30420737975772605,
+      -0.050305737355882396
+    ],
+    "joint_travel_rad": 0.6410870220715599,
+    "joint_squared_speed_integral": 0.012092353485409076,
+    "max_tilt": 3.3226256456008123,
+    "qpd_max_deg": 0.6444420085690431,
+    "actual_q_max_deg": 0.06441066513104039,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/Standing_duration_80.json.gz",
+    "sha256": "302c2e6ffbfa42b45deb8d643c4cc44de8d57287bf26e19ee27e9bc48f426249",
+    "label": "Standing_duration_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0011605124798088192,
+        "cost_integrals": {
+          "force": 5.03752453653274e-06,
+          "uncapped": 5.037293332143786e-07,
+          "tracking": 1.9854341728358283e-09,
+          "relative_velocity": 3.4551767398005054e-07,
+          "heading": 0.0011527124715839205,
+          "slip": 1.86465822624213e-06,
+          "tilt": 0.0,
+          "continuity": 1.531235291452049e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -20.070402289981153,
+        "cost_integrals": {
+          "force": 10.086310164004221,
+          "uncapped": 3.58582171498907,
+          "tracking": 6.187408170692232,
+          "relative_velocity": 0.036541412924569645,
+          "heading": 0.17429604170521967,
+          "slip": 2.221321395593444e-05,
+          "tilt": 0.0,
+          "continuity": 2.5724519046406165e-06,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -8.602408660574602,
+        "cost_integrals": {
+          "force": 2.9249999999999994,
+          "uncapped": 1.4606813990791219,
+          "tracking": 4.185794248478559,
+          "relative_velocity": 1.2407833356473748e-06,
+          "heading": 0.03092347034704725,
+          "slip": 5.259028563078674e-06,
+          "tilt": 0.0,
+          "continuity": 1.3811461524348978e-07,
+          "soft_prior": 0.0,
+          "idle": 2.9047433590843583e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0012374203879464364,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 1.1318811424726048e-05,
+          "tilt": 0.0,
+          "continuity": 6.689353842578072e-06,
+          "soft_prior": 0.0,
+          "idle": 0.001219412222679132
+        }
+      }
+    },
+    "reward_sum": -28.675208883423505,
+    "reward_integral_max_error": 1.6653345369377348e-16,
+    "foot_xy_path_m": [
+      0.005721934963770491,
+      0.012008298406883652
+    ],
+    "root_xy_path_m": 0.03728941769912261,
+    "root_contact_end_delta_cm": [
+      2.0549856675242024,
+      0.33330929066301557,
+      -0.039962528133830055
+    ],
+    "joint_travel_rad": 0.6494613118761965,
+    "joint_squared_speed_integral": 0.014681840316217661,
+    "max_tilt": 3.3613026246836823,
+    "qpd_max_deg": 0.6417406687523031,
+    "actual_q_max_deg": 0.06826251412710624,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/Standing_goalcontrol_05.json.gz",
+    "sha256": "13cc4b2ae81e0fe82181c4205c983c3038f63f8ec9484ad92aee6c2afc531857",
+    "label": "Standing_goalcontrol_05",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -7.764644273243534e-05,
+        "cost_integrals": {
+          "force": 3.1609343217332307e-06,
+          "uncapped": 3.1608528575768825e-07,
+          "tracking": 1.4226336663122695e-09,
+          "relative_velocity": 2.1151452591644306e-07,
+          "heading": 7.204512110696902e-05,
+          "slip": 1.8647714915307334e-06,
+          "tilt": 0.0,
+          "continuity": 1.5315813968186378e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -0.727614323437914,
+        "cost_integrals": {
+          "force": 0.6569198532459879,
+          "uncapped": 0.05902426525001499,
+          "tracking": 0.005951771855003858,
+          "relative_velocity": 0.0001969912536996289,
+          "heading": 0.00551153718461793,
+          "slip": 9.40598499978378e-06,
+          "tilt": 0.0,
+          "continuity": 4.986635900365855e-07,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.9208320544425298,
+        "cost_integrals": {
+          "force": 0.8354575381246505,
+          "uncapped": 0.07348660744407873,
+          "tracking": 0.008196437904194038,
+          "relative_velocity": 8.617331794778524e-07,
+          "heading": 0.003685639120062362,
+          "slip": 3.2624294357786355e-06,
+          "tilt": 0.0,
+          "continuity": 2.4591662763917556e-08,
+          "soft_prior": 0.0,
+          "idle": 1.683095266056287e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.000383968980854763,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 1.0191983484120138e-05,
+          "tilt": 0.0,
+          "continuity": 1.8959898505350745e-06,
+          "soft_prior": 0.0,
+          "idle": 0.00037188100752010787
+        }
+      }
+    },
+    "reward_sum": -1.6489079933040314,
+    "reward_integral_max_error": 1.3877787807814457e-17,
+    "foot_xy_path_m": [
+      0.003951446793849647,
+      0.0063745902679277116
+    ],
+    "root_xy_path_m": 0.019407750511304823,
+    "root_contact_end_delta_cm": [
+      1.010228502421827,
+      0.16125977210272244,
+      -0.04521335614189326
+    ],
+    "joint_travel_rad": 0.38074434262349977,
+    "joint_squared_speed_integral": 0.0019697404157646525,
+    "max_tilt": 2.893704161885855,
+    "qpd_max_deg": 0.3413728547172373,
+    "actual_q_max_deg": 0.016505800693216027,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/Standing_goalcontrol_15.json.gz",
+    "sha256": "040b648e5bcd94b8f8023035040a63a07d8fe6040936a9c83b0f3a673d549abf",
+    "label": "Standing_goalcontrol_15",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00022520370161191594,
+        "cost_integrals": {
+          "force": 6.12157847043629e-06,
+          "uncapped": 6.12122231548923e-07,
+          "tracking": 2.2978608693707787e-09,
+          "relative_velocity": 4.2371538853960703e-07,
+          "heading": 0.00021613278731425568,
+          "slip": 1.8646073614986238e-06,
+          "tilt": 0.0,
+          "continuity": 1.5311993024624828e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -3.283747074740858,
+        "cost_integrals": {
+          "force": 2.8864593681007573,
+          "uncapped": 0.32481988216781654,
+          "tracking": 0.05567503862021895,
+          "relative_velocity": 0.0020625494070287994,
+          "heading": 0.014718423831016644,
+          "slip": 9.421013760936313e-06,
+          "tilt": 0.0,
+          "continuity": 2.3916002575354867e-06,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -3.45708146380988,
+        "cost_integrals": {
+          "force": 2.9249999999999994,
+          "uncapped": 0.42864327188161994,
+          "tracking": 0.09535748540561118,
+          "relative_velocity": 2.071280934465539e-06,
+          "heading": 0.008069781415677196,
+          "slip": 5.054525365692629e-06,
+          "tilt": 0.0,
+          "continuity": 1.1708358941575626e-07,
+          "soft_prior": 0.0,
+          "idle": 3.682217081652871e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.001254669568691113,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 1.304919873469225e-05,
+          "tilt": 0.0,
+          "continuity": 6.7054804527053585e-06,
+          "soft_prior": 0.0,
+          "idle": 0.0012349148895037156
+        }
+      }
+    },
+    "reward_sum": -6.742308411821042,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.004187087912209672,
+      0.007506595968765823
+    ],
+    "root_xy_path_m": 0.03449909107443983,
+    "root_contact_end_delta_cm": [
+      1.803084039802812,
+      0.215238015830458,
+      -0.03993664289347887
+    ],
+    "joint_travel_rad": 0.5636614656063632,
+    "joint_squared_speed_integral": 0.011260983490105046,
+    "max_tilt": 3.36541761710512,
+    "qpd_max_deg": 0.6429018009112052,
+    "actual_q_max_deg": 0.05647862317725909,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/T30_duration_00.json.gz",
+    "sha256": "fddd1b6c529f7154eaa624e890d098d699ec6a35f1aabdf7feb3ec62836cd8f8",
+    "label": "T30_duration_00",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -1.1295857138414422e-05,
+        "cost_integrals": {
+          "force": 6.0395034052820695e-06,
+          "uncapped": 6.039220873175537e-07,
+          "tracking": 2.9440249959678894e-09,
+          "relative_velocity": 3.9851988902782526e-07,
+          "heading": 0.0,
+          "slip": 2.049927394587184e-06,
+          "tilt": 0.0,
+          "continuity": 2.1309056182872158e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -0.03451741773821044,
+        "cost_integrals": {
+          "force": 0.03105990725061642,
+          "uncapped": 0.003100804343850013,
+          "tracking": 0.00029503481393539885,
+          "relative_velocity": 3.881170486254298e-05,
+          "heading": 0.0,
+          "slip": 1.739769727238283e-05,
+          "tilt": 0.0,
+          "continuity": 5.461927673684026e-06,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.01155952961503316,
+        "cost_integrals": {
+          "force": 0.010417585408370292,
+          "uncapped": 0.0010398969432022479,
+          "tracking": 0.00010036861390487866,
+          "relative_velocity": 7.509471889076955e-08,
+          "heading": 0.0,
+          "slip": 1.589878659096825e-06,
+          "tilt": 0.0,
+          "continuity": 1.9663141763714974e-09,
+          "soft_prior": 0.0,
+          "idle": 1.1709863580898967e-08
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0002771793100466571,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 1.0864851753411088e-05,
+          "tilt": 0.0,
+          "continuity": 2.2942217194421128e-05,
+          "soft_prior": 0.0,
+          "idle": 0.00024337224109882485
+        }
+      }
+    },
+    "reward_sum": -0.04636542252042864,
+    "reward_integral_max_error": 2.168404344971009e-19,
+    "foot_xy_path_m": [
+      0.005466814411718283,
+      0.007050762960825326
+    ],
+    "root_xy_path_m": 0.02015733081111857,
+    "root_contact_end_delta_cm": [
+      0.11847563087510928,
+      0.4668928240663318,
+      -0.22233555830522
+    ],
+    "joint_travel_rad": 1.2960206888595633,
+    "joint_squared_speed_integral": 0.06337478065383513,
+    "max_tilt": 2.90786263627407,
+    "qpd_max_deg": 0.7611204226130784,
+    "actual_q_max_deg": 0.08132721192698554,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/T30_duration_05.json.gz",
+    "sha256": "6f0a563495770d2740b5f4117aa02cc7ea67c5e466b2c769dd004af0bcadfb88",
+    "label": "T30_duration_05",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -8.439520383550049e-05,
+        "cost_integrals": {
+          "force": 6.318704930848286e-06,
+          "uncapped": 6.31839325433303e-07,
+          "tracking": 3.0438201766217116e-09,
+          "relative_velocity": 4.175460825081228e-07,
+          "heading": 7.277313640104433e-05,
+          "slip": 2.049895539895609e-06,
+          "tilt": 0.0,
+          "continuity": 2.1308796021912718e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -1.2905235564447193,
+        "cost_integrals": {
+          "force": 1.1459512383389892,
+          "uncapped": 0.10077853662775375,
+          "tracking": 0.010517714014665011,
+          "relative_velocity": 0.0064443494470550755,
+          "heading": 0.0175765633493785,
+          "slip": 0.00736497409347325,
+          "tilt": 0.0,
+          "continuity": 0.0018901805734050183,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.05481181495328734,
+        "cost_integrals": {
+          "force": 0.039683340125787475,
+          "uncapped": 0.003940589649367179,
+          "tracking": 0.0004054646068660178,
+          "relative_velocity": 5.163709231485704e-05,
+          "heading": 0.01062931118989167,
+          "slip": 9.73986814906924e-05,
+          "tilt": 0.0,
+          "continuity": 3.6373070556692265e-06,
+          "soft_prior": 0.0,
+          "idle": 4.36300513764274e-07
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0006873578952284452,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.00014581813343449572,
+          "tilt": 0.0,
+          "continuity": 3.3943060910388566e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0005075967008835608
+        }
+      }
+    },
+    "reward_sum": -1.3461071244970704,
+    "reward_integral_max_error": 2.7755575615628914e-17,
+    "foot_xy_path_m": [
+      0.1318231988326055,
+      0.020343052066248587
+    ],
+    "root_xy_path_m": 0.15023763757586434,
+    "root_contact_end_delta_cm": [
+      4.688004563886455,
+      2.5946455252394562,
+      -0.07618915644802549
+    ],
+    "joint_travel_rad": 10.955530058216011,
+    "joint_squared_speed_integral": 3.1666659196913436,
+    "max_tilt": 7.268605629489261,
+    "qpd_max_deg": 15.76838133111383,
+    "actual_q_max_deg": 1.4363291770691018,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/T30_duration_15.json.gz",
+    "sha256": "68243bfbedd1f116d85e0ef1c3f1875e6b573dcdee6b7b0f7e4cc35613c0bb03",
+    "label": "T30_duration_15",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0002306248205721955,
+        "cost_integrals": {
+          "force": 6.903776758005647e-06,
+          "uncapped": 6.903398598364449e-07,
+          "tracking": 3.249752041333949e-09,
+          "relative_velocity": 4.5759715308625354e-07,
+          "heading": 0.00021831899715539757,
+          "slip": 2.049827516522104e-06,
+          "tilt": 0.0,
+          "continuity": 2.1308260193109166e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -2.9018415317950965,
+        "cost_integrals": {
+          "force": 2.584878320648323,
+          "uncapped": 0.21690945239128206,
+          "tracking": 0.02721297264788705,
+          "relative_velocity": 0.01758405821481256,
+          "heading": 0.020632854021848713,
+          "slip": 0.028691743037424233,
+          "tilt": 0.0,
+          "continuity": 0.005932130833518273,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.03200071106459878,
+        "cost_integrals": {
+          "force": 0.02742389765181274,
+          "uncapped": 0.002729341186794522,
+          "tracking": 0.0002755804292359917,
+          "relative_velocity": 1.84726725609287e-06,
+          "heading": 0.0015542188729231494,
+          "slip": 1.559683386925786e-05,
+          "tilt": 0.0,
+          "continuity": 6.198672326718224e-08,
+          "soft_prior": 0.0,
+          "idle": 1.6683598376298673e-07
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.00025100665353802666,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 2.573692813719475e-05,
+          "tilt": 0.0,
+          "continuity": 1.553402282629434e-05,
+          "soft_prior": 0.0,
+          "idle": 0.00020973570257453749
+        }
+      }
+    },
+    "reward_sum": -2.9343238743338076,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.12108008757794157,
+      0.16857667566503032
+    ],
+    "root_xy_path_m": 0.2486319677018652,
+    "root_contact_end_delta_cm": [
+      13.793505923014513,
+      1.3834109558231396,
+      -0.3448122296542788
+    ],
+    "joint_travel_rad": 14.196126227232613,
+    "joint_squared_speed_integral": 6.318965865466115,
+    "max_tilt": 9.72709896158025,
+    "qpd_max_deg": 42.91726142334334,
+    "actual_q_max_deg": 1.499279964889221,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/T30_duration_30.json.gz",
+    "sha256": "3b895c9ba2401fc3f18983ce87f94f77704d4b8d4cc929ffc0e40cce660ce3f8",
+    "label": "T30_duration_30",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00045004665763184097,
+        "cost_integrals": {
+          "force": 7.84810510106518e-06,
+          "uncapped": 7.847603957146717e-07,
+          "tracking": 3.5745035790625246e-09,
+          "relative_velocity": 5.226740242607362e-07,
+          "heading": 0.0004366367885387879,
+          "slip": 2.0497307592546472e-06,
+          "tilt": 0.0,
+          "continuity": 2.1307453380359225e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -5.846281811967411,
+        "cost_integrals": {
+          "force": 5.136031754672669,
+          "uncapped": 0.48172837218848724,
+          "tracking": 0.06667727871004854,
+          "relative_velocity": 0.048683751003427284,
+          "heading": 0.04575886377235364,
+          "slip": 0.05491868435147481,
+          "tilt": 0.0,
+          "continuity": 0.012483107268952156,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.8245279166606622,
+        "cost_integrals": {
+          "force": 0.6892122526658945,
+          "uncapped": 0.06056048474526748,
+          "tracking": 0.008517938622727234,
+          "relative_velocity": 0.0032547664839198223,
+          "heading": 0.041180460696459316,
+          "slip": 0.02097093877092024,
+          "tilt": 0.0,
+          "continuity": 0.0008299649838236289,
+          "soft_prior": 0.0,
+          "idle": 1.109691650465572e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.00038871829802406574,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.0002639353909057381,
+          "tilt": 0.0,
+          "continuity": 1.7567075971271608e-05,
+          "soft_prior": 0.0,
+          "idle": 0.00010721583114705607
+        }
+      }
+    },
+    "reward_sum": -6.67164849358373,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.45107784074117807,
+      0.31246756947262977
+    ],
+    "root_xy_path_m": 0.646151084409904,
+    "root_contact_end_delta_cm": [
+      33.691177328526315,
+      2.3420530573860145,
+      0.06442529369514727
+    ],
+    "joint_travel_rad": 30.819338024037307,
+    "joint_squared_speed_integral": 14.995611584464685,
+    "max_tilt": 10.484164384171708,
+    "qpd_max_deg": 43.14682749644206,
+    "actual_q_max_deg": 1.7002335494808554,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/T30_duration_80.json.gz",
+    "sha256": "f02ea76617849d56e992da95b19cf8e1745c1e989b912fa502699f0a7224462e",
+    "label": "T30_duration_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0011821229472784448,
+        "cost_integrals": {
+          "force": 1.1573648166219122e-05,
+          "uncapped": 1.1572467425966734e-06,
+          "tracking": 4.794311024473341e-09,
+          "relative_velocity": 7.829002914262953e-07,
+          "heading": 0.0011643539213841727,
+          "slip": 2.049440025327248e-06,
+          "tilt": 0.0,
+          "continuity": 2.1304658230292265e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -8.507844827544247,
+        "cost_integrals": {
+          "force": 7.29769341335038,
+          "uncapped": 0.7274310736378082,
+          "tracking": 0.12053841226176007,
+          "relative_velocity": 0.06527476303005204,
+          "heading": 0.21821811533384358,
+          "slip": 0.05034157314166677,
+          "tilt": 0.0,
+          "continuity": 0.02834747678873465,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.9020760367193231,
+        "cost_integrals": {
+          "force": 0.3402479158257071,
+          "uncapped": 0.03210903187751044,
+          "tracking": 0.0035399364680037577,
+          "relative_velocity": 0.00022538896560657298,
+          "heading": 0.525764456887671,
+          "slip": 0.00018372858775883463,
+          "tilt": 0.0,
+          "continuity": 4.103904409930692e-06,
+          "soft_prior": 0.0,
+          "idle": 1.474202655403324e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.00034233676607841067,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.00018266053192912506,
+          "tilt": 0.0,
+          "continuity": 1.2551250745616474e-05,
+          "soft_prior": 0.0,
+          "idle": 0.00014712498340366904
+        }
+      }
+    },
+    "reward_sum": -9.411445323976924,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      1.1918604404245048,
+      0.8479820890164987
+    ],
+    "root_xy_path_m": 1.1316327754042512,
+    "root_contact_end_delta_cm": [
+      86.13255935746098,
+      3.2430236618467037,
+      0.05973381882123929
+    ],
+    "joint_travel_rad": 43.073197945719045,
+    "joint_squared_speed_integral": 32.13267641084484,
+    "max_tilt": 9.640743452616979,
+    "qpd_max_deg": 53.173473481034485,
+    "actual_q_max_deg": 2.2217079312625247,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/T30_mask_geometry_80.json.gz",
+    "sha256": "ccecde4f4705e939984fb081da6a40239811924c74c9c0413588768d176649d3",
+    "label": "T30_mask_geometry_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0011821229472784448,
+        "cost_integrals": {
+          "force": 1.1573648166219122e-05,
+          "uncapped": 1.1572467425966734e-06,
+          "tracking": 4.794311024473341e-09,
+          "relative_velocity": 7.829002914262953e-07,
+          "heading": 0.0011643539213841727,
+          "slip": 2.049440025327248e-06,
+          "tilt": 0.0,
+          "continuity": 2.1304658230292265e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -9.18744803889187,
+        "cost_integrals": {
+          "force": 7.825734458038725,
+          "uncapped": 0.8902855612656548,
+          "tracking": 0.16819685619479144,
+          "relative_velocity": 0.08508694740020714,
+          "heading": 0.1065405816712812,
+          "slip": 0.080967300146343,
+          "tilt": 0.0,
+          "continuity": 0.03063633417486927,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -1.126089040044212,
+        "cost_integrals": {
+          "force": 0.9718481074040983,
+          "uncapped": 0.08338078053143952,
+          "tracking": 0.009774524728436701,
+          "relative_velocity": 0.001802569652791611,
+          "heading": 0.05891837166026167,
+          "slip": 0.00021051680747459706,
+          "tilt": 0.0,
+          "continuity": 7.148496307127062e-05,
+          "soft_prior": 0.0,
+          "idle": 8.268429663806537e-05
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0005756576279483461,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 6.601950922196369e-05,
+          "tilt": 0.0,
+          "continuity": 2.0603755534182258e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0004890343631922
+        }
+      }
+    },
+    "reward_sum": -10.31529485951131,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.9776802058954189,
+      0.9554496811341391
+    ],
+    "root_xy_path_m": 1.1313692488841423,
+    "root_contact_end_delta_cm": [
+      86.5910391455965,
+      5.213752376592368,
+      -0.6899848794779784
+    ],
+    "joint_travel_rad": 47.259015013912254,
+    "joint_squared_speed_integral": 35.26453113017242,
+    "max_tilt": 10.817422927432409,
+    "qpd_max_deg": 46.73414871646489,
+    "actual_q_max_deg": 2.229690275667812,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/T30_noforce_geometry_80.json.gz",
+    "sha256": "15dd213b2524cc0c7920581de571ab8c8ad8e9040a7a4d24c87a785fd65523d5",
+    "label": "T30_noforce_geometry_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": true,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0011707326298074753,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 1.2044752686762808e-06,
+          "tracking": 4.95609135128482e-09,
+          "relative_velocity": 8.155276699881131e-07,
+          "heading": 0.0011644542053444046,
+          "slip": 2.052233686779772e-06,
+          "tilt": 0.0,
+          "continuity": 2.1328197090042526e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -11.047043709706946,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 3.7757868323212156,
+          "tracking": 6.914304757925807,
+          "relative_velocity": 0.03857408638732093,
+          "heading": 0.3183103255801952,
+          "slip": 5.420154153622489e-05,
+          "tilt": 0.0,
+          "continuity": 1.3505950871149258e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -6.138488488892439,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 1.4851154219549074,
+          "tracking": 4.553422192242563,
+          "relative_velocity": 5.321432479838031e-06,
+          "heading": 0.09993901307972286,
+          "slip": 6.132234444773977e-06,
+          "tilt": 0.0,
+          "continuity": 1.2307483451934334e-07,
+          "soft_prior": 0.0,
+          "idle": 2.8487348758886147e-07
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0046360840738919286,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 4.532830113550326e-05,
+          "tilt": 0.0,
+          "continuity": 0.0002637315509188056,
+          "soft_prior": 0.0,
+          "idle": 0.0043270242218376165
+        }
+      }
+    },
+    "reward_sum": -17.191339015303086,
+    "reward_integral_max_error": 1.1102230246251565e-16,
+    "foot_xy_path_m": [
+      0.009148775390324226,
+      0.008193919890944503
+    ],
+    "root_xy_path_m": 0.07393281336955551,
+    "root_contact_end_delta_cm": [
+      -0.20008692387333063,
+      1.8023890516685421,
+      -0.9330729741915844
+    ],
+    "joint_travel_rad": 6.763320740574351,
+    "joint_squared_speed_integral": 1.2312729208588267,
+    "max_tilt": 4.353149526607145,
+    "qpd_max_deg": 2.3328959341342834,
+    "actual_q_max_deg": 0.31985025884318985,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/T30_oldanchor_80.json.gz",
+    "sha256": "d4ea7e957efc423aba78418ff4922e6e2829d28ca5a2f06cf4ed0b85e3418e4a",
+    "label": "T30_oldanchor_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "legacy",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00119430194267764,
+        "cost_integrals": {
+          "force": 2.264385751330797e-05,
+          "uncapped": 2.263969442746435e-06,
+          "tracking": 4.67977789604378e-08,
+          "relative_velocity": 7.723082021061315e-07,
+          "heading": 0.0011643251238656446,
+          "slip": 2.0490409530666174e-06,
+          "tilt": 0.0,
+          "continuity": 2.128951464328566e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -7.521485728577149,
+        "cost_integrals": {
+          "force": 6.372486261287974,
+          "uncapped": 0.6567597068139609,
+          "tracking": 0.10840292740965662,
+          "relative_velocity": 0.062436813609419925,
+          "heading": 0.20242950987886726,
+          "slip": 0.09171370819394256,
+          "tilt": 0.0,
+          "continuity": 0.027256801383333366,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -2.267629379428925,
+        "cost_integrals": {
+          "force": 1.8953042105562663,
+          "uncapped": 0.14542782477671048,
+          "tracking": 0.01749533295203663,
+          "relative_velocity": 0.004816196701795504,
+          "heading": 0.20195288399391595,
+          "slip": 0.0001526768710683906,
+          "tilt": 0.0,
+          "continuity": 0.00016704917250899605,
+          "soft_prior": 0.0,
+          "idle": 0.0023132044046232226
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.07175305306195537,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.000350613530618664,
+          "tilt": 0.0,
+          "continuity": 0.000510950733011214,
+          "soft_prior": 0.0,
+          "idle": 0.07089148879832549
+        }
+      }
+    },
+    "reward_sum": -9.862062463010709,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      1.024454095980187,
+      0.7724003360362011
+    ],
+    "root_xy_path_m": 1.1540333408648764,
+    "root_contact_end_delta_cm": [
+      73.39868487247541,
+      5.68752215983519,
+      -6.047353541153555
+    ],
+    "joint_travel_rad": 52.46521461930261,
+    "joint_squared_speed_integral": 35.16267171199231,
+    "max_tilt": 10.323771688912188,
+    "qpd_max_deg": 49.846467845753764,
+    "actual_q_max_deg": 1.792426194825567,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/T30_speed_05.json.gz",
+    "sha256": "ee58fb5a5c0e68b080a6d21eef129acecf9b556cd3d91467cca9319c55ef233f",
+    "label": "T30_speed_05",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 0.5000000000000001,
+      "release": 6.75,
+      "end": 10.75,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0004281157642360555,
+        "cost_integrals": {
+          "force": 0.00029934491525446895,
+          "uncapped": 2.9826473440212963e-05,
+          "tracking": 8.237055900953736e-08,
+          "relative_velocity": 2.1858237327226495e-05,
+          "heading": 7.27574021944159e-05,
+          "slip": 2.045901211104245e-06,
+          "tilt": 0.0,
+          "continuity": 2.1251447424219808e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 0.5,
+        "return_value": -0.13938292133573824,
+        "cost_integrals": {
+          "force": 0.1247265738226454,
+          "uncapped": 0.011352547421312136,
+          "tracking": 0.0009027265403366213,
+          "relative_velocity": 0.001524437203534134,
+          "heading": 0.0008387077373460046,
+          "slip": 4.745859511261118e-06,
+          "tilt": 0.0,
+          "continuity": 3.3182751052663666e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -1.9531589999644323,
+        "cost_integrals": {
+          "force": 1.7549836881074454,
+          "uncapped": 0.14468874292240982,
+          "tracking": 0.017523855830760836,
+          "relative_velocity": 0.01573340930387256,
+          "heading": 0.0017628024333528362,
+          "slip": 0.008832737148323043,
+          "tilt": 0.0,
+          "continuity": 0.002977714177919552,
+          "soft_prior": 0.0,
+          "idle": 0.006656050040348325
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.014861061800585476,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.00047048169153729804,
+          "tilt": 0.0,
+          "continuity": 0.000146668140875363,
+          "soft_prior": 0.0,
+          "idle": 0.014243911968172812
+        }
+      }
+    },
+    "reward_sum": -2.107831098864991,
+    "reward_integral_max_error": 4.163336342344337e-17,
+    "foot_xy_path_m": [
+      0.21819215618797652,
+      0.0173941190062363
+    ],
+    "root_xy_path_m": 0.1990058830692596,
+    "root_contact_end_delta_cm": [
+      5.3691261102931955,
+      3.969412364988477,
+      -3.0886909192841316
+    ],
+    "joint_travel_rad": 15.131773946080173,
+    "joint_squared_speed_integral": 7.337448782042085,
+    "max_tilt": 8.389472720122619,
+    "qpd_max_deg": 20.16661163770455,
+    "actual_q_max_deg": 1.4700759924444737,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/T30_speed_15.json.gz",
+    "sha256": "6098aea025bc268d6c091272a89699e27e991c940d1eac8b2276b34c9441e130",
+    "label": "T30_speed_15",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 1.5,
+      "release": 7.75,
+      "end": 11.75,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0002883001397999451,
+        "cost_integrals": {
+          "force": 5.6123845746658766e-05,
+          "uncapped": 5.6088827262599985e-06,
+          "tracking": 1.7599973211151162e-08,
+          "relative_velocity": 3.997619066940908e-06,
+          "heading": 0.00021830329329615558,
+          "slip": 2.0480688527472e-06,
+          "tilt": 0.0,
+          "continuity": 2.1288036259647928e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 1.5000000000000002,
+        "return_value": -1.572552421172101,
+        "cost_integrals": {
+          "force": 1.3801882262059406,
+          "uncapped": 0.15465597001258824,
+          "tracking": 0.023015784378652822,
+          "relative_velocity": 0.006250569379140895,
+          "heading": 0.006246678867275232,
+          "slip": 0.0013505186567433123,
+          "tilt": 0.0,
+          "continuity": 0.0008446736717596651,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -3.1258828318757685,
+        "cost_integrals": {
+          "force": 2.6361601281555584,
+          "uncapped": 0.34219460747349545,
+          "tracking": 0.08078911214644559,
+          "relative_velocity": 0.03075864669477593,
+          "heading": 0.0036166301764419123,
+          "slip": 0.02188638764812737,
+          "tilt": 0.0,
+          "continuity": 0.00798796038806904,
+          "soft_prior": 0.0,
+          "idle": 0.0024893591928546437
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.006453843164176752,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.00017444896388122902,
+          "tilt": 0.0,
+          "continuity": 5.609477264283669e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0062232994276526865
+        }
+      }
+    },
+    "reward_sum": -4.705177396351846,
+    "reward_integral_max_error": 8.326672684688674e-17,
+    "foot_xy_path_m": [
+      0.22616777660319057,
+      0.2816584787122233
+    ],
+    "root_xy_path_m": 0.3762825861558769,
+    "root_contact_end_delta_cm": [
+      21.35128102511528,
+      5.146036686626084,
+      -0.4613650941646563
+    ],
+    "joint_travel_rad": 19.80919029330259,
+    "joint_squared_speed_integral": 11.89814576634549,
+    "max_tilt": 10.029131905371013,
+    "qpd_max_deg": 41.23087064179427,
+    "actual_q_max_deg": 1.962897505640028,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/T30_speed_30.json.gz",
+    "sha256": "e8e702bc018de7cfe50c7812986e506a7b607f0f4eff369ad47118b5c611b3e9",
+    "label": "T30_speed_30",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00046932585719146254,
+        "cost_integrals": {
+          "force": 2.4321287155072622e-05,
+          "uncapped": 2.4315332762258536e-06,
+          "tracking": 8.647230195927027e-09,
+          "relative_velocity": 1.691828807518373e-06,
+          "heading": 0.0004366227779900695,
+          "slip": 2.0488489274739928e-06,
+          "tilt": 0.0,
+          "continuity": 2.1298402953107147e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -4.22572169727088,
+        "cost_integrals": {
+          "force": 3.3376987614892752,
+          "uncapped": 0.5790395903744939,
+          "tracking": 0.17939269468734206,
+          "relative_velocity": 0.047150841116415904,
+          "heading": 0.02121769050388336,
+          "slip": 0.049778748813478796,
+          "tilt": 0.0,
+          "continuity": 0.011443370285989659,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -1.4093862785996585,
+        "cost_integrals": {
+          "force": 1.2110158571412915,
+          "uncapped": 0.10935316770989092,
+          "tracking": 0.01735875595104821,
+          "relative_velocity": 0.010770421305077093,
+          "heading": 0.053008040618841616,
+          "slip": 0.004249983985499,
+          "tilt": 0.0,
+          "continuity": 0.0035256826661388915,
+          "soft_prior": 0.0,
+          "idle": 0.00010436922187151417
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0005959026267592049,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.0002520746712569322,
+          "tilt": 0.0,
+          "continuity": 2.2027989292212163e-05,
+          "soft_prior": 0.0,
+          "idle": 0.00032179996621006064
+        }
+      }
+    },
+    "reward_sum": -5.636173204354487,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.5852308181409073,
+      0.3334324582337225
+    ],
+    "root_xy_path_m": 0.514205089208751,
+    "root_contact_end_delta_cm": [
+      34.990085476193165,
+      5.253772585528798,
+      -0.11349666452786789
+    ],
+    "joint_travel_rad": 25.9083676893947,
+    "joint_squared_speed_integral": 19.227395282963297,
+    "max_tilt": 9.885494390249397,
+    "qpd_max_deg": 35.142723468495454,
+    "actual_q_max_deg": 2.051081714709425,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/T30_speed_80.json.gz",
+    "sha256": "651e932993d731c94bcd50ce0d2a19c52d35985d29750dfc4306ed536da19976",
+    "label": "T30_speed_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 8.000000000000002,
+      "release": 14.250000000000002,
+      "end": 18.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.001181742140131192,
+        "cost_integrals": {
+          "force": 1.1247617817419005e-05,
+          "uncapped": 1.1246509146017371e-06,
+          "tracking": 4.69041745612551e-09,
+          "relative_velocity": 7.599637166847111e-07,
+          "heading": 0.0011643547572754715,
+          "slip": 2.049460660561685e-06,
+          "tilt": 0.0,
+          "continuity": 2.1304955362211334e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 7.999999999999988,
+        "return_value": -8.87028778301564,
+        "cost_integrals": {
+          "force": 7.642070905756322,
+          "uncapped": 0.7538017835988703,
+          "tracking": 0.12309404550268498,
+          "relative_velocity": 0.06556280246944773,
+          "heading": 0.15182690477189,
+          "slip": 0.1002542038377834,
+          "tilt": 0.0,
+          "continuity": 0.033677137078640965,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.4828202690620534,
+        "cost_integrals": {
+          "force": 0.3019359949822259,
+          "uncapped": 0.028567765831874526,
+          "tracking": 0.003158196690520646,
+          "relative_velocity": 0.0004845950233325188,
+          "heading": 0.14843232668742745,
+          "slip": 0.00021307897568843717,
+          "tilt": 0.0,
+          "continuity": 2.768817362539267e-05,
+          "soft_prior": 0.0,
+          "idle": 6.226973585777906e-07
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0004007569353310161,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.00018657596562489091,
+          "tilt": 0.0,
+          "continuity": 1.2855226246074384e-05,
+          "soft_prior": 0.0,
+          "idle": 0.00020132574346005074
+        }
+      }
+    },
+    "reward_sum": -9.354690551153158,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      1.2456972279608205,
+      0.8327666551607058
+    ],
+    "root_xy_path_m": 1.0921002015053525,
+    "root_contact_end_delta_cm": [
+      81.70329598391629,
+      5.2295213880889975,
+      -0.00634813270949941
+    ],
+    "joint_travel_rad": 46.55609612983879,
+    "joint_squared_speed_integral": 35.34880207007513,
+    "max_tilt": 10.000346374742623,
+    "qpd_max_deg": 44.81973889966411,
+    "actual_q_max_deg": 1.8428480061315355,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/goal_anchored_05.json.gz",
+    "sha256": "d17eaf63a383cfe8bc782424de614cd1e53d3157f293a5e12a954257fee9b9fa",
+    "label": "goal_anchored_05",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -7.764644273243534e-05,
+        "cost_integrals": {
+          "force": 3.1609343217332307e-06,
+          "uncapped": 3.1608528575768825e-07,
+          "tracking": 1.4226336663122695e-09,
+          "relative_velocity": 2.1151452591644306e-07,
+          "heading": 7.204512110696902e-05,
+          "slip": 1.8647714915307334e-06,
+          "tilt": 0.0,
+          "continuity": 1.5315813968186378e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -0.2052827839877247,
+        "cost_integrals": {
+          "force": 0.17991052444184635,
+          "uncapped": 0.017515438771007117,
+          "tracking": 0.001649797353982505,
+          "relative_velocity": 6.123867578017838e-05,
+          "heading": 0.006130190048878104,
+          "slip": 1.1755328449609478e-05,
+          "tilt": 0.0,
+          "continuity": 3.839367780933856e-06,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.2480458154360002,
+        "cost_integrals": {
+          "force": 0.21933117700730048,
+          "uncapped": 0.0211489083337779,
+          "tracking": 0.002129821518348376,
+          "relative_velocity": 1.3852321337069401e-06,
+          "heading": 0.005429045030724486,
+          "slip": 4.888584472163815e-06,
+          "tilt": 0.0,
+          "continuity": 4.961750422438629e-08,
+          "soft_prior": 0.0,
+          "idle": 5.401117389012105e-07
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.00010861963680652369,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 9.648674246908705e-06,
+          "tilt": 0.0,
+          "continuity": 6.632186980276344e-06,
+          "soft_prior": 0.0,
+          "idle": 9.233877557933866e-05
+        }
+      }
+    },
+    "reward_sum": -0.45351486550326375,
+    "reward_integral_max_error": 5.204170427930421e-18,
+    "foot_xy_path_m": [
+      0.004416942388552998,
+      0.006300815857217553
+    ],
+    "root_xy_path_m": 0.011759174959820087,
+    "root_contact_end_delta_cm": [
+      0.022816245229103152,
+      0.3103570114947142,
+      0.05034527194998084
+    ],
+    "joint_travel_rad": 1.6599916024694148,
+    "joint_squared_speed_integral": 0.10674341839036539,
+    "max_tilt": 2.681784403491077,
+    "qpd_max_deg": 0.2848257185787017,
+    "actual_q_max_deg": 0.06383894163139046,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/goal_anchored_15.json.gz",
+    "sha256": "347b78400342b55eec559c68a2d4beab6c42d5b358e0c35a65d4298cc070f22d",
+    "label": "goal_anchored_15",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00022520370161191594,
+        "cost_integrals": {
+          "force": 6.12157847043629e-06,
+          "uncapped": 6.12122231548923e-07,
+          "tracking": 2.2978608693707787e-09,
+          "relative_velocity": 4.2371538853960703e-07,
+          "heading": 0.00021613278731425568,
+          "slip": 1.8646073614986238e-06,
+          "tilt": 0.0,
+          "continuity": 1.5311993024624828e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -2.3506747821473404,
+        "cost_integrals": {
+          "force": 2.1424384659511597,
+          "uncapped": 0.16325095670655423,
+          "tracking": 0.019948169893353542,
+          "relative_velocity": 0.0013267996812187182,
+          "heading": 0.023398386836167826,
+          "slip": 2.1944657359540068e-05,
+          "tilt": 0.0,
+          "continuity": 0.0002900584215262825,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -1.7693234677979388,
+        "cost_integrals": {
+          "force": 1.5929864935737854,
+          "uncapped": 0.12709939147274085,
+          "tracking": 0.015611640294134017,
+          "relative_velocity": 0.0003554005121101219,
+          "heading": 0.032112347826139365,
+          "slip": 2.9956147061151108e-05,
+          "tilt": 0.0,
+          "continuity": 0.0011278799822321164,
+          "soft_prior": 0.0,
+          "idle": 3.5798973636403855e-07
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0031693322973427077,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 3.459737848230313e-05,
+          "tilt": 0.0,
+          "continuity": 0.00036359059201164723,
+          "soft_prior": 0.0,
+          "idle": 0.0027711443268487574
+        }
+      }
+    },
+    "reward_sum": -4.123392785944235,
+    "reward_integral_max_error": 4.163336342344337e-17,
+    "foot_xy_path_m": [
+      0.007189172576753901,
+      0.008774253645488835
+    ],
+    "root_xy_path_m": 0.07812448392132815,
+    "root_contact_end_delta_cm": [
+      2.708024280382187,
+      2.46646536483011,
+      -0.18353758623179672
+    ],
+    "joint_travel_rad": 18.437837095736736,
+    "joint_squared_speed_integral": 14.216734845789546,
+    "max_tilt": 3.150728967966189,
+    "qpd_max_deg": 4.04706808324556,
+    "actual_q_max_deg": 0.8068829291575159,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/goal_native_05.json.gz",
+    "sha256": "2e26ce7e888d2428a3791a8258af45dba0dd89d11b0b2a76090de2aef33b1cf3",
+    "label": "goal_native_05",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -7.764644273243534e-05,
+        "cost_integrals": {
+          "force": 3.1609343217332307e-06,
+          "uncapped": 3.1608528575768825e-07,
+          "tracking": 1.4226336663122695e-09,
+          "relative_velocity": 2.1151452591644306e-07,
+          "heading": 7.204512110696902e-05,
+          "slip": 1.8647714915307334e-06,
+          "tilt": 0.0,
+          "continuity": 1.5315813968186378e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -0.6182181965646462,
+        "cost_integrals": {
+          "force": 0.5564764476753005,
+          "uncapped": 0.050173643990112274,
+          "tracking": 0.00493075819819483,
+          "relative_velocity": 0.0002314403978934752,
+          "heading": 0.006387522240949521,
+          "slip": 8.546227301562523e-06,
+          "tilt": 0.0,
+          "continuity": 9.837834894007359e-06,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -1.13155965025495,
+        "cost_integrals": {
+          "force": 1.0285010355239057,
+          "uncapped": 0.0881303828616252,
+          "tracking": 0.010005233488488184,
+          "relative_velocity": 3.5811839268938265e-06,
+          "heading": 0.00491464090709356,
+          "slip": 3.7594516130384416e-06,
+          "tilt": 0.0,
+          "continuity": 1.3449218263872355e-07,
+          "soft_prior": 0.0,
+          "idle": 8.823461148476993e-07
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.002432486470504268,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 2.0924200412088436e-05,
+          "tilt": 0.0,
+          "continuity": 1.7829978731768392e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0023937322913604115
+        }
+      }
+    },
+    "reward_sum": -1.7522879797328323,
+    "reward_integral_max_error": 2.0816681711721685e-17,
+    "foot_xy_path_m": [
+      0.003907857371682154,
+      0.005435465639059741
+    ],
+    "root_xy_path_m": 0.04784453772656573,
+    "root_contact_end_delta_cm": [
+      -1.0469180809539291,
+      -1.7051479014797997,
+      -0.4429228851041245
+    ],
+    "joint_travel_rad": 3.6209991309883978,
+    "joint_squared_speed_integral": 0.31799919660609965,
+    "max_tilt": 4.154726927925206,
+    "qpd_max_deg": 1.000096788840777,
+    "actual_q_max_deg": 0.17712324965577225,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/goal_native_15.json.gz",
+    "sha256": "6714081ea36010762f2e85f2c6730d0c8fadc95703e84acfe81b9d4abb654faa",
+    "label": "goal_native_15",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00022520370161191594,
+        "cost_integrals": {
+          "force": 6.12157847043629e-06,
+          "uncapped": 6.12122231548923e-07,
+          "tracking": 2.2978608693707787e-09,
+          "relative_velocity": 4.2371538853960703e-07,
+          "heading": 0.00021613278731425568,
+          "slip": 1.8646073614986238e-06,
+          "tilt": 0.0,
+          "continuity": 1.5311993024624828e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -2.9748361264313887,
+        "cost_integrals": {
+          "force": 2.6758464108368427,
+          "uncapped": 0.2382499112274444,
+          "tracking": 0.03460370802937675,
+          "relative_velocity": 0.002005592172215733,
+          "heading": 0.02403030364424883,
+          "slip": 2.691243053945724e-05,
+          "tilt": 0.0,
+          "continuity": 7.32880907194513e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -3.194355500449907,
+        "cost_integrals": {
+          "force": 2.9249999999999994,
+          "uncapped": 0.21140658553760383,
+          "tracking": 0.030434514511830855,
+          "relative_velocity": 3.0316078808353438e-05,
+          "heading": 0.02744036581233989,
+          "slip": 4.20552405933345e-05,
+          "tilt": 0.0,
+          "continuity": 6.088139742246313e-07,
+          "soft_prior": 0.0,
+          "idle": 1.0544547568760991e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0014040294117506843,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 5.0066815546106286e-05,
+          "tilt": 0.0,
+          "continuity": 0.00010895302098771254,
+          "soft_prior": 0.0,
+          "idle": 0.0012450095752168655
+        }
+      }
+    },
+    "reward_sum": -6.170820859994658,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.005868428402321472,
+      0.008000858802582302
+    ],
+    "root_xy_path_m": 0.04260468121043467,
+    "root_contact_end_delta_cm": [
+      0.5881542897677203,
+      -0.3971983221984172,
+      -0.6773832742262398
+    ],
+    "joint_travel_rad": 8.406777736664857,
+    "joint_squared_speed_integral": 2.2246243822296483,
+    "max_tilt": 3.206058563146654,
+    "qpd_max_deg": 1.0254333755669394,
+    "actual_q_max_deg": 0.2344503685339518,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-02/I_goalcontrol_05.json.gz",
+    "sha256": "4f3c51a3a5518a560fada393704fbd13307c3d956b39e1bbb2b2c73746d40cde",
+    "label": "I_goalcontrol_05",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -8.659958091751898e-05,
+        "cost_integrals": {
+          "force": 8.575160484285578e-06,
+          "uncapped": 8.574551823483119e-07,
+          "tracking": 3.8443739178988745e-09,
+          "relative_velocity": 5.721423759732595e-07,
+          "heading": 7.239006329210413e-05,
+          "slip": 1.950476075208343e-06,
+          "tilt": 0.0,
+          "continuity": 2.06722265602366e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -0.27496656484102905,
+        "cost_integrals": {
+          "force": 0.24344616896810717,
+          "uncapped": 0.02308778454306712,
+          "tracking": 0.0020777061686052,
+          "relative_velocity": 0.000774374246254228,
+          "heading": 0.005479864401850061,
+          "slip": 3.147429406718933e-05,
+          "tilt": 0.0,
+          "continuity": 6.919221907810426e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.7858057053204803,
+        "cost_integrals": {
+          "force": 0.7123168798289738,
+          "uncapped": 0.06369129812536266,
+          "tracking": 0.00679346036547031,
+          "relative_velocity": 0.0002139234887256169,
+          "heading": 0.002770014732261233,
+          "slip": 8.07894378966318e-06,
+          "tilt": 0.0,
+          "continuity": 7.948464437959048e-06,
+          "soft_prior": 0.0,
+          "idle": 4.101371459235482e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0025250627432019195,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 1.6357660235260038e-05,
+          "tilt": 0.0,
+          "continuity": 2.293800859297334e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0024857670743736863
+        }
+      }
+    },
+    "reward_sum": -1.0633839324856285,
+    "reward_integral_max_error": 1.3877787807814457e-17,
+    "foot_xy_path_m": [
+      0.004461595781320757,
+      0.005514629842112986
+    ],
+    "root_xy_path_m": 0.080379322069837,
+    "root_contact_end_delta_cm": [
+      -0.52744862953292,
+      -0.20670354204377836,
+      -1.086304052744902
+    ],
+    "joint_travel_rad": 5.805061975584345,
+    "joint_squared_speed_integral": 0.49989320281608296,
+    "max_tilt": 5.120157950461489,
+    "qpd_max_deg": 0.9021860270886443,
+    "actual_q_max_deg": 0.1661962165408635,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-02/I_mask_error_velocity_80.json.gz",
+    "sha256": "4a717ff13517e211b7ffbcb9941711411755e6f46afdc7f5d7d4fa21e9a648b2",
+    "label": "I_mask_error_velocity_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0011765617489448512,
+        "cost_integrals": {
+          "force": 1.2092688274726382e-05,
+          "uncapped": 1.2091388877913593e-06,
+          "tracking": 4.986637483743299e-09,
+          "relative_velocity": 8.183511041428943e-07,
+          "heading": 0.001158235779846985,
+          "slip": 1.950369624339486e-06,
+          "tilt": 0.0,
+          "continuity": 2.0671770130320514e-07,
+          "soft_prior": 0.0,
+          "idle": 2.0437168680790805e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -12.442817568674085,
+        "cost_integrals": {
+          "force": 9.133873683973892,
+          "uncapped": 1.9886605882577029,
+          "tracking": 1.0088724890559504,
+          "relative_velocity": 0.10615237648509389,
+          "heading": 0.1013113471689365,
+          "slip": 0.06707299655267267,
+          "tilt": 0.0,
+          "continuity": 0.036874087179843626,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -1.1809960416687557,
+        "cost_integrals": {
+          "force": 1.0294001945403417,
+          "uncapped": 0.08762893440423312,
+          "tracking": 0.010098008192063987,
+          "relative_velocity": 0.0014934940697422005,
+          "heading": 0.05224331893121358,
+          "slip": 9.931300914578881e-05,
+          "tilt": 0.0,
+          "continuity": 2.7194736616138475e-05,
+          "soft_prior": 0.0,
+          "idle": 5.583785398825959e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0009578845281344996,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 4.918249364917571e-05,
+          "tilt": 0.0,
+          "continuity": 2.4323610124724835e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0008843784243605992
+        }
+      }
+    },
+    "reward_sum": -13.625948056619913,
+    "reward_integral_max_error": 8.326672684688674e-17,
+    "foot_xy_path_m": [
+      0.9796965449336463,
+      0.9650332893974676
+    ],
+    "root_xy_path_m": 1.145548391997639,
+    "root_contact_end_delta_cm": [
+      86.13623058593443,
+      1.668760946499511,
+      -0.1551352184745114
+    ],
+    "joint_travel_rad": 47.45931294321145,
+    "joint_squared_speed_integral": 40.073612944827254,
+    "max_tilt": 10.25695666143632,
+    "qpd_max_deg": 48.560684734498864,
+    "actual_q_max_deg": 2.739379895756693,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-02/T30_goalcontrol_05.json.gz",
+    "sha256": "d73be6f3422477c4114a0f6c049a709c6e7fd7e4426b99663b070f11005f0b11",
+    "label": "T30_goalcontrol_05",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -8.645975156883671e-05,
+        "cost_integrals": {
+          "force": 8.085099544215142e-06,
+          "uncapped": 8.084564610337794e-07,
+          "tracking": 3.6557921649397443e-09,
+          "relative_velocity": 5.390613715008748e-07,
+          "heading": 7.277274944075356e-05,
+          "slip": 2.0497070938019804e-06,
+          "tilt": 0.0,
+          "continuity": 2.1307208999132858e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -1.0229784137183207,
+        "cost_integrals": {
+          "force": 0.9331540021274329,
+          "uncapped": 0.07496670881697681,
+          "tracking": 0.007805565819127662,
+          "relative_velocity": 0.0014068418607936994,
+          "heading": 0.004685089828997125,
+          "slip": 0.0003130465326092206,
+          "tilt": 0.0,
+          "continuity": 0.0006471587323831046,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.9473162968356487,
+        "cost_integrals": {
+          "force": 0.8476148939059369,
+          "uncapped": 0.06794250369863661,
+          "tracking": 0.008457496217677074,
+          "relative_velocity": 0.010309595570147422,
+          "heading": 0.0023238095417218723,
+          "slip": 0.009330042262056512,
+          "tilt": 0.0,
+          "continuity": 0.0012405229443393187,
+          "soft_prior": 0.0,
+          "idle": 9.743269513300245e-05
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0009970247398535664,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 0.00022669231657131126,
+          "tilt": 0.0,
+          "continuity": 1.1860789860577373e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0007584716334216781
+        }
+      }
+    },
+    "reward_sum": -1.9713781950453921,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.10590710435276902,
+      0.01534041947302328
+    ],
+    "root_xy_path_m": 0.1832457280622634,
+    "root_contact_end_delta_cm": [
+      3.008407549128078,
+      2.6617964716343567,
+      -0.4084359821129535
+    ],
+    "joint_travel_rad": 12.615850702866423,
+    "joint_squared_speed_integral": 4.295482577261687,
+    "max_tilt": 8.419839064129825,
+    "qpd_max_deg": 12.441394478853326,
+    "actual_q_max_deg": 1.1087691928947985,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-02/T30_mask_error_velocity_80.json.gz",
+    "sha256": "660f6119c01b366e12700995987198aa1a23fbf46038592213b79126560a3425",
+    "label": "T30_mask_error_velocity_80",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": false,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.0011821229472784448,
+        "cost_integrals": {
+          "force": 1.1573648166219122e-05,
+          "uncapped": 1.1572467425966734e-06,
+          "tracking": 4.794311024473341e-09,
+          "relative_velocity": 7.829002914262953e-07,
+          "heading": 0.0011643539213841727,
+          "slip": 2.049440025327248e-06,
+          "tilt": 0.0,
+          "continuity": 2.1304658230292265e-07,
+          "soft_prior": 0.0,
+          "idle": 1.9879497753751e-06
+        }
+      },
+      "move": {
+        "seconds": 7.799999999999988,
+        "return_value": -9.18744803889187,
+        "cost_integrals": {
+          "force": 7.825734458038725,
+          "uncapped": 0.8902855612656548,
+          "tracking": 0.16819685619479144,
+          "relative_velocity": 0.08508694740020714,
+          "heading": 0.1065405816712812,
+          "slip": 0.080967300146343,
+          "tilt": 0.0,
+          "continuity": 0.03063633417486927,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -1.126089040044212,
+        "cost_integrals": {
+          "force": 0.9718481074040983,
+          "uncapped": 0.08338078053143952,
+          "tracking": 0.009774524728436701,
+          "relative_velocity": 0.001802569652791611,
+          "heading": 0.05891837166026167,
+          "slip": 0.00021051680747459706,
+          "tilt": 0.0,
+          "continuity": 7.148496307127062e-05,
+          "soft_prior": 0.0,
+          "idle": 8.268429663806537e-05
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0005756576279483461,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 6.601950922196369e-05,
+          "tilt": 0.0,
+          "continuity": 2.0603755534182258e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0004890343631922
+        }
+      }
+    },
+    "reward_sum": -10.31529485951131,
+    "reward_integral_max_error": 5.551115123125783e-17,
+    "foot_xy_path_m": [
+      0.9776802058954189,
+      0.9554496811341391
+    ],
+    "root_xy_path_m": 1.1313692488841423,
+    "root_contact_end_delta_cm": [
+      86.5910391455965,
+      5.213752376592368,
+      -0.6899848794779784
+    ],
+    "joint_travel_rad": 47.259015013912254,
+    "joint_squared_speed_integral": 35.26453113017242,
+    "max_tilt": 10.817422927432409,
+    "qpd_max_deg": 46.73414871646489,
+    "actual_q_max_deg": 2.229690275667812,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-02/goal_free_anchored_05.json.gz",
+    "sha256": "2fc888f9bf61d0c9a57787c934d09fc88edc88d8225842559a13360eb2498e9f",
+    "label": "goal_free_anchored_05",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": true,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -7.451950894734282e-05,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 3.336873822699723e-07,
+          "tracking": 1.4887796437440764e-09,
+          "relative_velocity": 2.2344492051059151e-07,
+          "heading": 7.204861678193467e-05,
+          "slip": 1.8656724521726499e-06,
+          "tilt": 0.0,
+          "continuity": 1.536845346095106e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -0.05777109174400098,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0464751015873773,
+          "tracking": 0.0045551118479064765,
+          "relative_velocity": 0.00016356663144373668,
+          "heading": 0.006558935323604756,
+          "slip": 1.4888687794333596e-05,
+          "tilt": 0.0,
+          "continuity": 3.4876658743812078e-06,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.08666711244836653,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.07214768660467909,
+          "tracking": 0.007885346475538794,
+          "relative_velocity": 7.708741548045887e-06,
+          "heading": 0.006619777202515625,
+          "slip": 6.528013602088845e-06,
+          "tilt": 0.0,
+          "continuity": 4.045971403598969e-08,
+          "soft_prior": 0.0,
+          "idle": 2.495076886546734e-08
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -5.771913458977393e-05,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 8.277171477676677e-06,
+          "tilt": 0.0,
+          "continuity": 5.89981244733906e-06,
+          "soft_prior": 0.0,
+          "idle": 4.3542150664758214e-05
+        }
+      }
+    },
+    "reward_sum": -0.14457044283590464,
+    "reward_integral_max_error": 8.673617379884035e-19,
+    "foot_xy_path_m": [
+      0.004529707778502866,
+      0.005868669666286711
+    ],
+    "root_xy_path_m": 0.008889447041018367,
+    "root_contact_end_delta_cm": [
+      -0.3679605324285039,
+      0.08181317613987493,
+      0.015584110032529352
+    ],
+    "joint_travel_rad": 1.5985262578857753,
+    "joint_squared_speed_integral": 0.10043276427511101,
+    "max_tilt": 2.4875648865293485,
+    "qpd_max_deg": 0.2801239871087942,
+    "actual_q_max_deg": 0.06319835583155067,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-02/goal_free_anchored_15.json.gz",
+    "sha256": "f8b2ddb9cfaab0acf16dfd616baee62e567754ed9ea61ab250b398eb343ec14c",
+    "label": "goal_free_anchored_15",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": true,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00021914698447090454,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 6.419156142794301e-07,
+          "tracking": 2.3957369636941257e-09,
+          "relative_velocity": 4.445516908736802e-07,
+          "heading": 0.000216145850345804,
+          "slip": 1.8656724521726499e-06,
+          "tilt": 0.0,
+          "continuity": 1.536845346095106e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -0.534002335478766,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.41241046996649816,
+          "tracking": 0.08230132906092302,
+          "relative_velocity": 0.004476482591612366,
+          "heading": 0.03448656667003478,
+          "slip": 2.4710204876595532e-05,
+          "tilt": 0.0,
+          "continuity": 0.0003027769848210298,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.486252181609184,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.36219764625915407,
+          "tracking": 0.07061999779889241,
+          "relative_velocity": 0.0009351093207388033,
+          "heading": 0.05123244790679808,
+          "slip": 3.4546996796854846e-05,
+          "tilt": 0.0,
+          "continuity": 0.001227206040173769,
+          "soft_prior": 0.0,
+          "idle": 5.2272866300669435e-06
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.0021523668670925867,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 2.6359101393501494e-05,
+          "tilt": 0.0,
+          "continuity": 0.000367179778059409,
+          "soft_prior": 0.0,
+          "idle": 0.0017588279876396774
+        }
+      }
+    },
+    "reward_sum": -1.0226260309395143,
+    "reward_integral_max_error": 6.938893903907228e-18,
+    "foot_xy_path_m": [
+      0.007514778510323036,
+      0.006225216243182416
+    ],
+    "root_xy_path_m": 0.05602674798743457,
+    "root_contact_end_delta_cm": [
+      1.5323716745634828,
+      1.708216883859662,
+      -0.24926239512949033
+    ],
+    "joint_travel_rad": 18.93025027903889,
+    "joint_squared_speed_integral": 15.213341705526899,
+    "max_tilt": 2.8187104268202634,
+    "qpd_max_deg": 4.0910775533888915,
+    "actual_q_max_deg": 0.8237618476783313,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-02/goal_free_native_05.json.gz",
+    "sha256": "fb856f70c1a61506481660dde44c4deb741268aa92e27a6fa062149b5dddb87c",
+    "label": "goal_free_native_05",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": true,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -7.451950894734282e-05,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 3.336873822699723e-07,
+          "tracking": 1.4887796437440764e-09,
+          "relative_velocity": 2.2344492051059151e-07,
+          "heading": 7.204861678193467e-05,
+          "slip": 1.8656724521726499e-06,
+          "tilt": 0.0,
+          "continuity": 1.536845346095106e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -0.17672202240976168,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.1502451178909089,
+          "tracking": 0.01842159959195245,
+          "relative_velocity": 0.0008712090294483379,
+          "heading": 0.007165954377017981,
+          "slip": 8.776726751761112e-06,
+          "tilt": 0.0,
+          "continuity": 9.364793682216546e-06,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.3194263652937441,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.2697278475745777,
+          "tracking": 0.04294814228469852,
+          "relative_velocity": 1.5528632229854177e-05,
+          "heading": 0.006733344882950369,
+          "slip": 1.429241371745181e-06,
+          "tilt": 0.0,
+          "continuity": 5.477340500448237e-08,
+          "soft_prior": 0.0,
+          "idle": 1.790451093248514e-08
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.002574236954677198,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 1.8897325961406635e-05,
+          "tilt": 0.0,
+          "continuity": 1.6441365963490995e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0025388982627523016
+        }
+      }
+    },
+    "reward_sum": -0.49879714416713034,
+    "reward_integral_max_error": 6.938893903907228e-18,
+    "foot_xy_path_m": [
+      0.003563043772787276,
+      0.004138777223423515
+    ],
+    "root_xy_path_m": 0.05257882777958535,
+    "root_contact_end_delta_cm": [
+      -1.432808019955102,
+      -2.1586670003683333,
+      -0.499539192224252
+    ],
+    "joint_travel_rad": 3.523511915473167,
+    "joint_squared_speed_integral": 0.3031164373065417,
+    "max_tilt": 4.248957515856342,
+    "qpd_max_deg": 0.9923837977205401,
+    "actual_q_max_deg": 0.17612557887771085,
+    "boundary": null
+  },
+  {
+    "file": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-02/goal_free_native_15.json.gz",
+    "sha256": "2371288504ce6bd38f7a3bf218103449b447d9fc0cd6150c603dcde4e639081a",
+    "label": "goal_free_native_15",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 5.0,
+      "anchor_mode": "onset_actual",
+      "physical_force_off": true,
+      "handoff_time": 3.999999999999937
+    },
+    "phases": {
+      "pre": {
+        "seconds": 0.30000000000000004,
+        "return_value": -0.00021914698447090454,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 6.419156142794301e-07,
+          "tracking": 2.3957369636941257e-09,
+          "relative_velocity": 4.445516908736802e-07,
+          "heading": 0.000216145850345804,
+          "slip": 1.8656724521726499e-06,
+          "tilt": 0.0,
+          "continuity": 1.536845346095106e-09,
+          "soft_prior": 0.0,
+          "idle": 4.506178546507821e-08
+        }
+      },
+      "move": {
+        "seconds": 3.0000000000000013,
+        "return_value": -0.7053149586982703,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.5254090921243182,
+          "tracking": 0.13672857172589956,
+          "relative_velocity": 0.0071158041251298924,
+          "heading": 0.03597155232236343,
+          "slip": 1.4348708689324957e-05,
+          "tilt": 0.0,
+          "continuity": 7.558969187002163e-05,
+          "soft_prior": 0.0,
+          "idle": 0.0
+        }
+      },
+      "hold": {
+        "seconds": 2.0000000000000004,
+        "return_value": -0.7459146134629847,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.5386240347790434,
+          "tracking": 0.1516081300079099,
+          "relative_velocity": 4.5002702032719535e-05,
+          "heading": 0.05562633950851181,
+          "slip": 1.0544220239428572e-05,
+          "tilt": 0.0,
+          "continuity": 4.422201842260165e-07,
+          "soft_prior": 0.0,
+          "idle": 1.2002506314563546e-07
+        }
+      },
+      "recover": {
+        "seconds": 3.960000000000002,
+        "return_value": -0.001739999136811599,
+        "cost_integrals": {
+          "force": 0.0,
+          "uncapped": 0.0,
+          "tracking": 0.0,
+          "relative_velocity": 0.0,
+          "heading": 0.0,
+          "slip": 3.71134923002548e-05,
+          "tilt": 0.0,
+          "continuity": 0.00010699116163829103,
+          "soft_prior": 0.0,
+          "idle": 0.0015958944828730528
+        }
+      }
+    },
+    "reward_sum": -1.4531887182825372,
+    "reward_integral_max_error": 6.938893903907228e-18,
+    "foot_xy_path_m": [
+      0.00460357587690468,
+      0.0044337853822117535
+    ],
+    "root_xy_path_m": 0.04183560714106064,
+    "root_contact_end_delta_cm": [
+      -0.15373517468121253,
+      -1.528077893825572,
+      -0.8774270100175285
+    ],
+    "joint_travel_rad": 8.57300331068041,
+    "joint_squared_speed_integral": 2.2446778489582044,
+    "max_tilt": 3.114024418143023,
+    "qpd_max_deg": 1.0618314536539373,
+    "actual_q_max_deg": 0.2287888817981489,
+    "boundary": null
+  }
+]

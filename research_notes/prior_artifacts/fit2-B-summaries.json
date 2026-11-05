@@ -1,0 +1,660 @@
+[
+  {
+    "label": "B_zero",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.0,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10,
+      "anchor_mode": "onset_actual",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.007058840331411467,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.29634669887658877,
+    "error_cm": 0.36722064027022333,
+    "cap_fraction": 0.0,
+    "episode_return": -0.057398074437457036,
+    "physics_steps": 2812,
+    "rl_decisions": 141,
+    "prefill_steps": 600,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 5.913039684564405,
+    "moving_heading_rms_deg": 7.179914695808144,
+    "yaw_moment_rms": 0.048260690214964624,
+    "work_j": -0.001426823891172766,
+    "sum_force_norm_rms": 0.29634669887658877,
+    "actual_pelvis_turn_deg": -2.5736994223259835,
+    "actual_torso_turn_deg": -0.9610616344124923,
+    "handoff_record_sha256": "c2d097dc0b3806621e9451073276a9082cf127fe7e548206d32f98cc4f20305f",
+    "handoff_scope": "Full actual prefix/state record retained only in server run; not published"
+  },
+  {
+    "label": "B_arm5",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.05,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10,
+      "anchor_mode": "onset_actual",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.016962613186148893,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.7354448770037976,
+    "error_cm": 2.1114041558044154,
+    "cap_fraction": 0.0,
+    "episode_return": -1.004243377260281,
+    "physics_steps": 1852,
+    "rl_decisions": 93,
+    "prefill_steps": 1200,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 4.840135684025115,
+    "moving_heading_rms_deg": 5.936254955436953,
+    "yaw_moment_rms": 0.07460232039002027,
+    "work_j": -0.021041353659017423,
+    "sum_force_norm_rms": 1.7354448770037976,
+    "actual_pelvis_turn_deg": -1.4956520644021725,
+    "actual_torso_turn_deg": 4.648737237406629,
+    "handoff_record_sha256": "c2d097dc0b3806621e9451073276a9082cf127fe7e548206d32f98cc4f20305f",
+    "handoff_scope": "Full actual prefix/state record retained only in server run; not published"
+  },
+  {
+    "label": "B_arm15",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.15,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 3.0,
+      "release": 9.25,
+      "end": 13.25,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10,
+      "anchor_mode": "onset_actual",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.03692170830876615,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 3.25748806020968,
+    "error_cm": 3.9948613069411865,
+    "cap_fraction": 0.0,
+    "episode_return": -3.5272891500496137,
+    "physics_steps": 1852,
+    "rl_decisions": 93,
+    "prefill_steps": 1800,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 7.596748496386366,
+    "moving_heading_rms_deg": 8.088031143271321,
+    "yaw_moment_rms": 0.7617892622163256,
+    "work_j": 0.20907517006755802,
+    "sum_force_norm_rms": 3.2574880602096794,
+    "actual_pelvis_turn_deg": -3.3708024073048444,
+    "actual_torso_turn_deg": -3.0201514738037676,
+    "handoff_record_sha256": "c2d097dc0b3806621e9451073276a9082cf127fe7e548206d32f98cc4f20305f",
+    "handoff_scope": "Full actual prefix/state record retained only in server run; not published"
+  },
+  {
+    "label": "B_middle30",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.3,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10,
+      "anchor_mode": "onset_actual",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.3604749624247267,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 5.058715848391884,
+    "error_cm": 6.205923381743121,
+    "cap_fraction": 0.0,
+    "episode_return": -16.34593084386677,
+    "physics_steps": 2812,
+    "rl_decisions": 141,
+    "prefill_steps": 2400,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 7.640350191324332,
+    "moving_heading_rms_deg": 6.663331743684757,
+    "yaw_moment_rms": 0.35985144321773854,
+    "work_j": 0.04396081329542705,
+    "sum_force_norm_rms": 5.058715848391885,
+    "actual_pelvis_turn_deg": -3.9078104543809404,
+    "actual_torso_turn_deg": 1.3462788414353626,
+    "handoff_record_sha256": "c2d097dc0b3806621e9451073276a9082cf127fe7e548206d32f98cc4f20305f",
+    "handoff_scope": "Full actual prefix/state record retained only in server run; not published"
+  },
+  {
+    "label": "B_walk",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.8,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10,
+      "anchor_mode": "onset_actual",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.27016412918817223,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 8.73492015641692,
+    "error_cm": 34.85083735442924,
+    "cap_fraction": 0.7059724349157733,
+    "episode_return": -55.15891431142589,
+    "physics_steps": 2812,
+    "rl_decisions": 141,
+    "prefill_steps": 3000,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 8.926350578605797,
+    "moving_heading_rms_deg": 14.03984086759174,
+    "yaw_moment_rms": 1.2690609396193373,
+    "work_j": 2.4147539493116503,
+    "sum_force_norm_rms": 8.73492015641692,
+    "actual_pelvis_turn_deg": -15.267965495937249,
+    "actual_torso_turn_deg": -5.068985368335325,
+    "handoff_record_sha256": "c2d097dc0b3806621e9451073276a9082cf127fe7e548206d32f98cc4f20305f",
+    "handoff_scope": "Full actual prefix/state record retained only in server run; not published"
+  },
+  {
+    "label": "B_no_contact",
+    "condition": {
+      "geometry": "wrist",
+      "enabled": false,
+      "distance": 0.0,
+      "rotation_deg": 0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10,
+      "anchor_mode": "onset_actual",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.0032795204506358834,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 0.0,
+    "error_cm": 0.0,
+    "cap_fraction": 0.0,
+    "episode_return": -6.917072561497139e-05,
+    "physics_steps": 2812,
+    "rl_decisions": 141,
+    "prefill_steps": 3600,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "right_wrist_yaw_link",
+      "body": 31,
+      "locals": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "parent": 30,
+      "body_joints": 1,
+      "cap_each": 10.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        0.1554823755888023,
+        -0.21186174204813282,
+        0.8486220897929257
+      ],
+      "R0": [
+        [
+          0.9709215330984167,
+          0.16415289626423288,
+          0.1742561425427661
+        ],
+        [
+          -0.14527041744617844,
+          0.9825490751036585,
+          -0.11616290642007322
+        ],
+        [
+          -0.19028368921385214,
+          0.08747080462079697,
+          0.9778246141093796
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 0.0,
+    "moving_heading_rms_deg": 0.0,
+    "yaw_moment_rms": 0.0,
+    "work_j": 0.0,
+    "sum_force_norm_rms": 0.0,
+    "actual_pelvis_turn_deg": 0.0,
+    "actual_torso_turn_deg": 0.0,
+    "handoff_record_sha256": "c2d097dc0b3806621e9451073276a9082cf127fe7e548206d32f98cc4f20305f",
+    "handoff_scope": "Full actual prefix/state record retained only in server run; not published"
+  },
+  {
+    "label": "B_left",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.0,
+      "rotation_deg": 15.0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10,
+      "anchor_mode": "legacy",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.01595972320335445,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 2.239071430045353,
+    "error_cm": 1.9676828537978654,
+    "cap_fraction": 0.0,
+    "episode_return": -7.043364301664925,
+    "physics_steps": 2812,
+    "rl_decisions": 141,
+    "prefill_steps": 4200,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 7.93577061767048,
+    "moving_heading_rms_deg": 12.455138065030235,
+    "yaw_moment_rms": 0.35360348868958097,
+    "work_j": 0.05630247935052127,
+    "sum_force_norm_rms": 3.159908707596174,
+    "actual_pelvis_turn_deg": -1.7052236251887292,
+    "actual_torso_turn_deg": 6.104377549956594,
+    "handoff_record_sha256": "e7e0744612e988bc46a60b51f43ee233a928e769438d90c079c4cf88942cdb12",
+    "handoff_scope": "Full actual prefix/state record retained only in server run; not published"
+  },
+  {
+    "label": "B_right",
+    "condition": {
+      "geometry": "torso_pair",
+      "enabled": true,
+      "distance": 0.0,
+      "rotation_deg": -15.0,
+      "curvature": 0,
+      "onset": 4.25,
+      "ramp": 7.8,
+      "release": 14.05,
+      "end": 18.05,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "demand_family": "stand_walk",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10,
+      "anchor_mode": "legacy",
+      "handoff_time": 3.999999999999937
+    },
+    "root_max_displacement": 0.007765504068039472,
+    "boundary": null,
+    "complete": true,
+    "force_rms": 1.0065167015006338,
+    "error_cm": 0.8816345812366375,
+    "cap_fraction": 0.0,
+    "episode_return": -1.4157675840224073,
+    "physics_steps": 2812,
+    "rl_decisions": 141,
+    "prefill_steps": 4800,
+    "source_physics_steps": 200,
+    "geometry_contract": {
+      "link": "torso_link",
+      "body": 16,
+      "locals": [
+        [
+          0.0,
+          0.13,
+          0.15
+        ],
+        [
+          0.0,
+          -0.13,
+          0.15
+        ]
+      ],
+      "parent": 15,
+      "body_joints": 1,
+      "cap_each": 5.0,
+      "total_norm_budget": 10.0,
+      "wrench_reference": "body inertial COM xipos; diagnostics subtree COM",
+      "origin": [
+        -0.01715903097222511,
+        -0.042800492767580675,
+        0.9839697278778955
+      ],
+      "R0": [
+        [
+          0.9930204854313737,
+          0.08387722784800435,
+          0.08291517449884067
+        ],
+        [
+          -0.08308563114925262,
+          0.9964581618086897,
+          -0.012957996040196198
+        ],
+        [
+          -0.08370838315347859,
+          0.0059784959129668535,
+          0.9964723599661202
+        ]
+      ],
+      "semantics": "maintained bilateral tether, not unilateral press"
+    },
+    "torso_heading_rms_deg": 2.584571982611739,
+    "moving_heading_rms_deg": 7.178247886477626,
+    "yaw_moment_rms": 0.12492804378734258,
+    "work_j": 0.02121693415565384,
+    "sum_force_norm_rms": 1.3942073928410448,
+    "actual_pelvis_turn_deg": -4.985094698889306,
+    "actual_torso_turn_deg": -15.421145993743254,
+    "handoff_record_sha256": "e7e0744612e988bc46a60b51f43ee233a928e769438d90c079c4cf88942cdb12",
+    "handoff_scope": "Full actual prefix/state record retained only in server run; not published"
+  }
+]

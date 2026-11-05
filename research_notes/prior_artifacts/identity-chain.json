@@ -1,0 +1,198 @@
+{
+  "T30": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/best.pt",
+    "sha256": "c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33",
+    "metadata": {
+      "input_dim": 825,
+      "iteration": 30,
+      "decisions": 23040,
+      "optimizer_updates": 94,
+      "seed": 606,
+      "runtime": "32c87b4db3aba007e4d6cf15ed5495cdffdfcb75",
+      "source_student_online": false,
+      "execution_gain": 1.0,
+      "kind": "direct"
+    },
+    "actor_shapes": {
+      "actor.0.weight": [
+        128,
+        825
+      ],
+      "actor.0.bias": [
+        128
+      ],
+      "actor.2.weight": [
+        128,
+        128
+      ],
+      "actor.2.bias": [
+        128
+      ],
+      "actor.4.weight": [
+        256,
+        128
+      ],
+      "actor.4.bias": [
+        256
+      ]
+    },
+    "std": 0.00800000037997961
+  },
+  "C2": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38b-rotation-20261103/C-train-04/job/C2.pt",
+    "sha256": "ff471b60c0bfc53c1d582a82fd3562416216c67c480e0e8039dee3d09277782c",
+    "metadata": {
+      "input_dim": 1088,
+      "kind": "direct",
+      "updates": 3000,
+      "arm": "C2",
+      "runtime": "aa69aa7cbe344319b08cde65a326575f2b96b4cb"
+    },
+    "actor_shapes": {
+      "actor.0.weight": [
+        128,
+        1088
+      ],
+      "actor.0.bias": [
+        128
+      ],
+      "actor.2.weight": [
+        128,
+        128
+      ],
+      "actor.2.bias": [
+        128
+      ],
+      "actor.4.weight": [
+        256,
+        128
+      ],
+      "actor.4.bias": [
+        256
+      ]
+    },
+    "std": 0.00800000037997961,
+    "parent_delta_rms": {
+      "log_std": 0.0,
+      "actor.0.bias": 0.0007108131540007889,
+      "actor.2.weight": 0.0010715969838202,
+      "actor.2.bias": 0.0004486969264689833,
+      "actor.4.weight": 0.000987862702459097,
+      "actor.4.bias": 0.00044903287198394537,
+      "critic.0.bias": 0.0,
+      "critic.2.weight": 0.0,
+      "critic.2.bias": 0.0,
+      "critic.4.weight": 0.0,
+      "critic.4.bias": 0.0
+    }
+  },
+  "D2": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m38c-history-20261103/C-train-05/job/D2.pt",
+    "sha256": "9e4630896f9849c7ae1f68fa0058d6e23e1792095ef2a362dfd30c17baccf7f5",
+    "metadata": {
+      "input_dim": 1088,
+      "kind": "direct",
+      "updates": 3000,
+      "arm": "D2",
+      "runtime": "e88f259adf4b7677eb3f34c254567419dce37102",
+      "initial_sha": "ff471b60c0bfc53c1d582a82fd3562416216c67c480e0e8039dee3d09277782c"
+    },
+    "actor_shapes": {
+      "actor.0.weight": [
+        128,
+        1088
+      ],
+      "actor.0.bias": [
+        128
+      ],
+      "actor.2.weight": [
+        128,
+        128
+      ],
+      "actor.2.bias": [
+        128
+      ],
+      "actor.4.weight": [
+        256,
+        128
+      ],
+      "actor.4.bias": [
+        256
+      ]
+    },
+    "std": 0.00800000037997961,
+    "parent_delta_rms": {
+      "log_std": 0.0,
+      "center": 0.0,
+      "scale": 0.0,
+      "actor.0.weight": 0.0007467882824130356,
+      "actor.0.bias": 0.0003263358084950596,
+      "actor.2.weight": 0.0003728267620317638,
+      "actor.2.bias": 0.00017404768732376397,
+      "actor.4.weight": 0.0003359550901222974,
+      "actor.4.bias": 0.00013376060815062374,
+      "critic.0.weight": 0.0,
+      "critic.0.bias": 0.0,
+      "critic.2.weight": 0.0,
+      "critic.2.bias": 0.0,
+      "critic.4.weight": 0.0,
+      "critic.4.bias": 0.0
+    }
+  },
+  "I": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+    "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+    "metadata": {
+      "input_dim": 1088,
+      "iteration": 64,
+      "decisions": 49152,
+      "optimizer_updates": 326,
+      "seed": 3901,
+      "runtime": "6f1789269de53a428aa5f5383eff0adcf247c04d",
+      "source_student_online": false,
+      "execution_gain": 1.0,
+      "kind": "direct"
+    },
+    "actor_shapes": {
+      "actor.0.weight": [
+        128,
+        1088
+      ],
+      "actor.0.bias": [
+        128
+      ],
+      "actor.2.weight": [
+        128,
+        128
+      ],
+      "actor.2.bias": [
+        128
+      ],
+      "actor.4.weight": [
+        256,
+        128
+      ],
+      "actor.4.bias": [
+        256
+      ]
+    },
+    "std": 0.00800000037997961,
+    "parent_delta_rms": {
+      "log_std": 0.0,
+      "center": 0.0,
+      "scale": 0.0,
+      "actor.0.weight": 3.0207847885321826e-05,
+      "actor.0.bias": 2.2886124497745186e-05,
+      "actor.2.weight": 2.6626672479324043e-05,
+      "actor.2.bias": 2.358129495405592e-05,
+      "actor.4.weight": 3.226670378353447e-05,
+      "actor.4.bias": 3.122946509392932e-05,
+      "critic.0.weight": 0.025054067373275757,
+      "critic.0.bias": 0.030839866027235985,
+      "critic.2.weight": 0.07199488580226898,
+      "critic.2.bias": 0.07455208897590637,
+      "critic.4.weight": 0.06914302706718445,
+      "critic.4.bias": 0.03342264145612717
+    }
+  }
+}
