@@ -11,4 +11,6 @@ def install_frame():
  geometry_env.install_contact=reach_contact.install
 class Task(Base):
  def sample_spec(self):
-  names=list(PLAN['weights']);name=str(self.rng.choice(names,p=list(PLAN['weights'].values())));s=copy.deepcopy(PLAN['dev'][name]);dt=float(self.rng.uniform(-.1,.1));s['onset']+=dt;s['ramp']*=float(self.rng.uniform(.95,1.05));s['distance']*=float(self.rng.uniform(.9,1.1));s['rotation_deg']*=float(self.rng.uniform(.9,1.1));s['release']=s['onset']+s['ramp']+2;s['end']=s['release']+4;s['demand_family']=name;return s
+  names=list(PLAN['weights']);name=str(self.rng.choice(names,p=list(PLAN['weights'].values())));s=copy.deepcopy(PLAN['dev'][name]);dt=float(self.rng.uniform(-.1,.1));s['onset']+=dt;s['ramp']*=float(self.rng.uniform(.95,1.05));s['distance']*=float(self.rng.uniform(.9,1.1));s['rotation_deg']*=float(self.rng.uniform(.9,1.1));s['stop_time']=s['stop_time']+dt if 'stop_time' in s else None
+  if s['stop_time'] is None:del s['stop_time']
+  s['release']=s['stop_time']+2.8 if 'stop_time' in s else s['onset']+s['ramp']+2;s['end']=s['release']+4;s['demand_family']=name;return s
