@@ -1,0 +1,68 @@
+[
+  {
+    "update": 1,
+    "kind": "zero",
+    "z_loss": 0.0002691211411729455,
+    "norm_loss": 0.0001165450521511957,
+    "retention_qpd_rad2": 3.2818059025885304e-06,
+    "weighted_retention": 8.11888457974419e-06,
+    "gradient_preclip": 0.04256106913089752,
+    "param_change_since_log": 0.004045775625854731,
+    "elapsed_s": 0.03327683010138571
+  },
+  {
+    "update": 101,
+    "kind": "left",
+    "z_loss": 0.0007626473670825362,
+    "norm_loss": 0.0008828667923808098,
+    "retention_qpd_rad2": 2.5940914838429308e-06,
+    "weighted_retention": 6.417542863346171e-06,
+    "gradient_preclip": 0.03439291566610336,
+    "param_change_since_log": 0.061285872012376785,
+    "elapsed_s": 0.40928802103735507
+  },
+  {
+    "update": 201,
+    "kind": "arm15",
+    "z_loss": 0.0011036093346774578,
+    "norm_loss": 0.0010266080498695374,
+    "retention_qpd_rad2": 2.2958495264902012e-06,
+    "weighted_retention": 5.6797198340063915e-06,
+    "gradient_preclip": 0.05550209432840347,
+    "param_change_since_log": 0.05384601652622223,
+    "elapsed_s": 0.776424250099808
+  },
+  {
+    "update": 301,
+    "kind": "zero",
+    "z_loss": 0.00021727889543399215,
+    "norm_loss": 0.0001693398371571675,
+    "retention_qpd_rad2": 2.42780538428633e-06,
+    "weighted_retention": 6.006166586303152e-06,
+    "gradient_preclip": 0.02579495497047901,
+    "param_change_since_log": 0.0490751750767231,
+    "elapsed_s": 1.1174183438997716
+  },
+  {
+    "update": 401,
+    "kind": "left",
+    "z_loss": 0.0005069880862720311,
+    "norm_loss": 0.0006218532216735184,
+    "retention_qpd_rad2": 2.0842869616899407e-06,
+    "weighted_retention": 5.156333372724475e-06,
+    "gradient_preclip": 0.039042457938194275,
+    "param_change_since_log": 0.04491178318858147,
+    "elapsed_s": 1.4632267449051142
+  },
+  {
+    "update": 500,
+    "kind": "arm5",
+    "z_loss": 0.000494867330417037,
+    "norm_loss": 9.524663619231433e-05,
+    "retention_qpd_rad2": 2.7072944703832036e-06,
+    "weighted_retention": 6.697596745652845e-06,
+    "gradient_preclip": 0.026536397635936737,
+    "param_change_since_log": 0.04161439090967178,
+    "elapsed_s": 1.8138089741114527
+  }
+]

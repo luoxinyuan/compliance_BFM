@@ -1,0 +1,62 @@
+[
+  {
+    "path": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/prior-recovery/01-causal-recovery.mp4",
+    "sha256": "1cbb3b2e5da5a255c51e380dc50aa4295846deb6fc96c96901c63003bdfa07f4",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 1280,
+          "avg_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "14.080000"
+      }
+    },
+    "full_decode": true
+  },
+  {
+    "path": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/prior-recovery/02-long-coexistence.mp4",
+    "sha256": "879a1ac9e1153ef0703dfcf492257328fe16d2d1ae13ecc41aadeda5d3e622fc",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 1280,
+          "avg_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "14.080000"
+      }
+    },
+    "full_decode": true
+  },
+  {
+    "path": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/prior-recovery/03-new-small-demand.mp4",
+    "sha256": "4bc53a9b163d211fce8ddbae57151d3734a8ffa617f19432048c9c198cea9cbb",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 1280,
+          "avg_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "7.720000"
+      }
+    },
+    "full_decode": true
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "proceed": true,
+  "selected_before_training": true,
+  "accepted_label_files": [
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/physical-03/B_to_I_4.3-labels.json.gz",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/physical-03/B_to_I_5.0-labels.json.gz",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/physical-03/B_to_I_5.5-labels.json.gz"
+  ],
+  "branches": [
+    {
+      "label": "B_to_I_4.3",
+      "switch": 4.3,
+      "error_cm": 6.062965092676989,
+      "force": 4.97539409007278,
+      "root14": 80.58976938625878,
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/physical-03/B_to_I_4.3-labels.json.gz",
+      "sha256": "b61a1779d34323f4a6295f925b371f156da759b7e93e80b856f7f49413bb333e"
+    },
+    {
+      "label": "B_to_I_5.0",
+      "switch": 5.0,
+      "error_cm": 6.354408459072136,
+      "force": 5.244534989050226,
+      "root14": 80.526126202343,
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/physical-03/B_to_I_5.0-labels.json.gz",
+      "sha256": "668c6779ab372bbb50ccf715a495d045a35f7f94d654f0cf289625860544a96f"
+    },
+    {
+      "label": "B_to_I_5.5",
+      "switch": 5.5,
+      "error_cm": 8.11158310484733,
+      "force": 5.651617099650449,
+      "root14": 84.81619763341307,
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/physical-03/B_to_I_5.5-labels.json.gz",
+      "sha256": "5a04db8c7ea0b89d50af31b137712a068cd9db71544e5b75771eab3a746e9ae8"
+    }
+  ],
+  "scope": "Only first1s of three physically successful I recovery suffixes, starting from exact B histories. 3 actual B query starts; successor states are under I, not full B visited-domain coverage. Later failed states are evaluation only.",
+  "C0_updates": 1500,
+  "C1_updates": 1500,
+  "fixed_endpoint": true
+}

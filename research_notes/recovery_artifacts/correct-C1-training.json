@@ -1,0 +1,102 @@
+{
+  "arm": "C1",
+  "updates": 2000,
+  "samples": 750,
+  "manifest": [
+    {
+      "kind": "zero",
+      "samples": 141,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/qualify-02/10_I_zero-labels.json.gz",
+      "sha256": "cb38ce26e42bc2641f65f9ff05139f61426d7b6abe581d8af2ab5bbc81e54171"
+    },
+    {
+      "kind": "arm5",
+      "samples": 93,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/source2/10_source_arm5-labels.json.gz",
+      "sha256": "70de245479b362777ae304faaf73f7f2362af5dde97552b6b76837edff7c96e7"
+    },
+    {
+      "kind": "arm15",
+      "samples": 93,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/source2/10_source_arm15-labels.json.gz",
+      "sha256": "108993ca1c546a533480cf03dd01fe2ada3dee02493c20cc634e0ecbe700a977"
+    },
+    {
+      "kind": "walk",
+      "samples": 141,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/qualify-02/10_I_walk-labels.json.gz",
+      "sha256": "b99578bef454e572ce10f382e63ddf59ebb850013d1cc5371e68d981c35fa78a"
+    },
+    {
+      "kind": "left",
+      "samples": 141,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/source2/10_source_left-labels.json.gz",
+      "sha256": "70e2258b08bdcfb41c81192f6d11aa41a7d10c01caf2ce9426212f27cb52ae45"
+    },
+    {
+      "kind": "right",
+      "samples": 141,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/source2/10_source_right-labels.json.gz",
+      "sha256": "967d18b222ffc4e1e56ec2458533456d20ffcc635b2f585eb169ff19ad332b91"
+    }
+  ],
+  "unique_recovery_records": 30,
+  "replaced_walk_slots": 71,
+  "retention_records": 66,
+  "retention_weight": 2.473907620604606,
+  "group_checks": [
+    {
+      "kind": "zero",
+      "samples": 141,
+      "z_mse": 0.00020892033353447914,
+      "mean_z_angle_deg": 0.7088461518287659,
+      "raw_norm": 0.9617480039596558
+    },
+    {
+      "kind": "arm5",
+      "samples": 93,
+      "z_mse": 0.00045732842409051955,
+      "mean_z_angle_deg": 1.1042144298553467,
+      "raw_norm": 0.9102369546890259
+    },
+    {
+      "kind": "arm15",
+      "samples": 93,
+      "z_mse": 0.0008231145329773426,
+      "mean_z_angle_deg": 1.547221302986145,
+      "raw_norm": 0.8548217415809631
+    },
+    {
+      "kind": "walk",
+      "samples": 141,
+      "z_mse": 0.0010085242101922631,
+      "mean_z_angle_deg": 1.6971287727355957,
+      "raw_norm": 0.8212571144104004
+    },
+    {
+      "kind": "left",
+      "samples": 141,
+      "z_mse": 0.0005058929091319442,
+      "mean_z_angle_deg": 1.1808031797409058,
+      "raw_norm": 0.9315429925918579
+    },
+    {
+      "kind": "right",
+      "samples": 141,
+      "z_mse": 0.0004859699693042785,
+      "mean_z_angle_deg": 1.1536459922790527,
+      "raw_norm": 0.8924014568328857
+    }
+  ],
+  "retention_qpd_rms_deg": 0.10417403280735016,
+  "C0_actor_max_difference_from_old_B": null,
+  "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/correct-C1/C1.pt",
+  "sha256": "8ead3da1a2844fa8ac4cae3543df7aae93021202a8d8335af2f164fd2076455d",
+  "runtime": "f7559db0706fb19331aa153b2db7ea7b854be159",
+  "seed": 4301,
+  "init_sha": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+  "new_updates": 500,
+  "resume_path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/fit-C1/C1.pt",
+  "resume_sha256": "f105dfe76773131959fcb83a229a3028c36d04f2d2c39bd1cc6b533431ce2cbd",
+  "scope": "C1 bundles valid recovery coverage and bounded action retention; not isolating either contribution"
+}

@@ -1,0 +1,1105 @@
+{
+  "rows": 750,
+  "manifest": [
+    {
+      "kind": "zero",
+      "samples": 141,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/qualify-02/10_I_zero-labels.json.gz",
+      "sha256": "cb38ce26e42bc2641f65f9ff05139f61426d7b6abe581d8af2ab5bbc81e54171"
+    },
+    {
+      "kind": "arm5",
+      "samples": 93,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/source2/10_source_arm5-labels.json.gz",
+      "sha256": "70de245479b362777ae304faaf73f7f2362af5dde97552b6b76837edff7c96e7"
+    },
+    {
+      "kind": "arm15",
+      "samples": 93,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/source2/10_source_arm15-labels.json.gz",
+      "sha256": "108993ca1c546a533480cf03dd01fe2ada3dee02493c20cc634e0ecbe700a977"
+    },
+    {
+      "kind": "walk",
+      "samples": 141,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/qualify-02/10_I_walk-labels.json.gz",
+      "sha256": "b99578bef454e572ce10f382e63ddf59ebb850013d1cc5371e68d981c35fa78a"
+    },
+    {
+      "kind": "left",
+      "samples": 141,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/source2/10_source_left-labels.json.gz",
+      "sha256": "70e2258b08bdcfb41c81192f6d11aa41a7d10c01caf2ce9426212f27cb52ae45"
+    },
+    {
+      "kind": "right",
+      "samples": 141,
+      "source": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/source2/10_source_right-labels.json.gz",
+      "sha256": "967d18b222ffc4e1e56ec2458533456d20ffcc635b2f585eb169ff19ad332b91"
+    }
+  ],
+  "exact_conflicts": [],
+  "neighbors": [
+    {
+      "mode": "all",
+      "groups": [
+        "zero",
+        "walk"
+      ],
+      "indices": [
+        0,
+        327
+      ],
+      "times": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "zero",
+        "walk"
+      ],
+      "indices": [
+        2,
+        329
+      ],
+      "times": [
+        4.199999999999933,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "zero",
+        "walk"
+      ],
+      "indices": [
+        1,
+        328
+      ],
+      "times": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.00016747909830883145,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "zero",
+        "walk"
+      ],
+      "indices": [
+        3,
+        330
+      ],
+      "times": [
+        4.2999999999999305,
+        4.2999999999999305
+      ],
+      "normalized_input_rms": 0.0022218613885343075,
+      "target_z_angle_deg": 0.07132625579833984,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "zero",
+        "walk"
+      ],
+      "indices": [
+        4,
+        331
+      ],
+      "times": [
+        4.399999999999928,
+        4.399999999999928
+      ],
+      "normalized_input_rms": 0.007965387776494026,
+      "target_z_angle_deg": 0.32745644450187683,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "arm5",
+        "walk"
+      ],
+      "indices": [
+        143,
+        329
+      ],
+      "times": [
+        4.199999999999933,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "arm5",
+        "walk"
+      ],
+      "indices": [
+        142,
+        328
+      ],
+      "times": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "arm5",
+        "walk"
+      ],
+      "indices": [
+        141,
+        327
+      ],
+      "times": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "arm5",
+        "walk"
+      ],
+      "indices": [
+        144,
+        330
+      ],
+      "times": [
+        4.2999999999999305,
+        4.2999999999999305
+      ],
+      "normalized_input_rms": 0.0012864313321188092,
+      "target_z_angle_deg": 4.738549709320068,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "arm5",
+        "walk"
+      ],
+      "indices": [
+        142,
+        329
+      ],
+      "times": [
+        4.099999999999935,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.010420107282698154,
+      "target_z_angle_deg": 0.5385033488273621,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "arm15",
+        "walk"
+      ],
+      "indices": [
+        236,
+        329
+      ],
+      "times": [
+        4.199999999999933,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "arm15",
+        "walk"
+      ],
+      "indices": [
+        235,
+        328
+      ],
+      "times": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "arm15",
+        "walk"
+      ],
+      "indices": [
+        234,
+        327
+      ],
+      "times": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "arm15",
+        "walk"
+      ],
+      "indices": [
+        237,
+        330
+      ],
+      "times": [
+        4.2999999999999305,
+        4.2999999999999305
+      ],
+      "normalized_input_rms": 0.0005554653471335769,
+      "target_z_angle_deg": 4.737309455871582,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "arm15",
+        "walk"
+      ],
+      "indices": [
+        235,
+        329
+      ],
+      "times": [
+        4.099999999999935,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.010420107282698154,
+      "target_z_angle_deg": 0.5385033488273621,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "left",
+        "walk"
+      ],
+      "indices": [
+        468,
+        327
+      ],
+      "times": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "normalized_input_rms": 0.11239980906248093,
+      "target_z_angle_deg": 2.055665969848633,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "left",
+        "walk"
+      ],
+      "indices": [
+        468,
+        328
+      ],
+      "times": [
+        3.999999999999937,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.1130027249455452,
+      "target_z_angle_deg": 2.0840320587158203,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "left",
+        "walk"
+      ],
+      "indices": [
+        469,
+        328
+      ],
+      "times": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.11354637891054153,
+      "target_z_angle_deg": 2.286360502243042,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "left",
+        "walk"
+      ],
+      "indices": [
+        469,
+        329
+      ],
+      "times": [
+        4.099999999999935,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.11384513974189758,
+      "target_z_angle_deg": 2.3695120811462402,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "left",
+        "walk"
+      ],
+      "indices": [
+        468,
+        329
+      ],
+      "times": [
+        3.999999999999937,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.11391472071409225,
+      "target_z_angle_deg": 2.2889270782470703,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "right",
+        "walk"
+      ],
+      "indices": [
+        609,
+        327
+      ],
+      "times": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "normalized_input_rms": 0.11239980906248093,
+      "target_z_angle_deg": 2.055665969848633,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "right",
+        "walk"
+      ],
+      "indices": [
+        609,
+        328
+      ],
+      "times": [
+        3.999999999999937,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.1130027249455452,
+      "target_z_angle_deg": 2.0840320587158203,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "right",
+        "walk"
+      ],
+      "indices": [
+        610,
+        328
+      ],
+      "times": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.11354637891054153,
+      "target_z_angle_deg": 2.286360502243042,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "right",
+        "walk"
+      ],
+      "indices": [
+        610,
+        329
+      ],
+      "times": [
+        4.099999999999935,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.11384513974189758,
+      "target_z_angle_deg": 2.3695120811462402,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "all",
+      "groups": [
+        "right",
+        "walk"
+      ],
+      "indices": [
+        609,
+        329
+      ],
+      "times": [
+        3.999999999999937,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.11391472071409225,
+      "target_z_angle_deg": 2.2889270782470703,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "zero",
+        "walk"
+      ],
+      "indices": [
+        1,
+        328
+      ],
+      "times": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "zero",
+        "walk"
+      ],
+      "indices": [
+        2,
+        329
+      ],
+      "times": [
+        4.199999999999933,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "zero",
+        "walk"
+      ],
+      "indices": [
+        0,
+        327
+      ],
+      "times": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "normalized_input_rms": 0.00019151966262143105,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "zero",
+        "walk"
+      ],
+      "indices": [
+        3,
+        330
+      ],
+      "times": [
+        4.2999999999999305,
+        4.2999999999999305
+      ],
+      "normalized_input_rms": 0.002540795598179102,
+      "target_z_angle_deg": 0.07132625579833984,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "zero",
+        "walk"
+      ],
+      "indices": [
+        4,
+        331
+      ],
+      "times": [
+        4.399999999999928,
+        4.399999999999928
+      ],
+      "normalized_input_rms": 0.009100710973143578,
+      "target_z_angle_deg": 0.32745644450187683,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "arm5",
+        "walk"
+      ],
+      "indices": [
+        143,
+        329
+      ],
+      "times": [
+        4.199999999999933,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "arm5",
+        "walk"
+      ],
+      "indices": [
+        142,
+        328
+      ],
+      "times": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "arm5",
+        "walk"
+      ],
+      "indices": [
+        141,
+        327
+      ],
+      "times": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "arm5",
+        "walk"
+      ],
+      "indices": [
+        144,
+        330
+      ],
+      "times": [
+        4.2999999999999305,
+        4.2999999999999305
+      ],
+      "normalized_input_rms": 0.0014958162792026997,
+      "target_z_angle_deg": 4.738549709320068,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "arm5",
+        "walk"
+      ],
+      "indices": [
+        141,
+        328
+      ],
+      "times": [
+        3.999999999999937,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.010349152609705925,
+      "target_z_angle_deg": 0.5000685453414917,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "arm15",
+        "walk"
+      ],
+      "indices": [
+        236,
+        329
+      ],
+      "times": [
+        4.199999999999933,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "arm15",
+        "walk"
+      ],
+      "indices": [
+        235,
+        328
+      ],
+      "times": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "arm15",
+        "walk"
+      ],
+      "indices": [
+        234,
+        327
+      ],
+      "times": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "normalized_input_rms": 0.0,
+      "target_z_angle_deg": 0.0,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "arm15",
+        "walk"
+      ],
+      "indices": [
+        237,
+        330
+      ],
+      "times": [
+        4.2999999999999305,
+        4.2999999999999305
+      ],
+      "normalized_input_rms": 0.0007166009163483977,
+      "target_z_angle_deg": 4.737309455871582,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "arm15",
+        "walk"
+      ],
+      "indices": [
+        234,
+        328
+      ],
+      "times": [
+        3.999999999999937,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.010349152609705925,
+      "target_z_angle_deg": 0.5000685453414917,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "left",
+        "walk"
+      ],
+      "indices": [
+        468,
+        327
+      ],
+      "times": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "normalized_input_rms": 0.1285342425107956,
+      "target_z_angle_deg": 2.055665969848633,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "left",
+        "walk"
+      ],
+      "indices": [
+        468,
+        328
+      ],
+      "times": [
+        3.999999999999937,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.12895944714546204,
+      "target_z_angle_deg": 2.0840320587158203,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "left",
+        "walk"
+      ],
+      "indices": [
+        469,
+        328
+      ],
+      "times": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.12924839556217194,
+      "target_z_angle_deg": 2.286360502243042,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "left",
+        "walk"
+      ],
+      "indices": [
+        469,
+        329
+      ],
+      "times": [
+        4.099999999999935,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.1295747607946396,
+      "target_z_angle_deg": 2.3695120811462402,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "left",
+        "walk"
+      ],
+      "indices": [
+        468,
+        329
+      ],
+      "times": [
+        3.999999999999937,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.12991246581077576,
+      "target_z_angle_deg": 2.2889270782470703,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "right",
+        "walk"
+      ],
+      "indices": [
+        609,
+        327
+      ],
+      "times": [
+        3.999999999999937,
+        3.999999999999937
+      ],
+      "normalized_input_rms": 0.1285342425107956,
+      "target_z_angle_deg": 2.055665969848633,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "right",
+        "walk"
+      ],
+      "indices": [
+        609,
+        328
+      ],
+      "times": [
+        3.999999999999937,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.12895944714546204,
+      "target_z_angle_deg": 2.0840320587158203,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "right",
+        "walk"
+      ],
+      "indices": [
+        610,
+        328
+      ],
+      "times": [
+        4.099999999999935,
+        4.099999999999935
+      ],
+      "normalized_input_rms": 0.12924839556217194,
+      "target_z_angle_deg": 2.286360502243042,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "right",
+        "walk"
+      ],
+      "indices": [
+        610,
+        329
+      ],
+      "times": [
+        4.099999999999935,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.1295747607946396,
+      "target_z_angle_deg": 2.3695120811462402,
+      "scope": "neighbor description, not proof of ambiguous input"
+    },
+    {
+      "mode": "without_previous_z",
+      "groups": [
+        "right",
+        "walk"
+      ],
+      "indices": [
+        609,
+        329
+      ],
+      "times": [
+        3.999999999999937,
+        4.199999999999933
+      ],
+      "normalized_input_rms": 0.12991246581077576,
+      "target_z_angle_deg": 2.2889270782470703,
+      "scope": "neighbor description, not proof of ambiguous input"
+    }
+  ],
+  "gradients": {
+    "I": {
+      "zero": {
+        "samples": 141,
+        "loss": 9.503182813700058e-15,
+        "latent_loss": 9.503182813700058e-15,
+        "norm_loss": 0.0,
+        "gradient_norm": 4.238000528289376e-08
+      },
+      "arm5": {
+        "samples": 93,
+        "loss": 0.027621010318398476,
+        "latent_loss": 0.027621010318398476,
+        "norm_loss": 0.0,
+        "gradient_norm": 0.6448734998703003
+      },
+      "arm15": {
+        "samples": 93,
+        "loss": 0.34635481238365173,
+        "latent_loss": 0.34635481238365173,
+        "norm_loss": 0.0,
+        "gradient_norm": 3.7518422603607178
+      },
+      "walk": {
+        "samples": 141,
+        "loss": 2.6647541324139462e-14,
+        "latent_loss": 2.6647541324139462e-14,
+        "norm_loss": 0.0,
+        "gradient_norm": 1.302895356047884e-07
+      },
+      "left": {
+        "samples": 141,
+        "loss": 0.016586147248744965,
+        "latent_loss": 0.016586147248744965,
+        "norm_loss": 0.0,
+        "gradient_norm": 0.768204927444458
+      },
+      "right": {
+        "samples": 141,
+        "loss": 0.024556897580623627,
+        "latent_loss": 0.024556897580623627,
+        "norm_loss": 0.0,
+        "gradient_norm": 0.9757190346717834
+      }
+    },
+    "A": {
+      "zero": {
+        "samples": 141,
+        "loss": 1.877054778276488e-08,
+        "latent_loss": 1.8672370316608067e-08,
+        "norm_loss": 1.9635393311290272e-09,
+        "gradient_norm": 0.0006544347852468491
+      },
+      "arm5": {
+        "samples": 93,
+        "loss": 0.02762353979051113,
+        "latent_loss": 0.02762353979051113,
+        "norm_loss": 2.3402506599268236e-09,
+        "gradient_norm": 0.6442477107048035
+      },
+      "arm15": {
+        "samples": 93,
+        "loss": 0.3464473485946655,
+        "latent_loss": 0.3464473485946655,
+        "norm_loss": 2.1716317633035942e-08,
+        "gradient_norm": 3.752051591873169
+      },
+      "walk": {
+        "samples": 141,
+        "loss": 1.3526177156109043e-07,
+        "latent_loss": 1.3454285863190307e-07,
+        "norm_loss": 1.4378246149249208e-08,
+        "gradient_norm": 0.0015763621777296066
+      },
+      "left": {
+        "samples": 141,
+        "loss": 0.01658833585679531,
+        "latent_loss": 0.01658833585679531,
+        "norm_loss": 1.01050301459793e-09,
+        "gradient_norm": 0.7674915194511414
+      },
+      "right": {
+        "samples": 141,
+        "loss": 0.02456042356789112,
+        "latent_loss": 0.02456042356789112,
+        "norm_loss": 7.206263141767977e-09,
+        "gradient_norm": 0.9742562770843506
+      }
+    },
+    "B": {
+      "zero": {
+        "samples": 141,
+        "loss": 0.00032814868609420955,
+        "latent_loss": 0.0003223422390874475,
+        "norm_loss": 0.00011612886737566441,
+        "gradient_norm": 0.03689794987440109
+      },
+      "arm5": {
+        "samples": 93,
+        "loss": 0.0008138634148053825,
+        "latent_loss": 0.0007974729523994029,
+        "norm_loss": 0.00032780904439277947,
+        "gradient_norm": 0.04569289833307266
+      },
+      "arm15": {
+        "samples": 93,
+        "loss": 0.0014728573150932789,
+        "latent_loss": 0.001377164851874113,
+        "norm_loss": 0.0019138500792905688,
+        "gradient_norm": 0.04880675673484802
+      },
+      "walk": {
+        "samples": 141,
+        "loss": 0.001497772173024714,
+        "latent_loss": 0.0014604991301894188,
+        "norm_loss": 0.0007454598671756685,
+        "gradient_norm": 0.04520181939005852
+      },
+      "left": {
+        "samples": 141,
+        "loss": 0.00094551284564659,
+        "latent_loss": 0.000889985472895205,
+        "norm_loss": 0.0011105476878583431,
+        "gradient_norm": 0.03337852656841278
+      },
+      "right": {
+        "samples": 141,
+        "loss": 0.0009764019050635397,
+        "latent_loss": 0.0008875974453985691,
+        "norm_loss": 0.001776088960468769,
+        "gradient_norm": 0.03507266566157341
+      }
+    }
+  },
+  "cosines": {
+    "I": {
+      "zero:walk": 0.011561197228729725,
+      "arm5:walk": 0.0005556601099669933,
+      "arm15:walk": -0.0030218632891774178,
+      "walk:walk": 0.9999998807907104,
+      "left:walk": -0.03441224992275238,
+      "right:walk": 0.023701298981904984
+    },
+    "A": {
+      "zero:walk": 0.08615858852863312,
+      "arm5:walk": 0.06900093704462051,
+      "arm15:walk": 0.06458664685487747,
+      "walk:walk": 0.9999999403953552,
+      "left:walk": 0.004452690947800875,
+      "right:walk": -0.0025493125431239605
+    },
+    "B": {
+      "zero:walk": -0.06975352764129639,
+      "arm5:walk": -0.5330127477645874,
+      "arm15:walk": -0.2102530300617218,
+      "walk:walk": 0.9999999403953552,
+      "left:walk": -0.11781065165996552,
+      "right:walk": -0.009552160277962685
+    }
+  },
+  "scope": "gradient geometry under exact fixed corpus; no causal inference from cosine alone"
+}

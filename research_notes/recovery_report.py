@@ -7,7 +7,7 @@ from prior_metrics import summarize
 R=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105');O=R.parent/'latent-prior-audit-20261105';start=time.monotonic()
 def write(p,x):p.write_text(json.dumps(x,indent=2))
 rows=[]
-for d in ['physical-03','fit-C0','fit-C1','final-C','final-reference']:
+for d in ['physical-03','fit-C0','fit-C1','correct-C0','correct-C1','final-C','final-reference']:
  for p in sorted((R/d).glob('*.json.gz')):
   if any(k in p.name for k in ['labels','queries','prefix']):continue
   r=summarize(p)

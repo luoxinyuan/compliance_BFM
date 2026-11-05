@@ -1,44 +1,41 @@
 # CURRENT_STATE — 新会话先读
 
-2026-11-05 CST：Issue43已结项；用户新增授权Issue44，多行为负迁移与真实恢复。独立gaoe05/prior-recovery，run runs/prior-recovery-20261105。当前准备完成，即将启动冻结I/A/B接管；尚无新增训练。预算2GPU/10000job秒/6GiB/4000监督，RL仅共同收益后≤16384。协议recovery_protocol.json；旧模型与全部失败保留。
+最后核对：2026-11-05 CST。**Issue44（Issue43后续：负迁移与有效恢复）完成并停止；没有PPO/Student或下一阶段排队。**
 
+入口：[结果](PRIOR_RECOVERY_RESULTS.md) · [聚合证据](recovery_artifacts/physical-metrics.json) · [Issue44](https://github.com/GaoE05/robot-research-bridge/issues/44) · [Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。长期纲领RESEARCH_OVERVIEW不变；旧Library2026-10-28仅历史快照。
 
-最后核对：2026-11-05 CST。**Issue43（BFM latent先验去偏/reward审查）已完成并停止；无训练或下一阶段排队。**
+## 科学目标与保留基线
 
-入口：[完整结果](LATENT_PRIOR_RESULTS.md) · [训练与选模](prior_artifacts/training-final.json) · [终检物理指标](prior_artifacts/final-metrics.json) · [Issue43](https://github.com/GaoE05/robot-research-bridge/issues/43) · [Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。长期纲领RESEARCH_OVERVIEW不变。旧Library2026-10-28仅历史快照。
+Contact-conditioned whole-body behavior selection/modulation/transition：按实际接触及身体状态组织局部手臂、躯干/root与必要支撑/行走，不写死先臂后脚。冻结BFM/原PD。I/T30/S0/D2及M0–M43历史保留，有限直行Teacher→ideal-force Student与双向小转腰不被本次失败否定；不宣称真机已有精确力传感。
 
-## 总目标与可靠基线
+- BFM SHA33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361。
+- I SHA72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a；T30 c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33。
+- S0 0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12；D2 9e4630896f9849c7ae1f68fa0058d6e23e1792095ef2a362dfd30c17baccf7f5。
+- 旧B多行为初始化e1112cd0b20d1d8462ac3efbf183cb1289b5679612b37a286232e4a5eaedf00c。Issue43两臂PPO best均iteration0，没有PPO修复结论。原A/B和首/次轮都保留。
 
-Contact-conditioned whole-body behavior selection/modulation/transition。真实接触与身体状态应决定合适的局部手臂、躯干/root、支撑与步态响应。保持冻结BFM/PD。有限域直行Teacher→ideal-force Student、有限双向转腰等成果保留；不宣称general或G1具有精确力传感。
+## Issue44实际结果
 
-- BFM SHA 33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361。
-- I (M39-A best64) SHA72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a；T30 SHA c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33。
-- S0 SHA0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12；D2 SHA9e4630896f9849c7ae1f68fa0058d6e23e1792095ef2a362dfd30c17baccf7f5。
-- T30→C2→D2→I的实际actor/标签/replay/runtime见prior_artifacts/identity-chain.json。执行无在线CyclicFeedback/M10 Student；高层探索在已学raw均值附近，不是随机重学BFM。
+1. 22回合I/A/B与接管，16/16完整前缀hash一致；I/A历史qpos/qvel/force/anchor逐值复现。B在接触前4.0s已出现持续z/q_PD偏离，真实q随后偏离、cap饱和在后，不能仅归因力太小。
+2. B→I4.3/5.0/5.5/6s可以恢复80cm起步；7s接管误差23.87cm、力8.74N，未作为优质标签。I→B到5.5s后可继续走，说明行走条件能力尚存，早期反馈/历史演化被破坏。8cm中B→I反而变差，不能全面覆盖B。
+3. 原750数据无完全相同输入冲突。原B参数变化约A101倍；B上局部/行走梯度方向冲突是机制线索，不是不可学习证明。
+4. C0复现旧B1500，actor逐值差0。C1加入3个有效接管起点恢复短段＋有限可靠启动域五子步q_PD保持。浮点边界遗漏首条标签后，从保存决策准确补全30条；两组共同追加500，总4000，固定2000最终版本。旧1500与缺陷保留，不按终检重选。
+5. 最终80cm C0/C1误差40.395/6.059cm，恢复起步；但8cm为2.872/4.936cm，C1左足路径20.72cm，C0仅.33cm，局部优势丢失。新7cm重复该取舍（2.589/4.703cm；足路径.30/21.80cm）。新60cm C1 7.008cm仍不及I5.429cm，且有额外偏航。新arm-ready18cm未超过I。5N长距C1 13.543cm，I6.883cm。
+6. 106完整新物理回合无安全终止，但记录3个短暂双足support=false tick（精确条件见报告）。q_PD峰66.46°与真实5ms关节峰3.06°分开。释放后不考核旧anchor跟随。
 
-## 本阶段结论
+**有效恢复成立；同一模型局部/长距行为共存仍不成立。没有启动条件性PPO，不替换I/T30/S0，不拼C0/C1。**
 
-1. 复算43条旧轨迹reward；32条来源/共同前缀物理资格：原生局部伸臂、有限左右转腰、行走成立，额外30cm躯干候选效果差、排除标签。reward认可好的局部解，不能简单说只奖励walking；active阶段的运动经济性代价很弱。
-2. A为I旧数据自监督匹配控制，B为多行为初始化。两轮各1500更新/臂；第二轮严格统一I真实前缀仍未修复负迁移。局部改善不等于保住全身行为。
-3. A/B各32×768=24576真实RL决策，same10N/reward/std/课程/新critic/Adam。开发0/8/16/24/32后两臂best均iteration0，selected actor与pre-PPO逐值相同；没有可推广的新PPO收益。终检没有被用于选模型。
-4. 44条冻结终检/回归：新8cm，A5.174cm/4.298N→B2.993cm/2.474N；B几乎不调脚，确有局部价值。但新55cm A5.557cm/B22.692cm，80cm A6.019cm/B34.851cm，B长距启动严重退化。新arm-ready20cm A4.902/B6.740cm，未证明身体配置泛化。5N长距B48.081cm，物理域敏感性仍在。
-5. 44条没有安全终止或双足同时失去支撑tick；q_PD最大51.38°而实际物理步关节最大2.99°，不能混为实际瞬时转角。释放后不再评价旧anchor跟随，完整恢复保留。
+## 当前瓶颈与下一决策（未执行）
 
-## 当前瓶颈与下一决策（未授权执行）
+当前全参数共享MLP的混合监督＋软动作保持能救回walking，却牺牲局部响应。现有证据不要求增力、重训BFM或随机搜z，也不能唯一归因输入不可辨识/网络容量不足。
 
-有效局部/行走来源均存在，reward也并非必然把局部排到后面；当前主要证据指向多行为监督的闭环负迁移，32批PPO未修复。尚不能唯一归因为latent loss、隐藏信息、奖励或优化。
+唯一建议：下一阶段做结构性保旧对照——同I/数据/预算，当前全参数MLP对比冻结I主干＋零初始化可学习条件latent adapter，保留合法z和观测权限，不增加手工force→skill或固定动作路径。须由用户授权；不是已证明修法。当前不继续1500更新循环，不启动PPO/Student、force-history六组或真机。
 
-唯一优先建议：在B真实早期起步偏离状态核实I接管的有效窗口，以有效恢复短段和局部数据联合形成匹配初始化对照；不能把后期不可恢复状态硬当正确标签。保旧仅限可靠运动域，不冻结全部身体。运动经济性reward独立方案见报告，暂不同时改reward/force/history，也不原样续训。
+## 身份、成本与接力
 
-M41已证实启动失败具有闭环状态/历史积累，晚状态I不一定能救；Issue42已证实旧82cm先有手臂响应、80cm需身体参与。两项历史结论不被本阶段覆盖。已完成训练不代表“减噪无效”或“PPO不能学”。
+最终C0 SHA ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c；C1 8ead3da1a2844fa8ac4cae3543df7aae93021202a8d8335af2f164fd2076455d。两者为correct-C0/C1/*.pt，2000累计更新，runtime f7559db0706fb19331aa153b2db7ea7b854be159。个人gaoe05/research最终文档commit见Issue44；不改main。
 
-## 精确身份、成本和交付
+run `/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105`；物理/训练/终检/失败/精确SHA全存。记录job-wall约2732秒，另119秒CPU聚合与短检查；约1.8GiB，4000监督/0RL/0Student，最多GPU2/5，owned进程已退出。
 
-PPO runtime982f5bf544d7027fb080cd57036bb6ee36561e13；终检/渲染runtime4f46fdc，完整值见ledger。长期个人分支gaoe05/research；最终文档commit见Issue43结项，非main。
-A selected SHA7cc9f2bda24fd1d382d8dc346f0845aa0211e98680eb5a8e38f1dcb20ab86804；B selected SHA4380df4f8566b1bc2ac8d7849a633c6cda7da0c209029f987c24a3f02a07a24e，均为各自PPO iteration0，序列化critic/metadata导致与监督文件SHA不同。
+Mac `~/Projects/compliance-bfm-diagnostics/videos/prior-recovery/`：01因果接管；02 C0/C1最终长距；03新7cm。仅3条1×真实qpos MP4+INDEX，SHA/全解码/画面核验通过，不把视频生成当行为成功。
 
-run `/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105`。frozen-final-manifest、ppo-A/B、final-eval、videos与所有失败完整保存。49152新增RL、6000监督更新、7748.37记录job秒加约28秒结项CPU及短检查、约4.0GiB。阶段GPU/monitor全部退出。没有Student训练。
-
-Mac `~/Projects/compliance-bfm-diagnostics/videos/latent-prior-audit/`：01局部能力正控制；02 A/B长距成功/失败；03新自然arm-ready状态20cm。3条1×真实qpos MP4+INDEX，SHA/全解码/画面已核验。不是新PPO成功视频，不替换旧I/T30/S0。
-
-接力：先读本文件、报告、Issue43；用户决定下一阶段后再核验资源和模型。不复用PID/空闲GPU快照、不重开本阶段。共享checkout6023c6e clean；不改BFM/PD/权重/main、SoftSONIC或他人任务，不做真机。force-history消融仍未执行。
+接力先读本文件、长期纲领、PRIOR_RECOVERY_RESULTS和Issue44；按新授权再核验资源，不能复用旧PID或空闲快照。共享6023c6e checkout保持；不动BFM/PD/权重/main/SoftSONIC/他人任务。M11初轮及continuation早停历史仍独立保留，不能改写成等预算终检。

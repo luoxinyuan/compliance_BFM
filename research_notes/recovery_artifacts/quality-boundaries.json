@@ -1,0 +1,25 @@
+[
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/physical-03/I_to_B_5.5.json.gz",
+    "label": "I_to_B_5.5",
+    "support_loss_ticks": 1,
+    "support_loss_times": [
+      9.890000000000146
+    ],
+    "qpd_max_deg": 66.46112284852369,
+    "qpd_time": 9.880000000000145,
+    "qpd_joint": "right_ankle_pitch_joint"
+  },
+  {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/correct-C1/C1__middle30.json.gz",
+    "label": "C1__middle30",
+    "support_loss_ticks": 2,
+    "support_loss_times": [
+      9.365000000000064,
+      9.370000000000065
+    ],
+    "qpd_max_deg": 40.01265517690372,
+    "qpd_time": 10.04000000000017,
+    "qpd_joint": "right_ankle_pitch_joint"
+  }
+]

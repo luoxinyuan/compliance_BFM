@@ -1,0 +1,26 @@
+{
+  "C0": {
+    "sha256": "ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c",
+    "runtime": "f7559db0706fb19331aa153b2db7ea7b854be159",
+    "updates": 2000,
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/correct-C0/C0.pt"
+  },
+  "C1": {
+    "sha256": "8ead3da1a2844fa8ac4cae3543df7aae93021202a8d8335af2f164fd2076455d",
+    "runtime": "f7559db0706fb19331aa153b2db7ea7b854be159",
+    "updates": 2000,
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/correct-C1/C1.pt"
+  },
+  "I": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+    "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+    "selection_reason": "M39-A best64 shared M39-B initialization; chosen before this stage evidence; avoids selecting an arm by final M39-B outcomes"
+  },
+  "B": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/latent-prior-audit-20261105/fit2-B/B.pt",
+    "sha256": "e1112cd0b20d1d8462ac3efbf183cb1289b5679612b37a286232e4a5eaedf00c",
+    "runtime": "e5c9ccb3c267f3c1cd2ea2ef95e8eeb908a3ce8f",
+    "updates": 1500,
+    "samples": 750
+  }
+}

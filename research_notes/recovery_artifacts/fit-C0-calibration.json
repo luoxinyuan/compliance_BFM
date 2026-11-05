@@ -1,0 +1,54 @@
+{
+  "coefficient": 0.0,
+  "target_gradient_ratio": 0.25,
+  "batches": [
+    {
+      "kind": "zero",
+      "supervised_gradient": 0.04024529084563255,
+      "retention_gradient": 0.002970229834318161,
+      "retention_qpd_rad2": 9.937431059370283e-06
+    },
+    {
+      "kind": "arm5",
+      "supervised_gradient": 0.05030864104628563,
+      "retention_gradient": 0.003338098293170333,
+      "retention_qpd_rad2": 1.0917266990873031e-05
+    },
+    {
+      "kind": "arm15",
+      "supervised_gradient": 0.08975598216056824,
+      "retention_gradient": 0.013225667178630829,
+      "retention_qpd_rad2": 1.2891289770777803e-05
+    },
+    {
+      "kind": "walk",
+      "supervised_gradient": 0.06222177669405937,
+      "retention_gradient": 0.0032492054160684347,
+      "retention_qpd_rad2": 1.2188146683911327e-05
+    },
+    {
+      "kind": "left",
+      "supervised_gradient": 0.04849166423082352,
+      "retention_gradient": 0.006646137218922377,
+      "retention_qpd_rad2": 1.2211326065880712e-05
+    },
+    {
+      "kind": "right",
+      "supervised_gradient": 0.039812806993722916,
+      "retention_gradient": 0.006945143919438124,
+      "retention_qpd_rad2": 1.2518208677647635e-05
+    }
+  ],
+  "replay_identity": [
+    {
+      "action_max": 1.0132789611816406e-06,
+      "qpd_max_rad": 1.341104507446289e-06
+    },
+    {
+      "action_max": 8.642673492431641e-07,
+      "qpd_max_rad": 1.2442469596862793e-06
+    }
+  ],
+  "scope": "same-state five measured BFM substeps, frozen physics; gradient through frozen actor to high policy",
+  "records": 63
+}

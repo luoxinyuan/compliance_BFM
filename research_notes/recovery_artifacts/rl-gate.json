@@ -1,0 +1,7 @@
+{
+  "start_rl": false,
+  "decisions": 0,
+  "decided_before_final_results": true,
+  "reason": "C1 restores long startup but loses B local-response advantage: known8cm left-foot path20.719cm vs C0 .325cm; error4.936 vs2.872cm. Joint benefit prerequisite not met. Do not consume optional RL budget.",
+  "wall_time": 1793857160.9754243
+}
