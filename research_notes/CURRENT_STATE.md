@@ -1,6 +1,8 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-05 CST。**Arm-to-Locomotion任务合理性审查（Issue42）完成并停止；43个新冻结物理回合，0 PPO/Student训练。没有后台或下一轮训练排队。**
+最后核对：2026-11-05 CST。本轮Issue43已获授权：初始化去偏/reward审查，先来源资格，匹配PPO有条件执行（最多49152决策、16000job秒、10GiB）。当前尚未启动PPO；Issue42以下为已完成历史。
+
+**Arm-to-Locomotion任务合理性审查（Issue42）完成并停止；43个新冻结物理回合，0 PPO/Student训练。没有后台或下一轮训练排队。**
 
 入口：[本轮结果](ARM_TO_LOCOMOTION_RESULTS.md) · [M41启动因果结果](M41_STARTUP_CAUSAL_RESULTS.md) · [原Transition课程](TRANSITION_RESULTS.md) · [Issue42](https://github.com/GaoE05/robot-research-bridge/issues/42) · [Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。纲领见RESEARCH_OVERVIEW。旧Library2026-10-28只是历史快照。
 

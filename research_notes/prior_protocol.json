@@ -1,0 +1,73 @@
+{
+  "models": {
+    "I": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+      "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+      "selection_reason": "M39-A best64 shared M39-B initialization; chosen before this stage evidence; avoids selecting an arm by final M39-B outcomes"
+    },
+    "T30": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/stop-sensing-20261103/B1-train-02/job/best.pt",
+      "sha256": "c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33"
+    }
+  },
+  "resources": {
+    "max_gpu": 3,
+    "job_wall": 16000,
+    "output_bytes": 10737418240,
+    "rl_decisions": 49152
+  },
+  "qualification": {
+    "caps": [
+      5,
+      10
+    ],
+    "sources": [
+      "standing",
+      "arm5",
+      "arm15",
+      "body30_pitch8",
+      "walk_I",
+      "yaw_left15",
+      "yaw_right15"
+    ],
+    "baseline": "I",
+    "cap_selection": "10 unless unsafe or substantial loss of source behavior; then both5. No per-arm force change."
+  },
+  "initialization": {
+    "updates_per_arm": 1500,
+    "batch": 128,
+    "lr": 1e-05,
+    "seed": 4301,
+    "loss": "legal_z MSE plus .05 raw norm preservation to frozen I on each actual input",
+    "matching": "equal independent source categories and frame counts; A I trajectories, B qualified diverse sources; no T30 walking label for B local requests"
+  },
+  "training": {
+    "iterations": 32,
+    "decisions_per_batch": 768,
+    "actor_lr": 1e-05,
+    "evaluate_every": 8,
+    "std": 0.008,
+    "seed": 4302,
+    "reward": "unchanged geometry_env",
+    "replay": "none in either arm; reliable source preservation only matched supervised initialization"
+  },
+  "sealed": {
+    "wrist_distances": [
+      0.08,
+      0.2,
+      0.55
+    ],
+    "peak_speeds": [
+      0.11,
+      0.09,
+      0.13
+    ],
+    "onset": 4.55,
+    "source_state": "native 3cm arm progress real prefix",
+    "yaw_deg": [
+      -9,
+      9
+    ]
+  },
+  "scope": "Expert only; no Student, no force-history ablation, no reward edits"
+}
