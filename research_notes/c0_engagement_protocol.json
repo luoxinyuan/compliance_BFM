@@ -512,17 +512,18 @@
       "distance": 0.205,
       "rotation_deg": 0.0,
       "curvature": 0.0,
-      "onset": 5.11,
+      "onset": 6.91,
       "ramp": 3.1,
-      "release": 10.41,
-      "end": 14.41,
+      "release": 12.21,
+      "end": 16.21,
       "heading_deg": 0.0,
       "family": "walking",
       "source": "armready",
-      "source_until": 4.0,
+      "source_until": 6.0,
       "total_cap": 10.0,
       "anchor_mode": "onset_actual",
-      "demand_family": "new_ready205"
+      "demand_family": "new_ready205",
+      "ready_progress": 0.45
     },
     "new_prefix_stop": {
       "geometry": "wrist",
@@ -704,5 +705,50 @@
       "C0": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/final-reference/C0__holdout_continue.json.gz",
       "I": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/final-reference/I__holdout_continue.json.gz"
     }
+  },
+  "execution_amendment_20261106": {
+    "backend": "PPU",
+    "heldout_ready_config": {
+      "before": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.205,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "onset": 5.11,
+        "ramp": 3.1,
+        "release": 10.41,
+        "end": 14.41,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "armready",
+        "source_until": 4.0,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual",
+        "demand_family": "new_ready205"
+      },
+      "after": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.205,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "onset": 6.91,
+        "ramp": 3.1,
+        "release": 12.21,
+        "end": 16.21,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "armready",
+        "source_until": 6.0,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual",
+        "demand_family": "new_ready205",
+        "ready_progress": 0.45
+      },
+      "reason": "Before any model update or heldout execution: missing ready_progress would raise KeyError; source_until4 ended before source arm motion starting4. Use real partial-ready prefix, no qpos editing."
+    },
+    "retention": "none; optional replay not used; no I label on local requests",
+    "source_and_task_changes": "No other preregistered conditions changed"
   }
 }
