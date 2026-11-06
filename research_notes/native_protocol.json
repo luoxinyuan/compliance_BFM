@@ -1,0 +1,19 @@
+{
+ "issue":48,"created":"2026-11-06","stage":"native-contact-learning","base_commit":"812a74457dc6308a5e1e90f04eca10377a0b6510",
+ "bfm_sha256":"33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+ "buffer_sha256":"46eac53f603e45921d25504fcf7d3eea861f2a9f8ea503046855e701493b546b",
+ "budget":{"job_seconds":24000,"output_GiB":15,"rl_decisions":98304,"C0_new_fraction":0},
+ "candidates":["standing","goal_arm5","goal_arm15","goal_lean30","motion_walk_task","reward_move_ego_0_0.3"],
+ "inference_budget":"reuse matching assets, at most6 logical candidates; no reward rerun or new sampling/download; exact input/asset hashes saved",
+ "source_runtime":"f6ca5c5f6c4de205b3457bef4a024345e2105009",
+ "training":{"seed":4801,"workers":3,"batch_decisions":768,"initial_batches_each":32,"maximum_batches_each":64,"evaluate_every":8,"actor_lr":0.00001,"critic_lr":0.0003,"std_raw":0.008,"guided_axis_std":0.15,"guided_rank_max":4,"initialization_updates":2000,"gamma":0.99,"lambda":0.95},
+ "exploration":"A isotropic raw Gaussian. B fixed full-rank Gaussian covariance with additional variance along traceable native directions. Whitened Gaussian u, executed raw=L*u, legal z=16raw/||raw||. Full covariance via fixed invertible Cholesky, exact raw density differs by constant logdet. Original probability/KL/Adam checks unchanged. No expert overwrite, mixture, task selector or deployment proposal.",
+ "initialization":"Fresh actor/critic/normalizer, standing final bias; optional shared native continuation-only supervised initialization; never I/C0/T30 weights or default labels. Original native entry frames excluded when identical observations would carry clock-chosen inconsistent labels.",
+ "selection":"Within each arm same dev rule: .5*max relative physical cost + mean relative cost; reject native safety boundary or worst >1.75x initial. Initial included; dev-only selection. Report per-family and tail; no final reselection.",
+ "extension":"Both arms finish32 first. Extend both to64 only if both have no safety failures and at least one has >=5% development aggregate improvement without any family >1.5x initial; otherwise both stop32. Resource reserve may shorten equally. Final not opened before selection.",
+ "physical":{"total_cap":10,"regression_cap":5,"K":80,"D":8,"high_Hz":10,"BFM_Hz":50,"physics_Hz":200,"reward":"unchanged geometry_env per-point physical cost and absorbing terminal treatment"},
+ "actor_permissions":"current privileged partner error/relative velocity, current proprio/history, per-point actual forces and actual last-z; no taskID, future, final distance, globalclock or sourceID",
+ "source_prefix":"same live MuJoCo instance through native source execution to selected handoff; no reset/qpos-only/history erase at takeover",
+ "new_final":{"near_cm":6.8,"middle_cm":21.5,"long_cm":69.0,"onset":5.17,"ramp_long":8.3,"prefix_branch_time":8.27,"arm_source_handoff":5.7,"walk_source_handoff":6.1},
+ "C0_role":"frozen final reference only; no new mechanism training, no gating of native mainline"
+}

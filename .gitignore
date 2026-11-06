@@ -24,3 +24,6 @@ wandb/
 /humanoidverse/data/lafan_29dof_10s-clipped.pkl
 /model/
 /resources/
+
+# Private pinned frozen runtime mounted by this independent stage
+/humanoidverse

@@ -1,3 +1,17 @@
+# CURRENT_STATE — 新原生主线已授权启动
+
+2026-11-06：Issue48原生能力驱动的共享接触学习，PRO5000 GPU0，独立worktree；当前为资产核对及NVIDIA概率复验准备，尚未正式RL训练。Issue47已结项不重启，下面保存其历史结论。
+
+- 新策略fresh actor/critic/normalizer，不继承I/C0/T30高层，不在线读取其输出；复用冻结BFM/PD和原生goal/reward/motion。
+- 首批≤6候选；候选物理资格成立后直接进入共享真实transition反馈训练，不以C0改善为门槛。C0本轮只冻结参考。
+- 初版对照预登记：同原生初始化/课程，普通各向同性Gaussian vs 原生方向增加方差的full-rank Gaussian；固定Cholesky白化概率与原3e-4/logprob及.02联合KL/Adam回滚，不默认PPU专用逐行路径。
+- 上限24000累计job秒、98304新增高层RL决策、15GiB；GPU仅实时获准空闲GPU0，其他用户任务不动。没有Student或真机授权。
+- 私有运行根`/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106`，代码`trees/native-contact-learning/repo`，分支`gaoe05/native-contact-learning`；精确runtime见各launch/ledger。
+- Issue48 https://github.com/GaoE05/robot-research-bridge/issues/48；协议`native_protocol.json`。原生来源资格/训练成功均未预先宣称。新结果完成后集中回写Master。
+
+---
+## Issue47历史冻结摘要（下一建议已被Issue48新授权替代）
+
 # CURRENT_STATE — 新会话先读
 
 最后核对：2026-11-06 CST。**Issue47完整结项并停止：物理接管、两seed PPO、196回合终检、3条Mac视频已完成。未满足联合延长门槛，没有继续训练/Student/下一阶段队列。有限正结果成立，但不推广替换旧基线。**
