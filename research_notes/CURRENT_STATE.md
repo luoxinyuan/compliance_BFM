@@ -1,6 +1,6 @@
 # CURRENT_STATE — 新会话先读
 
-最后核对：2026-11-06 CST。**Issue46已结项，Issue47正式C0/I接管与PPO尚未启动。用户新提供PPU服务器并授权隔离兼容验证：原BFM推理/梯度、I/C0同状态输出及8s真实MuJoCo检查已通过；没有后台训练或自动排队任务。资源条件已从“没有可用后端”变为“PPU基础链路可用、Issue47完整后端回归待执行”，不可把兼容探针当作C0恢复证据。**
+最后核对：2026-11-06 20:10 CST。**Issue46已结项；Issue47正在执行。用户提供的PPU上，4个基线回归及28个完整接管/因果对照回合已完成；同PPU接管前缀严格一致。早期C0→I恢复有效、较晚不可靠，故按原授权启动C0起点两seed PPO，各先16×768。当前两组均已完成第8批开发评估，尚未做封存终检，不能宣称训练成功或推广为新基线。**
 
 [完整结果](COEXIST_RESULTS.md) · [预登记协议](COEXIST_PROTOCOL.md) · [Issue46](https://github.com/GaoE05/robot-research-bridge/issues/46) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18) · [BFM原生复用最小路线](BFM_REWARD_REUSE_ROADMAP.md)。RESEARCH_OVERVIEW是长期纲领；ChatGPT Library2026-10-28是历史快照。
 
@@ -24,28 +24,35 @@ Contact-conditioned whole-body behavior selection/modulation/transition：依据
 6. 242完整审查回合无安全终止；seed4602中距有共10个无支撑标记tick（单段10–15ms），未隐去。最大q_PD20ms跳变68.29°不等于实际q5ms3.60°。无接触稳定，释放后不考核旧anchor跟随。
 7. 探索噪声能改变同状态BFM动作，未证明std太小；但单步方向覆盖不等于持续有效反馈。raw logprob复现≤.0001221，联合KL≤.01996，critic EV提高不能代替actor成功。每seed208完整采样回合，减速决策仅136/213；覆盖及优化共同限制尚无唯一根因。
 
-## 当前授权：Issue47 C0局部→全身参与（进行中，正式实验未启动）
+## 当前授权：Issue47 C0局部→全身参与（实际接管完成，PPO进行中）
 
 [详细记录](C0_ENGAGEMENT_RESULTS.md) · [Issue47](https://github.com/GaoE05/robot-research-bridge/issues/47) · [协议](c0_engagement_protocol.json)。[方法定位与自主学习思考](CONTACT_LEARNING_RATIONALE.md)。用户观看C0后更认可其先局部、后身体参与的组织，当前优先研究delayed engagement；旧原生reward-prompting建议改为后备工具，未执行。
 
-讨论结论：继续既定C0/I接管有价值，用有限同状态干预区分条件运动能力、启动/维持反馈与恢复域；证据支持后才进行原授权PPO。最终主线是接触/身体状态条件的自主行为选择，不是人工goal答案拼接。人工goal用于资格、初始化和探索；BFM风格先验及PPO均不保证任意状态/latent序列自然或全局收敛。此次仅文档澄清，不改实验变量、预算或封存设置，不启动多部位/新力范围训练。
+讨论结论：继续既定C0/I接管有价值，用有限同状态干预区分条件运动能力、启动/维持反馈与恢复域；证据支持后才进行原授权PPO。最终主线是接触/身体状态条件的自主行为选择，不是人工goal答案拼接。人工goal用于资格、初始化和探索；BFM风格先验及PPO均不保证任意状态/latent序列自然或全局收敛。这部分是方法澄清，不扩大本轮实验变量、预算或多部位/新力范围训练。
 
-进一步讨论已写入CONTACT_LEARNING_RATIONALE第8节：原生候选可提供有起点的探索，真实源状态/共同前缀需求变化应常态覆盖，后续明确研究“蒸馏初始化→部署观测Student真实闭环RL→可靠专家聚合”。均是待验证方法候选，不宣称std=.008够不着已被证实、不保证原生候选便宜且合格或Student RL必胜；严格最差任务/频繁回滚也需防止冻结学习。当前Issue47协议/预算仍不变；2026-11-06另完成用户提供PPU的基础兼容检查，未自动启动原实验或新方向。
+进一步讨论已写入CONTACT_LEARNING_RATIONALE第8节：原生候选可提供有起点的探索，真实源状态/共同前缀需求变化应常态覆盖，后续明确研究“蒸馏初始化→部署观测Student真实闭环RL→可靠专家聚合”。均是待验证方法候选，不宣称std=.008够不着已被证实、不保证原生候选便宜且合格或Student RL必胜；严格最差任务/频繁回滚也需防止冻结学习。Issue47原预算仍不变；在用户授权继续后，用新PPU完成原任务回归、因果接管并启动条件PPO，没有启动新科研方向。
 
 C0精确SHA `ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c`，`runs/prior-recovery-20261105/correct-C0/C0.pt`。I起点、750条六类示范、2000监督更新；没有后续PPO，也没有在线先手后脚规则。仍是1088D特权Teacher，不是部署Student。
 
 已完成保存72cm轨迹100ms/50Hz分析：C0首次持续10N约8.18s，左足约10.22s卸载、10.35s落地，前进约5.90cm但root几乎未推进；约12.43s才建立持续root前向速度。最初至7.5sC0误差3.36cm/力2.93N，优于I4.77cm/4.25N；后续明显追赶不足。C0 7.5s目标z已偏离standing约52.6°，不能说高层一直没发命令。尚未隔离高层、BFM反馈和外力贡献，也没证明手臂已耗尽自然可达余量。
 
-待执行：C0/I完整历史双向接管（72cm的6/7.5/9/10.3/11s及少量近距/共同前缀）；仅有效恢复证据成立后，C0起点两seed4701/4702各16×768，开发共同收益可等预算延至32。新留出组合已固定。预算14000累计job秒/49152决策/9GiB/最多3张实际空闲GPU。原BFM/PD/Direct、reward/std/历史、10N/K80D8不变；5N回归。
+### 2026-11-06真实进展与运行身份
 
-历史NVIDIA资源检查（2026-11-05，不能作为当前快照）：初查全部卡有任务；1–6短暂空闲，但发车二次核验出现新多卡任务，故未发车。实际新增GPU任务/物理回合/BFM推断/RL/监督更新均0。不要CPU替代BFM、不要共用他人GPU或沿用这次快照。接管脚本仅语法验证，未声称物理通过；PPO尚未实现为已运行任务。Issue47开放，本阶段未完成/未科学否定。恢复时先重查资源，再核对协议与基线历史物理一致。
+- 物理runtime `d24622b259f984a42a3f628e983a15e8ea16d547`；4个基线＋28个完整回合，未触发安全边界。C0/I双向接管逐项保留MuJoCo integration/solver、BFM观测与动作历史、实际上一z、力/接触与控制记忆，同后端分支前缀精确一致。
+- 72cm全接触误差/力：C0 **30.827cm/8.625N**，I **7.642cm/5.885N**；C0→I@6s **7.117cm/5.598N**、@7.5s **7.126cm/5.016N**，@9s却 **27.655cm/8.625N**。不能将早期恢复标签推广到后期。近6cm原C0 **2.293cm/1.895N**，切I@6s退化至 **3.530cm/2.991N**。
+- I→C0@7.5s可接续已组织行走（7.541cm/5.572N），@6s却30cm附近；能力依赖真实源状态，不是C0完全不能走。固定6s实际z、BFM仍实时反馈时，带力root仅前移约3.81cm且没有真实抬脚/卸载；正常C0约49.98cm且有步态。进一步真实撤力仅约0.44cm。高层变化有因果贡献，未量化“主动百分比”，固定z不是完全被动机器人。
+- 两seed4701/4702均从原C0 actor/归一化/std逐值相同起点开始，独立fresh critic/Adam；没有在线I/M10/Cyclic、没有额外BC恢复标签或Student。正式PPO runtime **`eeeb8979258b774a87dbedf8b17d18e3d15fc47a`**，两独立worktree；同一独占PPU，两job各3个worker，不增加第二张卡。
+- 首轮尝试runtime `4acd257790f517cff94fbc23fd0f2d01b9bdd5e1`各采768决策，在第一次更新前因PPU批量/单条FP32 arithmetic导致原logprob断言失败；**共1536采样决策计入预算，0正式更新**。逐条重算原logp完全一致，改为learner与采样同一batch-one actor路径后，原3e-4断言通过且梯度/Adam/KL回滚正常。未放宽阈值或更改raw概率空间/std；不是已证实的历史PPO错误。
+- 第8批：4701等权near/mid/far/stop开发相对代价 **0.9796**，far **0.9497**、near **0.9853**；4702 **0.9943**，far **1.0036**、near **0.9745**。两者局部保留，但长距收益尚未重复，连接零需求仍有退化。继续预定16批，不用混合任务采样force曲线宣布改进；终检未打开。
+- 源姿态留出`new_ready205`在训练前修正缺失ready_progress及不实际进入arm-ready的前缀：真实执行到6s、进度.45，接触时刻等整体后移1.8s。其余训练/测试条件不变，详情见协议amendment。
 
-## PPU迁移检查（2026-11-06，独立兼容探针）
+运行根目录：`/root/compliance-ppu-20261106/issue47/`；正式训练`ppo4701-r1`、`ppo4702-r1`，worktree为同名`repo-ppo-4701-r1/4702-r1`。失败初尝`ppo4701/4702`原样保留。SDK每次shell须加载`/usr/local/PPU_SDK/envsetup.sh`；不改运行中源码/环境。原NVIDIA实验目录和共享checkout未动，BFM推断与梯度都在PPU，不CPU替代。
 
-[结果与复现](PPU_COMPATIBILITY_RESULTS.md)：PPU-ZW810E约95.6GiB，厂商PyTorch2.9.0，独立venv保留原MuJoCo3.3.3/NumPy1.26.4/joblib1.5.1；原完整BFM及I/C0 SHA核对通过。18个NVIDIA保存状态的BFM action最大差5.66e-7、q_PD差2.73e-5°，高层I/C0 raw差2.24e-8；真实latent梯度有限非零。新standing +X3.5cm兼容回合8s/1600物理步，力1.618N RMS/2.049N peak，tilt最大2.79°，无关节越限、力矩饱和或安全终止。0新增RL决策/研究监督更新。它不是原72cm接管/新PPO成功，不取代Issue47正式回归。
+原上限14000累计job秒/49152新RL决策/9GiB。首段两组共24576正式决策＋1536失败采样；仍需计入评估/渲染及未提交部分。扩展只能依原16批联合开发门槛，且扣除失败样本后等量延长，不能无视总cap自动各跑32。新增监督/Student更新0。当前状态是运行中快照，精确完结账本待作，不沿用旧PID或空闲快照。
 
-新服务器运行根目录`/root/compliance-ppu-20261106/`，私有模型资产`/mnt/workspace/compliance-ppu-20261106/`；Mac摘要`~/Projects/compliance-bfm-diagnostics/ppu-compatibility/`。源码快照仍`cc5765522826cbe130635321f0a3056362faa184`，仅新增隔离诊断入口；原服务器实验与共享源码未动。SDK必须按会话加载；缺GL库私有解包、旧joblib读取失败与测试误用no_grad的失败均保留。测试已退出，PPU最终空闲，无自动发车。恢复Issue47前先复查资源，运行冻结C0/I的原任务后端回归与同后端完整前缀一致性；跨平台逐位物理相同、PPO并行吞吐尚未验证。
+新接管视频已同步Mac：`~/Projects/compliance-bfm-diagnostics/videos/c0-delayed-engagement/01-causal-recovery-window.mp4`＋INDEX。四格为C0、C0→I@7.5s、C0→I@9s、I→C0@7.5s，正常1×真实qpos，覆盖完整接触和释放恢复；它证明恢复窗口差别，不是新统一模型。SHA/14.96s/374帧/完整解码和画面已核对。
 
+PPU基础兼容检查是此前独立准备：[PPU_COMPATIBILITY_RESULTS](PPU_COMPATIBILITY_RESULTS.md)。原18状态BFM/q_PD微差及8s基础回合通过；这不等于正式任务跨平台逐位相同。原NVIDIA严格断言的微小prefill数值差保留，正式接管使用同后端完整前缀精确校验。[阶段报告](C0_ENGAGEMENT_RESULTS.md)记录实际物理、概率路径修复及进度。
 ## Issue46历史身份与成本（不表示当前GPU空闲）
 
 训练runtime `f6ca5c5f6c4de205b3457bef4a024345e2105009`；最终评估/渲染 `057f5c6bd302185097770c3c1ed4d10dfb2ce109`。长期个人分支`gaoe05/research`；最终文档commit见Issue46链接，勿混作训练runtime。
