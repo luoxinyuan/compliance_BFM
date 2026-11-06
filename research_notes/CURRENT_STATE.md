@@ -15,8 +15,8 @@
 - 已完成：NVIDIA batched/batch-one FP32原概率检查及KL/Adam回滚复验，最大联合logprob差≤1.23e-4<原3e-4；拟合后真实输入两臂均9.16e-5。无PPU逐行路径，原阈值不变。
 - 已完成：首批6个逻辑候选、7个真实资格回合。standing稳定；5cm goal伸臂1.587cm/1.303N、root最大0.68cm；15cm为4.740cm/3.886N。lean30为13.080cm/8.838N，不当优质30cm专家。native motion任务版能进入/持续/退出，但72cm负载33.092cm/9.075N且推进过多，只是运动先验。旧reward move-ego侧漂/指令跳变负例保留，没有新大资产下载或reward seed扫描。
 - 已完成：fresh高层网络用7个原生回合的441个维持/恢复时刻记录作2000更新初始化，不是441个独立回合。排除隐藏时钟选择的进入/退出帧；低raw MSE不代表闭环成功。新初始化连接零需求会多走、长距又推进不足；无接触root约2mm。问题完整保留，不先无限BC修补才开始RL。
-- 正在执行：GPU0普通Gaussian真实PPO，原生方向协方差Gaussian组随后顺序执行；每臂首段32×768，相同seed4801、初始化、网络、课程、reward和决策预算。正式runtime见下方。源standing/reach/walking实际执行到不同阶段后同env接管，solver/BFM/动作/last-z/力历史不清零。零需求、近/中/远、停止/继续及移动起点需求变化均为正常分布。
-- 尚未完成：两臂最终开发选择、封存真实物理矩阵、真实qpos视频与Mac同步、科学结项。已登记仅在两臂完成后进行的冻结评估/离线渲染队列；不新增RL或Student。Mac目录已确认可写，不等于视频已交付。
+- 正在执行：GPU0普通Gaussian已完成32批/24576决策，开发最佳仍iteration0（未胜过原生初始化）；原生方向协方差Gaussian组已真实启动，同样32批/24576决策；每臂首段32×768，相同seed4801、初始化、网络、课程、reward和决策预算。正式runtime见下方。源standing/reach/walking实际执行到不同阶段后同env接管，solver/BFM/动作/last-z/力历史不清零。零需求、近/中/远、停止/继续及移动起点需求变化均为正常分布。
+- 尚未完成：两臂最终开发选择、封存真实物理矩阵、真实qpos视频与Mac同步、科学结项。已登记仅在两臂及supervisor完整退出后进行的77回合冻结评估/离线渲染队列（continue与long重复，不多算独立条件）；不新增RL或Student。Mac目录已确认可写，不等于视频已交付。
 
 探索实现：A各向同性raw std=.008；B固定满秩协方差 `.008²I+.15²DᵀD`，D为按来源均衡的4个原生切向方向；白化Gaussian采样u，raw=L*u一次后原sphere16投影，old logprob对应实际u。最终均值执行不查询候选，不限制为菜单/小半径。**此对照同时改变方向与总探索方差，也改变概率信赖域的raw几何；即便B胜出也不能单独归因方向性。** 无时间持续proposal或SF planner。引导组正式开始前发现unweighted SVD被71帧walking压过3个静态goal，局部切向覆盖仅9–13%；改用arm5/arm15/lean/walkmean四来源正交基，秩/方差总量不变；新真实输入概率复验1.22e-4通过。首版保留，未看引导/封存结果改方向，普通组执行不变。
 
@@ -29,7 +29,7 @@
 - 只用当前实时获准PRO5000 GPU0；其他卡/他人任务不动。上限24000累计job秒/15GiB/98304新增高层RL决策；C0专项为0。初步队列各32批共49152决策，不自动耗尽上限。
 - 工程失败保留：新worktree物化问题0RL；冷字节码CPFS启动中止0RL，后用同源码PYTHONDONTWRITEBYTECODE=1执行成功。初始化/概率/失败/评估均计入ledger。不修改共享BFM/PD/权重/main/SoftSONIC，无真机。
 - `postprocessing/status.json`及pid.json记录冻结评估/渲染队列。该队列不增加训练，不根据终检重选模型；若failed保留错误，禁止重复启动整个训练。
-- Mac目标`~/Projects/compliance-bfm-diagnostics/videos/native-contact-learning/`：计划仅3条1×MP4＋INDEX（局部/长距、同模型共同前缀停止/继续）。目前尚未生成或验证，不能宣称已同步。
+- Mac目标`~/Projects/compliance-bfm-diagnostics/videos/native-contact-learning/`：计划仅4条1×MP4＋INDEX（局部/长距、同模型共同前缀停止/继续、连接零需求含原生Standing物理对照）。目前尚未生成或验证，不能宣称已同步。
 
 ## 不可丢失的历史与基线
 
