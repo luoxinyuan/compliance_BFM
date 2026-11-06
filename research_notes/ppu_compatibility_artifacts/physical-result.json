@@ -1,0 +1,33 @@
+{
+  "status": "completed",
+  "model_loaded": true,
+  "original_wrapper_used": true,
+  "bfm_updates": 0,
+  "student_optimizer_updates": 0,
+  "study": {
+    "status": "completed",
+    "student_optimizer_updates": 0,
+    "rl_decisions": 0,
+    "bfm_updated": false,
+    "maximum_saved_action_difference": 5.662441253662109e-07,
+    "maximum_saved_qpd_difference_deg": 2.732075699896086e-05,
+    "physical": {
+      "physics_steps": 1600,
+      "simulated_seconds": 7.999999999999852,
+      "physics_wall_seconds": 9.583218755000416,
+      "active_steps": 600,
+      "force_rms": 1.6178448843401003,
+      "force_peak": 2.049409031930705,
+      "min_root_height": 0.7796946941041916,
+      "max_tilt_deg": 2.790098431140586,
+      "max_joint_limit_excess_rad": 0.0,
+      "any_failed": false,
+      "max_torque_saturation": 0.0,
+      "active_tracking_rms_cm": 1.967827979793311,
+      "episode": "New standing +X3.5cm compatibility probe, 3s onset/2s ramp/6s release/8s end; not a policy performance benchmark"
+    },
+    "elapsed_s": 11.332649052999841,
+    "peak_allocated_MiB": 174.5380859375
+  },
+  "original_bfm_unchanged": true
+}

@@ -1,0 +1,6 @@
+{
+  "bfm_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "bytes": 3384968272,
+  "source_commit": "cc5765522826cbe130635321f0a3056362faa184",
+  "purpose": "PPU compatibility only; no Issue47 experimental training"
+}
