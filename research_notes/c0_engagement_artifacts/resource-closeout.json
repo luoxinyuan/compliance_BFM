@@ -1,0 +1,46 @@
+{
+  "status": "complete; experiments, real video delivery and analysis finished",
+  "checked_unix": 1793971487.0434575,
+  "job_wall_conservative_seconds": 9080,
+  "components": {
+    "qualification_interventions_and_PPO": 5378,
+    "rendering_including_failed_timeout": 835,
+    "final_evaluations_and_failed_launch": 2125,
+    "prior_saved_analysis": 142,
+    "auxiliary_CPU_reserve": 600
+  },
+  "limits": {
+    "job_wall_seconds": 14000,
+    "RL_training_decisions": 49152,
+    "new_outputs_GiB": 9
+  },
+  "actual_RL_training_decisions": 26112,
+  "formal_RL_decisions": 24576,
+  "failed_attempt_RL_decisions": 1536,
+  "formal_optimizer_updates": 72,
+  "diagnostic_cached_update_smoke": "separate non-candidate; included in auxiliary reserve; not formal training",
+  "new_student_or_supervised_updates": 0,
+  "diagnostic_full_episodes": 32,
+  "formal_PPO_training_completed_episodes": {
+    "seed4701": 109,
+    "seed4702": 104
+  },
+  "development_eval_episodes": 120,
+  "frozen_final_eval_episodes": 196,
+  "final_labels_per_model": 28,
+  "heldout_labels": 6,
+  "heldout_unique_physical_conditions": 5,
+  "stage_directory_bytes": 7005783668,
+  "stage_directory_GiB": 6.524644482880831,
+  "output_counting": "Entire stage directory including code, preserved failures, checkpoints, raw private trajectories, copied references; excludes separately completed PPU compatibility assets",
+  "analysis_cpu_seconds": {
+    "initial": 180.240696901,
+    "cap_definition_refinement": 177.923900096,
+    "prefix_time_alignment": 20.520791138
+  },
+  "original_models_preserved": true,
+  "no_training_queued": true,
+  "postprocessing_only": false,
+  "owned_training_evaluation_rendering_processes_ended": true,
+  "PPU_free_at_closeout": true
+}

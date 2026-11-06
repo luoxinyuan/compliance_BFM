@@ -1,0 +1,317 @@
+{
+  "manifest": {
+    "started_utc": 1793967728.115305,
+    "runtime": "c6f4a31c3ad32c62d2ce8be810a85fe0d195fa46",
+    "protocol_sha256": "a224d9fee39febebab4dbdc43c11dc171e426119471c1b1e0bf27579594a0edc",
+    "extra_sha256": "87a5403738b9b667838d82c80d9ce79153241c888e1d8042185fe3bbfd0d10c3",
+    "selection": {
+      "4701": {
+        "iteration": 8,
+        "score": 0.9796357038739398,
+        "sha256": "f23a6818dab277b775b41d5926641c359546cd6d5f6b2f2003a33514c446e2f6",
+        "evaluation": "dev-0008/summary.json",
+        "rule": "0/8/16(/24/32): among checkpoints retaining local mean cost <=1.10*C0 and without safety termination, minimize equal-weight near/mid/far/stop family mean physical cost normalized to own initial C0; otherwise retain0. Report worst tasks and all candidates separately."
+      },
+      "4702": {
+        "iteration": 8,
+        "score": 0.9942706037267743,
+        "sha256": "37f2c7e54375df301c9cc8160b2363ff8b8eb03edf251b5b1b93cdac583ef4ce",
+        "evaluation": "dev-0008/summary.json",
+        "rule": "0/8/16(/24/32): among checkpoints retaining local mean cost <=1.10*C0 and without safety termination, minimize equal-weight near/mid/far/stop family mean physical cost normalized to own initial C0; otherwise retain0. Report worst tasks and all candidates separately."
+      }
+    },
+    "models": {
+      "C0": {
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/correct-C0/C0.pt",
+        "sha256": "ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c"
+      },
+      "I": {
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+        "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a"
+      },
+      "RL4601": {
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/feedback-coexistence-20261105/ppo4601/last.pt",
+        "sha256": "8fa4759d3766568dee8fbba0367e772a97977694d19a503868708efa6d8c9228"
+      },
+      "4701_selected": {
+        "path": "/root/compliance-ppu-20261106/issue47/ppo4701-r1/best.pt",
+        "sha256": "f23a6818dab277b775b41d5926641c359546cd6d5f6b2f2003a33514c446e2f6"
+      },
+      "4701_last": {
+        "path": "/root/compliance-ppu-20261106/issue47/ppo4701-r1/last.pt",
+        "sha256": "98fabe8d88b5f6b85d07e6cfcbab9e7e0df830367cc7aec408ed040e660adda6"
+      },
+      "4702_selected": {
+        "path": "/root/compliance-ppu-20261106/issue47/ppo4702-r1/best.pt",
+        "sha256": "37f2c7e54375df301c9cc8160b2363ff8b8eb03edf251b5b1b93cdac583ef4ce"
+      },
+      "4702_last": {
+        "path": "/root/compliance-ppu-20261106/issue47/ppo4702-r1/last.pt",
+        "sha256": "73376b32902381701c948cf19764180386441b7c8bf49191d92bdd653b2181fd"
+      }
+    },
+    "condition_order": [
+      "local7",
+      "local9",
+      "mid18",
+      "mid22",
+      "long65",
+      "long80",
+      "stop",
+      "continue",
+      "ready18",
+      "zero",
+      "no_contact",
+      "left",
+      "right",
+      "early",
+      "late",
+      "new_local65",
+      "new_mid205",
+      "new_long68",
+      "new_ready205",
+      "new_prefix_stop",
+      "new_prefix_continue",
+      "reg_local5",
+      "reg_mid24",
+      "reg_long60",
+      "exposed_long72",
+      "exposed_local6",
+      "light5N_long72",
+      "light5N_local6"
+    ],
+    "primary_seed": 4701,
+    "no_selection_from_final": true
+  },
+  "common_prefix": {
+    "C0": {
+      "cut_time": 7.61,
+      "checks": {
+        "physics": {
+          "equal": true,
+          "records": 722,
+          "sha256": "56526fa18bf60222d36382c6dc5ddd1d2231706ab676ba57c1017445cfa6905a"
+        },
+        "control_commands": {
+          "equal": true,
+          "records": 181,
+          "sha256": "4a5536ec6f0b017b9883a2ccab6c38a34ef7d6e01ef3bdedf9f9435ef99e23b0"
+        },
+        "complete_control_records": {
+          "equal": true,
+          "records": 180,
+          "sha256": "c53a1e3da90fb424b79dcd5db1bee15f4baa26ab1ca4d1365b50d8a488eb4ce2"
+        },
+        "decisions": {
+          "equal": true,
+          "records": 37,
+          "sha256": "da67b9902f72460b6e51eff62e44378cbf19fa946febe1136116dec06fca5e00"
+        }
+      },
+      "first_highlevel_input_output_difference_time": {
+        "obs": 7.699999999999858,
+        "raw": 7.699999999999858
+      },
+      "scope": "Full physical rows before demand change; command/prestate before change; post-state metadata only if the full 20ms substep ends before change. No physics modified."
+    },
+    "I": {
+      "cut_time": 7.61,
+      "checks": {
+        "physics": {
+          "equal": true,
+          "records": 722,
+          "sha256": "64cc0bdf014cee087e0391bb65e2a81be273a8648afbe4278c74e5bd1a0a0c02"
+        },
+        "control_commands": {
+          "equal": true,
+          "records": 181,
+          "sha256": "1c86cdabd653bb3bb2116881095fab6dccfef7acea052b2b1178a3ee8a1865cb"
+        },
+        "complete_control_records": {
+          "equal": true,
+          "records": 180,
+          "sha256": "337fa7ab8a77562b716f8c1a2cfda3a62f2c3b40808f4339476855f991f9993f"
+        },
+        "decisions": {
+          "equal": true,
+          "records": 37,
+          "sha256": "e48d7bface64dea818db56f6df079268efb9411ad9dcb952af669a1b5ae39ab6"
+        }
+      },
+      "first_highlevel_input_output_difference_time": {
+        "obs": 7.699999999999858,
+        "raw": 7.699999999999858
+      },
+      "scope": "Full physical rows before demand change; command/prestate before change; post-state metadata only if the full 20ms substep ends before change. No physics modified."
+    },
+    "RL4601": {
+      "cut_time": 7.61,
+      "checks": {
+        "physics": {
+          "equal": true,
+          "records": 722,
+          "sha256": "1a1ffcc228f90adcb6e8519f963a653586760b3d45a92580f1f0ff33d3e0623b"
+        },
+        "control_commands": {
+          "equal": true,
+          "records": 181,
+          "sha256": "37372ed24a81d43b5e0c48427b494e56d06f53a45c7c2f309afe6425bb9c4d6e"
+        },
+        "complete_control_records": {
+          "equal": true,
+          "records": 180,
+          "sha256": "944e74e9c7fdf409ab6c2c10d645d8a5d8aa99cc09e940da2b5c634be7dcad30"
+        },
+        "decisions": {
+          "equal": true,
+          "records": 37,
+          "sha256": "5f316483883b3470ce1e3bfbaa0b3eeccb930f655c8eb904f00d0e030ea25303"
+        }
+      },
+      "first_highlevel_input_output_difference_time": {
+        "obs": 7.699999999999858,
+        "raw": 7.699999999999858
+      },
+      "scope": "Full physical rows before demand change; command/prestate before change; post-state metadata only if the full 20ms substep ends before change. No physics modified."
+    },
+    "4701_selected": {
+      "cut_time": 7.61,
+      "checks": {
+        "physics": {
+          "equal": true,
+          "records": 722,
+          "sha256": "46c1004e703d3d044fae97c2af780291ac59fa8c1ba5fdd46890633374f3cbd7"
+        },
+        "control_commands": {
+          "equal": true,
+          "records": 181,
+          "sha256": "c477fa9f82d2db9ef34981a20f51e865add7e30c333345fcee87c46f52323579"
+        },
+        "complete_control_records": {
+          "equal": true,
+          "records": 180,
+          "sha256": "da632e73209f82d7b9f136ae2250092dbc7b80856a9b362b7eabc6b385f3a609"
+        },
+        "decisions": {
+          "equal": true,
+          "records": 37,
+          "sha256": "eb4f2babc3c6e081e7d5814c8a1743739dfe03da37fe5c4de0f8485f652fb639"
+        }
+      },
+      "first_highlevel_input_output_difference_time": {
+        "obs": 7.699999999999858,
+        "raw": 7.699999999999858
+      },
+      "scope": "Full physical rows before demand change; command/prestate before change; post-state metadata only if the full 20ms substep ends before change. No physics modified."
+    },
+    "4701_last": {
+      "cut_time": 7.61,
+      "checks": {
+        "physics": {
+          "equal": true,
+          "records": 722,
+          "sha256": "5a5e514750890c2ca3ec9ab9a9ce893054a891b7b3806e7de9e5afef3b2480c0"
+        },
+        "control_commands": {
+          "equal": true,
+          "records": 181,
+          "sha256": "bb842eb2cdacd22c84dfefce31f9a7cebc594bf781d63c8d4879894ff44655f7"
+        },
+        "complete_control_records": {
+          "equal": true,
+          "records": 180,
+          "sha256": "e4a92a36a545c004fdda0393283cb53b2f7f22e3a0527577a6f62f6422176cd0"
+        },
+        "decisions": {
+          "equal": true,
+          "records": 37,
+          "sha256": "e5d60332a18545c0dc23b5dd38955fd73e2c9e7c9833831b84b7d3b5749b9b85"
+        }
+      },
+      "first_highlevel_input_output_difference_time": {
+        "obs": 7.699999999999858,
+        "raw": 7.699999999999858
+      },
+      "scope": "Full physical rows before demand change; command/prestate before change; post-state metadata only if the full 20ms substep ends before change. No physics modified."
+    },
+    "4702_selected": {
+      "cut_time": 7.61,
+      "checks": {
+        "physics": {
+          "equal": true,
+          "records": 722,
+          "sha256": "b59998b54285f799316b0c59da10238e7634c0def1a7ddee4fa631373492c20f"
+        },
+        "control_commands": {
+          "equal": true,
+          "records": 181,
+          "sha256": "5e99d7f2b91c77bf9438badc6dc19550e20703149dd6a878764c8ebca756e923"
+        },
+        "complete_control_records": {
+          "equal": true,
+          "records": 180,
+          "sha256": "032ca65122a35967dca8a991b115ed5a4f5861e22f33af77c7be913e6096dbdd"
+        },
+        "decisions": {
+          "equal": true,
+          "records": 37,
+          "sha256": "8df8fa971a4a26957870dcbc74f9b26ba24c78900afd3dc165aa52f48c3307e6"
+        }
+      },
+      "first_highlevel_input_output_difference_time": {
+        "obs": 7.699999999999858,
+        "raw": 7.699999999999858
+      },
+      "scope": "Full physical rows before demand change; command/prestate before change; post-state metadata only if the full 20ms substep ends before change. No physics modified."
+    },
+    "4702_last": {
+      "cut_time": 7.61,
+      "checks": {
+        "physics": {
+          "equal": true,
+          "records": 722,
+          "sha256": "7ace26b3544304cd9535a9bf3bad036ee861c8a239b77dbe5c6694f7507cbdc0"
+        },
+        "control_commands": {
+          "equal": true,
+          "records": 181,
+          "sha256": "e096b7c018eec089a9a92f1a02115c6b2d28ded7e763ae17466bbb040ade166d"
+        },
+        "complete_control_records": {
+          "equal": true,
+          "records": 180,
+          "sha256": "f71a4b85601f5d0e40d168a2c941f2a915b9ab0d415db3a7335774b42f9d6674"
+        },
+        "decisions": {
+          "equal": true,
+          "records": 37,
+          "sha256": "b0459892ee82e63f5ef9e0614b0905ca0d4bea7af075f49de521d11688adac81"
+        }
+      },
+      "first_highlevel_input_output_difference_time": {
+        "obs": 7.699999999999858,
+        "raw": 7.699999999999858
+      },
+      "scope": "Full physical rows before demand change; command/prestate before change; post-state metadata only if the full 20ms substep ends before change. No physics modified."
+    }
+  },
+  "definition": "3D error/XYZ force use same-force-time contact.point/anchor/force. Kinematics use saved post-step actual state. Multi-point burden uses sum of point norms; released anchor is not a task metric.",
+  "analysis_seconds": 177.92390009600058,
+  "validation": {
+    "max_3D_error_difference_cm": 1.0658141036401503e-14,
+    "max_sum_force_rms_difference_N": 1.7763568394002505e-15,
+    "max_any_point_cap_fraction_difference": 0.0,
+    "all_prefix_physics_inputs_commands_equal": true
+  },
+  "heldout_independence": {
+    "labels": 6,
+    "unique_physical_conditions": 5,
+    "duplicate": "new_prefix_continue equals new_long68 except metadata demand_family; not an independent extra test"
+  },
+  "offline_analysis_corrections": {
+    "cap_fraction": "Distinguish per-point/any-point/total-budget saturation; original training and evaluation unchanged",
+    "prefix": "Original full control record hash included POST-state of 7.60-7.62s substep straddling change7.61s. Pre-change physics, commands and policy observations were already equal. Restrict full record to ended substeps, compare prestate/commands separately. No physics mutation or new rollout.",
+    "postcheck_seconds": 20.29694699399988,
+    "source_file_sha256": "8d79f984df462c31552aeed0eff6b68e1fe269e5b63984dee31c490e8069f52a"
+  }
+}

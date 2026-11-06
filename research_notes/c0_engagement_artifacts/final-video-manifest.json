@@ -1,0 +1,102 @@
+[
+  {
+    "name": "02-small-request-new6p5cm",
+    "path": "/root/compliance-ppu-20261106/issue47/videos-final/02-small-request-new6p5cm.mp4",
+    "sha256": "2efa1ac96d083155729069be544e65e1e7f53c0821a4689126a8297877c2741a",
+    "frames": 217,
+    "fps": 25,
+    "duration": 8.68,
+    "seconds": 49.687676517,
+    "sides": [
+      {
+        "title": "C0 frozen local-first prior",
+        "path": "/root/compliance-ppu-20261106/issue47/final-02/C0/new_local65.json.gz",
+        "sha256": "a6e137b22799a1e4d8a1d51372b09381891725499cb9ea4855914909249ad618"
+      },
+      {
+        "title": "C0-PPO4701 selected batch8",
+        "path": "/root/compliance-ppu-20261106/issue47/final-02/4701_selected/new_local65.json.gz",
+        "sha256": "f0ca92357140279c166cdddcec892fc63f6be8bf0038e1ba661cf6d85129c173"
+      },
+      {
+        "title": "I frozen walking reference",
+        "path": "/root/compliance-ppu-20261106/issue47/final-02/I/new_local65.json.gz",
+        "sha256": "615d5624c70fd0cbeddb057bccb4152923912137833b20e4d14f7b4b05d268f8"
+      },
+      {
+        "title": "4601 previous PPO reference",
+        "path": "/root/compliance-ppu-20261106/issue47/final-02/RL4601/new_local65.json.gz",
+        "sha256": "6c9c4318653e18d002ce74cbc76a0be7163b276d4586d2964f2704f8907f76ed"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.065,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 5.11,
+      "ramp": 1.35,
+      "release": 8.66,
+      "end": 12.66,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "new_local65",
+      "handoff_time": 3.999999999999937
+    }
+  },
+  {
+    "name": "03-sustained-pull-new68cm",
+    "path": "/root/compliance-ppu-20261106/issue47/videos-final/03-sustained-pull-new68cm.mp4",
+    "sha256": "25c4636355c4c89ac4a47237d6d1a1fb1028133634d16becd3d2040c498a63aa",
+    "frames": 391,
+    "fps": 25,
+    "duration": 15.64,
+    "seconds": 91.72558475400001,
+    "sides": [
+      {
+        "title": "C0 frozen local-first prior",
+        "path": "/root/compliance-ppu-20261106/issue47/final-02/C0/new_long68.json.gz",
+        "sha256": "af317c87955a1c0e86259f63571a4aa3db8aaaa188320edf1decd89785a8b845"
+      },
+      {
+        "title": "C0-PPO4701 selected batch8",
+        "path": "/root/compliance-ppu-20261106/issue47/final-02/4701_selected/new_long68.json.gz",
+        "sha256": "54fc3acf1d8e3d0f8b919fb25d82184d51495da7e8eb53fdada934ceb7124f51"
+      },
+      {
+        "title": "I frozen walking reference",
+        "path": "/root/compliance-ppu-20261106/issue47/final-02/I/new_long68.json.gz",
+        "sha256": "d36d0a9eae8e610ea903f16dc534cf28fcc271bd286ec8d1fd315957fc07939d"
+      },
+      {
+        "title": "4601 previous PPO reference",
+        "path": "/root/compliance-ppu-20261106/issue47/final-02/RL4601/new_long68.json.gz",
+        "sha256": "20ffecce356b3267e9f22599e29984cf85b4d93508b9dcc58e132d37565050d7"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.68,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "onset": 5.11,
+      "ramp": 8.3,
+      "release": 15.61,
+      "end": 19.61,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "new_long68",
+      "handoff_time": 3.999999999999937
+    }
+  }
+]
