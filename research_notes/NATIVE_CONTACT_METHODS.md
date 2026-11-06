@@ -27,3 +27,7 @@ Source prefixes physically execute standing, qualified reach or native walking i
 Self-hold, local, expanding/long demand, stop/continue, released recovery and moving-source demand changes are present from the first version. K80D8,total10N,5N regressions, original geometry reward/GAE/controls are fixed. Native execution and source-prefix costs are separate from actual on-policy decisions. Candidate qualification and BC do not count as PPO samples.
 
 Selection includes iteration0 and uses fixed multi-family development physical costs, worst-task protection and safety. New final combinations are sealed until selection. Results report continuous task utility and motion, not latent distance or root displacement alone. Released anchor error is descriptive, not follow success.
+
+
+## Scope of causal claims
+The guided arm adds variance as well as changing covariance orientation. It also changes the raw-coordinate probability/trust-region metric. Therefore this first contrast does not isolate direction from total exploration energy or optimization geometry. A future trace-matched isotropic control would be needed for that claim. Training samples stop/continue from matching parameter distributions; strict same-physical-prefix/same-checkpoint paired equality is measured in the sealed evaluation, not asserted for every independently randomized stochastic training episode.
