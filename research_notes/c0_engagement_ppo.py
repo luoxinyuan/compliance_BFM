@@ -7,8 +7,9 @@ def atomic(p,x):
  t=p.with_suffix('.tmp');t.write_text(json.dumps(x,indent=2,allow_nan=False));t.replace(p)
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- p=argparse.ArgumentParser();p.add_argument('--kind',choices=['structured','direct'],required=True);p.add_argument('--stage',required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--gpu',required=True);p.add_argument('--iterations',type=int,default=120);p.add_argument('--seed',type=int,default=101);p.add_argument('--execution-gain',type=float,default=1.0);p.add_argument('--resume',type=Path);p.add_argument('--domain',default='neighborhood',choices=['single','neighborhood']);p.add_argument('--max-seconds',type=float,default=28000);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--kind',choices=['structured','direct'],required=True);p.add_argument('--stage',required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--gpu',required=True);p.add_argument('--iterations',type=int,default=120);p.add_argument('--seed',type=int,default=101);p.add_argument('--execution-gain',type=float,default=1.0);p.add_argument('--resume',type=Path);p.add_argument('--domain',default='neighborhood',choices=['single','neighborhood']);p.add_argument('--max-seconds',type=float,default=28000);p.add_argument('--recovery-evidence',type=Path,required=True);a=p.parse_args()
  assert 0<a.execution_gain<=16
+ evidence=json.loads(a.recovery_evidence.read_text());assert evidence['conditional_PPO_gate']['early_valid_recovery'], 'No confirmed early physical recovery; do not train'
  assert not a.output.exists();a.output.mkdir();os.environ.update(CUDA_VISIBLE_DEVICES=a.gpu,CLEAN_KIND=a.kind,NARROW_DOMAIN=a.domain,NARROW_SEED=str(a.seed),NARROW_EXECUTION_GAIN=str(a.execution_gain))
  import torch,numpy as np
  from humanoidverse.force_compliance.parallel import receive,merge_rollouts
@@ -18,6 +19,7 @@ def main():
  cfg=json.loads(Path(__file__).with_name('c0_engagement_protocol.json').read_text());plan=dict(dev=cfg['development'],initial=cfg['models']['C0'],training=cfg['conditional_training']['optimizer_from_issue46'],selection=cfg['conditional_training']['checkpoint_selection']);torch.set_num_threads(1);torch.manual_seed(a.seed);torch.set_grad_enabled(False)
  ctx=mp.get_context('spawn');ps=[];cs=[];net=opt=None;iteration=decisions=updates=0;best=float('inf');status='initializing';started=time.monotonic();commit=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
+ atomic(a.output/'recovery-evidence.json',dict(path=str(a.recovery_evidence),sha256=sha(a.recovery_evidence),gate=evidence['conditional_PPO_gate']))
  atomic(a.output/'launch.json',dict(pid=os.getpid(),commit=commit,plan_sha256=sha(Path(__file__).with_name('c0_engagement_protocol.json')),args={k:str(v) if isinstance(v,Path) else v for k,v in vars(a).items()},started=time.time()))
  def stop(*_):raise KeyboardInterrupt
  signal.signal(signal.SIGTERM,stop)
@@ -52,7 +54,7 @@ def main():
   # Same newly initialized critic and fresh Adam in A/B; inherited actor differs.
   torch.manual_seed(a.seed+17);fresh=Expert(n).cuda();net.critic.load_state_dict(fresh.critic.state_dict());del fresh
   atomic(a.output/'resume.json',dict(path=str(a.resume),sha256=sha(a.resume),optimizer_loaded=False,critic='fresh seed+17, independent across4701/4702',std=float(net.log_std.exp().mean())))
-  assert a.iterations in (16,32) #32 only after the original joint development extension gate
+  assert a.iterations==16 #First round only; extension requires recorded joint gate and exact checkpoint/Adam continuation.
   assert a.resume is not None, 'Initialize from separately verified preparation; not random latent exploration'
   save('initial.pt')
   replay=None;weight=0.
