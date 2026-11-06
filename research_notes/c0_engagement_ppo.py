@@ -13,10 +13,10 @@ def main():
  assert not a.output.exists();a.output.mkdir();os.environ.update(CUDA_VISIBLE_DEVICES=a.gpu,CLEAN_KIND=a.kind,NARROW_DOMAIN=a.domain,NARROW_SEED=str(a.seed),NARROW_EXECUTION_GAIN=str(a.execution_gain))
  import torch,numpy as np
  from humanoidverse.force_compliance.parallel import receive,merge_rollouts
- from transfer_policy import Expert
+ from c0_ppu_probability import Expert
  from m39b_update import update
  from c0_engagement_worker import launch
- cfg=json.loads(Path(__file__).with_name('c0_engagement_protocol.json').read_text());plan=dict(dev=cfg['development'],initial=cfg['models']['C0'],training=cfg['conditional_training']['optimizer_from_issue46'],selection=cfg['conditional_training']['checkpoint_selection']);torch.set_num_threads(1);torch.manual_seed(a.seed);torch.set_grad_enabled(False)
+ cfg=json.loads(Path(__file__).with_name('c0_engagement_protocol.json').read_text());plan=dict(dev=cfg['development'],initial=cfg['models']['C0'],training=cfg['conditional_training']['optimizer_from_issue46'],selection=cfg['conditional_training']['checkpoint_selection']);torch.set_num_threads(1);torch.manual_seed(a.seed);torch.set_grad_enabled(False);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
  ctx=mp.get_context('spawn');ps=[];cs=[];net=opt=None;iteration=decisions=updates=0;best=float('inf');status='initializing';started=time.monotonic();commit=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
  atomic(a.output/'recovery-evidence.json',dict(path=str(a.recovery_evidence),sha256=sha(a.recovery_evidence),gate=evidence['conditional_PPO_gate']))
@@ -25,7 +25,7 @@ def main():
  signal.signal(signal.SIGTERM,stop)
  def weights():return {k:v.detach().cpu().numpy() for k,v in net.state_dict().items()}
  def save(name):
-  f=a.output/name;t=f.with_suffix('.tmp');torch.save(dict(state_dict={k:v.detach().cpu() for k,v in net.state_dict().items()},optimizer=opt.state_dict(),input_dim=n,iteration=iteration,decisions=decisions,optimizer_updates=updates,seed=a.seed,torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state(),runtime=commit,source_student_online=False,execution_gain=a.execution_gain,kind=a.kind),t);t.replace(f);return f
+  f=a.output/name;t=f.with_suffix('.tmp');torch.save(dict(state_dict={k:v.detach().cpu() for k,v in net.state_dict().items()},optimizer=opt.state_dict(),input_dim=n,iteration=iteration,decisions=decisions,optimizer_updates=updates,seed=a.seed,torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state(),runtime=commit,source_student_online=False,actor_probability_path='same batch-one FP32 actor as physical sampler',execution_gain=a.execution_gain,kind=a.kind),t);t.replace(f);return f
  def evaluate(schedule,name):
   d=a.output/name;d.mkdir();w=weights()
   for i,c in enumerate(cs):c.send(dict(op='evaluate',policy=w,schedule=schedule[i::len(cs)],output=str(d)))

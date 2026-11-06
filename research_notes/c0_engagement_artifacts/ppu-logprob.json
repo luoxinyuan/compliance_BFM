@@ -1,0 +1,49 @@
+{
+  "initial_precision": {
+    "matmul_allow_tf32": false,
+    "cudnn_allow_tf32": true,
+    "float32_matmul_precision": "highest"
+  },
+  "seeds": {
+    "4701": {
+      "True": {
+        "batch_vs_old_logp_max": 0.063720703125,
+        "batch_vs_old_logp_p99": 0.045775146484375015,
+        "single_vs_old_logp_max": 0.0,
+        "batch_mean_vs_single_max": 5.8338046073913574e-05,
+        "fp64_reference_vs_old_max": 9.200392355523945e-05,
+        "ratio_max_deviation": 0.06173298201540278,
+        "joint_mean_KL_from_mean_difference": 0.0001573361959980641
+      },
+      "False": {
+        "batch_vs_old_logp_max": 0.0009765625,
+        "batch_vs_old_logp_p99": 0.00067138671875,
+        "single_vs_old_logp_max": 0.0,
+        "batch_mean_vs_single_max": 7.450580596923828e-07,
+        "fp64_reference_vs_old_max": 9.200392355523945e-05,
+        "ratio_max_deviation": 0.0009770394924164538,
+        "joint_mean_KL_from_mean_difference": 2.65359545186115e-08
+      }
+    },
+    "4702": {
+      "True": {
+        "batch_vs_old_logp_max": 0.074951171875,
+        "batch_vs_old_logp_p99": 0.050780029296875015,
+        "single_vs_old_logp_max": 0.0,
+        "batch_mean_vs_single_max": 5.073845386505127e-05,
+        "fp64_reference_vs_old_max": 8.554519013159734e-05,
+        "ratio_max_deviation": 0.07783152110749358,
+        "joint_mean_KL_from_mean_difference": 0.00013953046629842363
+      },
+      "False": {
+        "batch_vs_old_logp_max": 0.0008544921875,
+        "batch_vs_old_logp_p99": 0.00067138671875,
+        "single_vs_old_logp_max": 0.0,
+        "batch_mean_vs_single_max": 8.791685104370117e-07,
+        "fp64_reference_vs_old_max": 8.554519013159734e-05,
+        "ratio_max_deviation": 0.0008541272130140332,
+        "joint_mean_KL_from_mean_difference": 2.8049435405141684e-08
+      }
+    }
+  }
+}

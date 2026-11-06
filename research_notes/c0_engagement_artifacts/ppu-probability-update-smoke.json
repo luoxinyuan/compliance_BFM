@@ -1,0 +1,87 @@
+{
+  "optimizer_updates": 3,
+  "pre_logprob_max_error": 0.0001220703125,
+  "pre_ratio_max_error": 0.0001220703125,
+  "old_GAE_value_EV": 0.07497155666351318,
+  "updated_value_EV": 0.43601036071777344,
+  "returns_mean": -3.9885787963867188,
+  "returns_std": 3.9626944065093994,
+  "old_value_mean": -0.574073314666748,
+  "raw_adv_std": 3.8112564086914062,
+  "std_mean": 0.007999999448657036,
+  "raw_mean_change_rms": 9.691714512882754e-05,
+  "gradient_components": [],
+  "gradients": [
+    {
+      "actor": 584.4761352539062,
+      "critic": 2.524080991744995,
+      "std": 0.0,
+      "actor_preclip": 584.4761352539062,
+      "critic_preclip": 2.524080991744995,
+      "actor_clip_scale": 0.0008554669213017425,
+      "actor_lr": 2.5e-06,
+      "backtracks": 2
+    },
+    {
+      "actor": 465.5754089355469,
+      "critic": 0.7400000095367432,
+      "std": 0.0,
+      "actor_preclip": 465.5754089355469,
+      "critic_preclip": 0.7400000095367432,
+      "actor_clip_scale": 0.0010739398825705994,
+      "actor_lr": 1.25e-06,
+      "backtracks": 1
+    },
+    {
+      "actor": 538.1608276367188,
+      "critic": 0.9829409122467041,
+      "std": 0.0,
+      "actor_preclip": 538.1608276367188,
+      "critic_preclip": 0.9829409122467041,
+      "actor_clip_scale": 0.0009290902910858482,
+      "actor_lr": 1.25e-06,
+      "backtracks": 0
+    }
+  ],
+  "epochs": [
+    {
+      "epoch": 0,
+      "joint_gaussian_KL": 0.01878584548830986,
+      "sample_KL": 0.04137376695871353,
+      "clip_fraction": 0.4270833432674408,
+      "value_loss": 0.10457129776477814,
+      "retention_loss": 0.0,
+      "retention_kind": null,
+      "bc_weight": 0.0,
+      "positive_adv_logprob_change": 0.0633610188961029,
+      "negative_adv_logprob_change": -0.25568124651908875
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "epoch": 0,
+      "retry": 0,
+      "joint_KL": 0.14846870303153992,
+      "candidate_actor_lr": 1e-05
+    },
+    {
+      "epoch": 0,
+      "retry": 1,
+      "joint_KL": 0.03709843009710312,
+      "candidate_actor_lr": 5e-06
+    },
+    {
+      "epoch": 0,
+      "retry": 0,
+      "joint_KL": 0.0215008445084095,
+      "candidate_actor_lr": 2.5e-06
+    }
+  ],
+  "actor_lr_after": 1.25e-06,
+  "initial_logprob_error": 0.0001220703125,
+  "elapsed_s": 8.016983583000183,
+  "new_physics_decisions": 0,
+  "cached_samples": 768,
+  "not_a_formal_training_model": true,
+  "network_and_std_unchanged": true
+}
