@@ -1,6 +1,6 @@
 # Issue47：C0局部响应与延迟全身参与
 
-2026-11-05。**保存轨迹分析已完成；真实接管和PPO尚未执行，因没有稳定空闲GPU暂缓。本阶段尚未科学结项。**
+2026-11-06更新。**保存轨迹分析、4个基线后端回归和28个真实物理干预已完成；早期恢复证据支持启动两seed C0起点PPO，目前已过第8批开发评估，正在完成原16批首段。本阶段尚未科学结项，未查看新封存结果。**
 
 [Issue47](https://github.com/GaoE05/robot-research-bridge/issues/47) · [Issue46用户视频补充](https://github.com/GaoE05/robot-research-bridge/issues/46#issuecomment-6655621491) · [预登记](c0_engagement_protocol.json) · [保存时序](c0_engagement_artifacts/saved-timeline.json) · [曲线](c0_engagement_artifacts/saved-timeline.png)。
 
@@ -50,7 +50,7 @@ I、C0、C1、4601及全部旧实验保留。本轮优先诊断C0的delayed whol
 - 外力做功、真实q/dq、每个50Hz子步q_PD与200Hz支撑完整保留。但这些闭环轨迹不能隔离高层反馈、冻结BFM本体反馈和外力的因果份额。固定z/接管尚未执行，不能把“有脚步”自动归为全部主动或全部被动。
 - I/4601自身轨迹更早前进只是描述性对照，不是相同状态下的反事实动作证据。
 
-## 已完成代码与未完成实验
+## 第一阶段准备记录（2026-11-05历史状态）
 
 `c0_engagement_analyze.py`仅用numpy读取既有物理/控制，重建100ms高层与50Hz控制表。原`decisions.time`是step之后写入，obs/raw在step前获取；本次按顺序五子步块恢复实际决策起点。不能据此宣称旧PPO错配，因为采样obs/action/logprob合同未变。
 
@@ -62,7 +62,7 @@ I、C0、C1、4601及全部旧实验保留。本轮优先诊断C0的delayed whol
 
 两个seed4701/4702的C0起点PPO仅预登记：各16×768，开发有共同收益再共同延至32；保留原reward/std/网络/权限/物理。新留出6.5/20.5/68cm及新停止/继续组合已固定，尚未采集。有效恢复门槛须由真实接管回答；没有好接管就不启动PPO。训练runner尚未发车，未把准备工作算作训练成功。
 
-## 资源状态与接力
+## 2026-11-05资源等待记录（历史状态，不是当前状态）
 
 初查7张卡均运行其他任务。随后GPU1–6短暂显示1MiB/0%，但发车前二次核验已出现新多卡进程。因此没有使用这个短暂空档；**0 GPU任务、0新物理回合、0 BFM推断、0 RL决策、0监督更新**，不共用他人卡、不CPU替代BFM。
 
@@ -74,3 +74,71 @@ CPU/RAM/I/O资源本身足够；瓶颈是当前没有符合空闲条件的GPU。
 ## 后续讨论：为何仍继续本阶段
 
 用户询问本阶段是否仍有必要；Codex判断继续机制接管与有条件反馈学习具有研究价值，具体依据与限制如下文记录。[CONTACT_LEARNING_RATIONALE](CONTACT_LEARNING_RATIONALE.md)明确人工目标与自主反馈学习的分工、I/C0继承来源、BFM先验/收敛的证据边界，以及不同接管结果如何决定下一步。此处是方法讨论，不是新增实验；本阶段变量、预算与封存不变。用户会通知GPU可用，此前不启动GPU任务；本阶段依旧未科学结项。
+
+
+## 2026-11-06原计划恢复：真实物理与条件PPO
+
+用户提供PPU并授权继续原计划。只有1张独占PPU，10vCPU/100GiB RAM；两正式job各3个采样worker，不按大显存增开无意义任务，不占旧NVIDIA/其他用户资源。独立venv保留原MuJoCo3.3.3/NumPy1.26.4，原BFM/PD/checkpoint SHA不变。
+
+### 后端一致性与全部失败
+
+原NVIDIA严格prefill断言首次在PPU失败：qpos最大2.00e-7rad、qvel5.88e-6、wrist4.52e-8m；不是策略学习收益。保留strict-01日志，明确重新核验新后端微差，不宣称跨硬件逐位相同。随后同PPU完整integration/solver/历史/last-z等精确重复，4个C0/I的72cm和6cm回归完成。正式28个分支各重跑原完整真实前缀，不用qpos-only reset；全部prefix sections逐值一致，未触发安全边界。物理runtime `d24622b259f984a42a3f628e983a15e8ea16d547`。
+
+### 全接触物理对照
+
+以下为全接触3D tracking RMS/实际力RMS，释放后旧anchor几何误差不计为跟随。
+
+|72cm分支|误差cm|力N|
+|---|---:|---:|
+|C0|30.827|8.625|
+|I|7.642|5.885|
+|C0→I@6.0|7.117|5.598|
+|C0→I@7.5|7.126|5.016|
+|C0→I@9.0|27.655|8.625|
+|C0→I@10.3|32.427|8.625|
+|C0→I@11.0|37.677|8.625|
+|I→C0@6.0|29.354|8.628|
+|I→C0@7.5|7.541|5.572|
+|I→C0@9.0|12.325|7.255|
+|I→C0@10.3|6.631|5.174|
+|I→C0@11.0|7.140|5.469|
+
+同一真实前缀的切换后matched-tail比较见[聚合物理分析](c0_engagement_artifacts/ppu-physical-analysis-v2.json)，而非从不同闭环状态的z差直接归因。早期6/7.5s接管支持I恢复，但9s后不可靠。新6cm C0 2.293cm/1.895N，切I@6s却3.530cm/2.991N；不能用保护walking强迫小请求也采用I。相同前缀停止/继续也真实执行：C0→I@7.3分别4.302cm/3.508N与8.288cm/6.617N；这仍是定时诊断干预，不是学会在线模式选择。
+
+### 高层主动控制与外力/冻结BFM反馈
+
+额外4个预先标明的有限因果对照：从真实6s前缀后固定实际上一z，BFM仍接收实时本体/动作历史；分别保留实际力、实际去掉后续施力。没有伪造Student力观测。
+
+- 正常C0在72cm接触窗口root前移约49.98cm，实际卸载/抬脚出现；固定z但有力仅约3.81cm，没有相应真实卸载/抬脚，固定z且6s后真实无力约0.44cm。
+- 因此，外力＋固定命令下的BFM本体反馈不足以重现本前缀的后续walking，高层反馈变化有因果贡献。固定z不是完全被动机器人，不能把root差简单当作“主动占比”。
+- 无力分支不跟随真实移动需求，不作为低force的任务成功。其全窗口RMS含6s前真实接触，6s后实际施力为0。
+- 原C0持续10N约8.185s，左足卸载10.225s/抬高10.215s，持续root vx>.05m/s约12.425s；C0→I@7.5左足卸载8.37s、持续root推进8.475s。指标定义不同形成起步窗口，不把任意阈值当精确技能开关。
+
+原始时序/各关节/力/支撑保存服务器`takeover-01/*.json.gz`。公开只包含聚合XYZ、分阶段误差/力、运动、支撑、q_PD/真实q/力矩质量和配对差，不上传原始qpos/历史。离线分析v1曾以post-step wrist对pre-step anchor求误差，v2改用与真实力同tick的contact.point/anchor；差异很小但明示，训练reward未改。原v1 gate文件冻结保留，v2验证早期恢复判定相同。
+
+### PPO实现与数值路径修复
+
+两seed4701/4702从原C0 actor、center/scale、std逐值相同开始，fresh critic(seed+17)/Adam；当前真实std=.008。无online Cyclic/M10/I、无新增BC/Student，原reward/std/网络/动作/接触合同不变。6/7.5s恢复使原条件PPO资格成立，但不将I后期不可靠状态作监督真值。
+
+原启动runtime `4acd257790f517cff94fbc23fd0f2d01b9bdd5e1`各采768决策，均在第一次更新前原3e-4概率复算断言失败。共1536采样决策计入预算，0正式更新；旧result.decisions=0只是原计数器更新时机，不能抹去真实采样成本。
+
+[定量诊断](c0_engagement_artifacts/ppu-logprob.json)：同一保存输入逐条重算与采样logp完全一致；PPU batched GEMM与batch-one GEMV的raw均值差约7–9e-7，256D联合logp放大到8.5–9.8e-4。默认TF32本来关闭，开启会更差。未把此现象泛化成旧NVIDIA训练失败的原因。
+
+修复`c0_ppu_probability.Expert.distribution`使learner actor采用与实际采样一致的batch-one数值路径，保留梯度、原网络/权重/std/raw logprob定义及3e-4断言；critic仍批量。缓存真实batch的backward/Adam smoke通过（pre-logp最大1.22e-4），原联合KL/Adam回滚生效，非正式训练候选。[测试摘要](c0_engagement_artifacts/ppu-probability-update-smoke.json)。
+
+当前正式重试runtime **`eeeb8979258b774a87dbedf8b17d18e3d15fc47a`**，原C0 SHA校验和独立initial actor哈希一致。两组已实际更新并完成dev8：
+
+|seed|near相对cost|mid|far|stop|等权总体|连接零需求比|
+|---|---:|---:|---:|---:|---:|---:|
+|4701|.9853|.9937|.9497|.9898|.9796|1.1118|
+|4702|.9745|1.0015|1.0036|.9975|.9943|1.1929|
+
+不是所有条件共同提高，也不能将不同任务组成下的采样force下降当均值执行收益。完成原16批共同开发规则后再决定扩展；新封存不参与选择。
+
+协议的`new_ready205`原缺ready_progress且source_until4s未实际进入arm-ready，训练前修正为真实源执行到6s、progress.45，接触/结束整体后移1.8s。修改依据、旧新完整配置保留在预登记amendment；没有用新终检挑条件。
+
+### 运行、预算与视频
+
+服务器 `/root/compliance-ppu-20261106/issue47/`：`qualification-01`、`takeover-01`、失败`ppo4701/4702`、正式`ppo4701-r1/ppo4702-r1`，各自源码worktree、launch SHA与ledger。输出约3.1GiB（运行中快照）。先16批/seed共24576正式决策，另计1536失败采样。14000job秒/49152决策/9GiB为硬上限；若联合延长门槛通过，仍须扣除失败采样及实际计算，不能自动双32批超限。
+
+Mac已交付1×真实物理接管视频：`~/Projects/compliance-bfm-diagnostics/videos/c0-delayed-engagement/01-causal-recovery-window.mp4`，四格C0、C0→I@7.5、C0→I@9、I→C0@7.5。14.96s、374帧、25fps、1280²，SHA `078bc9924f416137d82f7eefb5365104fa89c22a8e2bd93f7f159b58f794d751`；本地完整解码、SHA和中间帧已验证。只是恢复域因果诊断，不是新PPO结果视频。CPU离线软件渲染只读真实qpos，不是CPU运行BFM。当前训练/终检尚未完成，不科学结项。
