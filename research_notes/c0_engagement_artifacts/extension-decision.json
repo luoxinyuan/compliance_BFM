@@ -1,0 +1,25 @@
+{
+  "checked_unix": 1793967538.573132,
+  "decision": "Do not extend PPO; freeze development-selected and last for final",
+  "seeds": {
+    "4701": {
+      "selected_iteration": 8,
+      "selected_SHA256": "f23a6818dab277b775b41d5926641c359546cd6d5f6b2f2003a33514c446e2f6",
+      "far_relative_cost": 0.9496639295468924,
+      "local_relative_cost": 0.9853225073419974,
+      "no_safety": true,
+      "pass_gate": true
+    },
+    "4702": {
+      "selected_iteration": 8,
+      "selected_SHA256": "37f2c7e54375df301c9cc8160b2363ff8b8eb03edf251b5b1b93cdac583ef4ce",
+      "far_relative_cost": 1.0036083503089734,
+      "local_relative_cost": 0.9744982801675701,
+      "no_safety": true,
+      "pass_gate": false
+    }
+  },
+  "joint_pass": false,
+  "actual_RL_training_decisions": 26112,
+  "heldout_not_opened": true
+}

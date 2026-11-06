@@ -1,6 +1,6 @@
 # Issue47：C0局部响应与延迟全身参与
 
-2026-11-06更新。**保存轨迹分析、4个基线后端回归和28个真实物理干预已完成；早期恢复证据支持启动两seed C0起点PPO，目前已过第8批开发评估，正在完成原16批首段。本阶段尚未科学结项，未查看新封存结果。**
+2026-11-06更新。**保存轨迹分析、4个基线后端回归和28个真实物理干预已完成；早期恢复证据支持启动两seed C0起点PPO，现已完成各16批并依开发选择batch8；联合延长门槛未满足，未追加训练。冻结终检正在执行，本阶段尚未科学结项。**
 
 [Issue47](https://github.com/GaoE05/robot-research-bridge/issues/47) · [Issue46用户视频补充](https://github.com/GaoE05/robot-research-bridge/issues/46#issuecomment-6655621491) · [预登记](c0_engagement_protocol.json) · [保存时序](c0_engagement_artifacts/saved-timeline.json) · [曲线](c0_engagement_artifacts/saved-timeline.png)。
 
@@ -142,3 +142,41 @@ CPU/RAM/I/O资源本身足够；瓶颈是当前没有符合空闲条件的GPU。
 服务器 `/root/compliance-ppu-20261106/issue47/`：`qualification-01`、`takeover-01`、失败`ppo4701/4702`、正式`ppo4701-r1/ppo4702-r1`，各自源码worktree、launch SHA与ledger。输出约3.1GiB（运行中快照）。先16批/seed共24576正式决策，另计1536失败采样。14000job秒/49152决策/9GiB为硬上限；若联合延长门槛通过，仍须扣除失败采样及实际计算，不能自动双32批超限。
 
 Mac已交付1×真实物理接管视频：`~/Projects/compliance-bfm-diagnostics/videos/c0-delayed-engagement/01-causal-recovery-window.mp4`，四格C0、C0→I@7.5、C0→I@9、I→C0@7.5。14.96s、374帧、25fps、1280²，SHA `078bc9924f416137d82f7eefb5365104fa89c22a8e2bd93f7f159b58f794d751`；本地完整解码、SHA和中间帧已验证。只是恢复域因果诊断，不是新PPO结果视频。CPU离线软件渲染只读真实qpos，不是CPU运行BFM。当前训练/终检尚未完成，不科学结项。
+
+
+## 20:35 CST更新：首段训练完成，冻结终检运行中
+
+两seed各16×768＝12288正式决策，分别35/37次正式Adam更新；加首次失败采样，总26112新RL决策。两job墙钟1812/1761秒，运行源码/权重不再更新。两组选择均为batch8，seed4701为`f23a6818dab277b775b41d5926641c359546cd6d5f6b2f2003a33514c446e2f6`，4702为`37f2c7e54375df301c9cc8160b2363ff8b8eb03edf251b5b1b93cdac583ef4ce`；末轮完整保留，无覆盖旧C0/I。
+
+|seed/node|near|far|等权near/mid/far/stop|开发规则结果|
+|---|---:|---:|---:|---|
+|4701/8|.9853|.9497|.9796|选定|
+|4701/16|1.0369|.9476|.9967|未取代8|
+|4702/8|.9745|1.0036|.9943|选定|
+|4702/16|1.5100|.9562|1.1089|局部明显退化，未取代8|
+
+[完整固定条件学习曲线/分项/实际覆盖](c0_engagement_artifacts/ppu-training16.json) · [图](c0_engagement_artifacts/ppu-learning-curves.png) · [可读逐条件CSV](c0_engagement_artifacts/ppu-learning-curves.csv)。各条件相对自身原C0归一化，不把采样任务混合force当成固定物理条件改善。两seed选定模型的联合延长条件不满足，故未追加PPO；这是本阶段预登记资源/开发规则，不是RL能力的普遍上限。
+
+![固定开发集学习曲线](c0_engagement_artifacts/ppu-learning-curves.png)
+
+### 同状态反馈差异的证据边界
+
+[原始少量固定观测差分查询](c0_engagement_artifacts/ppu-same-state.json)使用相同真实C0本体/动作/力/上一z，分别查询I/C0，五个插值子步均固定该观测；不是五步真实物理rollout。
+
+|C0前缀查询时刻|raw逐坐标RMS差|合法z夹角|五子步q_PD全关节RMS差|
+|---|---:|---:|---:|
+|6.0s|.001667|2.01°|.110°|
+|7.5s|.044742|53.55°|3.457°|
+|9.0s|.045710|61.00°|5.221°|
+
+这支持“早期控制接近但后续反馈分开”的线索；真实长期接管才提供后果证据。6s一次动作很接近，不代表一次小扰动就能获得持续I行为；也不能从7.5s大角度反推唯一有效方向。原std=.008为每raw维的固定噪声；合法z均值缩放/多对一映射、反馈序列与各状态后果均需考虑，不能仅凭raw距离宣布探索绝无机会或应直接增大std。
+
+本轮没有旧residual硬半径限制，是原Direct绝对z接口。Accepted joint KL约.015–.020、每batch raw均值RMS更新约9e-5、动作概率符号更新正常，但这不证明稳定有效的持续行为方向已被探索。当前只是机制线索，尚未分别消融时间信用分配、探索持续性及函数干扰。未把critic EV当actor成功。
+
+### 冻结终检与普通工程失败
+
+在开发选择后固定C0/I/4601、两seed选定与末轮，15开发回归＋6新封存＋7明确暴露/轻触回归条件；主展示seed4701预固定，不按最终测试切换seed/方向。Source `c6f4a31c3ad32c62d2ce8be810a85fe0d195fa46`；`final-02`正在执行，0新增RL训练/监督更新，2400秒硬上限，预计21:00 CST附近结束。已完成模型与原始qpos持续写入私有目录，不用终检反选模型。
+
+准备中SDK envsetup.sh读取可选$1与shell nounset冲突（无回合），随后新worktree漏挂既有私有lafan文件导致motion glob空（18秒、0完整评估回合）；失败日志/manifest/resource原样保留。修复仅新launcher和原同SHA资产的私有symlink；没有修改共享motion、BFM、PD、reward或采样控制。CPU离线分析/绘图不运行BFM。
+
+本节是运行中进度，不是完整结项。下一步仅等待固定比较完成、分阶段物理分析、剩余1–2条关键视频及预算结算；没有新PPO/Student/下一里程碑队列。

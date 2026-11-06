@@ -17,8 +17,10 @@ def main():
             except json.JSONDecodeError:continue # last line can be being appended
             curves.append({k:v for k,v in r.items() if k not in ['episodes']})
         dev={}
-        for x in sorted(d.glob('dev-*/score.json')):
-            dev[x.parent.name]={'score':read(x),'episodes':[{k:v for k,v in r.items() if k!='handoff'} for r in read(x.parent/'summary.json')]}
+        for x in sorted(d.glob('dev-*/summary.json')):
+            score=read(x.parent/'score.json')
+            if x.parent.name=='dev-0000':score={'score':1.,'selection':{'groups':dict(near=1.,mid=1.,far=1.,stop=1.)},'definition':'Each condition normalized to this frozen initial C0 cost'}
+            dev[x.parent.name]={'score':score,'episodes':[{k:v for k,v in r.items() if k!='handoff'} for r in read(x)]}
         hashes={x.name:hashlib.sha256(x.read_bytes()).hexdigest() for x in d.glob('*.pt')}
         out['training'][str(seed)]={'curves':curves,'development':dev,'selection':read(d/'selection.json'),'result':read(d/'result.json'),'model_SHA256':hashes}
     a.output.write_text(json.dumps(out,indent=2,allow_nan=False))

@@ -1,0 +1,180 @@
+{
+  "stage": "Issue47 resumed on PPU",
+  "authorization": "user 2026-11-06 continue original plan",
+  "limits": {
+    "job_wall_seconds": 14000,
+    "new_RL_decisions": 49152,
+    "new_outputs_GiB": 9,
+    "concurrent_devices": 1
+  },
+  "reserved_prior_saved_analysis_seconds": 142,
+  "compatibility_probe": "separate completed setup; no research RL",
+  "RL_decisions": 26112,
+  "supervised_updates": 0,
+  "attempts": [
+    {
+      "name": "strict-01",
+      "start_unix": 1793962841,
+      "end_unix": 1793962866,
+      "job_wall_seconds": 25,
+      "exit_status": 1,
+      "RL_decisions": 0
+    },
+    {
+      "name": "qualification-01",
+      "start_unix": 1793963062,
+      "end_unix": 1793963206,
+      "job_wall_seconds": 144,
+      "exit_status": 0,
+      "RL_decisions": 0
+    },
+    {
+      "name": "takeover-01",
+      "start_unix": 1793963316,
+      "end_unix": 1793964340,
+      "job_wall_seconds": 1024,
+      "exit_status": 0,
+      "RL_decisions": 0
+    }
+  ],
+  "status": "Both first16 PPO jobs completed; no extension; frozen final-02 in progress",
+  "preparation_and_auxiliary_CPU_reserve_seconds": 600,
+  "training_reservation": {
+    "seeds": [
+      4701,
+      4702
+    ],
+    "each_initial_decisions": 12288,
+    "each_iterations": 16,
+    "runtime": "eeeb8979258b774a87dbedf8b17d18e3d15fc47a",
+    "coordinator_job_wall_each_limit_seconds": 3500,
+    "concurrent_jobs": 2,
+    "workers_per_job": 3,
+    "devices": 1,
+    "expected_CPU_threads": 8,
+    "optional_retention": false,
+    "extension": "Only original joint development gate; no automatic extension in first job",
+    "status": "completed16 both",
+    "actual_formal_decisions": 24576,
+    "actual_optimizer_updates": 72
+  },
+  "failed_first_PPO_attempts": {
+    "4701": {
+      "ledger": "/root/compliance-ppu-20261106/issue47/ppo4701-job-ledger.json",
+      "collected_RL_decisions": 768,
+      "committed_optimizer_updates": 0
+    },
+    "4702": {
+      "ledger": "/root/compliance-ppu-20261106/issue47/ppo4702-job-ledger.json",
+      "collected_RL_decisions": 768,
+      "committed_optimizer_updates": 0
+    }
+  },
+  "RL_decisions_before_retry": 1536,
+  "numerical_fix": {
+    "runtime": "eeeb8979258b774a87dbedf8b17d18e3d15fc47a",
+    "method": "same batch-one actor probability arithmetic; threshold/raw logp/std unchanged",
+    "cached_smoke": "probability-smoke.json",
+    "not_formal_training_model": true
+  },
+  "training_completed": {
+    "4701": {
+      "seed": 4701,
+      "start_unix": 1793965646,
+      "end_unix": 1793967458,
+      "exit_status": 0,
+      "runtime": "eeeb8979258b774a87dbedf8b17d18e3d15fc47a",
+      "job_wall_seconds": 1812,
+      "result": {
+        "status": "completed",
+        "iterations": 16,
+        "decisions": 12288,
+        "updates": 35,
+        "elapsed_s": 1809.2027061560002,
+        "workers": [
+          {
+            "pid": 10639,
+            "exitcode": 0
+          },
+          {
+            "pid": 10640,
+            "exitcode": 0
+          },
+          {
+            "pid": 10641,
+            "exitcode": 0
+          }
+        ],
+        "bfm_updated": false,
+        "student_updated": false
+      }
+    },
+    "4702": {
+      "seed": 4702,
+      "start_unix": 1793965646,
+      "end_unix": 1793967407,
+      "exit_status": 0,
+      "runtime": "eeeb8979258b774a87dbedf8b17d18e3d15fc47a",
+      "job_wall_seconds": 1761,
+      "result": {
+        "status": "completed",
+        "iterations": 16,
+        "decisions": 12288,
+        "updates": 37,
+        "elapsed_s": 1757.5011308470002,
+        "workers": [
+          {
+            "pid": 10672,
+            "exitcode": 0
+          },
+          {
+            "pid": 10673,
+            "exitcode": 0
+          },
+          {
+            "pid": 10674,
+            "exitcode": 0
+          }
+        ],
+        "bfm_updated": false,
+        "student_updated": false
+      }
+    }
+  },
+  "new_rendering": [
+    {
+      "name": "videos/original-MSAA-attempt",
+      "job_wall_seconds": 500,
+      "status": "timeout; partial retained; not delivered"
+    },
+    {
+      "name": "videos-fast",
+      "job_wall_seconds": 185,
+      "measured_render_seconds": 164.033,
+      "status": "actual qpos verified Mac delivery; startup rounded conservatively"
+    }
+  ],
+  "final_evaluation": {
+    "runtime": "c6f4a31c3ad32c62d2ce8be810a85fe0d195fa46",
+    "output": "/root/compliance-ppu-20261106/issue47/final-02",
+    "max_job_wall_seconds": 2400,
+    "status": "in_progress",
+    "training_decisions": 0,
+    "launch_failed_sdk": {
+      "job_wall_reserve_seconds": 1,
+      "log": "final-launch-failed-01.log"
+    },
+    "first_environment_failure": {
+      "start_unix": 1793967622,
+      "end_unix": 1793967640,
+      "job_wall_seconds": 18,
+      "exit_status": 1,
+      "RL_training_decisions": 0,
+      "new_supervised_updates": 0
+    },
+    "decisions_for_extension": "/root/compliance-ppu-20261106/issue47/extension-decision.json",
+    "complete_source_prefix_and_same_backend": true
+  },
+  "accounting_note": "1536 real failed-attempt samples included despite original result counters0. Sampler+learner group counted once per supervised job wall; parallel job walls added. Offline prep reserve600 includes small diagnostics; final wall determined at completion.",
+  "checked_unix": 1793968357.098882
+}
