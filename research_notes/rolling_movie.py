@@ -26,7 +26,7 @@ def main():
    panels=[]
    for side in entries:
     ix=int(np.argmin(abs(side['ts']-t)));r=side['rs'][ix];d.qpos[:]=r['qpos'];d.qvel[:]=r['qvel'];mujoco.mj_forward(m,d);point=np.array(r['wrist']);anchor=np.array(r.get('anchor',side['ep']['anchor']));force=np.array(r['force']);root=np.array(r['root']);R=np.array(r['pelvis_matrix']);views=[];marks=[]
-    for vi,cam in enumerate([cameras[0]] if item.get('grid4') else cameras):
+    for vi,cam in enumerate([cameras[1] if side.get('overhead') else cameras[0]] if item.get('grid4') else cameras):
      renderer.update_scene(d,camera=cam);sc=renderer.scene
      contacts=r.get('contacts',[])
      for contact in contacts:
@@ -56,7 +56,7 @@ def main():
     draw.text((12,130),('EPISODE ENDED: last saved frame held' if t>side['ts'][-1]+.02 else ''),font=small,fill='red');draw.text((12,29),f'Actual qpos 1x | t={r["time"]:.2f}s | '+phase+' | '+('NATIVE PREFIX' if r['time']<cond.get('handoff_time',0) else side['role']),font=small,fill='white')
     for j,contact in enumerate(r.get('contacts',[])[:2]):
      ff=contact['force'];error=100*np.linalg.norm(np.array(contact['anchor'])-contact['point']);draw.text((12,51+j*21),f'Point {contact["slot"]} : Fxyz=({ff[0]:+.2f},{ff[1]:+.2f},{ff[2]:+.2f})N | '+('tracking' if r.get('active') else 'non-task geometry')+f' {error:.1f}cm',font=small,fill='white')
-    T=np.array(r['torso_matrix']);draw.text((12,100),f'Pelvis {np.degrees(np.arctan2(R[1,0],R[0,0])):+.1f} | torso {np.degrees(np.arctan2(T[1,0],T[0,0])):+.1f} | target {np.degrees(r.get("target_yaw",0)):+.1f} deg | yellow=force',font=small,fill='white');draw.text((12,148),'FIXED WORLD oblique',font=small,fill='black');
+    T=np.array(r['torso_matrix']);draw.text((12,100),f'Pelvis {np.degrees(np.arctan2(R[1,0],R[0,0])):+.1f} | torso {np.degrees(np.arctan2(T[1,0],T[0,0])):+.1f} | target {np.degrees(r.get("target_yaw",0)):+.1f} deg | yellow=force',font=small,fill='white');draw.text((12,148),('FIXED WORLD overhead' if side.get('overhead') else 'FIXED WORLD oblique'),font=small,fill='black');
     if not item.get('grid4'):draw.text((652,148),'FIXED WORLD overhead',font=small,fill='black')
     panels.append(np.asarray(frame))
    full=np.concatenate([np.concatenate(panels[:2],axis=1),np.concatenate(panels[2:],axis=1)],axis=0) if item.get('grid4') else np.concatenate(panels,axis=0);writer.append_data(full)
