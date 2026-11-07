@@ -86,3 +86,10 @@ project .venv/bin/python research_notes/native_rolling.py --mode rolling --outpu
 ```
 
 上述为入口，不跳过`rolling_job.py`所实施的空闲GPU/内存/输出与累计墙钟保护。实际执行以对应launch/ledger记录的命令、源码commit及protocol SHA为准；文档/统计提交不冒充物理runtime。依赖同checkpoint私有模型/replay与已保存原生reference，不把源代码可读误称为无需资产即可完全复现。
+
+
+## 为什么没有新PPO，Teacher仍有反馈收益
+
+本轮优化的是每次当前状态下的有限候选序列，而非网络参数：完整快照→7条2.4秒真实物理分支→累计原reward/拒绝unsafe→恢复快照→仅执行最佳首100ms→读取真实新状态再规划。候选可以不完美；其组合与执行时机由本轮物理评分确定，没有写死先臂后脚。7提议/窗口/源基底是搜索覆盖限制，不是未来Direct256D策略永久菜单。对应固定runtime的native_rolling.py:126–190与236–246，效果和质量边界仍以既有完整报告为准。
+
+新讨论明确区分原生来源、序列搜索、PPO学习及受限观测迁移；也允许另行设计未来可见Teacher/critic上界，但当前实测不读未来，未启动新实验。[完整方法讨论第9节](CONTACT_LEARNING_RATIONALE.md#9-issue50讨论澄清候选物理搜索ppo与未来信息)。

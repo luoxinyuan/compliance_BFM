@@ -4,6 +4,8 @@ Issue48/49与C0专项均已结项，不恢复旧PPO/AR扫描。Issue50已实际�
 
 实际结果和完整方法将在NATIVE_ROLLING_RESULTS/METHODS维护。下方Issue46/47的优先级与“尚未推断”措辞是历史计划，数学/接口合同仍有效。没有新建F/SF planner、重训FB、下载大型资产或自动启动Student。
 
+补充只读核查与待验证方案见[方法讨论9.4节](CONTACT_LEARNING_RATIONALE.md#94-reward-prompting已确认失败范围尚未确认机制)：三配置softmax权重ESS约334/241/250，说明集中程度，不证明唯一病因。优先检查高分样本的真实运动片段、已知motion的同reward得分及相同完整状态下的进入/维持差异；未执行新推断/物理/训练。不以提示先成功阻塞已有goal/motion的反馈学习。
+
 # BFM reward prompting / composition / F-SF：后续最小研究记录
 
 2026-11-05更新：Issue47已优先授权C0延迟全身参与诊断；本记录继续作为后备工具，不是其前置条件。原Issue46建议是历史阶段决策。此文是研究积压项，不启动新推断、FB训练或planner。当前主线为Issue47的C0机制接管与有条件反馈PPO；I初始化PPO是Issue46历史设置。保留0/1/2/4/8/16帧force-history独立消融，未运行。
