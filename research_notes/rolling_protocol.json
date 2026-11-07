@@ -84,7 +84,9 @@
     "future_metadata_audit": "Legacy geometry heading reward reads final distance. Predictions erase stop/change/release metadata and use shared nominal .72 distance heading scale, never actual generator final distance; actual physical reward unchanged. Initial c4c3b50 diagnostic retained as superseded source diagnostic.",
     "reward_proposal_selection": "qualification-only same-condition rule: no safety boundary, moving error AND force better than Standing; rank force+error_cm/10; replace C32 candidate with selected native reward-z if any; no extra candidate count",
     "proposal_revision": "Before rolling, distinguish motor-source utility from feedback-Teacher success: ordinary forward015/022 yielded stable actual forward root/foot movement but high contact force, retained as exploration proposals, NOT qualified Teachers; v1 stricter reward-selection.json preserved.",
-    "actor_usage": "no I/C0/T30/native-initial/C32 actor called in actual rolling proposal generation when original-replay reward-z is present; all remain frozen evaluation references"
+    "actor_usage": "no I/C0/T30/native-initial/C32 actor called in actual rolling proposal generation when original-replay reward-z is present; all remain frozen evaluation references",
+    "control_nodes": "four stand-to-source alpha nodes + arm mixing + rate for native motion; source can be ordinary reward-z or motion sequence; shifted last executed plan, no future partner state",
+    "no_actor_in_actual_search": true
   },
   "representative_states": [
     {

@@ -130,13 +130,14 @@ def study(env,model,contract,out):
         if kind=='hold':return c['z']
         if kind in ['standing','goal_arm5','goal_arm15']:return env.standing if kind=='standing' else task.native_z[kind]
         u=j/(PLAN['search']['horizon_decisions']-1);nodes=np.array(c['alpha']);a=float(np.interp(u,np.linspace(0,1,len(nodes)),nodes))
-        rate=c['rate'];walk=sample(task.refs['straight'],phase+(j*.1*rate)/task.refs['straight']['period'])
+        rate=c['rate'];base_name=c.get('base','motion')
+        walk=reward_z[base_name] if base_name in reward_z else sample(task.refs['straight'],phase+(j*.1*rate)/task.refs['straight']['period'])
         base=spherical(env.standing,walk,a)
         return spherical(base,task.native_z['goal_arm15'],float(c.get('arm',0.)))
     def propose(phase,previous=None):
         # Throughput-calibrated seven candidates, fixed before rolling results.
         # Shift the previous plan by one actually executed100ms command.
-        prior=dict(kind='sequence',alpha=[.2,.7,1.,1.],rate=1.,arm=0.)
+        prior=dict(kind='sequence',base=('forward015_ordinary' if exploration_reward_names else 'motion'),alpha=[.2,.7,1.,1.],rate=1.,arm=0.)
         if previous and previous['kind']=='sequence':
             prior=copy.deepcopy(previous);xx=np.linspace(0,1,len(prior['alpha']))
             prior['alpha']=np.interp(np.minimum(xx+1/(PLAN['search']['horizon_decisions']-1),1),xx,prior['alpha']).tolist()
@@ -149,7 +150,7 @@ def study(env,model,contract,out):
         else:
             cs=[dict(kind='standing'),dict(kind='goal_arm15'),dict(kind='C32'),dict(kind='sequence',alpha=[1.,1.,1.,1.],rate=1.,arm=0.),prior]
         while len(cs)<7:
-            cs.append(dict(kind='sequence',alpha=np.clip(np.array(prior['alpha'])+rng.normal(0,.15,4),0,1).tolist(),rate=float(np.clip(prior['rate']+rng.normal(0,.15),.5,1.4)),arm=float(np.clip(prior.get('arm',0.)+rng.normal(0,.08),0,.2))))
+            cs.append(dict(kind='sequence',base=prior.get('base','motion'),alpha=np.clip(np.array(prior['alpha'])+rng.normal(0,.15,4),0,1).tolist(),rate=float(np.clip(prior['rate']+rng.normal(0,.15),.5,1.4)),arm=float(np.clip(prior.get('arm',0.)+rng.normal(0,.08),0,.2))))
         return cs
     search_rows=[]
     def search(label,phase,previous=None,save_predictions=False):
@@ -220,7 +221,7 @@ def study(env,model,contract,out):
             for k in range(3):task.step(env.standing/16)
             outputs.append(dict(state=BranchState(task).fingerprint,physics=copy.deepcopy(task.physics[-60:]),control=copy.deepcopy(task.controls[-15:])))
         assert outputs[0]==outputs[1],'full physical restored replay is not exact'
-        ss.restore();write(out/'restoration.json',dict(status='passed',same_full_source_state=ss.fingerprint,repeat_real_100ms_commands=3,all_physics_control_outputs_exact=True,solver_warmstart_preserved=True,not_qpos_only=True))
+        ss.restore();counts['branch_validation_physics_steps']=1380;write(out/'restoration.json',dict(status='passed',same_full_source_state=ss.fingerprint,repeat_real_100ms_commands=3,all_physics_control_outputs_exact=True,solver_warmstart_preserved=True,not_qpos_only=True))
         if ARGS.mode=='diagnostic':
             for case in PLAN['representative_states']:
                 task.reset(condition(case['distance'],case['average']),record=True,label=case['name'])

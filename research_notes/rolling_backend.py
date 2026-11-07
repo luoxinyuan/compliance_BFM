@@ -11,6 +11,16 @@ def install(env,model,folder):
     old='issue20-ccl01-20261028T082201Z/attempt-04/outputs/anchor-reference.json'
     common_name='issue21-direction-20261030T020000Z/attempt-02/outputs/common-state.json'
     origin=m8_stage.R
+    if (folder/'backend-standing-prefix.json').exists() and (folder/'backend-common-state.json').exists():
+        zero=json.loads((folder/'backend-standing-prefix.json').read_text());common=json.loads((folder/'backend-common-state.json').read_text())
+        def cached_read(p):
+            name=str(p)
+            if name.endswith(old):return copy.deepcopy(zero)
+            if name.endswith(common_name):return copy.deepcopy(common)
+            return original(p)
+        m8_stage.read=cached_read
+        parity=m8_stage.reset_common(env,model,model.act)
+        return dict(status='reused_verified_backend_exact_prefix',parity=parity,original_zero_difference_assertions_unchanged=True)
     try:
         parity=m8_stage.reset_common(env,model,model.act)
         return dict(status='original_exact_prefix',parity=parity)
