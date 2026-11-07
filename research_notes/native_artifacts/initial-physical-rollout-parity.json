@@ -1,0 +1,63 @@
+{
+  "scope": "initial actual physical rollouts before either learner update; same source/initial mean/covariance/seeds, not a teacher-forced single frame",
+  "workers": [
+    {
+      "worker": 0,
+      "obs_equal": true,
+      "obs_maxabs": 0.0,
+      "action_equal": true,
+      "action_maxabs": 0.0,
+      "logp_equal": true,
+      "logp_maxabs": 0.0,
+      "value_equal": true,
+      "value_maxabs": 0.0,
+      "next_value_equal": true,
+      "next_value_maxabs": 0.0,
+      "reward_equal": true,
+      "reward_maxabs": 0.0,
+      "discount_equal": true,
+      "discount_maxabs": 0.0,
+      "done_equal": true,
+      "done_maxabs": 0.0
+    },
+    {
+      "worker": 1,
+      "obs_equal": true,
+      "obs_maxabs": 0.0,
+      "action_equal": true,
+      "action_maxabs": 0.0,
+      "logp_equal": true,
+      "logp_maxabs": 0.0,
+      "value_equal": true,
+      "value_maxabs": 0.0,
+      "next_value_equal": true,
+      "next_value_maxabs": 0.0,
+      "reward_equal": true,
+      "reward_maxabs": 0.0,
+      "discount_equal": true,
+      "discount_maxabs": 0.0,
+      "done_equal": true,
+      "done_maxabs": 0.0
+    },
+    {
+      "worker": 2,
+      "obs_equal": true,
+      "obs_maxabs": 0.0,
+      "action_equal": true,
+      "action_maxabs": 0.0,
+      "logp_equal": true,
+      "logp_maxabs": 0.0,
+      "value_equal": true,
+      "value_maxabs": 0.0,
+      "next_value_equal": true,
+      "next_value_maxabs": 0.0,
+      "reward_equal": true,
+      "reward_maxabs": 0.0,
+      "discount_equal": true,
+      "discount_maxabs": 0.0,
+      "done_equal": true,
+      "done_maxabs": 0.0
+    }
+  ],
+  "all_exact": true
+}

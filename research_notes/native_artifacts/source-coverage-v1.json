@@ -1,0 +1,32 @@
+{
+  "axes": 4,
+  "static_rows": 3,
+  "motion_rows": 71,
+  "source_weighting": "fixed unweighted SVD; unequal motion sampling density is a potential bias, not a proven failure cause",
+  "per_source": [
+    {
+      "source": "goal_arm5",
+      "raw_delta_norm": 0.23166039729750182,
+      "subspace_capture": 0.1425793038938092,
+      "tangent_capture": 0.133818791850894
+    },
+    {
+      "source": "goal_arm15",
+      "raw_delta_norm": 0.9237622667441212,
+      "subspace_capture": 0.17112595836693112,
+      "tangent_capture": 0.09473749945563678
+    },
+    {
+      "source": "goal_lean30",
+      "raw_delta_norm": 0.9501974213849983,
+      "subspace_capture": 0.18366889777567919,
+      "tangent_capture": 0.09159358407848642
+    }
+  ],
+  "axis_radial_fraction": [
+    0.3548392900471898,
+    1.236826095808043e-05,
+    0.0010672740411649157,
+    0.012601620102738393
+  ]
+}

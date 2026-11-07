@@ -1,0 +1,272 @@
+[
+  {
+    "model": "native_initial",
+    "both_reached_branch": true,
+    "real_partner_branch_time": 8.27,
+    "first_raw_response_time": 8.299999999999898,
+    "first_three_decision_sustained_raw_response_time": 8.299999999999898,
+    "raw_max_difference": 0.3291226923465729,
+    "both_active_comparison_end": 10.969999999999999,
+    "stop_then_continue_tail_metrics": [
+      {
+        "root_delta_xyz_cm": [
+          3.4361991879646987,
+          4.6163777117616585,
+          -4.338816454121663
+        ],
+        "force_rms_n": 10.0,
+        "error_rms_cm": 16.9640542690463
+      },
+      {
+        "root_delta_xyz_cm": [
+          1.7318181121879421,
+          0.9130002757621041,
+          0.8323452252656738
+        ],
+        "force_rms_n": 10.0,
+        "error_rms_cm": 30.047254983618366
+      }
+    ],
+    "scope": "current feedback includes privileged geometry/velocity; branch test does not isolate explicit-force information. Raw-action response and physical task utility are distinct."
+  },
+  {
+    "model": "ordinary_best",
+    "both_reached_branch": true,
+    "real_partner_branch_time": 8.27,
+    "first_raw_response_time": 8.299999999999898,
+    "first_three_decision_sustained_raw_response_time": 8.299999999999898,
+    "raw_max_difference": 0.3291226923465729,
+    "both_active_comparison_end": 10.969999999999999,
+    "stop_then_continue_tail_metrics": [
+      {
+        "root_delta_xyz_cm": [
+          3.4361991879646987,
+          4.6163777117616585,
+          -4.338816454121663
+        ],
+        "force_rms_n": 10.0,
+        "error_rms_cm": 16.9640542690463
+      },
+      {
+        "root_delta_xyz_cm": [
+          1.7318181121879421,
+          0.9130002757621041,
+          0.8323452252656738
+        ],
+        "force_rms_n": 10.0,
+        "error_rms_cm": 30.047254983618366
+      }
+    ],
+    "scope": "current feedback includes privileged geometry/velocity; branch test does not isolate explicit-force information. Raw-action response and physical task utility are distinct."
+  },
+  {
+    "model": "ordinary_last",
+    "both_reached_branch": true,
+    "real_partner_branch_time": 8.27,
+    "first_raw_response_time": 8.299999999999898,
+    "first_three_decision_sustained_raw_response_time": 8.299999999999898,
+    "raw_max_difference": 0.06788935512304306,
+    "both_active_comparison_end": 10.969999999999999,
+    "stop_then_continue_tail_metrics": [
+      {
+        "root_delta_xyz_cm": [
+          3.1531196997867825,
+          1.1100252423310137,
+          -0.1277942605037885
+        ],
+        "force_rms_n": 9.61601960076395,
+        "error_rms_cm": 12.512501976067512
+      },
+      {
+        "root_delta_xyz_cm": [
+          3.7772518590041675,
+          0.8935549975154895,
+          -0.21535989060585958
+        ],
+        "force_rms_n": 10.0,
+        "error_rms_cm": 25.824732945645174
+      }
+    ],
+    "scope": "current feedback includes privileged geometry/velocity; branch test does not isolate explicit-force information. Raw-action response and physical task utility are distinct."
+  },
+  {
+    "model": "guided_best",
+    "both_reached_branch": true,
+    "real_partner_branch_time": 8.27,
+    "first_raw_response_time": 8.299999999999898,
+    "first_three_decision_sustained_raw_response_time": 8.299999999999898,
+    "raw_max_difference": 0.3291226923465729,
+    "both_active_comparison_end": 10.969999999999999,
+    "stop_then_continue_tail_metrics": [
+      {
+        "root_delta_xyz_cm": [
+          3.4361991879646987,
+          4.6163777117616585,
+          -4.338816454121663
+        ],
+        "force_rms_n": 10.0,
+        "error_rms_cm": 16.9640542690463
+      },
+      {
+        "root_delta_xyz_cm": [
+          1.7318181121879421,
+          0.9130002757621041,
+          0.8323452252656738
+        ],
+        "force_rms_n": 10.0,
+        "error_rms_cm": 30.047254983618366
+      }
+    ],
+    "scope": "current feedback includes privileged geometry/velocity; branch test does not isolate explicit-force information. Raw-action response and physical task utility are distinct."
+  },
+  {
+    "model": "guided_last",
+    "both_reached_branch": true,
+    "real_partner_branch_time": 8.27,
+    "first_raw_response_time": 8.299999999999898,
+    "first_three_decision_sustained_raw_response_time": 8.299999999999898,
+    "raw_max_difference": 0.06570256128907204,
+    "both_active_comparison_end": 10.969999999999999,
+    "stop_then_continue_tail_metrics": [
+      {
+        "root_delta_xyz_cm": [
+          1.2774696538340873,
+          1.1854031938164744,
+          -0.4734741491275618
+        ],
+        "force_rms_n": 9.609643566171597,
+        "error_rms_cm": 12.45960780862618
+      },
+      {
+        "root_delta_xyz_cm": [
+          1.282307009940153,
+          1.8069812354219463,
+          -0.31767959827692094
+        ],
+        "force_rms_n": 10.0,
+        "error_rms_cm": 26.368581582061573
+      }
+    ],
+    "scope": "current feedback includes privileged geometry/velocity; branch test does not isolate explicit-force information. Raw-action response and physical task utility are distinct."
+  },
+  {
+    "model": "coordinate_best",
+    "both_reached_branch": true,
+    "real_partner_branch_time": 8.27,
+    "first_raw_response_time": 8.299999999999898,
+    "first_three_decision_sustained_raw_response_time": 8.299999999999898,
+    "raw_max_difference": 0.3291226923465729,
+    "both_active_comparison_end": 10.969999999999999,
+    "stop_then_continue_tail_metrics": [
+      {
+        "root_delta_xyz_cm": [
+          3.4361991879646987,
+          4.6163777117616585,
+          -4.338816454121663
+        ],
+        "force_rms_n": 10.0,
+        "error_rms_cm": 16.9640542690463
+      },
+      {
+        "root_delta_xyz_cm": [
+          1.7318181121879421,
+          0.9130002757621041,
+          0.8323452252656738
+        ],
+        "force_rms_n": 10.0,
+        "error_rms_cm": 30.047254983618366
+      }
+    ],
+    "scope": "current feedback includes privileged geometry/velocity; branch test does not isolate explicit-force information. Raw-action response and physical task utility are distinct."
+  },
+  {
+    "model": "coordinate_last",
+    "both_reached_branch": true,
+    "real_partner_branch_time": 8.27,
+    "first_raw_response_time": 8.299999999999898,
+    "first_three_decision_sustained_raw_response_time": 8.299999999999898,
+    "raw_max_difference": 0.045862361788749695,
+    "both_active_comparison_end": 10.969999999999999,
+    "stop_then_continue_tail_metrics": [
+      {
+        "root_delta_xyz_cm": [
+          1.0222565693161159,
+          1.4260623074277903,
+          -1.0628191694288747
+        ],
+        "force_rms_n": 8.76171674788404,
+        "error_rms_cm": 10.96268245157431
+      },
+      {
+        "root_delta_xyz_cm": [
+          2.697383013471307,
+          1.5382901677698524,
+          -0.42301407244922373
+        ],
+        "force_rms_n": 9.959927021050598,
+        "error_rms_cm": 24.29976366817658
+      }
+    ],
+    "scope": "current feedback includes privileged geometry/velocity; branch test does not isolate explicit-force information. Raw-action response and physical task utility are distinct."
+  },
+  {
+    "model": "I",
+    "both_reached_branch": true,
+    "real_partner_branch_time": 8.27,
+    "first_raw_response_time": 8.299999999999898,
+    "first_three_decision_sustained_raw_response_time": 8.299999999999898,
+    "raw_max_difference": 0.21618152409791946,
+    "both_active_comparison_end": 10.969999999999999,
+    "stop_then_continue_tail_metrics": [
+      {
+        "root_delta_xyz_cm": [
+          25.86762069054686,
+          -5.148693968762806,
+          2.8084034921899814
+        ],
+        "force_rms_n": 4.175909011421535,
+        "error_rms_cm": 5.31053627125307
+      },
+      {
+        "root_delta_xyz_cm": [
+          28.112532300423144,
+          -0.6465376567580408,
+          -3.198911734252685
+        ],
+        "force_rms_n": 5.404878964410101,
+        "error_rms_cm": 6.523565534752472
+      }
+    ],
+    "scope": "current feedback includes privileged geometry/velocity; branch test does not isolate explicit-force information. Raw-action response and physical task utility are distinct."
+  },
+  {
+    "model": "C0",
+    "both_reached_branch": true,
+    "real_partner_branch_time": 8.27,
+    "first_raw_response_time": 8.299999999999898,
+    "first_three_decision_sustained_raw_response_time": 8.299999999999898,
+    "raw_max_difference": 0.1703510582447052,
+    "both_active_comparison_end": 10.969999999999999,
+    "stop_then_continue_tail_metrics": [
+      {
+        "root_delta_xyz_cm": [
+          1.3426743122943678,
+          0.06020915453119457,
+          -0.38966968504822175
+        ],
+        "force_rms_n": 9.244010890615225,
+        "error_rms_cm": 11.449448027649243
+      },
+      {
+        "root_delta_xyz_cm": [
+          1.1948465172412133,
+          2.353499301022811,
+          -1.0320809046642343
+        ],
+        "force_rms_n": 9.859746556336855,
+        "error_rms_cm": 25.10333840659208
+      }
+    ],
+    "scope": "current feedback includes privileged geometry/velocity; branch test does not isolate explicit-force information. Raw-action response and physical task utility are distinct."
+  }
+]

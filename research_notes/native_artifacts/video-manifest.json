@@ -1,0 +1,190 @@
+[
+  {
+    "name": "01-new_near",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/01-new_near.mp4",
+    "sha256": "1dc44ca1a629b2d21096e308fec7816c4fcaab085cf9a01e89d199ca1eeef8b9",
+    "frames": 252,
+    "fps": 25,
+    "duration": 10.08,
+    "seconds": 6.040644181892276,
+    "sides": [
+      {
+        "title": "I frozen historical walking | New6.8cm",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/I__new_near.json.gz",
+        "sha256": "dc0ce9457b15e4112d006e0aea6ec3b1e72d68b465cf0b82802695d34c5f73d7"
+      },
+      {
+        "title": "C0 frozen local / delayed walking | New6.8cm",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/C0__new_near.json.gz",
+        "sha256": "cba9fa56061589f6e701fdd2314a553e03da92714076ec7f46d520c7681c7ad1"
+      },
+      {
+        "title": "NATIVE guided RAW head | FIXED FINAL32 | NOT dev-selected | New6.8cm",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/guided_last__new_near.json.gz",
+        "sha256": "e581d6eb107fdddffe9f16392ff73d9768be325f8f12a0337c2a99613b02df70"
+      },
+      {
+        "title": "NATIVE guided COORD head | FIXED FINAL32 | NOT dev-selected | New6.8cm",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/coordinate_last__new_near.json.gz",
+        "sha256": "9f438ab5ae53f60ae31e694f3dc8be947312187d8e5f92320972987373443a27"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.068,
+      "ramp": 1.9,
+      "onset": 5.17,
+      "release": 9.07,
+      "end": 13.07,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "handoff_time": 3.999999999999937
+    }
+  },
+  {
+    "name": "02-new_long",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/02-new_long.mp4",
+    "sha256": "5d552915c24340844c41a7da947ee02a2126eefb97f2dee82ad27e3136fe134f",
+    "frames": 412,
+    "fps": 25,
+    "duration": 16.48,
+    "seconds": 10.468859249027446,
+    "sides": [
+      {
+        "title": "I frozen historical walking | New69cm",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/I__new_long.json.gz",
+        "sha256": "dd5d8ba8fa56cbca5e9d026d77952365c1371ad6e1ea7ef53d11c680fe2f51ca"
+      },
+      {
+        "title": "C0 frozen local / delayed walking | New69cm",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/C0__new_long.json.gz",
+        "sha256": "ff1a2f0fa95aa161fb7b669787a90fd7062678c2a6c4052662452b3761422ea2"
+      },
+      {
+        "title": "NATIVE guided RAW head | FIXED FINAL32 | NOT dev-selected | New69cm",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/guided_last__new_long.json.gz",
+        "sha256": "7dc592f2597c3a3999656c6b41291d127cf0bd32c0ccf36345b42bc611d67dd1"
+      },
+      {
+        "title": "NATIVE guided COORD head | FIXED FINAL32 | NOT dev-selected | New69cm",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/coordinate_last__new_long.json.gz",
+        "sha256": "b7ee52a909cdbfa6fdfd8e72b8be39779e7a71f17295e4e155351f743e77301d"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.69,
+      "ramp": 8.3,
+      "onset": 5.17,
+      "release": 15.47,
+      "end": 19.47,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "handoff_time": 3.999999999999937
+    }
+  },
+  {
+    "name": "04-zero_connected",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/04-zero_connected.mp4",
+    "sha256": "58e02b060b3d44952ac9f6f9ad93c239afecfaada8aafc020c61b2668de63df9",
+    "frames": 305,
+    "fps": 25,
+    "duration": 12.2,
+    "seconds": 8.555758987087756,
+    "sides": [
+      {
+        "title": "Frozen BFM STANDING | Connected ZERO demand",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/native_standing__zero_connected.json.gz",
+        "sha256": "4fd56fda595bffdc379fe90e5017411292bcb1bf2715c7f6081b21a8ed5a3069"
+      },
+      {
+        "title": "C0 frozen local / delayed walking | Connected ZERO demand",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/C0__zero_connected.json.gz",
+        "sha256": "a5c7250582af713892d5438cfc38da1dfc245e1568e3323e86654ff8e4cd355d"
+      },
+      {
+        "title": "NATIVE guided RAW head | FIXED FINAL32 | NOT dev-selected | Connected ZERO demand",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/guided_last__zero_connected.json.gz",
+        "sha256": "2f35a2417512c0f2f0ed46cad06839628e3592d3ac5c65b89d952b232c82e13b"
+      },
+      {
+        "title": "NATIVE guided COORD head | FIXED FINAL32 | NOT dev-selected | Connected ZERO demand",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/coordinate_last__zero_connected.json.gz",
+        "sha256": "1f83aaf96330096dcc40b179e55e05850bbfc4f603c3c50f52ffabe4584e2eb3"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.0,
+      "ramp": 4.0,
+      "onset": 5.17,
+      "release": 11.17,
+      "end": 15.17,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "handoff_time": 3.999999999999937
+    }
+  },
+  {
+    "name": "03-guided-common-prefix-stop-continue",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/03-guided-common-prefix-stop-continue.mp4",
+    "sha256": "eb5b83d29cfb9536d2e683f4261c7218ee8c144249c7bc2ac198e83a1e7e9adf",
+    "frames": 412,
+    "fps": 25,
+    "duration": 16.48,
+    "seconds": 9.138651005923748,
+    "sides": [
+      {
+        "title": "SAME native coordinate | partner stops | after8.27s",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/coordinate_last__new_stop.json.gz",
+        "sha256": "45cbedacba2588b4591573bc4a45874589234dd6947367c72e45e473486cbfc2"
+      },
+      {
+        "title": "SAME native coordinate | partner continues | after8.27s",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/videos-final32/merged/coordinate_last__new_continue.json.gz",
+        "sha256": "dc1e9a2ee3e576b71e67a140c172716e911f1302155c5805963c6dd98cd2c5c0"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.69,
+      "ramp": 8.3,
+      "onset": 5.17,
+      "release": 10.969999999999999,
+      "end": 14.969999999999999,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "stop_time": 8.27,
+      "deceleration": 0.7,
+      "handoff_time": 3.999999999999937
+    }
+  }
+]

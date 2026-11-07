@@ -1,0 +1,1475 @@
+{
+  "ordinary": {
+    "selection": {
+      "iteration": 0,
+      "score": 1.4826214813845335,
+      "sha256": "ea7a2f8f7ba3c6bde55233b08b46108d7988640ee9309cec7e2c7edef7335800",
+      "evaluation": "dev-0000/summary.json",
+      "rule": "Within each arm same dev rule: .5*max relative physical cost + mean relative cost; reject native safety boundary or worst >1.75x initial. Initial included; dev-only selection. Report per-family and tail; no final reselection."
+    },
+    "rounds": [
+      {
+        "evaluation": "dev-0000",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 8.162431149363135,
+            "relative": 1.0,
+            "root_max_m": 2.474632446038263,
+            "torso_excursion_deg": 62.73668454024826,
+            "error_cm": 21.117355278480606,
+            "force_rms": 6.45554296911201
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.979159021212856,
+            "relative": 1.0,
+            "root_max_m": 0.05260979162524202,
+            "torso_excursion_deg": 5.43544948277431,
+            "error_cm": 8.023960609902993,
+            "force_rms": 6.4948585170733395
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.39721167525954,
+            "relative": 1.0,
+            "root_max_m": 0.0565849089100963,
+            "torso_excursion_deg": 4.487205692151733,
+            "error_cm": 8.445665943261456,
+            "force_rms": 6.843937575005094
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.08435933324608035,
+            "relative": 0.8435933324608034,
+            "root_max_m": 0.0019083449863368993,
+            "torso_excursion_deg": 4.170258037645595,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.144458558288424,
+            "relative": 1.0,
+            "root_max_m": 0.08129518071966818,
+            "torso_excursion_deg": 8.428567962177203,
+            "error_cm": 38.377260398441734,
+            "force_rms": 8.912458014784306
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 15.24528684626008,
+            "relative": 1.0,
+            "root_max_m": 2.926891647314904,
+            "torso_excursion_deg": 118.87699495554227,
+            "error_cm": 68.58477060692911,
+            "force_rms": 9.978577048386764
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 3.165638465751803,
+            "relative": 1.0,
+            "root_max_m": 0.017242981684005464,
+            "torso_excursion_deg": 4.503547408812504,
+            "error_cm": 3.471759822196218,
+            "force_rms": 2.82452551504618
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.221015102466572,
+            "relative": 1.0,
+            "root_max_m": 0.0750505554049119,
+            "torso_excursion_deg": 8.90283707471341,
+            "error_cm": 11.920904376698035,
+            "force_rms": 8.0701117610641
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.295065020622681,
+            "relative": 1.0,
+            "root_max_m": 3.0848320841535886,
+            "torso_excursion_deg": 81.56290321036703,
+            "error_cm": 59.32759685416682,
+            "force_rms": 9.96881524530054
+          }
+        ],
+        "score": 1.4826214813845338
+      },
+      {
+        "evaluation": "dev-0008",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 8.2066319376346,
+            "relative": 1.005415149906032,
+            "root_max_m": 2.3910643790768815,
+            "torso_excursion_deg": 63.722798730744294,
+            "error_cm": 21.65717739438143,
+            "force_rms": 6.517535807169865
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.948210858029844,
+            "relative": 0.9955656314623372,
+            "root_max_m": 0.05275634689081325,
+            "torso_excursion_deg": 5.542928402832624,
+            "error_cm": 7.984716312753538,
+            "force_rms": 6.462595756770754
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.407494399243066,
+            "relative": 1.001390081078512,
+            "root_max_m": 0.05679255197972324,
+            "torso_excursion_deg": 4.490197450996937,
+            "error_cm": 8.461089130506725,
+            "force_rms": 6.854023743931027
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.09025717402096396,
+            "relative": 0.9025717402096396,
+            "root_max_m": 0.002036898918339589,
+            "torso_excursion_deg": 4.461936228089709,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.141868544872413,
+            "relative": 0.9997675962988722,
+            "root_max_m": 0.08053678347841017,
+            "torso_excursion_deg": 8.262409453228946,
+            "error_cm": 38.42482149094991,
+            "force_rms": 8.908463631544723
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 15.42636369093742,
+            "relative": 1.011877562324894,
+            "root_max_m": 3.044528327782204,
+            "torso_excursion_deg": 116.43176765924719,
+            "error_cm": 71.87211422446238,
+            "force_rms": 9.977852011075116
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 3.1424929112370794,
+            "relative": 0.9926885035151268,
+            "root_max_m": 0.01769504541803953,
+            "torso_excursion_deg": 4.660507580024511,
+            "error_cm": 3.4418585426821897,
+            "force_rms": 2.800571987595926
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.21309959370288,
+            "relative": 0.9991415794599909,
+            "root_max_m": 0.07312568756805238,
+            "torso_excursion_deg": 8.725793564400123,
+            "error_cm": 11.907274244296199,
+            "force_rms": 8.06263057109151
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.375571589201877,
+            "relative": 1.0056317735150595,
+            "root_max_m": 2.7789598530658592,
+            "torso_excursion_deg": 79.99186727530494,
+            "error_cm": 60.33910839097737,
+            "force_rms": 9.967759295141882
+          }
+        ],
+        "score": 1.4963887386924986
+      },
+      {
+        "evaluation": "dev-0016",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 7.926940581522666,
+            "relative": 0.9711494573698373,
+            "root_max_m": 2.430495234083316,
+            "torso_excursion_deg": 60.35929550152034,
+            "error_cm": 19.603772439351,
+            "force_rms": 6.347935016512401
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.924744268813704,
+            "relative": 0.9922032508166442,
+            "root_max_m": 0.0525682487818988,
+            "torso_excursion_deg": 5.7873900405641265,
+            "error_cm": 7.951576976517928,
+            "force_rms": 6.436346104807294
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.431186172016953,
+            "relative": 1.004592878810139,
+            "root_max_m": 0.056088268793579865,
+            "torso_excursion_deg": 4.542719579218712,
+            "error_cm": 8.487334912648953,
+            "force_rms": 6.876481807145462
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.09705213676393727,
+            "relative": 0.9705213676393727,
+            "root_max_m": 0.002835871066328356,
+            "torso_excursion_deg": 4.7817100615386545,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.129620408339061,
+            "relative": 0.9986685625082856,
+            "root_max_m": 0.07814926928473268,
+            "torso_excursion_deg": 7.8288949150138745,
+            "error_cm": 38.47381248038144,
+            "force_rms": 8.90373755124575
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 15.0825543689482,
+            "relative": 0.9893257188957516,
+            "root_max_m": 2.9621709705195336,
+            "torso_excursion_deg": 110.62868246457946,
+            "error_cm": 62.60333905721129,
+            "force_rms": 9.977356323687506
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 3.1193734057444042,
+            "relative": 0.9853852357090275,
+            "root_max_m": 0.017583398168748175,
+            "torso_excursion_deg": 4.7595649566655736,
+            "error_cm": 3.4122743260655843,
+            "force_rms": 2.7767564929417783
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.194868299971867,
+            "relative": 0.9971644333943548,
+            "root_max_m": 0.06352845689554606,
+            "torso_excursion_deg": 8.056658965291565,
+            "error_cm": 12.029654403984974,
+            "force_rms": 8.053774328441111
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.235986800833128,
+            "relative": 0.9958672297254805,
+            "root_max_m": 2.9852590560414134,
+            "torso_excursion_deg": 81.26600131010622,
+            "error_cm": 56.16192776358404,
+            "force_rms": 9.967037351831571
+          }
+        ],
+        "score": 1.491727343279391
+      },
+      {
+        "evaluation": "dev-0024",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 5.565829820286219,
+            "relative": 0.6818838307408556,
+            "root_max_m": 2.1202438001601775,
+            "torso_excursion_deg": 38.5599804082105,
+            "error_cm": 8.093066960849896,
+            "force_rms": 4.879651378320224
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.973443027900501,
+            "relative": 0.9991809911058078,
+            "root_max_m": 0.05311848646302437,
+            "torso_excursion_deg": 5.694797738460708,
+            "error_cm": 8.0075685394364,
+            "force_rms": 6.481808532056828
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.445459690440765,
+            "relative": 1.006522459718517,
+            "root_max_m": 0.05764941313642391,
+            "torso_excursion_deg": 4.754070937075932,
+            "error_cm": 8.499976749542707,
+            "force_rms": 6.886756588262456
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.12825755249597465,
+            "relative": 1.2825755249597464,
+            "root_max_m": 0.011901427082498,
+            "torso_excursion_deg": 6.115341947736281,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.135775588131388,
+            "relative": 0.999220871062365,
+            "root_max_m": 0.0819595100339902,
+            "torso_excursion_deg": 8.539711118604464,
+            "error_cm": 38.38999369784845,
+            "force_rms": 8.900512271808145
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 15.3097139319833,
+            "relative": 1.0042260330273172,
+            "root_max_m": 3.092577984282147,
+            "torso_excursion_deg": 106.60638461737787,
+            "error_cm": 71.46571864460762,
+            "force_rms": 9.977551598767404
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 3.1114622638900333,
+            "relative": 0.9828861689520495,
+            "root_max_m": 0.020018822888004856,
+            "torso_excursion_deg": 4.93446457363608,
+            "error_cm": 3.3910399043210497,
+            "force_rms": 2.7616389364987506
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.190393124729695,
+            "relative": 0.9966791099031294,
+            "root_max_m": 0.055743169673894546,
+            "torso_excursion_deg": 4.911373763405697,
+            "error_cm": 12.050746012833391,
+            "force_rms": 8.047727555943073
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.204383000468534,
+            "relative": 0.9936564107946815,
+            "root_max_m": 2.7495758459621897,
+            "torso_excursion_deg": 75.0538544359278,
+            "error_cm": 55.646090575630105,
+            "force_rms": 9.967321761951803
+          }
+        ],
+        "score": 1.6353801402870365
+      },
+      {
+        "evaluation": "dev-0032",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 4.010830788608725,
+            "relative": 0.49137698256991313,
+            "root_max_m": 1.8813821900062948,
+            "torso_excursion_deg": 32.576540079150305,
+            "error_cm": 4.183857942488819,
+            "force_rms": 3.611456131080185
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 7.052138125273079,
+            "relative": 1.010456718902436,
+            "root_max_m": 0.05427011368479073,
+            "torso_excursion_deg": 5.573188259075032,
+            "error_cm": 8.099531509242322,
+            "force_rms": 6.558093712764914
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.5286489446397065,
+            "relative": 1.01776848833727,
+            "root_max_m": 0.05814533995199796,
+            "torso_excursion_deg": 4.617684204042419,
+            "error_cm": 8.603757394041843,
+            "force_rms": 6.971031400073475
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.13472753928804526,
+            "relative": 1.3472753928804526,
+            "root_max_m": 0.013119752123957438,
+            "torso_excursion_deg": 6.408383161303327,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.136341215932744,
+            "relative": 0.9992716252374914,
+            "root_max_m": 0.08161010630290084,
+            "torso_excursion_deg": 8.29775383124481,
+            "error_cm": 38.44601082506161,
+            "force_rms": 8.898111542202487
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 14.52156186318072,
+            "relative": 0.9525279523843855,
+            "root_max_m": 2.7741728272187234,
+            "torso_excursion_deg": 93.10447452412836,
+            "error_cm": 47.36037355606798,
+            "force_rms": 9.977522224324314
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 3.0931183701242695,
+            "relative": 0.9770914788874001,
+            "root_max_m": 0.020974417312372883,
+            "torso_excursion_deg": 5.01777622394983,
+            "error_cm": 3.359440103781371,
+            "force_rms": 2.7369726646777597
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.211099150399479,
+            "relative": 0.998924635524733,
+            "root_max_m": 0.07767741388494517,
+            "torso_excursion_deg": 9.452219405179406,
+            "error_cm": 11.893612511638821,
+            "force_rms": 8.04322512662709
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.028556075742468,
+            "relative": 0.9813565769378638,
+            "root_max_m": 2.6976876947415227,
+            "torso_excursion_deg": 87.33044230541289,
+            "error_cm": 45.124230753845154,
+            "force_rms": 9.9672789794468
+          }
+        ],
+        "score": 1.6487543466248868
+      }
+    ]
+  },
+  "guided": {
+    "selection": {
+      "iteration": 0,
+      "score": 1.4826214813845335,
+      "sha256": "370a58c1d103a8743d2b829e0366b8f8cfae09ae6d9052d542c31e74823f31a4",
+      "evaluation": "dev-0000/summary.json",
+      "rule": "Within each arm same dev rule: .5*max relative physical cost + mean relative cost; reject native safety boundary or worst >1.75x initial. Initial included; dev-only selection. Report per-family and tail; no final reselection."
+    },
+    "rounds": [
+      {
+        "evaluation": "dev-0000",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 8.162431149363135,
+            "relative": 1.0,
+            "root_max_m": 2.474632446038263,
+            "torso_excursion_deg": 62.73668454024826,
+            "error_cm": 21.117355278480606,
+            "force_rms": 6.45554296911201
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.979159021212856,
+            "relative": 1.0,
+            "root_max_m": 0.05260979162524202,
+            "torso_excursion_deg": 5.43544948277431,
+            "error_cm": 8.023960609902993,
+            "force_rms": 6.4948585170733395
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.39721167525954,
+            "relative": 1.0,
+            "root_max_m": 0.0565849089100963,
+            "torso_excursion_deg": 4.487205692151733,
+            "error_cm": 8.445665943261456,
+            "force_rms": 6.843937575005094
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.08435933324608035,
+            "relative": 0.8435933324608034,
+            "root_max_m": 0.0019083449863368993,
+            "torso_excursion_deg": 4.170258037645595,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.144458558288424,
+            "relative": 1.0,
+            "root_max_m": 0.08129518071966818,
+            "torso_excursion_deg": 8.428567962177203,
+            "error_cm": 38.377260398441734,
+            "force_rms": 8.912458014784306
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 15.24528684626008,
+            "relative": 1.0,
+            "root_max_m": 2.926891647314904,
+            "torso_excursion_deg": 118.87699495554227,
+            "error_cm": 68.58477060692911,
+            "force_rms": 9.978577048386764
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 3.165638465751803,
+            "relative": 1.0,
+            "root_max_m": 0.017242981684005464,
+            "torso_excursion_deg": 4.503547408812504,
+            "error_cm": 3.471759822196218,
+            "force_rms": 2.82452551504618
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.221015102466572,
+            "relative": 1.0,
+            "root_max_m": 0.0750505554049119,
+            "torso_excursion_deg": 8.90283707471341,
+            "error_cm": 11.920904376698035,
+            "force_rms": 8.0701117610641
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.295065020622681,
+            "relative": 1.0,
+            "root_max_m": 3.0848320841535886,
+            "torso_excursion_deg": 81.56290321036703,
+            "error_cm": 59.32759685416682,
+            "force_rms": 9.96881524530054
+          }
+        ],
+        "score": 1.4826214813845338
+      },
+      {
+        "evaluation": "dev-0008",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 8.675783220576836,
+            "relative": 1.062892055298225,
+            "root_max_m": 2.5361240282990205,
+            "torso_excursion_deg": 62.44773814502744,
+            "error_cm": 26.734394466496497,
+            "force_rms": 6.773487067560623
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.967415631325399,
+            "relative": 0.9983173631877762,
+            "root_max_m": 0.052583489520028275,
+            "torso_excursion_deg": 5.568286705575037,
+            "error_cm": 8.00930697710829,
+            "force_rms": 6.4819084743584146
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.367049944944046,
+            "relative": 0.9959225541136842,
+            "root_max_m": 0.05758797822240877,
+            "torso_excursion_deg": 4.732669794125866,
+            "error_cm": 8.403707931727949,
+            "force_rms": 6.810431817920914
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.0916979178467666,
+            "relative": 0.916979178467666,
+            "root_max_m": 0.0024034741297041164,
+            "torso_excursion_deg": 4.524809039095727,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.134307243674094,
+            "relative": 0.9990891154952719,
+            "root_max_m": 0.08062844500051512,
+            "torso_excursion_deg": 8.266632708357221,
+            "error_cm": 38.345744463378466,
+            "force_rms": 8.910781103795877
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 15.214641164403123,
+            "relative": 0.9979898258284018,
+            "root_max_m": 3.1795464450946263,
+            "torso_excursion_deg": 104.76589345581267,
+            "error_cm": 69.08336256463008,
+            "force_rms": 9.978106231210297
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 3.1539276524685773,
+            "relative": 0.996300647275448,
+            "root_max_m": 0.01779356418902358,
+            "torso_excursion_deg": 4.646397429648826,
+            "error_cm": 3.455480259507611,
+            "force_rms": 2.8116647934658254
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.205496437012151,
+            "relative": 0.9983170328557135,
+            "root_max_m": 0.055857005266910426,
+            "torso_excursion_deg": 4.834851383211391,
+            "error_cm": 12.077033835331767,
+            "force_rms": 8.066971465003263
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.364531565660544,
+            "relative": 1.0048594773747197,
+            "root_max_m": 3.0741690884524178,
+            "torso_excursion_deg": 82.08921547823408,
+            "error_cm": 59.498259862350366,
+            "force_rms": 9.968129547386171
+          }
+        ],
+        "score": 1.5281868331932131
+      },
+      {
+        "evaluation": "dev-0016",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 8.788155133511347,
+            "relative": 1.0766590213991616,
+            "root_max_m": 2.5951081514578487,
+            "torso_excursion_deg": 61.71056198971046,
+            "error_cm": 28.059770310014336,
+            "force_rms": 6.850702548174207
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.99069651068577,
+            "relative": 1.0016531346309558,
+            "root_max_m": 0.052708834571527995,
+            "torso_excursion_deg": 5.489637474738941,
+            "error_cm": 8.035382070456496,
+            "force_rms": 6.503940190219347
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.408704763248333,
+            "relative": 1.0015537054356891,
+            "root_max_m": 0.05800590512459787,
+            "torso_excursion_deg": 4.57035809035135,
+            "error_cm": 8.454553823285508,
+            "force_rms": 6.851333840008459
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.09823128245677777,
+            "relative": 0.9823128245677777,
+            "root_max_m": 0.0029858357032051044,
+            "torso_excursion_deg": 4.836918230258761,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.128850623288134,
+            "relative": 0.9985994891614827,
+            "root_max_m": 0.08120376695471894,
+            "torso_excursion_deg": 8.297959245172242,
+            "error_cm": 38.334137383438666,
+            "force_rms": 8.907946906855994
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 15.395644884891212,
+            "relative": 1.0098625916420862,
+            "root_max_m": 3.1234345118225746,
+            "torso_excursion_deg": 117.77645151987392,
+            "error_cm": 67.99281336236135,
+            "force_rms": 9.978959929450054
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 3.1320217343903582,
+            "relative": 0.9893807420761609,
+            "root_max_m": 0.017917849245421644,
+            "torso_excursion_deg": 4.730089586697662,
+            "error_cm": 3.426348584561114,
+            "force_rms": 2.7881620341398605
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.204922850164099,
+            "relative": 0.9982548285493895,
+            "root_max_m": 0.06424350908853431,
+            "torso_excursion_deg": 7.558663972894253,
+            "error_cm": 12.083763457616959,
+            "force_rms": 8.0616625212258
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.272466909963635,
+            "relative": 0.9984191669903952,
+            "root_max_m": 2.968502609630547,
+            "torso_excursion_deg": 82.99495849501888,
+            "error_cm": 55.68721438722915,
+            "force_rms": 9.969372862180695
+          }
+        ],
+        "score": 1.5446290111943695
+      },
+      {
+        "evaluation": "dev-0024",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 8.325288020662239,
+            "relative": 1.0199520055139222,
+            "root_max_m": 2.498244497633181,
+            "torso_excursion_deg": 66.75239338831247,
+            "error_cm": 22.98629741045929,
+            "force_rms": 6.561107650636046
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.994448534101192,
+            "relative": 1.0021907385749291,
+            "root_max_m": 0.05273719415093418,
+            "torso_excursion_deg": 5.601470151382775,
+            "error_cm": 8.035727612736457,
+            "force_rms": 6.504804547628562
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.429581456521233,
+            "relative": 1.0043759436234543,
+            "root_max_m": 0.05813128411123569,
+            "torso_excursion_deg": 4.82448230683284,
+            "error_cm": 8.475795622522746,
+            "force_rms": 6.869103098357189
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.11982181348825327,
+            "relative": 1.1982181348825327,
+            "root_max_m": 0.009919759701346575,
+            "torso_excursion_deg": 5.743096681878999,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.104831598697588,
+            "relative": 0.996444245417256,
+            "root_max_m": 0.07609701427620634,
+            "torso_excursion_deg": 7.035171247670395,
+            "error_cm": 38.45661668563704,
+            "force_rms": 8.903673820652289
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 15.591378855620128,
+            "relative": 1.0227015741225591,
+            "root_max_m": 3.1908075695622116,
+            "torso_excursion_deg": 116.63711220753282,
+            "error_cm": 74.36007186088409,
+            "force_rms": 9.979182799791225
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 3.108750059792259,
+            "relative": 0.9820294052605802,
+            "root_max_m": 0.01939596853096753,
+            "torso_excursion_deg": 4.821355108774973,
+            "error_cm": 3.3912911896432307,
+            "force_rms": 2.7607433240389736
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.195762773182919,
+            "relative": 0.9972614371624987,
+            "root_max_m": 0.05547190568443505,
+            "torso_excursion_deg": 4.998474791742878,
+            "error_cm": 12.034576204110218,
+            "force_rms": 8.053654868715684
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.477185954405321,
+            "relative": 1.0127401262967257,
+            "root_max_m": 3.1203187767177285,
+            "torso_excursion_deg": 85.93837639251659,
+            "error_cm": 61.965317274533426,
+            "force_rms": 9.969697439574466
+          }
+        ],
+        "score": 1.6253216908695394
+      },
+      {
+        "evaluation": "dev-0032",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 7.543371224236506,
+            "relative": 0.9241574092572983,
+            "root_max_m": 2.3048889620620665,
+            "torso_excursion_deg": 56.961230257466376,
+            "error_cm": 17.66078505553561,
+            "force_rms": 6.102384753658713
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 7.000311518689113,
+            "relative": 1.0030308089286926,
+            "root_max_m": 0.0526207532227563,
+            "torso_excursion_deg": 5.69187232929929,
+            "error_cm": 8.043009791280005,
+            "force_rms": 6.5109054292379325
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.417317963397413,
+            "relative": 1.0027180901426844,
+            "root_max_m": 0.05804299612591875,
+            "torso_excursion_deg": 4.892887346760412,
+            "error_cm": 8.460142750729153,
+            "force_rms": 6.856717496053666
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.11648418360038963,
+            "relative": 1.1648418360038963,
+            "root_max_m": 0.009048824151591113,
+            "torso_excursion_deg": 5.597988576229704,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.091099701365827,
+            "relative": 0.9952120727405899,
+            "root_max_m": 0.07863584216197846,
+            "torso_excursion_deg": 7.671262152107661,
+            "error_cm": 38.439943804761825,
+            "force_rms": 8.902859512271094
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 15.56392178502414,
+            "relative": 1.0209005538549263,
+            "root_max_m": 3.1207714261775377,
+            "torso_excursion_deg": 122.18609403791011,
+            "error_cm": 72.35367355684133,
+            "force_rms": 9.978924316242436
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 3.1031746466765595,
+            "relative": 0.9802681766250244,
+            "root_max_m": 0.019135542551158364,
+            "torso_excursion_deg": 4.771424956746007,
+            "error_cm": 3.38470336828164,
+            "force_rms": 2.7551997366747414
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.194297658072868,
+            "relative": 0.9971025484616594,
+            "root_max_m": 0.05554012017392125,
+            "torso_excursion_deg": 5.10245594426854,
+            "error_cm": 12.039306463781614,
+            "force_rms": 8.052128408745206
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.367920271884106,
+            "relative": 1.0050965316461535,
+            "root_max_m": 3.0173523677844054,
+            "torso_excursion_deg": 88.00357619739492,
+            "error_cm": 55.85155762559202,
+            "force_rms": 9.969320996550744
+          }
+        ],
+        "score": 1.5927906988531622
+      }
+    ]
+  },
+  "coordinate": {
+    "selection": {
+      "iteration": 0,
+      "score": 1.4826214813845335,
+      "sha256": "f63701de62df5e24906b3c99f7b4c97e2a573419ed64c10191bae1c26e5c8bfb",
+      "evaluation": "dev-0000/summary.json",
+      "rule": "Within each arm same dev rule: .5*max relative physical cost + mean relative cost; reject native safety boundary or worst >1.75x initial. Initial included; dev-only selection. Report per-family and tail; no final reselection."
+    },
+    "rounds": [
+      {
+        "evaluation": "dev-0000",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 8.162431149363135,
+            "relative": 1.0,
+            "root_max_m": 2.474632446038263,
+            "torso_excursion_deg": 62.73668454024826,
+            "error_cm": 21.117355278480606,
+            "force_rms": 6.45554296911201
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.979159021212856,
+            "relative": 1.0,
+            "root_max_m": 0.05260979162524202,
+            "torso_excursion_deg": 5.43544948277431,
+            "error_cm": 8.023960609902993,
+            "force_rms": 6.4948585170733395
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.39721167525954,
+            "relative": 1.0,
+            "root_max_m": 0.0565849089100963,
+            "torso_excursion_deg": 4.487205692151733,
+            "error_cm": 8.445665943261456,
+            "force_rms": 6.843937575005094
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.08435933324608035,
+            "relative": 0.8435933324608034,
+            "root_max_m": 0.0019083449863368993,
+            "torso_excursion_deg": 4.170258037645595,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.144458558288424,
+            "relative": 1.0,
+            "root_max_m": 0.08129518071966818,
+            "torso_excursion_deg": 8.428567962177203,
+            "error_cm": 38.377260398441734,
+            "force_rms": 8.912458014784306
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 15.24528684626008,
+            "relative": 1.0,
+            "root_max_m": 2.926891647314904,
+            "torso_excursion_deg": 118.87699495554227,
+            "error_cm": 68.58477060692911,
+            "force_rms": 9.978577048386764
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 3.165638465751803,
+            "relative": 1.0,
+            "root_max_m": 0.017242981684005464,
+            "torso_excursion_deg": 4.503547408812504,
+            "error_cm": 3.471759822196218,
+            "force_rms": 2.82452551504618
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.221015102466572,
+            "relative": 1.0,
+            "root_max_m": 0.0750505554049119,
+            "torso_excursion_deg": 8.90283707471341,
+            "error_cm": 11.920904376698035,
+            "force_rms": 8.0701117610641
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.295065020622681,
+            "relative": 1.0,
+            "root_max_m": 3.0848320841535886,
+            "torso_excursion_deg": 81.56290321036703,
+            "error_cm": 59.32759685416682,
+            "force_rms": 9.96881524530054
+          }
+        ],
+        "score": 1.4826214813845338
+      },
+      {
+        "evaluation": "dev-0008",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 3.387855030082127,
+            "relative": 0.4150546532140073,
+            "root_max_m": 1.376690766198615,
+            "torso_excursion_deg": 30.06538916880054,
+            "error_cm": 3.6737651076076627,
+            "force_rms": 3.0248024040383057
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.684029672579131,
+            "relative": 0.9577127634236887,
+            "root_max_m": 0.05206330902625302,
+            "torso_excursion_deg": 6.243204586158808,
+            "error_cm": 7.656529611598136,
+            "force_rms": 6.194084991859635
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.231362448765184,
+            "relative": 0.9775794943047189,
+            "root_max_m": 0.056902234934522254,
+            "torso_excursion_deg": 5.298921955961726,
+            "error_cm": 8.219898878822045,
+            "force_rms": 6.666020479096005
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.12227312497583592,
+            "relative": 1.2227312497583591,
+            "root_max_m": 0.010457160500813753,
+            "torso_excursion_deg": 5.852227236271452,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.138566975109221,
+            "relative": 0.9994713441529359,
+            "root_max_m": 0.081540198357957,
+            "torso_excursion_deg": 9.297492151681121,
+            "error_cm": 38.21691756766302,
+            "force_rms": 8.887755002812668
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 15.24932403449146,
+            "relative": 1.000264815498199,
+            "root_max_m": 2.8882717824172155,
+            "torso_excursion_deg": 116.45044388709452,
+            "error_cm": 63.856038751524856,
+            "force_rms": 9.97759096274415
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 3.037594556625324,
+            "relative": 0.9595519480472101,
+            "root_max_m": 0.019623583342312255,
+            "torso_excursion_deg": 4.896713549185559,
+            "error_cm": 3.305476421423234,
+            "force_rms": 2.691061133273314
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.186492384853095,
+            "relative": 0.9962560827381963,
+            "root_max_m": 0.07563147340231871,
+            "torso_excursion_deg": 10.58963754665493,
+            "error_cm": 11.296958998318283,
+            "force_rms": 8.023787038036769
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.31307694044198,
+            "relative": 1.001260009646218,
+            "root_max_m": 2.353722353432834,
+            "torso_excursion_deg": 76.69186417290065,
+            "error_cm": 56.645715517587846,
+            "force_rms": 9.967379093655772
+          }
+        ],
+        "score": 1.5591303316329055
+      },
+      {
+        "evaluation": "dev-0016",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 1.9885581131571723,
+            "relative": 0.24362326331075118,
+            "root_max_m": 0.1020371775352876,
+            "torso_excursion_deg": 4.423286361058137,
+            "error_cm": 2.0448055564429497,
+            "force_rms": 1.69284287718412
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.551774614410442,
+            "relative": 0.9387627641806989,
+            "root_max_m": 0.05148996112433732,
+            "torso_excursion_deg": 7.092476371928578,
+            "error_cm": 7.478792505500555,
+            "force_rms": 6.053870678450148
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.224048625926932,
+            "relative": 0.976590767314154,
+            "root_max_m": 0.05649955458310645,
+            "torso_excursion_deg": 5.93453363906492,
+            "error_cm": 8.205622497891778,
+            "force_rms": 6.654914201821821
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.1325077965452915,
+            "relative": 1.3250779654529148,
+            "root_max_m": 0.012203180803810993,
+            "torso_excursion_deg": 6.320310307169299,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.138201108060414,
+            "relative": 0.9994385146487574,
+            "root_max_m": 0.08286581944663793,
+            "torso_excursion_deg": 10.612466199323235,
+            "error_cm": 38.20113585392635,
+            "force_rms": 8.865559002404769
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 14.886468142917618,
+            "relative": 0.976463630565896,
+            "root_max_m": 2.172996249514729,
+            "torso_excursion_deg": 95.69174969203303,
+            "error_cm": 58.20986571717779,
+            "force_rms": 9.978480022472818
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 2.928877733900947,
+            "relative": 0.9252091688888965,
+            "root_max_m": 0.020236999458295015,
+            "torso_excursion_deg": 5.359723987470072,
+            "error_cm": 3.1593265928323864,
+            "force_rms": 2.5742900183646102
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.155881202073765,
+            "relative": 0.9929363633321255,
+            "root_max_m": 0.07712353507202821,
+            "torso_excursion_deg": 11.617622667382724,
+            "error_cm": 11.107549848606556,
+            "force_rms": 7.982044880212908
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 14.160158726619843,
+            "relative": 0.990562736594187,
+            "root_max_m": 2.7413740193412988,
+            "torso_excursion_deg": 87.44166412802102,
+            "error_cm": 51.28865475567418,
+            "force_rms": 9.968673938016861
+          }
+        ],
+        "score": 1.5923906687584997
+      },
+      {
+        "evaluation": "dev-0024",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 1.2145887372314332,
+            "relative": 0.14880232555789463,
+            "root_max_m": 0.018053598591135474,
+            "torso_excursion_deg": 1.6635366864337764,
+            "error_cm": 1.1216824610839484,
+            "force_rms": 0.9289482317152348
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.325417627710103,
+            "relative": 0.9063294887656617,
+            "root_max_m": 0.04877702728838332,
+            "torso_excursion_deg": 8.274804440921063,
+            "error_cm": 7.190153582784006,
+            "force_rms": 5.8202188839098765
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 7.095202634602805,
+            "relative": 0.9591725836821969,
+            "root_max_m": 0.053810285876025064,
+            "torso_excursion_deg": 6.945427506283078,
+            "error_cm": 8.046387679880093,
+            "force_rms": 6.521960152004433
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.13747604200735622,
+            "relative": 1.3747604200735621,
+            "root_max_m": 0.01248364337973749,
+            "torso_excursion_deg": 6.561711015874374,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.104197305687146,
+            "relative": 0.9963873298652688,
+            "root_max_m": 0.07870834495500446,
+            "torso_excursion_deg": 10.799265545927911,
+            "error_cm": 38.08685185852857,
+            "force_rms": 8.83611671685329
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 13.989679772738747,
+            "relative": 0.9176396557058317,
+            "root_max_m": 1.2667543271211492,
+            "torso_excursion_deg": 60.301670645515685,
+            "error_cm": 36.82862757152077,
+            "force_rms": 9.97684113100912
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 2.781561613087939,
+            "relative": 0.8786731786276011,
+            "root_max_m": 0.019545923392220485,
+            "torso_excursion_deg": 5.899767852405044,
+            "error_cm": 2.9720645865689033,
+            "force_rms": 2.422670398071647
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.08672911570724,
+            "relative": 0.9854369627132037,
+            "root_max_m": 0.07197463375525937,
+            "torso_excursion_deg": 12.318149952414984,
+            "error_cm": 10.87538110593825,
+            "force_rms": 7.926498665448861
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 13.762297265051371,
+            "relative": 0.9627306518156639,
+            "root_max_m": 2.2245878232399403,
+            "torso_excursion_deg": 79.72534108803343,
+            "error_cm": 41.098281037835264,
+            "force_rms": 9.966286982654882
+          }
+        ],
+        "score": 1.5907060541264348
+      },
+      {
+        "evaluation": "dev-0032",
+        "cases": [
+          {
+            "label": "zero__mean",
+            "initial_cost": 8.162431149363135,
+            "current_cost": 1.0572554196722446,
+            "relative": 0.12952702452562015,
+            "root_max_m": 0.013703802423789336,
+            "torso_excursion_deg": 1.5884209781845753,
+            "error_cm": 0.9409231642806218,
+            "force_rms": 0.7764217888851462
+          },
+          {
+            "label": "mid__mean",
+            "initial_cost": 6.979159021212856,
+            "current_cost": 6.017179245702566,
+            "relative": 0.8621639408721892,
+            "root_max_m": 0.04407514573433137,
+            "torso_excursion_deg": 8.599566901583186,
+            "error_cm": 6.802645245485965,
+            "force_rms": 5.5050259079095385
+          },
+          {
+            "label": "arm__mean",
+            "initial_cost": 7.39721167525954,
+            "current_cost": 6.836539203739507,
+            "relative": 0.9242048901486436,
+            "root_max_m": 0.04957143215393863,
+            "torso_excursion_deg": 7.369744611555448,
+            "error_cm": 7.716414493379592,
+            "force_rms": 6.2554899511134945
+          },
+          {
+            "label": "none__mean",
+            "initial_cost": 0.08435933324608035,
+            "current_cost": 0.1364595417245767,
+            "relative": 1.3645954172457668,
+            "root_max_m": 0.011769580742338482,
+            "torso_excursion_deg": 6.5287375676703725,
+            "error_cm": 0.0,
+            "force_rms": 0.0
+          },
+          {
+            "label": "long__mean",
+            "initial_cost": 11.144458558288424,
+            "current_cost": 11.05407034329337,
+            "relative": 0.9918894027446645,
+            "root_max_m": 0.07618606299302345,
+            "torso_excursion_deg": 10.507479497562139,
+            "error_cm": 37.270148042303745,
+            "force_rms": 8.817525791379106
+          },
+          {
+            "label": "walk_continue__mean",
+            "initial_cost": 15.24528684626008,
+            "current_cost": 10.36977325755227,
+            "relative": 0.6801953523161255,
+            "root_max_m": 0.8006732692356476,
+            "torso_excursion_deg": 33.74649894625934,
+            "error_cm": 15.85296792392468,
+            "force_rms": 8.311808403080592
+          },
+          {
+            "label": "near__mean",
+            "initial_cost": 3.165638465751803,
+            "current_cost": 2.7566220491561126,
+            "relative": 0.8707949688441274,
+            "root_max_m": 0.01831064382555447,
+            "torso_excursion_deg": 6.2963690427768375,
+            "error_cm": 2.9450688719336426,
+            "force_rms": 2.3998057014271765
+          },
+          {
+            "label": "stop__mean",
+            "initial_cost": 9.221015102466572,
+            "current_cost": 9.020213338056516,
+            "relative": 0.9782234643172483,
+            "root_max_m": 0.0664679339658014,
+            "torso_excursion_deg": 12.208079044316055,
+            "error_cm": 10.434626662773965,
+            "force_rms": 7.891319320148209
+          },
+          {
+            "label": "walk_stop__mean",
+            "initial_cost": 14.295065020622681,
+            "current_cost": 12.569142384968677,
+            "relative": 0.8792644431372565,
+            "root_max_m": 0.7796345883338439,
+            "torso_excursion_deg": 32.85351203272398,
+            "error_cm": 19.121593245109732,
+            "force_rms": 9.952127855203086
+          }
+        ],
+        "score": 1.5357264757508435
+      }
+    ]
+  }
+}

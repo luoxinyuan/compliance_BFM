@@ -1,0 +1,36 @@
+{
+  "device": "NVIDIA RTX PRO 5000 72GB Blackwell",
+  "torch": "2.7.1+cu128",
+  "initial_checks": [
+    {
+      "input_scale": 0.03,
+      "joint_logprob_max": 6.103515625e-05,
+      "forced_rejection_KL": 5000.0,
+      "rollback_parameters_equal": true
+    },
+    {
+      "input_scale": 0.3,
+      "joint_logprob_max": 9.1552734375e-05,
+      "forced_rejection_KL": 4916.625,
+      "rollback_parameters_equal": true
+    },
+    {
+      "input_scale": 1.0,
+      "joint_logprob_max": 0.0001220703125,
+      "forced_rejection_KL": 4999.99951171875,
+      "rollback_parameters_equal": true
+    }
+  ],
+  "fitted_real_observation_checks": [
+    {
+      "arm": "ordinary",
+      "actual_native_obs_joint_logprob_max": 9.1552734375e-05,
+      "original_threshold": 0.0003
+    },
+    {
+      "arm": "guided",
+      "actual_native_obs_joint_logprob_max": 9.1552734375e-05,
+      "original_threshold": 0.0003
+    }
+  ]
+}

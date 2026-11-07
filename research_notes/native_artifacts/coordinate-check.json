@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "initial_raw_mean_bitwise_equal": true,
+  "initial_Gaussian_mean_bitwise_equal": true,
+  "trainable_actor_parameters": 188928,
+  "probability_checks": [
+    {
+      "delta_weight_std": 0.0,
+      "joint_logprob_max": 0.0001220703125
+    },
+    {
+      "delta_weight_std": 0.0001,
+      "joint_logprob_max": 0.0001220703125
+    }
+  ],
+  "same_saved_batch_discarded_update": [
+    {
+      "variant": "raw",
+      "optimizer_updates_on_discarded_clone": 3,
+      "joint_KL": 0.016850056126713753,
+      "mean_native_span_change": 0.00024869409389793873,
+      "mean_orthogonal_change": 0.001391796162351966,
+      "mean_z_direction_deg": 0.08365889638662338,
+      "actor_clip_threshold": 0.5,
+      "KL_threshold": 0.02,
+      "original_logprob_threshold": 0.0003
+    },
+    {
+      "variant": "coordinate",
+      "optimizer_updates_on_discarded_clone": 3,
+      "joint_KL": 0.016487712040543556,
+      "mean_native_span_change": 0.0022466168738901615,
+      "mean_orthogonal_change": 0.00137158518191427,
+      "mean_z_direction_deg": 0.14332783222198486,
+      "actor_clip_threshold": 0.5,
+      "KL_threshold": 0.02,
+      "original_logprob_threshold": 0.0003
+    }
+  ],
+  "RL_decisions_added": 0,
+  "retained_training_updates_added": 0,
+  "new_method": "mean-head coordinate change, not a probability bug fix; all hidden layers train; no second actor or radius",
+  "seconds": 42.8310224711895,
+  "ended": 1793985821.564246
+}

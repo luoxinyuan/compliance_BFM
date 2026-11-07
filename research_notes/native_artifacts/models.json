@@ -1,0 +1,62 @@
+{
+  "ordinary_best": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/ppo-ordinary/best.pt",
+    "sha256": "ea7a2f8f7ba3c6bde55233b08b46108d7988640ee9309cec7e2c7edef7335800",
+    "iteration": 0,
+    "runtime": "c1a8cc3e50d2258aa6afbf8d3ecf7b889c6250d6",
+    "deterministic_raw_function_sha256": "ece41e4410e0dc494b631d4eb4e2c8aede630821937b54d0edd99049a306d95a"
+  },
+  "ordinary_last": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/ppo-ordinary/last.pt",
+    "sha256": "aaf65ab274fb59be557cfe0b5533dbd9ff35167b6af15195297b8748dbbe74af",
+    "iteration": 32,
+    "runtime": "c1a8cc3e50d2258aa6afbf8d3ecf7b889c6250d6",
+    "deterministic_raw_function_sha256": "30358a23d0b6961a8f33285509358a09643f0a50e856b55bcfcd18e1047b5a03"
+  },
+  "guided_best": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/ppo-guided/best.pt",
+    "sha256": "370a58c1d103a8743d2b829e0366b8f8cfae09ae6d9052d542c31e74823f31a4",
+    "iteration": 0,
+    "runtime": "c1a8cc3e50d2258aa6afbf8d3ecf7b889c6250d6",
+    "deterministic_raw_function_sha256": "ece41e4410e0dc494b631d4eb4e2c8aede630821937b54d0edd99049a306d95a"
+  },
+  "guided_last": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/ppo-guided/last.pt",
+    "sha256": "7195af0f637f310f8db40c6400f06a93fd643421b08fce9d8550883414c01e52",
+    "iteration": 32,
+    "runtime": "c1a8cc3e50d2258aa6afbf8d3ecf7b889c6250d6",
+    "deterministic_raw_function_sha256": "b9c8e9030d6aecd527ea78d5bc2e052e93581d0e34509f220ff2adae5d84c268"
+  },
+  "coordinate_best": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/ppo-coordinate/best.pt",
+    "sha256": "f63701de62df5e24906b3c99f7b4c97e2a573419ed64c10191bae1c26e5c8bfb",
+    "iteration": 0,
+    "runtime": "1b99576ebca9bfa2c221cc382714e1d6184f5040",
+    "deterministic_raw_function_sha256": "ece41e4410e0dc494b631d4eb4e2c8aede630821937b54d0edd99049a306d95a"
+  },
+  "coordinate_last": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/ppo-coordinate/last.pt",
+    "sha256": "39cd0db55fddb174de3f77104acbd8d7574fb3a5051f743e4ca39bb6b7d24ad0",
+    "iteration": 32,
+    "runtime": "1b99576ebca9bfa2c221cc382714e1d6184f5040",
+    "deterministic_raw_function_sha256": "b1078b856b321bbbe847cd7f4e000423db1cd13f934dd1e6b63239e427e77f9e"
+  },
+  "native_initial": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/native-initial.pt",
+    "sha256": "d399174cc2ddbd3efb858953653c9134495070948341381565f5f918f58da5cd",
+    "runtime": "c1a8cc3e50d2258aa6afbf8d3ecf7b889c6250d6",
+    "deterministic_raw_function_sha256": "ece41e4410e0dc494b631d4eb4e2c8aede630821937b54d0edd99049a306d95a"
+  },
+  "I": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+    "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+    "scope": "frozen evaluation reference only, never native training source",
+    "deterministic_raw_function_sha256": "0df24d941f014240dc54035d15bfefc58033adf27c256b2c6b3d0d526cf0ddd1"
+  },
+  "C0": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/correct-C0/C0.pt",
+    "sha256": "ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c",
+    "scope": "frozen evaluation reference only, never native training source",
+    "deterministic_raw_function_sha256": "b997c168a2e63f0d442839bbff94678f661768533e1890e1977289ef5046057e"
+  }
+}

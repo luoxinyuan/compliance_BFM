@@ -1,0 +1,75 @@
+{
+  "status": "completed_no_further_training",
+  "timestamp": 1794015423.5827212,
+  "supervised_experiment_job_seconds": 10377.678248093696,
+  "supplemental_diagnostic_seconds": 85.25999974622391,
+  "total_experiment_job_seconds": 10462.93824783992,
+  "resource_definition": "Each experiment supervisor includes its child workers once. Queue waiting, read-only analysis, docs/git and Mac transfer are not extra GPU experiment jobs. Failed launches, probability, qualification, BC, RL, frozen eval and both video versions are included.",
+  "output_bytes": 4786384817,
+  "output_GiB": 4.457668230868876,
+  "rl_decisions": 73728,
+  "native_initial_supervised_updates": 2000,
+  "accepted_PPO_Adam_updates": {
+    "ordinary": 72,
+    "guided": 77,
+    "coordinate": 85
+  },
+  "frozen_final_episodes": 97,
+  "independent_final_conditions_note": "97 executions include duplicated new_long/new_continue and identical best0 actor functions; not97 independent tasks.",
+  "C0_new_training": 0,
+  "student_training": 0,
+  "gpu_devices": [
+    "0"
+  ],
+  "limits": {
+    "job_wall_seconds": 24000,
+    "output_bytes": 16106127360,
+    "rl_high_decisions": 98304,
+    "C0_fraction_max": 0.2
+  },
+  "Mac_video_revision": "fixed-final32",
+  "Mac_sync": {
+    "status": "complete_verified_on_mac",
+    "revision": "fixed-final32",
+    "time": "2026-11-07T09:33:19.380737",
+    "videos": [
+      {
+        "path": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/native-contact-learning/01-new_near.mp4",
+        "sha256": "1dc44ca1a629b2d21096e308fec7816c4fcaab085cf9a01e89d199ca1eeef8b9",
+        "bytes": 4195678,
+        "duration": 10.08,
+        "full_decode_passed": true,
+        "model_choice": "fixed final32, NOT selected by heldout"
+      },
+      {
+        "path": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/native-contact-learning/02-new_long.mp4",
+        "sha256": "5d552915c24340844c41a7da947ee02a2126eefb97f2dee82ad27e3136fe134f",
+        "bytes": 7851217,
+        "duration": 16.48,
+        "full_decode_passed": true,
+        "model_choice": "fixed final32, NOT selected by heldout"
+      },
+      {
+        "path": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/native-contact-learning/04-zero_connected.mp4",
+        "sha256": "58e02b060b3d44952ac9f6f9ad93c239afecfaada8aafc020c61b2668de63df9",
+        "bytes": 2806372,
+        "duration": 12.2,
+        "full_decode_passed": true,
+        "model_choice": "fixed final32, NOT selected by heldout"
+      },
+      {
+        "path": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/native-contact-learning/03-guided-common-prefix-stop-continue.mp4",
+        "sha256": "eb5b83d29cfb9536d2e683f4261c7218ee8c144249c7bc2ac198e83a1e7e9adf",
+        "bytes": 6336041,
+        "duration": 16.48,
+        "full_decode_passed": true,
+        "model_choice": "fixed final32, NOT selected by heldout"
+      }
+    ],
+    "index": "/Users/gaoe/Projects/compliance-bfm-diagnostics/videos/native-contact-learning/INDEX.md",
+    "preserved_previous": "/Users/gaoe/Projects/compliance-bfm-diagnostics/native-contact-learning/mac-video-verification/dev-selected-v1",
+    "no_new_physics": true,
+    "only_four_mp4_plus_index": true
+  },
+  "no_heldout_reselection": true
+}

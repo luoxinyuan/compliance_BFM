@@ -1,0 +1,125 @@
+[
+  {
+    "arm": "ordinary",
+    "runtime": "c1a8cc3e50d2258aa6afbf8d3ecf7b889c6250d6",
+    "selected": {
+      "iteration": 0,
+      "score": 1.4826214813845335,
+      "sha256": "ea7a2f8f7ba3c6bde55233b08b46108d7988640ee9309cec7e2c7edef7335800",
+      "evaluation": "dev-0000/summary.json",
+      "rule": "Within each arm same dev rule: .5*max relative physical cost + mean relative cost; reject native safety boundary or worst >1.75x initial. Initial included; dev-only selection. Report per-family and tail; no final reselection."
+    },
+    "result": {
+      "status": "completed",
+      "iterations": 32,
+      "decisions": 24576,
+      "updates": 72,
+      "elapsed_s": 2543.763069904875,
+      "workers": [
+        {
+          "pid": 3313682,
+          "exitcode": 0
+        },
+        {
+          "pid": 3313683,
+          "exitcode": 0
+        },
+        {
+          "pid": 3313684,
+          "exitcode": 0
+        }
+      ],
+      "bfm_updated": false,
+      "student_updated": false
+    },
+    "initialization": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/native-initial.pt",
+      "sha256": "d399174cc2ddbd3efb858953653c9134495070948341381565f5f918f58da5cd",
+      "optimizer_loaded": false,
+      "critic": "identical fresh seed in both arms",
+      "std": 1.0
+    }
+  },
+  {
+    "arm": "guided",
+    "runtime": "c1a8cc3e50d2258aa6afbf8d3ecf7b889c6250d6",
+    "selected": {
+      "iteration": 0,
+      "score": 1.4826214813845335,
+      "sha256": "370a58c1d103a8743d2b829e0366b8f8cfae09ae6d9052d542c31e74823f31a4",
+      "evaluation": "dev-0000/summary.json",
+      "rule": "Within each arm same dev rule: .5*max relative physical cost + mean relative cost; reject native safety boundary or worst >1.75x initial. Initial included; dev-only selection. Report per-family and tail; no final reselection."
+    },
+    "result": {
+      "status": "completed",
+      "iterations": 32,
+      "decisions": 24576,
+      "updates": 77,
+      "elapsed_s": 2530.852161241928,
+      "workers": [
+        {
+          "pid": 3322951,
+          "exitcode": 0
+        },
+        {
+          "pid": 3322952,
+          "exitcode": 0
+        },
+        {
+          "pid": 3322953,
+          "exitcode": 0
+        }
+      ],
+      "bfm_updated": false,
+      "student_updated": false
+    },
+    "initialization": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/native-initial.pt",
+      "sha256": "d399174cc2ddbd3efb858953653c9134495070948341381565f5f918f58da5cd",
+      "optimizer_loaded": false,
+      "critic": "identical fresh seed in both arms",
+      "std": 1.0
+    }
+  },
+  {
+    "arm": "coordinate",
+    "runtime": "1b99576ebca9bfa2c221cc382714e1d6184f5040",
+    "selected": {
+      "iteration": 0,
+      "score": 1.4826214813845335,
+      "sha256": "f63701de62df5e24906b3c99f7b4c97e2a573419ed64c10191bae1c26e5c8bfb",
+      "evaluation": "dev-0000/summary.json",
+      "rule": "Within each arm same dev rule: .5*max relative physical cost + mean relative cost; reject native safety boundary or worst >1.75x initial. Initial included; dev-only selection. Report per-family and tail; no final reselection."
+    },
+    "result": {
+      "status": "completed",
+      "iterations": 32,
+      "decisions": 24576,
+      "updates": 85,
+      "elapsed_s": 2540.166993109975,
+      "workers": [
+        {
+          "pid": 3332662,
+          "exitcode": 0
+        },
+        {
+          "pid": 3332663,
+          "exitcode": 0
+        },
+        {
+          "pid": 3332664,
+          "exitcode": 0
+        }
+      ],
+      "bfm_updated": false,
+      "student_updated": false
+    },
+    "initialization": {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/native-initial.pt",
+      "sha256": "d399174cc2ddbd3efb858953653c9134495070948341381565f5f918f58da5cd",
+      "optimizer_loaded": false,
+      "critic": "identical fresh seed in both arms",
+      "std": 1.0
+    }
+  }
+]

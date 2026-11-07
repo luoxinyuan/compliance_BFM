@@ -1,0 +1,30 @@
+{
+  "stage": "pre-guided-only source-balance correction",
+  "ordinary_unchanged": true,
+  "guided_RL_decisions_before_change": 0,
+  "reason": "71motion frames vs3static rows in unweighted SVD, static tangent capture only9-13%; directly balance source families instead of scanning outputs",
+  "basis_v1_sha256": "bef7156105d4e84bc1e1ae188b73db51c837341f2910cadcf4414cced622ccdb",
+  "basis_v2_sha256": "9f05a2bfed6f94d93d715eb0fae0f296484a1e036e0fbcca9048e71365329ba6",
+  "sources": [
+    "goal_arm5",
+    "goal_arm15",
+    "goal_lean30",
+    "motion_walk_mean"
+  ],
+  "tangent_span_capture": {
+    "goal_arm5": 0.9999999954012364,
+    "goal_arm15": 0.9999999941055742,
+    "goal_lean30": 0.9999999919950999,
+    "motion_walk_mean": 1.0000000017877246
+  },
+  "covariance_trace_unchanged_v1_to_v2": true,
+  "rank": 4,
+  "axis_std": 0.15,
+  "isotropic_floor": 0.008,
+  "joint_logprob_real_input_max": 0.0001220703125,
+  "original_logprob_threshold": 0.0003,
+  "whitened_mean_inverse_max": 6.407499313354492e-07,
+  "old_high_model_or_final_data_used": false,
+  "seconds": 20.657641301862895,
+  "ended": 1793983493.1937754
+}

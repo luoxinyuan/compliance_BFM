@@ -1,0 +1,101 @@
+[
+  {
+    "model": "ordinary_best",
+    "prefix_end": 8.27,
+    "qpos_max": 0.0,
+    "qvel_max": 0.0,
+    "force_max": 0.0,
+    "wrist_max": 0.0,
+    "anchor_max": 0.0,
+    "x_max": 0.0,
+    "raw_max": 0.0
+  },
+  {
+    "model": "ordinary_last",
+    "prefix_end": 8.27,
+    "qpos_max": 0.0,
+    "qvel_max": 0.0,
+    "force_max": 0.0,
+    "wrist_max": 0.0,
+    "anchor_max": 0.0,
+    "x_max": 0.0,
+    "raw_max": 0.0
+  },
+  {
+    "model": "guided_best",
+    "prefix_end": 8.27,
+    "qpos_max": 0.0,
+    "qvel_max": 0.0,
+    "force_max": 0.0,
+    "wrist_max": 0.0,
+    "anchor_max": 0.0,
+    "x_max": 0.0,
+    "raw_max": 0.0
+  },
+  {
+    "model": "guided_last",
+    "prefix_end": 8.27,
+    "qpos_max": 0.0,
+    "qvel_max": 0.0,
+    "force_max": 0.0,
+    "wrist_max": 0.0,
+    "anchor_max": 0.0,
+    "x_max": 0.0,
+    "raw_max": 0.0
+  },
+  {
+    "model": "coordinate_best",
+    "prefix_end": 8.27,
+    "qpos_max": 0.0,
+    "qvel_max": 0.0,
+    "force_max": 0.0,
+    "wrist_max": 0.0,
+    "anchor_max": 0.0,
+    "x_max": 0.0,
+    "raw_max": 0.0
+  },
+  {
+    "model": "coordinate_last",
+    "prefix_end": 8.27,
+    "qpos_max": 0.0,
+    "qvel_max": 0.0,
+    "force_max": 0.0,
+    "wrist_max": 0.0,
+    "anchor_max": 0.0,
+    "x_max": 0.0,
+    "raw_max": 0.0
+  },
+  {
+    "model": "native_initial",
+    "prefix_end": 8.27,
+    "qpos_max": 0.0,
+    "qvel_max": 0.0,
+    "force_max": 0.0,
+    "wrist_max": 0.0,
+    "anchor_max": 0.0,
+    "x_max": 0.0,
+    "raw_max": 0.0
+  },
+  {
+    "model": "I",
+    "prefix_end": 8.27,
+    "qpos_max": 0.0,
+    "qvel_max": 0.0,
+    "force_max": 0.0,
+    "wrist_max": 0.0,
+    "anchor_max": 0.0,
+    "x_max": 0.0,
+    "raw_max": 0.0
+  },
+  {
+    "model": "C0",
+    "prefix_end": 8.27,
+    "qpos_max": 0.0,
+    "qvel_max": 0.0,
+    "force_max": 0.0,
+    "wrist_max": 0.0,
+    "anchor_max": 0.0,
+    "x_max": 0.0,
+    "raw_max": 0.0
+  }
+]

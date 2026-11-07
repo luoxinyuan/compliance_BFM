@@ -111,3 +111,7 @@ BFM原生行为复用积压项：reward prompting、投影前状态reward线性�
 
 ### Issue48：原生能力主线正式启动
 用户新授权以原生goal/reward/motion提供可追溯起点与探索方向，独立共享Direct actor进行真实transition接触反馈RL；不再沿I/C0高层继承链修补。候选用于先验和探索，不限制为技能菜单。C0机制已结项，仅为冻结参考，不是原生主线前置。后续路线为受限观测Student初始化与自身闭环RL，当前不自动启动Student。详见CURRENT_STATE及native_protocol。
+
+
+### Issue48结项：原生先验与实际反馈学习的边界
+独立fresh高层网络可以从可追溯的原生goal/motion起点进行真实transition PPO，不必继承旧I/C0/T30 actor。三组各24576决策中，均值head坐标组在零需求/局部/停止学到部分物理收益，但源相位泛化与从局部进入及时walking仍失败。原生运动可执行不等于某个单时刻协方差就能有效探索完整运动过渡；也不保证源数据的低拟合误差构成高质量接触专家。实际结果见NATIVE_CONTACT_RESULTS。预定相对最差规则对近零基线可过度敏感，不能以best=initial否认真实部分收益，也不能根据封存事后换best。下一候选是有时间连续性的原生动态行为探索；尚未发车，Student自身RL仍为后续有限对照，不自动扩大general训练。
