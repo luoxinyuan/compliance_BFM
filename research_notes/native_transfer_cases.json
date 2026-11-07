@@ -1,0 +1,92 @@
+[
+  {
+    "name": "short08",
+    "split": "train",
+    "group": "new-short",
+    "spec": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.08,
+      "ramp": 1.6,
+      "onset": 5.2,
+      "release": 8.8,
+      "end": 12.8,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual"
+    }
+  },
+  {
+    "name": "speed022",
+    "split": "dev",
+    "group": "new-speed",
+    "spec": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.72,
+      "ramp": 3.2727272727272725,
+      "onset": 5.2,
+      "release": 10.472727272727273,
+      "end": 14.472727272727273,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual"
+    }
+  },
+  {
+    "name": "prefix_continue66",
+    "split": "final",
+    "group": "new-prefix66",
+    "spec": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.66,
+      "ramp": 4.4,
+      "onset": 5.4,
+      "release": 11.8,
+      "end": 15.8,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual"
+    }
+  },
+  {
+    "name": "prefix_stop66",
+    "split": "final",
+    "group": "new-prefix66",
+    "spec": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.66,
+      "ramp": 4.4,
+      "onset": 5.4,
+      "release": 10.8,
+      "end": 14.8,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "stop_time": 8.1,
+      "deceleration": 0.7
+    }
+  }
+]

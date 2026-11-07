@@ -236,7 +236,7 @@ def study(env,model,contract,out):
                 write(out/(case['name']+'-first-actual.json'),dict(physics=task.physics[-st['physics_steps']:],search_label=case['name'],scope='real first action, no claim of full rolling validation'))
                 print('SEARCH',case['name'],result['selected'],round(result['candidates'][result['selected']]['score'],4),round(result['wall_s'],2),flush=True)
         else:
-            run_specs=[('rolling_continue',condition()),('rolling_stop',condition(stop=7.8))]
+            run_specs=[(c['name'],c['spec']) for c in json.loads(ARGS.cases.read_text())] if ARGS.cases else [('rolling_continue',condition()),('rolling_stop',condition(stop=7.8))]
             initial_search_rng=copy.deepcopy(rng.bit_generator.state)
             for label,s in run_specs:
                 rng.bit_generator.state=copy.deepcopy(initial_search_rng)
@@ -255,11 +255,11 @@ def study(env,model,contract,out):
 
 def main():
     global ARGS
-    p=argparse.ArgumentParser();p.add_argument('--mode',choices=['qualification','diagnostic','rolling','compatibility','free','stop_references'],required=True);p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--mode',choices=['qualification','diagnostic','rolling','compatibility','free','stop_references'],required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--cases',type=Path);ARGS=p.parse_args()
     assert not ARGS.output.exists();ARGS.output.mkdir()
     import subprocess
     assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
-    write(ARGS.output/'launch.json',dict(runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),source_sha256=sha(__file__),protocol_sha256=sha(Path(__file__).with_name('rolling_protocol.json')),mode=ARGS.mode,actual_backend='previously validated H100-class NVIDIA environment',new_PPO_or_Student=False))
+    write(ARGS.output/'launch.json',dict(runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),source_sha256=sha(__file__),protocol_sha256=sha(Path(__file__).with_name('rolling_protocol.json')),mode=ARGS.mode,actual_backend='previously validated H100-class NVIDIA environment',new_PPO_or_Student=False,cases_sha256=sha(ARGS.cases) if ARGS.cases else None))
     os.environ['BFM_RECOVERY_OUTPUT']=str(ARGS.output);os.chdir(ARGS.output)
     import m10_physics,m10_stage
     m10_physics.OUT=ARGS.output;m10_physics.MODEL=Path(os.environ.get('BFM_ROLLING_MODEL_VIEW',str(ASSET_ROOT/'issue19-recovery-20261028T045520Z/model-view')));m10_stage.run_study=study;m10_physics.main()

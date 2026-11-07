@@ -1,0 +1,183 @@
+{
+  "stage": "Issue51",
+  "status": "preregistered_before_new_physics",
+  "budget": {
+    "stage": "Issue51",
+    "status": "preparing",
+    "budget_job_seconds": 18000,
+    "budget_output_bytes": 10737418240,
+    "RL_decisions": 0,
+    "BC_updates_limit": 10000,
+    "teacher_search_limit": 480,
+    "candidate_physics_steps_limit": 1612800,
+    "actual_teacher_physics_steps_limit": 9600,
+    "jobs": [],
+    "prior_known_spent_s": 0,
+    "prior_interrupted_qualification_max_s": 0,
+    "auxiliary_CPU_analysis_reserve_s": 300,
+    "previous_stage_read_only": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/native-rolling-h100-20261107",
+    "created_utc": "2026-11-07 14:48:05 UTC"
+  },
+  "teacher": {
+    "unchanged_candidates": 7,
+    "horizon_decisions": 24,
+    "Hz": 10,
+    "search_seed": 5001,
+    "no_future": true,
+    "unchanged_reward": true
+  },
+  "cases": [
+    {
+      "name": "short08",
+      "split": "train",
+      "group": "new-short",
+      "spec": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.08,
+        "ramp": 1.6,
+        "onset": 5.2,
+        "release": 8.8,
+        "end": 12.8,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "standing",
+        "source_until": 4.0,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual"
+      }
+    },
+    {
+      "name": "speed022",
+      "split": "dev",
+      "group": "new-speed",
+      "spec": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.72,
+        "ramp": 3.2727272727272725,
+        "onset": 5.2,
+        "release": 10.472727272727273,
+        "end": 14.472727272727273,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "standing",
+        "source_until": 4.0,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual"
+      }
+    },
+    {
+      "name": "prefix_continue66",
+      "split": "final",
+      "group": "new-prefix66",
+      "spec": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.66,
+        "ramp": 4.4,
+        "onset": 5.4,
+        "release": 11.8,
+        "end": 15.8,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "standing",
+        "source_until": 4.0,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual"
+      }
+    },
+    {
+      "name": "prefix_stop66",
+      "split": "final",
+      "group": "new-prefix66",
+      "spec": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.66,
+        "ramp": 4.4,
+        "onset": 5.4,
+        "release": 10.8,
+        "end": 14.8,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "standing",
+        "source_until": 4.0,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual",
+        "stop_time": 8.1,
+        "deceleration": 0.7
+      }
+    }
+  ],
+  "data": {
+    "train": [
+      "Issue50 rolling_continue",
+      "Issue50 rolling_stop",
+      "short08"
+    ],
+    "dev": [
+      "speed022"
+    ],
+    "final": [
+      "prefix_continue66",
+      "prefix_stop66"
+    ],
+    "group_split": "common-prefix family is indivisible",
+    "labels": "only real executed first100ms commands, indexed before command, never predictions",
+    "privileged_dim": 1088,
+    "restricted_dim": 1639,
+    "query_obs": "actual state,last_action,history_actor only; full physics private",
+    "invalid": "unsafe or gross late all-cap mismatched segments marked invalid, retained for evaluation"
+  },
+  "bc": {
+    "architecture": "existing clean_policy.Expert direct actor128tanh128tanh256; fresh networks",
+    "seed": 5101,
+    "lr": 0.0003,
+    "steps": 4000,
+    "batch": 128,
+    "sampling": "uniform episode then uniform frame",
+    "loss": "mean squared error on original norm16 projected legal z",
+    "normalizer": "train only, empirical std floor .05",
+    "checkpoints": [
+      0,
+      1000,
+      2000,
+      4000
+    ],
+    "selection": "lowest dev active forceRMS + .03*error_cm + cap_fraction + 20*safety_boundary, report all physical metrics separately",
+    "matched": "same episode/frame RNG and update budget; input dims differ so parameter/compute counts reported",
+    "single_trajectory_diagnostic_max_steps_each": 1000
+  },
+  "references": [
+    "I",
+    "C0",
+    "C32"
+  ],
+  "evaluation": [
+    "train old normal/stop",
+    "short08",
+    "speed022",
+    "prefix_continue66",
+    "prefix_stop66",
+    "no_actual_contact"
+  ],
+  "student_PPO": 0,
+  "oracle_future_teacher": 0,
+  "physics": {
+    "cap": 10,
+    "K": 80,
+    "D": 8,
+    "BFM_Hz": 50,
+    "physics_Hz": 200
+  },
+  "safety": "same original boundaries, no cap/anchor/PD changes"
+}

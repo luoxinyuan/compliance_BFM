@@ -1,47 +1,29 @@
-# CURRENT_STATE — Issue50原生来源＋短程滚动反馈结项
+# CURRENT_STATE — Issue51 Teacher覆盖与可蒸馏性验证
 
-最后核对2026-11-07。[完整结果](NATIVE_ROLLING_RESULTS.md) · [方法/复现](NATIVE_ROLLING_METHODS.md) · [Issue50](https://github.com/GaoE05/robot-research-bridge/issues/50) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。
+最后核对2026-11-07。[阶段Issue51](https://github.com/GaoE05/robot-research-bridge/issues/51) · [预登记协议](native_transfer_protocol.json)。Issue50已结项；旧完整结果见NATIVE_ROLLING_RESULTS/METHODS，不恢复PPO或C0。
 
-## 当前执行状态与可靠基线
+## 授权、状态与预算
 
-本轮有界物理阶段完成并停止；无新PPO、Student或C0专项自动续训。Issue49正式结论不改，I/C0/T30/S0、有限域Teacher→ideal-force Student、M1–M49全部旧模型/成功/失败保留。新滚动程序不继承或在线调用旧I/C0/T30/C32 actor。
+用户新授权：固定7提议/2.4s因果滚动Teacher，验证4条新完整回合，分离真实首动作数据，比较fresh特权P与受限ideal-force S的BC及真实闭环。当前完成预登记与准备，尚未启动物理运行，不将计划当结果。
 
-冻结BFM SHA256 `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`、原PD、合法Direct256D、10/50/200Hz、K80/D8、总10N。用户本轮授权H100级NVIDIA后端，非默认Pro5000/PPU。原始replay完整SHA `46eac53f603e45921d25504fcf7d3eea861f2a9f8ea503046855e701493b546b`。
+独立stage experiments/native-transfer-20261107；运行repo固定提交后启动，Issue50目录只读。H100级NVIDIA当前UUID GPU-3654846e-2666-fe93-20e9-cd7d08a217db，NVML L20Z名称冲突保留；14:44 UTC核对无GPU任务、20CPU、可用RAM199GiB，沿用Python3.10/Torch2.7.1cu128/MuJoCo3.3.3。发车前再次实时核查。
 
-## 最新真实进展与失败
+硬上限18000累计job秒（含CPU300预留）、10GiB、480搜索查询/1612800候选物理步、9600实际Teacher物理步；P/S各4000监督更新，必要单轨诊断各1000，总不超10000。无PPO、无Student访问状态无限聚合、无未来oracle、无新reward扫描/资产下载。
 
-1. **原生reward推断确已完成**：同150000 successor、seed5001、3固定robot-state配置×普通/weighted共6z；保存embedding，原API对照差0。没有把force/anchor当B支持的零样本reward。6候选尚未成为可靠低力接触walking；weighted更弱，不继续扫描。
-2. **速度不再只测极慢.09**：同72cm与完整standing onset，平均.09/.15/.22（峰值1.5倍）。motion全接触误差60.52/25.20/19.26cm、力仍约9N；侧漂/yaw与保持期反向牵拉保留。不能只因速度相近就称合格Expert。
-3. **昂贵但真实有效的反馈获取**：7个native提议、2.4s真实物理窗口，只执行首100ms后重规划。完整.15牵引7.417cm/5.465N，C32为40.446/9.086，motion为25.195/9.171，冻结I为10.265/6.682。相对I误差/力−27.7%/−18.2%，主要改善移动及侧向负担；保持力与I接近。
-4. **同程序停止有效**：7.8s前760physics/190BFM步、38次查询的完整状态fingerprint/历史/首指令逐值一致，8.1s后命令才分开。提前停止保持2.074cm/1.730N，释放后不再考核旧anchor，保留完整4s恢复。
-5. **并非全质量解决**：停止分支总pelvis偏航约−20.29°；q_PD20ms峰56.91°不等于真实关节5ms峰（继续1.395°、停止2.495°）。无失稳中断仍不能自动等同自然性最优。新增reward-z在223次实际决策中均未选中，收益应归于原生goal/motion＋反馈搜索。
+固定Teacher新条件：8cm/ramp1.6/onset5.2；72cm/平均.22/onset5.2；66cm/ramp4.4/onset5.4的继续/8.1刹停配对，减速.7、保持2、释放恢复4秒。冻结BFM/PD、K80D8/10N、256D/10Hz/50Hz/200Hz、原reward与候选不变。
 
-当前backend四状态恢复校验通过；局部/未起步有预测改善，但明显超前状态的所有候选仍10N，不能作为有效恢复标签。新增冻结停止参照I10.995cm/7.125N，MPC7.605/5.457；I保持期仍继续前移19.87cm，MPC0.695cm。完整短请求/.22滚动未运行，不把来源资格当反馈泛化。
+## 数据与选择合同
 
-## 讨论澄清（2026-11-07，未启动下一实验）
+train为Issue50停止/继续整组＋新短请求；dev为新.22速度整回合；final为新66cm共同前缀两支整体。相邻帧不随机拆分，不将共同前缀跨train/final，不按final调参或选模。仅真正执行的首100ms命令作标签；预测/未执行节点/搜索评分单独保留。非法/严重失配全cap段标无效，保留原轨迹，不能假装正确恢复。
 
-当前Teacher是完整状态的7提议×2.4秒物理试算、仅执行首100ms后重规划；没有新PPO网络。候选不必先成为合格接触Expert，先臂后脚不是固定答案，已有goal/motion有效反馈不以reward prompting先成功为前置。普通/加权提示的机制尚未唯一定位，保存权重ESS约334/241/250只表明集中度。用户允许把未来可见Expert作为上界方向讨论/尝试，但尚无新协议/预算或运行；当前因果Teacher、未来可见actor上界和特权critic须分开，不保证oracle动作均可蒸馏。[完整讨论与待验证方案](CONTACT_LEARNING_RATIONALE.md#9-issue50讨论澄清候选物理搜索ppo与未来信息)。本次仅维护文档，不更改已结项运行。
+P1088D/S1639D：同小128-128 Tanh Direct actor、fresh初始化与相同随机批次，train-only归一化，4000步。0/1000/2000/4000 checkpoint按预定dev物理分数选择；参数量和成本差别独立记录。当前Teacher不是新神经网络；当前P/S也未训练。
 
-## 当前主要瓶颈与唯一下一建议
+S不含anchor/伙伴真值速度/目标朝向/未来/任务ID/active真值/Teacher内部phase或kind；保留原本体、实际执行z、已知安装和理想力历史。理想仿真力不等于G1传感已解决。未来可见Teacher只为另行上界方向，本阶段不做。
 
-已证明可从原生来源与有限物理搜索获得一个有用的窄域特权反馈程序；尚未证明它能实时执行、广泛恢复或泛化。每100ms控制约23s搜索，远慢于实时。未训练新神经Teacher/Student；原生reward本身质量不足，不能归因成新PPO学习成功。
+## 不可丢失的事实与基线
 
-下一建议：把这一有限有效域的真实首动作反馈摊销到独立的受限观测Student，先含短停/继续与少量速度/自然初态覆盖，再做冻结BC vs同初始化小预算自身闭环RL。保留当前yaw/源状态恢复边界；不继续奖励prompt扫描或回到C0修补。本建议**未启动、未获得下一阶段预算**。
+Issue50真实MPC .15牵引7.417cm/5.465N（I10.265/6.682），同前缀停止7.605/5.457，未训练新PPO。6个reward-z未成可靠低力walking，未在223完整滚动决策选中。停止偏航约20度、q_PD峰56.91度、严重超前仍10N、约23秒计算/100ms控制仍是边界，不因新阶段抹去。旧有限域Teacher→ideal-force Student成功、I/C0/T30/S0/D2与失败全部保留。
 
-部署actor只用本体、真实已执行动作/z历史、已知接触安装、明确传感假设下的力及因果记忆。1088D特权query与1639D ideal-force query分开保存；不能输入anchor/伙伴真值速度、任务clock/active真值、未来轨迹或MPC内部模式/相位答案。仿真理想力不等于G1已具备该传感。
+BFM SHA33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361；I72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a；C0ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c；旧Issue50物理runtime32b3502262399409dd9091b067c89ba619d20873；文档维护9c2f383不是新物理运行。
 
-## 精确身份、源码、数据和视频
-
-- 长期个人分支`gaoe05/research`；实际滚动runtime **32b3502262399409dd9091b067c89ba619d20873**；后处理/当前backend诊断源码 **e0bc634fd36e124ea628660d20ea3b5e56b1f673**。文档最终提交不冒充物理runtime，最新公开HEAD以Issue50/Master结项链接为准。
-- native初始SHA d399174c…a5cd；C32 39cd0db5…4ad0；I **72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a**；C0 **ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c**。无新Teacher checkpoint；Teacher身份=runtime＋protocol/原生资产manifest＋实际执行历史。完整SHA见报告。
-- 项目相对stage：`experiments/native-rolling-h100-20261107`。运行树`repo`固定32b3502，文档/分析树`notes-repo`。`runs/reward-inference-01`、`qualification-03`、`reward-free-01`、`rolling-02`、`diagnostic-03`、`stop-reference-01`分别保存推断/资格/无力/真实滚动/四状态/冻结停止对照；`ledger.json`与launch、models、完整physics/control/searches均保留。
-- 真实qpos1×视频Mac：`~/Projects/compliance-bfm-diagnostics/videos/native-rolling-feedback/`，仅3条MP4＋INDEX；原生速度来源、主反馈同条件比较、严格共同前缀停止/继续。预测分支没有混入视频。
-- 外部重启改变挂载与现有runtime；旧隔离输出暂不可见而非删除。当前Torch2.7.1+cu128/MuJoCo3.3.3仅做必要差异检查；BFM/PD、backend内精确前缀和12概率回归通过（最大.00019837<.0003），无阈值放宽/PPU默认修复/共享安装。旧cu118/3.3.7数据不混作严格因果对照。
-
-保守累计8900.57/18000job秒（含原673.38s、中断850s和CPU300s预留）；可见runs .477GiB，含源码worktree约.734GiB，旧挂载输出精确大小暂不可复核，以4GiB保守预留，仍在10GiB内。223实际滚动决策、749280候选physics步、4460实际执行physics步；四状态预测13440/实际首动作80，原生150000重标记/450000 B-map examples分别计数。正式RL和Student更新均0。
-
-3条Mac MP4已核远端SHA、帧数、时长、完整解码和关键画面，INDEX说明对照身份及失败；没有原始轨迹/大数据塞进视频文件夹。全部owned作业退出，GPU compute为空，无队列/watch。最终文档/小型指标提交和远程分支SHA见Issue50结项链接，实际主runtime始终32b3502。
-
-## 跨会话接力
-
-先读本页、OVERVIEW、完整报告及Issue50；核对实际ledger/boot、runtime/模型身份和当前GPU权限，不以旧running/PID或空闲快照重启实验。Issue47/C0及旧Library为历史，不恢复其专项。Master保留全史；推送代码不等于新训练成功。未经新授权不启动PPO/Student、扩大候选或资源、不改main/共享BFM/PD/权重、SoftSONIC/他人任务，不做真机。
+长期gaoe05/research；当前新阶段源码尚待提交，精确runtime/模型SHA/成本将在ledger与结项报告记录。不改main、共享BFM/PD/权重/SoftSONIC/他人任务，不做真机。新会话先读本页/OVERVIEW/协议/Issue51和实时ledger，不以旧PID/空闲快照重启。

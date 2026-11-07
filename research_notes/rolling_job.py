@@ -3,7 +3,7 @@ import json,os,signal,subprocess,sys,time
 from pathlib import Path
 S=Path(__file__).resolve().parents[2];ledger=S/'ledger.json'
 name,script,limit=sys.argv[1:4];script=Path(script);assert script.is_relative_to(S)
-l=json.loads(ledger.read_text());spent=l.get('prior_known_spent_s',0)+l.get('prior_interrupted_qualification_max_s',0)+sum(j.get('elapsed_s',0) for j in l['jobs'])+l.get('auxiliary_CPU_analysis_reserve_s',0);limit=min(float(limit),18000-spent);assert limit>0
+l=json.loads(ledger.read_text());spent=l.get('prior_known_spent_s',0)+l.get('prior_interrupted_qualification_max_s',0)+sum(j.get('elapsed_s',0) for j in l['jobs'])+l.get('auxiliary_CPU_analysis_reserve_s',0);limit=min(float(limit),l['budget_job_seconds']-spent);assert limit>0
 assert not subprocess.check_output(['nvidia-smi','--query-compute-apps=pid','--format=csv,noheader'],text=True).strip(),'no independently idle GPU'
 mi={x.split(':')[0]:int(x.split(':')[1].split()[0])*1024 for x in Path('/proc/meminfo').read_text().splitlines()};assert mi['MemAvailable']>64*1024**3
 size=sum(p.stat().st_size for p in (S/'runs').rglob('*') if p.is_file());assert size+l.get('prior_output_reserve_bytes',0)<l['budget_output_bytes']

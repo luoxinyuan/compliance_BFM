@@ -1,5 +1,5 @@
 {
-  "stage": "Issue50 native candidates and short-horizon physical feedback",
+  "stage": "Issue51 fixed search coverage, original Issue50 teacher program",
   "budget": {
     "experiment_job_seconds": 18000,
     "output_bytes": 10737418240,
@@ -64,7 +64,7 @@
     "seed": 5001,
     "max_candidates_initial": 7,
     "iterations": 1,
-    "max_rollout_plans_total": 240,
+    "max_rollout_plans_total": 480,
     "prediction": "constant current measured partner velocity, position continuous from current anchor; no future actual path, stop, release or final distance",
     "physical_score": "unchanged geometry_env per-tick task reward integrated over horizon, absorbing safety tail; also report physical-unit metrics",
     "terminal_value": false,
@@ -134,8 +134,10 @@
     "predictions_replanned_every": 0.1,
     "stop_if": "no physical improvement over warmstart in all representative states OR unsafe restoration/probability/resource boundary",
     "actual_complete_cases": [
-      "72cm mean.15 continue",
-      "matched prefix until7.8 then.7s brake/2s hold/4s free recovery"
+      "short08",
+      "speed022",
+      "prefix_continue66",
+      "prefix_stop66"
     ],
     "not_run_as_complete_rolling_cases": [
       ".22 validation (source qualification only)",
