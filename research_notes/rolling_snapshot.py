@@ -40,6 +40,9 @@ class BranchState:
         self.trace=list(self.e.trace)
         self.base=state_of(self.e.base);self.sim=state_of(self.e.sim);self.wrapped=state_of(self.e.wrapped)
         self.tether=state_of(self.e.tether);self.history=clone(self.e.base.history_handler.history);self.force_history=state_of(t.h)
+        fn=self.e.tether.measure.__func__
+        cells=dict(zip(fn.__code__.co_freevars,fn.__closure__))
+        self.origin_cell=cells.get('base');self.origin=clone(self.origin_cell.cell_contents) if self.origin_cell is not None else None
         self.mask=mujoco.mjtState.mjSTATE_INTEGRATION
         self.integration=np.empty(mujoco.mj_stateSize(self.m,self.mask));mujoco.mj_getState(self.m,self.e.sim.data,self.integration,self.mask)
         self.data=copy.copy(self.e.sim.data)
@@ -57,11 +60,13 @@ class BranchState:
             else:h.update(str(v).encode())
         a=np.empty_like(self.integration);mujoco.mj_getState(self.m,d,a,self.mask)
         for v in [a,d.qacc,d.qacc_warmstart,d.qfrc_constraint,e.obs,e.previous_action,t.last_command,t.lastq,t.prevz,t.raw,e.history,e.base.history_handler.history,t.contact_history,t.h.rows,t.tick,t.prepared,e.tether.time,e.tether.force,e.tether.geometry_rows,e.last_support,t.features()]:add(v)
+        if self.origin_cell is not None:add(self.origin_cell.cell_contents)
         return h.hexdigest()
     def restore(self,check=True):
         t,e=self.t,self.e;d=e.sim.data
         put(t,self.task);put(e,self.env);put(e.base,self.base);put(e.sim,self.sim);put(e.wrapped,self.wrapped);put(e.tether,self.tether);put(t.h,self.force_history)
         e.base.history_handler.history=clone(self.history)
+        if self.origin_cell is not None:self.origin_cell.cell_contents=clone(self.origin)
         for k,v in self.logs.items():setattr(t,k,list(v))
         e.trace=list(self.trace)
         # Rebuild contact allocation, then restore integration AND all matching

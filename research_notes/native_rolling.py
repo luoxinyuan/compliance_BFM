@@ -167,7 +167,7 @@ def study(env,model,contract,out):
             # heading-cost metadata. Fixed nominal heading scale for ALL predictions.
             for key in ['stop_time','deceleration','change_time','after_curvature','rotation_onset','rotation_return','rotation_return_ramp']:
                 task.spec.pop(key,None)
-            task.spec.update(distance=.72,ramp=1.,curvature=0.,rotation_deg=0.,onset=-1000.,release=100000.,end=now+PLAN['search']['horizon_decisions']*.1+1.)
+            task.spec.update(anchor_mode='fixed_prediction_origin',distance=.72,ramp=1.,curvature=0.,rotation_deg=0.,onset=-1000.,release=100000.,end=now+PLAN['search']['horizon_decisions']*.1+1.)
             task.spec['enabled']=bool(env.tether.active) # CURRENT connection, never future release.
             total=0.;sequence=[]
             for j in range(PLAN['search']['horizon_decisions']):
