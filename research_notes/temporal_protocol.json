@@ -1,0 +1,103 @@
+{
+  "issue": 49,
+  "date": "2026-11-07",
+  "base_commit": "3049ef513aa49f87dde5ffca4d98e693b26d37cd",
+  "phase": "preregistered, no PPO yet",
+  "budget": {
+    "experiment_job_seconds": 18000,
+    "output_GiB": 12,
+    "new_RL_decisions": 98304,
+    "new_student_updates": 0,
+    "C0_training": 0
+  },
+  "initialization": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/native-initial.pt",
+    "sha256": "d399174cc2ddbd3efb858953653c9134495070948341381565f5f918f58da5cd",
+    "critic": "fresh same seed+17 within pair",
+    "optimizer": "fresh; any extension restores full actual checkpoint and Adam",
+    "old_I_C0_T30_actor_loaded": false
+  },
+  "arms": [
+    "independent",
+    "continuous"
+  ],
+  "seeds": [
+    4901,
+    4902
+  ],
+  "training": {
+    "workers": 3,
+    "batch_decisions": 768,
+    "initial_batches_each": 16,
+    "maximum_batches_each": 32,
+    "evaluate_every": 8,
+    "actor_lr": 1e-05,
+    "critic_lr": 0.0003,
+    "gamma": 0.99,
+    "lambda": 0.95,
+    "epochs": 6,
+    "minibatch": 256
+  },
+  "exploration": {
+    "L": "fixed identical Issue48 balanced-v2 covariance .008\u00b2I+.15\u00b2D^T D, 4 native directions",
+    "direction_sha256": "9f05a2bfed6f94d93d715eb0fae0f296484a1e036e0fbcca9048e71365329ba6",
+    "A_rho": 0,
+    "B_rho": 0.8187307530779818,
+    "tau_seconds": 0.5,
+    "conditional_mean": "mu_theta(x_t)+rho*(u_previous-mu_theta(x_previous)), BOTH theta evaluations differentiated",
+    "conditional_variance": "(1-rho^2)I; first after episode or policy-version boundary uses I",
+    "stationary_noise_marginal_covariance": "I in whitened u; L L^T in raw, same in A/B",
+    "history": "true previous observation/actual sampled u; version and reset stored. No taskID/clock/future. No expert override.",
+    "deployment": "deterministic raw_mean(current) only; no exploration memory at eval",
+    "critic": "unchanged1088D current observation critic, does not observe exact AR residual; approximation limitation recorded"
+  },
+  "selection": {
+    "score": "mean existing m39a physical costs + .25*max cost; no ratios to near-zero baselines",
+    "initial_included": true,
+    "tolerances": "temporal_selection.assess: no-contact root max(5cm, initial+3cm), torso+10deg; local error+max(2cm,.2initial), other error+max(5cm,.15initial); actual force+1N, cap+15pp; original safety boundaries. Deterioration allowances are NOT success targets.",
+    "heldout_reselection": false
+  },
+  "extension": "After ALL FOUR first16 groups complete: extend ALL FOUR equally to32 only if the SAME arm has admissible dev-selected improvements in BOTH seeds: either long error>=10% lower or mean walking-source continue/stop error>=10% lower, corresponding force no more than initial+.5N; no-contact protection and local/old task tolerances pass. Also reserve remaining job budget using1.25x observed worst first16 job each +3500s final/render. Otherwise stop all at16. No final data inspected for extension.",
+  "physical": {
+    "total_cap_N": 10,
+    "regression_cap_N": 5,
+    "K": 80,
+    "D": 8,
+    "high_Hz": 10,
+    "BFM_Hz": 50,
+    "physics_Hz": 200,
+    "reward": "unchanged geometry_env",
+    "BFM_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361"
+  },
+  "sources": "same Issue48 native continuation initialization / standing, goal_arm5 and original native task-walk physical source prefixes. New half-rate is qualification only, not silently adopted in an arm. Existingbuffer no new inference/download.",
+  "audit": "max3 new physics episodes: native full-rate contact .72m/8s; same reference half-rate no force/contact. Existing full-rate free evidence reused. Finite negative controls, no gain/seed scan.",
+  "sealed": {
+    "near": {
+      "distance": 0.061,
+      "ramp": 2.05,
+      "onset": 5.31
+    },
+    "mid": {
+      "distance": 0.232,
+      "ramp": 3.35,
+      "onset": 5.31
+    },
+    "long": {
+      "distance": 0.735,
+      "ramp": 8.45,
+      "onset": 5.31
+    },
+    "common_prefix_branch": 8.76,
+    "deceleration": 0.7,
+    "arm_source_until": 5.83,
+    "arm_source_onset": 6.57,
+    "moving_source_until": 6.34,
+    "moving_onset": 6.91,
+    "moving_distance": 0.465,
+    "moving_ramp": 6.15,
+    "moving_stop_time": 9.56,
+    "zero_and_none_onset": 5.31,
+    "light5_same_near": true
+  },
+  "stop": "Any probability/gradient mismatch: no formal PPO until fixed within recorded method; never relax3e-4/.02KL guards. No safe resource or budget/asset permission: preserve state, no CPU substitution. No extension when common rule fails. No new candidates/RL/Student after final."
+}

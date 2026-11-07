@@ -1,46 +1,27 @@
-# CURRENT_STATE — 原生能力共享接触学习已结项
+# CURRENT_STATE — 原生动态运动时间连续探索（Issue49）
 
-最后核对：2026-11-07 CST。**Issue48全部训练/冻结物理终检已结束，无新增实验在运行。原生主线已独立启动；C0仅冻结基线，不再是前置门槛。**
+核对：2026-11-07 CST。**新阶段已登记/正在实现准备，尚未启动新PPO。Issue48已完整结项，不重启其目录或修改原选模。**
 
-[Issue48](https://github.com/GaoE05/robot-research-bridge/issues/48) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18) · [本轮结论](NATIVE_CONTACT_RESULTS.md) · [方法](NATIVE_CONTACT_METHODS.md) · [协议](native_protocol.json) · [长期纲领](RESEARCH_OVERVIEW.md)
+[Issue49](https://github.com/GaoE05/robot-research-bridge/issues/49) · [协议](TEMPORAL_EXPLORATION_PROTOCOL.md) · [机器配置](temporal_protocol.json) · [Issue48结果](NATIVE_CONTACT_RESULTS.md) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)
 
-## 科学结论与当前瓶颈
+## 当前目标与状态
 
-全新高层actor/critic/normalizer/Adam，仅用同BFM原生goal/motion初始化，不继承I/C0/T30权重、在线输出/隐藏特征或训练标签。普通探索、原生候选协方差引导、同协方差下均值head坐标调整三组各32×768，合计73728真实RL决策；候选6个/实测7回合，初始化441时刻记录/7回合/2000更新，不是441条独立轨迹。一个配对seed4801，不宣称统计优越。
+原生walking进入/持续/低速接触/退出先做有限证据审查；新增正控制最多3回合，复用旧full-rate自由证据。比较同单步边际噪声协方差下，A独立探索与B时间连续AR探索；先NVIDIA真实输入条件概率/梯度检查，再两配对seed4901/4902各16×768。是否全部延至32由固定共同开发规则决定，不按封存调参。当前只是准备，不把用户提示或源码提交写成已开训。
 
-**部分反馈学习有效，局部→及时行走尚未解决。** 坐标组固定末轮C32相对新原生初始化，在新6.8cm局部由3.421cm/2.782N到2.823cm/2.300N；新停止12.523/7.925→8.551/6.936；连接零需求22.542/6.576→0.985/0.812。69cm仍34.920cm/8.756N，饱和67.6%，移动时root只前移约6.97cm；真实moving源新条件67.236cm/9.843N，尚不能适配伙伴或可靠进入/退出。不能归因成BFM没有walking，也不能据局部成功声称general Teacher。
+固定Issue48原生初始化SHA d399174cc2ddbd3efb858953653c9134495070948341381565f5f918f58da5cd，两个方法同coordinate head/原normalizer/MLP/covariance/课程/reward/历史。新阶段fresh critic/Adam；不继承I/C0/T30 actor。C32/I/C0仅冻结比较，不再C0修补。原BFM SHA33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361；PD/10N/K80D8/5N回归/256D/10-50-200Hz不变。1088D特权Teacher，不是新Student；不输入未来/任务ID/clock/最终距离，不真机。
 
-三组开发best仍iteration0，确定性控制函数相同，full SHA不同不等于三个新成果。预登记最差相对cost规则对接近零的无接触基线敏感：C32无接触root约2.2mm→12mm/torso约4.17→6.53°，最差相对项盖过其他8条件改善。**保留原选模，不以封存重选；同时不能把best=0误写成没有PPO收益。** C32仅固定末轮研究模型，不全面替代旧I/C0/S0。
+AR条件均值含mu(current)+rho*(actual_previous_u-mu(previous_observation))，更新两个mu均需当前theta梯度；完整保留实际历史，噪声边界只重置探索记忆。相同的是stationary噪声边际协方差，不是反馈导致的全部动作/状态分布。actor/critic网络输入仍1088，2433D replay wrapper只是概率上下文；critic不读精确AR residual是已记录的逼近限制。原3e-4/KL .02/Adam守卫不放宽。
 
-## 已完成与权限
+## 资源与身份
 
-- NVIDIA FP32 batchone/batched联合logprob≤1.23e-4，原3e-4/.02 KL/Adam回滚不变，无PPU路径。B/C初始768真实决策obs/action/logp/value/reward等逐值相同。
-- 原生standing/局部goal可执行；motion有真实步态，但对低速牵引不适配。旧reward移动负例保留，没有新reward扫描/资产下载。原buffer复用历史全SHA并核对来源/大小，不冒称本轮重哈希26GB。
-- 完成97个冻结物理回合（包含相同函数/重复continue条件，非97独立技能）、全XYZ/分段身体与动作质量、严格共同前缀停止/继续、5N回归。释放后旧anchor误差不计主动跟随。
-- 新策略仍为1088D特权Teacher，当前伙伴误差/相对速度和实际力等可见；无未来/任务ID/最终距离/全局clock。没有新Student；ideal-force不是G1真机感知事实。
-- 控制K80D8/主10N/回归5N、原BFM/PD、合法自由256D z及10/50/200Hz不变。无在线force→motion规则、无旧高层加载，不限制候选菜单/小半径。
-- 全部原始失败保留；无物理安全终止不等于动作质量通过。C32长距q_PD最大37.68°、moving69.06°，是20ms目标变化，实际q/dq另测，未加平滑器或改PD。
+新阶段硬上限：18000累计experiment-job秒、12GiB、98304新RL决策，Student/C0更新0。只使用实时检查空闲的Pro5000 GPU0，三个单线程worker；GPU1–6被其他任务占用，不动。无PPU、大下载、共享环境修改。首次49152决策，资源上限不是必须耗尽。
 
-## 精确身份与数据
+RUN_ROOT=/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-temporal-20261107；ledger.json记录实际作业/PID/start_ticks/预算，尚无PPO job。隔离树bridge-v2-owned/trees/native-temporal-learning/repo，分支gaoe05/native-temporal-learning；源码commit以launch.json为准，当前基础3049ef513aa49f87dde5ffca4d98e693b26d37cd，准备中的代码不是已验证结果。不要重复启动同名目录。
 
-RUN_ROOT=`/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106`。
+## 已有结论与不可丢失基线
 
-- BFM SHA `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
-- 新原生初始化 `native-initial.pt` SHA `d399174cc2ddbd3efb858953653c9134495070948341381565f5f918f58da5cd`。
-- A/B训练runtime `c1a8cc3e50d2258aa6afbf8d3ecf7b889c6250d6`；C runtime `1b99576ebca9bfa2c221cc382714e1d6184f5040`。运行worktree均保留，报告commit不冒充runtime。
-- C32 `ppo-coordinate/last.pt` SHA `39cd0db55fddb174de3f77104acbd8d7574fb3a5051f743e4ca39bb6b7d24ad0`。A/B/各best完整身份在[native_artifacts/models.json](native_artifacts/models.json)。
-- 账本`ledger.json`、各result/selection/launch、最终closeout是依据；训练status.json末条可能仍标running，是旧采样快照，**不得据此重启**。所有jobs已完成，无后续训练队列。
-- 仅Pro5000 GPU0，其他任务不动。阶段上限24000累计job秒/15GiB/98304决策；实际见[native_artifacts/closeout.json](native_artifacts/closeout.json)，无Student/C0新训练。费用包含失败/初始化/资格/训练/评估/两版渲染；worker不重复计时。
-- [长期集成分支gaoe05/research](https://github.com/luoxinyuan/compliance_BFM/tree/gaoe05/research)及实验分支`gaoe05/native-contact-learning`保存代码/小型摘要；最终报告commit以远程HEAD/Issue48精确链接为准，runtime如上不变。
+Issue48三组73728决策/97冻结物理执行全部完成。C32零需求0.985cm/.812N、6.8cm局部2.823cm/2.300N，69cm仍34.920cm/8.756N，moving新源67.236cm/9.843N。保留best=0及其近零基线选择偏置，不否认固定末轮实际部分收益，也不宣称已解决及时walking。C32 SHA39cd0db55fddb174de3f77104acbd8d7574fb3a5051f743e4ca39bb6b7d24ad0，旧I/C0/T30/S0/D2及全部失败与模型SHA见native_artifacts/models.json和历史报告。旧原生视频在Mac videos/native-contact-learning/，4MP4+INDEX已验，不是本轮新成果。
 
-## Mac视频（已实传验证）
+[Issue48精确结项快照](https://github.com/luoxinyuan/compliance_BFM/blob/3049ef513aa49f87dde5ffca4d98e693b26d37cd/research_notes/CURRENT_STATE.md)
 
-`~/Projects/compliance-bfm-diagnostics/videos/native-contact-learning/`仅4条1× MP4+INDEX：01新6.8cm、02新69cm（I/C0/B32/C32四格）；03同C32共同前缀后停止/继续；04Standing/C0/B32/C32连接零需求。使用固定末轮32，不按终检选模型；早期best=0版本在私有分析目录归档。已核对SHA/25fps/正常时长/完整解码。原始qpos及QA不堆到用户视频文件夹。
-
-## 历史、下一决策与接力
-
-保留I `72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a`；C0 `ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c`；T30 `c71fcfaa10d045512c0ac8afe1087b80246087798436dd73e32d1b6d73ab9f33`；S0 `0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12`；D2及全部历史失败。Issue47/4701仍为历史有限收益，PPU不可达，未在本轮新条件重评。M41历史启动退化、C1/F/R取舍、旧Teacher→ideal-force Student成果不被本轮任务抹去。
-
-**唯一下一建议（未启动）**：原生动态步态段引导的时间连续探索，对照当前单时刻协方差探索，重点攻克进入/持续/停止；不恢复旧actor、不增force cap、不再自动追加C0修补。先预登记物理单位的开发退化尺度，避免近零基线比值绑架选择。C32局部/零需求成果可作为有限域Student BC vs同初始化Student PPO候选来源，但不自动展开general Student。
-
-新会话先读本文件、OVERVIEW、Issue48与closeout，核对HEAD/result/ledger，不重启已消费目录。旧Library 2026-10-28仅历史快照。不改main/共享BFM/PD/权重/SoftSONIC或他人任务，不真机；新资源/实验须有新授权。
+接力先读CURRENT_STATE/OVERVIEW/Issue49/protocol/ledger，核实实际runtime、资源、result和模型SHA。没有空卡不换CPU，不根据旧PID/历史快照重跑。不改main、共享BFM/PD/权重、SoftSONIC或他人任务。完成本有界阶段后统一报告、更新Master/research并停止，无自动Student或追加PPO。

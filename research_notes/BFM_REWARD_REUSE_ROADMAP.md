@@ -1,3 +1,7 @@
+# 当前状态补充（2026-11-07）
+
+Issue48已结项，Issue49正在准备原生动态运动的时间连续探索。下方Issue47/C0优先级是历史快照，已被新授权覆盖。当前复用原生来源，不启动新的reward prompting扫描、buffer下载或F/SF planner；后续资产工具的接口与数学边界仍有效。
+
 # BFM reward prompting / composition / F-SF：后续最小研究记录
 
 2026-11-05更新：Issue47已优先授权C0延迟全身参与诊断；本记录继续作为后备工具，不是其前置条件。原Issue46建议是历史阶段决策。此文是研究积压项，不启动新推断、FB训练或planner。当前主线为Issue47的C0机制接管与有条件反馈PPO；I初始化PPO是Issue46历史设置。保留0/1/2/4/8/16帧force-history独立消融，未运行。
