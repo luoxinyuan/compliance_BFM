@@ -42,11 +42,12 @@ def main():
   os.environ['TEMPORAL_SOURCE_OFFSET']=str(1600000 if a.parent else 0)
   for i in range(3):
    parent,child=ctx.Pipe();proc=ctx.Process(target=launch,args=(child,a.gpu,i,a.output/f'worker-{i}'));proc.start();child.close();ps.append(proc);cs.append(parent)
-  ready=[receive(c,p,900) for c,p in zip(cs,ps)];n=ready[0]['input_dim'];assert all(r['input_dim']==n for r in ready);atomic(a.output/'workers.json',ready)
+  ready=[receive(c,p,900) for c,p in zip(cs,ps)];n=ready[0]['input_dim'];assert all(r['input_dim']==n for r in ready);assert all(r['contract']['model_sha256']==plan['physical']['BFM_sha256'] for r in ready);atomic(a.output/'workers.json',ready)
   net=Expert(n,rho=rho_for(a.arm)).cuda();net.log_std.requires_grad_(False)
   opt=torch.optim.Adam([dict(params=net.actor.parameters(),lr=plan['training']['actor_lr']),dict(params=net.critic.parameters(),lr=3e-4)])
   assert a.exploration=='guided' and a.resume
   native_root=Path(plan['initialization']['path']).parent
+  assert sha(native_root/'native-directions.npy')==plan['exploration']['direction_sha256']
   directions=torch.from_numpy(np.load(native_root/'native-directions.npy')).cuda()
   ck=torch.load(a.resume,map_location='cuda',weights_only=True)
   if a.parent:
