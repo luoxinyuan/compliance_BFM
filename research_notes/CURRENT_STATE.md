@@ -27,3 +27,5 @@ Issue48三组73728决策/97冻结物理执行全部完成。C32零需求0.985cm/
 接力先读CURRENT_STATE/OVERVIEW/Issue49/protocol/ledger，核实实际runtime、资源、result和模型SHA。没有空卡不换CPU，不根据旧PID/历史快照重跑。不改main、共享BFM/PD/权重、SoftSONIC或他人任务。完成本有界阶段后统一报告、更新Master/research并停止，无自动Student或追加PPO。
 
 探索reset行的previous_obs/u是显式valid=0的未使用哨兵，不冒充真实旧状态；当前1088D中的BFM/动作/last-z/接触历史从实际源前缀完整保留。有效AR行才对真实previous观测/命令条件化。新视频目标Mac videos/native-temporal-learning/，当前尚未生成，不宣称已送达。
+
+原生walking进一步事实（保存轨迹只读复算）：持续段full-contact root平均vx=.214m/s、vy=-.098m/s，实际Fx均值-5.99N/Fz+3.95N，pelvis yaw约-2.88→-93.09°；half-contact vx=.223、vy=-.037，Fx-5.65N/Fz+4.71N，yaw约-2.88→-51.16°。伙伴平均需求.09m/s。原生源会超前/侧偏、受到反向拉力，不能当低速反馈Expert；新网络从standing推进不足是另一个失败，不能混为BFM不会走或力太小。half-rate不作为单臂训练源改动。

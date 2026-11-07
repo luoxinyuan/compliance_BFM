@@ -1,0 +1,679 @@
+{
+  "scope": "saved actual physics; native timed qualification, not learned feedback",
+  "partner": "72cm/8s with real tether, mean requested .09m/s; actual speed profile continuous",
+  "full_free_historical": "Issue48 full-rate free has a different duration: not a causal full-vs-half free comparison",
+  "phases": [
+    {
+      "native": "full-contact",
+      "phase": "enter",
+      "seconds": 1.5,
+      "root_displacement_xyz_cm": [
+        -1.1705803984900696,
+        -0.28624632674229683,
+        -2.7845443994843566
+      ],
+      "root_mean_velocity_xyz_mps": [
+        -0.007829969220669529,
+        -0.001914691148777946,
+        -0.0186257150467185
+      ],
+      "root_horizontal_path_cm": 2.857602037744419,
+      "pelvis_yaw_start_end_deg": [
+        -5.724002469161306,
+        -2.9053730263706212
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        -2.1903849763399763,
+        5.500775567215363,
+        -1.6667742224087956
+      ],
+      "ankle_link_path_cm": [
+        13.3889367946362,
+        0.2490551434577151
+      ],
+      "foot_unloaded_time_s": [
+        0.22,
+        0.0
+      ],
+      "slip_contact_max_mps": 0.06308116230218593,
+      "peak_tilt_deg": 11.456045916697931,
+      "force_xyz_mean_n": [
+        1.7166754891897331,
+        0.19346546713425258,
+        2.4633636916161867
+      ],
+      "force_xyz_rms_n": [
+        2.120668939387686,
+        0.43824581816651825,
+        3.3029851095753116
+      ],
+      "force_rms_n": 3.9495577957159176,
+      "error_signed_xyz_mean_cm": [
+        1.8173665570723863,
+        0.2572870247832712,
+        2.5965871034839383
+      ],
+      "error_rms_cm": 4.299296087574321,
+      "cap_fraction": 0.0
+    },
+    {
+      "native": "full-contact",
+      "phase": "sustain",
+      "seconds": 6.495,
+      "root_displacement_xyz_cm": [
+        138.69578697578274,
+        -63.66531936065961,
+        -2.948878290305912
+      ],
+      "root_mean_velocity_xyz_mps": [
+        0.21370691367606645,
+        -0.0980975645002349,
+        -0.004543726179207366
+      ],
+      "root_horizontal_path_cm": 201.1435834350716,
+      "pelvis_yaw_start_end_deg": [
+        -2.8799134290003536,
+        -93.08824300554839
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        -23.021663901150802,
+        -10.41190932940548,
+        -1.334664220050752
+      ],
+      "ankle_link_path_cm": [
+        274.8321522297511,
+        213.1693471555208
+      ],
+      "foot_unloaded_time_s": [
+        3.8000000000000003,
+        2.025
+      ],
+      "slip_contact_max_mps": 1.284428999599786,
+      "peak_tilt_deg": 13.165710465009196,
+      "force_xyz_mean_n": [
+        -5.987132601978371,
+        0.7493567817525622,
+        3.9516696727380385
+      ],
+      "force_xyz_rms_n": [
+        6.813311384990554,
+        5.609998504153545,
+        4.4475532856314315
+      ],
+      "force_rms_n": 9.883017022851766,
+      "error_signed_xyz_mean_cm": [
+        -19.929480840975025,
+        9.332980981508102,
+        10.896047918026811
+      ],
+      "error_rms_cm": 34.30175973347643,
+      "cap_fraction": 0.8829869130100076
+    },
+    {
+      "native": "full-contact",
+      "phase": "native_return",
+      "seconds": 1.5,
+      "root_displacement_xyz_cm": [
+        -7.029263200120028,
+        -31.807711789301507,
+        4.786997769299606
+      ],
+      "root_mean_velocity_xyz_mps": [
+        -0.04701848294393933,
+        -0.21276061397522766,
+        0.03202005196855423
+      ],
+      "root_horizontal_path_cm": 35.71796173084424,
+      "pelvis_yaw_start_end_deg": [
+        -93.15834587459334,
+        -106.82178710193863
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        -6.019502830787715,
+        2.730789028933267,
+        1.2044883998424183
+      ],
+      "ankle_link_path_cm": [
+        30.089912896203803,
+        48.42118238438619
+      ],
+      "foot_unloaded_time_s": [
+        0.46,
+        0.47500000000000003
+      ],
+      "slip_contact_max_mps": 0.7629508683418578,
+      "peak_tilt_deg": 6.751579901524047,
+      "force_xyz_mean_n": [
+        -2.2953927673090506,
+        9.688839852138658,
+        0.473128186636713
+      ],
+      "force_xyz_rms_n": [
+        2.4170894571770902,
+        9.691036989617151,
+        0.49140677841837843
+      ],
+      "force_rms_n": 10.0,
+      "error_signed_xyz_mean_cm": [
+        -19.939221183765866,
+        81.54639174999637,
+        4.5304653021261965
+      ],
+      "error_rms_cm": 84.60504663983225,
+      "cap_fraction": 1.0
+    },
+    {
+      "native": "full-contact",
+      "phase": "contact_hold",
+      "seconds": 0.5,
+      "root_displacement_xyz_cm": [
+        -2.4146010609034985,
+        2.483070473463511,
+        0.7344999945957942
+      ],
+      "root_mean_velocity_xyz_mps": [
+        -0.04877981941218426,
+        0.05016303986794188,
+        0.014838383729205644
+      ],
+      "root_horizontal_path_cm": 3.744514372116134,
+      "pelvis_yaw_start_end_deg": [
+        -106.83504217113118,
+        -107.54307969191683
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        0.47196251412078283,
+        -0.200746364282689,
+        -0.19127268471286207
+      ],
+      "ankle_link_path_cm": [
+        0.1788297645140007,
+        7.203994381550576
+      ],
+      "foot_unloaded_time_s": [
+        0.0,
+        0.075
+      ],
+      "slip_contact_max_mps": 0.6499668104638713,
+      "peak_tilt_deg": 2.6702322028199528,
+      "force_xyz_mean_n": [
+        -1.685832790183509,
+        9.853629097445163,
+        0.23624289063845313
+      ],
+      "force_xyz_rms_n": [
+        1.6879361355524818,
+        9.853639448779596,
+        0.23803616479585343
+      ],
+      "force_rms_n": 10.0,
+      "error_signed_xyz_mean_cm": [
+        -14.961152650702617,
+        85.63531727144493,
+        2.134021863937263
+      ],
+      "error_rms_cm": 86.9650427417332,
+      "cap_fraction": 1.0
+    },
+    {
+      "native": "full-contact",
+      "phase": "released_recovery",
+      "seconds": 4.0,
+      "root_displacement_xyz_cm": [
+        -1.1090273345939705,
+        -2.4609705979645624,
+        0.10772745201772516
+      ],
+      "root_mean_velocity_xyz_mps": [
+        -0.002776038384465789,
+        -0.006160126653228564,
+        0.0002696556996689263
+      ],
+      "root_horizontal_path_cm": 3.984627264671028,
+      "pelvis_yaw_start_end_deg": [
+        -107.56088528490258,
+        -107.03714231735246
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        3.1794655069256716,
+        -5.783410438019643,
+        2.1624155376431253
+      ],
+      "ankle_link_path_cm": [
+        0.37454089814885655,
+        0.22816019348983713
+      ],
+      "foot_unloaded_time_s": [
+        0.0,
+        0.0
+      ],
+      "slip_contact_max_mps": 0.01849243660312741,
+      "peak_tilt_deg": 2.5092472308555314
+    },
+    {
+      "native": "half-free",
+      "phase": "enter",
+      "seconds": 1.5,
+      "root_displacement_xyz_cm": [
+        -1.6092125232780832,
+        -0.510712206444025,
+        -3.0723769701749726
+      ],
+      "root_mean_velocity_xyz_mps": [
+        -0.010763963366408813,
+        -0.0034161351601607755,
+        -0.020551016522909953
+      ],
+      "root_horizontal_path_cm": 3.301348875377169,
+      "pelvis_yaw_start_end_deg": [
+        -5.7240108017584985,
+        -3.2872093982778976
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        -5.85337235377329,
+        5.231441209858745,
+        -4.9495606471348985
+      ],
+      "ankle_link_path_cm": [
+        14.608430549460802,
+        0.2064199130644242
+      ],
+      "foot_unloaded_time_s": [
+        0.26,
+        0.0
+      ],
+      "slip_contact_max_mps": 0.061482408086761454,
+      "peak_tilt_deg": 11.864545796869534
+    },
+    {
+      "native": "half-free",
+      "phase": "sustain",
+      "seconds": 6.495,
+      "root_displacement_xyz_cm": [
+        211.89375798713513,
+        45.38203003357778,
+        -7.202099955749519
+      ],
+      "root_mean_velocity_xyz_mps": [
+        0.3264926933545628,
+        0.06992608633832462,
+        -0.01109722643412744
+      ],
+      "root_horizontal_path_cm": 234.08065233272382,
+      "pelvis_yaw_start_end_deg": [
+        -3.2591157010022127,
+        -15.748951927844168
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        -1.6374306444955689,
+        -4.808280429365061,
+        0.263677511511784
+      ],
+      "ankle_link_path_cm": [
+        285.01300728843466,
+        243.53788096460036
+      ],
+      "foot_unloaded_time_s": [
+        3.315,
+        2.21
+      ],
+      "slip_contact_max_mps": 1.3197052361039798,
+      "peak_tilt_deg": 13.77232273322261
+    },
+    {
+      "native": "half-free",
+      "phase": "native_return",
+      "seconds": 1.5,
+      "root_displacement_xyz_cm": [
+        2.7866497652387245,
+        -3.1955841843747725,
+        8.881717081268592
+      ],
+      "root_mean_velocity_xyz_mps": [
+        0.01863979776079123,
+        -0.021375145045981758,
+        0.0594094788044629
+      ],
+      "root_horizontal_path_cm": 11.869007101067137,
+      "pelvis_yaw_start_end_deg": [
+        -15.800145627651633,
+        -21.240599752214333
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        6.11622556383109,
+        -3.880405525345418,
+        4.642959814947256
+      ],
+      "ankle_link_path_cm": [
+        0.4740592940698855,
+        0.3177582063937049
+      ],
+      "foot_unloaded_time_s": [
+        0.0,
+        0.0
+      ],
+      "slip_contact_max_mps": 0.02737615174752997,
+      "peak_tilt_deg": 13.542833880823622
+    },
+    {
+      "native": "half-free",
+      "phase": "contact_hold",
+      "seconds": 0.5,
+      "root_displacement_xyz_cm": [
+        0.5457864495393316,
+        0.16777783502819887,
+        0.7545407392453685
+      ],
+      "root_mean_velocity_xyz_mps": [
+        0.011025988879580733,
+        0.0033894512126903566,
+        0.015243247257479808
+      ],
+      "root_horizontal_path_cm": 0.6589780523906261,
+      "pelvis_yaw_start_end_deg": [
+        -21.272143183930293,
+        -23.54252393229394
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        1.2479851376712592,
+        -1.1548791688099884,
+        1.6014703582094891
+      ],
+      "ankle_link_path_cm": [
+        0.20992169623944398,
+        0.18521450066534978
+      ],
+      "foot_unloaded_time_s": [
+        0.0,
+        0.0
+      ],
+      "slip_contact_max_mps": 0.02901990138347837,
+      "peak_tilt_deg": 7.641856749247037
+    },
+    {
+      "native": "half-free",
+      "phase": "released_recovery",
+      "seconds": 4.0,
+      "root_displacement_xyz_cm": [
+        -0.509590842078822,
+        0.02125251332361633,
+        0.38058024803228063
+      ],
+      "root_mean_velocity_xyz_mps": [
+        -0.001275571569659258,
+        5.3197780534714586e-05,
+        0.0009526414218581204
+      ],
+      "root_horizontal_path_cm": 0.8664588245738227,
+      "pelvis_yaw_start_end_deg": [
+        -23.560187950011613,
+        -33.57130833061603
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        -3.33020661284964,
+        -2.6802315529983107,
+        -0.9725084835676023
+      ],
+      "ankle_link_path_cm": [
+        1.2199743747143028,
+        1.2959278143575612
+      ],
+      "foot_unloaded_time_s": [
+        0.0,
+        0.0
+      ],
+      "slip_contact_max_mps": 0.01561796352290882,
+      "peak_tilt_deg": 5.125962829483881
+    },
+    {
+      "native": "half-contact",
+      "phase": "enter",
+      "seconds": 1.5,
+      "root_displacement_xyz_cm": [
+        -1.1705803984900696,
+        -0.28624632674229683,
+        -2.7845443994843566
+      ],
+      "root_mean_velocity_xyz_mps": [
+        -0.007829969220669529,
+        -0.001914691148777946,
+        -0.0186257150467185
+      ],
+      "root_horizontal_path_cm": 2.857602037744419,
+      "pelvis_yaw_start_end_deg": [
+        -5.724002469161306,
+        -2.9053730263706212
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        -2.1903849763399763,
+        5.500775567215363,
+        -1.6667742224087956
+      ],
+      "ankle_link_path_cm": [
+        13.3889367946362,
+        0.2490551434577151
+      ],
+      "foot_unloaded_time_s": [
+        0.22,
+        0.0
+      ],
+      "slip_contact_max_mps": 0.06308116230218593,
+      "peak_tilt_deg": 11.456045916697931,
+      "force_xyz_mean_n": [
+        1.7166754891897331,
+        0.19346546713425258,
+        2.4633636916161867
+      ],
+      "force_xyz_rms_n": [
+        2.120668939387686,
+        0.43824581816651825,
+        3.3029851095753116
+      ],
+      "force_rms_n": 3.9495577957159176,
+      "error_signed_xyz_mean_cm": [
+        1.8173665570723863,
+        0.2572870247832712,
+        2.5965871034839383
+      ],
+      "error_rms_cm": 4.299296087574321,
+      "cap_fraction": 0.0
+    },
+    {
+      "native": "half-contact",
+      "phase": "sustain",
+      "seconds": 6.495,
+      "root_displacement_xyz_cm": [
+        144.86532693921046,
+        -24.237597454281097,
+        -4.101114645909809
+      ],
+      "root_mean_velocity_xyz_mps": [
+        0.22321313858119285,
+        -0.03734606695574479,
+        -0.006319128884297916
+      ],
+      "root_horizontal_path_cm": 174.10433760370188,
+      "pelvis_yaw_start_end_deg": [
+        -2.8799134290003536,
+        -51.156656979889334
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        -17.80351173772906,
+        -3.478809209347486,
+        -4.708214315532233
+      ],
+      "ankle_link_path_cm": [
+        229.81114595939812,
+        209.0513305556637
+      ],
+      "foot_unloaded_time_s": [
+        3.5100000000000002,
+        2.205
+      ],
+      "slip_contact_max_mps": 1.2946621075882592,
+      "peak_tilt_deg": 13.305283245818904,
+      "force_xyz_mean_n": [
+        -5.646841456816005,
+        -0.5702437347214083,
+        4.711596129410282
+      ],
+      "force_xyz_rms_n": [
+        7.008256692599371,
+        4.571046195686158,
+        5.23095097941012
+      ],
+      "force_rms_n": 9.867774487768381,
+      "error_signed_xyz_mean_cm": [
+        -18.655057720449715,
+        3.1235039121444994,
+        11.67231128844526
+      ],
+      "error_rms_cm": 30.371495346204203,
+      "cap_fraction": 0.8729792147806005
+    },
+    {
+      "native": "half-contact",
+      "phase": "native_return",
+      "seconds": 1.5,
+      "root_displacement_xyz_cm": [
+        10.284410936503875,
+        -9.218181540047604,
+        6.017027796875296
+      ],
+      "root_mean_velocity_xyz_mps": [
+        0.06879204639800847,
+        -0.06166007719094423,
+        0.040247677571065926
+      ],
+      "root_horizontal_path_cm": 21.625782628970175,
+      "pelvis_yaw_start_end_deg": [
+        -51.26451327074621,
+        -63.798178551429864
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        1.2953322878575868,
+        -9.658264462314857,
+        2.973529539291375
+      ],
+      "ankle_link_path_cm": [
+        17.36075536975923,
+        14.884276732381666
+      ],
+      "foot_unloaded_time_s": [
+        0.335,
+        0.195
+      ],
+      "slip_contact_max_mps": 1.0807424837718262,
+      "peak_tilt_deg": 14.124191332811312,
+      "force_xyz_mean_n": [
+        -8.160913310796927,
+        5.517237091072755,
+        1.5664290869754487
+      ],
+      "force_xyz_rms_n": [
+        8.161562121618138,
+        5.523047642993611,
+        1.6984841677774842
+      ],
+      "force_rms_n": 10.0,
+      "error_signed_xyz_mean_cm": [
+        -55.55960927116579,
+        37.218585423975654,
+        11.438661436370966
+      ],
+      "error_rms_cm": 68.1902601050636,
+      "cap_fraction": 1.0
+    },
+    {
+      "native": "half-contact",
+      "phase": "contact_hold",
+      "seconds": 0.5,
+      "root_displacement_xyz_cm": [
+        -0.6794967155748788,
+        0.07329929377971611,
+        0.7336983734340108
+      ],
+      "root_mean_velocity_xyz_mps": [
+        -0.01372720637524793,
+        0.0014807938137314071,
+        0.014822189362300932
+      ],
+      "root_horizontal_path_cm": 0.6996342076735521,
+      "pelvis_yaw_start_end_deg": [
+        -63.872003277849835,
+        -68.51832470810419
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        -0.7043572319224811,
+        -1.5780261659416872,
+        1.0410592981091593
+      ],
+      "ankle_link_path_cm": [
+        0.5467992138302508,
+        0.06034661404386444
+      ],
+      "foot_unloaded_time_s": [
+        0.0,
+        0.0
+      ],
+      "slip_contact_max_mps": 0.13753500824557674,
+      "peak_tilt_deg": 6.19547327139577,
+      "force_xyz_mean_n": [
+        -8.01170961600985,
+        5.966147890981006,
+        0.46215029881716796
+      ],
+      "force_xyz_rms_n": [
+        8.011719078038947,
+        5.966185910705504,
+        0.4658144410448457
+      ],
+      "force_rms_n": 10.0,
+      "error_signed_xyz_mean_cm": [
+        -52.76330353319369,
+        39.104351529845935,
+        3.4256836985171066
+      ],
+      "error_rms_cm": 65.77077971002187,
+      "cap_fraction": 1.0
+    },
+    {
+      "native": "half-contact",
+      "phase": "released_recovery",
+      "seconds": 4.0,
+      "root_displacement_xyz_cm": [
+        1.2212551134478833,
+        -2.0912656227714765,
+        0.2998111742927856
+      ],
+      "root_mean_velocity_xyz_mps": [
+        0.003056958982347952,
+        -0.005234707441230758,
+        0.0007504660182548583
+      ],
+      "root_horizontal_path_cm": 2.730194513923384,
+      "pelvis_yaw_start_end_deg": [
+        -68.54475968145415,
+        -71.73382369303374
+      ],
+      "wrist_relative_shoulder_change_cm": [
+        4.290906037652231,
+        -2.633918213894665,
+        2.5292370590671798
+      ],
+      "ankle_link_path_cm": [
+        1.0175597573415036,
+        0.8753826598078612
+      ],
+      "foot_unloaded_time_s": [
+        0.0,
+        0.0
+      ],
+      "slip_contact_max_mps": 0.0317562915052172,
+      "peak_tilt_deg": 3.8934193595434046
+    }
+  ],
+  "read_only_analysis_seconds": 1.9138110869098455,
+  "RL_decisions": 0,
+  "new_physics_steps": 0
+}
