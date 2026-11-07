@@ -38,7 +38,7 @@ def events(ep):
 def main():
  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();a.output.mkdir(exist_ok=True);rows=[]
  names=json.loads((a.root/'runs/qualification-03/action-contract.json').read_text())['dof_names']
- for folder in ['qualification-03','reward-free-01','rolling-02']:
+ for folder in ['qualification-03','reward-free-01','rolling-02','stop-reference-01']:
   d=a.root/'runs'/folder
   if not (d/'summaries.json').exists():continue
   for row in json.loads((d/'summaries.json').read_text()):
