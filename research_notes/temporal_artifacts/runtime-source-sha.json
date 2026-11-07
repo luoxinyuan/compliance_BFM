@@ -20,5 +20,6 @@
     "research_notes/temporal_walk_audit.py": "132770fb5b315a51ee8fcd112fa2d29f531eec53e90638fadab8c89a5a129348",
     "research_notes/temporal_worker.py": "8102140eeaf450d109734b1030159ca689affe6b58332a5089ad45429fbc0344"
   },
-  "PPO_started": false
+  "PPO_started": false,
+  "snapshot_scope": "prelaunch source identity, NOT live training progress; see stage-status/ledger jobs/launch"
 }
