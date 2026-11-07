@@ -1,6 +1,8 @@
-# 当前状态补充（2026-11-07）
+# 当前状态补充（2026-11-07，Issue50）
 
-Issue48已结项，Issue49正在准备原生动态运动的时间连续探索。下方Issue47/C0优先级是历史快照，已被新授权覆盖。当前复用原生来源，不启动新的reward prompting扫描、buffer下载或F/SF planner；后续资产工具的接口与数学边界仍有效。
+Issue48/49与C0专项均已结项，不恢复旧PPO/AR扫描。Issue50已实际复用原26.7GB同权重replay，完整SHA核验后完成150000 successor、3配置×普通/weighted共6z，保留embedding与API零差对照。它们尚未成为可靠低力接触行走来源；ordinary候选在负载中推进不代表无力自主walking。当前原生goal/motion＋短程真实物理搜索已完成首条有效滚动回合，停止配对仍在运行；不能提前写成已训练的新神经Expert/Student。
+
+实际结果和完整方法将在NATIVE_ROLLING_RESULTS/METHODS维护。下方Issue46/47的优先级与“尚未推断”措辞是历史计划，数学/接口合同仍有效。没有新建F/SF planner、重训FB、下载大型资产或自动启动Student。
 
 # BFM reward prompting / composition / F-SF：后续最小研究记录
 

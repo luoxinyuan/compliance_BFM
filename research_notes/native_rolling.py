@@ -195,6 +195,9 @@ def study(env,model,contract,out):
             assert not task.boundary,task.boundary
         torch.save(torch.cat(xs).cpu(),out/'actual-observations.pt')
         save_episode('version_difference_smoke',dict(scope='targeted CUDA/MuJoCo version difference check, not new task success'))
+    elif ARGS.mode=='stop_references':
+        # Frozen same-condition stop baselines, no new search or learned weights.
+        for kind in ['C32','I']:run_fixed(kind+'__stop7.8',kind,condition(stop=7.8))
     elif ARGS.mode=='free':
         for name in ['forward015_ordinary','forward015_weighted']:
             s=condition();s['enabled']=False
@@ -252,7 +255,7 @@ def study(env,model,contract,out):
 
 def main():
     global ARGS
-    p=argparse.ArgumentParser();p.add_argument('--mode',choices=['qualification','diagnostic','rolling','compatibility','free'],required=True);p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--mode',choices=['qualification','diagnostic','rolling','compatibility','free','stop_references'],required=True);p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args()
     assert not ARGS.output.exists();ARGS.output.mkdir()
     import subprocess
     assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])

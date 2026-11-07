@@ -61,7 +61,6 @@
   },
   "search": {
     "horizon_decisions": 24,
-    "node_spacing_decisions": 6,
     "seed": 5001,
     "max_candidates_initial": 7,
     "iterations": 1,
@@ -70,7 +69,7 @@
     "physical_score": "unchanged geometry_env per-tick task reward integrated over horizon, absorbing safety tail; also report physical-unit metrics",
     "terminal_value": false,
     "sampling": "native sequence hot starts + bounded continuous coefficient proposals; no PPO likelihood or policy-training claim",
-    "space": "alpha and local-goal mix at 4 time nodes, continuous phase-rate; unrestricted legal256D interface retained but this finite search does not cover all256D sequences",
+    "space": "four alpha time nodes, one scalar local-arm-goal mix and one scalar phase-rate; legal256D interface unchanged, finite search does not cover256D\u00d7H",
     "revision": "v2 after 4-state13-candidate diagnostic, before actual rolling; measured42sec/13candidates; reduce to7 to bound cost; receding previous alpha nodes correctly shifted by executed100ms",
     "rolling_candidate_set": [
       "standing",
@@ -86,7 +85,15 @@
     "proposal_revision": "Before rolling, distinguish motor-source utility from feedback-Teacher success: ordinary forward015/022 yielded stable actual forward root/foot movement but high contact force, retained as exploration proposals, NOT qualified Teachers; v1 stricter reward-selection.json preserved.",
     "actor_usage": "no I/C0/T30/native-initial/C32 actor called in actual rolling proposal generation when original-replay reward-z is present; all remain frozen evaluation references",
     "control_nodes": "four stand-to-source alpha nodes + arm mixing + rate for native motion; source can be ordinary reward-z or motion sequence; shifted last executed plan, no future partner state",
-    "no_actor_in_actual_search": true
+    "no_actor_in_actual_search": true,
+    "unused_legacy_node_spacing_decisions": 6,
+    "actual_alpha_nodes_decisions": [
+      0,
+      7.666666666666667,
+      15.333333333333334,
+      23
+    ],
+    "documentation_correction": "No physics change: implementation always used four np.linspace nodes; legacy node_spacing field was unused."
   },
   "representative_states": [
     {
@@ -125,7 +132,19 @@
     "common_prefix_stop_time": 7.8,
     "deceleration": 0.7,
     "predictions_replanned_every": 0.1,
-    "stop_if": "no physical improvement over warmstart in all representative states OR unsafe restoration/probability/resource boundary"
+    "stop_if": "no physical improvement over warmstart in all representative states OR unsafe restoration/probability/resource boundary",
+    "actual_complete_cases": [
+      "72cm mean.15 continue",
+      "matched prefix until7.8 then.7s brake/2s hold/4s free recovery"
+    ],
+    "not_run_as_complete_rolling_cases": [
+      ".22 validation (source qualification only)",
+      "7cm (source qualification and representative same-state search only)"
+    ],
+    "frozen_stop_diagnostics": [
+      "C32",
+      "I"
+    ]
   },
   "sources": "same-checkpoint native standing/arm5/arm15/lean and documented M10 task-motion goal latents; I/C0 evaluation only; no inherited old actor",
   "selection": "search parameters fixed before representative results; no latent/reward/goal scan; any revision explicitly versioned and evidence explained"
