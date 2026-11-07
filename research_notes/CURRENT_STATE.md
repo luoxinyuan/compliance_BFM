@@ -1,31 +1,13 @@
-# CURRENT_STATE — 原生动态运动时间连续探索（Issue49）
+# CURRENT_STATE — Issue50，H100挂载重启后的差异核查
 
-核对：2026-11-07 CST。**新阶段已完成有限walking/概率校验，匹配训练队列已实际启动，尚无新物理收益结论。Issue48已完整结项，不重启其目录或修改原选模。**
+2026-11-07。Issue49已结项，新授权原生候选＋短程滚动物理反馈；不恢复旧PPO/C0/Student训练。
 
-[Issue49](https://github.com/GaoE05/robot-research-bridge/issues/49) · [协议](TEMPORAL_EXPLORATION_PROTOCOL.md) · [机器配置](temporal_protocol.json) · [Issue48结果](NATIVE_CONTACT_RESULTS.md) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)
+本阶段已完成两次有限四状态搜索：同完整物理状态分支、每条经冻结BFM/原PD/真实Tether。修正版7候选×2.4s有短程预测收益；不是完整滚动Teacher成果。原生阶段精确模型SHA已核对，I/C0只冻结参考。
 
-## 当前目标与状态
+外部实例刚重启，GPU UUID未变，挂载范围改变；此前隔离环境/Issue50目录暂不可见，运行中的资格对照中断。原始同权重buffer现在重新可见。原始项目现有环境CUDA可用，但Torch2.7.1+cu128/MuJoCo3.3.3与此前隔离cu118/3.3.7不同。新独立工作树仅做差异检查，不改共享环境、不安装依赖、不混合不同backend的结果。
 
-原生walking进入/持续/低速接触/退出先做有限证据审查；新增正控制最多3回合，复用旧full-rate自由证据。比较同单步边际噪声协方差下，A独立探索与B时间连续AR探索；先NVIDIA真实输入条件概率/梯度检查，再两配对seed4901/4902各16×768。是否全部延至32由固定共同开发规则决定，不按封存调参。资格：full-contact47.065cm/9.264N，half-contact38.902cm/9.253N，均无安全边界；half-free能走，但不代表低速跟随有效。概率/历史梯度/同方差检查通过。四组队列已启动：首组A-4901正在初始化/采样，B-4901、B-4902、A-4902顺序排队；具体进度以result/status/ledger为准。尚未开始封存终检。
+本阶段原上限18000累计job秒/10GiB；已知旧耗时673.3848s，最后中断job按850s保守预留直到可恢复账本。新账本继承这笔成本，不重置预算。当前无正式RL/Student，单H100顺序执行。
 
-固定Issue48原生初始化SHA d399174cc2ddbd3efb858953653c9134495070948341381565f5f918f58da5cd，两个方法同coordinate head/原normalizer/MLP/covariance/课程/reward/历史。新阶段fresh critic/Adam；不继承I/C0/T30 actor。C32/I/C0仅冻结比较，不再C0修补。原BFM SHA33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361；PD/10N/K80D8/5N回归/256D/10-50-200Hz不变。1088D特权Teacher，不是新Student；不输入未来/任务ID/clock/最终距离，不真机。
+[Issue50](https://github.com/GaoE05/robot-research-bridge/issues/50)。已知旧runtime c4c3b50（13候选诊断）、3e4da0d（删除未来任务元数据7候选诊断）、a2f0028（中断前匹配资格）。源码Mac备份保留；旧CPFS目录不可见不等于结果已删除。
 
-AR条件均值含mu(current)+rho*(actual_previous_u-mu(previous_observation))，更新两个mu均需当前theta梯度；完整保留实际历史，噪声边界只重置探索记忆。相同的是stationary噪声边际协方差，不是反馈导致的全部动作/状态分布。actor/critic网络输入仍1088，2433D replay wrapper只是概率上下文；critic不读精确AR residual是已记录的逼近限制。原3e-4/KL .02/Adam守卫不放宽。
-
-## 资源与身份
-
-新阶段硬上限：18000累计experiment-job秒、12GiB、98304新RL决策，Student/C0更新0。只使用实时检查空闲的Pro5000 GPU0，三个单线程worker；GPU1–6被其他任务占用，不动。无PPU、大下载、共享环境修改。首次49152决策，资源上限不是必须耗尽。
-
-RUN_ROOT=/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-temporal-20261107；ledger.json的jobs记录实际作业/PID/start_ticks/预算，stage-status.json记录阶段；顶层state是准备期旧标记，不覆盖实际jobs。PPO监督父PID3456991，队列PID3456980（必须同时核对start_ticks，不能仅靠历史PID操作）。隔离树bridge-v2-owned/trees/native-temporal-learning/repo，分支gaoe05/native-temporal-learning；正式PPO runtime固定687e20ccc95addd1a20357f7dec2264869d4ee48，概率/qualification runtime6d6a50b54daee4d4256938ccc0c9ac11545c8d5c。准备完成不等于学习成功，文档commit不混作运行源码。运行树保持不变，文档经独立maintenance树集成。不要重复启动同名目录。
-
-## 已有结论与不可丢失基线
-
-Issue48三组73728决策/97冻结物理执行全部完成。C32零需求0.985cm/.812N、6.8cm局部2.823cm/2.300N，69cm仍34.920cm/8.756N，moving新源67.236cm/9.843N。保留best=0及其近零基线选择偏置，不否认固定末轮实际部分收益，也不宣称已解决及时walking。C32 SHA39cd0db55fddb174de3f77104acbd8d7574fb3a5051f743e4ca39bb6b7d24ad0，旧I/C0/T30/S0/D2及全部失败与模型SHA见native_artifacts/models.json和历史报告。旧原生视频在Mac videos/native-contact-learning/，4MP4+INDEX已验，不是本轮新成果。
-
-[Issue48精确结项快照](https://github.com/luoxinyuan/compliance_BFM/blob/3049ef513aa49f87dde5ffca4d98e693b26d37cd/research_notes/CURRENT_STATE.md)
-
-接力先读CURRENT_STATE/OVERVIEW/Issue49/protocol/ledger，核实实际runtime、资源、result和模型SHA。没有空卡不换CPU，不根据旧PID/历史快照重跑。不改main、共享BFM/PD/权重、SoftSONIC或他人任务。完成本有界阶段后统一报告、更新Master/research并停止，无自动Student或追加PPO。
-
-探索reset行的previous_obs/u是显式valid=0的未使用哨兵，不冒充真实旧状态；当前1088D中的BFM/动作/last-z/接触历史从实际源前缀完整保留。有效AR行才对真实previous观测/命令条件化。新视频目标Mac videos/native-temporal-learning/，当前尚未生成，不宣称已送达。
-
-原生walking进一步事实（保存轨迹只读复算）：持续段full-contact root平均vx=.214m/s、vy=-.098m/s，实际Fx均值-5.99N/Fz+3.95N，pelvis yaw约-2.88→-93.09°；half-contact vx=.223、vy=-.037，Fx-5.65N/Fz+4.71N，yaw约-2.88→-51.16°。伙伴平均需求.09m/s。原生源会超前/侧偏、受到反向拉力，不能当低速反馈Expert；新网络从standing推进不足是另一个失败，不能混为BFM不会走或力太小。half-rate不作为单臂训练源改动。
+滚动预测仅当前伙伴状态＋常速度；清除最终距离/停止/释放时刻等生成器字段。速度平均.09/.15/.22，smoothstep峰值1.5倍。原BFM/PD/K80D8/10N/10-50-200Hz冻结；无共享环境/main/SoftSONIC或他人任务改动，无真机。差异核查不通过则在实际资源/兼容性边界停止，不带病执行。

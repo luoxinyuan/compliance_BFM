@@ -11,6 +11,15 @@ class Expert(RawExpert):
   self.register_buffer('base_weight',torch.zeros_like(self.actor[-1].weight))
   self.register_buffer('base_bias',torch.zeros_like(self.actor[-1].bias))
  def initialize_from_raw(self,state):
+  # This source is native_policy.Expert (whitened probability coordinates),
+  # not clean_policy.Expert (raw probability coordinates). Equal shapes do
+  # not make their log_std or covariance contracts interchangeable.
+  required={'raw_L','raw_Linv','log_std'}
+  missing=required-set(state)
+  if missing:
+   raise ValueError('Expected a native whitened-policy state with explicit covariance buffers; '
+                    'legacy raw-Gaussian state requires explicit coordinate conversion. '
+                    f'Missing keys: {sorted(missing)}')
   self.load_state_dict(state,strict=False)
   with torch.no_grad():
    self.base_weight.copy_(state['actor.4.weight']);self.base_bias.copy_(state['actor.4.bias']);self.actor[-1].weight.zero_();self.actor[-1].bias.zero_()
