@@ -4,7 +4,7 @@
 
 ## 授权、状态与预算
 
-用户新授权：固定7提议/2.4s因果滚动Teacher，验证4条新完整回合，分离真实首动作数据，比较fresh特权P与受限ideal-force S的BC及真实闭环。当前完成预登记与准备，尚未启动物理运行，不将计划当结果。
+用户新授权：固定7提议/2.4s因果滚动Teacher，验证4条新完整回合，分离真实首动作数据，比较fresh特权P与受限ideal-force S的BC及真实闭环。Teacher覆盖已启动，尚无新条件成功结论；BC重放/训练/评价代码准备中。仅预定任务在本阶段内顺序执行，不将计划当结果。
 
 独立stage experiments/native-transfer-20261107；运行repo固定提交后启动，Issue50目录只读。H100级NVIDIA当前UUID GPU-3654846e-2666-fe93-20e9-cd7d08a217db，NVML L20Z名称冲突保留；14:44 UTC核对无GPU任务、20CPU、可用RAM199GiB，沿用Python3.10/Torch2.7.1cu128/MuJoCo3.3.3。发车前再次实时核查。
 
@@ -26,4 +26,4 @@ Issue50真实MPC .15牵引7.417cm/5.465N（I10.265/6.682），同前缀停止7.6
 
 BFM SHA33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361；I72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a；C0ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c；旧Issue50物理runtime32b3502262399409dd9091b067c89ba619d20873；文档维护9c2f383不是新物理运行。
 
-长期gaoe05/research；当前新阶段源码尚待提交，精确runtime/模型SHA/成本将在ledger与结项报告记录。不改main、共享BFM/PD/权重/SoftSONIC/他人任务，不做真机。新会话先读本页/OVERVIEW/协议/Issue51和实时ledger，不以旧PID/空闲快照重启。
+长期gaoe05/research；Teacher实际runtime443f02c4fc22fd84e59f2cee4e25750d838fe527；监督进程PID23033/child23035、boot be0c7b44-26b0-4699-8716-9903210007ab，实际身份以ledger/start_ticks为准。BC另在bc-repo固定提交后运行；模型SHA/成本待产出，不用文件名代替。不改main、共享BFM/PD/权重/SoftSONIC/他人任务，不做真机。新会话先读本页/OVERVIEW/协议/Issue51和实时ledger，不以旧PID/空闲快照重启。
