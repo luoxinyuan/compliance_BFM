@@ -125,6 +125,7 @@ def loop(env, model, contract, out):
                 st.update(time=t, raw_sample_norm=float(raw.norm()),
                           raw_mean_norm=float(net.raw_mean(obs).norm()),
                           raw_noise_norm=float(net.to_raw(noise).norm()),
+                          sample_vs_mean_z_angle_deg=float(torch.acos(torch.nn.functional.cosine_similarity(raw,net.raw_mean(obs)).clamp(-1,1))[0]*180/torch.pi),
                           innovation_std=float(d.stddev.mean()), noise_reset=not valid,
                           probability_u_norm=float(u.norm()))
                 stats.append(st)

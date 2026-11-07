@@ -49,7 +49,8 @@
     "stationary_noise_marginal_covariance": "I in whitened u; L L^T in raw, same in A/B",
     "history": "true previous observation/actual sampled u; version and reset stored. No taskID/clock/future. No expert override.",
     "deployment": "deterministic raw_mean(current) only; no exploration memory at eval",
-    "critic": "unchanged1088D current observation critic, does not observe exact AR residual; approximation limitation recorded"
+    "critic": "unchanged1088D current observation critic, does not observe exact AR residual; approximation limitation recorded",
+    "scope": "Same rho applies to ALL whitened256D noise, including low-variance floor; this compares whole-process temporal continuity, not candidate-axis-only causation."
   },
   "selection": {
     "score": "mean existing m39a physical costs + .25*max cost; no ratios to near-zero baselines",
@@ -99,5 +100,6 @@
     "zero_and_none_onset": 5.31,
     "light5_same_near": true
   },
-  "stop": "Any probability/gradient mismatch: no formal PPO until fixed within recorded method; never relax3e-4/.02KL guards. No safe resource or budget/asset permission: preserve state, no CPU substitution. No extension when common rule fails. No new candidates/RL/Student after final."
+  "stop": "Any probability/gradient mismatch: no formal PPO until fixed within recorded method; never relax3e-4/.02KL guards. No safe resource or budget/asset permission: preserve state, no CPU substitution. No extension when common rule fails. No new candidates/RL/Student after final.",
+  "evaluation": "All four dev-best and fixed-last models + native_initial/C32/I/C0:11 sealed mean conditions=132 cells;2 stochastic long repeats per dev-best=8;native standing3=143 physical executions, duplicates explicitly not independent tasks. Four videos use predetermined fixed-last, not final-based selection."
 }

@@ -1,0 +1,31 @@
+{
+  "qualification_runtime": "6d6a50b54daee4d4256938ccc0c9ac11545c8d5c",
+  "probability_passed": true,
+  "checks_unchanged_policy": true,
+  "probability_json_sha256": "ce85a31430dd4ad633d368c64826a682ef467bc0e0e75000a0f570ea5a1d3873",
+  "audit_summary": [
+    {
+      "label": "full-contact",
+      "error_cm": 47.064913312008606,
+      "force_rms": 9.264018651934771,
+      "root_max_displacement": 1.626405396208356,
+      "boundary": null
+    },
+    {
+      "label": "half-free",
+      "error_cm": 0.0,
+      "force_rms": 0.0,
+      "root_max_displacement": 2.210331418256632,
+      "boundary": null
+    },
+    {
+      "label": "half-contact",
+      "error_cm": 38.902429637804815,
+      "force_rms": 9.253453971773585,
+      "root_max_displacement": 1.6185445297429404,
+      "boundary": null
+    }
+  ],
+  "interpretation": "stable native motion remains poor slow-contact feedback; half phase rate not promoted as teacher or silently adopted in curriculum",
+  "new_PPO_started": false
+}

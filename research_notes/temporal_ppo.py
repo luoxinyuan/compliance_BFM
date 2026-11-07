@@ -16,7 +16,7 @@ def main():
  from clean_policy import update
  from temporal_worker import launch
  plan=json.loads(Path(__file__).with_name('temporal_protocol.json').read_text());from native_env import dev_specs;plan['dev']=dev_specs();torch.set_num_threads(1);torch.manual_seed(a.seed);torch.set_grad_enabled(False)
- ctx=mp.get_context('spawn');ps=[];cs=[];net=opt=None;iteration=decisions=updates=start_iteration=start_decisions=0;best=float('inf');status='initializing';started=time.monotonic();commit=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
+ ctx=mp.get_context('spawn');ps=[];cs=[];net=opt=None;iteration=decisions=updates=start_iteration=start_decisions=collected_decisions=0;best=float('inf');status='initializing';started=time.monotonic();commit=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
  atomic(a.output/'launch.json',dict(pid=os.getpid(),commit=commit,plan_sha256=sha(Path(__file__).with_name('temporal_protocol.json')),args={k:str(v) if isinstance(v,Path) else v for k,v in vars(a).items()},started=time.time()))
  def stop(*_):raise KeyboardInterrupt
@@ -87,7 +87,7 @@ def main():
    for c in cs:c.send(dict(op='rollout',steps=256,version=it,policy=w))
    results=[receive(c,p,1200) for c,p in zip(cs,ps)];sample_s=time.monotonic()-t
    assert all(r['version']==it for r in results)
-   batch={k:v.cuda() for k,v in merge_rollouts(results,.95).items()};batch['raw_adv_std']=(batch['returns']-batch['value']).std();t=time.monotonic();before_raw=net.raw_mean(batch['obs']).detach().clone();u=update(net,opt,batch);actual_delta=net.raw_mean(batch['obs']).detach()-before_raw;native_delta=actual_delta@directions.T;orthogonal_delta=actual_delta-native_delta@directions
+   batch={k:v.cuda() for k,v in merge_rollouts(results,.95).items()};batch['raw_adv_std']=(batch['returns']-batch['value']).std();collected_decisions+=len(batch['reward']);atomic(a.output/'sampled-decisions.json',dict(new_RL_decisions=collected_decisions,version=it,source='real worker batches before optimizer update'));t=time.monotonic();before_raw=net.raw_mean(batch['obs']).detach().clone();u=update(net,opt,batch);actual_delta=net.raw_mean(batch['obs']).detach()-before_raw;native_delta=actual_delta@directions.T;orthogonal_delta=actual_delta-native_delta@directions
    iteration+=1;decisions+=len(batch['reward']);updates+=u['optimizer_updates'];stats=[s for r in results for s in r['stats']];active=sum(s['active_steps'] for s in stats)
    task_advantage={}
    for family in sorted(set(s['demand_family'] for s in stats)):
@@ -124,5 +124,5 @@ def main():
   for p in ps:
    p.join(timeout=10)
    if p.is_alive():p.terminate();p.join(timeout=10)
-  atomic(a.output/'result.json',dict(status=status,iterations=iteration,decisions=decisions,new_decisions=decisions-start_decisions,updates=updates,elapsed_s=time.monotonic()-started,workers=[dict(pid=p.pid,exitcode=p.exitcode) for p in ps],bfm_updated=False,student_updated=False))
+  atomic(a.output/'result.json',dict(status=status,iterations=iteration,decisions=decisions,new_decisions=decisions-start_decisions,collected_new_decisions=collected_decisions,updates=updates,elapsed_s=time.monotonic()-started,workers=[dict(pid=p.pid,exitcode=p.exitcode) for p in ps],bfm_updated=False,student_updated=False))
 if __name__=='__main__':main()

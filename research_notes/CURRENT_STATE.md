@@ -1,12 +1,12 @@
 # CURRENT_STATE — 原生动态运动时间连续探索（Issue49）
 
-核对：2026-11-07 CST。**新阶段已登记/正在实现准备，尚未启动新PPO。Issue48已完整结项，不重启其目录或修改原选模。**
+核对：2026-11-07 CST。**新阶段已完成有限walking/概率校验，匹配训练队列待启动，尚无新PPO结果。Issue48已完整结项，不重启其目录或修改原选模。**
 
 [Issue49](https://github.com/GaoE05/robot-research-bridge/issues/49) · [协议](TEMPORAL_EXPLORATION_PROTOCOL.md) · [机器配置](temporal_protocol.json) · [Issue48结果](NATIVE_CONTACT_RESULTS.md) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)
 
 ## 当前目标与状态
 
-原生walking进入/持续/低速接触/退出先做有限证据审查；新增正控制最多3回合，复用旧full-rate自由证据。比较同单步边际噪声协方差下，A独立探索与B时间连续AR探索；先NVIDIA真实输入条件概率/梯度检查，再两配对seed4901/4902各16×768。是否全部延至32由固定共同开发规则决定，不按封存调参。当前只是准备，不把用户提示或源码提交写成已开训。
+原生walking进入/持续/低速接触/退出先做有限证据审查；新增正控制最多3回合，复用旧full-rate自由证据。比较同单步边际噪声协方差下，A独立探索与B时间连续AR探索；先NVIDIA真实输入条件概率/梯度检查，再两配对seed4901/4902各16×768。是否全部延至32由固定共同开发规则决定，不按封存调参。资格：full-contact47.065cm/9.264N，half-contact38.902cm/9.253N，均无安全边界；half-free能走，但不代表低速跟随有效。概率/历史梯度/同方差检查通过。下一步仅启动已登记四组队列，实际启动以ledger/PID/launch为准，不把源码提交当开训。
 
 固定Issue48原生初始化SHA d399174cc2ddbd3efb858953653c9134495070948341381565f5f918f58da5cd，两个方法同coordinate head/原normalizer/MLP/covariance/课程/reward/历史。新阶段fresh critic/Adam；不继承I/C0/T30 actor。C32/I/C0仅冻结比较，不再C0修补。原BFM SHA33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361；PD/10N/K80D8/5N回归/256D/10-50-200Hz不变。1088D特权Teacher，不是新Student；不输入未来/任务ID/clock/最终距离，不真机。
 
@@ -16,7 +16,7 @@ AR条件均值含mu(current)+rho*(actual_previous_u-mu(previous_observation))，
 
 新阶段硬上限：18000累计experiment-job秒、12GiB、98304新RL决策，Student/C0更新0。只使用实时检查空闲的Pro5000 GPU0，三个单线程worker；GPU1–6被其他任务占用，不动。无PPU、大下载、共享环境修改。首次49152决策，资源上限不是必须耗尽。
 
-RUN_ROOT=/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-temporal-20261107；ledger.json记录实际作业/PID/start_ticks/预算，尚无PPO job。隔离树bridge-v2-owned/trees/native-temporal-learning/repo，分支gaoe05/native-temporal-learning；源码commit以launch.json为准，当前基础3049ef513aa49f87dde5ffca4d98e693b26d37cd，准备中的代码不是已验证结果。不要重复启动同名目录。
+RUN_ROOT=/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-temporal-20261107；ledger.json记录实际作业/PID/start_ticks/预算，尚无PPO job。隔离树bridge-v2-owned/trees/native-temporal-learning/repo，分支gaoe05/native-temporal-learning；源码commit以launch.json为准，当前基础3049ef513aa49f87dde5ffca4d98e693b26d37cd，正式源码将固定，准备完成不代表训练成功。不要重复启动同名目录。
 
 ## 已有结论与不可丢失基线
 
