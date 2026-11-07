@@ -50,8 +50,19 @@ def study(env,model,contract,out):
         else:n.load_state_dict(ck['state_dict'])
         n.eval().requires_grad_(False);nets[name]=n;identities[name]=dict(path=str(p),sha256=digest,runtime=ck.get('runtime'),iteration=ck.get('iteration'),role='frozen evaluation only' if name in ['I','C0'] else 'native independent reference')
     write(out/'models.json',identities)
-    buffer=Path('/mnt/data-oss/users/yi.gao/compliance_BFM/native_reward_assets/62b4206d68e026de5e5dc7efb1529bccfb95164c/train/buffer.hdf5')
-    write(out/'reward-source-status.json',dict(status='blocked_missing_original_buffer' if not buffer.exists() else 'present_not_loaded',expected_sha='46eac53f603e45921d25504fcf7d3eea861f2a9f8ea503046855e701493b546b',expected_path=str(buffer),searched='known original path and bounded own-project roots, no other-user search/download',predeclared_configurations=PLAN['reward_configurations'],new_reward_z_generated=0,continuing_with='verified same-checkpoint native goal and motion assets; no substitute replay manufactured'))
+    rp=STAGE/'runs/reward-inference-01/reward-candidates.json'
+    reward_z={}
+    if rp.exists():
+        manifest=json.loads(rp.read_text());assert manifest['model_sha256']==contract['model_sha256']
+        for row in manifest['candidates']:
+            z=torch.tensor(row['z'],device='cuda',dtype=torch.float32);assert abs(float(z.norm())-16)<1e-4
+            reward_z[row['name']]=z
+    write(out/'reward-source-status.json',dict(status='original_replay_verified_and3configs_inferred' if reward_z else 'no_new_reward_sources',new_reward_z_generated=len(reward_z),manifest_sha256=sha(rp) if rp.exists() else None,no_contact_reward_prompt_claim=True))
+    selected_reward=None
+    selection=STAGE/'runs/reward-selection.json'
+    if selection.exists():
+        selected_reward=json.loads(selection.read_text())['selected']
+        assert selected_reward is None or selected_reward in reward_z
     def raw_net(name):
         n=nets[name];x=task.features()
         return n.raw_mean(x) if hasattr(n,'raw_mean') else n.distribution(x).mean
@@ -61,6 +72,8 @@ def study(env,model,contract,out):
         return s
     def native_target(kind,t,origin=5.0,phase=0.):
         if kind in ['native_initial','C32','I','C0']:return direct_command(raw_net(kind),env.standing)
+        if kind in reward_z:
+            u=float(np.clip((t-origin)/1.5,0,1));return spherical(env.standing,reward_z[kind],u*u*(3-2*u))
         if kind=='standing':return env.standing
         if kind in task.native_z:return task.native_z[kind]
         assert kind=='motion'
@@ -77,6 +90,10 @@ def study(env,model,contract,out):
     summaries=[]
     def save_episode(label,extra=None):
         task.label=label;task.save(out)
+        ep_path=out/(label+'.json.gz')
+        with gzip.open(ep_path,'rt') as f:ep=json.load(f)
+        ep.update(scope='frozen-source qualification or real native hot-start rolling control; NOT new PPO training',formal_RL_decisions=0)
+        with gzip.open(ep_path,'wt') as f:json.dump(ep,f)
         row=dict(label=label,boundary=task.boundary,condition=copy.deepcopy(task.spec),all=metrics(task.physics,task.controls),role='real executed physical trajectory',**(extra or {}))
         s=task.spec
         for key,a,b in [('moving',s['onset'],s.get('stop_time',s['onset']+s['ramp'])),('decelerating',s.get('stop_time',s['onset']+s['ramp']),s.get('stop_time',s['onset']+s['ramp'])+s.get('deceleration',0)),('holding',s.get('stop_time',s['onset']+s['ramp'])+s.get('deceleration',0),s['release']),('released',s['release'],s['end'])]:
@@ -98,7 +115,7 @@ def study(env,model,contract,out):
                     if onset_identity is None:onset_identity=onset_sha
                     assert onset_sha==onset_identity,'speed/controller onset physical state differs'
                 z=native_target(kind,t)
-                if kind=='motion' and t>=s['onset']+s['ramp']-1e-7:
+                if (kind=='motion' or kind in reward_z) and t>=s['onset']+s['ramp']-1e-7:
                     if exit_z is None:exit_z=task.last_command.clone()
                     u=float(np.clip((t-s['onset']-s['ramp'])/1.5,0,1));z=spherical(exit_z,env.standing,u*u*(3-2*u))
             _,_,_,st=task.step(z/16);counts['qualification_physics_steps']+=st['physics_steps']
@@ -108,6 +125,7 @@ def study(env,model,contract,out):
     def command(c,j,phase):
         kind=c['kind']
         if kind in nets:return direct_command(raw_net(kind),env.standing)
+        if kind=='reward':return reward_z[c['name']]
         if kind=='hold':return c['z']
         if kind in ['standing','goal_arm5','goal_arm15']:return env.standing if kind=='standing' else task.native_z[kind]
         u=j/(PLAN['search']['horizon_decisions']-1);nodes=np.array(c['alpha']);a=float(np.interp(u,np.linspace(0,1,len(nodes)),nodes))
@@ -121,7 +139,7 @@ def study(env,model,contract,out):
         if previous and previous['kind']=='sequence':
             prior=copy.deepcopy(previous);xx=np.linspace(0,1,len(prior['alpha']))
             prior['alpha']=np.interp(np.minimum(xx+1/(PLAN['search']['horizon_decisions']-1),1),xx,prior['alpha']).tolist()
-        cs=[dict(kind='standing'),dict(kind='goal_arm15'),dict(kind='C32'),
+        cs=[dict(kind='standing'),dict(kind='goal_arm15'),(dict(kind='reward',name=selected_reward) if selected_reward else dict(kind='C32')),
             dict(kind='sequence',alpha=[1.,1.,1.,1.],rate=1.,arm=0.),prior]
         for _ in range(2):
             cs.append(dict(kind='sequence',alpha=np.clip(np.array(prior['alpha'])+rng.normal(0,.15,4),0,1).tolist(),rate=float(np.clip(prior['rate']+rng.normal(0,.15),.5,1.4)),arm=float(np.clip(prior.get('arm',0.)+rng.normal(0,.08),0,.2))))
@@ -176,6 +194,11 @@ def study(env,model,contract,out):
         run_fixed('standing__speed0.15','standing',condition())
         run_fixed('I__speed0.15','I',condition())
         run_fixed('goal_arm5__local','goal_arm5',condition(.07,.09))
+        for name in reward_z:run_fixed(name+'__speed0.15',name,condition())
+        standing=next(r for r in summaries if r['label']=='standing__speed0.15')
+        valid=[r for r in summaries if r['label'].split('__')[0] in reward_z and not r['boundary'] and r['moving']['error_cm']<standing['moving']['error_cm'] and r['moving']['force_rms']<standing['moving']['force_rms']]
+        ranked=sorted(valid,key=lambda r:r['all']['force_rms']+r['all']['error_cm']/10.)
+        write(STAGE/'runs/reward-selection.json',dict(selected=ranked[0]['label'].split('__')[0] if ranked else None,rule='no safety boundary and better moving error AND force than standing, then rank same-condition force+error_cm/10; exploration proposal only, not a qualified contact Expert claim',ranked=[r['label'] for r in ranked],qualification_runtime=json.loads((out/'launch.json').read_text())['runtime']))
     elif ARGS.mode in ['diagnostic','rolling']:
         # Full MjData/cache/history branching verification on actual contact state.
         s=condition();task.reset(s,record=True,label='restore_test')

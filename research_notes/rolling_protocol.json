@@ -56,7 +56,8 @@
       "reward_wr_inference"
     ],
     "requires_original_verified_buffer": true,
-    "download": false
+    "download": false,
+    "status": "original verified replay recovered after mount change;3configs\u00d7ordinary/weighted inferred, API equivalence checked"
   },
   "search": {
     "horizon_decisions": 24,
@@ -79,7 +80,8 @@
       "shifted previous/gradual motion",
       "two continuous node/rate/arm proposals"
     ],
-    "future_metadata_audit": "Legacy geometry heading reward reads final distance. Predictions erase stop/change/release metadata and use shared nominal .72 distance heading scale, never actual generator final distance; actual physical reward unchanged. Initial c4c3b50 diagnostic retained as superseded source diagnostic."
+    "future_metadata_audit": "Legacy geometry heading reward reads final distance. Predictions erase stop/change/release metadata and use shared nominal .72 distance heading scale, never actual generator final distance; actual physical reward unchanged. Initial c4c3b50 diagnostic retained as superseded source diagnostic.",
+    "reward_proposal_selection": "qualification-only same-condition rule: no safety boundary, moving error AND force better than Standing; rank force+error_cm/10; replace C32 candidate with selected native reward-z if any; no extra candidate count"
   },
   "representative_states": [
     {
