@@ -58,6 +58,7 @@ def study(env,model,contract,out):
             z=torch.tensor(row['z'],device='cuda',dtype=torch.float32);assert abs(float(z.norm())-16)<1e-4
             reward_z[row['name']]=z
     write(out/'reward-source-status.json',dict(status='original_replay_verified_and3configs_inferred' if reward_z else 'no_new_reward_sources',new_reward_z_generated=len(reward_z),manifest_sha256=sha(rp) if rp.exists() else None,no_contact_reward_prompt_claim=True))
+    exploration_reward_names=['forward015_ordinary','forward022_ordinary'] if reward_z else []
     selected_reward=None
     selection=STAGE/'runs/reward-selection.json'
     if selection.exists():
@@ -84,7 +85,7 @@ def study(env,model,contract,out):
         f=np.array([r['force'] for r in active]);err=np.array([np.array(r['anchor'])-r['wrist'] for r in active])
         root=np.array([r['root'] for r in rows]);vel=np.array([r['qvel'][:3] for r in rows]);feet=np.array([r['feet_xyz'] for r in rows]);q=np.array([r['qpos'][7:] for r in rows]);qd=np.array([r['q_PD'] for r in controls])
         yaw=np.unwrap(np.array([np.arctan2(np.array(r['pelvis_matrix'])[1,0],np.array(r['pelvis_matrix'])[0,0]) for r in rows]))
-        ans=dict(physics_steps=len(rows),error_cm=float(100*np.sqrt(np.mean(np.sum(err*err,1))))) if len(active) else dict(physics_steps=len(rows),error_cm=0.)
+        ans=dict(physics_steps=len(rows),error_cm=float(100*np.sqrt(np.mean(np.sum(err*err,1))))) if len(active) else dict(physics_steps=len(rows),error_cm=None)
         ans.update(force_rms=float(np.sqrt(np.mean(np.sum(f*f,1)))) if len(active) else 0.,force_xyz_rms=np.sqrt(np.mean(f*f,0)).tolist() if len(active) else [0]*3,signed_error_cm=(100*err.mean(0)).tolist() if len(active) else [0]*3,force_xyz_mean=f.mean(0).tolist() if len(active) else [0]*3,cap_fraction=float(np.mean(np.linalg.norm(f,axis=1)>=9.999)) if len(active) else 0.,root_delta_cm=(100*(root[-1]-root[0])).tolist(),root_vx_mean=float(vel[:,0].mean()),root_speed_mean=float(np.linalg.norm(vel[:,:2],axis=1).mean()),pelvis_yaw_change_deg=float(np.degrees(yaw[-1]-yaw[0])),foot_paths_cm=(100*np.linalg.norm(np.diff(feet,axis=0),axis=2).sum(0)).tolist(),slip_proxy_mean=float(np.mean([r['contact_tangent_speed_max_mps'] for r in rows])),qpd_max_step_deg=float(np.degrees(np.abs(np.diff(qd,axis=0))).max()) if len(qd)>1 else 0.,q_actual_max_step_deg=float(np.degrees(np.abs(np.diff(q,axis=0))).max()) if len(q)>1 else 0.,min_height=float(min(r['height'] for r in rows)),max_tilt=float(max(r['tilt_deg'] for r in rows)),torque_saturation_max=float(max(r['torque_saturation'] for r in rows)),work_J=float(sum(r['external_power']*.005 for r in rows)))
         return ans
     summaries=[]
@@ -100,7 +101,7 @@ def study(env,model,contract,out):
             rs=[r for r in task.physics if a<=r['force_time']<b];cs=[r for r in task.controls if a<=r['time']<b]
             if rs:row[key]=metrics(rs,cs)
         summaries.append(row);write(out/'summaries.json',summaries);write(out/'counts.json',counts)
-        print('ACTUAL',label,round(row['all']['error_cm'],3),round(row['all']['force_rms'],3),row['all']['root_delta_cm'],task.boundary,flush=True)
+        print('ACTUAL',label,(round(row['all']['error_cm'],3) if row['all']['error_cm'] is not None else 'NA'),round(row['all']['force_rms'],3),row['all']['root_delta_cm'],task.boundary,flush=True)
         return row
     onset_identity=None
     def run_fixed(label,kind,s):
@@ -139,9 +140,15 @@ def study(env,model,contract,out):
         if previous and previous['kind']=='sequence':
             prior=copy.deepcopy(previous);xx=np.linspace(0,1,len(prior['alpha']))
             prior['alpha']=np.interp(np.minimum(xx+1/(PLAN['search']['horizon_decisions']-1),1),xx,prior['alpha']).tolist()
-        cs=[dict(kind='standing'),dict(kind='goal_arm15'),(dict(kind='reward',name=selected_reward) if selected_reward else dict(kind='C32')),
-            dict(kind='sequence',alpha=[1.,1.,1.,1.],rate=1.,arm=0.),prior]
-        for _ in range(2):
+        if exploration_reward_names:
+            # Stable native forward motor sources can be useful proposals even
+            # when their contact force is not below Standing. NOT good Teachers.
+            cs=[dict(kind='standing'),dict(kind='goal_arm15'),
+                *[dict(kind='reward',name=n) for n in exploration_reward_names],
+                dict(kind='sequence',alpha=[1.,1.,1.,1.],rate=1.,arm=0.),prior]
+        else:
+            cs=[dict(kind='standing'),dict(kind='goal_arm15'),dict(kind='C32'),dict(kind='sequence',alpha=[1.,1.,1.,1.],rate=1.,arm=0.),prior]
+        while len(cs)<7:
             cs.append(dict(kind='sequence',alpha=np.clip(np.array(prior['alpha'])+rng.normal(0,.15,4),0,1).tolist(),rate=float(np.clip(prior['rate']+rng.normal(0,.15),.5,1.4)),arm=float(np.clip(prior.get('arm',0.)+rng.normal(0,.08),0,.2))))
         return cs
     search_rows=[]
@@ -187,6 +194,10 @@ def study(env,model,contract,out):
             assert not task.boundary,task.boundary
         torch.save(torch.cat(xs).cpu(),out/'actual-observations.pt')
         save_episode('version_difference_smoke',dict(scope='targeted CUDA/MuJoCo version difference check, not new task success'))
+    elif ARGS.mode=='free':
+        for name in ['forward015_ordinary','forward015_weighted']:
+            s=condition();s['enabled']=False
+            run_fixed(name+'__NO_FORCE',name,s)
     elif ARGS.mode=='qualification':
         # Only 3 speed points × core native references; not a cap/seed grid.
         for v in PLAN['speed']['averages']:
@@ -240,7 +251,7 @@ def study(env,model,contract,out):
 
 def main():
     global ARGS
-    p=argparse.ArgumentParser();p.add_argument('--mode',choices=['qualification','diagnostic','rolling','compatibility'],required=True);p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--mode',choices=['qualification','diagnostic','rolling','compatibility','free'],required=True);p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args()
     assert not ARGS.output.exists();ARGS.output.mkdir()
     import subprocess
     assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
