@@ -1,0 +1,24 @@
+{
+  "commit": "687e20ccc95addd1a20357f7dec2264869d4ee48",
+  "tree": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/trees/native-temporal-learning/repo",
+  "source_files": {
+    "research_notes/BFM_REWARD_REUSE_ROADMAP.md": "81efbdea6e3e62b979111a35afb4881d554e4420919f0c20b900386e23c98bfd",
+    "research_notes/CURRENT_STATE.md": "e919a42f0be4da9fecc33a09f926a457584f623b416442b51b5be3c0379e878a",
+    "research_notes/TEMPORAL_EXPLORATION_PROTOCOL.md": "8ed5bae47979e797ebe5edd36f96eee1aa9e1f9cf753c4dcf00e425dea970a36",
+    "research_notes/temporal_final.py": "f17fdbf3279bf09a2e3b4dbb6b207ded1fb422c3d1ce31b0baf00445aa95b31e",
+    "research_notes/temporal_metrics.py": "3389b2fcd3983498c5b58346c2100c4061333e99194cd3f60267d7ba71557553",
+    "research_notes/temporal_movie.py": "06a41fcb107c94fb0f18fa96db0df15a17ac1c7a5653eb12b82984f690e37fea",
+    "research_notes/temporal_policy.py": "6057e3d9733b4b1f2eb44967726e196cb11d5f73a56cffadfa92a746882e2206",
+    "research_notes/temporal_ppo.py": "055ddd669859ad0e005fd6de6dc782f38d0dbbb326316d8a73b79021c4bfd6f3",
+    "research_notes/temporal_preflight.json": "3340b9829d951433949819dc6f1c768d1a44cc8a9a221db768203d30bfeb762c",
+    "research_notes/temporal_probability.py": "c1a21cb8825e17ba0e8d0cb70236ed2d2bb8f017ec52e81d7f70ddaecaf88c45",
+    "research_notes/temporal_protocol.json": "e1428cd645a4e16638cf0cf38170b00adff28d939f680a781a340cc38758ff06",
+    "research_notes/temporal_render.py": "53236b304a038a82bc90220d16deb16c8314e98dd3184723bca4389c1574d89d",
+    "research_notes/temporal_selection.py": "3ee5da3a367d09ed50372440cef3ac429b49d430b99fde4e533867acf87871c2",
+    "research_notes/temporal_stage.py": "36ee01abcf59c87fd7241332e138c53e1f43e200df841d89ccf108d80a3e432c",
+    "research_notes/temporal_summarize.py": "7fe3d98aeeaff27ea74bb64aa49d2da788a3aee538c1b26b2137cce975a121b9",
+    "research_notes/temporal_walk_audit.py": "132770fb5b315a51ee8fcd112fa2d29f531eec53e90638fadab8c89a5a129348",
+    "research_notes/temporal_worker.py": "8102140eeaf450d109734b1030159ca689affe6b58332a5089ad45429fbc0344"
+  },
+  "PPO_started": false
+}

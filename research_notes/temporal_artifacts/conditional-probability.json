@@ -1,0 +1,146 @@
+{
+  "status": "passed",
+  "device": "NVIDIA RTX PRO 5000 72GB Blackwell",
+  "torch": "2.7.1+cu128",
+  "actor_dtype": "float32",
+  "joint_density_gradient_check": {
+    "log_density_error": 0.0,
+    "gradient_max_error": 3.552713678800501e-15,
+    "scope": "mathematical conditional likelihood identity, not physical success"
+  },
+  "checks": [
+    {
+      "arm": "independent",
+      "rho": 0.0,
+      "batch_one_vs_batched_joint_logprob_max": 9.1552734375e-05,
+      "head_bias_gradient_expected": 125.0,
+      "head_bias_gradient_max_error": 7.62939453125e-06,
+      "discarded_clone_update": {
+        "optimizer_updates": 1,
+        "pre_logprob_max_error": 0.0,
+        "pre_ratio_max_error": 0.0,
+        "old_GAE_value_EV": 0.4584280252456665,
+        "updated_value_EV": -0.9545326232910156,
+        "returns_mean": -0.6505962014198303,
+        "returns_std": 1.397261381149292,
+        "old_value_mean": -0.601009726524353,
+        "raw_adv_std": 1.0282666683197021,
+        "std_mean": 1.0,
+        "raw_mean_change_rms": 0.007686439901590347,
+        "gradients": [
+          {
+            "actor": 768.3678588867188,
+            "critic": 0.10711079835891724,
+            "std": 0.0,
+            "actor_preclip": 768.3678588867188,
+            "critic_preclip": 0.10711079835891724,
+            "actor_clip_scale": 0.0006507299781180924,
+            "actor_lr": 2.5e-06,
+            "backtracks": 2
+          }
+        ],
+        "epochs": [
+          {
+            "epoch": 0,
+            "joint_gaussian_KL": 0.007562334183603525,
+            "sample_KL": 0.06676939129829407,
+            "clip_fraction": 0.5703125,
+            "value_loss": 0.04678912088274956,
+            "positive_adv_logprob_change": 0.2529347836971283,
+            "negative_adv_logprob_change": -0.2516964077949524
+          }
+        ],
+        "rejected_candidates": [
+          {
+            "epoch": 0,
+            "retry": 0,
+            "joint_KL": 0.12097369879484177,
+            "candidate_actor_lr": 1e-05
+          },
+          {
+            "epoch": 0,
+            "retry": 1,
+            "joint_KL": 0.03024628385901451,
+            "candidate_actor_lr": 5e-06
+          }
+        ],
+        "actor_lr_after": 2.5e-06
+      }
+    },
+    {
+      "arm": "continuous",
+      "rho": 0.8187307530779818,
+      "batch_one_vs_batched_joint_logprob_max": 0.0001220703125,
+      "head_bias_gradient_expected": 22.65865586525227,
+      "head_bias_gradient_max_error": 1.9073486328125e-06,
+      "discarded_clone_update": {
+        "optimizer_updates": 1,
+        "pre_logprob_max_error": 0.0,
+        "pre_ratio_max_error": 0.0,
+        "old_GAE_value_EV": 0.5286539793014526,
+        "updated_value_EV": 0.1913798451423645,
+        "returns_mean": -0.604047417640686,
+        "returns_std": 1.3708951473236084,
+        "old_value_mean": -0.601009726524353,
+        "raw_adv_std": 0.9411832094192505,
+        "std_mean": 1.0,
+        "raw_mean_change_rms": 0.00523369712755084,
+        "gradients": [
+          {
+            "actor": 693.3527221679688,
+            "critic": 0.06589514762163162,
+            "std": 0.0,
+            "actor_preclip": 693.3527221679688,
+            "critic_preclip": 0.06589514762163162,
+            "actor_clip_scale": 0.000721133679891823,
+            "actor_lr": 5e-06,
+            "backtracks": 1
+          }
+        ],
+        "epochs": [
+          {
+            "epoch": 0,
+            "joint_gaussian_KL": 0.010451767593622208,
+            "sample_KL": 0.3343037962913513,
+            "clip_fraction": 0.7734375,
+            "value_loss": 0.015424352139234543,
+            "positive_adv_logprob_change": 0.48790574073791504,
+            "negative_adv_logprob_change": -0.5889365673065186
+          }
+        ],
+        "rejected_candidates": [
+          {
+            "epoch": 0,
+            "retry": 0,
+            "joint_KL": 0.041807860136032104,
+            "candidate_actor_lr": 1e-05
+          }
+        ],
+        "actor_lr_after": 5e-06
+      }
+    }
+  ],
+  "stationary_noise_check": [
+    {
+      "arm": "independent",
+      "mean_variance": 0.9998685717582703,
+      "min_variance": 0.9819115400314331,
+      "max_variance": 1.0177676677703857,
+      "lag1_correlation": -5.034224159317091e-06,
+      "scope": "stationary exploration process, not covariance conditional on endogenous robot state"
+    },
+    {
+      "arm": "continuous",
+      "mean_variance": 0.9990946650505066,
+      "min_variance": 0.9605173468589783,
+      "max_variance": 1.030028223991394,
+      "lag1_correlation": 0.8185993432998657,
+      "scope": "stationary exploration process, not covariance conditional on endogenous robot state"
+    }
+  ],
+  "original_logprob_threshold": 0.0003,
+  "original_KL_threshold": 0.02,
+  "RL_decisions": 0,
+  "retained_optimizer_updates": 0,
+  "seconds": 55.56043814797886
+}
