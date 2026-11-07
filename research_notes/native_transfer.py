@@ -41,10 +41,10 @@ def study(e,m,contract,out):
    if ep['boundary'] is not None:
     manifest.append(dict(episode=label,split=item['split'],group=item['group'],source=str(path),source_sha256=sha(path),samples=0,valid=0,condition=ep['condition'],boundary=ep['boundary'],excluded='unsafe source retained for evaluation, not labels'))
     continue
-   controls=ep['control'];assert len(controls)==5*len(queries)
+   controls=ep['control'];assert 5*(len(queries)-1)<len(controls)<=5*len(queries)
    task.reset(ep['condition'],record=True,label='replay_'+label);counts['reset_source_physics_steps']+=600+len(task.prefix_data['physics'])
    errmax=dict(privileged=0.,restricted=0.,previous_z=0.,qpos=0.,qvel=0.,qpd=0.,target_z=0.)
-   n0=len(examples)
+   n0=len(examples);partial_commands=[]
    for j,q in enumerate(queries):
     assert abs(float(e.tether.time)-q['time'])<1e-6
     px=task.features().detach().clone();sx=task.student_features().detach().clone()
@@ -58,16 +58,18 @@ def study(e,m,contract,out):
     integ=np.empty(mujoco.mj_stateSize(e.sim.model,mujoco.mjtState.mjSTATE_INTEGRATION));mujoco.mj_getState(e.sim.model,e.sim.data,integ,mujoco.mjtState.mjSTATE_INTEGRATION)
     point=task.read_point_state()[0];current_error=float(np.linalg.norm(e.tether.anchor-point)) if e.tether.active else 0.
     all_bad=all(c['metrics']['force_rms']>=9.99 for c in q['candidates'])
-    valid=not(current_error>.25 and all_bad)
-    row=dict(privileged=px[0].cpu(),restricted=sx[0].cpu(),z=z[0].cpu(),raw=(z[0]/16).cpu(),previous_z=prev[0].cpu(),obs={k:v.detach().cpu().clone() for k,v in e.obs.items() if k in e.keys},integration=torch.tensor(integ),qacc_warmstart=torch.tensor(e.sim.data.qacc_warmstart.copy()),qfrc_constraint=torch.tensor(e.sim.data.qfrc_constraint.copy()),episode=label,group=item['group'],split=item['split'],time=q['time'],valid=valid,invalid_reason=None if valid else 'all predictions full-cap and current error>25cm',source='actual first command, exact full physical replay',control=copy.deepcopy(controls[5*j:5*j+5]),contacts=copy.deepcopy(e.tether.geometry_rows),support=np.asarray(e.last_support).tolist())
+    complete_command=len(controls[5*j:5*j+5])==5
+    valid=complete_command and not(current_error>.25 and all_bad)
+    row=dict(privileged=px[0].cpu(),restricted=sx[0].cpu(),z=z[0].cpu(),raw=(z[0]/16).cpu(),previous_z=prev[0].cpu(),obs={k:v.detach().cpu().clone() for k,v in e.obs.items() if k in e.keys},integration=torch.tensor(integ),qacc_warmstart=torch.tensor(e.sim.data.qacc_warmstart.copy()),qfrc_constraint=torch.tensor(e.sim.data.qfrc_constraint.copy()),episode=label,group=item['group'],split=item['split'],time=q['time'],valid=valid,invalid_reason=None if valid else ('partial terminal high command excluded' if not complete_command else 'all predictions full-cap and current error>25cm'),source='actual first command, exact full physical replay',control=copy.deepcopy(controls[5*j:5*j+5]),contacts=json.loads(json.dumps(e.tether.geometry_rows,default=lambda x:x.tolist() if hasattr(x,'tolist') else x.item())),support=np.asarray(e.last_support).tolist())
     _,_,_,st=task.step(z/16);counts['actual_replay_physics_steps']+=st['physics_steps']
-    errmax['qpd']=max(errmax['qpd'],float(np.max(np.abs(np.array([c['q_PD'] for c in task.controls[-5:]])-np.array([c['q_PD'] for c in controls[5*j:5*j+5]])))))
-    errmax['target_z']=max(errmax['target_z'],float((task.last_command-z).abs().max()))
+    errmax['qpd']=max(errmax['qpd'],float(np.max(np.abs(np.array([c['q_PD'] for c in task.controls[-len(row['control']):]])-np.array([c['q_PD'] for c in controls[5*j:5*j+5]])))))
+    if complete_command:errmax['target_z']=max(errmax['target_z'],float((task.last_command-z).abs().max()))
+    else:partial_commands.append(dict(time=q['time'],actual_control_substeps=len(row['control']),not_labelled=True,target_vs_partial_endpoint_gap=float((task.last_command-z).abs().max())))
     # Same backend deterministic replay: do not silently relax this into a fit.
     assert max(errmax[k] for k in ['privileged','restricted','previous_z','qpos','qvel','qpd'])<1e-6,(label,j,errmax)
     assert errmax['target_z']<1e-4
     examples.append(row)
-   checks.append(dict(episode=label,max_errors=errmax,samples=len(examples)-n0,actual_source_sha256=sha(path),search_file_sha256=sha(item['folder']/'searches.json')))
+   checks.append(dict(episode=label,max_errors=errmax,samples=len(examples)-n0,partial_terminal_commands=partial_commands,actual_source_sha256=sha(path),search_file_sha256=sha(item['folder']/'searches.json')))
    manifest.append(dict(episode=label,split=item['split'],group=item['group'],source=str(path),source_sha256=sha(path),samples=len(examples)-n0,valid=sum(r['valid'] for r in examples[n0:]),condition=ep['condition'],boundary=ep['boundary']))
    write(out/'replay-checks.json',checks);print('EXACT_REAL_REPLAY',label,len(examples)-n0,errmax,flush=True)
   group_splits={}
