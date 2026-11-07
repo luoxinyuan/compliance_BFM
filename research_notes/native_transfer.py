@@ -4,6 +4,7 @@ No search prediction is used as a label; no PPO or online old policy in learned 
 import argparse,copy,gzip,hashlib,json,os,sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'research_notes')]
+import m11_ipc
 S=ROOT.parent;OLD=S.parent/'native-rolling-h100-20261107'
 PLAN=json.loads((ROOT/'research_notes/native_transfer_protocol.json').read_text())
 def write(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False))

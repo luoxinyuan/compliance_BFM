@@ -16,7 +16,7 @@ def main():
   time.sleep(30)
  write(S/'continuation-wait.json',dict(wait_seconds=time.monotonic()-wait_start,not_GPU_job_time=True))
  assert j['status']=='completed',('teacher failed; no automatic restart',j)
- repo=S/'bc-repo';py='/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python'
+ repo=Path(__file__).resolve().parents[1];py='/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python'
  for name,mode,limit in [('data-prepare-01','prepare',1800),('bc-fit-01','fit',1200),('bc-eval-01','eval',2400)]:
   out=S/'runs'/name
   if out.exists():raise RuntimeError('refuse overwrite/restart '+str(out))
