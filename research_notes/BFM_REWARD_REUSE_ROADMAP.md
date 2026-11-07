@@ -1,6 +1,6 @@
 # 当前状态补充（2026-11-07，Issue50）
 
-Issue48/49与C0专项均已结项，不恢复旧PPO/AR扫描。Issue50已实际复用原26.7GB同权重replay，完整SHA核验后完成150000 successor、3配置×普通/weighted共6z，保留embedding与API零差对照。它们尚未成为可靠低力接触行走来源；ordinary候选在负载中推进不代表无力自主walking。当前原生goal/motion＋短程真实物理搜索已完成首条有效滚动回合，停止配对仍在运行；不能提前写成已训练的新神经Expert/Student。
+Issue48/49与C0专项均已结项，不恢复旧PPO/AR扫描。Issue50已实际复用原26.7GB同权重replay，完整SHA核验后完成150000 successor、3配置×普通/weighted共6z，保留embedding与API零差对照。它们尚未成为可靠低力接触行走来源；ordinary候选在负载中推进不代表无力自主walking。当前原生goal/motion＋短程真实物理搜索已完成.15持续牵引和严格共同前缀停止配对，均有真实收益；新增reward-z没有在223次滚动决策中被选中。严重超前状态仍未找到可靠恢复，搜索远慢于实时；没有新神经Expert/Student训练。
 
 实际结果和完整方法将在NATIVE_ROLLING_RESULTS/METHODS维护。下方Issue46/47的优先级与“尚未推断”措辞是历史计划，数学/接口合同仍有效。没有新建F/SF planner、重训FB、下载大型资产或自动启动Student。
 

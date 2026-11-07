@@ -1,6 +1,6 @@
 # 接触条件自主行为学习：方法定位与Issue47的作用
 
-**当前状态补充（2026-11-07）：** C0机制已在Issue47结项，只作冻结参考；Issue48/49也已结束。Issue50原生来源＋短程真实物理反馈正在执行，本文件第1–8节保留讨论时的原授权与假设，不把历史C0优先级当成当前发车指令。实时进展以CURRENT_STATE/Issue50为准。
+**当前状态补充（2026-11-07）：** C0机制已在Issue47结项，只作冻结参考；Issue48/49也已结束。Issue50原生来源＋短程真实物理反馈已经有界结项，本文件第1–8节保留讨论时的原授权与假设，不把历史C0优先级当成当前发车指令。实时进展以CURRENT_STATE/Issue50为准。
 
 2026-11-05，用户讨论后的研究方向澄清。[当前执行状态](CURRENT_STATE.md) · [Issue47](https://github.com/GaoE05/robot-research-bridge/issues/47) · [C0已保存物理证据](C0_ENGAGEMENT_RESULTS.md)。
 

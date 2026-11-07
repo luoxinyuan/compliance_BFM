@@ -1,0 +1,568 @@
+{
+  "common_prefix": {
+    "physical_prefix_equal": true,
+    "control_prefix_equal": true,
+    "planning_prefix_input_equal": {
+      "state_fingerprint": true,
+      "phase": true,
+      "privileged_input": true,
+      "restricted_ideal_force_input": true,
+      "previous_executed_z": true,
+      "selected_first_z": true,
+      "current_partner_position": true,
+      "current_partner_velocity": true
+    },
+    "same_lengths": true,
+    "physical_ticks": 760,
+    "control_steps": 190,
+    "planning_decisions": 38,
+    "fork": 7.8
+  },
+  "standing_onset": {
+    "physical_fields_equal": true,
+    "full_recorded_control_prefix_equal": true,
+    "including_BFM_observation_history_action_z": true,
+    "ticks_reference": 200,
+    "ticks_rolling": 200,
+    "control_steps": 50,
+    "fields": [
+      "time",
+      "qpos",
+      "qvel",
+      "force",
+      "feet_xyz",
+      "pelvis_matrix",
+      "torso_matrix"
+    ]
+  },
+  "restoration": {
+    "status": "passed",
+    "same_full_source_state": "019ab756a6027cb2ccf4ad0af0726387d86427fa76ce90379f472e916d744532",
+    "repeat_real_100ms_commands": 3,
+    "all_physics_control_outputs_exact": true,
+    "solver_warmstart_preserved": true,
+    "not_qpos_only": true
+  },
+  "all_owned_jobs_exited": true,
+  "selection": {
+    "rolling_continue": {
+      "plans": 118,
+      "kinds": {
+        "standing": 39,
+        "goal_arm15": 57,
+        "sequence": 22
+      },
+      "sequence_bases": {
+        "motion": 22
+      },
+      "median_plan_wall_s": 23.352548026500244,
+      "note": "Sum of overlapping predicted horizons is NOT an episode return"
+    },
+    "rolling_stop": {
+      "plans": 105,
+      "kinds": {
+        "standing": 12,
+        "goal_arm15": 74,
+        "sequence": 19
+      },
+      "sequence_bases": {
+        "motion": 19
+      },
+      "median_plan_wall_s": 23.20267687999967,
+      "note": "Sum of overlapping predicted horizons is NOT an episode return"
+    }
+  },
+  "diagnostic": [
+    {
+      "state": "local",
+      "time": 5.599999999999903,
+      "selected": 1,
+      "role": "same-state CV-model prediction; NOT a completed recovery rollout",
+      "candidates": [
+        {
+          "index": 0,
+          "kind": "standing",
+          "source": "standing",
+          "score": -11.845970804303686,
+          "boundary": null,
+          "error_cm": 13.31282101734838,
+          "force_rms": 8.758900607326524
+        },
+        {
+          "index": 1,
+          "kind": "goal_arm15",
+          "source": "goal_arm15",
+          "score": -7.21656073674054,
+          "boundary": null,
+          "error_cm": 8.219139452746786,
+          "force_rms": 6.778492759263771
+        },
+        {
+          "index": 2,
+          "kind": "reward",
+          "source": "forward015_ordinary",
+          "score": -14.393865963701202,
+          "boundary": null,
+          "error_cm": 14.673052131146461,
+          "force_rms": 9.638954265496045
+        },
+        {
+          "index": 3,
+          "kind": "reward",
+          "source": "forward022_ordinary",
+          "score": -13.954735142955132,
+          "boundary": null,
+          "error_cm": 13.934401604573967,
+          "force_rms": 9.478820223289844
+        },
+        {
+          "index": 4,
+          "kind": "sequence",
+          "source": "motion",
+          "score": -13.161022764765695,
+          "boundary": null,
+          "error_cm": 19.153276322259302,
+          "force_rms": 9.025239387490965
+        },
+        {
+          "index": 5,
+          "kind": "sequence",
+          "source": "forward015_ordinary",
+          "score": -13.559216123786564,
+          "boundary": null,
+          "error_cm": 14.545216587968973,
+          "force_rms": 9.366606950722478
+        },
+        {
+          "index": 6,
+          "kind": "sequence",
+          "source": "forward015_ordinary",
+          "score": -13.659618138619855,
+          "boundary": null,
+          "error_cm": 14.536316939901244,
+          "force_rms": 9.405460544117181
+        }
+      ]
+    },
+    {
+      "state": "not_started",
+      "time": 6.299999999999888,
+      "selected": 4,
+      "role": "same-state CV-model prediction; NOT a completed recovery rollout",
+      "candidates": [
+        {
+          "index": 0,
+          "kind": "standing",
+          "source": "standing",
+          "score": -15.979413410662739,
+          "boundary": null,
+          "error_cm": 29.253874501680365,
+          "force_rms": 9.888758995415975
+        },
+        {
+          "index": 1,
+          "kind": "goal_arm15",
+          "source": "goal_arm15",
+          "score": -14.412637763252969,
+          "boundary": null,
+          "error_cm": 23.330603670558673,
+          "force_rms": 9.45028796288808
+        },
+        {
+          "index": 2,
+          "kind": "reward",
+          "source": "forward015_ordinary",
+          "score": -16.162594842850023,
+          "boundary": null,
+          "error_cm": 27.562025122558108,
+          "force_rms": 9.947273610514626
+        },
+        {
+          "index": 3,
+          "kind": "reward",
+          "source": "forward022_ordinary",
+          "score": -16.152563873569896,
+          "boundary": null,
+          "error_cm": 27.071954620946258,
+          "force_rms": 9.9450755202395
+        },
+        {
+          "index": 4,
+          "kind": "sequence",
+          "source": "motion",
+          "score": -14.172219462972715,
+          "boundary": null,
+          "error_cm": 14.213568528532306,
+          "force_rms": 9.546027216944852
+        },
+        {
+          "index": 5,
+          "kind": "sequence",
+          "source": "forward015_ordinary",
+          "score": -15.613395672878932,
+          "boundary": null,
+          "error_cm": 21.10372182735584,
+          "force_rms": 9.91987496228464
+        },
+        {
+          "index": 6,
+          "kind": "sequence",
+          "source": "forward015_ordinary",
+          "score": -15.637717728482992,
+          "boundary": null,
+          "error_cm": 20.393014639577743,
+          "force_rms": 9.915397522804993
+        }
+      ]
+    },
+    {
+      "state": "moving",
+      "time": 7.799999999999856,
+      "selected": 1,
+      "role": "same-state CV-model prediction; NOT a completed recovery rollout",
+      "candidates": [
+        {
+          "index": 0,
+          "kind": "standing",
+          "source": "standing",
+          "score": -14.262363599173815,
+          "boundary": null,
+          "error_cm": 19.47777729832341,
+          "force_rms": 9.433103372777774
+        },
+        {
+          "index": 1,
+          "kind": "goal_arm15",
+          "source": "goal_arm15",
+          "score": -14.088513698653735,
+          "boundary": null,
+          "error_cm": 19.687904627813047,
+          "force_rms": 9.153946032634375
+        },
+        {
+          "index": 2,
+          "kind": "reward",
+          "source": "forward015_ordinary",
+          "score": -16.033104280518064,
+          "boundary": null,
+          "error_cm": 22.419559182977082,
+          "force_rms": 10.0
+        },
+        {
+          "index": 3,
+          "kind": "reward",
+          "source": "forward022_ordinary",
+          "score": -15.459369916142593,
+          "boundary": null,
+          "error_cm": 15.919698401650892,
+          "force_rms": 9.885437644406451
+        },
+        {
+          "index": 4,
+          "kind": "sequence",
+          "source": "motion",
+          "score": -16.023773642060156,
+          "boundary": null,
+          "error_cm": 18.38870554667243,
+          "force_rms": 10.0
+        },
+        {
+          "index": 5,
+          "kind": "sequence",
+          "source": "forward015_ordinary",
+          "score": -15.470057856110943,
+          "boundary": null,
+          "error_cm": 21.335966150834444,
+          "force_rms": 9.896284216776472
+        },
+        {
+          "index": 6,
+          "kind": "sequence",
+          "source": "forward015_ordinary",
+          "score": -15.774545541300794,
+          "boundary": null,
+          "error_cm": 22.31226799843217,
+          "force_rms": 9.966963895063637
+        }
+      ]
+    },
+    {
+      "state": "stopped",
+      "time": 10.000000000000163,
+      "selected": 5,
+      "role": "same-state CV-model prediction; NOT a completed recovery rollout",
+      "candidates": [
+        {
+          "index": 0,
+          "kind": "standing",
+          "source": "standing",
+          "score": -20.6504979838353,
+          "boundary": null,
+          "error_cm": 32.51754756630802,
+          "force_rms": 10.0
+        },
+        {
+          "index": 1,
+          "kind": "goal_arm15",
+          "source": "goal_arm15",
+          "score": -22.628643510043023,
+          "boundary": null,
+          "error_cm": 35.14710886327471,
+          "force_rms": 10.0
+        },
+        {
+          "index": 2,
+          "kind": "reward",
+          "source": "forward015_ordinary",
+          "score": -19.732102381818045,
+          "boundary": null,
+          "error_cm": 34.343387538755124,
+          "force_rms": 10.0
+        },
+        {
+          "index": 3,
+          "kind": "reward",
+          "source": "forward022_ordinary",
+          "score": -20.53411187739212,
+          "boundary": null,
+          "error_cm": 35.66741242770463,
+          "force_rms": 10.0
+        },
+        {
+          "index": 4,
+          "kind": "sequence",
+          "source": "motion",
+          "score": -23.939334319782976,
+          "boundary": null,
+          "error_cm": 61.00176343198264,
+          "force_rms": 10.0
+        },
+        {
+          "index": 5,
+          "kind": "sequence",
+          "source": "forward015_ordinary",
+          "score": -19.6529336012278,
+          "boundary": null,
+          "error_cm": 32.71209669190212,
+          "force_rms": 10.0
+        },
+        {
+          "index": 6,
+          "kind": "sequence",
+          "source": "forward015_ordinary",
+          "score": -19.85914572088698,
+          "boundary": null,
+          "error_cm": 32.501368616795546,
+          "force_rms": 10.0
+        }
+      ]
+    }
+  ],
+  "identity": {
+    "updated_utc": "2026-11-07T12:29:12Z",
+    "visible_job_seconds": 7077.182125329971,
+    "prior_known_job_seconds": 673.384792328,
+    "prior_interrupted_job_reserve_seconds": 850,
+    "auxiliary_CPU_analysis_reserve_seconds": 300.0,
+    "conservative_total_seconds": 8900.566917657972,
+    "bytes_by_directory": {
+      "runs": 512255307,
+      "repo": 137565462,
+      "notes-repo": 137601952,
+      "logs": 112991,
+      "cache": 55046
+    },
+    "prior_unmounted_output_reserve_bytes": 4294967296,
+    "prior_unmounted_output_exact_bytes": "unknown, reserve is not measurement",
+    "all_owned_jobs_exited": true,
+    "GPU_compute_processes": [],
+    "RL_decisions": 0,
+    "Student_updates": 0,
+    "counts": {
+      "qualification-03": {
+        "candidate_physics_steps": 0,
+        "actual_physics_steps": 0,
+        "qualification_physics_steps": 42684,
+        "reset_source_physics_steps": 14400,
+        "searches": 0,
+        "native_inference_samples": 0
+      },
+      "reward-free-01": {
+        "candidate_physics_steps": 0,
+        "actual_physics_steps": 0,
+        "qualification_physics_steps": 4720,
+        "reset_source_physics_steps": 1600,
+        "searches": 0,
+        "native_inference_samples": 0
+      },
+      "rolling-02": {
+        "candidate_physics_steps": 749280,
+        "actual_physics_steps": 4460,
+        "qualification_physics_steps": 0,
+        "reset_source_physics_steps": 1600,
+        "searches": 223,
+        "native_inference_samples": 0,
+        "branch_validation_physics_steps": 1380
+      },
+      "diagnostic-03": {
+        "candidate_physics_steps": 13440,
+        "actual_physics_steps": 80,
+        "qualification_physics_steps": 0,
+        "reset_source_physics_steps": 0,
+        "searches": 4,
+        "native_inference_samples": 0,
+        "branch_validation_physics_steps": 1380
+      },
+      "stop-reference-01": {
+        "candidate_physics_steps": 0,
+        "actual_physics_steps": 0,
+        "qualification_physics_steps": 4200,
+        "reset_source_physics_steps": 1600,
+        "searches": 0,
+        "native_inference_samples": 0
+      }
+    },
+    "diagnostic_representative_prefix_physics_steps_derived": 5940,
+    "counts_scope": "explicit experiment segments; environment bootstrap/compatibility work separately wall-accounted; derived diagnostic prefixes omitted from legacy counter explicitly restored here",
+    "launches": {
+      "qualification-03": {
+        "runtime": "1a1890397f3faea855cd66dc309ef8fbfe29dc1d",
+        "source_sha256": "ac22f8208dd17e31e882d45c72c0104f008ba93309e2156559fca74621da3ab2",
+        "protocol_sha256": "9cb2c40080d4c7a9363d72dd28cbebebdf9fb069e3db1207c237a2301b3632d9",
+        "mode": "qualification",
+        "actual_backend": "previously validated H100-class NVIDIA environment",
+        "new_PPO_or_Student": false
+      },
+      "reward-free-01": {
+        "runtime": "e7602c9882d99448efd4502bdc7edcc54beb81aa",
+        "source_sha256": "c6a9e75ec8daed9061dab360a47f06a7bcc763c3d55fb71d6eb89b5e4eef3177",
+        "protocol_sha256": "c91a9094f77296f5ff133713ad3299fac25353462321e86b1985006bcfdcd107",
+        "mode": "free",
+        "actual_backend": "previously validated H100-class NVIDIA environment",
+        "new_PPO_or_Student": false
+      },
+      "rolling-02": {
+        "runtime": "32b3502262399409dd9091b067c89ba619d20873",
+        "source_sha256": "639ce705fa75e5079437ab401994b36052c0a09116e97dd75654db232e6e0cce",
+        "protocol_sha256": "a6e28c13ac350df040b3dd1b00bf4b7df4b90a893329108bd53360b6717ba1cf",
+        "mode": "rolling",
+        "actual_backend": "previously validated H100-class NVIDIA environment",
+        "new_PPO_or_Student": false
+      },
+      "diagnostic-03": {
+        "runtime": "e0bc634fd36e124ea628660d20ea3b5e56b1f673",
+        "source_sha256": "38356e71890bc801b245ac89d1d5a966a4213c01e42fdbe21758e4c038ce4b00",
+        "protocol_sha256": "ca563cd209866df0c488aeb4d7d442363cd4f288075bc484c8f685d0989e3ec4",
+        "mode": "diagnostic",
+        "actual_backend": "previously validated H100-class NVIDIA environment",
+        "new_PPO_or_Student": false
+      },
+      "stop-reference-01": {
+        "runtime": "e0bc634fd36e124ea628660d20ea3b5e56b1f673",
+        "source_sha256": "38356e71890bc801b245ac89d1d5a966a4213c01e42fdbe21758e4c038ce4b00",
+        "protocol_sha256": "ca563cd209866df0c488aeb4d7d442363cd4f288075bc484c8f685d0989e3ec4",
+        "mode": "stop_references",
+        "actual_backend": "previously validated H100-class NVIDIA environment",
+        "new_PPO_or_Student": false
+      }
+    },
+    "software": {
+      "torch": "2.7.1+cu128",
+      "torch_cuda": "12.8",
+      "mujoco": "3.3.3",
+      "python": "3.10.21 (main, Sep  1 2026, 14:16:49) [Clang 22.1.3 ]",
+      "device": "cuda:0",
+      "scope": "explicit post-restart runtime difference; shared environment read-only"
+    },
+    "native_assets_manifest_sha256": "ea9c3323e21abb55d300835d79c3b4981c4a47fa59036f39b9dfc25df17e1fd7",
+    "reward_candidates_manifest_sha256": "a078702f366a27d74ff81e0da931c6816ad79c8c43dbe6865af403b69846fca1",
+    "actual_primary_runtime": "32b3502262399409dd9091b067c89ba619d20873",
+    "analysis_runtime": "e0bc634fd36e124ea628660d20ea3b5e56b1f673"
+  },
+  "jobs": [
+    {
+      "name": "backend-difference-01",
+      "runtime": "5ca18a55f4198a2eecd8f1cdadd948698c625dd1",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 69.44468951225281
+    },
+    {
+      "name": "probability-difference-01",
+      "runtime": "5ca18a55f4198a2eecd8f1cdadd948698c625dd1",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 16.459024667739868
+    },
+    {
+      "name": "reward-inference-01",
+      "runtime": "b41797beeb1d6bb3105f4fae11d6ba3a2c99a2ce",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 80.71256017684937
+    },
+    {
+      "name": "qualification-03",
+      "runtime": "1a1890397f3faea855cd66dc309ef8fbfe29dc1d",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 700.6520133018494
+    },
+    {
+      "name": "reward-free-01",
+      "runtime": "e7602c9882d99448efd4502bdc7edcc54beb81aa",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 116.81903672218323
+    },
+    {
+      "name": "rolling-01",
+      "runtime": "5586a47c7b4d21206016ecc4fccde962a8948ad0",
+      "status": "failed",
+      "returncode": -15,
+      "elapsed_s": 151.52159237861633
+    },
+    {
+      "name": "rolling-02",
+      "runtime": "32b3502262399409dd9091b067c89ba619d20873",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 5483.5984852313995
+    },
+    {
+      "name": "diagnostic-03",
+      "runtime": "e0bc634fd36e124ea628660d20ea3b5e56b1f673",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 177.6265184879303
+    },
+    {
+      "name": "stop-reference-01",
+      "runtime": "e0bc634fd36e124ea628660d20ea3b5e56b1f673",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 118.45156288146973
+    },
+    {
+      "name": "final-analysis",
+      "runtime": "e0bc634fd36e124ea628660d20ea3b5e56b1f673",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 21.275681257247925
+    },
+    {
+      "name": "video-input-review",
+      "runtime": "e0bc634fd36e124ea628660d20ea3b5e56b1f673",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 67.40135908126831
+    },
+    {
+      "name": "render-01",
+      "runtime": "e0bc634fd36e124ea628660d20ea3b5e56b1f673",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 73.21960163116455
+    }
+  ]
+}
