@@ -3,11 +3,11 @@ import json,os,signal,subprocess,sys,time
 from pathlib import Path
 S=Path(__file__).resolve().parents[2];ledger=S/'ledger.json'
 name,script,limit=sys.argv[1:4];script=Path(script);assert script.is_relative_to(S)
-l=json.loads(ledger.read_text());spent=l.get('prior_known_spent_s',0)+l.get('prior_interrupted_qualification_max_s',0)+sum(j.get('elapsed_s',0) for j in l['jobs']);limit=min(float(limit),18000-spent);assert limit>0
+l=json.loads(ledger.read_text());spent=l.get('prior_known_spent_s',0)+l.get('prior_interrupted_qualification_max_s',0)+sum(j.get('elapsed_s',0) for j in l['jobs'])+l.get('auxiliary_CPU_analysis_reserve_s',0);limit=min(float(limit),18000-spent);assert limit>0
 assert not subprocess.check_output(['nvidia-smi','--query-compute-apps=pid','--format=csv,noheader'],text=True).strip(),'no independently idle GPU'
 mi={x.split(':')[0]:int(x.split(':')[1].split()[0])*1024 for x in Path('/proc/meminfo').read_text().splitlines()};assert mi['MemAvailable']>64*1024**3
-size=sum(p.stat().st_size for p in (S/'runs').rglob('*') if p.is_file());assert size<9*1024**3
-P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');py=str(P/'.venv/bin/python');repo=S/'repo'
+size=sum(p.stat().st_size for p in (S/'runs').rglob('*') if p.is_file());assert size+l.get('prior_output_reserve_bytes',0)<l['budget_output_bytes']
+P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');py=str(P/'.venv/bin/python');repo=script.parent.parent;assert repo.parent==S and (repo/'.git').exists()
 env=os.environ.copy();env.update(CUDA_VISIBLE_DEVICES='0',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',PYTHONDONTWRITEBYTECODE='1',MUJOCO_GL='egl',PYOPENGL_PLATFORM='egl',MUJOCO_EGL_DEVICE_ID='0',CLEAN_KIND='direct',PYTHONPATH=str(repo)+':'+str(repo/'research_notes'))
 with (S/'logs'/f'{name}.log').open('w') as log:
  p=subprocess.Popen([py,'-u',str(script)]+sys.argv[4:],stdout=log,stderr=subprocess.STDOUT,env=env,start_new_session=True)
