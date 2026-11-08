@@ -1,0 +1,181 @@
+{
+  "status": "completed",
+  "scope": "four fixed saved batches x3workers; excludes batch0 value warmup; descriptive associations only",
+  "checks": [
+    {
+      "version": 1,
+      "recomputed_phase_advantage_max_error": 2.9713624997984578e-08
+    },
+    {
+      "version": 7,
+      "recomputed_phase_advantage_max_error": 2.2497260943055153e-08
+    },
+    {
+      "version": 15,
+      "recomputed_phase_advantage_max_error": 1.955691570909579e-07
+    },
+    {
+      "version": 23,
+      "recomputed_phase_advantage_max_error": 7.973322946330796e-08
+    }
+  ],
+  "groups": {
+    "contact_hold": {
+      "decisions": 482,
+      "fully_saturated_fraction_of_active": 0.14315352697095435,
+      "mean_reward": -0.23560416356890357,
+      "reward_std": 0.21098725703390037,
+      "reward_terms": {
+        "force": 2.031896130447739,
+        "uncapped": 0.12779222688344222,
+        "tracking": 0.046005532566941,
+        "relative_velocity": 0.014954726607590804,
+        "heading": 0.12297572589586535,
+        "slip": 0.006741386634844206,
+        "tilt": 0.0,
+        "continuity": 0.002902301839821955,
+        "soft_prior": 0.0,
+        "idle": 0.0027736025716198357
+      },
+      "force_cost_fraction": 0.8624194503194047,
+      "positive_adv_fraction": 0.558091286307054,
+      "normalized_adv_std": 1.0379642309594364,
+      "fully_saturated_reward_std": 0.14510146056871115,
+      "fully_saturated_force_cost_range": [
+        0.30000000000000004,
+        6.0
+      ]
+    },
+    "decelerating": {
+      "decisions": 42,
+      "fully_saturated_fraction_of_active": 0.38095238095238093,
+      "mean_reward": -0.45879418899615604,
+      "reward_std": 0.18941836164579984,
+      "reward_terms": {
+        "force": 4.160883466260547,
+        "uncapped": 0.22387906457888315,
+        "tracking": 0.07672107200343582,
+        "relative_velocity": 0.048220677473109666,
+        "heading": 0.05336054529971438,
+        "slip": 0.011369429154261696,
+        "tilt": 0.0,
+        "continuity": 0.013507649707053567,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "force_cost_fraction": 0.9069172088252195,
+      "positive_adv_fraction": 0.47619047619047616,
+      "normalized_adv_std": 0.8675613673724063,
+      "fully_saturated_reward_std": 0.013908098905302391,
+      "fully_saturated_force_cost_range": [
+        6.0,
+        6.0
+      ]
+    },
+    "moving": {
+      "decisions": 691,
+      "fully_saturated_fraction_of_active": 0.30101302460202606,
+      "mean_reward": -0.31040002181672693,
+      "reward_std": 0.27524825560182326,
+      "reward_terms": {
+        "force": 2.8259911770453434,
+        "uncapped": 0.16134249132871112,
+        "tracking": 0.05488543063578105,
+        "relative_velocity": 0.021390409080801052,
+        "heading": 0.03103306574423413,
+        "slip": 0.003894608714429104,
+        "tilt": 0.0,
+        "continuity": 0.005463027873680435,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "force_cost_fraction": 0.9104352401639328,
+      "positive_adv_fraction": 0.447178002894356,
+      "normalized_adv_std": 1.1942301398363417,
+      "fully_saturated_reward_std": 0.023468429481758833,
+      "fully_saturated_force_cost_range": [
+        5.999999999999998,
+        6.0
+      ]
+    },
+    "no_actual_contact": {
+      "decisions": 518,
+      "fully_saturated_fraction_of_active": 0.0,
+      "mean_reward": -5.4312545321066455e-06,
+      "reward_std": 4.423722019020466e-06,
+      "reward_terms": {
+        "force": 0.0,
+        "uncapped": 0.0,
+        "tracking": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": 3.816137741580543e-06,
+        "tilt": 0.0,
+        "continuity": 9.651946382822916e-06,
+        "soft_prior": 0.0,
+        "idle": 4.106704009601115e-05
+      },
+      "force_cost_fraction": 0.0,
+      "positive_adv_fraction": 1.0,
+      "normalized_adv_std": 0.37105950837848745,
+      "fully_saturated_reward_std": null,
+      "fully_saturated_force_cost_range": null
+    },
+    "pre_contact": {
+      "decisions": 274,
+      "fully_saturated_fraction_of_active": 0.0,
+      "mean_reward": -8.648067714656741e-05,
+      "reward_std": 0.0003502687598370667,
+      "reward_terms": {
+        "force": 8.907509449229314e-05,
+        "uncapped": 8.890362881813956e-06,
+        "tracking": 6.317882477791457e-08,
+        "relative_velocity": 5.272655206073945e-06,
+        "heading": 0.0007024024444952628,
+        "slip": 6.0575527858232885e-06,
+        "tilt": 0.0,
+        "continuity": 1.154084922971538e-05,
+        "soft_prior": 0.0,
+        "idle": 4.150462749887009e-05
+      },
+      "force_cost_fraction": 0.10299999728793309,
+      "positive_adv_fraction": 0.22627737226277372,
+      "normalized_adv_std": 1.152799268061301,
+      "fully_saturated_reward_std": null,
+      "fully_saturated_force_cost_range": null
+    },
+    "released_recovery": {
+      "decisions": 1065,
+      "fully_saturated_fraction_of_active": 0.0,
+      "mean_reward": -0.002058757212896719,
+      "reward_std": 0.008285274607755598,
+      "reward_terms": {
+        "force": 0.0,
+        "uncapped": 0.0,
+        "tracking": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": 0.0011605790921519036,
+        "tilt": 0.0,
+        "continuity": 0.0008166052616648978,
+        "soft_prior": 0.0,
+        "idle": 0.018632137201746307
+      },
+      "force_cost_fraction": 0.0,
+      "positive_adv_fraction": 0.4356807511737089,
+      "normalized_adv_std": 0.6959538451322539,
+      "fully_saturated_reward_std": null,
+      "fully_saturated_force_cost_range": null
+    }
+  },
+  "decisions": 3072,
+  "limitations": [
+    "Different states and future trajectories are mixed; phase mean advantages are not causal action rankings",
+    "No inference that low cost variance alone makes RL impossible; tracking/uncapped/velocity/heading remain available",
+    "No new reward/std/KL/curriculum change; only diagnose reward distinction and saved GAE consistency"
+  ],
+  "GPU_used": false,
+  "new_RL_decisions": 0,
+  "new_physics_steps": 0,
+  "elapsed_s": 0.16299126300145872
+}

@@ -1,0 +1,65 @@
+{
+  "authorization": "User agrees to concurrent cause diagnosis, 2026-11-08; no new training/std/reward/runtime mutation",
+  "running_pair_runtime": "e1d6929d297442ad2ab4ebb7912306f292750354",
+  "CPU_review": {
+    "saved_versions": [
+      1,
+      7,
+      15,
+      23
+    ],
+    "workers": 3,
+    "decisions": 3072,
+    "model_inference": false,
+    "GPU": false
+  },
+  "post_pair_GPU_max_job_seconds": 600,
+  "budget_aggregate_unchanged": {
+    "job_seconds": 24000,
+    "output_bytes": 10737418240,
+    "RL_training_decisions": 98304
+  },
+  "trigger": "exact owned single-seed pair exits and completed status; GPU independently idle; >1100job seconds remaining",
+  "geometry": {
+    "cohorts": [
+      "initial visited rollout0",
+      "independent visited rollout23",
+      "joint visited rollout23"
+    ],
+    "stride": 4,
+    "checkpoints": [
+      "initial",
+      "each method8/16/24/32/last"
+    ],
+    "precision": "FP32 canonical actor; geometry double atan2 to avoid tiny-angle acos resolution artifacts",
+    "five_substep_BFM": "same actual BFM observations, same executed previous z; reconstruct recorded source qPD before comparison; not a physical rollout"
+  },
+  "physical_branches": {
+    "source": "actual independent dev24 complete prefix recordings; native reset and replay actual raw commands, exact feature/qpos/qvel matching; complete BranchState solver/history restored each branch",
+    "states": [
+      {
+        "case": "normal72",
+        "time": 6.2
+      },
+      {
+        "case": "stop66",
+        "time": "stop_time+.8 aligned to nearest actual100ms boundary"
+      }
+    ],
+    "window_seconds": 2.4,
+    "modes": [
+      "initial_mean",
+      "independent32_mean",
+      "joint32_mean",
+      "initial+3*(independent32-initial)",
+      "initial-(independent32-initial)",
+      "independent32+std.008 same registered Gaussian sequence",
+      "independent32+std.016 same registered Gaussian sequence"
+    ],
+    "probabilities": "diagnostic physical counterfactuals only, not PPO samples/expert labels or exploration adoption",
+    "future_information": "environment retains original partner motion; actors only current allowed privileged state, no future oracle",
+    "critic": "common frozen independent32 critic start/tail as diagnostic estimator, not value ground truth"
+  },
+  "stop": "No current-training changes. Prefix/BFM replay mismatch, unavailable checkpoint/GPU, failure of main pair, resource or physics boundary: preserve evidence, no auto retry/new PPO; archived samples and results remain",
+  "selection": "no sealed tests/recipe selection or new model promotion"
+}

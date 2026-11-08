@@ -15,6 +15,9 @@
 
 只个人worktree/gaoe05/research，不改main/共享BFM/PD/权重/SoftSONIC/他人任务，不做真机。源SHA与运行身份在ledger/launch固定；推送代码或critic EV提升不等于物理成功。Library旧快照非实时状态。
 
+
+用户同意并行归因：[有界反馈诊断](P4000_FEEDBACK_DIAGNOSIS.md)。保存3072决策CPU检查已完成：GAE阶段均值复算误差<2e-7，移动/减速force成本约91%，部分限幅区间force项恒定但其他项仍有信号。GPU固定状态/2.4s分支仅排在当前配对全部退出之后，≤600job秒计入原预算，不占运行GPU、不新训。以mean-diagnosis-status为准，尚无物理分支结论。
+
 ---
 以下为Issue51结项历史；其中后续建议已由本轮新授权覆盖，不是当前主线。
 
