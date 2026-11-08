@@ -54,6 +54,29 @@ def study(e,m,contract,out):
  from rolling_backend import install as backend
  torch.set_num_threads(1);torch.set_grad_enabled(False);install();write(out/'speed.json',speed(e));write(out/'backend.json',backend(e,m,P/'experiments/native-rolling-h100-20261107/compatibility-prefix'))
  task=Task(e,m,contract,5301);dev=e.standing.device
+ # Archive every predicted candidate z from frozen source parameters; never use unexecuted nodes as labels.
+ from locomotion_rollout import spherical
+ from m9_cyclic import sample
+ rr=json.loads((P/'experiments/native-rolling-h100-20261107/runs/reward-inference-01/reward-candidates.json').read_text());rz={r['name']:torch.tensor(r['z'],device=dev,dtype=torch.float32).reshape(1,256) for r in rr['candidates']}
+ with (S/'runs/diagnose-01/searches.json').open() as ff:queries=json.load(ff)
+ predicted=[];selected_max=0.
+ for qi,q in enumerate(queries):
+  for ci,crow in enumerate(q['candidates']):
+   c=crow['proposal'];zs=[]
+   for j in range(24):
+    if c['kind']=='standing':z=e.standing
+    elif c['kind']=='goal_arm15':z=task.native_z['goal_arm15']
+    elif c['kind']=='reward':z=rz[c['name']]
+    else:
+     alpha=float(np.interp(j/23,np.linspace(0,1,4),c['alpha']));base=rz[c['base']] if c.get('base') in rz else sample(task.refs['straight'],q['phase_start']+j*.1*c['rate']/task.refs['straight']['period']);z=spherical(spherical(e.standing,base,alpha),task.native_z['goal_arm15'],c.get('arm',0.))
+    zs.append(z[0].cpu())
+   if ci==q['selected']:selected_max=max(selected_max,float((zs[0]-torch.tensor(q['selected_z'])).abs().max()))
+   fscore=None
+   if 'shadow' in q:
+    detail=q['shadow']['F'];ff=detail['all_F_scores'];extras=detail['all_available_extra'];fscore=ff[ci] if ci<7 else ff[7+next(i for i,v in enumerate(extras) if v['name']==c['name'])]
+   predicted.append(dict(query_index=qi,candidate_index=ci,source=c,z_sequence=torch.stack(zs),F_score=fscore,physical=crow['physical'],physical_score=crow['score'],scope='unexecuted predictions except separately recorded true first actions; reconstructed deterministic source, not training data'))
+ assert selected_max<1e-6,selected_max
+ torch.save(dict(rows=predicted,selected_first_reconstruction_max=selected_max,not_labels=True),out/'candidate-z-archive.pt');write(out/'candidate-archive-audit.json',dict(candidates=len(predicted),selected_first_max_abs=selected_max,source='same frozen original references and saved candidate parameters; GPU FP32 reconstruction; no new physics/query',no_unexecuted_labels=True))
  specs={'short08':spec(.08,1.6,5.2),'normal72':spec(.72,4.8,5.),'stop66':spec(.66,4.4,5.4,stop=8.1),'mid24':spec(.24,3,5.3),'none':spec(0,3,5.2,enabled=False)}
  final={}
  for name,c in PLAN['sealed_cases'].items():
