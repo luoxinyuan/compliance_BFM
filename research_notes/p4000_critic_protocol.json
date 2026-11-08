@@ -1,0 +1,147 @@
+{
+  "stage": "Issue52 authorized independent-critic follow-up",
+  "authorization": "User explicitly authorized controlled verification after audit, 2026-11-08",
+  "initial": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/native-transfer-20261107/runs/bc-fit-01/P-4000.pt",
+    "sha256": "9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164"
+  },
+  "original_runtime": "93383a406e4b4923418af0b47aca2077ca68e40c",
+  "seeds": [
+    5201,
+    5202
+  ],
+  "iterations": 16,
+  "comparison": "original same-seed fixed16 vs independent-critic fixed16; original32 retained separately",
+  "single_variable": "independent critic no longer stopped/rolled back by actor KL; unchanged original actor update called with critic frozen, then critic completes 6 epochs",
+  "critic": {
+    "epochs": 6,
+    "minibatch": 256,
+    "lr": 0.0003,
+    "targets": "unchanged rollout GAE returns; no current-actor advantage relabeling",
+    "shuffle": "local CUDA Generator seed*100000+zero_based_batch; global actor and physical RNG unchanged",
+    "timing": "after actor updates; new values affect next real rollout",
+    "actor_guard": "actor weights, means and Adam state bitwise unchanged across value-only fit"
+  },
+  "unchanged": [
+    "network",
+    "fresh same seed+17 critic",
+    "P4000 actor/normalizer",
+    "raw std .008",
+    "3e-4 logprob assertion",
+    "KL accept .02 and stop .015",
+    "actor clip .15 and Adam rollback",
+    "actor/critic LR",
+    "first batch 100 value warmup",
+    "reward",
+    "10N/K80D8",
+    "BFM/PD",
+    "10/50/200Hz",
+    "curriculum/source states",
+    "actor input permissions"
+  ],
+  "budgets": {
+    "aggregate_with_original_job_seconds": 18000,
+    "aggregate_RL_decisions": 98304,
+    "aggregate_output_bytes": 10737418240,
+    "new_max_RL_decisions": 24576,
+    "unit_job_seconds": 90,
+    "final_job_seconds": 600,
+    "analysis_video_reserve_seconds": 400
+  },
+  "resource_rule": "same authorized GPU after original queue and sealed pass; two paired seeds if runtime-only aggregate forecast fits, otherwise one; no new-arm or sealed scores used for allocation",
+  "selection": {
+    "score": "mean(force_RMS+.03*active_error_cm+cap_fraction)+.25*max(0,max(case_cost-initial_case_cost)); no ratio normalization at near-zero baselines",
+    "severe": "any physics boundary; active error >initial+max(20cm,.5*initial) or force>initial+2N; short08 root_max_displacement>initial+.10m; none root_max_displacement>initial+.10m",
+    "rollback": "restore exact best network+Adam; halve nominal actorLR; keep actual sampler state and collect fresh on-policy batch",
+    "tie": "strict score improvement only; initial always retained"
+  },
+  "dev": {
+    "source": "unchanged p4000_protocol.json dev",
+    "nodes": [
+      0,
+      8,
+      16
+    ],
+    "sample_nodes": [
+      0,
+      16
+    ],
+    "primary": "matched fixed16; dev-best retained but never reselected from sealed outcomes"
+  },
+  "final": {
+    "short095": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.095,
+      "ramp": 1.65,
+      "onset": 5.23,
+      "release": 8.780000000000001,
+      "end": 12.780000000000001,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "family": "walking"
+    },
+    "mid255": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.255,
+      "ramp": 2.75,
+      "onset": 5.27,
+      "release": 9.92,
+      "end": 13.92,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "family": "walking"
+    },
+    "continue695": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.695,
+      "ramp": 4.088235294117647,
+      "onset": 5.33,
+      "release": 11.318235294117647,
+      "end": 15.318235294117647,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "family": "walking"
+    },
+    "stop695": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.695,
+      "ramp": 4.088235294117647,
+      "onset": 5.33,
+      "release": 10.81,
+      "end": 14.81,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "family": "walking",
+      "stop_time": 8.21,
+      "deceleration": 0.7
+    }
+  },
+  "final_rule": "one pass frozen P4000 + original same-seed candidate16 + new fixed16, no extension or reselection",
+  "not_changed": "Current force reward is squared cost, no Gaussian force sigma. Reward sensitivity and phase weighting remain separate hypotheses.",
+  "stop": "CUDA parity/probability failure; original queue failed; GPU/resource unavailable; insufficient aggregate reserve; no auto retry/new stage",
+  "limits": "Train-target critic EV is not independent calibration; z angle alone is not task success; one or two paired seeds are limited evidence"
+}
