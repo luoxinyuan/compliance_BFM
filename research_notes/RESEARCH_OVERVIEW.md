@@ -155,3 +155,10 @@ BFM原生行为复用积压项：reward prompting、投影前状态reward线性�
 ### 路线A小型交互验证（Issue53）
 
 当前授权优先检验原生物理搜索Teacher在受限Student真实访问状态中的有效性及成本；有效后有限交互聚合与Student自身闭环RL，不能把特权Expert PPO当作Student学习收益。FB只作当前同权重F/B与已有reward-z的影子提名，正式动作仍经原7候选真实物理排名；不将F的机器人状态价值误称完整接触return。实际状态与停止结论见CURRENT_STATE/Issue53。
+
+
+### Issue53：交互恢复证据与完整状态合同
+
+有限Teacher接管可将同一受限Student送回可执行域；旧数据续BC也能改善新条件，所以需用匹配对照分清训练优化与访问分布补充。本轮交互臂因跨reset闭包遗漏未形成可信方法比较，Student自身RL未执行，不因配方形式虚报成功。完整状态还包括任务生成器/接触callback的spec与原点绑定，数值fingerprint相同不足以代替不间断真实控制对照。修复与独立错误证据见Issue53报告。
+
+当前适合下一阶段的S-init是通过有限新条件的旧数据BC500；冻结BC vs部署权限actor自身RL值得受控验证，Teacher查询限定有效恢复域，不把万能Teacher/完美混合BC当全局门槛。FB只作shadow，当前机器人状态F代理与真实外部接触任务错位的有限结果不构成整个FB方法否定。长期目标仍是合理的接触条件全身组织，而非把本轮直行/存储修复当最终课题。
