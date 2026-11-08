@@ -17,7 +17,7 @@ def study(e,m,contract,out):
  from m11_runtime_speed import install as speed
  from rolling_backend import install as backend
  install();torch.set_num_threads(1);torch.set_grad_enabled(False);write(out/'speed.json',speed(e));write(out/'backend.json',backend(e,m,P/'experiments/native-rolling-h100-20261107/compatibility-prefix'))
- gate=json.loads((S/'runs/eval-01/route-gate.json').read_text());assert gate['PPO_allowed']
+ gate=json.loads((S/'runs/eval-02/route-gate.json').read_text());assert gate['PPO_allowed']
  path=Path(gate['PPO_start']['path']);assert sha(path)==gate['PPO_start']['sha256'];ck=torch.load(path,map_location='cuda',weights_only=True)
  torch.manual_seed(ARGS.seed);net=Expert(1639,'direct').cuda();net.load_state_dict(ck['state_dict']);torch.manual_seed(ARGS.seed+17);fresh=Expert(1639,'direct').cuda();net.critic.load_state_dict(fresh.critic.state_dict());del fresh
  net.requires_grad_(False);net.actor.requires_grad_(True);net.critic.requires_grad_(True);net.log_std.fill_(np.log(.008))
@@ -36,11 +36,12 @@ def study(e,m,contract,out):
   b={k:[] for k in ['obs','next_obs','action','logp','value','next_value','reward','discount','done']};stats=[];beg=time.monotonic()
   for j in range(768):
    if task.done:task.reset(record=True,label=f'train_{complete}')
+   decision_started=time.monotonic()
    x=task.student_features().detach().clone();d=net.distribution(x);raw=d.mean+d.stddev*torch.randn(d.mean.shape,device='cuda',generator=rng);lp=d.log_prob(raw).sum(-1);value=net.value(x);_,r,done,st=task.step(raw);nx=task.student_features().detach().clone();nv=net.value(nx)
    for k,v in dict(obs=x[0],next_obs=nx[0],action=raw[0],logp=lp[0],value=value[0],next_value=nv[0]).items():b[k].append(v.cpu().numpy())
    b['reward'].append(r);b['discount'].append(.99**(st['control_steps']/5));b['done'].append(done)
    zm=direct_command(d.mean,e.standing);zs=direct_command(raw,e.standing);st.update(raw_mean_norm=float(d.mean.norm()),raw_sample_norm=float(raw.norm()),z_sample_mean_angle_deg=float(torch.rad2deg(torch.acos(((zm*zs).sum()/256).clamp(-1,1)))),executed_std=float(d.stddev.mean()),Student_actor_observation_dim=1639)
-   stats.append(st);decisions+=1
+   st['decision_wall_s']=time.monotonic()-decision_started;stats.append(st);decisions+=1
    key=st.get('phase','unknown');phase_counts[key]=phase_counts.get(key,0)+1
    if done:
     complete+=1
@@ -63,7 +64,7 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--seed',type=int,choices=[5401,5402],required=True);ARGS=p.parse_args();out=ARGS.output;out.mkdir(exist_ok=False);os.environ['P4000_CANONICAL_ROW_ACTOR']='1'
  import subprocess
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain']);RUNTIME=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip();write(out/'launch.json',dict(runtime=RUNTIME,seed=ARGS.seed,source_sha256=sha(__file__),scope='authorized paired Student own PPO only; no Expert PPO',max_decisions=6144))
- os.environ['BFM_RECOVERY_OUTPUT']=str(out);os.chdir(out)
+ os.environ['CLEAN_KIND']='direct';os.environ['BFM_RECOVERY_OUTPUT']=str(out);os.chdir(out)
  import m10_stage,m10_physics
  m10_physics.OUT=out;m10_physics.MODEL=P/'bridge-v2-owned/runs/issue19-recovery-20261028T045520Z/model-view';m10_stage.run_study=study;m10_physics.main()
 if __name__=='__main__':main()

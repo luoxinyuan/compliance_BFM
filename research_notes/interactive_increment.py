@@ -76,14 +76,14 @@ def study(e,m,contract,out):
   selected=Path(chosen['model']['path']);allbase={};allnew={}
   for name,ss in {**reg,**final}.items():
    allbase[name]=run('BC500',baseline(),name,ss);allnew[name]=run('Sinteractive',selected,name,ss)
-  primary=list(final);bad=[dict(case=k,reasons=severe(allnew[k],allbase[k])) for k in primary if severe(allnew[k],allbase[k])];gains=[]
+  primary=list(final);bad=[dict(case=k,reasons=severe(allnew[k],allbase[k])) for k in allnew if severe(allnew[k],allbase[k])];gains=[]
   for k in primary:
    a,b=allnew[k]['all'],allbase[k]['all'];gains.append((a['error_cm']<=.95*b['error_cm'] and a['force_rms']<=1.05*b['force_rms'])or(a['force_rms']<=.95*b['force_rms'] and a['error_cm']<=1.05*b['error_cm']))
   noninferior=not bad and all(cost(allnew[k])<=cost(allbase[k])+.25 for k in primary)
   gate=dict(status='evaluated',selected_interactive=chosen['model'],baseline=dict(path=str(baseline()),sha256=sha(baseline())),serious_regressions=bad,meaningful_cases=gains,aggregate_score_new=score([allnew[k] for k in primary]),aggregate_score_baseline=score([allbase[k] for k in primary]),useful=not bad and sum(gains)>=2 and score([allnew[k] for k in primary])<=.95*score([allbase[k] for k in primary]),interactive_noninferior=noninferior,PPO_start=chosen['model'] if noninferior else dict(path=str(baseline()),sha256=sha(baseline())),PPO_allowed=not any(r['boundary'] for r in allbase.values()),checkpoint_selection_after_final=False,physics_steps=phys,reset_steps=reset,RL_decisions=0)
   write(out/'route-gate.json',gate);return gate
  else:
-  paths={'frozen_PPOstart':Path(json.loads((S/'runs/eval-01/route-gate.json').read_text())['PPO_start']['path'])}
+  paths={'frozen_PPOstart':Path(json.loads((S/'runs/eval-02/route-gate.json').read_text())['PPO_start']['path'])}
   for seed in [5401,5402]:paths[f'RL{seed}_batch8']=S/f'runs/ppo-{seed}/candidate-8.pt'
   for role,path in paths.items():
    for name,ss in {**reg,**final}.items():run(role,path,name,ss)
@@ -94,7 +94,7 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('--mode',choices=['fit','eval','final'],required=True);p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args();ARGS.output.mkdir(exist_ok=False)
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain']);RUNTIME=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip();write(ARGS.output/'launch.json',dict(runtime=RUNTIME,source_sha256=sha(__file__),mode=ARGS.mode))
  if ARGS.mode=='fit':write(ARGS.output/'result.json',fit(ARGS.output));return
- os.environ['BFM_RECOVERY_OUTPUT']=str(ARGS.output);os.chdir(ARGS.output)
+ os.environ['CLEAN_KIND']='direct';os.environ['BFM_RECOVERY_OUTPUT']=str(ARGS.output);os.chdir(ARGS.output)
  import m10_stage,m10_physics
  m10_physics.OUT=ARGS.output;m10_physics.MODEL=P/'bridge-v2-owned/runs/issue19-recovery-20261028T045520Z/model-view';m10_stage.run_study=study;m10_physics.main()
 if __name__=='__main__':main()
