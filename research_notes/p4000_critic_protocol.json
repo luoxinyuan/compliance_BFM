@@ -10,7 +10,7 @@
     5201
   ],
   "iterations": 32,
-  "comparison": "single paired development seed5201: original32 vs independent critic32; independent replication conditional on dev evidence",
+  "comparison": "one fixed development seed5201, two paired methods: canonical-row original joint critic vs canonical-row independent critic, each32; old5201 reference retained but not strict numerical-path control",
   "single_variable": "independent critic no longer stopped/rolled back by actor KL; unchanged original actor update called with critic frozen, then critic completes 6 epochs",
   "critic": {
     "epochs": 6,
@@ -48,7 +48,7 @@
     "analysis_video_reserve_seconds": 400,
     "per_training_job_seconds": 5500
   },
-  "resource_rule": "No automatic legacy two-seed launch. New runtime only after original probability failure reviewed, CUDA checks and live resources; one development seed5201; replication separate reviewed decision within aggregate limits.",
+  "resource_rule": "One development seed only; two matched methods run sequentially. Same canonical FP32 row actor, physical diagnostic adoption, initialization, old LP/GAE/KL/std/reward/curriculum. Original48384 sampled + new49152 =97536 within98304. Keep900jobsec reserve; no automatic second seed/heldout evaluation.",
   "selection": {
     "score": "mean(force_RMS+.03*active_error_cm+cap_fraction)+.25*max(0,max(case_cost-initial_case_cost)); no ratio normalization at near-zero baselines",
     "severe": "any physics boundary; active error >initial+max(20cm,.5*initial) or force>initial+2N; short08 root_max_displacement>initial+.10m; none root_max_displacement>initial+.10m",
@@ -145,7 +145,7 @@
   },
   "final_rule": "Sealed conditions remain fixed and unexecuted during recipe development; use only after recipe/selection fixed; no sealed reselection",
   "not_changed": "Current force reward is squared cost, no Gaussian force sigma. Reward sensitivity and phase weighting remain separate hypotheses.",
-  "stop": "CUDA parity/probability failure; original queue failed; GPU/resource unavailable; insufficient aggregate reserve; no auto retry/new stage",
+  "stop": "unchanged probability assertion or KL guard failure; first-batch physical mismatch; resource/budget or safety boundary; no automatic retry",
   "limits": "Train-target critic EV is not independent calibration; z angle alone is not task success; one or two paired seeds are limited evidence",
   "budget_revision": "Initial waiting-only v1 queue was stopped before GPU use; original runtime/jobs untouched. Original18k authorization kept in original protocol; ledger current aggregate cap24k. Output10GiB and RL98304 unchanged.",
   "engineering_speed_probe": {
@@ -173,7 +173,20 @@
     "automatic_replication": false,
     "replication_trigger": "Useful multi-condition deterministic dev gains and acceptable old-task tradeoffs; freeze recipe and review before replication; not sealed-result tuning",
     "legacy_two_seed_sequence": "Exited after original failure; not a current launch instruction",
-    "probability_blocker": "Original seed5202 batch31 raw logprob pre-update assertion; investigate without relaxing 3e-4",
-    "training_launched_under_revision": false
-  }
+    "probability_blocker": "Resolved in saved CUDA replay: shape-dependent FP32 actor accumulation; canonical FP32 row actor verifies all chunk shapes with original3e-4 threshold, wrong-action negative test rejects",
+    "training_launched_under_revision": false,
+    "implementation": "single development seed5201, matched canonical-row joint vs independent critic; actor numerical path identical in both"
+  },
+  "new_training_groups": [
+    {
+      "seed": 5201,
+      "critic_mode": "independent",
+      "iterations": 32
+    },
+    {
+      "seed": 5201,
+      "critic_mode": "joint",
+      "iterations": 32
+    }
+  ]
 }

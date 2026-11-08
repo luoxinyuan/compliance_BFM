@@ -1,20 +1,19 @@
-# CURRENT_STATE — Issue52：原训练已退出，改为单seed开发；概率断言待定位
+# CURRENT_STATE — Issue52：概率修复已验证，固定5201做两方法开发（非第二seed）
 
-最后实时核对2026-11-08。用户最新决策：**先固定seed5201开发有用配方，有明确多条件物理收益后再以seed5202独立复核**。不按种子挑好结果，不把单seed开发当统计成功。详见[P4000_DEVELOPMENT_REPLICATION](P4000_DEVELOPMENT_REPLICATION.md)、[原实现审查](P4000_PPO_AUDIT.md)、[critic协议](P4000_CRITIC_PROTOCOL.md)。[Issue52](https://github.com/GaoE05/robot-research-bridge/issues/52)；Project Master18同步当前状态。
+2026-11-08最新用户授权：单seed开发有效配方，再独立seed复核。原5201完成32批，原5202第31批采样后概率断言退出，全部历史保留、不重启旧作业。[Issue52](https://github.com/GaoE05/robot-research-bridge/issues/52)；[原审查](P4000_PPO_AUDIT.md)；[修复证据/新执行](P4000_PROBABILITY_REPAIR.md)。
 
-## 已完成与失败
+## 已验证事实
 
-- 冻结P4000 SHA256 `9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164`；同actor/normalizer、新critic/Adam。原runtime `93383a406e4b4923418af0b47aca2077ca68e40c`，BFM/PD、1088D特权Direct256D、10N/K80D8、10/50/200Hz、原reward/std=.008不变；没有在线旧actor/搜索覆盖，无Student训练。
-- seed5201完成32批/24576真实RL决策，开发best8仅微小改善，不能推广为更强Expert；seed5202完成30批/23040已更新决策，第31批采样后在原raw logprob一致性断言失败。失败不是完整32批，不证明随机seed性能较差或方法无效；其额外失败批采样也要计成本。
-- 原有限队列随失败退出，后续critic/提效队列保护性停止。实时GPU计算进程为空；没有仍在跑的训练，也没有新自动发车。原源码、进程身份、全部模型/样本/failure和历史队列保留。
+- 原失败批checkpoint/动作/随机流逐值复现；batch-one old logprob误差0，FP32 768-batch均值差2.98e-7导致一条logprob差.0003662>原.0003。当前证据是actor数值路径差异，不是seed学得差。原runtime93383a保持原样。
+- 新可选canonical FP32 row actor统一真实采样/learner评分的矩阵形状，1/16/128/256/768分块均值逐值一致；两个真实保存batch的原概率检查通过，故意错误动作仍被拒绝。阈值/std/KL不放宽；不改实际batch-one动作/BFM/PD。joint与independent在同batch/RNG上actor和Adam逐值一致，独立critic18步完成。GPU检查0新增物理/RL，尚无新训练收益结论。
 
-## 下一步与权限
+## 当前执行安排
 
-先定位保存的第31批概率复核差异，保持3e-4/KL/Adam原合同，不通过不带病开训。之后执行已授权的有界采样提效检查与独立critic最小对照：先固定5201单seed32批，与已完成原5201配对，reward/std/任务比等不混改。新runtime在问题查明后另固定，不调用已退出的历史双seed队列。独立第二seed留作有用配方的复核，不自动启动。新封存条件不用于反复开发/选配方。
+采样提效probe已启动独立固定worktree（runtime f75d612），≤600job秒，四条件完整物理逐值一致＋实测提速才采用，未出结论前默认完整诊断。新训练固定seed5201：canonical-row joint和independent critic各32批，是同seed方法对照，避免把数值修复与critic修复混为单因素；不是第二随机seed。新增actor/critic均从同P4000/normalizer和新critic/Adam开始，无在线旧actor/搜索覆盖。固定reward/std=.008/网络/任务比/1088D/Direct256D/10N/K80D8/10-50-200Hz/BFM/PD。首768真实输入/动作/物理奖励须与原同seed逐值一致。训练是否已启动以single-seed-status、launch、ledger为准；本次文档准备时尚未发车。
 
-预算当前累计上限24000job秒、10GiB、98304真实新增RL；已用原预检198.83s、5201训练4855.78s、5202失败4477.10s，另有300s CPU分析预留。新增修复训练/critic GPU检查/采样提效测试均**尚未运行**，不能将推送方案写成改善成功。actor KL同时限制critic、均值每批约.035°只是有依据的待检机制，不是唯一根因。
+原P4000 SHA2569f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164。新封存条件不用于反复开发，第二seed无自动发车，Student无新训练。预算仍24000job秒/10GiB/98304RL：原实际采样48384＋新两方法49152=97536；失败也记账，预留900s分析/视频。stage experiments/p4000-feedback-ppo-20261108；single-seed-status/ledger是真实入口，不能按旧队列PID重启。
 
-stage `experiments/p4000-feedback-ppo-20261108`，账本和各run/result/failure为证据。当前文档与原训练runtime分离；获准代码只进个人gaoe05/research，不改main/共享BFM/PD/权重/SoftSONIC/他人任务，不做真机。下一会话先核对本页、Issue52、真实ledger和具体失败，不按旧PID或旧“running”快照重启。
+只个人worktree/gaoe05/research，不改main/共享BFM/PD/权重/SoftSONIC/他人任务，不做真机。源SHA与运行身份在ledger/launch固定；推送代码或critic EV提升不等于物理成功。Library旧快照非实时状态。
 
 ---
 以下为Issue51结项历史；其中后续建议已由本轮新授权覆盖，不是当前主线。

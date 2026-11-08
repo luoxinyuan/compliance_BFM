@@ -24,22 +24,29 @@ def assess(rows,base):
  return dict(score=score,severe=bool(reasons),reasons=reasons,case_costs={k:cost(v) for k,v in current.items()},max_absolute_cost_increase=max(delta))
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--seed',type=int,required=True);p.add_argument('--iterations',type=int,default=32);p.add_argument('--resume',type=Path);p.add_argument('--std',type=float,required=True);p.add_argument('--max-seconds',type=float,default=6000);a=p.parse_args();assert a.seed in [5201,5202] and a.iterations==32 and a.resume is None and a.std in [.008,.004];a.output.mkdir(exist_ok=False)
- os.environ.update(CUDA_VISIBLE_DEVICES='0',CLEAN_KIND='direct',P4000_SEED=str(a.seed),PYTHONDONTWRITEBYTECODE='1',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1')
+ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--seed',type=int,required=True);p.add_argument('--iterations',type=int,default=32);p.add_argument('--critic-mode',choices=['joint','independent'],default='independent');p.add_argument('--resume',type=Path);p.add_argument('--std',type=float,required=True);p.add_argument('--max-seconds',type=float,default=6000);a=p.parse_args();assert a.seed in [5201,5202] and a.iterations==32 and a.resume is None and a.std in [.008,.004];a.output.mkdir(exist_ok=False)
+ os.environ.update(CUDA_VISIBLE_DEVICES='0',CLEAN_KIND='direct',P4000_SEED=str(a.seed),P4000_CANONICAL_ROW_ACTOR='1',PYTHONDONTWRITEBYTECODE='1',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1')
  import torch,numpy as np
  from clean_policy import Expert
- from p4000_critic import update
+ if a.critic_mode=='independent':
+  from p4000_critic import update
+ else:
+  from clean_policy import update as joint_update
+  def update(net,opt,batch,epochs=6,minibatch=256,*,critic_shuffle_seed):
+   log=joint_update(net,opt,batch,epochs=epochs,minibatch=minibatch)
+   log['critic_fit']=dict(optimizer_updates=log['optimizer_updates'],independent_of_actor_KL=False,scope='original joint optimizer: critic stops and rolls back with actor')
+   return log
  from humanoidverse.force_compliance.parallel import receive,merge_rollouts
  from p4000_worker import launch
  plan=json.loads(Path(__file__).with_name('p4000_protocol.json').read_text());torch.set_num_threads(1);torch.manual_seed(a.seed);torch.set_grad_enabled(False)
  commit=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip();assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
- atomic(a.output/'launch.json',dict(runtime=commit,args={k:str(v) if isinstance(v,Path) else v for k,v in vars(a).items()},protocol_sha256=sha(Path(__file__).with_name('p4000_protocol.json')),initial_sha256=plan['initial']['sha256'],method='independent_critic_fit',followup_protocol_sha256=sha(Path(__file__).with_name('p4000_critic_protocol.json')),nominal_diagnostic_mode=os.environ.get('BFM_RECORD_NOMINAL_DIAGNOSTIC','1')))
- ctx=mp.get_context('spawn');ps=[];cs=[];net=opt=None;iteration=decisions=updates=critic_updates=0;status='initializing';started=time.monotonic();best=float('inf');rollbacks=0;base=None
+ atomic(a.output/'launch.json',dict(runtime=commit,args={k:str(v) if isinstance(v,Path) else v for k,v in vars(a).items()},protocol_sha256=sha(Path(__file__).with_name('p4000_protocol.json')),initial_sha256=plan['initial']['sha256'],method='canonical_row_'+a.critic_mode+'_critic',canonical_row_actor=True,followup_protocol_sha256=sha(Path(__file__).with_name('p4000_critic_protocol.json')),nominal_diagnostic_mode=os.environ.get('BFM_RECORD_NOMINAL_DIAGNOSTIC','1')))
+ ctx=mp.get_context('spawn');ps=[];cs=[];net=opt=None;iteration=decisions=sampled_decisions=updates=critic_updates=0;status='initializing';started=time.monotonic();best=float('inf');rollbacks=0;base=None
  def stop(*_):raise KeyboardInterrupt
  signal.signal(signal.SIGTERM,stop)
  def weights():return {k:v.detach().cpu().numpy() for k,v in net.state_dict().items()}
  def save(name):
-  f=a.output/name;t=f.with_suffix('.tmp');torch.save(dict(state_dict={k:v.detach().cpu() for k,v in net.state_dict().items()},optimizer=opt.state_dict(),input_dim=1088,kind='direct',iteration=iteration,decisions=decisions,optimizer_updates=updates,critic_optimizer_updates=critic_updates,nominal_diagnostic_mode=os.environ.get('BFM_RECORD_NOMINAL_DIAGNOSTIC','1'),seed=a.seed,torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state(),runtime=commit,initial_sha256=plan['initial']['sha256'],actor_function_sha256=actor_hash(net),critic_trained_by_PPO=iteration>0,executed_std=a.std,rollbacks=rollbacks),t);t.replace(f);return f
+  f=a.output/name;t=f.with_suffix('.tmp');torch.save(dict(state_dict={k:v.detach().cpu() for k,v in net.state_dict().items()},optimizer=opt.state_dict(),input_dim=1088,kind='direct',iteration=iteration,decisions=decisions,sampled_RL_decisions=sampled_decisions,optimizer_updates=updates,critic_optimizer_updates=critic_updates,nominal_diagnostic_mode=os.environ.get('BFM_RECORD_NOMINAL_DIAGNOSTIC','1'),seed=a.seed,critic_mode=a.critic_mode,canonical_row_actor=True,torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state(),runtime=commit,initial_sha256=plan['initial']['sha256'],actor_function_sha256=actor_hash(net),critic_trained_by_PPO=iteration>0,executed_std=a.std,rollbacks=rollbacks),t);t.replace(f);return f
  def evaluate(name,sampled=False):
   folder=a.output/name;folder.mkdir();schedule=[(k+'__'+('sample' if sampled else 'mean'),dict(v,sampling_seed=a.seed*101+17),'sample' if sampled else 'mean') for k,v in plan['dev'].items()];w=weights()
   for i,c in enumerate(cs):c.send(dict(op='evaluate',policy=w,schedule=schedule[i::len(cs)],output=str(folder)))
@@ -64,7 +71,7 @@ def main():
    if time.monotonic()-started>a.max_seconds-300:status='time_budget';break
    before_update=weights();t=time.monotonic()
    for c in cs:c.send(dict(op='rollout',steps=256,version=iteration,policy=before_update))
-   results=[receive(c,p,1200) for c,p in zip(cs,ps)];assert all(r['version']==iteration for r in results);sample_seconds=time.monotonic()-t;batch={k:v.cuda() for k,v in merge_rollouts(results,.95).items()}
+   results=[receive(c,p,1200) for c,p in zip(cs,ps)];assert all(r['version']==iteration for r in results);sampled_decisions+=sum(len(r['batch']['reward']) for r in results);sample_seconds=time.monotonic()-t;batch={k:v.cuda() for k,v in merge_rollouts(results,.95).items()}
    if iteration==0:
        parity=[]
        for worker,result in enumerate(results):
@@ -95,7 +102,7 @@ def main():
     for group in sorted(set(x[field] for x in stats)):
      ix=torch.tensor([i for i,x in enumerate(stats) if x[field]==group],device='cuda');adv=batch['advantages'][ix];lc=logchange[ix];groups[field+':'+group]=dict(decisions=len(ix),reward_mean=float(batch['reward'][ix].mean()),return_mean=float(batch['returns'][ix].mean()),advantage_mean=float(adv.mean()),positive_fraction=float((adv>0).float().mean()),positive_adv_logprob_change=float(lc[adv>0].mean()) if (adv>0).any() else None,negative_adv_logprob_change=float(lc[adv<0].mean()) if (adv<0).any() else None,mean_z_update_deg=float(angles[ix].mean()))
    iteration+=1;decisions+=768;updates+=u['optimizer_updates'];critic_updates+=u['critic_fit']['optimizer_updates'];active=sum(x['active_steps'] for x in stats)
-   row=dict(iteration=iteration,RL_decisions=decisions,optimizer_updates=updates,critic_optimizer_updates=critic_updates,sampling_seconds=sample_seconds,optimization_seconds=opt_seconds,decisions_per_second=768/sample_seconds,physical_steps=sum(x['physics_steps'] for x in stats),BFM_control_steps=sum(x['control_steps'] for x in stats),reset_prefill_steps=sum(r['prefill_physics_steps'] for r in results),source_steps=sum(r['source_physics_steps'] for r in results),reward_mean=float(batch['reward'].mean()),reward_terms={k:float(np.mean([x['terms'][k] for x in stats])) for k in stats[0]['terms']},force_RMS=float((sum(x['active_force_squared'] for x in stats)/max(active,1))**.5),cap_fraction=sum(x['cap_steps'] for x in stats)/max(active,1),groups=groups,episodes=[e for r in results for e in r['episodes']],exploration={k:dict(mean=float(np.mean([x[k] for x in stats])),max=max(x[k] for x in stats)) for k in ['raw_mean_norm','raw_sample_norm','raw_noise_norm','z_sample_mean_angle_deg','executed_std']},mean_update_z_angle=dict(mean=float(angles.mean()),max=float(angles.max())),optimization=u,elapsed_s=time.monotonic()-started)
+   row=dict(iteration=iteration,RL_decisions=decisions,sampled_RL_decisions=sampled_decisions,optimizer_updates=updates,critic_optimizer_updates=critic_updates,sampling_seconds=sample_seconds,optimization_seconds=opt_seconds,decisions_per_second=768/sample_seconds,physical_steps=sum(x['physics_steps'] for x in stats),BFM_control_steps=sum(x['control_steps'] for x in stats),reset_prefill_steps=sum(r['prefill_physics_steps'] for r in results),source_steps=sum(r['source_physics_steps'] for r in results),reward_mean=float(batch['reward'].mean()),reward_terms={k:float(np.mean([x['terms'][k] for x in stats])) for k in stats[0]['terms']},force_RMS=float((sum(x['active_force_squared'] for x in stats)/max(active,1))**.5),cap_fraction=sum(x['cap_steps'] for x in stats)/max(active,1),groups=groups,episodes=[e for r in results for e in r['episodes']],exploration={k:dict(mean=float(np.mean([x[k] for x in stats])),max=max(x[k] for x in stats)) for k in ['raw_mean_norm','raw_sample_norm','raw_noise_norm','z_sample_mean_angle_deg','executed_std']},mean_update_z_angle=dict(mean=float(angles.mean()),max=float(angles.max())),optimization=u,elapsed_s=time.monotonic()-started)
    with (a.output/'training.jsonl').open('a') as f:f.write(json.dumps(row)+'\n')
    atomic(a.output/'status.json',dict(status=status,**row));save('latest.pt');print('P4000_PPO',a.seed,iteration,decisions,'force',round(row['force_RMS'],3),'reward',round(row['reward_mean'],4),'dps',round(row['decisions_per_second'],2),'KL',u['epochs'][-1]['joint_gaussian_KL'],flush=True)
    if iteration%8==0:
@@ -121,5 +128,5 @@ def main():
   for proc in ps:
    proc.join(timeout=10)
    if proc.is_alive():proc.terminate();proc.join(timeout=10)
-  atomic(a.output/'result.json',dict(status=status,seed=a.seed,iterations=iteration,RL_decisions=decisions,PPO_optimizer_updates=updates,critic_optimizer_updates=critic_updates,elapsed_s=time.monotonic()-started,workers=[dict(pid=p.pid,exitcode=p.exitcode) for p in ps],BFM_updated=False,Student_updated=False))
+  atomic(a.output/'result.json',dict(status=status,seed=a.seed,iterations=iteration,RL_decisions=decisions,sampled_RL_decisions=sampled_decisions,PPO_optimizer_updates=updates,critic_optimizer_updates=critic_updates,elapsed_s=time.monotonic()-started,workers=[dict(pid=p.pid,exitcode=p.exitcode) for p in ps],BFM_updated=False,Student_updated=False))
 if __name__=='__main__':main()

@@ -1,0 +1,143 @@
+{
+  "diagnosis": {
+    "status": "completed",
+    "checkpoint_sha256": "373c4388a3df444f4cf86c419c0300b8d3ffe850973b93970c73077bf598ae43",
+    "checkpoint_iteration": 30,
+    "runtime": "93383a406e4b4923418af0b47aca2077ca68e40c",
+    "saved_failed_batch": 30,
+    "probability_threshold_unchanged": 0.0003,
+    "torch_version": "2.7.1+cu128",
+    "allow_tf32": false,
+    "float32_matmul_precision": "highest",
+    "cublas_workspace_config": null,
+    "rows": [
+      {
+        "chunk": 1,
+        "old_logprob_max_error": 0.0,
+        "old_logprob_mismatch_count": 0,
+        "mean_max_difference_from_row": 0.0
+      },
+      {
+        "chunk": 16,
+        "old_logprob_max_error": 0.0001220703125,
+        "old_logprob_mismatch_count": 0,
+        "mean_max_difference_from_row": 1.1920928955078125e-07
+      },
+      {
+        "chunk": 128,
+        "old_logprob_max_error": 0.000244140625,
+        "old_logprob_mismatch_count": 0,
+        "mean_max_difference_from_row": 2.980232238769531e-07
+      },
+      {
+        "chunk": 256,
+        "old_logprob_max_error": 0.000244140625,
+        "old_logprob_mismatch_count": 0,
+        "mean_max_difference_from_row": 2.980232238769531e-07
+      },
+      {
+        "chunk": 768,
+        "old_logprob_max_error": 0.0003662109375,
+        "old_logprob_mismatch_count": 1,
+        "mean_max_difference_from_row": 2.980232238769531e-07
+      }
+    ],
+    "raw_action_reconstruction": [
+      {
+        "worker": 0,
+        "raw_reconstruction_max_error": 0.0,
+        "raw_exact": true
+      },
+      {
+        "worker": 1,
+        "raw_reconstruction_max_error": 0.0,
+        "raw_exact": true
+      },
+      {
+        "worker": 2,
+        "raw_reconstruction_max_error": 0.0,
+        "raw_exact": true
+      }
+    ],
+    "high_precision_comparison": {
+      "1": {
+        "high_precision_logprob_max_difference_from_row": 0.0
+      },
+      "16": {
+        "high_precision_logprob_max_difference_from_row": 9.441036218049703e-05
+      },
+      "128": {
+        "high_precision_logprob_max_difference_from_row": 0.000174661824416944
+      },
+      "256": {
+        "high_precision_logprob_max_difference_from_row": 0.000174661824416944
+      },
+      "768": {
+        "high_precision_logprob_max_difference_from_row": 0.0003159064499413944
+      }
+    },
+    "worst": {
+      "index": 318,
+      "worker": 0,
+      "worker_timestep": 106,
+      "old_logprob": 865.7154541015625,
+      "row_logprob": 865.7154541015625,
+      "batched_logprob": 865.7158203125,
+      "mean_difference_max": 1.7881393432617188e-07
+    },
+    "new_RL_decisions": 0,
+    "new_physics_steps": 0,
+    "optimizer_updates": 0
+  },
+  "verification": {
+    "status": "completed",
+    "actor_equal": true,
+    "canonical_actor": "FP32 batch-one actor for both sampling and scoring; actual batch-one controls unchanged",
+    "unchanged_thresholds": {
+      "logprob": 0.0003,
+      "joint_KL_accept": 0.02,
+      "joint_KL_stop": 0.015
+    },
+    "new_physics_steps": 0,
+    "RL_decisions": 0,
+    "elapsed_s": 8.831779099011328
+  },
+  "checks": [
+    {
+      "seed": 5201,
+      "version": 0,
+      "checkpoint_sha256": "2f436dc21744afa56831e32f92186e6536ac1a835fd129f0eeeced7bafc4a414",
+      "old_logprob_max_error": 0.0001220703125,
+      "all_batch_shapes_bitwise_equal": {
+        "1": true,
+        "16": true,
+        "128": true,
+        "256": true,
+        "768": true
+      },
+      "wrong_action_rejected": true,
+      "actor_equal": true,
+      "actor_adam_equal": true,
+      "old_update_s": 1.2505330069980118,
+      "new_update_s": 0.9822102269972675
+    },
+    {
+      "seed": 5202,
+      "version": 30,
+      "checkpoint_sha256": "373c4388a3df444f4cf86c419c0300b8d3ffe850973b93970c73077bf598ae43",
+      "old_logprob_max_error": 0.0001220703125,
+      "all_batch_shapes_bitwise_equal": {
+        "1": true,
+        "16": true,
+        "128": true,
+        "256": true,
+        "768": true
+      },
+      "wrong_action_rejected": true,
+      "actor_equal": true,
+      "actor_adam_equal": true,
+      "old_update_s": 0.565981024003122,
+      "new_update_s": 0.6995665560098132
+    }
+  ]
+}
