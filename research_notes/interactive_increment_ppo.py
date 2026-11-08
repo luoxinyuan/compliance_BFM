@@ -61,7 +61,9 @@ def study(e,m,contract,out):
  return dict(status='completed',student_optimizer_updates=0,RL_decisions=decisions,seed=ARGS.seed,actor_permission='restricted only',critic_permission='restricted only; privileged physical reward',phase_counts=phase_counts,complete_episodes=complete,reset_prefill_physics_steps=task.total_prefill-prefill,source_physics_steps=task.source_physics_total-source)
 def main():
  global ARGS,RUNTIME
- p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--seed',type=int,choices=[5401,5402],required=True);ARGS=p.parse_args();out=ARGS.output;out.mkdir(exist_ok=False);os.environ['P4000_CANONICAL_ROW_ACTOR']='1'
+ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--seed',type=int,choices=[5401,5402],required=True);ARGS=p.parse_args();
+ if (S/'user-early-stop.json').exists():raise RuntimeError('User stopped this archived continuation; no automatic PPO restart')
+ out=ARGS.output;out.mkdir(exist_ok=False);os.environ['P4000_CANONICAL_ROW_ACTOR']='1'
  import subprocess
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain']);RUNTIME=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip();write(out/'launch.json',dict(runtime=RUNTIME,seed=ARGS.seed,source_sha256=sha(__file__),scope='authorized paired Student own PPO only; no Expert PPO',max_decisions=5376))
  os.environ['CLEAN_KIND']='direct';os.environ['BFM_RECOVERY_OUTPUT']=str(out);os.chdir(out)

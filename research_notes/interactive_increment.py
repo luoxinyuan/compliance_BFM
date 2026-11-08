@@ -86,13 +86,23 @@ def study(e,m,contract,out):
   paths={'frozen_PPOstart':Path(json.loads((S/'runs/eval-02/route-gate.json').read_text())['PPO_start']['path'])}
   for seed in [5401,5402]:paths[f'RL{seed}_batch7']=S/f'runs/ppo-clean-{seed}/candidate-7.pt'
   for role,path in paths.items():
-   for name,ss in {**reg,**final}.items():run(role,path,name,ss)
+   if role=='frozen_PPOstart':
+    # Same immutable BC500 and exact case/runtime contract, already executed in this continuation.
+    reference=json.loads((S/'runs/eval-02/summaries.json').read_text())
+    for rr in reference:
+     if rr['role']=='BC500' and rr['case'] in {**reg,**final}:
+      r=copy.deepcopy(rr);assert r['model']['sha256']==sha(path);r['role']=role;r['source_folder']=str(S/'runs/eval-02');r['reused_actual_baseline']=True;rows.append(r)
+    write(out/'summaries.json',rows)
+   else:
+    for name,ss in {**reg,**final}.items():run(role,path,name,ss)
    run(role+'_sample',path,'normal72',dev['normal72'],True)
   return dict(status='completed',physics_steps=phys,reset_steps=reset,episodes=len(rows),checkpoint_selection_after_final=False,RL_decisions=0)
 
 def main():
  global ARGS,RUNTIME
- p=argparse.ArgumentParser();p.add_argument('--mode',choices=['fit','eval','final'],required=True);p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args();ARGS.output.mkdir(exist_ok=False)
+ p=argparse.ArgumentParser();p.add_argument('--mode',choices=['fit','eval','final'],required=True);p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args();
+ if (S/'user-early-stop.json').exists():raise RuntimeError('User stopped this archived continuation; no automatic training/evaluation restart')
+ ARGS.output.mkdir(exist_ok=False)
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain']);RUNTIME=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip();write(ARGS.output/'launch.json',dict(runtime=RUNTIME,source_sha256=sha(__file__),mode=ARGS.mode))
  if ARGS.mode=='fit':write(ARGS.output/'result.json',fit(ARGS.output));return
  os.environ['CLEAN_KIND']='direct';os.environ['BFM_RECOVERY_OUTPUT']=str(ARGS.output);os.chdir(ARGS.output)
