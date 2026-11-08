@@ -38,7 +38,9 @@ def study(e,m,contract,out):
    if task.done:task.reset(record=True,label=f'train_{complete}')
    x=task.student_features().detach().clone();d=net.distribution(x);raw=d.mean+d.stddev*torch.randn(d.mean.shape,device='cuda',generator=rng);lp=d.log_prob(raw).sum(-1);value=net.value(x);_,r,done,st=task.step(raw);nx=task.student_features().detach().clone();nv=net.value(nx)
    for k,v in dict(obs=x[0],next_obs=nx[0],action=raw[0],logp=lp[0],value=value[0],next_value=nv[0]).items():b[k].append(v.cpu().numpy())
-   b['reward'].append(r);b['discount'].append(.99**(st['control_steps']/5));b['done'].append(done);stats.append(st);decisions+=1
+   b['reward'].append(r);b['discount'].append(.99**(st['control_steps']/5));b['done'].append(done)
+   zm=direct_command(d.mean,e.standing);zs=direct_command(raw,e.standing);st.update(raw_mean_norm=float(d.mean.norm()),raw_sample_norm=float(raw.norm()),z_sample_mean_angle_deg=float(torch.rad2deg(torch.acos(((zm*zs).sum()/256).clamp(-1,1)))),executed_std=float(d.stddev.mean()),Student_actor_observation_dim=1639)
+   stats.append(st);decisions+=1
    key=st.get('phase','unknown');phase_counts[key]=phase_counts.get(key,0)+1
    if done:
     complete+=1
