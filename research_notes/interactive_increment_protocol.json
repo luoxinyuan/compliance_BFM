@@ -1,0 +1,16 @@
+{
+ "stage":"Issue53 small continuation: clean interactive labels incremental value",
+ "base_commit":"acab9142465e959b13a8be279fe1fbc16b47bc50",
+ "old_stage":"/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interactive-contact-pilot-20261108",
+ "budget":{"job_seconds":12000,"output_bytes":4294967296,"full_queries":64,"supervised_updates":2000,"RL_decisions":12288},
+ "bc":{"start":"same frozen S4000 as original53 to isolate data change, not extra updates on BC500","seed":5301,"updates":1000,"batch":128,"lr":0.0001,"new_fraction":0.35,"checkpoints":[0,500,1000],"normalization":"unchanged frozen S4000","loss":"same legal-z MSE","labels":"34 corrected valid rows; two verified source windows; no affected labels"},
+ "baseline":{"path":"runs/bc-fit-01/old_data_only-500.pt","sha256":"a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e"},
+ "selection":{"dev":["short08","normal72","stop66"],"score":"mean(force+.03error_cm+cap)+.1worst; original53 rule","select_only_new":[500,1000],"baseline_step0":"retained only for identity; cannot select step0 and call it interactive","severe":"any physical boundary; error>BC500+max(5cm,50% BC500 error), force>BC500+2N, small/none root excursion>BC500+.10m","final":"same original53 near06/prefix59 continue/stop, never reselect or retrain after final","exposure":"original53 heldout reused requested evaluation, not a new independent blind test"},
+ "interpretation":{"meaningful_case":"error or force improves>=5%, other metric worsens<=5%","useful":"no severe regression, at least2/3 main cases meaningful and aggregate physical score improves>=5%","no_increment":"otherwise report current interactive form no clear incremental gain; retain per-case tradeoffs","PPO_start":"interactive if no severe and each main case physical cost <=frozenBC+.25; otherwise frozenBC500; explicit route decision after final does not reselect checkpoint"},
+ "PPO":{"seeds":[5401,5402],"batches_each":8,"decisions_per_batch":768,"dev_nodes":[0,4,8],"main_endpoint":8,"dev_only_candidates":true,"raw_std":0.008,"actor_lr":0.00003,"critic_lr":0.0003,"fresh_critic":true,"fresh_Adam":true,"first_value_only_steps":100,"actor":"restricted1639 only","critic":"same restricted1639; privileged physical reward","curriculum":"existing p4000_env finite current-feedback distribution unchanged","no_expert_override":true,"probability":"original raw Gaussian sum logprob, clip .15, joint KL .02, transactional Adam rollback; canonical-row actor backend","stop":"budget or boundary; no extra training after evaluation"},
+ "supplement_queries":"none initially; 34 sufficient for original sparse-window BC test, no need to call these independent episodes; only if unusable data contract before training, never add labels to rescue final",
+ "counts":"BC, RL, queries, actual rollout, evaluation, render and failures separate;12000jobsec and4GiB include all work",
+ "physics":"frozen originalBFM/PD,Direct256norm16,10/50/200Hz,K80D8,total10N,unchanged reward",
+ "inputs":"same restricted1639; no anchor/partnertruth/time/active/phase/kind/Teacherhidden",
+ "no_automatic_next_stage":true
+}
