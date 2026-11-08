@@ -140,3 +140,8 @@ BFM原生行为复用积压项：reward prompting、投影前状态reward线性�
 ### Issue51：有限覆盖、可蒸馏性与自身闭环学习接续
 
 在已验证的有限原生滚动物理反馈上，先补少量完整新条件并分离真实首命令标签，比较fresh特权BC与受限ideal-force BC的真实闭环。按共同前缀族及整回合划分train/dev/final；特权BC失败先查实际标签、优化、隐藏控制记忆与自身分布，受限BC差距另查可辨识性，不凭离线latent距离直接断言。有限正结果可支持下一阶段冻结BC vs同初始化Student自身RL，但当前未启动PPO，不恢复旧高层继承链或要求万能Teacher。已知搜索偏航、超前恢复与计算边界继续保留，见CURRENT_STATE及Issue51预登记。
+
+
+### Issue51结论：搜索反馈、特权摊销与受限闭环需分层
+
+四条新增实际回合支持原生goal/motion＋因果物理搜索的有限有效域；fresh特权BC仅部分摊销，fresh受限ideal-force BC尚未获得可靠闭环。后者在接触前已分叉，平均latent MSE与完全重复输入检查都不足以证明闭环可学或信息不足。关键动作尾部拟合、实际执行历史和搜索自身记忆需分别定位。保留旧有限域迁移成功，本轮不启动PPO；下一步优先验证真实受限访问域的可靠反馈与小预算自身学习，勿以增加候选或旧高层继承链修补代替。详见[NATIVE_TRANSFER_RESULTS](NATIVE_TRANSFER_RESULTS.md)。
