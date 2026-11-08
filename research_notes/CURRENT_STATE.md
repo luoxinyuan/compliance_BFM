@@ -6,6 +6,8 @@ stage `experiments/p4000-feedback-ppo-20261108`，新ledger18,000job秒/10GiB/98
 
 P4000 SHA256 `9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164`；原Issue51的S失败/旧历史S0成功完整保留。阶段中源代码保持固定，文档另独立worktree；下一会话先看新ledger，不按旧PID重启。训练runtime `93383a406e4b4923418af0b47aca2077ca68e40c`，seed5201 PID144958/start_ticks6213109，有限队列PID144955/start_ticks6213079，boot be0c7b44-26b0-4699-8716-9903210007ab。预检runtime b6fcbab，198.83job秒；均值复现/FP32原概率阈值通过，默认std=.008保留；单次采样正常牵引8.824cm/6.476N优于均值12.306/7.939，只是探索正例，不是PPO已学成功。
 
+2026-11-08中途[只读PPO审查](P4000_PPO_AUDIT.md)：seed5201已完成32批/24576决策，开发best仍batch8，仅微小收益；seed5202按原队列运行。确认actor KL提前停止/回滚也同时限制独立critic，32批名义576机会实际68个接受步（另有首批100次value预热）。每批均值z变化约.035°、采样约3.57°；force成本占89.3%，约25.8%接触时间限幅。未见原logprob/GAE错配证据；并非已证明唯一根因。建议后续最小对照分离critic拟合与actor KL，当前runtime/变量/训练不变，未启动修复实验。
+
 ---
 以下为Issue51结项历史；其中后续建议已由本轮新授权覆盖，不是当前主线。
 

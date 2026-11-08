@@ -1,0 +1,266 @@
+{
+  "update_budget": {
+    "batches": 32,
+    "nominal_max_gradient_steps": 576,
+    "accepted_steps": 68,
+    "accepted_per_batch": [
+      3,
+      2,
+      2,
+      2,
+      1,
+      2,
+      3,
+      2,
+      3,
+      3,
+      1,
+      1,
+      3,
+      3,
+      4,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      3,
+      3,
+      3,
+      2
+    ],
+    "rejected_steps": 83,
+    "actor_early_stop_at_least": 32,
+    "critic_same_accepted_steps_as_actor": true,
+    "initial_value_only_steps": 100,
+    "KL_minmax": [
+      0.015132579952478409,
+      0.019903261214494705
+    ],
+    "mean_actor_update_degrees": 0.03488964372081682,
+    "mean_sample_angle": 3.5734428289191174,
+    "mean_clip_fraction": 0.44396973866969347,
+    "mean_actor_gradient_clip_scale": 0.0009699896288742541
+  },
+  "phases": {
+    "pre_contact": {
+      "n": 2587,
+      "raw_positive": 0.1979126401236954,
+      "centered_positive": 0.2079628913799768,
+      "positive_to_negative": 0.017394665635871664,
+      "mean_raw_adv": -2.2950205640843033,
+      "mean_centered_adv": -0.8569876922162742,
+      "mean_bootstrapped_MC_minus_V": -3.8382464032929238,
+      "value_EV_vs_bootstrapped_MC": -0.118679070305441,
+      "mean_reward": -7.805247233156773e-05,
+      "force_cost_mean": 6.903760476540324e-05,
+      "force_cost_std": 0.0005524391767880583,
+      "cap_fraction": 0.0,
+      "mean_error_cm": 0.03008090885113463
+    },
+    "moving": {
+      "n": 6218,
+      "raw_positive": 0.3811514956577678,
+      "centered_positive": 0.41540688324220004,
+      "positive_to_negative": 0.020585397233837247,
+      "mean_raw_adv": -0.9261144831329996,
+      "mean_centered_adv": -0.25765647923085916,
+      "mean_bootstrapped_MC_minus_V": -1.5373412639810518,
+      "value_EV_vs_bootstrapped_MC": 0.16859627695673285,
+      "mean_reward": -0.2826909991814927,
+      "force_cost_mean": 2.5593551217724215,
+      "force_cost_std": 2.447430738831906,
+      "cap_fraction": 0.2820681891283371,
+      "mean_error_cm": 8.63042583076746
+    },
+    "contact_hold": {
+      "n": 4401,
+      "raw_positive": 0.4780731651897296,
+      "centered_positive": 0.529879572824358,
+      "positive_to_negative": 0.023858214042263123,
+      "mean_raw_adv": -0.1354923345131572,
+      "mean_centered_adv": 0.034129240491069926,
+      "mean_bootstrapped_MC_minus_V": 0.36550370259339177,
+      "value_EV_vs_bootstrapped_MC": -0.09456031296710377,
+      "mean_reward": -0.251774453280599,
+      "force_cost_mean": 2.231864504603159,
+      "force_cost_std": 2.1721885414945588,
+      "cap_fraction": 0.21073286271595765,
+      "mean_error_cm": 8.260441096687517
+    },
+    "released_recovery": {
+      "n": 8685,
+      "raw_positive": 0.573517559009787,
+      "centered_positive": 0.6360391479562464,
+      "positive_to_negative": 0.045710995970063326,
+      "mean_raw_adv": 0.3154884937729231,
+      "mean_centered_adv": 0.22172665969943312,
+      "mean_bootstrapped_MC_minus_V": 0.6176643333790516,
+      "value_EV_vs_bootstrapped_MC": -9.900129865936718,
+      "mean_reward": -0.0022237352713524784,
+      "force_cost_mean": 0.0,
+      "force_cost_std": 0.0,
+      "cap_fraction": 0.0,
+      "mean_error_cm": null
+    },
+    "decelerating": {
+      "n": 343,
+      "raw_positive": 0.6997084548104956,
+      "centered_positive": 0.7667638483965015,
+      "positive_to_negative": 0.0,
+      "mean_raw_adv": 1.0894366818232097,
+      "mean_centered_adv": 0.5471012775631449,
+      "mean_bootstrapped_MC_minus_V": 0.94314959640238,
+      "value_EV_vs_bootstrapped_MC": -0.4438208077341521,
+      "mean_reward": -0.4642904832763679,
+      "force_cost_mean": 4.2161969774120625,
+      "force_cost_std": 2.0735854549240322,
+      "cap_fraction": 0.4969387755102041,
+      "mean_error_cm": 13.962294045058558
+    },
+    "no_actual_contact": {
+      "n": 2342,
+      "raw_positive": 0.9496157130657558,
+      "centered_positive": 0.9974380871050385,
+      "positive_to_negative": 0.0025619128949615714,
+      "mean_raw_adv": 1.6610671280062788,
+      "mean_centered_adv": 0.6642103255875533,
+      "mean_bootstrapped_MC_minus_V": 5.192428742023888,
+      "value_EV_vs_bootstrapped_MC": -1.7226430691500254,
+      "mean_reward": -5.084217542646023e-06,
+      "force_cost_mean": 0.0,
+      "force_cost_std": 0.0,
+      "cap_fraction": 0.0,
+      "mean_error_cm": null
+    }
+  },
+  "advantages_recomputed_family_max_difference_after_first_batch": 6.176405397961826e-07,
+  "reward_cost_sums": {
+    "force": 2718.283999547397,
+    "uncapped": 162.91173266978126,
+    "tracking": 56.69134398859497,
+    "relative_velocity": 19.736800321819832,
+    "heading": 56.79643265278235,
+    "slip": 7.226413226351373,
+    "tilt": 0.0,
+    "continuity": 5.469184862468991,
+    "soft_prior": 0.0,
+    "idle": 17.494699799597768
+  },
+  "active_cap_fraction": 0.2580285103804573,
+  "trace_weights": {
+    "0.5": 0.7358579723647938,
+    "1.0": 0.5414869554928257,
+    "2.0": 0.2932081229688893,
+    "3.0": 0.15876837383218992,
+    "5.0": 0.04655217687815933
+  },
+  "limits": "MC bootstraps batch boundary from saved critic; firstbatch arrays before value warmup, raw adv not final firstbatch; no causal intervention or model training. Phase signs are diagnostics, not a proof of wrong gradient.",
+  "normalizer": {
+    "note": "Saved array arithmetic only; checkpoint buffers loaded, no model inference, no physics or GPU use.",
+    "rows": 24576,
+    "input_dim": 1088,
+    "clipped_element_fraction": 0.0006540709850834865,
+    "rows_with_any_clipped_fraction": 0.15108235677083334,
+    "max_abs_preclamp": 68.80944061279297,
+    "nonfinite": 0,
+    "scale_minmax": [
+      0.05000000074505806,
+      1.028791904449463
+    ],
+    "top_clipped_features": [
+      {
+        "index": 15,
+        "clipped_count": 2083
+      },
+      {
+        "index": 236,
+        "clipped_count": 2017
+      },
+      {
+        "index": 294,
+        "clipped_count": 1994
+      },
+      {
+        "index": 265,
+        "clipped_count": 1988
+      },
+      {
+        "index": 323,
+        "clipped_count": 1976
+      },
+      {
+        "index": 466,
+        "clipped_count": 607
+      },
+      {
+        "index": 1069,
+        "clipped_count": 606
+      },
+      {
+        "index": 45,
+        "clipped_count": 131
+      },
+      {
+        "index": 353,
+        "clipped_count": 124
+      },
+      {
+        "index": 48,
+        "clipped_count": 123
+      },
+      {
+        "index": 443,
+        "clipped_count": 113
+      },
+      {
+        "index": 440,
+        "clipped_count": 113
+      },
+      {
+        "index": 46,
+        "clipped_count": 111
+      },
+      {
+        "index": 414,
+        "clipped_count": 107
+      },
+      {
+        "index": 382,
+        "clipped_count": 107
+      },
+      {
+        "index": 356,
+        "clipped_count": 106
+      },
+      {
+        "index": 411,
+        "clipped_count": 102
+      },
+      {
+        "index": 344,
+        "clipped_count": 95
+      },
+      {
+        "index": 385,
+        "clipped_count": 95
+      },
+      {
+        "index": 363,
+        "clipped_count": 94
+      }
+    ]
+  },
+  "runtime": "93383a406e4b4923418af0b47aca2077ca68e40c",
+  "seed": 5201,
+  "RL_decisions": 24576,
+  "audit_type": "read-only saved-array arithmetic and source inspection; no network inference, physics, gradient updates or runtime mutation"
+}
