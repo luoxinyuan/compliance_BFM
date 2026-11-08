@@ -1,3 +1,14 @@
+# CURRENT_STATE — Issue52：P4000热启动Expert真实反馈PPO（准备中）
+
+2026-11-08新授权优先于下方Issue51下一建议。[Issue52](https://github.com/GaoE05/robot-research-bridge/issues/52)。主线回到特权Expert真实物理PPO；BC仅初始化，不要求受限Student通过。两个seed5201/5202，同P4000 actor/normalizer，新critic/Adam；BFM/PD/Direct256D/1088D/10N/K80D8/reward不变，无在线I/C0/C32/搜索覆盖。
+
+stage `experiments/p4000-feedback-ppo-20261108`，新ledger18,000job秒/10GiB/98,304RL决策；两seed先各32×768，共同开发规则满足且预算允许才共同延至64。预登记见p4000_protocol.json；3个采样worker顺序使用同单卡，每个进程明确记录。无Student训练、reward-z扫描或未来输入。必要均值/采样和同状态分支检查后直接PPO，不恢复已结项Issue51。当前仅准备，是否启动和runtime以新ledger为准；GPU已只读核对空闲，另有资产下载进程不动。
+
+P4000 SHA256 `9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164`；原Issue51的S失败/旧历史S0成功完整保留。阶段中源代码保持固定，文档另独立worktree；下一会话先看新ledger，不按旧PID重启。
+
+---
+以下为Issue51结项历史；其中后续建议已由本轮新授权覆盖，不是当前主线。
+
 # CURRENT_STATE — Issue51已结项：Teacher扩域有效，特权BC部分有效，受限BC失败
 
 最后核对2026-11-08。[Issue51](https://github.com/GaoE05/robot-research-bridge/issues/51) · [结果](NATIVE_TRANSFER_RESULTS.md) · [方法/runtime](NATIVE_TRANSFER_METHODS.md) · [精简证据](native_transfer_evidence.json) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。当前无训练、无待自动发车任务；建议不等于新授权。
