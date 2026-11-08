@@ -53,12 +53,12 @@ def study(e,m,contract,out):
   ss=spec(c['distance'],c['ramp'],c['onset'])
   if 'stop_time'in c:ss.update(stop_time=c['stop_time'],deceleration=c['deceleration'],release=c['stop_time']+c['deceleration']+2,end=c['stop_time']+c['deceleration']+6)
   final[name]=ss
- def run(role,path,name,ss):
+ def run(role,path,name,ss,sampled=False):
   nonlocal phys,reset
-  ck=torch.load(path,map_location='cuda',weights_only=True);n=Expert(1639,'direct').cuda();n.load_state_dict(ck['state_dict']);n.eval().requires_grad_(False);task.reset(ss,record=True,label=role+'_'+name);reset+=600+len(task.prefix_data['physics'])
+  ck=torch.load(path,map_location='cuda',weights_only=True);n=Expert(1639,'direct').cuda();n.load_state_dict(ck['state_dict']);n.eval().requires_grad_(False);rng=torch.Generator(device='cuda').manual_seed(5430);task.reset(ss,record=True,label=role+'_'+name);reset+=600+len(task.prefix_data['physics'])
   while not task.done:
-   _,_,_,st=task.step(n.distribution(task.student_features()).mean);phys+=st['physics_steps']
-  r=copy.deepcopy(task.save(out));r.update(phase_report(task));r.update(role=role,case=name,model=dict(path=str(path),sha256=sha(path)),permission='restricted1639 ideal-force only',exposure='original53 heldout reused for requested fixed evaluation' if name in final else 'development/regression');rows.append(r);write(out/'summaries.json',rows);print('INCREMENT_REAL',role,name,r['all']['error_cm'],r['all']['force_rms'],r['boundary'],flush=True);return r
+   dist=n.distribution(task.student_features());raw=dist.mean+dist.stddev*torch.randn(dist.mean.shape,device='cuda',generator=rng) if sampled else dist.mean;_,_,_,st=task.step(raw);phys+=st['physics_steps']
+  r=copy.deepcopy(task.save(out));r.update(phase_report(task));r.update(role=role,case=name,model=dict(path=str(path),sha256=sha(path)),permission='restricted1639 ideal-force only',sampled=sampled,sampling_seed=5430 if sampled else None,exposure='original53 heldout reused for requested fixed evaluation' if name in final else 'development/regression');rows.append(r);write(out/'summaries.json',rows);print('INCREMENT_REAL',role,name,r['all']['error_cm'],r['all']['force_rms'],r['boundary'],flush=True);return r
  def cost(r):a=r['all'];return a['force_rms']+.03*(a['error_cm'] or 0)+a['cap_fraction']
  def score(rs):cs=[cost(r) for r in rs];return float(np.mean(cs)+.1*max(cs))
  def severe(r,b):
@@ -87,6 +87,7 @@ def study(e,m,contract,out):
   for seed in [5401,5402]:paths[f'RL{seed}_batch8']=S/f'runs/ppo-{seed}/candidate-8.pt'
   for role,path in paths.items():
    for name,ss in {**reg,**final}.items():run(role,path,name,ss)
+   run(role+'_sample',path,'normal72',dev['normal72'],True)
   return dict(status='completed',physics_steps=phys,reset_steps=reset,episodes=len(rows),checkpoint_selection_after_final=False,RL_decisions=0)
 
 def main():

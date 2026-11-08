@@ -7,7 +7,7 @@ def rd(p):
  with gzip.open(p,'rt')if str(p).endswith('.gz')else p.open()as f:return json.load(f)
 def stats(x):return dict(n=len(x),sum=float(sum(x)),mean=float(np.mean(x))if x else None,p50=float(np.median(x))if x else None,p90=float(np.quantile(x,.9))if x else None)
 def rank(x):x=np.asarray(x);return np.array([np.sum(x<v)+.5*(np.sum(x==v)-1)for v in x])
-def agg(qs):return dict(queries=len(qs),wall_s=stats([q['wall_s']for q in qs]),candidate_physics=sum(c['steps']for q in qs for c in q['candidates']),candidate_count=sum(len(q['candidates'])for q in qs))
+def agg(qs):return dict(queries=len(qs),wall_s=stats([q['wall_s']for q in qs]),candidate_high_level_decisions=sum(c['steps']for q in qs for c in q['candidates']),candidate_physics=sum(c['BFM_calls']*4 for q in qs for c in q['candidates']),candidate_count=sum(len(q['candidates'])for q in qs))
 def main():
  start=time.monotonic();mainq=rd(P/'runs/diagnose-01/searches.json');repair=rd(P/'runs/repair-short-01/searches.json');moving=rd(P/'runs/moving-cost-01/searches.json');allq=mainq+repair+moving
  parts={'throughput_qualification':[q for q in mainq if q['label'].startswith('cost_')],'FB_shadow':[q for q in mainq if 'shadow'in q],'original_iterative_takeover':[q for q in mainq if q['label'].startswith('Teacher_replan')],'corrected_postcontact_takeover':repair,'actual_moving_cost_check':moving};assert sum(map(len,parts.values()))==96
