@@ -22,7 +22,8 @@ def fit(out):
  new=list(unique.values());assert new
  allrows=old+new;x=torch.stack([r['restricted'] for r in allrows]).to(dev);z=torch.stack([r['z'] for r in allrows]).to(dev);standing=d['standing'].to(dev)[None]
  oldgroups=[np.array([j for j,r in enumerate(old) if r['episode']==e]) for e in sorted(set(r['episode'] for r in old))]
- newgroups=[np.array([len(old)+j for j,r in enumerate(new) if r['episode']==e]) for e in sorted(set(r['episode'] for r in new))]
+ def region(r):return r['episode'].replace('shadow_','').replace('Teacher_replan_2s_','')
+ newgroups=[np.array([len(old)+j for j,r in enumerate(new) if region(r)==e]) for e in sorted(set(region(r) for r in new))]
  rng=np.random.default_rng(cfg['seed']);orders={a:[] for a in cfg['arms']}
  for i in range(cfg['updates_each']):
   og=oldgroups[int(rng.integers(len(oldgroups)))];ng=newgroups[int(rng.integers(len(newgroups)))];ix=rng.choice(og,size=cfg['batch'],replace=True)
