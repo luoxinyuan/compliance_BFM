@@ -130,7 +130,7 @@ def study(env, model, contract, output):
             assert replay_error < 1e-5, ('Saved BFM control replay mismatch', case, index, replay_error)
             for name in nets:
                 difference = torch.rad2deg(q_by_model[name]-q_by_model['initial'])
-                action_rows.append(dict(case=case, source_decision=index, start_time=start_time, model=name,
+                action_rows.append(dict(case=case, source_decision=int(index), start_time=start_time, model=name,
                     recorded_source_replay_max_deg=replay_error,
                     five_substep_qpd_RMS_deg=float(difference.square().mean().sqrt()),
                     five_substep_qpd_max_deg=float(difference.abs().max()),
