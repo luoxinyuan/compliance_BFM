@@ -29,7 +29,16 @@ class Expert(torch.nn.Module):
         if self.kind=='structured':std[:2]=torch.tensor([.10,.15])
         self.log_std=torch.nn.Parameter(std.log(),requires_grad=False)
     def normalized(self,x):return ((x-self.center)/self.scale).clamp(-10,10)
-    def distribution(self,x):return torch.distributions.Normal(self.actor(self.normalized(x)),self.log_std.exp())
+    def distribution(self,x):
+        # Optional Issue52 contract: identical FP32 actor kernel shape during
+        # actual batch-one sampling and PPO batched scoring. The default path
+        # remains unchanged for historical/other runtimes.
+        normalized=self.normalized(x)
+        if os.environ.get('P4000_CANONICAL_ROW_ACTOR','0')=='1' and len(normalized)>1:
+            mean=torch.cat([self.actor(row) for row in normalized.split(1)],dim=0)
+        else:
+            mean=self.actor(normalized)
+        return torch.distributions.Normal(mean,self.log_std.exp())
     def value(self,x):return 10*self.critic(self.normalized(x)).squeeze(-1)
 
 # Same verified raw-coordinate PPO/GAE update, separate actor/critic and analytic joint KL.
