@@ -1,3 +1,9 @@
+# CURRENT_STATE — 已授权A/B/C小续轮，先评价与只读审计
+
+2026-11-09。新工作树ppo-retention-audit-20261109，基于19b60df。冻结BC500不变。A0匹配固定retrospective评价与分叉归因；仅收益成立才新seed5403，≤7×768决策；B先按独立回合/共同前缀组审计，不足10接触组即停止拟合；C只读四条路径，不顺手修复。预算见retention_protocol.json，各工作流单列账本。无新Teacher查询、无Expert PPO、原PPO数值合同不改。旧阶段保持结项。
+
+---
+
 # CURRENT_STATE — Issue53小续跑结项：交互标签无整体增量，PPO按用户决定停止
 
 最后核对：2026-11-09。**没有训练/队列，未启动下一阶段。** [Issue53及续跑](https://github.com/GaoE05/robot-research-bridge/issues/53) · [本轮结果](INTERACTIVE_INCREMENT_RESULTS.md) · [精确指标/成本](interactive_increment_evidence.json) · [长期目标](RESEARCH_OVERVIEW.md)。Issue52独立Expert PPO保持结项。

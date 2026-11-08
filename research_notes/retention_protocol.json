@@ -1,0 +1,17 @@
+{
+ "stage":"INTERACTIVE_INCREMENT followup: A retention, B paired-data eligibility, C read-only audit",
+ "base_commit":"19b60df8433877859e8d5bc1918671e470cbf5de",
+ "budgets":{"A0":{"job_seconds":3000},"A1":{"job_seconds":6000,"RL_decisions_target":5376,"RL_decisions_hard":6144},"B":{"job_seconds":1800},"C":{"job_seconds":1800},"A_output_bytes":6442450944,"B_output_bytes":2147483648},
+ "retrospective":true,
+ "eval_seed":5417,
+ "cases":["short08","normal72","stop66","none"],
+ "physics":"unchanged BFM/PD/Direct256,10/50/200Hz,K80D8,10N",
+ "A0_gate":"at least one batch4 has no severe regression and normal72 force and error each improve >=5%, short08 and stop66 force <=BC+.25N and error <=BC+.5cm; this is retrospective conditional launch, not blind result",
+ "severe":"physical boundary; any contact error > BC+max(5cm,.5BC); force > BC+2N; short/none root excursion > BC+.10m; slip peak > max(BC+.15m/s,2BC); absolute pelvis yaw excursion > BC+15deg",
+ "A1":{"seed":5403,"start":"frozen BC500","batches":7,"decisions_per_batch":768,"eval_after_every_batch":true,"fixed_eval_seed":5417,"independent_eval_process":true,"checkpoint_immutable":true,"std":0.008,"actor_lr":0.00003,"critic_lr":0.0003,"fresh_critic_Adam":true,"first_value_fit":100,"no_contract_change":true},
+ "selection":"severe guard first; short08/stop66 error <=BC+.5cm, force <=BC+.25N; main normal72 improves force and error>=5%; minimize normal72(force+.03error_cm+cap)+.1*mean(short,stop costs), tie smaller batch; initial BC retained if none eligible",
+ "stability":"report every batch separately; best retention does not imply monotonic or stable final improvement",
+ "B_gate":"at least10 independent contact episode/common-prefix groups with complete eligible pairing; otherwise stop without fitting or F recomputation",
+ "C":"read-only original code; standalone diagnostics allowed; confirmed repairs require separate small round and regression; no silent behavioral fixes",
+ "no_teacher_queries":true,"no_expert_PPO":true,"no_next_stage":true
+}
