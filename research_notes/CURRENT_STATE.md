@@ -9,7 +9,7 @@
 
 ## 当前执行安排
 
-采样提效probe已启动独立固定worktree（runtime f75d612），≤600job秒，四条件完整物理逐值一致＋实测提速才采用，未出结论前默认完整诊断。新训练固定seed5201：canonical-row joint和independent critic各32批，是同seed方法对照，避免把数值修复与critic修复混为单因素；不是第二随机seed。新增actor/critic均从同P4000/normalizer和新critic/Adam开始，无在线旧actor/搜索覆盖。固定reward/std=.008/网络/任务比/1088D/Direct256D/10N/K80D8/10-50-200Hz/BFM/PD。首768真实输入/动作/物理奖励须与原同seed逐值一致。训练是否已启动以single-seed-status、launch、ledger为准；本次文档准备时尚未发车。
+采样提效probe已完成（runtime f75d612）：四条件完整solver/状态/控制/reward/200Hz物理记录逐值一致；单worker吞吐比0.99346，无提速，未采用诊断削减，两方法均保留完整诊断。新训练固定seed5201：canonical-row joint和independent critic各32批，是同seed方法对照，避免把数值修复与critic修复混为单因素；不是第二随机seed。新增actor/critic均从同P4000/normalizer和新critic/Adam开始，无在线旧actor/搜索覆盖。固定reward/std=.008/网络/任务比/1088D/Direct256D/10N/K80D8/10-50-200Hz/BFM/PD。首768真实输入/动作/物理奖励须与原同seed逐值一致。训练是否已启动以single-seed-status、launch、ledger为准；2026-11-08已实际发车：有限队列PID164620/start_ticks7305189，固定runtime e1d6929d297442ad2ab4ebb7912306f292750354；当前independent方法运行，joint随后排队，不是第二seed。以实际日志为准，尚未宣称学习改善。
 
 原P4000 SHA2569f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164。新封存条件不用于反复开发，第二seed无自动发车，Student无新训练。预算仍24000job秒/10GiB/98304RL：原实际采样48384＋新两方法49152=97536；失败也记账，预留900s分析/视频。stage experiments/p4000-feedback-ppo-20261108；single-seed-status/ledger是真实入口，不能按旧队列PID重启。
 

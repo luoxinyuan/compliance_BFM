@@ -27,3 +27,8 @@ clean_env.Task.step每个50Hz子步除实际latent动作，还调用同一冻结
 若有效，先记录当前端到端增益并完成critic配对；若无实质收益，保留负结果和cProfile，下一轮再考虑跨环境BFM批处理。增加worker会改变片段长度/任务覆盖，须另做有解释力的工程与概率比较，当前不静默采用。当前不建设central inference框架或迁移GPU仿真平台。
 
 额外保护：两个新critic seed的首批实际768决策，在任何PPO更新前与原同seed首批保存数组逐值比较obs/next_obs/raw action/reward/discount/done；若不一致保存并停止，避免工程差异混入critic归因。该检查不要求训练后的轨迹继续相同。
+
+
+## 2026-11-08实际结果
+
+四条件normal72 mean、short08 sampled、stop66 mean、none sampled的完整物理/solver/控制/观测/reward均逐值相同。删除standing参考诊断的单worker总体unprofiled step速度比0.9934637，未达到预登记1.05门槛；故未采用，两新方法保留完整诊断。该负结果说明少一次诊断BFM前向在当前实现不是显著吞吐来源，不是H100算力已用尽。cProfile中有大量torch.tensor构造、观测更新及physics/torque包装开销；inclusive时间相互重叠，不相加、不当GPU kernel占比。后续若做提效优先小型tensor/观测路径剖析，不在当前两方法训练中替换runtime。完整私有结果见stage runs/speed-probe-01/probe-result.json、cprofile.json和timings.json；该probe0新增RL决策。
