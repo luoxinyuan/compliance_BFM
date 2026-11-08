@@ -20,3 +20,5 @@ FB只在当前进程将原冻结 `_forward_map` 放到GPU，核对原normalizer�
 匹配BC两臂从同S4000开始，原归一化冻结，1000更新/臂、同seed/旧批次；交互臂将其中35%换为实际验证域标签。开发只用short08/normal72/stop66，安全优先，`mean(force+.03*error_cm+cap)+.1*worst`；另mid/none回归及预封存59cm前缀/6cm条件不选模。same-state完整5子步检查只用于诊断。若有实际安全收益，条件性Student PPO每seed8×768，两seed5301/5302同起点；actor和critic均只读受限1639D，物理reward使用环境特权，fresh critic/Adam，原std.008/概率/KL回滚。critic不继承旧BC随机值函数。固定8批主终点，4批保留，不依封存重选。此处为实现，是否发车由本轮真实证据决定；不是已训练/成功。
 
 新增样本按实际恢复窗分组，首个Student访问查询与同一接管窗后继合并为同组，逐状态去重；不能把首个单点另当一个episode高频重采样。独立回合数、恢复窗数和相关后继分别报告，不称几十帧为几十个独立任务。
+
+补充成本点：原始S4000@7s尚未有效walking，因此不能称已经行走状态。早期Teacher接管2秒后交回Student的真实7.3s已观测到root vx约.28m/s与单足卸载；只追加1次完整查询成本测量，完整实际raw动作前缀重放q/qdot/qPD逐值一致，不借用原Teacher隐藏phase。查询冷phase0，不生成未验证训练标签。全阶段查询上限仍96。

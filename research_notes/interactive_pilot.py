@@ -138,6 +138,17 @@ def study(e,m,contract,out):
   task.label=label;row=task.save(out);row.update(phase_report(task));row['scope']=scope;summaries.append(row);write(out/'summaries.json',summaries);return row
  def make_label(row,source,qualified):
   return dict(restricted=torch.tensor(row['restricted_input']),privileged=torch.tensor(row['privileged_input']),z=torch.tensor(row['selected_z']),previous_z=torch.tensor(row['previous_z']),episode=row['label'],time=row['time'],query_index=query_rows.index(row),source=source,valid=qualified,state_fingerprint=row['state_fingerprint'])
+ if ARGS.mode=='moving-cost':
+  # Real moving Student state after a documented, already executed early assistance prefix.
+  ep=read(S/'runs/diagnose-01/Teacher_replan_2s_normal72_4.7.json.gz');task.reset(ep['condition'],record=True,label='actual_moving_replay');parity=dict(qpos=0.,qvel=0.,qpd=0.);j=0
+  while float(e.tether.time)<7.3-1e-7:
+   c=ep['control'][5*j];parity['qpos']=max(parity['qpos'],float(np.max(abs(e.sim.data.qpos-np.array(c['pre_qpos'])))));parity['qvel']=max(parity['qvel'],float(np.max(abs(e.sim.data.qvel-np.array(c['pre_qvel'])))))
+   raw=torch.tensor(ep['decisions'][j]['raw'],device=dev,dtype=torch.float32)[None];_,_,_,st=task.step(raw);counts['actual_Student_physics_steps']+=st['physics_steps'];parity['qpd']=max(parity['qpd'],float(np.max(abs(np.array([c['q_PD'] for c in task.controls[-5:]])-np.array([c['q_PD'] for c in ep['control'][5*j:5*j+5]])))));j+=1
+  assert max(parity.values())==0.,parity
+  old_counts=read(S/'runs/diagnose-01/counts.json');assert old_counts['full_queries']+1<=96
+  state_motion=dict(root_velocity=e.sim.data.qvel[:3].tolist(),foot_loads=list(e.last_support),previous_assistance='Teacher4.7-6.7s; actual Student6.7-7.3s, full own executed history replayed',no_borrowed_MPC_phase=True)
+  z,_,q=search('moving_student_after_assistance',phase=0.,previous=None,shadow=False);_,_,_,st=task.step(z/16);counts['counterfactual_first_physics_steps']+=st['physics_steps'];save('moving_student_first_Teacher_command','actual first100ms only, no full moving recovery claim, never training label')
+  write(out/'moving-cost.json',dict(full_prefix_replay_errors=parity,current_actual_motion=state_motion,query_wall_s=q['wall_s'],selected=q['selected'],scope='one cost-only Student-moving query after documented actual assistance; no qualification label',counts=counts));persist();return dict(status='completed',counts=counts,student_optimizer_updates=0)
  if ARGS.mode=='diagnose':
   # Four first cost checks. Three are also members of the predetermined shadow cohort.
   for c in PLAN['cost_first_states']:
@@ -194,7 +205,7 @@ def study(e,m,contract,out):
  raise ValueError(ARGS.mode)
 def main():
  global ARGS
- p=argparse.ArgumentParser();p.add_argument('--mode',choices=['diagnose'],required=True);p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args();out=ARGS.output;out.mkdir(exist_ok=False)
+ p=argparse.ArgumentParser();p.add_argument('--mode',choices=['diagnose','moving-cost'],required=True);p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args();out=ARGS.output;out.mkdir(exist_ok=False)
  import subprocess
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
  write(out/'launch.json',dict(runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),protocol_sha256=sha(ROOT/'research_notes/interactive_protocol.json'),source_sha256=sha(__file__),mode=ARGS.mode))
