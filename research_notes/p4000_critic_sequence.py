@@ -34,6 +34,12 @@ def resource_check():
     assert os.getloadavg()[0] < max(4, .75*len(os.sched_getaffinity(0)))
     disk = os.statvfs(S)
     assert disk.f_bavail*disk.f_frsize > 20*1024**3
+    snapshot = dict(utc=time.time(), gpu_apps=[], memory_available_bytes=mem['MemAvailable'],
+                    load=os.getloadavg(), CPU_affinity=len(os.sched_getaffinity(0)),
+                    free_disk_bytes=disk.f_bavail*disk.f_frsize,
+                    io_pressure=Path('/proc/pressure/io').read_text() if Path('/proc/pressure/io').exists() else 'unavailable')
+    with (S/'critic-resource-checks.jsonl').open('a') as log:
+        log.write(json.dumps(snapshot)+'\n')
 
 
 def main():
@@ -51,39 +57,36 @@ def main():
     # choose duration/replication. Resource decision uses only runtime records.
     assert not read(S/'extension-decision.json')['extend_both'], 'Unexpected budget-consuming extension'
     resource_check()
-    logs = [json.loads(x) for x in (S/'runs/seed5201-32/training.jsonl').read_text().splitlines()]
-    completed = next(x for x in read(S/'ledger.json')['jobs'] if x['name']=='seed5201-32')
-    sampling = sum(x['sampling_seconds']+x['optimization_seconds'] for x in logs)
-    overhead = max(0, completed['elapsed_s']-sampling)
-    train_limit = math.ceil(1.08*(16*sampling/32 + overhead*5/8 + 90))
-    train_limit = min(train_limit, 3100)
+    # User expanded the aggregate wall budget to make both complete paired
+    # 32-batch arms possible; do not allocate based on new-arm/held-out scores.
+    train_limit = 5500
     unit_limit, final_limit, reserve = 90, 600, 400
     available = remaining()
-    paired_seeds = [5201,5202] if available >= 2*train_limit+unit_limit+final_limit+reserve+60 else [5201]
-    assert available >= len(paired_seeds)*train_limit+unit_limit+final_limit+reserve+60, ('Insufficient aggregate budget',available,train_limit)
-    write(S/'critic-followup-allocation.json', dict(seeds=paired_seeds, iterations=16,
+    paired_seeds = [5201,5202]
+    assert available >= 2*train_limit+unit_limit+final_limit+reserve+60, ('Insufficient aggregate budget for both matched32 arms',available)
+    write(S/'critic-followup-allocation.json', dict(seeds=paired_seeds, iterations=32,
           max_job_seconds_each=train_limit, unit_max_seconds=unit_limit, final_max_seconds=final_limit,
           remaining_before=available, reserve_seconds=reserve,
           selection_uses='runtime/resource forecast only; no sealed physical scores or new-arm outcomes',
-          single_seed_if_insufficient='paired control only, no replicated efficacy claim'))
+          single_seed_if_insufficient='no automatic downgrade; preserve resource boundary and report'))
     write(state_path, dict(status='checking_CUDA_update_contract', seeds=paired_seeds))
     job('critic-unit-01', ROOT, 'p4000_critic_check.py', unit_limit,
         ['--output',str(S/'runs/critic-unit-01')])
     assert read(S/'runs/critic-unit-01/result.json')['actor_equal']
     outputs = {}
     for seed in paired_seeds:
-        name = f'critic-seed{seed}-16'
+        name = f'critic-seed{seed}-32'
         out = S/'runs'/name
         resource_check()
         write(state_path, dict(status='critic_comparison_running', seeds=paired_seeds, current_seed=seed))
         job(name, ROOT, 'p4000_critic_ppo.py', train_limit,
-            ['--output',str(out),'--seed',str(seed),'--iterations','16','--std','.008',
+            ['--output',str(out),'--seed',str(seed),'--iterations','32','--std','.008',
              '--max-seconds',str(train_limit-60)])
         outputs[seed] = out
     models = dict(P4000=plan['initial']['path'])
     for seed,out in outputs.items():
-        models[f'original{seed}_fixed16'] = str(S/f'runs/seed{seed}-32/candidate-0016.pt')
-        models[f'critic{seed}_fixed16'] = str(out/'last.pt')
+        models[f'original{seed}_fixed32'] = str(S/f'runs/seed{seed}-32/last.pt')
+        models[f'critic{seed}_fixed32'] = str(out/'last.pt')
     write(S/'critic-final-models.json', models)
     write(state_path, dict(status='critic_matched_final_evaluation', seeds=paired_seeds))
     resource_check()
@@ -92,7 +95,7 @@ def main():
     decisions = sum(read(out/'result.json')['RL_decisions'] for out in outputs.values())
     ledger = read(S/'ledger.json')
     original_decisions = sum(read(S/f'runs/seed{seed}-32/result.json')['RL_decisions'] for seed in [5201,5202])
-    assert decisions <= 24576 and original_decisions+decisions <= ledger['RL_decisions_limit']
+    assert decisions <= 49152 and original_decisions+decisions <= ledger['RL_decisions_limit']
     ledger.update(critic_followup_RL_decisions=decisions, combined_RL_decisions=original_decisions+decisions)
     write(S/'ledger.json',ledger)
     write(state_path,dict(status='critic_comparison_complete_pending_analysis_and_videos',

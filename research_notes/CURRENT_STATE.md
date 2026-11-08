@@ -8,7 +8,7 @@ P4000 SHA256 `9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164`�
 
 2026-11-08中途[只读PPO审查](P4000_PPO_AUDIT.md)：seed5201已完成32批/24576决策，开发best仍batch8，仅微小收益；seed5202按原队列运行。确认actor KL提前停止/回滚也同时限制独立critic，32批名义576机会实际68个接受步（另有首批100次value预热）。每批均值z变化约.035°、采样约3.57°；force成本占89.3%，约25.8%接触时间限幅。未见原logprob/GAE错配证据；并非已证明唯一根因。建议后续最小对照分离critic拟合与actor KL，当前runtime/变量/训练不变，未启动修复实验。
 
-2026-11-08用户追加授权：[独立critic修复对照](P4000_CRITIC_PROTOCOL.md)准备完成，待原两seed及原封存评价退出后，在同卡独立worktree执行GPU合同检查及同seed固定16批对照。最多两seed各12288新RL决策，依据运行耗时/剩余资源预定是否仅一seed，总成本仍合并原18000job秒/10GiB/98304决策上限。不改原作业；仅分离critic六轮拟合与actor KL停止，reward/任务配比/std/KL均不变。当前是已授权排队，不是GPU检查通过或学习成功；以critic-followup-status.json为准。
+2026-11-08用户追加授权并扩大有限预算：[独立critic修复对照](P4000_CRITIC_PROTOCOL.md)改为两个seed各32×768，与原同seed完整32批匹配。累计job上限24000秒，输出10GiB、总98304RL不变；新增最多49152RL。旧纯等待队列在占卡前停止并留档，新独立worktree队列等待原训练/原终检退出。只分离critic六轮拟合与actor KL，reward/任务比/std/KL均不变。尚未做GPU合同检查或证明改善，以critic-followup-status.json为准。
 
 ---
 以下为Issue51结项历史；其中后续建议已由本轮新授权覆盖，不是当前主线。

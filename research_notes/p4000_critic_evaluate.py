@@ -1,4 +1,4 @@
-"""Matched fixed16 critic comparison, no reselection."""
+"""Matched fixed32 critic comparison, no reselection."""
 import m11_ipc
 import os,json,argparse,multiprocessing as mp,hashlib,subprocess,time
 from pathlib import Path

@@ -24,7 +24,7 @@ def assess(rows,base):
  return dict(score=score,severe=bool(reasons),reasons=reasons,case_costs={k:cost(v) for k,v in current.items()},max_absolute_cost_increase=max(delta))
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--seed',type=int,required=True);p.add_argument('--iterations',type=int,default=32);p.add_argument('--resume',type=Path);p.add_argument('--std',type=float,required=True);p.add_argument('--max-seconds',type=float,default=6000);a=p.parse_args();assert a.seed in [5201,5202] and a.iterations==16 and a.resume is None and a.std in [.008,.004];a.output.mkdir(exist_ok=False)
+ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--seed',type=int,required=True);p.add_argument('--iterations',type=int,default=32);p.add_argument('--resume',type=Path);p.add_argument('--std',type=float,required=True);p.add_argument('--max-seconds',type=float,default=6000);a=p.parse_args();assert a.seed in [5201,5202] and a.iterations==32 and a.resume is None and a.std in [.008,.004];a.output.mkdir(exist_ok=False)
  os.environ.update(CUDA_VISIBLE_DEVICES='0',CLEAN_KIND='direct',P4000_SEED=str(a.seed),PYTHONDONTWRITEBYTECODE='1',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1')
  import torch,numpy as np
  from clean_policy import Expert

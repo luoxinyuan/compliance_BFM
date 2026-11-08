@@ -1,6 +1,6 @@
 {
   "stage": "Issue52 authorized independent-critic follow-up",
-  "authorization": "User explicitly authorized controlled verification after audit, 2026-11-08",
+  "authorization": "User explicitly expanded finite budget to prioritize credible complete matched experiments, 2026-11-08",
   "initial": {
     "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/native-transfer-20261107/runs/bc-fit-01/P-4000.pt",
     "sha256": "9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164"
@@ -10,8 +10,8 @@
     5201,
     5202
   ],
-  "iterations": 16,
-  "comparison": "original same-seed fixed16 vs independent-critic fixed16; original32 retained separately",
+  "iterations": 32,
+  "comparison": "two paired seeds; original same-seed last after32 vs independent-critic last after32, identical rollback rule; actual restored identities separately recorded",
   "single_variable": "independent critic no longer stopped/rolled back by actor KL; unchanged original actor update called with critic frozen, then critic completes 6 epochs",
   "critic": {
     "epochs": 6,
@@ -40,15 +40,16 @@
     "actor input permissions"
   ],
   "budgets": {
-    "aggregate_with_original_job_seconds": 18000,
+    "aggregate_with_original_job_seconds": 24000,
     "aggregate_RL_decisions": 98304,
     "aggregate_output_bytes": 10737418240,
-    "new_max_RL_decisions": 24576,
+    "new_max_RL_decisions": 49152,
     "unit_job_seconds": 90,
     "final_job_seconds": 600,
-    "analysis_video_reserve_seconds": 400
+    "analysis_video_reserve_seconds": 400,
+    "per_training_job_seconds": 5500
   },
-  "resource_rule": "same authorized GPU after original queue and sealed pass; two paired seeds if runtime-only aggregate forecast fits, otherwise one; no new-arm or sealed scores used for allocation",
+  "resource_rule": "same single authorized GPU sequential after original queue/final; both seed5201/5202 each32 with5500s cap, forecast reserve required before launch; no result-based extension or arm preference",
   "selection": {
     "score": "mean(force_RMS+.03*active_error_cm+cap_fraction)+.25*max(0,max(case_cost-initial_case_cost)); no ratio normalization at near-zero baselines",
     "severe": "any physics boundary; active error >initial+max(20cm,.5*initial) or force>initial+2N; short08 root_max_displacement>initial+.10m; none root_max_displacement>initial+.10m",
@@ -60,13 +61,16 @@
     "nodes": [
       0,
       8,
-      16
+      16,
+      24,
+      32
     ],
     "sample_nodes": [
       0,
-      16
+      16,
+      32
     ],
-    "primary": "matched fixed16; dev-best retained but never reselected from sealed outcomes"
+    "primary": "same-seed last after32 with same rollback rule; candidate32/pre-rollback and dev-best retained separately; no sealed reselection"
   },
   "final": {
     "short095": {
@@ -140,8 +144,9 @@
       "deceleration": 0.7
     }
   },
-  "final_rule": "one pass frozen P4000 + original same-seed candidate16 + new fixed16, no extension or reselection",
+  "final_rule": "one fixed pass P4000 + original same-seed last after32 + new last after32; restored identities if rollback are not mislabeled new learning",
   "not_changed": "Current force reward is squared cost, no Gaussian force sigma. Reward sensitivity and phase weighting remain separate hypotheses.",
   "stop": "CUDA parity/probability failure; original queue failed; GPU/resource unavailable; insufficient aggregate reserve; no auto retry/new stage",
-  "limits": "Train-target critic EV is not independent calibration; z angle alone is not task success; one or two paired seeds are limited evidence"
+  "limits": "Train-target critic EV is not independent calibration; z angle alone is not task success; one or two paired seeds are limited evidence",
+  "budget_revision": "Initial waiting-only v1 queue was stopped before GPU use; original runtime/jobs untouched. Original18k authorization kept in original protocol; ledger current aggregate cap24k. Output10GiB and RL98304 unchanged."
 }
