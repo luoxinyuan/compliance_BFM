@@ -148,5 +148,22 @@
   "not_changed": "Current force reward is squared cost, no Gaussian force sigma. Reward sensitivity and phase weighting remain separate hypotheses.",
   "stop": "CUDA parity/probability failure; original queue failed; GPU/resource unavailable; insufficient aggregate reserve; no auto retry/new stage",
   "limits": "Train-target critic EV is not independent calibration; z angle alone is not task success; one or two paired seeds are limited evidence",
-  "budget_revision": "Initial waiting-only v1 queue was stopped before GPU use; original runtime/jobs untouched. Original18k authorization kept in original protocol; ledger current aggregate cap24k. Output10GiB and RL98304 unchanged."
+  "budget_revision": "Initial waiting-only v1 queue was stopped before GPU use; original runtime/jobs untouched. Original18k authorization kept in original protocol; ledger current aggregate cap24k. Output10GiB and RL98304 unchanged.",
+  "engineering_speed_probe": {
+    "authorization": "User requests both faster sampling and better learning, 2026-11-08",
+    "max_job_seconds": 600,
+    "aggregate_budget_unchanged": 24000,
+    "scope": "optional nominal-standing BFM action/qPD diagnostic only; no worker/batch/horizon or control/reward change",
+    "adoption": "All real solver/observation/control/reward and200Hz physical rows exactly equal across4full cases; unprofiled Task.step speedup>=1.05; otherwise keep full diagnostics",
+    "cases": [
+      "normal72 mean",
+      "short08 sample.008",
+      "stop66 mean",
+      "none sample.008"
+    ],
+    "order": "AB/BA alternating",
+    "profiling": "first16 decisions per episode cProfile, excluded from throughput; inclusive times not additive or GPU compute",
+    "priority": "skip probe if it jeopardizes both matched32 arms; costs/failures count; both new arms get same adopted engine, inference mathematics unchanged",
+    "report": "single sampler result plus actual 3-worker RL decisions/s after adoption; cannot present single sampler gain as full training gain"
+  }
 }

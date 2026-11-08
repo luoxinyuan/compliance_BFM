@@ -28,6 +28,7 @@ class Task:
         self.scale=torch.tensor(contract['q_PD_scale'],device=e.standing.device);self.off=torch.tensor(contract['q_PD_offset'],device=e.standing.device)
         self.kind=os.environ.get('CLEAN_KIND','structured');self.raw=torch.zeros((1,258 if self.kind=='structured' else 256),device=e.standing.device);self.nominal_state=None
         self.total_prefill=0;self.total_steps=0;self.total_controls=0;self.total_episodes=0
+        self.record_nominal_diagnostic=os.environ.get('BFM_RECORD_NOMINAL_DIAGNOSTIC','1')=='1'
     def qof(self,a):return self.off+(a*5).clamp(-self.c['clip'],self.c['clip'])*self.scale/5
     def sample_spec(self):
         plan=read(Path(__file__).with_name('narrow_protocol.json'))
@@ -123,9 +124,10 @@ class Task:
                 teacher_labels.append(dict(alpha=self.teacher_state['alpha'],phase=self.teacher_state['phase'],rate=1. if self.teacher_state['alpha']>.05 else 0.,raw_residual=(tangent/16)[0].tolist(),z=z[0].tolist(),angle_deg=float(torch.rad2deg(torch.acos(cosine.clamp(-1,1)))[0,0]),tangent_norm=float(tangent.norm())))
             self.last_command=z.detach().clone()
             self.nominal_state=dict(alpha=self.alpha,phase=self.phase,phase_rate=self.phase_rate,source='teacher_data_only' if mode=='m10_expert' else 'policy')
-            a=self.m.act(e.obs,z,mean=True);q=self.qof(a);nom=self.qof(self.m.act(e.obs,base,mean=True));dq=q-self.lastq
+            a=self.m.act(e.obs,z,mean=True);q=self.qof(a);nom=self.qof(self.m.act(e.obs,base,mean=True)) if self.record_nominal_diagnostic else None;dq=q-self.lastq
             assert torch.isfinite(z).all() and abs(float(z.norm())-16)<1e-4
-            execution_diag=dict(raw_norm=float(self.raw.norm()),residual_norm=float(norm),latent_angle_deg=float(torch.rad2deg(torch.acos(((z*base).sum()/256).clamp(-1,1)))),qPD_vs_prior_rms_deg=float(torch.rad2deg(q-nom).square().mean().sqrt()),qPD_step_max_deg=float(torch.rad2deg(dq.abs()).max()))
+            execution_diag=dict(raw_norm=float(self.raw.norm()),residual_norm=float(norm),latent_angle_deg=float(torch.rad2deg(torch.acos(((z*base).sum()/256).clamp(-1,1)))),qPD_step_max_deg=float(torch.rad2deg(dq.abs()).max()))
+            if nom is not None:execution_diag['qPD_vs_prior_rms_deg']=float(torch.rad2deg(q-nom).square().mean().sqrt())
             c=dict(bfm_obs={k:v.tolist() for k,v in e.obs.items()},time=t,executed_z=z.tolist(),action=a[0].tolist(),q_PD=q[0].tolist(),q_PD_step_max_rad=float(dq.abs().max()),pre_qpos=e.sim.data.qpos.tolist(),pre_qvel=e.sim.data.qvel.tolist(),measured_force_xyz=e.tether.force.tolist(),action_saturation_fraction=float(((a*5).abs()>=self.c['clip']).float().mean()),residual_uncapped_norm=float(norm),prior_z=base.tolist()) if self.record else None
             start=len(e.trace)
             try:
@@ -139,7 +141,7 @@ class Task:
             if not hasattr(self,'execution_stats'):self.execution_stats=[]
             self.execution_stats.append(term_diag)
             if self.record:
-                c['uncapped_demand_xyz']=demand.tolist();c['reward_terms']=term.copy();c['reward_integral']=-.02*sum(term.values());c['nominal_q_PD']=nom[0].tolist();c['post_point']=point.tolist();c['post_velocity']=vel.tolist();c['post_partner_velocity']=vp.tolist();c['post_active']=active;c['post_yaw']=yaw;c['post_root_velocity']=vroot.tolist();c['native_memory']=dict(self.nominal_state);control.append(c)
+                c['uncapped_demand_xyz']=demand.tolist();c['reward_terms']=term.copy();c['reward_integral']=-.02*sum(term.values());c['nominal_q_PD']=nom[0].tolist() if nom is not None else None;c['nominal_diagnostic_recorded']=nom is not None;c['post_point']=point.tolist();c['post_velocity']=vel.tolist();c['post_partner_velocity']=vp.tolist();c['post_active']=active;c['post_yaw']=yaw;c['post_root_velocity']=vroot.tolist();c['native_memory']=dict(self.nominal_state);control.append(c)
             self.lastq=q.clone();self.prevz=z.clone();self.tick+=1;self.prepared=False
             self.done=self.boundary is not None or e.tether.time>=s['end']-1e-8
             if self.boundary:

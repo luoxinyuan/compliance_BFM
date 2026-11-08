@@ -69,6 +69,24 @@ def main():
           remaining_before=available, reserve_seconds=reserve,
           selection_uses='runtime/resource forecast only; no sealed physical scores or new-arm outcomes',
           single_seed_if_insufficient='no automatic downgrade; preserve resource boundary and report'))
+    # This is diagnostic elimination, not a different sampler/learning MDP.
+    # Both critic seeds receive the SAME adoption decision before training.
+    speed_reserve = 600
+    need_without_speed = 2*train_limit+unit_limit+final_limit+reserve+60
+    speed_choice = dict(adopt_fast_diagnostics=False, reason='insufficient optional profile reserve')
+    if remaining() >= need_without_speed+speed_reserve:
+        resource_check()
+        write(state_path,dict(status='profiling_optional_diagnostic_with_physics_parity',seeds=paired_seeds))
+        try:
+            job('speed-probe-01',ROOT,'p4000_speed_probe.py',speed_reserve,
+                ['--output',str(S/'runs/speed-probe-01')])
+            speed_choice=read(S/'runs/speed-probe-01/probe-result.json')
+        except Exception as error:
+            # A failed optional engineering probe is not a failed critic test.
+            # Do not use an unverified optimization; preserve failure/costs.
+            speed_choice=dict(adopt_fast_diagnostics=False,reason='optional probe failed; baseline diagnostics retained',error=repr(error))
+    os.environ['BFM_RECORD_NOMINAL_DIAGNOSTIC']='0' if speed_choice['adopt_fast_diagnostics'] else '1'
+    write(S/'sampler-diagnostic-adoption.json',speed_choice)
     write(state_path, dict(status='checking_CUDA_update_contract', seeds=paired_seeds))
     job('critic-unit-01', ROOT, 'p4000_critic_check.py', unit_limit,
         ['--output',str(S/'runs/critic-unit-01')])

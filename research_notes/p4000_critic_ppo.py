@@ -33,13 +33,13 @@ def main():
  from p4000_worker import launch
  plan=json.loads(Path(__file__).with_name('p4000_protocol.json').read_text());torch.set_num_threads(1);torch.manual_seed(a.seed);torch.set_grad_enabled(False)
  commit=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip();assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
- atomic(a.output/'launch.json',dict(runtime=commit,args={k:str(v) if isinstance(v,Path) else v for k,v in vars(a).items()},protocol_sha256=sha(Path(__file__).with_name('p4000_protocol.json')),initial_sha256=plan['initial']['sha256'],method='independent_critic_fit',followup_protocol_sha256=sha(Path(__file__).with_name('p4000_critic_protocol.json'))))
+ atomic(a.output/'launch.json',dict(runtime=commit,args={k:str(v) if isinstance(v,Path) else v for k,v in vars(a).items()},protocol_sha256=sha(Path(__file__).with_name('p4000_protocol.json')),initial_sha256=plan['initial']['sha256'],method='independent_critic_fit',followup_protocol_sha256=sha(Path(__file__).with_name('p4000_critic_protocol.json')),nominal_diagnostic_mode=os.environ.get('BFM_RECORD_NOMINAL_DIAGNOSTIC','1')))
  ctx=mp.get_context('spawn');ps=[];cs=[];net=opt=None;iteration=decisions=updates=critic_updates=0;status='initializing';started=time.monotonic();best=float('inf');rollbacks=0;base=None
  def stop(*_):raise KeyboardInterrupt
  signal.signal(signal.SIGTERM,stop)
  def weights():return {k:v.detach().cpu().numpy() for k,v in net.state_dict().items()}
  def save(name):
-  f=a.output/name;t=f.with_suffix('.tmp');torch.save(dict(state_dict={k:v.detach().cpu() for k,v in net.state_dict().items()},optimizer=opt.state_dict(),input_dim=1088,kind='direct',iteration=iteration,decisions=decisions,optimizer_updates=updates,critic_optimizer_updates=critic_updates,seed=a.seed,torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state(),runtime=commit,initial_sha256=plan['initial']['sha256'],actor_function_sha256=actor_hash(net),critic_trained_by_PPO=iteration>0,executed_std=a.std,rollbacks=rollbacks),t);t.replace(f);return f
+  f=a.output/name;t=f.with_suffix('.tmp');torch.save(dict(state_dict={k:v.detach().cpu() for k,v in net.state_dict().items()},optimizer=opt.state_dict(),input_dim=1088,kind='direct',iteration=iteration,decisions=decisions,optimizer_updates=updates,critic_optimizer_updates=critic_updates,nominal_diagnostic_mode=os.environ.get('BFM_RECORD_NOMINAL_DIAGNOSTIC','1'),seed=a.seed,torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state(),runtime=commit,initial_sha256=plan['initial']['sha256'],actor_function_sha256=actor_hash(net),critic_trained_by_PPO=iteration>0,executed_std=a.std,rollbacks=rollbacks),t);t.replace(f);return f
  def evaluate(name,sampled=False):
   folder=a.output/name;folder.mkdir();schedule=[(k+'__'+('sample' if sampled else 'mean'),dict(v,sampling_seed=a.seed*101+17),'sample' if sampled else 'mean') for k,v in plan['dev'].items()];w=weights()
   for i,c in enumerate(cs):c.send(dict(op='evaluate',policy=w,schedule=schedule[i::len(cs)],output=str(folder)))
@@ -65,6 +65,14 @@ def main():
    before_update=weights();t=time.monotonic()
    for c in cs:c.send(dict(op='rollout',steps=256,version=iteration,policy=before_update))
    results=[receive(c,p,1200) for c,p in zip(cs,ps)];assert all(r['version']==iteration for r in results);sample_seconds=time.monotonic()-t;batch={k:v.cuda() for k,v in merge_rollouts(results,.95).items()}
+   if iteration==0:
+       parity=[]
+       for worker,result in enumerate(results):
+           with np.load(S/f'runs/seed{a.seed}-32/worker-{worker}/rollout-0000.npz') as reference:
+               diff={k:float(np.max(np.abs(result['batch'][k].astype(float)-reference[k].astype(float)))) for k in ['obs','next_obs','action','reward','discount','done']}
+               parity.append(dict(worker=worker,max_difference=diff))
+       atomic(a.output/'first-batch-input-parity.json',dict(reference='original same-seed first on-policy batch before any PPO update',rows=parity))
+       assert all(all(v==0 for v in row['max_difference'].values()) for row in parity),('same-seed first-batch mismatch',parity)
    # merge_rollouts flattens [time,worker], NOT worker-major. Keep metadata aligned.
    stats=[results[w]['stats'][j] for j in range(256) for w in range(3)]
    assert len(stats)==len(batch['reward'])==768

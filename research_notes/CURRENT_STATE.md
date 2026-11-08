@@ -10,6 +10,8 @@ P4000 SHA256 `9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164`�
 
 2026-11-08用户追加授权并扩大有限预算：[独立critic修复对照](P4000_CRITIC_PROTOCOL.md)改为两个seed各32×768，与原同seed完整32批匹配。累计job上限24000秒，输出10GiB、总98304RL不变；新增最多49152RL。旧纯等待队列在占卡前停止并留档，新独立worktree队列等待原训练/原终检退出。只分离critic六轮拟合与actor KL，reward/任务比/std/KL均不变。尚未做GPU合同检查或证明改善，以critic-followup-status.json为准。
 
+2026-11-08采样提效追加授权：[有界诊断削减](P4000_SAMPLING_EFFICIENCY.md)准备排队。原两seed不动；在原作业退出后、新critic两seed前，预算充足则最多600job秒做四完整条件物理逐值一致与cProfile/吞吐对照。只考虑减少不参与reward/控制的standing参考BFM诊断；默认保持完整诊断，零差异且实测提速才共同采用。不改worker/batch/MDP，不增加24k/10GiB/98304上限；当前未运行该测试、未证明提速。
+
 ---
 以下为Issue51结项历史；其中后续建议已由本轮新授权覆盖，不是当前主线。
 
