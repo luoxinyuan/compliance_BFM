@@ -27,3 +27,5 @@ FB只在当前进程将原冻结 `_forward_map` 放到GPU，核对原normalizer�
 ## 执行后有效性勘误（优先于上方计划）
 
 原BranchState只保证同reset内值恢复；本轮跨reset保存多个状态时遗漏callback/spec/base对象图，post-onset两处出现非预期anchor偏移。原3/3资格撤回，混合BC模型不推广；停止其评价且未暴露封存、不启动PPO。CrossResetState本地修复在3状态相对不间断Student的所有physics/control字段逐值通过。余14次查询只作正确post-onset1.4秒复验；总96上限不变。2000监督已消耗，无额外重训。新整理的正确标签仅供后续授权，不当已训练结果。原7池/FB20比较只在同reset内发生，保留其有限结论。完整结果和成本见INTERACTIVE_PILOT_RESULTS。
+
+只补齐不受错误标签影响的冻结对照：原S4000 vs原3开发条件已选old-only BC500，执行原mid/none回归与3个原预封存条件。模型在看封存前固定，无额外训练/Teacher查询、不对受影响交互模型做封存、不按结果改选。该对照检验旧数据续BC的真实有限学习收益，不替代缺失的正确交互对照或Student PPO。
