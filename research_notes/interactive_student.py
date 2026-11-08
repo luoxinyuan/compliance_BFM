@@ -8,6 +8,7 @@ PLAN=json.loads((ROOT/'research_notes/interactive_protocol.json').read_text())
 def write(p,x):Path(p).write_text(json.dumps(x,indent=2,allow_nan=False))
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def fit(out):
+ if (S/'recovery-validity-erratum.json').exists():raise RuntimeError('Archived mixed dataset protocol affected; corrected labels require a separately authorized training budget')
  import torch,numpy as np
  from clean_policy import Expert,direct_command
  torch.set_num_threads(1);dev='cuda';cfg=PLAN['bc'];start=P/PLAN['source_student']['checkpoint'];assert sha(start)==PLAN['source_student']['sha256']

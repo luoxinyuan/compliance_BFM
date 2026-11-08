@@ -22,3 +22,8 @@ FB只在当前进程将原冻结 `_forward_map` 放到GPU，核对原normalizer�
 新增样本按实际恢复窗分组，首个Student访问查询与同一接管窗后继合并为同组，逐状态去重；不能把首个单点另当一个episode高频重采样。独立回合数、恢复窗数和相关后继分别报告，不称几十帧为几十个独立任务。
 
 补充成本点：原始S4000@7s尚未有效walking，因此不能称已经行走状态。早期Teacher接管2秒后交回Student的真实7.3s已观测到root vx约.28m/s与单足卸载；只追加1次完整查询成本测量，完整实际raw动作前缀重放q/qdot/qPD逐值一致，不借用原Teacher隐藏phase。查询冷phase0，不生成未验证训练标签。全阶段查询上限仍96。
+
+
+## 执行后有效性勘误（优先于上方计划）
+
+原BranchState只保证同reset内值恢复；本轮跨reset保存多个状态时遗漏callback/spec/base对象图，post-onset两处出现非预期anchor偏移。原3/3资格撤回，混合BC模型不推广；停止其评价且未暴露封存、不启动PPO。CrossResetState本地修复在3状态相对不间断Student的所有physics/control字段逐值通过。余14次查询只作正确post-onset1.4秒复验；总96上限不变。2000监督已消耗，无额外重训。新整理的正确标签仅供后续授权，不当已训练结果。原7池/FB20比较只在同reset内发生，保留其有限结论。完整结果和成本见INTERACTIVE_PILOT_RESULTS。

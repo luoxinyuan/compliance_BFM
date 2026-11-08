@@ -14,23 +14,13 @@ def main():
   return dict(path=str(dest),title=title,role=role)
  D=S/'runs/diagnose-01'
  items.append(dict(name='01-exact-prefix-teacher-recovery',sides=[side(D,'Student_continue_normal72_4.7','S4000 CONTINUES | FAILED REFERENCE','RESTRICTED STUDENT'),side(D,'first_Teacher_then_Student_normal72_4.7','TEACHER 4.7-4.8s ONLY; S4000 ELSEWHERE','TRUE FIRST ACTION INTERVENTION'),side(D,'Teacher_replan_2s_normal72_4.7','TEACHER 4.7-6.7s; S4000 ELSEWHERE','TRUE 2s TAKEOVER; NOT FULL TEACHER')]))
- E=S/'runs/bc-eval-01'
- if (E/'selection.json').exists():
-  sel=json.loads((E/'selection.json').read_text());sides=[]
-  for case in ['short08','normal72']:
-   for arm,title in [('old_data_only','OLD-DATA BC'),('interactive','INTERACTIVE BC')]:
-    j=1000;label=arm+'_'+str(j)+'_dev_'+case;selected=sel[arm]['selected']['step']
-    sides.append(side(E,label,title+' '+case+' | fixed1000 / selected'+str(selected),'RESTRICTED STUDENT; FIXED ENDPOINT DIAGNOSTIC'))
-  items.append(dict(name='02-matched-student-short-and-long',sides=sides,grid4=True,cross_condition_description='Top short08, bottom normal72; each row is paired same condition. Different durations explicitly hold ended panel. No checkpoint splicing: each arm fixed dev-selected checkpoint for both tasks.'))
- else:
-  items.append(dict(name='02-short-request-recovery',sides=[side(D,'Student_continue_short08_5.4','S4000 CONTINUES | SHORT08','RESTRICTED STUDENT'),side(D,'Teacher_replan_2s_short08_5.4','TEACHER 5.4-7.4s; S4000 ELSEWHERE','TRUE TAKEOVER; NOT FULL TEACHER')]))
- # Optional fixed8 PPO comparison only if both authorized seeds actually completed.
- paths=[S/'runs/student-ppo5301-01',S/'runs/student-ppo5302-01']
- if all((f/'candidate-8.pt').exists() and (f/'dev8_normal72.json.gz').exists() for f in paths):
-  sel=json.loads((E/'selection.json').read_text());j=sel['interactive']['selected']['step'];label='interactive_'+str(j)+'_dev_normal72'
-  sides=[side(E,label,'FROZEN INTERACTIVE BC','RESTRICTED IDEAL-FORCE STUDENT')]
-  for seed,folder in zip([5301,5302],paths):sides.append(side(folder,'dev8_normal72','STUDENT PPO8 | seed'+str(seed),'FIXED8, NOT FINAL-SELECTED'))
-  items.append(dict(name='03-student-own-ppo-fixed8',sides=sides))
+ C=S/'runs/repair-short-01'
+ items.append(dict(name='02-corrected-postcontact-recovery',sides=[side(C,'Student_continue_correct','S4000 CONTINUES | SHORT08','UNINTERRUPTED SOURCE MATCHED EXACTLY'),side(C,'Teacher_replan_correct_1p4s','TEACHER 5.4-6.8s; S4000 ELSEWHERE','CORRECTED CALLBACK/STATE RESTORE')]))
+ E=S/'runs/bc-eval-01';sides=[]
+ for case in ['short08','normal72']:
+  sides.append(side(E,'S4000_dev_'+case,'S4000 INITIAL | '+case,'RESTRICTED IDEAL-FORCE STUDENT'))
+  sides.append(side(E,'old_data_only_500_dev_'+case,'OLD-DATA BC +500 | '+case,'VALID DEV ONLY; NO NEW LABELS / NO RL'))
+ items.append(dict(name='03-valid-old-data-bc-development',sides=sides,grid4=True,cross_condition_description='Top short08, bottom normal72; each row paired same condition, both tasks same frozen old-data-only500 checkpoint. Development evidence only; no heldout/general claim. Mixed affected model is not displayed as success.'))
  (a.output/'video-pairs.json').write_text(json.dumps(items,indent=2));os.environ.update(BFM_ROLLING_VIDEO_RUN=str(a.output),BFM_RECOVERY_OUTPUT=str(a.output),BFM_RENDER_ASSET_ROOT=str(ROOT),CUDA_VISIBLE_DEVICES='0',MUJOCO_GL='egl',MUJOCO_EGL_DEVICE_ID='0',PYOPENGL_PLATFORM='egl',OMP_NUM_THREADS='2')
  import rolling_movie;rolling_movie.main()
  import imageio_ffmpeg

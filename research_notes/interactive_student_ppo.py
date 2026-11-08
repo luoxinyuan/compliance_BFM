@@ -7,6 +7,7 @@ S=ROOT.parent;P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM')
 def write(p,x):Path(p).write_text(json.dumps(x,indent=2,allow_nan=False))
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def study(e,m,contract,out):
+ if (S/'recovery-validity-erratum.json').exists():raise RuntimeError('Archived mixed dataset protocol affected; corrected labels require a separately authorized training budget')
  import torch,numpy as np
  from clean_policy import Expert,direct_command
  from native_env import spec,install
