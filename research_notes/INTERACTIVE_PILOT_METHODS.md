@@ -13,3 +13,8 @@ FB只在当前进程将原冻结 `_forward_map` 放到GPU，核对原normalizer�
 开发/封存按整回合、共同前缀族分组，不随机分相邻帧。原S4000、新S-init、历史S0身份均核验，不互换。Student1639D仅本体465、真实上一z256、理想力历史900与已知安装18；不输入anchor/真值伙伴速度/时钟/active/候选答案或特权特征。真机传感尚未实现。
 
 资源为用户上限12000 experiment-job秒/8GiB/96完整查询/40额外2.4sFB序列/2000监督更新/12288StudentRL决策；各类预测/真实/训练/评价/视频分别记账。所有运行只个人隔离worktree，代码固定后发车；不改main/共享BFM/PD/权重/SoftSONIC/他人任务。
+
+
+## 条件启动实现补充（物理接管进行中，尚未训练）
+
+匹配BC两臂从同S4000开始，原归一化冻结，1000更新/臂、同seed/旧批次；交互臂将其中35%换为实际验证域标签。开发只用short08/normal72/stop66，安全优先，`mean(force+.03*error_cm+cap)+.1*worst`；另mid/none回归及预封存59cm前缀/6cm条件不选模。same-state完整5子步检查只用于诊断。若有实际安全收益，条件性Student PPO每seed8×768，两seed5301/5302同起点；actor和critic均只读受限1639D，物理reward使用环境特权，fresh critic/Adam，原std.008/概率/KL回滚。critic不继承旧BC随机值函数。固定8批主终点，4批保留，不依封存重选。此处为实现，是否发车由本轮真实证据决定；不是已训练/成功。
