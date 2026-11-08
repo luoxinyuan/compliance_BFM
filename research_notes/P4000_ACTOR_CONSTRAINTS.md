@@ -1,3 +1,5 @@
+> 2026-11-08本有界阶段已完成，最新结论见[P4000_PPO_RESULTS](P4000_PPO_RESULTS.md)与[CURRENT_STATE](CURRENT_STATE.md)。下文保留当时方法/预登记，不代表仍在训练或等待发车。
+
 # Issue52开发中只读分析：不必等待整组结束才排查
 
 2026-11-08，独立critic在固定seed5201运行。只使用保存日志及固定协方差Gaussian代数，没有新GPU任务、物理采样、RL或修改运行源码。证据范围为中途开发，不取代最终同seed joint对照。

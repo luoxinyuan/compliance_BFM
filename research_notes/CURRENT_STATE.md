@@ -1,65 +1,54 @@
-# CURRENT_STATE — Issue52：概率修复已验证，固定5201做两方法开发（非第二seed）
+# CURRENT_STATE — Issue52完成：PPO有限收益，独立critic不足以解决均值反馈学习
 
-2026-11-08最新用户授权：单seed开发有效配方，再独立seed复核。原5201完成32批，原5202第31批采样后概率断言退出，全部历史保留、不重启旧作业。[Issue52](https://github.com/GaoE05/robot-research-bridge/issues/52)；[原审查](P4000_PPO_AUDIT.md)；[修复证据/新执行](P4000_PROBABILITY_REPAIR.md)。
+最后核对：2026-11-08。当前**无训练、无排队自动续训、新seed或Student**。[Issue52](https://github.com/GaoE05/robot-research-bridge/issues/52) · [完整结果](P4000_PPO_RESULTS.md) · [方法](P4000_PPO_METHODS.md) · [指标/模型清单](p4000_final_evidence.json) · [Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。先读[长期目标](RESEARCH_OVERVIEW.md)，不要把旧Library快照视为实时状态。
 
-## 已验证事实
+## 当前可信结论
 
-- 原失败批checkpoint/动作/随机流逐值复现；batch-one old logprob误差0，FP32 768-batch均值差2.98e-7导致一条logprob差.0003662>原.0003。当前证据是actor数值路径差异，不是seed学得差。原runtime93383a保持原样。
-- 新可选canonical FP32 row actor统一真实采样/learner评分的矩阵形状，1/16/128/256/768分块均值逐值一致；两个真实保存batch的原概率检查通过，故意错误动作仍被拒绝。阈值/std/KL不放宽；不改实际batch-one动作/BFM/PD。joint与independent在同batch/RNG上actor和Adam逐值一致，独立critic18步完成。GPU检查0新增物理/RL，尚无新训练收益结论。
+目标仍是冻结BFM上的Contact-Conditioned Whole-Body Motion Transitions / General Compliance，原生能力→真实反馈Expert→受限观测Student及自身闭环学习。当前不是修复某条固定walking动画。
 
-## 当前执行安排
+Issue50原生goal/motion＋因果滚动MuJoCo搜索取得有限域有效反馈，不是新神经PPO Teacher；约23秒/100ms命令，reward-z未成为有效主来源。Issue51真实执行数据训练fresh特权BC P4000部分有效，fresh受限ideal-force S4000失败；两者不能混淆。历史Teacher30→旧S0有限域迁移成功继续保留。
 
-采样提效probe已完成（runtime f75d612）：四条件完整solver/状态/控制/reward/200Hz物理记录逐值一致；单worker吞吐比0.99346，无提速，未采用诊断削减，两方法均保留完整诊断。新训练固定seed5201：canonical-row joint和independent critic各32批，是同seed方法对照，避免把数值修复与critic修复混为单因素；不是第二随机seed。新增actor/critic均从同P4000/normalizer和新critic/Adam开始，无在线旧actor/搜索覆盖。固定reward/std=.008/网络/任务比/1088D/Direct256D/10N/K80D8/10-50-200Hz/BFM/PD。首768真实输入/动作/物理奖励须与原同seed逐值一致。训练是否已启动以single-seed-status、launch、ledger为准；2026-11-08已实际发车：有限队列PID164620/start_ticks7305189，固定runtime e1d6929d297442ad2ab4ebb7912306f292750354；当前independent方法运行，joint随后排队，不是第二seed。以实际日志为准，尚未宣称学习改善。
+Issue52 P4000热启动真实PPO：原5201完成32批，原5202完成30批更新、第31批采样后FP32 batch-shape logprob断言退出；不是完整双seed结论。保存失败和真实采样成本，已用canonical-row FP32 actor统一采样与评分验证修复，原概率/KL断言不放宽。
 
-原P4000 SHA2569f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164。新封存条件不用于反复开发，第二seed无自动发车，Student无新训练。预算仍24000job秒/10GiB/98304RL：原实际采样48384＋新两方法49152=97536；失败也记账，预留900s分析/视频。stage experiments/p4000-feedback-ppo-20261108；single-seed-status/ledger是真实入口，不能按旧队列PID重启。
+根据用户新授权，随后固定seed5201，完成同数值路径joint与independent critic各32批/24576真实RL决策。独立critic不再随actor KL提前停止，每批18拟合步；网络、reward、std=.008、任务比、10N/K80D8及BFM/PD不变。它不是第二seed，只有单seed开发证据。
 
-只个人worktree/gaoe05/research，不改main/共享BFM/PD/权重/SoftSONIC/他人任务，不做真机。源SHA与运行身份在ledger/launch固定；推送代码或critic EV提升不等于物理成功。Library旧快照非实时状态。
+| 同条件确定性接触期3D RMSE cm / 实际力RMS N | P4000 | joint32 | independent32 |
+|---|---:|---:|---:|
+| 8cm小请求 | 2.511 / 2.076 | 2.516 / 2.079 | 2.488 / 2.056 |
+| 24cm中距 | 6.646 / 5.515 | 6.691 / 5.556 | 6.782 / 5.622 |
+| 较快72cm | 13.636 / 7.299 | 14.074 / 7.407 | 13.995 / 7.363 |
+| 正常72cm | 12.306 / 7.939 | 12.999 / 8.337 | 11.752 / 7.722 |
+| 同前缀停止 | 8.350 / 5.559 | 8.478 / 5.600 | 8.443 / 5.558 |
 
+**正常长牵引有真实行走，独立critic有小幅收益；没有多条件共同改进，不替换P4000。** 独立方法开发best仍0；joint best8仅极小分差。无接触稳定、无安全终止不等于动作质量全部合格。新封存条件未使用，不宣称未见泛化。
 
-用户同意并行归因：[有界反馈诊断](P4000_FEEDBACK_DIAGNOSIS.md)。保存3072决策CPU检查已完成：GAE阶段均值复算误差<2e-7，移动/减速force成本约91%，部分限幅区间force项恒定但其他项仍有信号。GPU固定状态/2.4s分支仅排在当前配对全部退出之后，≤600job秒计入原预算，不占运行GPU、不新训。以mean-diagnosis-status为准，尚无物理分支结论。
+## 主要瓶颈与诊断结果
 
+- 原小σ与KL合同确实约束每批均值方向变化约.035°；32批固定状态累计仍约.46–.50°，不是完全没更新；径向只占差能量7–10%，不支持主要浪费在raw缩放。
+- 两臂实际24576决策均为移动6218、减速343、保持4401、接触前2587、无接触2342、释放8685。移动25.30%、减速1.40%，关键反馈覆盖偏少是有依据假设，不是已证实唯一原因。
+- 3072保存决策GAE复算误差<2e−7；移动/减速force成本约91%，当前没有Gaussian force reward sigma。限幅使部分区间force项恒定，但其他reward仍有信号；不自动提高cap。
+- 14个完整同状态2.4s物理分支全部完成，前缀features/qpos/qvel逐值一致。学习修正×3在停止略好、行走不及原独立均值；std翻倍在这两个窗口没有改善。不能简单说“只要放大动作/噪声就能解决”。
+- 正常长牵引原P4000三种保存随机流均比确定性更好，但其他任务结果混合；新PPO未保留该随机收益。短窗reward与critic尾部bootstrap排序有分歧，但未观测更远未来，不能直接认定critic错误。
+- 旧姿态/footstep/q_PD问题保留。释放后原anchor误差不是任务失败；接触仍在时的偏差和负担照常评价。q_PD跳变不同于真实关节20ms跳过相同角度。
 
-2026-11-08 07:38UTC进一步核验：independent已完成32批/24576真实决策、69actor接受更新/576critic拟合步，开发best仍初始化。正常长牵引12.306cm/7.939N→11.752/7.722，末轮yaw已回到约+1.12°（24批的−20°中途负例保留）；中距/较快/停止未共同改善。joint同seed对照已接续运行；固定诊断runtime f07e05c，纯等待PID185843/start_ticks7816464，等待当前配对队列164620退出后再查资源做≤600s诊断，当前无GPU诊断结果。
+## 下一步决策：未启动
 
----
-以下为Issue51结项历史；其中后续建议已由本轮新授权覆盖，不是当前主线。
+推荐同P4000＋独立critic下做一次**关键移动/减速实际覆盖**的匹配课程对照，固定reward/std/KL/物理/网络；跟踪有效随机反馈是否真正进入均值。若仍受更新几何限制，再单独研究探索/步幅，不能一次改多个因素。没有授权自动新增训练；当前阶段完成后停止，先由用户审查下一方案。未开展新Student、大型F/SF planner或reward候选扫描。
 
-# CURRENT_STATE — Issue51已结项：Teacher扩域有效，特权BC部分有效，受限BC失败
+## 源码、模型、资源、视频
 
-最后核对2026-11-08。[Issue51](https://github.com/GaoE05/robot-research-bridge/issues/51) · [结果](NATIVE_TRANSFER_RESULTS.md) · [方法/runtime](NATIVE_TRANSFER_METHODS.md) · [精简证据](native_transfer_evidence.json) · [Project Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。当前无训练、无待自动发车任务；建议不等于新授权。
+- 服务器：`/mnt/data/temp_user/yi.gao/projects/compliance_BFM`，SSH1016当前已验证NVIDIA环境；NVML L20Z/CUDA9.0硬件命名差异保留，不重装，不沿用旧GPU空闲快照。stage `experiments/p4000-feedback-ppo-20261108`，ledger和各job launch是准确运行身份。
+- 原训练runtime `93383a406e4b4923418af0b47aca2077ca68e40c`；新配对runtime `e1d6929d297442ad2ab4ebb7912306f292750354`；最终物理诊断/视频runtime `92ec566c554bfa8e29238c9cb1f68d0ac84b6169`。文档HEAD不替代运行SHA。
+- P4000：Issue51 `runs/bc-fit-01/P-4000.pt`，SHA `9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164`。
+- independent candidate32：`runs/single5201-independent-32/candidate-0032.pt`，SHA `e9d0a5989096e87a2ca402aabbfca889578119069ead31d84a96da87c9aa2d72`。
+- joint candidate32：`runs/single5201-joint-32/candidate-0032.pt`，SHA `2fc142549a390c8ce8624e7457c0f2080072751d808d9d34a2697f7ef6f8fdc6`。best/last完整身份见结果，不以文件名判断。
+- BFM SHA `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`，原PD冻结；1088D策略当前是特权Expert，没有Student部署权限结论。
+- 总实际RL采样97536，包含失败批；累计job20183.05秒含CPU预留，上限24000；输出<10GiB，详见[p4000_closeout_ledger](p4000_closeout_ledger.json)。诊断6720分支physics步单记，不算RL训练。没有新增第二开发seed或封存评价。
+- Mac实际目录：`~/Projects/compliance-bfm-diagnostics/videos/p4000-feedback-ppo/`，仅**2个MP4＋INDEX.md**。正常72cm12.8s、停止11.8s，25fps/1×；每条上/中/下为P4000/joint32/independent32，每行世界斜视＋俯视。真实qpos、未重新挑seed、完整保存接触/释放，SHA/全解码/画面验证通过。它们全是特权Expert，不是新Student。
+- 长期审查分支 `gaoe05/research`，最终文档提交见Issue52结项评论。训练/诊断worktree及失败保留，不改正在运行的源码。
 
-## 本轮实际结果
+## 接力保护
 
-冻结BFM/PD、10N/K80D8、7提议/2.4s因果滚动搜索Teacher，在4个新完整回合：8cm2.551cm/2.207N，72cm平均.22m/s7.665/5.714，新66cm继续5.957/4.697、停止6.346/4.964。数值仅接触期3D RMSE/实际力RMS。短请求腕相对肩X+9.40cm、rootX+1.44cm；长请求有真实脚步。不是reward-z成功或新PPO Teacher；搜索仍约23秒/100ms命令，偏航/q_PD峰及严重超前恢复边界仍保存。
+I/C0/T30/S0/D2、M8–M10、M38双向转腰及M41启动因果结果保留。本轮fresh S失败不推翻历史S0成功。M11初轮与continuation A160/B114提前停止分别归档；不重启旧任务。原Issue47/48/49/50/51已结束，不按旧计划恢复。
 
-fresh特权BC P4000，在新66cm继续8.004/5.480、停止8.350/5.559，优于旧I但落后Teacher；旧已见正常牵引12.306/7.939，较I退化。P有特权，不能称受限Student成功。
-
-fresh受限ideal-force BC正式开发选回**新S-init/step0**，不是训练成功，更不是历史S0。固定S4000已见正常55.219cm/9.218N、开发58.270/9.245，没正常跟上。已见轨迹持续执行z差异4.24s出现，早于5.0s接触；Teacher状态上平均拟合低，但关键步态动作有尾部误差，自身历史越走越偏。该时序不是同状态因果证明，尚未证明信息不足或force太小。单轨P/S各1000更新仅诊断；S能前进约35cm但25.369/9.079，仍不合格，不重选正式模型。
-
-## 科学瓶颈与下一决策
-
-优先解决受限Student接触前自身历史闭环漂移及关键过渡命令拟合/覆盖。建议少量完整真实访问状态Teacher接管，界定可靠域，再做有限数据/历史反馈修复及冻结BC vs同初始化自身RL。**尚未启动或授权新PPO/大规模Student**；不再以增加reward候选/C0修补代替当前问题。P缺少搜索内部真实phase/上一计划，因此P/S差距也不能全归为观测权限。训练仅3整回合/2独立前缀族，单seed，不宣称general。
-
-## 权限、数据与成本
-
-P1088D；S1639D=465原BFM本体/动作历史＋256实际上一z＋900真实力历史＋18已知安装；不含anchor/error、伙伴真值速度、目标yaw、time、任务ID、active真值或搜索kind/phase。原obs保存的privileged_state/time未拼入S。ideal-force仍非已验证G1实机传感。
-
-642真实首命令查询→641完整有效标签；预测标签0。train311，dev104，新prefix final226；按整回合/前缀族划分。真实重放输入/上一z/qpos/qvel/q_PD全0误差。P/S主各4000更新＋单轨诊断各1000=10000；RL决策0。419搜索、1,407,840候选physics步、8376实际Teacher步；累计job12,622.77秒（含300秒CPU预留），新增实验输出约1.02GiB，低于18000秒/10GiB。所有正式回合无安全提前终止，不代表质量问题消失。
-
-## 模型、源码、服务器与视频
-
-服务器项目 `/mnt/data/temp_user/yi.gao/projects/compliance_BFM`；stage `experiments/native-transfer-20261107`；完整ledger、私有权重、raw轨迹均保留。后端SSH1016，CUDA9.0/132SM/~80GiB，NVML L20Z名称冲突保留；不将旧空闲快照当下次资源许可。
-
-- Teacher物理runtime `443f02c4fc22fd84e59f2cee4e25750d838fe527`；重放/主BC/评价 `0b5135574719f41d888f9f77fcf2d32e951868ca`。
-- 冻结/单轨诊断runtime `d800eb0b90d00526053cc983b33abb39ba6e5d26`；最终分析/视频 `73c437e81f2aca617bc432ddf859dddd2a959b4e`。文档提交不是物理runtime。
-- P `runs/bc-fit-01/P-4000.pt` SHA256 `9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164`。
-- S4000 `runs/bc-fit-01/S-4000.pt` SHA256 `8f5e7287e974deedba1a8d841dd65d7692e944e278bd4a091f1ec224f167a479`；新正式S-init `S-0.pt` `f414ea3fd12a4b90ae8a03ad273672dfd6c18e3d848a6d6e2e0efde5384561ba`。
-- 冻结BFM `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
-- 长期个人审查分支 `gaoe05/research`，本轮结项commit见Issue51；精准运行SHA以上表为准，绝不以文档HEAD替代。
-- Mac实际目录 `~/Projects/compliance-bfm-diagnostics/videos/native-teacher-transfer/`：**仅3个MP4＋INDEX**。01短请求、02较快长牵引（Teacher/I/P4000/S4000），03新共同前缀Teacher及同P4000的继续/停止；最后一条不是受限Student成功。SHA/正常1×时长/全解码/画面已核对，详见native_transfer_video_verification.json。
-
-## 保留历史与接力
-
-旧有限域Teacher→ideal-force Student迁移成功不被本轮fresh S失败抹去。保留T30/S0、M8–M10、M38双向转腰、I/C0/D2及所有失败；旧I/C0仅冻结参照，不是本轮actor初始化或在线输入。Issue50/49/47不恢复；M11初轮与continuation不同，A160/B114提前停止不代表等预算结论。
-
-新会话先读本页、OVERVIEW、Issue51和实际ledger，确认模型/环境身份与最新用户授权，不重跑已完成任务。只在个人worktree维护，Git无权重/raw数据/视频/凭据；不改团队main、共享BFM/PD/权重、SoftSONIC/他人任务，不做真机。Library2026-10-28为历史快照。
+新会话先读本页、OVERVIEW、Issue52最新结项、实际ledger与用户新授权。只个人worktree/gaoe05/research；不改main、共享BFM/PD/权重、SoftSONIC或他人任务，不做真机；不上传模型、raw轨迹、视频或凭据。Library2026-10-28为历史快照，Project Master保留完整决策历史，本页为精简入口。

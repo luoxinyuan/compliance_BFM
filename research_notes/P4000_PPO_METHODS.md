@@ -1,3 +1,5 @@
+> 2026-11-08本有界阶段已完成，最新结论见[P4000_PPO_RESULTS](P4000_PPO_RESULTS.md)与[CURRENT_STATE](CURRENT_STATE.md)。下文保留当时方法/预登记，不代表仍在训练或等待发车。
+
 # Issue52 — P4000热启动特权Expert真实反馈PPO
 
 [Issue52](https://github.com/GaoE05/robot-research-bridge/issues/52) · [预登记协议](p4000_protocol.json) · [实时状态](CURRENT_STATE.md)。源码推送不代表训练成功。

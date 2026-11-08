@@ -1,3 +1,5 @@
+> 2026-11-08本有界阶段已完成，最新结论见[P4000_PPO_RESULTS](P4000_PPO_RESULTS.md)与[CURRENT_STATE](CURRENT_STATE.md)。下文保留当时方法/预登记，不代表仍在训练或等待发车。
+
 # Issue52：均值学习瓶颈的有界诊断
 
 2026-11-08用户授权在训练继续时排查，不修改当前配对训练runtime，不新增第二seed。先做保存数据NumPy审查；GPU部分仅在当前两方法精确owned队列退出、GPU确实空闲且预算足够后运行一次。不是新PPO/Student、planner或控制器。
