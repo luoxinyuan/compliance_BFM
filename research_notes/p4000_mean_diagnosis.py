@@ -33,6 +33,7 @@ def study(env, model, contract, output):
 
     torch.set_num_threads(1)
     torch.set_grad_enabled(False)
+    assert contract['model_sha256'] == '33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361'
     install()
     write(output / 'runtime-speed.json', speed(env))
     write(output / 'backend.json', backend(
