@@ -19,7 +19,7 @@ def study(e,m,contract,out):
  import native_env,geometry_contact
  from native_env import Task,spec,install
  from clean_policy import Expert,direct_command
- from rolling_snapshot import BranchState
+ from interactive_snapshot import CrossResetState as BranchState
  from locomotion_rollout import spherical
  from m9_cyclic import sample
  from native_transfer import metrics,phase_report
@@ -149,6 +149,33 @@ def study(e,m,contract,out):
   state_motion=dict(root_velocity=e.sim.data.qvel[:3].tolist(),foot_loads=list(e.last_support),previous_assistance='Teacher4.7-6.7s; actual Student6.7-7.3s, full own executed history replayed',no_borrowed_MPC_phase=True)
   z,_,q=search('moving_student_after_assistance',phase=0.,previous=None,shadow=False);_,_,_,st=task.step(z/16);counts['counterfactual_first_physics_steps']+=st['physics_steps'];save('moving_student_first_Teacher_command','actual first100ms only, no full moving recovery claim, never training label')
   write(out/'moving-cost.json',dict(full_prefix_replay_errors=parity,current_actual_motion=state_motion,query_wall_s=q['wall_s'],selected=q['selected'],scope='one cost-only Student-moving query after documented actual assistance; no qualification label',counts=counts));persist();return dict(status='completed',counts=counts,student_optimizer_updates=0)
+ if ARGS.mode=='repair-short':
+  # Corrected post-onset check within remaining14 original7 queries; no new BC/PPO.
+  prior_total=read(S/'runs/diagnose-01/counts.json')['full_queries']+read(S/'runs/moving-cost-01/counts.json')['full_queries'];assert prior_total==82
+  reset('short08')
+  while e.tether.time<5.4-1e-7:student_step()
+  ss=BranchState(task);n0=len(task.physics);c0=len(task.controls)
+  # Deliberate other real reset: new graph restore must undo it exactly.
+  reset('normal72')
+  while e.tether.time<6.-1e-7:student_step()
+  results={};new=[]
+  for arm in ['Student_continue_correct','Teacher_replan_correct_1p4s']:
+   ss.restore();phase=0.;prev=None;rew=0.;rng=np.random.default_rng(5301)
+   for j in range(14):
+    if arm=='Student_continue_correct':rew+=student_step()
+    else:
+     assert prior_total+counts['full_queries']<96
+     z,prev,q=search(arm,phase,prev,rng=rng);new.append(make_label(q,'actual Teacher first action, corrected cross-reset graph',False));_,r,d,st=task.step(z/16);counts['actual_Teacher_physics_steps']+=st['physics_steps'];rew+=r;phase+=.1*prev.get('rate',0.)/task.refs['straight']['period'] if prev['kind']=='sequence' else 0.
+   mm=metrics(task.physics[n0:],task.controls[c0:]);results[arm]=dict(reward=rew,physical=mm,boundary=copy.deepcopy(task.boundary),prefix_fingerprint=ss.fingerprint)
+   if arm=='Student_continue_correct':
+    original=read(S/'runs/diagnose-01/S4000_short08.json.gz');rr=[r for r in original['physics'] if 5.4-1e-7<=r['force_time']<6.8-1e-7];cc=[c for c in original['control'] if 5.4-1e-7<=c['time']<6.8-1e-7]
+    assert rr==task.physics[n0:] and cc==task.controls[c0:],'corrected no-intervention differs from uninterrupted original Student'
+   while not task.done:student_step()
+   save(arm,'corrected exact original-prefix post-onset comparison; Teacher only5.4-6.8s then Student')
+  a=results['Student_continue_correct'];b=results['Teacher_replan_correct_1p4s'];am,bm=a['physical'],b['physical'];qualified=b['boundary'] is None and b['reward']>a['reward'] and bm['force_rms']<=am['force_rms'] and bm['error_cm']<=am['error_cm']
+  for row in new:row['valid']=qualified
+  torch.save(dict(rows=new,scope='corrected post-onset Teacher actual execution; unused by training in this stage'),out/'repaired-labels.pt');write(out/'corrected-recovery.json',dict(qualified=qualified,window=[5.4,6.8],arms=results,original_Student_continuation_exact=True,BC_updates_remaining=0,not_trained=True,global_full_queries=prior_total+counts['full_queries']))
+  persist();print('CORRECTED_RECOVERY',qualified,am['error_cm'],am['force_rms'],bm['error_cm'],bm['force_rms'],flush=True);return dict(status='completed',counts=counts,student_optimizer_updates=0,qualified=qualified)
  if ARGS.mode=='diagnose':
   # Four first cost checks. Three are also members of the predetermined shadow cohort.
   for c in PLAN['cost_first_states']:
@@ -205,7 +232,7 @@ def study(e,m,contract,out):
  raise ValueError(ARGS.mode)
 def main():
  global ARGS
- p=argparse.ArgumentParser();p.add_argument('--mode',choices=['diagnose','moving-cost'],required=True);p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args();out=ARGS.output;out.mkdir(exist_ok=False)
+ p=argparse.ArgumentParser();p.add_argument('--mode',choices=['diagnose','moving-cost','repair-short'],required=True);p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args();out=ARGS.output;out.mkdir(exist_ok=False)
  import subprocess
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
  write(out/'launch.json',dict(runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),protocol_sha256=sha(ROOT/'research_notes/interactive_protocol.json'),source_sha256=sha(__file__),mode=ARGS.mode))
