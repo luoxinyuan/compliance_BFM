@@ -140,10 +140,10 @@ def study(e,m,contract,out):
   return dict(restricted=torch.tensor(row['restricted_input']),privileged=torch.tensor(row['privileged_input']),z=torch.tensor(row['selected_z']),previous_z=torch.tensor(row['previous_z']),episode=row['label'],time=row['time'],query_index=query_rows.index(row),source=source,valid=qualified,state_fingerprint=row['state_fingerprint'])
  if ARGS.mode=='moving-cost':
   # Real moving Student state after a documented, already executed early assistance prefix.
-  ep=read(S/'runs/diagnose-01/Teacher_replan_2s_normal72_4.7.json.gz');task.reset(ep['condition'],record=True,label='actual_moving_replay');parity=dict(qpos=0.,qvel=0.,qpd=0.);j=0
+  ep=read(S/'runs/diagnose-01/Teacher_replan_2s_normal72_4.7.json.gz');task.reset(ep['condition'],record=True,label='actual_moving_replay');counts['reset_prefill_physics_steps']+=600+len(task.prefix_data['physics']);counts['actual_replay_prefix_physics_steps']=0;parity=dict(qpos=0.,qvel=0.,qpd=0.);j=0
   while float(e.tether.time)<7.3-1e-7:
    c=ep['control'][5*j];parity['qpos']=max(parity['qpos'],float(np.max(abs(e.sim.data.qpos-np.array(c['pre_qpos'])))));parity['qvel']=max(parity['qvel'],float(np.max(abs(e.sim.data.qvel-np.array(c['pre_qvel'])))))
-   raw=torch.tensor(ep['decisions'][j]['raw'],device=dev,dtype=torch.float32)[None];_,_,_,st=task.step(raw);counts['actual_Student_physics_steps']+=st['physics_steps'];parity['qpd']=max(parity['qpd'],float(np.max(abs(np.array([c['q_PD'] for c in task.controls[-5:]])-np.array([c['q_PD'] for c in ep['control'][5*j:5*j+5]])))));j+=1
+   raw=torch.tensor(ep['decisions'][j]['raw'],device=dev,dtype=torch.float32)[None];_,_,_,st=task.step(raw);counts['actual_replay_prefix_physics_steps']+=st['physics_steps'];parity['qpd']=max(parity['qpd'],float(np.max(abs(np.array([c['q_PD'] for c in task.controls[-5:]])-np.array([c['q_PD'] for c in ep['control'][5*j:5*j+5]])))));j+=1
   assert max(parity.values())==0.,parity
   old_counts=read(S/'runs/diagnose-01/counts.json');assert old_counts['full_queries']+1<=96
   state_motion=dict(root_velocity=e.sim.data.qvel[:3].tolist(),foot_loads=list(e.last_support),previous_assistance='Teacher4.7-6.7s; actual Student6.7-7.3s, full own executed history replayed',no_borrowed_MPC_phase=True)
