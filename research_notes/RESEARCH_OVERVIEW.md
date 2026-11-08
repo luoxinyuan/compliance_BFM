@@ -145,3 +145,8 @@ BFM原生行为复用积压项：reward prompting、投影前状态reward线性�
 ### Issue51结论：搜索反馈、特权摊销与受限闭环需分层
 
 四条新增实际回合支持原生goal/motion＋因果物理搜索的有限有效域；fresh特权BC仅部分摊销，fresh受限ideal-force BC尚未获得可靠闭环。后者在接触前已分叉，平均latent MSE与完全重复输入检查都不足以证明闭环可学或信息不足。关键动作尾部拟合、实际执行历史和搜索自身记忆需分别定位。保留旧有限域迁移成功，本轮不启动PPO；下一步优先验证真实受限访问域的可靠反馈与小预算自身学习，勿以增加候选或旧高层继承链修补代替。详见[NATIVE_TRANSFER_RESULTS](NATIVE_TRANSFER_RESULTS.md)。
+
+
+### Issue52：BC仅初始化，主要优化发生于特权Expert真实反馈PPO
+
+用户新授权以原生搜索反馈蒸馏的P4000热启动高层actor/normalizer，fresh critic/Adam，直接按真实接触任务PPO优化。受限BC不作为前置门槛，当前不训练Student；不继承旧I/C0高层网络。奖励排序、采样命中有用变化、优势信用、均值动作保留及物理结果分别诊断。候选/搜索片段不得冒充on-policy采样；无默认硬模仿保持。训练目标仍是状态相关全身行为组织，非固定理想z。实时权限/预算见CURRENT_STATE、Issue52及p4000_protocol。

@@ -1,10 +1,10 @@
-# CURRENT_STATE — Issue52：P4000热启动Expert真实反馈PPO（准备中）
+# CURRENT_STATE — Issue52：P4000热启动Expert真实反馈PPO（PPO作业已启动）
 
 2026-11-08新授权优先于下方Issue51下一建议。[Issue52](https://github.com/GaoE05/robot-research-bridge/issues/52)。主线回到特权Expert真实物理PPO；BC仅初始化，不要求受限Student通过。两个seed5201/5202，同P4000 actor/normalizer，新critic/Adam；BFM/PD/Direct256D/1088D/10N/K80D8/reward不变，无在线I/C0/C32/搜索覆盖。
 
-stage `experiments/p4000-feedback-ppo-20261108`，新ledger18,000job秒/10GiB/98,304RL决策；两seed先各32×768，共同开发规则满足且预算允许才共同延至64。预登记见p4000_protocol.json；3个采样worker顺序使用同单卡，每个进程明确记录。无Student训练、reward-z扫描或未来输入。必要均值/采样和同状态分支检查后直接PPO，不恢复已结项Issue51。当前仅准备，是否启动和runtime以新ledger为准；GPU已只读核对空闲，另有资产下载进程不动。
+stage `experiments/p4000-feedback-ppo-20261108`，新ledger18,000job秒/10GiB/98,304RL决策；两seed先各32×768，共同开发规则满足且预算允许才共同延至64。预登记见p4000_protocol.json；3个采样worker顺序使用同单卡，每个进程明确记录。无Student训练、reward-z扫描或未来输入。必要均值/采样和同状态分支检查后直接PPO，不恢复已结项Issue51。必要物理检查已完成，seed5201作业已启动，seed5202在有限顺序队列中；实际更新进度以新ledger/status为准；GPU已只读核对空闲，另有资产下载进程不动。
 
-P4000 SHA256 `9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164`；原Issue51的S失败/旧历史S0成功完整保留。阶段中源代码保持固定，文档另独立worktree；下一会话先看新ledger，不按旧PID重启。
+P4000 SHA256 `9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164`；原Issue51的S失败/旧历史S0成功完整保留。阶段中源代码保持固定，文档另独立worktree；下一会话先看新ledger，不按旧PID重启。训练runtime `93383a406e4b4923418af0b47aca2077ca68e40c`，seed5201 PID144958/start_ticks6213109，有限队列PID144955/start_ticks6213079，boot be0c7b44-26b0-4699-8716-9903210007ab。预检runtime b6fcbab，198.83job秒；均值复现/FP32原概率阈值通过，默认std=.008保留；单次采样正常牵引8.824cm/6.476N优于均值12.306/7.939，只是探索正例，不是PPO已学成功。
 
 ---
 以下为Issue51结项历史；其中后续建议已由本轮新授权覆盖，不是当前主线。
