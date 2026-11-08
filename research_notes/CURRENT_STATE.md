@@ -1,16 +1,20 @@
-# CURRENT_STATE — Issue52：P4000热启动Expert真实反馈PPO（PPO作业已启动）
+# CURRENT_STATE — Issue52：原训练已退出，改为单seed开发；概率断言待定位
 
-2026-11-08新授权优先于下方Issue51下一建议。[Issue52](https://github.com/GaoE05/robot-research-bridge/issues/52)。主线回到特权Expert真实物理PPO；BC仅初始化，不要求受限Student通过。两个seed5201/5202，同P4000 actor/normalizer，新critic/Adam；BFM/PD/Direct256D/1088D/10N/K80D8/reward不变，无在线I/C0/C32/搜索覆盖。
+最后实时核对2026-11-08。用户最新决策：**先固定seed5201开发有用配方，有明确多条件物理收益后再以seed5202独立复核**。不按种子挑好结果，不把单seed开发当统计成功。详见[P4000_DEVELOPMENT_REPLICATION](P4000_DEVELOPMENT_REPLICATION.md)、[原实现审查](P4000_PPO_AUDIT.md)、[critic协议](P4000_CRITIC_PROTOCOL.md)。[Issue52](https://github.com/GaoE05/robot-research-bridge/issues/52)；Project Master18同步当前状态。
 
-stage `experiments/p4000-feedback-ppo-20261108`，新ledger18,000job秒/10GiB/98,304RL决策；两seed先各32×768，共同开发规则满足且预算允许才共同延至64。预登记见p4000_protocol.json；3个采样worker顺序使用同单卡，每个进程明确记录。无Student训练、reward-z扫描或未来输入。必要均值/采样和同状态分支检查后直接PPO，不恢复已结项Issue51。必要物理检查已完成，seed5201作业已启动，seed5202在有限顺序队列中；实际更新进度以新ledger/status为准；GPU已只读核对空闲，另有资产下载进程不动。
+## 已完成与失败
 
-P4000 SHA256 `9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164`；原Issue51的S失败/旧历史S0成功完整保留。阶段中源代码保持固定，文档另独立worktree；下一会话先看新ledger，不按旧PID重启。训练runtime `93383a406e4b4923418af0b47aca2077ca68e40c`，seed5201 PID144958/start_ticks6213109，有限队列PID144955/start_ticks6213079，boot be0c7b44-26b0-4699-8716-9903210007ab。预检runtime b6fcbab，198.83job秒；均值复现/FP32原概率阈值通过，默认std=.008保留；单次采样正常牵引8.824cm/6.476N优于均值12.306/7.939，只是探索正例，不是PPO已学成功。
+- 冻结P4000 SHA256 `9f560903072b355e6d2af537af725b9e61210ecea87a56151aa5d59dff45d164`；同actor/normalizer、新critic/Adam。原runtime `93383a406e4b4923418af0b47aca2077ca68e40c`，BFM/PD、1088D特权Direct256D、10N/K80D8、10/50/200Hz、原reward/std=.008不变；没有在线旧actor/搜索覆盖，无Student训练。
+- seed5201完成32批/24576真实RL决策，开发best8仅微小改善，不能推广为更强Expert；seed5202完成30批/23040已更新决策，第31批采样后在原raw logprob一致性断言失败。失败不是完整32批，不证明随机seed性能较差或方法无效；其额外失败批采样也要计成本。
+- 原有限队列随失败退出，后续critic/提效队列保护性停止。实时GPU计算进程为空；没有仍在跑的训练，也没有新自动发车。原源码、进程身份、全部模型/样本/failure和历史队列保留。
 
-2026-11-08中途[只读PPO审查](P4000_PPO_AUDIT.md)：seed5201已完成32批/24576决策，开发best仍batch8，仅微小收益；seed5202按原队列运行。确认actor KL提前停止/回滚也同时限制独立critic，32批名义576机会实际68个接受步（另有首批100次value预热）。每批均值z变化约.035°、采样约3.57°；force成本占89.3%，约25.8%接触时间限幅。未见原logprob/GAE错配证据；并非已证明唯一根因。建议后续最小对照分离critic拟合与actor KL，当前runtime/变量/训练不变，未启动修复实验。
+## 下一步与权限
 
-2026-11-08用户追加授权并扩大有限预算：[独立critic修复对照](P4000_CRITIC_PROTOCOL.md)改为两个seed各32×768，与原同seed完整32批匹配。累计job上限24000秒，输出10GiB、总98304RL不变；新增最多49152RL。旧纯等待队列在占卡前停止并留档，新独立worktree队列等待原训练/原终检退出。只分离critic六轮拟合与actor KL，reward/任务比/std/KL均不变。尚未做GPU合同检查或证明改善，以critic-followup-status.json为准。
+先定位保存的第31批概率复核差异，保持3e-4/KL/Adam原合同，不通过不带病开训。之后执行已授权的有界采样提效检查与独立critic最小对照：先固定5201单seed32批，与已完成原5201配对，reward/std/任务比等不混改。新runtime在问题查明后另固定，不调用已退出的历史双seed队列。独立第二seed留作有用配方的复核，不自动启动。新封存条件不用于反复开发/选配方。
 
-2026-11-08采样提效追加授权：[有界诊断削减](P4000_SAMPLING_EFFICIENCY.md)准备排队。原两seed不动；在原作业退出后、新critic两seed前，预算充足则最多600job秒做四完整条件物理逐值一致与cProfile/吞吐对照。只考虑减少不参与reward/控制的standing参考BFM诊断；默认保持完整诊断，零差异且实测提速才共同采用。不改worker/batch/MDP，不增加24k/10GiB/98304上限；当前未运行该测试、未证明提速。
+预算当前累计上限24000job秒、10GiB、98304真实新增RL；已用原预检198.83s、5201训练4855.78s、5202失败4477.10s，另有300s CPU分析预留。新增修复训练/critic GPU检查/采样提效测试均**尚未运行**，不能将推送方案写成改善成功。actor KL同时限制critic、均值每批约.035°只是有依据的待检机制，不是唯一根因。
+
+stage `experiments/p4000-feedback-ppo-20261108`，账本和各run/result/failure为证据。当前文档与原训练runtime分离；获准代码只进个人gaoe05/research，不改main/共享BFM/PD/权重/SoftSONIC/他人任务，不做真机。下一会话先核对本页、Issue52、真实ledger和具体失败，不按旧PID或旧“running”快照重启。
 
 ---
 以下为Issue51结项历史；其中后续建议已由本轮新授权覆盖，不是当前主线。

@@ -7,11 +7,10 @@
   },
   "original_runtime": "93383a406e4b4923418af0b47aca2077ca68e40c",
   "seeds": [
-    5201,
-    5202
+    5201
   ],
   "iterations": 32,
-  "comparison": "two paired seeds; original same-seed last after32 vs independent-critic last after32, identical rollback rule; actual restored identities separately recorded",
+  "comparison": "single paired development seed5201: original32 vs independent critic32; independent replication conditional on dev evidence",
   "single_variable": "independent critic no longer stopped/rolled back by actor KL; unchanged original actor update called with critic frozen, then critic completes 6 epochs",
   "critic": {
     "epochs": 6,
@@ -49,7 +48,7 @@
     "analysis_video_reserve_seconds": 400,
     "per_training_job_seconds": 5500
   },
-  "resource_rule": "same single authorized GPU sequential after original queue/final; both seed5201/5202 each32 with5500s cap, forecast reserve required before launch; no result-based extension or arm preference",
+  "resource_rule": "No automatic legacy two-seed launch. New runtime only after original probability failure reviewed, CUDA checks and live resources; one development seed5201; replication separate reviewed decision within aggregate limits.",
   "selection": {
     "score": "mean(force_RMS+.03*active_error_cm+cap_fraction)+.25*max(0,max(case_cost-initial_case_cost)); no ratio normalization at near-zero baselines",
     "severe": "any physics boundary; active error >initial+max(20cm,.5*initial) or force>initial+2N; short08 root_max_displacement>initial+.10m; none root_max_displacement>initial+.10m",
@@ -144,7 +143,7 @@
       "deceleration": 0.7
     }
   },
-  "final_rule": "one fixed pass P4000 + original same-seed last after32 + new last after32; restored identities if rollback are not mislabeled new learning",
+  "final_rule": "Sealed conditions remain fixed and unexecuted during recipe development; use only after recipe/selection fixed; no sealed reselection",
   "not_changed": "Current force reward is squared cost, no Gaussian force sigma. Reward sensitivity and phase weighting remain separate hypotheses.",
   "stop": "CUDA parity/probability failure; original queue failed; GPU/resource unavailable; insufficient aggregate reserve; no auto retry/new stage",
   "limits": "Train-target critic EV is not independent calibration; z angle alone is not task success; one or two paired seeds are limited evidence",
@@ -165,5 +164,16 @@
     "profiling": "first16 decisions per episode cProfile, excluded from throughput; inclusive times not additive or GPU compute",
     "priority": "skip probe if it jeopardizes both matched32 arms; costs/failures count; both new arms get same adopted engine, inference mathematics unchanged",
     "report": "single sampler result plus actual 3-worker RL decisions/s after adoption; cannot present single sampler gain as full training gain"
+  },
+  "revision_single_seed_development": {
+    "utc": "2026-11-08T06:01:11.324220+00:00",
+    "authorization": "Latest user steering: fixed one-seed development before independent replication",
+    "development_seed": 5201,
+    "replication_seed": 5202,
+    "automatic_replication": false,
+    "replication_trigger": "Useful multi-condition deterministic dev gains and acceptable old-task tradeoffs; freeze recipe and review before replication; not sealed-result tuning",
+    "legacy_two_seed_sequence": "Exited after original failure; not a current launch instruction",
+    "probability_blocker": "Original seed5202 batch31 raw logprob pre-update assertion; investigate without relaxing 3e-4",
+    "training_launched_under_revision": false
   }
 }
