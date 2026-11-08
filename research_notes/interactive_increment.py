@@ -84,7 +84,7 @@ def study(e,m,contract,out):
   write(out/'route-gate.json',gate);return gate
  else:
   paths={'frozen_PPOstart':Path(json.loads((S/'runs/eval-02/route-gate.json').read_text())['PPO_start']['path'])}
-  for seed in [5401,5402]:paths[f'RL{seed}_batch8']=S/f'runs/ppo-{seed}/candidate-8.pt'
+  for seed in [5401,5402]:paths[f'RL{seed}_batch7']=S/f'runs/ppo-clean-{seed}/candidate-7.pt'
   for role,path in paths.items():
    for name,ss in {**reg,**final}.items():run(role,path,name,ss)
    run(role+'_sample',path,'normal72',dev['normal72'],True)

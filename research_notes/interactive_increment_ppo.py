@@ -32,7 +32,7 @@ def study(e,m,contract,out):
    while not task.done:task.step(net.distribution(task.student_features()).mean)
    r=task.save(out);r.update(phase_report(task));r['iteration']=i;r['seed']=ARGS.seed;summary.append(r);write(out/'summaries.json',summary);print('STUDENT_PPO_DEV',i,name,r['all']['error_cm'],r['all']['force_rms'],r['boundary'],flush=True)
  save(0);evaluate(0);task.reset(record=True,label='train_0')
- for iteration in range(1,9):
+ for iteration in range(1,8):
   b={k:[] for k in ['obs','next_obs','action','logp','value','next_value','reward','discount','done']};stats=[];beg=time.monotonic()
   for j in range(768):
    if task.done:task.reset(record=True,label=f'train_{complete}')
@@ -47,7 +47,7 @@ def study(e,m,contract,out):
     complete+=1
     if task.boundary:task.save(out)
   batch0={k:np.asarray(v,dtype=bool if k=='done' else np.float32) for k,v in b.items()};np.savez_compressed(out/f'rollout-{iteration}.npz',**batch0);write(out/f'rollout-{iteration}-stats.json',stats)
-  batch={k:v.cuda() for k,v in merge_rollouts([dict(batch=batch0)],.95).items()}
+  batch={k:v.cuda() for k,v in merge_rollouts([dict(batch=batch0)],.95).items()};batch['raw_adv_std']=(batch['returns']-batch['value']).std()
   # Fresh value prefit uses actual on-policy batch; actor is frozen, then original KL/Adam guard.
   if iteration==1:
    before={k:v.detach().clone() for k,v in net.actor.state_dict().items()}
@@ -56,14 +56,14 @@ def study(e,m,contract,out):
      opt.zero_grad(set_to_none=True);loss=.5*((net.value(batch['obs'])-batch['returns'])/10).square().mean();loss.backward();torch.nn.utils.clip_grad_norm_(net.critic.parameters(),1);opt.step()
    assert all(torch.equal(v,before[k]) for k,v in net.actor.state_dict().items())
   log=update(net,opt,batch,epochs=6,minibatch=256,critic_shuffle_seed=ARGS.seed*10000+iteration);log.update(iteration=iteration,RL_decisions=decisions,rollout_seconds=time.monotonic()-beg,complete_episodes=complete,phase_counts=copy.deepcopy(phase_counts));logs.append(log);write(out/'learning.json',logs);save(iteration);print('STUDENT_PPO',ARGS.seed,iteration,decisions,log['optimizer_updates'],log['updated_value_EV'],flush=True)
-  if iteration in [4,8]:evaluate(iteration);task.reset(record=True,label=f'train_afterdev{iteration}')
- # Fixed8 is main endpoint; dev4 retained, no final-driven selection.
+  if iteration in [4,7]:evaluate(iteration);task.reset(record=True,label=f'train_afterdev{iteration}')
+ # Fixed7 after counted logging failure is main endpoint; dev4 retained, no final-driven selection.
  return dict(status='completed',student_optimizer_updates=0,RL_decisions=decisions,seed=ARGS.seed,actor_permission='restricted only',critic_permission='restricted only; privileged physical reward',phase_counts=phase_counts,complete_episodes=complete,reset_prefill_physics_steps=task.total_prefill-prefill,source_physics_steps=task.source_physics_total-source)
 def main():
  global ARGS,RUNTIME
  p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--seed',type=int,choices=[5401,5402],required=True);ARGS=p.parse_args();out=ARGS.output;out.mkdir(exist_ok=False);os.environ['P4000_CANONICAL_ROW_ACTOR']='1'
  import subprocess
- assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain']);RUNTIME=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip();write(out/'launch.json',dict(runtime=RUNTIME,seed=ARGS.seed,source_sha256=sha(__file__),scope='authorized paired Student own PPO only; no Expert PPO',max_decisions=6144))
+ assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain']);RUNTIME=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip();write(out/'launch.json',dict(runtime=RUNTIME,seed=ARGS.seed,source_sha256=sha(__file__),scope='authorized paired Student own PPO only; no Expert PPO',max_decisions=5376))
  os.environ['CLEAN_KIND']='direct';os.environ['BFM_RECOVERY_OUTPUT']=str(out);os.chdir(out)
  import m10_stage,m10_physics
  m10_physics.OUT=out;m10_physics.MODEL=P/'bridge-v2-owned/runs/issue19-recovery-20261028T045520Z/model-view';m10_stage.run_study=study;m10_physics.main()
