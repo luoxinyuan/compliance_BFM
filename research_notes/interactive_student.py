@@ -13,7 +13,13 @@ def fit(out):
  torch.set_num_threads(1);dev='cuda';cfg=PLAN['bc'];start=P/PLAN['source_student']['checkpoint'];assert sha(start)==PLAN['source_student']['sha256']
  diag=S/'runs/diagnose-01';assert json.loads((diag/'gate.json').read_text())['BC_allowed']
  d=torch.load(OLD/'runs/data-prepare-01/dataset.pt',map_location='cpu',weights_only=True);old=[r for r in d['rows'] if r['valid'] and r['split']=='train']
- fresh=torch.load(diag/'interactive-labels.pt',map_location='cpu',weights_only=True);new=[r for r in fresh['rows'] if r['valid']];assert new
+ fresh=torch.load(diag/'interactive-labels.pt',map_location='cpu',weights_only=True);valid=[r for r in fresh['rows'] if r['valid']];unique={}
+ for r in valid:
+  key=r['state_fingerprint']
+  if key in unique:
+   assert torch.equal(unique[key]['z'],r['z']) and torch.equal(unique[key]['restricted'],r['restricted']);unique[key].setdefault('additional_roles',[]).append(r['source'])
+  else:unique[key]=r
+ new=list(unique.values());assert new
  allrows=old+new;x=torch.stack([r['restricted'] for r in allrows]).to(dev);z=torch.stack([r['z'] for r in allrows]).to(dev);standing=d['standing'].to(dev)[None]
  oldgroups=[np.array([j for j,r in enumerate(old) if r['episode']==e]) for e in sorted(set(r['episode'] for r in old))]
  newgroups=[np.array([len(old)+j for j,r in enumerate(new) if r['episode']==e]) for e in sorted(set(r['episode'] for r in new))]
@@ -34,7 +40,7 @@ def fit(out):
      curve.append(dict(step=j,loss=float(loss.detach()),gradient=gn,seconds=time.monotonic()-beg));write(out/(arm+'-curve.json'),curve);print('STUDENT_BC',arm,j,float(loss.detach()),flush=True)
     if j in cfg['checkpoints']:save(j)
   assert torch.equal(net.center,ck['state_dict']['center']) and torch.equal(net.scale,ck['state_dict']['scale'])
-  log.append(dict(arm=arm,updates=cfg['updates_each'],original_valid=len(old),new_valid=len(new),old_independent_episodes=len(oldgroups),new_query_regions=len({(r['episode'],r['time']) for r in new}),new_trajectory_groups=len(newgroups),new_role_counts={k:sum(r['source']==k for r in new) for k in set(r['source'] for r in new)},training_parameters=sum(p.numel() for p in net.parameters() if p.requires_grad),seconds=time.monotonic()-beg,curve=curve,restricted_input_dim=1639))
+  log.append(dict(arm=arm,updates=cfg['updates_each'],original_valid=len(old),new_valid=len(new),raw_valid_roles=len(valid),deduplicated_same_state_roles=len(valid)-len(new),old_independent_episodes=len(oldgroups),new_query_regions=len({(r['episode'],r['time']) for r in new}),new_trajectory_groups=len(newgroups),new_role_counts={k:sum(r['source']==k for r in new) for k in set(r['source'] for r in new)},training_parameters=sum(p.numel() for p in net.parameters() if p.requires_grad),seconds=time.monotonic()-beg,curve=curve,restricted_input_dim=1639))
  np.savez_compressed(out/'matched-orders.npz',**{k:np.stack(v) for k,v in orders.items()});write(out/'training.json',log)
  return dict(status='completed',student_optimizer_updates=2000,RL_decisions=0,models=log)
 def study(e,m,contract,out):
