@@ -1,0 +1,61 @@
+{
+  "utc": "2026-11-08T07:20:24.241822+00:00",
+  "scope": "read-only saved logs and exact fixed-covariance Gaussian algebra; no new inference/physics/RL",
+  "runtime": "e1d6929d297442ad2ab4ebb7912306f292750354",
+  "completed_batches": 26,
+  "completed_decisions": 19968,
+  "kl_algebra": {
+    "fixed_raw_sigma": 0.008,
+    "joint_KL_accept": 0.02,
+    "exact_average_raw_delta_L2_RMS_bound": 0.0016,
+    "mean_raw_norm": 2.2824833270159357,
+    "typical_small_angle_upper_scale_deg": 0.040163819001816384,
+    "actual_mean_per_batch_z_deg": 0.03569437670879639,
+    "actual_mean_final_KL": 0.017136705072166827,
+    "qualification": "Exact batch E||delta_mean||^2 relation at fixed isotropic covariance. Angle estimate is typical small-angle scale using mean norm, not a strict per-state angle bound or proof KL should be relaxed."
+  },
+  "updates": {
+    "actor_accepted": 61,
+    "actor_candidate_rollbacks": 70,
+    "critic_updates": 468,
+    "mean_actor_lr": 5.993852459016393e-06,
+    "nominal_actor_lr": 3e-05,
+    "mean_actor_preclip_norm": 513.7311091188525,
+    "mean_actor_clip_scale": 0.0009844117238172981,
+    "clip_caveat": "Adam is approximately scale-invariant to uniform gradient scaling; cannot infer an equivalent1000x smaller parameter step from clipping ratio alone."
+  },
+  "phase_counts": {
+    "demand_family:long": 5664,
+    "demand_family:mid": 3195,
+    "demand_family:near": 2043,
+    "demand_family:none": 1983,
+    "demand_family:stop": 4143,
+    "demand_family:zero": 2025,
+    "phase:contact_hold": 3546,
+    "phase:decelerating": 287,
+    "phase:moving": 5063,
+    "phase:no_actual_contact": 1983,
+    "phase:pre_contact": 2098,
+    "phase:released_recovery": 6991,
+    "demand_family:arm": 915
+  },
+  "phase_fractions": {
+    "contact_hold": 0.1775841346153846,
+    "decelerating": 0.014372996794871794,
+    "moving": 0.2535556891025641,
+    "no_actual_contact": 0.09930889423076923,
+    "pre_contact": 0.10506810897435898,
+    "released_recovery": 0.35011017628205127
+  },
+  "score_change": {
+    "positive_adv_logprob_change_mean": 0.04820807396362607,
+    "negative_adv_logprob_change_mean": -0.0980164695244569,
+    "qualification": "Correct direction on average in saved advantages does not prove physical causality, reliable credit or future mean performance."
+  },
+  "next_diagnostics": [
+    "Cumulative direction and radial/tangent changes on a fixed visited-state set when GPU safely available; per-batch motion is not cumulative progress",
+    "Same-state multi-step physical reward/advantage ranking for useful directions; distinguish never sampled vs not retained",
+    "Predefined update/optimization-scale experiment only after current matched critic result; do not change active runtime or silently relax probability/KL guards"
+  ],
+  "automatic_new_training": false
+}
