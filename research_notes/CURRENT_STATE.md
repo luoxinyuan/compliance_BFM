@@ -1,3 +1,11 @@
+# CURRENT_STATE — Issue53 路线A交互pilot已授权，正在执行
+
+2026-11-08更新。[Issue53](https://github.com/GaoE05/robot-research-bridge/issues/53) · [预登记方法](INTERACTIVE_PILOT_METHODS.md) · [协议](interactive_protocol.json)。当前仅准备有限Teacher恢复/成本与FB影子测试，未产生新BC/PPO结论。Issue52维持结项，不恢复独立Expert PPO。
+
+独立stage `experiments/interactive-contact-pilot-20261108`，启动前GPU无进程、CPU负载0、可用RAM199GiB，使用现有验证NVIDIA环境。总预算12000 job秒/8GiB/96完整搜索/40额外FB序列/2000监督更新/12288 Student RL决策。S4000失败参考SHA与新S-init/历史S0分开。先从实际Student完整历史确认Teacher恢复域；不合格标签不蒸馏。FB不改变正式7候选Teacher。监督和Student自身RL均按协议条件启动，不自动扩技能。
+
+## 上阶段结项快照（事实保留）
+
 # CURRENT_STATE — Issue52完成：PPO有限收益，独立critic不足以解决均值反馈学习
 
 最后核对：2026-11-08。当前**无训练、无排队自动续训、新seed或Student**。[Issue52](https://github.com/GaoE05/robot-research-bridge/issues/52) · [完整结果](P4000_PPO_RESULTS.md) · [方法](P4000_PPO_METHODS.md) · [指标/模型清单](p4000_final_evidence.json) · [Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。先读[长期目标](RESEARCH_OVERVIEW.md)，不要把旧Library快照视为实时状态。

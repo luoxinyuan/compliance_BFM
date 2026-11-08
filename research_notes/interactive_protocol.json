@@ -1,0 +1,25 @@
+{
+  "stage": "Issue53",
+  "source_base": "b8affe78cb915cf1ab53103b32cb9f7bf61e4baf",
+  "budgets": {"job_seconds":12000,"output_bytes":8589934592,"full_queries":96,"fb_sequences":40,"supervised_updates":2000,"student_ppo_decisions":12288},
+  "physics": {"K":80,"D":8,"total_cap":10,"high_hz":10,"bfm_hz":50,"physics_hz":200},
+  "teacher": {"horizon":24,"candidates":7,"cold_phase":0,"seed":5301,"prediction":"current position+constant current velocity; current connection preserved; no actual future path/stop/release","phase_query":"fresh0; never copy Teacher phase from another trajectory; thereafter integrate only this takeover's actually executed commands","candidate_future_nodes_are_labels":false},
+  "source_student": {"checkpoint":"experiments/native-transfer-20261107/runs/bc-fit-01/S-4000.pt","sha256":"8f5e7287e974deedba1a8d841dd65d7692e944e278bd4a091f1ec224f167a479","role":"frozen failed reference and common BC update start"},
+  "s_init_sha256":"f414ea3fd12a4b90ae8a03ad273672dfd6c18e3d848a6d6e2e0efde5384561ba",
+  "historic_s0_sha256":"0ef3d43b03803cbf226949bd5272517dede6a4b76c069c4794f900cebc4ead12",
+  "cost_first_states": [{"case":"normal72","time":4.0},{"case":"normal72","time":4.7},{"case":"short08","time":5.4},{"case":"normal72","time":7.0}],
+  "shadow": {"state_count":20,"max_extra_each":2,"reward_candidates":"existing six z only; no new inference/seed/reward","surrogate":"conservative head-min F(s,a,z) dot fixed ordinary forward015 preprojection embedding /150000; robot-state proxy only, not full contact return","physical_equal_budget":"replace baseline reward candidates slots2,3 by F nominated unique nonduplicate candidates;7 vs7; never modify formal7 Teacher","pause":"20 comparisons over4 separate episodes,0 win and no meaningful margin or recovery => current proposer no-go; not general FB failure"},
+  "shadow_states": {
+    "normal72":[4.2,4.7,5.1,6.0,7.0],
+    "short08":[4.3,4.8,5.4,6.3,7.5],
+    "stop66":[4.4,5.3,7.5,8.3,9.0],
+    "mid24":[4.4,5.0,5.6,7.0,8.7]
+  },
+  "takeover": {"candidates":[{"case":"normal72","time":4.7},{"case":"short08","time":5.4},{"case":"normal72","time":6.0}],"closed_loop_decisions_each":20,"compare":"exact same full Student prefix; Student continues vs first Teacher100ms then Student vs repeated Teacher replanning2s","gate":"no safety boundary; better true contact reward AND no worsened force/error burden compared with Student; precontact handoff judged on later contact portion; universally failed early cases stop aggregation","labels":"sparse counterfactual labels only in verified visited recovery neighborhoods; actually executed takeover first actions separate source; no unsupported distant state promotion"},
+  "bc": {"arms":["old_data_only","interactive"],"seed":5301,"updates_each":1000,"batch":128,"lr":0.0001,"common_start":"S4000","normalization":"frozen original S4000 center/scale","new_fraction":0.35,"old_data":"Issue51 valid train whole episodes311; retain short/normal/stop data; no sealed data","new_data":"only verified recovery regions; metadata excluded from actor","checkpoints":[0,500,1000],"selection":"severe safety failures first; force_RMS+.03*error_cm+cap_fraction across3 dev cases; report each condition and tail; use dev only"},
+  "student_actor_audit": {"dim":1639,"proprio":465,"actual_last_z":256,"ideal_force_history":900,"known_mounts":18,"excluded":["anchor/error","partner velocity","future","taskID","clock","active truth","MPC phase/kind","privileged network features"]},
+  "dev_cases":["short08","normal72","stop66","mid24","none"],
+  "sealed_cases": {"near06":{"distance":0.06,"ramp":1.5,"onset":5.6},"prefix59_continue":{"distance":0.59,"ramp":4.1,"onset":5.7},"prefix59_stop":{"distance":0.59,"ramp":4.1,"onset":5.7,"stop_time":8.4,"deceleration":0.65}},
+  "ppo_gate":"only safe selected interactive and meaningful improvement in at least1 task family; no automatic Expert PPO; max2seeds x8x768 Student decisions; actor restricted/critic explicitprivileged",
+  "stop_rules":["fullstate prefix mismatch","budget/permissions/safety","Teacher generally ineffective on earliest Student deviations => no BC/PPO on invalid labels","valid Teacher but aggregation no improvement => no repeated labels-only training","FB no-go does not block primary Student work"]
+}

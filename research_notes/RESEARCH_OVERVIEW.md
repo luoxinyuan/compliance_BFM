@@ -150,3 +150,8 @@ BFM原生行为复用积压项：reward prompting、投影前状态reward线性�
 ### Issue52：BC仅初始化，主要优化发生于特权Expert真实反馈PPO
 
 用户新授权以原生搜索反馈蒸馏的P4000热启动高层actor/normalizer，fresh critic/Adam，直接按真实接触任务PPO优化。受限BC不作为前置门槛，当前不训练Student；不继承旧I/C0高层网络。奖励排序、采样命中有用变化、优势信用、均值动作保留及物理结果分别诊断。候选/搜索片段不得冒充on-policy采样；无默认硬模仿保持。训练目标仍是状态相关全身行为组织，非固定理想z。实时权限/预算见CURRENT_STATE、Issue52及p4000_protocol。
+
+
+### 路线A小型交互验证（Issue53）
+
+当前授权优先检验原生物理搜索Teacher在受限Student真实访问状态中的有效性及成本；有效后有限交互聚合与Student自身闭环RL，不能把特权Expert PPO当作Student学习收益。FB只作当前同权重F/B与已有reward-z的影子提名，正式动作仍经原7候选真实物理排名；不将F的机器人状态价值误称完整接触return。实际状态与停止结论见CURRENT_STATE/Issue53。
