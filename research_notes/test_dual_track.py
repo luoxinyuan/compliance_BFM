@@ -3,9 +3,10 @@ import os,copy,torch
 os.environ['P4000_CANONICAL_ROW_ACTOR']='1'
 from clean_policy import Expert,update as old_update
 from dual_track_ppo import update
-from dual_track_runtime import PPOContract
+from dual_track_runtime import PPOContract,load_ppo_contract
 
 def main():
+ assert load_ppo_contract()==PPOContract()
  torch.set_num_threads(1);torch.manual_seed(5510)
  n=Expert(1639,'direct').cuda();n.actor[-1].bias.data.normal_(std=.01);nn=copy.deepcopy(n)
  x=torch.randn(12,1639,device='cuda');d=n.distribution(x);a=d.sample();lp=d.log_prob(a).sum(-1).detach();v=n.value(x).detach()

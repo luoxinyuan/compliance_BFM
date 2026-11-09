@@ -16,7 +16,7 @@ def study(e,m,contract,out):
  from native_env import install,spec
  from retention_eval import MODELS
  from clean_policy import Expert
- from dual_track_runtime import PrivilegedBranch,TrainingBranch,save_training_checkpoint,restore_training_checkpoint
+ from dual_track_runtime import PrivilegedBranch,TrainingBranch,save_training_checkpoint,restore_training_checkpoint,load_ppo_contract
  from dual_track_critic import update
  from humanoidverse.force_compliance.parallel import merge_rollouts
  from m11_runtime_speed import install as speed
@@ -78,7 +78,7 @@ def study(e,m,contract,out):
  t=time.monotonic();np.savez_compressed(out/'new-rollout.npz',**bb);torch.save(pool,out/'new-controls.pt');save_data=time.monotonic()-t
  # Complete original PPO batch; discarded benchmark update, not promoted model.
  merged={k:v.cuda() for k,v in merge_rollouts([dict(batch=bb)],.95).items()};merged['raw_adv_std']=(merged['returns']-merged['value']).std()
- torch.cuda.synchronize();t=time.monotonic();log=update(net,opt,merged,epochs=6,minibatch=256,critic_shuffle_seed=5503);torch.cuda.synchronize();update_s=time.monotonic()-t
+ torch.cuda.synchronize();t=time.monotonic();log=update(net,opt,merged,epochs=6,minibatch=256,critic_shuffle_seed=5503,contract=load_ppo_contract());torch.cuda.synchronize();update_s=time.monotonic()-t
  t=time.monotonic();torch.save(dict(model=net.state_dict(),optimizer=opt.state_dict()),out/'disposable-high.pt');save_s=time.monotonic()-t
  t=time.monotonic();back=torch.load(out/'disposable-high.pt',map_location='cuda',weights_only=True);read_s=time.monotonic()-t;assert all(torch.equal(v,back['model'][k]) for k,v in net.state_dict().items())
  write(out/'high-benchmark.json',dict(decisions=768,controls=len(pool),sample_s=sample_s,reset_s=reset_seconds,update_s=update_s,data_save_s=save_data,checkpoint_save_s=save_s,checkpoint_read_s=read_s,peak_allocated=torch.cuda.max_memory_allocated(),peak_reserved=torch.cuda.max_memory_reserved(),update=log,compile='none; canonical row eager FP32',formal_training=False))

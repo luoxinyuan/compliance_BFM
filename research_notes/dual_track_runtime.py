@@ -78,3 +78,12 @@ def restore_training_checkpoint(path,task,net,opt,generators=()):
     task.rng.bit_generator.state=copy.deepcopy(r['task'])
     for g,state in zip(generators,r['generators']):g.set_state(state)
     return ck['counters']
+
+def load_ppo_contract(path=None):
+    """Versioned new entry configuration; never mutates archived runtime modules."""
+    import json
+    from pathlib import Path
+    path=Path(path) if path else Path(__file__).with_name('dual_track_runtime_config_v1.json')
+    cfg=json.loads(path.read_text())
+    assert cfg['version']=='DUAL_TRACK_RUNTIME_V1'
+    return PPOContract(**cfg['ppo'])
