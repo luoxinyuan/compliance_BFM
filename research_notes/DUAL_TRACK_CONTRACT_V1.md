@@ -2,6 +2,14 @@
 
 Status: engineering draft; **not Yi-approved scientific training contract**. No formal PPO/FB run authorized by this document. Two tracks share task/quality/splits and differ only by explicitly registered model/training permissions. BC500 remains baseline; 5403b7 not promoted. Source: f9971405bad22bcff8134f226356a13eb5cba51f and read-only audit 2026-11-09. Existing FB update loop is retained; no new fork/UFO/mjlab required in this milestone.
 
+## Tracks and comparison boundary
+
+Track H: frozen original BFM/PD, external high-level direct-z policy. This milestone adds a BC500-derived privileged zero branch and benchmarks a disposable PPO batch, preserving the independent critic fit.
+
+Track FB: separate copy of original base F/B/actor/discriminator/critics, weights-only initialization, fresh optimizer/replay. This milestone benchmarks its complete original joint update only. Robot+contact/partner observation expansion remains unimplemented and requires explicit schema/weight-migration approval. Native base actor outputs29 low-level actions at50Hz; its learned256D representation is not the external10Hz policy action.
+
+Prospective matched scientific comparisons must use the same actor-information tier (Teacher tier O_P or restricted tier O_S), task/physics/parent split and physical quality criteria. Exact future FB input injection is pending Yi. Present runtime benchmarks deliberately retain the existing architectures, so their input sizes/roles differ and **are not an algorithm-quality A/B**. The privileged branch's base actor is trainable in the disposable benchmark, normalizer buffers unchanged; freeze/train decision for formal runs is pending.
+
 ## Common task / source / partner
 
 Scope: right-wrist forward tether guidance only. Requests: connected zero demand, local, medium, sustained long pull, same-prefix stop/continue, holding, real release/free recovery. Distance and speed must vary independently. A current partner target is not a future-distance label. Standing, goal_arm5 arm-ready and motion_walk_task moving sources are generated through actual native BFM execution, including entry and support phase. Never reset qpos alone. Common prefixes and original source trajectories form parent groups, even across seeds/conditions. Joint source × request × support/phase coverage is counted from real executed decisions/episodes, not sampling probabilities.
@@ -28,7 +36,7 @@ Store source trajectory ID, prefix ID, episode ID, source support stratum, compl
 
 New sealed **schema/list, no numeric instantiation yet**: standing long-A/B (different native support/prefix), arm-ready local/interior-domain/long, moving continued/stop, matched-prefix stop/continue, zero-demand/no-contact. All derive from distinct parent native episodes; exact distance/speed/onset/phase/seeds/group allocation await Yi. No sealed evaluation is run in this engineering milestone. No test-driven candidate/threshold/model changes.
 
-Independent evaluation runs in child process with fixed independent seeds, no live training Task reset. New live branch restore includes full CrossResetState callbacks/spec bindings/MjData integration+solver/history, Python random, NumPy global, Task Generator, Torch CPU/all CUDA, explicit sampling Generators. This is in-process branch restoration; portable cross-process training resume is not claimed without serialization test.
+Independent evaluation runs in child process with fixed independent seeds, no live training Task reset. New live branch restore includes full CrossResetState callbacks/spec bindings/MjData integration+solver/history, Python random, NumPy global, Task Generator, Torch CPU/all CUDA, explicit sampling Generators. In-process cross-reset restoration and persisted reset+actual-prefix reconstruction are tested separately. Exact new-process restoration is not claimed without an independent-process serialization test; portable simulator objects/callbacks are never blindly pickled.
 
 ## Counting and failures
 
@@ -45,6 +53,7 @@ Failure classes: correctness (probability/state/label identity → immutable err
 | new parent train/dev/sealed counts and exact seeds | group by source+common prefix; counts unset | pending Yi |
 | serious protection and quality tolerances | M1 long10cm/6.5N, mid8cm/7N, local4cm/4N, saturation15%, slip.45,yaw20° are **historical references only**, not automatically adopted | pending Yi |
 | scientific checkpoint rule and Pareto tolerances | no average-only masking; exact tolerances unset | pending Yi |
+| actor information tier and base actor freeze/train | matched O_S or O_P tier; formal choice unset | pending Yi |
 | formal PPO KL/step/std/critic schedule | inherited guard available, change values only explicitly; no formal values selected here | pending Yi |
 | formal base FB contact fields, widths, normalization and migration | current robot-only base plus proposed partner/contact schema; final dimensions unset | pending Yi |
 | replay composition/expert source and auxiliary reward weights | throughput replay is NOT approved learning dataset | pending Yi |

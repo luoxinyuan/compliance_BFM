@@ -24,6 +24,8 @@ def main():
  t=time.monotonic();agent=cfg.build(space,kw['action_dim']);sync();init_s=time.monotonic()-t
  t=time.monotonic();safetensors.torch.load_model(agent._model,MODEL/'model.safetensors',strict=True,device='cuda');sync();load_s=time.monotonic()-t
  assert all(len(o.state)==0 for o in [agent.actor_optimizer,agent.backward_optimizer,agent.forward_optimizer,agent.critic_optimizer,agent.discriminator_optimizer,agent.aux_critic_optimizer])
+ assert agent.z_buffer.empty()
+ probes={name:next(getattr(agent._model,name).parameters()).detach().flatten()[:1024].clone() for name in ['_forward_map','_backward_map','_actor','_critic','_aux_critic','_discriminator']}
  train=DictBuffer(capacity=8192,device='cpu');assert len(train)==0
  c=torch.load(a.controls,map_location='cpu',weights_only=False)
  keys=list(kw['obs_space']['spaces']);pairs=[(x,y) for x,y in zip(c,c[1:]) if abs(y['time']-x['time']-.02)<1e-6]
@@ -54,13 +56,21 @@ def main():
    write(a.output/f'segment-{segment}-progress.json',dict(updates=i+1,times=times))
   elapsed=time.monotonic()-t0
   result=dict(segment=segment,updates=128,wall_s=elapsed,per_update_s=times,median_s=float(np.median(times)),steady_median_excluding_first8_s=float(np.median(times[8:])),first_update_s=times[0],compile_enabled=segment==1,compile_registration_s=compile_registration_s,compile_first_call_included=True,peak_allocated=torch.cuda.max_memory_allocated(),peak_reserved=torch.cuda.max_memory_reserved(),replay_transitions=len(train),optimizer_names=list(agent.optimizer_dict))
+  result['parameter_probe_max_change']={name:float((next(getattr(agent._model,name).parameters()).detach().flatten()[:1024]-v).abs().max()) for name,v in probes.items()}
+  result['optimizer_state_counts']={k:len(v['state']) for k,v in agent.optimizer_dict.items()}
+  assert all(v>0 for v in result['optimizer_state_counts'].values())
   results.append(result);write(a.output/'segments.json',results)
  # Save/read full model+optimizers once; do not overwrite source archive.
  t=time.monotonic();agent.save(str(a.output/'disposable-checkpoint'));sync();save_s=time.monotonic()-t
  t=time.monotonic();saved=torch.load(a.output/'disposable-checkpoint/optimizers.pth',map_location='cpu',weights_only=False);read_s=time.monotonic()-t
- assert saved.keys()==agent.optimizer_dict.keys()
+ def equal(a,b):
+  if torch.is_tensor(a):return torch.equal(a.detach().cpu(),b.detach().cpu())
+  if isinstance(a,dict):return a.keys()==b.keys() and all(equal(a[k],b[k]) for k in a)
+  if isinstance(a,(tuple,list)):return len(a)==len(b) and all(equal(x,y) for x,y in zip(a,b))
+  return a==b
+ assert equal(saved,agent.optimizer_dict)
  from humanoidverse.agents.fb_cpr_aux.model import FBcprAuxModel
  t=time.monotonic();restored=FBcprAuxModel.load(str(a.output/'disposable-checkpoint/model'),device='cpu',strict=True);model_read_s=time.monotonic()-t
  assert all(torch.equal(v.detach().cpu(),restored.state_dict()[k]) for k,v in agent._model.state_dict().items())
- write(a.output/'result.json',dict(model_checkpoint_read_s=model_read_s,model_roundtrip_exact=True,status='completed',full_agent_updates=256,formal_training=False,model_source_unchanged=True,segments=results,checkpoint_save_s=save_s,optimizer_read_s=read_s,model_read_s_initial=load_s,compiled_model_readback='model safetensors identity checked separately; no formal resume'))
+ write(a.output/'result.json',dict(model_checkpoint_read_s=model_read_s,model_roundtrip_exact=True,optimizer_roundtrip_exact=True,status='completed',full_agent_updates=256,formal_training=False,model_source_unchanged=True,segments=results,checkpoint_save_s=save_s,optimizer_read_s=read_s,model_read_s_initial=load_s,compiled_model_readback='model safetensors identity checked separately; no formal resume'))
 if __name__=='__main__':main()
