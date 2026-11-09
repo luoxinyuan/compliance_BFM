@@ -165,4 +165,3 @@ def load_warm_started_agent(model_dir, *, device="cpu"):
                        fresh_optimizers=True, targets_synced_to_online=True,
                        model_source=str(model_dir), contact_dim=CONTACT_DIM,
                        formal_training=False)
-

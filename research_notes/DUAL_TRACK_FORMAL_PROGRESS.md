@@ -81,4 +81,3 @@ The four-cell physical table currently has explicitly missing trained cells; see
 the decision packet. Do not invent PPO results, qualifications, sealed groups or
 Student migration to fill it. Issue56 stays open; this preparation checkpoint is
 not a conclusion on which research track wins.
-

@@ -174,4 +174,3 @@ The comparison table is BFM frozen/mutable × privileged/restricted actor, with
 missing cells explicitly labeled untrained/unimplemented rather than failures.
 The frozen privileged cell includes the KL.02/.08 comparison. No extra restricted
 FB run is silently authorized by presenting this table. See the decisions note.
-
