@@ -1,6 +1,6 @@
 {
   "version": "DUAL_TRACK_CONTRACT_V1_APPROVED_SCOPE",
-  "status": "partial_scientific_approval_no_formal_launch",
+  "status": "scientific_configuration_approved_runtime_checks_required",
   "approved_limits": {
     "experiment_job_seconds": 864000,
     "frozen_job_seconds": 403200,
@@ -23,7 +23,8 @@
   "approval_sources": [
     "https://github.com/GaoE05/robot-research-bridge/issues/18#issuecomment-6739473031",
     "Current user formal dual-track instruction, 2026-11-09",
-    "Three explicit asynchronous user replies in this session, 2026-11-09"
+    "Three explicit asynchronous user replies in this session, 2026-11-09",
+    "Explicit user adopts P1-P9, source packet7354e0a"
   ],
   "decisions": {
     "discount_reward": {
@@ -108,49 +109,58 @@
       "approval_source": "https://github.com/GaoE05/robot-research-bridge/issues/18#issuecomment-6739473031"
     },
     "task_ranges": {
-      "status": "pending_Yi",
-      "value": null,
-      "proposal": "near4-12cm avg.03-.09m/s; mid16-45cm avg.06-.15; long50-80cm avg one of.09/.15/.22; onset handoff+.5-1.2s; hold1.5-3s; decel.5-1s; free recovery4s; real5N regression only"
+      "status": "approved",
+      "value": "near4-12cm avg.03-.09m/s; mid16-45cm avg.06-.15; long50-80cm avg one of.09/.15/.22; onset handoff+.5-1.2s; hold1.5-3s; decel.5-1s; free recovery4s; real5N regression only",
+      "proposal": "near4-12cm avg.03-.09m/s; mid16-45cm avg.06-.15; long50-80cm avg one of.09/.15/.22; onset handoff+.5-1.2s; hold1.5-3s; decel.5-1s; free recovery4s; real5N regression only",
+      "approval_source": "Explicit user async reply: adopt P1-P9 package at published commit7354e0a, 2026-11-09"
     },
     "source_generation_and_parent_split": {
-      "status": "pending_Yi",
-      "value": null,
-      "proposal": "distinct actual native source command histories, qualified physical support strata; dev10/source, sealed20/source; whole native episode/common-prefix/partner parent IDs; no seed-only independence; manifests hashed before evaluation"
+      "status": "approved",
+      "value": "distinct actual native source command histories, qualified physical support strata; dev10/source, sealed20/source; whole native episode/common-prefix/partner parent IDs; no seed-only independence; manifests hashed before evaluation",
+      "proposal": "distinct actual native source command histories, qualified physical support strata; dev10/source, sealed20/source; whole native episode/common-prefix/partner parent IDs; no seed-only independence; manifests hashed before evaluation",
+      "approval_source": "Explicit user async reply: adopt P1-P9 package at published commit7354e0a, 2026-11-09"
     },
     "selection_and_safety": {
-      "status": "pending_Yi",
-      "value": null,
-      "proposal": "retain all candidates; native/physics boundary excludes candidate promotion, not research; group by task family; equal-family physical cost F_RMS+.03*error_cm+cap; tail/quality guard against initial model; complete thresholds in decisions note"
+      "status": "approved",
+      "value": "retain all candidates; native/physics boundary excludes candidate promotion, not research; group by task family; equal-family physical cost F_RMS+.03*error_cm+cap; tail/quality guard against initial model; complete thresholds in decisions note",
+      "proposal": "retain all candidates; native/physics boundary excludes candidate promotion, not research; group by task family; equal-family physical cost F_RMS+.03*error_cm+cap; tail/quality guard against initial model; complete thresholds in decisions note",
+      "approval_source": "Explicit user async reply: adopt P1-P9 package at published commit7354e0a, 2026-11-09"
     },
     "high_architecture_and_optimization": {
-      "status": "pending_Yi",
-      "value": null,
-      "proposal": "exact Issue55 branch1088-128-256 and critic2727-128-1; train base actor+branch, fixed old normalizer/log_std; fresh Adam3e-5actor/3e-4critic; GAE.95; epochs6/batch768/minibatch256; no extra BC; 100 value-only first-batch updates"
+      "status": "approved",
+      "value": "exact Issue55 branch1088-128-256 and critic2727-128-1; train base actor+branch, fixed old normalizer/log_std; fresh Adam3e-5actor/3e-4critic; GAE.95; epochs6/batch768/minibatch256; no extra BC; 100 value-only first-batch updates",
+      "proposal": "exact Issue55 branch1088-128-256 and critic2727-128-1; train base actor+branch, fixed old normalizer/log_std; fresh Adam3e-5actor/3e-4critic; GAE.95; epochs6/batch768/minibatch256; no extra BC; 100 value-only first-batch updates",
+      "approval_source": "Explicit user async reply: adopt P1-P9 package at published commit7354e0a, 2026-11-09"
     },
     "matched_pair_schedule": {
-      "status": "pending_Yi",
-      "value": null,
-      "proposal": "98304 decisions per KL arm, same initialization and paired seed5601; 128x768 each; immutable every8batch checkpoints, dev0/every8/final; sealed once per selected model; single-GPU serial alternating blocks without touching archived code"
+      "status": "approved",
+      "value": "98304 decisions per KL arm, same initialization and paired seed5601; 128x768 each; immutable every8batch checkpoints, dev0/every8/final; sealed once per selected model; single-GPU serial alternating blocks without touching archived code",
+      "proposal": "98304 decisions per KL arm, same initialization and paired seed5601; 128x768 each; immutable every8batch checkpoints, dev0/every8/final; sealed once per selected model; single-GPU serial alternating blocks without touching archived code",
+      "approval_source": "Explicit user async reply: adopt P1-P9 package at published commit7354e0a, 2026-11-09"
     },
     "fb_reward_and_retention": {
-      "status": "pending_Yi",
-      "value": null,
-      "proposal": "same physical contact integral as scalar aux reward; fresh aux reward normalizer vs fixed identity must be explicitly selected; existing reg_coeff=1/reg_coeff_aux=1/scale_reg=True; robot-only CPR from actual original native no-contact8frame snippets, balanced by source; no synthetic contact labels"
+      "status": "approved",
+      "value": "same physical contact integral as scalar aux reward; fresh aux reward normalizer vs fixed identity must be explicitly selected; existing reg_coeff=1/reg_coeff_aux=1/scale_reg=True; robot-only CPR from actual original native no-contact8frame snippets, balanced by source; no synthetic contact labels",
+      "proposal": "same physical contact integral as scalar aux reward; fresh aux reward normalizer vs fixed identity must be explicitly selected; existing reg_coeff=1/reg_coeff_aux=1/scale_reg=True; robot-only CPR from actual original native no-contact8frame snippets, balanced by source; no synthetic contact labels",
+      "approval_source": "Explicit user async reply: adopt P1-P9 package at published commit7354e0a, 2026-11-09"
     },
     "fb_online_z_schedule": {
-      "status": "pending_Yi",
-      "value": null,
-      "proposal": "source-associated native stand/arm z or native walking causal phase sequence throughout episode; no contact-to-skill rule, actor free to change29D action; initial warmup real1024 counted toward1M; train existing goal/uniform relabel50/50; evaluate native prompts and contact reward-inference separately"
+      "status": "approved",
+      "value": "source-associated native stand/arm z or native walking causal phase sequence throughout episode; no contact-to-skill rule, actor free to change29D action; initial warmup real1024 counted toward1M; train existing goal/uniform relabel50/50; evaluate native prompts and contact reward-inference separately",
+      "proposal": "source-associated native stand/arm z or native walking causal phase sequence throughout episode; no contact-to-skill rule, actor free to change29D action; initial warmup real1024 counted toward1M; train existing goal/uniform relabel50/50; evaluate native prompts and contact reward-inference separately",
+      "approval_source": "Explicit user async reply: adopt P1-P9 package at published commit7354e0a, 2026-11-09"
     },
     "fb_replay_and_checkpoint": {
-      "status": "pending_Yi",
-      "value": null,
-      "proposal": "new CPU replay capacity1M, store complete pre-reset successor+terminated/truncated; source/prefix steps separate from1M; immutable full model/6Adam/normalizers/counters/RNG/replay at0/250k/1M; engineering stop ceiling64GiB and shared-free-space guard, no claim these are measured sizes; mutable-model restore must replay actual historical29D actions, not regenerate them using new actor weights"
+      "status": "approved",
+      "value": "new CPU replay capacity1M, store complete pre-reset successor+terminated/truncated; source/prefix steps separate from1M; immutable full model/6Adam/normalizers/counters/RNG/replay at0/250k/1M; engineering stop ceiling64GiB and shared-free-space guard, no claim these are measured sizes",
+      "proposal": "new CPU replay capacity1M, store complete pre-reset successor+terminated/truncated; source/prefix steps separate from1M; immutable full model/6Adam/normalizers/counters/RNG/replay at0/250k/1M; engineering stop ceiling64GiB and shared-free-space guard, no claim these are measured sizes",
+      "approval_source": "Explicit user async reply: adopt P1-P9 package at published commit7354e0a, 2026-11-09"
     },
     "fb_update_recipe": {
-      "status": "pending_Yi",
-      "value": null,
-      "proposal": "original six optimizer recipe except approved gamma; batch1024,16updates/1024 transitions; compile after eager correctness; warmup1024 counts within1M, no update burst for uncollected samples; exact endpoint pending schedule explicitly not15625 updates if one warmup batch skipped"
+      "status": "approved",
+      "value": "original six optimizer recipe except approved gamma; batch1024,16updates/1024 transitions; compile after eager correctness; warmup1024 counts within1M, no update burst for uncollected samples; exact endpoint pending schedule explicitly not15625 updates if one warmup batch skipped",
+      "proposal": "original six optimizer recipe except approved gamma; batch1024,16updates/1024 transitions; compile after eager correctness; warmup1024 counts within1M, no update burst for uncollected samples; exact endpoint pending schedule explicitly not15625 updates if one warmup batch skipped",
+      "approval_source": "Explicit user async reply: adopt P1-P9 package at published commit7354e0a, 2026-11-09"
     }
   }
 }

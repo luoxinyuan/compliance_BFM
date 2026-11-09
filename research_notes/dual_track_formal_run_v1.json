@@ -1,0 +1,115 @@
+{
+  "version": "DUAL_TRACK_FORMAL_RUN_V1",
+  "approvals": "dual_track_formal_contract_v1.json",
+  "seed": 5601,
+  "source_probs": {
+    "standing": 0.3333333333333333,
+    "goal_arm5": 0.3333333333333333,
+    "motion_walk_task": 0.3333333333333333
+  },
+  "request_probs": {
+    "near": 0.2,
+    "mid": 0.2,
+    "long": 0.25,
+    "stop": 0.2,
+    "zero": 0.1,
+    "none": 0.05
+  },
+  "source_until": {
+    "standing": [
+      3.8,
+      5.2
+    ],
+    "goal_arm5": [
+      5.2,
+      6.2
+    ],
+    "motion_walk_task": [
+      5.6,
+      7.6
+    ]
+  },
+  "distance_ranges": {
+    "near": [
+      0.04,
+      0.12
+    ],
+    "mid": [
+      0.16,
+      0.45
+    ],
+    "long": [
+      0.5,
+      0.8
+    ]
+  },
+  "speed_ranges": {
+    "near": [
+      0.03,
+      0.09
+    ],
+    "mid": [
+      0.06,
+      0.15
+    ]
+  },
+  "long_speeds": [
+    0.09,
+    0.15,
+    0.22
+  ],
+  "onset_delay": [
+    0.5,
+    1.2
+  ],
+  "hold": [
+    1.5,
+    3.0
+  ],
+  "deceleration": [
+    0.5,
+    1.0
+  ],
+  "recovery": 4.0,
+  "gamma_high": 0.99,
+  "gamma_native": 0.9979919516614258,
+  "gae": 0.95,
+  "batch": 768,
+  "minibatch": 256,
+  "epochs": 6,
+  "actor_lr": 3e-05,
+  "critic_lr": 0.0003,
+  "critic_value_only_first_batch": 100,
+  "raw_std": 0.008,
+  "high_batches_per_arm": 128,
+  "eval_every": 8,
+  "dev_parent_seed": 56031,
+  "sealed_parent_seed": 56061,
+  "dev_per_source": 10,
+  "sealed_per_source": 20,
+  "fb": {
+    "native_transitions": 1000000,
+    "checkpoint_steps": [
+      0,
+      250000,
+      1000000
+    ],
+    "batch": 1024,
+    "updates_per_collection": 16,
+    "collection_block": 1024,
+    "warmup": 1024,
+    "replay_capacity": 1000000,
+    "aux_normalizer": "identity",
+    "fresh_aux_critic": true,
+    "reg_coeff": 1.0,
+    "reg_coeff_aux": 1.0,
+    "scale_reg": true,
+    "online_z": "source_native_causal",
+    "train_goal_ratio": 0.5,
+    "expert_asm_ratio": 0.0,
+    "relabel_ratio": 1.0,
+    "compile": true
+  },
+  "engineering_output_ceiling_bytes": 68719476736,
+  "minimum_shared_free_bytes": 107374182400
+}
