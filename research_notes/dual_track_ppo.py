@@ -1,7 +1,8 @@
 """New-entry configurable guard; archived update unchanged."""
 import torch
 from dual_track_runtime import PPOContract
-def update(net,opt,batch,epochs=6,minibatch=256,actor_lr=None):
+def update(net,opt,batch,epochs=6,minibatch=256,actor_lr=None, contract=None):
+    contract = contract or PPOContract()
     import copy
     x=batch['obs'];raw=batch['action'];old=batch['logp'];adv=batch['advantages'];ret=batch['returns'];ov=batch['value']
     with torch.no_grad():
