@@ -1,3 +1,5 @@
+2026-11-09 发布更新：用户明确长期授权后，M1公开结项摘要已发布并结项于 https://github.com/GaoE05/robot-research-bridge/issues/54 ，Project Master同步评论 https://github.com/GaoE05/robot-research-bridge/issues/18#issuecomment-6732326969 。仅发布汇总结论，原始资产未上传；本轮源码分支仍未推送。本更新取代此前“公开Issue尚未创建”的当前状态，保留拒绝记录作为历史。
+
 # CURRENT_STATE — M1联合源覆盖资格已结项
 
 2026-11-09。**仅采集/验证完成，未训练，未进入M2/M3。BC500仍是冻结基线，5403b7不晋级。**
