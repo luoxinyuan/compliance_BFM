@@ -38,6 +38,10 @@ New sealed **schema/list, no numeric instantiation yet**: standing long-A/B (dif
 
 Independent evaluation runs in child process with fixed independent seeds, no live training Task reset. New live branch restore includes full CrossResetState callbacks/spec bindings/MjData integration+solver/history, Python random, NumPy global, Task Generator, Torch CPU/all CUDA, explicit sampling Generators. In-process cross-reset restoration and persisted reset+actual-prefix reconstruction are tested separately. An independent-process serialization test now verifies original-prefix physics/history/model/RNG identity; portable simulator objects/callbacks are never blindly pickled.
 
+## Reward / discount alignment requiring review
+
+The benchmark deliberately preserves each existing runtime, not a claimed scientific objective match. Current high-level gamma=.99 per100ms (GAE=.95), base FB discount=.99 per20ms are different physical-time horizons. Current FB throughput uses its original FB/CPR/auxiliary update and an empty auxiliary-reward list; it has not been extended with the contact-task reward. Common scientific comparison must define the same instantaneous physical cost and native-tick time integral, with high-level rewards summing the actually executed native steps, then approve an equivalent physical-time discount or explicitly justify a different objective. Exact reward coefficients/discount choice are pending below. True terminal, time-limit truncation and physical contact release are different events; save explicit successor before reset and declare bootstrap treatment. Benchmark replay retains only continuous nonterminal pairs and is not evidence that this full future terminal pipeline has been validated.
+
 ## Counting and failures
 
 1 physics tick=5ms;1 native transition=20ms;1 full high decision=100ms/5native controls/20physics ticks. Count reset/source steps separately.1 FB agent update means discriminator+F/B+critic+aux-critic+actor+targets, batch1024. Default16updates/1024new native transitions means15625updates per1M,78125per5M. Do not confuse replay draws with new transitions. Count formal vs disposable benchmark updates explicitly. Compile first-call, steady state, sampling, transfer, optimizer, replay/data IO, checkpoint save/read and evaluation separately; joint wall uses full path, not no-update FPS. Independent groups != candidate rows != labels. Search queries/predicted steps != real executed commands != on-policy samples.
@@ -55,6 +59,7 @@ Failure classes: correctness (probability/state/label identity → immutable err
 | scientific checkpoint rule and Pareto tolerances | no average-only masking; exact tolerances unset | pending Yi |
 | privileged branch/critic capacity in formal run | benchmark branch1088→128→256, critic2727→128→1 are engineering instances; formal capacity unset | pending Yi |
 | actor information tier and base actor freeze/train | matched O_S or O_P tier; formal choice unset | pending Yi |
+| common physical-time discount and reward integration | high .99/100ms vs base .99/20ms are inherited references; matching options gamma_native=.99**.2 or gamma_high=.99**5, neither selected; auxiliary contact reward coefficients unset | pending Yi |
 | formal PPO KL/step/std/critic schedule | inherited guard available, change values only explicitly; no formal values selected here | pending Yi |
 | formal base FB contact fields, widths, normalization and migration | current robot-only base plus proposed partner/contact schema; final dimensions unset | pending Yi |
 | replay composition/expert source and auxiliary reward weights | throughput replay is NOT approved learning dataset | pending Yi |

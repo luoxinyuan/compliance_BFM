@@ -1,3 +1,18 @@
+# CURRENT_STATE — 双轨共同合同与单卡运行能力工程里程碑已完成
+
+2026-11-09。[合同草案V1](DUAL_TRACK_CONTRACT_V1.md) · [实测报告](DUAL_TRACK_RUNTIME_RESULTS.md) · [准备勘误](DUAL_TRACK_ERRATUM.md) · [Isaac缺口](ISAAC_BATCH_CONTACT_GAP.md) · [Issue55](https://github.com/GaoE05/robot-research-bridge/issues/55)。**没有正式PPO/大规模FB、Teacher查询或排序器训练；全部测试结束。BC500不变，5403b7不晋级，旧M1结论保留。**
+
+- 完成BC500原1639D路径/normalizer保留的1088D特权零初始化支路；新入口KL集中配置、独立critic更新与原实现逐值回归通过。RNG/真实历史跨reset、落盘重建和独立新进程恢复通过，独立评价不改变父Task/RNG。此特权支路不是部署Student新基线。
+- 单RTX Pro5000、MuJoCo num_envs=1：768决策真实采样含reset79.35s（9.68决策/s、48.20个50Hz transition/s）；完整原保护更新.852s，接受actor1步、独立critic18步。计时更新副本不推广。
+- 原基座strict weights-only warm-start、fresh6Adam/replay/z_buffer、计数归零；128eager+128compiled完整agent updates、模型及Adam存盘读回逐值通过。稳态.145856/.122453s每update，compiled首两调用283.109/42.261s；不是环境训练FPS。
+- 默认16/1024比率的单卡组合预算：1M约6.3–6.5h，5M约31.5–32.4h，另加冷启动、评价、checkpoint/replay IO。是采样＋更新实测拼合推导，**完整在线可变基座吞吐、contact扩展拓扑、Isaac批量Tether仍未知/未实现**。不是已批准规模。
+- 科学分布比例、源/封存具体条件与独立组、阈值、正式run预算等集中待Yi批准。尤其当前PPO .99/100ms与baseFB .99/20ms折扣不等价，base benchmark的空aux reward并非contact任务reward；后续需共同科学合同，不在测速中静默修改。
+- 实测runtime高层a2efe6cee4c9a4cca974f862affa3b2fe16fdc66，FB/新进程恢复3fa9b8e66d8d72311438196ef7440970c355f7af；最后JSON配置回归4e339252168a0d96c6fe287cf211b95a73fd1f2b。完整原/计时模型SHA见报告。保守计费4076.20s（含预留/父子双计），新输出6.801GiB。私有stage dual-track-contract-v1-20261109，原始失败/数据/计时checkpoint不上传。
+
+**停止，等待Yi批准合同与下一研究决策；不自动M2/M3、正式Expert/Student/FB训练。** 本轮无新的可推广行为，未重复生成视频。以下是历史记录。
+
+---
+
 2026-11-09 发布更新：用户明确长期授权后，M1公开结项摘要已发布并结项于 https://github.com/GaoE05/robot-research-bridge/issues/54 ，Project Master同步评论 https://github.com/GaoE05/robot-research-bridge/issues/18#issuecomment-6732326969 。仅发布汇总结论，原始资产未上传；本轮源码分支仍未推送。本更新取代此前“公开Issue尚未创建”的当前状态，保留拒绝记录作为历史。
 
 # CURRENT_STATE — M1联合源覆盖资格已结项
