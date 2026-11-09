@@ -8,6 +8,7 @@ import copy
 import hashlib
 import json
 import math
+import random
 from pathlib import Path
 
 import numpy as np
@@ -199,12 +200,17 @@ class Task(NativeTask):
         return spherical(self.e.standing, sample(self.refs['straight'],phase),u)
 
     def reset(self, *a, **kw):
+        # The archived physical reset legitimately seeds its native environment0.
+        # Do not let that overwrite the NEW learner/replay/exploration RNG streams.
+        external_rng=(random.getstate(),np.random.get_state(),torch.get_rng_state(),torch.cuda.get_rng_state_all())
         self.stage_boundary = None; self.native_info = None; self.native_reset_deferred = False
         self.allow_native_reset = True
         try:
             return super().reset(*a, **kw)
         finally:
             self.allow_native_reset = False
+            random.setstate(external_rng[0]);np.random.set_state(external_rng[1])
+            torch.set_rng_state(external_rng[2]);torch.cuda.set_rng_state_all(external_rng[3])
 
     def contact_vector(self):
         R = self.e.sim.data.xmat[1].reshape(3,3)

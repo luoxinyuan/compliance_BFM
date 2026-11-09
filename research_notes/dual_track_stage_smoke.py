@@ -20,7 +20,9 @@ def study(e,m,contract,out):
  task=Task(e,m,contract,5607);proxy=NativeActor(task,m);task.m=proxy;sequences=NativeSequences();results=[]
  for source in CFG['source_probs']:
   s=next(r['spec'] for r in manifest['dev'] if r['source']==source)
+  cpu_rng=torch.get_rng_state();gpu_rng=torch.cuda.get_rng_state()
   proxy.begin_source();task.reset(s,record=True,label=source);proxy.finish_pending()
+  assert torch.equal(cpu_rng,torch.get_rng_state()) and torch.equal(gpu_rng,torch.cuda.get_rng_state())
   sequences.add(source,s['source_parent_id'],proxy.source_pairs);proxy.begin_online()
   records,done,stats=proxy.take_step(task.native(source,float(e.tether.time))/16)
   assert len(records)==5 and not done
@@ -52,7 +54,7 @@ def study(e,m,contract,out):
  sample=sequences.sample(1024);assert sample['observation']['contact_privileged_v1'].shape==(1024,97)
  result=dict(status='passed',source_checks=results,real_pre_reset_terminal_successor=True,
     first_unsafe_tick_preserved_without_further_physics=True,administrative_truncation_distinct=True,
-    source_balanced_CPR_sequences=True,manifests=dict(dev=30,sealed=60,actual_scientific_evaluations=0),
+    source_balanced_CPR_sequences=True,reset_preserves_external_training_RNG=True,manifests=dict(dev=30,sealed=60,actual_scientific_evaluations=0),
     optimizer_steps=0,formal_RL_decisions=0,formal_FB_transitions=0)
  (out/'verification.json').write_text(json.dumps(result,indent=2));return dict(status='completed',verification=result,student_optimizer_updates=0)
 
