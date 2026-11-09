@@ -65,6 +65,7 @@ class NativeActor:
     def take_step(self, raw):
         assert not self.source_mode
         self.records=[]; self.pending=None
+        self.previous_z=self.task.last_command.detach().cpu().clone()
         _,reward,done,stats=self.task.step(raw)
         self.finish_pending()
         assert len(self.records)==stats['control_steps']==len(stats['native_rewards'])
