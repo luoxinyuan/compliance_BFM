@@ -2,6 +2,7 @@
 import os,sys,json,time,hashlib,random,argparse,subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'research_notes')]
+import m11_ipc
 P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM')
 def write(p,x):Path(p).write_text(json.dumps(x,indent=2,allow_nan=False))
 def sha(p):
