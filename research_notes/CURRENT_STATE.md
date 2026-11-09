@@ -1,3 +1,15 @@
+# CURRENT_STATE — M1联合源状态/Teacher资格采集准备
+
+2026-11-09。用户新授权仅采集与验证；BC500冻结，5403b7不晋级。无PPO/BC/F拟合，不自动进入M2/M3。
+
+独立stage source-coverage-m1-20261109。协议 source_coverage_m1_protocol.json；先行12单元/4滚动窗口，原七池最多96查询，8/12且arm/moving各1通过才允许扩采。总job18000s/8GiB/400查询/80额外FB。真实原生前缀整组划分，不能把12单元冒称12独立组。当前尚未启动物理采集。
+
+5403实际5376决策/50完整回合：arm仅1、moving0；联合覆盖与历史质量缺失见source_coverage_m1_artifacts/coverage5403.json。
+
+本轮创建公开Issue被自动审批拒绝，尚未发布，工作区记录保留。
+
+---
+
 # CURRENT_STATE — RETENTION新条件验证已结项
 
 最后核对：2026-11-09。**26回合全部结束，无训练、Teacher查询或后续队列。**

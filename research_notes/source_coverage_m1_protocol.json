@@ -1,0 +1,245 @@
+{
+  "stage": "M1 source coverage and Teacher/F paired acquisition",
+  "mode": "collect-and-qualify only",
+  "locked_baseline": "BC500",
+  "base_commit": "c43600785c0acd4d497bb64ce5515979d6060964",
+  "budget": {
+    "job_seconds": 18000,
+    "output_bytes": 8589934592,
+    "original7_queries": 400,
+    "FB_extra_sequences": 80,
+    "RL_decisions": 0,
+    "training_updates": 0,
+    "F_fits": 0
+  },
+  "pilot": {
+    "cells": [
+      {
+        "id": "standing_local",
+        "source": "standing",
+        "request": "local",
+        "distance": 0.1,
+        "ramp": 1.8,
+        "onset_delay": 0.6,
+        "stop_offset": null,
+        "group": "native-prefix-standing",
+        "split": "train",
+        "rolling": false
+      },
+      {
+        "id": "standing_mid",
+        "source": "standing",
+        "request": "mid",
+        "distance": 0.3,
+        "ramp": 3.0,
+        "onset_delay": 0.6,
+        "stop_offset": null,
+        "group": "native-prefix-standing",
+        "split": "train",
+        "rolling": false
+      },
+      {
+        "id": "standing_long",
+        "source": "standing",
+        "request": "long",
+        "distance": 0.6,
+        "ramp": 4.0,
+        "onset_delay": 0.6,
+        "stop_offset": null,
+        "group": "native-prefix-standing",
+        "split": "train",
+        "rolling": true
+      },
+      {
+        "id": "standing_stop",
+        "source": "standing",
+        "request": "stop",
+        "distance": 0.6,
+        "ramp": 4.0,
+        "onset_delay": 0.6,
+        "stop_offset": 2.1,
+        "group": "native-prefix-standing",
+        "split": "train",
+        "rolling": false
+      },
+      {
+        "id": "goal_arm5_local",
+        "source": "goal_arm5",
+        "request": "local",
+        "distance": 0.1,
+        "ramp": 1.8,
+        "onset_delay": 0.6,
+        "stop_offset": null,
+        "group": "native-prefix-goal_arm5",
+        "split": "train",
+        "rolling": false
+      },
+      {
+        "id": "goal_arm5_mid",
+        "source": "goal_arm5",
+        "request": "mid",
+        "distance": 0.3,
+        "ramp": 3.0,
+        "onset_delay": 0.6,
+        "stop_offset": null,
+        "group": "native-prefix-goal_arm5",
+        "split": "train",
+        "rolling": true
+      },
+      {
+        "id": "goal_arm5_long",
+        "source": "goal_arm5",
+        "request": "long",
+        "distance": 0.6,
+        "ramp": 4.0,
+        "onset_delay": 0.6,
+        "stop_offset": null,
+        "group": "native-prefix-goal_arm5",
+        "split": "train",
+        "rolling": true
+      },
+      {
+        "id": "goal_arm5_stop",
+        "source": "goal_arm5",
+        "request": "stop",
+        "distance": 0.6,
+        "ramp": 4.0,
+        "onset_delay": 0.6,
+        "stop_offset": 2.1,
+        "group": "native-prefix-goal_arm5",
+        "split": "train",
+        "rolling": false
+      },
+      {
+        "id": "motion_walk_task_local",
+        "source": "motion_walk_task",
+        "request": "local",
+        "distance": 0.1,
+        "ramp": 1.8,
+        "onset_delay": 0.6,
+        "stop_offset": null,
+        "group": "native-prefix-motion_walk_task",
+        "split": "train",
+        "rolling": false
+      },
+      {
+        "id": "motion_walk_task_mid",
+        "source": "motion_walk_task",
+        "request": "mid",
+        "distance": 0.3,
+        "ramp": 3.0,
+        "onset_delay": 0.6,
+        "stop_offset": null,
+        "group": "native-prefix-motion_walk_task",
+        "split": "train",
+        "rolling": false
+      },
+      {
+        "id": "motion_walk_task_long",
+        "source": "motion_walk_task",
+        "request": "long",
+        "distance": 0.6,
+        "ramp": 4.0,
+        "onset_delay": 0.6,
+        "stop_offset": null,
+        "group": "native-prefix-motion_walk_task",
+        "split": "train",
+        "rolling": true
+      },
+      {
+        "id": "motion_walk_task_stop",
+        "source": "motion_walk_task",
+        "request": "stop",
+        "distance": 0.6,
+        "ramp": 4.0,
+        "onset_delay": 0.6,
+        "stop_offset": 2.1,
+        "group": "native-prefix-motion_walk_task",
+        "split": "train",
+        "rolling": false
+      }
+    ],
+    "queries_max": 96,
+    "queries_planned": 88,
+    "rolling_windows": 4,
+    "rolling_decisions": 20,
+    "expand_min_usable": 8,
+    "require_arm": true,
+    "require_moving": true
+  },
+  "source_selection": {
+    "standing": {
+      "interval": [
+        4.0,
+        4.8
+      ],
+      "rule": "first high-level boundary with both foot support>=20N and planar root speed<.08"
+    },
+    "goal_arm5": {
+      "interval": [
+        5.0,
+        6.0
+      ],
+      "rule": "first boundary with both foot support>=20N, planar root speed<.12 and actual wrist-shoulder X shift>=.015m vs3s"
+    },
+    "motion_walk_task": {
+      "interval": [
+        5.0,
+        6.8
+      ],
+      "rule": "first boundary with root vx>.05 and either left or right foot load<20N; otherwise first positive vx>.05 boundary; explicitly record fallback"
+    }
+  },
+  "source_selection_scope": "No contact; real native prefix. Selection uses body/support only, not contact outcome. If no state matches, retain boundary and do not invent posture.",
+  "independence": {
+    "target": 64,
+    "split_target": {
+      "train": 36,
+      "dev": 8,
+      "sealed": 20
+    },
+    "pilot_cells": 12,
+    "pilot_independent_native_prefix_families": 3,
+    "policy": "same native prefix/source trajectory and its branches remain one group even if seed/time/request differs. Pilot groups train only. No claim of12 independent groups. If fewer than64 genuinely independent prefixes available, report actual and data limitation; do not manufacture by seed changes."
+  },
+  "search": {
+    "original7": "exact interactive_pilot.propose/command;7 candidates24 decisions2.4s; unchanged physics reward",
+    "phase": "Student visited state phase=0, previous_plan=None cold restart; only actual Teacher execution advances its own phase; never borrow native/other trajectory phase",
+    "partner_prediction": "current position/velocity/yaw, constant velocity; no actual future/stop time",
+    "F": "same checkpoint forward_map at actual first interpolated z and actual first low-level action; full F tensor and fixed forward015 preprojection embedding score; not full sequence return"
+  },
+  "actual_branches": {
+    "BC": "frozen BC500 entire suffix",
+    "native": "same source continues using own real source phase/time; descriptive control, no old actor",
+    "best_sequence": "one original7 query at onset+.1, execute selected24-command plan in actual environment, then BC500 to actual release+4s",
+    "rolling": "only4 preselected cells, replan20 times; then BC500, full aftermath; never call whole episode a Teacher rollout"
+  },
+  "gate": {
+    "error_cm": {
+      "local": 4,
+      "mid": 8,
+      "long": 12,
+      "stop": 12
+    },
+    "force_N": {
+      "local": 4,
+      "mid": 7,
+      "long": 7.5,
+      "stop": 7.5
+    },
+    "cap_fraction": 0.15,
+    "loaded_slip_peak_mps": 0.45,
+    "release_abs_yaw_deg": 20,
+    "stop_hold_error_cm": 8,
+    "stop_hold_force_N": 6.5,
+    "relative_max_ratio": 1.05,
+    "window": "entire actual post-handoff episode contact window plus full release; no gate from2.4s prediction alone",
+    "combine": "usable if either actual selected sequence branch or actual rolling branch meets ALL bounds and relative BC leg; record which. Candidate chosen only by unchanged physical reward, not gate peeking.",
+    "no_contact": "external force exactly0; no termination; full planned completion; minheight>=.65, maxtilt<=30deg. Native moving may move. Numeric stability uses existing physical envelope, no posture freeze."
+  },
+  "decision": "pilot gate fails -> generation capability insufficient with any independent-data limitation separate; gate passes but cannot supply qualified independent groups -> data qualification insufficient; continue M2 only if qualified coverage/assets, never launch it",
+  "extra_FB": "0 planned pilot, full F on ALL original7 including failures. Extra80 cap retained, no candidates added to official pool",
+  "heldout": "No sealed evaluation or adjustment during pilot. If gatepasses, seal remaining independent-prefix split before expansion. No mixed sameprefix splits.",
+  "ledger": "count predictions, actual Teacher first commands, BC, native, restores, resets and failures separately; sum concurrent job seconds",
+  "thresholds": "user-specified stage gate, not universal research requirements"
+}
