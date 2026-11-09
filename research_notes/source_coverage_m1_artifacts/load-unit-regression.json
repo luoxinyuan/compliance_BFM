@@ -1,0 +1,13 @@
+{
+  "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/ppo-retention-audit-20261109/runs/A1-train-5403/eval-0/s5403b0_none.json.gz",
+  "actual_load_N": [
+    127.97870898445522,
+    216.42650071915563
+  ],
+  "support_bool": [
+    true,
+    true
+  ],
+  "correct_standing_load_test": true,
+  "old_bool_vs20_test": false
+}

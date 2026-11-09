@@ -46,7 +46,7 @@ def study(e,m,contract,out):
  limits=protocol['source_selection'][ARGS.source]['interval'];reset(spec(0,4,20,ARGS.source,3,False), 'source_selection')
  basew=np.array(task.read_point_state()[0])-np.array(task.initial.get('shoulder_xyz',task.read_point_state()[0]));seen=[];chosen=None;fallback=None
  while e.tether.time<=limits[1]+1e-7 and not task.done:
-  t=round(float(e.tether.time),6);v=e.sim.data.qvel[:3].copy();loads=np.array(e.last_support);row=task.physics[-1] if task.physics else task.initial
+  t=round(float(e.tether.time),6);v=e.sim.data.qvel[:3].copy();row=task.physics[-1] if task.physics else task.initial;loads=np.asarray(row['foot_normal_force_n'],dtype=float);assert loads.shape==(2,) and np.isfinite(loads).all()
   w=np.array(row['wrist'])-np.array(row['shoulder_xyz']);dx=float(w[0]-basew[0]);both=bool(np.all(loads>=20));single=bool(np.any(loads<20))
   entry=dict(time=t,root_velocity=v.tolist(),support=loads.tolist(),wrist_shoulder_x_change=dx)
   if t>=limits[0]-1e-7:
