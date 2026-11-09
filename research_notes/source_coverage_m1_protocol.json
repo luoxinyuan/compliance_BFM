@@ -218,14 +218,14 @@
     "error_cm": {
       "local": 4,
       "mid": 8,
-      "long": 12,
-      "stop": 12
+      "long": 10,
+      "stop": 10
     },
     "force_N": {
       "local": 4,
       "mid": 7,
-      "long": 7.5,
-      "stop": 7.5
+      "long": 6.5,
+      "stop": 6.5
     },
     "cap_fraction": 0.15,
     "loaded_slip_peak_mps": 0.45,
@@ -241,5 +241,6 @@
   "extra_FB": "0 planned pilot, full F on ALL original7 including failures. Extra80 cap retained, no candidates added to official pool",
   "heldout": "No sealed evaluation or adjustment during pilot. If gatepasses, seal remaining independent-prefix split before expansion. No mixed sameprefix splits.",
   "ledger": "count predictions, actual Teacher first commands, BC, native, restores, resets and failures separately; sum concurrent job seconds",
-  "thresholds": "user-specified stage gate, not universal research requirements"
+  "thresholds": "user-specified stage gate, not universal research requirements",
+  "prelaunch_amendment": "User tightened long>=50cm error<=10cm force<=6.5N before any physical acquisition. All other thresholds unchanged."
 }
