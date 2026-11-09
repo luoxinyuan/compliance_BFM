@@ -19,5 +19,16 @@ def main():
  try:update(nn,opt(nn),bad,epochs=1,minibatch=12)
  except AssertionError:pass
  else:raise AssertionError('probability mismatch accepted')
+ from p4000_critic import update as old_separate
+ from dual_track_critic import update as new_separate
+ left=Expert(1639,'direct').cuda();right=copy.deepcopy(left)
+ with torch.no_grad():
+  dist=left.distribution(x);aa=dist.sample();vv=left.value(x)
+ bb=dict(b,action=aa,logp=dist.log_prob(aa).sum(-1).detach(),value=vv,returns=vv+torch.ones_like(vv))
+ torch.manual_seed(5512);ll=old_separate(left,opt(left),bb,epochs=1,minibatch=12,critic_shuffle_seed=5513)
+ torch.manual_seed(5512);rr=new_separate(right,opt(right),bb,epochs=1,minibatch=12,critic_shuffle_seed=5513,contract=PPOContract())
+ assert all(torch.equal(t,right.state_dict()[k]) for k,t in left.state_dict().items())
+ assert ll==rr
+ print('PASS independent-critic default parity',flush=True)
  print('PASS default numeric parity and original logprob rejection',flush=True)
 if __name__=='__main__':main()

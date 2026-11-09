@@ -59,5 +59,8 @@ def main():
  t=time.monotonic();agent.save(str(a.output/'disposable-checkpoint'));sync();save_s=time.monotonic()-t
  t=time.monotonic();saved=torch.load(a.output/'disposable-checkpoint/optimizers.pth',map_location='cpu',weights_only=False);read_s=time.monotonic()-t
  assert saved.keys()==agent.optimizer_dict.keys()
- write(a.output/'result.json',dict(status='completed',full_agent_updates=256,formal_training=False,model_source_unchanged=True,segments=results,checkpoint_save_s=save_s,optimizer_read_s=read_s,model_read_s_initial=load_s,compiled_model_readback='model safetensors identity checked separately; no formal resume'))
+ from humanoidverse.agents.fb_cpr_aux.model import FBcprAuxModel
+ t=time.monotonic();restored=FBcprAuxModel.load(str(a.output/'disposable-checkpoint/model'),device='cpu',strict=True);model_read_s=time.monotonic()-t
+ assert all(torch.equal(v.detach().cpu(),restored.state_dict()[k]) for k,v in agent._model.state_dict().items())
+ write(a.output/'result.json',dict(model_checkpoint_read_s=model_read_s,model_roundtrip_exact=True,status='completed',full_agent_updates=256,formal_training=False,model_source_unchanged=True,segments=results,checkpoint_save_s=save_s,optimizer_read_s=read_s,model_read_s_initial=load_s,compiled_model_readback='model safetensors identity checked separately; no formal resume'))
 if __name__=='__main__':main()

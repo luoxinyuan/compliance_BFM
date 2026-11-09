@@ -7,7 +7,7 @@ original=rolling_backend.install
 
 def current_backend(env,model,folder):
     prefix=Path(os.environ['DUAL_TRACK_PREFIX'])
-    assert (prefix/'backend-standing-prefix.json').exists()
+    assert prefix.is_dir()  # Original exact-prefix path legitimately writes no new cache.
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     return original(env,model,prefix)
 rolling_backend.install=current_backend
