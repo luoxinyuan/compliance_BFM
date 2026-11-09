@@ -23,3 +23,19 @@ model, all six Adam states and new replay read back exactly; actual29D-action
 physical prefix reconstructs full solver/BFM/force/action/z history exactly.
 These updates are discarded engineering weights, not the first4 formal updates.
 All failed outputs and original logs remain in isolated private stage directories.
+
+## Final pre-launch checks
+
+- Course-provenance-01 failed due quoting in the disposable shell harness before
+  any generator/physics call;0.8795s charged. Replaced with a committed test file.
+- Course-provenance-02 assumed stopping must release later than continuation.
+  That is not a required invariant: late deceleration can outlast a short finite
+  continuation. Test now requires identical pre-branch parameters and equal
+  post-motion hold, with unchanged approved deceleration ranges.27.6612s charged;
+  course-provenance-03 passed in27.2666s. No probability or physics assertion relaxed.
+- Code review found the legacy executor marks wrapped timeouts as a native
+  termination. New stage entry preserves them as truncations, with real successor
+  and no fall tail. Actual injected wrapped-timeout regression passed in
+  stage-smoke-04 (147b22b684b0c03a613559fa6d5e5881d380ab7f,133.9472s).
+  No formal samples existed before this correction. Native time limit45s exceeds
+  this course; no evidence currently shows a historical result triggered it.

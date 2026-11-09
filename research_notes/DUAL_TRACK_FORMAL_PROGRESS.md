@@ -132,3 +132,32 @@ The formal serial schedule is two independent KL arms (98304 each), then the
 fresh1M FB probe; original BC500/BFM remain frozen. Fixed-runtime detached
 worktree and per-job ownership/resource guards protect the running source.
 Student continuation remains conditional, not automatically launched by queue.
+
+## Formal queue launch,2026-11-09 15:15UTC
+
+Runtime pinned at147b22b684b0c03a613559fa6d5e5881d380ab7f in a separate detached
+worktree. QueuePID380408; first KL.02 supervisor380634/worker380646 actually
+running. Initial development evaluation is in progress; at this snapshot no
+formal actor/critic training update or FB sample is claimed. Later status must
+come from private per-job learning/selection/sidecar files, not this snapshot.
+Both KL arms and1M FB have a fixed serial queue, each live-admitted separately.
+
+Additional CPU course/provenance test:12000 generated episodes (not physical
+experiences), fractions near.1935/mid.1945/long.25367/stop.20092/zero.104/none.05342;
+2411 paired parents, identical pre-branch task parameters, equal hold lengths;
+uint8 parent/time provenance round-trip exact. No RL or physics in this test.
+Training sampler preserves approved episode marginals through paired macro-groups;
+full pending-pair curriculum state is saved for resume. Reserved source/request
+parents are rejected from train sampling. Provenance stays outside actor inputs.
+
+Latest real smoke at147b22b validates actual wrapped truncation vs genuine
+terminal as well as3 native sources, replay metadata and full history restore.
+Original default native time limit is2250 controls=45s; this course fits within it.
+On a real wrapped timeout, legacy execution used to mark native_termination;
+the new entry clears that mistaken failure marker, keeps the true successor and
+bootstraps without absorbing-fall tail. Formal training had not started when fixed.
+No historical result is withdrawn without evidence of an actual timeout event.
+
+The four-cell table remains partially empty: frozen privileged KL run has started;
+mutable privileged1M is queued; historical restricted BC500 is retained; new
+restricted Teacher migration/Student RL has not run. Missing cells are not failures.
