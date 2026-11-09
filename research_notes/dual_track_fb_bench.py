@@ -19,7 +19,7 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('--controls',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();a.output.mkdir(exist_ok=False)
  torch.set_num_threads(1);torch.manual_seed(5502);torch.set_float32_matmul_precision('high')
  cfg=FBcprAuxAgentConfig(model=FBcprAuxModelConfig(**migrate_legacy_aux_critic_config(json.loads((MODEL/'config.json').read_text()))),compile=False,cudagraphs=False)
- cfg.train.batch_size=1024
+ assert cfg.train.batch_size==1024
  kw=json.loads((MODEL/'init_kwargs.json').read_text());space=json_to_space(kw['obs_space'])
  t=time.monotonic();agent=cfg.build(space,kw['action_dim']);sync();init_s=time.monotonic()-t
  t=time.monotonic();safetensors.torch.load_model(agent._model,MODEL/'model.safetensors',strict=True,device='cuda');sync();load_s=time.monotonic()-t
@@ -46,7 +46,7 @@ def main():
   # Segment2 compiles existing update functions; no numerical loss/optimizer change.
   ct=time.monotonic()
   if segment==1:
-   agent.cfg.compile=True;agent.setup_compile()
+   agent.cfg=agent.cfg.model_copy(update={'compile':True});agent.setup_compile()
   compile_registration_s=time.monotonic()-ct
   times=[];torch.cuda.reset_peak_memory_stats();sync();t0=time.monotonic()
   for i in range(128):
