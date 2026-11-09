@@ -36,12 +36,13 @@ def build():
 
 def evaluate(e,m,contract,out,args):
     from native_transfer import phase_report
-    from retention_eval import phase_quality
+    from dual_track_quality import quality as phase_quality
     from dual_track_task import digest
     assert sha(args.checkpoint)==args.sha256
     ck=torch.load(args.checkpoint,map_location='cpu',weights_only=False)
     net=build();net.load_state_dict(ck['model'],strict=True);net.eval().requires_grad_(False)
     groups=parent_manifests()[args.split]
+    if args.smoke:groups=[groups[i] for i in (0,10,20)]
     task=Task(e,m,contract,56017);rows=[];prefixes={};source_hashes={}
     for group in groups:
         items=[('main',group['spec'])]
@@ -136,6 +137,7 @@ def train(e,m,contract,out,args):
         state=TrainingBranch(task,[rng]);dest=out/f'dev-{i}'
         cmd=[sys.executable,str(ROOT/'research_notes/dual_track_run.py'),'--mode','high_eval','--output',str(dest),
              '--checkpoint',str(path),'--sha256',sha(path),'--iteration',str(i),'--split','dev']
+        if args.smoke:cmd.append('--smoke')
         t=time.monotonic()
         with (out/f'dev-{i}.log').open('w') as f:subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT,check=True,timeout=2400)
         assert state.digest()==state.fingerprint
@@ -154,14 +156,17 @@ def train(e,m,contract,out,args):
         if i==0 or (choice['admissible'] and choice['score']<best['score']):best=copy.deepcopy(choice);write(out/'selection.json',best)
         write(out/f'dev-{i}-isolation.json',dict(physical_history_exact=True,torch_and_task_rng_exact=True,independent_process=True))
     dev_eval(0,save(0))
-    for iteration in range(1,CFG['high_batches_per_arm']+1):
+    batches=1 if args.smoke else CFG['high_batches_per_arm']
+    for iteration in range(1,batches+1):
         arrays={k:[] for k in ('obs','action','logp','value','next_value','reward','discount','terminated','truncated')}
-        stats=[];t0=time.monotonic()
+        stats=[];probes=[];t0=time.monotonic()
         for j in range(CFG['batch']):
             if task.done:
                 episode+=1;task.reset(record=True,label=f'train{episode}')
             x=torch.cat([task.student_features(),task.features()],-1).detach().clone()
             dist=net.distribution(x);raw=dist.mean+dist.stddev*torch.randn(dist.mean.shape,device='cuda',generator=rng)
+            if j%96==0:
+                probes.append(dict(x=x.clone(),obs={k:v.clone() for k,v in e.obs.items()},previous=task.last_command.clone()))
             lp=dist.log_prob(raw).sum(-1);v=net.value(x)
             _,reward,done,st=task.step(raw)
             nx=torch.cat([task.student_features(),task.features()],-1)
@@ -188,11 +193,33 @@ def train(e,m,contract,out,args):
         log=update(net,opt,b,epochs=CFG['epochs'],minibatch=CFG['minibatch'],
                    critic_shuffle_seed=CFG['seed']*10000+iteration,contract=guard)
         after=net.distribution(b['obs']).mean.detach().double()
+        from clean_policy import direct_command
+        from locomotion_rollout import spherical
+        action_changes=[];target_changes=[]
+        for probe in probes:
+            ix=len(action_changes)*96
+            oldz=direct_command(before[ix:ix+1].float(),e.standing)
+            newz=direct_command(after[ix:ix+1].float(),e.standing)
+            oldactions=[];newactions=[]
+            for f in (.2,.4,.6,.8,1.):
+                oldactions.append(m.act(probe['obs'],spherical(probe['previous'],oldz,f),mean=True))
+                newactions.append(m.act(probe['obs'],spherical(probe['previous'],newz,f),mean=True))
+            da=torch.stack(newactions)-torch.stack(oldactions)
+            action_changes.append(dict(rms=float(da.square().mean().sqrt()),maximum=float(da.abs().max())))
+            # Original executor mapping uses the same action scale for both.
+            scale=torch.as_tensor(contract['q_PD_scale'],device=da.device)
+            bound=contract['clip']/contract['normalize_ratio']
+            qdiff=(torch.stack(newactions).clamp(-bound,bound)-torch.stack(oldactions).clamp(-bound,bound))*scale
+            target_changes.append(float(torch.rad2deg(qdiff).abs().max()))
         cosine=(before*after).sum(-1)/(before.norm(dim=-1)*after.norm(dim=-1)).clamp_min(1e-30)
         log.update(iteration=iteration,RL_decisions=decisions,episodes=episode,coverage=copy.deepcopy(coverage),
                    episode_coverage=copy.deepcopy(episode_coverage),wall_s=time.monotonic()-t0,
+                   frozen_observation_five_substep_action_changes=action_changes,
+                   frozen_observation_qpd_max_changes_deg=target_changes,
+                   probe_contract='same BFM observation and actual previous-z; five interpolation fractions; not a physics rollout',
                    legal_z_mean_change_deg=float(torch.rad2deg(torch.acos(cosine.clamp(-1,1))).mean()))
         logs.append(log);write(out/'learning.json',logs)
         print('FORMAL_PRIVILEGED_PPO',args.kl,iteration,decisions,log['optimizer_updates'],log['legal_z_mean_change_deg'],flush=True)
-        if iteration%CFG['eval_every']==0 or iteration==CFG['high_batches_per_arm']:dev_eval(iteration,save(iteration))
-    return dict(status='completed',Expert_RL_decisions=decisions,selected=best,joint_KL=args.kl,Student_RL_decisions=0)
+        if iteration%CFG['eval_every']==0 or iteration==batches:dev_eval(iteration,save(iteration))
+    return dict(status='completed',Expert_RL_decisions=0 if args.smoke else decisions,
+        engineering_sample_decisions=decisions if args.smoke else 0,selected=best,joint_KL=args.kl,Student_RL_decisions=0)

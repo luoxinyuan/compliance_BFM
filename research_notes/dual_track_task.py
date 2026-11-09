@@ -130,6 +130,23 @@ class Task(NativeTask):
         self.native_info = None
         self.inject_terminal_tick = None
         super().__init__(*args)
+        original_native_step=self.e._original_step
+        def measured_native_step():
+            import mujoco
+            e=self.e;before=e.sim.data.qvel.copy();original_native_step();m,d=e.sim.model,e.sim.data
+            contacts=[]
+            for i,c in enumerate(d.contact[:d.ncon]):
+                bodies=[int(m.geom_bodyid[c.geom1]),int(m.geom_bodyid[c.geom2])]
+                if 0 not in bodies:continue
+                body=max(bodies);name=mujoco.mj_id2name(m,mujoco.mjtObj.mjOBJ_BODY,body) or ''
+                if 'ankle' not in name and 'foot' not in name:continue
+                force=np.zeros(6);mujoco.mj_contactForce(m,d,i,force)
+                jac=np.zeros((3,m.nv));mujoco.mj_jac(m,d,jac,None,c.pos,body)
+                speed=float(np.linalg.norm(c.frame.reshape(3,3)[1:]@(jac@before)))
+                contacts.append(dict(body=name,normal_N=abs(float(force[0])),tangent_speed_mps=speed))
+            e.contact_sample['stage_foot_contacts']=contacts
+            e.contact_sample['stage_loaded_slip_mps']=max((c['tangent_speed_mps'] for c in contacts if c['normal_N']>1e-6),default=0.)
+        self.e._original_step=measured_native_step
         base = self.e.base
         original_reset, original_check = base.reset_envs_idx, base._check_termination
 

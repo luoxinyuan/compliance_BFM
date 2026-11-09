@@ -45,9 +45,10 @@ def main():
     limits = dict(frozen=112*3600, fb=80*3600, common=32*3600, buffer=16*3600)
     previous = [json.loads(p.read_text()) for p in (args.stage / "jobs").glob("*.json")]
     assert all(r.get("status") != "running" for r in previous), "Another stage job is active"
-    spent = sum(r.get("elapsed_s", r.get("timeout_s", 0)) for r in previous if r.get("category") == args.category)
+    carried=json.loads((args.stage/'carried-costs.json').read_text()) if (args.stage/'carried-costs.json').exists() else {}
+    spent = carried.get(args.category,0)+sum(r.get("elapsed_s", r.get("timeout_s", 0)) for r in previous if r.get("category") == args.category)
     assert spent + args.timeout <= limits[args.category]
-    assert sum(r.get("elapsed_s", r.get("timeout_s", 0)) for r in previous) + args.timeout <= 240*3600
+    assert sum(carried.values())+sum(r.get("elapsed_s", r.get("timeout_s", 0)) for r in previous) + args.timeout <= 240*3600
     lock = (args.stage.parent.parent / ".dual-track-gpu0.lock").open("a+")
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     gpu = subprocess.check_output(["nvidia-smi", "-i", "0", "--query-gpu=index,name,uuid,memory.used,utilization.gpu", "--format=csv,noheader"], text=True).strip()

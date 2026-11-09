@@ -1,6 +1,11 @@
 """Pinned stage entry; single actual MuJoCo environment, no shared asset writes."""
 import argparse,json,os,subprocess,sys
 from pathlib import Path
+P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM')
+os.environ.setdefault('TORCHINDUCTOR_CACHE_DIR',str(P/'experiments/dual-track-formal-20261109/torch-cache'))
+os.environ.setdefault('TORCHINDUCTOR_COMPILE_THREADS','4')
+os.environ.setdefault('TMPDIR',str(P/'experiments/dual-track-formal-20261109/tmp'))
+Path(os.environ['TMPDIR']).mkdir(exist_ok=True)
 ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'research_notes')]
 import m11_ipc
 
@@ -25,6 +30,7 @@ def main():
  p.add_argument('--output',type=Path,required=True);p.add_argument('--kl',type=float,choices=(.02,.08))
  p.add_argument('--checkpoint',type=Path);p.add_argument('--sha256');p.add_argument('--iteration',type=int,default=0)
  p.add_argument('--split',choices=('dev','sealed'),default='dev');p.add_argument('--record',action='store_true')
+ p.add_argument('--smoke',action='store_true',help='Disposable engineering run, one batch and three development sources; not formal progress')
  ARGS=p.parse_args();assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
  ARGS.runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
  if not ARGS.output.exists():ARGS.output.mkdir()
