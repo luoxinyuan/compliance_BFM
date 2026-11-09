@@ -23,6 +23,8 @@ def main():
     parser.add_argument("--stage", type=Path, required=True)
     parser.add_argument("--name", required=True)
     parser.add_argument("--category", choices=("frozen", "fb", "common", "buffer"), required=True)
+    parser.add_argument("--purpose", choices=("engineering", "frozen_ppo", "fb_train", "student_ppo"), required=True)
+    parser.add_argument("--contract", type=Path)
     parser.add_argument("--timeout", type=int, required=True)
     parser.add_argument("command", nargs=argparse.REMAINDER)
     args = parser.parse_args()
@@ -30,6 +32,11 @@ def main():
     assert cmd and 0 < args.timeout <= 36000
     assert args.name.replace("-", "").isalnum()
     repo = args.stage / "repo"
+    if args.purpose != "engineering":
+        from dual_track_admission import require_launchable
+        assert args.contract is not None
+        track = dict(frozen_ppo="frozen", fb_train="fb", student_ppo="student")[args.purpose]
+        require_launchable(json.loads(args.contract.read_text()), track)
     assert not subprocess.check_output(["git", "-C", str(repo), "status", "--porcelain"]), "Commit before launch"
     revision = subprocess.check_output(["git", "-C", str(repo), "rev-parse", "HEAD"], text=True).strip()
     sidecar = args.stage / "jobs" / (args.name + ".json")
@@ -54,7 +61,8 @@ def main():
     started = time.time()
     row = dict(name=args.name, category=args.category, runtime=revision, command=cmd,
                started=started, timeout_s=args.timeout, supervisor_pid=os.getpid(),
-               gpu_baseline=gpu, status="running", output=str(out), formal_training=False)
+               gpu_baseline=gpu, status="running", output=str(out),
+               purpose=args.purpose, formal_training=args.purpose != "engineering")
     write(sidecar, row)
     try:
         with (out / "stdout.log").open("w") as log:

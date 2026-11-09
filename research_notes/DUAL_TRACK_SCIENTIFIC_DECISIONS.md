@@ -38,6 +38,20 @@ The machine-readable file stores approval and proposal separately.
 |P8 FB replay / CPR / checkpoints|Fresh CPU replay capacity1M; all online actual transitions, actual interpolated z and low-level action, target z, terminal successor before reset, separate terminated/truncated. CPR snippets8 frames from actual original native no-contact source executions, balanced by source and never crossing reset. Immutable complete0/250k/1M packages: model/6Adam/normalizers/replay/counters/RNG plus exact physical reconstruction identity.|No fake zero-filled partner labels on unrelated historical robot data. Explicitly recorded no-contact source has a valid zero physical force. Replay size and resumability must be measured after expansion; current format is not yet a complete resumable online run. Engineering output ceiling64GiB and shared free-space guard proposed, not a throughput promise.|
 |P9 FB cadence and initial collection|Use original six-optimizer update recipe except approved gamma, batch1024,16 full updates per1024 new native transitions. First1024 real transitions are warmup **inside**1M; then updates only against actual collected counts. Report final fractional block and exact updates; do not automatically label it15625 if warmup was skipped for optimization.|Existing benchmark does not establish online scheduling or terminal correctness. The endpoint must stop at exactly1M true controlled transitions; source/reset steps remain separate costs, not extra learning samples hidden outside the cap.|
 
+For P2, a concrete bounded proposal is: mean native actor only; standing handoff
+3.8–5.2s with a genuinely distinct native preconditioning profile (stand/arm5
+spherical interpolation fraction.02–.08 for.3–.8s, then actual standing.3–.6s);
+arm-ready handoff5.2–6.2s with goal_arm5 participation.85–1.0 and a distinct
+native entry profile; moving handoff5.6–7.6s with actual native phase offset
+within±.1cycle and rate.9–1.1. These are proposed source-generator variations,
+not force-to-skill rules or learned actor inputs. They require bounded physical
+verification and explicit approval before use. Rejecting an unmaintainable source
+does not erase the failure or turn a new seed into an independent replacement.
+Record the3 reused source assets separately from the number of actual independently
+sampled/hashed source-and-partner parent processes. Frame cuts of one generated
+source episode stay in its original group. Dev/sealed generator seeds56031/56061
+and their full manifests are proposed; existing exposed regressions remain separate.
+
 The numerical suggestions above are intended to be approved or revised as one
 reviewable packet. Formal entry admission remains closed while any applicable
 decision has `pending_Yi` status. Selecting an option in the earlier three
@@ -95,4 +109,3 @@ Missing cells are not zero performance or failed experiments. The first two
 formal learning jobs await completed scientific configuration and actual runtime
 validation. New restricted migration is conditional on useful Teacher evidence;
 this stage does not silently authorize another1M restricted-FB run.
-
