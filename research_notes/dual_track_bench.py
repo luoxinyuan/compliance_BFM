@@ -16,7 +16,7 @@ def study(e,m,contract,out):
  from native_env import install,spec
  from retention_eval import MODELS
  from clean_policy import Expert
- from dual_track_runtime import PrivilegedBranch,TrainingBranch
+ from dual_track_runtime import PrivilegedBranch,TrainingBranch,save_training_checkpoint,restore_training_checkpoint
  from dual_track_ppo import update
  from humanoidverse.force_compliance.parallel import merge_rollouts
  from m11_runtime_speed import install as speed
@@ -43,7 +43,13 @@ def study(e,m,contract,out):
  def draws():return (random.random(),float(np.random.rand()),float(task.rng.random()),torch.rand(3).cpu(),torch.rand(3,device='cuda').cpu(),torch.rand(3,device='cuda',generator=rng).cpu())
  a=draws();raw=net.distribution(xx).mean;task.step(raw);q=task.e.sim.data.qpos.copy();zz=task.last_command.clone();f=obs().clone()
  task.reset(spec(.08,1.6,5.2),record=True,label='other_reset');ss.restore();b=draws();assert all(torch.equal(i,j) if torch.is_tensor(i) else i==j for i,j in zip(a,b));assert torch.equal(obs(),xx)
- task.step(raw);assert np.array_equal(q,e.sim.data.qpos) and torch.equal(zz,task.last_command) and torch.equal(f,obs());ss.restore()
+ task.step(raw);assert np.array_equal(q,e.sim.data.qpos) and torch.equal(zz,task.last_command) and torch.equal(f,obs())
+ save_training_checkpoint(out/'resume-check.pt',task,net,None,[rng],dict(benchmark_decisions=1))
+ rr=TrainingBranch(task,[rng]);original_draws=draws();rr.restore()
+ task.reset(spec(.08,1.6,5.2),record=True,label='resume_disturb')
+ counters=restore_training_checkpoint(out/'resume-check.pt',task,net,None,[rng]);assert counters==dict(benchmark_decisions=1)
+ restored_draws=draws();assert all(torch.equal(i,j) if torch.is_tensor(i) else i==j for i,j in zip(original_draws,restored_draws))
+ ss.restore()
  # Independent child evaluation; no training Task or any RNG touched by child.
  before=TrainingBranch(task,[rng]);dd=draws();before.restore()
  cp=out/'initial-branch.pt';torch.save({'state_dict':net.state_dict(),'base_sha':digest},cp)
@@ -52,7 +58,7 @@ def study(e,m,contract,out):
  with open(out/'independent-eval.log','w') as log:subprocess.run(cmd,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=400)
  assert before.digest()==before.fingerprint
  ee=draws();assert all(torch.equal(i,j) if torch.is_tensor(i) else i==j for i,j in zip(dd,ee));before.restore()
- write(out/'correctness.json',dict(zero_branch_exact=True,normalizer_exact=True,last_layer_gradient=g0,earlier_layer_gradient=g1,cross_reset_next_physics_exact=True,all_rng_exact=True,independent_evaluation_exact=True,eval_wall_s=time.monotonic()-t))
+ write(out/'correctness.json',dict(zero_branch_exact=True,normalizer_exact=True,last_layer_gradient=g0,earlier_layer_gradient=g1,disk_resume_history_rng_exact=True,cross_reset_next_physics_exact=True,all_rng_exact=True,independent_evaluation_exact=True,eval_wall_s=time.monotonic()-t))
  opt=torch.optim.Adam([{'params':net.actor.parameters(),'lr':3e-5},{'params':net.critic.parameters(),'lr':3e-4}]);batch={k:[] for k in ['obs','next_obs','action','logp','value','next_value','reward','discount','done']};pool=[];reset_seconds=0
  torch.cuda.reset_peak_memory_stats();torch.cuda.synchronize();t=time.monotonic()
  for j in range(768):
