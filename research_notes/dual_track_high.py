@@ -123,7 +123,16 @@ def select(rows,initial):
 def train(e,m,contract,out,args):
     net=build();opt=torch.optim.Adam([{'params':net.actor.parameters(),'lr':CFG['actor_lr']},
                                      {'params':net.critic.parameters(),'lr':CFG['critic_lr']}])
-    task=Task(e,m,contract,CFG['seed']);task.reset(record=True,label='train0')
+    task=Task(e,m,contract,CFG['seed']);source_failures=[]
+    def reset_source(label):
+        for attempt in range(20):
+            try:task.reset(record=True,label=label);return
+            except RuntimeError as exc:
+                if not str(exc).startswith('native source prefix failed:'):raise
+                source_failures.append(dict(spec=copy.deepcopy(task.spec),error=str(exc),attempt=attempt))
+                write(out/'native-source-failures.json',source_failures)
+        raise RuntimeError('Twenty unmaintainable source prefixes; no learning/qualification invented')
+    reset_source('train0')
     rng=torch.Generator(device='cuda').manual_seed(CFG['seed']*997)
     guard=PPOContract(joint_kl_limit=args.kl,joint_kl_stop=.75*args.kl,joint_kl_assert=args.kl+.00001)
     runtime=args.runtime;logs=[];dev=[];decisions=0;episode=0;coverage={};episode_coverage={};initial_rows=None;best=None
@@ -162,7 +171,7 @@ def train(e,m,contract,out,args):
         stats=[];probes=[];t0=time.monotonic()
         for j in range(CFG['batch']):
             if task.done:
-                episode+=1;task.reset(record=True,label=f'train{episode}')
+                episode+=1;reset_source(f'train{episode}')
             x=torch.cat([task.student_features(),task.features()],-1).detach().clone()
             dist=net.distribution(x);raw=dist.mean+dist.stddev*torch.randn(dist.mean.shape,device='cuda',generator=rng)
             if j%96==0:
@@ -219,7 +228,7 @@ def train(e,m,contract,out,args):
                    probe_contract='same BFM observation and actual previous-z; five interpolation fractions; not a physics rollout',
                    legal_z_mean_change_deg=float(torch.rad2deg(torch.acos(cosine.clamp(-1,1))).mean()))
         logs.append(log);write(out/'learning.json',logs)
-        print('FORMAL_PRIVILEGED_PPO',args.kl,iteration,decisions,log['optimizer_updates'],log['legal_z_mean_change_deg'],flush=True)
+        print('ENGINEERING_PPO' if args.smoke else 'FORMAL_PRIVILEGED_PPO',args.kl,iteration,decisions,log['optimizer_updates'],log['legal_z_mean_change_deg'],flush=True)
         if iteration%CFG['eval_every']==0 or iteration==batches:dev_eval(iteration,save(iteration))
     return dict(status='completed',Expert_RL_decisions=0 if args.smoke else decisions,
         engineering_sample_decisions=decisions if args.smoke else 0,selected=best,joint_KL=args.kl,Student_RL_decisions=0)

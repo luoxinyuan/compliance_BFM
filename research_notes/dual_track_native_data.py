@@ -62,11 +62,11 @@ class NativeActor:
         (self.source_pairs if self.source_mode else self.records).append(row)
         return action
 
-    def take_step(self, raw):
+    def take_step(self, raw, native_limit=5):
         assert not self.source_mode
         self.records=[]; self.pending=None
         self.previous_z=self.task.last_command.detach().cpu().clone()
-        _,reward,done,stats=self.task.step(raw)
+        _,reward,done,stats=self.task.step(raw,native_limit=native_limit)
         self.finish_pending()
         assert len(self.records)==stats['control_steps']==len(stats['native_rewards'])
         result=[]

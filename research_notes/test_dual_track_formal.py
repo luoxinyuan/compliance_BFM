@@ -24,8 +24,12 @@ def expect_rejected(fn):
 
 
 def contract_and_replay_tests(contract):
-    expect_rejected(lambda: require_launchable(contract, "frozen"))
-    expect_rejected(lambda: require_launchable(contract, "fb"))
+    pending=copy.deepcopy(contract)
+    pending['decisions']['discount_reward']['status']='pending_Yi'
+    expect_rejected(lambda: require_launchable(pending, "frozen"))
+    expect_rejected(lambda: require_launchable(pending, "fb"))
+    if contract['decisions']['discount_reward']['status']=='approved':
+        assert require_launchable(contract,'frozen') and require_launchable(contract,'fb')
     row = dict(observation={"x": 1}, next_observation={"x": 2}, action=[0.], z=[1.],
                target_z=[1.], terminal_observation={"x": 2}, terminated=False,
                truncated=True, episode_id="e1", successor_episode_id="e1",

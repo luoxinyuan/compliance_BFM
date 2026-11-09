@@ -2,7 +2,7 @@
 
 最后核对：2026-11-09。[Issue56](https://github.com/GaoE05/robot-research-bridge/issues/56)
 · [获批范围合同](DUAL_TRACK_CONTRACT_V1.md)
-· [具体待确认项P1–P9](DUAL_TRACK_SCIENTIFIC_DECISIONS.md)
+· [已获批P1–P9](DUAL_TRACK_SCIENTIFIC_DECISIONS.md)
 · [实际准备进度/证据](DUAL_TRACK_FORMAL_PROGRESS.md)
 · [Project Master](https://github.com/GaoE05/robot-research-bridge/issues/18#issuecomment-6739473031)。
 
@@ -21,8 +21,7 @@
   物理成本积分；FB97D当前接触/伙伴输入、固定尺度/原统计冻结/零新权重、
   robot-only discriminator；三源等比例、近中长停零无接触20/20/25/20/10/5%，
   高层不额外BC保持，FB新真实replay与原生无接触CPR原则。
-- **具体范围/父组生成/选择容差、正式优化节奏、FB辅助reward归一化、在线z
-  调度、replay恢复与更新预热细节仍待确认**，见P1–P9；不是默认沿用benchmark。
+- **用户已整包批准7354e0a的P1–P9**：两KL臂各98304决策；具体范围、父组、选模容差、优化节奏、Identity辅助reward归一化、fresh辅助critic、native-z在线先验、新replay与恢复配方均已明确批准。当前在做必要入口验证，无待确认科学参数。
 
 ## 本轮实际完成
 
@@ -34,7 +33,7 @@
 新阶段终止/截断回报测试通过；父组泄漏/错误后继/预测样本入库拒绝测试通过。
 
 这些是工程正确性结果：**0科学dev/sealed新组、0封存评价、0新行为收益**。
-FB真实online collector、完整replay/扩展模型恢复、接触扩展后update吞吐尚未完成。
+新的真实采集、终止后继、跨reset完整状态恢复及物理/训练RNG隔离测试已通过；高层正在运行可丢弃的768决策端到端测试。FB真实online collector、完整replay/扩展模型恢复与实际update吞吐仍在验证，尚无正式学习结果。
 原有#55原拓扑1M估时不是本轮真实完成时间。暂不重复生成视频。
 
 ## 精确身份与运行位置
@@ -57,11 +56,11 @@ FB真实online collector、完整replay/扩展模型恢复、接触扩展后upda
 
 209.95802s实测job；另3600s明确准备/发布保守预留。为避免漏账，#55保守
 4076.20309s先并入共同额度，总共同保守计费7886.16111s，仍在32h内。
-没有新RL/BC/F拟合。GPU0测试已结束并释放；可用性仅代表最后实时检查，
+没有新RL/BC/F拟合。GPU0当前由本阶段工程检查独占；可用性必须实时核对，
 下一启动仍需复核GPU/CPU/RAM/I/O。CPFS约257GiB自由/99%使用，不假定存储无限。
 
 新会话先读本文件、OVERVIEW、获批范围合同、P1–P9和Issue56；恢复前核对
-实际ledger/进程，不能把待确认项写成已批准，不能把缺失四格填成失败/成功。
+实际ledger/进程，不能把工程验证写成正式训练，不能把缺失四格填成失败/成功。
 既有理想力Student不是已验证真机感知。无真机、无非公开公司数据。
 
 历史入口：#55工程结项、SOURCE_COVERAGE_M1_RESULTS、RETENTION_VALIDATION_RESULTS、

@@ -1,3 +1,9 @@
+> 2026-11-09 approval addendum: Yi explicitly adopts all P1–P9 in the7354e0a
+> review packet. The three prior principle approvals and all numeric details are
+> now approved. Earlier pending markers below are retained as review history;
+> the machine-readable approved JSON and DUAL_TRACK_SCIENTIFIC_DECISIONS.md are
+> the resolved formal configuration. No benchmark value is silently promoted.
+
 # DUAL_TRACK_CONTRACT_V1 — approved scope, revision2
 
 2026-11-09. Formal stage: [Issue56](https://github.com/GaoE05/robot-research-bridge/issues/56).
@@ -49,8 +55,6 @@ checkpoints, errata and reports remain unchanged. Machine-readable decisions:
 |FB immutable checkpoints|step0,250000,1000000, including model/optimizers/normalizers/replay/counters/run identity|
 |Beyond1M|5M requires fresh explicit Yi authorization; no automatic continuation|
 |Concurrent heavy jobs|One authorized RTX Pro5000 job at a time; CPU preparation may overlap|
-
-The referenced earlier delay-cut priority list could not be located in the read Master body/comments or Issue55 comments. The verified rules are allocation caps, stop at the first limit and no automatic5M. No new priority order is invented; resolve the original wording before a delay-driven scope cut is needed.
 
 The budget is a cap, not a success criterion.250k is a learning/correctness
 observation point, not an automatic task-quality stop. Correctness failure pauses
@@ -174,3 +178,4 @@ The comparison table is BFM frozen/mutable × privileged/restricted actor, with
 missing cells explicitly labeled untrained/unimplemented rather than failures.
 The frozen privileged cell includes the KL.02/.08 comparison. No extra restricted
 FB run is silently authorized by presenting this table. See the decisions note.
+

@@ -2,7 +2,7 @@
 
 2026-11-09 · [Issue56](https://github.com/GaoE05/robot-research-bridge/issues/56) ·
 [approved-scope contract](DUAL_TRACK_CONTRACT_V1.md) ·
-[remaining decisions](DUAL_TRACK_SCIENTIFIC_DECISIONS.md) ·
+[approved P1–P9](DUAL_TRACK_SCIENTIFIC_DECISIONS.md) ·
 [small measured evidence](dual_track_formal_artifacts/preparation.json).
 
 ## Actual state
@@ -12,9 +12,9 @@ preserved byte-for-byte. Master six approvals plus the1M limit and this session'
 three explicit decisions are recorded separately from proposals.
 
 **Formal Expert PPO=0 decisions; new Student PPO=0; formal FB=0 transitions,
-0 agent updates. No formal run is queued.** The remaining applicable scientific
-decisions still have pending status; entry admission rejects a launch rather
-than importing benchmark defaults. This is not a completed dual-track milestone
+0 agent updates. No formal run is queued.** Yi has explicitly approved the entire P1–P9 packet7354e0a. Entry admission
+checks the resolved authorization record rather than importing benchmark defaults.
+Necessary runtime validation is in progress, not a new permission gate. This is not a completed dual-track milestone
 and there are no new learning curves or behavioral claims.
 
 ## Implemented and actually verified
@@ -81,3 +81,18 @@ The four-cell physical table currently has explicitly missing trained cells; see
 the decision packet. Do not invent PPO results, qualifications, sealed groups or
 Student migration to fill it. Issue56 stays open; this preparation checkpoint is
 not a conclusion on which research track wins.
+
+
+## Subsequent approval and entry validation
+
+Yi explicitly adopts the complete P1–P9 packet7354e0a. Configuration is resolved.
+Stage-smoke-03 passed at1df24ee0ef214478b809b8a02c744b30486317bf:
+three actual native prefixes, true terminal successor, deferred auto-reset,
+truncation and complete state/history plus independent physics RNG.
+The first two stage smoke failures were engineering defects before any formal
+training (reset keyword forwarding; test CPU/CUDA comparison), retained in
+private immutable jobs/ERRATUM. No old research artifact is reclassified.
+A disposable full768-decision high-level entry test is currently running; it
+uses no sealed parents and its updated model will not initialize formal training.
+FB online collection, extended full model/six-Adam/replay/physical-prefix restore
+are being completed. Formal counters remain zero until separately launched.

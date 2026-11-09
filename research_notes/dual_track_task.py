@@ -219,7 +219,8 @@ class Task(NativeTask):
         if profile is None:
             return super().native(name, t)
         if name == 'standing':
-            u = (t - 3.05) / profile['pulse_duration']
+            pulse_start=max(3.05,self.spec['source_until']-.4-profile['pulse_duration'])
+            u = (t - pulse_start) / profile['pulse_duration']
             a = profile['pulse_fraction'] * math.sin(math.pi*u)**2 if 0 < u < 1 else 0.
             return spherical(self.e.standing, self.native_z['goal_arm5'], a)
         if name == 'goal_arm5':
@@ -258,10 +259,18 @@ class Task(NativeTask):
         self.prepare()
         return dict(self.e.obs, **{CONTACT_KEY:torch.as_tensor(self.contact_vector(),device=self.e.standing.device)[None]})
 
-    def step(self, *a, **kw):
+    def step(self, *a, native_limit=5, **kw):
+        assert 1<=native_limit<=5
         self._wrap_physics()
         start = len(self.physics); controls = len(self.controls); old_q = self.lastq[0].cpu().numpy().copy()
-        x, old_reward, done, st = super().step(*a, **kw)
+        # FB count/checkpoint endpoints are native-control boundaries. A last
+        # partial high-level call is an administrative chunk, not an episode end.
+        original_end=self.spec['end'];was_active=self.e.qualification_active
+        if native_limit<5:self.spec['end']=min(original_end,float(self.e.tether.time)+.02*native_limit)
+        try:x, old_reward, done, st = super().step(*a, **kw)
+        finally:self.spec['end']=original_end
+        if native_limit<5 and self.boundary is None and self.e.tether.time<original_end-1e-8:
+            self.done=done=False;self.e.qualification_active=was_active
         rows=self.physics[start:]; cs=self.controls[controls:]
         assert rows and cs
         rewards=[]; chunks=[]
@@ -283,6 +292,7 @@ class Task(NativeTask):
         reward=sum(rewards);self.episode_return+=reward-old_reward
         if self.stage_boundary is not None:self.boundary=copy.deepcopy(self.stage_boundary)
         st.update(reward=reward,legacy_reward_not_optimized=old_reward,terminated=terminated,truncated=truncated,
+                  administrative_native_limit=native_limit,
                   native_rewards=rewards,actual_duration_s=len(rows)*.005,boundary=self.boundary,
                   source=self.spec['source'],family=self.spec.get('demand_family','unknown'),
                   native_terms=[c['reward_terms'] for c in cs])
