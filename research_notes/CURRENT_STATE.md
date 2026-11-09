@@ -1,3 +1,9 @@
+# CURRENT_STATE — RETENTION新条件纯评价已授权，尚未启动
+
+2026-11-09。两个冻结模型BC500/5403b7，13条件/26配对执行。协议retention_validation_protocol.json在首次评价前固定；无训练/Teacher查询/控制行为修改。真实源前缀保留历史，累计job≤1800s、输出≤2GiB；结项停止。上一轮结论保留在RETENTION_RESULTS。
+
+---
+
 # CURRENT_STATE — A/B/C有界续轮已结项
 
 最后核对：2026-11-09。**全部训练与评价结束，无队列，不自动开启下一轮。** [完整报告](RETENTION_RESULTS.md) · [只读审计](RETENTION_CODE_AUDIT.md) · [分段物理表](RETENTION_PHASE_TABLES.md) · [Issue53](https://github.com/GaoE05/robot-research-bridge/issues/53) · [Project Master](https://github.com/GaoE05/robot-research-bridge/issues/18)。

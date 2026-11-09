@@ -1,0 +1,251 @@
+{
+  "stage": "RETENTION new-condition frozen paired evaluation",
+  "base_commit": "9be63b54b14f728cd3b3f70a818331b27f6facc5",
+  "conditions": [
+    {
+      "name": "L53",
+      "family": "long",
+      "args": {
+        "distance": 0.53,
+        "ramp": 3.8,
+        "onset": 4.7,
+        "source": "standing",
+        "until": 4.1,
+        "enabled": true,
+        "cap": 10.0
+      },
+      "common_prefix_of": null
+    },
+    {
+      "name": "L61",
+      "family": "long",
+      "args": {
+        "distance": 0.61,
+        "ramp": 4.0,
+        "onset": 5.35,
+        "source": "standing",
+        "until": 4.6,
+        "enabled": true,
+        "cap": 10.0
+      },
+      "common_prefix_of": null
+    },
+    {
+      "name": "L68_arm",
+      "family": "long",
+      "args": {
+        "distance": 0.68,
+        "ramp": 4.6,
+        "onset": 6.15,
+        "source": "goal_arm5",
+        "until": 5.5,
+        "enabled": true,
+        "cap": 10.0
+      },
+      "common_prefix_of": null
+    },
+    {
+      "name": "L57_moving",
+      "family": "long",
+      "args": {
+        "distance": 0.57,
+        "ramp": 4.1,
+        "onset": 6.45,
+        "source": "motion_walk_task",
+        "until": 5.7,
+        "enabled": true,
+        "cap": 10.0
+      },
+      "common_prefix_of": null
+    },
+    {
+      "name": "M34",
+      "family": "medium",
+      "args": {
+        "distance": 0.34,
+        "ramp": 2.8,
+        "onset": 4.85,
+        "source": "standing",
+        "until": 4.1,
+        "enabled": true,
+        "cap": 10.0
+      },
+      "common_prefix_of": null
+    },
+    {
+      "name": "M42_arm",
+      "family": "medium",
+      "args": {
+        "distance": 0.42,
+        "ramp": 3.3,
+        "onset": 6.3,
+        "source": "goal_arm5",
+        "until": 5.6,
+        "enabled": true,
+        "cap": 10.0
+      },
+      "common_prefix_of": null
+    },
+    {
+      "name": "Stop53",
+      "family": "stop",
+      "args": {
+        "distance": 0.53,
+        "ramp": 3.8,
+        "onset": 4.7,
+        "source": "standing",
+        "until": 4.1,
+        "enabled": true,
+        "cap": 10.0,
+        "stop": 6.1
+      },
+      "common_prefix_of": "L53"
+    },
+    {
+      "name": "Stop61",
+      "family": "stop",
+      "args": {
+        "distance": 0.61,
+        "ramp": 4.0,
+        "onset": 5.35,
+        "source": "standing",
+        "until": 4.6,
+        "enabled": true,
+        "cap": 10.0,
+        "stop": 7.7
+      },
+      "common_prefix_of": "L61"
+    },
+    {
+      "name": "Stop57_moving",
+      "family": "stop",
+      "args": {
+        "distance": 0.57,
+        "ramp": 4.1,
+        "onset": 6.45,
+        "source": "motion_walk_task",
+        "until": 5.7,
+        "enabled": true,
+        "cap": 10.0,
+        "stop": 9.45
+      },
+      "common_prefix_of": "L57_moving"
+    },
+    {
+      "name": "Small45",
+      "family": "local",
+      "args": {
+        "distance": 0.045,
+        "ramp": 1.3,
+        "onset": 4.95,
+        "source": "standing",
+        "until": 4.2,
+        "enabled": true,
+        "cap": 10.0
+      },
+      "common_prefix_of": null
+    },
+    {
+      "name": "Small95_arm",
+      "family": "local",
+      "args": {
+        "distance": 0.095,
+        "ramp": 1.9,
+        "onset": 6.25,
+        "source": "goal_arm5",
+        "until": 5.4,
+        "enabled": true,
+        "cap": 10.0
+      },
+      "common_prefix_of": null
+    },
+    {
+      "name": "None_stand",
+      "family": "none",
+      "args": {
+        "distance": 0.0,
+        "ramp": 3.8,
+        "onset": 4.7,
+        "source": "standing",
+        "until": 4.1,
+        "enabled": false,
+        "cap": 10.0
+      },
+      "common_prefix_of": null
+    },
+    {
+      "name": "None_arm",
+      "family": "none",
+      "args": {
+        "distance": 0.0,
+        "ramp": 4.6,
+        "onset": 6.15,
+        "source": "goal_arm5",
+        "until": 5.5,
+        "enabled": false,
+        "cap": 10.0
+      },
+      "common_prefix_of": null
+    }
+  ],
+  "case_count": 13,
+  "model_count": 2,
+  "eval_seed": 5517,
+  "models": {
+    "BC500": {
+      "path": "experiments/interactive-contact-pilot-20261108/runs/bc-fit-01/old_data_only-500.pt",
+      "sha256": "a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e"
+    },
+    "s5403b7": {
+      "path": "experiments/ppo-retention-audit-20261109/runs/A1-train-5403/candidate-7.pt",
+      "sha256": "c1b9f7c04b4c0154b8644929bbeebbd64f55a227b199e6f5c7ed0dc116257f76"
+    }
+  },
+  "BFM_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "budget": {
+    "job_seconds": 1800,
+    "output_bytes": 2147483648,
+    "eval_job_per_model_seconds": 825,
+    "eval_job_combined_limit": 1650,
+    "remaining_analysis_reserve": 150,
+    "RL_decisions": 0,
+    "Teacher_queries": 0
+  },
+  "physics": "unchanged native_env.spec/Task, K80D8 10N, Direct256,10/50/200Hz, original frozen BFM/PD, deterministic mean",
+  "initial_states": "Existing native standing/goal_arm5/motion_walk_task executed in real physics to source_until; no qpos offsets or history reset. Root/wrist offsets are measured consequences, not prescribed teleports. Source identity is environment metadata, never actor input.",
+  "scope": "New combinations not used for 5403 selection; within known families, not claim wholly unseen training distribution. Fixed13 with no additions/removals after results.",
+  "pairing": "Independent processes per frozen model, same ordered cases, seed5517 reset per case. Full source audit including integration solver/BFM/history/previous_action/lastz/force state must match exactly. Common-prefix stop/continue checked on saved real control and physics before stop.",
+  "severe": {
+    "description": "Any physical boundary/incomplete physical episode is a failure; other thresholds carried from RETENTION, per-condition versus BC.",
+    "error_cm_add": "max(5cm,0.5*BCerror)",
+    "force_N_add": 2.0,
+    "local_none_root_excursion_m_add": 0.1,
+    "slip_peak_mps_limit": "max(BCpeak+.15,2*BCpeak)",
+    "yaw_excursion_deg_add": 15.0,
+    "none_force_must_be_zero": true
+  },
+  "promotion": {
+    "long_each_min_error_and_force_relative_improvement": 0.05,
+    "medium_local_stop_error_cm_tolerance": 0.5,
+    "medium_local_stop_force_N_tolerance": 0.25,
+    "every_condition_must_pass_severe": true,
+    "long_each_must_pass_cost_limits": true,
+    "dev_cost_reference": {
+      "sustained_slip_peak_mps": 0.6659222173468278,
+      "sustained_slip_p95_mps": 0.0380764145227011,
+      "released_abs_yaw_deg": 15.149558080571708
+    },
+    "significant_cost_amplification_limits": {
+      "sustained_slip_peak_mps": 0.8324027716835348,
+      "sustained_slip_p95_mps": 0.0480764145227011,
+      "holding_or_released_abs_final_yaw_deg": 20.14955808057171
+    },
+    "cost_tolerances_reason": "Predeclared practical margins: peak max(+.15m/s,+25%); p95 max(+.01m/s,+25%); final yaw +5deg. Not statistical confidence intervals or universal requirements. Report continuous deltas even when within margins.",
+    "passed_conclusion": "new-condition validation passed; next decision second seed confirmation, not automatically executed",
+    "failed_conclusion": "benefit limited to development conditions; candidate remains developmental, BC500 baseline maintained; report condition-specific wins too"
+  },
+  "no_training": true,
+  "no_new_teacher": true,
+  "no_original_behavior_code_changes": true,
+  "no_next_stage": true
+}
