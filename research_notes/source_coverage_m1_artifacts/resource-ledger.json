@@ -1,0 +1,315 @@
+{
+  "jobs": [
+    {
+      "name": "asset-replay",
+      "pid": 288627,
+      "guard": 288626,
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/controls-repo/research_notes/source_coverage_replay.py",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/asset-replay"
+      ],
+      "started": 1794197699.9610891,
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 68.00561618804932
+    },
+    {
+      "name": "exact-arm",
+      "pid": 288283,
+      "guard": 288282,
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/controls-repo/research_notes/source_coverage_controls.py",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/exact-arm",
+        "--source",
+        "goal_arm5",
+        "--job-limit",
+        "1500"
+      ],
+      "started": 1794197348.2118866,
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 284.1462438106537
+    },
+    {
+      "name": "exact-standing",
+      "pid": 288110,
+      "guard": 288109,
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/controls-repo/research_notes/source_coverage_controls.py",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/exact-standing",
+        "--source",
+        "standing",
+        "--job-limit",
+        "1500"
+      ],
+      "started": 1794197233.2768085,
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 414.59902596473694
+    },
+    {
+      "name": "goal_arm5-r2",
+      "pid": 280087,
+      "guard": 280084,
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/repo/research_notes/source_coverage_m1.py",
+        "--source",
+        "goal_arm5",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/goal_arm5-r2",
+        "--job-limit",
+        "4300"
+      ],
+      "started": 1794195355.7239883,
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 2641.218886613846
+    },
+    {
+      "name": "goal_arm5",
+      "pid": 279403,
+      "guard": 279400,
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/repo/research_notes/source_coverage_m1.py",
+        "--source",
+        "goal_arm5",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/goal_arm5",
+        "--job-limit",
+        "4300"
+      ],
+      "started": 1794195256.5723674,
+      "status": "failed",
+      "returncode": -15,
+      "elapsed_s": 50.14731454849243
+    },
+    {
+      "name": "motion_walk_task-r2",
+      "pid": 280088,
+      "guard": 280085,
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/repo/research_notes/source_coverage_m1.py",
+        "--source",
+        "motion_walk_task",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/motion_walk_task-r2",
+        "--job-limit",
+        "4300"
+      ],
+      "started": 1794195355.7244954,
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 1898.9832861423492
+    },
+    {
+      "name": "motion_walk_task",
+      "pid": 279404,
+      "guard": 279401,
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/repo/research_notes/source_coverage_m1.py",
+        "--source",
+        "motion_walk_task",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/motion_walk_task",
+        "--job-limit",
+        "4300"
+      ],
+      "started": 1794195256.57291,
+      "status": "failed",
+      "returncode": -15,
+      "elapsed_s": 50.146169900894165
+    },
+    {
+      "name": "standing-r1",
+      "pid": 279402,
+      "guard": 279399,
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/repo/research_notes/source_coverage_m1.py",
+        "--source",
+        "standing",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/standing-r1",
+        "--job-limit",
+        "4300"
+      ],
+      "started": 1794195256.572276,
+      "status": "failed",
+      "returncode": -15,
+      "elapsed_s": 50.14709544181824
+    },
+    {
+      "name": "standing-r2",
+      "pid": 280086,
+      "guard": 280083,
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/repo/research_notes/source_coverage_m1.py",
+        "--source",
+        "standing",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/standing-r2",
+        "--job-limit",
+        "4300"
+      ],
+      "started": 1794195355.7211428,
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 1862.953958272934
+    },
+    {
+      "name": "standing",
+      "pid": 278860,
+      "guard": 278859,
+      "command": [
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/repo/research_notes/source_coverage_m1.py",
+        "--source",
+        "standing",
+        "--output",
+        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/standing",
+        "--job-limit",
+        "4300"
+      ],
+      "started": 1794195099.276575,
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_s": 50.07071042060852
+    }
+  ],
+  "supervised_job_seconds": 7370.418307304382,
+  "output_bytes": 2940101504,
+  "query_attempts": 91,
+  "completed_queries": 91,
+  "original7_candidate_rows": 637,
+  "extra_FB_branches": 0,
+  "RL_decisions": 0,
+  "training_updates": 0,
+  "F_fits": 0,
+  "archive_analysis_seconds": "separate analysis script runtimes recorded in final ledger",
+  "limits": {
+    "job_seconds": 18000,
+    "output_GiB": 8,
+    "full_queries_stage": 400,
+    "full_queries_pilot": 96,
+    "extra_FB": 80
+  },
+  "split_scope": "3 native prefix families; all train; no dev/sealed used",
+  "replay": {
+    "status": "completed",
+    "model_loaded": true,
+    "original_wrapper_used": true,
+    "bfm_updates": 0,
+    "student_optimizer_updates": 0,
+    "study": {
+      "status": "completed",
+      "checks": [
+        {
+          "source": "standing",
+          "asset": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/standing-r2/query-001",
+          "max_errors": {
+            "integration": 0.0,
+            "qpos": 0.0,
+            "qvel": 0.0,
+            "qacc": 0.0,
+            "qacc_warmstart": 0.0,
+            "qfrc_constraint": 0.0,
+            "previous_z": 0.0,
+            "restricted": 0.0,
+            "privileged": 0.0,
+            "obs_state": 0.0,
+            "obs_last_action": 0.0,
+            "obs_history_actor": 0.0
+          },
+          "exact_digest": true,
+          "steps": 7,
+          "no_new_search": true
+        },
+        {
+          "source": "goal_arm5",
+          "asset": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/goal_arm5-r2/query-001",
+          "max_errors": {
+            "integration": 0.0,
+            "qpos": 0.0,
+            "qvel": 0.0,
+            "qacc": 0.0,
+            "qacc_warmstart": 0.0,
+            "qfrc_constraint": 0.0,
+            "previous_z": 0.0,
+            "restricted": 0.0,
+            "privileged": 0.0,
+            "obs_state": 0.0,
+            "obs_last_action": 0.0,
+            "obs_history_actor": 0.0
+          },
+          "exact_digest": true,
+          "steps": 7,
+          "no_new_search": true
+        },
+        {
+          "source": "motion_walk_task",
+          "asset": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/motion_walk_task-r2/query-001",
+          "max_errors": {
+            "integration": 0.0,
+            "qpos": 0.0,
+            "qvel": 0.0,
+            "qacc": 0.0,
+            "qacc_warmstart": 0.0,
+            "qfrc_constraint": 0.0,
+            "previous_z": 0.0,
+            "restricted": 0.0,
+            "privileged": 0.0,
+            "obs_state": 0.0,
+            "obs_last_action": 0.0,
+            "obs_history_actor": 0.0
+          },
+          "exact_digest": true,
+          "steps": 7,
+          "no_new_search": true
+        }
+      ],
+      "actual_replay_physics": 420,
+      "queries": 0,
+      "training": 0
+    },
+    "original_bfm_unchanged": true
+  },
+  "timestamp": 1794198028.8524382,
+  "analysis_jobs": [
+    {
+      "script": "source_coverage_analysis.py",
+      "seconds": 4.604754447937012,
+      "returncode": 0
+    },
+    {
+      "script": "source_coverage_segments.py",
+      "seconds": 19.303228855133057,
+      "returncode": 0
+    },
+    {
+      "script": "source_coverage_accounting.py",
+      "seconds": 0.7926526069641113,
+      "returncode": 0
+    },
+    {
+      "script": "source_coverage_report.py",
+      "seconds": 0.14494681358337402,
+      "returncode": 0
+    }
+  ],
+  "analysis_seconds": 24.845582723617554,
+  "total_accounted_job_seconds": 7395.263890028,
+  "reporting_reserve_seconds": 120,
+  "conservative_budget_charge_seconds": 7515.263890028,
+  "new_tree_bytes_conservative": 3230909126
+}

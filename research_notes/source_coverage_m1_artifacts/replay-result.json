@@ -1,0 +1,79 @@
+{
+  "status": "completed",
+  "model_loaded": true,
+  "original_wrapper_used": true,
+  "bfm_updates": 0,
+  "student_optimizer_updates": 0,
+  "study": {
+    "status": "completed",
+    "checks": [
+      {
+        "source": "standing",
+        "asset": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/standing-r2/query-001",
+        "max_errors": {
+          "integration": 0.0,
+          "qpos": 0.0,
+          "qvel": 0.0,
+          "qacc": 0.0,
+          "qacc_warmstart": 0.0,
+          "qfrc_constraint": 0.0,
+          "previous_z": 0.0,
+          "restricted": 0.0,
+          "privileged": 0.0,
+          "obs_state": 0.0,
+          "obs_last_action": 0.0,
+          "obs_history_actor": 0.0
+        },
+        "exact_digest": true,
+        "steps": 7,
+        "no_new_search": true
+      },
+      {
+        "source": "goal_arm5",
+        "asset": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/goal_arm5-r2/query-001",
+        "max_errors": {
+          "integration": 0.0,
+          "qpos": 0.0,
+          "qvel": 0.0,
+          "qacc": 0.0,
+          "qacc_warmstart": 0.0,
+          "qfrc_constraint": 0.0,
+          "previous_z": 0.0,
+          "restricted": 0.0,
+          "privileged": 0.0,
+          "obs_state": 0.0,
+          "obs_last_action": 0.0,
+          "obs_history_actor": 0.0
+        },
+        "exact_digest": true,
+        "steps": 7,
+        "no_new_search": true
+      },
+      {
+        "source": "motion_walk_task",
+        "asset": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/source-coverage-m1-20261109/runs/motion_walk_task-r2/query-001",
+        "max_errors": {
+          "integration": 0.0,
+          "qpos": 0.0,
+          "qvel": 0.0,
+          "qacc": 0.0,
+          "qacc_warmstart": 0.0,
+          "qfrc_constraint": 0.0,
+          "previous_z": 0.0,
+          "restricted": 0.0,
+          "privileged": 0.0,
+          "obs_state": 0.0,
+          "obs_last_action": 0.0,
+          "obs_history_actor": 0.0
+        },
+        "exact_digest": true,
+        "steps": 7,
+        "no_new_search": true
+      }
+    ],
+    "actual_replay_physics": 420,
+    "queries": 0,
+    "training": 0
+  },
+  "original_bfm_unchanged": true
+}

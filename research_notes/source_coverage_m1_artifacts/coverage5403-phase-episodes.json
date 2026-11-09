@@ -1,0 +1,1144 @@
+{
+  "joint": {
+    "standing|long|pre_contact": {
+      "episode_ids": [
+        0,
+        1,
+        3,
+        4,
+        8,
+        9,
+        11,
+        13,
+        19,
+        20,
+        21,
+        24,
+        25,
+        27,
+        28,
+        32,
+        35,
+        38,
+        42,
+        47,
+        48
+      ],
+      "complete_episodes": 21,
+      "partial_episodes": 0,
+      "decisions": 262
+    },
+    "standing|long|moving": {
+      "episode_ids": [
+        0,
+        1,
+        3,
+        4,
+        8,
+        9,
+        11,
+        13,
+        19,
+        20,
+        21,
+        24,
+        25,
+        27,
+        28,
+        32,
+        35,
+        38,
+        42,
+        47,
+        48
+      ],
+      "complete_episodes": 21,
+      "partial_episodes": 0,
+      "decisions": 838
+    },
+    "standing|long|contact_hold": {
+      "episode_ids": [
+        0,
+        1,
+        3,
+        4,
+        8,
+        9,
+        11,
+        13,
+        19,
+        20,
+        21,
+        24,
+        25,
+        27,
+        28,
+        32,
+        35,
+        38,
+        42,
+        47,
+        48
+      ],
+      "complete_episodes": 21,
+      "partial_episodes": 0,
+      "decisions": 426
+    },
+    "standing|long|released_recovery": {
+      "episode_ids": [
+        0,
+        1,
+        3,
+        4,
+        8,
+        9,
+        11,
+        13,
+        19,
+        20,
+        21,
+        24,
+        25,
+        27,
+        28,
+        32,
+        35,
+        38,
+        42,
+        47,
+        48
+      ],
+      "complete_episodes": 21,
+      "partial_episodes": 0,
+      "decisions": 840
+    },
+    "standing|mid|pre_contact": {
+      "episode_ids": [
+        2,
+        6,
+        16,
+        37,
+        39,
+        41,
+        44,
+        50
+      ],
+      "complete_episodes": 7,
+      "partial_episodes": 1,
+      "decisions": 104
+    },
+    "standing|mid|moving": {
+      "episode_ids": [
+        2,
+        6,
+        16,
+        37,
+        39,
+        41,
+        44,
+        50
+      ],
+      "complete_episodes": 7,
+      "partial_episodes": 1,
+      "decisions": 160
+    },
+    "standing|mid|contact_hold": {
+      "episode_ids": [
+        2,
+        6,
+        16,
+        37,
+        39,
+        41,
+        44,
+        50
+      ],
+      "complete_episodes": 7,
+      "partial_episodes": 1,
+      "decisions": 157
+    },
+    "standing|mid|released_recovery": {
+      "episode_ids": [
+        2,
+        6,
+        16,
+        37,
+        39,
+        41,
+        44,
+        50
+      ],
+      "complete_episodes": 7,
+      "partial_episodes": 1,
+      "decisions": 305
+    },
+    "standing|none|no_actual_contact": {
+      "episode_ids": [
+        5,
+        15,
+        23,
+        26,
+        29,
+        36,
+        49
+      ],
+      "complete_episodes": 7,
+      "partial_episodes": 0,
+      "decisions": 770
+    },
+    "standing|stop|pre_contact": {
+      "episode_ids": [
+        7,
+        12,
+        22,
+        30,
+        31,
+        33,
+        34,
+        40
+      ],
+      "complete_episodes": 8,
+      "partial_episodes": 0,
+      "decisions": 102
+    },
+    "standing|stop|moving": {
+      "episode_ids": [
+        7,
+        12,
+        22,
+        30,
+        31,
+        33,
+        34,
+        40
+      ],
+      "complete_episodes": 8,
+      "partial_episodes": 0,
+      "decisions": 171
+    },
+    "standing|stop|decelerating": {
+      "episode_ids": [
+        7,
+        12,
+        22,
+        30,
+        31,
+        33,
+        34,
+        40
+      ],
+      "complete_episodes": 8,
+      "partial_episodes": 0,
+      "decisions": 56
+    },
+    "standing|stop|contact_hold": {
+      "episode_ids": [
+        7,
+        12,
+        22,
+        30,
+        31,
+        33,
+        34,
+        40
+      ],
+      "complete_episodes": 8,
+      "partial_episodes": 0,
+      "decisions": 173
+    },
+    "standing|stop|released_recovery": {
+      "episode_ids": [
+        7,
+        12,
+        22,
+        30,
+        31,
+        33,
+        34,
+        40
+      ],
+      "complete_episodes": 8,
+      "partial_episodes": 0,
+      "decisions": 320
+    },
+    "standing|zero|pre_contact": {
+      "episode_ids": [
+        10,
+        45,
+        46
+      ],
+      "complete_episodes": 3,
+      "partial_episodes": 0,
+      "decisions": 39
+    },
+    "standing|zero|moving": {
+      "episode_ids": [
+        10,
+        45,
+        46
+      ],
+      "complete_episodes": 3,
+      "partial_episodes": 0,
+      "decisions": 120
+    },
+    "standing|zero|contact_hold": {
+      "episode_ids": [
+        10,
+        45,
+        46
+      ],
+      "complete_episodes": 3,
+      "partial_episodes": 0,
+      "decisions": 54
+    },
+    "standing|zero|released_recovery": {
+      "episode_ids": [
+        10,
+        45,
+        46
+      ],
+      "complete_episodes": 3,
+      "partial_episodes": 0,
+      "decisions": 120
+    },
+    "standing|near|pre_contact": {
+      "episode_ids": [
+        14,
+        18,
+        43
+      ],
+      "complete_episodes": 3,
+      "partial_episodes": 0,
+      "decisions": 34
+    },
+    "standing|near|moving": {
+      "episode_ids": [
+        14,
+        18,
+        43
+      ],
+      "complete_episodes": 3,
+      "partial_episodes": 0,
+      "decisions": 53
+    },
+    "standing|near|contact_hold": {
+      "episode_ids": [
+        14,
+        18,
+        43
+      ],
+      "complete_episodes": 3,
+      "partial_episodes": 0,
+      "decisions": 60
+    },
+    "standing|near|released_recovery": {
+      "episode_ids": [
+        14,
+        18,
+        43
+      ],
+      "complete_episodes": 3,
+      "partial_episodes": 0,
+      "decisions": 120
+    },
+    "goal_arm5|arm|pre_contact": {
+      "episode_ids": [
+        17
+      ],
+      "complete_episodes": 1,
+      "partial_episodes": 0,
+      "decisions": 7
+    },
+    "goal_arm5|arm|moving": {
+      "episode_ids": [
+        17
+      ],
+      "complete_episodes": 1,
+      "partial_episodes": 0,
+      "decisions": 21
+    },
+    "goal_arm5|arm|contact_hold": {
+      "episode_ids": [
+        17
+      ],
+      "complete_episodes": 1,
+      "partial_episodes": 0,
+      "decisions": 24
+    },
+    "goal_arm5|arm|released_recovery": {
+      "episode_ids": [
+        17
+      ],
+      "complete_episodes": 1,
+      "partial_episodes": 0,
+      "decisions": 40
+    }
+  },
+  "outcomes": [
+    {
+      "episode": 0,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 1,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 2,
+      "source": "standing",
+      "request": "mid",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": null
+    },
+    {
+      "episode": 3,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 4,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 5,
+      "source": "standing",
+      "request": "none",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 6,
+      "source": "standing",
+      "request": "mid",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": null
+    },
+    {
+      "episode": 7,
+      "source": "standing",
+      "request": "stop",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 8,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 9,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 10,
+      "source": "standing",
+      "request": "zero",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 11,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 12,
+      "source": "standing",
+      "request": "stop",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 13,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 14,
+      "source": "standing",
+      "request": "near",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 15,
+      "source": "standing",
+      "request": "none",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 16,
+      "source": "standing",
+      "request": "mid",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": null
+    },
+    {
+      "episode": 17,
+      "source": "goal_arm5",
+      "request": "arm",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": null
+    },
+    {
+      "episode": 18,
+      "source": "standing",
+      "request": "near",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 19,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 20,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 21,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 22,
+      "source": "standing",
+      "request": "stop",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 23,
+      "source": "standing",
+      "request": "none",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 24,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 25,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 26,
+      "source": "standing",
+      "request": "none",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 27,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 28,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 29,
+      "source": "standing",
+      "request": "none",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 30,
+      "source": "standing",
+      "request": "stop",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 31,
+      "source": "standing",
+      "request": "stop",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 32,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 33,
+      "source": "standing",
+      "request": "stop",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 34,
+      "source": "standing",
+      "request": "stop",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 35,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 36,
+      "source": "standing",
+      "request": "none",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 37,
+      "source": "standing",
+      "request": "mid",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": null
+    },
+    {
+      "episode": 38,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 39,
+      "source": "standing",
+      "request": "mid",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": null
+    },
+    {
+      "episode": 40,
+      "source": "standing",
+      "request": "stop",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 41,
+      "source": "standing",
+      "request": "mid",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": null
+    },
+    {
+      "episode": 42,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 43,
+      "source": "standing",
+      "request": "near",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 44,
+      "source": "standing",
+      "request": "mid",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": null
+    },
+    {
+      "episode": 45,
+      "source": "standing",
+      "request": "zero",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 46,
+      "source": "standing",
+      "request": "zero",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 47,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 48,
+      "source": "standing",
+      "request": "long",
+      "complete": true,
+      "known_failed_metrics": [
+        "contact_error",
+        "actual_force",
+        "saturation"
+      ],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        10,
+        6.5
+      ]
+    },
+    {
+      "episode": 49,
+      "source": "standing",
+      "request": "none",
+      "complete": true,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": [
+        4,
+        4
+      ]
+    },
+    {
+      "episode": 50,
+      "source": "standing",
+      "request": "mid",
+      "complete": false,
+      "known_failed_metrics": [],
+      "full_quality_pass": null,
+      "reason": "saved train logs lack full slip/yaw; 15-30cm amplitudes have no user absolute bin",
+      "metric_bounds": null
+    }
+  ],
+  "phase_assignment": "100ms decision start; crossing decisions not relabeled as exact physics ticks",
+  "full_quality_success_count": "not recoverable from archived logs"
+}

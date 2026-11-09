@@ -1,12 +1,18 @@
-# CURRENT_STATE — M1联合源状态/Teacher资格采集准备
+# CURRENT_STATE — M1联合源覆盖资格已结项
 
-2026-11-09。用户新授权仅采集与验证；BC500冻结，5403b7不晋级。无PPO/BC/F拟合，不自动进入M2/M3。
+2026-11-09。**仅采集/验证完成，未训练，未进入M2/M3。BC500仍是冻结基线，5403b7不晋级。**
 
-独立stage source-coverage-m1-20261109。协议 source_coverage_m1_protocol.json；先行12单元/4滚动窗口，原七池最多96查询，8/12且arm/moving各1通过才允许扩采。总job18000s/8GiB/400查询/80额外FB。真实原生前缀整组划分，不能把12单元冒称12独立组。当前尚未启动物理采集。
+[完整M1报告](SOURCE_COVERAGE_M1_RESULTS.md) · [配对资产与质量门槛](source_coverage_m1_artifacts/m1-evidence.json) · [真实分段/预测差距](source_coverage_m1_artifacts/segments.json) · [覆盖账本](source_coverage_m1_artifacts/coverage5403-phase-episodes.json)。
 
-5403实际5376决策/50完整回合：arm仅1、moving0；联合覆盖与历史质量缺失见source_coverage_m1_artifacts/coverage5403.json。
+预声明结论：**生成能力不足**。长距门槛在查询前改为10cm/6.5N。12单元通过0，未达到8/12及arm/moving各1；不扩采。3个真实原生共同前缀族，不把查询/相邻状态冒充64独立组；train3/dev0/sealed0。本轮有限2秒Teacher后交回BC，其短窗和后继分开评价，不能把整个失败全部归给Teacher，更不否定历史完整滚动正结果。
 
-本轮创建公开Issue被自动审批拒绝，尚未发布，工作区记录保留。
+完成91原七池查询/637候选分支、4个实际2秒窗口，实际Teacher首命令80条但无自动批准的正向模仿标签。3类源代表快照完整新进程重放逐值一致。原F/首动作与24命令物理评分合同差异可从完整存档检验。
+
+5403真实5376决策：arm仅1回合92决策、moving0；standing接管固定4.0s。旧课程未覆盖当前联合源需求。历史日志不足以重建所有训练回合滑移/yaw，完整质量成功率未知。
+
+模型BC500 `a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e`，冻结BFM `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。实际runtime、路径、失败准备和成本见报告/账本；private stage `source-coverage-m1-20261109`。公开Issue创建被自动审批拒绝，尚未发布或push，不以私有提交冒称GitHub同步。
+
+后续等待新的科研决策；不自动启动训练。以下历史结论原样保留。
 
 ---
 

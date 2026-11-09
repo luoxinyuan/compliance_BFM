@@ -1,0 +1,9 @@
+{
+  "states": 91,
+  "independent_source_families": 3,
+  "original_F_top4_retains_physical_best": 1,
+  "spearman_median": -0.7857142857142857,
+  "regret_median": 5.613130503834265,
+  "regret_max": 12.211392112583749,
+  "note": "Contact queries only. Repeated Teacher-successor states are correlated; not 91 independent groups. F is first-action robot-reward proxy, not full contact return. No fitting or heldout claims."
+}

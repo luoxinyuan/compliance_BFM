@@ -1,0 +1,2304 @@
+{
+  "rolling_windows": [
+    {
+      "run": "standing-r2",
+      "cell": "standing_long",
+      "Teacher_window": [
+        4.7,
+        6.699999999999879
+      ],
+      "Teacher_window_metrics": {
+        "physics_steps": 400,
+        "error_cm": 8.56056444453109,
+        "force_rms": 6.970082149957794,
+        "force_xyz_rms": [
+          5.567021084296921,
+          3.155396260851553,
+          2.7629324749544377
+        ],
+        "signed_error_cm": [
+          4.410338852059579,
+          -0.008803582364080444,
+          2.4061480781580022
+        ],
+        "force_xyz_mean": [
+          3.698588669911376,
+          -0.2072624339842912,
+          1.8357656522793795
+        ],
+        "cap_fraction": 0.2325,
+        "root_delta_cm": [
+          18.139138423589042,
+          7.731703045236152,
+          -2.384244958608195
+        ],
+        "root_vx_mean": 0.09069256906574936,
+        "root_speed_mean": 0.12310390675219046,
+        "pelvis_yaw_change_deg": 1.1255851330544888,
+        "foot_paths_cm": [
+          19.140528984819937,
+          39.55157465509491
+        ],
+        "slip_proxy_mean": 0.0074624095891874884,
+        "qpd_max_step_deg": 39.51267508437503,
+        "q_actual_max_step_deg": 1.396697682218332,
+        "min_height": 0.7255281539458972,
+        "max_tilt": 9.425641030243066,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.3097685638424728,
+        "loaded_slip_peak_mps": 0.19653723615417681,
+        "loaded_slip_p95_mps": 0.018050909764054077,
+        "yaw_final_deg": -4.396610763139611
+      },
+      "BC_same_window_metrics": {
+        "physics_steps": 400,
+        "error_cm": 9.94577864415448,
+        "force_rms": 6.573747534505065,
+        "force_xyz_rms": [
+          5.461915594902156,
+          2.9502756479403756,
+          2.162754790249242
+        ],
+        "signed_error_cm": [
+          5.331489407562972,
+          -0.5091374578249857,
+          1.9827078630980595
+        ],
+        "force_xyz_mean": [
+          3.672913411516449,
+          -0.21942774284350983,
+          1.262053512758651
+        ],
+        "cap_fraction": 0.345,
+        "root_delta_cm": [
+          8.653129097713652,
+          11.58619262618796,
+          -2.046711371497445
+        ],
+        "root_vx_mean": 0.04326251610946904,
+        "root_speed_mean": 0.08481625704284268,
+        "pelvis_yaw_change_deg": 2.2961319728266396,
+        "foot_paths_cm": [
+          24.175149666827373,
+          11.690010053704059
+        ],
+        "slip_proxy_mean": 0.011961661044517053,
+        "qpd_max_step_deg": 43.505011154253985,
+        "q_actual_max_step_deg": 2.7011365405392356,
+        "min_height": 0.741619656635153,
+        "max_tilt": 9.143525832731203,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.4823679044888359,
+        "loaded_slip_peak_mps": 0.49534220242883026,
+        "loaded_slip_p95_mps": 0.036851362014434674,
+        "yaw_final_deg": -3.226034169187269
+      },
+      "BC_after_Teacher_metrics": {
+        "physics_steps": 1580,
+        "error_cm": 10.612764456826904,
+        "force_rms": 7.957670516188733,
+        "force_xyz_rms": [
+          3.250607620423306,
+          6.985851683481283,
+          1.9889561077779423
+        ],
+        "signed_error_cm": [
+          -2.36322544318027,
+          -8.533083674712794,
+          0.9521138152243775
+        ],
+        "force_xyz_mean": [
+          -2.0158288906667554,
+          -6.426043677082655,
+          0.7514169100604845
+        ],
+        "cap_fraction": 0.23717948717948717,
+        "root_delta_cm": [
+          58.21193586984978,
+          1.9231038288619287,
+          2.278912742300454
+        ],
+        "root_vx_mean": 0.07395257698041298,
+        "root_speed_mean": 0.09841265601781103,
+        "pelvis_yaw_change_deg": -10.610993459398825,
+        "foot_paths_cm": [
+          81.80275178045017,
+          46.952511193909544
+        ],
+        "slip_proxy_mean": 0.008899848359014672,
+        "qpd_max_step_deg": 46.4670166029311,
+        "q_actual_max_step_deg": 3.1176485416989257,
+        "min_height": 0.7326159086079893,
+        "max_tilt": 8.182638209715783,
+        "torque_saturation_max": 0.0,
+        "work_J": -1.0009760066516393,
+        "loaded_slip_peak_mps": 0.6244786087851031,
+        "loaded_slip_p95_mps": 0.017994016821990946,
+        "yaw_final_deg": -15.031753982042876
+      },
+      "BC_uninterrupted_same_after_window": {
+        "physics_steps": 1580,
+        "error_cm": 20.862102581902846,
+        "force_rms": 9.989624979986022,
+        "force_xyz_rms": [
+          4.606137965259288,
+          8.726003058119996,
+          1.5597983573008027
+        ],
+        "signed_error_cm": [
+          1.9886469432484246,
+          -17.738322084120636,
+          1.5178408822295604
+        ],
+        "force_xyz_mean": [
+          0.8820101473693378,
+          -8.535723752399829,
+          0.8417749224609603
+        ],
+        "cap_fraction": 0.9653846153846154,
+        "root_delta_cm": [
+          69.3895702522678,
+          7.4599176112303835,
+          1.9097086763981475
+        ],
+        "root_vx_mean": 0.08797288643943484,
+        "root_speed_mean": 0.11004663572680164,
+        "pelvis_yaw_change_deg": -14.23947296147454,
+        "foot_paths_cm": [
+          92.42077902488725,
+          74.33520042407818
+        ],
+        "slip_proxy_mean": 0.009150398593773479,
+        "qpd_max_step_deg": 43.64094216402099,
+        "q_actual_max_step_deg": 2.1303583468355143,
+        "min_height": 0.7365389343486523,
+        "max_tilt": 8.152423309979694,
+        "torque_saturation_max": 0.0,
+        "work_J": 1.0228815146443453,
+        "loaded_slip_peak_mps": 0.5231172866661756,
+        "loaded_slip_p95_mps": 0.015681454195525687,
+        "yaw_final_deg": -17.499559965987473
+      },
+      "roles": [
+        {
+          "start": 4.7,
+          "end": 6.699999999999879,
+          "controller": "actual rolling Teacher first commands"
+        },
+        {
+          "start": 6.699999999999879,
+          "end": 14.600010000000882,
+          "controller": "frozen BC500 aftermath"
+        }
+      ]
+    },
+    {
+      "run": "goal_arm5-r2",
+      "cell": "goal_arm5_mid",
+      "Teacher_window": [
+        5.7,
+        7.699999999999858
+      ],
+      "Teacher_window_metrics": {
+        "physics_steps": 400,
+        "error_cm": 11.035738094668082,
+        "force_rms": 7.359278892378729,
+        "force_xyz_rms": [
+          5.9672156328130495,
+          3.666040004047208,
+          2.260856938430245
+        ],
+        "signed_error_cm": [
+          7.01392185288938,
+          -3.9086758618255923,
+          2.0984470566277658
+        ],
+        "force_xyz_mean": [
+          4.981458926866627,
+          -2.829494752050951,
+          1.319019706799794
+        ],
+        "cap_fraction": 0.4475,
+        "root_delta_cm": [
+          15.632219523291582,
+          6.450505533552932,
+          -1.2243982552337274
+        ],
+        "root_vx_mean": 0.07817136373632089,
+        "root_speed_mean": 0.10632511450942633,
+        "pelvis_yaw_change_deg": 7.338261190535516,
+        "foot_paths_cm": [
+          20.644807173143498,
+          33.097145899169305
+        ],
+        "slip_proxy_mean": 0.0076436165833396385,
+        "qpd_max_step_deg": 39.07872157677921,
+        "q_actual_max_step_deg": 1.351869463393063,
+        "min_height": 0.7174977672275792,
+        "max_tilt": 9.786836173287183,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.041890220201829746,
+        "loaded_slip_peak_mps": 0.046699983467836596,
+        "loaded_slip_p95_mps": 0.023581876138882553,
+        "yaw_final_deg": -5.67673824860347
+      },
+      "BC_same_window_metrics": {
+        "physics_steps": 400,
+        "error_cm": 25.658802220519327,
+        "force_rms": 9.528563788845535,
+        "force_xyz_rms": [
+          7.513477480535619,
+          5.774505642446314,
+          0.9981325628082535
+        ],
+        "signed_error_cm": [
+          18.167520875268803,
+          -13.987639817897957,
+          1.6654608127301251
+        ],
+        "force_xyz_mean": [
+          7.107994927329107,
+          -5.545934269670815,
+          0.6256751419402363
+        ],
+        "cap_fraction": 0.8625,
+        "root_delta_cm": [
+          2.3118573085837286,
+          1.7688608652552857,
+          0.5672130352217475
+        ],
+        "root_vx_mean": 0.011558138963021046,
+        "root_speed_mean": 0.04170143412309972,
+        "pelvis_yaw_change_deg": 21.122071429195906,
+        "foot_paths_cm": [
+          9.089479752286381,
+          0.628926703194415
+        ],
+        "slip_proxy_mean": 0.009187815519689599,
+        "qpd_max_step_deg": 21.084970698974136,
+        "q_actual_max_step_deg": 1.4247996689658124,
+        "min_height": 0.7623075506546816,
+        "max_tilt": 5.397818244869761,
+        "torque_saturation_max": 0.0,
+        "work_J": -1.9388229313695693,
+        "loaded_slip_peak_mps": 0.29644069123292754,
+        "loaded_slip_p95_mps": 0.017571686455135033,
+        "yaw_final_deg": 8.121000923523995
+      },
+      "BC_after_Teacher_metrics": {
+        "physics_steps": 1380,
+        "error_cm": 15.032975544160882,
+        "force_rms": 9.010979058103475,
+        "force_xyz_rms": [
+          5.315161567035125,
+          7.046542075748737,
+          1.8146751435435282
+        ],
+        "signed_error_cm": [
+          -4.7936665610899984,
+          -10.888209084632864,
+          1.7295745890880228
+        ],
+        "force_xyz_mean": [
+          -3.1612718573216774,
+          -6.674364945008965,
+          1.2103837309726633
+        ],
+        "cap_fraction": 0.4586206896551724,
+        "root_delta_cm": [
+          42.359027551228756,
+          1.7784083431793642,
+          1.6565445089351982
+        ],
+        "root_vx_mean": 0.06164479572135117,
+        "root_speed_mean": 0.09588160855223701,
+        "pelvis_yaw_change_deg": -6.119233495216696,
+        "foot_paths_cm": [
+          66.19280095292137,
+          36.11165152353814
+        ],
+        "slip_proxy_mean": 0.010992598567661178,
+        "qpd_max_step_deg": 50.84849074794049,
+        "q_actual_max_step_deg": 2.0670697328283416,
+        "min_height": 0.7393541618046764,
+        "max_tilt": 8.066501699432367,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.5582429442505095,
+        "loaded_slip_peak_mps": 0.6494490788355664,
+        "loaded_slip_p95_mps": 0.04016973148187901,
+        "yaw_final_deg": -11.811982963371433
+      },
+      "BC_uninterrupted_same_after_window": {
+        "physics_steps": 1380,
+        "error_cm": 42.652938346251915,
+        "force_rms": 10.0,
+        "force_xyz_rms": [
+          9.00958925767793,
+          4.296627387512691,
+          0.6052226869593248
+        ],
+        "signed_error_cm": [
+          38.374470255829664,
+          -18.36759395445058,
+          2.5965170292505992
+        ],
+        "force_xyz_mean": [
+          9.009463994768138,
+          -4.295669198886031,
+          0.6030438128008722
+        ],
+        "cap_fraction": 1.0,
+        "root_delta_cm": [
+          -3.670408243567784,
+          -0.15476824871294295,
+          -0.17193633661759522
+        ],
+        "root_vx_mean": -0.005314892009138956,
+        "root_speed_mean": 0.010485450584262167,
+        "pelvis_yaw_change_deg": -3.656029249240249,
+        "foot_paths_cm": [
+          0.8517021096410862,
+          0.9456096676643475
+        ],
+        "slip_proxy_mean": 0.003204055032894116,
+        "qpd_max_step_deg": 1.9222132545666657,
+        "q_actual_max_step_deg": 0.3842813119635053,
+        "min_height": 0.7732797190677468,
+        "max_tilt": 4.032566069893479,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.023776383536897566,
+        "loaded_slip_peak_mps": 0.005635783788559148,
+        "loaded_slip_p95_mps": 0.004561890311133404,
+        "yaw_final_deg": 4.442178444673182
+      },
+      "roles": [
+        {
+          "start": 5.7,
+          "end": 7.699999999999858,
+          "controller": "actual rolling Teacher first commands"
+        },
+        {
+          "start": 7.699999999999858,
+          "end": 14.600010000000882,
+          "controller": "frozen BC500 aftermath"
+        }
+      ]
+    },
+    {
+      "run": "goal_arm5-r2",
+      "cell": "goal_arm5_long",
+      "Teacher_window": [
+        5.7,
+        7.699999999999858
+      ],
+      "Teacher_window_metrics": {
+        "physics_steps": 400,
+        "error_cm": 13.508044676937203,
+        "force_rms": 7.7029322010267585,
+        "force_xyz_rms": [
+          7.099152208805302,
+          2.4411951952665234,
+          1.7256211717631886
+        ],
+        "signed_error_cm": [
+          9.71607576830119,
+          -3.401491517077044,
+          1.7734790371840317
+        ],
+        "force_xyz_mean": [
+          6.001562895614761,
+          -2.0730341236123566,
+          1.0846231709148633
+        ],
+        "cap_fraction": 0.5,
+        "root_delta_cm": [
+          15.422743690418894,
+          3.2694528363038486,
+          -2.419354395516804
+        ],
+        "root_vx_mean": 0.07712405725896004,
+        "root_speed_mean": 0.10236642093078473,
+        "pelvis_yaw_change_deg": 6.040680917919977,
+        "foot_paths_cm": [
+          15.090046067802149,
+          36.12999980953115
+        ],
+        "slip_proxy_mean": 0.007585984210886159,
+        "qpd_max_step_deg": 56.70366358374475,
+        "q_actual_max_step_deg": 1.3518879756885098,
+        "min_height": 0.7373505458361411,
+        "max_tilt": 9.486527733580091,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.6137454365294174,
+        "loaded_slip_peak_mps": 0.050937595529579216,
+        "loaded_slip_p95_mps": 0.022698341069400926,
+        "yaw_final_deg": -6.973893080653474
+      },
+      "BC_same_window_metrics": {
+        "physics_steps": 400,
+        "error_cm": 28.571278183694005,
+        "force_rms": 9.534297790577346,
+        "force_xyz_rms": [
+          7.775327102695617,
+          5.43665805530336,
+          0.9433302683578751
+        ],
+        "signed_error_cm": [
+          20.814693065249397,
+          -14.171712877435155,
+          1.6971970471982716
+        ],
+        "force_xyz_mean": [
+          7.3588304102983075,
+          -5.194489541221611,
+          0.573756675441666
+        ],
+        "cap_fraction": 0.865,
+        "root_delta_cm": [
+          2.411192582513574,
+          1.883237575541458,
+          0.6150017244935579
+        ],
+        "root_vx_mean": 0.01205485118301557,
+        "root_speed_mean": 0.042044437981656,
+        "pelvis_yaw_change_deg": 21.137192376309383,
+        "foot_paths_cm": [
+          9.064791382635171,
+          0.6380206988541092
+        ],
+        "slip_proxy_mean": 0.009103310193955563,
+        "qpd_max_step_deg": 21.468348363313307,
+        "q_actual_max_step_deg": 1.4224485427960367,
+        "min_height": 0.7622112673310248,
+        "max_tilt": 5.411008609580204,
+        "torque_saturation_max": 0.0,
+        "work_J": -1.930930639499573,
+        "loaded_slip_peak_mps": 0.2827185172347843,
+        "loaded_slip_p95_mps": 0.01759016791009913,
+        "yaw_final_deg": 8.13652723910939
+      },
+      "BC_after_Teacher_metrics": {
+        "physics_steps": 1580,
+        "error_cm": 12.570735186128143,
+        "force_rms": 8.462235169679925,
+        "force_xyz_rms": [
+          4.24271935355974,
+          7.13021003871344,
+          1.6639895906307598
+        ],
+        "signed_error_cm": [
+          4.096593432381122,
+          -8.890630867230044,
+          1.3121722589922453
+        ],
+        "force_xyz_mean": [
+          2.518191421979989,
+          -6.0942261025145505,
+          0.9236658729145361
+        ],
+        "cap_fraction": 0.6205128205128205,
+        "root_delta_cm": [
+          58.281245199851696,
+          2.4926985831291675,
+          3.2878629111105395
+        ],
+        "root_vx_mean": 0.07406570941975565,
+        "root_speed_mean": 0.09839567323847698,
+        "pelvis_yaw_change_deg": -9.213139795771363,
+        "foot_paths_cm": [
+          87.7512742504378,
+          44.78561242678736
+        ],
+        "slip_proxy_mean": 0.008589980393507324,
+        "qpd_max_step_deg": 49.818679221115566,
+        "q_actual_max_step_deg": 1.551197999206415,
+        "min_height": 0.7379444729313996,
+        "max_tilt": 9.82750146322456,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.3376888958863768,
+        "loaded_slip_peak_mps": 0.7145377170716166,
+        "loaded_slip_p95_mps": 0.012845544287515952,
+        "yaw_final_deg": -16.143573104562776
+      },
+      "BC_uninterrupted_same_after_window": {
+        "physics_steps": 1580,
+        "error_cm": 66.98774893467994,
+        "force_rms": 10.0,
+        "force_xyz_rms": [
+          9.561783683877424,
+          2.903067152896035,
+          0.380123517440926
+        ],
+        "signed_error_cm": [
+          63.64976283365606,
+          -19.196048094329164,
+          2.470448955247997
+        ],
+        "force_xyz_mean": [
+          9.561257298469343,
+          -2.888626411611819,
+          0.37264025074504403
+        ],
+        "cap_fraction": 1.0,
+        "root_delta_cm": [
+          -3.7518381247918993,
+          -0.005087225064562663,
+          -0.25910938045562437
+        ],
+        "root_vx_mean": -0.0047458584831676495,
+        "root_speed_mean": 0.008927742745075434,
+        "pelvis_yaw_change_deg": -3.360270728703823,
+        "foot_paths_cm": [
+          0.9999467720488128,
+          1.153212430876544
+        ],
+        "slip_proxy_mean": 0.0031888288220572325,
+        "qpd_max_step_deg": 1.8252271830342761,
+        "q_actual_max_step_deg": 0.38532911024619027,
+        "min_height": 0.7746642213732406,
+        "max_tilt": 4.064240267439314,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.0023048163268622112,
+        "loaded_slip_peak_mps": 0.005581816509980429,
+        "loaded_slip_p95_mps": 0.004535923742271618,
+        "yaw_final_deg": 4.75233771084316
+      },
+      "roles": [
+        {
+          "start": 5.7,
+          "end": 7.699999999999858,
+          "controller": "actual rolling Teacher first commands"
+        },
+        {
+          "start": 7.699999999999858,
+          "end": 15.600010000001038,
+          "controller": "frozen BC500 aftermath"
+        }
+      ]
+    },
+    {
+      "run": "motion_walk_task-r2",
+      "cell": "motion_walk_task_long",
+      "Teacher_window": [
+        5.7,
+        7.699999999999858
+      ],
+      "Teacher_window_metrics": {
+        "physics_steps": 400,
+        "error_cm": 12.627471593160703,
+        "force_rms": 7.116257051020453,
+        "force_xyz_rms": [
+          6.301118399148193,
+          2.3619142117023713,
+          2.3148180474224733
+        ],
+        "signed_error_cm": [
+          7.531155846536184,
+          -1.6437137426144217,
+          3.111305301695427
+        ],
+        "force_xyz_mean": [
+          4.640730681310015,
+          -0.8808968812069162,
+          1.7578593919859213
+        ],
+        "cap_fraction": 0.405,
+        "root_delta_cm": [
+          16.783325989930432,
+          7.029039903341171,
+          -2.3710376972139735
+        ],
+        "root_vx_mean": 0.08430281257669128,
+        "root_speed_mean": 0.1278362719773094,
+        "pelvis_yaw_change_deg": 2.9023637349655638,
+        "foot_paths_cm": [
+          30.778420300066966,
+          17.81996379049101
+        ],
+        "slip_proxy_mean": 0.007811482778520753,
+        "qpd_max_step_deg": 43.36849104067106,
+        "q_actual_max_step_deg": 1.557799477820586,
+        "min_height": 0.7138737048278188,
+        "max_tilt": 9.878783771258064,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.09985984613775037,
+        "loaded_slip_peak_mps": 0.19470825735132477,
+        "loaded_slip_p95_mps": 0.017979765441643807,
+        "yaw_final_deg": 6.599958038772982
+      },
+      "BC_same_window_metrics": {
+        "physics_steps": 400,
+        "error_cm": 19.17134232354997,
+        "force_rms": 7.680456830161354,
+        "force_xyz_rms": [
+          6.946737826278776,
+          2.5553665836536106,
+          2.0499639792119067
+        ],
+        "signed_error_cm": [
+          12.170390399369516,
+          -3.7742530876776446,
+          2.2782741338192527
+        ],
+        "force_xyz_mean": [
+          5.448660728767631,
+          -1.176671629600874,
+          1.425812190339359
+        ],
+        "cap_fraction": 0.51,
+        "root_delta_cm": [
+          8.056694104198394,
+          0.386070566124537,
+          -0.736211507048512
+        ],
+        "root_vx_mean": 0.040668944809214055,
+        "root_speed_mean": 0.07930280461407337,
+        "pelvis_yaw_change_deg": 9.380562998598206,
+        "foot_paths_cm": [
+          19.86849257088021,
+          0.7362705652300343
+        ],
+        "slip_proxy_mean": 0.008238901631922747,
+        "qpd_max_step_deg": 28.361372712369235,
+        "q_actual_max_step_deg": 1.4408063656871302,
+        "min_height": 0.7539664698970929,
+        "max_tilt": 7.201221702848323,
+        "torque_saturation_max": 0.0,
+        "work_J": -1.5760816198872705,
+        "loaded_slip_peak_mps": 0.14321926802912388,
+        "loaded_slip_p95_mps": 0.013781944072714818,
+        "yaw_final_deg": 13.081439299687883
+      },
+      "BC_after_Teacher_metrics": {
+        "physics_steps": 1580,
+        "error_cm": 25.41715642117841,
+        "force_rms": 9.800419197264702,
+        "force_xyz_rms": [
+          5.843915780951157,
+          7.7323794888353135,
+          1.4516102189994022
+        ],
+        "signed_error_cm": [
+          14.364040690908961,
+          -19.602631439454203,
+          2.2784079387062053
+        ],
+        "force_xyz_mean": [
+          5.745969502324037,
+          -7.562887423911586,
+          1.0808638728074278
+        ],
+        "cap_fraction": 0.9166666666666666,
+        "root_delta_cm": [
+          40.95671178338612,
+          6.839013434660076,
+          2.3499578255925413
+        ],
+        "root_vx_mean": 0.05207982105438409,
+        "root_speed_mean": 0.07438041985138744,
+        "pelvis_yaw_change_deg": 1.8078105407366514,
+        "foot_paths_cm": [
+          52.72710804652334,
+          52.48198418353757
+        ],
+        "slip_proxy_mean": 0.005723500387699995,
+        "qpd_max_step_deg": 33.234099675695326,
+        "q_actual_max_step_deg": 1.398689656153923,
+        "min_height": 0.7390635524843686,
+        "max_tilt": 7.132972703893397,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.3544334853142944,
+        "loaded_slip_peak_mps": 0.6909388103672688,
+        "loaded_slip_p95_mps": 0.011522095209263944,
+        "yaw_final_deg": 8.379292240092266
+      },
+      "BC_uninterrupted_same_after_window": {
+        "physics_steps": 1580,
+        "error_cm": 46.59493043072677,
+        "force_rms": 10.0,
+        "force_xyz_rms": [
+          8.525496322293153,
+          5.186435268152623,
+          0.6456017873492671
+        ],
+        "signed_error_cm": [
+          39.7424102082919,
+          -22.51951857865041,
+          2.6938273027102095
+        ],
+        "force_xyz_mean": [
+          8.488175744856356,
+          -4.966500479696146,
+          0.5797997878200994
+        ],
+        "cap_fraction": 1.0,
+        "root_delta_cm": [
+          29.0608539666019,
+          14.738947908275374,
+          0.6252640871964421
+        ],
+        "root_vx_mean": 0.03679993986740801,
+        "root_speed_mean": 0.06377523967710715,
+        "pelvis_yaw_change_deg": 4.647976368975106,
+        "foot_paths_cm": [
+          32.66387979312591,
+          47.89380075901424
+        ],
+        "slip_proxy_mean": 0.006767132212697759,
+        "qpd_max_step_deg": 47.36954413947824,
+        "q_actual_max_step_deg": 1.04810579879399,
+        "min_height": 0.7581255014365343,
+        "max_tilt": 7.548281247878673,
+        "torque_saturation_max": 0.0,
+        "work_J": 1.8497540243267518,
+        "loaded_slip_peak_mps": 0.4727204654145371,
+        "loaded_slip_p95_mps": 0.013833905451851907,
+        "yaw_final_deg": 17.716900621055817
+      },
+      "roles": [
+        {
+          "start": 5.7,
+          "end": 7.699999999999858,
+          "controller": "actual rolling Teacher first commands"
+        },
+        {
+          "start": 7.699999999999858,
+          "end": 15.600010000001038,
+          "controller": "frozen BC500 aftermath"
+        }
+      ]
+    }
+  ],
+  "prediction_to_actual": [
+    {
+      "run": "standing-r2",
+      "cell": "standing_local",
+      "query": 1,
+      "selected": 0,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 1.9033825360694934,
+        "force_rms": 1.6085206394981861,
+        "force_xyz_rms": [
+          1.6018277311472007,
+          0.07221693860141296,
+          0.12755893225683754
+        ],
+        "signed_error_cm": [
+          1.7106318855834148,
+          0.08240805846134525,
+          -0.12278800520417366
+        ],
+        "force_xyz_mean": [
+          1.4691593987266287,
+          0.06726618101570758,
+          -0.10571956832869753
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          0.786347993689442,
+          0.12097453436864594,
+          -0.018689266950189243
+        ],
+        "root_vx_mean": 0.003273696717334749,
+        "root_speed_mean": 0.0033763815775920514,
+        "pelvis_yaw_change_deg": -0.5094351358547379,
+        "foot_paths_cm": [
+          0.11406942450145036,
+          0.19407965668182983
+        ],
+        "slip_proxy_mean": 0.0011491899535329135,
+        "qpd_max_step_deg": 0.24558722561706398,
+        "q_actual_max_step_deg": 0.006458227954873956,
+        "min_height": 0.7797615606339111,
+        "max_tilt": 2.7844501427230552,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.02080994396269569,
+        "slip_peak_mps": 0.0015693766451808366,
+        "legacy_allcontact_slip_peak_mps": 0.0015693766451808366,
+        "slip_p95_mps": 0.0015570684385683496,
+        "yaw_final_deg": -6.032025264655933,
+        "error_xyz_rms_cm": [
+          1.8955113127900964,
+          0.08929711184448712,
+          0.14808094919784945
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 5.186127835668261,
+        "force_rms": 4.29684574157267,
+        "force_xyz_rms": [
+          4.258461280861192,
+          0.24534210964817826,
+          0.517878456310588
+        ],
+        "signed_error_cm": [
+          4.640484176982793,
+          -0.21743362467501534,
+          -0.5484984177913823
+        ],
+        "force_xyz_mean": [
+          3.9291415538783756,
+          -0.18813676419658343,
+          -0.4627527810246775
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          1.8010599632428257,
+          0.1821882860002233,
+          -0.023559843411347092
+        ],
+        "root_vx_mean": 0.007501663257140495,
+        "root_speed_mean": 0.007616966284747008,
+        "pelvis_yaw_change_deg": 0.21294095905626426,
+        "foot_paths_cm": [
+          0.11558878062172982,
+          0.25046362496786906
+        ],
+        "slip_proxy_mean": 0.0011748065013210509,
+        "qpd_max_step_deg": 0.2457529710962492,
+        "q_actual_max_step_deg": 0.019216495248749656,
+        "min_height": 0.7797128548692995,
+        "max_tilt": 3.4371469304903615,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.14245186930216042,
+        "loaded_slip_peak_mps": 0.0015654678589064996,
+        "loaded_slip_p95_mps": 0.00153441299406462,
+        "yaw_final_deg": -5.30964916974493
+      },
+      "anchor_prediction_error_rms_cm": 5.091705709790448,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "standing-r2",
+      "cell": "standing_mid",
+      "query": 2,
+      "selected": 0,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 2.0735210065994574,
+        "force_rms": 1.7528902934305626,
+        "force_xyz_rms": [
+          1.745432851055111,
+          0.06099167706499588,
+          0.1495612202060069
+        ],
+        "signed_error_cm": [
+          1.8630764383386744,
+          0.06654647629743324,
+          -0.14444583353912324
+        ],
+        "force_xyz_mean": [
+          1.6005325495914926,
+          0.05342045300661931,
+          -0.12442438912442857
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          0.8525680378515446,
+          0.12482049867672748,
+          -0.01832332615140375
+        ],
+        "root_vx_mean": 0.00354967400858567,
+        "root_speed_mean": 0.003647763456574012,
+        "pelvis_yaw_change_deg": -0.457733756126299,
+        "foot_paths_cm": [
+          0.11295797988344412,
+          0.19614898767154887
+        ],
+        "slip_proxy_mean": 0.0011366538995356387,
+        "qpd_max_step_deg": 0.24560320052239815,
+        "q_actual_max_step_deg": 0.006517728927849467,
+        "min_height": 0.7797652319768473,
+        "max_tilt": 2.8269326776837977,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.025492739074456493,
+        "slip_peak_mps": 0.0015656453736828135,
+        "legacy_allcontact_slip_peak_mps": 0.0015656453736828135,
+        "slip_p95_mps": 0.0015524493820769354,
+        "yaw_final_deg": -5.980167168883152,
+        "error_xyz_rms_cm": [
+          2.064821673532331,
+          0.07539734939420066,
+          0.17411507983141988
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 11.213523136109085,
+        "force_rms": 7.496154734507171,
+        "force_xyz_rms": [
+          7.437996583578793,
+          0.4757225616755865,
+          0.8013929564560202
+        ],
+        "signed_error_cm": [
+          9.168068959537795,
+          -0.5362588788549841,
+          -0.977584696249605
+        ],
+        "force_xyz_mean": [
+          6.58627575550666,
+          -0.37397283973217055,
+          -0.7018993819763135
+        ],
+        "cap_fraction": 0.37916666666666665,
+        "root_delta_cm": [
+          3.401114039985622,
+          0.5000561393828109,
+          -0.04899044094007765
+        ],
+        "root_vx_mean": 0.014168615684144324,
+        "root_speed_mean": 0.014518374390218188,
+        "pelvis_yaw_change_deg": 0.7883420974048835,
+        "foot_paths_cm": [
+          0.1594934688592272,
+          0.3475988237099728
+        ],
+        "slip_proxy_mean": 0.0015843556023870655,
+        "qpd_max_step_deg": 0.36604691309390835,
+        "q_actual_max_step_deg": 0.031578065459532303,
+        "min_height": 0.7794585608289606,
+        "max_tilt": 4.304243541272355,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.49641078252825577,
+        "loaded_slip_peak_mps": 0.002018632355166488,
+        "loaded_slip_p95_mps": 0.002011904764288429,
+        "yaw_final_deg": -4.734091315351969
+      },
+      "anchor_prediction_error_rms_cm": 12.719643481094401,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "standing-r2",
+      "cell": "standing_long",
+      "query": 3,
+      "selected": 0,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 2.3150986563306155,
+        "force_rms": 1.9580639323292635,
+        "force_xyz_rms": [
+          1.9490917287473088,
+          0.05046656839043469,
+          0.18030230584343934
+        ],
+        "signed_error_cm": [
+          2.0785135606234086,
+          0.04407127376526061,
+          -0.17538464162855116
+        ],
+        "force_xyz_mean": [
+          1.7863399126347546,
+          0.033865987176583845,
+          -0.15102634271575505
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          0.9469907740846852,
+          0.13027961449416509,
+          -0.017822142845391742
+        ],
+        "root_vx_mean": 0.003943192348523005,
+        "root_speed_mean": 0.0040354527620858945,
+        "pelvis_yaw_change_deg": -0.38812764608354133,
+        "foot_paths_cm": [
+          0.111670570017908,
+          0.19924957139841343
+        ],
+        "slip_proxy_mean": 0.0011222969967539164,
+        "qpd_max_step_deg": 0.24563081476376908,
+        "q_actual_max_step_deg": 0.006603564552975335,
+        "min_height": 0.7797702619589696,
+        "max_tilt": 2.887853323830561,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.03271888481551871,
+        "slip_peak_mps": 0.0015608469523647039,
+        "legacy_allcontact_slip_peak_mps": 0.0015608469523647039,
+        "slip_p95_mps": 0.0015458606179730163,
+        "yaw_final_deg": -5.9103235422776415,
+        "error_xyz_rms_cm": [
+          2.3046817566937845,
+          0.061147329026210465,
+          0.21067698749419905
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 16.391219833309552,
+        "force_rms": 7.927325463311217,
+        "force_xyz_rms": [
+          7.881937028014261,
+          0.42607974987487923,
+          0.7321295885474735
+        ],
+        "signed_error_cm": [
+          12.876794157478177,
+          -0.6559987867120678,
+          -1.1059837537562245
+        ],
+        "force_xyz_mean": [
+          7.087741688496168,
+          -0.35000636650723244,
+          -0.646512439697311
+        ],
+        "cap_fraction": 0.4875,
+        "root_delta_cm": [
+          3.4199202988719044,
+          0.57419271709227,
+          -0.044165089807235436
+        ],
+        "root_vx_mean": 0.014247065368469751,
+        "root_speed_mean": 0.014769883908124032,
+        "pelvis_yaw_change_deg": 0.9124360585226613,
+        "foot_paths_cm": [
+          0.16466850381949902,
+          0.36516429476163786
+        ],
+        "slip_proxy_mean": 0.001653891995524666,
+        "qpd_max_step_deg": 0.4576260894854393,
+        "q_actual_max_step_deg": 0.040396646521754544,
+        "min_height": 0.7795055933543753,
+        "max_tilt": 4.294488231245703,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.5317296498026293,
+        "loaded_slip_peak_mps": 0.0020703576301311344,
+        "loaded_slip_p95_mps": 0.0020652324373877417,
+        "yaw_final_deg": -4.609759837671438
+      },
+      "anchor_prediction_error_rms_cm": 17.908221898918324,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "standing-r2",
+      "cell": "standing_stop",
+      "query": 23,
+      "selected": 0,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 2.3150986563306155,
+        "force_rms": 1.9580639323292635,
+        "force_xyz_rms": [
+          1.9490917287473088,
+          0.05046656839043469,
+          0.18030230584343934
+        ],
+        "signed_error_cm": [
+          2.0785135606234086,
+          0.04407127376526061,
+          -0.17538464162855116
+        ],
+        "force_xyz_mean": [
+          1.7863399126347546,
+          0.033865987176583845,
+          -0.15102634271575505
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          0.9469907740846852,
+          0.13027961449416509,
+          -0.017822142845391742
+        ],
+        "root_vx_mean": 0.003943192348523005,
+        "root_speed_mean": 0.0040354527620858945,
+        "pelvis_yaw_change_deg": -0.38812764608354133,
+        "foot_paths_cm": [
+          0.111670570017908,
+          0.19924957139841343
+        ],
+        "slip_proxy_mean": 0.0011222969967539164,
+        "qpd_max_step_deg": 0.24563081476376908,
+        "q_actual_max_step_deg": 0.006603564552975335,
+        "min_height": 0.7797702619589696,
+        "max_tilt": 2.887853323830561,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.03271888481551871,
+        "slip_peak_mps": 0.0015608469523647039,
+        "legacy_allcontact_slip_peak_mps": 0.0015608469523647039,
+        "slip_p95_mps": 0.0015458606179730163,
+        "yaw_final_deg": -5.9103235422776415,
+        "error_xyz_rms_cm": [
+          2.3046817566937845,
+          0.061147329026210465,
+          0.21067698749419905
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 16.144908807079645,
+        "force_rms": 7.927325463311217,
+        "force_xyz_rms": [
+          7.881482892612376,
+          0.429471016269145,
+          0.7350313332815157
+        ],
+        "signed_error_cm": [
+          12.74724449474184,
+          -0.6557008049712093,
+          -1.1053847996355473
+        ],
+        "force_xyz_mean": [
+          7.087382755413439,
+          -0.35310339417282655,
+          -0.6502038582752131
+        ],
+        "cap_fraction": 0.4875,
+        "root_delta_cm": [
+          3.4206881513580165,
+          0.5726138116642875,
+          -0.04431150627076663
+        ],
+        "root_vx_mean": 0.014250264753828552,
+        "root_speed_mean": 0.01476659700304121,
+        "pelvis_yaw_change_deg": 0.9115224351907769,
+        "foot_paths_cm": [
+          0.16470856133207126,
+          0.3651032281948849
+        ],
+        "slip_proxy_mean": 0.001653580725845091,
+        "qpd_max_step_deg": 0.4576260894854393,
+        "q_actual_max_step_deg": 0.040396646521754544,
+        "min_height": 0.7795048554617806,
+        "max_tilt": 4.294503564527972,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.530878177576668,
+        "loaded_slip_peak_mps": 0.0020703576301311344,
+        "loaded_slip_p95_mps": 0.0020652324373877417,
+        "yaw_final_deg": -4.610673461003323
+      },
+      "anchor_prediction_error_rms_cm": 17.667237262520775,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "goal_arm5-r2",
+      "cell": "goal_arm5_local",
+      "query": 1,
+      "selected": 1,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 2.3052975043210777,
+        "force_rms": 2.001262800369385,
+        "force_xyz_rms": [
+          1.6894526342816587,
+          0.8360486374622137,
+          0.6721794912511495
+        ],
+        "signed_error_cm": [
+          1.3105689232195985,
+          -0.8596721129083581,
+          0.6507827272901837
+        ],
+        "force_xyz_mean": [
+          1.2058835763326676,
+          -0.7159794165561805,
+          0.5582001987359678
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          1.7641799206765916,
+          -0.22864096168840956,
+          0.6305288581723967
+        ],
+        "root_vx_mean": 0.007359264927507146,
+        "root_speed_mean": 0.009760358280959275,
+        "pelvis_yaw_change_deg": 0.680520759024856,
+        "foot_paths_cm": [
+          0.31278806865954323,
+          0.30804480137097046
+        ],
+        "slip_proxy_mean": 0.002918666586939201,
+        "qpd_max_step_deg": 7.632366926943834,
+        "q_actual_max_step_deg": 1.3518466678029517,
+        "min_height": 0.7676132368808662,
+        "max_tilt": 4.331082025762014,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.0996581042663697,
+        "slip_peak_mps": 0.02380779494660407,
+        "legacy_allcontact_slip_peak_mps": 0.02380779494660407,
+        "slip_p95_mps": 0.003808480140559969,
+        "yaw_final_deg": -12.334757086983018,
+        "error_xyz_rms_cm": [
+          1.9708919186029688,
+          0.914775503467329,
+          0.770173621250815
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 5.315209973366781,
+        "force_rms": 4.441011072303718,
+        "force_xyz_rms": [
+          4.290123574209757,
+          1.071685314930468,
+          0.41098618966613637
+        ],
+        "signed_error_cm": [
+          4.27024389393372,
+          -1.167171075271738,
+          0.08204282317929604
+        ],
+        "force_xyz_mean": [
+          3.691237756018438,
+          -0.9774035945698476,
+          0.08438196828818653
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          2.961987836481557,
+          -0.1091386805207678,
+          0.5971685931761783
+        ],
+        "root_vx_mean": 0.01235013124336117,
+        "root_speed_mean": 0.014167785604770963,
+        "pelvis_yaw_change_deg": 1.3701833821884375,
+        "foot_paths_cm": [
+          0.2660154781315689,
+          0.3994385355646096
+        ],
+        "slip_proxy_mean": 0.002909354871989624,
+        "qpd_max_step_deg": 7.632401077889684,
+        "q_actual_max_step_deg": 1.351854854673999,
+        "min_height": 0.7676131043601155,
+        "max_tilt": 4.331367174480672,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.007630388230736145,
+        "loaded_slip_peak_mps": 0.02380779494660407,
+        "loaded_slip_p95_mps": 0.0037866627506933847,
+        "yaw_final_deg": -11.645094463819436
+      },
+      "anchor_prediction_error_rms_cm": 5.091705709790889,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "goal_arm5-r2",
+      "cell": "goal_arm5_mid",
+      "query": 2,
+      "selected": 1,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 2.4397928422612125,
+        "force_rms": 2.114061715276627,
+        "force_xyz_rms": [
+          1.823570871495578,
+          0.8480460926613727,
+          0.651662517989939
+        ],
+        "signed_error_cm": [
+          1.464413239783607,
+          -0.8758423097725069,
+          0.6219057001635386
+        ],
+        "force_xyz_mean": [
+          1.3388791829033848,
+          -0.7302137759143286,
+          0.5334033705134794
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          1.8256673981460598,
+          -0.22594062906425189,
+          0.6300698965067353
+        ],
+        "root_vx_mean": 0.007615502592161048,
+        "root_speed_mean": 0.009905532029720448,
+        "pelvis_yaw_change_deg": 0.737673483119156,
+        "foot_paths_cm": [
+          0.3102425369429461,
+          0.31258326039768086
+        ],
+        "slip_proxy_mean": 0.002915174964033726,
+        "qpd_max_step_deg": 7.632471514215499,
+        "q_actual_max_step_deg": 1.3518601675538968,
+        "min_height": 0.7676138303783739,
+        "max_tilt": 4.331375674979721,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.09690109030307713,
+        "slip_peak_mps": 0.023802979824119552,
+        "legacy_allcontact_slip_peak_mps": 0.023802979824119552,
+        "slip_p95_mps": 0.0038058364592284794,
+        "yaw_final_deg": -12.27732595601983,
+        "error_xyz_rms_cm": [
+          2.129703496066536,
+          0.9294982332360535,
+          0.7436297239904235
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 11.369224804916497,
+        "force_rms": 7.543634617766523,
+        "force_xyz_rms": [
+          7.422621110177871,
+          1.1809670010236788,
+          0.6453185597830453
+        ],
+        "signed_error_cm": [
+          8.845874217881663,
+          -1.4769120834194651,
+          -0.4794507037334249
+        ],
+        "force_xyz_mean": [
+          6.320831471156558,
+          -1.0879199968351474,
+          -0.2998192802446209
+        ],
+        "cap_fraction": 0.37916666666666665,
+        "root_delta_cm": [
+          4.342759614995432,
+          -0.06725426094738966,
+          0.4647486100324949
+        ],
+        "root_vx_mean": 0.018103386829033445,
+        "root_speed_mean": 0.020909281131150863,
+        "pelvis_yaw_change_deg": 2.390247235941451,
+        "foot_paths_cm": [
+          0.3732945967001031,
+          0.5482273744133344
+        ],
+        "slip_proxy_mean": 0.0033049911546267547,
+        "qpd_max_step_deg": 7.632506092048173,
+        "q_actual_max_step_deg": 1.351869463393063,
+        "min_height": 0.7676136739022158,
+        "max_tilt": 4.3317041667873495,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.2998557081263433,
+        "loaded_slip_peak_mps": 0.023802979824119552,
+        "loaded_slip_p95_mps": 0.004208589663748299,
+        "yaw_final_deg": -10.624752203197534
+      },
+      "anchor_prediction_error_rms_cm": 12.719643481094764,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "goal_arm5-r2",
+      "cell": "goal_arm5_long",
+      "query": 22,
+      "selected": 1,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 2.6392249394736256,
+        "force_rms": 2.281589826028783,
+        "force_xyz_rms": [
+          2.0169884048149536,
+          0.8652375767460333,
+          0.6235173172147941
+        ],
+        "signed_error_cm": [
+          1.6825221144413154,
+          -0.8986072391728805,
+          0.5809171011659353
+        ],
+        "force_xyz_mean": [
+          1.5274049772139493,
+          -0.7502526713833481,
+          0.49821978559861535
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          1.912421337781744,
+          -0.2217736239779701,
+          0.6292758996472747
+        ],
+        "root_vx_mean": 0.007977037913145253,
+        "root_speed_mean": 0.010126200278167479,
+        "pelvis_yaw_change_deg": 0.8164163228909542,
+        "foot_paths_cm": [
+          0.3066894969977489,
+          0.319108664684291
+        ],
+        "slip_proxy_mean": 0.0029109665444646696,
+        "qpd_max_step_deg": 7.632600434036084,
+        "q_actual_max_step_deg": 1.3518773269254625,
+        "min_height": 0.767614728392464,
+        "max_tilt": 4.3318107968189015,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.09240095547117745,
+        "slip_peak_mps": 0.023795812754098703,
+        "legacy_allcontact_slip_peak_mps": 0.023795812754098703,
+        "slip_p95_mps": 0.003802102390708371,
+        "yaw_final_deg": -12.198157675682497,
+        "error_xyz_rms_cm": [
+          2.35847103897401,
+          0.9504960236682967,
+          0.7068804343389119
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 16.555953386622186,
+        "force_rms": 7.9668646954786935,
+        "force_xyz_rms": [
+          7.867056748066602,
+          1.1013442851203548,
+          0.6061286698360707
+        ],
+        "signed_error_cm": [
+          12.56970745029104,
+          -1.6238217089004672,
+          -0.6315926416452041
+        ],
+        "force_xyz_mean": [
+          6.826194146356697,
+          -1.0059673540535732,
+          -0.30436810715653956
+        ],
+        "cap_fraction": 0.4895833333333333,
+        "root_delta_cm": [
+          4.322045867707904,
+          -0.07677031032438213,
+          0.4666172404368174
+        ],
+        "root_vx_mean": 0.018017140121170925,
+        "root_speed_mean": 0.02170400958347413,
+        "pelvis_yaw_change_deg": 2.57296747952366,
+        "foot_paths_cm": [
+          0.3733556467291128,
+          0.5787563435973642
+        ],
+        "slip_proxy_mean": 0.003395644940017816,
+        "qpd_max_step_deg": 7.632645684039335,
+        "q_actual_max_step_deg": 1.3518879756885098,
+        "min_height": 0.7676145542204,
+        "max_tilt": 4.332190455464697,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.33116694771360206,
+        "loaded_slip_peak_mps": 0.023795812754098703,
+        "loaded_slip_p95_mps": 0.004441109558010941,
+        "yaw_final_deg": -10.44160651904979
+      },
+      "anchor_prediction_error_rms_cm": 17.90822189891864,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "goal_arm5-r2",
+      "cell": "goal_arm5_stop",
+      "query": 42,
+      "selected": 1,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 2.6392249394736256,
+        "force_rms": 2.281589826028783,
+        "force_xyz_rms": [
+          2.0169884048149536,
+          0.8652375767460333,
+          0.6235173172147941
+        ],
+        "signed_error_cm": [
+          1.6825221144413154,
+          -0.8986072391728805,
+          0.5809171011659353
+        ],
+        "force_xyz_mean": [
+          1.5274049772139493,
+          -0.7502526713833481,
+          0.49821978559861535
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          1.912421337781744,
+          -0.2217736239779701,
+          0.6292758996472747
+        ],
+        "root_vx_mean": 0.007977037913145253,
+        "root_speed_mean": 0.010126200278167479,
+        "pelvis_yaw_change_deg": 0.8164163228909542,
+        "foot_paths_cm": [
+          0.3066894969977489,
+          0.319108664684291
+        ],
+        "slip_proxy_mean": 0.0029109665444646696,
+        "qpd_max_step_deg": 7.632600434036084,
+        "q_actual_max_step_deg": 1.3518773269254625,
+        "min_height": 0.767614728392464,
+        "max_tilt": 4.3318107968189015,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.09240095547117745,
+        "slip_peak_mps": 0.023795812754098703,
+        "legacy_allcontact_slip_peak_mps": 0.023795812754098703,
+        "slip_p95_mps": 0.003802102390708371,
+        "yaw_final_deg": -12.198157675682497,
+        "error_xyz_rms_cm": [
+          2.35847103897401,
+          0.9504960236682967,
+          0.7068804343389119
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 16.309824245027016,
+        "force_rms": 7.9668646954786935,
+        "force_xyz_rms": [
+          7.866430488627156,
+          1.1045716396919378,
+          0.6083797633470461
+        ],
+        "signed_error_cm": [
+          12.440293823112373,
+          -1.6227899338461687,
+          -0.6308863425211972
+        ],
+        "force_xyz_mean": [
+          6.825699421703896,
+          -1.0105557544293784,
+          -0.30720075325153334
+        ],
+        "cap_fraction": 0.4895833333333333,
+        "root_delta_cm": [
+          4.322588795196583,
+          -0.07805527022278456,
+          0.4662377544104812
+        ],
+        "root_vx_mean": 0.01801940231904042,
+        "root_speed_mean": 0.021707712052004925,
+        "pelvis_yaw_change_deg": 2.5707598356062156,
+        "foot_paths_cm": [
+          0.3733306951088462,
+          0.5786763988238486
+        ],
+        "slip_proxy_mean": 0.0033955700355591473,
+        "qpd_max_step_deg": 7.632645684039335,
+        "q_actual_max_step_deg": 1.3518879756885098,
+        "min_height": 0.7676145542204,
+        "max_tilt": 4.332190455464697,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.32962373140419493,
+        "loaded_slip_peak_mps": 0.023795812754098703,
+        "loaded_slip_p95_mps": 0.004441109558010941,
+        "yaw_final_deg": -10.443814162967236
+      },
+      "anchor_prediction_error_rms_cm": 17.66723726252112,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "motion_walk_task-r2",
+      "cell": "motion_walk_task_local",
+      "query": 1,
+      "selected": 1,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 2.4695455172565173,
+        "force_rms": 1.977616663542953,
+        "force_xyz_rms": [
+          1.2896907145671475,
+          0.6334622741955016,
+          1.3588197363348469
+        ],
+        "signed_error_cm": [
+          -0.9951479170014716,
+          0.4931405098651938,
+          1.6042486773858882
+        ],
+        "force_xyz_mean": [
+          -0.660796889031771,
+          0.44603764441684113,
+          1.3288258462988358
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          1.7946619641997452,
+          -2.6289737554853665,
+          0.08521586081029486
+        ],
+        "root_vx_mean": 0.007799467435922339,
+        "root_speed_mean": 0.025712229181230662,
+        "pelvis_yaw_change_deg": -0.008621002918506265,
+        "foot_paths_cm": [
+          0.41766363615034063,
+          0.485526885899242
+        ],
+        "slip_proxy_mean": 0.0034946792097247546,
+        "qpd_max_step_deg": 4.8406583713992335,
+        "q_actual_max_step_deg": 1.1772284665722155,
+        "min_height": 0.7738853249365316,
+        "max_tilt": 3.554245231595276,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.06046377863162652,
+        "slip_peak_mps": 0.005355115999007591,
+        "legacy_allcontact_slip_peak_mps": 0.005355115999007591,
+        "slip_p95_mps": 0.00480995811317771,
+        "yaw_final_deg": 3.6884723807272923,
+        "error_xyz_rms_cm": [
+          1.6919385775071567,
+          0.729937736629094,
+          1.6441380150065312
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 3.7637594737633715,
+        "force_rms": 3.108969485647314,
+        "force_xyz_rms": [
+          2.892400075364821,
+          0.6558092292404669,
+          0.9325381072957445
+        ],
+        "signed_error_cm": [
+          2.0394688631170754,
+          0.48289608906771214,
+          1.025344493881388
+        ],
+        "force_xyz_mean": [
+          1.8865113289738409,
+          0.4404149600649633,
+          0.8432453029070992
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          3.2897998931308097,
+          -2.6292988685159147,
+          0.07703441093430685
+        ],
+        "root_vx_mean": 0.014029208806468395,
+        "root_speed_mean": 0.027196494027797443,
+        "pelvis_yaw_change_deg": 0.1540909170922471,
+        "foot_paths_cm": [
+          0.3520435734523776,
+          0.5283625829906085
+        ],
+        "slip_proxy_mean": 0.0035649366981590743,
+        "qpd_max_step_deg": 4.840556772335329,
+        "q_actual_max_step_deg": 1.1772253017210659,
+        "min_height": 0.7738973529995393,
+        "max_tilt": 3.554245231595276,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.013796372845774642,
+        "loaded_slip_peak_mps": 0.005358586219975101,
+        "loaded_slip_p95_mps": 0.004779591346016077,
+        "yaw_final_deg": 3.8511843007380455
+      },
+      "anchor_prediction_error_rms_cm": 5.09170570979089,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "motion_walk_task-r2",
+      "cell": "motion_walk_task_mid",
+      "query": 2,
+      "selected": 1,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 2.4384883330250164,
+        "force_rms": 1.9570802798962548,
+        "force_xyz_rms": [
+          1.2828046109509934,
+          0.6333101887369295,
+          1.3354751053178298
+        ],
+        "signed_error_cm": [
+          -0.8369606440711308,
+          0.49015049671240823,
+          1.5758410541187908
+        ],
+        "force_xyz_mean": [
+          -0.5241140080491545,
+          0.44350811609396884,
+          1.3043533682432513
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          1.8766866534522393,
+          -2.6284105529777992,
+          0.08555026545166156
+        ],
+        "root_vx_mean": 0.008141280390662885,
+        "root_speed_mean": 0.025696999690669447,
+        "pelvis_yaw_change_deg": 0.01708350242546436,
+        "foot_paths_cm": [
+          0.4148617813151829,
+          0.4878302833271544
+        ],
+        "slip_proxy_mean": 0.0034936718504506264,
+        "qpd_max_step_deg": 4.8406908147977905,
+        "q_actual_max_step_deg": 1.177232728850343,
+        "min_height": 0.7738861563981206,
+        "max_tilt": 3.5543199997167427,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.06001214984654156,
+        "slip_peak_mps": 0.00535767138491742,
+        "legacy_allcontact_slip_peak_mps": 0.00535767138491742,
+        "slip_p95_mps": 0.004804619418279521,
+        "yaw_final_deg": 3.7143742528076147,
+        "error_xyz_rms_cm": [
+          1.6740510487863074,
+          0.7288334604910188,
+          1.6163478039163688
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 9.767172318517645,
+        "force_rms": 6.947205594615983,
+        "force_xyz_rms": [
+          6.85761958818181,
+          0.7448777027961879,
+          0.8257580550777907
+        ],
+        "signed_error_cm": [
+          6.682111526974952,
+          0.04249737358157264,
+          0.3096367212449785
+        ],
+        "force_xyz_mean": [
+          5.145007665301024,
+          0.11251657791778848,
+          0.2655794981936516
+        ],
+        "cap_fraction": 0.2875,
+        "root_delta_cm": [
+          5.258851714391407,
+          -1.3201855051077134,
+          0.43671144044947763
+        ],
+        "root_vx_mean": 0.022233634811242776,
+        "root_speed_mean": 0.042499963380104616,
+        "pelvis_yaw_change_deg": -1.238502642443721,
+        "foot_paths_cm": [
+          6.818312288443246,
+          0.6731654297765227
+        ],
+        "slip_proxy_mean": 0.0059047590055247845,
+        "qpd_max_step_deg": 34.621632115015906,
+        "q_actual_max_step_deg": 1.177229135370173,
+        "min_height": 0.7739011605690055,
+        "max_tilt": 3.7151349754741214,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.267129411291293,
+        "loaded_slip_peak_mps": 0.43855371720617714,
+        "loaded_slip_p95_mps": 0.006798021646138322,
+        "yaw_final_deg": 2.458788107938429
+      },
+      "anchor_prediction_error_rms_cm": 12.719643481094764,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "motion_walk_task-r2",
+      "cell": "motion_walk_task_long",
+      "query": 3,
+      "selected": 1,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 2.4171679646621644,
+        "force_rms": 1.948596174939382,
+        "force_xyz_rms": [
+          1.3040235309874815,
+          0.6335235516944303,
+          1.301997539578246
+        ],
+        "signed_error_cm": [
+          -0.6121119829969788,
+          0.4865870661934917,
+          1.5347815395184397
+        ],
+        "force_xyz_mean": [
+          -0.3298429743663524,
+          0.440571306191597,
+          1.2689324648405953
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          1.9902995208136627,
+          -2.6321251593573294,
+          0.08641473378714348
+        ],
+        "root_vx_mean": 0.008614733525922855,
+        "root_speed_mean": 0.025702136565448352,
+        "pelvis_yaw_change_deg": 0.05417664351220088,
+        "foot_paths_cm": [
+          0.4106377998776869,
+          0.4912273139938566
+        ],
+        "slip_proxy_mean": 0.0034926045298655814,
+        "qpd_max_step_deg": 4.840753140273967,
+        "q_actual_max_step_deg": 1.1772407147998152,
+        "min_height": 0.7738873629167684,
+        "max_tilt": 3.5544356828934336,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.05869697930866777,
+        "slip_peak_mps": 0.005361374208361143,
+        "legacy_allcontact_slip_peak_mps": 0.005361374208361143,
+        "slip_p95_mps": 0.004797963687993801,
+        "yaw_final_deg": 3.7517709473196192,
+        "error_xyz_rms_cm": [
+          1.6815654115021814,
+          0.7277091201193109,
+          1.5765399369263404
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 14.956835348288692,
+        "force_rms": 7.5492468446576115,
+        "force_xyz_rms": [
+          7.479275001138977,
+          0.6770483987535666,
+          0.7701810466738871
+        ],
+        "signed_error_cm": [
+          10.39890519976992,
+          -0.09639037733200588,
+          0.11875775730815007
+        ],
+        "force_xyz_mean": [
+          5.865394921045673,
+          0.11318156228492575,
+          0.19993528213207024
+        ],
+        "cap_fraction": 0.43333333333333335,
+        "root_delta_cm": [
+          5.631572379609132,
+          -1.329396393924185,
+          0.45378380395036944
+        ],
+        "root_vx_mean": 0.02378670377090386,
+        "root_speed_mean": 0.044542609188117206,
+        "pelvis_yaw_change_deg": -1.2829273798490926,
+        "foot_paths_cm": [
+          7.117321326074134,
+          0.7022647376979201
+        ],
+        "slip_proxy_mean": 0.0064483559556503586,
+        "qpd_max_step_deg": 37.02503481129176,
+        "q_actual_max_step_deg": 1.1772365984469588,
+        "min_height": 0.7735344300152819,
+        "max_tilt": 3.752311379377269,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.33197182144487597,
+        "loaded_slip_peak_mps": 0.505613985470129,
+        "loaded_slip_p95_mps": 0.007178294690970098,
+        "yaw_final_deg": 2.4146669239583254
+      },
+      "anchor_prediction_error_rms_cm": 17.90822189891864,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "motion_walk_task-r2",
+      "cell": "motion_walk_task_stop",
+      "query": 23,
+      "selected": 1,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 2.4171679646621644,
+        "force_rms": 1.948596174939382,
+        "force_xyz_rms": [
+          1.3040235309874815,
+          0.6335235516944303,
+          1.301997539578246
+        ],
+        "signed_error_cm": [
+          -0.6121119829969788,
+          0.4865870661934917,
+          1.5347815395184397
+        ],
+        "force_xyz_mean": [
+          -0.3298429743663524,
+          0.440571306191597,
+          1.2689324648405953
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          1.9902995208136627,
+          -2.6321251593573294,
+          0.08641473378714348
+        ],
+        "root_vx_mean": 0.008614733525922855,
+        "root_speed_mean": 0.025702136565448352,
+        "pelvis_yaw_change_deg": 0.05417664351220088,
+        "foot_paths_cm": [
+          0.4106377998776869,
+          0.4912273139938566
+        ],
+        "slip_proxy_mean": 0.0034926045298655814,
+        "qpd_max_step_deg": 4.840753140273967,
+        "q_actual_max_step_deg": 1.1772407147998152,
+        "min_height": 0.7738873629167684,
+        "max_tilt": 3.5544356828934336,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.05869697930866777,
+        "slip_peak_mps": 0.005361374208361143,
+        "legacy_allcontact_slip_peak_mps": 0.005361374208361143,
+        "slip_p95_mps": 0.004797963687993801,
+        "yaw_final_deg": 3.7517709473196192,
+        "error_xyz_rms_cm": [
+          1.6815654115021814,
+          0.7277091201193109,
+          1.5765399369263404
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 14.702266116652499,
+        "force_rms": 7.5492468446576115,
+        "force_xyz_rms": [
+          7.478857304080027,
+          0.6805349390135772,
+          0.7711637592389496
+        ],
+        "signed_error_cm": [
+          10.269333374956032,
+          -0.09501023455555156,
+          0.1194257953616596
+        ],
+        "force_xyz_mean": [
+          5.865081367260174,
+          0.10971198278336208,
+          0.19785679291031386
+        ],
+        "cap_fraction": 0.43333333333333335,
+        "root_delta_cm": [
+          5.631782039586605,
+          -1.3314868819921701,
+          0.4535164877415565
+        ],
+        "root_vx_mean": 0.023787577354143365,
+        "root_speed_mean": 0.04454812209512906,
+        "pelvis_yaw_change_deg": -1.2870053448150478,
+        "foot_paths_cm": [
+          7.117360297743303,
+          0.7021649300572684
+        ],
+        "slip_proxy_mean": 0.0064476479050829165,
+        "qpd_max_step_deg": 37.02503481129176,
+        "q_actual_max_step_deg": 1.1772365984469588,
+        "min_height": 0.7735344300152819,
+        "max_tilt": 3.752311379377269,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.33144259832276046,
+        "loaded_slip_peak_mps": 0.505613985470129,
+        "loaded_slip_p95_mps": 0.007178294690970098,
+        "yaw_final_deg": 2.4105889589923706
+      },
+      "anchor_prediction_error_rms_cm": 17.667237262521123,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "exact-standing",
+      "cell": "exact_standing_near",
+      "query": 1,
+      "selected": 0,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 1.8509132442900174,
+        "force_rms": 1.5655820989216802,
+        "force_xyz_rms": [
+          1.5605386490575215,
+          0.10503056642228414,
+          0.06881143348858096
+        ],
+        "signed_error_cm": [
+          1.6595588248422846,
+          0.1218921631958136,
+          -0.03609694016793274
+        ],
+        "force_xyz_mean": [
+          1.4267178320451874,
+          0.10069764872610176,
+          -0.03391883758881222
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          0.8485917558082836,
+          0.17289617206984118,
+          -0.012040806542701343
+        ],
+        "root_vx_mean": 0.0035354170564068873,
+        "root_speed_mean": 0.003620399890548745,
+        "pelvis_yaw_change_deg": -0.5779183485901443,
+        "foot_paths_cm": [
+          0.10872544998239135,
+          0.1875956346081488
+        ],
+        "slip_proxy_mean": 0.0010932296304298178,
+        "qpd_max_step_deg": 0.2970987147435684,
+        "q_actual_max_step_deg": 0.004488047607629487,
+        "min_height": 0.7796774439289962,
+        "max_tilt": 2.7639610230502902,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.020929485750456934,
+        "slip_peak_mps": 0.001522217205488398,
+        "legacy_allcontact_slip_peak_mps": 0.001522217205488398,
+        "slip_p95_mps": 0.0015049236376813283,
+        "yaw_final_deg": -6.301458550283139,
+        "error_xyz_rms_cm": [
+          1.8447718692479163,
+          0.12922404817781916,
+          0.07744503658907241
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 4.263823345929932,
+        "force_rms": 3.522822396435529,
+        "force_xyz_rms": [
+          3.50195977444254,
+          0.1534900830502934,
+          0.3507080971681857
+        ],
+        "signed_error_cm": [
+          3.8841976506559885,
+          -0.12505908896343423,
+          -0.36861028731940887
+        ],
+        "force_xyz_mean": [
+          3.276856269309222,
+          -0.10842528553077976,
+          -0.310445660437514
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          1.5782383582547472,
+          0.21989827990115604,
+          -0.011935103581417472
+        ],
+        "root_vx_mean": 0.0065756112332671455,
+        "root_speed_mean": 0.0066709119452339986,
+        "pelvis_yaw_change_deg": 0.0188354956445943,
+        "foot_paths_cm": [
+          0.10422457127723615,
+          0.225735812542929
+        ],
+        "slip_proxy_mean": 0.0010647637622252732,
+        "qpd_max_step_deg": 0.2974974270363679,
+        "q_actual_max_step_deg": 0.017801395030858196,
+        "min_height": 0.779678500958609,
+        "max_tilt": 3.236053026497731,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.09837313580313213,
+        "loaded_slip_peak_mps": 0.0015218767406816635,
+        "loaded_slip_p95_mps": 0.001482614355877658,
+        "yaw_final_deg": -5.704704706048401
+      },
+      "anchor_prediction_error_rms_cm": 3.8737633320554146,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "exact-standing",
+      "cell": "exact_standing_long",
+      "query": 2,
+      "selected": 0,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 1.9386108975817828,
+        "force_rms": 1.6395891136524234,
+        "force_xyz_rms": [
+          1.6349970659282405,
+          0.08661564474641097,
+          0.08680314567312421
+        ],
+        "signed_error_cm": [
+          1.7411901317388667,
+          0.0993573198497795,
+          -0.06215512627656616
+        ],
+        "force_xyz_mean": [
+          1.496493558189873,
+          0.08173621601235972,
+          -0.05574680532782963
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          0.8649624333071162,
+          0.1575534254530074,
+          -0.014018905437684914
+        ],
+        "root_vx_mean": 0.003602588370638661,
+        "root_speed_mean": 0.0036890767676415245,
+        "pelvis_yaw_change_deg": -0.5345955759141054,
+        "foot_paths_cm": [
+          0.11004070998976001,
+          0.19071498525000286
+        ],
+        "slip_proxy_mean": 0.0011073726783170689,
+        "qpd_max_step_deg": 0.2885976905478413,
+        "q_actual_max_step_deg": 0.004630389167490258,
+        "min_height": 0.7797068176657429,
+        "max_tilt": 2.788512659116607,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.022960006815221222,
+        "slip_peak_mps": 0.001541345609824452,
+        "legacy_allcontact_slip_peak_mps": 0.001541345609824452,
+        "slip_p95_mps": 0.0015249907582882713,
+        "yaw_final_deg": -6.190769079212481,
+        "error_xyz_rms_cm": [
+          1.9331490882258058,
+          0.1068803434920269,
+          0.09860733790954372
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 14.556604058599648,
+        "force_rms": 7.661078047967207,
+        "force_xyz_rms": [
+          7.620860156035063,
+          0.4101299906733533,
+          0.6681322698033174
+        ],
+        "signed_error_cm": [
+          11.343363489717323,
+          -0.5658278308870945,
+          -0.9324015991161166
+        ],
+        "force_xyz_mean": [
+          6.749293321630958,
+          -0.32302697370178507,
+          -0.5771400481778264
+        ],
+        "cap_fraction": 0.4375,
+        "root_delta_cm": [
+          3.4876197805582105,
+          0.5856189803620154,
+          -0.04096389150115565
+        ],
+        "root_vx_mean": 0.014530327317518231,
+        "root_speed_mean": 0.014964978257035093,
+        "pelvis_yaw_change_deg": 0.7983304528856527,
+        "foot_paths_cm": [
+          0.15960278221751956,
+          0.3516961721375832
+        ],
+        "slip_proxy_mean": 0.0016049067918376026,
+        "qpd_max_step_deg": 0.4088175576765282,
+        "q_actual_max_step_deg": 0.039310364762943896,
+        "min_height": 0.7794373674197473,
+        "max_tilt": 4.283619047813155,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.5250742862144772,
+        "loaded_slip_peak_mps": 0.0020547199197652566,
+        "loaded_slip_p95_mps": 0.002049220141741789,
+        "yaw_final_deg": -4.857843050412724
+      },
+      "anchor_prediction_error_rms_cm": 16.43815376934234,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    },
+    {
+      "run": "exact-arm",
+      "cell": "exact_arm_mid",
+      "query": 1,
+      "selected": 1,
+      "prediction": {
+        "physics_steps": 480,
+        "error_cm": 2.4707832205971165,
+        "force_rms": 2.114373952883608,
+        "force_xyz_rms": [
+          1.825769800958463,
+          0.9630097998544885,
+          0.45798905218898334
+        ],
+        "signed_error_cm": [
+          1.5125709229057531,
+          -1.0994248731453833,
+          0.4030931912725815
+        ],
+        "force_xyz_mean": [
+          1.3836489889738373,
+          -0.8980498451018551,
+          0.34204210561195614
+        ],
+        "cap_fraction": 0.0,
+        "root_delta_cm": [
+          1.8404117085582667,
+          -0.017530291107082513,
+          0.21918354321632805
+        ],
+        "root_vx_mean": 0.007660767321867682,
+        "root_speed_mean": 0.0090752441359214,
+        "pelvis_yaw_change_deg": 0.5165268610576413,
+        "foot_paths_cm": [
+          0.29119883072704933,
+          0.29483406408262913
+        ],
+        "slip_proxy_mean": 0.0028426026676399976,
+        "qpd_max_step_deg": 4.953198010971358,
+        "q_actual_max_step_deg": 1.1903006912377903,
+        "min_height": 0.7733596410220978,
+        "max_tilt": 3.6734283882625745,
+        "torque_saturation_max": 0.0,
+        "work_J": -0.04119512030757511,
+        "slip_peak_mps": 0.011015199836173996,
+        "legacy_allcontact_slip_peak_mps": 0.011015199836173996,
+        "slip_p95_mps": 0.0038779712723256924,
+        "yaw_final_deg": -12.549117338664509,
+        "error_xyz_rms_cm": [
+          2.138734509477568,
+          1.128788594634416,
+          0.5063800250575349
+        ]
+      },
+      "actual_same_24commands": {
+        "physics_steps": 480,
+        "error_cm": 10.663788638274104,
+        "force_rms": 7.6577503309967065,
+        "force_xyz_rms": [
+          7.494238280898316,
+          1.3684642398739577,
+          0.7777135367116966
+        ],
+        "signed_error_cm": [
+          8.52685853755606,
+          -1.7305480417002972,
+          -0.7326830983438176
+        ],
+        "force_xyz_mean": [
+          6.475166521903931,
+          -1.3094254752516257,
+          -0.5266946745197818
+        ],
+        "cap_fraction": 0.38958333333333334,
+        "root_delta_cm": [
+          4.159195525597659,
+          0.1652638997059624,
+          0.06602856651714006
+        ],
+        "root_vx_mean": 0.01732236655953182,
+        "root_speed_mean": 0.020427121034946503,
+        "pelvis_yaw_change_deg": 2.313647046295205,
+        "foot_paths_cm": [
+          0.7222222241063128,
+          0.5374417543251193
+        ],
+        "slip_proxy_mean": 0.0032397943622483336,
+        "qpd_max_step_deg": 4.957367574655386,
+        "q_actual_max_step_deg": 1.190312540244937,
+        "min_height": 0.7733596187130445,
+        "max_tilt": 4.272218276276865,
+        "torque_saturation_max": 0.0,
+        "work_J": 0.34262220022415085,
+        "loaded_slip_peak_mps": 0.011015199836173996,
+        "loaded_slip_p95_mps": 0.003936813260726239,
+        "yaw_final_deg": -10.751997153426945
+      },
+      "anchor_prediction_error_rms_cm": 12.002698839352032,
+      "first_actual_qpd_vs_prediction_max_deg": 0.0,
+      "target_sequence_equal": true,
+      "note": "Identical planned high-level sequence; BFM observations evolve under different future partner motion. Actual full episode subsequently uses BC500."
+    }
+  ]
+}
