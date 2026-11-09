@@ -1,6 +1,14 @@
-# CURRENT_STATE — RETENTION新条件纯评价已授权，尚未启动
+# CURRENT_STATE — RETENTION新条件验证已结项
 
-2026-11-09。两个冻结模型BC500/5403b7，13条件/26配对执行。协议retention_validation_protocol.json在首次评价前固定；无训练/Teacher查询/控制行为修改。真实源前缀保留历史，累计job≤1800s、输出≤2GiB；结项停止。上一轮结论保留在RETENTION_RESULTS。
+最后核对：2026-11-09。**26回合全部结束，无训练、Teacher查询或后续队列。**
+
+[13条件对照与结论](RETENTION_VALIDATION_RESULTS.md) · [分阶段XYZ/滑移/yaw表](RETENTION_VALIDATION_PHASES.md) · [锁定协议](retention_validation_protocol.json)。
+
+**结论：收益限于开发条件，5403b7不晋级，BC500维持基线。** 四条新长距均未达到误差与力共同实质收益；61cm触发相对BC滑移保护，移动源57cm末yaw约−24.22°，较开发约−15.15°显著放大。34cm中距有明确收益（13.959→7.154cm、8.347→5.785N），停止/局部相对指标在容差内，但arm-ready起点两模型共有严重跟随失败，不能因相对不劣称成功。
+
+13组配对完整初态一致；6组停止/继续前缀实际物理/动作逐值一致。精确模型SHA沿用下方身份，评价runtime `3a59503b2f4ef9255830a441a8fdddcac030c051`。私有stage `retention-newconditions-20261109`；累计保守job 1271.15s，产物约0.347GiB，均低于1800s/2GiB。未新增视频或重复实验。
+
+**下一决策：保留开发正结果和共同失败域，等待用户决定；本轮不自动启动第二seed或任何新训练。** 历史RETENTION/INTERACTIVE_INCREMENT结论完整保留如下。
 
 ---
 
@@ -30,6 +38,6 @@
 
 A0 768.16s、A1 3543.73s、B14.08s、C6.05s实测job；另250s明确CPU分析预留，总4582.02s。A1双计父等待与评价子job，保守。输出约.759GiB，5376Student RL，0新Teacher搜索/0BC/0Expert RL。所有分项低于用户上限。只用获准NVIDIA卡；启动实时核验CPU/RAM/I/O；不据NVML名称臆断型号。
 
-没有下一轮运行授权。下一建议：冻结BC500与5403b7，在少量新起步/支撑状态、停止组合检验收益和滑移代价；先保留逐批独立评价，不无界续训。不把回合内高度相关候选当独立校准样本。若修复旧RNG/评价生命周期需独立回归小轮，带归档物理复算。
+此前建议的新条件评价已完成，结论见本文件顶部；不再重复发车。不把回合内高度相关候选当独立校准样本。若修复旧RNG/评价生命周期需独立回归小轮，带归档物理复算。
 
 新会话先读RESEARCH_OVERVIEW、本文件、RETENTION_RESULTS及Issue53；需要启动时重新核验实际资源和身份，不沿用旧PID/空闲快照。保持BFM/PD/main/SoftSONIC/他人任务不动、不真机。ideal-force只是传感假设；既有Library 2026-10-28文档是历史快照，不覆盖当前GitHub事实。

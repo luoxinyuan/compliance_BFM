@@ -1,0 +1,33 @@
+{
+  "stage": "retention-newconditions",
+  "status": "completed; no queued follow-up",
+  "created": 1794188459.8523655,
+  "max_job_s": 1800,
+  "max_output_bytes": 2147483648,
+  "RL_decisions": 0,
+  "Teacher_queries": 0,
+  "resources": {
+    "GPU_compute_empty": true,
+    "CPU_cores_quota": 20,
+    "RAM_available_kB": 209221196,
+    "IO_PSI_avg10": 0,
+    "CPU_PSI_avg10": 0,
+    "disk_free_GiB": 621
+  },
+  "parallelism": "two independent frozen-model evaluations, cumulative per-job wall accounted",
+  "runtime": "3a59503b2f4ef9255830a441a8fdddcac030c051",
+  "protocol_sha256": "1f5c62fde268b29091706cea65f7fbf5bfb3a661238dde57f4c324d5a94ab606",
+  "launched": 1794188494.1099367,
+  "evaluation_job_s": 1141.9766283035278,
+  "analysis_job_s": 9.17304253578186,
+  "CPU_finalization_allowance_s": 120,
+  "total_accounted_job_s": 1271.1496708393097,
+  "output_bytes_before_final_docs": 372917101,
+  "physics_steps": 52112,
+  "episodes": 26,
+  "supervised_updates": 0,
+  "conclusion": "benefit limited to development conditions",
+  "closed": 1794189298.0104728,
+  "final_private_output_bytes": 372917581,
+  "public_artifacts_bytes": 588933
+}
