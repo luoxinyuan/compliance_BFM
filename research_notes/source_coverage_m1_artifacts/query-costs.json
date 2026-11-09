@@ -1,0 +1,12 @@
+{
+  "queries": 91,
+  "query_mean_s": 51.39103584600917,
+  "query_median_s": 54.54290286899777,
+  "query_p90_s": 56.451169201987796,
+  "raw_actual_first_command_labels": 80,
+  "search_seconds_for_actual_label_queries": 4121.182224937831,
+  "mean_query_seconds_per_raw_label": 51.51477781172289,
+  "qualified_positive_labels": 0,
+  "cost_per_qualified_label": null,
+  "note": "Query cost only; actual execution, source prefixes, failures, full evaluation in resource ledger. Zero qualified positives: no finite cost-per-valid-label claim."
+}
