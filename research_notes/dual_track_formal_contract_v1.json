@@ -145,7 +145,7 @@
     "fb_replay_and_checkpoint": {
       "status": "pending_Yi",
       "value": null,
-      "proposal": "new CPU replay capacity1M, store complete pre-reset successor+terminated/truncated; source/prefix steps separate from1M; immutable full model/6Adam/normalizers/counters/RNG/replay at0/250k/1M; engineering stop ceiling64GiB and shared-free-space guard, no claim these are measured sizes"
+      "proposal": "new CPU replay capacity1M, store complete pre-reset successor+terminated/truncated; source/prefix steps separate from1M; immutable full model/6Adam/normalizers/counters/RNG/replay at0/250k/1M; engineering stop ceiling64GiB and shared-free-space guard, no claim these are measured sizes; mutable-model restore must replay actual historical29D actions, not regenerate them using new actor weights"
     },
     "fb_update_recipe": {
       "status": "pending_Yi",
