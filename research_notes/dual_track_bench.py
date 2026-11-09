@@ -21,7 +21,7 @@ def study(e,m,contract,out):
  from humanoidverse.force_compliance.parallel import merge_rollouts
  from m11_runtime_speed import install as speed
  from rolling_backend import install as backend
- install();torch.set_num_threads(1);torch.set_grad_enabled(False)
+ install();torch.set_num_threads(1);torch.set_grad_enabled(False);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
  write(out/'speed.json',speed(e));write(out/'backend.json',backend(e,m,P/'experiments/native-rolling-h100-20261107/compatibility-prefix'))
  path,digest=MODELS['BC500'];assert sha(path)==digest
  ck=torch.load(path,map_location='cpu',weights_only=True);net=PrivilegedBranch(ck).cuda();old=net.base
