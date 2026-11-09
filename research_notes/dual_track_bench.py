@@ -84,6 +84,8 @@ def study(e,m,contract,out):
  write(out/'high-benchmark.json',dict(decisions=768,controls=len(pool),sample_s=sample_s,reset_s=reset_seconds,update_s=update_s,data_save_s=save_data,checkpoint_save_s=save_s,checkpoint_read_s=read_s,peak_allocated=torch.cuda.max_memory_allocated(),peak_reserved=torch.cuda.max_memory_reserved(),update=log,compile='none; canonical row eager FP32',formal_training=False))
  return dict(status='completed',student_optimizer_updates=log['optimizer_updates'],benchmark_only=True,RL_decisions=768,formal_RL_decisions=0)
 def main():
+ from test_dual_track import main as regression
+ regression()
  p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args();out=a.output;out.mkdir(parents=True,exist_ok=False)
  os.environ.update(CLEAN_KIND='direct',P4000_CANONICAL_ROW_ACTOR='1',BFM_RECOVERY_OUTPUT=str(out));os.chdir(out)
  import m10_stage,m10_physics
