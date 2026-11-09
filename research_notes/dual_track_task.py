@@ -123,9 +123,9 @@ class Task(NativeTask):
         base = self.e.base
         original_reset, original_check = base.reset_envs_idx, base._check_termination
 
-        def reset_selected(ids):
+        def reset_selected(ids, *a, **kw):
             if self.allow_native_reset or len(ids) == 0:
-                return original_reset(ids)
+                return original_reset(ids, *a, **kw)
             # Real terminal observation/history is captured by the existing base
             # pipeline. Delay reset until this task explicitly starts a new episode.
             self.native_reset_deferred = True
