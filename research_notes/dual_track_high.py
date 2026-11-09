@@ -5,7 +5,7 @@ import numpy as np
 import torch
 
 from dual_track_task import Task,CFG,parent_manifests
-from dual_track_runtime import PrivilegedBranch,PPOContract,TrainingBranch,save_training_checkpoint
+from dual_track_runtime import PrivilegedBranch,PPOContract,TrainingBranch,save_training_checkpoint,restore_training_checkpoint
 from dual_track_critic import update
 from dual_track_returns import advantages,physical_discount,high_reward_from_native
 
@@ -123,23 +123,40 @@ def select(rows,initial):
 def train(e,m,contract,out,args):
     net=build();opt=torch.optim.Adam([{'params':net.actor.parameters(),'lr':CFG['actor_lr']},
                                      {'params':net.critic.parameters(),'lr':CFG['critic_lr']}])
+    statehash=hashlib.sha256()
+    for key,value in sorted(net.state_dict().items()):
+        statehash.update(key.encode());statehash.update(value.detach().cpu().numpy().tobytes())
+    write(out/'initialization.json',dict(model_state_sha256=statehash.hexdigest(),BC500_sha256=BC_SHA,
+        joint_KL=args.kl,std=CFG['raw_std'],fresh_Adam=True,fresh_critic=True,
+        actor_parameters=sum(p.numel() for p in net.actor.parameters()),
+        critic_parameters=sum(p.numel() for p in net.critic.parameters()),
+        old_input_and_normalizer_retained=True,zero_privileged_output_branch=True))
     task=Task(e,m,contract,CFG['seed']);source_failures=[]
     def reset_source(label):
         for attempt in range(20):
-            try:task.reset(record=True,label=label);return
+            try:
+                task.reset(record=True,label=label)
+                with (out/'source-episodes.jsonl').open('a') as f:
+                    f.write(json.dumps(dict(label=label,spec=task.spec,
+                        actual_source_sha256=task.prefix_data['audit']['sha256'],
+                        support=np.asarray(e.last_support).tolist()))+'\n')
+                return
             except RuntimeError as exc:
                 if not str(exc).startswith('native source prefix failed:'):raise
                 source_failures.append(dict(spec=copy.deepcopy(task.spec),error=str(exc),attempt=attempt))
                 write(out/'native-source-failures.json',source_failures)
         raise RuntimeError('Twenty unmaintainable source prefixes; no learning/qualification invented')
     reset_source('train0')
+    first=torch.cat([task.student_features(),task.features()],-1)
+    assert torch.equal(net.distribution(first).mean,net.base.distribution(first[:,:1639]).mean)
     rng=torch.Generator(device='cuda').manual_seed(CFG['seed']*997)
     guard=PPOContract(joint_kl_limit=args.kl,joint_kl_stop=.75*args.kl,joint_kl_assert=args.kl+.00001)
     runtime=args.runtime;logs=[];dev=[];decisions=0;episode=0;coverage={};episode_coverage={};initial_rows=None;best=None
     def save(i):
         path=out/f'candidate-{i}.pt';assert not path.exists()
         save_training_checkpoint(path,task,net,opt,[rng],dict(iteration=i,RL_decisions=decisions,episode=episode,
-            runtime=runtime,initial_BC500_sha256=BC_SHA,joint_KL=args.kl,kind='privileged_Expert',coverage=coverage))
+            runtime=runtime,initial_BC500_sha256=BC_SHA,joint_KL=args.kl,kind='privileged_Expert',coverage=coverage,
+            episode_coverage=episode_coverage))
         return path
     def dev_eval(i,path):
         nonlocal initial_rows,best
@@ -160,24 +177,47 @@ def train(e,m,contract,out,args):
         assert after.task_rng==before.task_rng and torch.equal(after.generators[0][1],before.generators[0][1])
         rows=json.loads((dest/'summaries.json').read_text())
         if initial_rows is None:initial_rows=rows
-        choice=select(rows,initial_rows);choice.update(iteration=i,sha256=sha(path),eval_job_s=time.monotonic()-t)
+        choice=select(rows,initial_rows);choice.update(iteration=i,sha256=sha(path),checkpoint_path=str(path),eval_job_s=time.monotonic()-t)
         dev.append(choice);write(out/'development.json',dev)
         if i==0 or (choice['admissible'] and choice['score']<best['score']):best=copy.deepcopy(choice);write(out/'selection.json',best)
         write(out/f'dev-{i}-isolation.json',dict(physical_history_exact=True,torch_and_task_rng_exact=True,independent_process=True))
-    dev_eval(0,save(0))
+    first_iteration=1
+    if args.resume:
+        assert not args.smoke
+        restored=restore_training_checkpoint(args.resume,task,net,opt,[rng])
+        assert restored['runtime']==runtime and restored['joint_KL']==args.kl,'Use original pinned runtime and KL for resume'
+        decisions=restored['RL_decisions'];episode=restored['episode'];coverage=restored['coverage']
+        episode_coverage=restored.get('episode_coverage',{});first_iteration=restored['iteration']+1
+        parent=args.resume.parent
+        if (parent/'dev-0/evaluation.json').exists():
+            initial_rows=json.loads((parent/'dev-0/summaries.json').read_text())
+            logs=[r for r in json.loads((parent/'learning.json').read_text()) if r['iteration']<first_iteration] if (parent/'learning.json').exists() else []
+            dev=[r for r in json.loads((parent/'development.json').read_text()) if r['iteration']<first_iteration]
+            best=copy.deepcopy(min([r for r in dev if r['iteration']==0 or r['admissible']],key=lambda r:r['score']))
+            best.setdefault('checkpoint_path',str(parent/f"candidate-{best['iteration']}.pt"))
+        write(out/'resume.json',dict(checkpoint=str(args.resume),sha256=sha(args.resume),counters=restored,
+            physical_history_and_all_RNG_exact=True,curriculum_pair_memory_restored=True))
+        dev_eval(restored['iteration'],args.resume)
+    else:dev_eval(0,save(0))
     batches=1 if args.smoke else CFG['high_batches_per_arm']
-    for iteration in range(1,batches+1):
+    for iteration in range(first_iteration,batches+1):
         arrays={k:[] for k in ('obs','action','logp','value','next_value','reward','discount','terminated','truncated')}
         stats=[];probes=[];t0=time.monotonic()
         for j in range(CFG['batch']):
             if task.done:
                 episode+=1;reset_source(f'train{episode}')
             x=torch.cat([task.student_features(),task.features()],-1).detach().clone()
+            decision_time=float(e.tether.time)
             dist=net.distribution(x);raw=dist.mean+dist.stddev*torch.randn(dist.mean.shape,device='cuda',generator=rng)
             if j%96==0:
                 probes.append(dict(x=x.clone(),obs={k:v.clone() for k,v in e.obs.items()},previous=task.last_command.clone()))
             lp=dist.log_prob(raw).sum(-1);v=net.value(x)
             _,reward,done,st=task.step(raw)
+            from transition_env import phase
+            native_phase_counts={}
+            for c in task.controls[-st['control_steps']:]:
+                key=phase(task.spec,c['time']);native_phase_counts[key]=native_phase_counts.get(key,0)+1
+            st.update(decision_time_s=decision_time,native_phase_counts=native_phase_counts)
             nx=torch.cat([task.student_features(),task.features()],-1)
             nv=torch.zeros(1,device='cuda') if st['terminated'] else net.value(nx)
             for k,val in dict(obs=x[0],action=raw[0],logp=lp[0],value=v[0],next_value=nv[0]).items():arrays[k].append(val.cpu().numpy())

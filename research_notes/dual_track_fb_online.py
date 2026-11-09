@@ -67,19 +67,33 @@ class Collector:
         self.sequences=NativeSequences()
         self.decisions=0;self.transitions=0;self.physics=0;self.source_controls=0;self.source_physics=0
         self.episodes=0;self.coverage={};self.episode_rows=[];self.native_actions=[];self.source_failures=[]
+        self.source_ledger=[]
 
     def reset(self,s=None):
+        for _ in range(20):
+            try:return self._reset_once(s)
+            except RuntimeError as exc:
+                if s is not None or not str(exc).startswith('native source prefix failed:'):raise
+        raise RuntimeError('Twenty invalid original native sources; preserve evidence and pause')
+
+    def _reset_once(self,s=None):
         self.proxy.begin_source()
         prefill=self.task.total_prefill
         try:self.task.reset(s,record=True,label=f'fb-{self.episodes}')
         except RuntimeError as exc:
             self.source_failures.append(dict(spec=copy.deepcopy(self.task.spec),error=str(exc)))
+            self.source_controls+=len(self.proxy.source_pairs)
+            self.source_physics+=self.task.total_prefill-prefill+len(self.task.physics)
             raise
         self.proxy.finish_pending()
         self.sequences.add(self.task.spec['source'],self.task.spec['source_parent_id'],self.proxy.source_pairs)
         self.source_controls+=len(self.proxy.source_pairs)
         self.source_physics+=self.task.total_prefill-prefill+len(self.task.prefix_data['physics'])
         self.proxy.begin_online();self.native_actions=[]
+        self.task.online_episode=self.episodes
+        self.source_ledger.append(dict(spec=copy.deepcopy(self.task.spec),online_episode=self.episodes,
+            actual_source_sha256=self.task.prefix_data['audit']['sha256'],role='native_source_prefix_not_online_replay',
+            support=np.asarray(self.task.e.last_support).tolist()))
 
     def bootstrap_sources(self):
         # Three new native free prefixes for CPR, never PPO or train replay.
@@ -121,6 +135,7 @@ def save_package(path,agent,c,updates,runtime):
     assert not path.exists();path.mkdir()
     begun=time.monotonic();torch.cuda.synchronize()
     state=TrainingBranch(c.task)
+    assert all(torch.isfinite(v).all() for v in agent._model.state_dict().values() if v.is_floating_point())
     torch.save(cpu(agent._model.state_dict()),path/'model.pt')
     torch.save(cpu(agent.optimizer_dict),path/'optimizers.pt')
     torch.save(dict(storage=cpu(agent.z_buffer._storage),idx=agent.z_buffer._idx,full=agent.z_buffer._is_full),path/'zbuffer.pt')
@@ -133,6 +148,7 @@ def save_package(path,agent,c,updates,runtime):
     r=state.rng_all
     history=dict(spec=copy.deepcopy(c.task.spec),raw=[copy.deepcopy(d['raw']) for d in c.task.decision_rows],
         native_limits=[d['administrative_native_limit'] for d in c.task.stats],
+        pending_continue_spec=copy.deepcopy(c.task.pending_continue_spec),source_ledger=copy.deepcopy(c.source_ledger),
         actual_native_actions=copy.deepcopy(c.native_actions),digest=state.fingerprint,
         physics_rng=copy.deepcopy(c.task.physics_rng),
         rng=dict(python=r.python,numpy=r.numpy,cpu=r.cpu,cuda=r.cuda,task=r.task_rng))
@@ -196,10 +212,14 @@ def load_package(path,e,m,contract,*,physical,existing=None):
             except StopIteration:pass
         finally:c.proxy.act=original_act
         c.native_actions=hist['actual_native_actions'];c.task.physics_rng=hist['physics_rng']
+        c.task.pending_continue_spec=hist.get('pending_continue_spec');c.source_ledger=hist.get('source_ledger',[])
         check=TrainingBranch(c.task)
         assert check.fingerprint==hist['digest'],'Mutable-actor physical/history resume mismatch'
         r=hist['rng'];restore_global_rng(dict(python=r['python'],numpy=r['numpy'],cpu=r['cpu'],cuda=r['cuda']))
         c.task.rng.bit_generator.state=copy.deepcopy(r['task'])
+        meta['resume_reconstruction']=dict(actual_archived_native_actions_reexecuted=len(hist['actual_native_actions']),
+            new_training_transitions=0,source_physics_reexecuted=len(c.task.prefix_data['physics'])+600,
+            actual_low_actions_and_full_history_digest_exact=True)
     return agent,c,meta
 
 
@@ -301,6 +321,7 @@ def run(e,m,contract,out,args):
             replay_len=len(c.replay),episodes=c.episodes)
         logs.append(row);write(out/'learning.json',logs)
         write(out/'episodes.json',c.episode_rows)
+        write(out/'source-episodes.json',c.source_ledger)
         print('FORMAL_FB',c.transitions,updates,collected['wall_s'],stats['wall_s'],flush=True)
         if c.transitions in (250000,total):
             write(out/f'actor-gradient-{c.transitions}.json',actor_gradient_terms(agent,c))
@@ -308,8 +329,9 @@ def run(e,m,contract,out,args):
         assert c.transitions<=total
         free=shutil.disk_usage(out).free
         assert free>=CFG['minimum_shared_free_bytes'],'Shared storage reserve reached; pause with evidence'
-        used=sum(p.stat().st_size for p in out.parent.rglob('*') if p.is_file())
-        assert used<=CFG['engineering_output_ceiling_bytes'],'Approved stage output ceiling reached'
+        if c.transitions%16384==0 or c.transitions in (250000,total):
+            used=sum(p.stat().st_size for p in out.parent.rglob('*') if p.is_file())
+            assert used<=CFG['engineering_output_ceiling_bytes'],'Approved stage output ceiling reached'
     assert c.transitions==1000000
     return dict(status='completed',actual_native_transitions=c.transitions,agent_updates=updates,
         source_controls=c.source_controls,source_physics=c.source_physics,Student_RL_decisions=0)
@@ -334,13 +356,31 @@ def evaluate(e,m,contract,out,args):
             replay_origin='new actual online train execution; auxiliary physical reward and true next observation',
             reward_mean=float(reward.mean()),z=prompt.tolist(),norm=float(prompt.norm()),wall_s=time.monotonic()-t))
         groups=[groups[i] for i in (0,4,6,10,14,16,20,24,26)]
+    from dual_track_task import digest
+    prefixes={}
     for group in groups:
-        c.reset(group['spec'])
-        while not task.done:
-            raw=(prompt if prompt is not None else task.native(task.spec['source'],float(e.tether.time)))/16
-            rows_unused,_,_=c.proxy.take_step(raw)
-        rows.append(dict(parent_id=group['parent_id'],source=group['source'],family=group['family'],
-            boundary=task.boundary,quality=quality(task),**phase_report(task)))
-        write(out/'summaries.json',rows)
+        items=[('main',group['spec'])]
+        if 'continued_spec' in group:items.append(('continue',group['continued_spec']))
+        for child,s in items:
+            try:c.reset(s)
+            except RuntimeError as exc:
+                if not str(exc).startswith('native source prefix failed:'):raise
+                rows.append(dict(parent_id=group['parent_id'],source=group['source'],family=group['family'],
+                    child=child,source_failure=str(exc),complete=False,boundary_scope='source_before_policy'))
+                write(out/'summaries.json',rows);continue
+            while not task.done:
+                raw=(prompt if prompt is not None else task.native(task.spec['source'],float(e.tether.time)))/16
+                rows_unused,_,_=c.proxy.take_step(raw)
+            row=dict(parent_id=group['parent_id'],source=group['source'],family=group['family'],child=child,
+                boundary=task.boundary,quality=quality(task),**phase_report(task))
+            stop=group['spec'].get('stop_time',-1)
+            if stop>0:
+                h=digest([r for r in task.physics if r['force_time']<stop-1e-7])
+                if child=='main':prefixes[group['parent_id']]=h
+                else:
+                    assert prefixes[group['parent_id']]==h,'FB evaluation common-prefix physics mismatch'
+                    row['paired_prefix_exact']=True
+            rows.append(row);write(out/'summaries.json',rows)
+            if args.record and len(rows)<=4:task.save(out)
     return dict(status='completed',rows=len(rows),formal_native_training_transitions=0,
         prompt=args.fb_prompt,model_sha256=meta['model_sha256'])

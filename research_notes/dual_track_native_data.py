@@ -84,6 +84,11 @@ class NativeActor:
             assert torch.equal(row['z'],torch.tensor(c['executed_z'],dtype=torch.float32))
             result.append(dict(observation=row['observation'],action=row['action'],z=row['z'],
                 previous_z=row['previous_z'],target_z=row['target_z'],
+                provenance=dict(time=torch.tensor([[row['time']]],dtype=torch.float64),
+                    parent_sha256=torch.tensor([list(bytes.fromhex(self.task.spec['parent_id']))],dtype=torch.uint8),
+                    source_parent_sha256=torch.tensor([list(bytes.fromhex(self.task.spec['source_parent_id']))],dtype=torch.uint8),
+                    online_episode=torch.tensor([[getattr(self.task,'online_episode',0)]],dtype=torch.int64),
+                    origin_actual_online_execution=torch.ones(1,1,dtype=torch.uint8)),
                 next=dict(observation=row['next_observation'],terminated=torch.tensor([[term]]),
                           truncated=torch.tensor([[trunc]])),
                 aux_rewards={'contact_physical':torch.tensor([[stats['native_rewards'][i]]],dtype=torch.float32)},

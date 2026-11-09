@@ -34,7 +34,7 @@ def main():
             name='expert-'+tag
             job(name,'frozen','frozen_ppo',80000,'high_train',['--kl',kl])
             selected=json.loads((a.stage/'runs'/name/'selection.json').read_text())
-            ck=a.stage/'runs'/name/f"candidate-{selected['iteration']}.pt"
+            ck=Path(selected.get('checkpoint_path',str(a.stage/'runs'/name/f"candidate-{selected['iteration']}.pt")))
             job(name+'-sealed','frozen','engineering',8000,'high_eval',
                 ['--checkpoint',str(ck),'--sha256',selected['sha256'],'--iteration',str(selected['iteration']),'--split','sealed','--record'])
         job('fb-1m','fb','fb_train',260000,'fb_train',[])

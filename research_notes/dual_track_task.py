@@ -9,6 +9,7 @@ import hashlib
 import json
 import math
 import random
+import functools
 from pathlib import Path
 
 import numpy as np
@@ -73,6 +74,7 @@ def sample_spec(rng, source=None, family=None):
     return s
 
 
+@functools.lru_cache(maxsize=1)
 def parent_manifests():
     result = {}
     for split, seed, repeats in [('dev', CFG['dev_parent_seed'], 1), ('sealed', CFG['sealed_parent_seed'], 2)]:
@@ -125,6 +127,7 @@ def native_terms(rows, qpd, previous_qpd, spec):
 
 class Task(NativeTask):
     def __init__(self, *args):
+        self.pending_continue_spec=None
         self.stage_boundary = None
         self.allow_native_reset = True
         self.native_info = None
@@ -212,7 +215,27 @@ class Task(NativeTask):
         return out
 
     def sample_spec(self):
-        return sample_spec(self.rng)
+        if self.pending_continue_spec is not None:
+            s=self.pending_continue_spec;self.pending_continue_spec=None
+        else:
+            # Complete macro-groups preserve the approved EPISODE marginals.
+            # Stop=.20: pair macro mass=.20/.80=.25. Each pair yields one
+            # stop and one continuation; extra long macro mass=(.25-.20)/.80.
+            p=CFG['request_probs'];den=1-p['stop']
+            weights=[p['near']/den,p['mid']/den,(p['long']-p['stop'])/den,
+                     p['stop']/den,p['zero']/den,p['none']/den]
+            family=str(self.rng.choice(['near','mid','long','stop','zero','none'],p=weights))
+            s=sample_spec(self.rng,family=family)
+            if family=='stop':
+                other=copy.deepcopy(s);del other['stop_time'];other['deceleration']=0.
+                other['release']=s['onset']+s['ramp']+s['release']-s['stop_time']-s['deceleration']
+                other['end']=other['release']+CFG['recovery'];other['demand_family']='long'
+                self.pending_continue_spec=other
+        for groups in parent_manifests().values():
+            for group in groups:
+                for key in ('source_parent_id','partner_parent_id','common_prefix_parent_id'):
+                    assert s[key]!=group[key],'Training source/request overlaps a reserved parent'
+        return s
 
     def native(self, name, t):
         profile = self.spec.get('source_profile')

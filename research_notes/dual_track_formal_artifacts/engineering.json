@@ -1,0 +1,219 @@
+{
+  "status": "engineering_entry_checks_passed_formal_launch_pending",
+  "formal_Expert_decisions": 0,
+  "formal_FB_transitions": 0,
+  "jobs": [
+    {
+      "name": "physics-parity-01",
+      "runtime": "d3b137f5d23e08845c8db439b74e91013e75c607",
+      "status": "completed",
+      "elapsed_s": 130.10830950737
+    },
+    {
+      "name": "stage-smoke-02",
+      "runtime": "68d4f569cc5c64a210d125307eefa54ae76fee24",
+      "status": "failed",
+      "elapsed_s": 125.28479647636414,
+      "purpose": "engineering"
+    },
+    {
+      "name": "migration-01",
+      "runtime": "82e84807779c2bf295b3b3f63e44c81960cdbe3d",
+      "status": "completed",
+      "elapsed_s": 59.09149146080017
+    },
+    {
+      "name": "high-smoke-01",
+      "runtime": "6ab8b6e42e641b5bafeec4839b025ed066a43526",
+      "status": "completed",
+      "elapsed_s": 462.92764592170715,
+      "purpose": "engineering"
+    },
+    {
+      "name": "stage-smoke-03",
+      "runtime": "1df24ee0ef214478b809b8a02c744b30486317bf",
+      "status": "completed",
+      "elapsed_s": 127.92397999763489,
+      "purpose": "engineering"
+    },
+    {
+      "name": "returns-01",
+      "runtime": "7d1ae5f38cb7a278874021e266fc587d1e20d4af",
+      "status": "completed",
+      "elapsed_s": 20.758221864700317,
+      "purpose": "engineering"
+    },
+    {
+      "name": "fb-online-smoke-01",
+      "runtime": "658f69f1d36e8da5cc952be635323290eace9a2f",
+      "status": "failed",
+      "elapsed_s": 576.5885031223297,
+      "purpose": "engineering"
+    },
+    {
+      "name": "fb-online-smoke-02",
+      "runtime": "cbbc65427bb11499eb98a3a2e83b3d62bdc184d4",
+      "status": "failed",
+      "elapsed_s": 260.59637117385864,
+      "purpose": "engineering"
+    },
+    {
+      "name": "returns-approved-02",
+      "runtime": "cbbc65427bb11499eb98a3a2e83b3d62bdc184d4",
+      "status": "completed",
+      "elapsed_s": 10.236894929999835,
+      "purpose": "engineering"
+    },
+    {
+      "name": "stage-smoke-01",
+      "runtime": "546de08b2e058055a9a1d0e0ac08fa9176d4a1cd",
+      "status": "failed",
+      "elapsed_s": 104.46080040931702,
+      "purpose": "engineering"
+    },
+    {
+      "name": "fb-online-smoke-03",
+      "runtime": "b9862178a6355043a19a809b08c27c5aa6a2fe94",
+      "status": "completed",
+      "elapsed_s": 262.34705686569214,
+      "purpose": "engineering"
+    }
+  ],
+  "measured_job_s": 2140.324071729774,
+  "carried_conservative_costs": {
+    "common": 7676.203086376
+  },
+  "high_smoke": {
+    "disposable_decisions": 768,
+    "accepted_actor_updates": 4,
+    "logprob_max_error": 0.0001220703125,
+    "mean_z_change_deg": 0.049581216400086864,
+    "critic_updates": 18,
+    "child_evaluation_physical_and_RNG_isolation": true
+  },
+  "fb_smoke": {
+    "status": "completed",
+    "engineering_online_transitions": 256,
+    "formal_FB_transitions": 0,
+    "collection": {
+      "native_transitions": 256,
+      "wall_s": 4.3683359480019135
+    },
+    "eager_updates": {
+      "updates": 2,
+      "wall_s": 4.278251628002181,
+      "per_update_s": [
+        3.936344428002485,
+        0.3419071999996959
+      ],
+      "last_metrics": {
+        "disc_loss": 8.790855407714844,
+        "disc_expert_loss": 8.34603500366211,
+        "disc_train_loss": 2.3019674699753523e-05,
+        "disc_wgan_gp_loss": 0.04447987303137779,
+        "target_M": 5378.470703125,
+        "M1": 4482.0791015625,
+        "F1": 2.383788585662842,
+        "B": 0.04373437538743019,
+        "B_norm": 16.0,
+        "z_norm": 16.0,
+        "fb_loss": 1022650.3125,
+        "fb_diag": 1723.35400390625,
+        "fb_offdiag": 991954.375,
+        "orth_loss": 28972.546875,
+        "orth_loss_diag": -256.0,
+        "orth_loss_offdiag": 29228.546875,
+        "q_loss": 0.0,
+        "target_Q": -238.76246643066406,
+        "Q1": -231.71530151367188,
+        "mean_next_Q": -229.99948120117188,
+        "unc_Q": 1.5439437627792358,
+        "critic_loss": 51.292640686035156,
+        "mean_disc_reward": -8.454404830932617,
+        "aux_rew/contact_physical": -0.00607002479955554,
+        "target_auxQ": -0.36614519357681274,
+        "auxQ1": -21.563865661621094,
+        "mean_next_auxQ": 0.1549801230430603,
+        "unc_auxQ": 1.0315594673156738,
+        "aux_critic_loss": 452.06878662109375,
+        "mean_aux_reward": -0.006070025265216827,
+        "actor_loss": 1283056.125,
+        "Q_discriminator": -233.16549682617188,
+        "Q_aux": -7.872947692871094,
+        "Q_fb": 5345.2109375
+      }
+    },
+    "compiled_updates": {
+      "updates": 2,
+      "wall_s": 76.57222508299674,
+      "per_update_s": [
+        58.05054372499944,
+        18.521681357997295
+      ],
+      "last_metrics": {
+        "disc_loss": 1.7001641988754272,
+        "disc_expert_loss": 1.5606999397277832,
+        "disc_train_loss": 0.011392876505851746,
+        "disc_wgan_gp_loss": 0.012807152234017849,
+        "target_M": 5244.93017578125,
+        "M1": 5609.333984375,
+        "F1": 2.4311232566833496,
+        "B": 0.06265105307102203,
+        "B_norm": 16.0,
+        "z_norm": 16.0,
+        "fb_loss": 328128.71875,
+        "fb_diag": -795.9976806640625,
+        "fb_offdiag": 299803.625,
+        "orth_loss": 29121.095703125,
+        "orth_loss_diag": -256.0,
+        "orth_loss_offdiag": 29377.095703125,
+        "q_loss": 0.0,
+        "target_Q": -238.12570190429688,
+        "Q1": -240.93411254882812,
+        "mean_next_Q": -236.8758544921875,
+        "unc_Q": 2.6403300762176514,
+        "critic_loss": 19.07573127746582,
+        "mean_disc_reward": -0.40798699855804443,
+        "aux_rew/contact_physical": -0.0063303145579993725,
+        "target_auxQ": -0.6933969855308533,
+        "auxQ1": 4.292629241943359,
+        "mean_next_auxQ": -0.1807638257741928,
+        "unc_auxQ": 1.015370488166809,
+        "aux_critic_loss": 25.951988220214844,
+        "mean_aux_reward": -0.00633031502366066,
+        "actor_loss": 1424188.75,
+        "Q_discriminator": -241.6118621826172,
+        "Q_aux": 5.593358993530273,
+        "Q_fb": 6059.8505859375
+      }
+    },
+    "parameter_changes": {
+      "_actor": 0.0004011644923593849,
+      "_forward_map": 0.00040107351378537714,
+      "_backward_map": 0.00039201509207487106,
+      "_critic": 0.00040102447383105755,
+      "_aux_critic": 0.0004007558454759419,
+      "_discriminator": 0.00040115974843502045
+    },
+    "save_and_read_s": 53.35450107100041,
+    "actor_gradient_terms": {
+      "gradient_norms": {
+        "CPR": 184353.85529728988,
+        "auxiliary": 6577.5488606955405,
+        "FB": 2366.006882187421
+      },
+      "loss_terms": {
+        "CPR": 1506301.875,
+        "auxiliary": -57611.74609375,
+        "FB": -10102.966796875
+      },
+      "sample": "fixed64 actual online states and their executed z; diagnostic, not the relabeled training batch",
+      "optimizer_steps": 0
+    },
+    "model_and_six_optimizers_exact": true,
+    "replay_readback_exact": true,
+    "actual_action_physics_resume_exact": true,
+    "peak_allocated_bytes": 15917232128,
+    "peak_reserved_bytes": 19975372800
+  }
+}

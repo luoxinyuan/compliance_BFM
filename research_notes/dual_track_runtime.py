@@ -56,7 +56,8 @@ def save_training_checkpoint(path,task,net,opt,generators=(),counters=None):
     """Serialize actual command prefix + all RNG streams; never pickle callback closures."""
     ss=TrainingBranch(task,generators)
     rng=ss.rng_all
-    torch.save(dict(version=1,model=net.state_dict(),optimizer=opt.state_dict() if opt else None,
+    torch.save(dict(version=2,model=net.state_dict(),optimizer=opt.state_dict() if opt else None,
+        curriculum_memory=copy.deepcopy(getattr(task,'pending_continue_spec',None)),
         counters=copy.deepcopy(counters or {}),spec=copy.deepcopy(task.spec),
         actual_raw_prefix=[copy.deepcopy(d['raw']) for d in task.decision_rows],
         physical_history_digest=ss.fingerprint,
@@ -66,7 +67,7 @@ def save_training_checkpoint(path,task,net,opt,generators=(),counters=None):
 def restore_training_checkpoint(path,task,net,opt,generators=()):
     """Reconstruct callback graph by native reset + actual prefix; require exact full history."""
     ck=torch.load(path,map_location='cpu',weights_only=False)
-    assert ck['version']==1 and len(generators)==len(ck['rng']['generators'])
+    assert ck['version'] in (1,2) and len(generators)==len(ck['rng']['generators'])
     task.reset(ck['spec'],record=True,label='resumed')
     for raw in ck['actual_raw_prefix']:
         task.step(torch.tensor(raw,device=task.e.standing.device,dtype=torch.float32)[None])
@@ -76,6 +77,7 @@ def restore_training_checkpoint(path,task,net,opt,generators=()):
     if opt is not None:opt.load_state_dict(ck['optimizer'])
     r=ck['rng'];random.setstate(r['python']);np.random.set_state(r['numpy']);torch.set_rng_state(r['cpu']);torch.cuda.set_rng_state_all(r['cuda'])
     task.rng.bit_generator.state=copy.deepcopy(r['task'])
+    if hasattr(task,'pending_continue_spec'):task.pending_continue_spec=copy.deepcopy(ck.get('curriculum_memory'))
     for g,state in zip(generators,r['generators']):g.set_state(state)
     return ck['counters']
 

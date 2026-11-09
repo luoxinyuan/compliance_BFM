@@ -8,3 +8,18 @@
 No probability assertion, physics threshold, source split or scientific quality
 gate has been relaxed to bypass the error. This file does not overwrite #55's
 separate historical engineering erratum.
+
+## New FB full-package validation failures
+
+|Attempt/runtime|Observed defect|Impact and regression|
+|---|---|---|
+|fb-online-smoke-01 /658f69f1d36e8da5cc952be635323290eace9a2f|The loader constructed a second Collector/Task on the already-used simulator, stacking reset/callback bindings. Original strict reset-prefix comparison failed (max qpos0.132094, qvel12.2291).|Disposable engineering only; no formal model or prior paper result affected.576.5885s charged. Reuse the same Task graph for in-process readback; standalone load constructs one Task in a fresh process. Full actual-action prefix regression passed in fb-online-smoke-03; no equality tolerance changed.|
+|fb-online-smoke-02 /cbbc65427bb11499eb98a3a2e83b3d62bdc184d4|Strict JSON writer rejected original Gym Box metadata containing -Infinity while packaging original init kwargs.|Not a nonfinite reward, gradient or policy-probability escape.260.5964s charged. Copy the archived init-kwargs bytes verbatim; retain strict finite JSON checks for measurements. Full save/readback passed in fb-online-smoke-03. Partial package is not a resumable or formal checkpoint.|
+
+Successful full-package regression: runtime
+`b9862178a6355043a19a809b08c27c5aa6a2fe94`,262.3471s total job.
+256 actual native online controls;2 eager+2 compiled full six-optimizer updates;
+model, all six Adam states and new replay read back exactly; actual29D-action
+physical prefix reconstructs full solver/BFM/force/action/z history exactly.
+These updates are discarded engineering weights, not the first4 formal updates.
+All failed outputs and original logs remain in isolated private stage directories.

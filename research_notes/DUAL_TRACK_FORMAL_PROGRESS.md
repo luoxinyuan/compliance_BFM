@@ -96,3 +96,39 @@ A disposable full768-decision high-level entry test is currently running; it
 uses no sealed parents and its updated model will not initialize formal training.
 FB online collection, extended full model/six-Adam/replay/physical-prefix restore
 are being completed. Formal counters remain zero until separately launched.
+
+## Approved formal entry now validated (before formal launch)
+
+See [engineering summary](dual_track_formal_artifacts/engineering.json) and
+[new-runtime errata](DUAL_TRACK_FORMAL_ERRATUM.md). Formal counters still0 at
+this snapshot; the queue will create new, independent initializations.
+
+- High full768-decision disposable rollout/update:4 accepted actor updates,
+  logprob maximum error0.0001220703125 < unchanged0.0003 assertion;
+  critic completes18 updates after100 first-batch value-only updates.
+  Mean legal-z changes0.04958degrees; same-state five-substep action/q_PD probes
+  recorded. This is not evidence of useful contact learning.
+- FB extended online collector:256 actual50Hz transitions in4.3683s in this
+  short partial-episode sample. Not a full-run/update-inclusive training FPS.
+- Full eager updates3.9363/.3419s; compiled updates58.0505/18.5217s still include
+  cache/graph warmup. **No steady compiled update time is established from two
+  calls**, and no formal1M ETA is claimed from these numbers.
+- Full modified model/six-Adam/replay/normalizer and actual-action physical
+  resume passed. Save+read+physical reconstruction53.3545s. Peak allocated
+  15.917GB, reserved19.975GB. Entire successful engineering job262.3471s.
+- Same-state64-row diagnostic actor-gradient norms:CPR184353.86,
+  auxiliary6577.55,FB2366.01. These are diagnostic actual-z states, not the
+  relabeled optimizer batch, and not causal proof that a coefficient should
+  change. Approved coefficients remain fixed; watch actual learning/physics.
+- Measured jobs including failures total2140.3241s; conservative carry/reserve
+  remains7676.2031s. Common charged total9816.5272s (<32h). No failures erased.
+
+The shared physical-time target now also discounts the five native rewards
+inside a100ms high-level command; an analytic test proves equality with the
+native20ms reward stream. Undiscounted physical costs remain separately saved.
+No physical cost weight, force cap, anchor or PD is changed.
+
+The formal serial schedule is two independent KL arms (98304 each), then the
+fresh1M FB probe; original BC500/BFM remain frozen. Fixed-runtime detached
+worktree and per-job ownership/resource guards protect the running source.
+Student continuation remains conditional, not automatically launched by queue.
