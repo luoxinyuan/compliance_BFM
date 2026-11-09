@@ -1,0 +1,235 @@
+{
+  "status": "preparation_verified_formal_launch_pending_scientific_choices",
+  "model_migration": {
+    "admission": {
+      "pending_contract_blocks_both_tracks": true,
+      "terminal_and_truncation_distinct": true,
+      "pre_reset_successor_required": true,
+      "predicted_rows_rejected": true,
+      "shared_parents_rejected": true
+    },
+    "layernorm": {
+      "naive_zero_padding_max_normalization_change": 0.7574502229690552,
+      "migrated_block_bitwise_parity": true,
+      "contact_gradient_norm": {
+        "1": 10.011419296264648,
+        "2": 2.5770487785339355
+      },
+      "contact_feature_unit_checks": true
+    },
+    "real_model": {
+      "status": "passed",
+      "manifest": {
+        "version": "contact97-preserve-input-layernorm-v1",
+        "modules": [
+          {
+            "module": "_actor",
+            "old_input": 465,
+            "added_input": 97
+          },
+          {
+            "module": "_forward_map",
+            "old_input": 928,
+            "added_input": 97
+          },
+          {
+            "module": "_backward_map",
+            "old_input": 527,
+            "added_input": 97
+          },
+          {
+            "module": "_critic",
+            "old_input": 928,
+            "added_input": 97
+          },
+          {
+            "module": "_aux_critic",
+            "old_input": 928,
+            "added_input": 97
+          },
+          {
+            "module": "_target_forward_map",
+            "old_input": 928,
+            "added_input": 97
+          },
+          {
+            "module": "_target_backward_map",
+            "old_input": 527,
+            "added_input": 97
+          },
+          {
+            "module": "_target_critic",
+            "old_input": 928,
+            "added_input": 97
+          },
+          {
+            "module": "_target_aux_critic",
+            "old_input": 928,
+            "added_input": 97
+          }
+        ],
+        "fresh_optimizers": true,
+        "targets_synced_to_online": true,
+        "contact_dim": 97,
+        "formal_training": false
+      },
+      "parity": {
+        "actor": {
+          "exact": true,
+          "max_error": 0.0
+        },
+        "backward": {
+          "exact": true,
+          "max_error": 0.0
+        },
+        "forward": {
+          "exact": true,
+          "max_error": 0.0
+        },
+        "critic": {
+          "exact": true,
+          "max_error": 0.0
+        },
+        "aux_critic": {
+          "exact": true,
+          "max_error": 0.0
+        },
+        "discriminator": {
+          "exact": true,
+          "max_error": 0.0
+        }
+      },
+      "added_online_matrices": 9,
+      "fresh_optimizer_membership": true,
+      "model_test_wall_s": 7.63883440799691,
+      "formal_updates": 0,
+      "real_physical_transitions": 0
+    },
+    "wall_s": 35.12672492999991,
+    "formal_training": false,
+    "optimizer_steps": 0,
+    "model_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+    "runtime": "82e84807779c2bf295b3b3f63e44c81960cdbe3d"
+  },
+  "physical_parity": {
+    "status": "passed",
+    "backend": {
+      "status": "original_exact_prefix",
+      "parity": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "wrist": 0.0,
+        "root": 0.0,
+        "force": 0.0
+      }
+    },
+    "migration": {
+      "version": "contact97-preserve-input-layernorm-v1",
+      "modules": [
+        {
+          "module": "_actor",
+          "old_input": 465,
+          "added_input": 97
+        },
+        {
+          "module": "_forward_map",
+          "old_input": 928,
+          "added_input": 97
+        },
+        {
+          "module": "_backward_map",
+          "old_input": 527,
+          "added_input": 97
+        },
+        {
+          "module": "_critic",
+          "old_input": 928,
+          "added_input": 97
+        },
+        {
+          "module": "_aux_critic",
+          "old_input": 928,
+          "added_input": 97
+        },
+        {
+          "module": "_target_forward_map",
+          "old_input": 928,
+          "added_input": 97
+        },
+        {
+          "module": "_target_backward_map",
+          "old_input": 527,
+          "added_input": 97
+        },
+        {
+          "module": "_target_critic",
+          "old_input": 928,
+          "added_input": 97
+        },
+        {
+          "module": "_target_aux_critic",
+          "old_input": 928,
+          "added_input": 97
+        }
+      ],
+      "fresh_optimizers": true,
+      "targets_synced_to_online": true,
+      "contact_dim": 97,
+      "formal_training": false
+    },
+    "branches": [
+      {
+        "source": "standing",
+        "controls_per_branch": 25,
+        "complete_physics_history_equal": true,
+        "low_action_equal": true,
+        "actual_qpos_equal": true,
+        "actual_active": true
+      },
+      {
+        "source": "goal_arm5",
+        "controls_per_branch": 25,
+        "complete_physics_history_equal": true,
+        "low_action_equal": true,
+        "actual_qpos_equal": true,
+        "actual_active": true
+      },
+      {
+        "source": "motion_walk_task",
+        "controls_per_branch": 25,
+        "complete_physics_history_equal": true,
+        "low_action_equal": true,
+        "actual_qpos_equal": true,
+        "actual_active": true
+      }
+    ],
+    "formal_training": false,
+    "optimizer_steps": 0,
+    "task_quality_qualified": false,
+    "sampled_source_groups_for_science": 0,
+    "runtime": "d3b137f5d23e08845c8db439b74e91013e75c607"
+  },
+  "returns_regression": {
+    "runtime": "7d1ae5f38cb7a278874021e266fc587d1e20d4af",
+    "status": "passed",
+    "genuine_terminal_matches_archive": true,
+    "truncation_bootstrap_and_trace_boundary": true,
+    "physical_time_discount_matched": true
+  },
+  "counts": {
+    "formal_high_decisions": 0,
+    "formal_fb_transitions": 0,
+    "formal_fb_agent_updates": 0,
+    "optimizer_steps": 0,
+    "teacher_queries": 0,
+    "new_scientific_dev_parents": 0,
+    "new_sealed_evaluations": 0,
+    "paired_physical_branch_controls": 150,
+    "source_and_prefill_controls_separately_tallied": false
+  },
+  "cost": {
+    "measured_job_seconds": 209.95802283287048,
+    "preparation_and_publication_conservative_reserve_s": 3600,
+    "prior_issue55_conservative_common_charge_s": 4076.203086376
+  }
+}

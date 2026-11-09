@@ -1,80 +1,70 @@
-2026-11-09 发布核对：源码/合同/实测报告已FF推送gaoe05/research至 `2f0d5dfe82cc5cd3c31a28dd7554091b667f9210` 并实际读取远程文件；[Issue55已完成结项](https://github.com/GaoE05/robot-research-bridge/issues/55)，[Master最新摘要](https://github.com/GaoE05/robot-research-bridge/issues/18#issuecomment-6739057952)。以下运行SHA与报告提交分开记录，无后续队列。
+# CURRENT_STATE — Issue56双轨正式stage：合同与迁移准备已验证，正式训练未启动
 
-# CURRENT_STATE — 双轨共同合同与单卡运行能力工程里程碑已完成
+最后核对：2026-11-09。[Issue56](https://github.com/GaoE05/robot-research-bridge/issues/56)
+· [获批范围合同](DUAL_TRACK_CONTRACT_V1.md)
+· [具体待确认项P1–P9](DUAL_TRACK_SCIENTIFIC_DECISIONS.md)
+· [实际准备进度/证据](DUAL_TRACK_FORMAL_PROGRESS.md)
+· [Project Master](https://github.com/GaoE05/robot-research-bridge/issues/18#issuecomment-6739473031)。
 
-2026-11-09。[合同草案V1](DUAL_TRACK_CONTRACT_V1.md) · [实测报告](DUAL_TRACK_RUNTIME_RESULTS.md) · [准备勘误](DUAL_TRACK_ERRATUM.md) · [Isaac缺口](ISAAC_BATCH_CONTACT_GAP.md) · [Issue55](https://github.com/GaoE05/robot-research-bridge/issues/55)。**没有正式PPO/大规模FB、Teacher查询或排序器训练；全部测试结束。BC500不变，5403b7不晋级，旧M1结论保留。**
+**本阶段尚未完成；正式Expert/Student PPO=0，正式FB transition/update=0，无队列。**
+没有把计划、源码push、step0测试或#55工程测速写成学习成功。
 
-- 完成BC500原1639D路径/normalizer保留的1088D特权零初始化支路；新入口KL集中配置、独立critic更新与原实现逐值回归通过。RNG/真实历史跨reset、落盘重建和独立新进程恢复通过，独立评价不改变父Task/RNG。此特权支路不是部署Student新基线。
-- 单RTX Pro5000、MuJoCo num_envs=1：768决策真实采样含reset79.35s（9.68决策/s、48.20个50Hz transition/s）；完整原保护更新.852s，接受actor1步、独立critic18步。计时更新副本不推广。
-- 原基座strict weights-only warm-start、fresh6Adam/replay/z_buffer、计数归零；128eager+128compiled完整agent updates、模型及Adam存盘读回逐值通过。稳态.145856/.122453s每update，compiled首两调用283.109/42.261s；不是环境训练FPS。
-- 默认16/1024比率的单卡组合预算：1M约6.3–6.5h，5M约31.5–32.4h，另加冷启动、评价、checkpoint/replay IO。是采样＋更新实测拼合推导，**完整在线可变基座吞吐、contact扩展拓扑、Isaac批量Tether仍未知/未实现**。不是已批准规模。
-- 科学分布比例、源/封存具体条件与独立组、阈值、正式run预算等集中待Yi批准。尤其当前PPO .99/100ms与baseFB .99/20ms折扣不等价，base benchmark的空aux reward并非contact任务reward；后续需共同科学合同，不在测速中静默修改。
-- 实测runtime高层a2efe6cee4c9a4cca974f862affa3b2fe16fdc66，FB/新进程恢复3fa9b8e66d8d72311438196ef7440970c355f7af；最后JSON配置回归4e339252168a0d96c6fe287cf211b95a73fd1f2b。完整原/计时模型SHA见报告。保守计费4076.20s（含预留/父子双计），新输出6.801GiB。私有stage dual-track-contract-v1-20261109，原始失败/数据/计时checkpoint不上传。
+## 当前批准与科学边界
 
-**停止，等待Yi批准合同与下一研究决策；不自动M2/M3、正式Expert/Student/FB训练。** 本轮无新的可推广行为，未重复生成视频。以下是历史记录。
+- 原腕部接触/三类真实原生源，30开发/60新封存parent目标；共同前缀整组划分。
+- 高层同初始化KL.02/.08、std.008；Expert总196608决策、Student后续98304。
+- FB独立原权重warm-start，fresh optimizer/replay/计数，首次仅1M真实50Hz
+  transition，保存0/250k/1M；5M必须另批。250k非任务质量自动停止门。
+- 总240累计job小时：冻结112/挑战80/共同32/缓冲16；单Pro5000重任务串行。
+- M1质量线保留作参考，取消小样本全门槛对研究方向的一票否决。
+- 本会话新增明确批准：统一gamma高层.99/100ms、FB.99**.2/20ms及原逐点
+  物理成本积分；FB97D当前接触/伙伴输入、固定尺度/原统计冻结/零新权重、
+  robot-only discriminator；三源等比例、近中长停零无接触20/20/25/20/10/5%，
+  高层不额外BC保持，FB新真实replay与原生无接触CPR原则。
+- **具体范围/父组生成/选择容差、正式优化节奏、FB辅助reward归一化、在线z
+  调度、replay恢复与更新预热细节仍待确认**，见P1–P9；不是默认沿用benchmark。
 
----
+## 本轮实际完成
 
-2026-11-09 发布更新：用户明确长期授权后，M1公开结项摘要已发布并结项于 https://github.com/GaoE05/robot-research-bridge/issues/54 ，Project Master同步评论 https://github.com/GaoE05/robot-research-bridge/issues/18#issuecomment-6732326969 。仅发布汇总结论，原始资产未上传；本轮源码分支仍未推送。本更新取代此前“公开Issue尚未创建”的当前状态，保留拒绝记录作为历史。
+原#55草案单独归档；版本化获批范围与JSON决策表分开存储批准值和建议。
+实现97D输入迁移，保留原input LayerNorm域，避免零补齐仍改变旧函数。
+真实BFM checkpoint的actor/F/B/两critic/discriminator step0逐值一致；
+新权重梯度和fresh optimizer参数归属通过。三类真实源各作原/新.5s物理
+分支，25控制步/分支，实际动作/qpos/完整物理历史逐值一致。
+新阶段终止/截断回报测试通过；父组泄漏/错误后继/预测样本入库拒绝测试通过。
 
-# CURRENT_STATE — M1联合源覆盖资格已结项
+这些是工程正确性结果：**0科学dev/sealed新组、0封存评价、0新行为收益**。
+FB真实online collector、完整replay/扩展模型恢复、接触扩展后update吞吐尚未完成。
+原有#55原拓扑1M估时不是本轮真实完成时间。暂不重复生成视频。
 
-2026-11-09。**仅采集/验证完成，未训练，未进入M2/M3。BC500仍是冻结基线，5403b7不晋级。**
+## 精确身份与运行位置
 
-[完整M1报告](SOURCE_COVERAGE_M1_RESULTS.md) · [配对资产与质量门槛](source_coverage_m1_artifacts/m1-evidence.json) · [真实分段/预测差距](source_coverage_m1_artifacts/segments.json) · [覆盖账本](source_coverage_m1_artifacts/coverage5403-phase-episodes.json)。
+- BC500 `a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e`，
+  仍是冻结可靠基线；5403b7未晋级，原M38及其他历史保留。
+- BFM `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`；
+  原共享权重/PD/main/SoftSONIC未改。尚无新正式model SHA。
+- 97D模型迁移runtime `82e84807779c2bf295b3b3f63e44c81960cdbe3d`；
+  真实物理回归 `d3b137f5d23e08845c8db439b74e91013e75c607`；
+  returns回归 `7d1ae5f38cb7a278874021e266fc587d1e20d4af`。
+- 私有stage `experiments/dual-track-formal-20261109/`，独立detached worktree，
+  未新增研究分支；`jobs/`、`runs/`、ledger保留实际身份/原日志。
+- 个人审查入口`luoxinyuan/compliance_BFM:gaoe05/research`，发布SHA在Issue56中
+  单独记录，与上述实测runtime区分。原#55起点a097774，不变更旧运行环境。
+- 本地少量验证JSON：`~/Projects/compliance-bfm-diagnostics/dual-track-formal-20261109/evidence/`；
+  没有新checkpoint/大数据同步Mac。既有视频保持原路径。
 
-预声明结论：**生成能力不足**。长距门槛在查询前改为10cm/6.5N。12单元通过0，未达到8/12及arm/moving各1；不扩采。3个真实原生共同前缀族，不把查询/相邻状态冒充64独立组；train3/dev0/sealed0。本轮有限2秒Teacher后交回BC，其短窗和后继分开评价，不能把整个失败全部归给Teacher，更不否定历史完整滚动正结果。
+## 成本、安全与接力
 
-完成91原七池查询/637候选分支、4个实际2秒窗口，实际Teacher首命令80条但无自动批准的正向模仿标签。3类源代表快照完整新进程重放逐值一致。原F/首动作与24命令物理评分合同差异可从完整存档检验。
+209.95802s实测job；另3600s明确准备/发布保守预留。为避免漏账，#55保守
+4076.20309s先并入共同额度，总共同保守计费7886.16111s，仍在32h内。
+没有新RL/BC/F拟合。GPU0测试已结束并释放；可用性仅代表最后实时检查，
+下一启动仍需复核GPU/CPU/RAM/I/O。CPFS约257GiB自由/99%使用，不假定存储无限。
 
-5403真实5376决策：arm仅1回合92决策、moving0；standing接管固定4.0s。旧课程未覆盖当前联合源需求。历史日志不足以重建所有训练回合滑移/yaw，完整质量成功率未知。
+新会话先读本文件、OVERVIEW、获批范围合同、P1–P9和Issue56；恢复前核对
+实际ledger/进程，不能把待确认项写成已批准，不能把缺失四格填成失败/成功。
+既有理想力Student不是已验证真机感知。无真机、无非公开公司数据。
 
-模型BC500 `a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e`，冻结BFM `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。实际runtime、路径、失败准备和成本见报告/账本；private stage `source-coverage-m1-20261109`。公开Issue创建被自动审批拒绝，尚未发布或push，不以私有提交冒称GitHub同步。
-
-后续等待新的科研决策；不自动启动训练。以下历史结论原样保留。
-
----
-
-# CURRENT_STATE — RETENTION新条件验证已结项
-
-最后核对：2026-11-09。**26回合全部结束，无训练、Teacher查询或后续队列。**
-
-[13条件对照与结论](RETENTION_VALIDATION_RESULTS.md) · [分阶段XYZ/滑移/yaw表](RETENTION_VALIDATION_PHASES.md) · [锁定协议](retention_validation_protocol.json)。
-
-**结论：收益限于开发条件，5403b7不晋级，BC500维持基线。** 四条新长距均未达到误差与力共同实质收益；61cm触发相对BC滑移保护，移动源57cm末yaw约−24.22°，较开发约−15.15°显著放大。34cm中距有明确收益（13.959→7.154cm、8.347→5.785N），停止/局部相对指标在容差内，但arm-ready起点两模型共有严重跟随失败，不能因相对不劣称成功。
-
-13组配对完整初态一致；6组停止/继续前缀实际物理/动作逐值一致。精确模型SHA沿用下方身份，评价runtime `3a59503b2f4ef9255830a441a8fdddcac030c051`。私有stage `retention-newconditions-20261109`；累计保守job 1271.15s，产物约0.347GiB，均低于1800s/2GiB。未新增视频或重复实验。
-
-**下一决策：保留开发正结果和共同失败域，等待用户决定；本轮不自动启动第二seed或任何新训练。** 历史RETENTION/INTERACTIVE_INCREMENT结论完整保留如下。
-
----
-
-# CURRENT_STATE — A/B/C有界续轮已结项
-
-最后核对：2026-11-09。**全部训练与评价结束，无队列，不自动开启下一轮。** [完整报告](RETENTION_RESULTS.md) · [只读审计](RETENTION_CODE_AUDIT.md) · [分段物理表](RETENTION_PHASE_TABLES.md) · [Issue53](https://github.com/GaoE05/robot-research-bridge/issues/53) · [Project Master](https://github.com/GaoE05/robot-research-bridge/issues/18)。
-
-## 当前结论
-
-- 有限域Teacher→ideal-force Student最小闭环仍成立。干净基线仍是 **BC500**，不是原S4000或历史S0。34条修复后交互标签的原形态仍未显示整体增量，原结项保留，见[INTERACTIVE_INCREMENT_RESULTS](INTERACTIVE_INCREMENT_RESULTS.md)。Issue52独立Expert PPO未重启。
-- **A0**：固定相同初态/随机流重评BC500、5401b4/b7、5402b4，旧指标复现，5402无接触检查补齐。batch4长距收益真实，主要来自保持段减轻侧向牵拉；移动滑移增加。b4/b7第一分叉支持微小命令差异经状态/支撑反馈放大，约6.585s首次支撑不同，非只在最后停止时失配；没有证明唯一critic或梯度冲突根因。
-- **A1**：新seed5403从相同BC500 actor/normalizer、新critic/Adam，原PPO数值/物理合同，7×768=5376决策。每批独立固定评价，8次训练RNG/状态隔离通过。事前两层规则选**batch7**：72cm **8.047cm/5.346N**（BC11.316/7.485）；8cm2.765/2.326（BC2.795/2.347）；停止9.332/5.833（BC9.384/5.851）。
-- 最佳检查点保留收益成立；**持续稳定改善未证明**：batch5曾回退10.698/7.052，batch1因滑移保护排除。末轮仍有移动滑移和约−15°偏航代价。仅一个新seed开发验证，不是新封存泛化或全任务替换BC。旧5401/5402与失败保持。
-- **B**：712候选不是712独立标签。20shadow状态/180 F-物理分数配对，12接触状态仅来自4独立回合，低于约10组门槛；逐候选首z/action需重建而非显式保存。本轮不补算F、不拟合校准器、不新增查询，校准主张暂停，非整个FB方法否定。
-- **C**：物理callback跨reset、SHA/normalizer、混合索引核实。确认快照不全面恢复NumPy任务RNG，旧开发评价复用Task后重置训练回合；明确使用边界，未修复旧实现。未发现需撤回已复现BC/b4物理结果的新缺陷。完整原入口清单、最小复现与影响范围见审计。
-
-## 精确身份与位置
-
-- BC500：`a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e`；原stage `interactive-contact-pilot-20261108/runs/bc-fit-01/old_data_only-500.pt`。
-- 新5403b7：`c1b9f7c04b4c0154b8644929bbeebbd64f55a227b199e6f5c7ed0dc116257f76`；新stage `ppo-retention-audit-20261109/runs/A1-train-5403/candidate-7.pt`。只是本轮开发选定候选，BC不覆盖。
-- BFM：`33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。A0 runtime `48e756fadfeffcb5cf447e21d114344044291cf2`；同状态诊断/5403 runtime **`8ef38c44ce71b910d11af10e3abe44b2bff9283e`**；报告提交不冒充运行源码。
-- 旧模型完整SHA、所有新检查点/阶段成本、逐批学习与评价见[retention_artifacts/evidence.json](retention_artifacts/evidence.json)。服务器根 `/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/`；各stage ledger/jobs与失败保留。
-- 个人审查分支 `luoxinyuan/compliance_BFM:gaoe05/research`，本轮最终文档SHA见Issue53最新结项链接；main未改。
-- 本轮不重复生成视频，新增两张由真实轨迹/评价生成的科研图已核查；历史关键1×视频仍在Mac `~/Projects/compliance-bfm-diagnostics/videos/interactive-increment/`（2条MP4＋INDEX）。
-
-## 成本、边界与接力
-
-A0 768.16s、A1 3543.73s、B14.08s、C6.05s实测job；另250s明确CPU分析预留，总4582.02s。A1双计父等待与评价子job，保守。输出约.759GiB，5376Student RL，0新Teacher搜索/0BC/0Expert RL。所有分项低于用户上限。只用获准NVIDIA卡；启动实时核验CPU/RAM/I/O；不据NVML名称臆断型号。
-
-此前建议的新条件评价已完成，结论见本文件顶部；不再重复发车。不把回合内高度相关候选当独立校准样本。若修复旧RNG/评价生命周期需独立回归小轮，带归档物理复算。
-
-新会话先读RESEARCH_OVERVIEW、本文件、RETENTION_RESULTS及Issue53；需要启动时重新核验实际资源和身份，不沿用旧PID/空闲快照。保持BFM/PD/main/SoftSONIC/他人任务不动、不真机。ideal-force只是传感假设；既有Library 2026-10-28文档是历史快照，不覆盖当前GitHub事实。
+历史入口：#55工程结项、SOURCE_COVERAGE_M1_RESULTS、RETENTION_VALIDATION_RESULTS、
+RETENTION_RESULTS、INTERACTIVE_INCREMENT_RESULTS及对应Issues。原CURRENT_STATE全文
+仍可从a097774提交读取，未删除历史实验或改写任何结论。旧Library2026-10-28
+仅为历史快照。

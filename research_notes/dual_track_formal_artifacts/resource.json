@@ -1,0 +1,26 @@
+{
+  "stage": "dual-track-formal-20261109",
+  "status": "preparation_verified_waiting_remaining_scientific_decisions",
+  "approved_job_seconds": {
+    "frozen": 403200,
+    "fb": 288000,
+    "common": 115200,
+    "buffer": 57600,
+    "total": 864000
+  },
+  "measured_job_seconds": 209.95802283287048,
+  "conservative_reserves": {
+    "preparation_publication_s": 3600,
+    "prior_issue55_common_s": 4076.203086376
+  },
+  "common_conservative_charged_s": 7886.161109208871,
+  "formal_counters": {
+    "Expert_RL": 0,
+    "Student_RL": 0,
+    "FB_transitions": 0,
+    "FB_updates": 0,
+    "Teacher_queries": 0
+  },
+  "new_artifact_bytes": 40146,
+  "updated_utc_epoch": 1794230305.4746737
+}

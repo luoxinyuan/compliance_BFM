@@ -50,6 +50,8 @@ checkpoints, errata and reports remain unchanged. Machine-readable decisions:
 |Beyond1M|5M requires fresh explicit Yi authorization; no automatic continuation|
 |Concurrent heavy jobs|One authorized RTX Pro5000 job at a time; CPU preparation may overlap|
 
+The referenced earlier delay-cut priority list could not be located in the read Master body/comments or Issue55 comments. The verified rules are allocation caps, stop at the first limit and no automatic5M. No new priority order is invented; resolve the original wording before a delay-driven scope cut is needed.
+
 The budget is a cap, not a success criterion.250k is a learning/correctness
 observation point, not an automatic task-quality stop. Correctness failure pauses
 the affected run and creates an immutable erratum; no relaxed probability or
