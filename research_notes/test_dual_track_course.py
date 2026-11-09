@@ -15,7 +15,13 @@ def main():
         if s['demand_family']=='stop':
             t=x.pending_continue_spec;assert t is not None
             assert all(s[k]==t[k] for k in ('source','source_profile','source_until','onset','distance','ramp','parent_id','source_parent_id','common_prefix_parent_id'))
-            assert 'stop_time' not in t and t['release']>s['release'];pairs+=1
+            # A late explicit deceleration can outlast the original finite
+            # continuation. Release ORDER is not the paired-prefix invariant;
+            # equal post-motion hold and identical pre-branch history are.
+            assert 'stop_time' not in t
+            hold_stop=s['release']-s['stop_time']-s['deceleration']
+            hold_continue=t['release']-t['onset']-t['ramp']
+            assert abs(hold_stop-hold_continue)<1e-10;pairs+=1
     rates={k:v/12000 for k,v in counts.items()}
     assert all(abs(rates[k]-v)<.02 for k,v in CFG['request_probs'].items()),rates
     b=DictBuffer(capacity=8,device='cpu')
