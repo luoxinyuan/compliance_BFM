@@ -53,7 +53,8 @@ def study(e,m,contract,out):
  # Independent child evaluation; no training Task or any RNG touched by child.
  before=TrainingBranch(task,[rng]);dd=draws();before.restore()
  cp=out/'initial-branch.pt';torch.save({'state_dict':net.state_dict(),'base_sha':digest},cp)
- cmd=[sys.executable,str(ROOT/'research_notes/retention_eval.py'),'--roles','BC500','--output',str(out/'independent-eval')]
+ os.environ['DUAL_TRACK_PREFIX']=str(out/'backend-prefix')
+ cmd=[sys.executable,str(ROOT/'research_notes/dual_track_eval.py'),'--roles','BC500','--output',str(out/'independent-eval')]
  t=time.monotonic()
  with open(out/'independent-eval.log','w') as log:subprocess.run(cmd,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=400)
  assert before.digest()==before.fingerprint
