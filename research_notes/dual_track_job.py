@@ -9,6 +9,8 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import signal
+import shutil
 import time
 
 
@@ -56,6 +58,13 @@ def main():
     uuid = gpu.split(",")[2].strip()
     apps = subprocess.check_output(["nvidia-smi", "--query-compute-apps=gpu_uuid,pid,process_name", "--format=csv,noheader"], text=True)
     assert not any(uuid in row for row in apps.splitlines()), "Authorized GPU is occupied"
+    mem={line.split(':')[0]:int(line.split()[1])*1024 for line in Path('/proc/meminfo').read_text().splitlines() if line.startswith('MemAvailable:')}
+    assert mem['MemAvailable']>16*(1<<30),'Insufficient independent host memory headroom'
+    assert shutil.disk_usage(args.stage).free>100*(1<<30),'Shared-storage reserve reached'
+    resources=dict(available_RAM_bytes=mem['MemAvailable'],loadavg=Path('/proc/loadavg').read_text().strip(),
+        CPU_quota=Path('/sys/fs/cgroup/cpu/cpu.cfs_quota_us').read_text().strip(),
+        CPU_period=Path('/sys/fs/cgroup/cpu/cpu.cfs_period_us').read_text().strip(),
+        IO_pressure=Path('/proc/pressure/io').read_text().strip(),free_storage_bytes=shutil.disk_usage(args.stage).free)
     out = args.stage / "runs" / args.name
     out.mkdir(exist_ok=False)
     env = dict(os.environ, CUDA_VISIBLE_DEVICES="0", OMP_NUM_THREADS="1", MKL_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1")
@@ -64,18 +73,21 @@ def main():
     row = dict(name=args.name, category=args.category, runtime=revision, command=cmd,
                started=started, timeout_s=args.timeout, supervisor_pid=os.getpid(),
                gpu_baseline=gpu, status="running", output=str(out),
-               purpose=args.purpose, formal_training=args.purpose != "engineering")
+               purpose=args.purpose, formal_training=args.purpose != "engineering",resources=resources)
     write(sidecar, row)
     try:
         with (out / "stdout.log").open("w") as log:
-            child = subprocess.Popen(cmd, cwd=repo, env=env, stdout=log, stderr=subprocess.STDOUT)
+            child = subprocess.Popen(cmd, cwd=repo, env=env, stdout=log, stderr=subprocess.STDOUT,start_new_session=True)
             row["pid"] = child.pid
+            row['owned_process_group']=child.pid
             write(sidecar, row)
             try:
                 rc = child.wait(timeout=args.timeout)
             except subprocess.TimeoutExpired:
-                child.terminate()
-                rc = child.wait(timeout=30)
+                os.killpg(child.pid,signal.SIGTERM)
+                try:rc = child.wait(timeout=30)
+                except subprocess.TimeoutExpired:
+                    os.killpg(child.pid,signal.SIGKILL);rc=child.wait(timeout=10)
                 row["timed_out"] = True
         row.update(returncode=rc, status="completed" if rc == 0 else "failed")
         if rc:

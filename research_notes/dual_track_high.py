@@ -7,7 +7,7 @@ import torch
 from dual_track_task import Task,CFG,parent_manifests
 from dual_track_runtime import PrivilegedBranch,PPOContract,TrainingBranch,save_training_checkpoint
 from dual_track_critic import update
-from dual_track_returns import advantages,physical_discount
+from dual_track_returns import advantages,physical_discount,high_reward_from_native
 
 ROOT=Path(__file__).resolve().parents[1]
 BC=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interactive-contact-pilot-20261108/runs/bc-fit-01/old_data_only-500.pt')
@@ -181,7 +181,10 @@ def train(e,m,contract,out,args):
             nx=torch.cat([task.student_features(),task.features()],-1)
             nv=torch.zeros(1,device='cuda') if st['terminated'] else net.value(nx)
             for k,val in dict(obs=x[0],action=raw[0],logp=lp[0],value=v[0],next_value=nv[0]).items():arrays[k].append(val.cpu().numpy())
-            arrays['reward'].append(reward);arrays['discount'].append(physical_discount(st['actual_duration_s']))
+            native_durations=[c['actual_duration_s'] for c in task.controls[-st['control_steps']:]]
+            training_reward=high_reward_from_native(st['native_rewards'],native_durations)
+            st['undiscounted_physical_reward']=reward;st['PPO_reward_native_discounted']=training_reward
+            arrays['reward'].append(training_reward);arrays['discount'].append(physical_discount(st['actual_duration_s']))
             arrays['terminated'].append(st['terminated']);arrays['truncated'].append(st['truncated'])
             key=st['source']+'/'+st['family']+'/'+st.get('phase','unknown');coverage[key]=coverage.get(key,0)+1
             if done:episode_coverage[key]=episode_coverage.get(key,0)+1

@@ -26,3 +26,12 @@ def advantages(reward, value, next_value, discount, terminated, truncated, trace
 def physical_discount(duration_seconds, gamma_100ms=.99):
     assert 0 < gamma_100ms <= 1
     return gamma_100ms ** (duration_seconds / .1)
+
+
+def high_reward_from_native(rewards,durations):
+    """Same20ms reward stream, exactly discounted inside a100ms command."""
+    assert len(rewards)==len(durations)>0
+    elapsed=0.;result=0.
+    for reward,dt in zip(rewards,durations):
+        result+=physical_discount(elapsed)*reward;elapsed+=dt
+    return result

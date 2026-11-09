@@ -29,6 +29,7 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('--mode',choices=('high_train','high_eval','fb_smoke','fb_train','fb_eval'),required=True)
  p.add_argument('--output',type=Path,required=True);p.add_argument('--kl',type=float,choices=(.02,.08))
  p.add_argument('--checkpoint',type=Path);p.add_argument('--sha256');p.add_argument('--iteration',type=int,default=0)
+ p.add_argument('--resume',type=Path)
  p.add_argument('--split',choices=('dev','sealed'),default='dev');p.add_argument('--record',action='store_true')
  p.add_argument('--smoke',action='store_true',help='Disposable engineering run, one batch and three development sources; not formal progress')
  ARGS=p.parse_args();assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])

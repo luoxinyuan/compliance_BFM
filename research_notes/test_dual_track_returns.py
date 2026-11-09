@@ -1,6 +1,6 @@
 """Analytic terminal/truncation tests plus original-contract numerical regression."""
 import torch
-from dual_track_returns import advantages, physical_discount
+from dual_track_returns import advantages, physical_discount,high_reward_from_native
 from humanoidverse.force_compliance.ppo import advantages as legacy
 
 
@@ -22,6 +22,10 @@ def main():
     a, _ = advantages(r, v, nv, d, term, trunc, .95)
     assert a[0] == -1
     assert abs(physical_discount(.02)**5 - physical_discount(.1)) < 1e-14
+    rs=[-.1,-.2,-.3,-.4,-.5,-.6,-.7,-.8,-.9,-1.]
+    grouped=high_reward_from_native(rs[:5],[.02]*5)+physical_discount(.1)*high_reward_from_native(rs[5:],[.02]*5)
+    fine=sum(physical_discount(.02*i)*r for i,r in enumerate(rs))
+    assert abs(grouped-fine)<1e-12
     print('PASS: legacy-equivalent genuine terminals, real-successor truncation bootstrap, no cross-reset trace, matched physical-time discount')
 
 
