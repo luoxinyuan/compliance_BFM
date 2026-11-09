@@ -1,3 +1,5 @@
+2026-11-09 发布核对：源码/合同/实测报告已FF推送gaoe05/research至 `2f0d5dfe82cc5cd3c31a28dd7554091b667f9210` 并实际读取远程文件；[Issue55已完成结项](https://github.com/GaoE05/robot-research-bridge/issues/55)，[Master最新摘要](https://github.com/GaoE05/robot-research-bridge/issues/18#issuecomment-6739057952)。以下运行SHA与报告提交分开记录，无后续队列。
+
 # CURRENT_STATE — 双轨共同合同与单卡运行能力工程里程碑已完成
 
 2026-11-09。[合同草案V1](DUAL_TRACK_CONTRACT_V1.md) · [实测报告](DUAL_TRACK_RUNTIME_RESULTS.md) · [准备勘误](DUAL_TRACK_ERRATUM.md) · [Isaac缺口](ISAAC_BATCH_CONTACT_GAP.md) · [Issue55](https://github.com/GaoE05/robot-research-bridge/issues/55)。**没有正式PPO/大规模FB、Teacher查询或排序器训练；全部测试结束。BC500不变，5403b7不晋级，旧M1结论保留。**
