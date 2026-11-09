@@ -1,0 +1,156 @@
+{
+  "version": "DUAL_TRACK_CONTRACT_V1_APPROVED_SCOPE",
+  "status": "partial_scientific_approval_no_formal_launch",
+  "approved_limits": {
+    "experiment_job_seconds": 864000,
+    "frozen_job_seconds": 403200,
+    "fb_job_seconds": 288000,
+    "common_job_seconds": 115200,
+    "buffer_job_seconds": 57600,
+    "expert_high_decisions_total": 196608,
+    "student_high_decisions_total": 98304,
+    "fb_true_native_transitions": 1000000,
+    "fb_checkpoint_steps": [
+      0,
+      250000,
+      1000000
+    ],
+    "fb_larger_run_requires_new_approval": true,
+    "max_heavy_gpu_jobs": 1,
+    "dev_parents_target": 30,
+    "sealed_parents_target": 60
+  },
+  "approval_sources": [
+    "https://github.com/GaoE05/robot-research-bridge/issues/18#issuecomment-6739473031",
+    "Current user formal dual-track instruction, 2026-11-09",
+    "Three explicit asynchronous user replies in this session, 2026-11-09"
+  ],
+  "decisions": {
+    "discount_reward": {
+      "status": "approved",
+      "value": {
+        "gamma_high_100ms": 0.99,
+        "gamma_fb_20ms": 0.9979919516614258,
+        "physical_reward": "existing per-contact physical cost, integrate actual executed physical time; no added economy term",
+        "true_terminal_distinct_from_truncation": true,
+        "release_is_not_terminal": true
+      },
+      "approval_source": "Explicit user async reply: adopt unified physical-time objective"
+    },
+    "curriculum_principles": {
+      "status": "approved",
+      "value": {
+        "source_probabilities": {
+          "standing": 0.3333333333333333,
+          "goal_arm5": 0.3333333333333333,
+          "motion_walk_task": 0.3333333333333333
+        },
+        "request_probabilities": {
+          "near": 0.2,
+          "mid": 0.2,
+          "long": 0.25,
+          "stop": 0.2,
+          "zero": 0.1,
+          "none": 0.05
+        },
+        "extra_high_actor_BC_weight": 0,
+        "fb_train_replay": "new actual execution only",
+        "fb_CPR_source": "real native no-contact continuous snippets; existing CPR coefficients"
+      },
+      "approval_source": "Explicit user async reply: adopt curriculum and retention principles only"
+    },
+    "contact_schema": {
+      "status": "approved",
+      "value": {
+        "key": "contact_privileged_v1",
+        "dimensions": 97,
+        "current": {
+          "mount": 6,
+          "force_body_div5N": 3,
+          "anchor_error_body_div025m": 3,
+          "relative_velocity_body_div05mps": 3,
+          "point_relative_root_body_m": 3,
+          "partner_velocity_body_div05mps": 3,
+          "physical_active_teacher_only": 1
+        },
+        "history": "25 real 50Hz force samples in current pelvis frame, /5N",
+        "future_or_task_clock": false,
+        "normalizer": "original robot statistics frozen, new fixed SI scales and clip10",
+        "injection": "actor/F/B/critics, zero new input weights while preserving original input LayerNorm domain",
+        "discriminator": "original robot-only"
+      },
+      "approval_source": "Explicit user async reply: adopt 97D scheme"
+    },
+    "kl_comparison": {
+      "status": "approved",
+      "value": {
+        "A": {
+          "joint_kl_limit": 0.02,
+          "joint_kl_stop": 0.015,
+          "joint_kl_assert": 0.02001
+        },
+        "B": {
+          "joint_kl_limit": 0.08,
+          "joint_kl_stop": 0.06,
+          "joint_kl_assert": 0.08001
+        },
+        "shared_raw_std": 0.008,
+        "logprob_atol": 0.0003,
+        "clip": 0.15
+      },
+      "approval_source": "https://github.com/GaoE05/robot-research-bridge/issues/18#issuecomment-6739473031"
+    },
+    "quality_role": {
+      "status": "approved",
+      "value": {
+        "M1_lines": "retained as physical references, no small-sample veto of research direction"
+      },
+      "approval_source": "https://github.com/GaoE05/robot-research-bridge/issues/18#issuecomment-6739473031"
+    },
+    "task_ranges": {
+      "status": "pending_Yi",
+      "value": null,
+      "proposal": "near4-12cm avg.03-.09m/s; mid16-45cm avg.06-.15; long50-80cm avg one of.09/.15/.22; onset handoff+.5-1.2s; hold1.5-3s; decel.5-1s; free recovery4s; real5N regression only"
+    },
+    "source_generation_and_parent_split": {
+      "status": "pending_Yi",
+      "value": null,
+      "proposal": "distinct actual native source command histories, qualified physical support strata; dev10/source, sealed20/source; whole native episode/common-prefix/partner parent IDs; no seed-only independence; manifests hashed before evaluation"
+    },
+    "selection_and_safety": {
+      "status": "pending_Yi",
+      "value": null,
+      "proposal": "retain all candidates; native/physics boundary excludes candidate promotion, not research; group by task family; equal-family physical cost F_RMS+.03*error_cm+cap; tail/quality guard against initial model; complete thresholds in decisions note"
+    },
+    "high_architecture_and_optimization": {
+      "status": "pending_Yi",
+      "value": null,
+      "proposal": "exact Issue55 branch1088-128-256 and critic2727-128-1; train base actor+branch, fixed old normalizer/log_std; fresh Adam3e-5actor/3e-4critic; GAE.95; epochs6/batch768/minibatch256; no extra BC; 100 value-only first-batch updates"
+    },
+    "matched_pair_schedule": {
+      "status": "pending_Yi",
+      "value": null,
+      "proposal": "98304 decisions per KL arm, same initialization and paired seed5601; 128x768 each; immutable every8batch checkpoints, dev0/every8/final; sealed once per selected model; single-GPU serial alternating blocks without touching archived code"
+    },
+    "fb_reward_and_retention": {
+      "status": "pending_Yi",
+      "value": null,
+      "proposal": "same physical contact integral as scalar aux reward; fresh aux reward normalizer vs fixed identity must be explicitly selected; existing reg_coeff=1/reg_coeff_aux=1/scale_reg=True; robot-only CPR from actual original native no-contact8frame snippets, balanced by source; no synthetic contact labels"
+    },
+    "fb_online_z_schedule": {
+      "status": "pending_Yi",
+      "value": null,
+      "proposal": "source-associated native stand/arm z or native walking causal phase sequence throughout episode; no contact-to-skill rule, actor free to change29D action; initial warmup real1024 counted toward1M; train existing goal/uniform relabel50/50; evaluate native prompts and contact reward-inference separately"
+    },
+    "fb_replay_and_checkpoint": {
+      "status": "pending_Yi",
+      "value": null,
+      "proposal": "new CPU replay capacity1M, store complete pre-reset successor+terminated/truncated; source/prefix steps separate from1M; immutable full model/6Adam/normalizers/counters/RNG/replay at0/250k/1M; engineering stop ceiling64GiB and shared-free-space guard, no claim these are measured sizes"
+    },
+    "fb_update_recipe": {
+      "status": "pending_Yi",
+      "value": null,
+      "proposal": "original six optimizer recipe except approved gamma; batch1024,16updates/1024 transitions; compile after eager correctness; warmup1024 counts within1M, no update burst for uncollected samples; exact endpoint pending schedule explicitly not15625 updates if one warmup batch skipped"
+    }
+  }
+}
