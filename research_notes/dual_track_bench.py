@@ -22,7 +22,7 @@ def study(e,m,contract,out):
  from m11_runtime_speed import install as speed
  from rolling_backend import install as backend
  install();torch.set_num_threads(1);torch.set_grad_enabled(False);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
- write(out/'speed.json',speed(e));write(out/'backend.json',backend(e,m,P/'experiments/native-rolling-h100-20261107/compatibility-prefix'))
+ write(out/'speed.json',speed(e));(out/'backend-prefix').mkdir();write(out/'backend.json',backend(e,m,out/'backend-prefix'))
  path,digest=MODELS['BC500'];assert sha(path)==digest
  ck=torch.load(path,map_location='cpu',weights_only=True);net=PrivilegedBranch(ck).cuda();old=net.base
  task=Task(e,m,contract,5501);task.reset(record=True,label='benchmark')
