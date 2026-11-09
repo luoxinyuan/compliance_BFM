@@ -42,7 +42,7 @@ def study(e,m,contract,out):
  assert np.array_equal(e.sim.data.qpos,np.asarray(task.physics[-1]['qpos']))
  assert task.native_reset_deferred and task.native_info['final_observation'] is not None
  assert abs(float(records[-1]['duration'])-.005)<1e-8
- assert all(torch.equal(v,records[-1]['next']['observation'][k]) for k,v in task.native_info['final_observation'].items())
+ assert all(torch.equal(v.cpu(),records[-1]['next']['observation'][k]) for k,v in task.native_info['final_observation'].items())
  task.inject_terminal_tick=None
  # Fresh source clears the old callback/terminal state, then an administrative
  # time limit bootstraps from the true successor without crossing reset.

@@ -21,6 +21,7 @@ def write(path, data):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage", type=Path, required=True)
+    parser.add_argument("--runtime-repo", type=Path)
     parser.add_argument("--name", required=True)
     parser.add_argument("--category", choices=("frozen", "fb", "common", "buffer"), required=True)
     parser.add_argument("--purpose", choices=("engineering", "frozen_ppo", "fb_train", "student_ppo"), required=True)
@@ -29,9 +30,9 @@ def main():
     parser.add_argument("command", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     cmd = args.command[1:] if args.command[:1] == ["--"] else args.command
-    assert cmd and 0 < args.timeout <= 36000
+    assert cmd and 0 < args.timeout <= 80*3600
     assert args.name.replace("-", "").isalnum()
-    repo = args.stage / "repo"
+    repo = args.runtime_repo or args.stage / "repo"
     if args.purpose != "engineering":
         from dual_track_admission import require_launchable
         assert args.contract is not None

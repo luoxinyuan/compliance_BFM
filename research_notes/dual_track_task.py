@@ -29,6 +29,15 @@ def qtime(t):
     return round(float(t) * 10) / 10
 
 
+def global_rng():
+    return dict(python=random.getstate(),numpy=np.random.get_state(),cpu=torch.get_rng_state(),cuda=torch.cuda.get_rng_state_all())
+
+
+def restore_global_rng(state):
+    random.setstate(state['python']);np.random.set_state(state['numpy'])
+    torch.set_rng_state(state['cpu']);torch.cuda.set_rng_state_all(state['cuda'])
+
+
 def sample_spec(rng, source=None, family=None):
     source = source or str(rng.choice(list(CFG['source_probs']), p=list(CFG['source_probs'].values())))
     family = family or str(rng.choice(list(CFG['request_probs']), p=list(CFG['request_probs'].values())))
@@ -141,7 +150,12 @@ class Task(NativeTask):
         import clean_env
 
         def advance(env, action):
-            obs, _, terminated, truncated, info = env.wrapped.step(action, to_numpy=False)
+            outside=global_rng() if not self.allow_native_reset else None
+            if outside is not None:restore_global_rng(self.physics_rng)
+            try:obs, _, terminated, truncated, info = env.wrapped.step(action, to_numpy=False)
+            finally:
+                if outside is not None:
+                    self.physics_rng=global_rng();restore_global_rng(outside)
             terminal = bool(torch.as_tensor(terminated).any())
             limit = bool(torch.as_tensor(truncated).any()) and not terminal
             if terminal or limit:
@@ -202,15 +216,14 @@ class Task(NativeTask):
     def reset(self, *a, **kw):
         # The archived physical reset legitimately seeds its native environment0.
         # Do not let that overwrite the NEW learner/replay/exploration RNG streams.
-        external_rng=(random.getstate(),np.random.get_state(),torch.get_rng_state(),torch.cuda.get_rng_state_all())
+        external_rng=global_rng()
         self.stage_boundary = None; self.native_info = None; self.native_reset_deferred = False
         self.allow_native_reset = True
         try:
             return super().reset(*a, **kw)
         finally:
             self.allow_native_reset = False
-            random.setstate(external_rng[0]);np.random.set_state(external_rng[1])
-            torch.set_rng_state(external_rng[2]);torch.cuda.set_rng_state_all(external_rng[3])
+            self.physics_rng=global_rng();restore_global_rng(external_rng)
 
     def contact_vector(self):
         R = self.e.sim.data.xmat[1].reshape(3,3)
