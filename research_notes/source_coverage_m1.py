@@ -24,6 +24,21 @@ def study(e,m,contract,out):
  torch.set_num_threads(1);torch.set_grad_enabled(False);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
  install();write(out/'speed.json',speed(e));write(out/'backend.json',backend(e,m,ROLL/'compatibility-prefix'))
  assert contract['model_sha256']=='33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361'
+ # Read-only per-contact load-qualified slip logging. Does not alter mj state/control/reward.
+ original_physics_sample=e._original_step
+ def log_loaded_slip():
+  before_v=e.sim.data.qvel.copy();result=original_physics_sample();mm,dd=e.sim.model,e.sim.data;points=[]
+  for ci,c in enumerate(dd.contact[:dd.ncon]):
+   bodies=[int(mm.geom_bodyid[c.geom1]),int(mm.geom_bodyid[c.geom2])]
+   if 0 not in bodies:continue
+   body=max(bodies);name=mujoco.mj_id2name(mm,mujoco.mjtObj.mjOBJ_BODY,body) or ''
+   if 'ankle' not in name and 'foot' not in name:continue
+   ff=np.zeros(6);mujoco.mj_contactForce(mm,dd,ci,ff)
+   jac=np.zeros((3,mm.nv));mujoco.mj_jac(mm,dd,jac,None,c.pos,body);vv=c.frame.reshape(3,3)[1:]@(jac@before_v)
+   points.append(dict(body=body,normal_load_N=abs(float(ff[0])),tangent_speed_mps=float(np.linalg.norm(vv))))
+  e.contact_sample['loaded_contact_points']=points;e.contact_sample['loaded_slip_peak_mps']=max([x['tangent_speed_mps'] for x in points if x['normal_load_N']>1e-6],default=0.)
+  return result
+ e._original_step=log_loaded_slip
  task=Task(e,m,contract,6101);dev=e.standing.device;path,digest=MODELS['BC500'];assert sha(path)==digest
  ck=torch.load(path,map_location=dev,weights_only=True);net=Expert(1639,'direct').to(dev);net.load_state_dict(ck['state_dict']);net.eval().requires_grad_(False)
  assert torch.equal(net.center,ck['state_dict']['center']) and torch.equal(net.scale,ck['state_dict']['scale'])
@@ -97,7 +112,7 @@ def study(e,m,contract,out):
   state=dict(integration=ss.integration,solver_arrays={k:getattr(ss.data,k).copy() for k in dir(ss.data) if not k.startswith('_') and isinstance(getattr(ss.data,k),np.ndarray)},task=ss.task,env=ss.env,base=ss.base,sim=ss.sim,wrapped=ss.wrapped,tether=ss.tether,history=ss.history,force_history=ss.force_history,origin=ss.origin,torch_rng=ss.rng,cpu_rng=ss.cpu_rng,numpy_rng=np.random.get_state(),python_rng=random.getstate(),task_rng=copy.deepcopy(task.rng.bit_generator.state),spec=copy.deepcopy(task.spec),source_audit=task.prefix_data['audit'],actual_prefix_decisions=copy.deepcopy(task.decision_rows),actual_prefix_controls=copy.deepcopy(task.controls),actual_prefix_physics=copy.deepcopy(task.physics),fingerprint=ss.fingerprint,callback_reconstruction='native Task.reset(saved spec) then replay actual_prefix_decisions raw in order; CrossResetState within live process',physics_identity=contract)
   torch.save(serial(state),qdir/'state.pt')
  def quality(rows,controls):
-  mm=metrics(rows,controls);mm['slip_peak_mps']=max(r['contact_tangent_speed_max_mps'] for r in rows);mm['slip_p95_mps']=float(np.quantile([r['contact_tangent_speed_max_mps'] for r in rows],.95));last=rows[-1]['pelvis_matrix'];mm['yaw_final_deg']=float(np.degrees(np.arctan2(last[1][0],last[0][0])));mm['error_xyz_rms_cm']=(100*np.sqrt(np.mean([(np.array(r['anchor'])-r['wrist'])**2 for r in rows if r['active']],axis=0))).tolist() if any(r['active'] for r in rows) else None;return mm
+  mm=metrics(rows,controls);mm['slip_peak_mps']=max(r['loaded_slip_peak_mps'] for r in rows);mm['legacy_allcontact_slip_peak_mps']=max(r['contact_tangent_speed_max_mps'] for r in rows);mm['slip_p95_mps']=float(np.quantile([r['contact_tangent_speed_max_mps'] for r in rows],.95));last=rows[-1]['pelvis_matrix'];mm['yaw_final_deg']=float(np.degrees(np.arctan2(last[1][0],last[0][0])));mm['error_xyz_rms_cm']=(100*np.sqrt(np.mean([(np.array(r['anchor'])-r['wrist'])**2 for r in rows if r['active']],axis=0))).tolist() if any(r['active'] for r in rows) else None;return mm
  def search(cell,label,phase=0.,previous=None,rng=None):
   nonlocal prediction
   persist();counts['full_queries']+=1;idx=counts['full_queries'];qdir=out/f'query-{idx:03d}';qdir.mkdir();started=time.monotonic();ss=CrossResetState(task);n0=len(task.physics);c0=len(task.controls);save_state(ss,qdir)

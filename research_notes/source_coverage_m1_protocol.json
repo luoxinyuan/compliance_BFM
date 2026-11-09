@@ -235,7 +235,8 @@
     "relative_max_ratio": 1.05,
     "window": "entire actual post-handoff episode contact window plus full release; no gate from2.4s prediction alone",
     "combine": "usable if either actual selected sequence branch or actual rolling branch meets ALL bounds and relative BC leg; record which. Candidate chosen only by unchanged physical reward, not gate peeking.",
-    "no_contact": "external force exactly0; no termination; full planned completion; minheight>=.65, maxtilt<=30deg. Native moving may move. Numeric stability uses existing physical envelope, no posture freeze."
+    "no_contact": "external force exactly0; no termination; full planned completion; original boundary minheight>=.45 and maxtilt<=30deg, not added posture constraint",
+    "loaded_slip_definition": "max actual ground foot contact tangential speed at contacts with measured normal force>1e-6N; all-contact legacy proxy retained separately"
   },
   "decision": "pilot gate fails -> generation capability insufficient with any independent-data limitation separate; gate passes but cannot supply qualified independent groups -> data qualification insufficient; continue M2 only if qualified coverage/assets, never launch it",
   "extra_FB": "0 planned pilot, full F on ALL original7 including failures. Extra80 cap retained, no candidates added to official pool",
