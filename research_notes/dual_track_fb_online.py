@@ -126,7 +126,10 @@ def save_package(path,agent,c,updates,runtime):
     torch.save(dict(storage=cpu(agent.z_buffer._storage),idx=agent.z_buffer._idx,full=agent.z_buffer._is_full),path/'zbuffer.pt')
     torch.save(c.sequences,path/'native-sequences.pt')
     c.replay.save(path/'replay')
-    write(path/'original-init-kwargs.json',json.loads((MODEL/'init_kwargs.json').read_text()))
+    # Original Gym space metadata contains +/-Infinity for unbounded robot Box
+    # fields. Preserve those archived bytes, rather than relaxing strict finite
+    # JSON checks on actual rewards, metrics or new physical measurements.
+    shutil.copyfile(MODEL/'init_kwargs.json',path/'original-init-kwargs.json')
     r=state.rng_all
     history=dict(spec=copy.deepcopy(c.task.spec),raw=[copy.deepcopy(d['raw']) for d in c.task.decision_rows],
         native_limits=[d['administrative_native_limit'] for d in c.task.stats],
@@ -206,12 +209,14 @@ def run_updates(agent,c,first,count,compile=False):
     times=[];last={}
     for i in range(first,first+count):
         t=time.monotonic()
+        if i==first:print('FB_UPDATE_BLOCK_BEGIN',first,count,'compiled',agent.cfg.compile,flush=True)
         # m10 physics defaults grad mode off; training is explicitly enabled.
         with torch.enable_grad():metrics=agent.update(c.buffers,i)
         torch.cuda.synchronize();times.append(time.monotonic()-t)
         assert all(torch.isfinite(v).all() for v in metrics.values() if torch.is_tensor(v))
         freeze_robot_normalizers(agent._model)
         last={k:float(v) for k,v in metrics.items() if torch.is_tensor(v) and v.numel()==1}
+    print('FB_UPDATE_BLOCK_END',first,count,sum(times),flush=True)
     return dict(updates=count,wall_s=sum(times),per_update_s=times,last_metrics=last)
 
 
@@ -315,12 +320,27 @@ def evaluate(e,m,contract,out,args):
     from native_transfer import phase_report
     agent,c,meta=load_package(args.checkpoint,e,m,contract,physical=False)
     task=c.task;c.proxy.stochastic=False
-    rows=[]
-    for group in parent_manifests()[args.split]:
+    rows=[];groups=parent_manifests()[args.split];prompt=None
+    if args.fb_prompt=='reward':
+        assert len(c.replay)>0 and args.split=='dev'
+        indices=torch.linspace(0,len(c.replay)-1,steps=min(100000,len(c.replay))).long().unique()
+        data=c.replay.storage
+        obs={k:v[indices] for k,v in data['next']['observation'].items()}
+        reward=data['aux_rewards']['contact_physical'][indices]
+        # This challenge B now has contact fields. Reward comes ONLY from real
+        # train execution, never sealed targets or future candidate predictions.
+        t=time.monotonic();prompt=agent._model.reward_inference(obs,reward)
+        write(out/'reward-prompt.json',dict(method='original unweighted reward_inference',rows=len(indices),
+            replay_origin='new actual online train execution; auxiliary physical reward and true next observation',
+            reward_mean=float(reward.mean()),z=prompt.tolist(),norm=float(prompt.norm()),wall_s=time.monotonic()-t))
+        groups=[groups[i] for i in (0,4,6,10,14,16,20,24,26)]
+    for group in groups:
         c.reset(group['spec'])
         while not task.done:
-            rows_unused,_,_=c.proxy.take_step(task.native(task.spec['source'],float(e.tether.time))/16)
+            raw=(prompt if prompt is not None else task.native(task.spec['source'],float(e.tether.time)))/16
+            rows_unused,_,_=c.proxy.take_step(raw)
         rows.append(dict(parent_id=group['parent_id'],source=group['source'],family=group['family'],
             boundary=task.boundary,quality=quality(task),**phase_report(task)))
         write(out/'summaries.json',rows)
-    return dict(status='completed',rows=len(rows),formal_native_training_transitions=0,model_sha256=meta['model_sha256'])
+    return dict(status='completed',rows=len(rows),formal_native_training_transitions=0,
+        prompt=args.fb_prompt,model_sha256=meta['model_sha256'])

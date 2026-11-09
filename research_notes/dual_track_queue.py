@@ -43,6 +43,8 @@ def main():
             job(f'fb-dev-{step}','fb','engineering',6000,'fb_eval',['--checkpoint',str(ck),'--split','dev'])
         job('fb-sealed-1m','fb','engineering',8000,'fb_eval',
             ['--checkpoint',str(a.stage/'runs/fb-1m/step1000000'),'--split','sealed','--record'])
+        job('fb-reward-dev-1m','fb','engineering',1200,'fb_eval',
+            ['--checkpoint',str(a.stage/'runs/fb-1m/step1000000'),'--split','dev','--fb-prompt','reward'])
         write(dict(status='completed',updated=time.time(),automatic_next_stage=False))
     except Exception as exc:
         write(dict(status='paused_on_failure',error=repr(exc),updated=time.time(),automatic_retry=False))
