@@ -51,9 +51,24 @@ def study(e,m,contract,out):
  records,done,stats=proxy.take_step(task.native(source,float(e.tether.time))/16)
  assert done and stats['truncated'] and not stats['terminated'] and not task.stage_boundary
  assert records[-1]['next']['truncated'].item()
+ # Also test a REAL wrapped-env timeout. The old executor calls every wrapped
+ # done native_termination; the new task must not turn this into a fall penalty.
+ proxy.begin_source();task.reset(s,record=True,label='wrapped-timeout-test');proxy.finish_pending();proxy.begin_online()
+ original_check=e.base._check_termination
+ def force_wrapped_timeout():
+  original_check();e.base.reset_buf[:]=True;e.base.time_out_buf[:]=True
+ e.base._check_termination=force_wrapped_timeout
+ try:records,done,stats=proxy.take_step(task.native(source,float(e.tether.time))/16)
+ finally:e.base._check_termination=original_check
+ assert done and stats['truncated'] and not stats['terminated'] and task.boundary is None
+ assert task.native_info['truncated'] and task.native_info['final_observation'] is not None
+ assert records[-1]['next']['truncated'].item() and not records[-1]['next']['terminated'].item()
+ assert 'absorbing_failure_penalty' not in task.controls[-1]
  sample=sequences.sample(1024);assert sample['observation']['contact_privileged_v1'].shape==(1024,97)
  result=dict(status='passed',source_checks=results,real_pre_reset_terminal_successor=True,
     first_unsafe_tick_preserved_without_further_physics=True,administrative_truncation_distinct=True,
+    wrapped_timeout_bootstraps_without_absorbing_tail=True,
+    native_episode_length_limit=repr(getattr(e.base,'max_episode_length',None)),
     source_balanced_CPR_sequences=True,reset_preserves_external_training_RNG=True,manifests=dict(dev=30,sealed=60,actual_scientific_evaluations=0),
     optimizer_steps=0,formal_RL_decisions=0,formal_FB_transitions=0)
  (out/'verification.json').write_text(json.dumps(result,indent=2));return dict(status='completed',verification=result,student_optimizer_updates=0)

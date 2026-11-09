@@ -296,6 +296,13 @@ class Task(NativeTask):
             self.done=done=False;self.e.qualification_active=was_active
         rows=self.physics[start:]; cs=self.controls[controls:]
         assert rows and cs
+        if (self.native_info and self.native_info['truncated'] and not self.native_info['terminated']
+                and self.stage_boundary is None):
+            # The legacy executor marks any wrapped done as native_termination.
+            # Preserve a REAL wrapped time limit as truncation, before computing
+            # bootstrap masks or an absorbing-failure tail in this new entry.
+            assert self.boundary is None or self.boundary['kind']=='native_termination'
+            self.boundary=None;self.done=done=True
         rewards=[]; chunks=[]
         for i,c in enumerate(cs):
             end = cs[i+1]['time'] if i+1<len(cs) else float(self.e.tether.time)+1e-8

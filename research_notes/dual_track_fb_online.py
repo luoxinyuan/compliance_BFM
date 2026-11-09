@@ -213,6 +213,7 @@ def load_package(path,e,m,contract,*,physical,existing=None):
         finally:c.proxy.act=original_act
         c.native_actions=hist['actual_native_actions'];c.task.physics_rng=hist['physics_rng']
         c.task.pending_continue_spec=hist.get('pending_continue_spec');c.source_ledger=hist.get('source_ledger',[])
+        c.task.online_episode=c.episodes
         check=TrainingBranch(c.task)
         assert check.fingerprint==hist['digest'],'Mutable-actor physical/history resume mismatch'
         r=hist['rng'];restore_global_rng(dict(python=r['python'],numpy=r['numpy'],cpu=r['cpu'],cuda=r['cuda']))
