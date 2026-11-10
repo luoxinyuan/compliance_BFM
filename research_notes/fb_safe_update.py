@@ -1,3 +1,5 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# Derived portions follow the original CC BY-NC 4.0 LICENSE.
 """Joint actor loss adds only native no-contact actual-qPD preservation."""
 import types
 import torch
@@ -45,9 +47,14 @@ def install_retention(agent,original):
             actual=self._model._actor(normalized,prompt,self._model.cfg.actor_std).mean
             # Same original PD scale; no change to original PD values.
             delta=(actual-nominal.clamp(-1,1))*self._safe_qpd_scale
-            keep=delta[mask].square().mean()/.01 if bool(mask.any()) else task_loss*0
+            keep=delta[mask].square().mean()/.01 if bool(mask.any()) else task_loss.new_zeros(())
             loss=task_loss+.1*keep
-        self.actor_optimizer.zero_grad(set_to_none=True);loss.backward()
+        self.actor_optimizer.zero_grad(set_to_none=True)
+        from fb_ordered_grad import ordered_component_gradients
+        parameters=tuple(self._model._actor.parameters())
+        components=[task_loss,.1*keep] if bool(mask.any()) else [task_loss]
+        for parameter,gradient in zip(parameters,ordered_component_gradients(components,parameters)):
+            parameter.grad=gradient
         if clip_grad_norm is not None:torch.nn.utils.clip_grad_norm_(self._model._actor.parameters(),clip_grad_norm)
         self.actor_optimizer.step()
         return dict(actor_loss=loss.detach(),Q_discriminator=Qd.mean().detach(),Q_aux=Qa.mean().detach(),Q_fb=Qf.mean().detach(),

@@ -27,11 +27,14 @@ class SafeAction:
         raw=proposal;source=original.clamp(-self.bound,self.bound)
         mixed=(1-alpha)*source+alpha*proposal.clamp(-self.bound,self.bound)
         qpd=self.offset+mixed*self.scale
-        safe=qpd.clone();safe[...,self.indices]=qpd[...,self.indices].clamp(self.lower,self.upper)
-        action=(safe-self.offset)/self.scale
+        action=mixed.clone()
+        lower=(self.lower-self.offset[...,self.indices])/self.scale[...,self.indices]
+        upper=(self.upper-self.offset[...,self.indices])/self.scale[...,self.indices]
+        action[...,self.indices]=mixed[...,self.indices].clamp(lower,upper)
+        actual_qpd=self.offset+action.clamp(-self.bound,self.bound)*self.scale
         self.last=dict(raw_proposal=raw.detach().clone(),pre_bound_action=mixed.detach().clone(),
-            actual_action=action.detach().clone(),q_PD=safe.detach().clone(),
-            active=(safe-qpd).abs().gt(0).detach(),alpha=alpha.detach().clone())
+            actual_action=action.detach().clone(),q_PD=actual_qpd.detach().clone(),
+            active=(action-mixed).abs().gt(0).detach(),alpha=alpha.detach().clone())
         return action
 
 class PhysicalDistribution:

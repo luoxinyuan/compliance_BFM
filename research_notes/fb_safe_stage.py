@@ -3,6 +3,7 @@ import argparse,copy,json,os,subprocess,sys,time,types
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];STAGE=ROOT.parent
 sys.path[:0]=[str(ROOT),str(ROOT/'research_notes')]
+os.environ['CUBLAS_WORKSPACE_CONFIG']=':4096:8'
 os.environ.setdefault('TMPDIR',str(STAGE/'tmp'));Path(os.environ['TMPDIR']).mkdir(exist_ok=True)
 os.environ.setdefault('TORCHINDUCTOR_CACHE_DIR',str(STAGE/'torch-cache'))
 import m11_ipc
@@ -21,16 +22,17 @@ def study(e,m,contract,out):
  from diagnostic_fb_resume import tree_digest,publish,NormalStop
  from fb_ordered_grad import install as ordered
  from fb_safe_action import SafeAction,install,bind_task,KEY,VERSION
- model=e.sim.model;ranges=[]
+ model=e.sim.model;ranges=[];q_addresses=[];dq_addresses=[]
  for name in contract['dof_names']:
   joint=mujoco.mj_name2id(model,mujoco.mjtObj.mjOBJ_JOINT,name)
-  assert joint>=0;ranges.append(model.jnt_range[joint].tolist())
+  assert joint>=0;ranges.append(model.jnt_range[joint].tolist());q_addresses.append(int(model.jnt_qposadr[joint]));dq_addresses.append(int(model.jnt_dofadr[joint]))
  contract['safe_execution_v1']=dict(version=VERSION,ankle_target_inset_rad=.05,handoff_s=.35,joint_ranges=ranges,metadata_key=KEY)
  old,_=factory(compile=False);agent,_=factory(compile=False);ordered(agent,record_gradients=False)
+ assert old.cfg.train.stddev_clip==agent.cfg.train.stddev_clip==.3
  assert tree_digest(old._model.state_dict())==tree_digest(agent._model.state_dict())
  transform=SafeAction(contract,ranges,'cuda');install(agent._model,m,transform)
  write(out/'safe-action-contract.json',dict(version=VERSION,q_PD_ankle_inset_rad=.05,
-  ranges=ranges,ankle_indices=transform.indices,transition_s=.35,metadata_key=KEY,
+  ranges=ranges,qpos_addresses=q_addresses,qvel_addresses=dq_addresses,ankle_indices=transform.indices,transition_s=.35,metadata_key=KEY,
   metadata_not_neural_input=True,actual_q_excess_boundary_rad=.02,
   retain_no_contact_qPD_coefficient=.1,retain_scale_rad2=.01,formal_FB_training=False))
  r=np.random.default_rng(58021);groups=[]
@@ -39,7 +41,8 @@ def study(e,m,contract,out):
    s=sample_spec(r,source,'none');s['release']=s['source_until']+6.;s['end']=s['source_until']+8.
    # Parent IDs version the complete task, never reuse a different path's label.
    from dual_track_task import digest
-   s['parent_id']=digest(dict(protocol=VERSION,spec=s));s['common_prefix_parent_id']=s['parent_id']
+   s['partner_parent_id']=digest({k:s.get(k) for k in ('enabled','distance','ramp','onset','release','end')})
+   s['parent_id']=digest(dict(protocol=VERSION,source=s['source_parent_id'],partner=s['partner_parent_id']));s['common_prefix_parent_id']=s['parent_id']
    groups.append(dict(spec=s,seed=58601+len(groups)))
  write(out/'paired-parent-manifest.json',groups)
  results=[]
@@ -64,7 +67,7 @@ def study(e,m,contract,out):
     col.proxy.take_step(raw)
     if kind=='safe_handoff_random' and transform.last is not None:
      proposals.append({k:v.cpu().tolist() for k,v in transform.last.items()})
-   q=np.array([x['qpos'][7:] for x in col.task.physics]);dq=np.array([x['qvel'][6:] for x in col.task.physics])
+   q=np.array([[x['qpos'][i] for i in q_addresses] for x in col.task.physics]);dq=np.array([[x['qvel'][i] for i in dq_addresses] for x in col.task.physics])
    qpd=np.array([x['q_PD'] for x in col.task.controls]);tau=np.array([x['torque'] for x in col.task.physics])
    idx=transform.indices
    rows=col.task.physics;first,last=rows[0],rows[-1]
@@ -73,7 +76,9 @@ def study(e,m,contract,out):
     actual_ankle_min=q[:,idx].min(0).tolist(),actual_ankle_max=q[:,idx].max(0).tolist(),
     ankle_qdot_max=np.abs(dq[:,idx]).max(0).tolist(),ankle_qPD_min=qpd[:,idx].min(0).tolist(),ankle_qPD_max=qpd[:,idx].max(0).tolist(),
     ankle_torque_max=np.abs(tau[:,idx]).max(0).tolist(),
-    root_delta=(np.array(last['root'])-first['root']).tolist(),
+    actual_q_step_max_rad=float(np.abs(np.diff(q,axis=0)).max()) if len(q)>1 else 0.,
+    q_PD_step_max_rad=max(x['q_PD_step_max_rad'] for x in col.task.controls),
+    root_delta=(np.array(last['root'])-col.task.initial['root']).tolist(),
     loaded_slip_peak=max(x['stage_loaded_slip_mps'] for x in rows),
     yaw_end_deg=float(np.degrees(np.arctan2(last['pelvis_matrix'][1][0],last['pelvis_matrix'][0][0]))))
    col.task.save(out)
@@ -108,44 +113,43 @@ def study(e,m,contract,out):
  agent._safe_action_transform=transform
  install_retention(agent,m)
  col.proxy.policy_model=agent._model;col.proxy.stochastic=True
- original_take=col.proxy.take_step
- def take(raw,native_limit=5):
-  rows,done,stats=original_take(raw,native_limit)
-  # Records actual low-level execution; raw proposals are not replay actions.
-  # Per-control raw diagnostics are attached by the proxy hook below.
-  for row,record in zip(rows,col.proxy.records):
-   row['raw_actor_proposal']=record['raw_actor_proposal']
-   row['actual_q_PD']=record['actual_q_PD']
-   row['safety_transform_active']=record['safety_transform_active']
-  return rows,done,stats
- original_act=col.proxy.act
- def act(obs,z,mean=True):
-  action=original_act(obs,z,mean)
-  if not col.proxy.source_mode:
-   record=col.proxy.pending;record['raw_actor_proposal']=transform.last['raw_proposal'].cpu()
-   record['actual_q_PD']=transform.last['q_PD'].cpu();record['safety_transform_active']=transform.last['active'].cpu()
-  return action
- col.proxy.act=act;col.proxy.take_step=take
+ from fb_safe_resume import bind_records
+ bind_records(col,transform)
  col.output=out;col.bootstrap_sources();updates=0;stop=NormalStop(out)
  progress=dict(validation=True,formal_training=False,collection_block_start=0,collection_block_target=1024,collected_within_block=0,completed_agent_updates=0)
  publish(out/'safe-step0',agent,col,0,ARGS.runtime,progress,'initial')
- for target in range(1024,8193,1024):
+ last_package=out/'safe-step0'
+ for target in range(1024,6145,1024):
+  import shutil
+  assert shutil.disk_usage(out).free>100*(1<<30),'100GiB storage protection'
   if stop.pending():break
   col.collect(target-col.transitions)
   if target>1024:
    run_updates(agent,col,updates,16,compile=False);updates+=16
   progress.update(collection_block_start=target,collection_block_target=target+1024,collected_within_block=0,completed_agent_updates=updates)
-  publish(out/f'safe-step{target}',agent,col,updates,ARGS.runtime,progress,'rolling')
+  publish(out/f'safe-step{target}',agent,col,updates,ARGS.runtime,progress,'rolling',previous=last_package)
+  last_package=out/f'safe-step{target}'
   write(out/'engineering-progress.json',dict(transitions=col.transitions,updates=updates,episodes=col.episode_rows,formal_training=0))
   if col.episode_rows and sum(x['boundary'] is not None for x in col.episode_rows[-10:])>=5:
    (out/'STOP_REQUEST.json').write_text(json.dumps(dict(reason='post-update early termination collapse')));break
- publish(out/f'user-stop-safe-{col.transitions}',agent,col,updates,ARGS.runtime,progress,'user_stop')
+ from diagnostic_fb_resume import fingerprints
+ if col.transitions==6144 and not stop.pending():
+  # Leave room for the independent1011-step resumed branch: total actually
+  # collected online6144+1024+1011=8179, below the8192 engineering cap.
+  col.collect(13);progress.update(collection_block_start=6144,collection_block_target=7168,collected_within_block=13,completed_agent_updates=updates)
+  publish(out/'safe-user-stop-6157',agent,col,updates,ARGS.runtime,progress,'user_stop',previous=last_package)
+  write(out/'safe-stopped-fingerprints.json',fingerprints(agent,col,updates))
+  col.collect(1011);stat=run_updates(agent,col,updates,16,compile=False);updates+=16
+  progress.update(collection_block_start=7168,collection_block_target=8192,collected_within_block=0,completed_agent_updates=updates)
+  write(out/'safe-after-fingerprints.json',fingerprints(agent,col,updates,stat['last_metrics']))
+ publish(out/f'user-stop-safe-{col.transitions}',agent,col,updates,ARGS.runtime,progress,'user_stop',previous=last_package)
  return dict(status='engineering_completed',qualification=True,engineering_transitions=col.transitions,engineering_FB_updates=updates,formal_FB_training=0)
 
 
 def main():
  global ARGS
  p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args()
+ import torch;torch.use_deterministic_algorithms(True)
  ARGS.runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
  ARGS.output.mkdir(parents=True,exist_ok=False)

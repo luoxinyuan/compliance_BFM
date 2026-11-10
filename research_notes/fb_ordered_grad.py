@@ -1,3 +1,5 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# Derived portions follow the original CC BY-NC 4.0 LICENSE.
 """New-runtime discriminator gradients with explicit branch accumulation order.
 
 Retain expert, unlabeled and WGAN-GP contributions and the original six-step

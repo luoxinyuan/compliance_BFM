@@ -1,5 +1,5 @@
 {
-  "status": "not_stage_closeout",
+  "status": "formal_A_running_B_pending",
   "jobs": [
     {
       "name": "p0a-eager16-resume-01",
@@ -51,10 +51,10 @@
   ],
   "preparation_conservative_reserve_s": {
     "P0-A": 900,
-    "P0-B": 900,
+    "P0-B": 3600,
     "F-RL-v2": 1200
   },
-  "new_formal_PPO_decisions": 0,
+  "new_formal_PPO_decisions": 24576,
   "engineering_high_decisions": 768,
   "engineering_FB_updates": 38,
   "maximum_job_hours": {
