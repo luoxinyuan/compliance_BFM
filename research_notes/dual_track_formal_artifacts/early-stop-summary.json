@@ -1,0 +1,101 @@
+{
+  "version": "FB_EARLY_STOP_ASSESSMENT_V1",
+  "as_of_UTC": "2026-11-10T04:30:39Z",
+  "runtime": "147b22b684b0c03a613559fa6d5e5881d380ab7f",
+  "last_logged_counts": {
+    "native_transitions": 33792,
+    "agent_updates": 512,
+    "episodes": 244,
+    "controlled_physics_ticks": 134887,
+    "source_controls": 30735,
+    "source_physics": 271740,
+    "replay_len": 33792
+  },
+  "partial_collection_after_last_logged_block_unquantified": true,
+  "windows": [
+    {
+      "start_episode_index": 0,
+      "episodes": 30,
+      "quality_early_terminations": 6,
+      "before_onset_early_terminations": 1,
+      "median_actual_50Hz_controls": 483.0
+    },
+    {
+      "start_episode_index": 30,
+      "episodes": 30,
+      "quality_early_terminations": 12,
+      "before_onset_early_terminations": 6,
+      "median_actual_50Hz_controls": 459.5
+    },
+    {
+      "start_episode_index": 60,
+      "episodes": 30,
+      "quality_early_terminations": 27,
+      "before_onset_early_terminations": 8,
+      "median_actual_50Hz_controls": 127.0
+    },
+    {
+      "start_episode_index": 90,
+      "episodes": 30,
+      "quality_early_terminations": 29,
+      "before_onset_early_terminations": 16,
+      "median_actual_50Hz_controls": 35.0
+    },
+    {
+      "start_episode_index": 120,
+      "episodes": 30,
+      "quality_early_terminations": 30,
+      "before_onset_early_terminations": 25,
+      "median_actual_50Hz_controls": 6.0
+    },
+    {
+      "start_episode_index": 150,
+      "episodes": 30,
+      "quality_early_terminations": 30,
+      "before_onset_early_terminations": 29,
+      "median_actual_50Hz_controls": 4.0
+    },
+    {
+      "start_episode_index": 180,
+      "episodes": 30,
+      "quality_early_terminations": 30,
+      "before_onset_early_terminations": 30,
+      "median_actual_50Hz_controls": 3.0
+    },
+    {
+      "start_episode_index": 210,
+      "episodes": 30,
+      "quality_early_terminations": 30,
+      "before_onset_early_terminations": 24,
+      "median_actual_50Hz_controls": 4.0
+    },
+    {
+      "start_episode_index": 240,
+      "episodes": 4,
+      "quality_early_terminations": 4,
+      "before_onset_early_terminations": 4,
+      "median_actual_50Hz_controls": 4.5
+    }
+  ],
+  "total_logged_episodes": 244,
+  "quality_early_terminations": 198,
+  "boundary_kind_counts": {
+    "physics_review": 198
+  },
+  "current_model_optimizer_replay_checkpoint_missing": true,
+  "available_FB_checkpoint": "step0",
+  "latest_PPO_models": {
+    "expert-kl002": {
+      "relative_path": "runs/expert-kl002/candidate-128.pt",
+      "sha256": "e4cd0f4e361f4cfc7dfffe74c6205145ee6fd20ee0492815e74ab17c23bbbe5e",
+      "selected_iteration": 0,
+      "last_iteration": 128
+    },
+    "expert-kl008": {
+      "relative_path": "runs/expert-kl008/candidate-128.pt",
+      "sha256": "edb41ba25c078910d9150c731ccdda0e949a85ca29636f0986dc1a2035ad4afd",
+      "selected_iteration": 0,
+      "last_iteration": 128
+    }
+  }
+}
