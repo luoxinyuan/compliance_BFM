@@ -1,3 +1,12 @@
+# CURRENT_STATE — Issue57 D1/D2准备验证
+
+2026-11-10：新用户授权，旧Issue56已结项且结论保持。
+[Issue57](https://github.com/GaoE05/robot-research-bridge/issues/57)执行冻结batch48机制诊断与FB中止保存/新进程恢复验证；不启动正式PPO/Student/1M。新独立stage dual-track-diagnostics-20261110；先核验复现，再进行完整状态接管。
+
+预算见diagnostic_protocol_v1.json：12000累计job秒，48GiB输出（完整六Adam包需要空间），短程FB验证最多6次完整update/4096采样，正式训练0。单卡GPU0重作业串行。旧512更新后权重不可复原，旧erratum不被新测试覆盖。
+
+以下保留上轮结项快照：
+
 # CURRENT_STATE — Issue56已结项：无新模型晋级
 
 最后核对：2026-11-10；训练停止与CPU存档归因已完成，运行身份不变。

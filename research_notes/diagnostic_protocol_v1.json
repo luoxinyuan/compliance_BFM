@@ -1,0 +1,41 @@
+{
+  "version": "ISSUE57_D1_D2_V1",
+  "base": "8716f285f84d67ceadf1db9b9c85555fa5f314c5",
+  "issue": 57,
+  "budget": {
+    "experiment_job_seconds": 12000,
+    "output_bytes": 51539607552,
+    "minimum_free_bytes": 107374182400,
+    "formal_PPO_decisions": 0,
+    "Student_updates": 0,
+    "FB_long_training": 0,
+    "FB_short_validation_updates_max": 6,
+    "FB_short_collected_transitions_max": 4096
+  },
+  "D1": {
+    "parent_prefixes": [
+      "3ffd2fc10497",
+      "42f40dfe854d",
+      "1d3ee72c35d3"
+    ],
+    "models": [
+      "expert-kl002/candidate-0",
+      "expert-kl002/candidate-48"
+    ],
+    "reproduction_atol": 1e-08,
+    "branch_modes": [
+      "persistent",
+      "300ms_then_original"
+    ],
+    "sealed": false
+  },
+  "D2": {
+    "old_episode_rows": 244,
+    "read_only_old": true,
+    "boundary_rad": 0.02,
+    "reward_unchanged": true,
+    "new_run_only": true,
+    "resume": "new process actual low-level prefix reconstruction plus solver/history/RNG checks"
+  },
+  "created": 1794288976.8276331
+}
