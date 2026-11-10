@@ -127,6 +127,25 @@ def fingerprints(agent,c,updates,metrics=None):
   physical=TrainingBranch(c.task).fingerprint,transitions=c.transitions,updates=updates,
   coverage=c.coverage,metrics=metrics)
 
+def execution_metadata(agent):
+ return dict(module_training={n:v.training for n,v in agent._model.named_modules()},
+  parameter_requires_grad={n:v.requires_grad for n,v in agent._model.named_parameters()},
+  normalizer_order=list(agent._model._obs_normalizer._normalizers),
+  input_filters={n:v.input_filter.cfg.model_dump() for n,v in agent._model.named_modules() if hasattr(v,'input_filter')},
+  config=agent.cfg.model_dump())
+
+def factory_rebuild(agent,c,out):
+ """One controlled construction-path intervention; state and RNG remain exact."""
+ r=global_rng();before=fingerprints(agent,c,1);oldmeta=execution_metadata(agent)
+ fresh,_=factory(compile=False)
+ fresh._model.load_state_dict(agent._model.state_dict(),strict=True)
+ for n,sd in agent.optimizer_dict.items():getattr(fresh,n).load_state_dict(sd)
+ fresh.z_buffer._storage.copy_(agent.z_buffer._storage);fresh.z_buffer._idx=agent.z_buffer._idx;fresh.z_buffer._is_full=agent.z_buffer._is_full
+ c.proxy.policy_model=fresh._model;restore_global_rng(r)
+ assert before==fingerprints(fresh,c,1)
+ write(out/'construction-metadata.json',dict(loaded=oldmeta,factory=execution_metadata(fresh)))
+ return fresh
+
 def run(e,m,contract,out,args):
  start=time.monotonic();stop=NormalStop(out)
  if args.mode=='d2control':
@@ -146,12 +165,13 @@ def run(e,m,contract,out,args):
   # No process restart for the control. A new Stop object gives explicit permission
   # only for the regression continuation; it does not restart a formal stage.
   stop.requested=False;stop.pending=lambda:False
- elif args.mode=='d2resume':
+ elif args.mode in ('d2resume','d2resume_factory'):
   assert args.package is not None
   agent,c,progress,meta=restore(args.package,e,m,contract);updates=progress['completed_agent_updates']
   before=fingerprints(agent,c,updates);write(out/'restored-fingerprints.json',before)
   reference=json.loads((args.package.parent/'stopped-fingerprints.json').read_text())
   assert before==reference,('Full package readback mismatch',{k:(before[k],reference[k]) for k in before if before[k]!=reference[k]})
+  if args.mode=='d2resume_factory':agent=factory_rebuild(agent,c,out)
  else:raise AssertionError(args.mode)
  replay_before=len(c.replay);collect_to(c,1064,stop)
  after_collection=fingerprints(agent,c,updates);write(out/'after-collection-fingerprints.json',after_collection)
@@ -159,8 +179,9 @@ def run(e,m,contract,out,args):
  after=fingerprints(agent,c,updates,stats['last_metrics']);write(out/'after-update-fingerprints.json',after)
  progress=dict(collection_block_start=1024,collection_block_target=2048,collected_within_block=c.transitions-1024,
   completed_agent_updates=updates,validation=True,formal_training=False)
- publish(out/'rolling-1064',agent,c,updates,args.runtime,progress,'rolling',previous=args.package if args.mode=='d2resume' else out/'user-stop-1037')
- if args.mode=='d2resume':
+ previous=args.package.parent/'rolling-1064' if args.mode=='d2resume_factory' else args.package if args.mode=='d2resume' else out/'user-stop-1037'
+ publish(out/'rolling-1064',agent,c,updates,args.runtime,progress,'rolling',previous=previous)
+ if args.mode in ('d2resume','d2resume_factory'):
   reference_path=args.package.parent
   expected=json.loads((reference_path/'after-collection-fingerprints.json').read_text())
   assert after_collection==expected,('Interrupted collection differs from uninterrupted', {k:(after_collection[k],expected[k]) for k in expected if after_collection[k]!=expected[k]})
@@ -168,4 +189,4 @@ def run(e,m,contract,out,args):
   assert after==expected,('Interrupted update differs from uninterrupted',{k:(after[k],expected[k]) for k in expected if after[k]!=expected[k]})
  return dict(status='completed',mode=args.mode,actual_new_transitions=1064 if args.mode=='d2control' else len(c.replay)-replay_before,
   engineering_FB_updates=2 if args.mode=='d2control' else 1,formal_training=0,wall_s=time.monotonic()-start,
-  new_process_resume_exact=args.mode=='d2resume',save_protocol='atomic immutable full package V2')
+  new_process_resume_exact=args.mode in ('d2resume','d2resume_factory'),save_protocol='atomic immutable full package V2')

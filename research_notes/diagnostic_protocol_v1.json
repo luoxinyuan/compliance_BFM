@@ -9,7 +9,7 @@
     "formal_PPO_decisions": 0,
     "Student_updates": 0,
     "FB_long_training": 0,
-    "FB_short_validation_updates_max": 6,
+    "FB_short_validation_updates_max": 7,
     "FB_short_collected_transitions_max": 4096
   },
   "D1": {
@@ -37,5 +37,10 @@
     "new_run_only": true,
     "resume": "new process actual low-level prefix reconstruction plus solver/history/RNG checks"
   },
-  "created": 1794288976.8276331
+  "created": 1794288976.8276331,
+  "amendment": {
+    "reason": "Two exact-update regressions failed despite exact readback and collection; one loader-construction diagnostic, no formal learning.",
+    "prior_update_cap": 6,
+    "new_engineering_update_cap": 7
+  }
 }

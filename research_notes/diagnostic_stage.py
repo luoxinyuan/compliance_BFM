@@ -28,11 +28,11 @@ def study(e,m,c,out):
 
 def main():
  global ARGS
- p=argparse.ArgumentParser();p.add_argument('--mode',choices=['d1','d1substeps','d2audit','d2control','d2resume'],required=True)
+ p=argparse.ArgumentParser();p.add_argument('--mode',choices=['d1','d1substeps','d2audit','d2control','d2resume','d2resume_factory'],required=True)
  p.add_argument('--output',type=Path,required=True);p.add_argument('--package',type=Path)
  ARGS=p.parse_args();ARGS.runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
- if ARGS.mode in ('d2control','d2resume'):
+ if ARGS.mode in ('d2control','d2resume','d2resume_factory'):
   # Exact new-process training regression needs deterministic backward kernels,
   # not just identical RNG. This affects only the new engineering entry.
   os.environ['CUBLAS_WORKSPACE_CONFIG']=':4096:8'
