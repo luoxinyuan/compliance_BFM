@@ -1,3 +1,5 @@
+最终状态（2026-11-10）：本文件保留历史执行快照；正式结项、真实曲线与缺失格子见[DUAL_TRACK_RESULTS](DUAL_TRACK_RESULTS.md)。两KL完成且均选初始化；FB按用户授权提前停，末轮存盘缺口另有勘误。
+
 # Dual-track formal stage: preparation checkpoint, not research closeout
 
 2026-11-09 · [Issue56](https://github.com/GaoE05/robot-research-bridge/issues/56) ·

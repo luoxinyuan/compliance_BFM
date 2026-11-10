@@ -1,0 +1,15 @@
+{
+  "status": "closed_no_new_model_promoted",
+  "runtime": "147b22b684b0c03a613559fa6d5e5881d380ab7f",
+  "PPO_RL_decisions": 196608,
+  "FB_last_logged_transitions": 33792,
+  "FB_last_logged_full_agent_updates": 512,
+  "FB_partial_collection_unknown": true,
+  "FB_latest_memory_checkpoint_missing": true,
+  "batch48_long_error_improved": 5,
+  "batch48_long_error_worsened": 1,
+  "analysis_physics_runs": 0,
+  "analysis_optimizer_steps": 0,
+  "actual_registered_job_hours_including_carry": 16.05557548162474,
+  "exact_dev_state_overlap_unknown": true
+}
