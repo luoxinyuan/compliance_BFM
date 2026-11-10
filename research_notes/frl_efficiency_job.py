@@ -24,6 +24,7 @@ def save():
 save();env=dict(os.environ,CUDA_VISIBLE_DEVICES='0',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1',PYTHONPATH=str(ROOT)+':'+str(ROOT/'research_notes'))
 try:
  for mode,profile in [('legacy',False),('fast',False),('legacy-profile',True)]:
+  assert limit-(time.time()-started)>30,'No launch after acceleration budget exhaustion'
   cmd=[str(P/'.venv/bin/python'),str(ROOT/'research_notes/frl_efficiency_physics.py'),'--output',str(out/mode),'--archive-mode','legacy' if mode.startswith('legacy') else 'fast']
   if profile:cmd+=['--profile']
   with (out/(mode+'.log')).open('x') as log:
@@ -42,5 +43,9 @@ try:
  result=dict(status='exact_physical_parity_passed',legacy_wall_s=a['evaluation_wall_s'],fast_wall_s=b['evaluation_wall_s'],measured_end_to_end_speedup=a['evaluation_wall_s']/b['evaluation_wall_s'],counts=a['counts'],all_physics_actions_qPD_history_features_archives_exact=True,RL_decisions=0,agent_updates=0,adopted_into_formal_AB=False)
  (out/'comparison.json').write_text(json.dumps(result,indent=2));row.update(status='completed',returncode=0)
 except BaseException as exc:
+ if 'child' in locals() and child.poll() is None:
+  os.killpg(child.pid,signal.SIGTERM)
+  try:child.wait(30)
+  except subprocess.TimeoutExpired:os.killpg(child.pid,signal.SIGKILL);child.wait()
  row.update(status='failed',returncode=1,error=repr(exc));raise
 finally:row['elapsed_s']=time.time()-started;save()
