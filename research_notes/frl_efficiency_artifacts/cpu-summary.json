@@ -1,0 +1,24 @@
+{
+  "versions": {
+    "legacy": {
+      "write_s_sum_medians": 8.331518200495339,
+      "compressed_bytes": 32588864
+    },
+    "block_level9": {
+      "write_s_sum_medians": 7.571242661506403,
+      "compressed_bytes": 32588863
+    },
+    "block_level1": {
+      "write_s_sum_medians": 1.6897290845008683,
+      "compressed_bytes": 36029024
+    }
+  },
+  "uncompressed_byte_parity": true,
+  "repeats_unprofiled": 2,
+  "profiled_repeat_excluded_from_throughput": true,
+  "all_measurements": 18,
+  "status": "CPU_complete_GPU_pending",
+  "RL_decisions": 0,
+  "updates": 0,
+  "whole_training_speedup_measured": false
+}
