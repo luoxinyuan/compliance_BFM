@@ -76,7 +76,7 @@ def study(e,m,contract,out):
     actual_ankle_min=q[:,idx].min(0).tolist(),actual_ankle_max=q[:,idx].max(0).tolist(),
     ankle_qdot_max=np.abs(dq[:,idx]).max(0).tolist(),ankle_qPD_min=qpd[:,idx].min(0).tolist(),ankle_qPD_max=qpd[:,idx].max(0).tolist(),
     ankle_torque_max=np.abs(tau[:,idx]).max(0).tolist(),
-    actual_q_step_max_rad=float(np.abs(np.diff(q,axis=0)).max()) if len(q)>1 else 0.,
+    actual_q_step_max_rad=float(np.abs(np.diff(np.vstack(([col.task.initial['qpos'][a] for a in q_addresses],q)),axis=0)).max()),
     q_PD_step_max_rad=max(x['q_PD_step_max_rad'] for x in col.task.controls),
     root_delta=(np.array(last['root'])-col.task.initial['root']).tolist(),
     loaded_slip_peak=max(x['stage_loaded_slip_mps'] for x in rows),
