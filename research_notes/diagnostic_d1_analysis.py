@@ -48,7 +48,8 @@ def run(folder,out):
   inputs[label]=transform(torch.cat([r['input'] for r in d['high']]))
   for j,h in enumerate(d['high']):ids.append(dict(label=label,time=h['time'],frame=j))
   devs.append(inputs[label])
- dev=torch.cat(devs);blocks=dict(proprio=(0,465),last_z=(465,721),force_history=(721,1621),mount=(1621,1639),privileged=(1639,2727))
+ dev=torch.cat(devs);blocks=dict(proprio=(0,465),last_z=(465,721),force_history=(721,1621),mount=(1621,1639),privileged=(1639,2727),
+  current_contact_error_relative_velocity_force=(2104,2113),current_body_point_support=(2113,2129))
  results=[]
  for name,(lo,hi) in blocks.items():
   a=dev[:,lo:hi];b=train[:,lo:hi];normb=(b*b).sum(1)[None];nearest=[]

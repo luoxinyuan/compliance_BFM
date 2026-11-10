@@ -5,3 +5,8 @@
 A new engineering-only entry enables deterministic Torch backward algorithms and an explicit CUBLAS_WORKSPACE_CONFIG, records/asserts that numerical backend contract, and fsyncs the published pointer directory. A paired short rerun is pending; this is not a formal FB restart or reward/boundary change. Old Issue56 lost512-update weights remain unrecoverable regardless of the new result.
 
 Second pair d990dff control-02/resume-02 also failed exact post-update equality, with the same model/Adam digests as pair01. Deterministic algorithms therefore did NOT resolve the discrepancy; a generic GPU nondeterminism explanation is not established. Both readback and subsequent collection were exact. Long-run admission remains blocked. Original failed outputs are retained, including original result.json left at its launch status by the old diagnostic entry; jobs sidecars are authoritative. The new entry writes independent failure/finish evidence.
+
+Final: third attempt8ecd211 through the original factory still produced identical mismatch hashes.
+Recorded module training/requires_grad, normalizer/filter order and config matched; cause unresolved.
+Seven complete engineering updates total, no further training. External-stop fallthrough gate was
+subsequently added and CPU-tested, not physically requalified. Old original erratum remains unchanged.

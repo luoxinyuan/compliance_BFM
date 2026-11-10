@@ -1,0 +1,59 @@
+{
+  "01": {
+    "stopped": {
+      "equal": true,
+      "different_fields": []
+    },
+    "after-collection": {
+      "equal": true,
+      "different_fields": []
+    },
+    "after-update": {
+      "equal": false,
+      "different_fields": [
+        "model",
+        "optimizers"
+      ]
+    }
+  },
+  "02": {
+    "stopped": {
+      "equal": true,
+      "different_fields": []
+    },
+    "after-collection": {
+      "equal": true,
+      "different_fields": []
+    },
+    "after-update": {
+      "equal": false,
+      "different_fields": [
+        "model",
+        "optimizers"
+      ]
+    }
+  },
+  "negative_tests": {
+    "status": "completed",
+    "overwrite_rejected": true,
+    "original_manifest_unchanged": true,
+    "hash_corruption_rejected_before_model_load": true,
+    "partial_write_not_published": true,
+    "previous_pointer_retained": true,
+    "SIGTERM_records_intent_without_async_saving": true,
+    "GPU_used": false,
+    "updates": 0
+  },
+  "negative_tests_02": {
+    "status": "completed",
+    "overwrite_rejected": true,
+    "original_manifest_unchanged": true,
+    "hash_corruption_rejected_before_model_load": true,
+    "partial_write_not_published": true,
+    "previous_pointer_retained": true,
+    "SIGTERM_records_intent_without_async_saving": true,
+    "external_stop_gate_returns_before_updates": true,
+    "GPU_used": false,
+    "updates": 0
+  }
+}

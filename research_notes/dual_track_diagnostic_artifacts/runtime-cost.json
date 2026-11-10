@@ -1,0 +1,179 @@
+{
+  "jobs": [
+    {
+      "job": "d1-01",
+      "status": "completed",
+      "observed_last_output": 1794289493.3658407,
+      "job_wall_lower_bound_s": 481.4250707626343,
+      "charged_job_s": 511.4250707626343,
+      "cleanup_allowance_s": 30.0,
+      "exact_process_exit_time": false,
+      "gpu": 0
+    },
+    {
+      "job": "d2-control-02",
+      "status": "completed",
+      "observed_last_output": 1794290598.4644022,
+      "job_wall_lower_bound_s": 290.49175000190735,
+      "charged_job_s": 320.49175000190735,
+      "cleanup_allowance_s": 30.0,
+      "exact_process_exit_time": false,
+      "gpu": 0
+    },
+    {
+      "job": "d1-analysis-02",
+      "status": "completed",
+      "observed_last_output": 1794289865.915271,
+      "job_wall_lower_bound_s": 39.03958606719971,
+      "charged_job_s": 69.0395860671997,
+      "cleanup_allowance_s": 30.0,
+      "exact_process_exit_time": false,
+      "gpu": null
+    },
+    {
+      "job": "d2-update-diff-01",
+      "status": "completed",
+      "observed_last_output": 1794290176.9356067,
+      "job_wall_lower_bound_s": 28.25836682319641,
+      "charged_job_s": 58.25836682319641,
+      "cleanup_allowance_s": 30.0,
+      "exact_process_exit_time": false,
+      "gpu": null
+    },
+    {
+      "job": "d2-resume-02",
+      "status": "failed",
+      "observed_last_output": 1794290851.4902701,
+      "job_wall_lower_bound_s": 174.7830216884613,
+      "charged_job_s": 204.7830216884613,
+      "cleanup_allowance_s": 30.0,
+      "exact_process_exit_time": false,
+      "gpu": 0
+    },
+    {
+      "job": "d1-plot",
+      "status": "completed",
+      "observed_last_output": 1794291450.1391952,
+      "job_wall_lower_bound_s": 9.11223554611206,
+      "charged_job_s": 39.11223554611206,
+      "cleanup_allowance_s": 30.0,
+      "exact_process_exit_time": false,
+      "gpu": null
+    },
+    {
+      "job": "d1-substeps-01",
+      "status": "completed",
+      "observed_last_output": 1794291302.1350837,
+      "job_wall_lower_bound_s": 114.25765228271484,
+      "charged_job_s": 115.25765228271484,
+      "cleanup_allowance_s": 1.0,
+      "exact_process_exit_time": true,
+      "gpu": 0
+    },
+    {
+      "job": "d2-control-01",
+      "status": "completed",
+      "observed_last_output": 1794289830.405657,
+      "job_wall_lower_bound_s": 284.40711212158203,
+      "charged_job_s": 314.40711212158203,
+      "cleanup_allowance_s": 30.0,
+      "exact_process_exit_time": false,
+      "gpu": 0
+    },
+    {
+      "job": "d2-resume-factory-01",
+      "status": "failed",
+      "observed_last_output": 1794291607.856938,
+      "job_wall_lower_bound_s": 189.91003894805908,
+      "charged_job_s": 190.91003894805908,
+      "cleanup_allowance_s": 1.0,
+      "exact_process_exit_time": true,
+      "gpu": 0
+    },
+    {
+      "job": "d1-attribution-01",
+      "status": "completed",
+      "observed_last_output": 1794289738.580421,
+      "job_wall_lower_bound_s": 31.461195707321167,
+      "charged_job_s": 61.46119570732117,
+      "cleanup_allowance_s": 30.0,
+      "exact_process_exit_time": false,
+      "gpu": null
+    },
+    {
+      "job": "d2-audit-01",
+      "status": "completed",
+      "observed_last_output": 1794289345.8179324,
+      "job_wall_lower_bound_s": 69.66221737861633,
+      "charged_job_s": 99.66221737861633,
+      "cleanup_allowance_s": 30.0,
+      "exact_process_exit_time": false,
+      "gpu": null
+    },
+    {
+      "job": "d1-analysis-01",
+      "status": "completed",
+      "observed_last_output": 1794289586.6249337,
+      "job_wall_lower_bound_s": 40.65730023384094,
+      "charged_job_s": 70.65730023384094,
+      "cleanup_allowance_s": 30.0,
+      "exact_process_exit_time": false,
+      "gpu": null
+    },
+    {
+      "job": "d2-package-negative-tests",
+      "status": "completed",
+      "observed_last_output": 1794290529.9969323,
+      "job_wall_lower_bound_s": 19.532542943954468,
+      "charged_job_s": 49.53254294395447,
+      "cleanup_allowance_s": 30.0,
+      "exact_process_exit_time": false,
+      "gpu": null
+    },
+    {
+      "job": "d2-resume-01",
+      "status": "failed",
+      "observed_last_output": 1794290041.258547,
+      "job_wall_lower_bound_s": 164.6946029663086,
+      "charged_job_s": 194.6946029663086,
+      "cleanup_allowance_s": 30.0,
+      "exact_process_exit_time": false,
+      "gpu": 0
+    },
+    {
+      "job": "d2-package-negative-tests-02",
+      "status": "completed",
+      "charged_job_s": 27.111824728999636,
+      "exact_process_exit_time": true,
+      "gpu": null
+    }
+  ],
+  "charged_jobs_s": 2326.804518200908,
+  "preparation_nonjob_reserve_s": 900,
+  "total_charged_s": 3226.804518200908,
+  "job_cap_s": 12000,
+  "unique_output_bytes": 29098792015,
+  "logical_output_bytes": 64026945377,
+  "byte_identical_hardlinked_packages": true,
+  "output_cap_unique_bytes": 51539607552,
+  "D1_actual_controlled_physics_ticks": 49312,
+  "D1_actual_controlled_native_steps": 12328,
+  "D1_source_prefill_and_native_ticks": 6280,
+  "backend_prefix_verification_ticks": "not separately instrumented; wall cost included",
+  "D2_new_collected_transitions": 2209,
+  "D2_complete_FB_engineering_updates": 7,
+  "formal_PPO_decisions": 0,
+  "Student_updates": 0,
+  "long_FB_training": 0,
+  "RL_relabeling_of_reconstruction": false,
+  "runtime": {
+    "c99d576": "c99d576f003f90acdaa05be2d851caacbb23a8b9",
+    "e0c5c6b": "e0c5c6bfc071556252fb07b51df17436329d6699",
+    "d990dff": "d990dffc7ca5aaca952205496fed025bbcdc2327",
+    "d009c2b": "d009c2be85fcab1dbe5a5fc637d76b2baa8e3cbf",
+    "8ecd211": "8ecd2116c85e1162d4ba25e69b065f2001e6333e"
+  },
+  "physical_resume_reconstruction": "counted separately in each package manifest; never new replay samples",
+  "stopped": true,
+  "GPU0_released": true
+}

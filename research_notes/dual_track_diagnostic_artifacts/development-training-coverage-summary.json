@@ -1,0 +1,373 @@
+{
+  "actual_dev_frames": 564,
+  "training_frames": 36864,
+  "blocks": {
+    "proprio": [
+      0,
+      465
+    ],
+    "last_z": [
+      465,
+      721
+    ],
+    "force_history": [
+      721,
+      1621
+    ],
+    "mount": [
+      1621,
+      1639
+    ],
+    "privileged": [
+      1639,
+      2727
+    ],
+    "current_contact_error_relative_velocity_force": [
+      2104,
+      2113
+    ],
+    "current_body_point_support": [
+      2113,
+      2129
+    ]
+  },
+  "groups": {
+    "3ffd2fc10497-i48/proprio": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.000362296006642282,
+      "rms_distance_median": 0.1572815328836441,
+      "rms_distance_p95": 0.7616596221923828,
+      "nearest_distinct_train_parents": 71,
+      "fraction_positive_original_advantage": 0.4268041237113402
+    },
+    "42f40dfe854d-i48/proprio": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.34015601873397827,
+      "rms_distance_p95": 0.969426691532135,
+      "nearest_distinct_train_parents": 86,
+      "fraction_positive_original_advantage": 0.42702702702702705
+    },
+    "1d3ee72c35d3-i48/proprio": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.005007030442357063,
+      "rms_distance_median": 0.19081123918294907,
+      "rms_distance_p95": 0.463055819272995,
+      "nearest_distinct_train_parents": 83,
+      "fraction_positive_original_advantage": 0.41081081081081083
+    },
+    "3ffd2fc10497-i0/proprio": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.000362296006642282,
+      "rms_distance_median": 0.33746856451034546,
+      "rms_distance_p95": 0.8584369421005249,
+      "nearest_distinct_train_parents": 88,
+      "fraction_positive_original_advantage": 0.465979381443299
+    },
+    "1d3ee72c35d3-i0/proprio": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.005007030442357063,
+      "rms_distance_median": 0.22569573670625687,
+      "rms_distance_p95": 0.4403850734233856,
+      "nearest_distinct_train_parents": 55,
+      "fraction_positive_original_advantage": 0.5675675675675675
+    },
+    "42f40dfe854d-i0/proprio": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.2972179055213928,
+      "rms_distance_p95": 0.7372416853904724,
+      "nearest_distinct_train_parents": 66,
+      "fraction_positive_original_advantage": 0.34054054054054056
+    },
+    "3ffd2fc10497-i48/last_z": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.00048828125,
+      "rms_distance_median": 0.076131172478199,
+      "rms_distance_p95": 0.11972752213478088,
+      "nearest_distinct_train_parents": 126,
+      "fraction_positive_original_advantage": 0.44948453608247424
+    },
+    "42f40dfe854d-i48/last_z": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.00048828125,
+      "rms_distance_median": 0.08405248075723648,
+      "rms_distance_p95": 0.20915429294109344,
+      "nearest_distinct_train_parents": 135,
+      "fraction_positive_original_advantage": 0.4864864864864865
+    },
+    "1d3ee72c35d3-i48/last_z": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.000244140625,
+      "rms_distance_median": 0.06798399612307549,
+      "rms_distance_p95": 0.13346980512142181,
+      "nearest_distinct_train_parents": 123,
+      "fraction_positive_original_advantage": 0.5432432432432432
+    },
+    "3ffd2fc10497-i0/last_z": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.00048828125,
+      "rms_distance_median": 0.08627253770828247,
+      "rms_distance_p95": 0.1512616127729416,
+      "nearest_distinct_train_parents": 123,
+      "fraction_positive_original_advantage": 0.46804123711340206
+    },
+    "1d3ee72c35d3-i0/last_z": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.000244140625,
+      "rms_distance_median": 0.0790456011891365,
+      "rms_distance_p95": 0.11706740409135818,
+      "nearest_distinct_train_parents": 128,
+      "fraction_positive_original_advantage": 0.581081081081081
+    },
+    "42f40dfe854d-i0/last_z": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.00048828125,
+      "rms_distance_median": 0.08826687932014465,
+      "rms_distance_p95": 0.16283191740512848,
+      "nearest_distinct_train_parents": 127,
+      "fraction_positive_original_advantage": 0.45585585585585586
+    },
+    "3ffd2fc10497-i48/force_history": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0515546090900898,
+      "rms_distance_p95": 0.23322808742523193,
+      "nearest_distinct_train_parents": 30,
+      "fraction_positive_original_advantage": 0.3443298969072165
+    },
+    "42f40dfe854d-i48/force_history": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.2293938249349594,
+      "rms_distance_p95": 0.5663458704948425,
+      "nearest_distinct_train_parents": 43,
+      "fraction_positive_original_advantage": 0.47927927927927927
+    },
+    "1d3ee72c35d3-i48/force_history": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.12520760297775269,
+      "rms_distance_p95": 0.45374926924705505,
+      "nearest_distinct_train_parents": 31,
+      "fraction_positive_original_advantage": 0.24594594594594596
+    },
+    "3ffd2fc10497-i0/force_history": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.10610277950763702,
+      "rms_distance_p95": 0.4208488166332245,
+      "nearest_distinct_train_parents": 38,
+      "fraction_positive_original_advantage": 0.3711340206185567
+    },
+    "1d3ee72c35d3-i0/force_history": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.13366200029850006,
+      "rms_distance_p95": 0.28187429904937744,
+      "nearest_distinct_train_parents": 18,
+      "fraction_positive_original_advantage": 0.34864864864864864
+    },
+    "42f40dfe854d-i0/force_history": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.15759490430355072,
+      "rms_distance_p95": 0.32028496265411377,
+      "nearest_distinct_train_parents": 37,
+      "fraction_positive_original_advantage": 0.29009009009009007
+    },
+    "3ffd2fc10497-i48/mount": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0,
+      "rms_distance_p95": 0.0,
+      "nearest_distinct_train_parents": 1,
+      "fraction_positive_original_advantage": 0
+    },
+    "42f40dfe854d-i48/mount": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0,
+      "rms_distance_p95": 0.0,
+      "nearest_distinct_train_parents": 1,
+      "fraction_positive_original_advantage": 0
+    },
+    "1d3ee72c35d3-i48/mount": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0,
+      "rms_distance_p95": 0.0,
+      "nearest_distinct_train_parents": 1,
+      "fraction_positive_original_advantage": 0
+    },
+    "3ffd2fc10497-i0/mount": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0,
+      "rms_distance_p95": 0.0,
+      "nearest_distinct_train_parents": 1,
+      "fraction_positive_original_advantage": 0
+    },
+    "1d3ee72c35d3-i0/mount": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0,
+      "rms_distance_p95": 0.0,
+      "nearest_distinct_train_parents": 1,
+      "fraction_positive_original_advantage": 0
+    },
+    "42f40dfe854d-i0/mount": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0,
+      "rms_distance_p95": 0.0,
+      "nearest_distinct_train_parents": 1,
+      "fraction_positive_original_advantage": 0
+    },
+    "3ffd2fc10497-i48/privileged": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.026305414736270905,
+      "rms_distance_p95": 0.1230119913816452,
+      "nearest_distinct_train_parents": 71,
+      "fraction_positive_original_advantage": 0.45979381443298967
+    },
+    "42f40dfe854d-i48/privileged": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.06031247228384018,
+      "rms_distance_p95": 0.19398777186870575,
+      "nearest_distinct_train_parents": 77,
+      "fraction_positive_original_advantage": 0.5207207207207207
+    },
+    "1d3ee72c35d3-i48/privileged": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.0006699163350276649,
+      "rms_distance_median": 0.03345072641968727,
+      "rms_distance_p95": 0.09423106163740158,
+      "nearest_distinct_train_parents": 79,
+      "fraction_positive_original_advantage": 0.6378378378378379
+    },
+    "3ffd2fc10497-i0/privileged": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.045415252447128296,
+      "rms_distance_p95": 0.13397029042243958,
+      "nearest_distinct_train_parents": 81,
+      "fraction_positive_original_advantage": 0.4742268041237113
+    },
+    "1d3ee72c35d3-i0/privileged": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.0006699163350276649,
+      "rms_distance_median": 0.03053814172744751,
+      "rms_distance_p95": 0.0837472453713417,
+      "nearest_distinct_train_parents": 50,
+      "fraction_positive_original_advantage": 0.5864864864864865
+    },
+    "42f40dfe854d-i0/privileged": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.04419480636715889,
+      "rms_distance_p95": 0.11954065412282944,
+      "nearest_distinct_train_parents": 60,
+      "fraction_positive_original_advantage": 0.3675675675675676
+    },
+    "3ffd2fc10497-i48/current_contact_error_relative_velocity_force": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0,
+      "rms_distance_p95": 0.07219374179840088,
+      "nearest_distinct_train_parents": 37,
+      "fraction_positive_original_advantage": 0.19381443298969073
+    },
+    "42f40dfe854d-i48/current_contact_error_relative_velocity_force": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.04544281214475632,
+      "rms_distance_p95": 0.09890906512737274,
+      "nearest_distinct_train_parents": 74,
+      "fraction_positive_original_advantage": 0.27927927927927926
+    },
+    "1d3ee72c35d3-i48/current_contact_error_relative_velocity_force": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0,
+      "rms_distance_p95": 0.08466850966215134,
+      "nearest_distinct_train_parents": 63,
+      "fraction_positive_original_advantage": 0.14324324324324325
+    },
+    "3ffd2fc10497-i0/current_contact_error_relative_velocity_force": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0,
+      "rms_distance_p95": 0.10671523958444595,
+      "nearest_distinct_train_parents": 40,
+      "fraction_positive_original_advantage": 0.177319587628866
+    },
+    "1d3ee72c35d3-i0/current_contact_error_relative_velocity_force": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0,
+      "rms_distance_p95": 0.045949775725603104,
+      "nearest_distinct_train_parents": 28,
+      "fraction_positive_original_advantage": 0.1864864864864865
+    },
+    "42f40dfe854d-i0/current_contact_error_relative_velocity_force": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.019851433113217354,
+      "rms_distance_p95": 0.0855407789349556,
+      "nearest_distinct_train_parents": 61,
+      "fraction_positive_original_advantage": 0.17657657657657658
+    },
+    "3ffd2fc10497-i48/current_body_point_support": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0024168689269572496,
+      "rms_distance_p95": 0.017600150778889656,
+      "nearest_distinct_train_parents": 107,
+      "fraction_positive_original_advantage": 0.44742268041237115
+    },
+    "42f40dfe854d-i48/current_body_point_support": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.00666374247521162,
+      "rms_distance_p95": 0.03196191415190697,
+      "nearest_distinct_train_parents": 107,
+      "fraction_positive_original_advantage": 0.4540540540540541
+    },
+    "1d3ee72c35d3-i48/current_body_point_support": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.00408706720918417,
+      "rms_distance_p95": 0.010753278620541096,
+      "nearest_distinct_train_parents": 96,
+      "fraction_positive_original_advantage": 0.6459459459459459
+    },
+    "3ffd2fc10497-i0/current_body_point_support": {
+      "dev_frames": 97,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.008126619271934032,
+      "rms_distance_p95": 0.03148278221487999,
+      "nearest_distinct_train_parents": 123,
+      "fraction_positive_original_advantage": 0.4061855670103093
+    },
+    "1d3ee72c35d3-i0/current_body_point_support": {
+      "dev_frames": 74,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.0043741336558014154,
+      "rms_distance_p95": 0.014043922536075115,
+      "nearest_distinct_train_parents": 94,
+      "fraction_positive_original_advantage": 0.6081081081081081
+    },
+    "42f40dfe854d-i0/current_body_point_support": {
+      "dev_frames": 111,
+      "rms_distance_min": 0.0,
+      "rms_distance_median": 0.006019935477524996,
+      "rms_distance_p95": 0.02432478778064251,
+      "nearest_distinct_train_parents": 101,
+      "fraction_positive_original_advantage": 0.4486486486486487
+    }
+  },
+  "scope": "actual rebuilt development inputs; distances and original sample advantages are descriptive, not effective-action qualification"
+}

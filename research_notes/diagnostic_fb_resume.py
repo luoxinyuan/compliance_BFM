@@ -120,6 +120,15 @@ def collect_to(c,target,stop,at=None):
   if at is not None and c.transitions==at:return False
  return True
 
+def honor_external_stop(stop,agent,c,updates,runtime,out):
+ """An external request stops before further collection/update, with actual cursor."""
+ if not stop.pending():return None
+ progress=dict(collection_block_start=(c.transitions//1024)*1024,collection_block_target=(c.transitions//1024+1)*1024,
+  collected_within_block=c.transitions%1024,completed_agent_updates=updates,validation=True,formal_training=False)
+ path=out/f'user-stop-external-{c.transitions}-{updates}'
+ publish(path,agent,c,updates,runtime,progress,'user_stop')
+ return dict(status='stopped_by_request',package=str(path),actual_transitions=c.transitions,engineering_FB_updates=updates,formal_training=0)
+
 def fingerprints(agent,c,updates,metrics=None):
  return dict(model=tree_digest(agent._model.state_dict()),optimizers=tree_digest(agent.optimizer_dict),
   zbuffer=tree_digest(dict(storage=agent.z_buffer._storage,idx=agent.z_buffer._idx,full=agent.z_buffer._is_full)),
@@ -152,12 +161,18 @@ def run(e,m,contract,out,args):
   initial_noise_audit(m,contract,out)
   agent,init=factory(compile=False);c=Collector(e,m,contract,agent,2048);c.bootstrap_sources()
   collect_to(c,1024,stop)
+  stopped=honor_external_stop(stop,agent,c,0,args.runtime,out)
+  if stopped is not None:return stopped
   stat=run_updates(agent,c,0,1,compile=False);updates=1
+  stopped=honor_external_stop(stop,agent,c,updates,args.runtime,out)
+  if stopped is not None:return stopped
   progress=dict(collection_block_start=1024,collection_block_target=2048,collected_within_block=0,completed_agent_updates=updates,
     validation=True,formal_training=False)
   publish(out/'rolling-1024',agent,c,updates,args.runtime,progress,'rolling')
   # Both paths use the same administrative boundary at1037. Only one restarts.
   collect_to(c,2048,stop,at=1037)
+  stopped=honor_external_stop(stop,agent,c,updates,args.runtime,out)
+  if stopped is not None:return stopped
   write(out/'STOP_REQUEST.json',dict(reason='controlled interruption during collection',requested_at_transition=c.transitions))
   assert stop.pending();progress['collected_within_block']=13
   publish(out/'user-stop-1037',agent,c,updates,args.runtime,progress,'user_stop',previous=out/'rolling-1024')
@@ -174,8 +189,12 @@ def run(e,m,contract,out,args):
   if args.mode=='d2resume_factory':agent=factory_rebuild(agent,c,out)
  else:raise AssertionError(args.mode)
  replay_before=len(c.replay);collect_to(c,1064,stop)
+ stopped=honor_external_stop(stop,agent,c,updates,args.runtime,out)
+ if stopped is not None:return stopped
  after_collection=fingerprints(agent,c,updates);write(out/'after-collection-fingerprints.json',after_collection)
  stats=run_updates(agent,c,updates,1,compile=False);updates+=1
+ stopped=honor_external_stop(stop,agent,c,updates,args.runtime,out)
+ if stopped is not None:return stopped
  after=fingerprints(agent,c,updates,stats['last_metrics']);write(out/'after-update-fingerprints.json',after)
  progress=dict(collection_block_start=1024,collection_block_target=2048,collected_within_block=c.transitions-1024,
   completed_agent_updates=updates,validation=True,formal_training=False)
