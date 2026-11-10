@@ -70,7 +70,7 @@ def broker_study(e,m,contract,out):
  configure();checkpoint=S/'runs/frl-formal-A-01/candidate-0.pt'
  assert hashlib.sha256(checkpoint.read_bytes()).hexdigest()==POLICY_SHA
  net=build();net.load_state_dict(torch.load(checkpoint,map_location='cpu',weights_only=False)['model'],strict=True);net.eval().requires_grad_(False)
- children=[];connections=[];sequence={};pending={};messages=[];sampling_start=None;startup=time.perf_counter()
+ children=[];worker_processes=[];connections=[];sequence={};pending={};messages=[];sampling_start=None;startup=time.perf_counter()
  server_stats=dict(bfm_requests=0,high_requests=0,GPU_forward_calls=0,shadow_batch_calls=0,shadow_batch_errors=[],shadow_bfm_max_difference=0.,shadow_high_max_difference=0.,joint_logprob_max_difference=0.,received_group_sizes=[])
  probe_rng=torch.Generator(device='cuda');probe_rng.manual_seed(58083)
  def ready_read(conn,child,timeout):
@@ -88,6 +88,8 @@ def broker_study(e,m,contract,out):
    log=(out/f'worker-{i}.log').open('x')
    child=subprocess.Popen(cmd,pass_fds=(child_conn.fileno(),),cwd=ROOT,stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT)
    child_conn.close();children.append((child,log));connections.append(parent);sequence[parent]=0
+   worker_processes.append(dict(worker=i,pid=child.pid,command=cmd,started=time.time(),output=str(worker_out)))
+   (out/'worker-processes.json').write_text(json.dumps(worker_processes,indent=2))
    messages.append(ready_read(parent,child,240))
   startup_s=time.perf_counter()-startup;sampling_start=time.perf_counter()
   for conn in connections:conn.send({'kind':'start'})
@@ -143,7 +145,9 @@ def broker_study(e,m,contract,out):
      for (conn,request),mean in zip(entries,means):
       conn.send(dict(sequence=request['sequence'],policy_sha=POLICY_SHA,payload=dict(mean=tensor_array(mean))))
   sampling_s=time.perf_counter()-sampling_start
-  for child,_ in children:assert child.wait(timeout=60)==0,'Worker post-run frozen-weight or physical check failed'
+  for meta,(child,_) in zip(worker_processes,children):
+   rc=child.wait(timeout=60);meta.update(returncode=rc,elapsed_s=time.time()-meta['started']);assert rc==0,'Worker post-run frozen-weight or physical check failed'
+  (out/'worker-processes.json').write_text(json.dumps(worker_processes,indent=2))
   counts={k:sum(msg['counts'][k] for msg in messages if msg.get('kind')=='done') for k in next(msg['counts'] for msg in messages if msg.get('kind')=='done')}
   row=dict(status='completed',workers=ARGS.workers,architecture='CPU MuJoCo workers retain CUDA observation tensors and unused frozen modules; one central inference service',execution='canonical batch-one; batching shadow only',startup_s=startup_s,sampling_s=sampling_s,counts=counts,
    high_level_decisions_per_s=counts['high_level_decisions']/sampling_s,control_50Hz_transitions_per_s=counts['control_50Hz']/sampling_s,server=server_stats,RL_training_decisions=0,agent_updates=0,policy_sha=POLICY_SHA,base_sha=BASE_SHA)
@@ -162,6 +166,7 @@ def main():
  ap=argparse.ArgumentParser();ap.add_argument('--role',choices=['broker','worker'],required=True);ap.add_argument('--workers',type=int,choices=[1,2,4],required=True);ap.add_argument('--worker-index',type=int,default=0);ap.add_argument('--fd',type=int);ap.add_argument('--output',type=Path,required=True);ARGS=ap.parse_args()
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
  ARGS.output.mkdir(parents=True,exist_ok=False)
+ (ARGS.output/'launch.json').write_text(json.dumps(dict(runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),pid=os.getpid(),started=time.time(),role=ARGS.role,workers=ARGS.workers,worker_index=ARGS.worker_index,base_sha=BASE_SHA,policy_sha=POLICY_SHA,training=False),indent=2))
  if ARGS.role=='worker':
   from multiprocessing.connection import Connection
   WORKER_CONNECTION=Connection(ARGS.fd)
