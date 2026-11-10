@@ -1,0 +1,26 @@
+{
+  "base_commit": "55cfe85928365ed4933c40a4b62ebc18e6324e12",
+  "original_bfm_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "original_replay_sha256": "46eac53f603e45921d25504fcf7d3eea861f2a9f8ea503046855e701493b546b",
+  "source_references": {
+    "bridge-v2-owned/runs/native-contact-20261106/native-assets.json": "ea9c3323e21abb55d300835d79c3b4981c4a47fa59036f39b9dfc25df17e1fd7",
+    "bridge-v2-owned/runs/m10-task-appropriate-20261101/source_control-attempt-01/outputs/references.json": "211a192ddf6e3d534a1ef273c22e9cf977510ccb235e1c88dc2f0b24e8d6f2c0",
+    "experiments/dual-track-diagnostics-20261110/runs/d2-control-02/user-stop-1037/manifest.json": "df39106cf7b6bfcaabbaa1b7c604a11148e5fbceb4bac969ad1db3a4166daaae"
+  },
+  "trace-control-01": {
+    "post_model": "9246b5de9d05a4a6c958c7afa049fbc46e5579227dc721f2682d367d52c41cd5",
+    "post_adam": "5fcfa48ca5cb51e504fa85302e78ba8dea3fbcfa5f3aba062827751c48d01dfa",
+    "operators": 5443
+  },
+  "trace-resume-01": {
+    "post_model": "aed2b4ab38cb798366116e5d7b089450136b6953c38fdbefc60535f146091c2f",
+    "post_adam": "12019e78c602ceaf112e1ae50c2caf2f56ff9c7a134a6615237289b26b1c6b0e",
+    "operators": 5443
+  },
+  "trace-resume-02": {
+    "post_model": "aed2b4ab38cb798366116e5d7b089450136b6953c38fdbefc60535f146091c2f",
+    "post_adam": "12019e78c602ceaf112e1ae50c2caf2f56ff9c7a134a6615237289b26b1c6b0e",
+    "operators": 5443
+  },
+  "hash_scope": "post_model/post_adam are canonical tensor-tree digests, not model file SHA"
+}

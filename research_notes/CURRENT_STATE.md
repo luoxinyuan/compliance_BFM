@@ -1,63 +1,72 @@
-# CURRENT_STATE — Issue57 D1完成，D2更新恢复仍阻塞
+# CURRENT_STATE — 三包诊断完成，D2严格更新恢复尚未修复
 
 最后核对2026-11-10。[Issue57](https://github.com/GaoE05/robot-research-bridge/issues/57) ·
-[总报告](D1_D2_RESULTS.md) · [D1](D1_FROZEN_BATCH48_RESULTS.md) · [D2](D2_FB_STOP_RECOVERY_RESULTS.md)。
-本轮测试停止，所有本任务GPU进程退出，核验GPU0=0MiB/0%。无排队训练或自动重启。
-Issue57保留未关闭追踪D2；**长跑禁止，下一诊断仅建议、未启动**。
+[本轮总报告](FB_NATIVE_BIAS_RESULTS.md) · [更新分叉](FB_UPDATE_FIRST_DIFFERENCE.md) ·
+[原生能力](NATIVE_NO_CONTACT_INVENTORY.md) · [B均值](B_MEAN_BIAS_DIAGNOSTIC.md)。
+三个小包完成即停，无正式PPO/Student/FB长跑，无排队或自动重启。
+Issue57仍打开追踪严格更新恢复；**定位不等于修复，不发长跑资格**。
 
-## 保留的结论与模型
+## 当前保留的模型与旧结论
 
-旧#56已结项；两KL各98304决策，均按开发规则选iteration0，BC500不替换。
-FB旧最后完整落盘33792 transitions/512 updates后提前停，下一部分采样计数未知。
-旧512更新后model/六Adam/replay丢失，只有step0；新包不能补回。
-[旧结项](DUAL_TRACK_RESULTS.md)、[batch48](DUAL_TRACK_BATCH48_RESULTS.md)、
-[早停](DUAL_TRACK_FB_EARLY_STOP.md)、[原保存erratum](DUAL_TRACK_FB_CHECKPOINT_ERRATUM.md)保留。
-
-BC500：a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e。
+BC500仍为基线：a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e。
 原BFM：33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361。
-KL.02 iteration0：1fa6e0703bc8e5bb9e06ec34cf72d7ecab016c672cc5899a83e5ec8626763332。
+KL.02 iteration0：1fa6e0703bc8e5bb9e06ec34cf72d7ecab016c672cc5899a83e5ec8626763332；
 batch48：1c136654af650e60e8d5deb7fedef40818af698de2cb2df4a01390b76360f9f7。
-末轮、T30/S0/M38等历史全部保留，不按任务拼模型。
+两KL各98304正式高层决策均开发选iteration0；没有新模型晋级。
+T30/S0/M38与全部旧模型、失败保留，不按任务拼接。
 
-## D1：新物理证据
+旧FB最后完整日志33792 transitions/512 updates后按用户意图早停，
+下一部分采样计数未知；512更新后权重/六Adam/replay已丢失，只有step0。
+[旧结项](DUAL_TRACK_RESULTS.md)、[batch48](DUAL_TRACK_BATCH48_RESULTS.md)、
+[FB早停](DUAL_TRACK_FB_EARLY_STOP.md)、[永久保存勘误](DUAL_TRACK_FB_CHECKPOINT_ERRATUM.md)保留。
+新诊断不能补回旧丢失模型，更不能拿重训假冒原模型。
 
-- 三个已暴露父组×两模型，完整轨迹精确复现旧误差/力/饱和（差0）。
-- 退化standing62.07cm/.22：4.4s同初态约.095°同状态q_PD差；5.08s各自实际q_PD差
-  持续>1°，早于5.2s接触；随后支撑与滑移分叉。
-- 24条真实完整前缀接管：初始化5.3s→48改善跟随但增滑移；反向仍不能恢复。
-  不当作全部质量合格标签。2812实际BFM子步owner动作复算差0。
-- 564实际开发输入对36864训练输入分块核查，不再用训练近邻代替开发状态重叠。
-  没有证明唯一梯度冲突、覆盖不足或critic错误。
+## 本轮三个实际工作包
 
-## D2：保存部分通过，更新门未过
+1. **D2更新分叉**：同真实mini-batch/RNG和更新前状态，追踪参考/恢复各5443算子。
+   前向一致，discriminator backward先改变调度；首层矩阵梯度的
+   `((A+C)+B)`/`((A+B)+C)`分别精确复现两条最终梯度SHA，差最大4.768e−7。
+   discriminator4个最终梯度不同，F/B/aux自身差0，随后critic77/actor46个不同。
+   三次最终状态精确复现旧两条model/Adam不一致；只完成算子定位，未改原更新实现。
+   为什么Autograd调度不同的更深执行状态尚未全部定位。
+2. **无接触原生能力**：12候选完整原BFM/PD物理执行，外部实际force=0，
+   双向小腰转约±10°、抬臂保持、下沉约14.5cm及回standing可用。
+   motion能前进/停住，但slip峰.811m/s、偏航等质量代价仍在，不称低速接触合格。
+   可靠持续后退、双向迈步转身在有限来源/调用范围未找到；不等于基座不可能。
+3. **原B均值**：30k replay successor、7 robot-state reward/5 goal。
+   μ norm1.001 vs B norm16；reward z公共方向明显但非坍缩，
+   两两角中位74.9→97.0°（中心化诊断）；goal两两角约40.27→40.33°。
+   中心化候选从未用于真实控制/训练；没有证明其解释prompting全部失败。
 
-旧198条完整边界：194左踝roll/4右踝roll，均实际越界>.02rad；143次接触前，
-104次交接后100ms内，不是198次摔倒。不放宽边界。
-新runtime实现完整不可覆盖停止包、rolling/块内游标、hash与原子发布，
-包含online/targets、六Adam、normalizers、z_buffer、replay、全部RNG及真实物理历史。
-新进程读回与继续27步采样逐值一致；后续1次完整FB更新model/Adam有可重复差异，
-最大model差2.384e−7。确定性设置、统一factory均未解决，严格验证未过，不能长跑。
-CPU篡改/半写入/覆盖/信号/外部stop返回gate检查通过；eager测试不覆盖compiled恢复。
-[本轮验证erratum](D1_D2_VALIDATION_ERRATUM.md)保留三次失败与未关闭项。
+三个包分别报告，不用数值工程问题否定原生能力，也不用表征角度代替物理收益。
+来源为原生接口/既有goal-motion资产，未在线调用I/C0/T30或继承新高层actor。
 
-## 成本、代码与接力
+## D1/D2此前证据保持
 
-单RTX PRO5000 GPU0，原BFM/PD/10N/K80D8/频率/reward不变。
-正式PPO/Student/1M/5M均0；D2新采样2209、完整工程update共7。
-D1受控49312物理tick/12328 native控制，源前缀另计。
-本轮保守计费3226.80s（含900s准备预留）/12000s，唯一输出约27.10GiB/48GiB。
-所有失败计入；相同新包仅hash核验后hardlink去重，原字节/身份保留。
-无精确退出戳的job显式采用最后自身产物+清理预留，详见账本，不冒称实际精确耗时。
+[D1_D2_RESULTS](D1_D2_RESULTS.md)与[D2保存报告](D2_FB_STOP_RECOVERY_RESULTS.md)事实不变。
+D1六轨迹精确复现、24接管、2812实际BFM子步差0；batch48站立退化有接触前历史传播，
+5.3s初始化→48改善跟随但增滑移，反向恢复不可靠。564开发输入独立对36864训练输入核查。
+未证明唯一梯度冲突/覆盖不足/critic原因。
+D2旧198边界均真实踝roll越界>.02rad，143次接触前；不等于198次摔倒。
+完整不可覆盖停止包、读回与继续27步采样逐值一致，更新精确一致仍失败。
+[验证erratum](D1_D2_VALIDATION_ERRATUM.md)保留，不放宽边界/概率/恢复容差。
 
-私有stage：experiments/dual-track-diagnostics-20261110；repo固定D1 c99d576，
-fb-runtime为独立工程/文档集成，实际运行完整SHA见总报告。runs与ledger分账。
-旧正式runtime147b22b始终不动。公开长期分支gaoe05/research，文档HEAD不等于runtime。
-本轮无新MP4，交付真实物理诊断图；历史Mac视频不动。
+## 资源、身份与接力
 
-下一单一干预：D1 source/precontact稳定域函数保持；D2固定batch拆六优化器定位数值分叉。
-两者均未启动。本轮不是多接触共享Student训练，历史有限Teacher→ideal-force Student成果保留，
-不等于原生来源→可靠神经Teacher→受限Student新链已完整建立。
+本轮单RTX PRO5000 GPU0串行，runtime从55cfe85隔离；重作业均退出，无正式训练。
+完整工程agent.update4次、新采样1118；原生受控31200 tick，源/reset另计；
+离线B-state evaluation240005（含重复），完整原replay不改不下载。
+5个job实测1371.82s＋准备/CPU分析保守预留900s＝2271.82s/7200s；
+新增输出约.256GiB/12GiB，最终账本保留。旧轮成本不混入新轮。
 
-新会话先读OVERVIEW、本页、总报告、Issue57与Master18，实时核验资源/进程/权限。
-不沿用旧PID，不改main、共享BFM/PD/权重、SoftSONIC、他人任务，不真机。
-旧Library2026-10-28仅历史快照；本轮不自动下一阶段。
+私有stage `experiments/fb-native-audit-20261110`；运行代码：
+参考a1834af，首次恢复570cbf0，操作数捕获/原生/均值aa62fe5。
+精确runtime/SHA、协议、分包成本见总报告及fb_native_bias_artifacts。
+个人长期gaoe05/research只集成获准源码/小型汇总；发布HEAD不等于runtime。
+旧runtime/数据/模型原样保留；本轮无新MP4，交付实际物理曲线，不向Mac塞重复视频。
+
+下一单一工程建议：只固定discriminator梯度累加顺序，复跑同batch新进程严格回归。
+该修复、中心化物理A/B、PPO/Student/FB长跑均未启动，也没有自动启动授权。
+新会话先读OVERVIEW、本页、本轮总报告、Issue57/Master；实时核验资源。
+不改main、共享BFM/PD/权重、SoftSONIC、他人任务，不真机。
+旧Library2026-10-28仅历史快照。

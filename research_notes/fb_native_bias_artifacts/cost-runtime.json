@@ -1,0 +1,66 @@
+{
+  "measured_supervised_job_s": 1371.820629119873,
+  "preparation_and_unseparately_timed_CPU_analysis_reserve_s": 900,
+  "conservative_charged_job_s": 2271.820629119873,
+  "ceiling_s": 7200,
+  "private_output_bytes": 274654368,
+  "output_ceiling_bytes": 12884901888,
+  "costs": [
+    {
+      "name": "b-mean-01",
+      "runtime": "aa62fe541037bb6a59f453fe4b9c366e10977523",
+      "elapsed_s": 147.97037506103516,
+      "pid": 1447878,
+      "returncode": 0,
+      "status": "completed"
+    },
+    {
+      "name": "native-inventory-01",
+      "runtime": "aa62fe541037bb6a59f453fe4b9c366e10977523",
+      "elapsed_s": 316.03236961364746,
+      "pid": 1450327,
+      "returncode": 0,
+      "status": "completed"
+    },
+    {
+      "name": "trace-control-01",
+      "runtime": "a1834af33ac136bbac046dfed26448b43656c670",
+      "elapsed_s": 335.8458716869354,
+      "pid": 1324966,
+      "returncode": 0,
+      "status": "completed"
+    },
+    {
+      "name": "trace-resume-01",
+      "runtime": "570cbf002c770ccb3db61453974a1a3b4972f429",
+      "elapsed_s": 271.6809811592102,
+      "pid": 1441834,
+      "returncode": 0,
+      "status": "completed"
+    },
+    {
+      "name": "trace-resume-02",
+      "runtime": "aa62fe541037bb6a59f453fe4b9c366e10977523",
+      "elapsed_s": 300.2910315990448,
+      "pid": 1445061,
+      "returncode": 0,
+      "status": "completed"
+    }
+  ],
+  "actual_engineering_complete_agent_updates": 4,
+  "new_engineering_native_transitions": 1118,
+  "replay_restore_steps_not_new_training_samples": true,
+  "native_inventory_physics_ticks": 31200,
+  "native_inventory_reset_prefill_physics_ticks": 7200,
+  "native_inventory_actual_source_suffix_ticks": 2400,
+  "offline_sampled_state_rows": 30000,
+  "offline_unique_replay_index_rows": 29898,
+  "offline_backward_state_evaluations": 240005,
+  "caveat": "900s is conservative reserve, not a measured CPU job duration; source/backend reconstruction costs included in measured job wall; no formal training",
+  "original_bfm_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "formal_PPO_Student_FB_long_runs": 0,
+  "final_private_output_bytes": 274659443,
+  "complete": true,
+  "all_owned_jobs_exited": true,
+  "formal_training": 0
+}

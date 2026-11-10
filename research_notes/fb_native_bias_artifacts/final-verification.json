@@ -1,0 +1,12 @@
+{
+  "checked_at": 1794302441.1589575,
+  "gpu0": "NVIDIA RTX PRO 5000 72GB Blackwell, GPU-3ae548cd-2131-2b5d-42ad-5d0f40ff9da0, 0 MiB, 0 %\n",
+  "nproc": "210",
+  "cpu_quota": "21000000",
+  "cpu_period": "100000",
+  "loadavg": "3.80 4.64 9.18 2/3265 1457336",
+  "io_pressure": "some avg10=0.00 avg60=0.00 avg300=0.05 total=343993326\nfull avg10=0.00 avg60=0.00 avg300=0.04 total=276330566",
+  "owned_jobs_all_exited": true,
+  "original_formal_runtime": "147b22b684b0c03a613559fa6d5e5881d380ab7f",
+  "previous_diagnostic_runtime": "55cfe85928365ed4933c40a4b62ebc18e6324e12"
+}

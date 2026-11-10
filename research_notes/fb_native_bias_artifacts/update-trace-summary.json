@@ -1,0 +1,275 @@
+{
+  "batch_and_rng_pre_state_exact": true,
+  "operators_control": 5443,
+  "operators_resumed": 5443,
+  "first_execution_order_difference": {
+    "actual": {
+      "index": 270,
+      "phase": "discriminator_optimizer.backward",
+      "op": "aten.slice_backward.default",
+      "outputs": [
+        {
+          "shape": [
+            1024,
+            527
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            527,
+            1
+          ],
+          "device": "cuda:0",
+          "hash": "4c8b2eefa7ff95a41c0cc0c91ea78dce6d285680d08df564eeb1194acd757b20"
+        }
+      ]
+    },
+    "reference": {
+      "index": 270,
+      "phase": "discriminator_optimizer.backward",
+      "op": "aten.detach.default",
+      "outputs": [
+        {
+          "shape": [
+            1024,
+            1024
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            1024,
+            1
+          ],
+          "device": "cuda:0",
+          "hash": "e4b31434e3a899f4b0ba3df119ee7a013c8c21653af8131269970eec2409441c"
+        }
+      ]
+    },
+    "inputs": [
+      {
+        "shape": [
+          1024,
+          463
+        ],
+        "dtype": "torch.float32",
+        "stride": [
+          783,
+          1
+        ],
+        "device": "cuda:0",
+        "hash": "7c12fc9cffe21a8d5f2cfbebb2554950886282d186c87a8b497684bba13459ba"
+      }
+    ]
+  },
+  "first_new_intermediate_value": {
+    "index": 373,
+    "phase": "discriminator_optimizer.backward",
+    "op": "aten.add.Tensor",
+    "outputs": [
+      {
+        "shape": [
+          1024
+        ],
+        "dtype": "torch.float32",
+        "stride": [
+          1
+        ],
+        "device": "cuda:0",
+        "hash": "5683339944b5d28e6f6df354aebb8a83b40c9d59e36907085f19e34b2d92c517"
+      }
+    ]
+  },
+  "optimizer_gradients": [
+    {
+      "optimizer": "discriminator_optimizer",
+      "different_gradient_tensors": 4,
+      "names": [
+        "_discriminator.trunk.0.weight",
+        "_discriminator.trunk.0.bias",
+        "_discriminator.trunk.1.weight",
+        "_discriminator.trunk.1.bias"
+      ]
+    },
+    {
+      "optimizer": "forward_optimizer",
+      "different_gradient_tensors": 0,
+      "names": []
+    },
+    {
+      "optimizer": "backward_optimizer",
+      "different_gradient_tensors": 0,
+      "names": []
+    },
+    {
+      "optimizer": "critic_optimizer",
+      "different_gradient_tensors": 77,
+      "names": [
+        "_critic.embed_z.0.contact_weight",
+        "_critic.embed_z.0.mlp.0.weight",
+        "_critic.embed_z.0.mlp.0.bias",
+        "_critic.embed_z.0.mlp.1.weight",
+        "_critic.embed_z.0.mlp.1.bias",
+        "_critic.embed_z.1.mlp.0.weight",
+        "_critic.embed_z.1.mlp.0.bias",
+        "_critic.embed_z.1.mlp.1.weight",
+        "_critic.embed_z.1.mlp.1.bias",
+        "_critic.embed_z.2.mlp.0.weight",
+        "_critic.embed_z.2.mlp.0.bias",
+        "_critic.embed_z.2.mlp.1.weight",
+        "_critic.embed_z.2.mlp.1.bias",
+        "_critic.embed_z.3.mlp.0.weight",
+        "_critic.embed_z.3.mlp.0.bias",
+        "_critic.embed_z.3.mlp.1.weight",
+        "_critic.embed_z.3.mlp.1.bias",
+        "_critic.embed_z.4.mlp.0.weight",
+        "_critic.embed_z.4.mlp.0.bias",
+        "_critic.embed_z.4.mlp.1.weight",
+        "_critic.embed_z.4.mlp.1.bias",
+        "_critic.embed_z.5.mlp.0.weight",
+        "_critic.embed_z.5.mlp.0.bias",
+        "_critic.embed_z.5.mlp.1.weight",
+        "_critic.embed_z.5.mlp.1.bias",
+        "_critic.embed_sa.0.contact_weight",
+        "_critic.embed_sa.0.mlp.0.weight",
+        "_critic.embed_sa.0.mlp.0.bias",
+        "_critic.embed_sa.0.mlp.1.weight",
+        "_critic.embed_sa.0.mlp.1.bias",
+        "_critic.embed_sa.1.mlp.0.weight",
+        "_critic.embed_sa.1.mlp.0.bias",
+        "_critic.embed_sa.1.mlp.1.weight",
+        "_critic.embed_sa.1.mlp.1.bias",
+        "_critic.embed_sa.2.mlp.0.weight",
+        "_critic.embed_sa.2.mlp.0.bias",
+        "_critic.embed_sa.2.mlp.1.weight",
+        "_critic.embed_sa.2.mlp.1.bias",
+        "_critic.embed_sa.3.mlp.0.weight",
+        "_critic.embed_sa.3.mlp.0.bias",
+        "_critic.embed_sa.3.mlp.1.weight",
+        "_critic.embed_sa.3.mlp.1.bias",
+        "_critic.embed_sa.4.mlp.0.weight",
+        "_critic.embed_sa.4.mlp.0.bias",
+        "_critic.embed_sa.4.mlp.1.weight",
+        "_critic.embed_sa.4.mlp.1.bias",
+        "_critic.embed_sa.5.mlp.0.weight",
+        "_critic.embed_sa.5.mlp.0.bias",
+        "_critic.embed_sa.5.mlp.1.weight",
+        "_critic.embed_sa.5.mlp.1.bias",
+        "_critic.Fs.0.mlp.0.weight",
+        "_critic.Fs.0.mlp.0.bias",
+        "_critic.Fs.0.mlp.1.weight",
+        "_critic.Fs.0.mlp.1.bias",
+        "_critic.Fs.1.mlp.0.weight",
+        "_critic.Fs.1.mlp.0.bias",
+        "_critic.Fs.1.mlp.1.weight",
+        "_critic.Fs.1.mlp.1.bias",
+        "_critic.Fs.2.mlp.0.weight",
+        "_critic.Fs.2.mlp.0.bias",
+        "_critic.Fs.2.mlp.1.weight",
+        "_critic.Fs.2.mlp.1.bias",
+        "_critic.Fs.3.mlp.0.weight",
+        "_critic.Fs.3.mlp.0.bias",
+        "_critic.Fs.3.mlp.1.weight",
+        "_critic.Fs.3.mlp.1.bias",
+        "_critic.Fs.4.mlp.0.weight",
+        "_critic.Fs.4.mlp.0.bias",
+        "_critic.Fs.4.mlp.1.weight",
+        "_critic.Fs.4.mlp.1.bias",
+        "_critic.Fs.5.mlp.0.weight",
+        "_critic.Fs.5.mlp.0.bias",
+        "_critic.Fs.5.mlp.1.weight",
+        "_critic.Fs.5.mlp.1.bias",
+        "_critic.Fs.6.mlp.0.weight",
+        "_critic.Fs.6.mlp.0.bias",
+        "_critic.Fs.6.mlp.1.weight"
+      ]
+    },
+    {
+      "optimizer": "aux_critic_optimizer",
+      "different_gradient_tensors": 0,
+      "names": []
+    },
+    {
+      "optimizer": "actor_optimizer",
+      "different_gradient_tensors": 46,
+      "names": [
+        "_actor.embed_z.0.contact_weight",
+        "_actor.embed_z.0.mlp.0.weight",
+        "_actor.embed_z.0.mlp.0.bias",
+        "_actor.embed_z.0.mlp.1.weight",
+        "_actor.embed_z.0.mlp.1.bias",
+        "_actor.embed_z.1.mlp.0.weight",
+        "_actor.embed_z.1.mlp.0.bias",
+        "_actor.embed_z.1.mlp.1.weight",
+        "_actor.embed_z.1.mlp.1.bias",
+        "_actor.embed_s.0.contact_weight",
+        "_actor.embed_s.0.mlp.0.weight",
+        "_actor.embed_s.0.mlp.0.bias",
+        "_actor.embed_s.0.mlp.1.weight",
+        "_actor.embed_s.0.mlp.1.bias",
+        "_actor.embed_s.1.mlp.0.weight",
+        "_actor.embed_s.1.mlp.0.bias",
+        "_actor.embed_s.1.mlp.1.weight",
+        "_actor.embed_s.1.mlp.1.bias",
+        "_actor.policy.0.mlp.0.weight",
+        "_actor.policy.0.mlp.0.bias",
+        "_actor.policy.0.mlp.1.weight",
+        "_actor.policy.0.mlp.1.bias",
+        "_actor.policy.1.mlp.0.weight",
+        "_actor.policy.1.mlp.0.bias",
+        "_actor.policy.1.mlp.1.weight",
+        "_actor.policy.1.mlp.1.bias",
+        "_actor.policy.2.mlp.0.weight",
+        "_actor.policy.2.mlp.0.bias",
+        "_actor.policy.2.mlp.1.weight",
+        "_actor.policy.2.mlp.1.bias",
+        "_actor.policy.3.mlp.0.weight",
+        "_actor.policy.3.mlp.0.bias",
+        "_actor.policy.3.mlp.1.weight",
+        "_actor.policy.3.mlp.1.bias",
+        "_actor.policy.4.mlp.0.weight",
+        "_actor.policy.4.mlp.0.bias",
+        "_actor.policy.4.mlp.1.weight",
+        "_actor.policy.4.mlp.1.bias",
+        "_actor.policy.5.mlp.0.weight",
+        "_actor.policy.5.mlp.0.bias",
+        "_actor.policy.5.mlp.1.weight",
+        "_actor.policy.5.mlp.1.bias",
+        "_actor.policy.6.mlp.0.weight",
+        "_actor.policy.6.mlp.0.bias",
+        "_actor.policy.6.mlp.1.weight",
+        "_actor.policy.6.mlp.1.bias"
+      ]
+    }
+  ],
+  "addition_leaf_hashes": [
+    "417dfe5dfa2c6654ed618b7a093f75d965203aca25cc5b87b26ab5fe0f442fd6",
+    "5f963cb3043072090cf1933bbc693a4360f53d68b3ade491d6c6aaca67371ab4",
+    "5c2f7be1423c85ff80cf15dca74a4b485f8f6802ef8b00b6b79fb33c59fb1273",
+    "7d1513bf5d1ac2568e0bc107d10a4c52badbc9bad2dda602f3e1012f01d4c813",
+    "9107fe6795315b5636fd52dbee55b7510a9f37afab77f85fb8835cfd078a1577"
+  ],
+  "addition_reconstruction": {
+    "f70050ab26b501b3510121c0053dd6377b303ef43e90ad2b8acf1ad3b23ea5c4": {
+      "control_operator_index": 333,
+      "expression": "(0+1)"
+    },
+    "a6fc88c1db2a2c221f4677aa60160cf4319b93565f30cc037e472c512184bc7c": {
+      "control_operator_index": 327,
+      "expression": "(2+4)"
+    },
+    "c5ae4cdecd430dd4943fc29ba2cfa794f8168e226627fb577f4d5d581fda9845": {
+      "control_operator_index": 485,
+      "expression": "((2+4)+3)"
+    }
+  },
+  "final_gradient_solutions": {
+    "3ea577e9c7d5bc2129bf56cc8c352db726250f422680d7c8e11a9e819fb80460": "((2+3)+4)",
+    "c5ae4cdecd430dd4943fc29ba2cfa794f8168e226627fb577f4d5d581fda9845": "((2+4)+3)"
+  },
+  "gradient_difference": {
+    "max_abs": 4.76837158203125e-07,
+    "different_elements": 182830,
+    "elements": 801792
+  },
+  "arithmetic_scope": "CPU IEEE FP32 additions of actual saved CUDA backward operands; exact SHA matching to CUDA results, no tolerance",
+  "exclusions": "uninitialized allocator bytes excluded; intermediate tensor schedule/order is separate from final gradient difference; target/Adam unchanged",
+  "contract_status": "localization only, strict uninterrupted/resumed final weights remain unequal; no long-run qualification"
+}

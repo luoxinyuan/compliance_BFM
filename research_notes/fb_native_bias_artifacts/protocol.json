@@ -1,0 +1,14 @@
+{
+  "base_commit": "55cfe85928365ed4933c40a4b62ebc18e6324e12",
+  "status": "pre_registered",
+  "gpu": 0,
+  "job_ceiling_s": 7200,
+  "output_ceiling_GiB": 12,
+  "engineering_agent_update_ceiling": 4,
+  "formal_training": 0,
+  "native_candidate_ceiling": 12,
+  "native_physics_per_candidate_s": 16,
+  "offline_replay_states": 30000,
+  "probability_physics_reward_tolerances": "unchanged",
+  "stop": "first operator/state localization or bounded exclusion; no automatic repair/long run"
+}
