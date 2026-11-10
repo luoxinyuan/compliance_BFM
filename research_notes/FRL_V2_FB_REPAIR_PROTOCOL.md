@@ -26,7 +26,7 @@ standing原生真实前缀，右腕前向；near .04–.12m /平均.03–.09m/s�
 
 ### 课程与独立组
 
-episode边际near/mid/stop/zero/none=.30/.30/.20/.10/.10，stop父组包含停止与继续子回合；continue计mid。宏组选择near .375、独立mid .125、stop-pair .25、zero .125、none .125，故完整宏组的episode边际符合上述比例；有限预算末尾残余及真实完整回合/决策/阶段另报，不拿理论概率当实际经历。stop与continue共享源/请求/初态和分叉前随机流，actor不得读取未来距离或时钟。
+episode边际near/mid/stop/zero/none=.30/.30/.20/.10/.10，stop父组包含停止与继续子回合；continue计mid。宏组选择near .375、独立mid .125、stop-pair .25、zero .125、none .125，故完整宏组的episode边际符合上述比例；有限预算末尾残余及真实完整回合/决策/阶段另报，不拿理论概率当实际经历。stop与continue共享源/伙伴需求前缀；独立评价用同一冻结模型与随机流核查逐值一致。训练配对跨更新时须记录不同策略版本，不冒称完整身体共同前缀。actor不得读取未来距离或时钟。
 
 训练seed5801；dev58031，每near/mid/stop至少8父组，zero/none各4；封存58061，每near/mid/stop至少16父组，zero/none各4。实际源前缀/父组hash独立性另验，不把新seed叫新物理组。旧#56全部条件已暴露，仅回归；62.07cm/.22m/s为独立暴露退化哨兵，不进主训练/封存成功统计。
 

@@ -1,7 +1,7 @@
 """Issue58 exact owned GPU0 supervisor with per-package hard job caps."""
 import argparse,fcntl,json,os,shutil,signal,subprocess,time
 from pathlib import Path
-p=argparse.ArgumentParser();p.add_argument('name');p.add_argument('mode');p.add_argument('--package');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('name');p.add_argument('mode');p.add_argument('--package');p.add_argument('--extended',action='store_true');p.add_argument('--compiled',action='store_true');a=p.parse_args()
 R=Path(__file__).resolve().parents[1];S=R.parent;P=S.parents[1]
 side=S/'jobs'/(a.name+'.json');assert not side.exists()
 lock=(P/'.dual-track-gpu0.lock').open('a+');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -14,8 +14,9 @@ gpu=subprocess.check_output(['nvidia-smi','-i','0','--query-gpu=name,uuid,memory
 uuid=gpu.split(',')[1].strip();apps=subprocess.check_output(['nvidia-smi','--query-compute-apps=gpu_uuid,pid','--format=csv,noheader'],text=True)
 assert 'RTX PRO 5000' in gpu and not any(uuid in v for v in apps.splitlines())
 assert not subprocess.check_output(['git','-C',str(R),'status','--porcelain'])
-cmd=[str(P/'.venv/bin/python'),str(R/'research_notes/repair_stage.py'),'--mode',a.mode,'--output',str(S/'runs'/a.name)]
+cmd=[str(P/'.venv/bin/python'),str(R/'research_notes'/('repair_extended.py' if a.extended else 'repair_stage.py')),'--mode',a.mode,'--output',str(S/'runs'/a.name)]
 if a.package:cmd+=['--package',a.package]
+if a.compiled:cmd+=['--compiled']
 env=dict(os.environ,CUDA_VISIBLE_DEVICES='0',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1',PYTHONPATH=str(R)+':'+str(R/'research_notes'))
 start=time.time();row=dict(name=a.name,category='P0-A',started=start,timeout_s=timeout,status='running',supervisor_pid=os.getpid(),command=cmd,runtime=subprocess.check_output(['git','-C',str(R),'rev-parse','HEAD'],text=True).strip(),gpu=gpu)
 def write():side.write_text(json.dumps(row,indent=2))
