@@ -1,5 +1,5 @@
 """Approved matched privileged high-level PPO; immutable checkpoints and child eval."""
-import copy,hashlib,json,math,subprocess,sys,time
+import copy,gzip,hashlib,json,math,subprocess,sys,time
 from pathlib import Path
 import numpy as np
 import torch
@@ -77,7 +77,7 @@ def evaluate(e,m,contract,out,args):
                 assert prefixes[group['parent_id']]==(decisions,prefix_physics,source_hash),'Common-prefix leak or physical mismatch'
                 rr['paired_prefix_decisions']=len(decisions);rr['paired_prefix_exact']=True
             rows.append(rr);write(out/'summaries.json',rows)
-            if args.record and len(rows)<=4:task.save(out)
+            if args.record:task.save(out)
             print('DUAL_DEV',args.split,args.iteration,group['source'],group['family'],child,rr['all']['error_cm'],rr['all']['force_rms'],flush=True)
     collisions={k:v for k,v in source_hashes.items() if len(set(v))>1}
     assert not collisions,'Distinct parent profiles produced duplicate actual source states'
@@ -165,7 +165,7 @@ def train(e,m,contract,out,args):
         nonlocal initial_rows,best
         state=TrainingBranch(task,[rng]);dest=out/f'dev-{i}'
         cmd=[sys.executable,str(ROOT/'research_notes/frl_v2_stage.py'),'--mode','high_eval','--output',str(dest),
-             '--checkpoint',str(path),'--sha256',sha(path),'--iteration',str(i),'--split','dev','--arm',args.arm]
+             '--checkpoint',str(path),'--sha256',sha(path),'--iteration',str(i),'--split','dev','--arm',args.arm,'--record']
         if args.smoke:cmd.append('--smoke')
         t=time.monotonic()
         with (out/f'dev-{i}.log').open('w') as f:subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT,check=True,timeout=2400)
@@ -211,7 +211,7 @@ def train(e,m,contract,out,args):
             if not (out/f'candidate-{iteration-1}.pt').exists():save(iteration-1)
             return dict(status='stopped_by_request',Expert_RL_decisions=decisions)
         arrays={k:[] for k in ('obs','action','logp','value','next_value','reward','discount','terminated','truncated','pre_mask')}
-        stats=[];probes=[];t0=time.monotonic()
+        stats=[];probes=[];control_records=[];physical_records=[];t0=time.monotonic()
         for j in range(CFG['batch']):
             if task.done:
                 completed_episodes.append(dict(parent_id=task.spec['parent_id'],family=task.spec['demand_family'],source=task.spec['source'],actual_decisions=len(task.stats),return_=task.episode_return,boundary=copy.deepcopy(task.boundary)))
@@ -224,7 +224,10 @@ def train(e,m,contract,out,args):
             if j%96==0:
                 probes.append(dict(x=x.clone(),obs={k:v.clone() for k,v in e.obs.items()},previous=task.last_command.clone()))
             lp=dist.log_prob(raw).sum(-1);v=net.value(x)
+            phys_start=len(task.physics);ctrl_start=len(task.controls)
             _,reward,done,st=task.step(raw)
+            control_records.extend(dict(parent_id=task.spec['parent_id'],**{k:c[k] for k in ('time','executed_z','action','q_PD','pre_qpos','pre_qvel','actual_duration_s','reward_terms','reward_integral')}) for c in task.controls[ctrl_start:])
+            physical_records.extend(dict(parent_id=task.spec['parent_id'],**{k:r[k] for k in ('time','force_time','active','force','error','qpos','qvel','support','feet_xyz','torque','joint_limit_excess_max_rad','stage_loaded_slip_mps','pelvis_matrix','torso_matrix')}) for r in task.physics[phys_start:])
             from transition_env import phase
             native_phase_counts={}
             for c in task.controls[-st['control_steps']:]:
@@ -243,6 +246,8 @@ def train(e,m,contract,out,args):
             st.update(parent_id=task.spec['parent_id'],raw_mean_norm=float(dist.mean.norm()),raw_sample_norm=float(raw.norm()),std=float(dist.stddev.mean()))
             stats.append(st);decisions+=1
         cpu={k:np.asarray(v,dtype=bool if k in ('terminated','truncated','pre_mask') else np.float32) for k,v in arrays.items()}
+        with gzip.open(out/f'native-controls-{iteration}.json.gz','wt') as f:json.dump(control_records,f)
+        with gzip.open(out/f'physics-{iteration}.json.gz','wt') as f:json.dump(physical_records,f)
         np.savez_compressed(out/f'rollout-{iteration}.npz',**cpu);write(out/f'rollout-{iteration}-stats.json',stats)
         b={k:torch.from_numpy(v).cuda() for k,v in cpu.items()}
         adv,returns=advantages(b['reward'],b['value'],b['next_value'],b['discount'],b['terminated'],b['truncated'],CFG['gae'])

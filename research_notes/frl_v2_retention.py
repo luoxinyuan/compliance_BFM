@@ -43,4 +43,4 @@ class Retention:
 
     def load_state_dict(self,x):
         assert x['enabled']==self.enabled
-        self.coefficient=x['coefficient'];self.reference=x['reference'].to(next(self.initial.parameters()).device)
+        self.coefficient=x['coefficient'];self.reference=None if x['reference'] is None else x['reference'].to(next(self.initial.parameters()).device)
