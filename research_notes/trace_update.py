@@ -29,8 +29,15 @@ class Trace(TorchDispatchMode):
  def __torch_dispatch__(self,func,types,args=(),kwargs=None):
   kwargs=kwargs or {};result=func(*args,**kwargs)
   row=dict(index=len(self.rows),phase=self.phase,op=str(func),outputs=[signature(t) for t in leaves(result)])
+  # Allocator bytes before first write are not defined tensor results. Keep
+  # shape/layout, exclude only these hashes on both sides (no tolerance).
+  allocation=any(v in str(func) for v in ['aten.empty.', 'aten.empty_like.', 'aten.empty_strided.', 'aten.new_empty.'])
+  if allocation:
+   for v in row['outputs']:v.pop('hash',None)
   if self.expected is not None and self.first is None:
-   ref=self.expected[len(self.rows)] if len(self.rows)<len(self.expected) else None
+   ref=copy.deepcopy(self.expected[len(self.rows)]) if len(self.rows)<len(self.expected) else None
+   if allocation and ref:
+    for v in ref['outputs']:v.pop('hash',None)
    if ref!=row:
     self.first=dict(actual=row,reference=ref,inputs=[signature(t) for t in leaves((args,kwargs))])
     torch.save(dict(inputs=cpu((args,kwargs)),outputs=cpu(result)),self.out/'first-difference-tensors.pt')

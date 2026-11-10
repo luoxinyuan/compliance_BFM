@@ -16,12 +16,17 @@ def study(e,m,c,out):
  from rolling_backend import install as backend
  install();speed(e);torch.set_num_threads(1);torch.set_grad_enabled(False)
  (out/'backend-prefix').mkdir();backend(e,m,out/'backend-prefix')
- from trace_update import run
+ if ARGS.mode=='bias':
+  from b_mean_audit import run
+ elif ARGS.mode=='inventory':
+  from native_inventory import run
+ else:
+  from trace_update import run
  return run(e,m,c,out,ARGS)
 
 def main():
  global ARGS
- p=argparse.ArgumentParser();p.add_argument('--mode',choices=['trace-control','trace-resume'],required=True)
+ p=argparse.ArgumentParser();p.add_argument('--mode',choices=['trace-control','trace-resume','bias','inventory'],required=True)
  p.add_argument('--output',type=Path,required=True);p.add_argument('--package',type=Path);p.add_argument('--reference',type=Path)
  ARGS=p.parse_args();ARGS.runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
