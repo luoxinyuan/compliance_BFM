@@ -44,6 +44,8 @@ def main():
  changed(other,bopt,b,epochs=1,minibatch=6,retention=ret)
  assert all(torch.equal(v,other.state_dict()[k]) for k,v in net.state_dict().items()),'A changed original PPO'
  hold=Retention(other,True);hold.seed_reference(x,b['pre_mask']);assert float(hold.divergence(other,x).max())==0
+ assert torch.equal(hold.reference_mean,hold.initial.distribution(hold.reference).mean)
+ assert torch.equal(hold.divergence(other,hold.reference),hold.divergence(other,hold.reference.clone()))
  with torch.no_grad():other.actor.bias.add_(.001)
  other.zero_grad();loss=hold.loss(other,x,b['pre_mask']);loss.backward()
  assert other.actor.bias.grad.norm()>0

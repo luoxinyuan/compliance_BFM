@@ -1,0 +1,66 @@
+{
+  "status": "not_stage_closeout",
+  "jobs": [
+    {
+      "name": "p0a-eager16-resume-01",
+      "category": "P0-A",
+      "started": 1794309342.2088437,
+      "status": "completed",
+      "runtime": "3377edbffc05814f9add09b927b108edcda9e33d",
+      "returncode": 0,
+      "elapsed_s": 275.1040644645691
+    },
+    {
+      "name": "p0a-eager-resume-01",
+      "category": "P0-A",
+      "started": 1794308632.7600083,
+      "status": "completed",
+      "runtime": "dcb3fae684367496fa4f31cfd4e0a07af546308a",
+      "returncode": 0,
+      "elapsed_s": 180.04802465438843
+    },
+    {
+      "name": "p0a-eager-control-01",
+      "category": "P0-A",
+      "started": 1794308269.9779706,
+      "status": "completed",
+      "runtime": "dcb3fae684367496fa4f31cfd4e0a07af546308a",
+      "returncode": 0,
+      "elapsed_s": 322.98106598854065
+    },
+    {
+      "name": "p0a-eager16-control-01",
+      "category": "P0-A",
+      "started": 1794308923.7712784,
+      "status": "completed",
+      "runtime": "3377edbffc05814f9add09b927b108edcda9e33d",
+      "returncode": 0,
+      "elapsed_s": 396.3524715900421
+    },
+    {
+      "name": "frl-smoke-B-01",
+      "category": "F-RL-v2",
+      "started": 1794309706.4585736,
+      "status": "completed",
+      "runtime": "017c2713930c287a26f864b1dc86844d22a994de",
+      "formal_training": false,
+      "arm": "B",
+      "returncode": 0,
+      "elapsed_s": 604.2492859363556
+    }
+  ],
+  "preparation_conservative_reserve_s": {
+    "P0-A": 900,
+    "P0-B": 900,
+    "F-RL-v2": 1200
+  },
+  "new_formal_PPO_decisions": 0,
+  "engineering_high_decisions": 768,
+  "engineering_FB_updates": 38,
+  "maximum_job_hours": {
+    "P0-A": 4,
+    "P0-B": 12,
+    "F-RL-v2": 48
+  },
+  "global_original_limit_h": 240
+}

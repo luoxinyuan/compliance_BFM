@@ -1,0 +1,61 @@
+{
+  "version": "ISSUE58_PREREGISTRATION_V1",
+  "source": "8dd48a0b0e36879efaa971adedf786159861320f",
+  "issue": 58,
+  "budgets_job_seconds": {
+    "P0-A": 14400,
+    "P0-B": 43200,
+    "F-RL-v2": 172800
+  },
+  "global_cumulative_job_hours": 240,
+  "shared_free_guard_bytes": 107374182400,
+  "GPU": "RTX PRO 5000 GPU0",
+  "heavy_GPU_serial": true,
+  "F_RL_v2": {
+    "seed": 5801,
+    "source": "standing",
+    "episode_probs": {
+      "near": 0.3,
+      "mid": 0.3,
+      "stop": 0.2,
+      "zero": 0.1,
+      "none": 0.1
+    },
+    "stop_source_range_m": [
+      0.16,
+      0.45
+    ],
+    "raw_std": 0.008,
+    "joint_KL": 0.02,
+    "gamma_high": 0.99,
+    "gamma_native": 0.9979919516614258,
+    "formal_decisions_per_arm": 98304,
+    "formal_arms": 2,
+    "developer_nodes": [
+      0,
+      16,
+      32,
+      64,
+      96,
+      128
+    ],
+    "new_dev_parents": 32,
+    "new_sealed_parents": 56,
+    "actual_parent_qualification": "pending actual execution hash verification",
+    "B_retention": {
+      "target_mean_D": 0.01,
+      "initial_coefficient": 0.1,
+      "update_rate": 0.1,
+      "max_coefficient": 100,
+      "update": "once per complete PPO batch; clip(lambda+.1*(meanD/.01-1),0,100)",
+      "mask": "current and past physical precontact, no actual force, legal state; no released chasing"
+    }
+  },
+  "prohibited": [
+    "Student",
+    "formal FB1M",
+    "FB5M",
+    "search actions as on-policy rollout",
+    "shared/main mutations"
+  ]
+}

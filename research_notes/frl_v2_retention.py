@@ -6,7 +6,7 @@ class Retention:
     def __init__(self,net,enabled):
         self.initial=copy.deepcopy(net).eval().requires_grad_(False)
         self.enabled=enabled;self.coefficient=.1 if enabled else 0.
-        self.reference=None
+        self.reference=None;self.reference_mean=None
 
     def seed_reference(self,x,mask):
         if self.reference is None:
@@ -14,9 +14,13 @@ class Retention:
             assert len(rows)>0,'First real batch has no legal precontact reference'
             ix=torch.linspace(0,len(rows)-1,min(512,len(rows)),device=x.device).long().unique()
             self.reference=rows[ix].detach().clone()
+            with torch.no_grad():
+                self.reference_mean=self.initial.distribution(self.reference).mean.detach().clone()
+                assert torch.equal(self.reference_mean,self.initial.distribution(self.reference).mean), 'Frozen reference forward is not repeatable'
 
     def divergence(self,net,x):
-        with torch.no_grad():base=self.initial.distribution(x).mean
+        with torch.no_grad():
+            base=self.reference_mean if x is self.reference and self.reference_mean is not None else self.initial.distribution(x).mean
         return (net.distribution(x).mean-base).square().sum(-1)/(2*.008**2)
 
     def loss(self,net,x,mask):
@@ -39,8 +43,10 @@ class Retention:
             fixed_dual_rule='clip(lambda+.1*(meanD/.01-1),0,100); once per complete PPO batch')
 
     def state_dict(self):
-        return dict(coefficient=self.coefficient,reference=self.reference,enabled=self.enabled)
+        return dict(coefficient=self.coefficient,reference=self.reference,reference_mean=self.reference_mean,enabled=self.enabled)
 
     def load_state_dict(self,x):
         assert x['enabled']==self.enabled
         self.coefficient=x['coefficient'];self.reference=None if x['reference'] is None else x['reference'].to(next(self.initial.parameters()).device)
+        self.reference_mean=None if self.reference is None else self.initial.distribution(self.reference).mean.detach().clone()
+        if x.get('reference_mean') is not None:assert torch.equal(self.reference_mean,x['reference_mean'].to(self.reference_mean.device))

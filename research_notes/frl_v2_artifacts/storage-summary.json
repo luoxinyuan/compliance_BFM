@@ -1,0 +1,781 @@
+{
+  "status": "read_only_inventory_completed",
+  "shared_free_bytes": 984243765248,
+  "shared_guard_bytes": 107374182400,
+  "stage_count": 110,
+  "checkpoint_file_count": 2054,
+  "stages": {
+    "experiments/lpp002": {
+      "logical_bytes": 417880,
+      "unique_allocated_bytes": 468480,
+      "files": 20,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "experiments/frl-v2-fb-repair-20261110": {
+      "logical_bytes": 70414100052,
+      "unique_allocated_bytes": 56510386688,
+      "files": 7086,
+      "checkpoint_files": 67,
+      "checkpoint_bytes": 69711957116
+    },
+    "experiments/native-rolling-h100-20261107": {
+      "logical_bytes": 790878129,
+      "unique_allocated_bytes": 796286464,
+      "files": 3156,
+      "checkpoint_files": 2,
+      "checkpoint_bytes": 181433
+    },
+    "experiments/dual-track-formal-20261109": {
+      "logical_bytes": 27813978407,
+      "unique_allocated_bytes": 27825223168,
+      "files": 4961,
+      "checkpoint_files": 58,
+      "checkpoint_bytes": 24679721842
+    },
+    "experiments/interactive-contact-pilot-20261108": {
+      "logical_bytes": 1113651771,
+      "unique_allocated_bytes": 1121824768,
+      "files": 4865,
+      "checkpoint_files": 11,
+      "checkpoint_bytes": 28721061
+    },
+    "experiments/dual-track-diagnostics-20261110": {
+      "logical_bytes": 64319480729,
+      "unique_allocated_bytes": 29405737472,
+      "files": 3668,
+      "checkpoint_files": 104,
+      "checkpoint_bytes": 63493104784
+    },
+    "experiments/dual-track-contract-v1-20261109": {
+      "logical_bytes": 7205012018,
+      "unique_allocated_bytes": 7207870976,
+      "files": 1717,
+      "checkpoint_files": 8,
+      "checkpoint_bytes": 6993522208
+    },
+    "experiments/lpp001": {
+      "logical_bytes": 142786,
+      "unique_allocated_bytes": 130048,
+      "files": 22,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "experiments/ppo-retention-audit-20261109": {
+      "logical_bytes": 958446314,
+      "unique_allocated_bytes": 961753600,
+      "files": 1869,
+      "checkpoint_files": 9,
+      "checkpoint_bytes": 43000800
+    },
+    "experiments/p4000-feedback-ppo-20261108": {
+      "logical_bytes": 5815410428,
+      "unique_allocated_bytes": 5846046720,
+      "files": 16718,
+      "checkpoint_files": 31,
+      "checkpoint_bytes": 111265359
+    },
+    "experiments/fb-native-audit-20261110": {
+      "logical_bytes": 421663969,
+      "unique_allocated_bytes": 424686592,
+      "files": 1798,
+      "checkpoint_files": 8,
+      "checkpoint_bytes": 88816752
+    },
+    "experiments/retention-newconditions-20261109": {
+      "logical_bytes": 516910879,
+      "unique_allocated_bytes": 519772672,
+      "files": 1668,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "experiments/interactive-increment-20261108": {
+      "logical_bytes": 996662098,
+      "unique_allocated_bytes": 999896064,
+      "files": 1790,
+      "checkpoint_files": 18,
+      "checkpoint_bytes": 76274704
+    },
+    "experiments/source-coverage-m1-20261109": {
+      "logical_bytes": 3229318708,
+      "unique_allocated_bytes": 3240256000,
+      "files": 5009,
+      "checkpoint_files": 822,
+      "checkpoint_bytes": 357957695
+    },
+    "experiments/native-transfer-20261107": {
+      "logical_bytes": 2059609353,
+      "unique_allocated_bytes": 2078045184,
+      "files": 10677,
+      "checkpoint_files": 20,
+      "checkpoint_bytes": 86085421
+    },
+    "bridge-v2-owned/runs/m38-supervisor-07.log": {
+      "logical_bytes": 2020,
+      "unique_allocated_bytes": 512,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/.execution.lock": {
+      "logical_bytes": 0,
+      "unique_allocated_bytes": 0,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m38-supervisor-04.log": {
+      "logical_bytes": 2010,
+      "unique_allocated_bytes": 512,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m38-supervisor-05.log": {
+      "logical_bytes": 2013,
+      "unique_allocated_bytes": 512,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/t30-launch-D.log": {
+      "logical_bytes": 1964,
+      "unique_allocated_bytes": 512,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m8-asset-audit-preparation.py": {
+      "logical_bytes": 2668,
+      "unique_allocated_bytes": 512,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m38-supervisor-start.log": {
+      "logical_bytes": 1606,
+      "unique_allocated_bytes": 512,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m38-supervisor-02.log": {
+      "logical_bytes": 2022,
+      "unique_allocated_bytes": 512,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m38-supervisor-03.log": {
+      "logical_bytes": 2019,
+      "unique_allocated_bytes": 512,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/t30-launch-C.log": {
+      "logical_bytes": 1971,
+      "unique_allocated_bytes": 512,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m38-supervisor-02b.log": {
+      "logical_bytes": 485,
+      "unique_allocated_bytes": 512,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m8_analysis.py": {
+      "logical_bytes": 4375,
+      "unique_allocated_bytes": 8192,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/t30-launch-A.log": {
+      "logical_bytes": 1980,
+      "unique_allocated_bytes": 512,
+      "files": 1,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue21-ccl02a-20261029T153900Z": {
+      "logical_bytes": 74220786,
+      "unique_allocated_bytes": 74320896,
+      "files": 49,
+      "checkpoint_files": 1,
+      "checkpoint_bytes": 74470
+    },
+    "bridge-v2-owned/runs/m11-privileged-expert-20261101": {
+      "logical_bytes": 1653554577,
+      "unique_allocated_bytes": 1654465024,
+      "files": 377,
+      "checkpoint_files": 17,
+      "checkpoint_bytes": 54593300
+    },
+    "bridge-v2-owned/runs/issue20-ccl01-v03-20261028T121000Z": {
+      "logical_bytes": 229376003,
+      "unique_allocated_bytes": 229796864,
+      "files": 254,
+      "checkpoint_files": 60,
+      "checkpoint_bytes": 141200695
+    },
+    "bridge-v2-owned/runs/issue-17-afb15ab102f53a20": {
+      "logical_bytes": 188180284,
+      "unique_allocated_bytes": 189719040,
+      "files": 577,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/native-contact-20261106": {
+      "logical_bytes": 4786398511,
+      "unique_allocated_bytes": 4791792640,
+      "files": 1379,
+      "checkpoint_files": 27,
+      "checkpoint_bytes": 99052493
+    },
+    "bridge-v2-owned/runs/m39b-retention-20261104": {
+      "logical_bytes": 7093077876,
+      "unique_allocated_bytes": 7094948864,
+      "files": 590,
+      "checkpoint_files": 28,
+      "checkpoint_bytes": 101512023
+    },
+    "bridge-v2-owned/runs/prior-recovery-20261105": {
+      "logical_bytes": 1735159902,
+      "unique_allocated_bytes": 1735897600,
+      "files": 379,
+      "checkpoint_files": 5,
+      "checkpoint_bytes": 5580143
+    },
+    "bridge-v2-owned/runs/issue20-v03-chain-20261028T142231Z": {
+      "logical_bytes": 21306198,
+      "unique_allocated_bytes": 21364224,
+      "files": 27,
+      "checkpoint_files": 3,
+      "checkpoint_bytes": 19767483
+    },
+    "bridge-v2-owned/runs/m1-state-response-20261031A": {
+      "logical_bytes": 1952529983,
+      "unique_allocated_bytes": 1953650176,
+      "files": 370,
+      "checkpoint_files": 9,
+      "checkpoint_bytes": 41886127
+    },
+    "bridge-v2-owned/runs/stop-sensing-20261103": {
+      "logical_bytes": 3012063515,
+      "unique_allocated_bytes": 3013268480,
+      "files": 426,
+      "checkpoint_files": 20,
+      "checkpoint_bytes": 45454010
+    },
+    "bridge-v2-owned/runs/m38c-history-20261103": {
+      "logical_bytes": 2144288672,
+      "unique_allocated_bytes": 2145017344,
+      "files": 287,
+      "checkpoint_files": 4,
+      "checkpoint_bytes": 4197153
+    },
+    "bridge-v2-owned/runs/issue21-alpha-repair-20261031A": {
+      "logical_bytes": 854238459,
+      "unique_allocated_bytes": 854752256,
+      "files": 163,
+      "checkpoint_files": 12,
+      "checkpoint_bytes": 43185855
+    },
+    "bridge-v2-owned/runs/issue20-ccl01-20261028T082201Z": {
+      "logical_bytes": 281811927,
+      "unique_allocated_bytes": 282214400,
+      "files": 171,
+      "checkpoint_files": 20,
+      "checkpoint_bytes": 35314839
+    },
+    "bridge-v2-owned/runs/m8-contact-body-20261101A": {
+      "logical_bytes": 2125258373,
+      "unique_allocated_bytes": 2125704704,
+      "files": 212,
+      "checkpoint_files": 9,
+      "checkpoint_bytes": 807329440
+    },
+    "bridge-v2-owned/runs/m7-continuous-20261101A": {
+      "logical_bytes": 2621591846,
+      "unique_allocated_bytes": 2622493696,
+      "files": 309,
+      "checkpoint_files": 9,
+      "checkpoint_bytes": 628800233
+    },
+    "bridge-v2-owned/runs/latent-prior-audit-20261105": {
+      "logical_bytes": 4257673634,
+      "unique_allocated_bytes": 4259969536,
+      "files": 881,
+      "checkpoint_files": 21,
+      "checkpoint_bytes": 61219595
+    },
+    "bridge-v2-owned/runs/m2-unseen-body-20261031A": {
+      "logical_bytes": 387090363,
+      "unique_allocated_bytes": 387341312,
+      "files": 90,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue21-alpha-student-20261030A": {
+      "logical_bytes": 497880395,
+      "unique_allocated_bytes": 498156032,
+      "files": 117,
+      "checkpoint_files": 12,
+      "checkpoint_bytes": 21143075
+    },
+    "bridge-v2-owned/runs/issue21-native-interface-20261030A": {
+      "logical_bytes": 55277,
+      "unique_allocated_bytes": 66048,
+      "files": 3,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/heading-transfer-20261103": {
+      "logical_bytes": 3002879559,
+      "unique_allocated_bytes": 3004052480,
+      "files": 368,
+      "checkpoint_files": 13,
+      "checkpoint_bytes": 29558546
+    },
+    "bridge-v2-owned/runs/issue21-reward-stage-20261030A": {
+      "logical_bytes": 67783889,
+      "unique_allocated_bytes": 67897856,
+      "files": 75,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m41-startup-causal-20261104": {
+      "logical_bytes": 820527815,
+      "unique_allocated_bytes": 820767232,
+      "files": 120,
+      "checkpoint_files": 1,
+      "checkpoint_bytes": 2891
+    },
+    "bridge-v2-owned/runs/issue20-ccl01-v02-20261028T114817Z": {
+      "logical_bytes": 240816992,
+      "unique_allocated_bytes": 241073664,
+      "files": 141,
+      "checkpoint_files": 62,
+      "checkpoint_bytes": 154276289
+    },
+    "bridge-v2-owned/runs/issue21-projector-20261030T004000Z": {
+      "logical_bytes": 84407868,
+      "unique_allocated_bytes": 84517888,
+      "files": 44,
+      "checkpoint_files": 3,
+      "checkpoint_bytes": 1274052
+    },
+    "bridge-v2-owned/runs/issue21-alpha-interruption-20261030A": {
+      "logical_bytes": 285266919,
+      "unique_allocated_bytes": 285460480,
+      "files": 77,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue21-native-assets-20261030A": {
+      "logical_bytes": 401763,
+      "unique_allocated_bytes": 445952,
+      "files": 19,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m10-task-appropriate-20261101": {
+      "logical_bytes": 1598892878,
+      "unique_allocated_bytes": 1599202816,
+      "files": 182,
+      "checkpoint_files": 5,
+      "checkpoint_bytes": 869201297
+    },
+    "bridge-v2-owned/runs/issue-19-a8187804319761a4": {
+      "logical_bytes": 188164609,
+      "unique_allocated_bytes": 189710848,
+      "files": 575,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/c0-delayed-engagement-20261105": {
+      "logical_bytes": 30919664,
+      "unique_allocated_bytes": 31050752,
+      "files": 42,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue21-skill-source-20261030A": {
+      "logical_bytes": 65731211,
+      "unique_allocated_bytes": 65791488,
+      "files": 39,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue19-wrist-20261028T054245Z": {
+      "logical_bytes": 27675795,
+      "unique_allocated_bytes": 27748864,
+      "files": 22,
+      "checkpoint_files": 2,
+      "checkpoint_bytes": 74229
+    },
+    "bridge-v2-owned/runs/issue21-targetedrepair-20261030A": {
+      "logical_bytes": 138240129,
+      "unique_allocated_bytes": 138541056,
+      "files": 154,
+      "checkpoint_files": 5,
+      "checkpoint_bytes": 2789940
+    },
+    "bridge-v2-owned/runs/contact-geometry-20261103": {
+      "logical_bytes": 4601817698,
+      "unique_allocated_bytes": 4603264512,
+      "files": 533,
+      "checkpoint_files": 27,
+      "checkpoint_bytes": 97911399
+    },
+    "bridge-v2-owned/runs/m9-feedback-continuation-20261101B": {
+      "logical_bytes": 2956197502,
+      "unique_allocated_bytes": 2956652032,
+      "files": 228,
+      "checkpoint_files": 6,
+      "checkpoint_bytes": 1644048478
+    },
+    "bridge-v2-owned/runs/m6-multibehavior-20261031A": {
+      "logical_bytes": 2148838671,
+      "unique_allocated_bytes": 2149879808,
+      "files": 320,
+      "checkpoint_files": 12,
+      "checkpoint_bytes": 383444956
+    },
+    "bridge-v2-owned/runs/issue20-ccl01-v01-20261028T095023Z": {
+      "logical_bytes": 272741042,
+      "unique_allocated_bytes": 273094656,
+      "files": 158,
+      "checkpoint_files": 65,
+      "checkpoint_bytes": 159177932
+    },
+    "bridge-v2-owned/runs/issue21-beyond-alpha-20261031A": {
+      "logical_bytes": 115967100,
+      "unique_allocated_bytes": 116049408,
+      "files": 37,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue21-wholebody-20261030A": {
+      "logical_bytes": 48572639,
+      "unique_allocated_bytes": 48672768,
+      "files": 50,
+      "checkpoint_files": 1,
+      "checkpoint_bytes": 78799
+    },
+    "bridge-v2-owned/runs/narrow-contact-expert-20261102": {
+      "logical_bytes": 1965062370,
+      "unique_allocated_bytes": 1965646336,
+      "files": 412,
+      "checkpoint_files": 36,
+      "checkpoint_bytes": 121390626
+    },
+    "bridge-v2-owned/runs/m38-rotation-20261103": {
+      "logical_bytes": 982549985,
+      "unique_allocated_bytes": 983024128,
+      "files": 198,
+      "checkpoint_files": 3,
+      "checkpoint_bytes": 2798382
+    },
+    "bridge-v2-owned/runs/m11-throughput-20261102": {
+      "logical_bytes": 235636643,
+      "unique_allocated_bytes": 235757568,
+      "files": 72,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue20-force-amplitude-20261028T154017Z": {
+      "logical_bytes": 36748587,
+      "unique_allocated_bytes": 36855808,
+      "files": 41,
+      "checkpoint_files": 1,
+      "checkpoint_bytes": 1953
+    },
+    "bridge-v2-owned/runs/issue20-causal-fix-20261028T150232Z": {
+      "logical_bytes": 19665641,
+      "unique_allocated_bytes": 19724800,
+      "files": 30,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue21-skill-compat-20261031A": {
+      "logical_bytes": 225986078,
+      "unique_allocated_bytes": 226083328,
+      "files": 37,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m9-contact-locomotion-20261101A": {
+      "logical_bytes": 2577511330,
+      "unique_allocated_bytes": 2578267136,
+      "files": 330,
+      "checkpoint_files": 6,
+      "checkpoint_bytes": 1102109306
+    },
+    "bridge-v2-owned/runs/issue21-causallatent-20261030A": {
+      "logical_bytes": 18296791,
+      "unique_allocated_bytes": 18384384,
+      "files": 48,
+      "checkpoint_files": 2,
+      "checkpoint_bytes": 465381
+    },
+    "bridge-v2-owned/runs/m4-continuous-feedback-20261031A": {
+      "logical_bytes": 540421037,
+      "unique_allocated_bytes": 540698112,
+      "files": 100,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue21-onset09-20261030T005300Z": {
+      "logical_bytes": 60745932,
+      "unique_allocated_bytes": 60810752,
+      "files": 40,
+      "checkpoint_files": 1,
+      "checkpoint_bytes": 75597
+    },
+    "bridge-v2-owned/runs/m39a-demand-20261104": {
+      "logical_bytes": 9065364864,
+      "unique_allocated_bytes": 9067592192,
+      "files": 701,
+      "checkpoint_files": 29,
+      "checkpoint_bytes": 108467482
+    },
+    "bridge-v2-owned/runs/m11-sampling-profile-20261102": {
+      "logical_bytes": 173061652,
+      "unique_allocated_bytes": 173102080,
+      "files": 29,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m0-lpp-20261031A": {
+      "logical_bytes": 449634464,
+      "unique_allocated_bytes": 449781248,
+      "files": 97,
+      "checkpoint_files": 5,
+      "checkpoint_bytes": 4104791
+    },
+    "bridge-v2-owned/runs/native-temporal-20261107": {
+      "logical_bytes": 5270392865,
+      "unique_allocated_bytes": 5275572224,
+      "files": 1352,
+      "checkpoint_files": 25,
+      "checkpoint_bytes": 99253687
+    },
+    "bridge-v2-owned/runs/issue19-wrist-replay-minusx-20261028T070932Z": {
+      "logical_bytes": 59145490,
+      "unique_allocated_bytes": 59217408,
+      "files": 34,
+      "checkpoint_files": 2,
+      "checkpoint_bytes": 75952
+    },
+    "bridge-v2-owned/runs/issue-15-64311338b195be7c": {
+      "logical_bytes": 94115842,
+      "unique_allocated_bytes": 94888448,
+      "files": 289,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue21-direction-20261030T020000Z": {
+      "logical_bytes": 27734033,
+      "unique_allocated_bytes": 27855360,
+      "files": 86,
+      "checkpoint_files": 2,
+      "checkpoint_bytes": 152570
+    },
+    "bridge-v2-owned/runs/direct-transfer-20261103": {
+      "logical_bytes": 2647451591,
+      "unique_allocated_bytes": 2648537088,
+      "files": 445,
+      "checkpoint_files": 24,
+      "checkpoint_bytes": 54852106
+    },
+    "bridge-v2-owned/runs/issue21-goalcalibration-20261030A": {
+      "logical_bytes": 44818074,
+      "unique_allocated_bytes": 44894720,
+      "files": 45,
+      "checkpoint_files": 1,
+      "checkpoint_bytes": 79704
+    },
+    "bridge-v2-owned/runs/t30-transfer-20261103": {
+      "logical_bytes": 1496488023,
+      "unique_allocated_bytes": 1497444864,
+      "files": 302,
+      "checkpoint_files": 7,
+      "checkpoint_bytes": 5011977
+    },
+    "bridge-v2-owned/runs/issue19-wrist-anchor-20261028T062503Z": {
+      "logical_bytes": 68375420,
+      "unique_allocated_bytes": 68513280,
+      "files": 41,
+      "checkpoint_files": 4,
+      "checkpoint_bytes": 150192
+    },
+    "bridge-v2-owned/runs/clean-contact-expert-20261102": {
+      "logical_bytes": 1581125143,
+      "unique_allocated_bytes": 1581673472,
+      "files": 448,
+      "checkpoint_files": 38,
+      "checkpoint_bytes": 79712633
+    },
+    "bridge-v2-owned/runs/issue-16-e12e97810b509875": {
+      "logical_bytes": 94117985,
+      "unique_allocated_bytes": 94888448,
+      "files": 289,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue21-bidirectional-20261030T012400Z": {
+      "logical_bytes": 259815698,
+      "unique_allocated_bytes": 259969536,
+      "files": 76,
+      "checkpoint_files": 3,
+      "checkpoint_bytes": 2017349
+    },
+    "bridge-v2-owned/runs/m9c-expert-20261101": {
+      "logical_bytes": 4161949727,
+      "unique_allocated_bytes": 4163089920,
+      "files": 377,
+      "checkpoint_files": 27,
+      "checkpoint_bytes": 2010918175
+    },
+    "bridge-v2-owned/runs/issue21-contact-gate-20261030A": {
+      "logical_bytes": 467278910,
+      "unique_allocated_bytes": 467485696,
+      "files": 76,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue21-ccl02a-20261029T152000Z": {
+      "logical_bytes": 122014656,
+      "unique_allocated_bytes": 122261504,
+      "files": 121,
+      "checkpoint_files": 4,
+      "checkpoint_bytes": 297880
+    },
+    "bridge-v2-owned/runs/issue20-noise-probe-20261029T123424Z": {
+      "logical_bytes": 106204791,
+      "unique_allocated_bytes": 106784256,
+      "files": 249,
+      "checkpoint_files": 3,
+      "checkpoint_bytes": 249634
+    },
+    "bridge-v2-owned/runs/issue20-latent-feasibility-20261029T135200Z": {
+      "logical_bytes": 8642275,
+      "unique_allocated_bytes": 8800256,
+      "files": 73,
+      "checkpoint_files": 2,
+      "checkpoint_bytes": 149194
+    },
+    "bridge-v2-owned/runs/issue19-recovery-20261028T045520Z": {
+      "logical_bytes": 1892794,
+      "unique_allocated_bytes": 2016256,
+      "files": 51,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/feedback-coexistence-20261105": {
+      "logical_bytes": 4553860954,
+      "unique_allocated_bytes": 4557271552,
+      "files": 1073,
+      "checkpoint_files": 17,
+      "checkpoint_bytes": 55645837
+    },
+    "bridge-v2-owned/runs/issue20-mask-ab-20261028T164000Z": {
+      "logical_bytes": 372618135,
+      "unique_allocated_bytes": 373260288,
+      "files": 244,
+      "checkpoint_files": 105,
+      "checkpoint_bytes": 281680392
+    },
+    "bridge-v2-owned/runs/m5-contact-lpp-20261031A": {
+      "logical_bytes": 1346317767,
+      "unique_allocated_bytes": 1347045888,
+      "files": 226,
+      "checkpoint_files": 9,
+      "checkpoint_bytes": 130268073
+    },
+    "bridge-v2-owned/runs/m11-continuation-20261102": {
+      "logical_bytes": 4692551115,
+      "unique_allocated_bytes": 3861657600,
+      "files": 555,
+      "checkpoint_files": 18,
+      "checkpoint_bytes": 70216570
+    },
+    "bridge-v2-owned/runs/arm-to-locomotion-20261105": {
+      "logical_bytes": 666244180,
+      "unique_allocated_bytes": 666546688,
+      "files": 142,
+      "checkpoint_files": 1,
+      "checkpoint_bytes": 4577
+    },
+    "bridge-v2-owned/runs/m38b-rotation-20261103": {
+      "logical_bytes": 1229219565,
+      "unique_allocated_bytes": 1229638144,
+      "files": 191,
+      "checkpoint_files": 4,
+      "checkpoint_bytes": 4205032
+    },
+    "bridge-v2-owned/runs/conditional-adapter-20261105": {
+      "logical_bytes": 2178336454,
+      "unique_allocated_bytes": 2179478528,
+      "files": 530,
+      "checkpoint_files": 22,
+      "checkpoint_bytes": 37444006
+    },
+    "bridge-v2-owned/runs/issue21-alpha-cross-20261031A": {
+      "logical_bytes": 1754082821,
+      "unique_allocated_bytes": 1754823168,
+      "files": 261,
+      "checkpoint_files": 12,
+      "checkpoint_bytes": 87261475
+    },
+    "bridge-v2-owned/runs/issue21-accumulated-20261030A": {
+      "logical_bytes": 24965983,
+      "unique_allocated_bytes": 25075712,
+      "files": 73,
+      "checkpoint_files": 2,
+      "checkpoint_bytes": 161918
+    },
+    "bridge-v2-owned/runs/issue-13-99d2409c72cbc8bd": {
+      "logical_bytes": 94070491,
+      "unique_allocated_bytes": 94839808,
+      "files": 288,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/issue21-locomotion-audit-20261030A": {
+      "logical_bytes": 63010644,
+      "unique_allocated_bytes": 63162368,
+      "files": 75,
+      "checkpoint_files": 0,
+      "checkpoint_bytes": 0
+    },
+    "bridge-v2-owned/runs/m3-continuous-body-20261031A": {
+      "logical_bytes": 1075766519,
+      "unique_allocated_bytes": 1076439040,
+      "files": 221,
+      "checkpoint_files": 4,
+      "checkpoint_bytes": 46250369
+    },
+    "bridge-v2-owned/runs/issue21-directionteacher-20261030T031000Z": {
+      "logical_bytes": 8175033,
+      "unique_allocated_bytes": 8244224,
+      "files": 39,
+      "checkpoint_files": 1,
+      "checkpoint_bytes": 77112
+    },
+    "bridge-v2-owned/runs/transition-curriculum-20261104": {
+      "logical_bytes": 4787011843,
+      "unique_allocated_bytes": 4788882432,
+      "files": 601,
+      "checkpoint_files": 17,
+      "checkpoint_bytes": 52878699
+    }
+  },
+  "wall_s": 442.00690484201186,
+  "modified_or_deleted_assets": 0
+}

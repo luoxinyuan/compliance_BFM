@@ -26,7 +26,7 @@ def study(e,m,contract,out):
   joint=mujoco.mj_name2id(model,mujoco.mjtObj.mjOBJ_JOINT,name)
   assert joint>=0;ranges.append(model.jnt_range[joint].tolist())
  contract['safe_execution_v1']=dict(version=VERSION,ankle_target_inset_rad=.05,handoff_s=.35,joint_ranges=ranges,metadata_key=KEY)
- old,_=factory(compile=False);agent,_=factory(compile=False);ordered(agent)
+ old,_=factory(compile=False);agent,_=factory(compile=False);ordered(agent,record_gradients=False)
  assert tree_digest(old._model.state_dict())==tree_digest(agent._model.state_dict())
  transform=SafeAction(contract,ranges,'cuda');install(agent._model,m,transform)
  write(out/'safe-action-contract.json',dict(version=VERSION,q_PD_ankle_inset_rad=.05,
@@ -83,6 +83,9 @@ def study(e,m,contract,out):
    print('SAFE_PAIR',result['source'],kind,result['boundary'],flush=True)
  # Qualification never lowers original physical boundaries or native quality guards.
  qualified=True;reasons=[];bad_old=0;bad_safe=0
+ hashes={x['parent_id']:x.get('prefix_sha256') for x in results if x['kind']=='native_mean'}
+ if len(hashes)!=30 or len(set(hashes.values()))!=30:
+  qualified=False;reasons.append(dict(reason='insufficient_independent_actual_source_prefixes',actual=len(set(hashes.values()))))
  for g in groups:
   rr=[x for x in results if x['parent_id']==g['spec']['parent_id']]
   if len(rr)!=3 or any('source_failure' in x for x in rr):qualified=False;reasons.append(dict(parent=g['spec']['parent_id'],reason='source_qualification_missing'));continue

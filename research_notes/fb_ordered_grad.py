@@ -52,11 +52,12 @@ def update_discriminator(self, expert_obs, expert_z, train_obs, train_z, grad_pe
     return result
 
 
-def install(agent):
+def install(agent, record_gradients=True):
     assert not getattr(agent, '_ordered_discriminator_installed', False)
     agent.update_discriminator = types.MethodType(update_discriminator, agent)
     agent._ordered_discriminator_installed = True
     agent._repair_events = []
+    if not record_gradients:return agent
     # Compact exact pre-step gradients for every participating optimizer.
     from diagnostic_fb_resume import tree_digest
     names = {id(p): n for n, p in agent._model.named_parameters()}

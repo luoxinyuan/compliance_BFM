@@ -1,0 +1,423 @@
+{
+  "status": "matched_archive_support",
+  "pairs": [
+    {
+      "parent": "1d3ee72c35d3",
+      "matched": true,
+      "before": {
+        "file": "1d3ee72c35d3-i0.json.gz",
+        "condition": {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.05822749726581117,
+          "ramp": 1.06547120191901,
+          "onset": 6.8,
+          "release": 9.541529959606285,
+          "end": 13.541529959606285,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "goal_arm5",
+          "source_until": 6.2,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "deceleration": 0.0,
+          "demand_family": "near",
+          "source_profile": {
+            "arm_fraction": 0.9533417182007679,
+            "pulse_fraction": 0.074057500371686,
+            "pulse_duration": 0.37214969757903044,
+            "phase_offset": 0.02536253503091035,
+            "phase_rate": 0.9505708499869073
+          },
+          "parent_id": "1d3ee72c35d3d6564123f03d1c6002ef910b8622519d0e37d82f7f94451c0e57",
+          "source_parent_id": "365e51d28ba03bf6c850ba04275d519670dc720c172cf748f669da67104813f3",
+          "partner_parent_id": "12c34613388b2b710b3b97969bb4a4cd8a975ae01ac608116094803448e19508",
+          "common_prefix_parent_id": "1d3ee72c35d3d6564123f03d1c6002ef910b8622519d0e37d82f7f94451c0e57",
+          "requested_average_speed": 0.05464952704581614,
+          "handoff_time": 6.19999999999989
+        },
+        "source": "goal_arm5",
+        "length_s": 7.36000000000083,
+        "optimized_discounted_return": -12.857667953649077,
+        "stage_return": {
+          "precontact": -0.0031268009332182326,
+          "startup": -4.2205451885236505,
+          "moving": -0.32667919066550033,
+          "hold": -8.29961077980667,
+          "released": -0.007705993720029835
+        },
+        "discounted_terms": {
+          "force": -12.034630266042027,
+          "tracking": -0.17728450678774701,
+          "uncapped": -0.6073963049931953,
+          "relative_velocity": -0.02217804884129862,
+          "heading": -0.003407607924283862,
+          "slip": -0.0014354462653708878,
+          "tilt": 0.0,
+          "continuity": -0.0027097643468116284,
+          "soft_prior": 0.0,
+          "idle": -0.008626008448335564
+        },
+        "error_cm": 14.649578527651968,
+        "force_RMS_N": 9.495279435289579,
+        "quality": {
+          "loaded_slip_peak": 0.14161822543137154,
+          "tilt_peak": 5.158252819230538,
+          "q_PD_step_peak": 0.2021348774433136,
+          "boundary": null
+        },
+        "reconstruction_max_error": 0.0
+      },
+      "after": {
+        "file": "1d3ee72c35d3-i48.json.gz",
+        "condition": {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.05822749726581117,
+          "ramp": 1.06547120191901,
+          "onset": 6.8,
+          "release": 9.541529959606285,
+          "end": 13.541529959606285,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "goal_arm5",
+          "source_until": 6.2,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "deceleration": 0.0,
+          "demand_family": "near",
+          "source_profile": {
+            "arm_fraction": 0.9533417182007679,
+            "pulse_fraction": 0.074057500371686,
+            "pulse_duration": 0.37214969757903044,
+            "phase_offset": 0.02536253503091035,
+            "phase_rate": 0.9505708499869073
+          },
+          "parent_id": "1d3ee72c35d3d6564123f03d1c6002ef910b8622519d0e37d82f7f94451c0e57",
+          "source_parent_id": "365e51d28ba03bf6c850ba04275d519670dc720c172cf748f669da67104813f3",
+          "partner_parent_id": "12c34613388b2b710b3b97969bb4a4cd8a975ae01ac608116094803448e19508",
+          "common_prefix_parent_id": "1d3ee72c35d3d6564123f03d1c6002ef910b8622519d0e37d82f7f94451c0e57",
+          "requested_average_speed": 0.05464952704581614,
+          "handoff_time": 6.19999999999989
+        },
+        "source": "goal_arm5",
+        "length_s": 7.36000000000083,
+        "optimized_discounted_return": -0.7137514462583319,
+        "stage_return": {
+          "precontact": -0.0012722102958378197,
+          "startup": -0.28309895839808324,
+          "moving": -0.02414498212326415,
+          "hold": -0.40218026439138355,
+          "released": -0.0030550310497637722
+        },
+        "discounted_terms": {
+          "force": -0.6076798603947831,
+          "tracking": -0.0033192136783582577,
+          "uncapped": -0.05144754826804607,
+          "relative_velocity": -0.02611493230396038,
+          "heading": -0.018827899587149824,
+          "slip": -7.288587590012227e-05,
+          "tilt": 0.0,
+          "continuity": -0.0031840347379684373,
+          "soft_prior": 0.0,
+          "idle": -0.0031050714121666234
+        },
+        "error_cm": 1.9616969323364357,
+        "force_RMS_N": 2.1005468382284778,
+        "quality": {
+          "loaded_slip_peak": 0.006277693416179955,
+          "tilt_peak": 4.212252448763673,
+          "q_PD_step_peak": 0.10709847509860992,
+          "boundary": null
+        },
+        "reconstruction_max_error": 0.0
+      },
+      "quality_unambiguous_better": 1,
+      "reward_orders_better_feedback": true
+    },
+    {
+      "parent": "3ffd2fc10497",
+      "matched": true,
+      "before": {
+        "file": "3ffd2fc10497-i0.json.gz",
+        "condition": {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.6206981134464213,
+          "ramp": 2.821355061120097,
+          "onset": 5.2,
+          "release": 10.069369208444623,
+          "end": 14.069369208444623,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.4,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "deceleration": 0.0,
+          "demand_family": "long",
+          "source_profile": {
+            "arm_fraction": 0.8664829884643932,
+            "pulse_fraction": 0.04374387755596745,
+            "pulse_duration": 0.45000940926244304,
+            "phase_offset": -0.06454971550547237,
+            "phase_rate": 1.0663427093200029
+          },
+          "parent_id": "3ffd2fc10497db9d0f515b12049126172baf72844049750c673b37e209df2275",
+          "source_parent_id": "b37819587e21bebe501ea97d48e1eff1142df26d614ce4a0db025e7594ad864f",
+          "partner_parent_id": "5ab9f3b85b62faa2fd78caf063cd2485d7d4006c2377bc7f74c5c0d20625252d",
+          "common_prefix_parent_id": "3ffd2fc10497db9d0f515b12049126172baf72844049750c673b37e209df2275",
+          "requested_average_speed": 0.22,
+          "handoff_time": 4.399999999999928
+        },
+        "source": "standing",
+        "length_s": 9.680000000000874,
+        "optimized_discounted_return": -20.758628640143737,
+        "stage_return": {
+          "precontact": -0.0003264824329770447,
+          "startup": -1.1519899870029222,
+          "moving": -10.275078503278666,
+          "hold": -9.309750414933534,
+          "released": -0.02148325249561276
+        },
+        "discounted_terms": {
+          "force": -16.962767219478383,
+          "tracking": -1.8531316309392938,
+          "uncapped": -1.5775630984280644,
+          "relative_velocity": -0.18061650142882868,
+          "heading": -0.1050255521841164,
+          "slip": -0.03917031958271515,
+          "tilt": 0.0,
+          "continuity": -0.017894174337779234,
+          "soft_prior": 0.0,
+          "idle": -0.02246014376454259
+        },
+        "error_cm": 38.286269355963626,
+        "force_RMS_N": 9.11584256711277,
+        "quality": {
+          "loaded_slip_peak": 0.6300314041331293,
+          "tilt_peak": 8.173840482930657,
+          "q_PD_step_peak": 0.9716628789901733,
+          "boundary": null
+        },
+        "reconstruction_max_error": 0.0
+      },
+      "after": {
+        "file": "3ffd2fc10497-i48.json.gz",
+        "condition": {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.6206981134464213,
+          "ramp": 2.821355061120097,
+          "onset": 5.2,
+          "release": 10.069369208444623,
+          "end": 14.069369208444623,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.4,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "deceleration": 0.0,
+          "demand_family": "long",
+          "source_profile": {
+            "arm_fraction": 0.8664829884643932,
+            "pulse_fraction": 0.04374387755596745,
+            "pulse_duration": 0.45000940926244304,
+            "phase_offset": -0.06454971550547237,
+            "phase_rate": 1.0663427093200029
+          },
+          "parent_id": "3ffd2fc10497db9d0f515b12049126172baf72844049750c673b37e209df2275",
+          "source_parent_id": "b37819587e21bebe501ea97d48e1eff1142df26d614ce4a0db025e7594ad864f",
+          "partner_parent_id": "5ab9f3b85b62faa2fd78caf063cd2485d7d4006c2377bc7f74c5c0d20625252d",
+          "common_prefix_parent_id": "3ffd2fc10497db9d0f515b12049126172baf72844049750c673b37e209df2275",
+          "requested_average_speed": 0.22,
+          "handoff_time": 4.399999999999928
+        },
+        "source": "standing",
+        "length_s": 9.680000000000874,
+        "optimized_discounted_return": -22.522590300897367,
+        "stage_return": {
+          "precontact": -0.000340715785628229,
+          "startup": -1.3928491458727117,
+          "moving": -10.564792346028435,
+          "hold": -10.55730616834505,
+          "released": -0.0073019248655576165
+        },
+        "discounted_terms": {
+          "force": -17.16203959372852,
+          "tracking": -3.208014653335955,
+          "uncapped": -1.8181368730273801,
+          "relative_velocity": -0.13968097424813947,
+          "heading": -0.16300861252981338,
+          "slip": -0.011820292393253704,
+          "tilt": 0.0,
+          "continuity": -0.012763706768562397,
+          "soft_prior": 0.0,
+          "idle": -0.007125594865773409
+        },
+        "error_cm": 51.30868873710783,
+        "force_RMS_N": 9.16077907890933,
+        "quality": {
+          "loaded_slip_peak": 0.41212775297618776,
+          "tilt_peak": 5.428810397565888,
+          "q_PD_step_peak": 0.8822727203369141,
+          "boundary": null
+        },
+        "reconstruction_max_error": 0.0
+      },
+      "quality_unambiguous_better": null,
+      "reward_orders_better_feedback": null
+    },
+    {
+      "parent": "42f40dfe854d",
+      "matched": true,
+      "before": {
+        "file": "42f40dfe854d-i0.json.gz",
+        "condition": {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.5037277320316077,
+          "ramp": 3.358184880210718,
+          "onset": 5.9,
+          "release": 12.170750857021577,
+          "end": 16.170750857021577,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 5.1,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "deceleration": 0.0,
+          "demand_family": "long",
+          "source_profile": {
+            "arm_fraction": 0.8694548543981717,
+            "pulse_fraction": 0.02152009193758801,
+            "pulse_duration": 0.6136116101446686,
+            "phase_offset": 0.07347319102748417,
+            "phase_rate": 1.086512882042905
+          },
+          "parent_id": "42f40dfe854dead8deabbf40b494cd08f2e11a10ccd73d6940762f3b4f51a7f5",
+          "source_parent_id": "084364e466dde78805ae0173abc416ac5e9fc5e3cdbcae835e55478742757baa",
+          "partner_parent_id": "7c6491c3816017a4c72603a89fa5323a70c4de13e967df0adb1be96d19025b82",
+          "common_prefix_parent_id": "42f40dfe854dead8deabbf40b494cd08f2e11a10ccd73d6940762f3b4f51a7f5",
+          "requested_average_speed": 0.15,
+          "handoff_time": 5.0999999999999135
+        },
+        "source": "standing",
+        "length_s": 11.080000000001153,
+        "optimized_discounted_return": -19.782121973503596,
+        "stage_return": {
+          "precontact": -0.00029913227887351426,
+          "startup": -0.5738291216121911,
+          "moving": -9.91448110134838,
+          "hold": -9.283567673024717,
+          "released": -0.009944945239404009
+        },
+        "discounted_terms": {
+          "force": -17.922785806182592,
+          "tracking": -0.34668797729532436,
+          "uncapped": -1.031579076412553,
+          "relative_velocity": -0.13263503003230387,
+          "heading": -0.26937085105836195,
+          "slip": -0.04025135739504683,
+          "tilt": 0.0,
+          "continuity": -0.02913483432624413,
+          "soft_prior": 0.0,
+          "idle": -0.009677040801141868
+        },
+        "error_cm": 15.24420060160171,
+        "force_RMS_N": 8.577902031412373,
+        "quality": {
+          "loaded_slip_peak": 0.7397655384867895,
+          "tilt_peak": 8.785561810592084,
+          "q_PD_step_peak": 1.1810461282730103,
+          "boundary": null
+        },
+        "reconstruction_max_error": 0.0
+      },
+      "after": {
+        "file": "42f40dfe854d-i48.json.gz",
+        "condition": {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.5037277320316077,
+          "ramp": 3.358184880210718,
+          "onset": 5.9,
+          "release": 12.170750857021577,
+          "end": 16.170750857021577,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 5.1,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "deceleration": 0.0,
+          "demand_family": "long",
+          "source_profile": {
+            "arm_fraction": 0.8694548543981717,
+            "pulse_fraction": 0.02152009193758801,
+            "pulse_duration": 0.6136116101446686,
+            "phase_offset": 0.07347319102748417,
+            "phase_rate": 1.086512882042905
+          },
+          "parent_id": "42f40dfe854dead8deabbf40b494cd08f2e11a10ccd73d6940762f3b4f51a7f5",
+          "source_parent_id": "084364e466dde78805ae0173abc416ac5e9fc5e3cdbcae835e55478742757baa",
+          "partner_parent_id": "7c6491c3816017a4c72603a89fa5323a70c4de13e967df0adb1be96d19025b82",
+          "common_prefix_parent_id": "42f40dfe854dead8deabbf40b494cd08f2e11a10ccd73d6940762f3b4f51a7f5",
+          "requested_average_speed": 0.15,
+          "handoff_time": 5.0999999999999135
+        },
+        "source": "standing",
+        "length_s": 11.080000000001153,
+        "optimized_discounted_return": -16.104605375189752,
+        "stage_return": {
+          "precontact": -0.000302696148163921,
+          "startup": -0.564074497033832,
+          "moving": -9.011487640008887,
+          "hold": -6.515677498851721,
+          "released": -0.01306304314711826
+        },
+        "discounted_terms": {
+          "force": -14.624041857589201,
+          "tracking": -0.20113810954788902,
+          "uncapped": -0.774945945767613,
+          "relative_velocity": -0.11851448274052316,
+          "heading": -0.3142889997662133,
+          "slip": -0.03202480285999164,
+          "tilt": 0.0,
+          "continuity": -0.026847631963981374,
+          "soft_prior": 0.0,
+          "idle": -0.012803544954310337
+        },
+        "error_cm": 11.28452101865804,
+        "force_RMS_N": 7.7113493850421975,
+        "quality": {
+          "loaded_slip_peak": 0.6245595945493482,
+          "tilt_peak": 9.323328658743023,
+          "q_PD_step_peak": 1.2447874546051025,
+          "boundary": null
+        },
+        "reconstruction_max_error": 0.0
+      },
+      "quality_unambiguous_better": null,
+      "reward_orders_better_feedback": null
+    }
+  ],
+  "unambiguous_matched_pairs": 1,
+  "actual_reward_source_sha256": "1ed618cb2581391fedb8064b7b743faeb96e3ab6d72db18307f76fb1f554618c",
+  "limitations": "Finite archive; mixed-quality Pareto pairs do not prove reward ranking. No new force cap/reward or training data.",
+  "formal_RL_launch_allowed": false
+}

@@ -8,7 +8,7 @@ side=S/'jobs'/(a.name+'.json');assert not side.exists()
 lock=(P/'.dual-track-gpu0.lock').open('a+');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
 prior=[json.loads(v.read_text()) for v in (S/'jobs').glob('*.json')]
 assert not any(v.get('status')=='running' for v in prior)
-spent=sum(v.get('elapsed_s',v['timeout_s']) for v in prior if v['category']=='F-RL-v2')
+spent=1200+sum(v.get('elapsed_s',v['timeout_s']) for v in prior if v['category']=='F-RL-v2')
 timeout=min(7200 if a.smoke else 70000,172800-spent-1800);assert timeout>60
 assert shutil.disk_usage(S).free>100*(1<<30)
 gpu=subprocess.check_output(['nvidia-smi','-i','0','--query-gpu=name,uuid,memory.used','--format=csv,noheader'],text=True)

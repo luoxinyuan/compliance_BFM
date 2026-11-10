@@ -214,8 +214,6 @@ def train(e,m,contract,out,args):
         stats=[];probes=[];control_records=[];physical_records=[];t0=time.monotonic()
         for j in range(CFG['batch']):
             if task.done:
-                completed_episodes.append(dict(parent_id=task.spec['parent_id'],family=task.spec['demand_family'],source=task.spec['source'],actual_decisions=len(task.stats),return_=task.episode_return,boundary=copy.deepcopy(task.boundary)))
-                write(out/'completed-episodes.json',completed_episodes)
                 episode+=1;reset_source(f'train{episode}')
             x=torch.cat([task.student_features(),task.features()],-1).detach().clone()
             arrays['pre_mask'].append(task.precontact_eligible())
@@ -226,6 +224,11 @@ def train(e,m,contract,out,args):
             lp=dist.log_prob(raw).sum(-1);v=net.value(x)
             phys_start=len(task.physics);ctrl_start=len(task.controls)
             _,reward,done,st=task.step(raw)
+            if done:
+                completed_episodes.append(dict(parent_id=task.spec['parent_id'],family=task.spec['demand_family'],source=task.spec['source'],actual_decisions=len(task.stats),return_=task.episode_return,boundary=copy.deepcopy(task.boundary)))
+                write(out/'completed-episodes.json',completed_episodes)
+                if task.boundary is not None:
+                    failure_dir=out/'physical-failures';failure_dir.mkdir(exist_ok=True);task.save(failure_dir)
             control_records.extend(dict(parent_id=task.spec['parent_id'],**{k:c[k] for k in ('time','executed_z','action','q_PD','pre_qpos','pre_qvel','actual_duration_s','reward_terms','reward_integral')}) for c in task.controls[ctrl_start:])
             physical_records.extend(dict(parent_id=task.spec['parent_id'],**{k:r[k] for k in ('time','force_time','active','force','error','qpos','qvel','support','feet_xyz','torque','joint_limit_excess_max_rad','stage_loaded_slip_mps','pelvis_matrix','torso_matrix')}) for r in task.physics[phys_start:])
             from transition_env import phase
