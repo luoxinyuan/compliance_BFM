@@ -55,3 +55,8 @@ P0-B采集/恢复校验合计8179实际online transitions≤8192，固定16updat
 ### 用户追加工程加速（2026-11-10）
 
 见[独立加速记录](FRL_EFFICIENCY_RESULTS.md)。CPU无损写盘基准和4项回归已完成；完整物理一致性与采样profile尚待单卡排程。不更改当前正式A/B源码/配置/数量。并行环境未验证，未报虚假训练FPS。
+
+
+### 并行采样原型准备（2026-11-11）
+
+[1/2/4进程真实物理协议](FRL_PARALLEL_SAMPLING_PROTOCOL.md)与代码已准备，四项CPU回归通过；GPU性能尚未知，未改当前A/B。原型保持worker完整历史/solver，batch输出仅影子，实际执行canonical row；成本/负例单列。
