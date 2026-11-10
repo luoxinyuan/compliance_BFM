@@ -49,7 +49,7 @@ def run(e,m,c,out,args):
    task.step(z/16)
   p=task.physics;cc=task.controls
   assert all(not r['active'] and np.array_equal(np.asarray(r['force']),np.zeros(3)) for r in p)
-  with gzip.open(out/(kind+'-actual.json.gz'),'wt') as f:json.dump(dict(initial=task.initial,physics=p,controls=cc,targets=targets,source=source,spec=s,boundary=task.boundary),f)
+  with gzip.open(out/(kind+'-actual.json.gz'),'wt') as f:json.dump(dict(initial=task.initial,source_prefix=task.prefix_data,physics=p,controls=cc,targets=targets,source=source,spec=s,boundary=task.boundary),f)
   def measure(part,controls):
    if not part:return None
    root=np.array([r['root'] for r in part]);qs=np.array([r['qpos'] for r in part]);q=qs[:,qadr]

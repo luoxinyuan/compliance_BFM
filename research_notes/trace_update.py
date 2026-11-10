@@ -26,6 +26,8 @@ class Trace(TorchDispatchMode):
  def __init__(self,out,expected=None):
   super().__init__();self.out=out;self.rows=[];self.phase='prepare';self.first=None
   self.expected=json.loads(expected.read_text()) if expected else None
+  self.unique=None
+  self.pool=set((v['phase'],v['op'],o.get('hash'),str(o['shape'])) for v in self.expected or [] for o in v['outputs'] if 'empty' not in v['op'])
  def __torch_dispatch__(self,func,types,args=(),kwargs=None):
   kwargs=kwargs or {};result=func(*args,**kwargs)
   row=dict(index=len(self.rows),phase=self.phase,op=str(func),outputs=[signature(t) for t in leaves(result)])
@@ -42,6 +44,11 @@ class Trace(TorchDispatchMode):
     self.first=dict(actual=row,reference=ref,inputs=[signature(t) for t in leaves((args,kwargs))])
     torch.save(dict(inputs=cpu((args,kwargs)),outputs=cpu(result)),self.out/'first-difference-tensors.pt')
     write(self.out/'first-difference.json',self.first)
+  if self.expected is not None and self.unique is None and 'empty' not in row['op'] and any((row['phase'],row['op'],o.get('hash'),str(o['shape'])) not in self.pool for o in row['outputs']):
+   self.unique=dict(row=row,inputs=[signature(t) for t in leaves((args,kwargs))],non_tensor_arguments=repr([v for v in tree_flatten((args,kwargs))[0] if not torch.is_tensor(v)]))
+   torch.save(dict(inputs=cpu((args,kwargs)),outputs=cpu(result)),self.out/'first-unique-tensors.pt');write(self.out/'first-unique.json',self.unique)
+  if self.expected is not None and row['phase']=='discriminator_optimizer.backward' and row['op']=='aten.add.Tensor' and any(t.ndim==2 and tuple(t.shape)==(1024,783) for t in leaves(result)):
+   torch.save(dict(inputs=cpu((args,kwargs)),outputs=cpu(result),row=row),self.out/('disc-matrix-add-'+str(row['index'])+'.pt'))
   self.rows.append(row);return result
 
 def instrument(agent,tr,out):
