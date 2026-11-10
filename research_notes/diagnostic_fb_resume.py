@@ -14,6 +14,25 @@ from dual_track_runtime import TrainingBranch
 from dual_track_high import write,sha
 from diagnostic_frozen import portable
 
+def initial_noise_audit(m,contract,out):
+ """Same archived input only, before update0; not a physical noise ablation."""
+ import gzip
+ old=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/dual-track-formal-20261109/runs/fb-1m')
+ ep=json.load(gzip.open(old/'failures/fb-0.json.gz','rt'));rows=[]
+ offset=torch.tensor(contract['q_PD_offset'],device='cuda');scale=torch.tensor(contract['q_PD_scale'],device='cuda')
+ bound=contract['clip']/contract['normalize_ratio'];ankle=contract['dof_names'].index('left_ankle_roll_joint')
+ for c in ep['control']:
+  obs={k:torch.tensor(v,device='cuda',dtype=torch.float32) for k,v in c['bfm_obs'].items()}
+  z=torch.tensor(c['executed_z'],device='cuda',dtype=torch.float32)
+  mean=m.act(obs,z,mean=True);qpd=offset+mean.clamp(-bound,bound)*scale
+  rows.append(dict(time=c['time'],mean_action_ankle=float(mean[0,ankle]),sample_action_ankle=c['action'][ankle],
+     mean_qpd_ankle=float(qpd[0,ankle]),sample_qpd_ankle=c['q_PD'][ankle],
+     same_state_action_max_delta=float((mean-torch.tensor(c['action'],device='cuda')).abs().max())))
+ write(out/'old-preupdate-same-state-noise.json',dict(rows=rows,
+   scope='episode0 ended before first FB update; frozen original actor reproduces initialization mean source, no physics counterfactual',
+   postupdate_mean_not_recoverable=True))
+
+
 def tree_digest(obj):
  h=hashlib.sha256()
  def visit(v):
@@ -108,6 +127,7 @@ def fingerprints(agent,c,updates,metrics=None):
 def run(e,m,contract,out,args):
  start=time.monotonic();stop=NormalStop(out)
  if args.mode=='d2control':
+  initial_noise_audit(m,contract,out)
   agent,init=factory(compile=False);c=Collector(e,m,contract,agent,2048);c.bootstrap_sources()
   collect_to(c,1024,stop)
   stat=run_updates(agent,c,0,1,compile=False);updates=1
