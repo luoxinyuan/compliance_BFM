@@ -30,6 +30,12 @@ def main():
  p.add_argument('--output',type=Path,required=True);p.add_argument('--package',type=Path)
  ARGS=p.parse_args();ARGS.runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
+ if ARGS.mode in ('d2control','d2resume'):
+  # Exact new-process training regression needs deterministic backward kernels,
+  # not just identical RNG. This affects only the new engineering entry.
+  os.environ['CUBLAS_WORKSPACE_CONFIG']=':4096:8'
+  import torch
+  torch.use_deterministic_algorithms(True)
  ARGS.output.mkdir(parents=True,exist_ok=False)
  (ARGS.output/'launch.json').write_text(json.dumps(dict(mode=ARGS.mode,runtime=ARGS.runtime,pid=os.getpid(),start=time.time()),indent=2))
  os.environ.update(CLEAN_KIND='direct',P4000_CANONICAL_ROW_ACTOR='1',BFM_RECORD_NOMINAL_DIAGNOSTIC='0',BFM_RECOVERY_OUTPUT=str(ARGS.output))

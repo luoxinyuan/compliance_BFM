@@ -54,6 +54,7 @@ def publish(path,agent,c,updates,runtime,progress,reason,previous=None):
  assert not path.exists();pending=path.parent/('.pending-'+uuid.uuid4().hex);begun=time.monotonic()
  save_package(pending,agent,c,updates,runtime)
  extra=dict(progress=copy.deepcopy(progress),reason=reason,episode_rows=copy.deepcopy(c.episode_rows),
+  numerical_backend=dict(deterministic_algorithms=torch.are_deterministic_algorithms_enabled(),cublas_workspace=os.environ.get('CUBLAS_WORKSPACE_CONFIG')),
   task_totals={k:getattr(c.task,k) for k in ['total_prefill','total_steps','total_controls','total_episodes','source_physics_total']},
   source_ledger=copy.deepcopy(c.source_ledger),rng=global_rng(),task_rng=copy.deepcopy(c.task.rng.bit_generator.state),
   physical=cpu(portable(c.task)),actual_last_z=cpu(c.task.last_command),physics_rng=copy.deepcopy(c.task.physics_rng))
@@ -76,12 +77,14 @@ def publish(path,agent,c,updates,runtime,progress,reason,previous=None):
  fd=os.open(path.parent,os.O_DIRECTORY);os.fsync(fd);os.close(fd)
  write(path.parent/'latest-complete.json',dict(package=path.name,manifest_sha256=sha(path/'manifest.json'),reason=reason,progress=progress))
  fsync_file(path.parent/'latest-complete.json')
+ fd=os.open(path.parent,os.O_DIRECTORY);os.fsync(fd);os.close(fd)
  return manifest
 
 def restore(path,e,m,c):
  agent,col,meta=load_package(path,e,m,c,physical=True)
  assert meta['checkpoint_protocol']=='ISSUE57_ATOMIC_FULL_V2' and meta['complete']
  x=torch.load(path/'continuation.pt',map_location='cpu',weights_only=False)
+ assert x['numerical_backend']==dict(deterministic_algorithms=torch.are_deterministic_algorithms_enabled(),cublas_workspace=os.environ.get('CUBLAS_WORKSPACE_CONFIG'))
  col.episode_rows=x['episode_rows'];col.source_ledger=x['source_ledger']
  for k,v in x['task_totals'].items():setattr(col.task,k,v)
  assert torch.equal(col.task.last_command.cpu(),x['actual_last_z'])
