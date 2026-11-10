@@ -18,6 +18,8 @@ def study(e,m,c,out):
  (out/'backend-prefix').mkdir();backend(e,m,out/'backend-prefix')
  if ARGS.mode=='d1':
   from diagnostic_frozen import run
+ elif ARGS.mode=='d1substeps':
+  from diagnostic_actual_substeps import run
  elif ARGS.mode=='d2audit':
   from diagnostic_fb_audit import run
  else:
@@ -26,7 +28,7 @@ def study(e,m,c,out):
 
 def main():
  global ARGS
- p=argparse.ArgumentParser();p.add_argument('--mode',choices=['d1','d2audit','d2control','d2resume'],required=True)
+ p=argparse.ArgumentParser();p.add_argument('--mode',choices=['d1','d1substeps','d2audit','d2control','d2resume'],required=True)
  p.add_argument('--output',type=Path,required=True);p.add_argument('--package',type=Path)
  ARGS=p.parse_args();ARGS.runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
  assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
@@ -41,5 +43,14 @@ def main():
  os.environ.update(CLEAN_KIND='direct',P4000_CANONICAL_ROW_ACTOR='1',BFM_RECORD_NOMINAL_DIAGNOSTIC='0',BFM_RECOVERY_OUTPUT=str(ARGS.output))
  os.chdir(ARGS.output)
  import m10_stage,m10_physics
- m10_physics.OUT=ARGS.output;m10_stage.run_study=study;m10_physics.main()
+ m10_physics.OUT=ARGS.output;m10_stage.run_study=study
+ started=time.time()
+ try:
+  m10_physics.main()
+ except BaseException as exc:
+  import traceback
+  (ARGS.output/'entry-failure.json').write_text(json.dumps(dict(status='failed',error_type=type(exc).__name__,error=str(exc),traceback=traceback.format_exc(),runtime=ARGS.runtime),indent=2))
+  raise
+ finally:
+  (ARGS.output/'entry-finish.json').write_text(json.dumps(dict(runtime=ARGS.runtime,started=started,finished=time.time(),pid=os.getpid()),indent=2))
 if __name__=='__main__':main()
