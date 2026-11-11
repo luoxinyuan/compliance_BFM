@@ -1,0 +1,625 @@
+{
+  "status": "completed_with_numeric_helper_limitation",
+  "ibfm_antipode": {
+    "norm": 50.26551818847656,
+    "expected": 50.26548245743669,
+    "absolute_error": 3.573103987264403e-05,
+    "criterion": 1e-05,
+    "passed": false,
+    "finite": true
+  },
+  "joint_order_exact": true,
+  "PD_differences": [
+    {
+      "joint": "left_hip_pitch_joint",
+      "original_effective_raw_scale": 1.7533073425292969,
+      "pbfm_effective_raw_scale": 1.7533072925575108,
+      "original_kp": 99.09843,
+      "pbfm_kp": 99.09843,
+      "ibfm_kp": 99.09843,
+      "original_kd": 6.3088,
+      "pbfm_kd": 6.3088,
+      "ibfm_kd": 6.3088
+    },
+    {
+      "joint": "left_hip_roll_joint",
+      "original_effective_raw_scale": 1.7533073425292969,
+      "pbfm_effective_raw_scale": 1.7533072925575108,
+      "original_kp": 99.09843,
+      "pbfm_kp": 99.09843,
+      "ibfm_kp": 99.09843,
+      "original_kd": 6.3088,
+      "pbfm_kd": 6.3088,
+      "ibfm_kd": 6.3088
+    },
+    {
+      "joint": "left_hip_yaw_joint",
+      "original_effective_raw_scale": 2.737732172012329,
+      "pbfm_effective_raw_scale": 2.737732221913605,
+      "original_kp": 40.17924,
+      "pbfm_kp": 40.17924,
+      "ibfm_kp": 40.17924,
+      "original_kd": 2.55789,
+      "pbfm_kd": 2.55789,
+      "ibfm_kd": 2.55789
+    },
+    {
+      "joint": "left_knee_joint",
+      "original_effective_raw_scale": 1.7533073425292969,
+      "pbfm_effective_raw_scale": 1.7533072925575108,
+      "original_kp": 99.09843,
+      "pbfm_kp": 99.09843,
+      "ibfm_kp": 99.09843,
+      "original_kd": 6.3088,
+      "pbfm_kd": 6.3088,
+      "ibfm_kd": 6.3088
+    },
+    {
+      "joint": "left_ankle_pitch_joint",
+      "original_effective_raw_scale": 2.1928863525390625,
+      "pbfm_effective_raw_scale": 2.192886276917679,
+      "original_kp": 28.50125,
+      "pbfm_kp": 28.50125,
+      "ibfm_kp": 28.50125,
+      "original_kd": 1.81445,
+      "pbfm_kd": 1.81445,
+      "ibfm_kd": 1.81445
+    },
+    {
+      "joint": "left_ankle_roll_joint",
+      "original_effective_raw_scale": 2.1928863525390625,
+      "pbfm_effective_raw_scale": 2.192886276917679,
+      "original_kp": 28.50125,
+      "pbfm_kp": 28.50125,
+      "ibfm_kp": 28.50125,
+      "original_kd": 1.81445,
+      "pbfm_kd": 1.81445,
+      "ibfm_kd": 1.81445
+    },
+    {
+      "joint": "right_hip_pitch_joint",
+      "original_effective_raw_scale": 1.7533073425292969,
+      "pbfm_effective_raw_scale": 1.7533072925575108,
+      "original_kp": 99.09843,
+      "pbfm_kp": 99.09843,
+      "ibfm_kp": 99.09843,
+      "original_kd": 6.3088,
+      "pbfm_kd": 6.3088,
+      "ibfm_kd": 6.3088
+    },
+    {
+      "joint": "right_hip_roll_joint",
+      "original_effective_raw_scale": 1.7533073425292969,
+      "pbfm_effective_raw_scale": 1.7533072925575108,
+      "original_kp": 99.09843,
+      "pbfm_kp": 99.09843,
+      "ibfm_kp": 99.09843,
+      "original_kd": 6.3088,
+      "pbfm_kd": 6.3088,
+      "ibfm_kd": 6.3088
+    },
+    {
+      "joint": "right_hip_yaw_joint",
+      "original_effective_raw_scale": 2.737732172012329,
+      "pbfm_effective_raw_scale": 2.737732221913605,
+      "original_kp": 40.17924,
+      "pbfm_kp": 40.17924,
+      "ibfm_kp": 40.17924,
+      "original_kd": 2.55789,
+      "pbfm_kd": 2.55789,
+      "ibfm_kd": 2.55789
+    },
+    {
+      "joint": "right_knee_joint",
+      "original_effective_raw_scale": 1.7533073425292969,
+      "pbfm_effective_raw_scale": 1.7533072925575108,
+      "original_kp": 99.09843,
+      "pbfm_kp": 99.09843,
+      "ibfm_kp": 99.09843,
+      "original_kd": 6.3088,
+      "pbfm_kd": 6.3088,
+      "ibfm_kd": 6.3088
+    },
+    {
+      "joint": "right_ankle_pitch_joint",
+      "original_effective_raw_scale": 2.1928863525390625,
+      "pbfm_effective_raw_scale": 2.192886276917679,
+      "original_kp": 28.50125,
+      "pbfm_kp": 28.50125,
+      "ibfm_kp": 28.50125,
+      "original_kd": 1.81445,
+      "pbfm_kd": 1.81445,
+      "ibfm_kd": 1.81445
+    },
+    {
+      "joint": "right_ankle_roll_joint",
+      "original_effective_raw_scale": 2.1928863525390625,
+      "pbfm_effective_raw_scale": 2.192886276917679,
+      "original_kp": 28.50125,
+      "pbfm_kp": 28.50125,
+      "ibfm_kp": 28.50125,
+      "original_kd": 1.81445,
+      "pbfm_kd": 1.81445,
+      "ibfm_kd": 1.81445
+    },
+    {
+      "joint": "waist_yaw_joint",
+      "original_effective_raw_scale": 0.36666667461395264,
+      "pbfm_effective_raw_scale": 0.3666666666666667,
+      "original_kp": 300,
+      "pbfm_kp": 300.0,
+      "ibfm_kp": 40.17924,
+      "original_kd": 5,
+      "pbfm_kd": 5.0,
+      "ibfm_kd": 5.0
+    },
+    {
+      "joint": "waist_roll_joint",
+      "original_effective_raw_scale": 0.2083333283662796,
+      "pbfm_effective_raw_scale": 0.20833333333333331,
+      "original_kp": 300,
+      "pbfm_kp": 300.0,
+      "ibfm_kp": 28.50125,
+      "original_kd": 5,
+      "pbfm_kd": 5.0,
+      "ibfm_kd": 5.0
+    },
+    {
+      "joint": "waist_pitch_joint",
+      "original_effective_raw_scale": 0.2083333283662796,
+      "pbfm_effective_raw_scale": 0.20833333333333331,
+      "original_kp": 300,
+      "pbfm_kp": 300.0,
+      "ibfm_kp": 40.0,
+      "original_kd": 5,
+      "pbfm_kd": 5.0,
+      "ibfm_kd": 5.0
+    },
+    {
+      "joint": "left_shoulder_pitch_joint",
+      "original_effective_raw_scale": 2.1928870677948,
+      "pbfm_effective_raw_scale": 2.192887046317985,
+      "original_kp": 14.25062,
+      "pbfm_kp": 14.25062,
+      "ibfm_kp": 14.25062,
+      "original_kd": 0.90722,
+      "pbfm_kd": 0.90722,
+      "ibfm_kd": 0.90722
+    },
+    {
+      "joint": "left_shoulder_roll_joint",
+      "original_effective_raw_scale": 2.1928870677948,
+      "pbfm_effective_raw_scale": 2.192887046317985,
+      "original_kp": 14.25062,
+      "pbfm_kp": 14.25062,
+      "ibfm_kp": 14.25062,
+      "original_kd": 0.90722,
+      "pbfm_kd": 0.90722,
+      "ibfm_kd": 0.90722
+    },
+    {
+      "joint": "left_shoulder_yaw_joint",
+      "original_effective_raw_scale": 2.1928870677948,
+      "pbfm_effective_raw_scale": 2.192887046317985,
+      "original_kp": 14.25062,
+      "pbfm_kp": 14.25062,
+      "ibfm_kp": 14.25062,
+      "original_kd": 0.90722,
+      "pbfm_kd": 0.90722,
+      "ibfm_kd": 0.90722
+    },
+    {
+      "joint": "left_elbow_joint",
+      "original_effective_raw_scale": 2.1928870677948,
+      "pbfm_effective_raw_scale": 2.192887046317985,
+      "original_kp": 14.25062,
+      "pbfm_kp": 14.25062,
+      "ibfm_kp": 14.25062,
+      "original_kd": 0.90722,
+      "pbfm_kd": 0.90722,
+      "ibfm_kd": 0.90722
+    },
+    {
+      "joint": "left_wrist_roll_joint",
+      "original_effective_raw_scale": 2.1928870677948,
+      "pbfm_effective_raw_scale": 2.192887046317985,
+      "original_kp": 14.25062,
+      "pbfm_kp": 14.25062,
+      "ibfm_kp": 14.25062,
+      "original_kd": 0.90722,
+      "pbfm_kd": 0.90722,
+      "ibfm_kd": 0.90722
+    },
+    {
+      "joint": "left_wrist_pitch_joint",
+      "original_effective_raw_scale": 0.3725042939186096,
+      "pbfm_effective_raw_scale": 1.9451796126595775,
+      "original_kp": 16.77833,
+      "pbfm_kp": 8.61103,
+      "ibfm_kp": 8.61103,
+      "original_kd": 1.06814,
+      "pbfm_kd": 0.5482,
+      "ibfm_kd": 0.5482
+    },
+    {
+      "joint": "left_wrist_yaw_joint",
+      "original_effective_raw_scale": 0.3725042939186096,
+      "pbfm_effective_raw_scale": 1.9451796126595775,
+      "original_kp": 16.77833,
+      "pbfm_kp": 8.61103,
+      "ibfm_kp": 8.61103,
+      "original_kd": 1.06814,
+      "pbfm_kd": 0.5482,
+      "ibfm_kd": 0.5482
+    },
+    {
+      "joint": "right_shoulder_pitch_joint",
+      "original_effective_raw_scale": 2.1928870677948,
+      "pbfm_effective_raw_scale": 2.192887046317985,
+      "original_kp": 14.25062,
+      "pbfm_kp": 14.25062,
+      "ibfm_kp": 14.25062,
+      "original_kd": 0.90722,
+      "pbfm_kd": 0.90722,
+      "ibfm_kd": 0.90722
+    },
+    {
+      "joint": "right_shoulder_roll_joint",
+      "original_effective_raw_scale": 2.1928870677948,
+      "pbfm_effective_raw_scale": 2.192887046317985,
+      "original_kp": 14.25062,
+      "pbfm_kp": 14.25062,
+      "ibfm_kp": 14.25062,
+      "original_kd": 0.90722,
+      "pbfm_kd": 0.90722,
+      "ibfm_kd": 0.90722
+    },
+    {
+      "joint": "right_shoulder_yaw_joint",
+      "original_effective_raw_scale": 2.1928870677948,
+      "pbfm_effective_raw_scale": 2.192887046317985,
+      "original_kp": 14.25062,
+      "pbfm_kp": 14.25062,
+      "ibfm_kp": 14.25062,
+      "original_kd": 0.90722,
+      "pbfm_kd": 0.90722,
+      "ibfm_kd": 0.90722
+    },
+    {
+      "joint": "right_elbow_joint",
+      "original_effective_raw_scale": 2.1928870677948,
+      "pbfm_effective_raw_scale": 2.192887046317985,
+      "original_kp": 14.25062,
+      "pbfm_kp": 14.25062,
+      "ibfm_kp": 14.25062,
+      "original_kd": 0.90722,
+      "pbfm_kd": 0.90722,
+      "ibfm_kd": 0.90722
+    },
+    {
+      "joint": "right_wrist_roll_joint",
+      "original_effective_raw_scale": 2.1928870677948,
+      "pbfm_effective_raw_scale": 2.192887046317985,
+      "original_kp": 14.25062,
+      "pbfm_kp": 14.25062,
+      "ibfm_kp": 14.25062,
+      "original_kd": 0.90722,
+      "pbfm_kd": 0.90722,
+      "ibfm_kd": 0.90722
+    },
+    {
+      "joint": "right_wrist_pitch_joint",
+      "original_effective_raw_scale": 0.3725042939186096,
+      "pbfm_effective_raw_scale": 1.9451796126595775,
+      "original_kp": 16.77833,
+      "pbfm_kp": 8.61103,
+      "ibfm_kp": 8.61103,
+      "original_kd": 1.06814,
+      "pbfm_kd": 0.5482,
+      "ibfm_kd": 0.5482
+    },
+    {
+      "joint": "right_wrist_yaw_joint",
+      "original_effective_raw_scale": 0.3725042939186096,
+      "pbfm_effective_raw_scale": 1.9451796126595775,
+      "original_kp": 16.77833,
+      "pbfm_kp": 8.61103,
+      "ibfm_kp": 8.61103,
+      "original_kd": 1.06814,
+      "pbfm_kd": 0.5482,
+      "ibfm_kd": 0.5482
+    }
+  ],
+  "pbfm_helper_exact_cases": 32,
+  "ibfm_spherical_helper_tests": 2,
+  "ibfm_observation_dimensions": {
+    "history_actor": [
+      372
+    ],
+    "last_action": [
+      29
+    ],
+    "privileged_state": [
+      497
+    ],
+    "state": [
+      98
+    ]
+  },
+  "source_manifest": [
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "LICENSE",
+      "sha256": "3711f963c05d0be80d53e5923308a6dee31b203da23435c9cfb7c7b6e4dd5e19",
+      "bytes": 19346,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/LICENSE"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "README.md",
+      "sha256": "291ca8eed429ea74f838afe8bc3553db5c159c95fbe1cd77ddd55ed76855c2db",
+      "bytes": 8018,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/README.md"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "dd0b09dce17643492c44e5101f2ca2e9834889ed72961b6427779d0f130896d3",
+      "bytes": 2830,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/docs/ARCHITECTURE.md"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "docs/INFERENCE.md",
+      "sha256": "cd4fb03ed6eaaf24cf93de42fa13459ae2f48c8e34a35d7ca160b22a4879a338",
+      "bytes": 5986,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/docs/INFERENCE.md"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "2401ffa16598c8efeb8512a774a71ee38bd8ae73",
+      "path": "interactive/assets/index-CeK8jAtY.js",
+      "sha256": "8a7f2419fe9417696f20d0bac9b79fa5d31c0d54d9c41d72367d081a4e7654f3",
+      "bytes": 21224,
+      "url": "https://github.com/Roboparty/P-BFM/blob/2401ffa16598c8efeb8512a774a71ee38bd8ae73/interactive/assets/index-CeK8jAtY.js"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "2401ffa16598c8efeb8512a774a71ee38bd8ae73",
+      "path": "interactive/pbfm/config.json",
+      "sha256": "819263dab491b876f2c61af73347f344fc63d6a56a07db9f395f1dba0ef84db7",
+      "bytes": 7260,
+      "url": "https://github.com/Roboparty/P-BFM/blob/2401ffa16598c8efeb8512a774a71ee38bd8ae73/interactive/pbfm/config.json"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "pbfm/agents/behavior_context.py",
+      "sha256": "f2b8a70b6b8622643d79799d8d85f46e661c8b3ba22cbbdd5774609715126251",
+      "bytes": 7022,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/pbfm/agents/behavior_context.py"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "pbfm/agents/execution.py",
+      "sha256": "855bed1e385d6af362a8024b940371a414497e80f8f6c49dcbe9318a66fd9403",
+      "bytes": 6488,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/pbfm/agents/execution.py"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "pbfm/agents/fb_cpr_aux/model.py",
+      "sha256": "5d127f98f943eb8024edf731fb2b33741e69b6df2dfd9db7696c427223471b9b",
+      "bytes": 8244,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/pbfm/agents/fb_cpr_aux/model.py"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "pbfm/agents/nn_models.py",
+      "sha256": "38c5ba5da7b0806d51fbda047ca75516253a47e2c2407d6b5fc55cc5f4e76470",
+      "bytes": 37328,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/pbfm/agents/nn_models.py"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "pbfm/agents/velocity_context.py",
+      "sha256": "a7d5217cce42e5c15b67f63e13ff10d849bf14d6740d3b6c1103d051ca4dbb85",
+      "bytes": 9146,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/pbfm/agents/velocity_context.py"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "pbfm/configs/legacy_large.json",
+      "sha256": "abd07cd0a2c8526e8276f42b80ec5c2aa6f282b0f9ad4052cfd97f1128f326ae",
+      "bytes": 23225,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/pbfm/configs/legacy_large.json"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "pbfm/configs/robots/g1_29dof.yaml",
+      "sha256": "91a0a05bc53f08c415786f3ab5520da29da1d89a407553d5019504d0b0f1682d",
+      "bytes": 3458,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/pbfm/configs/robots/g1_29dof.yaml"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "pbfm/envs/mjlab/config.py",
+      "sha256": "103be32f6ab020c21a43d5eb9d22bed2a0492ebc0f2addec7d3273ecc746801b",
+      "bytes": 34511,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/pbfm/envs/mjlab/config.py"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "pbfm/inference/export/depth_policy.py",
+      "sha256": "af77ad4d321858297fa1e4c7d52319508420b94dc566557b5c81c33e74e9e35f",
+      "bytes": 9842,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/pbfm/inference/export/depth_policy.py"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "pbfm/inference/runtime.py",
+      "sha256": "dc5ee0d6a73e50a378afeac3cb054af290372b2a075d26fb32b8dc40d9142901",
+      "bytes": 35602,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/pbfm/inference/runtime.py"
+    },
+    {
+      "repo": "Roboparty/P-BFM",
+      "ref": "ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7",
+      "path": "pyproject.toml",
+      "sha256": "93ea441bc6fcb84a3623ce135fbe87c416f1d9f25094661b8318b5be7e6c73fb",
+      "bytes": 1748,
+      "url": "https://github.com/Roboparty/P-BFM/blob/ff8f45c7945a3a19b8755bfd62b4a9ed0efb2fc7/pyproject.toml"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "LICENSE",
+      "sha256": "3711f963c05d0be80d53e5923308a6dee31b203da23435c9cfb7c7b6e4dd5e19",
+      "bytes": 19346,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/LICENSE"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "README.md",
+      "sha256": "a880541702525639ada2085053e1aa291c1cf7ce89c92d9dd7603382db93767c",
+      "bytes": 5647,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/README.md"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "checkpoints/ibfm-166m/config.json",
+      "sha256": "450e1c9056d646daac608ca5b21c39a9831d670b56926f9feb1e88bf39e7475b",
+      "bytes": 28263,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/checkpoints/ibfm-166m/config.json"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "checkpoints/ibfm-166m/model/config.json",
+      "sha256": "fe11cd98386db287718db3cb1e6e87c4850fc1f7250ddf0329375edccb2ccfe4",
+      "bytes": 3840,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/checkpoints/ibfm-166m/model/config.json"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "checkpoints/ibfm-166m/model/init_kwargs.json",
+      "sha256": "3c27f27fb75da23df106b34f8a60097c314d3aec1ecec6a38a5df036ccc40928",
+      "bytes": 61927,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/checkpoints/ibfm-166m/model/init_kwargs.json"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "checkpoints/ibfm-166m/model/model.safetensors.part-000",
+      "sha256": "c02d5e9467d9b8676425e455685930924d0cc10c49f36546b236c5b8d8fc32d9",
+      "bytes": 136,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/checkpoints/ibfm-166m/model/model.safetensors.part-000"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "checkpoints/ibfm-166m/model/model.safetensors.part-001",
+      "sha256": "f3852cb686a6e9ab764f933a81c015c300a9c1aad29d7466e605891dc065c978",
+      "bytes": 136,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/checkpoints/ibfm-166m/model/model.safetensors.part-001"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "ibfm/configs/robots/g1_29dof.yaml",
+      "sha256": "3bc0ef02e55472aa7bbd73befc83b843206508abc89873ca7f09860bc7b575e4",
+      "bytes": 3588,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/ibfm/configs/robots/g1_29dof.yaml"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "ibfm/configs/tasks/carry_box.yaml",
+      "sha256": "ea08133277efd4fad4229b3243a11f0eaef826c31b50d64324f30da5fc348a76",
+      "bytes": 3176,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/ibfm/configs/tasks/carry_box.yaml"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "ibfm/humanoidverse/agents/envs/humanoidverse_mjlab.py",
+      "sha256": "3312fbde614df67c723b3e4a6616aa51469f072d3a10a6e6450db2fc090f348c",
+      "bytes": 106139,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/ibfm/humanoidverse/agents/envs/humanoidverse_mjlab.py"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "ibfm/humanoidverse/agents/fb/model.py",
+      "sha256": "d10df7189df208ad49e1965e1e9ba0403a257d5a0a1310dd67602ef1c9451265",
+      "bytes": 7787,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/ibfm/humanoidverse/agents/fb/model.py"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "ibfm/humanoidverse/agents/spherical.py",
+      "sha256": "12f726cc98e31d56663da0d8ef9bb7ef27954c6b0fff32594d751ba85a908e46",
+      "bytes": 1354,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/ibfm/humanoidverse/agents/spherical.py"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "ibfm/humanoidverse/envs/carry_observations.py",
+      "sha256": "49a756c6d58ce06d6bfe4f123b2e19dcb402fe6f068ea06535a9e7c1f5c26340",
+      "bytes": 22140,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/ibfm/humanoidverse/envs/carry_observations.py"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "ibfm/pyproject.toml",
+      "sha256": "845d85af3c8e726759b70ac765cc775dc50a0dc05b686c2167aaa652dee77529",
+      "bytes": 1827,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/ibfm/pyproject.toml"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "ibfm/tasks/carry_box/run_interactive.sh",
+      "sha256": "6187b71b3ede684feb6036a147e0b92a4312ec68f5e207e00b84b42a6c9c41ed",
+      "bytes": 4736,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/ibfm/tasks/carry_box/run_interactive.sh"
+    },
+    {
+      "repo": "Roboparty/I-BFM-Code",
+      "ref": "b4547263e925aedc16ade5427d03e9884f9fa3c2",
+      "path": "restore_checkpoint.sh",
+      "sha256": "f5d5b014998195231a076a61d4bd0fb115867c9f67a6347a32e97917d6a0c810",
+      "bytes": 1227,
+      "url": "https://github.com/Roboparty/I-BFM-Code/blob/b4547263e925aedc16ade5427d03e9884f9fa3c2/restore_checkpoint.sh"
+    }
+  ],
+  "installed": {
+    "python": "3.10.21",
+    "torch": "2.7.1+cu128",
+    "mujoco": "3.3.3",
+    "onnxruntime_available": true
+  },
+  "external_model_forwards": 0,
+  "physics_steps": 0,
+  "weights_downloaded": 0,
+  "job_s": 18.68182221800089
+}

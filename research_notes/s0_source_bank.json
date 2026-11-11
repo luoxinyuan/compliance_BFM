@@ -1,0 +1,30 @@
+{
+  "source": "M10 task straight reference, offline arm/waist correction then original goal inference",
+  "reference_file_sha256": "211a192ddf6e3d534a1ef273c22e9cf977510ccb235e1c88dc2f0b24e8d6f2c0",
+  "bank_canonical_z_json_sha256": "f3bb1f490aa5f90a4a78653e3f3f78af79d47ddadc92d502632deb8c5550e907",
+  "bank_rows": 71,
+  "period_s": 1.42,
+  "other_metadata": {
+    "start_index": 189,
+    "end_index": 260,
+    "period": 1.42,
+    "closure_scaled_rms": 0.3121826333709263,
+    "closure_joint_max_deg": 19.842946048410568,
+    "closure_z_angle_deg": 35.54735025964146,
+    "phase_offset": 0,
+    "source": {
+      "motion": "walk2_subject3",
+      "start": 3390,
+      "end": 3570,
+      "fps": 30,
+      "mean_speed": 0.3468281626701355,
+      "yaw_change_deg": 3.5473814010620117,
+      "root_min": 0.6521729826927185,
+      "tilt_max": 15.236689567565918,
+      "heading_velocity_alignment": 0.8780489563941956,
+      "score": 0.010266600131988504
+    }
+  },
+  "proposed_v_ref_mps": 0.214,
+  "v_ref_status": "fixed proposed command-to-phase calibration; not measured equality for this bank"
+}

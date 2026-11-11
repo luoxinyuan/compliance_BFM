@@ -1,0 +1,28 @@
+{
+  "stage": "Issue61-S0",
+  "started_epoch": 1794419480,
+  "checked_epoch": 1794420876.1936948,
+  "runtime_original": "16e103e3bdc0dd53bb70fe6f7aee3920a885a263",
+  "runtime_metadata": "168a91bf1446dec7346a9fff725e28d74fef0030",
+  "cap_s": 7200,
+  "charged_s": 2400,
+  "accounting": "conservative whole-stage wall upper allocation including CPU/source audit, initial failed helper, IO, tests, publication; measured jobs nested and not added twice; close before start+2400 or revise actual ledger within7200",
+  "observed_elapsed_at_ledger_s": 1396.193698644638,
+  "measured_subjobs_s": {
+    "original_frozen_forward": 40.0154082730005,
+    "external_final": 18.68182221800089
+  },
+  "physics_steps": 0,
+  "training_updates": 0,
+  "external_weight_download_bytes": 0,
+  "P_IBFM_model_forwards": 0,
+  "source_text_evidence_bytes": 547790,
+  "prior_project_s": 160035.87926433232,
+  "project_with_allocation_s": 162435.87926433232,
+  "project_cap_s": 864000,
+  "S1_started": false,
+  "S2_S3_authorized": false,
+  "failures": [
+    "I sphere_log antipode original offline criterion failed; preserved"
+  ]
+}

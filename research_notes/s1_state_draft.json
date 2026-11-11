@@ -1,0 +1,68 @@
+{
+  "status": "DRAFT_NOT_AUTHORIZED",
+  "selection": "exposed_only",
+  "states": [
+    {
+      "state_id": "P1-1",
+      "parent_id": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "phase": "sustained",
+      "exposure": "exposed",
+      "state_snapshot_sha256": "57510c8c5155f69c9326cd2a7ae26fd16f4cb5fd0b8ff312978a9359ab4c1f5f",
+      "time_actual": 5.399999999999907,
+      "restored_fingerprint": "f4bc6acba95a1020be5fc35525ffc43e1b476885a01e4caa269cd71e1d3119ba",
+      "actual_runtime_sha": "5f4c82c7e1ae1c8c44606e388261d6f4c93107e5"
+    },
+    {
+      "state_id": "P1-13",
+      "parent_id": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "phase": "sustained",
+      "exposure": "exposed",
+      "state_snapshot_sha256": "62e0a17e2c5ba4ef839febe48e3746e2b0b5e9d143526b0fa8fafb33ccf34de6",
+      "time_actual": 7.299999999999867,
+      "restored_fingerprint": "8b04ccad6056ff4439f6ae62555cddc059d2371569300eb335e7930adea8c4a1",
+      "actual_runtime_sha": "5f4c82c7e1ae1c8c44606e388261d6f4c93107e5"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent_id": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "phase": "sustained",
+      "exposure": "exposed",
+      "state_snapshot_sha256": "4f1ffef09658708b4cc3712824d96a152a39028e185713e97ceba0d533d256dc",
+      "time_actual": 5.999999999999894,
+      "restored_fingerprint": "1f893366f979699625ebbe21710bbc21db3bc55d4e0f07876e152ea366477e4d",
+      "actual_runtime_sha": "5f4c82c7e1ae1c8c44606e388261d6f4c93107e5"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent_id": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "phase": "sustained",
+      "exposure": "exposed",
+      "state_snapshot_sha256": "78bd96e40ae4bb53c3710b04026b3d9f971824bc6288eb928b1b393e41e1bace",
+      "time_actual": 4.999999999999916,
+      "restored_fingerprint": "e6309d1744204c474fbad331d38a0bc81d5d8db0a055da15a519c90c34ac6e18",
+      "actual_runtime_sha": "5f4c82c7e1ae1c8c44606e388261d6f4c93107e5"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent_id": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "phase": "hold",
+      "exposure": "exposed",
+      "state_snapshot_sha256": "334d69ff492890fcc8545c1fef325f198a7f3a24acf1cf762067c177b43df9e8",
+      "time_actual": 7.899999999999854,
+      "restored_fingerprint": "6e9807a23a8857ca3c2f391d431dffeb1d255ae77ad3cb150a4125b6bc8bd239",
+      "actual_runtime_sha": "5f4c82c7e1ae1c8c44606e388261d6f4c93107e5"
+    },
+    {
+      "state_id": "native-standing",
+      "parent_id": "native-standing-8ecc04e83daecd97",
+      "phase": "sustain",
+      "exposure": "source-positive",
+      "state_snapshot_sha256": "7626057d0244aa136e3f78a21b05c020d5e20d44fd9d169944d4673cd24abc51",
+      "time_actual": 5.999999999999894,
+      "restored_fingerprint": "f6975f82b0f86b2665b5c3b0470ab5a77ffcde7bf280bc96d7aa4e099e8235a9",
+      "actual_runtime_sha": "5f4c82c7e1ae1c8c44606e388261d6f4c93107e5"
+    }
+  ],
+  "continue_branch": "derive matched continuation from selected stop parent, same complete prefix; no additional independent parent",
+  "manifest_sha256": "a4e5dcf143bc8322f0b6f9da8a69fc52a15da3e866b360cc027a6bf4a25a9be2"
+}

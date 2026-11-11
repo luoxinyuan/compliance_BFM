@@ -1,0 +1,13 @@
+test_action_coordinates (test_contracts.Contracts) ... ok
+test_backend_and_state_fail_closed (test_contracts.Contracts) ... ok
+test_no_hidden_inputs (test_contracts.Contracts) ... ok
+test_prefix_and_causal_guidance (test_contracts.Contracts) ... ok
+test_progress_is_own_memory (test_contracts.Contracts) ... ok
+test_yaw_coordinates (test_contracts.Contracts) ... ok
+test_zero_and_nonfinite_latent (test_contracts.Contracts) ... ok
+test_zero_velocity_not_invalid (test_contracts.Contracts) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.004s
+
+OK

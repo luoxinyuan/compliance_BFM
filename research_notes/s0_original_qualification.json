@@ -1,0 +1,488 @@
+{
+  "runtime": "16e103e3bdc0dd53bb70fe6f7aee3920a885a263",
+  "status": "passed",
+  "physics_steps": 0,
+  "training_updates": 0,
+  "model_forwards": 42,
+  "model_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "model_bytes": 3384968272,
+  "load_and_stage_s": 2.2141209409746807,
+  "checks": [
+    {
+      "state": "new_stop-sustained-5f6380cdec75",
+      "substep": 0,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75",
+      "substep": 1,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75",
+      "substep": 4,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75",
+      "substep": 30,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75",
+      "substep": 75,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75",
+      "substep": 120,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75",
+      "substep": 149,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75-continue",
+      "substep": 0,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75-continue",
+      "substep": 1,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75-continue",
+      "substep": 4,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75-continue",
+      "substep": 30,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75-continue",
+      "substep": 75,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75-continue",
+      "substep": 120,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_stop-sustained-5f6380cdec75-continue",
+      "substep": 149,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_tail-hold-97ff10c4dcd9",
+      "substep": 0,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_tail-hold-97ff10c4dcd9",
+      "substep": 1,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_tail-hold-97ff10c4dcd9",
+      "substep": 4,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_tail-hold-97ff10c4dcd9",
+      "substep": 30,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_tail-hold-97ff10c4dcd9",
+      "substep": 75,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_tail-hold-97ff10c4dcd9",
+      "substep": 120,
+      "actor_exact": true,
+      "PD_exact": true
+    },
+    {
+      "state": "new_tail-hold-97ff10c4dcd9",
+      "substep": 149,
+      "actor_exact": true,
+      "PD_exact": true
+    }
+  ],
+  "actor_fields": [
+    "state",
+    "last_action",
+    "history_actor"
+  ],
+  "model_config": {
+    "name": "FBcprAuxModel",
+    "device": "cuda",
+    "archi": {
+      "name": "FBcprAuxModelArchiConfig",
+      "z_dim": 256,
+      "norm_z": true,
+      "f": {
+        "name": "ForwardArchi",
+        "hidden_dim": 2048,
+        "model": "residual",
+        "hidden_layers": 6,
+        "embedding_layers": 2,
+        "num_parallel": 2,
+        "ensemble_mode": "batch",
+        "input_filter": {
+          "name": "DictInputFilterConfig",
+          "key": [
+            "state",
+            "privileged_state",
+            "last_action",
+            "history_actor"
+          ]
+        }
+      },
+      "b": {
+        "name": "BackwardArchi",
+        "hidden_dim": 256,
+        "hidden_layers": 1,
+        "norm": true,
+        "input_filter": {
+          "name": "DictInputFilterConfig",
+          "key": [
+            "state",
+            "privileged_state"
+          ]
+        }
+      },
+      "actor": {
+        "name": "actor",
+        "model": "residual",
+        "hidden_dim": 2048,
+        "hidden_layers": 6,
+        "embedding_layers": 2,
+        "input_filter": {
+          "name": "DictInputFilterConfig",
+          "key": [
+            "state",
+            "last_action",
+            "history_actor"
+          ]
+        }
+      },
+      "critic": {
+        "name": "ForwardArchi",
+        "hidden_dim": 2048,
+        "model": "residual",
+        "hidden_layers": 6,
+        "embedding_layers": 2,
+        "num_parallel": 2,
+        "ensemble_mode": "batch",
+        "input_filter": {
+          "name": "DictInputFilterConfig",
+          "key": [
+            "state",
+            "privileged_state",
+            "last_action",
+            "history_actor"
+          ]
+        }
+      },
+      "discriminator": {
+        "name": "DiscriminatorArchi",
+        "hidden_dim": 1024,
+        "hidden_layers": 3,
+        "input_filter": {
+          "name": "DictInputFilterConfig",
+          "key": [
+            "state",
+            "privileged_state"
+          ]
+        }
+      },
+      "aux_critic": {
+        "name": "ForwardArchi",
+        "hidden_dim": 2048,
+        "model": "residual",
+        "hidden_layers": 6,
+        "embedding_layers": 2,
+        "num_parallel": 2,
+        "ensemble_mode": "batch",
+        "input_filter": {
+          "name": "DictInputFilterConfig",
+          "key": [
+            "state",
+            "privileged_state",
+            "last_action",
+            "history_actor"
+          ]
+        }
+      }
+    },
+    "obs_normalizer": {
+      "name": "ObsNormalizerConfig",
+      "normalizers": {
+        "state": {
+          "name": "BatchNormNormalizerConfig",
+          "momentum": 0.01
+        },
+        "privileged_state": {
+          "name": "BatchNormNormalizerConfig",
+          "momentum": 0.01
+        },
+        "last_action": {
+          "name": "BatchNormNormalizerConfig",
+          "momentum": 0.01
+        },
+        "history_actor": {
+          "name": "BatchNormNormalizerConfig",
+          "momentum": 0.01
+        }
+      },
+      "allow_mismatching_keys": true
+    },
+    "inference_batch_size": 500000,
+    "seq_length": 8,
+    "actor_std": 0.05,
+    "amp": false,
+    "norm_aux_reward": {
+      "name": "RewardNormalizer",
+      "translate": false,
+      "scale": true
+    }
+  },
+  "model_init_dimensions": {
+    "history_actor": [
+      372
+    ],
+    "last_action": [
+      29
+    ],
+    "privileged_state": [
+      463
+    ],
+    "state": [
+      64
+    ]
+  },
+  "action_contract": {
+    "dof_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_yaw_joint",
+      "waist_roll_joint",
+      "waist_pitch_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+    ],
+    "arm_indices": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "q_PD_scale": [
+      [
+        1.7533073425292969,
+        1.7533073425292969,
+        2.737732172012329,
+        1.7533073425292969,
+        2.1928863525390625,
+        2.1928863525390625,
+        1.7533073425292969,
+        1.7533073425292969,
+        2.737732172012329,
+        1.7533073425292969,
+        2.1928863525390625,
+        2.1928863525390625,
+        0.36666667461395264,
+        0.2083333283662796,
+        0.2083333283662796,
+        2.1928870677948,
+        2.1928870677948,
+        2.1928870677948,
+        2.1928870677948,
+        2.1928870677948,
+        0.3725042939186096,
+        0.3725042939186096,
+        2.1928870677948,
+        2.1928870677948,
+        2.1928870677948,
+        2.1928870677948,
+        2.1928870677948,
+        0.3725042939186096,
+        0.3725042939186096
+      ]
+    ],
+    "q_PD_offset": [
+      [
+        -0.10000000149011612,
+        0.0,
+        0.0,
+        0.30000001192092896,
+        -0.20000000298023224,
+        0.0,
+        -0.10000000149011612,
+        0.0,
+        0.0,
+        0.30000001192092896,
+        -0.20000000298023224,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "normalize_ratio": 5.0,
+    "clip": 5.0,
+    "control": {
+      "control_type": "P",
+      "stiffness": {
+        "hip_yaw": 40.17924,
+        "hip_roll": 99.09843,
+        "hip_pitch": 99.09843,
+        "knee": 99.09843,
+        "ankle_pitch": 28.50125,
+        "ankle_roll": 28.50125,
+        "waist_yaw": 300,
+        "waist_roll": 300,
+        "waist_pitch": 300,
+        "shoulder_pitch": 14.25062,
+        "shoulder_roll": 14.25062,
+        "shoulder_yaw": 14.25062,
+        "elbow": 14.25062,
+        "wrist_roll": 14.25062,
+        "wrist_pitch": 16.77833,
+        "wrist_yaw": 16.77833
+      },
+      "damping": {
+        "hip_yaw": 2.55789,
+        "hip_roll": 6.3088,
+        "hip_pitch": 6.3088,
+        "knee": 6.3088,
+        "ankle_pitch": 1.81445,
+        "ankle_roll": 1.81445,
+        "waist_yaw": 5,
+        "waist_roll": 5,
+        "waist_pitch": 5,
+        "shoulder_pitch": 0.90722,
+        "shoulder_roll": 0.90722,
+        "shoulder_yaw": 0.90722,
+        "elbow": 0.90722,
+        "wrist_roll": 0.90722,
+        "wrist_pitch": 1.06814,
+        "wrist_yaw": 1.06814
+      },
+      "action_scale": 0.25,
+      "isaac_pd_scale": false,
+      "clamp_actions": 1.0,
+      "clip_torques": true,
+      "integral": {
+        "hip_yaw": 0.0,
+        "hip_roll": 0.0,
+        "hip_pitch": 0.0,
+        "knee": 0.0,
+        "ankle_pitch": 0.0,
+        "ankle_roll": 0.0,
+        "waist_yaw": 0.0,
+        "waist_roll": 0.0,
+        "waist_pitch": 0.0,
+        "shoulder_pitch": 2.0,
+        "shoulder_roll": 2.0,
+        "shoulder_yaw": 2.0,
+        "elbow": 2.0,
+        "wrist_roll": 1.5,
+        "wrist_pitch": 1.5,
+        "wrist_yaw": 1.5
+      },
+      "action_clip_value": 5.0,
+      "action_rescale": true,
+      "normalize_action": true,
+      "normalize_action_from": 1.0,
+      "normalize_action_to": 5.0
+    },
+    "bfm_inputs": [
+      "state",
+      "last_action",
+      "history_actor"
+    ],
+    "source_pins": {
+      "humanoidverse/force_compliance/environment.py": "424edfd5caeeefdd299284875674698a6904cf06161f1297e8a6f791a7eafdf5",
+      "humanoidverse/force_compliance/no_force.json": "4e084a6ed18cc4cb270c119a9754c4f02387725dd371686924979a9490be866c",
+      "humanoidverse/force_compliance/run.py": "ce4cf68f1659bb15646cfdfe55dd5ee83a9f91444a295cac312d0802669f8530",
+      "humanoidverse/agents/base_model.py": "daa48871eb9bd14c10f88bcc578bd5e42721bc0f4babaef2128e9f41f97754ad",
+      "humanoidverse/agents/envs/humanoidverse_isaac.py": "e7f467a1c57bdb347ed10e556c0e1bff63028702443309a228cbeb8e9c7d1985",
+      "humanoidverse/envs/legged_base_task/legged_robot_base.py": "5de7f691e32e9798975722e7c4a6c7e28d5ccdb4044c28d9101ff21102dbdd09",
+      "humanoidverse/simulator/mujoco/mujoco.py": "b2c6ee5419d62cfc2aae26b1ecb14c2223a5f6a520bf6c37ae6f63432e4eb990",
+      "humanoidverse/config/robot/g1/g1_29dof_hard_waist.yaml": "b3c8b7d25faca3908d874bef4471f1362385428612cce845d2df5467cd71f53e"
+    },
+    "model_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361"
+  },
+  "action_contract_sha256": "705fa1d4072b31523ef943c1121c8652f2ab09ba4d1bd4066b57adf8f30b36dd",
+  "cuda_peak_bytes": 137262592,
+  "after_weight_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "source_kind": "archived actual execution; no simulator created",
+  "job_s": 40.0154082730005
+}

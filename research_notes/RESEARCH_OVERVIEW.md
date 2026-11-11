@@ -235,3 +235,12 @@ checkpoint保存、逐值读回、继续采样一致、继续更新一致是不�
 ### Issue60 F1：有限能力、定价、信息权限分别测量
 
 F1以冻结合法z连续物理能力及C-S/C-P/O-F信息权限分层为诊断路线，不自动延长高层PPO。搜索选择的信息权限取候选生成、状态初始化、伙伴预测、评分与选择中最强者；原场景未来回放不得冒称因果受限规划。L0经逐数组C指针和156条3秒干预证据，修复了NULL指针对应Python临时数组的比较错误；27状态有效恢复资格与测速完成，未改变科学质量门。该工程通过不代表接触能力或学习成功。C-S planner仍缺格；详见F1_PREFLIGHT与F1_L0_ARRAY_AUDIT。用户随后授权L1/L2连续执行；L1/L2已完成并停于正式gate：有限状态存在合格连续控制，因果重规划也有部分任务收益，但尾部仍有明显滑移/偏航代价；不能把有限搜索失败当全空间不可达。候选评分的有限窗口最优不等于物理质量同时合格，也不等于共享策略已学会。信息合同见F1_L1_L2_METHODS，实际结果见F1_L2_GATE_REPORT；候选/时域不同使未来依赖仍未识别。L3仍必须另行用户确认，不自动扩大训练。
+
+
+### Issue60 closed → Issue61 Steering-first (2026-11-12)
+
+F1 matched future-oracle comparison improves stop and part of continuation but leaves tail quality unchanged; it neither proves pure sensing insufficiency nor makes Contact Adaptation mandatory. F1 is formally closed; [final evidence](F1_RESULTS.md).
+
+Next decomposition is explicit Goal / causal Guidance / executable backend. Original BFM has no native ERI; Guidance→legal latent must earn physical qualification. P-BFM offers native velocity/heading semantics but different depth/PD/physics; I-BFM LOGO actor has a transitive current-B/privileged-object dependency. These interfaces cannot be called interchangeable or deployable force-only by inspection. S0 original archived-action parity passed; new root control remains a hypothesis. [Audit](S0_PORTABILITY_AND_ARCHITECTURE.md), [method decision](STEERING_METHOD_DECISION.md).
+
+S1 remains a proposed bounded matched physical test, not started. Only after actual Steering/control evidence should learned Guidance or targeted Contact Adaptation be separately authorized. Native sources are traceable priors, including offline reference edits; no claim of prior-free behavior discovery. Historical headings above are stage records, superseded for current execution by CURRENT_STATE.
