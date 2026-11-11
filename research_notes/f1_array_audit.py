@@ -75,10 +75,15 @@ def study(e,m,c,out):
       assert pool.size
       arr[...] = gen.choice(pool,size=arr.shape)
      changed.append(dict(array=k,count=int(np.count_nonzero(arr!=old)),capacity=int(arr.size),finite=bool(np.all(np.isfinite(arr)))))
-    after=portable(t);assert digest(without(before,names))==digest(without(after,names)),('nonintervened field changed',stateid,names,mode)
+    after=portable(t)
+    different=[k for k in before['mjdata_arrays'] if digest(before['mjdata_arrays'][k])!=digest(after['mjdata_arrays'][k])]
+    aliases={k:[kk for kk in before['mjdata_arrays'] if np.shares_memory(getattr(d,k),getattr(d,kk))] for k in names}
+    if digest(without(before,NAMES))!=digest(without(after,NAMES)):
+     torch.save(dict(before=before,after=after,arrays=names,different_arrays=different,aliases=aliases),out/(stateid+'-mutation-outside25.pt'))
+     base.write(out/'mutation-outside25.json',dict(state_id=stateid,arrays=names,different_arrays=different,aliases=aliases));raise AssertionError(('mutation outside25',different))
     st=time.monotonic();got=execute();wall=time.monotonic()-st;eq=tensorsame(ref,got)
     dest=out/(stateid+'-'+str(ki)+'-'+mode+'.pt');torch.save(got,dest)
-    row=dict(state_id=stateid,arrays=names,mode=mode,changes=changed,other_state_byte_equal=True,physics_equal=tensorsame(ref['physics'],got['physics']),controls_equal=tensorsame(ref['controls'],got['controls']),score_equal=tensorsame(ref['scores'],got['scores']),all_output_equal=eq,actual_s=got['actual_s'],wall_s=wall,path=dest.name,sha256=base.sha(dest))
+    row=dict(state_id=stateid,arrays=names,mode=mode,changes=changed,other_state_byte_equal=True,actual_changed_arrays=different,memory_aliases=aliases,physics_equal=tensorsame(ref['physics'],got['physics']),controls_equal=tensorsame(ref['controls'],got['controls']),score_equal=tensorsame(ref['scores'],got['scores']),all_output_equal=eq,actual_s=got['actual_s'],wall_s=wall,path=dest.name,sha256=base.sha(dest))
     rows.append(row);base.write(out/'interventions.json',rows)
     print('ARRAY',stateid,ki,mode,eq,round(wall,3),flush=True)
     if not eq:
