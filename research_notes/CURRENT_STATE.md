@@ -1,4 +1,14 @@
-# CURRENT_STATE — Issue59完成：v3部分风险改善，未晋级
+# CURRENT_STATE — Issue60 L0已执行，完整状态严格门阻塞
+
+最后核对2026-11-11。[Issue60锁定合同](F1_CONTRACT.md) · [L0预检](F1_PREFLIGHT.md) · [状态清单](f1_state_manifest.json) · [失败记录](F1_ERRATUM.md)。
+
+用户本次只启动L0；资源门通过（GPU0空闲，共享盘约642GiB>100GiB），独立runtime a39be585f54b71a213ac65b1171aa6a58f6d7354 已执行后停止。规划12主父组24状态+3原生参考；实际仅1状态完成原档输入/last-z/integration重建，随后重复完整末态检查失败。
+两个1s真实分支physics/controls/输入/raw/评分逐值一致，但25个MjData数组不同，集中island/约束缓存；可能为工作区有效域问题，尚未证明可忽略。不降容差、不自动重试。没有L1/L2/L3，没有任何训练。GPU已释放。
+L0实测job113.187s，加准备/收尾reserve共1113.187s<1800s；1/3s候选与重规划完整wall未成功落盘/执行，后续成本投影未知。饱和别名仅预登记，受限planner未实现；不能以O-F场景回放冒称C-S/C-P搜索。需先定位状态数组语义和修复计时落盘，未启动下一阶段。
+Issue59及所有历史结论不变，BC500仍是基线。下方保留Issue59与更早阶段信息，避免把旧结项覆盖。
+
+## Issue59已结项状态
+
 
 最后核对2026-11-11。[Issue59](https://github.com/GaoE05/robot-research-bridge/issues/59) · [结项](FRL_V3_RESULTS.md) · [协议](FRL_V3_RISK_PROTOCOL.md) · [全部曲线/模型/成本](frl_v3_results.json)。
 

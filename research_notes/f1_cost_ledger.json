@@ -1,0 +1,54 @@
+{
+  "stage": "L0",
+  "status": "BLOCKED_correctness_gate",
+  "job": {
+    "runtime": "a39be585f54b71a213ac65b1171aa6a58f6d7354",
+    "elapsed_s": 113.18688785599079,
+    "status": "failed_no_automatic_retry",
+    "returncode": 1,
+    "started": 1794401381.8323598,
+    "child_pid": 2146349
+  },
+  "preparation_reserve_s": 900,
+  "postprocess_reserve_s": 100,
+  "CPU_difference_analysis_s": 0.4878385500051081,
+  "CPU_difference_analysis_accounting": "inside100s postprocess reserve, not added twice",
+  "charged_s": 1113.1868878559908,
+  "hard_cap_s": 1800,
+  "F1_total_cap_s": 43200,
+  "original_240h_budget_not_reset": true,
+  "remaining_L0_s_not_authorization_to_retry": 686.8131121440092,
+  "L1_L2_L3_job_s": 0,
+  "free_bytes_at_launch": 689119952896,
+  "free_bytes_at_report": 688612442112,
+  "stage_outputs_bytes": 7470609,
+  "benchmarks": {
+    "complete_in_memory_restore_s": [
+      0.013469251978676766,
+      0.01073220098624006,
+      0.01028630998916924
+    ],
+    "snapshot_save_s": 0.11058520400547422,
+    "snapshot_read_s": 0.05519311100943014,
+    "snapshot_bytes": 1296598,
+    "candidate_1s_wall_s": null,
+    "candidate_1s_status": "two actual repeats saved; timing rows not flushed before assertion, cannot reconstruct trustworthy wall",
+    "candidate_3s_wall_s": null,
+    "replan_100ms_end_to_end_s": null,
+    "cold_start_s": null,
+    "job_total_not_candidate_throughput": true
+  },
+  "cost_projection": {
+    "status": "unavailable; failed before full timing contract",
+    "L1_3h": null,
+    "L2_4h": null,
+    "L3_3h_frozen": null,
+    "prohibition": "No historical24s/query or no-updateFPS substituted"
+  },
+  "formal_training_decisions": 0,
+  "optimizer_updates": 0,
+  "timing_actual_suffix_physics_ticks": 400,
+  "timing_actual_suffix_50Hz_controls": 100,
+  "timing_actual_suffix_high_commands": 20,
+  "prefix_backend_and_cold_cost_in_job": true
+}

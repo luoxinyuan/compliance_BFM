@@ -1,0 +1,7 @@
+# F1 L0失败记录（不追溯修改历史）
+
+首runtime a39be585f54b71a213ac65b1171aa6a58f6d7354 在P1-1两个1s重复后，`f1_l0.py:65`完整portable一致性断言失败。job l0-01原sidecar状态failed_no_automatic_retry、原failure.json和两条真实轨迹保留，不覆盖。实际physics/controls/inputs/raws/scores一致，末态25个MjData数组不同，见first-difference数据。不提高容差、不删除字段、不自动重跑。
+
+测速wall记录在完整检查后才统一flush，导致失败时独立候选wall未落盘，这是本L0可观测性缺陷；未用文件时间补数字。后续修复应先逐条原子落盘计时再做严格断言。不存在新reward、模型更新或历史科学checkpoint修改。
+
+其他准备读档时的新worktree尚未checkout完、猜测不存在的旧文件名等只读命令失败，未产生物理或模型产物；GitHub连接器临时传输失败不算实验结果。合同中的Markdown双空格为原文换行，逐字保留，不为了diff-check改变锁定文本。

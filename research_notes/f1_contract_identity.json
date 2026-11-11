@@ -1,0 +1,8 @@
+{
+  "source_issue": "https://github.com/GaoE05/robot-research-bridge/issues/60",
+  "source_updated_at": "2026-11-11T12:26:10Z",
+  "contract_file_sha256": "0d63e801414cd8a84c950a01b1ce047f96745a3b0588f78154cb4689ff529a9d",
+  "copy_note": "Issue body preserved including intentional Markdown double-space line breaks; file has terminal newline",
+  "base_commit": "994bdd582dda63bd63dd1df34382a6bcd86c814e",
+  "runtime": "a39be585f54b71a213ac65b1171aa6a58f6d7354"
+}

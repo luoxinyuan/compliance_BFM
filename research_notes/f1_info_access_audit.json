@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "runtime": "a39be585f54b71a213ac65b1171aa6a58f6d7354",
+  "scopes": {
+    "BC500_frozen_controller": "C-S ideal-force proxy; original restricted input path only; privileged zero-branch wrapper is separately identified",
+    "B64_B128_v3_controllers": "C-P actor inputs; any search classification also depends on simulator and scoring",
+    "L0_timing_repeat": "O-F environment future replay; no candidate optimization completed",
+    "C_S_planner": "not implemented/qualified",
+    "C_P_legacy_search": "native_rolling.py current-position/velocity predictor exists; not integrated or qualified for F1 in this L0",
+    "O_F": "explicitly permitted only as labeled timing/reference, not C-S or C-P"
+  },
+  "restricted_input": {
+    "dim": 1639,
+    "parts": [
+      {
+        "name": "normalized robot state+last_action+history_actor",
+        "dim": 465,
+        "evidence": "m9_learning.py:37-42; geometry_env.py:47-48"
+      },
+      {
+        "name": "actual own previous legal z/16",
+        "dim": 256
+      },
+      {
+        "name": "100 history samples x3 slots x3 force +3x6 known mounting encoding",
+        "dim": 918,
+        "evidence": "geometry_env.py:26-48"
+      }
+    ],
+    "excludes": [
+      "partner anchor",
+      "true partner velocity",
+      "hidden active truth",
+      "future path",
+      "stop clock",
+      "task ID",
+      "search phase"
+    ],
+    "hardware": "ideal-force proxy, not verified G1 sensing"
+  },
+  "privileged_input": {
+    "dim": 1088,
+    "evidence": "clean_env.py:85-91 and geometry_env.py:43-46",
+    "additional_fields": [
+      "current anchor-point error",
+      "current relative/partner velocity",
+      "current force",
+      "current support and body state",
+      "active truth",
+      "current target-yaw geometry",
+      "own causal command memory"
+    ],
+    "future_permitted": false
+  },
+  "selection_leak_rules": [
+    "exact future Task.spec in simulated rollout => O-F regardless of actor",
+    "anchor-error/progress truth in selection precludes C-S",
+    "current hidden full state + only causal predictor => at least C-P"
+  ],
+  "alias_preregister": {
+    "groups": 1,
+    "branches": 2,
+    "status": "not constructed",
+    "construction": "one full robot/history snapshot; same installation/guidance/current velocity; two collinear hidden anchor offsets giving same saturated 10N encoded force; must verify complete restricted input and normalized force bytes; reject impulse/callback leakage",
+    "causal_relevance": "not established; needs separate privileged crossed-response physical test and later force disambiguation check",
+    "not_in_success_denominator": true
+  },
+  "missing_query_records": "Two identical frozen 1s timing branches executed; no candidate-selection/replanning query reached. All L1/L2/L3 counts zero."
+}
