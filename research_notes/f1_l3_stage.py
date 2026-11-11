@@ -76,7 +76,6 @@ def study(e,m,c,out):
   if meta['state_id'] not in completed:search.state(meta,owner,oldrow)
  # Recorded raw prefixes rebuild original callback/partner graph, never pose-only reset.
  for row in plan['states']:
-  if row['state_id'] not in ('new_tail-hold-97ff10c4dcd9','new_stop-sustained-5f6380cdec75'):continue
   if row['source_kind']=='p1_snapshot':
    a=torch.load(P/row['source_snapshot'],map_location='cpu',weights_only=False);owner=a['meta']['frozen_owner'];spec=a['spec'];raws=a['actual_raw_prefix'];frl_v3_task.RISK_COEFFICIENT=0.
   else:

@@ -2,12 +2,15 @@
 import fcntl,json,os,signal,subprocess,time,shutil
 from pathlib import Path
 P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');S=P/'experiments/f1-l1-l2-20261111';R=S/'runtime-l3'
-start=time.monotonic();name='l3-01';f=S/'jobs'/f'{name}.json';assert not f.exists()
+start=time.monotonic();name='l3-02';f=S/'jobs'/f'{name}.json';assert not f.exists()
 row=dict(layer='L3',pid=os.getpid(),started=time.time(),status='preflight',timeout_s=3600,preparation_reporting_reserved_s=1200,stage_hard_s=5400,prior_F1_charged_s=11372.572671389,training=False)
 def save():
  q=f.with_suffix('.tmp');q.write_text(json.dumps(row,indent=2));q.replace(f)
 save()
 try:
+ previous=sum(json.loads(x.read_text()).get('elapsed_s',0) for x in (S/'jobs').glob('l3-*.json') if x!=f)
+ assert previous+3600+1200+20<=5400
+ row['previous_L3_measured_s']=previous
  with (P/'.dual-track-gpu0.lock').open('a') as lock:
   fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
   free=shutil.disk_usage(P).free;assert free>105*2**30
