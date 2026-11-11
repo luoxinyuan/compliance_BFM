@@ -2,7 +2,7 @@
 import argparse,fcntl,json,os,signal,subprocess,time,shutil
 from pathlib import Path
 p=argparse.ArgumentParser();p.add_argument('--layer',choices=['L1','L2'],required=True);p.add_argument('--name',required=True);p.add_argument('--seconds',type=int,required=True);p.add_argument('--reuse',action='append',default=[]);a=p.parse_args()
-P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');S=P/'experiments/f1-l1-l2-20261111';R=S/'runtime';start=time.monotonic()
+P=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM');S=P/'experiments/f1-l1-l2-20261111';R=S/('runtime-l2' if a.layer=='L2' else 'runtime');start=time.monotonic()
 row=dict(layer=a.layer,pid=os.getpid(),started=time.time(),status='preflight',timeout_s=a.seconds,training=False)
 f=S/'jobs'/(a.name+'.json');assert not f.exists()
 def save():

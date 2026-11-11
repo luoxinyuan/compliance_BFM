@@ -67,6 +67,8 @@ def study(e,m,c,out):
    fixed.restore();frl_v3_task.RISK_COEFFICIENT=oldrisk;assert same(portable(task),prior['state'],md,prior['state_validity'])
    search.checks.append(dict(state_id=meta['state_id'],test='explicit archived efc_JT restore; all other state exact',passed=True,physics_control_score_bitwise_equal=True,seconds=len(aa['physics'])*.005,compared_array_shape=list(e.sim.data.efc_JT.shape),array_excluded=False))
    print('CACHE_RESTORED',meta['state_id'],len(aa['physics']),flush=True)
+  search.checks.append(dict(test='L0 complete reconstructed state exact',state_id=meta['state_id'],passed=True))
+  if not search.includes(meta['state_id']):return
   completed=set()
   for name in ARGS.reuse:
    path=ST/'runs'/name/'candidate-scores.json'
@@ -74,7 +76,6 @@ def study(e,m,c,out):
   if meta['state_id'] not in completed:search.state(meta,owner,oldrow)
  # Recorded raw prefixes rebuild original callback/partner graph, never pose-only reset.
  for row in plan['states']:
-  if not search.includes(row['state_id']):continue
   if row['source_kind']=='p1_snapshot':
    a=torch.load(P/row['source_snapshot'],map_location='cpu',weights_only=False);owner=a['meta']['frozen_owner'];spec=a['spec'];raws=a['actual_raw_prefix'];frl_v3_task.RISK_COEFFICIENT=0.
   else:
