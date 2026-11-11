@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "hard_cap_job_s": 14400,
+  "measured_completed_analysis_job_s": 235.1493292709638,
+  "first_full_archive_attempt_job_upper_bound_s": 223,
+  "auxiliary_preparation_failure_IO_publication_reserve_s": 1800,
+  "charged_job_upper_bound_s": 2259,
+  "charging_note": "reserve is conservative not measured; includes inventory/name collision, first failed dev field lookup, archive inspection, git/SSH, packaging; reproduction failure due NumPy scalar serialization is in archive bound; original private continuation ledger is only that phase, not total",
+  "new_training_updates": 0,
+  "new_RL_decisions": 0,
+  "new_physics_steps": 0,
+  "new_Teacher_queries": 0,
+  "sealed_reads": 0,
+  "output_bytes": 115379998,
+  "model_selection_changed": false,
+  "gate_changed": false
+}

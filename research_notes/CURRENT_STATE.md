@@ -1,15 +1,23 @@
-# CURRENT_STATE — Issue58计算结束，结项复核中
+# CURRENT_STATE — F-RL-v2结项；三项档案诊断完成
 
 最后核对2026-11-11。[Issue58](https://github.com/GaoE05/robot-research-bridge/issues/58) ·
 [执行结果](ISSUE58_EXECUTION_RESULTS.md) · [锁定协议](FRL_V2_FB_REPAIR_PROTOCOL.md)。
 
 ## 当前状态
 
-全部有界GPU作业已停止，GPU0空闲；没有自动续训、Student、正式FB1M或5M。
+原有界GPU作业已停止；GPU空闲状态须实时核对，不把旧快照当授权。没有自动续训、Student、正式FB1M或5M。
 A/B各128×768=98304真实on-policy高层决策均已完成，合计196608。
 每臂489640个50Hz控制、1958560物理tick，998完整回合；无物理边界终止。
 A/B均按原开发保护选iteration0，封存按选定初始化执行，不能当新模型成功。
 原BC500维持基线；本报告不是全面否认PPO已有的有限开发收益。
+
+## 最新授权诊断已完成（2026-11-11）
+
+[一页摘要](FRL_V2_DIAGNOSTICS_SUMMARY.md) · [三项报告](FRL_V2_ARCHIVE_DIAGNOSTICS.md)。纯CPU现有档案复算，0训练/新物理/Teacher查询/封存读取，4job小时内完成并停止。
+- 探索链抽查B64/B128/A128：干净推进代理59/39/19→正PPO优势16/21/11→raw均值方向保留11/9/3（合法z10/11/3）。只有观测代理，不把负优势自动判critic错；没有确切dev状态的采样物理反事实，真实因果三分比例未识别。
+- BC500现行相对自门40/40通过，但mid/stop滑移峰值p50/max=.395/.848与.765/1.103m/s；完整尾部分布/CDF已列，不改门。
+- reward独立物理重算24条/11156控制步差异0；质量等级32/32、Pareto21/21排序一致；打滑成功高于干净成功0/3且只有1父组，不能泛化成reward无问题。
+- 原B128未晋级、BC500基线不变；暴露诊断不反选模型。旧结项与erratum保留，不自动新训。
 
 ## 科学结果
 
@@ -44,7 +52,8 @@ BFM33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361。
 证据stage experiments/frl-v2-fb-repair-20261110，实际models/SHA/分项数据见执行报告和私有账本。
 发布HEAD不是运行源码；全部旧结项、负例、erratum和基线保留；不改main/共享资产/他人任务。
 
-当前只整理结项，不自动下一阶段。下一项候选：冻结线做探索—优势—均值保留的有界归因；
-FB先核portable数组有效性/compiled反向与动作噪声质量。新会话先读本页、OVERVIEW、执行报告、Issue58/Master18，再查实际进程；不要重复启动。
+本次探索—优势—保留、质量门与reward档案诊断已完成，见本页最新摘要；没有自动新实验。
+剩余因果缺口不能靠本轮观测代理补成结论；FB的portable数组/compiled与动作质量仍保持旧边界。
+新会话先读本页、OVERVIEW、三项诊断报告及Issue58/Master18，再核实际进程；不要重复启动。
 
 执行错误的影响隔离见[Issue58 erratum](ISSUE58_EXECUTION_ERRATUM.md)，原始失败不覆盖。
