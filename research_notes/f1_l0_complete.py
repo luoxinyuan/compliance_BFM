@@ -21,7 +21,7 @@ def study(e,m,c,out):
  from rolling_backend import install as backend
  from frl_v2_high import build
  from frl_v3_counterfactual import tensorsame
- from f1_mjdata_contract import metadata,canonical,same,install_restore_guard
+ from f1_mjdata_contract import metadata,canonical,same,install_restore_guard,exact
  install_restore_guard()
  assert read(ST/'runs/array-audit-03/checks.json')['status']=='passed'
  from dual_track_runtime import TrainingBranch
@@ -69,7 +69,7 @@ def study(e,m,c,out):
     timings.append({'state_id':meta['state_id'],'horizon':horizon,'rep':rep,'candidate_wall_s':wall,'save_wall_s':io,'bytes':dst.stat().st_size,'actual_physics_seconds':r['actual_seconds'],'information_tier':'O-F','purpose':'frozen timing/recovery control only; exact future scenario used; no L1 candidate search'})
     write(out/'timings.json',timings)
    # All captured physical, control and RNG/history tensors must agree; no tolerance relaxation.
-   assert tensorsame(pairs[0],pairs[1]),'repeat branch not bitwise identical'
+   assert exact(pairs[0],pairs[1]),'repeat valid branch not bitwise identical'
   snap.restore();start=time.monotonic();ranking=[]
   for proposal in ('feedback','hold_last_z'):
    snap.restore();r=execute(1.,proposal);ranking.append((r['scores']['old_discounted_return'],proposal))

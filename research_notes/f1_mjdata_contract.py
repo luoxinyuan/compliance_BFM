@@ -26,7 +26,19 @@ def canonical(state,meta):
  result['mjdata_validity']=meta
  return result
 
-def same(a,b,ma,mb):return tensorsame(canonical(a,ma),canonical(b,mb))
+def exact(a,b):
+ import numpy as np
+ import torch
+ from collections import deque
+ if torch.is_tensor(a):
+  return torch.is_tensor(b) and a.dtype==b.dtype and a.shape==b.shape and a.detach().cpu().contiguous().numpy().tobytes()==b.detach().cpu().contiguous().numpy().tobytes()
+ if isinstance(a,np.ndarray):return isinstance(b,np.ndarray) and a.dtype==b.dtype and a.shape==b.shape and a.tobytes()==b.tobytes()
+ if isinstance(a,dict):return isinstance(b,dict) and a.keys()==b.keys() and all(exact(a[k],b[k]) for k in a)
+ if isinstance(a,(tuple,list,deque)):return type(a)==type(b) and len(a)==len(b) and getattr(a,'maxlen',None)==getattr(b,'maxlen',None) and all(exact(x,y) for x,y in zip(a,b))
+ if isinstance(a,float):return isinstance(b,float) and a.hex()==b.hex()
+ return a==b
+
+def same(a,b,ma,mb):return exact(canonical(a,ma),canonical(b,mb))
 
 
 def install_restore_guard():
