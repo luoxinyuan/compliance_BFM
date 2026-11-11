@@ -1,4 +1,16 @@
-# CURRENT_STATE — Issue60 L0完成，未进入L1
+# CURRENT_STATE — Issue60 F1 L1完成，L2执行中
+
+最后核对2026-11-11。Yi已授权L1/L2连续执行；L2结束提交F1_L2_GATE_REPORT并停止，L3的3h仍未授权。
+
+L1实际完成12个已暴露父组/24状态/384条3s分支。11状态/7父组存在满足当前窗口任务、推进、slip/yaw参考的候选；v3评分选择合格8/24。不是一个共享策略胜率，也不是封存晋级。完整表见[F1_L1_RESULTS](F1_L1_RESULTS.md)。P1-13合格候选仍有约52.49°的q_PD单步峰值，实际q另报，不能把窗口参考通过称为动作质量已完美。
+
+L2正在独立runtime `ad93901e9b75791ae918dd37664b7d6f8b8e86bb` 执行七状态＋一个相关continue分支的因果重规划，与固定BC500配对。尚未完成，不预写总体成功或失败。两者候选/预测时域与L1不同，不做未来信息唯一归因。信息权限与C-S planner缺格见[F1_L1_L2_METHODS](F1_L1_L2_METHODS.md)。
+
+L1保留两次完整恢复检查失败及原产物；仅对已分配efc_JT显式全量恢复，并通过3s干预，不新增mask或容差。辅助滑移时长按body/tick重算，原风险不删。见[F1_ERRATUM](F1_ERRATUM.md)。
+
+原BFM/PD、BC500及全部历史模型冻结；无训练、无封存读取、无L3队列。新阶段索引 `experiments/f1-l1-l2-20261111`，L1分布于l1-01/02/03，L2当前l2-01。单GPU0重任务串行，job账本含全部失败与冷启动；最终成本待L2结束汇总，不用查询wall冒充整job。
+
+## 历史快照：L0完成时的状态（下列未启动描述仅指当时）
 
 最后核对2026-11-11。[逐数组审计](F1_L0_ARRAY_AUDIT.md) · [完整L0报告](F1_PREFLIGHT.md) · [manifest锁](f1_state_manifest_lock.json) · [全部失败](F1_ERRATUM.md)。
 
