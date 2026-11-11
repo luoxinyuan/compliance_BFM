@@ -50,3 +50,9 @@
 runtime `ad93901e9b75791ae918dd37664b7d6f8b8e86bb`在L2启动前固定：按原24状态顺序重建、只在预登记7状态查询；每个query绑定其**当前真实完整状态SHA**，而非重复使用源初态SHA；C-S物理评价时域明确为3s、选择时域0。该修改不改变候选、reward、概率、物理或科学门。无L3入口/自动队列。
 
 所有原始作业和修复记录保留；完整runtime SHA以Git/launch/机器账本为准。报告若引用缩写，不能把发布commit代替实际运行版本。
+
+## L3首次运行的reset顺序错误（2026-11-12）
+
+原始runtime1773f8f44d38eefb4fcbeb02af94fa04f1c8f5da，runs/l3-01，115.830369s。筛选三窗口时跳过前序状态重建，使base reward统计、episode/prefill计数及allocated efc_J_colind/efc_JT不同；完整状态断言停止。没有科学查询结果进入比较。原差异pt/json保留，不覆盖。
+
+修复61b4371恢复全部原始重建/reset顺序，仅限制查询窗口，未改数组mask、容差、物理或科学门。l3-02三个完整初态/旧C-P三秒重放逐值通过，另90query/720score复算通过；90 O-F首100ms预测与执行对齐。此项是重建工程修复，不追溯把失败run改判通过。

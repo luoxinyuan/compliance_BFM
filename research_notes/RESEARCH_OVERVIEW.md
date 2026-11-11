@@ -2,6 +2,12 @@
 
 本文件说明研究目标与判断原则；执行状态、模型身份及下一决策见 [CURRENT_STATE.md](CURRENT_STATE.md)。完整历史与里程碑决策在 [Project Master #18](https://github.com/GaoE05/robot-research-bridge/issues/18)。它不是实验启动指令。
 
+## 当前方法决策（F1收官，Issue61）
+
+Steering-first只作为下一研究主线：分离目标Goal、当前接触Guidance与冻结底座Execution，先验证真实Guidance→合法动作/latent合同。原BFM、P-BFM原生ERI与I-BFM交互表征应按权重、动作、观测、物理资格分别审查；接口可调用不等于真实接触能力成立。
+
+F1证明有限状态有可执行反馈，也证明真实未来并非尾部质量问题的通用解；不据此宣布必须解冻或已有可部署通用策略。当前只授权S0，Contact Adaptation是否必要留给匹配物理证据，S1及训练不可自动启动。历史LPP/action alignment/Teacher→Student仍为有需要时工具，不强套形式。
+
 ## 科学目标
 
 **Contact-Conditioned Whole-Body Motion Transitions / General Whole-Body Compliance**：机器人接受人的局部物理引导，根据真实接触、本体与动作历史，以及自身可维护记忆，组织任务合适的手臂、躯干/root、支撑和步态响应，降低不必要的交互负担，保持稳定与运动质量。

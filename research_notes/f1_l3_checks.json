@@ -1,0 +1,154 @@
+[
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "P1-1",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "P1-2",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "P1-13",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "P1-14",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_tail-sustained-5c67db5a4802",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_tail-hold-5c67db5a4802",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_tail-sustained-12c3401ff67b",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_tail-hold-12c3401ff67b",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_tail-sustained-97ff10c4dcd9",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_tail-hold-97ff10c4dcd9",
+    "passed": true
+  },
+  {
+    "test": "strict C-P reuse: full initial state/pool/all8 first-query branches/full actual trajectory",
+    "state_id": "new_tail-hold-97ff10c4dcd9",
+    "passed": true,
+    "archive_runtime": "ad93901e9b75791ae918dd37664b7d6f8b8e86bb",
+    "actual_artifact_sha256": "bd133366d61cac42053c0571c95d1d8bfee6f896f60671817c939c4cf37375da"
+  },
+  {
+    "state_id": "old_tradeoff-sustained-1f7c1c806ff0",
+    "test": "explicit archived efc_JT restore; all other state exact",
+    "passed": true,
+    "physics_control_score_bitwise_equal": true,
+    "seconds": 3.0,
+    "compared_array_shape": [
+      2135
+    ],
+    "array_excluded": false
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-sustained-1f7c1c806ff0",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-hold-1f7c1c806ff0",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-sustained-3077ca809d70",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-hold-3077ca809d70",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-sustained-7952b43a7dd4",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-hold-7952b43a7dd4",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-sustained-6fc08121dd42",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-hold-6fc08121dd42",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_near-sustained-5f62e065b5ac",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_near-hold-5f62e065b5ac",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_stop-sustained-5f6380cdec75",
+    "passed": true
+  },
+  {
+    "test": "strict C-P reuse: full initial state/pool/all8 first-query branches/full actual trajectory",
+    "state_id": "new_stop-sustained-5f6380cdec75",
+    "passed": true,
+    "archive_runtime": "ad93901e9b75791ae918dd37664b7d6f8b8e86bb",
+    "actual_artifact_sha256": "1ebaff66e1a5c7595f2d93f406554b5ebcea173e9937d40e0ad84b6bf0e9a9ed"
+  },
+  {
+    "test": "strict C-P reuse: full initial state/pool/all8 first-query branches/full actual trajectory",
+    "state_id": "new_stop-sustained-5f6380cdec75-continue",
+    "passed": true,
+    "archive_runtime": "ad93901e9b75791ae918dd37664b7d6f8b8e86bb",
+    "actual_artifact_sha256": "adffd6ebcd549fce6228309c0b7e0309802bc5bbb12e9aad550c1fad13637e9b"
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_stop-hold-5f6380cdec75",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_stop-sustained-4ea37e71ee89",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_stop-hold-4ea37e71ee89",
+    "passed": true
+  }
+]

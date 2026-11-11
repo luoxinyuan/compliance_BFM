@@ -9,3 +9,7 @@ Mac：`~/Projects/compliance-bfm-diagnostics/videos/f1-l1-l2-20261111/`。三条
 |f1-tail-hold-release.mp4|固定BC500 / 因果特权重规划|同状态同条件，减力明显，但yaw/滑移代价保留；覆盖保持到释放，释放后不考核旧anchor|
 
 每行自身左右视角为同一条实际轨迹，字幕含时刻、阶段、真实XYZ力、接触误差及pelvis/torso yaw；黄箭头为力。中帧图已人工查看。SHA与源轨迹身份见[f1_video_manifest](f1_video_manifest.json)。不剪除窗口内失败，不拼不同checkpoint为统一策略。
+
+## L3匹配C-P/O-F实际执行（2026-11-12）
+
+本地 `~/Projects/compliance-bfm-diagnostics/videos/f1-l3-20261112/`：f1-l3-stop.mp4、f1-l3-continue.mp4、f1-l3-tail.mp4。每条上下同条件C-P/O-F，实际qpos三秒25fps、1×，不是搜索预测动画。服务器runs/video-l3-01；全帧解码核验。视频短窗不能冒充完整回合。

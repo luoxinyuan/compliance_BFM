@@ -1,0 +1,139 @@
+{
+  "stage": "F1-L3",
+  "jobs": [
+    {
+      "name": "l3-01",
+      "layer": "L3",
+      "pid": 2191394,
+      "started": 1794417039.8670757,
+      "status": "failed_preserved",
+      "timeout_s": 3600,
+      "preparation_reporting_reserved_s": 1200,
+      "stage_hard_s": 5400,
+      "prior_F1_charged_s": 11372.572671389,
+      "training": false,
+      "child_pid": 2191399,
+      "runtime": "1773f8f44d38eefb4fcbeb02af94fa04f1c8f5da",
+      "command": [
+        "<project>/.venv/bin/python",
+        "<project>/experiments/f1-l1-l2-20261111/runtime-l3/research_notes/f1_l3_stage.py",
+        "--layer",
+        "L3",
+        "--output",
+        "<project>/experiments/f1-l1-l2-20261111/runs/l3-01"
+      ],
+      "gpu": "GPU-3ae548cd-2131-2b5d-42ad-5d0f40ff9da0, 0 MiB, 0 %",
+      "free_bytes": 654701494272,
+      "returncode": 1,
+      "elapsed_s": 115.8303691559995
+    },
+    {
+      "name": "l3-02",
+      "layer": "L3",
+      "pid": 2191841,
+      "started": 1794417244.7095034,
+      "status": "completed",
+      "timeout_s": 3600,
+      "preparation_reporting_reserved_s": 1200,
+      "stage_hard_s": 5400,
+      "prior_F1_charged_s": 11372.572671389,
+      "training": false,
+      "previous_L3_measured_s": 115.8303691559995,
+      "child_pid": 2191845,
+      "runtime": "61b4371c00eab86e40dd4ef21b5a0123d2cfd355",
+      "command": [
+        "<project>/.venv/bin/python",
+        "<project>/experiments/f1-l1-l2-20261111/runtime-l3/research_notes/f1_l3_stage.py",
+        "--layer",
+        "L3",
+        "--output",
+        "<project>/experiments/f1-l1-l2-20261111/runs/l3-02"
+      ],
+      "gpu": "GPU-3ae548cd-2131-2b5d-42ad-5d0f40ff9da0, 0 MiB, 0 %",
+      "free_bytes": 654550499328,
+      "returncode": 0,
+      "elapsed_s": 1952.3631634799822
+    },
+    {
+      "name": "l3-cp-audit",
+      "layer": "L3",
+      "status": "completed",
+      "elapsed_s": 93.5972178139782,
+      "physics_steps": 0,
+      "script_sha256": "e0a0ea5457780bc2fcc7a52533145fc03a6cd65c2d32a35cb0367d824c4dee1c"
+    },
+    {
+      "name": "l3-reduction",
+      "layer": "L3",
+      "status": "completed",
+      "elapsed_s": 36.488346255006036,
+      "script_sha256": "f4087c6c4045efd211aa2d81f8a2f0fbd014a36345cc1a4fc4b7267e58a4b990",
+      "physics_steps": 0
+    },
+    {
+      "name": "l3-video-render",
+      "layer": "L3",
+      "status": "completed",
+      "pid": 2197719,
+      "started": 1794419218.1598883,
+      "runtime": "61b4371c00eab86e40dd4ef21b5a0123d2cfd355",
+      "physics_steps": 0,
+      "training": false,
+      "videos": 3,
+      "decode_all_frames": true,
+      "elapsed_s": 28.85113858000841
+    }
+  ],
+  "preparation_reporting_estimate_s": 1200,
+  "measured_s": 2227.1302352849743,
+  "total_charged_s": 3427.1302352849743,
+  "cap_s": 5400,
+  "prior_F1_s": 11372.572671389,
+  "total_F1_s": 14799.702906673974,
+  "F1_cap_s": 43200,
+  "project_cap_s": 864000,
+  "accounting": "additive; no reset of original240h; supervisor wall includes all child compute/IO; no nested double counting",
+  "project_rollup": {
+    "prior_stage_entries": [
+      {
+        "scope": "approved dual-track ledger including carried benchmark/preparation",
+        "seconds": 57800.07173384906,
+        "evidence": "dual-track-formal-20261109/ledger.json"
+      },
+      {
+        "scope": "D1/D2",
+        "seconds": 3226.804518200908,
+        "evidence": "research_notes/dual_track_diagnostic_artifacts/runtime-cost.json"
+      },
+      {
+        "scope": "FB/native/offline three packages",
+        "seconds": 2271.820629119873,
+        "evidence": "fb-native-audit-20261110/ledger.json"
+      },
+      {
+        "scope": "Issue58 sidecars and declared preparation/CPU",
+        "seconds": 49325.24287739601,
+        "evidence": "frl-v2-fb-repair-20261110/jobs/*.json; ISSUE58_EXECUTION_RESULTS; rounded CPU figures"
+      },
+      {
+        "scope": "v2 archive diagnosis upper bound",
+        "seconds": 2259,
+        "evidence": "FRL_V2_ARCHIVE_DIAGNOSTICS.md:129"
+      },
+      {
+        "scope": "v3 P1/P2 sidecars plus preparation and CPU",
+        "seconds": 30353.236599092485,
+        "evidence": "frl-v3-risk-20261111/jobs/*.json; FRL_V3_RESULTS.md:81"
+      },
+      {
+        "scope": "F1 L0-L2 inclusive",
+        "seconds": 11372.572671389,
+        "evidence": "f1_cost_ledger.json at a72cb8a"
+      }
+    ],
+    "prior_charged_s": 156608.74902904735,
+    "including_L3_s": 160035.87926433232,
+    "precision": "includes stated estimates and report-rounded CPU, not all-exact kernel time",
+    "dedup": "prior benchmark already carried by dual formal; F1 L0 not counted again; supervised parent contains child wall"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "rows": 747,
+  "shards": [
+    "f1_l3_candidate_scores_00.json",
+    "f1_l3_candidate_scores_01.json",
+    "f1_l3_candidate_scores_02.json",
+    "f1_l3_candidate_scores_03.json"
+  ],
+  "raw_states_and_trajectories": "private; referenced by sha256"
+}
