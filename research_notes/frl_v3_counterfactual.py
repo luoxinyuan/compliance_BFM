@@ -54,7 +54,7 @@ def run(e,m,c,out,args):
     # Six exposed independent dev parents, four real phase states each.
     for parent in dict.fromkeys(r['parent_id'] for r in plan['P1']['actual_development_states']):
         wanted=[r for r in plan['P1']['actual_development_states'] if r['parent_id']==parent];first=wanted[0];owner=first['policy'];spec=first['spec'];torch.manual_seed(56017);np.random.seed(56017);t.reset(spec,record=True,label=parent[:12]+'-source-'+owner)
-        saved=js(OLD/f'runs/frl-formal-B-01/dev-{dict(BC500=0,B64=64,B128=128)[owner]}/'+(parent[:12]+'-main.json.gz'))
+        saved=js(OLD / f'runs/frl-formal-B-01/dev-{dict(BC500=0,B64=64,B128=128)[owner]}' / (parent[:12]+'-main.json.gz'))
         j=0
         while not t.done:
             x=torch.cat([t.student_features(),t.features()],-1)
