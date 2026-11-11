@@ -1,0 +1,12 @@
+{
+  "f1_phase_reduction.py": "631abeb3a9f2077a14f9bec0d690c6b8de936a3cc1184d937ef251ecdd3bf1ce",
+  "f1_query_reduction.py": "cfc376035f783104876abbdb6a8384929a925c162567a87af93e36a3f35158bc",
+  "f1_slip_reduction.py": "4efeb1fcd4732beb8fa62535febf77890c2ca59706b98610965fe798de65ecf5",
+  "f1_render_job.py": "57ccba5d01031fcc8c3f6314525243a6d9a6030ae863db6852fa81476bfbc625",
+  "f1_assemble.py": "c0c34d106995615c9a0aea694c89ceaa2789cb48b03c7d583ee3d4237421fff4",
+  "f1_scientific_tables.py": "0edfb3238ed62cd33dff36276b982f5c48d4369eb5e0b42206d64b739317412d",
+  "f1_narrative.py": "069d7273a52036610b70b15c87a8a8c606672679af64b292327b820333870881",
+  "f1_publication_finish.py": "5b7cd7cf518bc2b2b7c0924eee85e1e20d364d610040a195c4ba70e4c90e79f9",
+  "f1_report_reduction.py": "2efcd3491cb35093690407c38076d727d42ca1ce5ebc540d0ca96897e40f792b",
+  "archived_l1_slip_reducer": "6325ceb7cd4f56f71a6d4abee38119aada0c4126b2d677f7d00e12a431f0940e"
+}

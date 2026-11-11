@@ -1,263 +1,182 @@
 {
-  "prior_L0_charged_s": 1113.1868878559908,
+  "prior_L0_and_authorized_reserve_s": 3346.9409750220075,
+  "prior_L0_cap_s": 1800,
+  "prior_reserve_s": 1546.9409750220075,
   "new_jobs": [
     {
-      "name": "array-audit-01",
-      "pid": 2148574,
-      "started": 1794403165.4903278,
+      "name": "kinematic-probe",
+      "layer": "reserve",
+      "status": "diagnostic",
+      "elapsed_s": 19.95426509101526,
+      "runtime": null,
+      "physics_steps": 0,
+      "rows": [
+        {
+          "tick": 1,
+          "lag": 0,
+          "max": 0.0,
+          "exact": true
+        },
+        {
+          "tick": 1,
+          "lag": 1,
+          "max": 0.0012847196863489951,
+          "exact": false
+        },
+        {
+          "tick": 10,
+          "lag": 0,
+          "max": 0.0,
+          "exact": true
+        },
+        {
+          "tick": 10,
+          "lag": 1,
+          "max": 0.0008860184948527028,
+          "exact": false
+        },
+        {
+          "tick": 100,
+          "lag": 0,
+          "max": 0.0,
+          "exact": true
+        },
+        {
+          "tick": 100,
+          "lag": 1,
+          "max": 0.00012411229541958724,
+          "exact": false
+        },
+        {
+          "tick": 300,
+          "lag": 0,
+          "max": 0.0,
+          "exact": true
+        },
+        {
+          "tick": 300,
+          "lag": 1,
+          "max": 3.42036392992906e-05,
+          "exact": false
+        }
+      ]
+    },
+    {
+      "name": "l1-01",
+      "layer": "L1",
       "status": "failed_preserved",
-      "timeout_s": 2400,
-      "training": false,
-      "child_pid": 2148579,
-      "runtime": "bbd207bed1369e190d0653f294d7975c74e9fa32",
-      "command": [
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/f1-l0-array-audit-20261111/runtime/research_notes/f1_array_audit.py",
-        "--output",
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/f1-l0-array-audit-20261111/runs/array-audit-01"
-      ],
-      "gpu": "GPU-3ae548cd-2131-2b5d-42ad-5d0f40ff9da0, 0 MiB, 0 %",
-      "free_bytes": 687559671808,
-      "prior_charged_s": 1713.1868878559908,
-      "returncode": 1,
-      "elapsed_s": 149.23078065700247
+      "elapsed_s": 568.0238667619997,
+      "runtime": "f03ed1be5b384ce982fd073b9669b9717742c50b",
+      "physics_steps": null,
+      "rows": null
     },
     {
-      "name": "array-audit-02",
-      "pid": 2148902,
-      "started": 1794403399.2324703,
+      "name": "l1-02",
+      "layer": "L1",
       "status": "failed_preserved",
-      "timeout_s": 2400,
-      "training": false,
-      "child_pid": 2148906,
-      "runtime": "147a93de035c639d4fc90e2ed8f4610d9f6230f7",
-      "command": [
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/f1-l0-array-audit-20261111/runtime/research_notes/f1_array_audit.py",
-        "--output",
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/f1-l0-array-audit-20261111/runs/array-audit-02"
-      ],
-      "gpu": "GPU-3ae548cd-2131-2b5d-42ad-5d0f40ff9da0, 0 MiB, 0 %",
-      "free_bytes": 687115075584,
-      "prior_charged_s": 1862.4176685129933,
-      "returncode": 1,
-      "elapsed_s": 141.79361601700657
+      "elapsed_s": 261.7774787929957,
+      "runtime": "e31b0d2aa9fc3b896887b4a78ee685e8640affcd",
+      "physics_steps": null,
+      "rows": null
     },
     {
-      "name": "array-audit-03",
-      "pid": 2149669,
-      "started": 1794403858.0232017,
+      "name": "l1-03",
+      "layer": "L1",
       "status": "completed",
-      "timeout_s": 2400,
-      "training": false,
-      "child_pid": 2149674,
-      "runtime": "5e5b3a464d9c1bf301d375f197bc9acc4cc3a653",
-      "command": [
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/f1-l0-array-audit-20261111/runtime/research_notes/f1_array_audit.py",
-        "--output",
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/f1-l0-array-audit-20261111/runs/array-audit-03"
-      ],
-      "gpu": "GPU-3ae548cd-2131-2b5d-42ad-5d0f40ff9da0, 0 MiB, 0 %",
-      "free_bytes": 686678867968,
-      "prior_charged_s": 2004.2112845299998,
-      "returncode": 0,
-      "elapsed_s": 709.3652233959874
+      "elapsed_s": 979.8643361160066,
+      "runtime": "f42fb177fe3679d0a162ace03b22acb5196279c4",
+      "physics_steps": null,
+      "rows": null
     },
     {
-      "name": "cold-probe-01",
-      "pid": 2151669,
-      "started": 1794405410.5744736,
+      "name": "l1-slip-kinematics-final",
+      "layer": "L1",
       "status": "completed",
-      "timeout_s": 300,
-      "training": false,
-      "child_pid": 2151674,
-      "runtime": "8bb0de396f3999abcc3c63f7a294afb1927f6372",
-      "command": [
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/f1-l0-array-audit-20261111/runtime/research_notes/f1_l0_cold_probe.py",
-        "--output",
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/f1-l0-array-audit-20261111/runs/cold-probe-01"
-      ],
-      "gpu": "GPU-3ae548cd-2131-2b5d-42ad-5d0f40ff9da0, 0 MiB, 0 %",
-      "free_bytes": 683931598848,
-      "prior_charged_s": 3202.1533377949963,
-      "returncode": 0,
-      "elapsed_s": 144.78763722701115
+      "elapsed_s": 106.09080245601945,
+      "runtime": null,
+      "physics_steps": 0,
+      "rows": 384
     },
     {
-      "name": "cpu-byte-digest",
+      "name": "l1-slip-reduction-01",
+      "layer": "L1",
       "status": "completed",
-      "elapsed_s": 79.44857738399878,
-      "kind": "CPU only; read saved trajectories",
-      "count": 156
+      "elapsed_s": 54.73136354400776,
+      "runtime": null,
+      "physics_steps": 0,
+      "rows": 160
     },
     {
-      "name": "l0-complete-01",
-      "pid": 2150825,
-      "started": 1794404632.2496977,
-      "status": "failed_preserved",
-      "timeout_s": 2400,
-      "training": false,
-      "child_pid": 2150832,
-      "runtime": "0b36af7795d49e84beda78f2936684e8ebc7c44a",
-      "command": [
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/f1-l0-array-audit-20261111/runtime/research_notes/f1_l0_complete.py",
-        "--output",
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/f1-l0-array-audit-20261111/runs/l0-complete-01"
-      ],
-      "gpu": "GPU-3ae548cd-2131-2b5d-42ad-5d0f40ff9da0, 0 MiB, 0 %",
-      "free_bytes": 684833374208,
-      "prior_charged_s": 2713.5765079259872,
-      "returncode": 1,
-      "elapsed_s": 102.2672156530025
-    },
-    {
-      "name": "l0-complete-02",
-      "pid": 2151111,
-      "started": 1794404813.6473196,
+      "name": "l2-01",
+      "layer": "L2",
       "status": "completed",
-      "timeout_s": 2400,
-      "training": false,
-      "child_pid": 2151116,
-      "runtime": "5f4c82c7e1ae1c8c44606e388261d6f4c93107e5",
-      "command": [
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/f1-l0-array-audit-20261111/runtime/research_notes/f1_l0_complete.py",
-        "--output",
-        "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/f1-l0-array-audit-20261111/runs/l0-complete-02"
-      ],
-      "gpu": "GPU-3ae548cd-2131-2b5d-42ad-5d0f40ff9da0, 0 MiB, 0 %",
-      "free_bytes": 684401360896,
-      "prior_charged_s": 2895.2923009629885,
-      "returncode": 0,
-      "elapsed_s": 306.8610368320078
+      "elapsed_s": 4671.5099291689985,
+      "runtime": "ad93901e9b75791ae918dd37664b7d6f8b8e86bb",
+      "physics_steps": null,
+      "rows": null
+    },
+    {
+      "name": "l2-slip-kinematics-final",
+      "layer": "L2",
+      "status": "completed",
+      "elapsed_s": 29.460440294991713,
+      "runtime": null,
+      "physics_steps": 0,
+      "rows": 16
+    },
+    {
+      "name": "phase-reduction",
+      "layer": "L2",
+      "status": "completed",
+      "elapsed_s": 30.94740320998244,
+      "runtime": null,
+      "physics_steps": 0,
+      "rows": 64
+    },
+    {
+      "name": "query-reduction",
+      "layer": "L2",
+      "status": "completed",
+      "elapsed_s": 62.691990097024245,
+      "runtime": null,
+      "physics_steps": 0,
+      "rows": null
+    },
+    {
+      "name": "video-render-01",
+      "layer": "L2",
+      "status": "completed",
+      "elapsed_s": 40.57982083398383,
+      "runtime": "ad93901e9b75791ae918dd37664b7d6f8b8e86bb",
+      "physics_steps": 0,
+      "rows": null
     }
   ],
-  "new_job_actual_s": 1633.7540871660167,
-  "preparation_and_reporting_reserve_s": 600,
-  "cumulative_L0_plus_reserve_s": 3346.9409750220075,
-  "authorized_combined_cap_s": 7200,
-  "F1_total_cap_s": 43200,
-  "L3_reserved_s": 10800,
-  "L1_actual_s": 0,
-  "L2_actual_s": 0,
-  "L3_actual_s": 0,
-  "remaining_nonL3_total_s": 29053.059024977993,
-  "free_bytes_at_report": 683487002624,
-  "new_output_bytes": 1101943568,
-  "benchmarks": {
-    "candidate_1s": {
-      "n": 6,
-      "min": 0.8344553369970527,
-      "median": 0.8847243744967273,
-      "max": 1.2078719699929934
-    },
-    "candidate_3s": {
-      "n": 6,
-      "min": 2.524306473991601,
-      "median": 2.752754657994956,
-      "max": 3.092571246990701
-    },
-    "full_restore": {
-      "n": 81,
-      "min": 0.00942837301408872,
-      "median": 0.014051298989215866,
-      "max": 0.02408994600409642
-    },
-    "snapshot_save": {
-      "n": 27,
-      "min": 0.06678044600994326,
-      "median": 0.08316908398410305,
-      "max": 0.14430495098349638
-    },
-    "snapshot_read": {
-      "n": 27,
-      "min": 0.04393724599503912,
-      "median": 0.05284486699383706,
-      "max": 0.17791404100717045
-    },
-    "replan_100ms_two_1s_candidates": {
-      "n": 3,
-      "min": 1.8093027299910318,
-      "median": 1.8774315920018125,
-      "max": 2.377030631992966
-    },
-    "snapshot_sizes": {
-      "n": 27,
-      "min": 1290967,
-      "median": 1332865,
-      "max": 1487564
-    },
-    "branch_bytes": {
-      "n": 12,
-      "min": 2778036,
-      "median": 4529255.5,
-      "max": 6470691
-    },
-    "backend_setup_s": 2.0259033080074005,
-    "cold_start": {
-      "status": "passed",
-      "process_entry_to_model_environment_s": 128.60196100000758,
-      "process_entry_to_usable_task_and_actor_s": 131.66675207900698,
-      "process_entry_to_restored_P1_1_s": 135.6984364730015,
-      "hot_3s_candidate_s": [
-        2.8890712459979113,
-        2.5767257600091398
-      ],
-      "cold_definition": "fresh Python/CUDA/model/environment process; shared filesystem and driver caches NOT flushed",
-      "repeated_valid_state_exact": true,
-      "runtime": "8bb0de396f3999abcc3c63f7a294afb1927f6372",
-      "bfm_sha": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
-      "actor_sha": "e1165d80cbce13b9248eba0ee816f4ecfb873b70056257c0d32f22c720e9c39d",
-      "training": 0,
-      "permission": "O-F frozen benchmark only"
-    }
+  "new_measured_by_layer_s": {
+    "reserve": 19.95426509101526,
+    "L1": 1970.4878476710292,
+    "L2": 4835.189583604981
   },
-  "projections": [
-    {
-      "stage": "L1",
-      "planned_3s_branches": 576,
-      "lower_job_s": 1459.4312718752772,
-      "conservative_job_s": 3217.97626779601,
-      "output_bytes_estimate": 3727118016,
-      "status": "projection_only_not_started",
-      "caveat": "O-F timing proxy; causal predictor overhead needs own check; L3 requires separate approval"
-    },
-    {
-      "stage": "L2",
-      "planned_3s_branches": 720,
-      "lower_job_s": 1824.2890898440965,
-      "conservative_job_s": 3947.470334745012,
-      "output_bytes_estimate": 4658897520,
-      "status": "projection_only_not_started",
-      "caveat": "O-F timing proxy; causal predictor overhead needs own check; L3 requires separate approval"
-    },
-    {
-      "stage": "L3_locked",
-      "planned_3s_branches": 480,
-      "lower_job_s": 1216.192726562731,
-      "conservative_job_s": 2731.646889830008,
-      "output_bytes_estimate": 3105931680,
-      "status": "projection_only_not_started",
-      "caveat": "O-F timing proxy; causal predictor overhead needs own check; L3 requires separate approval"
-    }
-  ],
-  "budget_allocation": {
-    "L0_charged_s": 1800,
-    "additional_reserve_charged_s": 1546.9409750220075,
-    "L1_borrowed_s": 0,
-    "L2_borrowed_s": 0,
-    "L3_borrowed_s": 0
+  "new_preparation_reporting_reserve_estimate_s": 1200.0,
+  "reserve_used_including_estimate_s": 2766.8952401130227,
+  "total_charged_s": 11372.572671389033,
+  "total_charged_h": 3.1590479642747313,
+  "non_L3_limit_s": 32400,
+  "L3_charged_s": 0,
+  "L3_locked_s": 10800,
+  "L1_remaining_s": 8829.51215232897,
+  "L2_remaining_s": 9564.81041639502,
+  "reserve_remaining_s": 2633.1047598869773,
+  "L1_candidate_branches": 384,
+  "L1_candidate_physics_ticks": 230400,
+  "L2_counts": {
+    "prediction_ticks": 771200,
+    "actual_ticks": 9600,
+    "queries": 240,
+    "training_updates": 0,
+    "L3": 0
   },
-  "stage_tree_bytes_by_directory": {
-    "tmp": 0,
-    "runtime": 153410779,
-    "prep": 176880,
-    "jobs": 105476,
-    "source": 474103,
-    "runs": 947776330
-  },
-  "runs_artifact_bytes": 947776330
+  "new_RL_decisions": 0,
+  "optimizer_updates": 0,
+  "scope": "Nested subprocess/evaluation costs not double counted. Preparation is a declared estimate, not GPU kernel timing. Prefix reconstruction/backend qualification and cache probes are in job wall; extra physics counts listed separately where archived."
 }

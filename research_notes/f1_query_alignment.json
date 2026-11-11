@@ -1,0 +1,4456 @@
+{
+  "status": "passed",
+  "restricted_stop_continue_prefix": {
+    "physics_ticks": 100,
+    "commands": 5,
+    "passed": true,
+    "fields": {
+      "inputs": true,
+      "raws": true,
+      "target_z": true,
+      "previous_z": true,
+      "physics": true,
+      "controls": true
+    },
+    "first_force_difference_time": 5.504999999999905,
+    "first_anchor_difference_time": 5.504999999999905,
+    "first_restricted_input_difference_time": 5.599999999999903,
+    "first_raw_difference_time": 5.599999999999903
+  },
+  "required_fields": [
+    "information_tier",
+    "actor_observation_schema",
+    "candidate_generator_inputs",
+    "partner_predictor_version",
+    "partner_predictor_inputs",
+    "score_features",
+    "simulator_state_origin",
+    "future_anchor_accessible",
+    "future_anchor_consumed",
+    "anchor_error_used_in_selection",
+    "selection_horizon",
+    "physical_eval_horizon",
+    "query_wall_seconds",
+    "state_parent_id",
+    "state_snapshot_sha",
+    "actual_runtime_sha"
+  ],
+  "query_count": 248,
+  "causal_command_alignment": [
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 0,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "e4bfee84b3917f4abc2427b8232b3ad260a569d697cd6b83f105135ebf056c5e",
+      "force_prediction_error_rms_N": 0.025133627880675375,
+      "geometry_prediction_error_rms_cm": 0.04584189784806103,
+      "root_endpoint_prediction_error_cm": 0.00035580599493765304,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 1,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "45c4ff5e708db6305931133042ce537e7e41b5d645fe47331aae0d5718520a9d",
+      "force_prediction_error_rms_N": 0.04131479239648774,
+      "geometry_prediction_error_rms_cm": 0.03610745258406271,
+      "root_endpoint_prediction_error_cm": 0.00013915472901815178,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 2,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "5723591a0f78ddb24d54c6f91bc4238aa9835e59d4b08ef02056315de1f585f0",
+      "force_prediction_error_rms_N": 0.07998653415915645,
+      "geometry_prediction_error_rms_cm": 0.029728362402329296,
+      "root_endpoint_prediction_error_cm": 0.00016981956147226493,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 3,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "3c9c4557344de61833026e8b3d94a7aa4098e2c38025a21d1677eee28e33e3af",
+      "force_prediction_error_rms_N": 0.12429676412199026,
+      "geometry_prediction_error_rms_cm": 0.03425231649137593,
+      "root_endpoint_prediction_error_cm": 0.0005339114350129693,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 4,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "565c73a6c937b7569d2fef3be174e21007a8de48b58523f5b84c0f3a0d68a9af",
+      "force_prediction_error_rms_N": 0.1703264611720326,
+      "geometry_prediction_error_rms_cm": 0.05011719522915071,
+      "root_endpoint_prediction_error_cm": 0.0008475207801534966,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 5,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "d6b5ba0dbe3d18f7cdfae16c364953bdccadd6ff0582065f957d831a1ec91aae",
+      "force_prediction_error_rms_N": 0.14519257980495567,
+      "geometry_prediction_error_rms_cm": 0.05640445894482893,
+      "root_endpoint_prediction_error_cm": 0.001120164424889138,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 6,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "a382519473f6699b5e5c2d11c8a0b260da51ea0a4f6463dcbb66ec05d33760e2",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 7,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "c5053e3a91824da22bbd59a1f98ed5af58243716f1398e7fb69c02400f07ffd4",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 8,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "e647f963a26ece14edcf3211c62d6eb55d9499aeb4aecfd34f25255b98683cb9",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 9,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "9f0edb2baf69d8b4f9f66531a0e8d9d5612b2236b439c241410aa2f5e8b83049",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 10,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "a49bfd6d0a3bb3247b7d9a80527526fbf3f53e521e5fead4bd2e1ac07b7ba43d",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 11,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "2161f67a24f534f9daa2c9553b212bc79cb89dee8a5eb49aaa6bb30810da10a0",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 12,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "dddc287a962f5a32f437fc3a35bf5045690a741f182e445e68fbca2e26e8e06c",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 13,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "904389a8b113c21b698db5448c8e4f8424c3c366684a03c47a216b915c9e55bf",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 14,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "ecdd961f28df7f4fbb7d52060777695b1cc2e59b046c2bf52ebe6fd1112afe73",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 15,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "5ec75fb07cb0552f7e801f6f08d99e313fc2044a936674c24748b28f2e370755",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 16,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "84e41e7641ebd91d225e568103d11da947bf73ddc18f7c84d01b25e50279acd1",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 17,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "bfd8451d3a210362f7c964eea3631dc79824f832727a592ca3a12b8e0b866d8c",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 18,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "a7ef3fa674e2bd8ae3d58d5e44a015900fcb4ba8edfdad1c7fc7928855225bfa",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 19,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "4dac3e0b795180e47ffb902b797d0227008f1d1d4b0d4f124b1f2f0706070d8e",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 20,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "4f39a7232e5197ae4037240d0560b8a4c08423b8aa01d7ff15ffe2ed5e07d863",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 21,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "a5b81a7d3c3dca4d0854537f07cce09b1f94e4f85d188b996d6f28cb1c3be9f4",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 22,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "ee1f771e07a2912096f6d9818f86429b67a24f41591434fcaccc221f7f87e5e8",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 23,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "5c6e0417f20df403dcb66412da682bee9b846b1438f1d10759a2b0537dd8a84f",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 24,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "b9d67113592cab7ad02eb3c6c02dc54952863add53a34c6e3de5a9f46dd82cb3",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 25,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "ab7c76db22ccd7adc5c6ffd466f44965a5be92d1354137a7e4b692aba73ae895",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 26,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "0da4b74b352e01f460130d5d1a9a14280e64ccf98e40fb2cc142676f5ab804db",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 27,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "f4380e1911f1a000b92de4b9d1d3877a5d6884b903d53d626bf2be2b7dabd408",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 28,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "11907abf395198b7a1289a3caf329a0816c828138125ff7dd6348fdb220be5d0",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-1",
+      "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "replan": 29,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "60b17a652ef564b51c88e4a80284a6bd4e4185f8076e4d4daf593ce8703f967d",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 0,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1afd309e434d313049fe39c06217934d8a7545efd41f03ecf5ea5eb67ecbb7d8",
+      "force_prediction_error_rms_N": 0.01610535527221029,
+      "geometry_prediction_error_rms_cm": 0.08001925634220737,
+      "root_endpoint_prediction_error_cm": 0.00016220351786856707,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 1,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "d234883cc370184792672902f98b115d929605bb5cd1eb43ede551963946a2d2",
+      "force_prediction_error_rms_N": 0.012072532224346054,
+      "geometry_prediction_error_rms_cm": 0.07783678152575253,
+      "root_endpoint_prediction_error_cm": 0.00011337633352376882,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 2,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "037b864629096e2f26cc8f2baacccb98d2a6cb366c6ef090e261f4b571111a2d",
+      "force_prediction_error_rms_N": 0.013423325375187277,
+      "geometry_prediction_error_rms_cm": 0.07499482061731315,
+      "root_endpoint_prediction_error_cm": 9.531036674862982e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 3,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "98b04ba2016363afa84353bc686dc41f424944b591c1f7092f61830292d4aedb",
+      "force_prediction_error_rms_N": 0.014415562299100007,
+      "geometry_prediction_error_rms_cm": 0.07160011065376996,
+      "root_endpoint_prediction_error_cm": 0.00012463692096483244,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 4,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "2c5bf6dba1ac874dfe89b9ca7e219a2c4daa903a4c322dc1f928af6651f40762",
+      "force_prediction_error_rms_N": 0.011287644938309261,
+      "geometry_prediction_error_rms_cm": 0.06819007604955626,
+      "root_endpoint_prediction_error_cm": 7.892976591357557e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 5,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "7a5fe8b5ab63c288756e17a3b8e308b99d27869c60cf97de4f86f6db55d5ff33",
+      "force_prediction_error_rms_N": 0.01531198169621485,
+      "geometry_prediction_error_rms_cm": 0.0643185140399153,
+      "root_endpoint_prediction_error_cm": 0.00012903607942453573,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 6,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "b344785590a5a4c918a2b5b7ef797b1b4ff542430a5156a35dbd462cf859fdb0",
+      "force_prediction_error_rms_N": 0.029884786810833928,
+      "geometry_prediction_error_rms_cm": 0.059142792666424374,
+      "root_endpoint_prediction_error_cm": 0.00046073152645171765,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 7,
+      "selected": 1,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "97e4ad1a8b746025df12d86ec65d1cb4da8a964c357776e31e643ee79fd8f2bf",
+      "force_prediction_error_rms_N": 0.02885802593659397,
+      "geometry_prediction_error_rms_cm": 0.054329757430453644,
+      "root_endpoint_prediction_error_cm": 0.0002596659064955474,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 8,
+      "selected": 2,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "3d8fcad2189ccc76d73384ff94476b2124d00b790f13c0af60d90d540fb4927b",
+      "force_prediction_error_rms_N": 0.030361807015440827,
+      "geometry_prediction_error_rms_cm": 0.0494137239501064,
+      "root_endpoint_prediction_error_cm": 0.00018734839827923148,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 9,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "b76c20ff49491ba7e5c374445c6fdb0dbbc687c73e470cabea51abf8dc13a556",
+      "force_prediction_error_rms_N": 0.03387619449283696,
+      "geometry_prediction_error_rms_cm": 0.04434485532921492,
+      "root_endpoint_prediction_error_cm": 0.00015340075544747464,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 10,
+      "selected": 6,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "e28422e7e5bf32b3ca42a3a30a4e2c8f78539718534e6351865cd2182a90b74e",
+      "force_prediction_error_rms_N": 0.03906749767188846,
+      "geometry_prediction_error_rms_cm": 0.03905444576706144,
+      "root_endpoint_prediction_error_cm": 0.00010104254498951636,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 11,
+      "selected": 5,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "151746a6cfa8ac274c0976111368e5c132045d1c743898c9489997a6dc687967",
+      "force_prediction_error_rms_N": 0.045436838244194123,
+      "geometry_prediction_error_rms_cm": 0.033759708847972664,
+      "root_endpoint_prediction_error_cm": 5.835813856432242e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 12,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "da4721477e02d85ad26ad7e465eb12e8f808d7ee449f2dcf13b52cf56dfbd488",
+      "force_prediction_error_rms_N": 0.05304097693984681,
+      "geometry_prediction_error_rms_cm": 0.028595182511175772,
+      "root_endpoint_prediction_error_cm": 5.155510276397426e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 13,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "6512ddc2337fcfb54fd59778bbd8d4432cf612bf02dbadbb0634f62a619436ef",
+      "force_prediction_error_rms_N": 0.06117306519379176,
+      "geometry_prediction_error_rms_cm": 0.02428987961941007,
+      "root_endpoint_prediction_error_cm": 0.00010000662181021943,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 14,
+      "selected": 2,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "57d54928317b7b60c88696bda8492391306349544ea448de6642b0dcce471db1",
+      "force_prediction_error_rms_N": 0.06976624824716642,
+      "geometry_prediction_error_rms_cm": 0.021719927175341196,
+      "root_endpoint_prediction_error_cm": 0.0001766105722539469,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 15,
+      "selected": 2,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "9562f9fc3ced1ceb68d981b3286f397eb5397527edb8021cf2732acebc5837fe",
+      "force_prediction_error_rms_N": 0.07901439767897424,
+      "geometry_prediction_error_rms_cm": 0.02205124309496797,
+      "root_endpoint_prediction_error_cm": 0.00027277084595596953,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 16,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "0ca5d5f64443f2701034ace11c8053c0c5423466ecae3846fb09833053b4039b",
+      "force_prediction_error_rms_N": 0.09011800461446011,
+      "geometry_prediction_error_rms_cm": 0.026010250758870295,
+      "root_endpoint_prediction_error_cm": 0.0006202642867120689,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 17,
+      "selected": 5,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "41ee5748ad722a1287d186b70684793e95374ff39c57094fb997ffa0f85a5315",
+      "force_prediction_error_rms_N": 0.09528664844464672,
+      "geometry_prediction_error_rms_cm": 0.03132682697352265,
+      "root_endpoint_prediction_error_cm": 0.00046293441258463917,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 18,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "a72d1df73060c6d1c2532e4342a43ed78a2ac831868ed53afbb4bb3ea524d413",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 19,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "0476293bdbbcb389fc7f9549e41c70f980c1475537bcafd0fb2296a3440bd53a",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 20,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "211240dc19d2ffa3f40f0f29f8dbed03d8ef56940061a7a723e6cbdc082b5cb1",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 21,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "ad52620707d924e0b72aba00a8a48214e4a3f08dbd69f919fbd3979bf3fcaf0c",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 22,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "e061a7154c7a1a6cb05b47ef1e0b34313de252e7e1d2e8fb7cb0175c40f64252",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 23,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "0d8e6ddc5ed17d6828bd0bcc9807da791578cea26bd5705bbcc93203fb2037b7",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 24,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "790afe08118571aa7a78e254e3f517da5b31b0a364a27238b2df4ff6063fb89d",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 25,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "e876855488d00cdde949c5db3e0c0f36ecb9eb6d23fb5a15972ad24da3405364",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 26,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "375e238be94afb5a1a893c4ee50d16ee2387cfd7db73879c151673c182a07308",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 27,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "5adfe1c7f1f66101102650fd10d2d036aafd96e07c2ebbc52d6f1debe9f13970",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 28,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "48cca54bb3386a3b84a80ada5ef4c9bfe47965a783bf9902f36322437671ae80",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "P1-13",
+      "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "replan": 29,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "3e71e6e2179e3d2c4f3ecf5f9d4e19fe6aadec873fb4362419c7980f5d57b404",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 0,
+      "selected": 2,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "d4fdc9d9123754fd622184eac4190f9fcb54eef1c2427b704d9172d14873a44a",
+      "force_prediction_error_rms_N": 0.016111920289875525,
+      "geometry_prediction_error_rms_cm": 0.06782294801979603,
+      "root_endpoint_prediction_error_cm": 0.00011995861588635082,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 1,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "02316da5e93cf12a36f381f1e639c98bc738c7abf321ae74e2ca85fafa4d1e6d",
+      "force_prediction_error_rms_N": 0.02498123092957073,
+      "geometry_prediction_error_rms_cm": 0.06586607559420463,
+      "root_endpoint_prediction_error_cm": 0.0001805091435955763,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 2,
+      "selected": 1,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "72886544fc11f4170496c6ce228ce1cd0548480864186cd7623fd90d8a26c863",
+      "force_prediction_error_rms_N": 0.024652790409620616,
+      "geometry_prediction_error_rms_cm": 0.06383613532304196,
+      "root_endpoint_prediction_error_cm": 0.00021166773612784528,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 3,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "f1f202fa74520d06e12381c6939aa2163a1a343d9efaef57769dfa72e096b708",
+      "force_prediction_error_rms_N": 0.018364000391117602,
+      "geometry_prediction_error_rms_cm": 0.062139441904996914,
+      "root_endpoint_prediction_error_cm": 0.00015845997595670955,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 4,
+      "selected": 5,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "5b3883149fdc3954b94aa426065e5b789b4e8d09372db1d3f59fb560bab7e37d",
+      "force_prediction_error_rms_N": 0.03339489176342372,
+      "geometry_prediction_error_rms_cm": 0.05873758819918028,
+      "root_endpoint_prediction_error_cm": 0.0005059814639391109,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 5,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "c99e188363c0d34f682ad844c6729de92fcb926bc5301cdf8f20e98eeea6b428",
+      "force_prediction_error_rms_N": 0.030394600567856398,
+      "geometry_prediction_error_rms_cm": 0.05632077078877764,
+      "root_endpoint_prediction_error_cm": 0.00041302371297338524,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 6,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "61c8c0f7a13a9c69bc75c9f6de097237a9177eb78349ae6a936c51a09c4ff5e6",
+      "force_prediction_error_rms_N": 0.027635783921149397,
+      "geometry_prediction_error_rms_cm": 0.05360900863290558,
+      "root_endpoint_prediction_error_cm": 0.0003653798842524145,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 7,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "695898b5f8b6ab95d1fd7c221d5422d0e2ac26a4d8d96b84f8d816c92e8f2c92",
+      "force_prediction_error_rms_N": 0.025595647725057288,
+      "geometry_prediction_error_rms_cm": 0.05084516350925359,
+      "root_endpoint_prediction_error_cm": 0.00039540786850201013,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 8,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "e4c37b5e025beb57682c598d04edf08a7edabf2f6fd9015ed42db92b704dfd1d",
+      "force_prediction_error_rms_N": 0.024332996218051222,
+      "geometry_prediction_error_rms_cm": 0.04808551610482967,
+      "root_endpoint_prediction_error_cm": 0.0004562373703399166,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 9,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "881ce2abbbee770629aaec5511218e0430e95847f8964ca62bd85d93c980092d",
+      "force_prediction_error_rms_N": 0.023524870735207645,
+      "geometry_prediction_error_rms_cm": 0.0445066420497716,
+      "root_endpoint_prediction_error_cm": 0.00039422376824190734,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 10,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1d140fbdb8aa63cba6a9a8e2dd216d0416ac03e3f216a60aa8690c31fc1982b1",
+      "force_prediction_error_rms_N": 0.024106909458222033,
+      "geometry_prediction_error_rms_cm": 0.0401984398736654,
+      "root_endpoint_prediction_error_cm": 0.00020570265186908894,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 11,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1f0f3b9e4cc9370f992916bd0716da3604e9cedf5cb1c8fe61eba924ed617a71",
+      "force_prediction_error_rms_N": 0.02616660558256743,
+      "geometry_prediction_error_rms_cm": 0.03629971914113393,
+      "root_endpoint_prediction_error_cm": 0.00016138422992341276,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 12,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "ba55fdf4a285959e766746636364f3a2cfde84b3dbd18d9b9f563c523bbb298e",
+      "force_prediction_error_rms_N": 0.02937083246043449,
+      "geometry_prediction_error_rms_cm": 0.0322484463133388,
+      "root_endpoint_prediction_error_cm": 0.00011263042994824024,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 13,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "b32e7ea131e93f32b68a2d5757910c223d557566d91822f2a7f378eccce3eb5e",
+      "force_prediction_error_rms_N": 0.033584044886203486,
+      "geometry_prediction_error_rms_cm": 0.02813911703326838,
+      "root_endpoint_prediction_error_cm": 5.923448095811846e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 14,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "cfab4099719111c546e4f57f3a2df162d1c66c866d9bc7e46e9441e6dbed6670",
+      "force_prediction_error_rms_N": 0.03846277206931186,
+      "geometry_prediction_error_rms_cm": 0.024097757821813913,
+      "root_endpoint_prediction_error_cm": 2.5525594195884096e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 15,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "2bcaec15c418beba78293f66ed14bdc6884ca5f89bcd0c8c15c885f2f3046e87",
+      "force_prediction_error_rms_N": 0.0439441125879314,
+      "geometry_prediction_error_rms_cm": 0.020415349027893527,
+      "root_endpoint_prediction_error_cm": 7.748187307711246e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 16,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "7601b89b4d5e8760c92bef42ccca6c8ec2b74ddbcb27ada5bdca7827d41115a7",
+      "force_prediction_error_rms_N": 0.04989828171418517,
+      "geometry_prediction_error_rms_cm": 0.017604252430990282,
+      "root_endpoint_prediction_error_cm": 0.00013506197202547512,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 17,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "3db1b6ed31c277386cdfa9873f24e3b6af8ef34ed30ef9bb28ad5c9842df5a5e",
+      "force_prediction_error_rms_N": 0.056314149004391356,
+      "geometry_prediction_error_rms_cm": 0.016458164716773728,
+      "root_endpoint_prediction_error_cm": 0.00021364474530060924,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 18,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "f06dd548eb133d44ebc796de1cdc4d5fcd28cdfa64da4568cb982c0cd119f022",
+      "force_prediction_error_rms_N": 0.06303225690990627,
+      "geometry_prediction_error_rms_cm": 0.01760515221083973,
+      "root_endpoint_prediction_error_cm": 0.0002846492882029635,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 19,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "14310c75d2f83018a5af7cc5c2f963b8bb238db1cffb102a02b5efe1e03d67aa",
+      "force_prediction_error_rms_N": 0.07046727579168054,
+      "geometry_prediction_error_rms_cm": 0.021040782142530707,
+      "root_endpoint_prediction_error_cm": 0.0004208523674511617,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 20,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "f6407eeb4e7140a30c922f56928b3fdb6c1d726ec30771028e82f4374916f6c0",
+      "force_prediction_error_rms_N": 0.06070537460658284,
+      "geometry_prediction_error_rms_cm": 0.022971071561275383,
+      "root_endpoint_prediction_error_cm": 0.00070561417293739,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 21,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "5daa2933d1cba6675f1a8cc6d78cb072321c009e25e9d8f3d710269eb0d58e99",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 22,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "47d169f639a6db55362df731ade28ec1c47be422da00569a187235c3e9aec182",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 23,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "8ef44cf034c97ba44afd1488576f36325a40cf38ddfb50627b197d85bb7f5e0f",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 24,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "7aa5fc5c70ab0e2fdc94c155a9d974b0c1e210595f3432a31d12239a1faeb46e",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 25,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "db5013bf899255d071813ac2008d05ffa7772fa595bab45d5abe54df3c08e691",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 26,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1105cfffdf490d0055f6a229e84eb7e091f91d6be26836b19ff9d229b3686560",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 27,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "931734bd1e919556a3bf25176a572728b17adfca1f5c7c6b8ae4a705c07d136b",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 28,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "e251c6d0f1eadf704b922c3187b350bae5199fc7265dcb48d249a02ae47760e1",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "replan": 29,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "70576376a338e0930b8530ef552752a935066324077632ab2caf8ab90ab39f0f",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 0,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "9b91af6f037abe8284c7a158e10122d3be2aca8f2950e40ef8fe608f63c4254c",
+      "force_prediction_error_rms_N": 0.13336661942099115,
+      "geometry_prediction_error_rms_cm": 0.10038386292005039,
+      "root_endpoint_prediction_error_cm": 0.00114303254399466,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 1,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "be79adf8e57995981f44b93e9096e0cffe2a2a7385758c3b2c65709db18ba6e0",
+      "force_prediction_error_rms_N": 0.1247795709039147,
+      "geometry_prediction_error_rms_cm": 0.10267017963619428,
+      "root_endpoint_prediction_error_cm": 0.0011957338049699078,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 2,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "8e1964b1290e0e4104c249c026a00c5d83414be9b328808f1eb023c35b925cc2",
+      "force_prediction_error_rms_N": 0.11758008249896716,
+      "geometry_prediction_error_rms_cm": 0.1045402411713038,
+      "root_endpoint_prediction_error_cm": 0.0017442595112483524,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 3,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "dfa77894fbdd04b91ecb4410562cdeaae4ad4488cbffe2223e0ea251d42e7f40",
+      "force_prediction_error_rms_N": 0.10477308720657177,
+      "geometry_prediction_error_rms_cm": 0.10368727250080119,
+      "root_endpoint_prediction_error_cm": 0.001195059185587064,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 4,
+      "selected": 2,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "f4d563870d11f6d7ce1e2b137e6dfadd0c57ec51360481872352ce56af5f3add",
+      "force_prediction_error_rms_N": 0.09282104484846776,
+      "geometry_prediction_error_rms_cm": 0.10215319459328089,
+      "root_endpoint_prediction_error_cm": 0.0009762154289904566,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 5,
+      "selected": 1,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "18cc16fda33b3cae8f87c3722c45e30ed427eafd76034e3f478b747c3fadfc71",
+      "force_prediction_error_rms_N": 0.08064987953076246,
+      "geometry_prediction_error_rms_cm": 0.09967029918903239,
+      "root_endpoint_prediction_error_cm": 0.0007753331620350113,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 6,
+      "selected": 2,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "41c29c2f73cadec8ef2392ba0d04e13096cc00dc2cb528ab1e9899c6edfd314f",
+      "force_prediction_error_rms_N": 0.027115190930799195,
+      "geometry_prediction_error_rms_cm": 0.09986427467777598,
+      "root_endpoint_prediction_error_cm": 0.00019953181123518937,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 7,
+      "selected": 1,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "7d835b5dd1263e5f0fe5a03a28d8f016dde2ad7783a188e9fa47278a3dd4241e",
+      "force_prediction_error_rms_N": 0.045809355428170405,
+      "geometry_prediction_error_rms_cm": 0.06764576864807602,
+      "root_endpoint_prediction_error_cm": 6.162295741026946e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 8,
+      "selected": 2,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "b27f19970f39c8f8f991d744b9d77efd407d74cba5aedfc9df44cce10c3cff82",
+      "force_prediction_error_rms_N": 0.05532079773984877,
+      "geometry_prediction_error_rms_cm": 0.05945197894206141,
+      "root_endpoint_prediction_error_cm": 0.00011623167725975643,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 9,
+      "selected": 2,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "e1ee13f5ee88053336ccb58030f8566e755a8af60e431054458884ba58097466",
+      "force_prediction_error_rms_N": 0.045927042546829194,
+      "geometry_prediction_error_rms_cm": 0.05694559719360422,
+      "root_endpoint_prediction_error_cm": 9.452000706836983e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 10,
+      "selected": 1,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "c808ba30758cf39ae103f5d9ac437fc11a67137949e59e9d2540790460afbfd1",
+      "force_prediction_error_rms_N": 0.0730182663350258,
+      "geometry_prediction_error_rms_cm": 0.05974654592050628,
+      "root_endpoint_prediction_error_cm": 9.54820795340339e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 11,
+      "selected": 1,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "6a9aa95560f94620fb9e9dfbf236e1a073540476f8a1560d12de805bea3d105b",
+      "force_prediction_error_rms_N": 0.13187478975943237,
+      "geometry_prediction_error_rms_cm": 0.0663285908214161,
+      "root_endpoint_prediction_error_cm": 0.00030437373421897287,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 12,
+      "selected": 5,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "34d48994ff4779e7bcdab50cb3ea26e63c9ee5cb95d408830b7d176030090887",
+      "force_prediction_error_rms_N": 0.1417323194723237,
+      "geometry_prediction_error_rms_cm": 0.06158408046338915,
+      "root_endpoint_prediction_error_cm": 0.000510262443860762,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 13,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1878f7544d4cd9faa37dba3be5daec95c43287dfd2ce6aa3f3688c140e526152",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 14,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "33a1edf4ce80c4fbef5e26af68dc8b41ac8b71d94c8a054ba31b83dd7c7cac1f",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 15,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "d53930b6f252cb26cbf116a5b7b5b41b2ca6ab00436282c3ea13c855b3a9da59",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 16,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "c9fb291374cd353ab992a34386500a3f48da12e45449ee66f7dfcb3496dcbc1e",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 17,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "ee12ccedba06ff299d34e1f6a5f03fc9530f67ca043c2e5b8f7eaf155aefc9f1",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 18,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "dca70b64c7830d0b364d533fcce94dddd24d5ddbc3e38388fb2a4a56a17ea92d",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 19,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "aff01a47b99fb53c6aa8ce5eccf62422f1bd081f155baf04cae08732e01f57c4",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 20,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "80937ec52dc30dcf33afc44b68e70ede45e2c3dc68a1ddd07be5071a73f27657",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 21,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1c9d5c9a7b6cef734abc432d7775a1961cd6e71718fd778921f36a39ad894edd",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 22,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "5dd32a94d36dcf6f689dc25aa0b6fb9c7a57037e0f9cd6c0956fde7b9a4dfd85",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 23,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "06f40528bca60a9cb93d9f832756fedd75681474fc9097c94436cad0592fd426",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 24,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1c64f6e45aa711a510b5c45f76cdaa8752567d828cca3d141f8af42e7c436257",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 25,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "534e25bac1d1c9630bb5f54bdcedec58ee9632ce86782f1fbe6b478a95041e4b",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 26,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "2c1f46ea4c56f157e474ee8b8bb40f702ec9cd194afe411df91666848709dad9",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 27,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "59deccdb5c2f96fbb9573065d765aa7a3d49ae4277b4c089b580adbd1977616a",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 28,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "e42603182e92bb740ee86907c2c037794f946f543dd3ecf6fbb46d40724c69a5",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 29,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "d386a494b9508717588309bb5d9d86fb537ed5d4d6db2acbf7b427e1c4769403",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 0,
+      "selected": 4,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "898513537b66f19729963aa0125044a2de35aef95ab816327dc3a5adb641e1ac",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 1,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "baa1c51689426520c93fcd1d303c3ab637711c56335b5e9d0f65260d4b8a7b94",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 2,
+      "selected": 1,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "f65fe709e16064727caceda5d69432b59dd4883dd24fe55dffb8c49b11db9517",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 3,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "0121f52475fd3571eb16054911d5678abe9ce9ced52e2866e7ebc897463af596",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 4,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "67a35bdb5968e7d1fd9b98700e9edd92b6a40f7df3b7a719253f2adea7068b3a",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 5,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "fe996d0c356a5518225aa03ada97bb1460c95c27d40653ffc04ddd553346d0a4",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 6,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "2147ab5151c983cb6ea4c0aea26712b6c63bc6dbe825cda125ee7d4033ba8eeb",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 7,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "7496ea75f44b4c811e6b8c9659c3d960e7e3aa76b81f2e06123ae836c42a2e00",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 8,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "bd0037494518acd36eead46d0612f7dae4a1e4b81b47afa7bc7dc30f936e3227",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 9,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "b4b94ba410bfc2ca49793aa6dac38368de76a252d45c009a0087ef5c59fe23c1",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 10,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "2d12c62bb70b8b00c333ccf1fd8ab9878cb127de816d18df691fc1ac4c3d4a11",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 11,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "ca43a721cf4b57bcdbb2c5ffde6c0bf9dc2e4963ac81ca05e3091e36bfd76573",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 12,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1450f89b18d13d37748f75d0ef079be3ce679cda42ec2b496de6f64ff1ab4839",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 13,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "286062e1d67f18e725d9a422399f7b6b45816c7872e96fa15cff62588b11a935",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 14,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "88dbd8d51879fbf265a471da7f9b8907ae3cd4d245808e2dd6f0aefd96c0a3e1",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 15,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "374f1904850da32e0f869b13504ef3e652b9fdf2bec65c1711695927741e33fe",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 16,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "58b012b9f1eec5e370808fdf6497ed7556c4c6da831dd4df2a46d8a28e4839ca",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 17,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "3775f10dbeee75f6bab29aec36681fd87b1986e6c91cc1a0ca5b8ff8152ab82d",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 18,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "b17dad036da62c0995d46883ebf2e329351afd407b164e430b3f10f4973a4199",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 19,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "8b59d1de10943facb6b72524e7e00a19ce44abf948db56d81497826bfca96d9c",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 20,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "0b0a5ba65910a35e1438ad4816cfd560246d6ca9496174f0e54a3002084f3405",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 21,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "0ed3dccb3502fc5e79f825c9dc020f3a8e2a559b843f41006b10c8777af871c2",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 22,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "b0ef1a9e3862852c23ded6428e27c52d97638f50946c01e355e9f1e6d1288be7",
+      "force_prediction_error_rms_N": 0.20780353596842943,
+      "geometry_prediction_error_rms_cm": 0.004694452666238426,
+      "root_endpoint_prediction_error_cm": 0.0023952638277721255,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 23,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "3dc86394470a6fad17ae722cc4194cf8a103462eea4ea3990e54784b38341bfd",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 24,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "4c5682dae80036be01d8a277389062ba1056c350ef7abb10fecd0663d3338614",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 25,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "b33143cb8dbfbdd1d7b4182039f304b4938434737aa5ab5b12cfc22d8b61b6f7",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 26,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "30bcd10de65041a7014382bbccd2125e606ae95a3dd976445b4d4310e1a596f5",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 27,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "cb645cfc91ea2903f8ebe6c7d66b68adb61b9dd0fd6aafc86d92e01e92200c23",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 28,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "51a49f66b39905d37cdad9577411cd0d822edbba627db5346b0dfa22d097dc42",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+      "replan": 29,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "a8199024e54e25b9e61a751ad6f16f3f510089c804a129a256e6b2d45bade05c",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 0,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "12d0ca4e0f163f646d7d7048b17fb1180a8976e18f1372ad472ececbc148695f",
+      "force_prediction_error_rms_N": 0.03810710449424827,
+      "geometry_prediction_error_rms_cm": 0.05628422401108777,
+      "root_endpoint_prediction_error_cm": 0.0005013969901701072,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 1,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "12e34ed08a7416070eefc5edf8d54876992d3b7e5606f62a8abc43bfd21fbe7e",
+      "force_prediction_error_rms_N": 0.0654673600805558,
+      "geometry_prediction_error_rms_cm": 0.039363930463143945,
+      "root_endpoint_prediction_error_cm": 6.176735738027971e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 2,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "18b1208af06b82557b397060e0e24334d0a8697d79e6c8ec7fa0d1fb8062a3ca",
+      "force_prediction_error_rms_N": 0.1475962839455537,
+      "geometry_prediction_error_rms_cm": 0.041030206780537634,
+      "root_endpoint_prediction_error_cm": 0.0004925650889918994,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 3,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "fe30d6bf8879ca95969967bcd38626f285861664e055d729cccfc8f17537ec92",
+      "force_prediction_error_rms_N": 0.23709318889802594,
+      "geometry_prediction_error_rms_cm": 0.06896954428707949,
+      "root_endpoint_prediction_error_cm": 0.0011388167312320482,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 4,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "7f524b91db699bd74ca8c3cd7615428472fc4edc0f23e62388dba793572dda05",
+      "force_prediction_error_rms_N": 0.20652143857408597,
+      "geometry_prediction_error_rms_cm": 0.08098414353807828,
+      "root_endpoint_prediction_error_cm": 0.0023882545966175607,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 5,
+      "selected": 5,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "0af58bab9b335eb03059f24c1b2e6ba4b3ab4324b0813c00efdaff83dd8e8016",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 6,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "79800b3ceed7d737470b841b79ebd1a9af040e14518cf1e511535e76059ffd4a",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 7,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "b38d4e6bec0cebc6bc73c10fc74c4883c95c0593cbc1b4be9b90f02aa7d53551",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 8,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "6ceb0b227d5a0a36390663efe5a9872d98808b4f1fd9ed1a1b94e822c9803bb6",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 9,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "2a3a809d2e101343399ed5630e80412d775a5d8dde1982cfe9a708b952cab31e",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 10,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "3ffe0c5fd2ca64a641da7210c3116ea72187d0f6ef08aa7bbbbfa343e59c2175",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 11,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "a6bf9683fce0137761df0d91ed0f658e6771acf9720de464b7f8191b7f10134f",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 12,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "742a2aea47e1b66d09e730b3e217812fc0ea09f93cd6e76654b3bc2250c4ed48",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 13,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1757836d8753523252d5056f76875a4707a10f44a0084deddddca4cff2ab90a5",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 14,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "32ea245fcf866ae63b5da04ca96aaad40e3a72fdea6de538b7e7e5281c40262e",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 15,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "f8a51e1a2f5cbcf1fac1aeccb989b6da4ee42dfc68b91e89c1f334b50c6125ef",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 16,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "3664f337410409a47d7e358dbc87a8182637ec88f8925ce73e7a69b2262d8ae8",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 17,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "fa7b849ed6baa76c080cfaeae7aee6c7620375dce32c9cd9a975e4de8746815e",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 18,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "313acbf593a94bf2e0fe78ff1f18268b1155abbab8adacb9e47c48c7efd8e24f",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 19,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "7eb67f279bea8eaa284b346a834024c1e4d6c9d0cba45ba67ec30825aa7b5300",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 20,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "9d95b1bd3e94399d83eeb4a5c169c2d43c2fd469f70f3c37052a58437161f6b8",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 21,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "9df290e03f07696cad58d49d08333af6a5783f43247b1dfc331f45b7d3e203a2",
+      "force_prediction_error_rms_N": 1.5009708693001977,
+      "geometry_prediction_error_rms_cm": 0.0973094145511127,
+      "root_endpoint_prediction_error_cm": 0.006179310671837655,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 22,
+      "selected": 4,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "38da51b4f3c273322ca1a2f94b2fd23e6ab548c27c36e2ab6a1fcb6d7d998fa4",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 23,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "7a08d448c7135843e6f690c8c71fe1cf582110b28210e833ebd717755743d74f",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 24,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "7fb0026da834404a74cfbfcbacac0bb0f41c6e2ae3aed7e52780091d939b48b5",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 25,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "971023cd25967e38b782c610293e55bde98f84326f0737499b4ce5b94a1123e6",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 26,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "ff1bbca983557b6ad2d101ad0c62dfa3098ff2935dc15b4c32f3dbfd5b3ba049",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 27,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "7c9395c5310df248b2ae473c120b0f67e44bba550544505ff4f789bc8414b2c5",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 28,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "0db0f5940b0377f86dc9266a74850a4f7910f6be9de56257c036a190906e79e4",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+      "replan": 29,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "143a110b8b17828e2d1913731d2c7aa506f44b6c5ea5c1664622bf11c293f765",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 0,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "0ded0bf2272e24145659b4f19503cd6ec6aea3c0e51c25fa5d7f5a322783c860",
+      "force_prediction_error_rms_N": 0.10237829158276196,
+      "geometry_prediction_error_rms_cm": 0.06471105421635392,
+      "root_endpoint_prediction_error_cm": 0.0007018071119712618,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 1,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "83c1686dba239aa526afce0669b8b1d96b2539be786b4973fa067b018839de76",
+      "force_prediction_error_rms_N": 0.09588695255053278,
+      "geometry_prediction_error_rms_cm": 0.06706969121327046,
+      "root_endpoint_prediction_error_cm": 0.0006647626936266655,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 2,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1979f2ee347d68e06d7ca5e0a587a096674ae4060d87a450c928187541888c2d",
+      "force_prediction_error_rms_N": 0.08916003887425678,
+      "geometry_prediction_error_rms_cm": 0.06881058777683477,
+      "root_endpoint_prediction_error_cm": 0.0006788119228024487,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 3,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "0c6c8fec8801f604b932fae848fdb64594b75810a0afa3b945ab9dd5e5b1aeba",
+      "force_prediction_error_rms_N": 0.08250589392535276,
+      "geometry_prediction_error_rms_cm": 0.07003637331141177,
+      "root_endpoint_prediction_error_cm": 0.00063023016548967,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 4,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "c2f71616b2b9ff61bd3cdc188a2715417a86bd6132c4bb19b58912f284af9172",
+      "force_prediction_error_rms_N": 0.07539501926596232,
+      "geometry_prediction_error_rms_cm": 0.0705513624847861,
+      "root_endpoint_prediction_error_cm": 0.0006435096243883468,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 5,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "4dd6388a8d0926886c373d89f61733be4c234c9f4c63d6b07b902f0f4091bf58",
+      "force_prediction_error_rms_N": 0.07101029508587008,
+      "geometry_prediction_error_rms_cm": 0.04565829672093683,
+      "root_endpoint_prediction_error_cm": 9.29210014517824e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 6,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "e439449a31d0db7a298ae6aa912e21144afadbcf3aa3a0075a04f4c0e371a6a6",
+      "force_prediction_error_rms_N": 0.08338796647624663,
+      "geometry_prediction_error_rms_cm": 0.03702728378230983,
+      "root_endpoint_prediction_error_cm": 0.00011884518059406714,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 7,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "fc714d96f7070acfe39bcb98d0f3ecb8853aa03e4627642efbe53a2c130bea8e",
+      "force_prediction_error_rms_N": 0.08778693855018559,
+      "geometry_prediction_error_rms_cm": 0.03162229967844482,
+      "root_endpoint_prediction_error_cm": 0.00019325244942759593,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 8,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "84959245518f2417974eef27ea921ee0902cc2948ddf5101e371b9acbf595365",
+      "force_prediction_error_rms_N": 0.0924792720995067,
+      "geometry_prediction_error_rms_cm": 0.02813295902251483,
+      "root_endpoint_prediction_error_cm": 0.00027005456276211944,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 9,
+      "selected": 5,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "07bb8a67302cc8064aa0b3b1d082c9472e909ba643c05c884eec0b1aae5b5fa4",
+      "force_prediction_error_rms_N": 0.0974049614352588,
+      "geometry_prediction_error_rms_cm": 0.027313554367066343,
+      "root_endpoint_prediction_error_cm": 0.0003256713984364413,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 10,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "dd4ba9996a04b072f966ef02de6ff735457f33781bc8fd5e8efdfc3c85d764d3",
+      "force_prediction_error_rms_N": 0.1028923427452921,
+      "geometry_prediction_error_rms_cm": 0.029494894914496115,
+      "root_endpoint_prediction_error_cm": 0.0004260432237118632,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 11,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "d1ed902f030f2a634c9403f03756a58864ec784252eeea0116adada3cf080113",
+      "force_prediction_error_rms_N": 0.1085529429244348,
+      "geometry_prediction_error_rms_cm": 0.034088440850561334,
+      "root_endpoint_prediction_error_cm": 0.0004984500203998716,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 12,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "a5b480c69bfdfc29d783457c0a3b5c3c302b6f49d1825a43c7fa47d3aa50dad6",
+      "force_prediction_error_rms_N": 0.022276449036028913,
+      "geometry_prediction_error_rms_cm": 0.009880541720075027,
+      "root_endpoint_prediction_error_cm": 0.00019626276870724296,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 13,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "fbe614e65b52856c64ec6cb75a5f055e302270aa1335c25d53eaa9d8a189d168",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 14,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "6cd5101d331fc2a693360272151f366182ffbf1eb10fa70179310462ed2f7f8b",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 15,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1561e75923d927708ab6784873acb457ab636a68fb96c35a6a2a8f9482d4e614",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 16,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "807008e1d9c2e49f6dc0e19ee13ab015ba595a9f2049d7d6108afbff66467610",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 17,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "2ccc7f472b4afe027533a843aaecb0b7e24b072b2b5447bf0995416f4085fa26",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 18,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "821b808f3d8e1f64188514939574ee5f6fd945a844b65b2d5f70bc6f1f98eb30",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 19,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "fa6aa2aae9ea6d655dd49590014cec2bae037748db0471041992ffbcf8380ac0",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 20,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "9c9c014004aaaee16ee6d1b88b5e17cb9623aa3a347cea489e67ef16300b1bc8",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 21,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "0398dea2bde9f332bb8cfe46263ccdc5b359d433404813a0d17778cf3bf7c5bc",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 22,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "00bba8fdc863f61e1b7948af4a1242dd5def24182d8403439f65fcb813c89fc4",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 23,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "cadc8deb0399b3e4fdb009842983b8760149986a0d6cdaaa29413c993deccee1",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 24,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1d51df167d93b80880fe50c2b7b10301d227336ff2bfc74085dbe91c896f795d",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 25,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "4dab923408726f9e14ba2d58b41f6d7c2a6c6b144b7411574c33a617756de9fc",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 26,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "b3a9d08ead11a6e3a2796e447916880aa923f5d1ba81ac09f8c935a9df371e8d",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 27,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "4537d28d4af933981a97d1a8a8cd9e03fb3fe14cb80fbdf8210a37f27d2aea50",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 28,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "c786388373a1f3c232e0408ff616cc92ec7e4f88fabbbbe8472ab892ee459b4d",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 29,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1d43275aa1146cb61963a005da5296ce830aaea7444c5e612afc5bc91b853022",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 0,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "8c2d1dbef6b68ea69a232be066ebe50fa41d746c0cb9a74d70dfc41f7add17dd",
+      "force_prediction_error_rms_N": 0.10237829158276196,
+      "geometry_prediction_error_rms_cm": 0.06471105421635392,
+      "root_endpoint_prediction_error_cm": 0.0007018071119712618,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 1,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "98ed9f8fddc59f216784784ecfd737b35a21d51c9df286dc3f21b4e858a7fb6e",
+      "force_prediction_error_rms_N": 0.09588695255053278,
+      "geometry_prediction_error_rms_cm": 0.06706969121327046,
+      "root_endpoint_prediction_error_cm": 0.0006647626936266655,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 2,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "8c4ec00fd361f7fe271dfa3c48bb5654bce6eaaec05dae750cfb263e33498f85",
+      "force_prediction_error_rms_N": 0.08916003887425678,
+      "geometry_prediction_error_rms_cm": 0.06881058777683477,
+      "root_endpoint_prediction_error_cm": 0.0006788119228024487,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 3,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "75c3c440138fcfef0062411120da79956f8d36f8e5dddb2e30a7ae023d47d428",
+      "force_prediction_error_rms_N": 0.08250589392535276,
+      "geometry_prediction_error_rms_cm": 0.07003637331141177,
+      "root_endpoint_prediction_error_cm": 0.00063023016548967,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 4,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "23cc98b99e493110072fb8118983edfbb3b1108a1ad142d672d846c0436a21bc",
+      "force_prediction_error_rms_N": 0.07539501926596232,
+      "geometry_prediction_error_rms_cm": 0.0705513624847861,
+      "root_endpoint_prediction_error_cm": 0.0006435096243883468,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 5,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "64b77787666115b9faddb60f01345581d96d60b4fc148629d4d23e59586214a2",
+      "force_prediction_error_rms_N": 0.06794324892399223,
+      "geometry_prediction_error_rms_cm": 0.07031442431067171,
+      "root_endpoint_prediction_error_cm": 0.0005906153602244509,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 6,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "ad910d38843513747865dd149326e62aa1560c8425805d3eedaa16b307daec51",
+      "force_prediction_error_rms_N": 0.06035548512347794,
+      "geometry_prediction_error_rms_cm": 0.06942096067703311,
+      "root_endpoint_prediction_error_cm": 0.0005665347555072572,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 7,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "bf055d22aed8d30fdc823973d940ce0c917870583b9896c491dc87728e05328b",
+      "force_prediction_error_rms_N": 0.052454571864409806,
+      "geometry_prediction_error_rms_cm": 0.06775182095441144,
+      "root_endpoint_prediction_error_cm": 0.0005255138414716086,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 8,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "78066db71f5dfc9d9272ffb273c9f3d034df27ea3f72b3c2f000b2866d7e5836",
+      "force_prediction_error_rms_N": 0.04446932487911104,
+      "geometry_prediction_error_rms_cm": 0.06531755706529724,
+      "root_endpoint_prediction_error_cm": 0.0004966461340317672,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 9,
+      "selected": 7,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "4db4ee7a3750d13b84cd440b2adb28baaf1b0c83477fe254d2116e959eca385e",
+      "force_prediction_error_rms_N": 0.03852960966699641,
+      "geometry_prediction_error_rms_cm": 0.06294573093150153,
+      "root_endpoint_prediction_error_cm": 0.0006706694273081263,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 10,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "eb7599e2463455bfae28fef0aac9bb0f535c84c9f84a486080718793064f2951",
+      "force_prediction_error_rms_N": 0.030345771525255832,
+      "geometry_prediction_error_rms_cm": 0.0581981734999192,
+      "root_endpoint_prediction_error_cm": 0.0003750885426144491,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 11,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "7e6274bcefb3e0d80c2232a8d6898af5a3794e2b47a342d17f8b4e9058faa402",
+      "force_prediction_error_rms_N": 0.011442078744207244,
+      "geometry_prediction_error_rms_cm": 0.05489960562395876,
+      "root_endpoint_prediction_error_cm": 8.249311126678058e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 12,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "cc278a4c1f087c09d520d0a035ade09c4f024a0c11851a808c19b1d1cc1288ff",
+      "force_prediction_error_rms_N": 0.01975436007647429,
+      "geometry_prediction_error_rms_cm": 0.049353685538300524,
+      "root_endpoint_prediction_error_cm": 5.907644260489507e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 13,
+      "selected": 1,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "1d914b054e941fed2213166a4e9c0a0a43b7bf9aa8a1ba8c40884bf5e332c78c",
+      "force_prediction_error_rms_N": 0.018234117068877755,
+      "geometry_prediction_error_rms_cm": 0.04285468629816787,
+      "root_endpoint_prediction_error_cm": 0.00012040872902019973,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 14,
+      "selected": 1,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "aa2dd846d62bc3bce66d0fe4675ff9c78789637c2d597954f77d739589556285",
+      "force_prediction_error_rms_N": 0.02030715834058088,
+      "geometry_prediction_error_rms_cm": 0.036997466618373664,
+      "root_endpoint_prediction_error_cm": 2.4072144344736277e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 15,
+      "selected": 1,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "a640a3cba08edeb3fb6df8d87d3c39ce5bdea353cf051aabeaf4f901d29c0a3b",
+      "force_prediction_error_rms_N": 0.030836903500427656,
+      "geometry_prediction_error_rms_cm": 0.03113265634744495,
+      "root_endpoint_prediction_error_cm": 6.680439382464175e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 16,
+      "selected": 0,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "6c9dfad762fe888147c2b8d0dd3f5458c617c4fbfe4ae673d1ab220f57e2448d",
+      "force_prediction_error_rms_N": 0.033497658349129225,
+      "geometry_prediction_error_rms_cm": 0.026701047098892417,
+      "root_endpoint_prediction_error_cm": 5.384890941304104e-05,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 17,
+      "selected": 1,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "4c0918212739dc4be9f847922ce68ccc3c2df372f2bcd021cbeef46344615c1c",
+      "force_prediction_error_rms_N": 0.042360608958210935,
+      "geometry_prediction_error_rms_cm": 0.02537064619039105,
+      "root_endpoint_prediction_error_cm": 0.00011945601851480795,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 18,
+      "selected": 5,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "de42f29f7ff5c34e7bc6a5de33c072124c5b598fed6754e877f90a73a9e5a203",
+      "force_prediction_error_rms_N": 0.09331787377399642,
+      "geometry_prediction_error_rms_cm": 0.027773981889455877,
+      "root_endpoint_prediction_error_cm": 0.0002478875945479787,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 19,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "f1d5cb48f0aba2331dcfaa7d24c31bda36b8efc107ed2d3ca3b97d6391dfe159",
+      "force_prediction_error_rms_N": 0.11296402923352232,
+      "geometry_prediction_error_rms_cm": 0.03378345711661028,
+      "root_endpoint_prediction_error_cm": 0.0005403465137777794,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 20,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "58471c9769d8a5f531536ab528d6bcb2e91aaac1f20ee8207c827a16dea6ee80",
+      "force_prediction_error_rms_N": 0.08538942714946159,
+      "geometry_prediction_error_rms_cm": 0.033291214987132764,
+      "root_endpoint_prediction_error_cm": 0.0005436997432878929,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 21,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "bff11cadd7fef7a4f84fca0c54d63f6fc8cf56f9f0ac78c04f87a4d6b0d0539a",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 22,
+      "selected": 4,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "c024e311baa24ab547149f66c8f468a44ed19ce85b75e72abc34fc335d10d8a3",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 23,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "d221aaf2ae650384c60bbe9085c145c07222f65fc731dedd1a08661e59372044",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 24,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "f3ff22fb0d1e1f1aefe5ebce9c56077515b6d731aa8d3179cea049c4fb7049d5",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 25,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "3842a43b8f69fb7fc48494434c9f97cefedb2398f0ad428ec5688cb702f2390e",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 26,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "ab00ff05cacaa3e8f11e6c0b11c3b50ccd07e8061a8ffbcb284a0fecc1df7779",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 27,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "95fea551703dc1eed8f7cc2956df37fa4e28302b375991cb55927c3c42eefae2",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 28,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "5384dd539a0aa02d797c7106c4091cf0266da701940e4958c92d6df1bb4f71ab",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75-continue",
+      "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+      "replan": 29,
+      "selected": 3,
+      "actual_raw_exact": true,
+      "first_substep_exact": {
+        "bfm_obs": true,
+        "executed_z": true,
+        "action": true,
+        "q_PD": true
+      },
+      "query_state_sha": "70fb4787e6505acf1e183e74d7058329fb3510ccec274bb15f90da496dc88461",
+      "force_prediction_error_rms_N": 0.0,
+      "geometry_prediction_error_rms_cm": 0.0,
+      "root_endpoint_prediction_error_cm": 0.0,
+      "interpretation": "first 100ms same command; differences include constant-velocity forecast vs actual partner, not an oracle replay"
+    }
+  ],
+  "independent_BC500_repetition": [
+    {
+      "state_id": "P1-1",
+      "same_actual_BC500_L1_vs_L2": {
+        "physics": true,
+        "controls": true,
+        "inputs": true,
+        "raws": true,
+        "target_z": true,
+        "previous_z": true,
+        "score": true
+      },
+      "passed": true
+    },
+    {
+      "state_id": "P1-13",
+      "same_actual_BC500_L1_vs_L2": {
+        "physics": true,
+        "controls": true,
+        "inputs": true,
+        "raws": true,
+        "target_z": true,
+        "previous_z": true,
+        "score": true
+      },
+      "passed": true
+    },
+    {
+      "state_id": "new_tail-sustained-5c67db5a4802",
+      "same_actual_BC500_L1_vs_L2": {
+        "physics": true,
+        "controls": true,
+        "inputs": true,
+        "raws": true,
+        "target_z": true,
+        "previous_z": true,
+        "score": true
+      },
+      "passed": true
+    },
+    {
+      "state_id": "new_tail-sustained-97ff10c4dcd9",
+      "same_actual_BC500_L1_vs_L2": {
+        "physics": true,
+        "controls": true,
+        "inputs": true,
+        "raws": true,
+        "target_z": true,
+        "previous_z": true,
+        "score": true
+      },
+      "passed": true
+    },
+    {
+      "state_id": "new_tail-hold-97ff10c4dcd9",
+      "same_actual_BC500_L1_vs_L2": {
+        "physics": true,
+        "controls": true,
+        "inputs": true,
+        "raws": true,
+        "target_z": true,
+        "previous_z": true,
+        "score": true
+      },
+      "passed": true
+    },
+    {
+      "state_id": "new_near-sustained-5f62e065b5ac",
+      "same_actual_BC500_L1_vs_L2": {
+        "physics": true,
+        "controls": true,
+        "inputs": true,
+        "raws": true,
+        "target_z": true,
+        "previous_z": true,
+        "score": true
+      },
+      "passed": true
+    },
+    {
+      "state_id": "new_stop-sustained-5f6380cdec75",
+      "same_actual_BC500_L1_vs_L2": {
+        "physics": true,
+        "controls": true,
+        "inputs": true,
+        "raws": true,
+        "target_z": true,
+        "previous_z": true,
+        "score": true
+      },
+      "passed": true
+    }
+  ],
+  "all_BC500_repetitions_exact": true,
+  "future_program_note": "raw Task backup retains original future; candidate/score interfaces sanitize it, no claim of OS-level access isolation"
+}

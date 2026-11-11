@@ -1,0 +1,38 @@
+{
+  "format": "aggregate_shards_v1",
+  "rows": 2320,
+  "shards": [
+    {
+      "file": "f1_candidate_scores_part_00.json",
+      "rows": 300
+    },
+    {
+      "file": "f1_candidate_scores_part_01.json",
+      "rows": 300
+    },
+    {
+      "file": "f1_candidate_scores_part_02.json",
+      "rows": 300
+    },
+    {
+      "file": "f1_candidate_scores_part_03.json",
+      "rows": 300
+    },
+    {
+      "file": "f1_candidate_scores_part_04.json",
+      "rows": 300
+    },
+    {
+      "file": "f1_candidate_scores_part_05.json",
+      "rows": 300
+    },
+    {
+      "file": "f1_candidate_scores_part_06.json",
+      "rows": 300
+    },
+    {
+      "file": "f1_candidate_scores_part_07.json",
+      "rows": 220
+    }
+  ]
+}

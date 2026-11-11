@@ -1,0 +1,65 @@
+[
+  {
+    "name": "f1-p1-13-feedback",
+    "sha256": "62e30eb143fcc967ea9112933b1aa6cba55cc98ac8657a87bb593377c083dec5",
+    "frames": 75,
+    "fps": 25,
+    "duration": 3.0,
+    "seconds": 2.2319022830051836,
+    "filename": "f1-p1-13-feedback.mp4",
+    "sides": [
+      {
+        "title": "BC500 fixed ideal-force policy | actual 3s window",
+        "artifact": "P1-13-CS.json.gz",
+        "sha256": "65d83a7ee2f16c0366e8b85eaaf4b546332c8da1e74e590686ee666983662b28"
+      },
+      {
+        "title": "Causal privileged replanning | actual 3s window",
+        "artifact": "P1-13-CP.json.gz",
+        "sha256": "b774072e0f56cd3bbb5840cdcb072d807b8c023b308788e498be3c4991c1c63b"
+      }
+    ]
+  },
+  {
+    "name": "f1-stop-continue",
+    "sha256": "ac324d570604bf8f061cd8079d4ef47ef9a5c73790e378c77d36de5af1dbf4e7",
+    "frames": 75,
+    "fps": 25,
+    "duration": 3.0,
+    "seconds": 1.8017072000075132,
+    "filename": "f1-stop-continue.mp4",
+    "sides": [
+      {
+        "title": "STOP: causal privileged replanning | actual 3s window",
+        "artifact": "new_stop-sustained-5f6380cdec75-CP.json.gz",
+        "sha256": "078f0cb1eb5cdbb308864cbbf3e3c5ea451257a46c0adc184aa4924aef719f4a"
+      },
+      {
+        "title": "CONTINUE: same causal planner | actual 3s window",
+        "artifact": "new_stop-sustained-5f6380cdec75-continue-CP.json.gz",
+        "sha256": "2c258cf4997cd1972042c6a35ebc3f6518d65576fe360d9b79682e86548f3064"
+      }
+    ]
+  },
+  {
+    "name": "f1-tail-hold-release",
+    "sha256": "2a6d4f7a4a4248dcb845d17a7b133ecb1be6033462c6492cb7fad899e515eda5",
+    "frames": 75,
+    "fps": 25,
+    "duration": 3.0,
+    "seconds": 1.9094312629895285,
+    "filename": "f1-tail-hold-release.mp4",
+    "sides": [
+      {
+        "title": "BC500 fixed ideal-force policy | actual 3s window",
+        "artifact": "new_tail-hold-97ff10c4dcd9-CS.json.gz",
+        "sha256": "babca79bd9f2c7e11e6043c9af839827e8b0205989e5da0270655e3e74b35718"
+      },
+      {
+        "title": "Causal privileged replanning | actual 3s window",
+        "artifact": "new_tail-hold-97ff10c4dcd9-CP.json.gz",
+        "sha256": "cf84f95d9245e1a55228ac5f6d40ebfea5a7a959b50de698cfd87bbb8c601102"
+      }
+    ]
+  }
+]

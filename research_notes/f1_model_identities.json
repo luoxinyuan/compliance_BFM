@@ -1,0 +1,54 @@
+{
+  "models": {
+    "BC500": {
+      "sha256": "e1165d80cbce13b9248eba0ee816f4ecfb873b70056257c0d32f22c720e9c39d",
+      "path": "experiments/frl-v2-fb-repair-20261110/runs/frl-formal-B-01/candidate-0.pt"
+    },
+    "B64": {
+      "sha256": "0262661464676cfc5fec9674993dedab881570287af26b5d804030041012b54e",
+      "path": "experiments/frl-v2-fb-repair-20261110/runs/frl-formal-B-01/candidate-64.pt"
+    },
+    "B128": {
+      "sha256": "a4b7fa1ad2ab5714b81a05f3176ca8b3429c67d52c76ddc2822a9f7388c5d5de",
+      "path": "experiments/frl-v2-fb-repair-20261110/runs/frl-formal-B-01/candidate-128.pt"
+    },
+    "v3-32": {
+      "sha256": "ce9bec931c8e8a27085bdf4c6471a07551fa23b1bf5846b7ad73c22b331713e5",
+      "path": "experiments/frl-v3-risk-20261111/runs/formal-v3-lambda033-02/candidate-32.pt"
+    },
+    "v3-128": {
+      "sha256": "f6bf786cec47fb10ba362522680107071c74912530f183546f48c29757d52336",
+      "path": "experiments/frl-v3-risk-20261111/runs/formal-v3-lambda033-02/candidate-128.pt"
+    }
+  },
+  "BFM_SHA256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "BC500_original_SHA256": "a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e",
+  "native_sources": {
+    "model_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+    "motion_reference": {
+      "path": "bridge-v2-owned/runs/m10-task-appropriate-20261101/source_control-attempt-01/outputs/references.json",
+      "sha256": "211a192ddf6e3d534a1ef273c22e9cf977510ccb235e1c88dc2f0b24e8d6f2c0",
+      "variant": "task",
+      "source": "same-weight goal inference on traced native motion with documented M10 offline arm/waist pose correction; no learned actor"
+    },
+    "goal_reference": {
+      "path": "bridge-v2-owned/runs/arm-to-locomotion-20261105/physical-01/offline-ik.json",
+      "sha256": "09f819a474402639bbf3b5f5d645686e51d56d572b519f112d3c1f4401005a2a",
+      "scope": "offline IK pose→same frozen goal_inference anchored difference; no online IK"
+    },
+    "reward_reference": {
+      "path": "bridge-v2-owned/runs/issue21-reward-stage-20261030A/inference-attempt-01/outputs/result.json",
+      "sha256": "e15a042396cab6f8bbca7731a0d7ce410f5448955d2c0d8d1c366e64a77d8d6d",
+      "model_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+      "buffer_sha256": "46eac53f603e45921d25504fcf7d3eea861f2a9f8ea503046855e701493b546b",
+      "buffer_bytes_now": 26675212288,
+      "used_for_training": false,
+      "reason": "historical move-ego side drift/58.99deg qPD failure retained; not promoted from name"
+    },
+    "normalizer": "same model.safetensors obs normalizer, FP32, frozen",
+    "old_high_actor_loaded": false,
+    "assets_manifest_sha256": "ea9c3323e21abb55d300835d79c3b4981c4a47fa59036f39b9dfc25df17e1fd7",
+    "F1_new_reward_prompting": false,
+    "old_high_actor_loaded_scope": "native proposal generation only; F1 separately loads frozen BC500/B64/B128/v3 comparators"
+  }
+}

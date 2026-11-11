@@ -1,0 +1,42 @@
+{
+  "L1_all": {
+    "branches": 384,
+    "old_rows": 442,
+    "transient_rows": 361,
+    "persist_rows": 81,
+    "old_ticks": 294,
+    "persist_ticks": 61,
+    "min_normal": 3.7181763550778655,
+    "max_run": 0.005
+  },
+  "L1_selected": {
+    "branches": 24,
+    "old_rows": 37,
+    "transient_rows": 34,
+    "persist_rows": 3,
+    "old_ticks": 17,
+    "persist_ticks": 2,
+    "min_normal": 25.979621361448523,
+    "max_run": 0.005
+  },
+  "L2_CS": {
+    "branches": 8,
+    "old_rows": 6,
+    "transient_rows": 5,
+    "persist_rows": 1,
+    "old_ticks": 3,
+    "persist_ticks": 1,
+    "min_normal": 18.183683504561195,
+    "max_run": 0.005
+  },
+  "L2_CP": {
+    "branches": 8,
+    "old_rows": 9,
+    "transient_rows": 9,
+    "persist_rows": 0,
+    "old_ticks": 6,
+    "persist_ticks": 0,
+    "min_normal": 21.87310118686941,
+    "max_run": 0.0
+  }
+}

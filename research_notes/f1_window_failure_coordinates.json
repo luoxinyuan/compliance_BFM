@@ -1,0 +1,162 @@
+[
+  {
+    "state": "P1-1",
+    "controller": "CS",
+    "task_family": "near",
+    "failures": [],
+    "progress_shortfall_mm": 0.0,
+    "window_good": true
+  },
+  {
+    "state": "P1-1",
+    "controller": "CP",
+    "task_family": "near",
+    "failures": [],
+    "progress_shortfall_mm": 0.0,
+    "window_good": true
+  },
+  {
+    "state": "P1-13",
+    "controller": "CS",
+    "task_family": "mid",
+    "failures": [],
+    "progress_shortfall_mm": 0.0,
+    "window_good": true
+  },
+  {
+    "state": "P1-13",
+    "controller": "CP",
+    "task_family": "mid",
+    "failures": [],
+    "progress_shortfall_mm": 0.0,
+    "window_good": true
+  },
+  {
+    "state": "new_tail-sustained-5c67db5a4802",
+    "controller": "CS",
+    "task_family": "mid",
+    "failures": [
+      "error",
+      "force",
+      "slip"
+    ],
+    "progress_shortfall_mm": 0.0,
+    "window_good": false
+  },
+  {
+    "state": "new_tail-sustained-5c67db5a4802",
+    "controller": "CP",
+    "task_family": "mid",
+    "failures": [
+      "error",
+      "slip"
+    ],
+    "progress_shortfall_mm": 0.0,
+    "window_good": false
+  },
+  {
+    "state": "new_tail-sustained-97ff10c4dcd9",
+    "controller": "CS",
+    "task_family": "stop",
+    "failures": [
+      "error",
+      "force",
+      "slip",
+      "holding"
+    ],
+    "progress_shortfall_mm": 0.0,
+    "window_good": false
+  },
+  {
+    "state": "new_tail-sustained-97ff10c4dcd9",
+    "controller": "CP",
+    "task_family": "stop",
+    "failures": [
+      "error",
+      "slip"
+    ],
+    "progress_shortfall_mm": 0.0,
+    "window_good": false
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CS",
+    "task_family": "stop",
+    "failures": [
+      "error",
+      "force",
+      "holding"
+    ],
+    "progress_shortfall_mm": 0.0,
+    "window_good": false
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CP",
+    "task_family": "stop",
+    "failures": [
+      "slip",
+      "yaw"
+    ],
+    "progress_shortfall_mm": 0.0,
+    "window_good": false
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CS",
+    "task_family": "near",
+    "failures": [],
+    "progress_shortfall_mm": 0.0,
+    "window_good": true
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CP",
+    "task_family": "near",
+    "failures": [
+      "progress"
+    ],
+    "progress_shortfall_mm": 2.3609327440929433,
+    "window_good": false
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CS",
+    "task_family": "stop",
+    "failures": [
+      "error",
+      "force",
+      "progress",
+      "holding"
+    ],
+    "progress_shortfall_mm": 7.40517704904127,
+    "window_good": false
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CP",
+    "task_family": "stop",
+    "failures": [],
+    "progress_shortfall_mm": 0.0,
+    "window_good": true
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CS",
+    "task_family": "mid",
+    "failures": [],
+    "progress_shortfall_mm": 0.0,
+    "window_good": true
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CP",
+    "task_family": "mid",
+    "failures": [
+      "error",
+      "slip"
+    ],
+    "progress_shortfall_mm": 0.0,
+    "window_good": false
+  }
+]

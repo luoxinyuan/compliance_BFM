@@ -1,105 +1,33 @@
-# CURRENT_STATE — Issue60 F1 L1完成，L2执行中
+# CURRENT_STATE — Issue60 F1停于L2正式报告点
 
-最后核对2026-11-11。Yi已授权L1/L2连续执行；L2结束提交F1_L2_GATE_REPORT并停止，L3的3h仍未授权。
+最后核对2026-11-12。[L2 gate报告](F1_L2_GATE_REPORT.md) · [汇总](F1_RESULTS.md) · [方法/权限](F1_L1_L2_METHODS.md) · [成本](f1_cost_ledger.json) · [Issue60](https://github.com/GaoE05/robot-research-bridge/issues/60) · [Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)。
 
-L1实际完成12个已暴露父组/24状态/384条3s分支。11状态/7父组存在满足当前窗口任务、推进、slip/yaw参考的候选；v3评分选择合格8/24。不是一个共享策略胜率，也不是封存晋级。完整表见[F1_L1_RESULTS](F1_L1_RESULTS.md)。P1-13合格候选仍有约52.49°的q_PD单步峰值，实际q另报，不能把窗口参考通过称为动作质量已完美。
+## 当前执行与授权
 
-L2正在独立runtime `ad93901e9b75791ae918dd37664b7d6f8b8e86bb` 执行七状态＋一个相关continue分支的因果重规划，与固定BC500配对。尚未完成，不预写总体成功或失败。两者候选/预测时域与L1不同，不做未来信息唯一归因。信息权限与C-S planner缺格见[F1_L1_L2_METHODS](F1_L1_L2_METHODS.md)。
+用户授权的L1/L2已完成并停止；没有L3或训练自动队列。L3仍需Yi明确确认，其3h未使用。原BFM/PD/BC500及所有历史模型不改，未读取任何封存集。GPU占用/资源必须下次实时核对，不能沿用本页快照。
 
-L1保留两次完整恢复检查失败及原产物；仅对已分配efc_JT显式全量恢复，并通过3s干预，不新增mask或容差。辅助滑移时长按body/tick重算，原风险不删。见[F1_ERRATUM](F1_ERRATUM.md)。
+## F1实际证据
 
-原BFM/PD、BC500及全部历史模型冻结；无训练、无封存读取、无L3队列。新阶段索引 `experiments/f1-l1-l2-20261111`，L1分布于l1-01/02/03，L2当前l2-01。单GPU0重任务串行，job账本含全部失败与冷启动；最终成本待L2结束汇总，不用查询wall冒充整job。
+L0：当前MuJoCo3.3.3 Newton dense、island禁用下25个NULL数组经156条3s C指针干预通过；27状态有效恢复/测速完成。模型与状态manifest锁不变，规则仅适用于已验证配置。[逐数组审计](F1_L0_ARRAY_AUDIT.md)和[完整L0](F1_PREFLIGHT.md)保留。
 
-## 历史快照：L0完成时的状态（下列未启动描述仅指当时）
+L1：12已暴露父组24状态，384连续3s候选；11状态/7父组存在任务/推进/slip/yaw参考合格候选，v3实际选合格8/24。有限存在性，不是共享checkpoint或泛化成功。L2：六父组七初态＋一个相关continue分支，八窗口；C-P参考合格3/8，固定BC5004/8。部分因果反馈降低误差/力，但尾部仍明显转移到滑移/偏航。near的2.36mm进度参考差与尾部严重代价分别解释，未改判据。
 
-最后核对2026-11-11。[逐数组审计](F1_L0_ARRAY_AUDIT.md) · [完整L0报告](F1_PREFLIGHT.md) · [manifest锁](f1_state_manifest_lock.json) · [全部失败](F1_ERRATUM.md)。
+L1 O-F与L2 C-P候选数/时域不同，未来oracle依赖未证。C-S只有原ideal-force BC500对照，受限planner缺格，饱和别名未构造。没有训练，没有新的探索→GAE→更新因果比例。[定价/滑移/分段表](F1_PRICING_AND_SLIP_RESULTS.md)与[中立决策](F1_DECISION_TABLE.md)给出证据等级。
 
-按Yi 21:12授权，25数组的C指针/源码/干预证据已完成：当前MuJoCo3.3.3 Newton dense、island禁用配置下均为NULL；Python临时数组不是有效状态。3真实状态（两受力、一个无伙伴力）156条3秒C指针干预，physics/control/评分逐值一致，CPU重读字节摘要同样一致。无容差放宽。
+## 失败、身份与资产
 
-12主父组24状态＋3原生参考全部真实重建；27状态保存/读回/81次完整有效状态恢复通过，5个stop/continue父组前缀一致。3原生参考不计独立接触成功组。规则变化单列报告：NULL有效长度0，其余有效数组/积分/solver/历史/RNG全量严格核验，当前配置以外不能沿用。旧失败不追溯改判。
+两次L1完整恢复检查失败原判保留；对allocated efc_JT显式全量恢复并做3s前后物理干预，未新增mask/容差。早期辅助滑移时长重复计点错误已从原接触行重算，不影响原物理/reward/选择。[F1_ERRATUM](F1_ERRATUM.md)。
 
-1s候选中位0.885s、3s候选2.753s；2候选1s→执行100ms重规划中位1.877s；新进程到task/actor就绪131.667s。L0与授权reserve累计0.930job小时<2h，仍计入F1 12h/原240h；未占用L1/L2/L3。GPU0已释放，无训练/自动队列。
+BFM SHA `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`；BC500原SHA `a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e`。F1读取BC500零支路扩展及B64/B128/v3-32/128，全部独立冻结。精确路径/模型SHA见[f1_model_identities](f1_model_identities.json)。L1主要runtime f42fb17，L2 ad93901；发布commit不代替实际runtime。
 
-实际runtime：数组干预5e5b3a464d9c1bf301d375f197bc9acc4cc3a653；27状态续验5f4c82c7e1ae1c8c44606e388261d6f4c93107e5；独立冷启动8bb0de396f3999abcc3c63f7a294afb1927f6372。模型未更新，BC500/BFM身份及状态SHA见manifest。
+服务器项目相对stage `experiments/f1-l1-l2-20261111`；L1原始l1-01/02/03及合并索引，L2 l2-01，所有失败/预测/真实执行/状态快照保留。含L0与准备估计总3.1590job小时，L3=0，仍计入原240h而非重置。视频见[F1_VIDEO_INDEX](F1_VIDEO_INDEX.md)。
 
-**当前只完成L0**。C-S固定BC500对照保留，但C-S planner缺格；C-P旧预测器未在F1新实现资格化。测速标O-F，不能冒称因果搜索。饱和别名只预登记。L1/L2未启动，L3须另获明确批准。能力/学习科学结论仍以Issue59及更早正式报告为准。
+## 不可丢失的旧结论
 
-## Issue59已结项状态
+F-RL-v2接触前保持机制有效，但A/B均未晋级；v3部分风险坐标改善同时有尾部和旧停止退化，BC500仍是基线。正式科学候选v3-32与末轮128身份不混淆。[v2](ISSUE58_EXECUTION_RESULTS.md) · [v3](FRL_V3_RESULTS.md)。有限直行Teacher→ideal-force Student历史成果保留，不宣称已具备G1真实腕力感知。
 
+FB eager更新一致性、portable状态覆盖、compiled资格、踝交接/运动质量是不同层级。L0/F1仅补portable有效域/恢复证据，没有新FB update或长跑，不追溯改判旧失败。P0-B质量负例保留，不自动重启1M/5M。旧erratum、5403b7未晋级、T30/S0/M38等历史结果保留。
 
-最后核对2026-11-11。[Issue59](https://github.com/GaoE05/robot-research-bridge/issues/59) · [结项](FRL_V3_RESULTS.md) · [协议](FRL_V3_RISK_PROTOCOL.md) · [全部曲线/模型/成本](frl_v3_results.json)。
+## 下一会话接力
 
-## 当前结论与运行状态
-
-包一10父组32完整状态280实际分支完成；严格非入口有效方向仅2状态/2父组，不是广域恢复。λ0模型/Adam与旧B更新逐值一致，λ=.33真实Task.step只改变指定reward；全部原失败与[erratum](FRL_V3_ERRATUM.md)保留。
-
-v3从BC500重新训练128×768=98,304真实高层决策，489,640控制/1,958,560物理tick，998完整回合；旧B六节点同新dev配对及v3旧32父组64/128回归全部结束。GPU任务结束，没有自动后续作业。新dev32父组/40子回合；主要绝对坐标分母24，stop/continue不当独立组；旧封存未读取。
-
-相对初始化：v3-32严重度降低26.65%，v3-128超限父组14/24→10/24（−28.57%），严重度仅−7.49%；末轮stop误差12.882→10.884cm、力8.065→7.748N。**相对同预算旧B128：超限父组13/24→10/24，但严重度+33.85%；不是共同质量胜出。** 旧stop回归v3-128为11.977cm/8.108N，旧B128为9.063cm/7.036N，保留退化。
-
-预登记科学候选32，原相对风控仍选0；末轮128不是重新选出的模型。新dev v3-128 yaw p90/max=22.82/24.90°，旧回归max26.36°，均未晋级。BC500维持冻结基线。单配对seed、部分学习收益不能写成稳定收敛或新封存成功；新增风险项涵盖带载落脚瞬态，不直接等同持续支撑滑移。
-
-## 精确身份与账本
-
-- 正式runtime `85af4353747bd000b50b9fbf06236e23c8d5ef4f`；资格/队列 `cc1ddf6ee2fd4e5b7b02d7a3b791574f46396150`。
-- BC500 SHA `a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e`；原BFM SHA `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
-- v3-32 SHA `ce9bec931c8e8a27085bdf4c6471a07551fa23b1bf5846b7ad73c22b331713e5`；v3-128 SHA `f6bf786cec47fb10ba362522680107071c74912530f183546f48c29757d52336`。
-- 服务器项目相对索引 `experiments/frl-v3-risk-20261111/runs/formal-v3-lambda033-02/`，完整模型、逐tick轨迹、分项结果与失败均保留；公开不推送权重/原始轨迹。
-- P2监督job实测7.2256h，加准备/结项reserve合计7.5923h<24h；P1含准备reserve约.8392h。CPU分析不重复计内部dev时间。准备reserve与实测严格分列。
-- 当前新阶段仅有建议，无新训练授权执行：先查已保存尾部父组中瞬态/持续滑移与reward贡献，不自动扫λ或放宽质量门。
-- 本轮没有新视频渲染；全部真实qpos已保存。历史Mac视频及模型不覆盖。
-
-## 已结项v2状态
-
-原有界GPU作业已停止；GPU空闲状态须实时核对，不把旧快照当授权。没有自动续训、Student、正式FB1M或5M。
-A/B各128×768=98304真实on-policy高层决策均已完成，合计196608。
-每臂489640个50Hz控制、1958560物理tick，998完整回合；无物理边界终止。
-A/B均按原开发保护选iteration0，封存按选定初始化执行，不能当新模型成功。
-原BC500维持基线；本报告不是全面否认PPO已有的有限开发收益。
-
-## 最新授权诊断已完成（2026-11-11）
-
-[一页摘要](FRL_V2_DIAGNOSTICS_SUMMARY.md) · [三项报告](FRL_V2_ARCHIVE_DIAGNOSTICS.md)。纯CPU现有档案复算，0训练/新物理/Teacher查询/封存读取，4job小时内完成并停止。
-- 探索链抽查B64/B128/A128：干净推进代理59/39/19→正PPO优势16/21/11→raw均值方向保留11/9/3（合法z10/11/3）。只有观测代理，不把负优势自动判critic错；没有确切dev状态的采样物理反事实，真实因果三分比例未识别。
-- BC500现行相对自门40/40通过，但mid/stop滑移峰值p50/max=.395/.848与.765/1.103m/s；完整尾部分布/CDF已列，不改门。
-- reward独立物理重算24条/11156控制步差异0；质量等级32/32、Pareto21/21排序一致；打滑成功高于干净成功0/3且只有1父组，不能泛化成reward无问题。
-- 原B128未晋级、BC500基线不变；暴露诊断不反选模型。旧结项与erratum保留，不自动新训。
-
-## 科学结果
-
-- A局部改善，但中距及质量退化；B显著降低接触前函数/实际前缀漂移，mid/stop有真实改善。
-- B64开发示例：near9.00cm/6.48N；mid7.25cm/5.72N；stop/continue8.93cm/6.22N。
-  初始化对应9.03/6.45、7.89/6.21、11.62/7.60；均为active窗口3D误差/真实力RMS。
-  B64仍有slip/yaw尾部未过，不是正式晋级模型，不按封存反选。
-- 末批mean D_pre A13.5116、B.01109；32个开发main父组接触前root差中位数A.10244cm/B.000509cm。
-  函数保持有效降低漂移，但不足以保证共同质量收益。单seed方法对照，无唯一根因结论。
-- 概率/GAE/物理合同未放宽：LP最大.00012207<.0003，接受jointKL<.02。
-
-## 加速实际结果
-
-快速记录独立真实评价59.72→46.63s，1.281×；完整档逐值相同。
-中央canonical推理1/2/4 worker热采样60.39/41.01/35.82s，1/1.473/1.686×，完整8档与原进程相同。
-worker冷启动104/206/412s，不能把热采样倍数当总job/训练FPS；相对快速单进程，4 worker约1.30×。
-BFM批量shadow有约4e-7动作差，未执行；当前正式训练仍原num_envs=1，尚无并行PPO更新/恢复资格。
-
-## FB工程边界
-
-P0-A eager固定16更新逐值通过；额外真实physics/control/RNG相同，但portable最终state有23个island辅助数组差异。
-严格门仍未关闭，不删除字段或降容差改判。compiled固定16测试出现second-backward错误，原失败保留。
-P0-B三源30父组/90配对，原4个关节边界降到0，但滑移/偏航退化，资格失败；工程8192采样和更新未启动。
-不自动重跑正式FB。
-
-## 身份、预算与接力
-
-BC500 a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e；
-BFM33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361。
-正式A/B19b3117；FB工程d757bee；记录profile92e4a60；并行prototype edade56。
-本轮sidecar实测F11.008h/P0-A.508h/P0-B.412h，准备reserve另列；原240h未重置。
-证据stage experiments/frl-v2-fb-repair-20261110，实际models/SHA/分项数据见执行报告和私有账本。
-发布HEAD不是运行源码；全部旧结项、负例、erratum和基线保留；不改main/共享资产/他人任务。
-
-本次探索—优势—保留、质量门与reward档案诊断已完成，见本页最新摘要；没有自动新实验。
-剩余因果缺口不能靠本轮观测代理补成结论；FB的portable数组/compiled与动作质量仍保持旧边界。
-新会话先读本页、OVERVIEW、三项诊断报告及Issue58/Master18，再核实际进程；不要重复启动。
-
-执行错误的影响隔离见[Issue58 erratum](ISSUE58_EXECUTION_ERRATUM.md)，原始失败不覆盖。
+先读本页、OVERVIEW、F1_L2_GATE_REPORT及Issue60/Master。当前唯一新增建议是L3的匹配预测权限诊断，尚未获准；不恢复旧PPO或自行占用3h。下一步先核真实进程、磁盘≥100GiB、runtime/模型/状态身份与剩余额度。只改个人research，main/共享资产/其他任务不动，无真机。Library旧PROJECT_STATE/SESSION_HANDOFF仍为历史快照，不用其覆盖实时GitHub状态。
