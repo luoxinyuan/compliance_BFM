@@ -46,3 +46,5 @@ BFM33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361。
 
 当前只整理结项，不自动下一阶段。下一项候选：冻结线做探索—优势—均值保留的有界归因；
 FB先核portable数组有效性/compiled反向与动作噪声质量。新会话先读本页、OVERVIEW、执行报告、Issue58/Master18，再查实际进程；不要重复启动。
+
+执行错误的影响隔离见[Issue58 erratum](ISSUE58_EXECUTION_ERRATUM.md)，原始失败不覆盖。
