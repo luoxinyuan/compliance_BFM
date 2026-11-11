@@ -47,8 +47,26 @@ def study(e,m,c,out):
   assert sha(P/'experiments/f1-l0-array-audit-20261111'/oldrow['state_snapshot'])==oldrow['state_snapshot_sha256']
   assert torch.equal(x.cpu(),prior['input']) and torch.equal(task.last_command.cpu(),prior['previous_z'])
   if not same(pp,prior['state'],md,prior['state_validity']):
-   torch.save(dict(actual=pp,archived=prior['state'],actual_meta=md,archived_meta=prior['state_validity']),out/(meta['state_id']+'-restore-difference.pt'))
-   raise AssertionError(('L0 portable reconstruction differs',meta['state_id']))
+   diffpath=out/(meta['state_id']+'-restore-difference.pt')
+   torch.save(dict(actual=pp,archived=prior['state'],actual_meta=md,archived_meta=prior['state_validity']),diffpath)
+   # Conservatively restore this allocated array, NEVER mask it or relax equality.
+   check=copy.deepcopy(pp);check['mjdata_arrays']['efc_JT']=prior['state']['mjdata_arrays']['efc_JT'].copy()
+   assert same(check,prior['state'],md,prior['state_validity']),('unclassified complete-state difference',meta['state_id'])
+   assert e.sim.data.efc_JT.shape==prior['state']['mjdata_arrays']['efc_JT'].shape
+   before=TrainingBranch(task);oldrisk=frl_v3_task.RISK_COEFFICIENT;frl_v3_task.RISK_COEFFICIENT=0.
+   def probe():
+    pi=len(task.physics);ci=len(task.controls);tm=float(e.tether.time);xx=[];rr=[]
+    for _ in range(30):
+     if task.done:break
+     xx.append(xnow().cpu().clone());raw=nets['BC500'].base.distribution(task.student_features()).mean;rr.append(raw.cpu().clone());task.step(raw)
+    ph=copy.deepcopy(task.physics[pi:]);co=copy.deepcopy(task.controls[ci:])
+    return dict(physics=ph,controls=co,inputs=xx,raws=rr,score=score(ph,co,tm))
+   aa=probe();before.restore();e.sim.data.efc_JT[:]=prior['state']['mjdata_arrays']['efc_JT'];assert same(portable(task),prior['state'],md,prior['state_validity'])
+   fixed=TrainingBranch(task);bb=probe();assert exact(aa,bb),'efc_JT replay-cache restoration changed measured control/physics'
+   torch.save(dict(before=aa,after=bb,equal=True),out/(meta['state_id']+'-efcJT-intervention.pt'))
+   fixed.restore();frl_v3_task.RISK_COEFFICIENT=oldrisk;assert same(portable(task),prior['state'],md,prior['state_validity'])
+   search.checks.append(dict(state_id=meta['state_id'],test='explicit archived efc_JT restore; all other state exact',passed=True,physics_control_score_bitwise_equal=True,seconds=len(aa['physics'])*.005,compared_array_shape=list(e.sim.data.efc_JT.shape),array_excluded=False))
+   print('CACHE_RESTORED',meta['state_id'],len(aa['physics']),flush=True)
   completed=set()
   for name in ARGS.reuse:
    path=ST/'runs'/name/'candidate-scores.json'
