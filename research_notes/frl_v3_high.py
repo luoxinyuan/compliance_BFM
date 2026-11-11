@@ -187,6 +187,9 @@ def train(e,m,contract,out,args):
         from frl_v3_metrics import summarize,scientific_choice
         choice['absolute_summary']=summarize(rows)
         choice['scientific_coordinate']=scientific_choice(rows,initial_rows)
+        sci=choice['scientific_coordinate']
+        choice['promotion_eligible']=bool(choice['admissible'] and sci['error_force_progress_admissible'] and sci['absolute_improvement_atleast25'] and not sci['absolute_yaw_over20'])
+        choice['selection_scope']='old-relative selection is a risk monitor; separate promotion eligibility is required'
         choice.update(iteration=i,sha256=sha(path),checkpoint_path=str(path),eval_job_s=time.monotonic()-t)
         dev.append(choice);write(out/'development.json',dev)
         scientific=[r for r in dev if r['scientific_coordinate']['error_force_progress_admissible']]
@@ -194,6 +197,8 @@ def train(e,m,contract,out,args):
             selected=min(scientific,key=lambda r:(r['absolute_summary']['family_balanced_severity'],r['absolute_summary']['exceeding_parent_fraction'],r['score'],r['iteration']))
             write(out/'scientific-selection.json',dict(selected=selected,scope='development scientific candidate, not promotion; yaw failure remains partial/no promotion'))
         if i==0 or (choice['admissible'] and choice['score']<best['score']):best=copy.deepcopy(choice);write(out/'selection.json',best)
+        promotable=[r for r in dev if r['promotion_eligible']]
+        write(out/'promotion.json',dict(promoted=bool(promotable),candidate=min(promotable,key=lambda r:r['score']) if promotable else None,baseline='frozen BC500 unchanged',rule='hard physics plus unchanged old relative guard plus25percent absolute gain and family/progress guards; absolute yaw20 required'))
         write(out/f'dev-{i}-isolation.json',dict(physical_history_exact=True,torch_and_task_rng_exact=True,independent_process=True))
     first_iteration=1
     if args.resume:

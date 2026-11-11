@@ -19,7 +19,7 @@ def score(physics,controls,start_time):
         end=controls[i+1]['time'] if i+1<len(controls) else c['time']+c['actual_duration_s']+1e-8
         rows=[r for r in physics if c['time']-1e-8<=r['force_time']<end-1e-8];assert rows
         p=event(rows);discount=.99**((c['time']-start_time)/.1)
-        old+=discount*c['reward_integral'];risk+=discount*p
+        old+=discount*(c['reward_integral']-c.get('absorbing_failure_penalty',0.));risk+=discount*p
         terms.update({k:terms.get(k,0)-discount*c['actual_duration_s']*v for k,v in c['reward_terms'].items()})
         v=max(r['stage_loaded_slip_mps'] for r in rows)
         if v>THRESHOLD:

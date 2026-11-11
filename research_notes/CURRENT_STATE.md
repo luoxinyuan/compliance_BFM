@@ -1,17 +1,18 @@
-# CURRENT_STATE — Issue59同状态反事实运行；v3条件准备
+# CURRENT_STATE — Issue59包一有限通过；v3更新一致性准备
 
 最后核对2026-11-11。[Issue58](https://github.com/GaoE05/robot-research-bridge/issues/58) ·
 [执行结果](ISSUE58_EXECUTION_RESULTS.md) · [锁定协议](FRL_V2_FB_REPAIR_PROTOCOL.md)。
 
 ## 当前新阶段授权（Issue59）
 
-[协议](FRL_V3_RISK_PROTOCOL.md) · [Issue59](https://github.com/GaoE05/robot-research-bridge/issues/59)。包一正在GPU0进行10父组/32完整状态的首100ms反事实与原策略2s续跑；包二尚未启动。
+[协议](FRL_V3_RISK_PROTOCOL.md) · [Issue59](https://github.com/GaoE05/robot-research-bridge/issues/59)。[包一结果](FRL_V3_P1_RESULTS.md)：10父组32状态280分支；完整连续对照13440tick/3360控制逐值一致，有限存在性过闸。包二正式训练尚未启动。
 状态源为24个已暴露dev状态及8个真实B64采样状态（rollout65），不是qpos-only；历史B65只作离线概率比较。
 P1 runtime ac1d51a，首个路径拼接失败561af1d/120.39s保留，修复后counterfactual-02独立输出；原BC500/B64/B128均不学习。
 已锁定新dev32父组，manifest SHA9f2c8c1ef38fae9b18c38ed5fe87ae8a4a862c44e6d69ed9965564dbe9fc79eb；旧32仅回归，旧封存不读。
-P1完成且存在非平凡低滑移有效分支、原均值/原采样连续前缀逐值复现后，才进入lambda0完整更新/物理一致性资格；未通过不带病发车。
+P1仅2个持续状态/2父组有非平凡低滑移有效分支（near一处、mid一处且接近8cm边界），不是广域恢复成功；现在进入lambda0完整更新/物理一致性资格。
 包二唯一主要变量为每20ms新增.33*h(max(v−.45,0)/.45)事件惩罚（不乘.02），其余沿用v2 B，从BC500新开128×768；必要时λ0新控制同额。包二含对照/评价≤24job小时；没有Student/FB。
-这是已授权的条件队列，不是已有v3结果或晋级。旧F-RL-v2结项、B128未晋级、BC500基线全部保持。
+滑移语义：79个超限tick中69个步后已消解，法向力均>10N；多数为带载瞬态，不能把指标降幅直接叫持续滑移降幅。风险公式/加载门不改。
+P1采集进程最终bool_序列化失败，完整数据CPU恢复，原failed记录保留；没有重跑物理。v3仍无训练结果/晋级，旧F-RL-v2/B128未晋级/BC500基线保持。
 
 ## 已结项v2状态
 

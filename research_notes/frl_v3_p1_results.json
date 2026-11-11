@@ -1,0 +1,465 @@
+{
+  "gate": {
+    "P2_allowed": true,
+    "existence_answer": "exists within measured subset",
+    "clean_success_states": 10,
+    "nontrivial_success_states": 2,
+    "nontrivial_parents": 2,
+    "states": 32,
+    "parents": 10,
+    "candidates": 280,
+    "new_training_updates": 0,
+    "normal_threshold_unchanged_N": 1e-06,
+    "recovered_from_complete_actual_data": true,
+    "original_collection_process_status": "failed only during final NumPy bool JSON serialization; no physical rerun or overwrite",
+    "job_s": 2.77523830201244
+  },
+  "archived_baselines": {
+    "status": "completed",
+    "states": 32,
+    "all_archived_continuations_bitwise": true,
+    "physics_rows": 13440,
+    "controls": 3360,
+    "load_semantics": {
+      "overlimit20ms_events": 70,
+      "normal_bands": {
+        "10-100N": 59,
+        ">100N": 11
+      },
+      "bodies": {
+        "left_ankle_roll_link": 48,
+        "right_ankle_roll_link": 22
+      },
+      "normal_quantiles_N": {
+        "p50": 55.08391135323824,
+        "p90": 115.41896468424517,
+        "p99": 140.293623882985,
+        "max": 142.8906630306756
+      },
+      "scope": "one peak tick per overlimit20ms event; all loads counted using unchanged1e-6N; bands descriptive only"
+    },
+    "P2_allowed": true,
+    "job_s": 49.081131143000675
+  },
+  "semantics": {
+    "status": "completed",
+    "elapsed_s": 29.772324340010528,
+    "total_physics_ticks": 117600,
+    "overlimit_ticks": 79,
+    "old_velocity_reproduction_max_error": 1.1102230246251565e-16,
+    "contact_local_point_reconstruction_max_error_m": 4.440892098500626e-16,
+    "before_after_counts": {
+      "resolved_within5ms": 69,
+      "poststep_still_over045": 10
+    },
+    "normal_bands_N": {
+      "10-100N": 68,
+      ">100N": 11
+    },
+    "no_physics_steps": true,
+    "unchanged_risk_contract": true,
+    "interpretation": "original metric uses pre-integration tangent velocity and force solved during that tick; post-integration resolution is descriptive only, not grounds to delete old overlimits. Transient-resolved does not prove zero5ms sliding distance; persistent/poststep motion stronger evidence of ongoing slip."
+  },
+  "state_results": [
+    {
+      "state_id": 0,
+      "parent_id": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "phase": "entry",
+      "owner": "BC500",
+      "candidates": 9,
+      "clean_success_candidates": 8
+    },
+    {
+      "state_id": 1,
+      "parent_id": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "phase": "sustained",
+      "owner": "BC500",
+      "candidates": 8,
+      "clean_success_candidates": 8
+    },
+    {
+      "state_id": 2,
+      "parent_id": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "phase": "stopping",
+      "owner": "BC500",
+      "candidates": 9,
+      "clean_success_candidates": 9
+    },
+    {
+      "state_id": 3,
+      "parent_id": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "phase": "holding",
+      "owner": "BC500",
+      "candidates": 8,
+      "clean_success_candidates": 8
+    },
+    {
+      "state_id": 4,
+      "parent_id": "f74a4aa65c23d920b71d32155b123bc91f2c5a3a697679a806f6bfb809a3b29f",
+      "phase": "entry",
+      "owner": "B64",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 5,
+      "parent_id": "f74a4aa65c23d920b71d32155b123bc91f2c5a3a697679a806f6bfb809a3b29f",
+      "phase": "sustained",
+      "owner": "B64",
+      "candidates": 8,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 6,
+      "parent_id": "f74a4aa65c23d920b71d32155b123bc91f2c5a3a697679a806f6bfb809a3b29f",
+      "phase": "stopping",
+      "owner": "B64",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 7,
+      "parent_id": "f74a4aa65c23d920b71d32155b123bc91f2c5a3a697679a806f6bfb809a3b29f",
+      "phase": "holding",
+      "owner": "B64",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 8,
+      "parent_id": "3f98101b1b6c9b3d0f0cc27ab199908621380b2886269bc542edade1ba74345d",
+      "phase": "entry",
+      "owner": "B64",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 9,
+      "parent_id": "3f98101b1b6c9b3d0f0cc27ab199908621380b2886269bc542edade1ba74345d",
+      "phase": "sustained",
+      "owner": "B64",
+      "candidates": 8,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 10,
+      "parent_id": "3f98101b1b6c9b3d0f0cc27ab199908621380b2886269bc542edade1ba74345d",
+      "phase": "stopping",
+      "owner": "B64",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 11,
+      "parent_id": "3f98101b1b6c9b3d0f0cc27ab199908621380b2886269bc542edade1ba74345d",
+      "phase": "holding",
+      "owner": "B64",
+      "candidates": 9,
+      "clean_success_candidates": 2
+    },
+    {
+      "state_id": 12,
+      "parent_id": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "phase": "entry",
+      "owner": "B128",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 13,
+      "parent_id": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "phase": "sustained",
+      "owner": "B128",
+      "candidates": 9,
+      "clean_success_candidates": 1
+    },
+    {
+      "state_id": 14,
+      "parent_id": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "phase": "stopping",
+      "owner": "B128",
+      "candidates": 9,
+      "clean_success_candidates": 7
+    },
+    {
+      "state_id": 15,
+      "parent_id": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "phase": "holding",
+      "owner": "B128",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 16,
+      "parent_id": "dd96638e58f2bf59ce36315f4d069bca75ce2bede6e4ec522872a2470eeb79fb",
+      "phase": "entry",
+      "owner": "B128",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 17,
+      "parent_id": "dd96638e58f2bf59ce36315f4d069bca75ce2bede6e4ec522872a2470eeb79fb",
+      "phase": "sustained",
+      "owner": "B128",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 18,
+      "parent_id": "dd96638e58f2bf59ce36315f4d069bca75ce2bede6e4ec522872a2470eeb79fb",
+      "phase": "stopping",
+      "owner": "B128",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 19,
+      "parent_id": "dd96638e58f2bf59ce36315f4d069bca75ce2bede6e4ec522872a2470eeb79fb",
+      "phase": "holding",
+      "owner": "B128",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 20,
+      "parent_id": "cfbd99757849c501c6f82cae1a83a6058cf1f6b64f227a849178d7174a46e537",
+      "phase": "entry",
+      "owner": "BC500",
+      "candidates": 9,
+      "clean_success_candidates": 8
+    },
+    {
+      "state_id": 21,
+      "parent_id": "cfbd99757849c501c6f82cae1a83a6058cf1f6b64f227a849178d7174a46e537",
+      "phase": "sustained",
+      "owner": "BC500",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 22,
+      "parent_id": "cfbd99757849c501c6f82cae1a83a6058cf1f6b64f227a849178d7174a46e537",
+      "phase": "stopping",
+      "owner": "BC500",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 23,
+      "parent_id": "cfbd99757849c501c6f82cae1a83a6058cf1f6b64f227a849178d7174a46e537",
+      "phase": "holding",
+      "owner": "BC500",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 24,
+      "parent_id": "ddaa03cefed8f487a960fd3b130dbd715119726170c9885a72097f2d6faa3850",
+      "phase": "moving",
+      "owner": "B64",
+      "candidates": 8,
+      "clean_success_candidates": 8
+    },
+    {
+      "state_id": 25,
+      "parent_id": "ddaa03cefed8f487a960fd3b130dbd715119726170c9885a72097f2d6faa3850",
+      "phase": "moving",
+      "owner": "B64",
+      "candidates": 8,
+      "clean_success_candidates": 8
+    },
+    {
+      "state_id": 26,
+      "parent_id": "9808f0c7b590db415b16e0aee7cd5a11e1582c0c607a0d016dfb0af0000de490",
+      "phase": "moving",
+      "owner": "B64",
+      "candidates": 8,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 27,
+      "parent_id": "9808f0c7b590db415b16e0aee7cd5a11e1582c0c607a0d016dfb0af0000de490",
+      "phase": "moving",
+      "owner": "B64",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 28,
+      "parent_id": "18bde078686580ad5c17638698f9bd8ed58a0cda4e0a9fc93d0f42baa5060a1d",
+      "phase": "moving",
+      "owner": "B64",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 29,
+      "parent_id": "18bde078686580ad5c17638698f9bd8ed58a0cda4e0a9fc93d0f42baa5060a1d",
+      "phase": "moving",
+      "owner": "B64",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 30,
+      "parent_id": "e0ce032fc9d8f23fec4de3ffd6c16197d8d1bf270f2c6106f658c72270fc53fb",
+      "phase": "moving",
+      "owner": "B64",
+      "candidates": 8,
+      "clean_success_candidates": 0
+    },
+    {
+      "state_id": 31,
+      "parent_id": "e0ce032fc9d8f23fec4de3ffd6c16197d8d1bf270f2c6106f658c72270fc53fb",
+      "phase": "moving",
+      "owner": "B64",
+      "candidates": 9,
+      "clean_success_candidates": 0
+    }
+  ],
+  "credit": [
+    {
+      "state_id": 24,
+      "parent_id": "ddaa03cefed8f487a960fd3b130dbd715119726170c9885a72097f2d6faa3850",
+      "historical_GAE": 6.5859270095825195,
+      "PPO_adv": 2.792156457901001,
+      "logprob_delta": -0.08270263671875,
+      "counterfactual_old_return_delta": 0.001554528606809935,
+      "counterfactual_v3_return_delta": 0.001554528606809935,
+      "sample_clean_success": true,
+      "adv_sign_agrees_with_counterfactual": true,
+      "probability_sign_agrees_with_counterfactual": false,
+      "scope": "finite2.1s CRN feedback return, not whole-episode ground truth advantage"
+    },
+    {
+      "state_id": 25,
+      "parent_id": "ddaa03cefed8f487a960fd3b130dbd715119726170c9885a72097f2d6faa3850",
+      "historical_GAE": 6.327348709106445,
+      "PPO_adv": 2.670382499694824,
+      "logprob_delta": 0.0322265625,
+      "counterfactual_old_return_delta": 0.000360540670506726,
+      "counterfactual_v3_return_delta": 0.000360540670506726,
+      "sample_clean_success": true,
+      "adv_sign_agrees_with_counterfactual": true,
+      "probability_sign_agrees_with_counterfactual": true,
+      "scope": "finite2.1s CRN feedback return, not whole-episode ground truth advantage"
+    },
+    {
+      "state_id": 26,
+      "parent_id": "9808f0c7b590db415b16e0aee7cd5a11e1582c0c607a0d016dfb0af0000de490",
+      "historical_GAE": 1.1804523468017578,
+      "PPO_adv": 0.2465202659368515,
+      "logprob_delta": -0.14569091796875,
+      "counterfactual_old_return_delta": 0.009359616527575554,
+      "counterfactual_v3_return_delta": 0.009359616527575554,
+      "sample_clean_success": false,
+      "adv_sign_agrees_with_counterfactual": true,
+      "probability_sign_agrees_with_counterfactual": false,
+      "scope": "finite2.1s CRN feedback return, not whole-episode ground truth advantage"
+    },
+    {
+      "state_id": 27,
+      "parent_id": "9808f0c7b590db415b16e0aee7cd5a11e1582c0c607a0d016dfb0af0000de490",
+      "historical_GAE": -1.662063717842102,
+      "PPO_adv": -1.0921247005462646,
+      "logprob_delta": -0.08538818359375,
+      "counterfactual_old_return_delta": -0.011300905196185873,
+      "counterfactual_v3_return_delta": -0.011300905196185873,
+      "sample_clean_success": false,
+      "adv_sign_agrees_with_counterfactual": true,
+      "probability_sign_agrees_with_counterfactual": true,
+      "scope": "finite2.1s CRN feedback return, not whole-episode ground truth advantage"
+    },
+    {
+      "state_id": 28,
+      "parent_id": "18bde078686580ad5c17638698f9bd8ed58a0cda4e0a9fc93d0f42baa5060a1d",
+      "historical_GAE": -2.0633902549743652,
+      "PPO_adv": -1.2811241149902344,
+      "logprob_delta": -0.164306640625,
+      "counterfactual_old_return_delta": 0.05688333078742236,
+      "counterfactual_v3_return_delta": 0.05688333078742236,
+      "sample_clean_success": false,
+      "adv_sign_agrees_with_counterfactual": false,
+      "probability_sign_agrees_with_counterfactual": false,
+      "scope": "finite2.1s CRN feedback return, not whole-episode ground truth advantage"
+    },
+    {
+      "state_id": 29,
+      "parent_id": "18bde078686580ad5c17638698f9bd8ed58a0cda4e0a9fc93d0f42baa5060a1d",
+      "historical_GAE": 0.3530278205871582,
+      "PPO_adv": -0.14314426481723785,
+      "logprob_delta": 0.04730224609375,
+      "counterfactual_old_return_delta": 0.033984050773471,
+      "counterfactual_v3_return_delta": 0.033984050773471,
+      "sample_clean_success": false,
+      "adv_sign_agrees_with_counterfactual": false,
+      "probability_sign_agrees_with_counterfactual": true,
+      "scope": "finite2.1s CRN feedback return, not whole-episode ground truth advantage"
+    },
+    {
+      "state_id": 30,
+      "parent_id": "e0ce032fc9d8f23fec4de3ffd6c16197d8d1bf270f2c6106f658c72270fc53fb",
+      "historical_GAE": 1.338952660560608,
+      "PPO_adv": 0.3211638927459717,
+      "logprob_delta": -0.013671875,
+      "counterfactual_old_return_delta": 0.22838530386128575,
+      "counterfactual_v3_return_delta": 0.2284432072961824,
+      "sample_clean_success": false,
+      "adv_sign_agrees_with_counterfactual": true,
+      "probability_sign_agrees_with_counterfactual": false,
+      "scope": "finite2.1s CRN feedback return, not whole-episode ground truth advantage"
+    },
+    {
+      "state_id": 31,
+      "parent_id": "e0ce032fc9d8f23fec4de3ffd6c16197d8d1bf270f2c6106f658c72270fc53fb",
+      "historical_GAE": -0.06908845901489258,
+      "PPO_adv": -0.34193429350852966,
+      "logprob_delta": -0.05255126953125,
+      "counterfactual_old_return_delta": 0.020709009310276638,
+      "counterfactual_v3_return_delta": 0.020709009310276638,
+      "sample_clean_success": false,
+      "adv_sign_agrees_with_counterfactual": false,
+      "probability_sign_agrees_with_counterfactual": false,
+      "scope": "finite2.1s CRN feedback return, not whole-episode ground truth advantage"
+    }
+  ],
+  "ranking": {
+    "winner_changes": [
+      {
+        "state_id": 23,
+        "old_best": "observed_better_transferred",
+        "v3_best": "archived_transferred",
+        "old_peak": 0.9319973761474779,
+        "v3_peak": 0.9310762640697128
+      }
+    ],
+    "clean_slipping_pairs": [],
+    "scope": "paired branches within state, not independent outcomes; no fitted scores or threshold change"
+  },
+  "terminal_score_audit": {
+    "terminal_cases": 0,
+    "original_scores_affected": 0,
+    "scope": "original outputs retained; termination tail explicitly audited"
+  },
+  "physics_collection_jobs": [
+    {
+      "name": "counterfactual-01",
+      "category": "P1",
+      "status": "failed",
+      "runtime": "561af1dedf4399880cc8dfed639a2709986d2660",
+      "training": false,
+      "returncode": 1,
+      "elapsed_s": 120.38654923439026
+    },
+    {
+      "name": "counterfactual-02",
+      "category": "P1",
+      "status": "failed",
+      "runtime": "ac1d51a8d93bf547bff654acd59fa3306b2f071f",
+      "training": false,
+      "returncode": 1,
+      "elapsed_s": 1019.1553280353546
+    }
+  ]
+}

@@ -24,13 +24,18 @@ try:
   if state['status']!='running':break
   if state.get('expected_budget_exceeded'):write(dict(status='P1_over_expected_report_required',formal_started=False))
   time.sleep(10)
- assert state['status']=='completed','P1 correctness failed; no automatic retry or training'
+ P1=S/'runs/counterfactual-02'
+ recovered=(P1/'complete-recovery.json').exists() and read(P1/'complete-recovery.json').get('complete_collection_verified') is True
+ assert state['status']=='completed' or recovered,'P1 data incomplete; no automatic retry or training'
+ if recovered:assert sha(P1/'outcomes.json')==read(P1/'complete-recovery.json')['raw_outcomes_sha256'],'Recovered data changed'
+ assert read(P1/'postcontact-velocity-audit.json')['status']=='completed','Slip semantics audit must finish before P2'
  P1=S/'runs/counterfactual-02';gate=read(P1/'gate.json')
  # Always verify archived complete baseline continuations before interpreting existence.
  verify_start=time.time()
  try:
-  with (S/'jobs/counterfactual-verification.log').open('w') as f:subprocess.run([str(PY),str(R/'research_notes/frl_v3_verify_counterfactual.py'),'--output',str(P1)],stdout=f,stderr=subprocess.STDOUT,check=True,env=dict(os.environ,CUDA_VISIBLE_DEVICES='',OPENBLAS_NUM_THREADS='1'))
- finally:(S/'jobs/counterfactual-verification-job.json').write_text(json.dumps(dict(category='P1',name='counterfactual-verification',status='completed' if (P1/'counterfactual-verification.json').exists() else 'failed',elapsed_s=time.time()-verify_start),indent=2))
+  if not (P1/'counterfactual-verification.json').exists():
+   with (S/'jobs/counterfactual-verification.log').open('w') as f:subprocess.run([str(PY),str(R/'research_notes/frl_v3_verify_counterfactual.py'),'--output',str(P1)],stdout=f,stderr=subprocess.STDOUT,check=True,env=dict(os.environ,CUDA_VISIBLE_DEVICES='',OPENBLAS_NUM_THREADS='1'))
+ finally:(S/'jobs/counterfactual-verification-queue-check-job.json').write_text(json.dumps(dict(category='P1',name='counterfactual-verification',status='completed' if (P1/'counterfactual-verification.json').exists() else 'failed',elapsed_s=time.time()-verify_start),indent=2))
  assert read(P1/'counterfactual-verification.json')['all_archived_continuations_bitwise']
  if not gate['P2_allowed']:
   write(dict(status='stopped_P1_no_effective_low_slip_branch',formal_started=False,scientific_report_required=True));raise SystemExit(0)
