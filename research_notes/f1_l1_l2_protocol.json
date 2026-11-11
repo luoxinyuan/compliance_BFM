@@ -1,0 +1,47 @@
+{
+  "version": "F1_L1_L2_EXECUTION_V1",
+  "base_commit": "6cee2c83afe8293ebbe12d7dde9b1739e3bdf396",
+  "manifest_lock_sha256": "a4e5dcf143bc8322f0b6f9da8a69fc52a15da3e866b360cc027a6bf4a25a9be2",
+  "L1": {
+    "states": 24,
+    "parents": 12,
+    "horizon_s": 3,
+    "candidates_per_state": 16,
+    "information": "O-F",
+    "candidates": "five feedback policies, hold last-z, standing, arm5/15, three three-node native-motion envelopes, four three-node interpolation sequences",
+    "expansion": "all locked states in fixed manifest order; strict positives and tails first; no repeated old first100ms scan",
+    "cap_s": 10800
+  },
+  "L2": {
+    "horizon_s": 3,
+    "prediction_s": 2,
+    "replan_s": 0.1,
+    "candidates": 8,
+    "information": "C-P constant current velocity; fixed BC500 C-S",
+    "max_replans": 240,
+    "max_prediction_branches": 1920,
+    "cap_s": 14400
+  },
+  "L2_states": [
+    "P1-1",
+    "P1-13",
+    "new_tail-sustained-5c67db5a4802",
+    "new_tail-sustained-97ff10c4dcd9",
+    "new_tail-hold-97ff10c4dcd9",
+    "new_near-sustained-5f62e065b5ac",
+    "new_stop-sustained-5f6380cdec75"
+  ],
+  "paired_stop_state": "new_stop-sustained-5f6380cdec75",
+  "selection": "max locked v3 discounted reward among no-hard-boundary candidates; all unsafe retained; if all unsafe select max and flag",
+  "actual_reward": "lambda0 physical runtime plus independent original/v3 .33 recomputation; no double counting",
+  "success": "all locked F1 physical task and .45 slip/20deg yaw references, progress; full horizon required; report each coordinate and old relative gate separately",
+  "forecast_heading_metadata": "causal predicted endpoint displacement norm; not true final distance; same reward formula",
+  "C_S_planner": "missing, not built",
+  "L3": "not authorized; no entrypoint",
+  "prior_charged_s": 3346.9409750220075,
+  "estimated_L1_s": 2300,
+  "estimated_L2_s": 7200,
+  "preparation_reporting_reserve_s": 1200,
+  "expected_new_output_GiB": 12,
+  "physical_RL_training_decisions": 0
+}
