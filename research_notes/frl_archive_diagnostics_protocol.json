@@ -1,0 +1,16 @@
+{
+ "version":"FRL_ARCHIVE_DIAGNOSTICS_V1", "source":"a687d528b1119413bc1a8f73eb5f199229e27d4d", "budget_job_s":14400,
+ "training":0,"new_physical_rollouts":0,"sealed_reads":0,"config_changes":0,
+ "archive_models":["B64","B128","A128","initial"],
+ "chain_windows":{"B64":[64],"B128":[128],"A128":[128]},
+ "alignment":"rollout k sampled with candidate k-1; compare candidate k-1 to candidate k at identical saved 2727D input; additional B64-to-B128 retention on B64 samples",
+ "observational_clean_progress_proxy":"actual contact during moving; positive world wrist +X progress and strictly decreasing 3D contact error across a 100ms command; actual loaded slip max<=0.45m/s, max absolute pelvis yaw<=20deg, no real joint boundary. Training compact archives reconstruct wrist progress as delta anchor minus delta error only when vector error exists, otherwise use frozen high input relative geometry/current root and full physical qpos as documented. No counterfactual causal benefit claim.",
+ "credit":"raw GAE and globally normalized PPO advantage both reported; positive normalized advantage is actual PPO promotion signal",
+ "retention":"dot(mu_after-mu_before, sampled_raw-mu_before)>0 plus actual sample logprob change; report both, not infer full physical success",
+ "quality_gate":"exact frl_v2_high.select: all-phase loaded-slip max <= init_slip+max(.2,.5*init_slip); absolute released final pelvis yaw <= abs(init_final_yaw)+10deg; original family error/force rules unchanged",
+ "reference_classification":"M1 absolute reference only, not new selection: near error<=4cm force<=4N; mid error<=8cm force<=7N; stop additionally holding error<=8cm force<=6.5N. clean success additionally all-phase loaded-slip<=.45m/s, released abs yaw<=20deg, no boundary; slipping success meets task reference but exceeds .45m/s. Report failed and yaw-only separately.",
+ "ranking":"only same parent_id+child matching, compare actual discounted return from handoff; stage contributions separately. Pareto quality ordering uses error,force,cap,loaded-slip,abs final yaw, no fitted scalar. Tradeoffs/unrankable retained. Clean vs slipping success rates report denominator including zero eligible pairs.",
+ "groups":"40 dev subepisodes,32 parents; stop and continue paired siblings, not independent. No randomized frame split.",
+ "proof_levels":["proven","compatible","unproven"],
+ "stop":"complete archive analysis or cumulative14400job seconds; no automatic follow-up"
+}
