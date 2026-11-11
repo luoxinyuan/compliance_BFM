@@ -46,8 +46,14 @@ def study(e,m,c,out):
   prior=torch.load(P/'experiments/f1-l0-array-audit-20261111'/oldrow['state_snapshot'],map_location='cpu',weights_only=False)
   assert sha(P/'experiments/f1-l0-array-audit-20261111'/oldrow['state_snapshot'])==oldrow['state_snapshot_sha256']
   assert torch.equal(x.cpu(),prior['input']) and torch.equal(task.last_command.cpu(),prior['previous_z'])
-  assert same(pp,prior['state'],md,prior['state_validity']),('L0 portable reconstruction differs',meta['state_id'])
-  search.state(meta,owner,oldrow)
+  if not same(pp,prior['state'],md,prior['state_validity']):
+   torch.save(dict(actual=pp,archived=prior['state'],actual_meta=md,archived_meta=prior['state_validity']),out/(meta['state_id']+'-restore-difference.pt'))
+   raise AssertionError(('L0 portable reconstruction differs',meta['state_id']))
+  completed=set()
+  for name in ARGS.reuse:
+   path=ST/'runs'/name/'candidate-scores.json'
+   if path.exists():completed.update(r['state_id'] for r in read(path) if r.get('layer')=='L1')
+  if meta['state_id'] not in completed:search.state(meta,owner,oldrow)
  # Recorded raw prefixes rebuild original callback/partner graph, never pose-only reset.
  for row in plan['states']:
   if not search.includes(row['state_id']):continue
@@ -72,7 +78,7 @@ def study(e,m,c,out):
  return search.finish()
 def main():
  global ARGS
- p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--layer',choices=['L1','L2'],required=True);ARGS=p.parse_args();ARGS.runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip();assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain']);ARGS.output.mkdir(exist_ok=False,parents=True)
+ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--layer',choices=['L1','L2'],required=True);p.add_argument('--reuse',action='append',default=[]);ARGS=p.parse_args();ARGS.runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip();assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain']);ARGS.output.mkdir(exist_ok=False,parents=True)
  write(ARGS.output/'launch.json',dict(runtime=ARGS.runtime,pid=os.getpid(),started=time.time(),training=False,stage=ARGS.layer))
  os.environ.update(CLEAN_KIND='direct',P4000_CANONICAL_ROW_ACTOR='1',BFM_RECORD_NOMINAL_DIAGNOSTIC='0',BFM_RECOVERY_OUTPUT=str(ARGS.output));os.chdir(ARGS.output)
  import m10_stage,m10_physics

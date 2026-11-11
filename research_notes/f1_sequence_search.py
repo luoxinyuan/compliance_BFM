@@ -32,21 +32,23 @@ def install_post_velocity(e):
  return old
 
 def semantics(ph):
- # Preserve ALL old events; post-speed is separate diagnostic, not a filter.
- old=0;transient=0;sust=0;normal=[];run={};maxrun={};travel={};impulse={}
+ # Old events retained. Duration uses body/tick, not number of simultaneous contact points.
+ old=transient=sust=oldticks=persistticks=transientticks=0;normal=[];run={};maxrun={};travel={};impulse={}
  for r in ph:
-  present=set()
+  bodies={};tickold=tickpersist=False
   for a,b in zip(r['stage_foot_contacts'],r.get('f1_post_contacts',[])):
-   assert a['body']==b['body'];k=a['body'];present.add(k)
+   assert a['body']==b['body'];k=a['body'];v=bodies.setdefault(k,dict(persist=False,post=0.))
    loaded=a['normal_N']>1e-6;over=loaded and a['tangent_speed_mps']>.45
+   tickold=tickold or over
    if over:old+=1;normal.append(a['normal_N'])
-   if over and b['post_tangent_mps']<=.45:transient+=1
-   if over and b['post_tangent_mps']>.45:sust+=1
-   run[k]=run.get(k,0)+.005 if over and b['post_tangent_mps']>.45 else 0.
-   maxrun[k]=max(maxrun.get(k,0.),run[k]);travel[k]=travel.get(k,0.)+(b['post_tangent_mps']*.005 if loaded else 0.)
-   impulse[k]=impulse.get(k,0.)+(a['normal_N']*.005 if over and b['post_tangent_mps']<=.45 else 0.)
-  for k in set(run)-present:run[k]=0.
- return dict(old_loaded_overlimit_contact_rows=old,loaded_landing_transient_rows=transient,persistent_pre_post_rows=sust,max_consecutive_persistent_s=maxrun,loaded_point_speed_integral_m=travel,transient_normal_impulse_Ns=impulse,event_normal_N_min=min(normal) if normal else None,event_normal_N_max=max(normal) if normal else None,threshold_N=1e-6,threshold_mps=.45,scope='all contacts retained; speed integral is point travel proxy, not tracked-material-point displacement')
+   if over and b['post_tangent_mps']<=.45:
+    transient+=1;impulse[k]=impulse.get(k,0.)+a['normal_N']*.005
+   if over and b['post_tangent_mps']>.45:sust+=1;v['persist']=True;tickpersist=True
+   if loaded:v['post']=max(v['post'],b['post_tangent_mps'])
+  oldticks+=int(tickold);persistticks+=int(tickpersist);transientticks+=int(tickold and not tickpersist)
+  for k in set(run)|set(bodies):
+   v=bodies.get(k,dict(persist=False,post=0.));run[k]=run.get(k,0.)+.005 if v['persist'] else 0.;maxrun[k]=max(maxrun.get(k,0.),run[k]);travel[k]=travel.get(k,0.)+v['post']*.005
+ return dict(old_loaded_overlimit_contact_rows=old,loaded_landing_transient_rows=transient,persistent_pre_post_rows=sust,old_loaded_overlimit_ticks=oldticks,persistent_pre_post_ticks=persistticks,transient_only_ticks=transientticks,max_consecutive_persistent_s=maxrun,loaded_point_speed_integral_m=travel,transient_normal_impulse_Ns=impulse,event_normal_N_min=min(normal) if normal else None,event_normal_N_max=max(normal) if normal else None,threshold_N=1e-6,threshold_mps=.45,scope='all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement')
 
 class Search:
  def __init__(self,t,e,m,nets,out,args,identities):
@@ -142,6 +144,9 @@ class Search:
   return {k:v.tolist() if isinstance(v,np.ndarray) else v for k,v in pred.items()}
  def query(self,meta,oldrow,index,audit=False):
   t=self.t;ss=TrainingBranch(t);base=portable(t);md=metadata(self.e.sim.model,self.e.sim.data);pool=self.candidate_pool(2.,small=True);rs=[];start=time.monotonic();prediction=None
+  path=self.out/(meta['state_id']+f'-query-state-{index:02}.pt')
+  torch.save(dict(state=base,state_validity=md,spec=copy.deepcopy(t.spec),actual_raw_prefix=[d['raw'] for d in t.decision_rows],input=self.x().cpu(),previous_z=t.last_command.cpu(),runtime=self.args.runtime,identity='actual feedback access state; not prediction'),path)
+  original_state_sha=oldrow['state_snapshot_sha256'];oldrow=dict(oldrow,state_snapshot_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
   try:
    for i,c in enumerate(pool):
     ss.restore();assert same(base,portable(t),md,metadata(self.e.sim.model,self.e.sim.data))
@@ -157,7 +162,7 @@ class Search:
     assert exact(rs[0],repeat),'future-spec intervention changed causal predicted rollout'
     self.checks.append(dict(state_id=meta['state_id'],test='future-spec invariance',passed=True,compared='all physics/control/inputs/raw/z/scores byte-exact'))
   finally:self.prediction=None;ss.restore()
-  q=self.permission('C-P',meta,oldrow,2.,time.monotonic()-start,len(pool),selected);q.update(replan=index,time=float(self.e.tether.time),prediction=prediction,initial_previous_z=t.last_command.cpu().tolist(),current_restricted_input_sha256=hashlib.sha256(t.student_features().cpu().numpy().tobytes()).hexdigest(),current_privileged_input_sha256=hashlib.sha256(self.x().cpu().numpy().tobytes()).hexdigest(),prediction_reward_distance_rule='norm(current relative anchor + 2s current velocity), no final requested distance')
+  q=self.permission('C-P',meta,oldrow,2.,time.monotonic()-start,len(pool),selected);q.update(all_candidates_unsafe=all(r['boundary'] is not None for r in rs),replan=index,time=float(self.e.tether.time),prediction=prediction,initial_previous_z=t.last_command.cpu().tolist(),current_restricted_input_sha256=hashlib.sha256(t.student_features().cpu().numpy().tobytes()).hexdigest(),current_privileged_input_sha256=hashlib.sha256(self.x().cpu().numpy().tobytes()).hexdigest(),prediction_reward_distance_rule='norm(current relative anchor + 2s current velocity), no final requested distance',current_state_artifact=path.name,source_initial_state_sha256=original_state_sha)
   self.queries.append(q);self.counts['queries']+=1;write(self.out/'query-ledger.json',self.queries)
   return rs[selected]['raws'][0].to(self.e.standing.device)
  def l2(self,meta,owner,oldrow):
