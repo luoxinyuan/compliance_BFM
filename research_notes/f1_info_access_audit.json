@@ -1,10 +1,10 @@
 {
-  "version": 1,
-  "runtime": "a39be585f54b71a213ac65b1171aa6a58f6d7354",
+  "version": 2,
+  "runtime": "5f4c82c7e1ae1c8c44606e388261d6f4c93107e5",
   "scopes": {
     "BC500_frozen_controller": "C-S ideal-force proxy; original restricted input path only; privileged zero-branch wrapper is separately identified",
     "B64_B128_v3_controllers": "C-P actor inputs; any search classification also depends on simulator and scoring",
-    "L0_timing_repeat": "O-F environment future replay; no candidate optimization completed",
+    "L0_timing_repeat": "O-F exact scenario future benchmark; three two-candidate/first100ms timing queries completed; not scientific L1/L2 search",
     "C_S_planner": "not implemented/qualified",
     "C_P_legacy_search": "native_rolling.py current-position/velocity predictor exists; not integrated or qualified for F1 in this L0",
     "O_F": "explicitly permitted only as labeled timing/reference, not C-S or C-P"
@@ -65,5 +65,100 @@
     "causal_relevance": "not established; needs separate privileged crossed-response physical test and later force disambiguation check",
     "not_in_success_denominator": true
   },
-  "missing_query_records": "Two identical frozen 1s timing branches executed; no candidate-selection/replanning query reached. All L1/L2/L3 counts zero."
+  "queries": [
+    {
+      "state_parent_id": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+      "state_snapshot_sha": "57510c8c5155f69c9326cd2a7ae26fd16f4cb5fd0b8ff312978a9359ab4c1f5f",
+      "actual_runtime_sha": "5f4c82c7e1ae1c8c44606e388261d6f4c93107e5",
+      "information_tier": "O-F",
+      "actor_observation_schema": "2727D privileged branch; 1639D restricted prefix",
+      "candidate_generator_inputs": [
+        "current real obs",
+        "current last-z"
+      ],
+      "partner_predictor_version": "original scenario exact future: ORACLE",
+      "partner_predictor_inputs": [
+        "full current spec and exact future program"
+      ],
+      "score_features": [
+        "true future contact force",
+        "anchor error",
+        "physical quality"
+      ],
+      "simulator_state_origin": "complete actual exposed state",
+      "future_anchor_accessible": true,
+      "future_anchor_consumed": true,
+      "anchor_error_used_in_selection": true,
+      "selection_horizon": 1.0,
+      "physical_eval_horizon": 0.1,
+      "query_wall_seconds": 1.8093027299910318,
+      "number_of_simulated_candidates": 2,
+      "selected_candidate_id": "hold_last_z",
+      "purpose": "L0 timing only",
+      "C_S_eligible": false
+    },
+    {
+      "state_parent_id": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+      "state_snapshot_sha": "62e0a17e2c5ba4ef839febe48e3746e2b0b5e9d143526b0fa8fafb33ccf34de6",
+      "actual_runtime_sha": "5f4c82c7e1ae1c8c44606e388261d6f4c93107e5",
+      "information_tier": "O-F",
+      "actor_observation_schema": "2727D privileged branch; 1639D restricted prefix",
+      "candidate_generator_inputs": [
+        "current real obs",
+        "current last-z"
+      ],
+      "partner_predictor_version": "original scenario exact future: ORACLE",
+      "partner_predictor_inputs": [
+        "full current spec and exact future program"
+      ],
+      "score_features": [
+        "true future contact force",
+        "anchor error",
+        "physical quality"
+      ],
+      "simulator_state_origin": "complete actual exposed state",
+      "future_anchor_accessible": true,
+      "future_anchor_consumed": true,
+      "anchor_error_used_in_selection": true,
+      "selection_horizon": 1.0,
+      "physical_eval_horizon": 0.1,
+      "query_wall_seconds": 1.8774315920018125,
+      "number_of_simulated_candidates": 2,
+      "selected_candidate_id": "feedback",
+      "purpose": "L0 timing only",
+      "C_S_eligible": false
+    },
+    {
+      "state_parent_id": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+      "state_snapshot_sha": "30c8dac0a3fdf9e03f83b68eb991c10d00c5b9e9045839760050609cb454808c",
+      "actual_runtime_sha": "5f4c82c7e1ae1c8c44606e388261d6f4c93107e5",
+      "information_tier": "O-F",
+      "actor_observation_schema": "2727D privileged branch; 1639D restricted prefix",
+      "candidate_generator_inputs": [
+        "current real obs",
+        "current last-z"
+      ],
+      "partner_predictor_version": "original scenario exact future: ORACLE",
+      "partner_predictor_inputs": [
+        "full current spec and exact future program"
+      ],
+      "score_features": [
+        "true future contact force",
+        "anchor error",
+        "physical quality"
+      ],
+      "simulator_state_origin": "complete actual exposed state",
+      "future_anchor_accessible": true,
+      "future_anchor_consumed": true,
+      "anchor_error_used_in_selection": true,
+      "selection_horizon": 1.0,
+      "physical_eval_horizon": 0.1,
+      "query_wall_seconds": 2.377030631992966,
+      "number_of_simulated_candidates": 2,
+      "selected_candidate_id": "feedback",
+      "purpose": "L0 timing only",
+      "C_S_eligible": false
+    }
+  ],
+  "all_L1_L2_L3_counts": 0
 }

@@ -1,11 +1,16 @@
-# CURRENT_STATE — Issue60 L0已执行，完整状态严格门阻塞
+# CURRENT_STATE — Issue60 L0完成，未进入L1
 
-最后核对2026-11-11。[Issue60锁定合同](F1_CONTRACT.md) · [L0预检](F1_PREFLIGHT.md) · [状态清单](f1_state_manifest.json) · [失败记录](F1_ERRATUM.md)。
+最后核对2026-11-11。[逐数组审计](F1_L0_ARRAY_AUDIT.md) · [完整L0报告](F1_PREFLIGHT.md) · [manifest锁](f1_state_manifest_lock.json) · [全部失败](F1_ERRATUM.md)。
 
-用户本次只启动L0；资源门通过（GPU0空闲，共享盘约642GiB>100GiB），独立runtime a39be585f54b71a213ac65b1171aa6a58f6d7354 已执行后停止。规划12主父组24状态+3原生参考；实际仅1状态完成原档输入/last-z/integration重建，随后重复完整末态检查失败。
-两个1s真实分支physics/controls/输入/raw/评分逐值一致，但25个MjData数组不同，集中island/约束缓存；可能为工作区有效域问题，尚未证明可忽略。不降容差、不自动重试。没有L1/L2/L3，没有任何训练。GPU已释放。
-L0实测job113.187s，加准备/收尾reserve共1113.187s<1800s；1/3s候选与重规划完整wall未成功落盘/执行，后续成本投影未知。饱和别名仅预登记，受限planner未实现；不能以O-F场景回放冒称C-S/C-P搜索。需先定位状态数组语义和修复计时落盘，未启动下一阶段。
-Issue59及所有历史结论不变，BC500仍是基线。下方保留Issue59与更早阶段信息，避免把旧结项覆盖。
+按Yi 21:12授权，25数组的C指针/源码/干预证据已完成：当前MuJoCo3.3.3 Newton dense、island禁用配置下均为NULL；Python临时数组不是有效状态。3真实状态（两受力、一个无伙伴力）156条3秒C指针干预，physics/control/评分逐值一致，CPU重读字节摘要同样一致。无容差放宽。
+
+12主父组24状态＋3原生参考全部真实重建；27状态保存/读回/81次完整有效状态恢复通过，5个stop/continue父组前缀一致。3原生参考不计独立接触成功组。规则变化单列报告：NULL有效长度0，其余有效数组/积分/solver/历史/RNG全量严格核验，当前配置以外不能沿用。旧失败不追溯改判。
+
+1s候选中位0.885s、3s候选2.753s；2候选1s→执行100ms重规划中位1.877s；新进程到task/actor就绪131.667s。L0与授权reserve累计0.930job小时<2h，仍计入F1 12h/原240h；未占用L1/L2/L3。GPU0已释放，无训练/自动队列。
+
+实际runtime：数组干预5e5b3a464d9c1bf301d375f197bc9acc4cc3a653；27状态续验5f4c82c7e1ae1c8c44606e388261d6f4c93107e5；独立冷启动8bb0de396f3999abcc3c63f7a294afb1927f6372。模型未更新，BC500/BFM身份及状态SHA见manifest。
+
+**当前只完成L0**。C-S固定BC500对照保留，但C-S planner缺格；C-P旧预测器未在F1新实现资格化。测速标O-F，不能冒称因果搜索。饱和别名只预登记。L1/L2未启动，L3须另获明确批准。能力/学习科学结论仍以Issue59及更早正式报告为准。
 
 ## Issue59已结项状态
 
