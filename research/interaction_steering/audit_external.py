@@ -21,7 +21,10 @@ def main():
         v=torch.randn(1,2,generator=generator);h=torch.randn(1,2,generator=generator);valid=torch.tensor([[i%2]],dtype=torch.bool)
         assert torch.equal(native.velocity_observation(v,h,valid),pbfm_velocity_command(v,h,valid));n+=1
     q=torch.ones(1,256);assert torch.equal(sphere.sphere_log_map(q,q),torch.zeros_like(q))
-    assert abs(float(sphere.sphere_log_map(q,-q).norm())-16*torch.pi)<1e-5
+    antipode=sphere.sphere_log_map(q,-q)
+    antipode_error=abs(float(antipode.norm())-16*torch.pi)
+    # Preserve the first 1e-5 diagnostic criterion; report failure, do not relax it.
+    antipode_result=dict(norm=float(antipode.norm()),expected=16*torch.pi,absolute_error=antipode_error,criterion=1e-5,passed=antipode_error<1e-5,finite=bool(torch.isfinite(antipode).all()))
     assert pd['dof_names']==pc['jointNames']==ic['env']['robot_training']['robot']['control_joint_names']
     diffs=[]
     for j,name in enumerate(pd['dof_names']):
@@ -36,6 +39,6 @@ def main():
             if not f.is_file() or '__pycache__' in str(f):continue
             rel=str(f.relative_to(root/repo));r=refs['repositories'][2]['ref'] if rel.startswith('interactive/') else ref
             manifest.append(dict(repo='Roboparty/'+repo,ref=r,path=rel,sha256=file_sha(f),bytes=f.stat().st_size,url=f'https://github.com/Roboparty/{repo}/blob/{r}/{rel}'))
-    result=dict(status='passed',joint_order_exact=True,PD_differences=diffs,pbfm_helper_exact_cases=n,ibfm_spherical_helper_tests=2,ibfm_observation_dimensions={k:v['shape'] for k,v in init['obs_space']['spaces'].items()},source_manifest=manifest,installed=dict(python=platform.python_version(),torch=torch.__version__,mujoco=mujoco.__version__,onnxruntime_available=importlib.util.find_spec('onnxruntime') is not None),external_model_forwards=0,physics_steps=0,weights_downloaded=0,job_s=time.monotonic()-start)
+    result=dict(status='completed_with_numeric_helper_limitation' if not antipode_result['passed'] else 'passed',ibfm_antipode=antipode_result,joint_order_exact=True,PD_differences=diffs,pbfm_helper_exact_cases=n,ibfm_spherical_helper_tests=2,ibfm_observation_dimensions={k:v['shape'] for k,v in init['obs_space']['spaces'].items()},source_manifest=manifest,installed=dict(python=platform.python_version(),torch=torch.__version__,mujoco=mujoco.__version__,onnxruntime_available=importlib.util.find_spec('onnxruntime') is not None),external_model_forwards=0,physics_steps=0,weights_downloaded=0,job_s=time.monotonic()-start)
     a.output.write_text(json.dumps(result,indent=2))
 if __name__=='__main__':main()
