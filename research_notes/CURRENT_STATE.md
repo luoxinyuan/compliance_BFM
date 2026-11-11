@@ -1,9 +1,19 @@
-# CURRENT_STATE — F-RL-v2结项；三项档案诊断完成
+# CURRENT_STATE — Issue59同状态反事实运行；v3条件准备
 
 最后核对2026-11-11。[Issue58](https://github.com/GaoE05/robot-research-bridge/issues/58) ·
 [执行结果](ISSUE58_EXECUTION_RESULTS.md) · [锁定协议](FRL_V2_FB_REPAIR_PROTOCOL.md)。
 
-## 当前状态
+## 当前新阶段授权（Issue59）
+
+[协议](FRL_V3_RISK_PROTOCOL.md) · [Issue59](https://github.com/GaoE05/robot-research-bridge/issues/59)。包一正在GPU0进行10父组/32完整状态的首100ms反事实与原策略2s续跑；包二尚未启动。
+状态源为24个已暴露dev状态及8个真实B64采样状态（rollout65），不是qpos-only；历史B65只作离线概率比较。
+P1 runtime ac1d51a，首个路径拼接失败561af1d/120.39s保留，修复后counterfactual-02独立输出；原BC500/B64/B128均不学习。
+已锁定新dev32父组，manifest SHA9f2c8c1ef38fae9b18c38ed5fe87ae8a4a862c44e6d69ed9965564dbe9fc79eb；旧32仅回归，旧封存不读。
+P1完成且存在非平凡低滑移有效分支、原均值/原采样连续前缀逐值复现后，才进入lambda0完整更新/物理一致性资格；未通过不带病发车。
+包二唯一主要变量为每20ms新增.33*h(max(v−.45,0)/.45)事件惩罚（不乘.02），其余沿用v2 B，从BC500新开128×768；必要时λ0新控制同额。包二含对照/评价≤24job小时；没有Student/FB。
+这是已授权的条件队列，不是已有v3结果或晋级。旧F-RL-v2结项、B128未晋级、BC500基线全部保持。
+
+## 已结项v2状态
 
 原有界GPU作业已停止；GPU空闲状态须实时核对，不把旧快照当授权。没有自动续训、Student、正式FB1M或5M。
 A/B各128×768=98304真实on-policy高层决策均已完成，合计196608。
