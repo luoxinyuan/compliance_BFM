@@ -15,6 +15,7 @@ class CausalObservation:
     gravity: tuple
     angular_velocity: tuple
     action_history: tuple
+    proprio_history: tuple
     force_history: tuple
     last_z: tuple
     contact_link: str
@@ -25,7 +26,7 @@ class CausalObservation:
         for name, n in [('q',29),('dq',29),('gravity',3),('angular_velocity',3),('last_z',256),('contact_local_point',3)]:
             v=getattr(self,name)
             if len(v)!=n or not all(math.isfinite(float(x)) for x in v): raise ValueError(name)
-        for name,n,m in [('action_history',4,29),('force_history',25,3)]:
+        for name,n,m in [('action_history',4,29),('proprio_history',4,64),('force_history',25,3)]:
             rows=getattr(self,name)
             if len(rows)!=n or any(len(v)!=m or not all(math.isfinite(float(x)) for x in v) for v in rows): raise ValueError(name)
         if self.contact_link!='right_wrist_yaw_link' or self.known_mode!='forward_guidance': raise ValueError('S0 scope')

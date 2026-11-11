@@ -8,7 +8,7 @@ from research.interaction_steering.tasks import require_shared_prefix,StateRefer
 
 class Contracts(unittest.TestCase):
     def observation(self):
-        return dict(q=(0.,)*29,dq=(0.,)*29,gravity=(0.,0.,-1.),angular_velocity=(0.,)*3,action_history=((0.,)*29,)*4,force_history=((1.,0.,0.),)*25,last_z=(1.,)*256,contact_link='right_wrist_yaw_link',contact_local_point=(0.,)*3,known_mode='forward_guidance')
+        return dict(q=(0.,)*29,dq=(0.,)*29,gravity=(0.,0.,-1.),angular_velocity=(0.,)*3,action_history=((0.,)*29,)*4,proprio_history=((0.,)*64,)*4,force_history=((1.,0.,0.),)*25,last_z=(1.,)*256,contact_link='right_wrist_yaw_link',contact_local_point=(0.,)*3,known_mode='forward_guidance')
     def test_no_hidden_inputs(self):
         for key in ('anchor','partner_velocity','time','active','task_id','future','search_phase'):
             x=self.observation();x[key]=0
