@@ -1,28 +1,26 @@
-# CURRENT_STATE — Issue59包一完成；v3资格通过，正式阶段运行
+# CURRENT_STATE — Issue59完成：v3部分风险改善，未晋级
 
-最后核对2026-11-11。[Issue58](https://github.com/GaoE05/robot-research-bridge/issues/58) ·
-[执行结果](ISSUE58_EXECUTION_RESULTS.md) · [锁定协议](FRL_V2_FB_REPAIR_PROTOCOL.md)。
+最后核对2026-11-11。[Issue59](https://github.com/GaoE05/robot-research-bridge/issues/59) · [结项](FRL_V3_RESULTS.md) · [协议](FRL_V3_RISK_PROTOCOL.md) · [全部曲线/模型/成本](frl_v3_results.json)。
 
-## 当前新阶段授权（Issue59）
+## 当前结论与运行状态
 
-[协议](FRL_V3_RISK_PROTOCOL.md) · [Issue59](https://github.com/GaoE05/robot-research-bridge/issues/59) · [包一结果](FRL_V3_P1_RESULTS.md) · [开训资格](FRL_V3_QUALIFICATION_RESULTS.md)。
-包一10父组32完整状态280真实分支已完成；32条归档连续轨迹13440tick/3360控制逐值一致。
-有限有效方向仅2个持续状态/2父组，不是广域恢复；mid约7.981cm接近8cm边界。历史GAE与有限反事实符号5/8一致、概率保留3/8，不据此断言critic硬错。
-滑移79个超限tick中69个步后消解，峰值载荷都>10N；新风险含带载落脚瞬态，不把事件下降直接叫持续滑移下降。
-原P1路径/汇总错误与失败sidecar保持，完整数据CPU恢复，不重跑物理。
+包一10父组32完整状态280实际分支完成；严格非入口有效方向仅2状态/2父组，不是广域恢复。λ0模型/Adam与旧B更新逐值一致，λ=.33真实Task.step只改变指定reward；全部原失败与[erratum](FRL_V3_ERRATUM.md)保留。
 
-λ0原更新与v3模型/Adam逐值相同，并逐值复现实际B65；完整物理连续也相同，旧B可作固定对照，无需重跑控制。
-λ=.33补充实际Task.step已通过：420tick物理、输入、raw及非reward控制逐值同；105控制中103零事件reward不变，2个只扣规定项；原折扣/GAE/终止及概率门不改。
-资格统计原字段80为重复计数，实际保留40更新（4actor+36critic），另8回滚尝试；非新on-policy训练，erratum与原始80均保留。
+v3从BC500重新训练128×768=98,304真实高层决策，489,640控制/1,958,560物理tick，998完整回合；旧B六节点同新dev配对及v3旧32父组64/128回归全部结束。GPU任务结束，没有自动后续作业。新dev32父组/40子回合；主要绝对坐标分母24，stop/continue不当独立组；旧封存未读取。
 
-正式runtime85af4353747bd000b50b9fbf06236e23c8d5ef4f，补查/有限排程cc1ddf6ee2fd4e5b7b02d7a3b791574f46396150。
-初始完整模型state SHA fc40820b02f5da08d4b404dbaf7475803ceb1ba396303a15846de6b2a32686ab，精确复现原v2初始化。
-包二从BC500新开，不续B64；每20ms只新增.33*h(max(v-.45,0)/.45)事件惩罚，不乘.02，旧连续成本保留。KL.02/std.008、网络/课程/10N/原BFM/PD不变。
-已锁新dev32父组/40子回合，manifest SHA9f2c8c1ef38fae9b18c38ed5fe87ae8a4a862c44e6d69ed9965564dbe9fc79eb；旧32仅回归，旧封存不读。
-首段formal-v3-lambda033-01在初始评价后、首个PPO更新前正常停止（0新决策），补实际正事件奖励路径资格；全部输出/873.05秒保留。
-截至2026-11-11 04:40 UTC，formal-v3-lambda033-02已启动并读取同runtime的完整candidate0，恢复和初始评价进行中；实际更新数量须核learning.json，不把进程启动当训练成功。
-计划仅128×768、新dev节点与固定旧B配对及旧32回归；P2全部失败/评价/IO含准备reserve≤24job小时，正确性/安全/预算硬停，不因中途质量差自动停。
-包二尚无学习收益或晋级结论；BC500保持冻结基线，没有Student/FB/下一轮自动启动。
+相对初始化：v3-32严重度降低26.65%，v3-128超限父组14/24→10/24（−28.57%），严重度仅−7.49%；末轮stop误差12.882→10.884cm、力8.065→7.748N。**相对同预算旧B128：超限父组13/24→10/24，但严重度+33.85%；不是共同质量胜出。** 旧stop回归v3-128为11.977cm/8.108N，旧B128为9.063cm/7.036N，保留退化。
+
+预登记科学候选32，原相对风控仍选0；末轮128不是重新选出的模型。新dev v3-128 yaw p90/max=22.82/24.90°，旧回归max26.36°，均未晋级。BC500维持冻结基线。单配对seed、部分学习收益不能写成稳定收敛或新封存成功；新增风险项涵盖带载落脚瞬态，不直接等同持续支撑滑移。
+
+## 精确身份与账本
+
+- 正式runtime `85af4353747bd000b50b9fbf06236e23c8d5ef4f`；资格/队列 `cc1ddf6ee2fd4e5b7b02d7a3b791574f46396150`。
+- BC500 SHA `a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e`；原BFM SHA `33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
+- v3-32 SHA `ce9bec931c8e8a27085bdf4c6471a07551fa23b1bf5846b7ad73c22b331713e5`；v3-128 SHA `f6bf786cec47fb10ba362522680107071c74912530f183546f48c29757d52336`。
+- 服务器项目相对索引 `experiments/frl-v3-risk-20261111/runs/formal-v3-lambda033-02/`，完整模型、逐tick轨迹、分项结果与失败均保留；公开不推送权重/原始轨迹。
+- P2监督job实测7.2256h，加准备/结项reserve合计7.5923h<24h；P1含准备reserve约.8392h。CPU分析不重复计内部dev时间。准备reserve与实测严格分列。
+- 当前新阶段仅有建议，无新训练授权执行：先查已保存尾部父组中瞬态/持续滑移与reward贡献，不自动扫λ或放宽质量门。
+- 本轮没有新视频渲染；全部真实qpos已保存。历史Mac视频及模型不覆盖。
 
 ## 已结项v2状态
 
