@@ -1,0 +1,30 @@
+{
+  "rounds": {
+    "1": {
+      "agent": true,
+      "rng": true,
+      "physics_stream": true,
+      "qpos": true,
+      "qvel": true,
+      "history": true
+    },
+    "2": {
+      "agent": true,
+      "rng": true,
+      "physics_stream": true,
+      "qpos": true,
+      "qvel": true,
+      "history": true
+    },
+    "3": {
+      "agent": true,
+      "rng": true,
+      "physics_stream": true,
+      "qpos": true,
+      "qvel": true,
+      "history": true
+    }
+  },
+  "complete": true,
+  "replay_difference": "tensor provenance spec_index and corrected online_episode; no input fields or sample RNG changed"
+}

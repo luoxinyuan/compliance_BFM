@@ -1,0 +1,39 @@
+{
+  "2": {
+    "agent": true,
+    "rows": true,
+    "native": true,
+    "physical_stream": true,
+    "rng": true,
+    "task_rng": true,
+    "physics_rng": true,
+    "cursor": true,
+    "spec_id": true,
+    "commands": true,
+    "actions": true,
+    "episodes": true,
+    "task_specs": true
+  },
+  "3": {
+    "agent": true,
+    "rows": true,
+    "native": true,
+    "physical_stream": true,
+    "rng": true,
+    "task_rng": true,
+    "physics_rng": true,
+    "cursor": true,
+    "spec_id": true,
+    "commands": true,
+    "actions": true,
+    "episodes": true,
+    "task_specs": true
+  },
+  "interruption": {
+    "committed_round": 1,
+    "core_and_all_segment_dependencies_exact": true,
+    "uncommitted_transitions": 15,
+    "uncommitted_update_count": 0
+  },
+  "wall_s": 8.103682518005371
+}

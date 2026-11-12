@@ -1,0 +1,194 @@
+{
+  "jobs": [
+    {
+      "name": "bench-A-01",
+      "runtime": "47d2215718d19ebe88e85cff27a4c449b0fedf6c",
+      "exit_code": 0,
+      "wall_s": 212.56850123405457,
+      "start": 1794461138.4794908,
+      "end": 1794461351.0479944,
+      "all_physics_steps": {
+        "actual": 5201,
+        "reserved": 5201
+      }
+    },
+    {
+      "name": "bench-A-02",
+      "runtime": "6ee2dd283ca532862ca190c3df7b543895470680",
+      "exit_code": 0,
+      "wall_s": 202.63603711128235,
+      "start": 1794463752.120842,
+      "end": 1794463954.7568815,
+      "all_physics_steps": {
+        "actual": 5201,
+        "reserved": 5201
+      }
+    },
+    {
+      "name": "bench-B-01",
+      "runtime": "47d2215718d19ebe88e85cff27a4c449b0fedf6c",
+      "exit_code": 0,
+      "wall_s": 204.5706958770752,
+      "start": 1794461351.5282848,
+      "end": 1794461556.0989828,
+      "all_physics_steps": {
+        "actual": 5201,
+        "reserved": 5201
+      }
+    },
+    {
+      "name": "bench-C-01",
+      "runtime": "4f79752c85e550484801bfaf3ff93b6b22db767e",
+      "exit_code": 0,
+      "wall_s": 222.54475927352905,
+      "start": 1794461577.6152503,
+      "end": 1794461800.160013,
+      "all_physics_steps": {
+        "actual": 5201,
+        "reserved": 5201
+      }
+    },
+    {
+      "name": "eval-BC500-02",
+      "runtime": "22651a9fad4f2e7c03bc229be3ab5a6915e0be05",
+      "exit_code": 1,
+      "wall_s": 138.56038737297058,
+      "start": 1794463204.3930387,
+      "end": 1794463342.9534278,
+      "all_physics_steps": {
+        "actual": 2201,
+        "reserved": 2201
+      }
+    },
+    {
+      "name": "eval-BC500-03",
+      "runtime": "cf48c0aec80d20587b878711c2849828de2b5a55",
+      "exit_code": 0,
+      "wall_s": 290.8577926158905,
+      "start": 1794463416.5002697,
+      "end": 1794463707.358065,
+      "all_physics_steps": {
+        "actual": 9301,
+        "reserved": 9301
+      }
+    },
+    {
+      "name": "eval-C-01",
+      "runtime": "4f79752c85e550484801bfaf3ff93b6b22db767e",
+      "exit_code": 1,
+      "wall_s": 306.74936079978943,
+      "start": 1794462197.6090357,
+      "end": 1794462504.3583984,
+      "all_physics_steps": {
+        "actual": 9301,
+        "reserved": 9301
+      }
+    },
+    {
+      "name": "eval-C-02",
+      "runtime": "22651a9fad4f2e7c03bc229be3ab5a6915e0be05",
+      "exit_code": 0,
+      "wall_s": 286.86974239349365,
+      "start": 1794462916.5495799,
+      "end": 1794463203.4193246,
+      "all_physics_steps": {
+        "actual": 9301,
+        "reserved": 9301
+      }
+    },
+    {
+      "name": "inject-C-01",
+      "runtime": "4f79752c85e550484801bfaf3ff93b6b22db767e",
+      "exit_code": 0,
+      "wall_s": 160.46065020561218,
+      "start": 1794462037.068418,
+      "end": 1794462197.5290704,
+      "all_physics_steps": {
+        "actual": 3261,
+        "reserved": 3261
+      }
+    },
+    {
+      "name": "resume-C-01",
+      "runtime": "4f79752c85e550484801bfaf3ff93b6b22db767e",
+      "exit_code": 0,
+      "wall_s": 234.6071572303772,
+      "start": 1794461802.3832517,
+      "end": 1794462036.9904118,
+      "all_physics_steps": {
+        "actual": 6001,
+        "reserved": 6001
+      }
+    }
+  ],
+  "measured_child_wall_s": 2260.4250841140747,
+  "cpu_preparation_charged_upper_bound_s": 300,
+  "cpu_note": "Conservative charged allowance for local/remote static preparation, hash/audit, documentation/publication and failed command wrappers; not a measured CPU kernel time. No waiting parent double-count.",
+  "total_charged_s": 2560.4250841140747,
+  "unique_new_artifact_bytes": 339689135,
+  "models": {
+    "A": {
+      "manifest_sha256": "4436aa8c2f21b2b88813871032eedc6e2c7707e6108da05f4595beb642505d44",
+      "core": {
+        "sha256": "b82c7765915ecbc4d5514762645fab267855738a788f59b617c7c30544de479c",
+        "bytes": 6828705
+      },
+      "runtime": "47d2215718d19ebe88e85cff27a4c449b0fedf6c",
+      "round": 3
+    },
+    "B": {
+      "manifest_sha256": "421b19c438775b2b6aa3119ab13419ccf8ccfda53615d944a6967bb34e03c95e",
+      "core": {
+        "sha256": "691165f4f3d1866125937f2e42c8b944d0112a58d309e3ffb5a07497dc2cd7bc",
+        "bytes": 10063260
+      },
+      "runtime": "47d2215718d19ebe88e85cff27a4c449b0fedf6c",
+      "round": 3
+    },
+    "C": {
+      "manifest_sha256": "dbe501defea53c213b4aebc9f4e9f3e74db30e2ee7d4b3195531a54736e8296d",
+      "core": {
+        "sha256": "b20e26d5ce58fadf0bfa10c61d2819259a92f1e45b90e7b1732acf8c3d52f3a7",
+        "bytes": 14410142
+      },
+      "runtime": "4f79752c85e550484801bfaf3ff93b6b22db767e",
+      "round": 3
+    }
+  },
+  "evaluator": {
+    "eval-C-02": {
+      "status": "evaluation_completed",
+      "episodes": 3,
+      "common_prefix_checks": 1,
+      "optimizer_updates": 0,
+      "hard_boundaries": [
+        null,
+        null,
+        null
+      ],
+      "no_contact_force_zero": [
+        true
+      ]
+    },
+    "eval-BC500-03": {
+      "status": "evaluation_completed",
+      "episodes": 3,
+      "common_prefix_checks": 1,
+      "optimizer_updates": 0,
+      "hard_boundaries": [
+        null,
+        null,
+        null
+      ],
+      "no_contact_force_zero": [
+        true
+      ]
+    }
+  },
+  "previous_project_charged_s": 173343.6948208585,
+  "project_charged_s_after": 175904.11990497258,
+  "actual_physics_ticks_total": 60170,
+  "engineering_online_transitions": 3515,
+  "engineering_completed_update_groups": 28,
+  "pilot_training_transitions": 0
+}
