@@ -1,5 +1,9 @@
 """Isolated child entry. All monkeypatches scoped to this process and recorded."""
-import os,sys,time,json,argparse,subprocess,hashlib,traceback
+import os,sys,time,json,argparse,subprocess,hashlib,traceback,signal,resource,shutil
+STOP_REQUESTED=False
+def request_stop(signum,frame):
+    global STOP_REQUESTED
+    STOP_REQUESTED=True
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT),str(ROOT/'research_notes')]
@@ -52,11 +56,13 @@ def study(e,m,c,out):
             manifest=save(out/'checkpoints',r,agent,env,ARGS.runtime)
             io_s=time.monotonic()-io
             rec=dict(round=r,transitions=env.next_cursor,updates=agent.updates,collect_s=collect_s,update_s=update_s,io_s=io_s,
+                host_peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,free_disk_bytes=shutil.disk_usage(out).free,
                 total_s=time.monotonic()-begun,peak_cuda_bytes=torch.cuda.max_memory_allocated(),metrics=metrics,
                 contact_rows=sum(bool(x['observation']['contact_privileged_v1'][0,21]) for x in env.rows),
                 fingerprints=dict(agent=tree_digest(agent.state()),replay=tree_digest(env.rows),rng=tree_digest(global_rng()),
                     physics_stream=tree_digest(env.physical_stream),qpos=tree_digest(e.sim.data.qpos),qvel=tree_digest(e.sim.data.qvel),history=tree_digest(e.base.history_handler.history)))
             records.append(rec);write(out/'rounds.json',records);print('COMMITTED',r,rec['total_s'],flush=True)
+            if STOP_REQUESTED:return dict(status='normal_stop_after_committed_round',rounds=records)
     except Exception as exc:
         write(out/'failure-evidence.json',dict(type=type(exc).__name__,error=str(exc),cursor=env.next_cursor,updates=agent.updates,
             rounds=records,physics=env.task.physics[-20:],last_controls=env.task.controls[-5:]))
@@ -70,6 +76,7 @@ def study(e,m,c,out):
 def write(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False))
 def main():
     global ARGS
+    signal.signal(signal.SIGTERM,request_stop);signal.signal(signal.SIGINT,request_stop)
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--resume',type=Path);p.add_argument('--inject',action='store_true');ARGS=p.parse_args()
     ARGS.runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
     assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
