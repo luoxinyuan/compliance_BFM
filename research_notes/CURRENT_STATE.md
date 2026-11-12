@@ -1,3 +1,13 @@
+# CURRENT_STATE — Issue62 B均值真实越界，命中用户停止边界
+
+2026-11-12。[B定性报告](INTERACTION_PILOT_B_FAILURE_RESULTS.md)：从B19同一完整状态/RNG恢复，sample原动作/控制/5ms物理逐值复现；去噪声的真实mean分支也在12.310s左踝pitch越界0.02756rad（原sample12.315s、0.02138rad）。发生在25.984cm mid任务release10.8s之后，实际力0。原sample最后状态：BFM q_PD −0.8106rad、adapter后mean −1.1598rad、采样−1.1623rad，下限−0.87267rad。不是仅噪声，也不是恢复错配；不据此把adapter唯一因果或全回合mean失败写成事实。
+
+Yi明确规定若均值动作本身越界、修法需改训练配方则停止。本次符合，故未改共同std/reward/硬界/划分，未跳父组或重抽RNG，未续训B/C/dev。A128=32k/256更新保留；B19=4750/38及26条未提交失败保留；C和dev缺格，尚无新三臂行为比较。
+
+诊断runtime `9bceb9956baa0d29d9c6d6d222b9e3484ef3707c`；所有旧模型与失败完整。新增正式训练0；成本累计8.6295/15h、输出约3.021/8GiB。GPU0释放。下一建议只做adapter-off同状态物理因果对照，再决定是否修订adapter约束/保持域；尚未执行，不自动追加训练。
+
+## 之前快照（历史保留）
+
 # CURRENT_STATE — Issue62 新共同噪声合同已获接纳，A重跑进行中
 
 2026-11-12，Yi明确接纳std=.01/clip=.06为A/B/C共同合同：[批准记录](https://github.com/GaoE05/robot-research-bridge/issues/62#issuecomment-6822542264)。保留单窗峰值筛查未通过，不改判历史；该筛查非§5.1成功判据，残余尾部由原dev指标报告。原真实物理/正确性硬界不变。

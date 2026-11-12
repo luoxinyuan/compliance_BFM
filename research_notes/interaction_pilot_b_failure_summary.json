@@ -1,0 +1,191 @@
+{
+  "analysis": {
+    "sample": {
+      "status": "hard_physics_boundary",
+      "frozen_agent_digest": "54002fb0161de37bff3e2e00c781b216e8fc294e829bd88b60cf053a68222f79",
+      "restored_rng_digest": "069a550954100c118ff076efc59bdd379079e7db678c77b84c728e2b20be4496",
+      "trace_sha256": "5069799c107898756bda9d5302d1bf5c13fe61c42ec1887d309d339fdf6138a2",
+      "updates": 38,
+      "original_cursor": 4750,
+      "end_cursor": 4776,
+      "joint_contract": {
+        "name": "left_ankle_pitch_joint",
+        "qposadr": 11,
+        "qveladr": 10,
+        "range": [
+          -0.87267,
+          0.5236
+        ],
+        "limited": true
+      },
+      "t_start": 11.805000000000446,
+      "t_end": 12.315000000000525,
+      "physics_ticks": 103,
+      "peak_excess": 0.02138361058716065,
+      "peak_time": 12.315000000000525,
+      "peak_joint_q": -0.8940536105871606,
+      "peak_joint_dq": -0.9618662513734901,
+      "peak_active": false,
+      "peak_force": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_q_PD_min": -1.586633324623108,
+      "first_control": {
+        "time": 11.800000000000445,
+        "q": -0.6393031947740859,
+        "dq": 0.08765957599152906,
+        "mean_action": -0.2166566401720047,
+        "actual_action": -0.2173248678445816,
+        "base_action": -0.06068950518965721,
+        "adapter": -0.1559671312570572,
+        "mean_q_PD": -0.6751033663749695,
+        "actual_q_PD": -0.6765687465667725,
+        "base_q_PD": -0.33308517932891846
+      },
+      "last_control": {
+        "time": 12.300000000000523,
+        "q": -0.8572325446910857,
+        "dq": -4.038161532643008,
+        "mean_action": -0.43770602345466614,
+        "actual_action": -0.43881937861442566,
+        "base_action": -0.2784382402896881,
+        "adapter": -0.15926778316497803,
+        "mean_q_PD": -1.1598396301269531,
+        "actual_q_PD": -1.1622810363769531,
+        "base_q_PD": -0.8105834126472473
+      },
+      "mean_target_outside_count": 14,
+      "controls": 26,
+      "original_first_difference": {
+        "commands": null,
+        "actions": null,
+        "controls": null,
+        "physics": null
+      }
+    },
+    "mean": {
+      "status": "hard_physics_boundary",
+      "frozen_agent_digest": "54002fb0161de37bff3e2e00c781b216e8fc294e829bd88b60cf053a68222f79",
+      "restored_rng_digest": "069a550954100c118ff076efc59bdd379079e7db678c77b84c728e2b20be4496",
+      "trace_sha256": "c09fc591603b3419ccc09f858c60660620bdade3bb170d15ec9f99a23704323e",
+      "updates": 38,
+      "original_cursor": 4750,
+      "end_cursor": 4776,
+      "joint_contract": {
+        "name": "left_ankle_pitch_joint",
+        "qposadr": 11,
+        "qveladr": 10,
+        "range": [
+          -0.87267,
+          0.5236
+        ],
+        "limited": true
+      },
+      "t_start": 11.805000000000446,
+      "t_end": 12.310000000000525,
+      "physics_ticks": 102,
+      "peak_excess": 0.027558818837588928,
+      "peak_time": 12.310000000000525,
+      "peak_joint_q": -0.9002288188375889,
+      "peak_joint_dq": -2.049022998730671,
+      "peak_active": false,
+      "peak_force": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_q_PD_min": -1.4526876211166382,
+      "first_control": {
+        "time": 11.800000000000445,
+        "q": -0.6393031947740859,
+        "dq": 0.08765957599152906,
+        "mean_action": -0.2166566401720047,
+        "actual_action": -0.2166566401720047,
+        "base_action": -0.06068950518965721,
+        "adapter": -0.1559671312570572,
+        "mean_q_PD": -0.6751033663749695,
+        "actual_q_PD": -0.6751033663749695,
+        "base_q_PD": -0.33308517932891846
+      },
+      "last_control": {
+        "time": 12.300000000000523,
+        "q": -0.8681200828125585,
+        "dq": -4.258306273162946,
+        "mean_action": -0.49549198150634766,
+        "actual_action": -0.49549198150634766,
+        "base_action": -0.3351609706878662,
+        "adapter": -0.16033099591732025,
+        "mean_q_PD": -1.286557674407959,
+        "actual_q_PD": -1.286557674407959,
+        "base_q_PD": -0.9349699020385742
+      },
+      "mean_target_outside_count": 13,
+      "controls": 26
+    },
+    "conclusion": {
+      "sample_exactly_reproduces_original": true,
+      "mean_physical_branch_also_violates": true,
+      "no_new_updates": true,
+      "scope": "same B19 actual visited state only; no claim of full mean episode from initial state"
+    }
+  },
+  "identities": {
+    "A": {
+      "round": 128,
+      "manifest_sha256": "f182e453fda8ad0e49d31fb938a80bd7f2368e38f1c7ca04fcde064091338a88",
+      "core_sha256": "d97f8c515fb76f34b7ff3d75b7a29208a68987afbf75de5cf727f8227180114b",
+      "runtime": "62d55b0d26127440253dba2b5d0baa8bd1e457fa",
+      "transitions": 32000,
+      "updates": 256
+    },
+    "B": {
+      "round": 19,
+      "manifest_sha256": "150f107489e267fc0c93ef8e99b7a51d798cd5a1011f9c3c3ddba9017855306a",
+      "core_sha256": "0cd3e3684d764cad42caaa83773b885868caeed0557dba1780ec36a3d03a3984",
+      "runtime": "62d55b0d26127440253dba2b5d0baa8bd1e457fa",
+      "transitions": 4750,
+      "updates": 38
+    }
+  },
+  "diagnostic_runtime": "9bceb9956baa0d29d9c6d6d222b9e3484ef3707c",
+  "cost": {
+    "inherited_job_upper_s": 29440.403239489602,
+    "prepare_reserved_s": 1200,
+    "total_charged_upper_s": 31066.150840760278,
+    "new_training_updates": 0,
+    "output_bytes": 3243425681
+  },
+  "jobs": [
+    {
+      "name": "sample-B19",
+      "start": 1794491100.879058,
+      "pid": 2381563,
+      "exit_code": 0,
+      "end": 1794491316.1796134,
+      "wall_s": 215.3005554676056
+    },
+    {
+      "name": "mean-B19",
+      "start": 1794491317.600298,
+      "pid": 2382185,
+      "exit_code": 0,
+      "end": 1794491528.0473437,
+      "wall_s": 210.44704580307007
+    }
+  ],
+  "physics_counters": {
+    "sample-B19": {
+      "actual": 4784,
+      "reserved": 4784
+    },
+    "mean-B19": {
+      "actual": 4783,
+      "reserved": 4783
+    }
+  },
+  "decision": "STOP_USER_DEFINED_MEAN_FAILURE_BOUNDARY_NO_RECIPE_CHANGE",
+  "sealed_executed": false,
+  "new_training_updates": 0
+}
