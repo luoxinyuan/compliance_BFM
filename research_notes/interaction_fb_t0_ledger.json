@@ -1,0 +1,98 @@
+{
+  "jobs": {
+    "control-01": {
+      "runtime": "af1648b7c0b2a8406c9676ec047ac2c6a3bf03cd",
+      "start": 1794457467.7819893,
+      "end": 1794457574.1500046,
+      "wall_s": 106.36801290512085,
+      "exit_code": 1,
+      "physics_ticks": {
+        "actual": 1,
+        "reserved": 1
+      }
+    },
+    "control-02": {
+      "runtime": "af1648b7c0b2a8406c9676ec047ac2c6a3bf03cd",
+      "start": 1794457623.5894206,
+      "end": 1794457766.0596023,
+      "wall_s": 142.4701793193817,
+      "exit_code": 1,
+      "physics_ticks": {
+        "actual": 2401,
+        "reserved": 2401
+      }
+    },
+    "control-03": {
+      "runtime": "080e33ea81ccb95427bf1ce8ccd3e41c175cb27d",
+      "start": 1794457856.4918094,
+      "end": 1794458062.9970558,
+      "wall_s": 206.50524377822876,
+      "exit_code": 0,
+      "physics_ticks": {
+        "actual": 5201,
+        "reserved": 5201
+      }
+    },
+    "control-04": {
+      "runtime": "e86dced8eda3ce5027fc8c0248858e656a3f4ff0",
+      "start": 1794458406.0684426,
+      "end": 1794458604.553405,
+      "wall_s": 198.48495984077454,
+      "exit_code": 0,
+      "physics_ticks": {
+        "actual": 5201,
+        "reserved": 5201
+      }
+    },
+    "inject-01": {
+      "runtime": "e9f8a7b1510b8a79018e6fc9a64dc02742df1339",
+      "start": 1794458891.481424,
+      "end": 1794459054.3277977,
+      "wall_s": 162.84637117385864,
+      "exit_code": 0,
+      "physics_ticks": {
+        "actual": 3261,
+        "reserved": 3261
+      }
+    },
+    "resume-01": {
+      "runtime": "080e33ea81ccb95427bf1ce8ccd3e41c175cb27d",
+      "start": 1794458090.8077672,
+      "end": 1794458273.318796,
+      "wall_s": 182.51102685928345,
+      "exit_code": 1,
+      "physics_ticks": {
+        "actual": 3201,
+        "reserved": 3201
+      }
+    },
+    "resume-02": {
+      "runtime": "e9f8a7b1510b8a79018e6fc9a64dc02742df1339",
+      "start": 1794458672.8023684,
+      "end": 1794458883.3275545,
+      "wall_s": 210.52518343925476,
+      "exit_code": 0,
+      "physics_ticks": {
+        "actual": 6001,
+        "reserved": 6001
+      }
+    }
+  },
+  "measured_experiment_job_s": 1209.7109773159027,
+  "r0_conservative_preparation_charge_s": 3600,
+  "t0_cpu_io_audit_publication_conservative_charge_s": 1200,
+  "accounting_note": "Preparation and publication were not separately instrumented from the first shell read. Charges are explicit conservative reservations, not claimed stopwatch measurements; include passive monitor, CPU audits and final IO. No GPU jobs run concurrently.",
+  "prior_project_job_s": 167333.9838435426,
+  "output_unique_inode_bytes_before_reports": 570010257,
+  "physics_ticks_all_jobs": 25267,
+  "new_online_transitions_all_jobs": 2265,
+  "completed_joint_updates_all_jobs": 16,
+  "canonical_unique_transitions": 750,
+  "canonical_unique_updates": 6,
+  "budget_r0_s": 7200,
+  "budget_t0_s": 21600,
+  "budget_output_bytes": 8589934592,
+  "t0_charged_s": 2409.7109773159027,
+  "stage_charged_s": 6009.710977315903,
+  "project_charged_s": 173343.6948208585
+}

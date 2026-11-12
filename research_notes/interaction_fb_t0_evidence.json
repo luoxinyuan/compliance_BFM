@@ -1,0 +1,193 @@
+{
+  "round_fingerprints": {
+    "2": true,
+    "3": true
+  },
+  "round2": {
+    "agent": true,
+    "rows": true,
+    "native": true,
+    "commands": true,
+    "actions": true,
+    "rng": true,
+    "task_rng": true,
+    "physics_rng": true,
+    "physical_stream": true,
+    "cursor": true,
+    "spec_id": true,
+    "episodes": true,
+    "optimizers": {
+      "bi": true,
+      "fi": true,
+      "u": true,
+      "adapter": true,
+      "q": true,
+      "disc": true
+    }
+  },
+  "round3": {
+    "agent": true,
+    "rows": true,
+    "native": true,
+    "commands": true,
+    "actions": true,
+    "rng": true,
+    "task_rng": true,
+    "physics_rng": true,
+    "physical_stream": true,
+    "cursor": true,
+    "spec_id": true,
+    "episodes": true,
+    "optimizers": {
+      "bi": true,
+      "fi": true,
+      "u": true,
+      "adapter": true,
+      "q": true,
+      "disc": true
+    }
+  },
+  "data": {
+    "rows": 750,
+    "terminated": 0,
+    "duration_values": [
+      0.019999999552965164
+    ],
+    "row_keys": [
+      "observation",
+      "action",
+      "z",
+      "previous_z",
+      "target_z",
+      "provenance",
+      "next",
+      "aux_rewards",
+      "duration",
+      "zi"
+    ],
+    "next_keys": [
+      "observation",
+      "terminated",
+      "truncated"
+    ],
+    "physical_stream_rows": 3000,
+    "episodes": [
+      {
+        "spec": {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.08,
+          "ramp": 3.0,
+          "onset": 4.6,
+          "release": 9.6,
+          "end": 13.6,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.0,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "near",
+          "parent_id": "5068b4a24c5bd63c7adbf973bd8ca6e76bf58fd2594151bb32ec8f5fb43b78e6",
+          "source_parent_id": "5e62e60921c744ae8e573db59392d714aa36393de006991f5b23b7ae0522de19",
+          "partner_parent_id": "5068b4a24c5bd63c7adbf973bd8ca6e76bf58fd2594151bb32ec8f5fb43b78e6",
+          "common_prefix_parent_id": "5068b4a24c5bd63c7adbf973bd8ca6e76bf58fd2594151bb32ec8f5fb43b78e6",
+          "handoff_time": 3.999999999999937
+        },
+        "boundary": null,
+        "controls": 480
+      }
+    ],
+    "truncated": [
+      479
+    ],
+    "inactive_rows": 261,
+    "inactive_bootstrap_nonterminal": 261
+  },
+  "throughput": {
+    "round_seconds": [
+      20.095392292976612,
+      34.17077995400177,
+      21.345508731988957
+    ],
+    "warm_transition_s": 9.919102317122471,
+    "warm_update_s": 0.07935281853697976,
+    "update_seconds": 0.31085606999113224,
+    "io_seconds": 6.3314264040091075,
+    "cold_transition_s": 3.778623834277686
+  },
+  "checkpoints": {
+    "runs/control-04/checkpoints/round-3/manifest.json": {
+      "round_id": 3,
+      "reason": "completed_round",
+      "complete": true,
+      "runtime": "e86dced8eda3ce5027fc8c0248858e656a3f4ff0",
+      "files": {
+        "state.pt": {
+          "sha256": "4709b2cae69230b729ecd5a4a62b0804285141b95ea1639c4300cf5e82bc992f",
+          "bytes": 46861391
+        }
+      },
+      "transitions": 750,
+      "updates": 6,
+      "base_sha": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361"
+    },
+    "runs/control-04/checkpoints/round-0/manifest.json": {
+      "round_id": 0,
+      "reason": "initial",
+      "complete": true,
+      "runtime": "e86dced8eda3ce5027fc8c0248858e656a3f4ff0",
+      "files": {
+        "state.pt": {
+          "sha256": "cdd17dcb50adad3aa1fe6ab06595fe1a31168fff88ac79b180cc4532b672faa4",
+          "bytes": 9919685
+        }
+      },
+      "transitions": 0,
+      "updates": 0,
+      "base_sha": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361"
+    },
+    "runs/control-04/checkpoints/round-1/manifest.json": {
+      "round_id": 1,
+      "reason": "completed_round",
+      "complete": true,
+      "runtime": "e86dced8eda3ce5027fc8c0248858e656a3f4ff0",
+      "files": {
+        "state.pt": {
+          "sha256": "2c195f0fe4dce063bdf53aeab4608277872ca90812eeaf716f109b9ff6a2c13c",
+          "bytes": 27081527
+        }
+      },
+      "transitions": 250,
+      "updates": 2,
+      "base_sha": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361"
+    },
+    "runs/control-04/checkpoints/round-2/manifest.json": {
+      "round_id": 2,
+      "reason": "completed_round",
+      "complete": true,
+      "runtime": "e86dced8eda3ce5027fc8c0248858e656a3f4ff0",
+      "files": {
+        "state.pt": {
+          "sha256": "05e71385709d4d30ef1336a3c52534306f7b23b0ca34a5b6931561eac91a7aea",
+          "bytes": 37350251
+        }
+      },
+      "transitions": 500,
+      "updates": 4,
+      "base_sha": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361"
+    }
+  },
+  "audit_wall_s": 5.090139389038086,
+  "interruption": {
+    "planned_exception": true,
+    "uncommitted_new_transitions": 15,
+    "completed_update_count_unchanged": 2,
+    "latest_committed_round": 1,
+    "incoming_package_hash_unchanged": true,
+    "round2_not_published": true,
+    "partial_evidence_saved": true
+  }
+}

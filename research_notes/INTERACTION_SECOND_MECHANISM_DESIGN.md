@@ -1,0 +1,7 @@
+# R0 second mechanism — design, no physics run
+
+Verified source: `research_notes/geometry_contact.py:25–60` at base `9fc9c6d`. Rigid `torso_link`, local points `(0,+0.13,+0.15)` and `(0,-0.13,+0.15)` metres. Not movable upper arms. Two maintained bilateral tethers, each2.5N, sum of caps5N; distinct from wrist10N, so raw cross-mechanism burden is not a matched-force comparison.
+
+A single partner rigid frame determines both anchor positions. Equal/opposite point loads can create yaw moment with near-zero net force. Each200Hz tick compute both world points/forces, sum force and sum cross(point−body inertial COM `d.xipos[body]`,force) once; subtree-COM diagnostic moment is a separately labelled reference. No duplicate torque. Partner frame supplies demands, not robot joints/latent or a force-to-turn rule. No unilateral pressing claim. Upon tether release, remove both external wrenches and measure recovery; no old-anchor tracking criterion after release.
+
+Before future inclusion: version contact slots and causal mount identity; unit/same-tick wrench proof, zero-load, symmetric±yaw, native no-contact and loaded continuation, handoff/release safety under original joint/PD limits. Only after separate authorization run finite qualification. Design→qualification→independent grouped data→optional second-mechanism Pilot is the order; no dates or compute presumed. Wrist T0 is independent and not blocked by this design. No cross-mechanism generalization evidence exists here.

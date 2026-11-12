@@ -1,0 +1,48 @@
+{
+  "hidden_input_invariance_exact": true,
+  "params": {
+    "bi": 31008,
+    "fi": 258208,
+    "u": 185856,
+    "adapter": 160669,
+    "q": 254209,
+    "disc": 57729
+  },
+  "frozen_base": true,
+  "optimizer_names": [
+    "bi",
+    "fi",
+    "u",
+    "adapter",
+    "q",
+    "disc"
+  ],
+  "robot_keys": {
+    "state": [
+      1,
+      64
+    ],
+    "privileged_state": [
+      1,
+      463
+    ],
+    "last_action": [
+      1,
+      29
+    ],
+    "time": [
+      1,
+      1
+    ],
+    "history_actor": [
+      1,
+      372
+    ]
+  },
+  "global_hooks": [
+    "native_env.install:geometry_env.install_contact",
+    "dual_track_task.Task:clean_env.advance",
+    "rolling_backend.install:m8_stage.read"
+  ],
+  "isolated_one_Task_process": true
+}

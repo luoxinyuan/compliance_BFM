@@ -252,3 +252,8 @@ S1 remains a proposed bounded matched physical test, not started. Only after act
 ## P-BFM ERI bounded evidence,2026-11-12
 
 [One native preset/export qualification](PBFM_ERI_RESULTS.md) confirms real command input/action sensitivity but not reliable zero/low-speed stopping on the local port. Native ERI existence is not a blanket execution guarantee. Distinguish preset intent, command coupling and backend portability before attributing failure to contact or starting Contact Adaptation. No training or contact extension followed this failed gate.
+
+
+## Issue62: Interaction-Steerable FB research hypothesis (2026-11-12)
+
+R0 specifies separate frozen robot representation and new interaction-successor representation, with deployable local Guidance and public long-term Goal. T0 qualified a small six-network real-physics update/recovery loop; it did not establish useful factorization or behavior. A frozen executor+Guidance, B execution adaptation, C added interaction FB must be matched before scientific comparison. Accept B if C adds no independently supported value. Wrist bilateral tether is the first mechanism; rigid torso force couple is design-only, not cross-mechanism evidence. See [R0/T0 results](R1_T0_TRIAL_RESULTS.md). Pilot remains subject to separate user approval.
