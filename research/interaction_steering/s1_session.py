@@ -94,6 +94,13 @@ class Session:
       ss.restore();self.t.spec.clear();self.t.spec.update(copy.deepcopy(sp));self.e._original_step=original;install_post_velocity(self.e)
       records.append(self.execute(mm,kind,rep))
      a,b=records;cut=a['start']+3.-1e-8
+     if kind=='BC500' and mm['state_id']!='native-standing':
+      from f1_mjdata_contract import exact
+      archive=self.out.parents[2]/'f1-l1-l2-20261111'/'runs/l2-01'/(mm['state_id']+'-L2-CS.pt')
+      old=torch.load(archive,map_location='cpu',weights_only=False)
+      for key,tkey in [('physics','force_time'),('controls','time')]:
+       assert exact([r for r in a[key] if r[tkey]<cut],old[key]),('BC500 archived replay mismatch',mm['state_id'],key)
+      self.checks.append(dict(test='BC500 archived first3s physics/control exact',state=mm['state_id'],passed=True))
      for key,tkey in [('physics','force_time'),('controls','time'),('decisions','time')]:
       aa=[r for r in a[key] if r[tkey]<cut];bb=[r for r in b[key] if r[tkey]<cut];assert exact(aa,bb),('repeat mismatch',mm['state_id'],kind,key)
      self.checks.append(dict(test='repeat first3s physics/control/causal_inputs/commands exact',state=mm['state_id'],controller=kind,passed=True))
