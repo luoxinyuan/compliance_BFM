@@ -1,0 +1,7 @@
+{
+  "error": "ffmpeg not on PATH; Renderer destructor EGL error follows failed subprocess creation",
+  "physics_steps": 0,
+  "code_sha": "88c4770f4a338a212d9c9bc5bf1cf5d232cbf5bc72eb6fa2ba7629f62f6a9916",
+  "retained_output": "analysis",
+  "fix": "use existing project imageio_ffmpeg executable; new analysis02 output"
+}

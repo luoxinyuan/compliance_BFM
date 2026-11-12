@@ -1,0 +1,350 @@
+[
+  {
+    "speed": 0.0,
+    "repeat": 0,
+    "seconds": 38.38576650619507,
+    "actual_ticks": 2400,
+    "reserved_total": 2400,
+    "boundary": null,
+    "phases": {
+      "entry": {
+        "ticks": 600,
+        "mean_vx": 0.35494931503793015,
+        "horizontal_speed_rms": 0.3804183374902337,
+        "slip_peak": 0.8827361511275373,
+        "yaw_end_deg": -5.33278113856715,
+        "root_dx": 1.0647502478158812
+      },
+      "moving": {
+        "ticks": 800,
+        "mean_vx": 0.4105449202590464,
+        "horizontal_speed_rms": 0.4254029607172258,
+        "slip_peak": 0.9210023698821995,
+        "yaw_end_deg": -7.350684827369508,
+        "root_dx": 1.6404161189811435
+      },
+      "deceleration": {
+        "ticks": 200,
+        "mean_vx": 0.4070293686961077,
+        "horizontal_speed_rms": 0.4213524772320107,
+        "slip_peak": 0.6927794487885406,
+        "yaw_end_deg": -7.452115586747907,
+        "root_dx": 0.40508628366784066
+      },
+      "stop": {
+        "ticks": 800,
+        "mean_vx": 0.40936108965254236,
+        "horizontal_speed_rms": 0.42443386231829644,
+        "slip_peak": 0.8899341747323284,
+        "yaw_end_deg": -6.457915313904578,
+        "root_dx": 1.6349999481894735
+      },
+      "final": {
+        "ticks": 401,
+        "mean_vx": 0.4108284062730885,
+        "horizontal_speed_rms": 0.42660403230145744,
+        "slip_peak": 0.8899341747323284,
+        "yaw_end_deg": -6.457915313904578,
+        "root_dx": 0.821810798130771
+      }
+    },
+    "root_dx": 4.751501353456252,
+    "root_dy": -0.27246441302228064,
+    "max_slip": [
+      0.9210023698821995,
+      125.59854694866401,
+      6.449999999999885
+    ],
+    "trace_sha": "b9e363b5fd1a1d349370625e8a4d4af93cdd2eac73e2bccb518e857921eed512"
+  },
+  {
+    "speed": 0.0,
+    "repeat": 1,
+    "seconds": 36.14295268058777,
+    "actual_ticks": 2400,
+    "reserved_total": 4800,
+    "boundary": null,
+    "phases": {
+      "entry": {
+        "ticks": 600,
+        "mean_vx": 0.35494931503793015,
+        "horizontal_speed_rms": 0.3804183374902337,
+        "slip_peak": 0.8827361511275373,
+        "yaw_end_deg": -5.33278113856715,
+        "root_dx": 1.0647502478158812
+      },
+      "moving": {
+        "ticks": 800,
+        "mean_vx": 0.4105449202590464,
+        "horizontal_speed_rms": 0.4254029607172258,
+        "slip_peak": 0.9210023698821995,
+        "yaw_end_deg": -7.350684827369508,
+        "root_dx": 1.6404161189811435
+      },
+      "deceleration": {
+        "ticks": 200,
+        "mean_vx": 0.4070293686961077,
+        "horizontal_speed_rms": 0.4213524772320107,
+        "slip_peak": 0.6927794487885406,
+        "yaw_end_deg": -7.452115586747907,
+        "root_dx": 0.40508628366784066
+      },
+      "stop": {
+        "ticks": 800,
+        "mean_vx": 0.40936108965254236,
+        "horizontal_speed_rms": 0.42443386231829644,
+        "slip_peak": 0.8899341747323284,
+        "yaw_end_deg": -6.457915313904578,
+        "root_dx": 1.6349999481894735
+      },
+      "final": {
+        "ticks": 401,
+        "mean_vx": 0.4108284062730885,
+        "horizontal_speed_rms": 0.42660403230145744,
+        "slip_peak": 0.8899341747323284,
+        "yaw_end_deg": -6.457915313904578,
+        "root_dx": 0.821810798130771
+      }
+    },
+    "root_dx": 4.751501353456252,
+    "root_dy": -0.27246441302228064,
+    "max_slip": [
+      0.9210023698821995,
+      125.59854694866401,
+      6.449999999999885
+    ],
+    "trace_sha": "b9e363b5fd1a1d349370625e8a4d4af93cdd2eac73e2bccb518e857921eed512"
+  },
+  {
+    "speed": 0.09,
+    "repeat": 0,
+    "seconds": 36.33025026321411,
+    "actual_ticks": 2400,
+    "reserved_total": 7200,
+    "boundary": null,
+    "phases": {
+      "entry": {
+        "ticks": 600,
+        "mean_vx": 0.3571504408029688,
+        "horizontal_speed_rms": 0.38282772569379514,
+        "slip_peak": 0.8827361511275373,
+        "yaw_end_deg": -5.446491371550741,
+        "root_dx": 1.0713536251109956
+      },
+      "moving": {
+        "ticks": 800,
+        "mean_vx": 0.4319139211633019,
+        "horizontal_speed_rms": 0.4466768098501587,
+        "slip_peak": 0.974733748048629,
+        "yaw_end_deg": -7.941571817714172,
+        "root_dx": 1.7258074430125019
+      },
+      "deceleration": {
+        "ticks": 200,
+        "mean_vx": 0.4253040415075955,
+        "horizontal_speed_rms": 0.4390173534912107,
+        "slip_peak": 0.9008036537597284,
+        "yaw_end_deg": -8.090582975027646,
+        "root_dx": 0.4227057755515063
+      },
+      "stop": {
+        "ticks": 800,
+        "mean_vx": 0.4116887726301988,
+        "horizontal_speed_rms": 0.42718330953976935,
+        "slip_peak": 0.9172894368870049,
+        "yaw_end_deg": -6.2701161383515505,
+        "root_dx": 1.6445549354482023
+      },
+      "final": {
+        "ticks": 401,
+        "mean_vx": 0.40886718545759804,
+        "horizontal_speed_rms": 0.4249515974550554,
+        "slip_peak": 0.8967471168027187,
+        "yaw_end_deg": -6.2701161383515505,
+        "root_dx": 0.8178243389750472
+      }
+    },
+    "root_dx": 4.871166139090503,
+    "root_dy": -0.3369195774778113,
+    "max_slip": [
+      0.974733748048629,
+      130.13008888861313,
+      3.349999999999951
+    ],
+    "trace_sha": "a1f3bfeb7d199a661e71333f9b7501e693ebb6ebbc4c723000dd95ce44a5e641"
+  },
+  {
+    "speed": 0.09,
+    "repeat": 1,
+    "seconds": 37.9247624874115,
+    "actual_ticks": 2400,
+    "reserved_total": 9600,
+    "boundary": null,
+    "phases": {
+      "entry": {
+        "ticks": 600,
+        "mean_vx": 0.3571504408029688,
+        "horizontal_speed_rms": 0.38282772569379514,
+        "slip_peak": 0.8827361511275373,
+        "yaw_end_deg": -5.446491371550741,
+        "root_dx": 1.0713536251109956
+      },
+      "moving": {
+        "ticks": 800,
+        "mean_vx": 0.4319139211633019,
+        "horizontal_speed_rms": 0.4466768098501587,
+        "slip_peak": 0.974733748048629,
+        "yaw_end_deg": -7.941571817714172,
+        "root_dx": 1.7258074430125019
+      },
+      "deceleration": {
+        "ticks": 200,
+        "mean_vx": 0.4253040415075955,
+        "horizontal_speed_rms": 0.4390173534912107,
+        "slip_peak": 0.9008036537597284,
+        "yaw_end_deg": -8.090582975027646,
+        "root_dx": 0.4227057755515063
+      },
+      "stop": {
+        "ticks": 800,
+        "mean_vx": 0.4116887726301988,
+        "horizontal_speed_rms": 0.42718330953976935,
+        "slip_peak": 0.9172894368870049,
+        "yaw_end_deg": -6.2701161383515505,
+        "root_dx": 1.6445549354482023
+      },
+      "final": {
+        "ticks": 401,
+        "mean_vx": 0.40886718545759804,
+        "horizontal_speed_rms": 0.4249515974550554,
+        "slip_peak": 0.8967471168027187,
+        "yaw_end_deg": -6.2701161383515505,
+        "root_dx": 0.8178243389750472
+      }
+    },
+    "root_dx": 4.871166139090503,
+    "root_dy": -0.3369195774778113,
+    "max_slip": [
+      0.974733748048629,
+      130.13008888861313,
+      3.349999999999951
+    ],
+    "trace_sha": "a1f3bfeb7d199a661e71333f9b7501e693ebb6ebbc4c723000dd95ce44a5e641"
+  },
+  {
+    "speed": 0.18,
+    "repeat": 0,
+    "seconds": 39.12868666648865,
+    "actual_ticks": 2400,
+    "reserved_total": 12000,
+    "boundary": null,
+    "phases": {
+      "entry": {
+        "ticks": 600,
+        "mean_vx": 0.36005477709720396,
+        "horizontal_speed_rms": 0.3860702938401825,
+        "slip_peak": 0.8867433766673161,
+        "yaw_end_deg": -5.436271711389267,
+        "root_dx": 1.0800666339937022
+      },
+      "moving": {
+        "ticks": 800,
+        "mean_vx": 0.4507573709456193,
+        "horizontal_speed_rms": 0.46532544176021656,
+        "slip_peak": 0.897113948846084,
+        "yaw_end_deg": -5.905022363063855,
+        "root_dx": 1.8010683720545337
+      },
+      "deceleration": {
+        "ticks": 200,
+        "mean_vx": 0.4288387697854115,
+        "horizontal_speed_rms": 0.4436671263408004,
+        "slip_peak": 0.8413345429848672,
+        "yaw_end_deg": -4.864429323666786,
+        "root_dx": 0.4263402675639301
+      },
+      "stop": {
+        "ticks": 800,
+        "mean_vx": 0.4104375777678355,
+        "horizontal_speed_rms": 0.42539204392572455,
+        "slip_peak": 0.8609714195616383,
+        "yaw_end_deg": -6.219182085238191,
+        "root_dx": 1.639705105467869
+      },
+      "final": {
+        "ticks": 401,
+        "mean_vx": 0.40984225384499284,
+        "horizontal_speed_rms": 0.4248179979606748,
+        "slip_peak": 0.8609714195616383,
+        "yaw_end_deg": -6.219182085238191,
+        "root_dx": 0.8199799564169794
+      }
+    },
+    "root_dx": 4.953782895930844,
+    "root_dy": -0.29258706445791205,
+    "max_slip": [
+      0.897113948846084,
+      44.32806795428691,
+      3.3699999999999504
+    ],
+    "trace_sha": "25b2dc8604ced19a10fa49d7098e22de142b74570b9a67654c2541b824feb3d8"
+  },
+  {
+    "speed": 0.18,
+    "repeat": 1,
+    "seconds": 36.423285722732544,
+    "actual_ticks": 2400,
+    "reserved_total": 14400,
+    "boundary": null,
+    "phases": {
+      "entry": {
+        "ticks": 600,
+        "mean_vx": 0.36005477709720396,
+        "horizontal_speed_rms": 0.3860702938401825,
+        "slip_peak": 0.8867433766673161,
+        "yaw_end_deg": -5.436271711389267,
+        "root_dx": 1.0800666339937022
+      },
+      "moving": {
+        "ticks": 800,
+        "mean_vx": 0.4507573709456193,
+        "horizontal_speed_rms": 0.46532544176021656,
+        "slip_peak": 0.897113948846084,
+        "yaw_end_deg": -5.905022363063855,
+        "root_dx": 1.8010683720545337
+      },
+      "deceleration": {
+        "ticks": 200,
+        "mean_vx": 0.4288387697854115,
+        "horizontal_speed_rms": 0.4436671263408004,
+        "slip_peak": 0.8413345429848672,
+        "yaw_end_deg": -4.864429323666786,
+        "root_dx": 0.4263402675639301
+      },
+      "stop": {
+        "ticks": 800,
+        "mean_vx": 0.4104375777678355,
+        "horizontal_speed_rms": 0.42539204392572455,
+        "slip_peak": 0.8609714195616383,
+        "yaw_end_deg": -6.219182085238191,
+        "root_dx": 1.639705105467869
+      },
+      "final": {
+        "ticks": 401,
+        "mean_vx": 0.40984225384499284,
+        "horizontal_speed_rms": 0.4248179979606748,
+        "slip_peak": 0.8609714195616383,
+        "yaw_end_deg": -6.219182085238191,
+        "root_dx": 0.8199799564169794
+      }
+    },
+    "root_dx": 4.953782895930844,
+    "root_dy": -0.29258706445791205,
+    "max_slip": [
+      0.897113948846084,
+      44.32806795428691,
+      3.3699999999999504
+    ],
+    "trace_sha": "25b2dc8604ced19a10fa49d7098e22de142b74570b9a67654c2541b824feb3d8"
+  }
+]

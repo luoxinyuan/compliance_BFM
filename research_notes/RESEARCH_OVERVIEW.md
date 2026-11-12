@@ -248,3 +248,7 @@ S1 remains a proposed bounded matched physical test, not started. Only after act
 ## 2026-11-12 S1 evidence
 
 [Original progress-interface test](S1_RESULTS.md) finds causal stop-hold benefit but not reliable shared velocity control; near/sustained quality regresses. This neither refutes frozen BFM nor proves Contact Adaptation necessary. Native P-BFM ERI qualification is the next proposal, not started. [Budget erratum](S1_ERRATUM.md) retained.
+
+## P-BFM ERI bounded evidence,2026-11-12
+
+[One native preset/export qualification](PBFM_ERI_RESULTS.md) confirms real command input/action sensitivity but not reliable zero/low-speed stopping on the local port. Native ERI existence is not a blanket execution guarantee. Distinguish preset intent, command coupling and backend portability before attributing failure to contact or starting Contact Adaptation. No training or contact extension followed this failed gate.

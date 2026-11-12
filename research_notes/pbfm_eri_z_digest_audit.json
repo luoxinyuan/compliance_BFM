@@ -1,0 +1,12 @@
+{
+  "declared": "b3ccab037ff62aa0306247af4cd6a99dd9c4bf08b962bb286d742dee2b117b32",
+  "variants": {
+    "fp32_le": "f0f20adecfaeb8f400cbd1f4ad64560a525a3c001e7fcfe4454111d448fe986d",
+    "fp64_le": "b66c719391f5eb53f71b4f6a77f5e9159d848b7a4aca85d0727cc87756a14a0c",
+    "json_default": "6b0c5556ebab8bf80e41047e1daf48b23f4f9a1d0fb0070569c6e821c5539125",
+    "json_compact": "771ac9e569f43fa1be2f31949a6f65a362df56fc6ab3665b50863b643853ac29",
+    "json_nested": "4125cc91f8d7918c44730e830424b17464033ce452fe8e9150769161ead0c279"
+  },
+  "source_context_file_sha256": "9a475627faf6cd66a718bd8aa1f9462f866a3ab13678ce290bc8b22880d3e0f0",
+  "note": "metadata digest encoding not specified; exact pinned public z values used unchanged"
+}

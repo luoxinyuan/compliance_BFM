@@ -1,0 +1,13 @@
+{
+  "mujoco": "3.3.3",
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "shape": [
+    36,
+    35,
+    29
+  ],
+  "load_s": 1.231208324432373,
+  "physics_steps": 0
+}

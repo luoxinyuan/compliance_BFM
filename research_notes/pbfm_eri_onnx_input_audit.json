@@ -1,0 +1,21 @@
+{
+  "input_consumers": [
+    {
+      "name": "/actor/Concat_1",
+      "op": "Concat",
+      "inputs": [
+        "/state/_normalizer/BatchNormalization_output_0",
+        "/last_action/_normalizer/BatchNormalization_output_0",
+        "/history_actor/_normalizer/BatchNormalization_output_0",
+        "heading",
+        "velocity_command",
+        "/actor/velocity_estimator/velocity_estimator.4/Gemm_output_0"
+      ],
+      "outputs": [
+        "/actor/Concat_1_output_0"
+      ]
+    }
+  ],
+  "z_norm": 16.00000057296725,
+  "z_bytes_sha_matches": false
+}

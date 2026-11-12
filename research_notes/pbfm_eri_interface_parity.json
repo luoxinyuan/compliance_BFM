@@ -1,0 +1,19 @@
+{
+  "cases": 42,
+  "errors": {
+    "depth": 0,
+    "state": 0,
+    "last_action": 0,
+    "history_actor": 0,
+    "heading": 0,
+    "velocity_command": 0,
+    "depth_image": 0,
+    "z": 0,
+    "target": 0,
+    "scaled": 0
+  },
+  "passed": true,
+  "tolerance": 1e-07,
+  "velocity_rotation_independently_evaluated": true,
+  "physics_steps": 0
+}

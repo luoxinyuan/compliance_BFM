@@ -1,0 +1,803 @@
+{
+  "source": "2401ffa16598c8efeb8512a774a71ee38bd8ae73",
+  "seconds": 17.01270031929016,
+  "downloads": [
+    {
+      "path": "policy-42872f98404a.part0",
+      "bytes": 40000000,
+      "sha256": "18fb1615e9e7e93c53617057cbd50315689855585622e5137f91e7891be0cfc3"
+    },
+    {
+      "path": "policy-42872f98404a.part1",
+      "bytes": 40000000,
+      "sha256": "cc003de9f01dbafa9d90542ecde1b53de7d875a9bad2911c29862d38dea5341f"
+    },
+    {
+      "path": "policy-42872f98404a.part2",
+      "bytes": 40000000,
+      "sha256": "52004a348367e4f21d9e545d921921692a412dbab46b7165a29c903ead143df8"
+    },
+    {
+      "path": "policy-42872f98404a.part3",
+      "bytes": 30909102,
+      "sha256": "1a2de34c2bd9bfe2a0bffdf9a034165c98120316c4d84a469a96c9cc0b181aee"
+    },
+    {
+      "path": "backward_encoder.onnx",
+      "bytes": 820629,
+      "sha256": "135127a36ec87e2046530a569a65fe5a245a9e1c7872db310002b316d56bce43"
+    },
+    {
+      "path": "robot/scene.xml",
+      "bytes": 95199,
+      "sha256": "acf4a9f2848d4ea2c372fe44044ba1af4a1ab8fecf75143e4386d7d34dec2b7b"
+    },
+    {
+      "path": "robot/g1_29dof.xml",
+      "bytes": 26553,
+      "sha256": "6f2f8d246bfdeee66f4bd7ce9f5627fffb9f51698c2732f5706a2a0aa5dcaeb6"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_000.bin",
+      "bytes": 3852,
+      "sha256": "30d0f4b89477299fa00a229bd76be62bc6a8cc5f327bdd6662d168d4cbef6525"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_001.bin",
+      "bytes": 3852,
+      "sha256": "4eda75276e0c7364cbf3ec2904119210c6abdde46fac5fb139b1dc1f4f47d75f"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_002.bin",
+      "bytes": 3852,
+      "sha256": "938d5d13e6ea0fff5eea8765915f6282010e39007136f088ffd2851e2fc729fa"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_003.bin",
+      "bytes": 3852,
+      "sha256": "64410d573094a190c34876e90c521dfff7a267e55b57f9e94e3901a165c38b67"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_004.bin",
+      "bytes": 3852,
+      "sha256": "a04224528e339ef7288beed7e7d3ba6e3b8a0eb7ab6fbdae5d7355fc3d5ffb45"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_005.bin",
+      "bytes": 3852,
+      "sha256": "c6edf746caff2b7609555efc0e62b3a22df843b499a08a2afa2a66ee32cf6f2a"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_006.bin",
+      "bytes": 3852,
+      "sha256": "5a343a12202077693729328f3a065908f59d9f048d105efc55a93ddfd4ee951a"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_007.bin",
+      "bytes": 3852,
+      "sha256": "b76d47255556a1981a6847956dd744d8dc7b69015b918fc7ff76c62f20d4b615"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_008.bin",
+      "bytes": 3852,
+      "sha256": "0b30719fa7d15ba3c74d1075757eba62ccc0704f0ba9a5cc6ff5f42aeef3c5cf"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_009.bin",
+      "bytes": 3852,
+      "sha256": "de2c8f490f3fbedd00ad3cc93286b8cf6f78b05d017bdfd9a0323312a1e29f32"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_010.bin",
+      "bytes": 3852,
+      "sha256": "b942c3ec7f828d6d0c526c2be0c16c00c8dfccaa764dda1a18451e71893d6e1f"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_011.bin",
+      "bytes": 3852,
+      "sha256": "36726b11d6f994c5299ffd0f7e66727340fbc761dfedf78edb5ecbe69acaa9cb"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_012.bin",
+      "bytes": 3852,
+      "sha256": "9f25078f548bca6b6a325c69de48883062ba822dd4d22aff8f4fe1ec1e28291a"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_013.bin",
+      "bytes": 3852,
+      "sha256": "e1fea051c16caac0602a4308d4afafbbd2edb75dfbd8fb187dcc5d05f79c3838"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_014.bin",
+      "bytes": 3852,
+      "sha256": "9727b8969d5966b0b602c30f7a2d2ebffa013d35bedcbf3dc4e236d19b3d858e"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_015.bin",
+      "bytes": 3852,
+      "sha256": "9c5828a08f3a550c29b9e0c063960f706af2e244a5e1e440645757cc8f20abd7"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_016.bin",
+      "bytes": 3852,
+      "sha256": "c93e360eff9c133fbf0a33f0c6f4e589b8e36144f63b1ebf089d42cc2f0e79a1"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_017.bin",
+      "bytes": 3852,
+      "sha256": "804761a1fccc72e6322999c2c9fc88ca65a724507c90cdd27693813c8cdd4e1c"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_018.bin",
+      "bytes": 3852,
+      "sha256": "989ba630869bde366260db640dd38501d823f594ea71b4e153451c4afd96e8e9"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_019.bin",
+      "bytes": 3852,
+      "sha256": "7b9092542eb92de2281630908fa88d00b6047a80b5758aa1f4608d2ec85b86b9"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_020.bin",
+      "bytes": 3852,
+      "sha256": "3576490763ae0e57e91cb53fe22159ab3e5cb85d2896f1aa505307b602150c59"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_021.bin",
+      "bytes": 3852,
+      "sha256": "a23ccccd4791ac2bc0aaff7935eea8f171ebbd87195bf37bdc9de13fac6b8bf0"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_022.bin",
+      "bytes": 3852,
+      "sha256": "4d028968962acd5030534c4eeda9bfd48563cc00bc4591853390b1852299f819"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_023.bin",
+      "bytes": 3852,
+      "sha256": "4ebc73ec9751836bd0eb11335719a87ea7c5002bf2f29f226d94c01c83aae4a9"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_024.bin",
+      "bytes": 3852,
+      "sha256": "e805233f0751566df158e03ec937578585977218217ea3498f9e69dce714235b"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_025.bin",
+      "bytes": 3852,
+      "sha256": "6565377afbe4d7e8a870f5b733a270f87608ea8b391caae602aec888dbf1e62e"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_026.bin",
+      "bytes": 3852,
+      "sha256": "f507e40e998b210b8b7419488e581d00c48887e370d3e19c9563f5c869dbce39"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_027.bin",
+      "bytes": 3852,
+      "sha256": "133a8ceb763fbf695ec7e9536d7b8da732b588d171d613b6652954ee94f38f41"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_028.bin",
+      "bytes": 3852,
+      "sha256": "721306e27abc023f434764bc95397f6400818222b8ecbfb846fab98efbc082e9"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_029.bin",
+      "bytes": 3852,
+      "sha256": "df9ea7f0c1d549375fb6e0cfef6b766cb661a6e20642ff133d9b21d8a6330704"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_030.bin",
+      "bytes": 3852,
+      "sha256": "57cb59d5810214f51368f7d4c71dc49ded4fed7ddd0df2408064de10ab4c2240"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_031.bin",
+      "bytes": 3852,
+      "sha256": "652a77dd7151bdc99353b83f285b10b6e47c1082757fdaf980a4c0fbbf3ee66a"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_032.bin",
+      "bytes": 3852,
+      "sha256": "9ee51169ef67e1f9215151abc0b5fe187f76ac0e6eb15e283a874dbe3c4871b0"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_033.bin",
+      "bytes": 3852,
+      "sha256": "358c6425caf9d033c43e9517149b2b2d1f4db1c3f575ad29495fbec2a7d6cc5e"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_034.bin",
+      "bytes": 3852,
+      "sha256": "d364d2017f51f2a47264178406703189dad8fbc2d74ed5725f4699e2a5e6f1c1"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_035.bin",
+      "bytes": 3852,
+      "sha256": "18c13b6af1e351b9b4a61575064c85dce35ab3c71605e63095273e32b8969e56"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_036.bin",
+      "bytes": 3852,
+      "sha256": "fdf58073b9ee84fe552f3937d1aeec69b41e38a3fd5a99ad7005b8bb9c167d9d"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_037.bin",
+      "bytes": 3852,
+      "sha256": "4b1d61ba1d1ce383920e913f6cdca041861d4111c2199becf2c30132bf446945"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_038.bin",
+      "bytes": 3852,
+      "sha256": "050bf82cddae1a7690e204c4ab1bb55b07675f7ff3e4ce7605c220af13cab8b8"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_039.bin",
+      "bytes": 3852,
+      "sha256": "d53cbe5ae58263f7537f9f0175fc87a3bddf9e999e2308810a7a2f0cab1f9c71"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_040.bin",
+      "bytes": 3852,
+      "sha256": "d2e330cfe8d88020dbcea13700a67ebd9676f42c0a8637cbb6e17668589f4932"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_041.bin",
+      "bytes": 3852,
+      "sha256": "e575c8208cab82fc14440d8582ac38eb2573738749c1ce95e951dc0ee1903bcc"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_042.bin",
+      "bytes": 3852,
+      "sha256": "64b47d14f1fd7f8ee120d34341120d0128cfca3efbfc072855454c07cbceb647"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_043.bin",
+      "bytes": 3852,
+      "sha256": "f032048b6701633092cf859fb16399d02afaa3db4edcdf5e2f34ca060c97b10b"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_044.bin",
+      "bytes": 3852,
+      "sha256": "b6151afb2d16c6326c018db9b7a2afc09b859a77ea4ad608a6435e82ada980a4"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_045.bin",
+      "bytes": 3852,
+      "sha256": "a4a6db6c0e40f5768122ad944b24617d623567df406c110ac4a8b4b9c78876ff"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_046.bin",
+      "bytes": 3852,
+      "sha256": "75afd75b007112c44b54ed8de3130c7a5794672a2cb7104937441b1c2a56327f"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_047.bin",
+      "bytes": 3852,
+      "sha256": "c56bcb98c3db28abf7127c9603848ca4efc8cf2c8056b2dcf3f934dab6d83da9"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_048.bin",
+      "bytes": 3852,
+      "sha256": "ef2ef1706127f89d7d414472db842c001d39b672e025d47b69064b1668233da3"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_049.bin",
+      "bytes": 3852,
+      "sha256": "62ecb0c3aa3fa5bd616bce734bbdad6ec0831c232cabfbceb0c344d59bcb0ab3"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_050.bin",
+      "bytes": 3852,
+      "sha256": "8e58242cb3f1fd46bbf276ecc88eb3f8caec761fbca8e26ceb9d27a585bad4aa"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_051.bin",
+      "bytes": 3852,
+      "sha256": "4416d56dca830e1d51a02334562a4f3b404f7b144ff97122211277e84c03049a"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_052.bin",
+      "bytes": 3852,
+      "sha256": "38c7392dde8672ec7f84cf0f8cb349445025b17417ed3e09c1550cf4f1c58418"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_053.bin",
+      "bytes": 3852,
+      "sha256": "44e03e51d18d88e9de3d630d742ed0424a00de71a0116582a3f7aba3016c9e80"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_054.bin",
+      "bytes": 3852,
+      "sha256": "e560599d5a0115b6819f157223291873f2c3b4dcd9cffd819fa348b2bd798321"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_055.bin",
+      "bytes": 3852,
+      "sha256": "dc0019c2ed2efb90c893da17af29299d3302214beda4630a7f49715dc6ee585d"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_056.bin",
+      "bytes": 3852,
+      "sha256": "b1141fc075fba28b40b73d8453628c49de39cb67ce0953a985d6ca179995c47c"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_057.bin",
+      "bytes": 3852,
+      "sha256": "bcfa35e5be3b23a17b25598345a0eb7e5504835f1aacea67be1bca50a90a721a"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_058.bin",
+      "bytes": 3852,
+      "sha256": "9ecd37697c3293d6dec39df75e4ea154c91c4fd1114492e07fde0db0be9075ac"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_059.bin",
+      "bytes": 3852,
+      "sha256": "d0d04a23d0c620ba6ae346b89ba7dbdbb9ce5c82fc737dff7d80476529d13355"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_060.bin",
+      "bytes": 3852,
+      "sha256": "d72aae1552fb27c290ed20c50981888f9959907ba993b9b031ad182a7cecbd83"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_061.bin",
+      "bytes": 3852,
+      "sha256": "611e75c6c702fee906f8acc4b7ee26f5a94827b68c3bc6d59edbe2bd39af04d8"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_062.bin",
+      "bytes": 3852,
+      "sha256": "dce2654d4d4d2d45384a9c5569c5436dc73efabd72828e84b94bd54407ced2cb"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_063.bin",
+      "bytes": 3852,
+      "sha256": "406265ab5eeff13f4a2d2d3cc092a70999c24358a45b1a0c92a305a67b0768b1"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_064.bin",
+      "bytes": 3852,
+      "sha256": "3d8226b3bf99dabf6d03c8202a015999bc7ae7967831cb35dc4be63a1e2afe13"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_065.bin",
+      "bytes": 3852,
+      "sha256": "9b8168f7fca71873be8b73275ecf6c29a6ad7dbce31f0a867add0727d97ea7a4"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_066.bin",
+      "bytes": 3852,
+      "sha256": "a27dcbe0ccd3710e5c361a8018fd96c4f2f4bec604221efa3e379f99e6568bbf"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_067.bin",
+      "bytes": 3852,
+      "sha256": "0bd4851103870f8c988fb0b1a65b5284876498ff6e65d81faa3f49066220c3e4"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_068.bin",
+      "bytes": 3852,
+      "sha256": "07d6c5dcfdcf494fc9d132a61c62970c3596a73b4986267c9ccabc8730a4be28"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_069.bin",
+      "bytes": 3852,
+      "sha256": "d62f5fbe42414c8c5ceaad53f5b7dbd8c6ee02b31f8f01dc45be46701ca71638"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_070.bin",
+      "bytes": 3852,
+      "sha256": "7ca68bab15ae9aea07ddf90a9fe9eac86f3373daf03461f79cd2093b562a7365"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_071.bin",
+      "bytes": 3852,
+      "sha256": "d5717365335d853b45734daefa10a70dd0680e85f323166c2287c9399476fae3"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_072.bin",
+      "bytes": 3852,
+      "sha256": "a611b4ee762576901ea47fbc36b06ddb0117237364ffec3018e7092314864732"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_073.bin",
+      "bytes": 3852,
+      "sha256": "7c8436f90dc5227b4a405366f47d30b94de6a45b1e7b7818b6756bf5fab3d2a5"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_074.bin",
+      "bytes": 3852,
+      "sha256": "27512beb6ae221eb5367c3d4540d9ecff5a9915eac0c27038e0aaea3f6d9a649"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_075.bin",
+      "bytes": 3852,
+      "sha256": "23bf2976a5d194cd07e5c129a8a4ff49f35ff50452245c769bc0922620cf8fdc"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_076.bin",
+      "bytes": 3852,
+      "sha256": "8998c8ed8a57be74d7fc27d441c79a41394cd56782f3aea2e6d7a58384eb7c4c"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_077.bin",
+      "bytes": 3852,
+      "sha256": "508b96f52cbe738065b54b48ee12d9a918a71e91e37249124404a463b7258f18"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_078.bin",
+      "bytes": 3852,
+      "sha256": "accc8c8d81f415ae04a18d5df6cd9044f5dda826660325c11d4c85805effebba"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_079.bin",
+      "bytes": 3852,
+      "sha256": "74b3dcf82c587b8419e912061eba7198a048503afb84fa5ebda4092cab9e461c"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_080.bin",
+      "bytes": 3852,
+      "sha256": "15db27e2e002c0f86f74a993f620be8ba8a38a430bd6abc4020dfda40befb076"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_081.bin",
+      "bytes": 3852,
+      "sha256": "1b0c1838a44f3645149d297d1dd3dd57363d1c9c74f12394cba3b30a474738bd"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_082.bin",
+      "bytes": 3852,
+      "sha256": "b6027680ee88e96fc3690d32249cc0fd50e976a51d1398698b4f5e239ebc3498"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_083.bin",
+      "bytes": 3852,
+      "sha256": "0e5078ad218ee3634b7af02dde0f8922a0b523f204029ad96e6a568a284022af"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_084.bin",
+      "bytes": 3852,
+      "sha256": "544b354b957ff13a7ecf80e09f385d845bf7c0442c23a0724901a09854bef619"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_085.bin",
+      "bytes": 3852,
+      "sha256": "72c0ecc8e58c420a97a87a1b12575c08c113540bc19d693eaedb55f2af87c928"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_086.bin",
+      "bytes": 3852,
+      "sha256": "ba4610cb36925e84c395a303201d4f650c79e3ab239e785931c05d2c4469e6f2"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_087.bin",
+      "bytes": 3852,
+      "sha256": "95a61b6123d9efddadda158a30eaf5ed3a3ab4ef76d458e891d04db03599dae4"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_088.bin",
+      "bytes": 3852,
+      "sha256": "b02b5ba5ef38d1e129334b7152f857ef4f71c61ef19cf1e454feacf22f5a0d12"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_089.bin",
+      "bytes": 3852,
+      "sha256": "f66371eb92e64e2ab550daa0f435837255ac3e2a7e4b87ca16d47238dbb17295"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_090.bin",
+      "bytes": 3852,
+      "sha256": "9af523be762860b6ed49a09c828fdd0e58360c8da7aa6f48f3b988021b28c1e6"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_091.bin",
+      "bytes": 3852,
+      "sha256": "f1af215225b0d39db43b2903c057d1cd15ab09062375a1bf08247968043aa705"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_092.bin",
+      "bytes": 3852,
+      "sha256": "bae69bad146a9a3466f00d52c6b2ce6f78ca1d836e964601231c053c9dfc98dc"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_093.bin",
+      "bytes": 3852,
+      "sha256": "7674d89d46f5f19e6a25b0fdfe6656017c23ef00434f85ce5b3b84a999362163"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_094.bin",
+      "bytes": 3852,
+      "sha256": "31df09fabd2568f090ee0d10d03e23855f75744d1df9725b886b5ea06d0aa183"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_095.bin",
+      "bytes": 3852,
+      "sha256": "66e2799496167d75c352f08b5113f8dffeff1cb5aa212e7834a134d79c1252a0"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_096.bin",
+      "bytes": 3852,
+      "sha256": "d1a5f5a7bbc577749fc7db9f329e8a2c3237c30dd72a78367a11c0723ce4c783"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_097.bin",
+      "bytes": 3852,
+      "sha256": "f2483dbc2c86649bd4375b056b7bfbe398233971a82efa2185431ab88bd10039"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_098.bin",
+      "bytes": 3852,
+      "sha256": "dd8c4e013560ee36554f1788a3c4df8517fde5f511859cf37f718c5cfa1b40b1"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_099.bin",
+      "bytes": 3852,
+      "sha256": "e5fc192d516df82b51b0bc0a996dba5203c254f8f3f13473ba65e13ddc98df41"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_100.bin",
+      "bytes": 3852,
+      "sha256": "1326e7776dc02d4d5e631590b780929ecbc807cf930ef1160924212cb0a542e0"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_101.bin",
+      "bytes": 3852,
+      "sha256": "49c37d162163e097fba9372bb19d8b974d2f178b87475d74bc657a79cbca4455"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_102.bin",
+      "bytes": 3852,
+      "sha256": "8ce5bd93263719a6ecdb1fdfb53a38d0c32897d448de9a3290b65a581faa3ee9"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_103.bin",
+      "bytes": 3852,
+      "sha256": "eb2b214e9982d01b651655e341437ba8c9198271edccb25359902d7a82ad4dea"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_104.bin",
+      "bytes": 3852,
+      "sha256": "63eb845c11236ceaf385e1f0ad8e1b83fb69b4bc19ba65e97e957913f8c9617c"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_105.bin",
+      "bytes": 3852,
+      "sha256": "8e6828097d076ad3762e0b8b5623fee787447357bba65a1d13e188e118ab2052"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_106.bin",
+      "bytes": 3852,
+      "sha256": "ed9c404ee6996c9e958376269d6aefa96365edb153f816825d64afd526e14034"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_107.bin",
+      "bytes": 3852,
+      "sha256": "dd8b97696aa46a29c984908a85ca5d61f29d5c776f91ddd3d4d6dc64fe1c4ce4"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_108.bin",
+      "bytes": 3852,
+      "sha256": "e66579b7cf046a817f23a5a772ed8e4053e2909afd2804ad0982db018244496e"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_109.bin",
+      "bytes": 3852,
+      "sha256": "b5c5752690ad5ca8f93c88714070e8d86f1d3904edaeae7440940d3ababf2243"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_110.bin",
+      "bytes": 3852,
+      "sha256": "f8dc0666f49015080f0090ca504cac988a60681b57936d2d78f5bf9bd639d86d"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_111.bin",
+      "bytes": 3852,
+      "sha256": "eac5241e73080c63f522e9a03655847b66ae40fc8ad8d85a67d51ed53a8ce66e"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_112.bin",
+      "bytes": 3852,
+      "sha256": "3903543c9e6256da29999799b230fefed24529be6606b4eaab8498d86a28a0e1"
+    },
+    {
+      "path": "robot/hfields/terrain_hfield_113.bin",
+      "bytes": 3852,
+      "sha256": "7da456369c1ecb19968eadaede718674a1fd173c4af34cc0a84a54d0e5a9e6cc"
+    },
+    {
+      "path": "robot/meshes/head_link.STL",
+      "bytes": 932784,
+      "sha256": "005fb67fbd3eff94aa8bf4a6e83238174e9f91b6721f7111594322f223724411"
+    },
+    {
+      "path": "robot/meshes/left_ankle_pitch_link.STL",
+      "bytes": 71184,
+      "sha256": "d49e3abc6f5b12e532062cd575b87b5ef40cd2a3fc18f54a1ca5bba4f773d51d"
+    },
+    {
+      "path": "robot/meshes/left_ankle_roll_link.STL",
+      "bytes": 653384,
+      "sha256": "c4092af943141d4d9f74232f3cfa345afc6565f46a077793b8ae0e68b39dc33f"
+    },
+    {
+      "path": "robot/meshes/left_elbow_link.STL",
+      "bytes": 88784,
+      "sha256": "fa752198accd104d5c4c3a01382e45165b944fbbc5acce085059223324e5bed3"
+    },
+    {
+      "path": "robot/meshes/left_hip_pitch_link.STL",
+      "bytes": 181684,
+      "sha256": "4725168105ee768ee31638ef22b53f6be2d7641bfd7cfefe803488d884776fa4"
+    },
+    {
+      "path": "robot/meshes/left_hip_roll_link.STL",
+      "bytes": 192184,
+      "sha256": "91f25922ee8a7c3152790051bebad17b4d9cd243569c38fe340285ff93a97acf"
+    },
+    {
+      "path": "robot/meshes/left_hip_yaw_link.STL",
+      "bytes": 296284,
+      "sha256": "a16d88aa6ddac8083aa7ad55ed317bea44b1fa003d314fba88965b7ed0f3b55b"
+    },
+    {
+      "path": "robot/meshes/left_knee_link.STL",
+      "bytes": 854884,
+      "sha256": "8d92b9e3d3a636761150bb8025e32514c4602b91c7028d523ee42b3e632de477"
+    },
+    {
+      "path": "robot/meshes/left_rubber_hand.STL",
+      "bytes": 2287484,
+      "sha256": "cff2221a690fa69303f61fce68f2d155c1517b52efb6ca9262dd56e0bc6e70fe"
+    },
+    {
+      "path": "robot/meshes/left_shoulder_pitch_link.STL",
+      "bytes": 176784,
+      "sha256": "f0d1cfd02fcf0d42f95e678eeca33da3afbcc366ffba5c052847773ec4f31d52"
+    },
+    {
+      "path": "robot/meshes/left_shoulder_roll_link.STL",
+      "bytes": 400284,
+      "sha256": "fb9df21687773522598dc384f1a2945c7519f11cbc8bd372a49170316d6eee88"
+    },
+    {
+      "path": "robot/meshes/left_shoulder_yaw_link.STL",
+      "bytes": 249184,
+      "sha256": "1aa97e9748e924336567992181f78c7cd0652fd52a4afcca3df6b2ef6f9e712e"
+    },
+    {
+      "path": "robot/meshes/left_wrist_pitch_link_5010.STL",
+      "bytes": 91784,
+      "sha256": "65c91c4681228f28ccb73d9fc7e853bc1c857da199352321e834e15f2cd7a7d4"
+    },
+    {
+      "path": "robot/meshes/left_wrist_roll_link_5010.STL",
+      "bytes": 899184,
+      "sha256": "b5be0d8d17b6db9f74323049ce6a0b8a7d95b2434a34805650cc22050f4992dd"
+    },
+    {
+      "path": "robot/meshes/left_wrist_yaw_link_5010.STL",
+      "bytes": 682184,
+      "sha256": "d020b9ef67b0899c98b77029d8de80a820c16dba0b7611d0cd7f85033d9241f1"
+    },
+    {
+      "path": "robot/meshes/logo_link.STL",
+      "bytes": 243384,
+      "sha256": "8571a0a19bc4916fa55f91449f51d5fdefd751000054865a842449429d5f155b"
+    },
+    {
+      "path": "robot/meshes/pelvis.STL",
+      "bytes": 1060884,
+      "sha256": "5ba6bbc888e630550140d3c26763f10206da8c8bd30ed886b8ede41c61f57a31"
+    },
+    {
+      "path": "robot/meshes/pelvis_contour_link.STL",
+      "bytes": 1805184,
+      "sha256": "5cc5c2c7a312329e3feeb2b03d3fc09fc29705bd01864f6767e51be959662420"
+    },
+    {
+      "path": "robot/meshes/right_ankle_pitch_link.STL",
+      "bytes": 71184,
+      "sha256": "15be426539ec1be70246d4d82a168806db64a41301af8b35c197a33348c787a9"
+    },
+    {
+      "path": "robot/meshes/right_ankle_roll_link.STL",
+      "bytes": 653784,
+      "sha256": "4b66222ea56653e627711b56d0a8949b4920da5df091da0ceb343f54e884e3a5"
+    },
+    {
+      "path": "robot/meshes/right_elbow_link.STL",
+      "bytes": 88784,
+      "sha256": "1be925d7aa268bb8fddf5362b9173066890c7d32092c05638608126e59d1e2ab"
+    },
+    {
+      "path": "robot/meshes/right_hip_pitch_link.STL",
+      "bytes": 181284,
+      "sha256": "e4f3c99d7f4a7d34eadbef9461fc66e3486cb5442db1ec50c86317d459f1a9c6"
+    },
+    {
+      "path": "robot/meshes/right_hip_roll_link.STL",
+      "bytes": 192684,
+      "sha256": "4c254ef66a356f492947f360dd931965477b631e3fcc841f91ccc46d945d54f6"
+    },
+    {
+      "path": "robot/meshes/right_hip_yaw_link.STL",
+      "bytes": 296284,
+      "sha256": "e479c2936ca2057e9eb2f7dff6c189b7419d7b8484dea0b298cbb36a2a6aa668"
+    },
+    {
+      "path": "robot/meshes/right_knee_link.STL",
+      "bytes": 852284,
+      "sha256": "63c4008449c9bbe701a6e2b557b7a252e90cf3a5abcf54cee46862b9a69f8ec8"
+    },
+    {
+      "path": "robot/meshes/right_rubber_hand.STL",
+      "bytes": 2192684,
+      "sha256": "99533b778bca6246144fa511bb9d4e555e075c641f2a0251e04372869cd99d67"
+    },
+    {
+      "path": "robot/meshes/right_shoulder_pitch_link.STL",
+      "bytes": 176784,
+      "sha256": "24cdb387e0128dfe602770a81c56cdce3a0181d34d039a11d1aaf8819b7b8c02"
+    },
+    {
+      "path": "robot/meshes/right_shoulder_roll_link.STL",
+      "bytes": 401884,
+      "sha256": "962b97c48f9ce9e8399f45dd9522e0865d19aa9fd299406b2d475a8fc4a53e81"
+    },
+    {
+      "path": "robot/meshes/right_shoulder_yaw_link.STL",
+      "bytes": 249984,
+      "sha256": "a0b76489271da0c72461a344c9ffb0f0c6e64f019ea5014c1624886c442a2fe5"
+    },
+    {
+      "path": "robot/meshes/right_wrist_pitch_link_5010.STL",
+      "bytes": 91784,
+      "sha256": "ac1110adfd93a10396bd32bba7b71ded5ccd757405b9e6d3d0b4ff53dea09582"
+    },
+    {
+      "path": "robot/meshes/right_wrist_roll_link_5010.STL",
+      "bytes": 899184,
+      "sha256": "458d62c3fcb63f526cd258397c7ac88350d50fd444f35646054cb0e2015a2042"
+    },
+    {
+      "path": "robot/meshes/right_wrist_yaw_link_5010.STL",
+      "bytes": 682184,
+      "sha256": "fe36d6fe3f09fb0bb27bf3027b4c388110505d3f46678b80afe2e198a5ea7922"
+    },
+    {
+      "path": "robot/meshes/torso_link_rev_1_0.STL",
+      "bytes": 2570584,
+      "sha256": "11ddb46f2098efbbd8816b1d65893632d8e78be936376c7cdcd6771899ccc723"
+    },
+    {
+      "path": "robot/meshes/waist_roll_link_rev_1_0.STL",
+      "bytes": 85884,
+      "sha256": "b67c347a05abc3e8ddae600d98a082bee273bb39f8e651647708b0a7140a8a97"
+    },
+    {
+      "path": "robot/meshes/waist_yaw_link_rev_1_0.STL",
+      "bytes": 619984,
+      "sha256": "ec6db442b11f25eed898b5add07940c85d804f300de24dcbd264ccd8be7d554c"
+    },
+    {
+      "path": "robot/README.md",
+      "bytes": 2475,
+      "sha256": "7d7b25fb19e3017aec3a1317b53fa52453e71f4db8ab13db778b63d772744588"
+    },
+    {
+      "path": "robot/LICENSE.source.txt",
+      "bytes": 19345,
+      "sha256": "db2e35513dbadcdc67f5819a3bfee2777786538dd3531620cd5fbd4b6ed6e538"
+    },
+    {
+      "path": "robot/terrain.json",
+      "bytes": 15616,
+      "sha256": "0b615a0a352b6cd63466b72af628967d29f77447558b750b5fadc4d3e8c3b77d"
+    }
+  ],
+  "bytes": 173802787,
+  "policy_sha256": "42872f98404abd7a6e624b871f8b00075ad266146908965afc4dfeb2f6fc910e"
+}

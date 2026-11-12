@@ -1,0 +1,93 @@
+{
+  "rows": [
+    {
+      "speed": 0,
+      "slip_tick_p50_p90_p99_max": [
+        0.004206254351613885,
+        0.020967179714290157,
+        0.565807797063299,
+        0.9210023698821995
+      ],
+      "slip_exceed_tick_fraction": 0.013333333333333334,
+      "event_rows": 120,
+      "persistent_event_rows": 10,
+      "max_range_excess": -0.1983445578438229,
+      "max_actual_q_step_deg": 2.1797582839127037,
+      "max_qpd_step_deg": 29.418363571166992,
+      "max_abs_torque": 34.79932494261939,
+      "max_slip_event": {
+        "time": 6.449999999999885,
+        "body": "right_ankle_roll_link",
+        "normal_N": 125.59854694866401,
+        "speed_mps": 0.9210023698821995,
+        "position": [
+          0.1063841081971435,
+          -15.284892864131304,
+          -4.075511801315823e-05
+        ],
+        "persistent_pre_post": false
+      },
+      "external_force_max": 0
+    },
+    {
+      "speed": 0.09,
+      "slip_tick_p50_p90_p99_max": [
+        0.004246600010162945,
+        0.024836351320130144,
+        0.5684812229661191,
+        0.974733748048629
+      ],
+      "slip_exceed_tick_fraction": 0.015833333333333335,
+      "event_rows": 137,
+      "persistent_event_rows": 31,
+      "max_range_excess": -0.19087421775582541,
+      "max_actual_q_step_deg": 2.1971065854294216,
+      "max_qpd_step_deg": 29.418363571166992,
+      "max_abs_torque": 34.87592408002526,
+      "max_slip_event": {
+        "time": 3.349999999999951,
+        "body": "right_ankle_roll_link",
+        "normal_N": 130.13008888861313,
+        "speed_mps": 0.974733748048629,
+        "position": [
+          -1.1472653607400956,
+          -15.218177845490459,
+          -3.404038067217341e-05
+        ],
+        "persistent_pre_post": false
+      },
+      "external_force_max": 0
+    },
+    {
+      "speed": 0.18,
+      "slip_tick_p50_p90_p99_max": [
+        0.004339940186087786,
+        0.021414861945105314,
+        0.5648719847905938,
+        0.897113948846084
+      ],
+      "slip_exceed_tick_fraction": 0.015416666666666667,
+      "event_rows": 132,
+      "persistent_event_rows": 17,
+      "max_range_excess": -0.19417623617578622,
+      "max_actual_q_step_deg": 2.115658591392276,
+      "max_qpd_step_deg": 29.418363571166992,
+      "max_abs_torque": 35.10797219399382,
+      "max_slip_event": {
+        "time": 3.3699999999999504,
+        "body": "right_ankle_roll_link",
+        "normal_N": 44.32806795428691,
+        "speed_mps": 0.897113948846084,
+        "position": [
+          -1.1112979837365833,
+          -15.221897415301822,
+          -0.00015095773920276168
+        ],
+        "persistent_pre_post": false
+      },
+      "external_force_max": 0
+    }
+  ],
+  "job_s": 0.6591825485229492,
+  "physics_steps": 0
+}

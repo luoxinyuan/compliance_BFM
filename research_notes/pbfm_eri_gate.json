@@ -1,0 +1,41 @@
+{
+  "gate": false,
+  "per_condition": [
+    {
+      "speed": 0.0,
+      "pass": false
+    },
+    {
+      "speed": 0.09,
+      "pass": false
+    },
+    {
+      "speed": 0.18,
+      "pass": false
+    }
+  ],
+  "speed_order": true,
+  "repeats": [
+    {
+      "speed": 0.0,
+      "repeat_exact": true
+    },
+    {
+      "speed": 0.09,
+      "repeat_exact": true
+    },
+    {
+      "speed": 0.18,
+      "repeat_exact": true
+    }
+  ],
+  "seconds": 227.15278506278992,
+  "total_reserved_ticks": 14400,
+  "actual_ticks": 14400,
+  "runtime": "9d29641c4a502d75e6641045565b8150779adcb7",
+  "provider": [
+    "CPUExecutionProvider"
+  ],
+  "physics_backend": "MuJoCo3.3.3",
+  "contact_runs": 0
+}

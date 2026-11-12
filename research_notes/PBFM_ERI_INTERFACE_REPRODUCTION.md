@@ -1,0 +1,5 @@
+# Interface reference reproduction
+
+No simulator stepping. Local Node reads pinned public index-CeK8jAtY.js: extract from Le={state: through before const i=e=>, prepend const, append export {Fe,$e,q}; save upstream_policy.mjs. depth.mjs is unchanged public depth-BJV-tJSc.js. Place pinned config/contexts beside these, run pbfm_parity_reference.mjs to generate42frames js_reference_rotation.json. Original files and references retained in isolated evidence. Compare Feed.build/process_depth/Feed.action from pbfm_native.py successively, without replacing the Python velocity_command with expected values. Every flattened field equals upstream exactly; result pbfm_eri_interface_parity.json. Upstream JS source/model license retained; no browser DOM executed.
+
+The physical port preserves calibrated optical rays, PD and motor equations. Helper parity does not establish dynamics equivalence across MuJoCo versions or native Warp. The graph command-consumer audit and fixed-input action perturbations are offline; they do not add physical branches.
