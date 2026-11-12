@@ -244,3 +244,7 @@ F1 matched future-oracle comparison improves stop and part of continuation but l
 Next decomposition is explicit Goal / causal Guidance / executable backend. Original BFM has no native ERI; Guidance→legal latent must earn physical qualification. P-BFM offers native velocity/heading semantics but different depth/PD/physics; I-BFM LOGO actor has a transitive current-B/privileged-object dependency. These interfaces cannot be called interchangeable or deployable force-only by inspection. S0 original archived-action parity passed; new root control remains a hypothesis. [Audit](S0_PORTABILITY_AND_ARCHITECTURE.md), [method decision](STEERING_METHOD_DECISION.md).
 
 S1 remains a proposed bounded matched physical test, not started. Only after actual Steering/control evidence should learned Guidance or targeted Contact Adaptation be separately authorized. Native sources are traceable priors, including offline reference edits; no claim of prior-free behavior discovery. Historical headings above are stage records, superseded for current execution by CURRENT_STATE.
+
+## 2026-11-12 S1 evidence
+
+[Original progress-interface test](S1_RESULTS.md) finds causal stop-hold benefit but not reliable shared velocity control; near/sustained quality regresses. This neither refutes frozen BFM nor proves Contact Adaptation necessary. Native P-BFM ERI qualification is the next proposal, not started. [Budget erratum](S1_ERRATUM.md) retained.

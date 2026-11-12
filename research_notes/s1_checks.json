@@ -1,0 +1,329 @@
+[
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "P1-1",
+    "passed": true
+  },
+  {
+    "test": "BC500 archived first3s physics/control exact",
+    "state": "P1-1",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "P1-1",
+    "controller": "BC500",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "P1-1",
+    "controller": "CS",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "P1-1",
+    "controller": "CP",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "P1-2",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "P1-13",
+    "passed": true
+  },
+  {
+    "test": "BC500 archived first3s physics/control exact",
+    "state": "P1-13",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "P1-13",
+    "controller": "BC500",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "P1-13",
+    "controller": "CS",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "P1-13",
+    "controller": "CP",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "P1-14",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_tail-sustained-5c67db5a4802",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_tail-hold-5c67db5a4802",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_tail-sustained-12c3401ff67b",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_tail-hold-12c3401ff67b",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_tail-sustained-97ff10c4dcd9",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_tail-hold-97ff10c4dcd9",
+    "passed": true
+  },
+  {
+    "test": "BC500 archived first3s physics/control exact",
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "BC500",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CS",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CP",
+    "passed": true
+  },
+  {
+    "state_id": "old_tradeoff-sustained-1f7c1c806ff0",
+    "test": "explicit archived efc_JT restore; all other state exact",
+    "passed": true,
+    "physics_control_score_bitwise_equal": true,
+    "seconds": 3.0,
+    "compared_array_shape": [
+      2135
+    ],
+    "array_excluded": false
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-sustained-1f7c1c806ff0",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-hold-1f7c1c806ff0",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-sustained-3077ca809d70",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-hold-3077ca809d70",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-sustained-7952b43a7dd4",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-hold-7952b43a7dd4",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-sustained-6fc08121dd42",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "old_tradeoff-hold-6fc08121dd42",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_near-sustained-5f62e065b5ac",
+    "passed": true
+  },
+  {
+    "test": "BC500 archived first3s physics/control exact",
+    "state": "new_near-sustained-5f62e065b5ac",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "BC500",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CS",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CP",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_near-hold-5f62e065b5ac",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_stop-sustained-5f6380cdec75",
+    "passed": true
+  },
+  {
+    "test": "BC500 archived first3s physics/control exact",
+    "state": "new_stop-sustained-5f6380cdec75",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "BC500",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CS",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CP",
+    "passed": true
+  },
+  {
+    "test": "BC500 archived first3s physics/control exact",
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "BC500",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CS",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CP",
+    "passed": true
+  },
+  {
+    "test": "stop/continue pre-observable-branch exact",
+    "controller": "BC500",
+    "cut": 5.5,
+    "passed": true
+  },
+  {
+    "test": "stop/continue pre-observable-branch exact",
+    "controller": "CS",
+    "cut": 5.5,
+    "passed": true
+  },
+  {
+    "test": "stop/continue pre-observable-branch exact",
+    "controller": "CP",
+    "cut": 5.5,
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_stop-hold-5f6380cdec75",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_stop-sustained-4ea37e71ee89",
+    "passed": true
+  },
+  {
+    "test": "L0 complete reconstructed state exact",
+    "state_id": "new_stop-hold-4ea37e71ee89",
+    "passed": true
+  },
+  {
+    "test": "native-standing archived full state exact",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "native-standing",
+    "controller": "BC500",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "native-standing",
+    "controller": "CS",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "native-standing",
+    "controller": "CP",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "native-standing",
+    "controller": "fixed:0",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "native-standing",
+    "controller": "fixed:0.09",
+    "passed": true
+  },
+  {
+    "test": "repeat first3s physics/control/causal_inputs/commands exact",
+    "state": "native-standing",
+    "controller": "fixed:0.18",
+    "passed": true
+  }
+]

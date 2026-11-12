@@ -7,3 +7,7 @@ Recommend **continuous forward velocity/progress with explicit validity**, then 
 3. I-BFM: useful interaction representation/reference, but current-B/privileged object state, LOGO coordinates and PD make it a longer path for wrist Steering.
 
 Contact Adaptation is **not established as necessary**. F1 shows quality limits remain even with future information, but does not separate poor Guidance from execution limitations. If S1 has correctly changing u and actual progress yet repeatable contact-specific slip/yaw relative to no-contact controls, propose narrow actor conditioning; if T itself cannot produce progress/stopping, address its interface or use native ERI first. No FB/PPO restart, Student or planner growth is authorized.
+
+## S1 update
+
+[S1](S1_RESULTS.md): original T not promoted. Prefer proposing native-ERI qualification; Contact Adaptation remains conditional on a qualified no-contact interface. No automatic next run.

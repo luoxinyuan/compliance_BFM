@@ -1,0 +1,482 @@
+[
+  {
+    "state": "P1-1",
+    "controller": "BC500",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "P1-1",
+    "controller": "CS",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": false
+  },
+  {
+    "state": "P1-1",
+    "controller": "CP",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "P1-13",
+    "controller": "BC500",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "P1-13",
+    "controller": "CS",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": false
+  },
+  {
+    "state": "P1-13",
+    "controller": "CP",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "BC500",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CS",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": false
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CP",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "BC500",
+    "decisions": 42,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CS",
+    "decisions": 42,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": false
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CP",
+    "decisions": 42,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "BC500",
+    "decisions": 60,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CS",
+    "decisions": 60,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": false
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CP",
+    "decisions": 60,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "BC500",
+    "decisions": 68,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CS",
+    "decisions": 68,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": false
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CP",
+    "decisions": 68,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "native-standing",
+    "controller": "BC500",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "native-standing",
+    "controller": "CS",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": false
+  },
+  {
+    "state": "native-standing",
+    "controller": "CP",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0.09",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0.18",
+    "decisions": 30,
+    "causal_keys": [
+      "q",
+      "dq",
+      "gravity",
+      "angular_velocity",
+      "action_history",
+      "proprio_history",
+      "force_history",
+      "last_z",
+      "contact_link",
+      "contact_local_point",
+      "known_mode"
+    ],
+    "phase_own_start": 0.0,
+    "guidance_spec_access": null
+  }
+]

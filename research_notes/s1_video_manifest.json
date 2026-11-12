@@ -1,0 +1,26 @@
+[
+  {
+    "name": "s1-sustained-negative",
+    "sha256": "1dae61e44bf64d975c73f899bb72f3bd6e2445df067773f60c75924d1aebcfca",
+    "frames": 75,
+    "fps": 25,
+    "duration": 3.0,
+    "seconds": 2.465803364990279
+  },
+  {
+    "name": "s1-stop-response",
+    "sha256": "3e851558222f3ad0727e85864e0886f3df0dffe72b1a559d603afdb3113ddee0",
+    "frames": 150,
+    "fps": 25,
+    "duration": 6.0,
+    "seconds": 4.483134609006811
+  },
+  {
+    "name": "s1-cs-stop-continue",
+    "sha256": "dcb032580cbd950ffd1580cfaad9fca4003e2422f319890f4f43b1f36f338022",
+    "frames": 170,
+    "fps": 25,
+    "duration": 6.8,
+    "seconds": 3.4296629400050733
+  }
+]

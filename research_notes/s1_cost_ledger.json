@@ -1,0 +1,65 @@
+{
+  "stage": "Issue61-S1",
+  "start_epoch": 1794446700,
+  "measurement_epoch": 1794448726.5941617,
+  "wall_envelope_s": 2026.594161748886,
+  "publication_reserve_s": 600,
+  "charged_s": 2626.594161748886,
+  "cap_s": 7200,
+  "accounting": "whole elapsed envelope includes preparation, supervised jobs, idle/IO/failed postprocessing; concurrent CPU/render are conservatively also reported as subjobs, not summed twice into envelope",
+  "subjobs": [
+    {
+      "name": "physical-01",
+      "job_s": 464.1682996749878,
+      "status": "completed"
+    },
+    {
+      "name": "video-01-failed",
+      "job_s": 17.443422198994085,
+      "status": "failed_preserved"
+    },
+    {
+      "name": "reduction-01-failed",
+      "job_upper_bound_s": 120,
+      "status": "failed_preserved"
+    },
+    {
+      "name": "reduction-02",
+      "job_s": 8.61029057498672,
+      "physics_steps": 0,
+      "training": false,
+      "source_runtime": "f994b9b66907219edd69d8e94c77bd667d7898e9"
+    },
+    {
+      "name": "video-02",
+      "job_s": 40.99444100598339,
+      "status": "completed"
+    },
+    {
+      "name": "saved_FK",
+      "job_s": 6.172900481993565,
+      "physics_steps": 0,
+      "kind": "saved qpos FK and saved command comparison"
+    }
+  ],
+  "runtime": "f994b9b66907219edd69d8e94c77bd667d7898e9",
+  "branch_count": 48,
+  "parent_count": 6,
+  "experimental_ticks": 33600,
+  "experimental_seconds": 168.0,
+  "experimental_high_level_commands": 1680,
+  "archived_reconstruction_prefill_ticks": 15000,
+  "archived_reconstruction_task_ticks": 21880,
+  "known_efcJT_validation_ticks": 1200,
+  "original_backend_prefix_ticks": 600,
+  "known_total_physics_ticks_lower_bound": 72280,
+  "total_physics_counter_installed": false,
+  "physical_count_erratum": "Experimental45,000 allowance met; literal total-step interpretation not met due unbudgeted reconstruction overhead. No unconditional budget-pass claim.",
+  "training_updates": 0,
+  "search_queries": 0,
+  "external_download_bytes": 0,
+  "prior_project_charged_s": 162435.87926433232,
+  "project_charged_s": 165062.4734260812,
+  "project_cap_s": 864000,
+  "new_output_bytes_at_accounting": 530456329
+}

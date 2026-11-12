@@ -1,0 +1,22 @@
+{
+  "BC500": {
+    "sha256": "e1165d80cbce13b9248eba0ee816f4ecfb873b70056257c0d32f22c720e9c39d",
+    "path": "experiments/frl-v2-fb-repair-20261110/runs/frl-formal-B-01/candidate-0.pt"
+  },
+  "B64": {
+    "sha256": "0262661464676cfc5fec9674993dedab881570287af26b5d804030041012b54e",
+    "path": "experiments/frl-v2-fb-repair-20261110/runs/frl-formal-B-01/candidate-64.pt"
+  },
+  "B128": {
+    "sha256": "a4b7fa1ad2ab5714b81a05f3176ca8b3429c67d52c76ddc2822a9f7388c5d5de",
+    "path": "experiments/frl-v2-fb-repair-20261110/runs/frl-formal-B-01/candidate-128.pt"
+  },
+  "v3-32": {
+    "sha256": "ce9bec931c8e8a27085bdf4c6471a07551fa23b1bf5846b7ad73c22b331713e5",
+    "path": "experiments/frl-v3-risk-20261111/runs/formal-v3-lambda033-02/candidate-32.pt"
+  },
+  "v3-128": {
+    "sha256": "f6bf786cec47fb10ba362522680107071c74912530f183546f48c29757d52336",
+    "path": "experiments/frl-v3-risk-20261111/runs/formal-v3-lambda033-02/candidate-128.pt"
+  }
+}

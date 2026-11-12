@@ -1,0 +1,23 @@
+[
+  {
+    "controller": "BC500",
+    "actual_partner_branch_s": 5.5,
+    "first_raw_difference_s": 5.599999999999903,
+    "first_guidance_difference_s": null,
+    "pre_branch_exact": true
+  },
+  {
+    "controller": "CS",
+    "actual_partner_branch_s": 5.5,
+    "first_raw_difference_s": 5.599999999999903,
+    "first_guidance_difference_s": 5.599999999999903,
+    "pre_branch_exact": true
+  },
+  {
+    "controller": "CP",
+    "actual_partner_branch_s": 5.5,
+    "first_raw_difference_s": 5.599999999999903,
+    "first_guidance_difference_s": 5.599999999999903,
+    "pre_branch_exact": true
+  }
+]

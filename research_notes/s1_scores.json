@@ -1,0 +1,3310 @@
+[
+  {
+    "state": "P1-1",
+    "controller": "BC500",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -0.7951498118026633,
+      "v3_discounted_return": -0.7951498118026633,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -0.6874662799404757,
+        "tracking": -0.006650058600886739,
+        "uncapped": -0.0612715569451063,
+        "relative_velocity": -0.009890116095469784,
+        "heading": -0.02819312179513418,
+        "slip": -5.6124235952323374e-05,
+        "tilt": 0.0,
+        "continuity": -0.0016225541896376474,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "P1-1",
+    "controller": "BC500",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -0.7951498118026633,
+      "v3_discounted_return": -0.7951498118026633,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -0.6874662799404757,
+        "tracking": -0.006650058600886739,
+        "uncapped": -0.0612715569451063,
+        "relative_velocity": -0.009890116095469784,
+        "heading": -0.02819312179513418,
+        "slip": -5.6124235952323374e-05,
+        "tilt": 0.0,
+        "continuity": -0.0016225541896376474,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "P1-1",
+    "controller": "CS",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -3.2091865658645915,
+      "v3_discounted_return": -3.2091865658645915,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -2.939222466177595,
+        "tracking": -0.027379422956723878,
+        "uncapped": -0.2154504954286724,
+        "relative_velocity": -0.011343259883546968,
+        "heading": -0.011610213437081417,
+        "slip": -0.00247935280069063,
+        "tilt": 0.0,
+        "continuity": -0.0017013551802791422,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "P1-1",
+    "controller": "CS",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -3.2091865658645915,
+      "v3_discounted_return": -3.2091865658645915,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -2.939222466177595,
+        "tracking": -0.027379422956723878,
+        "uncapped": -0.2154504954286724,
+        "relative_velocity": -0.011343259883546968,
+        "heading": -0.011610213437081417,
+        "slip": -0.00247935280069063,
+        "tilt": 0.0,
+        "continuity": -0.0017013551802791422,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "P1-1",
+    "controller": "CP",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -2.6716860033718044,
+      "v3_discounted_return": -2.6716860033718044,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -2.4410567125972955,
+        "tracking": -0.02310243617243309,
+        "uncapped": -0.18819723537962635,
+        "relative_velocity": -0.010111166848573216,
+        "heading": -0.00849115766986781,
+        "slip": -3.477514856771222e-05,
+        "tilt": 0.0,
+        "continuity": -0.0006925195554419851,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "P1-1",
+    "controller": "CP",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -2.6716860033718044,
+      "v3_discounted_return": -2.6716860033718044,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -2.4410567125972955,
+        "tracking": -0.02310243617243309,
+        "uncapped": -0.18819723537962635,
+        "relative_velocity": -0.010111166848573216,
+        "heading": -0.00849115766986781,
+        "slip": -3.477514856771222e-05,
+        "tilt": 0.0,
+        "continuity": -0.0006925195554419851,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "P1-13",
+    "controller": "BC500",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -5.939460314656174,
+      "v3_discounted_return": -5.939460314656174,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -5.300215974882383,
+        "tracking": -0.058608345163171066,
+        "uncapped": -0.26680870992645284,
+        "relative_velocity": -0.053239509027924126,
+        "heading": -0.23202501368597428,
+        "slip": -0.011277229812466621,
+        "tilt": 0.0,
+        "continuity": -0.017285532157797674,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "P1-13",
+    "controller": "BC500",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -5.939460314656174,
+      "v3_discounted_return": -5.939460314656174,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -5.300215974882383,
+        "tracking": -0.058608345163171066,
+        "uncapped": -0.26680870992645284,
+        "relative_velocity": -0.053239509027924126,
+        "heading": -0.23202501368597428,
+        "slip": -0.011277229812466621,
+        "tilt": 0.0,
+        "continuity": -0.017285532157797674,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "P1-13",
+    "controller": "CS",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -10.18307860864575,
+      "v3_discounted_return": -10.877044472555097,
+      "risk_discounted": 0.6939658639093457,
+      "legacy_term_returns": {
+        "force": -9.264788447274668,
+        "tracking": -0.1384551913816688,
+        "uncapped": -0.512166307942441,
+        "relative_velocity": -0.07412688802724665,
+        "heading": -0.15638623186586942,
+        "slip": -0.02363232552536077,
+        "tilt": 0.0,
+        "continuity": -0.013523216628493403,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": [
+        {
+          "time": 8.990000000000006,
+          "v": 1.235190084045416,
+          "normal_N": 48.85214049426546,
+          "body": "left_ankle_roll_link",
+          "event": 0.8216121232666102,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 48.85214049426546,
+              "tangent_speed_mps": 1.235190084045416
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 26.467765639859824,
+              "tangent_speed_mps": 1.19929769437269
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.69096736676428,
+              "tangent_speed_mps": 0.007065252762189149
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 61.71212772517059,
+              "tangent_speed_mps": 0.006326038535547184
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 62.65163362606688,
+              "tangent_speed_mps": 0.004296998962753529
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 34.463773987500026,
+              "tangent_speed_mps": 0.0026376028964019845
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 48.85214049426546,
+              "world_point": [
+                0.45664096823114647,
+                0.19764976775394472,
+                -0.0005702831332103885
+              ],
+              "body_local_point": [
+                -0.05007155148767393,
+                0.02506004239669617,
+                -0.0344287319646972
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 26.467765639859824,
+              "world_point": [
+                0.44960798873332175,
+                0.1481515062564311,
+                -0.0002314217651942594
+              ],
+              "body_local_point": [
+                -0.05007702498309717,
+                -0.024935364522234448,
+                -0.03476751799036518
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.69096736676428,
+              "world_point": [
+                0.5024888203724539,
+                -0.02012081570516546,
+                -0.0005495858639693822
+              ],
+              "body_local_point": [
+                -0.05000768550291661,
+                0.025027505209576785,
+                -0.034450322502771226
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 61.71212772517059,
+              "world_point": [
+                0.4850752491769546,
+                -0.06698948376562132,
+                -0.00039507659395493673
+              ],
+              "body_local_point": [
+                -0.05000795232784777,
+                -0.024971539865842367,
+                -0.03460482859146645
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 62.65163362606688,
+              "world_point": [
+                0.6635870866972461,
+                -0.07463943261127265,
+                -0.0004182487105923848
+              ],
+              "body_local_point": [
+                0.11999208768851118,
+                0.030028316921884544,
+                -0.03458165695193889
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 34.463773987500026,
+              "world_point": [
+                0.6426908012626469,
+                -0.13088183428381966,
+                -0.0002328375865750503
+              ],
+              "body_local_point": [
+                0.11999176749859375,
+                -0.029970537168618454,
+                -0.03476706425837316
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "state": "P1-13",
+    "controller": "CS",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -10.18307860864575,
+      "v3_discounted_return": -10.877044472555097,
+      "risk_discounted": 0.6939658639093457,
+      "legacy_term_returns": {
+        "force": -9.264788447274668,
+        "tracking": -0.1384551913816688,
+        "uncapped": -0.512166307942441,
+        "relative_velocity": -0.07412688802724665,
+        "heading": -0.15638623186586942,
+        "slip": -0.02363232552536077,
+        "tilt": 0.0,
+        "continuity": -0.013523216628493403,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": [
+        {
+          "time": 8.990000000000006,
+          "v": 1.235190084045416,
+          "normal_N": 48.85214049426546,
+          "body": "left_ankle_roll_link",
+          "event": 0.8216121232666102,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 48.85214049426546,
+              "tangent_speed_mps": 1.235190084045416
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 26.467765639859824,
+              "tangent_speed_mps": 1.19929769437269
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.69096736676428,
+              "tangent_speed_mps": 0.007065252762189149
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 61.71212772517059,
+              "tangent_speed_mps": 0.006326038535547184
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 62.65163362606688,
+              "tangent_speed_mps": 0.004296998962753529
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 34.463773987500026,
+              "tangent_speed_mps": 0.0026376028964019845
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 48.85214049426546,
+              "world_point": [
+                0.45664096823114647,
+                0.19764976775394472,
+                -0.0005702831332103885
+              ],
+              "body_local_point": [
+                -0.05007155148767393,
+                0.02506004239669617,
+                -0.0344287319646972
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 26.467765639859824,
+              "world_point": [
+                0.44960798873332175,
+                0.1481515062564311,
+                -0.0002314217651942594
+              ],
+              "body_local_point": [
+                -0.05007702498309717,
+                -0.024935364522234448,
+                -0.03476751799036518
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.69096736676428,
+              "world_point": [
+                0.5024888203724539,
+                -0.02012081570516546,
+                -0.0005495858639693822
+              ],
+              "body_local_point": [
+                -0.05000768550291661,
+                0.025027505209576785,
+                -0.034450322502771226
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 61.71212772517059,
+              "world_point": [
+                0.4850752491769546,
+                -0.06698948376562132,
+                -0.00039507659395493673
+              ],
+              "body_local_point": [
+                -0.05000795232784777,
+                -0.024971539865842367,
+                -0.03460482859146645
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 62.65163362606688,
+              "world_point": [
+                0.6635870866972461,
+                -0.07463943261127265,
+                -0.0004182487105923848
+              ],
+              "body_local_point": [
+                0.11999208768851118,
+                0.030028316921884544,
+                -0.03458165695193889
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 34.463773987500026,
+              "world_point": [
+                0.6426908012626469,
+                -0.13088183428381966,
+                -0.0002328375865750503
+              ],
+              "body_local_point": [
+                0.11999176749859375,
+                -0.029970537168618454,
+                -0.03476706425837316
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "state": "P1-13",
+    "controller": "CP",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -16.888030760155313,
+      "v3_discounted_return": -17.04391515141084,
+      "risk_discounted": 0.15588439125552742,
+      "legacy_term_returns": {
+        "force": -15.555380113799867,
+        "tracking": -0.3645640077083505,
+        "uncapped": -0.9105114349205683,
+        "relative_velocity": -0.017726539860527357,
+        "heading": -0.01656541276282043,
+        "slip": -0.015590724607783888,
+        "tilt": 0.0,
+        "continuity": -0.007692526495366266,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": [
+        {
+          "time": 9.430000000000074,
+          "v": 0.7940517702592794,
+          "normal_N": 81.06273442236827,
+          "body": "left_ankle_roll_link",
+          "event": 0.19290190026725687,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 40.58108305048023,
+              "tangent_speed_mps": 0.787306300800022
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 81.06273442236827,
+              "tangent_speed_mps": 0.7940517702592794
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 56.46860617686769,
+              "tangent_speed_mps": 0.003050266379703025
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 23.485721594460713,
+              "tangent_speed_mps": 0.0033977938095872337
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 101.06631530723364,
+              "tangent_speed_mps": 0.0021760064341885665
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 72.9666734688603,
+              "tangent_speed_mps": 0.002714844053885087
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 40.58108305048023,
+              "world_point": [
+                0.05089518963174278,
+                0.12423952571206287,
+                -0.00013944830749833097
+              ],
+              "body_local_point": [
+                -0.049998972301004724,
+                0.02503481639569123,
+                -0.03486042688638632
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 81.06273442236827,
+              "world_point": [
+                0.22018893600588635,
+                0.14050674087569515,
+                -0.00017532806248595628
+              ],
+              "body_local_point": [
+                0.12000102011269859,
+                0.030034559387058065,
+                -0.034824548052695935
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 56.46860617686769,
+              "world_point": [
+                0.09987057186705922,
+                -0.08783960338846969,
+                -0.0003748150935049283
+              ],
+              "body_local_point": [
+                -0.04998548833627627,
+                0.02503557229993645,
+                -0.03462502534505095
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 23.485721594460713,
+              "world_point": [
+                0.09174928847968683,
+                -0.13717414379796417,
+                -0.0001825400782593939
+              ],
+              "body_local_point": [
+                -0.0499848850673432,
+                -0.024962948912804147,
+                -0.034817293727117546
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 101.06631530723364,
+              "world_point": [
+                0.2684236067435055,
+                -0.11052324150598929,
+                -0.0006607327796306645
+              ],
+              "body_local_point": [
+                0.1200136145879536,
+                0.0300333733068381,
+                -0.034339117522625764
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 72.9666734688603,
+              "world_point": [
+                0.25867806667865867,
+                -0.16972468999738266,
+                -0.0004300027613360225
+              ],
+              "body_local_point": [
+                0.12001433851067331,
+                -0.02996485214845062,
+                -0.03456983958110568
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "state": "P1-13",
+    "controller": "CP",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -16.888030760155313,
+      "v3_discounted_return": -17.04391515141084,
+      "risk_discounted": 0.15588439125552742,
+      "legacy_term_returns": {
+        "force": -15.555380113799867,
+        "tracking": -0.3645640077083505,
+        "uncapped": -0.9105114349205683,
+        "relative_velocity": -0.017726539860527357,
+        "heading": -0.01656541276282043,
+        "slip": -0.015590724607783888,
+        "tilt": 0.0,
+        "continuity": -0.007692526495366266,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": [
+        {
+          "time": 9.430000000000074,
+          "v": 0.7940517702592794,
+          "normal_N": 81.06273442236827,
+          "body": "left_ankle_roll_link",
+          "event": 0.19290190026725687,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 40.58108305048023,
+              "tangent_speed_mps": 0.787306300800022
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 81.06273442236827,
+              "tangent_speed_mps": 0.7940517702592794
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 56.46860617686769,
+              "tangent_speed_mps": 0.003050266379703025
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 23.485721594460713,
+              "tangent_speed_mps": 0.0033977938095872337
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 101.06631530723364,
+              "tangent_speed_mps": 0.0021760064341885665
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 72.9666734688603,
+              "tangent_speed_mps": 0.002714844053885087
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 40.58108305048023,
+              "world_point": [
+                0.05089518963174278,
+                0.12423952571206287,
+                -0.00013944830749833097
+              ],
+              "body_local_point": [
+                -0.049998972301004724,
+                0.02503481639569123,
+                -0.03486042688638632
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 81.06273442236827,
+              "world_point": [
+                0.22018893600588635,
+                0.14050674087569515,
+                -0.00017532806248595628
+              ],
+              "body_local_point": [
+                0.12000102011269859,
+                0.030034559387058065,
+                -0.034824548052695935
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 56.46860617686769,
+              "world_point": [
+                0.09987057186705922,
+                -0.08783960338846969,
+                -0.0003748150935049283
+              ],
+              "body_local_point": [
+                -0.04998548833627627,
+                0.02503557229993645,
+                -0.03462502534505095
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 23.485721594460713,
+              "world_point": [
+                0.09174928847968683,
+                -0.13717414379796417,
+                -0.0001825400782593939
+              ],
+              "body_local_point": [
+                -0.0499848850673432,
+                -0.024962948912804147,
+                -0.034817293727117546
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 101.06631530723364,
+              "world_point": [
+                0.2684236067435055,
+                -0.11052324150598929,
+                -0.0006607327796306645
+              ],
+              "body_local_point": [
+                0.1200136145879536,
+                0.0300333733068381,
+                -0.034339117522625764
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 72.9666734688603,
+              "world_point": [
+                0.25867806667865867,
+                -0.16972468999738266,
+                -0.0004300027613360225
+              ],
+              "body_local_point": [
+                0.12001433851067331,
+                -0.02996485214845062,
+                -0.03456983958110568
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "BC500",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -10.880083116968335,
+      "v3_discounted_return": -10.880083116968335,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -9.965446190839431,
+        "tracking": -0.20908797766316267,
+        "uncapped": -0.5832131303205859,
+        "relative_velocity": -0.03081884179104776,
+        "heading": -0.07331837305754602,
+        "slip": -0.0021046730423694092,
+        "tilt": 0.0,
+        "continuity": -0.004947561016076213,
+        "soft_prior": 0.0,
+        "idle": -0.011146369238128203
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "BC500",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -10.880083116968335,
+      "v3_discounted_return": -10.880083116968335,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -9.965446190839431,
+        "tracking": -0.20908797766316267,
+        "uncapped": -0.5832131303205859,
+        "relative_velocity": -0.03081884179104776,
+        "heading": -0.07331837305754602,
+        "slip": -0.0021046730423694092,
+        "tilt": 0.0,
+        "continuity": -0.004947561016076213,
+        "soft_prior": 0.0,
+        "idle": -0.011146369238128203
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CS",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -2.3295951508475956,
+      "v3_discounted_return": -2.3314645305083532,
+      "risk_discounted": 0.0018693796607576682,
+      "legacy_term_returns": {
+        "force": -1.8592800775523566,
+        "tracking": -0.02106909566719219,
+        "uncapped": -0.1420073062588644,
+        "relative_velocity": -0.01785041110975917,
+        "heading": -0.26698670624961784,
+        "slip": -0.018427349429580048,
+        "tilt": 0.0,
+        "continuity": -0.0037043657297696356,
+        "soft_prior": 0.0,
+        "idle": -0.00026983885045696435
+      },
+      "risk_events": [
+        {
+          "time": 8.484999999999927,
+          "v": 0.4848708261020438,
+          "normal_N": 36.67669924358098,
+          "body": "left_ankle_roll_link",
+          "event": 0.001981588095322779,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 36.67669924358098,
+              "tangent_speed_mps": 0.4848708261020438
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 39.58674313960006,
+              "tangent_speed_mps": 0.470648896896941
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 71.66201907660002,
+              "tangent_speed_mps": 0.00514106524033149
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.70961595584993,
+              "tangent_speed_mps": 0.004297844164160593
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 60.770763211858664,
+              "tangent_speed_mps": 0.00458574525944912
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 62.72008585720269,
+              "tangent_speed_mps": 0.0033964236575914743
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 36.67669924358098,
+              "world_point": [
+                0.3038359314874217,
+                0.23719435581066325,
+                -0.00030175582260578114
+              ],
+              "body_local_point": [
+                -0.050118830751472505,
+                0.02500143663312282,
+                -0.03469674094868009
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 39.58674313960006,
+              "world_point": [
+                0.2918572613551309,
+                0.18865044550147064,
+                -0.0002941113012240922
+              ],
+              "body_local_point": [
+                -0.05011902410119764,
+                -0.024998561029328903,
+                -0.03470438302415569
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 71.66201907660002,
+              "world_point": [
+                0.273580401126686,
+                0.04864559288374706,
+                -0.00046246147736054254
+              ],
+              "body_local_point": [
+                -0.05000348065801532,
+                0.025007036828221314,
+                -0.0345375317312946
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.70961595584993,
+              "world_point": [
+                0.25658067329914275,
+                0.0016242866352514538,
+                -0.0004236914030888179
+              ],
+              "body_local_point": [
+                -0.05000351039778921,
+                -0.024992903047032285,
+                -0.034576301747539055
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 60.770763211858664,
+              "world_point": [
+                0.4351530291222273,
+                -0.004451213420082841,
+                -0.00040113662923847715
+              ],
+              "body_local_point": [
+                0.11999647230088004,
+                0.030007131930977975,
+                -0.034598856487631606
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 62.72008585720269,
+              "world_point": [
+                0.4147533557291754,
+                -0.06087678091827758,
+                -0.0003546125401124086
+              ],
+              "body_local_point": [
+                0.11999643661315137,
+                -0.02999279591932634,
+                -0.034645380507124963
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CS",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -2.3295951508475956,
+      "v3_discounted_return": -2.3314645305083532,
+      "risk_discounted": 0.0018693796607576682,
+      "legacy_term_returns": {
+        "force": -1.8592800775523566,
+        "tracking": -0.02106909566719219,
+        "uncapped": -0.1420073062588644,
+        "relative_velocity": -0.01785041110975917,
+        "heading": -0.26698670624961784,
+        "slip": -0.018427349429580048,
+        "tilt": 0.0,
+        "continuity": -0.0037043657297696356,
+        "soft_prior": 0.0,
+        "idle": -0.00026983885045696435
+      },
+      "risk_events": [
+        {
+          "time": 8.484999999999927,
+          "v": 0.4848708261020438,
+          "normal_N": 36.67669924358098,
+          "body": "left_ankle_roll_link",
+          "event": 0.001981588095322779,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 36.67669924358098,
+              "tangent_speed_mps": 0.4848708261020438
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 39.58674313960006,
+              "tangent_speed_mps": 0.470648896896941
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 71.66201907660002,
+              "tangent_speed_mps": 0.00514106524033149
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.70961595584993,
+              "tangent_speed_mps": 0.004297844164160593
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 60.770763211858664,
+              "tangent_speed_mps": 0.00458574525944912
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 62.72008585720269,
+              "tangent_speed_mps": 0.0033964236575914743
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 36.67669924358098,
+              "world_point": [
+                0.3038359314874217,
+                0.23719435581066325,
+                -0.00030175582260578114
+              ],
+              "body_local_point": [
+                -0.050118830751472505,
+                0.02500143663312282,
+                -0.03469674094868009
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 39.58674313960006,
+              "world_point": [
+                0.2918572613551309,
+                0.18865044550147064,
+                -0.0002941113012240922
+              ],
+              "body_local_point": [
+                -0.05011902410119764,
+                -0.024998561029328903,
+                -0.03470438302415569
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 71.66201907660002,
+              "world_point": [
+                0.273580401126686,
+                0.04864559288374706,
+                -0.00046246147736054254
+              ],
+              "body_local_point": [
+                -0.05000348065801532,
+                0.025007036828221314,
+                -0.0345375317312946
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.70961595584993,
+              "world_point": [
+                0.25658067329914275,
+                0.0016242866352514538,
+                -0.0004236914030888179
+              ],
+              "body_local_point": [
+                -0.05000351039778921,
+                -0.024992903047032285,
+                -0.034576301747539055
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 60.770763211858664,
+              "world_point": [
+                0.4351530291222273,
+                -0.004451213420082841,
+                -0.00040113662923847715
+              ],
+              "body_local_point": [
+                0.11999647230088004,
+                0.030007131930977975,
+                -0.034598856487631606
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 62.72008585720269,
+              "world_point": [
+                0.4147533557291754,
+                -0.06087678091827758,
+                -0.0003546125401124086
+              ],
+              "body_local_point": [
+                0.11999643661315137,
+                -0.02999279591932634,
+                -0.034645380507124963
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CP",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -2.3037559387160558,
+      "v3_discounted_return": -2.3203979970252933,
+      "risk_discounted": 0.016642058309237345,
+      "legacy_term_returns": {
+        "force": -1.8471077608714608,
+        "tracking": -0.020956936805224424,
+        "uncapped": -0.1411959557931407,
+        "relative_velocity": -0.0178392073953063,
+        "heading": -0.24883128518682046,
+        "slip": -0.022720297839013335,
+        "tilt": 0.0,
+        "continuity": -0.004802425176979994,
+        "soft_prior": 0.0,
+        "idle": -0.00030206964811173813
+      },
+      "risk_events": [
+        {
+          "time": 8.43999999999992,
+          "v": 0.5538350647566718,
+          "normal_N": 25.979621361448523,
+          "body": "left_ankle_roll_link",
+          "event": 0.017570211467147316,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 25.979621361448523,
+              "tangent_speed_mps": 0.5538350647566718
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 37.851468014843825,
+              "tangent_speed_mps": 0.5373307826883175
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 71.25892832606169,
+              "tangent_speed_mps": 0.005501793866247016
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.86726396846275,
+              "tangent_speed_mps": 0.004612085079612047
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 59.10539822882911,
+              "tangent_speed_mps": 0.00487450557924808
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 60.11503968187841,
+              "tangent_speed_mps": 0.0036100856622967113
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 25.979621361448523,
+              "world_point": [
+                0.2893650645819819,
+                0.24001752538556165,
+                -0.0001901778732971461
+              ],
+              "body_local_point": [
+                -0.05011090831651283,
+                0.024988244994823387,
+                -0.03480852888685319
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 37.851468014843825,
+              "world_point": [
+                0.2781878704182943,
+                0.19128298529031088,
+                -0.00025127683323231814
+              ],
+              "body_local_point": [
+                -0.05010949945302299,
+                -0.025011605681860373,
+                -0.034747446354887225
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 71.25892832606169,
+              "world_point": [
+                0.2725026885817797,
+                0.04782017277222205,
+                -0.0004785052311956084
+              ],
+              "body_local_point": [
+                -0.050004499476138546,
+                0.025008530142495773,
+                -0.03452148448363023
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.86726396846275,
+              "world_point": [
+                0.2557737210939923,
+                0.0007018881167703958,
+                -0.0004313408368307372
+              ],
+              "body_local_point": [
+                -0.05000454641085326,
+                -0.024991380878300395,
+                -0.0345686487707089
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 59.10539822882911,
+              "world_point": [
+                0.43437806571320986,
+                -0.0043462605151504685,
+                -0.0003986356009072871
+              ],
+              "body_local_point": [
+                0.11999542104317777,
+                0.030008680822605407,
+                -0.03460135393223681
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 60.11503968187841,
+              "world_point": [
+                0.41430330472786503,
+                -0.06088820210169244,
+                -0.00034203832766944303
+              ],
+              "body_local_point": [
+                0.11999536472152009,
+                -0.029991212402349986,
+                -0.03465795107673121
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CP",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -2.3037559387160558,
+      "v3_discounted_return": -2.3203979970252933,
+      "risk_discounted": 0.016642058309237345,
+      "legacy_term_returns": {
+        "force": -1.8471077608714608,
+        "tracking": -0.020956936805224424,
+        "uncapped": -0.1411959557931407,
+        "relative_velocity": -0.0178392073953063,
+        "heading": -0.24883128518682046,
+        "slip": -0.022720297839013335,
+        "tilt": 0.0,
+        "continuity": -0.004802425176979994,
+        "soft_prior": 0.0,
+        "idle": -0.00030206964811173813
+      },
+      "risk_events": [
+        {
+          "time": 8.43999999999992,
+          "v": 0.5538350647566718,
+          "normal_N": 25.979621361448523,
+          "body": "left_ankle_roll_link",
+          "event": 0.017570211467147316,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 25.979621361448523,
+              "tangent_speed_mps": 0.5538350647566718
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 37.851468014843825,
+              "tangent_speed_mps": 0.5373307826883175
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 71.25892832606169,
+              "tangent_speed_mps": 0.005501793866247016
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.86726396846275,
+              "tangent_speed_mps": 0.004612085079612047
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 59.10539822882911,
+              "tangent_speed_mps": 0.00487450557924808
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 60.11503968187841,
+              "tangent_speed_mps": 0.0036100856622967113
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 25.979621361448523,
+              "world_point": [
+                0.2893650645819819,
+                0.24001752538556165,
+                -0.0001901778732971461
+              ],
+              "body_local_point": [
+                -0.05011090831651283,
+                0.024988244994823387,
+                -0.03480852888685319
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 37.851468014843825,
+              "world_point": [
+                0.2781878704182943,
+                0.19128298529031088,
+                -0.00025127683323231814
+              ],
+              "body_local_point": [
+                -0.05010949945302299,
+                -0.025011605681860373,
+                -0.034747446354887225
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 71.25892832606169,
+              "world_point": [
+                0.2725026885817797,
+                0.04782017277222205,
+                -0.0004785052311956084
+              ],
+              "body_local_point": [
+                -0.050004499476138546,
+                0.025008530142495773,
+                -0.03452148448363023
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.86726396846275,
+              "world_point": [
+                0.2557737210939923,
+                0.0007018881167703958,
+                -0.0004313408368307372
+              ],
+              "body_local_point": [
+                -0.05000454641085326,
+                -0.024991380878300395,
+                -0.0345686487707089
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 59.10539822882911,
+              "world_point": [
+                0.43437806571320986,
+                -0.0043462605151504685,
+                -0.0003986356009072871
+              ],
+              "body_local_point": [
+                0.11999542104317777,
+                0.030008680822605407,
+                -0.03460135393223681
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 60.11503968187841,
+              "world_point": [
+                0.41430330472786503,
+                -0.06088820210169244,
+                -0.00034203832766944303
+              ],
+              "body_local_point": [
+                0.11999536472152009,
+                -0.029991212402349986,
+                -0.03465795107673121
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "BC500",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -0.5862469975263691,
+      "v3_discounted_return": -0.5862469975263691,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -0.5096515534696078,
+        "tracking": -0.005770686494153709,
+        "uncapped": -0.04541392729783529,
+        "relative_velocity": -0.004582271204749693,
+        "heading": -0.018855952156345963,
+        "slip": -5.805046805112557e-05,
+        "tilt": 0.0,
+        "continuity": -0.0017171882458116342,
+        "soft_prior": 0.0,
+        "idle": -0.00019736818981409913
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "BC500",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -0.5862469975263691,
+      "v3_discounted_return": -0.5862469975263691,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -0.5096515534696078,
+        "tracking": -0.005770686494153709,
+        "uncapped": -0.04541392729783529,
+        "relative_velocity": -0.004582271204749693,
+        "heading": -0.018855952156345963,
+        "slip": -5.805046805112557e-05,
+        "tilt": 0.0,
+        "continuity": -0.0017171882458116342,
+        "soft_prior": 0.0,
+        "idle": -0.00019736818981409913
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CS",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -1.6056482377309653,
+      "v3_discounted_return": -1.6056482377309653,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -1.4517304118635774,
+        "tracking": -0.013821066042705119,
+        "uncapped": -0.11683124723848971,
+        "relative_velocity": -0.011901306693445853,
+        "heading": -0.006806849696329641,
+        "slip": -0.0001326593868425313,
+        "tilt": 0.0,
+        "continuity": -0.0005849227892881102,
+        "soft_prior": 0.0,
+        "idle": -0.0038397740202857186
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CS",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -1.6056482377309653,
+      "v3_discounted_return": -1.6056482377309653,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -1.4517304118635774,
+        "tracking": -0.013821066042705119,
+        "uncapped": -0.11683124723848971,
+        "relative_velocity": -0.011901306693445853,
+        "heading": -0.006806849696329641,
+        "slip": -0.0001326593868425313,
+        "tilt": 0.0,
+        "continuity": -0.0005849227892881102,
+        "soft_prior": 0.0,
+        "idle": -0.0038397740202857186
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CP",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -1.5006083841087525,
+      "v3_discounted_return": -1.5006083841087525,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -1.3561485516206697,
+        "tracking": -0.012616809594518476,
+        "uncapped": -0.10863566779919467,
+        "relative_velocity": -0.015558384005547059,
+        "heading": -0.006595584010039089,
+        "slip": -4.515073643910269e-05,
+        "tilt": 0.0,
+        "continuity": -0.0006487558871257514,
+        "soft_prior": 0.0,
+        "idle": -0.0003594804552179877
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CP",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -1.5006083841087525,
+      "v3_discounted_return": -1.5006083841087525,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -1.3561485516206697,
+        "tracking": -0.012616809594518476,
+        "uncapped": -0.10863566779919467,
+        "relative_velocity": -0.015558384005547059,
+        "heading": -0.006595584010039089,
+        "slip": -4.515073643910269e-05,
+        "tilt": 0.0,
+        "continuity": -0.0006487558871257514,
+        "soft_prior": 0.0,
+        "idle": -0.0003594804552179877
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "BC500",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -10.497856366981297,
+      "v3_discounted_return": -10.497856366981297,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -9.697416423638586,
+        "tracking": -0.14122125485944018,
+        "uncapped": -0.5351484272434889,
+        "relative_velocity": -0.07215020783917007,
+        "heading": -0.038564435006140235,
+        "slip": -0.007131302925328449,
+        "tilt": 0.0,
+        "continuity": -0.006224315469146045,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "BC500",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -10.497856366981297,
+      "v3_discounted_return": -10.497856366981297,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -9.697416423638586,
+        "tracking": -0.14122125485944018,
+        "uncapped": -0.5351484272434889,
+        "relative_velocity": -0.07215020783917007,
+        "heading": -0.038564435006140235,
+        "slip": -0.007131302925328449,
+        "tilt": 0.0,
+        "continuity": -0.006224315469146045,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CS",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -3.228258416043669,
+      "v3_discounted_return": -3.228258416043669,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -2.9712623559863633,
+        "tracking": -0.027395210911909322,
+        "uncapped": -0.19011694761451983,
+        "relative_velocity": -0.01747685266691759,
+        "heading": -0.010928312434009888,
+        "slip": -0.006251062425301177,
+        "tilt": 0.0,
+        "continuity": -0.004827674004646486,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CS",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -3.228258416043669,
+      "v3_discounted_return": -3.228258416043669,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -2.9712623559863633,
+        "tracking": -0.027395210911909322,
+        "uncapped": -0.19011694761451983,
+        "relative_velocity": -0.01747685266691759,
+        "heading": -0.010928312434009888,
+        "slip": -0.006251062425301177,
+        "tilt": 0.0,
+        "continuity": -0.004827674004646486,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CP",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -6.316845292811345,
+      "v3_discounted_return": -6.316845292811345,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -5.880178462275838,
+        "tracking": -0.05476073776678436,
+        "uncapped": -0.3529168693846303,
+        "relative_velocity": -0.008159128248855903,
+        "heading": -0.020395209747581047,
+        "slip": -0.00011083590215526227,
+        "tilt": 0.0,
+        "continuity": -0.00032404948550028995,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CP",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -6.316845292811345,
+      "v3_discounted_return": -6.316845292811345,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -5.880178462275838,
+        "tracking": -0.05476073776678436,
+        "uncapped": -0.3529168693846303,
+        "relative_velocity": -0.008159128248855903,
+        "heading": -0.020395209747581047,
+        "slip": -0.00011083590215526227,
+        "tilt": 0.0,
+        "continuity": -0.00032404948550028995,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "BC500",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -6.68583351498186,
+      "v3_discounted_return": -6.68583351498186,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -6.131381093160391,
+        "tracking": -0.05643537253719693,
+        "uncapped": -0.33180246415409803,
+        "relative_velocity": -0.0759396853900635,
+        "heading": -0.06681269772375746,
+        "slip": -0.012791838323661615,
+        "tilt": 0.0,
+        "continuity": -0.010670363692696482,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "BC500",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -6.68583351498186,
+      "v3_discounted_return": -6.68583351498186,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": -6.131381093160391,
+        "tracking": -0.05643537253719693,
+        "uncapped": -0.33180246415409803,
+        "relative_velocity": -0.0759396853900635,
+        "heading": -0.06681269772375746,
+        "slip": -0.012791838323661615,
+        "tilt": 0.0,
+        "continuity": -0.010670363692696482,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CS",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -5.318404447531965,
+      "v3_discounted_return": -6.157668113357479,
+      "risk_discounted": 0.8392636658255135,
+      "legacy_term_returns": {
+        "force": -4.882187301688473,
+        "tracking": -0.04387591439848883,
+        "uncapped": -0.2865163499762441,
+        "relative_velocity": -0.03417033666678754,
+        "heading": -0.02257113989043387,
+        "slip": -0.03873400305141032,
+        "tilt": 0.0,
+        "continuity": -0.010349401860129673,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": [
+        {
+          "time": 6.989999999999873,
+          "v": 1.1617732127750862,
+          "normal_N": 41.864752168609634,
+          "body": "left_ankle_roll_link",
+          "event": 0.7139340454034597,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 41.864752168609634,
+              "tangent_speed_mps": 1.1617732127750862
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 33.777930681436075,
+              "tangent_speed_mps": 1.1280746497508267
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.43593951112658,
+              "tangent_speed_mps": 0.006678567700566014
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 84.81521451027038,
+              "tangent_speed_mps": 0.005307343601706423
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 45.296968838603895,
+              "tangent_speed_mps": 0.005834704480430433
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 50.739467911244574,
+              "tangent_speed_mps": 0.0037851674948689816
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 41.864752168609634,
+              "world_point": [
+                0.19581829265920037,
+                0.16943665439056943,
+                -0.0012218499696382535
+              ],
+              "body_local_point": [
+                -0.05011858512613642,
+                0.025008931649476894,
+                -0.033776277988366264
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 33.777930681436075,
+              "world_point": [
+                0.19693649136616656,
+                0.11944929938862807,
+                -0.0011627492893774203
+              ],
+              "body_local_point": [
+                -0.0501204401243676,
+                -0.02499092863490686,
+                -0.033835349384730345
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.43593951112658,
+              "world_point": [
+                0.3157052919719968,
+                -0.02818461976340541,
+                -0.000547323867089472
+              ],
+              "body_local_point": [
+                -0.05001040737861115,
+                0.025004721992156673,
+                -0.03445266146634259
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 84.81521451027038,
+              "world_point": [
+                0.3038040532016354,
+                -0.07674754496529822,
+                -0.0005208117650653994
+              ],
+              "body_local_point": [
+                -0.05001046934617294,
+                -0.024995249892181267,
+                -0.034479173481039065
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 45.296968838603895,
+              "world_point": [
+                0.48200910366039035,
+                -0.06379204201652375,
+                -0.0003513019298335904
+              ],
+              "body_local_point": [
+                0.11998913445320987,
+                0.030004929870300682,
+                -0.034648682757926305
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 50.739467911244574,
+              "world_point": [
+                0.4677276171359566,
+                -0.12206755225879512,
+                -0.0003194874074047005
+              ],
+              "body_local_point": [
+                0.11998906009213568,
+                -0.029995036390904856,
+                -0.03468049717556206
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        },
+        {
+          "time": 7.12999999999987,
+          "v": 0.889312574329639,
+          "normal_N": 33.39568604150551,
+          "body": "right_ankle_roll_link",
+          "event": 0.31451124705266365,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 45.96589608275758,
+              "tangent_speed_mps": 0.002446094383016866
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 79.46543331501309,
+              "tangent_speed_mps": 0.0023488767593350685
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 48.319349809909816,
+              "tangent_speed_mps": 0.004245437115824645
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 81.48533237003419,
+              "tangent_speed_mps": 0.004176518698334732
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 33.39568604150551,
+              "tangent_speed_mps": 0.889312574329639
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 42.42368726231132,
+              "tangent_speed_mps": 0.8467089273544539
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 45.96589608275758,
+              "world_point": [
+                0.2018798982787414,
+                0.170244625036319,
+                -0.0002949626309712485
+              ],
+              "body_local_point": [
+                -0.04999683102557554,
+                0.02497140201068958,
+                -0.03470494938937344
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 79.46543331501309,
+              "world_point": [
+                0.2027898184504628,
+                0.12025382903261968,
+                -0.0004469167339219045
+              ],
+              "body_local_point": [
+                -0.04999693337091907,
+                -0.025027674387334258,
+                -0.034552998127817765
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 48.319349809909816,
+              "world_point": [
+                0.3717607012097493,
+                0.17833818551377675,
+                -0.0003370171009537924
+              ],
+              "body_local_point": [
+                0.12000314064956123,
+                0.029971657624660048,
+                -0.03466289570576887
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 81.48533237003419,
+              "world_point": [
+                0.37285260541581494,
+                0.11834923030933757,
+                -0.0005193620244945806
+              ],
+              "body_local_point": [
+                0.12000301783514895,
+                -0.030027234052968574,
+                -0.034480554191902074
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 33.39568604150551,
+              "world_point": [
+                0.4246170877239141,
+                -0.06718357499405529,
+                -0.0014931912151331535
+              ],
+              "body_local_point": [
+                0.12011093841755528,
+                0.030010681142374967,
+                -0.03350503729428477
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 42.42368726231132,
+              "world_point": [
+                0.41284011939339976,
+                -0.12601613077279977,
+                -0.0014018163239124227
+              ],
+              "body_local_point": [
+                0.12011382907583128,
+                -0.029989040545266854,
+                -0.033596366026798496
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CS",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -5.318404447531965,
+      "v3_discounted_return": -6.157668113357479,
+      "risk_discounted": 0.8392636658255135,
+      "legacy_term_returns": {
+        "force": -4.882187301688473,
+        "tracking": -0.04387591439848883,
+        "uncapped": -0.2865163499762441,
+        "relative_velocity": -0.03417033666678754,
+        "heading": -0.02257113989043387,
+        "slip": -0.03873400305141032,
+        "tilt": 0.0,
+        "continuity": -0.010349401860129673,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": [
+        {
+          "time": 6.989999999999873,
+          "v": 1.1617732127750862,
+          "normal_N": 41.864752168609634,
+          "body": "left_ankle_roll_link",
+          "event": 0.7139340454034597,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 41.864752168609634,
+              "tangent_speed_mps": 1.1617732127750862
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 33.777930681436075,
+              "tangent_speed_mps": 1.1280746497508267
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.43593951112658,
+              "tangent_speed_mps": 0.006678567700566014
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 84.81521451027038,
+              "tangent_speed_mps": 0.005307343601706423
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 45.296968838603895,
+              "tangent_speed_mps": 0.005834704480430433
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 50.739467911244574,
+              "tangent_speed_mps": 0.0037851674948689816
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 41.864752168609634,
+              "world_point": [
+                0.19581829265920037,
+                0.16943665439056943,
+                -0.0012218499696382535
+              ],
+              "body_local_point": [
+                -0.05011858512613642,
+                0.025008931649476894,
+                -0.033776277988366264
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 33.777930681436075,
+              "world_point": [
+                0.19693649136616656,
+                0.11944929938862807,
+                -0.0011627492893774203
+              ],
+              "body_local_point": [
+                -0.0501204401243676,
+                -0.02499092863490686,
+                -0.033835349384730345
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 75.43593951112658,
+              "world_point": [
+                0.3157052919719968,
+                -0.02818461976340541,
+                -0.000547323867089472
+              ],
+              "body_local_point": [
+                -0.05001040737861115,
+                0.025004721992156673,
+                -0.03445266146634259
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 84.81521451027038,
+              "world_point": [
+                0.3038040532016354,
+                -0.07674754496529822,
+                -0.0005208117650653994
+              ],
+              "body_local_point": [
+                -0.05001046934617294,
+                -0.024995249892181267,
+                -0.034479173481039065
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 45.296968838603895,
+              "world_point": [
+                0.48200910366039035,
+                -0.06379204201652375,
+                -0.0003513019298335904
+              ],
+              "body_local_point": [
+                0.11998913445320987,
+                0.030004929870300682,
+                -0.034648682757926305
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 50.739467911244574,
+              "world_point": [
+                0.4677276171359566,
+                -0.12206755225879512,
+                -0.0003194874074047005
+              ],
+              "body_local_point": [
+                0.11998906009213568,
+                -0.029995036390904856,
+                -0.03468049717556206
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        },
+        {
+          "time": 7.12999999999987,
+          "v": 0.889312574329639,
+          "normal_N": 33.39568604150551,
+          "body": "right_ankle_roll_link",
+          "event": 0.31451124705266365,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 45.96589608275758,
+              "tangent_speed_mps": 0.002446094383016866
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 79.46543331501309,
+              "tangent_speed_mps": 0.0023488767593350685
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 48.319349809909816,
+              "tangent_speed_mps": 0.004245437115824645
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 81.48533237003419,
+              "tangent_speed_mps": 0.004176518698334732
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 33.39568604150551,
+              "tangent_speed_mps": 0.889312574329639
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 42.42368726231132,
+              "tangent_speed_mps": 0.8467089273544539
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 45.96589608275758,
+              "world_point": [
+                0.2018798982787414,
+                0.170244625036319,
+                -0.0002949626309712485
+              ],
+              "body_local_point": [
+                -0.04999683102557554,
+                0.02497140201068958,
+                -0.03470494938937344
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 79.46543331501309,
+              "world_point": [
+                0.2027898184504628,
+                0.12025382903261968,
+                -0.0004469167339219045
+              ],
+              "body_local_point": [
+                -0.04999693337091907,
+                -0.025027674387334258,
+                -0.034552998127817765
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 48.319349809909816,
+              "world_point": [
+                0.3717607012097493,
+                0.17833818551377675,
+                -0.0003370171009537924
+              ],
+              "body_local_point": [
+                0.12000314064956123,
+                0.029971657624660048,
+                -0.03466289570576887
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 81.48533237003419,
+              "world_point": [
+                0.37285260541581494,
+                0.11834923030933757,
+                -0.0005193620244945806
+              ],
+              "body_local_point": [
+                0.12000301783514895,
+                -0.030027234052968574,
+                -0.034480554191902074
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 33.39568604150551,
+              "world_point": [
+                0.4246170877239141,
+                -0.06718357499405529,
+                -0.0014931912151331535
+              ],
+              "body_local_point": [
+                0.12011093841755528,
+                0.030010681142374967,
+                -0.03350503729428477
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 42.42368726231132,
+              "world_point": [
+                0.41284011939339976,
+                -0.12601613077279977,
+                -0.0014018163239124227
+              ],
+              "body_local_point": [
+                0.12011382907583128,
+                -0.029989040545266854,
+                -0.033596366026798496
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CP",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -8.419225928698893,
+      "v3_discounted_return": -8.701259842086545,
+      "risk_discounted": 0.28203391338765266,
+      "legacy_term_returns": {
+        "force": -7.857399000843799,
+        "tracking": -0.07364415476284374,
+        "uncapped": -0.41484161377020584,
+        "relative_velocity": -0.011934176678720085,
+        "heading": -0.030499269934505774,
+        "slip": -0.023657282264227485,
+        "tilt": 0.0,
+        "continuity": -0.0072504304445908455,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": [
+        {
+          "time": 6.894999999999875,
+          "v": 0.9070820110530895,
+          "normal_N": 31.18483074708439,
+          "body": "left_ankle_roll_link",
+          "event": 0.34038694954453125,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 31.18483074708439,
+              "tangent_speed_mps": 0.9070820110530895
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 23.7078615091201,
+              "tangent_speed_mps": 0.8925258150415529
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 57.27091187157178,
+              "tangent_speed_mps": 0.0038943009132168787
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 26.91486959278288,
+              "tangent_speed_mps": 0.0038225567299521256
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 102.55735287675714,
+              "tangent_speed_mps": 0.004041170018643604
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 79.55702058739705,
+              "tangent_speed_mps": 0.003959238427877917
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 31.18483074708439,
+              "world_point": [
+                -0.025860043815677743,
+                0.1337794291906393,
+                -0.0003663718790978092
+              ],
+              "body_local_point": [
+                -0.05008261239624587,
+                0.024995192960841975,
+                -0.0346328891252843
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 23.7078615091201,
+              "world_point": [
+                -0.02358330193659452,
+                0.08383131855778098,
+                -0.00039230749063524396
+              ],
+              "body_local_point": [
+                -0.050082149993359554,
+                -0.02500478013292035,
+                -0.03460695765009591
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 57.27091187157178,
+              "world_point": [
+                0.06369074113861184,
+                -0.07739724401884439,
+                -0.00035923884691354754
+              ],
+              "body_local_point": [
+                -0.049984514676148034,
+                0.02503289077097542,
+                -0.034640618760674785
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 26.91486959278288,
+              "world_point": [
+                0.05032200516295935,
+                -0.1255755723577902,
+                -0.00018205470679954518
+              ],
+              "body_local_point": [
+                -0.04998392344688613,
+                -0.024965853460244387,
+                -0.034817797464250205
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 102.55735287675714,
+              "world_point": [
+                0.22883605830042256,
+                -0.11803787614317862,
+                -0.0006605858477035376
+              ],
+              "body_local_point": [
+                0.12001447978709981,
+                0.030030755014606992,
+                -0.03433928100611074
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 79.55702058739705,
+              "world_point": [
+                0.21279357512963956,
+                -0.1758518701499136,
+                -0.00044796487956673403
+              ],
+              "body_local_point": [
+                0.12001518926221405,
+                -0.02996773806285677,
+                -0.03455189545040126
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        },
+        {
+          "time": 6.899999999999875,
+          "v": 0.46365563169536606,
+          "normal_N": 25.67936093609858,
+          "body": "left_ankle_roll_link",
+          "event": 0.0003038872662213841,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 25.67936093609858,
+              "tangent_speed_mps": 0.46365563169536606
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 20.825298725255248,
+              "tangent_speed_mps": 0.4471696283918929
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 51.10577085299888,
+              "tangent_speed_mps": 0.003732991718865012
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 26.49107464443825,
+              "tangent_speed_mps": 0.0035246737589117723
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 85.86388774775035,
+              "tangent_speed_mps": 0.0041087401157439045
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 69.07004948755349,
+              "tangent_speed_mps": 0.003884534837124012
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 25.67936093609858,
+              "world_point": [
+                -0.023521746916248747,
+                0.13389273210585026,
+                -0.0008995798872647055
+              ],
+              "body_local_point": [
+                -0.050045990930177316,
+                0.024995360843557815,
+                -0.03410015955951643
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 20.825298725255248,
+              "world_point": [
+                -0.021327268812057966,
+                0.08394094469272001,
+                -0.0009278645283180981
+              ],
+              "body_local_point": [
+                -0.05004567368537897,
+                -0.02500460715560557,
+                -0.03407187671575553
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 51.10577085299888,
+              "world_point": [
+                0.0637047518948404,
+                -0.07741037112343696,
+                -0.00035442480436464335
+              ],
+              "body_local_point": [
+                -0.04998517637089202,
+                0.025030866194441653,
+                -0.0346454490026653
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 26.49107464443825,
+              "world_point": [
+                0.050334753397232125,
+                -0.12558850699681984,
+                -0.00018831946142141426
+              ],
+              "body_local_point": [
+                -0.04998464634309289,
+                -0.02496803016616031,
+                -0.03481154983350277
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 85.86388774775035,
+              "world_point": [
+                0.22884923169266447,
+                -0.11805479742040238,
+                -0.000642262995327816
+              ],
+              "body_local_point": [
+                0.12001390516230807,
+                0.030028953735984767,
+                -0.03435761863057379
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 69.07004948755349,
+              "world_point": [
+                0.21280523349553454,
+                -0.17586856046846183,
+                -0.00044293658379593835
+              ],
+              "body_local_point": [
+                0.12001454119566703,
+                -0.029969721896737585,
+                -0.034556939627578755
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CP",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -8.419225928698893,
+      "v3_discounted_return": -8.701259842086545,
+      "risk_discounted": 0.28203391338765266,
+      "legacy_term_returns": {
+        "force": -7.857399000843799,
+        "tracking": -0.07364415476284374,
+        "uncapped": -0.41484161377020584,
+        "relative_velocity": -0.011934176678720085,
+        "heading": -0.030499269934505774,
+        "slip": -0.023657282264227485,
+        "tilt": 0.0,
+        "continuity": -0.0072504304445908455,
+        "soft_prior": 0.0,
+        "idle": 0.0
+      },
+      "risk_events": [
+        {
+          "time": 6.894999999999875,
+          "v": 0.9070820110530895,
+          "normal_N": 31.18483074708439,
+          "body": "left_ankle_roll_link",
+          "event": 0.34038694954453125,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 31.18483074708439,
+              "tangent_speed_mps": 0.9070820110530895
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 23.7078615091201,
+              "tangent_speed_mps": 0.8925258150415529
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 57.27091187157178,
+              "tangent_speed_mps": 0.0038943009132168787
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 26.91486959278288,
+              "tangent_speed_mps": 0.0038225567299521256
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 102.55735287675714,
+              "tangent_speed_mps": 0.004041170018643604
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 79.55702058739705,
+              "tangent_speed_mps": 0.003959238427877917
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 31.18483074708439,
+              "world_point": [
+                -0.025860043815677743,
+                0.1337794291906393,
+                -0.0003663718790978092
+              ],
+              "body_local_point": [
+                -0.05008261239624587,
+                0.024995192960841975,
+                -0.0346328891252843
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 23.7078615091201,
+              "world_point": [
+                -0.02358330193659452,
+                0.08383131855778098,
+                -0.00039230749063524396
+              ],
+              "body_local_point": [
+                -0.050082149993359554,
+                -0.02500478013292035,
+                -0.03460695765009591
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 57.27091187157178,
+              "world_point": [
+                0.06369074113861184,
+                -0.07739724401884439,
+                -0.00035923884691354754
+              ],
+              "body_local_point": [
+                -0.049984514676148034,
+                0.02503289077097542,
+                -0.034640618760674785
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 26.91486959278288,
+              "world_point": [
+                0.05032200516295935,
+                -0.1255755723577902,
+                -0.00018205470679954518
+              ],
+              "body_local_point": [
+                -0.04998392344688613,
+                -0.024965853460244387,
+                -0.034817797464250205
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 102.55735287675714,
+              "world_point": [
+                0.22883605830042256,
+                -0.11803787614317862,
+                -0.0006605858477035376
+              ],
+              "body_local_point": [
+                0.12001447978709981,
+                0.030030755014606992,
+                -0.03433928100611074
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 79.55702058739705,
+              "world_point": [
+                0.21279357512963956,
+                -0.1758518701499136,
+                -0.00044796487956673403
+              ],
+              "body_local_point": [
+                0.12001518926221405,
+                -0.02996773806285677,
+                -0.03455189545040126
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        },
+        {
+          "time": 6.899999999999875,
+          "v": 0.46365563169536606,
+          "normal_N": 25.67936093609858,
+          "body": "left_ankle_roll_link",
+          "event": 0.0003038872662213841,
+          "all_foot_contacts": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 25.67936093609858,
+              "tangent_speed_mps": 0.46365563169536606
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 20.825298725255248,
+              "tangent_speed_mps": 0.4471696283918929
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 51.10577085299888,
+              "tangent_speed_mps": 0.003732991718865012
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 26.49107464443825,
+              "tangent_speed_mps": 0.0035246737589117723
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 85.86388774775035,
+              "tangent_speed_mps": 0.0041087401157439045
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 69.07004948755349,
+              "tangent_speed_mps": 0.003884534837124012
+            }
+          ],
+          "contact_details": [
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 25.67936093609858,
+              "world_point": [
+                -0.023521746916248747,
+                0.13389273210585026,
+                -0.0008995798872647055
+              ],
+              "body_local_point": [
+                -0.050045990930177316,
+                0.024995360843557815,
+                -0.03410015955951643
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "normal_N": 20.825298725255248,
+              "world_point": [
+                -0.021327268812057966,
+                0.08394094469272001,
+                -0.0009278645283180981
+              ],
+              "body_local_point": [
+                -0.05004567368537897,
+                -0.02500460715560557,
+                -0.03407187671575553
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 51.10577085299888,
+              "world_point": [
+                0.0637047518948404,
+                -0.07741037112343696,
+                -0.00035442480436464335
+              ],
+              "body_local_point": [
+                -0.04998517637089202,
+                0.025030866194441653,
+                -0.0346454490026653
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 26.49107464443825,
+              "world_point": [
+                0.050334753397232125,
+                -0.12558850699681984,
+                -0.00018831946142141426
+              ],
+              "body_local_point": [
+                -0.04998464634309289,
+                -0.02496803016616031,
+                -0.03481154983350277
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 85.86388774775035,
+              "world_point": [
+                0.22884923169266447,
+                -0.11805479742040238,
+                -0.000642262995327816
+              ],
+              "body_local_point": [
+                0.12001390516230807,
+                0.030028953735984767,
+                -0.03435761863057379
+              ],
+              "geom1": "floor",
+              "geom2": null
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "normal_N": 69.07004948755349,
+              "world_point": [
+                0.21280523349553454,
+                -0.17586856046846183,
+                -0.00044293658379593835
+              ],
+              "body_local_point": [
+                0.12001454119566703,
+                -0.029969721896737585,
+                -0.034556939627578755
+              ],
+              "geom1": "floor",
+              "geom2": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "state": "native-standing",
+    "controller": "BC500",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -0.008248525663558394,
+      "v3_discounted_return": -0.008248525663558394,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": 0.0,
+        "tracking": 0.0,
+        "uncapped": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": -0.00016337673370686427,
+        "tilt": 0.0,
+        "continuity": -0.000793993934899023,
+        "soft_prior": 0.0,
+        "idle": -0.007291154994952507
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "native-standing",
+    "controller": "BC500",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -0.008248525663558394,
+      "v3_discounted_return": -0.008248525663558394,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": 0.0,
+        "tracking": 0.0,
+        "uncapped": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": -0.00016337673370686427,
+        "tilt": 0.0,
+        "continuity": -0.000793993934899023,
+        "soft_prior": 0.0,
+        "idle": -0.007291154994952507
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "native-standing",
+    "controller": "CS",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -1.0386937623048112e-05,
+      "v3_discounted_return": -1.0386937623048112e-05,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": 0.0,
+        "tracking": 0.0,
+        "uncapped": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": -9.857140108632079e-06,
+        "tilt": 0.0,
+        "continuity": -7.363453484883258e-09,
+        "soft_prior": 0.0,
+        "idle": -5.224340609311452e-07
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "native-standing",
+    "controller": "CS",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -1.0386937623048112e-05,
+      "v3_discounted_return": -1.0386937623048112e-05,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": 0.0,
+        "tracking": 0.0,
+        "uncapped": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": -9.857140108632079e-06,
+        "tilt": 0.0,
+        "continuity": -7.363453484883258e-09,
+        "soft_prior": 0.0,
+        "idle": -5.224340609311452e-07
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "native-standing",
+    "controller": "CP",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -1.0386937623048112e-05,
+      "v3_discounted_return": -1.0386937623048112e-05,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": 0.0,
+        "tracking": 0.0,
+        "uncapped": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": -9.857140108632079e-06,
+        "tilt": 0.0,
+        "continuity": -7.363453484883258e-09,
+        "soft_prior": 0.0,
+        "idle": -5.224340609311452e-07
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "native-standing",
+    "controller": "CP",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -1.0386937623048112e-05,
+      "v3_discounted_return": -1.0386937623048112e-05,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": 0.0,
+        "tracking": 0.0,
+        "uncapped": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": -9.857140108632079e-06,
+        "tilt": 0.0,
+        "continuity": -7.363453484883258e-09,
+        "soft_prior": 0.0,
+        "idle": -5.224340609311452e-07
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -1.0386937623048112e-05,
+      "v3_discounted_return": -1.0386937623048112e-05,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": 0.0,
+        "tracking": 0.0,
+        "uncapped": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": -9.857140108632079e-06,
+        "tilt": 0.0,
+        "continuity": -7.363453484883258e-09,
+        "soft_prior": 0.0,
+        "idle": -5.224340609311452e-07
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -1.0386937623048112e-05,
+      "v3_discounted_return": -1.0386937623048112e-05,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": 0.0,
+        "tracking": 0.0,
+        "uncapped": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": -9.857140108632079e-06,
+        "tilt": 0.0,
+        "continuity": -7.363453484883258e-09,
+        "soft_prior": 0.0,
+        "idle": -5.224340609311452e-07
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0.09",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -0.010111826568519666,
+      "v3_discounted_return": -0.010111826568519666,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": 0.0,
+        "tracking": 0.0,
+        "uncapped": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": -0.00011418484546032412,
+        "tilt": 0.0,
+        "continuity": -9.204710068391034e-05,
+        "soft_prior": 0.0,
+        "idle": -0.00990559462237543
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0.09",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -0.010111826568519666,
+      "v3_discounted_return": -0.010111826568519666,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": 0.0,
+        "tracking": 0.0,
+        "uncapped": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": -0.00011418484546032412,
+        "tilt": 0.0,
+        "continuity": -9.204710068391034e-05,
+        "soft_prior": 0.0,
+        "idle": -0.00990559462237543
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0.18",
+    "rep": 0,
+    "score": {
+      "old_discounted_return": -1.7712727682045923,
+      "v3_discounted_return": -1.7712727682045923,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": 0.0,
+        "tracking": 0.0,
+        "uncapped": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": -0.008983181805801273,
+        "tilt": 0.0,
+        "continuity": -0.015128669332615995,
+        "soft_prior": 0.0,
+        "idle": -1.747160917066175
+      },
+      "risk_events": []
+    }
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0.18",
+    "rep": 1,
+    "score": {
+      "old_discounted_return": -1.7712727682045923,
+      "v3_discounted_return": -1.7712727682045923,
+      "risk_discounted": 0.0,
+      "legacy_term_returns": {
+        "force": 0.0,
+        "tracking": 0.0,
+        "uncapped": 0.0,
+        "relative_velocity": 0.0,
+        "heading": 0.0,
+        "slip": -0.008983181805801273,
+        "tilt": 0.0,
+        "continuity": -0.015128669332615995,
+        "soft_prior": 0.0,
+        "idle": -1.747160917066175
+      },
+      "risk_events": []
+    }
+  }
+]

@@ -1,0 +1,434 @@
+[
+  {
+    "state": "P1-1",
+    "controller": "BC500",
+    "wrist_relative_shoulder_delta_body_m": [
+      0.01420851416828195,
+      0.0276591020236837,
+      -0.00575601872772738
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      0.014208514168281894,
+      0.027659102023684046,
+      -0.0057560187277283445
+    ],
+    "wrist_relative_shoulder_path_m": 0.22519321872015374,
+    "shoulder_world_dx_m": 0.0009128795070346973,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "P1-1",
+    "controller": "CS",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.03682980780096601,
+      0.04277025013850821,
+      0.05336891009799993
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.03682980780096606,
+      0.042770250138508215,
+      0.05336891009799995
+    ],
+    "wrist_relative_shoulder_path_m": 0.16686393811237857,
+    "shoulder_world_dx_m": 0.03370749873959197,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "P1-1",
+    "controller": "CP",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.05802351076304513,
+      0.03206174118802002,
+      0.027109937501034215
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.0580235107630451,
+      0.03206174118801966,
+      0.02710993750103515
+    ],
+    "wrist_relative_shoulder_path_m": 0.09225960206280043,
+    "shoulder_world_dx_m": 0.033933280555608604,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "P1-13",
+    "controller": "BC500",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.05517634652116776,
+      0.029028614386820802,
+      -0.02408428808170046
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.05517634652116768,
+      0.02902861438682039,
+      -0.024084288081699566
+    ],
+    "wrist_relative_shoulder_path_m": 0.3640123766254302,
+    "shoulder_world_dx_m": 0.34061639763859375,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "P1-13",
+    "controller": "CS",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.07971196744893652,
+      -0.02709967566002825,
+      -0.04492767307614273
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.07971196744893655,
+      -0.027099675660028494,
+      -0.04492767307614211
+    ],
+    "wrist_relative_shoulder_path_m": 0.18041927840073943,
+    "shoulder_world_dx_m": 0.43641810674356996,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "P1-13",
+    "controller": "CP",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.0244017850144036,
+      -0.0007363169465344072,
+      -0.013399663690366076
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.024401785014403682,
+      -0.0007363169465342823,
+      -0.01339966369036634
+    ],
+    "wrist_relative_shoulder_path_m": 0.09548586126500899,
+    "shoulder_world_dx_m": 0.1482178324532168,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "BC500",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.11818234467007595,
+      0.07363510605358792,
+      -0.012440946056089697
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.11818234467007593,
+      0.07363510605358813,
+      -0.012440946056090155
+    ],
+    "wrist_relative_shoulder_path_m": 0.2032652303956834,
+    "shoulder_world_dx_m": 0.21525375325161947,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CS",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.04077762546892774,
+      0.010922289062856708,
+      -0.033374397240016535
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.0407776254689278,
+      0.010922289062856444,
+      -0.03337439724001596
+    ],
+    "wrist_relative_shoulder_path_m": 0.07797231648681328,
+    "shoulder_world_dx_m": 0.14125545541137882,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CP",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.04135434394627893,
+      0.009921869736386008,
+      -0.033002602649580465
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.041354343946278904,
+      0.009921869736385702,
+      -0.033002602649579715
+    ],
+    "wrist_relative_shoulder_path_m": 0.08131210970089797,
+    "shoulder_world_dx_m": 0.13866005781700988,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "BC500",
+    "wrist_relative_shoulder_delta_body_m": [
+      0.00334067881547917,
+      0.026259456673065312,
+      -0.03645710736688962
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      0.00334067881547917,
+      0.02625945667306484,
+      -0.03645710736688852
+    ],
+    "wrist_relative_shoulder_path_m": 0.15078242178000542,
+    "shoulder_world_dx_m": 0.00428448196093429,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CS",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.06329988002670286,
+      0.041537501047929075,
+      0.00906749768357415
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.06329988002670284,
+      0.041537501047928915,
+      0.009067497683574552
+    ],
+    "wrist_relative_shoulder_path_m": 0.14673634285646783,
+    "shoulder_world_dx_m": 0.01358183438376696,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CP",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.06879961012037986,
+      0.039439163080116794,
+      -0.0014150407203495918
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.06879961012037977,
+      0.039439163080116635,
+      -0.0014150407203493906
+    ],
+    "wrist_relative_shoulder_path_m": 0.10571302128251586,
+    "shoulder_world_dx_m": 0.02091997538284005,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "BC500",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.10088677912696378,
+      0.0916903079209701,
+      0.026728084191428914
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.10088677912696378,
+      0.09169030792096994,
+      0.02672808419142924
+    ],
+    "wrist_relative_shoulder_path_m": 0.5553398610614463,
+    "shoulder_world_dx_m": 0.13467532637470467,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CS",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.03833587136545985,
+      0.0073702448836413526,
+      0.011894684986607201
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.038335871365459906,
+      0.007370244883641713,
+      0.011894684986606441
+    ],
+    "wrist_relative_shoulder_path_m": 0.14410020625199432,
+    "shoulder_world_dx_m": 0.14020122630001172,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CP",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.017701253146744006,
+      0.02589645151104615,
+      0.023679271081473913
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.017701253146744034,
+      0.025896451511046054,
+      0.023679271081474246
+    ],
+    "wrist_relative_shoulder_path_m": 0.08091642570115444,
+    "shoulder_world_dx_m": 0.0371915552345453,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "BC500",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.04128389660033649,
+      0.007993370060091445,
+      -0.01554599927984679
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.04128389660033649,
+      0.007993370060091792,
+      -0.01554599927984797
+    ],
+    "wrist_relative_shoulder_path_m": 0.5474215042148299,
+    "shoulder_world_dx_m": 0.31067436272850246,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CS",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.050969170471607095,
+      0.0022291446591658354,
+      0.0023471180675845305
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.05096917047160712,
+      0.0022291446591660435,
+      0.002347118067584048
+    ],
+    "wrist_relative_shoulder_path_m": 0.18709198355751372,
+    "shoulder_world_dx_m": 0.30075052938949676,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CP",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.015047510239375367,
+      0.021933287862216745,
+      0.026574517081301874
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.015047510239375395,
+      0.02193328786221657,
+      0.02657451708130249
+    ],
+    "wrist_relative_shoulder_path_m": 0.14197238196200468,
+    "shoulder_world_dx_m": 0.14719604712935053,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "native-standing",
+    "controller": "BC500",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.06355002772696183,
+      0.06240106583604531,
+      0.03879360300759052
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.06355002772696183,
+      0.062401065836044975,
+      0.038793603007591215
+    ],
+    "wrist_relative_shoulder_path_m": 0.21028504510865198,
+    "shoulder_world_dx_m": 0.0010130909250416625,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "native-standing",
+    "controller": "CS",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.0003016639603386495,
+      -0.0014023939005010713,
+      0.0009401019580136671
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.0003016639603386495,
+      -0.0014023939005009811,
+      0.0009401019580135006
+    ],
+    "wrist_relative_shoulder_path_m": 0.0017229322270293423,
+    "shoulder_world_dx_m": -0.0021440308642631384,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "native-standing",
+    "controller": "CP",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.0003016639603386495,
+      -0.0014023939005010713,
+      0.0009401019580136671
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.0003016639603386495,
+      -0.0014023939005009811,
+      0.0009401019580135006
+    ],
+    "wrist_relative_shoulder_path_m": 0.0017229322270293423,
+    "shoulder_world_dx_m": -0.0021440308642631384,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0",
+    "wrist_relative_shoulder_delta_body_m": [
+      -0.0003016639603386495,
+      -0.0014023939005010713,
+      0.0009401019580136671
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      -0.0003016639603386495,
+      -0.0014023939005009811,
+      0.0009401019580135006
+    ],
+    "wrist_relative_shoulder_path_m": 0.0017229322270293423,
+    "shoulder_world_dx_m": -0.0021440308642631384,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0.09",
+    "wrist_relative_shoulder_delta_body_m": [
+      0.015399548435084398,
+      0.004949306463573985,
+      0.008280281743768075
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      0.015399548435084426,
+      0.004949306463573833,
+      0.008280281743768339
+    ],
+    "wrist_relative_shoulder_path_m": 0.044374574739723706,
+    "shoulder_world_dx_m": -0.005762973990047653,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0.18",
+    "wrist_relative_shoulder_delta_body_m": [
+      0.0075023313060343655,
+      -0.008212774841794244,
+      0.008972712582648756
+    ],
+    "wrist_relative_torso_delta_body_m": [
+      0.007502331306034421,
+      -0.00821277484179414,
+      0.008972712582648486
+    ],
+    "wrist_relative_shoulder_path_m": 0.2410722758250345,
+    "shoulder_world_dx_m": 0.8619393276192502,
+    "FK_sample_dt_s": 0.02,
+    "physical_steps": 0
+  }
+]

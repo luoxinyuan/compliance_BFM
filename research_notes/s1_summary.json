@@ -1,0 +1,914 @@
+[
+  {
+    "state": "P1-1",
+    "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+    "controller": "BC500",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 2.5688783528094805,
+    "force_rms_N": 2.0711932300717577,
+    "error_xyz_cm": [
+      0.7535075817464181,
+      2.043132486357728,
+      1.3627075838100788
+    ],
+    "force_xyz_N": [
+      0.790940219815507,
+      1.5342761895406725,
+      1.1446621943533526
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.014413500074239874,
+    "root_mean_vx_mps": 0.004794408898271346,
+    "slip_peak_mps": 0.005819764414207704,
+    "slip_p90_mps": 0.003621444619662657,
+    "slip_p95_mps": 0.004562396298798594,
+    "yaw_deg": -11.6441261247232,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 27.98463025663705,
+      "tangent_speed_mps": 0.005819764414207704
+    },
+    "q_step_max_deg": 0.8315068395211282,
+    "dq_abs_max": 2.9025064204991593,
+    "qpd_step_max_deg": 4.547580183477569,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": null,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "dc4e2fa61fdb97c053c752daeb88a98e19d3a8a567ec14dbec43495652074130"
+  },
+  {
+    "state": "P1-1",
+    "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+    "controller": "CS",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 5.344871679046242,
+    "force_rms_N": 4.375406855646078,
+    "error_xyz_cm": [
+      4.501229632076305,
+      1.5922653218799372,
+      2.4023480616945116
+    ],
+    "force_xyz_N": [
+      3.706723965515523,
+      1.1922085163410268,
+      1.9957508485458566
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.009961912399881805,
+    "root_mean_vx_mps": -0.0033290020792782916,
+    "slip_peak_mps": 0.07299694429544931,
+    "slip_p90_mps": 0.01797190731196991,
+    "slip_p95_mps": 0.03796825039381343,
+    "yaw_deg": -6.261551641570982,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 7.478080858316926,
+      "tangent_speed_mps": 0.07299694429544931
+    },
+    "q_step_max_deg": 0.8740479899858562,
+    "dq_abs_max": 3.0510030491383286,
+    "qpd_step_max_deg": 24.028305825555023,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.10623371868162995,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "200f612a5862f85a5edadd792927c1745d12588836aba191ca436859418220d0"
+  },
+  {
+    "state": "P1-1",
+    "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+    "controller": "CP",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 4.864103884672851,
+    "force_rms_N": 3.947861807474355,
+    "error_xyz_cm": [
+      4.553279206468016,
+      0.855269679603686,
+      1.4817789457223804
+    ],
+    "force_xyz_N": [
+      3.742102787748377,
+      0.43130327713497507,
+      1.18163321719269
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.013300722521515217,
+    "root_mean_vx_mps": 0.004419557318887931,
+    "slip_peak_mps": 0.007700959475709587,
+    "slip_p90_mps": 0.004126010856778636,
+    "slip_p95_mps": 0.005833679924409151,
+    "yaw_deg": -5.198233792402291,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 34.55471222273986,
+      "tangent_speed_mps": 0.007700959475709587
+    },
+    "q_step_max_deg": 0.8603307378563126,
+    "dq_abs_max": 3.003120806340975,
+    "qpd_step_max_deg": 10.08367806416204,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.014262952200124324,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "63752ed73f57177590bc48682d3fc1399aeb1f1184b831cb7bc8434ee9328d42"
+  },
+  {
+    "state": "P1-13",
+    "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+    "controller": "BC500",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 7.373371140473424,
+    "force_rms_N": 5.59420446180584,
+    "error_xyz_cm": [
+      6.473782149295585,
+      2.2174918166687796,
+      2.7458107548837263
+    ],
+    "force_xyz_N": [
+      4.762163781068168,
+      1.8619642264190954,
+      2.269363104993658
+    ],
+    "cap_fraction": 0.18666666666666668,
+    "root_dx_m": 0.3925963914095909,
+    "root_mean_vx_mps": 0.13105404310327728,
+    "slip_peak_mps": 0.31843428716626887,
+    "slip_p90_mps": 0.013194083622581489,
+    "slip_p95_mps": 0.027054674911448702,
+    "yaw_deg": -17.820048392418755,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 100.79571289599204,
+      "tangent_speed_mps": 0.31843428716626887
+    },
+    "q_step_max_deg": 1.8813205575141956,
+    "dq_abs_max": 6.567047602815614,
+    "qpd_step_max_deg": 52.49052798856679,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": null,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "05ec1aad6e2faa0202d0b03408a4c17adb08a734adbf3308e50a1e67cdf4f688"
+  },
+  {
+    "state": "P1-13",
+    "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+    "controller": "CS",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 11.53405483045524,
+    "force_rms_N": 7.536690570387604,
+    "error_xyz_cm": [
+      10.05954531641491,
+      3.988117564094195,
+      3.99185259671574
+    ],
+    "force_xyz_N": [
+      6.436747682672066,
+      2.80021831024258,
+      2.7438588590464006
+    ],
+    "cap_fraction": 0.31666666666666665,
+    "root_dx_m": 0.498517666202354,
+    "root_mean_vx_mps": 0.16636212110972148,
+    "slip_peak_mps": 1.235190084045416,
+    "slip_p90_mps": 0.012754127423255828,
+    "slip_p95_mps": 0.024528324685262157,
+    "yaw_deg": -18.558515481733107,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 48.85214049426546,
+      "tangent_speed_mps": 1.235190084045416
+    },
+    "q_step_max_deg": 1.654687366568107,
+    "dq_abs_max": 5.775948527553562,
+    "qpd_step_max_deg": 49.73438785656844,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.08352929444723951,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "fd151275cfa2a0ed1812b533c64d700216ce9f7e5619fa126af1cfc8190ac786"
+  },
+  {
+    "state": "P1-13",
+    "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+    "controller": "CP",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 19.26356687683813,
+    "force_rms_N": 10.0,
+    "error_xyz_cm": [
+      18.83098753801986,
+      2.3359695661533864,
+      3.3199643593510073
+    ],
+    "force_xyz_N": [
+      9.769586907915993,
+      1.2641453539103429,
+      1.7196244278514299
+    ],
+    "cap_fraction": 1.0,
+    "root_dx_m": 0.17328115392788437,
+    "root_mean_vx_mps": 0.057946688038228826,
+    "slip_peak_mps": 0.7940517702592794,
+    "slip_p90_mps": 0.011339131493977804,
+    "slip_p95_mps": 0.013214208146576622,
+    "yaw_deg": -3.0062904888700923,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 81.06273442236827,
+      "tangent_speed_mps": 0.7940517702592794
+    },
+    "q_step_max_deg": 2.2214506370417153,
+    "dq_abs_max": 7.754325557380687,
+    "qpd_step_max_deg": 34.32391526815245,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.06622793634667049,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "d500f18fdef9776d5a8b28236b7b6b5da94663c04211c7d266a01199c0e82186"
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+    "controller": "BC500",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 17.04611961699888,
+    "force_rms_N": 9.210482500768993,
+    "error_xyz_cm": [
+      4.667612682591468,
+      16.041558303290323,
+      3.3840793496137866
+    ],
+    "force_xyz_N": [
+      2.3672091963490325,
+      8.603249050566658,
+      2.283290233767112
+    ],
+    "cap_fraction": 0.6884875846501128,
+    "root_dx_m": 0.23974602406460085,
+    "root_mean_vx_mps": 0.08078837049108545,
+    "slip_peak_mps": 0.17884580164680444,
+    "slip_p90_mps": 0.0065867089332736035,
+    "slip_p95_mps": 0.008262678948424125,
+    "yaw_deg": -9.336070167331096,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 38.97508311810106,
+      "tangent_speed_mps": 0.17884580164680444
+    },
+    "q_step_max_deg": 1.3002595281412463,
+    "dq_abs_max": 4.538761979298533,
+    "qpd_step_max_deg": 30.6728794822308,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": null,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "c4183a4a3acfa619749ec9850a9593623104294b9712bbcb70dc3a7f212cfa7e"
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+    "controller": "CS",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 5.225146298024431,
+    "force_rms_N": 3.9187303722802924,
+    "error_xyz_cm": [
+      2.6486117248341037,
+      4.288303369482904,
+      1.3774846562162864
+    ],
+    "force_xyz_N": [
+      2.050948055105142,
+      3.1954100092567126,
+      0.9692340680323261
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.19434906313707004,
+    "root_mean_vx_mps": 0.06565583711213899,
+    "slip_peak_mps": 0.4848708261020438,
+    "slip_p90_mps": 0.0057230799010899855,
+    "slip_p95_mps": 0.007150933881729755,
+    "yaw_deg": -21.92782908017874,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 36.67669924358098,
+      "tangent_speed_mps": 0.4848708261020438
+    },
+    "q_step_max_deg": 1.1939165219949148,
+    "dq_abs_max": 4.1675548605541115,
+    "qpd_step_max_deg": 31.385788160813696,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.0015722778094784042,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "299e86f7d52055a46cc9f542dfacfac28d12f66186eb8da3e337b132c52fcf0d"
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "parent": "97ff10c4dcd98a2be39b774c1ee3a979b00f8d1e8dded4f24f2ca0fc54f69618",
+    "controller": "CP",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 5.210047672217461,
+    "force_rms_N": 3.9051157230754354,
+    "error_xyz_cm": [
+      2.4577696709239163,
+      4.418674890885343,
+      1.2566929617549898
+    ],
+    "force_xyz_N": [
+      1.8790400167484607,
+      3.3085350836653733,
+      0.8790523455541684
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.18972105380738702,
+    "root_mean_vx_mps": 0.06411308281421,
+    "slip_peak_mps": 0.5538350647566718,
+    "slip_p90_mps": 0.005949018840125097,
+    "slip_p95_mps": 0.008083419759317104,
+    "yaw_deg": -20.85689750205603,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 25.979621361448523,
+      "tangent_speed_mps": 0.5538350647566718
+    },
+    "q_step_max_deg": 1.224979704321802,
+    "dq_abs_max": 4.2759858221044125,
+    "qpd_step_max_deg": 41.63585646334642,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.0,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "0e20337d2034a4aec31a04620c7f92d57de6f7a16df4718020a43f3ea72a820f"
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+    "controller": "BC500",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 2.785916412533117,
+    "force_rms_N": 2.0878129607536438,
+    "error_xyz_cm": [
+      1.1380293869266176,
+      2.2595918654874123,
+      1.1663892890180068
+    ],
+    "force_xyz_N": [
+      0.8794228987613781,
+      1.5910272667472107,
+      1.0267475642493291
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.015173905956490019,
+    "root_mean_vx_mps": 0.005044656280036302,
+    "slip_peak_mps": 0.005408293492668094,
+    "slip_p90_mps": 0.003878987122636743,
+    "slip_p95_mps": 0.0048186191733616155,
+    "yaw_deg": -12.116333725331621,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 24.402475947788613,
+      "tangent_speed_mps": 0.005408293492668094
+    },
+    "q_step_max_deg": 1.0269512577557212,
+    "dq_abs_max": 3.5847361410668572,
+    "qpd_step_max_deg": 5.583760541538406,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": null,
+    "actual_seconds": 4.2,
+    "boundary": null,
+    "artifact_sha": "4e472fdbfe459b70b3fec665fc277182d2a74f1695b99581689b8a8a510e9ee5"
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+    "controller": "CS",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 4.381021225005215,
+    "force_rms_N": 3.553247586224025,
+    "error_xyz_cm": [
+      3.757281907505319,
+      1.4059636661026467,
+      1.7605243000534219
+    ],
+    "force_xyz_N": [
+      3.146646416637118,
+      0.8130599715948378,
+      1.436355882176092
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.008898403771488442,
+    "root_mean_vx_mps": -0.002982156016329311,
+    "slip_peak_mps": 0.009968999238043784,
+    "slip_p90_mps": 0.007059786140291395,
+    "slip_p95_mps": 0.008346855680514789,
+    "yaw_deg": -6.6223668437724035,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 14.97451706683221,
+      "tangent_speed_mps": 0.009968999238043784
+    },
+    "q_step_max_deg": 0.7651735768250205,
+    "dq_abs_max": 2.678453672499723,
+    "qpd_step_max_deg": 6.113864543071201,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.07191884767643786,
+    "actual_seconds": 4.2,
+    "boundary": null,
+    "artifact_sha": "0a8773363fd8343f90cb6e658e7c03ba725f466b51b28deeaad4f281b6740ef3"
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "parent": "5f62e065b5ac9d05bfd9109bd4be13eaafc62b5af3afbdcbf2748c57120f2381",
+    "controller": "CP",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 4.160330233387319,
+    "force_rms_N": 3.410929347779303,
+    "error_xyz_cm": [
+      3.671778787848841,
+      1.2831593128644632,
+      1.4764451773598248
+    ],
+    "force_xyz_N": [
+      3.0747314445068823,
+      0.6861105170310667,
+      1.3075618219121123
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.0027573413340097677,
+    "root_mean_vx_mps": 0.0008997887659801618,
+    "slip_peak_mps": 0.009235631487861521,
+    "slip_p90_mps": 0.0039465697199095665,
+    "slip_p95_mps": 0.007160403559599296,
+    "yaw_deg": -6.245365487575484,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 39.8614936354694,
+      "tangent_speed_mps": 0.009235631487861521
+    },
+    "q_step_max_deg": 0.7709079308287045,
+    "dq_abs_max": 2.6909763245395126,
+    "qpd_step_max_deg": 7.117513030280385,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.01385204911200809,
+    "actual_seconds": 4.2,
+    "boundary": null,
+    "artifact_sha": "d3988518f58613efe6e35c1131338f00e6e09255bb2ecf42c923e05e12520537"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+    "controller": "BC500",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 12.506406009037157,
+    "force_rms_N": 8.080851475840456,
+    "error_xyz_cm": [
+      8.604260185183996,
+      8.599723733301602,
+      2.9020078634330524
+    ],
+    "force_xyz_N": [
+      5.593593290381131,
+      5.289886955676314,
+      2.455396235348107
+    ],
+    "cap_fraction": 0.49333333333333335,
+    "root_dx_m": 0.07418375032503705,
+    "root_mean_vx_mps": 0.0247247168888706,
+    "slip_peak_mps": 0.2923235507637933,
+    "slip_p90_mps": 0.014358774158372712,
+    "slip_p95_mps": 0.016289943698972048,
+    "yaw_deg": 6.083860500695759,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 58.93434534681063,
+      "tangent_speed_mps": 0.2923235507637933
+    },
+    "q_step_max_deg": 0.991084551519475,
+    "dq_abs_max": 3.459537717933242,
+    "qpd_step_max_deg": 37.02652208498353,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": null,
+    "actual_seconds": 6.0,
+    "boundary": null,
+    "artifact_sha": "de80ef1f9df17699b82d36cfe241c5c59d7b2dda1933e3ea3fa6cc847083ea14"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+    "controller": "CS",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 5.190951097440651,
+    "force_rms_N": 4.270560038969274,
+    "error_xyz_cm": [
+      3.7557862261644446,
+      2.824960156165746,
+      2.204459851176636
+    ],
+    "force_xyz_N": [
+      3.0888915784788384,
+      2.2991656589139033,
+      1.8466914024045231
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.12525950009192532,
+    "root_mean_vx_mps": 0.04174667302631554,
+    "slip_peak_mps": 0.30245660151992987,
+    "slip_p90_mps": 0.008282515325901114,
+    "slip_p95_mps": 0.01341069669638555,
+    "yaw_deg": -1.2180391515348903,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 7.128914014764141,
+      "tangent_speed_mps": 0.30245660151992987
+    },
+    "q_step_max_deg": 1.3066872110399943,
+    "dq_abs_max": 4.561198825269981,
+    "qpd_step_max_deg": 38.60252505671415,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.06286753806683154,
+    "actual_seconds": 6.0,
+    "boundary": null,
+    "artifact_sha": "9de01b109bdafbe01c045bf8696c58ec7aba205b8bc80eed7a2540ac89d6f77e"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+    "controller": "CP",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 7.5668106333773135,
+    "force_rms_N": 6.185415056646973,
+    "error_xyz_cm": [
+      7.20715502047979,
+      0.9909944387935528,
+      2.0812183197457226
+    ],
+    "force_xyz_N": [
+      5.89697508882472,
+      0.7442724420536718,
+      1.7120463652527762
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.02050360998446995,
+    "root_mean_vx_mps": 0.006826960616828731,
+    "slip_peak_mps": 0.011716879232470627,
+    "slip_p90_mps": 0.006684874174514148,
+    "slip_p95_mps": 0.008444654384396495,
+    "yaw_deg": -4.191063741141424,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 15.257175853723208,
+      "tangent_speed_mps": 0.011716879232470627
+    },
+    "q_step_max_deg": 0.4005755858078464,
+    "dq_abs_max": 1.5302240374819418,
+    "qpd_step_max_deg": 3.10225399177322,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.03595436552528276,
+    "actual_seconds": 6.0,
+    "boundary": null,
+    "artifact_sha": "94bda0d1c90c053aedecf1f91921527af6ad359a140b57245d63c1fb60da7b9e"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+    "controller": "BC500",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 7.618881423912145,
+    "force_rms_N": 6.2768034688502485,
+    "error_xyz_cm": [
+      6.450460145961995,
+      2.1518110775213697,
+      3.4363683073334537
+    ],
+    "force_xyz_N": [
+      5.219044626563439,
+      1.8529979088907227,
+      2.9540199258225046
+    ],
+    "cap_fraction": 0.11333333333333333,
+    "root_dx_m": 0.34216186231639634,
+    "root_mean_vx_mps": 0.11405075421932365,
+    "slip_peak_mps": 0.3960867398928564,
+    "slip_p90_mps": 0.016287990861529867,
+    "slip_p95_mps": 0.021929299407291266,
+    "yaw_deg": -18.891773601479017,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 48.319959400629656,
+      "tangent_speed_mps": 0.3960867398928564
+    },
+    "q_step_max_deg": 1.5697756114055947,
+    "dq_abs_max": 5.479550587306941,
+    "qpd_step_max_deg": 33.43745148275953,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": null,
+    "actual_seconds": 6.8,
+    "boundary": null,
+    "artifact_sha": "dd777293a8e0a0efa69e6baea98d7694f1d576e143a025d0cfa30c6ed043aa2e"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+    "controller": "CS",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 6.646887460911485,
+    "force_rms_N": 5.544579267133206,
+    "error_xyz_cm": [
+      5.236684619859299,
+      3.371192526934298,
+      2.322349684370061
+    ],
+    "force_xyz_N": [
+      4.376515106736424,
+      2.775872798790633,
+      1.9705341851806377
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.29999766964007885,
+    "root_mean_vx_mps": 0.0999927295423667,
+    "slip_peak_mps": 1.1617732127750862,
+    "slip_p90_mps": 0.012100990129496503,
+    "slip_p95_mps": 0.027692381292011684,
+    "yaw_deg": -7.990941937312863,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 41.864752168609634,
+      "tangent_speed_mps": 1.1617732127750862
+    },
+    "q_step_max_deg": 1.8470206357081156,
+    "dq_abs_max": 6.447318289077073,
+    "qpd_step_max_deg": 27.482383715249245,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.06802727338569368,
+    "actual_seconds": 6.8,
+    "boundary": null,
+    "artifact_sha": "9d3982552b7e23d64328f0d952c86ee157aa7b469777a3095924ee2297c44833"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "parent": "5f6380cdec755f630bc43932fd8d3a1b6deddc055f7fcd6bceb4e3d396a812bb",
+    "controller": "CP",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": 8.746608447769324,
+    "force_rms_N": 7.138241659430954,
+    "error_xyz_cm": [
+      8.35724960204029,
+      1.2969385728574132,
+      2.2310286340658356
+    ],
+    "force_xyz_N": [
+      6.817616132988952,
+      1.0506705829636873,
+      1.835945417962947
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.13693611996931584,
+    "root_mean_vx_mps": 0.04563779727844403,
+    "slip_peak_mps": 0.9070820110530895,
+    "slip_p90_mps": 0.01561612902449834,
+    "slip_p95_mps": 0.021926085062194317,
+    "yaw_deg": -6.777309142975991,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 31.18483074708439,
+      "tangent_speed_mps": 0.9070820110530895
+    },
+    "q_step_max_deg": 2.1269406338135095,
+    "dq_abs_max": 7.424423410900155,
+    "qpd_step_max_deg": 41.468091649405274,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.07162426267334307,
+    "actual_seconds": 6.8,
+    "boundary": null,
+    "artifact_sha": "06e4709feb77afd19a0cdff10acd6d83bb9dd41bd5cc9493ab38d8f2f495b2c6"
+  },
+  {
+    "state": "native-standing",
+    "parent": "native-standing-8ecc04e83daecd97",
+    "controller": "BC500",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.014391415001774842,
+    "root_mean_vx_mps": -0.004797093784755825,
+    "slip_peak_mps": 0.014642492354253793,
+    "slip_p90_mps": 0.007429203538153411,
+    "slip_p95_mps": 0.009099378772269451,
+    "yaw_deg": -0.7927661065377765,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 5.687301512722717,
+      "tangent_speed_mps": 0.014642492354253793
+    },
+    "q_step_max_deg": 0.74346527015114,
+    "dq_abs_max": 2.595183367673302,
+    "qpd_step_max_deg": 4.7237118724302745,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": null,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "8a823b9abfbe2f26cbfa9c15e59fbbfbfc7b4e48e32b2d0ecc005d737134edf4"
+  },
+  {
+    "state": "native-standing",
+    "parent": "native-standing-8ecc04e83daecd97",
+    "controller": "CS",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.00029660514358846937,
+    "root_mean_vx_mps": 9.888261219279179e-05,
+    "slip_peak_mps": 0.0014487630193408107,
+    "slip_p90_mps": 0.0014172736391350042,
+    "slip_p95_mps": 0.0014331251165226712,
+    "yaw_deg": -7.485413203153155,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 44.698957653310266,
+      "tangent_speed_mps": 0.0014487630193408107
+    },
+    "q_step_max_deg": 0.0011970491859584953,
+    "dq_abs_max": 0.004178489920660676,
+    "qpd_step_max_deg": 0.004697889488499396,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.0,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "789b9c406f5bc810a0980b6ebe9a7d32371b01065ebab5b38faa407288f1b492"
+  },
+  {
+    "state": "native-standing",
+    "parent": "native-standing-8ecc04e83daecd97",
+    "controller": "CP",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.00029660514358846937,
+    "root_mean_vx_mps": 9.888261219279179e-05,
+    "slip_peak_mps": 0.0014487630193408107,
+    "slip_p90_mps": 0.0014172736391350042,
+    "slip_p95_mps": 0.0014331251165226712,
+    "yaw_deg": -7.485413203153155,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 44.698957653310266,
+      "tangent_speed_mps": 0.0014487630193408107
+    },
+    "q_step_max_deg": 0.0011970491859584953,
+    "dq_abs_max": 0.004178489920660676,
+    "qpd_step_max_deg": 0.004697889488499396,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.0,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "7a3c3048db34df493c637b18d70652d170ef65dec8c4cd28b46036d1063a98fc"
+  },
+  {
+    "state": "native-standing",
+    "parent": "native-standing-8ecc04e83daecd97",
+    "controller": "fixed:0",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.00029660514358846937,
+    "root_mean_vx_mps": 9.888261219279179e-05,
+    "slip_peak_mps": 0.0014487630193408107,
+    "slip_p90_mps": 0.0014172736391350042,
+    "slip_p95_mps": 0.0014331251165226712,
+    "yaw_deg": -7.485413203153155,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 44.698957653310266,
+      "tangent_speed_mps": 0.0014487630193408107
+    },
+    "q_step_max_deg": 0.0011970491859584953,
+    "dq_abs_max": 0.004178489920660676,
+    "qpd_step_max_deg": 0.004697889488499396,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.0,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "9ca5bc137b492d07ee88f25780991891eb2fb5b64837df0aa32d183ae14e0838"
+  },
+  {
+    "state": "native-standing",
+    "parent": "native-standing-8ecc04e83daecd97",
+    "controller": "fixed:0.09",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.026334727188235967,
+    "root_mean_vx_mps": -0.00878180350183659,
+    "slip_peak_mps": 0.006203617992844659,
+    "slip_p90_mps": 0.005628280446419708,
+    "slip_p95_mps": 0.006023200400809952,
+    "yaw_deg": -5.391633936574034,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 27.50156615340935,
+      "tangent_speed_mps": 0.006203617992844659
+    },
+    "q_step_max_deg": 0.23915529317083636,
+    "dq_abs_max": 0.8348094578806834,
+    "qpd_step_max_deg": 1.742799606356916,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.08999999999999998,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "9512423ad4ba96320df85fac1847b73656d5652fdf63e9f42e1014e092a095d2"
+  },
+  {
+    "state": "native-standing",
+    "parent": "native-standing-8ecc04e83daecd97",
+    "controller": "fixed:0.18",
+    "ticks": 600,
+    "duration_s": 3.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.8579561875475269,
+    "root_mean_vx_mps": 0.2859801621139014,
+    "slip_peak_mps": 0.35901453750902945,
+    "slip_p90_mps": 0.014276504417543042,
+    "slip_p95_mps": 0.022050094469191036,
+    "yaw_deg": -16.611029622514245,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 77.28260359091149,
+      "tangent_speed_mps": 0.35901453750902945
+    },
+    "q_step_max_deg": 1.3987463994536729,
+    "dq_abs_max": 4.882546014176491,
+    "qpd_step_max_deg": 43.79443871278598,
+    "force_evaluation": "actual active ticks only; released not diluting burden",
+    "u_mean": 0.17999999999999997,
+    "actual_seconds": 3.0,
+    "boundary": null,
+    "artifact_sha": "457a7440f7d0817502ea3359f08c714db2e4b140e86e26f98ebc042a52f7a183"
+  }
+]

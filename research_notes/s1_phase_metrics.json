@@ -1,0 +1,2006 @@
+[
+  {
+    "state": "P1-1",
+    "controller": "BC500",
+    "phase": "moving",
+    "ticks": 109,
+    "duration_s": 0.545,
+    "error_cm": 3.754571538672159,
+    "force_rms_N": 2.979387469652423,
+    "error_xyz_cm": [
+      1.6989715862264232,
+      2.975788192863059,
+      1.5345968915057497
+    ],
+    "force_xyz_N": [
+      1.7409196370955635,
+      2.0523498598198247,
+      1.2782052121605771
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.01208110244921197,
+    "root_mean_vx_mps": 0.022111612972084665,
+    "slip_peak_mps": 0.005819764414207704,
+    "slip_p90_mps": 0.005435891345619959,
+    "slip_p95_mps": 0.005622019995113686,
+    "yaw_deg": -10.972625401636279,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 27.98463025663705,
+      "tangent_speed_mps": 0.005819764414207704
+    },
+    "q_step_max_deg": 0.7909438018045731,
+    "dq_abs_max": 2.7609147079462537,
+    "qpd_step_max_deg": 4.547580183477569,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "P1-1",
+    "controller": "BC500",
+    "phase": "hold",
+    "ticks": 491,
+    "duration_s": 2.455,
+    "error_cm": 2.221414745293453,
+    "force_rms_N": 1.808747201263162,
+    "error_xyz_cm": [
+      0.23027133694603416,
+      1.7706620431512783,
+      1.3215197731897939
+    ],
+    "force_xyz_N": [
+      0.30271860480794555,
+      1.3933788741202444,
+      1.112844642138269
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.0022240908164303692,
+    "root_mean_vx_mps": 0.0009500601323942563,
+    "slip_peak_mps": 0.0038779908718591825,
+    "slip_p90_mps": 0.0033159952286922786,
+    "slip_p95_mps": 0.003430080613984196,
+    "yaw_deg": -11.6441261247232,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 49.4099005463425,
+      "tangent_speed_mps": 0.0038779908718591825
+    },
+    "q_step_max_deg": 0.8315068395211282,
+    "dq_abs_max": 2.9025064204991593,
+    "qpd_step_max_deg": 4.38399763310344,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "P1-1",
+    "controller": "CS",
+    "phase": "moving",
+    "ticks": 109,
+    "duration_s": 0.545,
+    "error_cm": 4.363949662474977,
+    "force_rms_N": 3.7839117494730474,
+    "error_xyz_cm": [
+      3.433885596015106,
+      2.0629359182634697,
+      1.731121534507007
+    ],
+    "force_xyz_N": [
+      3.4022736446371367,
+      1.0426155543843714,
+      1.2866526262218103
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.0032048845903720063,
+    "root_mean_vx_mps": 0.005834478444805347,
+    "slip_peak_mps": 0.004764179518310216,
+    "slip_p90_mps": 0.004564289795839175,
+    "slip_p95_mps": 0.0047128627865916945,
+    "yaw_deg": -5.958201117757998,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 32.038598155102804,
+      "tangent_speed_mps": 0.004764179518310216
+    },
+    "q_step_max_deg": 0.7859088507446814,
+    "dq_abs_max": 2.7433394132118814,
+    "qpd_step_max_deg": 10.165080258690251,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "P1-1",
+    "controller": "CS",
+    "phase": "hold",
+    "ticks": 491,
+    "duration_s": 2.455,
+    "error_cm": 5.539120229782182,
+    "force_rms_N": 4.496174066165576,
+    "error_xyz_cm": [
+      4.705450269490957,
+      1.467442675887606,
+      2.527291568915922
+    ],
+    "force_xyz_N": [
+      3.7709781843013603,
+      1.2229380532369722,
+      2.1212560629796857
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.013156191038807826,
+    "root_mean_vx_mps": -0.005363257429838612,
+    "slip_peak_mps": 0.07299694429544931,
+    "slip_p90_mps": 0.0248178097356185,
+    "slip_p95_mps": 0.04356496169066254,
+    "yaw_deg": -6.261551641570982,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 7.478080858316926,
+      "tangent_speed_mps": 0.07299694429544931
+    },
+    "q_step_max_deg": 0.8740479899858562,
+    "dq_abs_max": 3.0510030491383286,
+    "qpd_step_max_deg": 24.028305825555023,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "P1-1",
+    "controller": "CP",
+    "phase": "moving",
+    "ticks": 109,
+    "duration_s": 0.545,
+    "error_cm": 5.1125004222449295,
+    "force_rms_N": 4.442981204983859,
+    "error_xyz_cm": [
+      3.470113714469774,
+      1.9075658695649176,
+      3.233753829433282
+    ],
+    "force_xyz_N": [
+      3.4512460084990813,
+      0.88073967187037,
+      2.6558013116670933
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.0004986758551045536,
+    "root_mean_vx_mps": -0.0009921585687265174,
+    "slip_peak_mps": 0.007700959475709587,
+    "slip_p90_mps": 0.007249048679560755,
+    "slip_p95_mps": 0.007546006958344204,
+    "yaw_deg": -6.403455948793526,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 34.55471222273986,
+      "tangent_speed_mps": 0.007700959475709587
+    },
+    "q_step_max_deg": 0.8603307378563126,
+    "dq_abs_max": 3.003120806340975,
+    "qpd_step_max_deg": 10.08367806416204,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "P1-1",
+    "controller": "CP",
+    "phase": "hold",
+    "ticks": 491,
+    "duration_s": 2.455,
+    "error_cm": 4.807220248191836,
+    "force_rms_N": 3.8292737725316153,
+    "error_xyz_cm": [
+      4.760424683979721,
+      0.2933815499337061,
+      0.6013739343708409
+    ],
+    "force_xyz_N": [
+      3.8036562355314554,
+      0.2347679524848186,
+      0.37472773501205886
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.013590631736389604,
+    "root_mean_vx_mps": 0.005620936202289103,
+    "slip_peak_mps": 0.0012304127342901278,
+    "slip_p90_mps": 0.0010338299199362643,
+    "slip_p95_mps": 0.0010415355280445561,
+    "yaw_deg": -5.198233792402291,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 71.8390467257034,
+      "tangent_speed_mps": 0.0012304127342901278
+    },
+    "q_step_max_deg": 0.1535874163752103,
+    "dq_abs_max": 0.5554999192775171,
+    "qpd_step_max_deg": 0.6530446318286741,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "P1-13",
+    "controller": "BC500",
+    "phase": "moving",
+    "ticks": 357,
+    "duration_s": 1.7850000000000001,
+    "error_cm": 9.452230700636258,
+    "force_rms_N": 7.160294316133313,
+    "error_xyz_cm": [
+      8.345059101316323,
+      2.7533518104334687,
+      3.4819114896233203
+    ],
+    "force_xyz_N": [
+      6.131224439032096,
+      2.310569839298184,
+      2.8877618651114867
+    ],
+    "cap_fraction": 0.3137254901960784,
+    "root_dx_m": 0.40291428803309165,
+    "root_mean_vx_mps": 0.226039230214752,
+    "slip_peak_mps": 0.31843428716626887,
+    "slip_p90_mps": 0.022778010604618322,
+    "slip_p95_mps": 0.03796240207196929,
+    "yaw_deg": -21.301499641865924,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 100.79571289599204,
+      "tangent_speed_mps": 0.31843428716626887
+    },
+    "q_step_max_deg": 1.8813205575141956,
+    "dq_abs_max": 6.567047602815614,
+    "qpd_step_max_deg": 52.49052798856679,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "P1-13",
+    "controller": "BC500",
+    "phase": "hold",
+    "ticks": 243,
+    "duration_s": 1.215,
+    "error_cm": 1.72600027926284,
+    "force_rms_N": 1.3962770761909398,
+    "error_xyz_cm": [
+      1.0818919538064777,
+      1.001981952897701,
+      0.8970055353070645
+    ],
+    "force_xyz_N": [
+      0.8763216758951897,
+      0.8467288632902654,
+      0.681689244394937
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.010181091483769389,
+    "root_mean_vx_mps": -0.008492095986420214,
+    "slip_peak_mps": 0.009323509291179696,
+    "slip_p90_mps": 0.008550876422980759,
+    "slip_p95_mps": 0.008821583994062538,
+    "yaw_deg": -17.820048392418755,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 26.12468144668359,
+      "tangent_speed_mps": 0.009323509291179696
+    },
+    "q_step_max_deg": 0.545374048984805,
+    "dq_abs_max": 1.903714561943537,
+    "qpd_step_max_deg": 2.768221882866454,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "P1-13",
+    "controller": "CS",
+    "phase": "moving",
+    "ticks": 357,
+    "duration_s": 1.7850000000000001,
+    "error_cm": 13.980112832932065,
+    "force_rms_N": 8.874092432773734,
+    "error_xyz_cm": [
+      12.074236422344885,
+      4.8122746854350735,
+      5.147657913143888
+    ],
+    "force_xyz_N": [
+      7.426975876569505,
+      3.3262688030915255,
+      3.5391357255475175
+    ],
+    "cap_fraction": 0.5322128851540616,
+    "root_dx_m": 0.4953309157946223,
+    "root_mean_vx_mps": 0.27781490919968216,
+    "slip_peak_mps": 1.235190084045416,
+    "slip_p90_mps": 0.019098450863470645,
+    "slip_p95_mps": 0.03811375949782568,
+    "yaw_deg": -16.739951683870288,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 48.85214049426546,
+      "tangent_speed_mps": 1.235190084045416
+    },
+    "q_step_max_deg": 1.654687366568107,
+    "dq_abs_max": 5.775948527553562,
+    "qpd_step_max_deg": 49.73438785656844,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "P1-13",
+    "controller": "CS",
+    "phase": "hold",
+    "ticks": 243,
+    "duration_s": 1.215,
+    "error_cm": 6.430157672000433,
+    "force_rms_N": 4.955541213992513,
+    "error_xyz_cm": [
+      5.9734136877264445,
+      2.2911957385111217,
+      0.6447314866646833
+    ],
+    "force_xyz_N": [
+      4.611188267373948,
+      1.7625069235608408,
+      0.43347529434943893
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.002568905962373469,
+    "root_mean_vx_mps": 0.0026228398417546244,
+    "slip_peak_mps": 0.0049985762542729,
+    "slip_p90_mps": 0.003671642457532984,
+    "slip_p95_mps": 0.003700451091169709,
+    "yaw_deg": -18.558515481733107,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 17.702542455199904,
+      "tangent_speed_mps": 0.0049985762542729
+    },
+    "q_step_max_deg": 0.17147256503612607,
+    "dq_abs_max": 0.6016899457662814,
+    "qpd_step_max_deg": 1.066710770042265,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "P1-13",
+    "controller": "CP",
+    "phase": "moving",
+    "ticks": 357,
+    "duration_s": 1.7850000000000001,
+    "error_cm": 20.41567654570838,
+    "force_rms_N": 10.0,
+    "error_xyz_cm": [
+      19.854756086354175,
+      2.6393359009506243,
+      3.9525201545750837
+    ],
+    "force_xyz_N": [
+      9.696657538742196,
+      1.407851618638245,
+      1.9981957852652321
+    ],
+    "cap_fraction": 1.0,
+    "root_dx_m": 0.13454661046920224,
+    "root_mean_vx_mps": 0.07568936731428821,
+    "slip_peak_mps": 0.09151069149681086,
+    "slip_p90_mps": 0.01187995352444068,
+    "slip_p95_mps": 0.01422755591863252,
+    "yaw_deg": -2.048994911564008,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 73.11514840751352,
+      "tangent_speed_mps": 0.09151069149681086
+    },
+    "q_step_max_deg": 2.2214506370417153,
+    "dq_abs_max": 7.754325557380687,
+    "qpd_step_max_deg": 34.32391526815245,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "P1-13",
+    "controller": "CP",
+    "phase": "hold",
+    "ticks": 243,
+    "duration_s": 1.215,
+    "error_cm": 17.4334076034901,
+    "force_rms_N": 10.0,
+    "error_xyz_cm": [
+      17.21686976353848,
+      1.7998133546283897,
+      2.0648893682911904
+    ],
+    "force_xyz_N": [
+      9.875753290131403,
+      1.01682876504006,
+      1.1981469922533954
+    ],
+    "cap_fraction": 1.0,
+    "root_dx_m": 0.03844169247100662,
+    "root_mean_vx_mps": 0.0318802826820428,
+    "slip_peak_mps": 0.7940517702592794,
+    "slip_p90_mps": 0.008798355004939674,
+    "slip_p95_mps": 0.011932591162582398,
+    "yaw_deg": -3.0062904888700923,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 81.06273442236827,
+      "tangent_speed_mps": 0.7940517702592794
+    },
+    "q_step_max_deg": 1.0709998142852788,
+    "dq_abs_max": 3.738494609505179,
+    "qpd_step_max_deg": 33.23986264780752,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "BC500",
+    "phase": "hold",
+    "ticks": 443,
+    "duration_s": 2.215,
+    "error_cm": 17.04611961699888,
+    "force_rms_N": 9.210482500768993,
+    "error_xyz_cm": [
+      4.667612682591468,
+      16.041558303290323,
+      3.3840793496137866
+    ],
+    "force_xyz_N": [
+      2.3672091963490325,
+      8.603249050566658,
+      2.283290233767112
+    ],
+    "cap_fraction": 0.6884875846501128,
+    "root_dx_m": 0.23083840625504723,
+    "root_mean_vx_mps": 0.10539841700392899,
+    "slip_peak_mps": 0.17884580164680444,
+    "slip_p90_mps": 0.00729427316772542,
+    "slip_p95_mps": 0.009411885585051334,
+    "yaw_deg": -11.946430552098073,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 38.97508311810106,
+      "tangent_speed_mps": 0.17884580164680444
+    },
+    "q_step_max_deg": 1.3002595281412463,
+    "dq_abs_max": 4.538761979298533,
+    "qpd_step_max_deg": 30.6728794822308,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "BC500",
+    "phase": "released",
+    "ticks": 157,
+    "duration_s": 0.785,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.008917515831458722,
+    "root_mean_vx_mps": 0.011347283833826355,
+    "slip_peak_mps": 0.005426274781699141,
+    "slip_p90_mps": 0.004958823796491545,
+    "slip_p95_mps": 0.0050575282380952245,
+    "yaw_deg": -9.336070167331096,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 68.58809625601583,
+      "tangent_speed_mps": 0.005426274781699141
+    },
+    "q_step_max_deg": 0.2659964673704443,
+    "dq_abs_max": 0.9285028308575847,
+    "qpd_step_max_deg": 1.3480761440327091,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CS",
+    "phase": "hold",
+    "ticks": 443,
+    "duration_s": 2.215,
+    "error_cm": 5.225146298024431,
+    "force_rms_N": 3.9187303722802924,
+    "error_xyz_cm": [
+      2.6486117248341037,
+      4.288303369482904,
+      1.3774846562162864
+    ],
+    "force_xyz_N": [
+      2.050948055105142,
+      3.1954100092567126,
+      0.9692340680323261
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.1897813539557158,
+    "root_mean_vx_mps": 0.08686221316255653,
+    "slip_peak_mps": 0.4848708261020438,
+    "slip_p90_mps": 0.00596709893742666,
+    "slip_p95_mps": 0.008702383549957289,
+    "yaw_deg": -21.922549611614336,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 36.67669924358098,
+      "tangent_speed_mps": 0.4848708261020438
+    },
+    "q_step_max_deg": 1.1939165219949148,
+    "dq_abs_max": 4.1675548605541115,
+    "qpd_step_max_deg": 31.385788160813696,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CS",
+    "phase": "released",
+    "ticks": 157,
+    "duration_s": 0.785,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.0045590756708541735,
+    "root_mean_vx_mps": 0.005818737810642349,
+    "slip_peak_mps": 0.002022096023342833,
+    "slip_p90_mps": 0.0016558858136265166,
+    "slip_p95_mps": 0.001663190967051383,
+    "yaw_deg": -21.92782908017874,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 37.102619638706145,
+      "tangent_speed_mps": 0.002022096023342833
+    },
+    "q_step_max_deg": 0.06406525763338901,
+    "dq_abs_max": 0.22362993636821504,
+    "qpd_step_max_deg": 0.35568007331600415,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CP",
+    "phase": "hold",
+    "ticks": 443,
+    "duration_s": 2.215,
+    "error_cm": 5.210047672217461,
+    "force_rms_N": 3.9051157230754354,
+    "error_xyz_cm": [
+      2.4577696709239163,
+      4.418674890885343,
+      1.2566929617549898
+    ],
+    "force_xyz_N": [
+      1.8790400167484607,
+      3.3085350836653733,
+      0.8790523455541684
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.18493401752945732,
+    "root_mean_vx_mps": 0.08467368495020323,
+    "slip_peak_mps": 0.5538350647566718,
+    "slip_p90_mps": 0.0063556456402045014,
+    "slip_p95_mps": 0.009126037281614553,
+    "yaw_deg": -20.943341774328637,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 25.979621361448523,
+      "tangent_speed_mps": 0.5538350647566718
+    },
+    "q_step_max_deg": 1.224979704321802,
+    "dq_abs_max": 4.2759858221044125,
+    "qpd_step_max_deg": 41.63585646334642,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_tail-hold-97ff10c4dcd9",
+    "controller": "CP",
+    "phase": "released",
+    "ticks": 157,
+    "duration_s": 0.785,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.0047785088941282305,
+    "root_mean_vx_mps": 0.006098135385897891,
+    "slip_peak_mps": 0.0018395146465362616,
+    "slip_p90_mps": 0.0014528391720751404,
+    "slip_p95_mps": 0.0015172952116269194,
+    "yaw_deg": -20.85689750205603,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 37.626433471128934,
+      "tangent_speed_mps": 0.0018395146465362616
+    },
+    "q_step_max_deg": 0.06551761737223388,
+    "dq_abs_max": 0.22869962824146414,
+    "qpd_step_max_deg": 0.3606429527999589,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "BC500",
+    "phase": "moving",
+    "ticks": 88,
+    "duration_s": 0.44,
+    "error_cm": 4.115893359404762,
+    "force_rms_N": 2.721972953794479,
+    "error_xyz_cm": [
+      1.8992251569733336,
+      3.6128965600763285,
+      0.529622880265254
+    ],
+    "force_xyz_N": [
+      1.5040893251616592,
+      2.1591974766106605,
+      0.6962171501202348
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.0030245168550032675,
+    "root_mean_vx_mps": 0.0067831357695957864,
+    "slip_peak_mps": 0.005408293492668094,
+    "slip_p90_mps": 0.005317670738934533,
+    "slip_p95_mps": 0.005375174531434426,
+    "yaw_deg": -12.190005135409017,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 24.402475947788613,
+      "tangent_speed_mps": 0.005408293492668094
+    },
+    "q_step_max_deg": 1.0269512577557212,
+    "dq_abs_max": 3.5847361410668572,
+    "qpd_step_max_deg": 5.583760541538406,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "BC500",
+    "phase": "hold",
+    "ticks": 337,
+    "duration_s": 1.685,
+    "error_cm": 2.3161121128761875,
+    "force_rms_N": 1.8874528882669863,
+    "error_xyz_cm": [
+      0.8315035557658471,
+      1.7408345381448938,
+      1.281589742063506
+    ],
+    "force_xyz_N": [
+      0.6201546097744338,
+      1.4053348230012932,
+      1.0967774161892798
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.010314799495775795,
+    "root_mean_vx_mps": 0.00616169836380993,
+    "slip_peak_mps": 0.003983308652928939,
+    "slip_p90_mps": 0.003436469000582214,
+    "slip_p95_mps": 0.003528184518564579,
+    "yaw_deg": -11.844652694645264,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 33.82662142055405,
+      "tangent_speed_mps": 0.003983308652928939
+    },
+    "q_step_max_deg": 0.876936088950532,
+    "dq_abs_max": 3.0610844163497295,
+    "qpd_step_max_deg": 4.458089657589887,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "BC500",
+    "phase": "released",
+    "ticks": 415,
+    "duration_s": 2.075,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.0015898204608494632,
+    "root_mean_vx_mps": 0.000763024138332212,
+    "slip_peak_mps": 0.00296099179938038,
+    "slip_p90_mps": 0.002719503288052691,
+    "slip_p95_mps": 0.0028255054843711823,
+    "yaw_deg": -12.96129874136557,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 59.403041034065545,
+      "tangent_speed_mps": 0.00296099179938038
+    },
+    "q_step_max_deg": 0.8093500773016389,
+    "dq_abs_max": 2.8251647300368457,
+    "qpd_step_max_deg": 4.041848644780907,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CS",
+    "phase": "moving",
+    "ticks": 88,
+    "duration_s": 0.44,
+    "error_cm": 4.220717056418977,
+    "force_rms_N": 3.566307761479079,
+    "error_xyz_cm": [
+      2.889225284971229,
+      2.938198959355464,
+      0.9131355859189049
+    ],
+    "force_xyz_N": [
+      3.0718513638957314,
+      1.556583180633444,
+      0.9270000266919786
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.0023308141317378815,
+    "root_mean_vx_mps": 0.0051880678505419504,
+    "slip_peak_mps": 0.003741328974831517,
+    "slip_p90_mps": 0.0033398674512729143,
+    "slip_p95_mps": 0.0035592277800330133,
+    "yaw_deg": -6.902936981374641,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 30.542564821659287,
+      "tangent_speed_mps": 0.003741328974831517
+    },
+    "q_step_max_deg": 0.7651735768250205,
+    "dq_abs_max": 2.678453672499723,
+    "qpd_step_max_deg": 6.113864543071201,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CS",
+    "phase": "hold",
+    "ticks": 337,
+    "duration_s": 1.685,
+    "error_cm": 4.421924284902952,
+    "force_rms_N": 3.5498293023132654,
+    "error_xyz_cm": [
+      3.9526895454279702,
+      0.48846250320532636,
+      1.9212142311156466
+    ],
+    "force_xyz_N": [
+      3.1658865230788176,
+      0.44831886588005937,
+      1.5419016807325354
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.0005090094727502985,
+    "root_mean_vx_mps": -0.0002972797064932537,
+    "slip_peak_mps": 0.008584898979821032,
+    "slip_p90_mps": 0.0067735200227326976,
+    "slip_p95_mps": 0.007539646221491809,
+    "yaw_deg": -7.488445109060581,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 16.65747162851943,
+      "tangent_speed_mps": 0.008584898979821032
+    },
+    "q_step_max_deg": 0.18943054451601113,
+    "dq_abs_max": 0.6699059435535172,
+    "qpd_step_max_deg": 0.8618511987187802,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CS",
+    "phase": "released",
+    "ticks": 415,
+    "duration_s": 2.075,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.001259506899938912,
+    "root_mean_vx_mps": -0.0006565515260377822,
+    "slip_peak_mps": 0.009968999238043784,
+    "slip_p90_mps": 0.0050499998341526665,
+    "slip_p95_mps": 0.008849539384508767,
+    "yaw_deg": -6.881137764178502,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 14.97451706683221,
+      "tangent_speed_mps": 0.009968999238043784
+    },
+    "q_step_max_deg": 0.11414450441642349,
+    "dq_abs_max": 0.39843948502475546,
+    "qpd_step_max_deg": 1.6006258036885157,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CP",
+    "phase": "moving",
+    "ticks": 88,
+    "duration_s": 0.44,
+    "error_cm": 4.931104799976493,
+    "force_rms_N": 4.40287339223729,
+    "error_xyz_cm": [
+      2.9192135047717693,
+      2.788798989995633,
+      2.831357846565614
+    ],
+    "force_xyz_N": [
+      3.1104477284725185,
+      1.4693578685975723,
+      2.7479804385223807
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.00510064684772028,
+    "root_mean_vx_mps": -0.011724140644976244,
+    "slip_peak_mps": 0.009235631487861521,
+    "slip_p90_mps": 0.0089141173433347,
+    "slip_p95_mps": 0.009167951853974933,
+    "yaw_deg": -7.396266619046407,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 39.8614936354694,
+      "tangent_speed_mps": 0.009235631487861521
+    },
+    "q_step_max_deg": 0.7709079308287045,
+    "dq_abs_max": 2.6909763245395126,
+    "qpd_step_max_deg": 7.117513030280385,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CP",
+    "phase": "hold",
+    "ticks": 337,
+    "duration_s": 1.685,
+    "error_cm": 3.9342737430577297,
+    "force_rms_N": 3.1000769111236193,
+    "error_xyz_cm": [
+      3.8441113448397735,
+      0.21342474785675755,
+      0.8097948695749434
+    ],
+    "force_xyz_N": [
+      3.0653364149144884,
+      0.1729019517949392,
+      0.42929527524357797
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.015579758984114574,
+    "root_mean_vx_mps": 0.00937361619183618,
+    "slip_peak_mps": 0.0017472053894250794,
+    "slip_p90_mps": 0.0009605622678564946,
+    "slip_p95_mps": 0.0010096787128343297,
+    "yaw_deg": -5.88682855224727,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 70.72013281735438,
+      "tangent_speed_mps": 0.0017472053894250794
+    },
+    "q_step_max_deg": 0.16959986540501473,
+    "dq_abs_max": 0.5920152124513426,
+    "qpd_step_max_deg": 0.8903356488786721,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_near-sustained-5f62e065b5ac",
+    "controller": "CP",
+    "phase": "released",
+    "ticks": 415,
+    "duration_s": 2.075,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.009176540314945508,
+    "root_mean_vx_mps": -0.004421302419390653,
+    "slip_peak_mps": 0.0015583713650735923,
+    "slip_p90_mps": 0.0015534470873595047,
+    "slip_p95_mps": 0.0015573524940887154,
+    "yaw_deg": -6.857191864941224,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 45.675402239365305,
+      "tangent_speed_mps": 0.0015583713650735923
+    },
+    "q_step_max_deg": 0.052795347193650206,
+    "dq_abs_max": 0.18429052765254958,
+    "qpd_step_max_deg": 0.4026225760993266,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "BC500",
+    "phase": "moving",
+    "ticks": 100,
+    "duration_s": 0.5,
+    "error_cm": 4.417704232898694,
+    "force_rms_N": 4.172631964948306,
+    "error_xyz_cm": [
+      1.5116186408157168,
+      3.638562848955579,
+      1.9979940361046489
+    ],
+    "force_xyz_N": [
+      2.1513001316396685,
+      2.8911032544356696,
+      2.103398970881888
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.002571630490850605,
+    "root_mean_vx_mps": 0.005124061664850695,
+    "slip_peak_mps": 0.006248390077172387,
+    "slip_p90_mps": 0.005663780513627759,
+    "slip_p95_mps": 0.006148688875792452,
+    "yaw_deg": -9.736922694829188,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 34.13076521030116,
+      "tangent_speed_mps": 0.006248390077172387
+    },
+    "q_step_max_deg": 0.7465271164304372,
+    "dq_abs_max": 2.605871227426038,
+    "qpd_step_max_deg": 5.989529486967582,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "BC500",
+    "phase": "deceleration",
+    "ticks": 142,
+    "duration_s": 0.71,
+    "error_cm": 5.271192516122669,
+    "force_rms_N": 5.5085372846016,
+    "error_xyz_cm": [
+      3.6086481867871374,
+      1.9529976085104646,
+      3.30891661230348
+    ],
+    "force_xyz_N": [
+      3.749789711098141,
+      1.5663971295080237,
+      3.7187982159640645
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.004444575746072047,
+    "root_mean_vx_mps": -0.005914507501520526,
+    "slip_peak_mps": 0.010164645941476185,
+    "slip_p90_mps": 0.009941414549256922,
+    "slip_p95_mps": 0.010086865485777053,
+    "yaw_deg": -9.17449164829322,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 42.71314114823784,
+      "tangent_speed_mps": 0.010164645941476185
+    },
+    "q_step_max_deg": 0.991084551519475,
+    "dq_abs_max": 3.459537717933242,
+    "qpd_step_max_deg": 5.629714267717664,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "BC500",
+    "phase": "hold",
+    "ticks": 548,
+    "duration_s": 2.74,
+    "error_cm": 15.848603294513333,
+    "force_rms_N": 9.753360360938117,
+    "error_xyz_cm": [
+      9.420033332629078,
+      12.5074853916166,
+      2.4503076495642606
+    ],
+    "force_xyz_N": [
+      5.806294639079923,
+      7.682199737456242,
+      1.548802146285288
+    ],
+    "cap_fraction": 0.8868613138686131,
+    "root_dx_m": 0.155622699591299,
+    "root_mean_vx_mps": 0.056812728337931516,
+    "slip_peak_mps": 0.662687761066031,
+    "slip_p90_mps": 0.015754448383068994,
+    "slip_p95_mps": 0.0191073836639727,
+    "yaw_deg": 5.545789791172217,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 37.12912658744251,
+      "tangent_speed_mps": 0.662687761066031
+    },
+    "q_step_max_deg": 0.8451092984566461,
+    "dq_abs_max": 2.949987959457581,
+    "qpd_step_max_deg": 37.02652208498353,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "BC500",
+    "phase": "released",
+    "ticks": 410,
+    "duration_s": 2.05,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.02420389252581312,
+    "root_mean_vx_mps": -0.011756279006617498,
+    "slip_peak_mps": 0.010368946541292107,
+    "slip_p90_mps": 0.009602285563289133,
+    "slip_p95_mps": 0.009932223805537143,
+    "yaw_deg": 0.9078341402741704,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 15.426048247149673,
+      "tangent_speed_mps": 0.010368946541292107
+    },
+    "q_step_max_deg": 0.49966285487853646,
+    "dq_abs_max": 1.7441523935090142,
+    "qpd_step_max_deg": 2.797801724614487,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CS",
+    "phase": "moving",
+    "ticks": 100,
+    "duration_s": 0.5,
+    "error_cm": 3.815075417669279,
+    "force_rms_N": 3.6321781031604785,
+    "error_xyz_cm": [
+      3.0427388201403804,
+      1.969667318291241,
+      1.190357748817781
+    ],
+    "force_xyz_N": [
+      3.2165731487560327,
+      1.3384975730552975,
+      1.02703417601618
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.0024511999371637783,
+    "root_mean_vx_mps": 0.004863437848370272,
+    "slip_peak_mps": 0.004153711152409077,
+    "slip_p90_mps": 0.003388269540790285,
+    "slip_p95_mps": 0.003787600685912807,
+    "yaw_deg": -5.811296789928063,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 27.148034739952717,
+      "tangent_speed_mps": 0.004153711152409077
+    },
+    "q_step_max_deg": 0.44978010737551954,
+    "dq_abs_max": 1.5700287567352902,
+    "qpd_step_max_deg": 3.2527490992848116,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CS",
+    "phase": "deceleration",
+    "ticks": 142,
+    "duration_s": 0.71,
+    "error_cm": 7.905087608087884,
+    "force_rms_N": 6.704453714190834,
+    "error_xyz_cm": [
+      6.779118131174067,
+      1.4466168631245442,
+      3.8001667208762515
+    ],
+    "force_xyz_N": [
+      5.479507937889163,
+      1.6638225288800181,
+      3.4866010607364055
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.028108255745918156,
+    "root_mean_vx_mps": 0.0395963321808066,
+    "slip_peak_mps": 0.2400101073793407,
+    "slip_p90_mps": 0.013207369083906954,
+    "slip_p95_mps": 0.027782945559873453,
+    "yaw_deg": -2.5065820430050745,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 82.46024114321264,
+      "tangent_speed_mps": 0.2400101073793407
+    },
+    "q_step_max_deg": 0.9801759734099065,
+    "dq_abs_max": 3.4214595969886528,
+    "qpd_step_max_deg": 13.923186943814667,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CS",
+    "phase": "hold",
+    "ticks": 548,
+    "duration_s": 2.74,
+    "error_cm": 3.38028629923844,
+    "force_rms_N": 2.5292959709120586,
+    "error_xyz_cm": [
+      1.4486064687803406,
+      2.8289294783220664,
+      1.1511006776591242
+    ],
+    "force_xyz_N": [
+      0.9714223569538672,
+      2.2493879350186274,
+      0.627638933364414
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.09746733532221459,
+    "root_mean_vx_mps": 0.03578136438654028,
+    "slip_peak_mps": 0.30245660151992987,
+    "slip_p90_mps": 0.007908562747435371,
+    "slip_p95_mps": 0.008348408858507971,
+    "yaw_deg": -1.415920718131426,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 7.128914014764141,
+      "tangent_speed_mps": 0.30245660151992987
+    },
+    "q_step_max_deg": 1.3066872110399943,
+    "dq_abs_max": 4.561198825269981,
+    "qpd_step_max_deg": 38.60252505671415,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CS",
+    "phase": "released",
+    "ticks": 410,
+    "duration_s": 2.05,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.007911134523029412,
+    "root_mean_vx_mps": 0.003866363181908934,
+    "slip_peak_mps": 0.0031787317054317436,
+    "slip_p90_mps": 0.002772991827440004,
+    "slip_p95_mps": 0.0028511846110946576,
+    "yaw_deg": -0.9989212902275544,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 16.462252959525188,
+      "tangent_speed_mps": 0.0031787317054317436
+    },
+    "q_step_max_deg": 0.021775784077843016,
+    "dq_abs_max": 0.07601182587234286,
+    "qpd_step_max_deg": 0.08373128903518631,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CP",
+    "phase": "moving",
+    "ticks": 100,
+    "duration_s": 0.5,
+    "error_cm": 4.692396855163986,
+    "force_rms_N": 4.477859601823133,
+    "error_xyz_cm": [
+      3.1357476929382067,
+      1.8303191561670622,
+      2.9724748004236266
+    ],
+    "force_xyz_N": [
+      3.3070073699542215,
+      1.242175429493533,
+      2.7517138425117276
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.0037244843354716332,
+    "root_mean_vx_mps": -0.007494424938910789,
+    "slip_peak_mps": 0.007818399552627635,
+    "slip_p90_mps": 0.007171815296466299,
+    "slip_p95_mps": 0.00754689482590685,
+    "yaw_deg": -5.9133176118488295,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 29.580519244690166,
+      "tangent_speed_mps": 0.007818399552627635
+    },
+    "q_step_max_deg": 0.4005755858078464,
+    "dq_abs_max": 1.5302240374819418,
+    "qpd_step_max_deg": 3.10225399177322,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CP",
+    "phase": "deceleration",
+    "ticks": 142,
+    "duration_s": 0.71,
+    "error_cm": 7.827856305376342,
+    "force_rms_N": 6.481621987153014,
+    "error_xyz_cm": [
+      7.199690010137999,
+      0.435485665377589,
+      3.041405979278319
+    ],
+    "force_xyz_N": [
+      6.062734188754526,
+      0.4075870138348899,
+      2.255781586724562
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.02511036365362511,
+    "root_mean_vx_mps": 0.03568068430923133,
+    "slip_peak_mps": 0.011716879232470627,
+    "slip_p90_mps": 0.010182017776758341,
+    "slip_p95_mps": 0.011069269079721297,
+    "yaw_deg": -6.441671071640469,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 15.257175853723208,
+      "tangent_speed_mps": 0.011716879232470627
+    },
+    "q_step_max_deg": 0.17681962776357665,
+    "dq_abs_max": 0.6172169373250462,
+    "qpd_step_max_deg": 2.5134857089025973,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CP",
+    "phase": "hold",
+    "ticks": 548,
+    "duration_s": 2.74,
+    "error_cm": 8.018181662400266,
+    "force_rms_N": 6.4076240135058535,
+    "error_xyz_cm": [
+      7.906133820279289,
+      0.7995340827790416,
+      1.0700609503960579
+    ],
+    "force_xyz_N": [
+      6.313655305424828,
+      0.6524305119199557,
+      0.8773463454381242
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.00030505279948674427,
+    "root_mean_vx_mps": -0.00011878689055176654,
+    "slip_peak_mps": 0.0017893830427639593,
+    "slip_p90_mps": 0.001741214186747444,
+    "slip_p95_mps": 0.0017672154242346658,
+    "yaw_deg": -3.9197785837979326,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 21.159947297952666,
+      "tangent_speed_mps": 0.0017893830427639593
+    },
+    "q_step_max_deg": 0.15391104597022387,
+    "dq_abs_max": 0.5372509014737488,
+    "qpd_step_max_deg": 0.4878974878869358,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75",
+    "controller": "CP",
+    "phase": "released",
+    "ticks": 410,
+    "duration_s": 2.05,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.017864966011551856,
+    "root_mean_vx_mps": -0.008713759811050693,
+    "slip_peak_mps": 0.0020899395545562567,
+    "slip_p90_mps": 0.002070605367220672,
+    "slip_p95_mps": 0.0020841676422485075,
+    "yaw_deg": -5.1759844378868305,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 45.81500187014142,
+      "tangent_speed_mps": 0.0020899395545562567
+    },
+    "q_step_max_deg": 0.08509350401501797,
+    "dq_abs_max": 0.2970323634242162,
+    "qpd_step_max_deg": 0.8210263042759678,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "BC500",
+    "phase": "moving",
+    "ticks": 409,
+    "duration_s": 2.045,
+    "error_cm": 8.499027834627029,
+    "force_rms_N": 6.953914504171008,
+    "error_xyz_cm": [
+      7.383202574045615,
+      2.498924477938296,
+      3.3877972693081806
+    ],
+    "force_xyz_N": [
+      5.907046417870987,
+      2.09139149647028,
+      3.0149313685271912
+    ],
+    "cap_fraction": 0.16625916870415647,
+    "root_dx_m": 0.13979215182586877,
+    "root_mean_vx_mps": 0.06835332624324866,
+    "slip_peak_mps": 0.3960867398928564,
+    "slip_p90_mps": 0.016875466245892926,
+    "slip_p95_mps": 0.02218132671008144,
+    "yaw_deg": -5.002358804765406,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 48.319959400629656,
+      "tangent_speed_mps": 0.3960867398928564
+    },
+    "q_step_max_deg": 1.5697756114055947,
+    "dq_abs_max": 5.479550587306941,
+    "qpd_step_max_deg": 33.02152455193066,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "BC500",
+    "phase": "hold",
+    "ticks": 548,
+    "duration_s": 2.74,
+    "error_cm": 4.31446570036524,
+    "force_rms_N": 3.5398287740368906,
+    "error_xyz_cm": [
+      3.6245001666783487,
+      0.997334332658392,
+      2.117294748087186
+    ],
+    "force_xyz_N": [
+      2.960133232431676,
+      0.9567245687323548,
+      1.6889870027140532
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.18296426892407858,
+    "root_mean_vx_mps": 0.06752999645766622,
+    "slip_peak_mps": 0.33143983687934236,
+    "slip_p90_mps": 0.008082093842058135,
+    "slip_p95_mps": 0.012271323433895028,
+    "yaw_deg": -18.134374439798243,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 61.25696525890108,
+      "tangent_speed_mps": 0.33143983687934236
+    },
+    "q_step_max_deg": 1.2024717024707239,
+    "dq_abs_max": 4.1974180740351565,
+    "qpd_step_max_deg": 33.43745148275953,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "BC500",
+    "phase": "released",
+    "ticks": 403,
+    "duration_s": 2.015,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.00591839362565183,
+    "root_mean_vx_mps": 0.0029311432465928475,
+    "slip_peak_mps": 0.0037669102811696063,
+    "slip_p90_mps": 0.0030267921785127948,
+    "slip_p95_mps": 0.0033922647927089825,
+    "yaw_deg": -19.54345201552716,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 32.500064188936854,
+      "tangent_speed_mps": 0.0037669102811696063
+    },
+    "q_step_max_deg": 0.055151613009095504,
+    "dq_abs_max": 0.19251544695889056,
+    "qpd_step_max_deg": 0.5164954899417792,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CS",
+    "phase": "moving",
+    "ticks": 409,
+    "duration_s": 2.045,
+    "error_cm": 7.382460050115432,
+    "force_rms_N": 6.236387057441363,
+    "error_xyz_cm": [
+      5.622363799304698,
+      3.8928099062111525,
+      2.781325715180207
+    ],
+    "force_xyz_N": [
+      4.772070850140124,
+      3.2420216655085574,
+      2.3683662832928074
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.291948632036951,
+    "root_mean_vx_mps": 0.14275264108751703,
+    "slip_peak_mps": 1.1617732127750862,
+    "slip_p90_mps": 0.018780420203781248,
+    "slip_p95_mps": 0.0287526292420436,
+    "yaw_deg": -7.981308448093205,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 41.864752168609634,
+      "tangent_speed_mps": 1.1617732127750862
+    },
+    "q_step_max_deg": 1.8470206357081156,
+    "dq_abs_max": 6.447318289077073,
+    "qpd_step_max_deg": 27.482383715249245,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CS",
+    "phase": "hold",
+    "ticks": 548,
+    "duration_s": 2.74,
+    "error_cm": 3.9654339319309515,
+    "force_rms_N": 3.112847596435835,
+    "error_xyz_cm": [
+      3.7353761713654037,
+      1.227147240285148,
+      0.5155005117024264
+    ],
+    "force_xyz_N": [
+      2.9520831843889925,
+      0.907794704313919,
+      0.38850200244490324
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.006703037611413831,
+    "root_mean_vx_mps": 0.0024644392185171793,
+    "slip_peak_mps": 0.889312574329639,
+    "slip_p90_mps": 0.0037948668674464515,
+    "slip_p95_mps": 0.004481078940052292,
+    "yaw_deg": -8.941306592774092,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 33.39568604150551,
+      "tangent_speed_mps": 0.889312574329639
+    },
+    "q_step_max_deg": 1.404147359118966,
+    "dq_abs_max": 4.901398919961835,
+    "qpd_step_max_deg": 25.317794314434657,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CS",
+    "phase": "released",
+    "ticks": 403,
+    "duration_s": 2.015,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.01631344309517907,
+    "root_mean_vx_mps": 0.008099712096560296,
+    "slip_peak_mps": 0.001839045596041621,
+    "slip_p90_mps": 0.0013694986885109017,
+    "slip_p95_mps": 0.0015428302209405471,
+    "yaw_deg": -8.381649722275968,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 36.982971157910534,
+      "tangent_speed_mps": 0.001839045596041621
+    },
+    "q_step_max_deg": 0.026498708102125325,
+    "dq_abs_max": 0.09249794078139566,
+    "qpd_step_max_deg": 0.21495629846405628,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CP",
+    "phase": "moving",
+    "ticks": 409,
+    "duration_s": 2.045,
+    "error_cm": 8.77920259834844,
+    "force_rms_N": 7.307724827014707,
+    "error_xyz_cm": [
+      8.271644132834293,
+      1.4234193374977915,
+      2.5745250032255202
+    ],
+    "force_xyz_N": [
+      6.890674695233755,
+      1.1973728863108843,
+      2.118429267868029
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.09671836531407561,
+    "root_mean_vx_mps": 0.047283930161414106,
+    "slip_peak_mps": 0.9070820110530895,
+    "slip_p90_mps": 0.017969973904632675,
+    "slip_p95_mps": 0.025886027942955067,
+    "yaw_deg": -6.9774356537449576,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 31.18483074708439,
+      "tangent_speed_mps": 0.9070820110530895
+    },
+    "q_step_max_deg": 2.1269406338135095,
+    "dq_abs_max": 7.424423410900155,
+    "qpd_step_max_deg": 41.468091649405274,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CP",
+    "phase": "hold",
+    "ticks": 548,
+    "duration_s": 2.74,
+    "error_cm": 7.895156156694462,
+    "force_rms_N": 6.238761809481152,
+    "error_xyz_cm": [
+      7.78073996801533,
+      0.6884562660269201,
+      1.148740292010132
+    ],
+    "force_xyz_N": [
+      6.150439216066382,
+      0.4819412316448545,
+      0.9284282493299849
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.04224935818300782,
+    "root_mean_vx_mps": 0.015536149246947989,
+    "slip_peak_mps": 0.005924507172117425,
+    "slip_p90_mps": 0.005580594541366551,
+    "slip_p95_mps": 0.005737015656916741,
+    "yaw_deg": -5.766204894561823,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 26.361743016765942,
+      "tangent_speed_mps": 0.005924507172117425
+    },
+    "q_step_max_deg": 0.2185527230571659,
+    "dq_abs_max": 0.7628929213093737,
+    "qpd_step_max_deg": 1.635661259036096,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "new_stop-sustained-5f6380cdec75-continue",
+    "controller": "CP",
+    "phase": "released",
+    "ticks": 403,
+    "duration_s": 2.015,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.02716039646158283,
+    "root_mean_vx_mps": -0.013479357459165626,
+    "slip_peak_mps": 0.0027367453182174204,
+    "slip_p90_mps": 0.002517343328999385,
+    "slip_p95_mps": 0.002534369195380265,
+    "yaw_deg": -5.541001235742024,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 19.721581952256205,
+      "tangent_speed_mps": 0.0027367453182174204
+    },
+    "q_step_max_deg": 0.09152897677568772,
+    "dq_abs_max": 0.3194964011434335,
+    "qpd_step_max_deg": 0.8154059123626934,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "native-standing",
+    "controller": "BC500",
+    "phase": "moving",
+    "ticks": 400,
+    "duration_s": 2.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.005879613425166123,
+    "root_mean_vx_mps": -0.002939739888829364,
+    "slip_peak_mps": 0.014642492354253793,
+    "slip_p90_mps": 0.007176691203014305,
+    "slip_p95_mps": 0.009819523364676754,
+    "yaw_deg": -2.805433292223865,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 5.687301512722717,
+      "tangent_speed_mps": 0.014642492354253793
+    },
+    "q_step_max_deg": 0.74346527015114,
+    "dq_abs_max": 2.595183367673302,
+    "qpd_step_max_deg": 4.7237118724302745,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "native-standing",
+    "controller": "BC500",
+    "phase": "hold",
+    "ticks": 200,
+    "duration_s": 1.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.008302071930334429,
+    "root_mean_vx_mps": -0.008511801576608748,
+    "slip_peak_mps": 0.007552342351145401,
+    "slip_p90_mps": 0.0074598570352275954,
+    "slip_p95_mps": 0.007509311813807777,
+    "yaw_deg": -0.7927661065377765,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 26.511283923239944,
+      "tangent_speed_mps": 0.007552342351145401
+    },
+    "q_step_max_deg": 0.43980756090548406,
+    "dq_abs_max": 1.535218002593238,
+    "qpd_step_max_deg": 2.0450696280758303,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "native-standing",
+    "controller": "CS",
+    "phase": "moving",
+    "ticks": 400,
+    "duration_s": 2.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.00017036195653928263,
+    "root_mean_vx_mps": 8.52023247645803e-05,
+    "slip_peak_mps": 0.0014487630193408107,
+    "slip_p90_mps": 0.0014277236788097373,
+    "slip_p95_mps": 0.0014382120233619646,
+    "yaw_deg": -7.094790852038859,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 44.698957653310266,
+      "tangent_speed_mps": 0.0014487630193408107
+    },
+    "q_step_max_deg": 0.0011970491859584953,
+    "dq_abs_max": 0.004178489920660676,
+    "qpd_step_max_deg": 0.004697889488499396,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "native-standing",
+    "controller": "CS",
+    "phase": "hold",
+    "ticks": 200,
+    "duration_s": 1.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.00012561737731578773,
+    "root_mean_vx_mps": 0.00012624318704921474,
+    "slip_peak_mps": 0.0012464044462963317,
+    "slip_p90_mps": 0.0012365946430206913,
+    "slip_p95_mps": 0.0012415573697998582,
+    "yaw_deg": -7.485413203153155,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 44.830210438088926,
+      "tangent_speed_mps": 0.0012464044462963317
+    },
+    "q_step_max_deg": 0.001156354480750333,
+    "dq_abs_max": 0.004036579780666885,
+    "qpd_step_max_deg": 0.0036921441332150176,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "native-standing",
+    "controller": "CP",
+    "phase": "moving",
+    "ticks": 400,
+    "duration_s": 2.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.00017036195653928263,
+    "root_mean_vx_mps": 8.52023247645803e-05,
+    "slip_peak_mps": 0.0014487630193408107,
+    "slip_p90_mps": 0.0014277236788097373,
+    "slip_p95_mps": 0.0014382120233619646,
+    "yaw_deg": -7.094790852038859,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 44.698957653310266,
+      "tangent_speed_mps": 0.0014487630193408107
+    },
+    "q_step_max_deg": 0.0011970491859584953,
+    "dq_abs_max": 0.004178489920660676,
+    "qpd_step_max_deg": 0.004697889488499396,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "native-standing",
+    "controller": "CP",
+    "phase": "hold",
+    "ticks": 200,
+    "duration_s": 1.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.00012561737731578773,
+    "root_mean_vx_mps": 0.00012624318704921474,
+    "slip_peak_mps": 0.0012464044462963317,
+    "slip_p90_mps": 0.0012365946430206913,
+    "slip_p95_mps": 0.0012415573697998582,
+    "yaw_deg": -7.485413203153155,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 44.830210438088926,
+      "tangent_speed_mps": 0.0012464044462963317
+    },
+    "q_step_max_deg": 0.001156354480750333,
+    "dq_abs_max": 0.004036579780666885,
+    "qpd_step_max_deg": 0.0036921441332150176,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0",
+    "phase": "moving",
+    "ticks": 400,
+    "duration_s": 2.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.00017036195653928263,
+    "root_mean_vx_mps": 8.52023247645803e-05,
+    "slip_peak_mps": 0.0014487630193408107,
+    "slip_p90_mps": 0.0014277236788097373,
+    "slip_p95_mps": 0.0014382120233619646,
+    "yaw_deg": -7.094790852038859,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 44.698957653310266,
+      "tangent_speed_mps": 0.0014487630193408107
+    },
+    "q_step_max_deg": 0.0011970491859584953,
+    "dq_abs_max": 0.004178489920660676,
+    "qpd_step_max_deg": 0.004697889488499396,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0",
+    "phase": "hold",
+    "ticks": 200,
+    "duration_s": 1.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.00012561737731578773,
+    "root_mean_vx_mps": 0.00012624318704921474,
+    "slip_peak_mps": 0.0012464044462963317,
+    "slip_p90_mps": 0.0012365946430206913,
+    "slip_p95_mps": 0.0012415573697998582,
+    "yaw_deg": -7.485413203153155,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 44.830210438088926,
+      "tangent_speed_mps": 0.0012464044462963317
+    },
+    "q_step_max_deg": 0.001156354480750333,
+    "dq_abs_max": 0.004036579780666885,
+    "qpd_step_max_deg": 0.0036921441332150176,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0.09",
+    "phase": "moving",
+    "ticks": 400,
+    "duration_s": 2.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.009643931817573208,
+    "root_mean_vx_mps": -0.004827307567423505,
+    "slip_peak_mps": 0.005829167388719252,
+    "slip_p90_mps": 0.005269527850179922,
+    "slip_p95_mps": 0.0054533032857740915,
+    "yaw_deg": -7.903734559028649,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 30.19572622987267,
+      "tangent_speed_mps": 0.005829167388719252
+    },
+    "q_step_max_deg": 0.23915529317083636,
+    "dq_abs_max": 0.8348094578806834,
+    "qpd_step_max_deg": 1.742799606356916,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0.09",
+    "phase": "hold",
+    "ticks": 200,
+    "duration_s": 1.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": -0.016584334092316085,
+    "root_mean_vx_mps": -0.016690795370662762,
+    "slip_peak_mps": 0.006203617992844659,
+    "slip_p90_mps": 0.006112943795471778,
+    "slip_p95_mps": 0.00616575358998188,
+    "yaw_deg": -5.391633936574034,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 27.50156615340935,
+      "tangent_speed_mps": 0.006203617992844659
+    },
+    "q_step_max_deg": 0.051939307799265616,
+    "dq_abs_max": 0.18130238646078034,
+    "qpd_step_max_deg": 0.5810595606186173,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0.18",
+    "phase": "moving",
+    "ticks": 400,
+    "duration_s": 2.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.4796017639744887,
+    "root_mean_vx_mps": 0.23979303138433292,
+    "slip_peak_mps": 0.18885011212323569,
+    "slip_p90_mps": 0.015543901991244608,
+    "slip_p95_mps": 0.024386777276015844,
+    "yaw_deg": -9.832434619679095,
+    "slip_peak_contact": {
+      "body": "right_ankle_roll_link",
+      "normal_N": 218.95743208035987,
+      "tangent_speed_mps": 0.18885011212323569
+    },
+    "q_step_max_deg": 1.3987463994536729,
+    "dq_abs_max": 4.882546014176491,
+    "qpd_step_max_deg": 37.8520930263785,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  },
+  {
+    "state": "native-standing",
+    "controller": "fixed:0.18",
+    "phase": "hold",
+    "ticks": 200,
+    "duration_s": 1.0,
+    "error_cm": null,
+    "force_rms_N": 0.0,
+    "error_xyz_cm": null,
+    "force_xyz_N": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cap_fraction": 0.0,
+    "root_dx_m": 0.37722116779784687,
+    "root_mean_vx_mps": 0.3783544235730385,
+    "slip_peak_mps": 0.35901453750902945,
+    "slip_p90_mps": 0.009451904696417069,
+    "slip_p95_mps": 0.016988140338245514,
+    "yaw_deg": -16.611029622514245,
+    "slip_peak_contact": {
+      "body": "left_ankle_roll_link",
+      "normal_N": 77.28260359091149,
+      "tangent_speed_mps": 0.35901453750902945
+    },
+    "q_step_max_deg": 1.2313333974769627,
+    "dq_abs_max": 4.298164395148213,
+    "qpd_step_max_deg": 43.79443871278598,
+    "force_evaluation": "actual active ticks only; released not diluting burden"
+  }
+]
