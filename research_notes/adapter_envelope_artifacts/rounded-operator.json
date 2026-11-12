@@ -1,0 +1,48 @@
+{
+  "cpu": {
+    "exact_repeated_output": true,
+    "actual_q_in_original_envelope": true,
+    "zero_correction_identity": true,
+    "entries": 29696,
+    "rounding_error_max_rad": 4.76837158203125e-07,
+    "trigger_fraction": 0.6218682527542114,
+    "base_gradient_norm": 0.0034111954737454653,
+    "raw_gradient_norm": 0.003015972441062331,
+    "raw_zero_gradient_fraction": 0.6218682527542114,
+    "microbenchmark": {
+      "1": {
+        "p50_s": 0.0003420309512875974,
+        "p90_s": 0.00036689097760245204,
+        "max_s": 0.0005528319743461907
+      },
+      "32": {
+        "p50_s": 0.0021131380344741046,
+        "p90_s": 0.0021793979685753584,
+        "max_s": 0.0023232499952428043
+      }
+    }
+  },
+  "cuda": {
+    "exact_repeated_output": true,
+    "actual_q_in_original_envelope": true,
+    "zero_correction_identity": true,
+    "entries": 29696,
+    "rounding_error_max_rad": 4.76837158203125e-07,
+    "trigger_fraction": 0.6227774620056152,
+    "base_gradient_norm": 0.0034525487571954727,
+    "raw_gradient_norm": 0.0030217557214200497,
+    "raw_zero_gradient_fraction": 0.6227774620056152,
+    "microbenchmark": {
+      "1": {
+        "p50_s": 0.0014598459820263088,
+        "p90_s": 0.0014954060316085815,
+        "max_s": 0.0016471169656142592
+      },
+      "32": {
+        "p50_s": 0.0075175699894316494,
+        "p90_s": 0.008051412005443126,
+        "max_s": 0.010174860013648868
+      }
+    }
+  }
+}

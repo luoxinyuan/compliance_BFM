@@ -270,3 +270,6 @@ Nominal-anchored执行适配的物理设计与其有限精度实现须分别验�
 
 ### Issue62 execution representation clarification
 Nominal-anchored adapter Envelope is a constrained execution adaptation package, not a force-to-skill rule. Its deterministic inward FP32 representation uses actual executed action and original g(action) consistently for physics/replay/critic/target. This does not revise physical thresholds or prove behavioural qualification. A remains Guidance-only; C versus B shares this Envelope. Numerical-only fixes ≤1e-6rad that preserve criterion relationships may proceed with explicit milestone disclosure under Yi approval.
+
+
+Issue62 Envelope V1 frozen qualification: inward numeric representation succeeded; B19 sampled release-state actual joint excess became0, but loadedslip peak/p95 violated prelocked off-relative criteria. Constraining targets does not by itself establish coordinated recovery or qualify adaptation learning. B/C retraining and five-waydev remain unexecuted; no frozen baseline promotion. Full gradient-path audit is separately missing due a documented harness no_grad defect. See ADAPTER_ENVELOPE_V1_RESULTS/ERRATUM.

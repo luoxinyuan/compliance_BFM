@@ -1,0 +1,74 @@
+{
+  "status": "completed_3s",
+  "error": null,
+  "mode": "envelope",
+  "sample": true,
+  "case": {
+    "id": "B19-release",
+    "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-v3-20261112/runs/pilot-B-v3/checkpoints/round-19",
+    "core_sha": "0cd3e3684d764cad42caaa83773b885868caeed0557dba1780ec36a3d03a3984",
+    "manifest_sha": "150f107489e267fc0c93ef8e99b7a51d798cd5a1011f9c3c3ddba9017855306a",
+    "time": 11.800000000000445,
+    "parent_id": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+    "spec": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.2598418573725568,
+      "ramp": 4.2,
+      "onset": 5.1,
+      "release": 10.8,
+      "end": 14.8,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.4,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "demand_family": "mid",
+      "source_profile": {
+        "arm_fraction": 1.0,
+        "pulse_fraction": 0.07682825846372102,
+        "pulse_duration": 0.6897354057055731,
+        "phase_offset": 0.0,
+        "phase_rate": 1.0
+      },
+      "parent_id": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "source_parent_id": "f2b9d9813473a0991f4147cbab8150bdb280858d2c3c580d44d31049d7ca84e8",
+      "partner_parent_id": "e4c491566f5ed2f915659f5d3af6e614966f4d9cf388567ba02f27a6f23fb1d6",
+      "common_prefix_parent_id": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "deceleration": 0.0,
+      "split": "train"
+    },
+    "branches": [
+      {
+        "id": "envelope-sample",
+        "mode": "envelope",
+        "sample": true
+      },
+      {
+        "id": "envelope-mean",
+        "mode": "envelope",
+        "sample": false
+      }
+    ],
+    "origin": "archived actual B policy state; current frozen model B19 for all branches"
+  },
+  "initial_digest": "fdd0cfd1fd689dec0f09274f7b62ab72cbf26dd1541604b96d6a95a5540901cc",
+  "rng_digest": "069a550954100c118ff076efc59bdd379079e7db678c77b84c728e2b20be4496",
+  "model_digest": "54002fb0161de37bff3e2e00c781b216e8fc294e829bd88b60cf053a68222f79",
+  "trace_sha256": "2fb2feacb607e4c73227daeb69d4a5790174a132beb9703d070d071819e4a95b",
+  "ticks": 600,
+  "controls": 150,
+  "updates": 38,
+  "exact_execution_replay_qPD": true,
+  "path_audit": null,
+  "path_audit_status": "FAILED_harness_inherited_outer_no_grad",
+  "provenance": "posthoc read-only summary from trace saved after frozen-state and replay/qPD exact assertions; original job remains exit1",
+  "restore_checks": {
+    "canonical_mjdata": true,
+    "BFM_history": true,
+    "rng": true
+  }
+}

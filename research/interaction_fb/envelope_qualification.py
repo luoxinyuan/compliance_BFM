@@ -65,6 +65,7 @@ def run(env,agent,out,config,case,mode,stochastic):
         if mode=='envelope':assert torch.equal(row['envelope']['qexec'][0],q)
     torch.save(trace,out/'qualification-trace.pt')
     result=dict(status=status,error=error,mode=mode,sample=stochastic,case=case,initial_digest=initial_digest,prefix_digest=prefix_digest,rng_digest=tree_digest(rng),model_digest=model_digest,trace_sha256=hashlib.sha256((out/'qualification-trace.pt').read_bytes()).hexdigest(),ticks=len(trace['physics']),controls=len(trace['controls']),updates=agent.updates,exact_execution_replay_qPD=True)
+    (out/'qualification-physical.json').write_text(json.dumps(result,indent=2))
     if mode=='envelope' and case['id']=='B19-release' and stochastic and status=='completed_3s':
         result['path_audit']=audit_update_paths(agent,trace['rows'],env.native,config['operator'])
     (out/'qualification.json').write_text(json.dumps(result,indent=2));return result
@@ -85,7 +86,8 @@ def audit_update_paths(agent,rows,native,operator):
     h=test.nets['q'].register_forward_pre_hook(lambda mod,args:qinputs.append(args[0].detach().cpu().clone()))
     ht=test.targets['q'].register_forward_pre_hook(lambda mod,args:tinputs.append(args[0].detach().cpu().clone()))
     try:
-        metric=test.update(rows,native)
+        with torch.enable_grad():
+            metric=test.update(rows,native)
         dp=privileged(obs).shape[-1]
         replay=torch.cat([rows[i]['action'] for i in metric['replay_indices']],0)
         assert torch.equal(qinputs[0][:,dp:dp+29],replay)

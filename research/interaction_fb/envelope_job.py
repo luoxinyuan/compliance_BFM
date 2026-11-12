@@ -1,9 +1,12 @@
 """One owned serial qualification process, cumulative hard budget and storage guard."""
-import os,sys,time,json,subprocess,shutil,signal
+import os,sys,time,json,subprocess,shutil,signal,hashlib
 from pathlib import Path
 from supervision import tree_bytes,stop_owned_group
 S=Path(sys.argv[1]);case_id=sys.argv[2];name=sys.argv[3];R=S/'runtime';P=S.parents[1]
 L=R/'research_notes/adapter_envelope_lock_v1.json';lock=json.loads(L.read_text());assert lock['status']=='qualification_locked_not_yet_executed'
+assert not (S/'STOPPED_QUALIFICATION_FAILURE.json').exists(), 'Milestone stopped by failed physical qualification; new authority required'
+for filename,expected in lock['source_sha256'].items():
+ if filename!='envelope_job.py':assert hashlib.sha256((R/'research/interaction_fb'/filename).read_bytes()).hexdigest()==expected, 'Runtime differs from frozen source lock'
 case=next(c for c in lock['qualification_states'] if c['id']==case_id)
 J=S/'jobs';J.mkdir(exist_ok=True);(S/'runs').mkdir(exist_ok=True);(S/'tmp').mkdir(exist_ok=True)
 base=lock['time_projection']['already_charged']+lock['time_projection']['current_preparation_analysis_tests_reserve']

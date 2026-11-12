@@ -1,0 +1,31 @@
+{
+  "status": "STOPPED_FROZEN_QUALIFICATION_FAILED_NO_B_C_RETRAIN",
+  "runtime": "e4c2d3ff08fc0a29152dc7b1f0ee00201b077012",
+  "inherited_s": 34028.58896708589,
+  "preparation_analysis_offline_tests_charged_upper_s": 1800,
+  "qualification_failed_job_s": 277.47438049316406,
+  "read_only_analysis_reporting_publication_charged_upper_s": 900,
+  "charged_total_upper_s": 37006.06334757905,
+  "cap_s": 64800,
+  "measured_output_bytes": 3687261920,
+  "cap_bytes": 17179869184,
+  "shared_free_bytes": 391253065728,
+  "physics_ticks": 7641,
+  "new_qualification_ticks": 600,
+  "prefix_reset_replay_ticks": 7041,
+  "real_frozen_transitions": 150,
+  "new_formal_training_transitions": 0,
+  "new_completed_optimizer_steps": 0,
+  "disposable_update_attempts_failed": 1,
+  "updates_in_frozen_B19": 38,
+  "sealed_read": false,
+  "missing": [
+    "B19 mean",
+    "two active parents",
+    "no-contact recovery",
+    "complete differentiable path audit",
+    "B/C fresh training",
+    "five-way dev",
+    "B_I probe"
+  ]
+}

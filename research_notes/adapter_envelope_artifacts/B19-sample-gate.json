@@ -1,0 +1,76 @@
+{
+  "scope": "exposed frozen qualification; no training or sealed selection",
+  "branches": {
+    "sample": {
+      "gates": {
+        "complete_same_3s": true,
+        "no_hard_boundary": true,
+        "actual_joint_excess_zero": true,
+        "slip_peak": false,
+        "slip_p95": false,
+        "yaw": true,
+        "height": true,
+        "no_support": true
+      },
+      "pass_all": false,
+      "identity": {
+        "model": true,
+        "rng": true,
+        "task": true,
+        "first_z": true,
+        "first_obs": true
+      },
+      "envelope": {
+        "ticks": 600,
+        "start": 11.805000000000446,
+        "end": 14.800000000000914,
+        "duration": 3.0,
+        "actual_joint_excess_max_rad": 0.0,
+        "slip_peak": 0.9195260891667565,
+        "slip_p95": 0.15026771276250883,
+        "min_height": 0.7243636160910983,
+        "yaw_final_deg": 96.83112761075252,
+        "no_support_ticks": 0,
+        "force_max": 0.0,
+        "root_displacement": 0.43076051272941435,
+        "final_root_speed": 0.2026570293486378,
+        "active_ticks": 0,
+        "absolute_slip_pass": false,
+        "absolute_yaw_pass": false
+      },
+      "off": {
+        "ticks": 600,
+        "start": 11.805000000000446,
+        "end": 14.800000000000914,
+        "duration": 3.0,
+        "actual_joint_excess_max_rad": 0.0,
+        "slip_peak": 0.6060274721165771,
+        "slip_p95": 0.02167210339944122,
+        "min_height": 0.7246708526814623,
+        "yaw_final_deg": -164.85714822413988,
+        "no_support_ticks": 0,
+        "force_max": 0.0,
+        "root_displacement": 0.09569515383922039,
+        "final_root_speed": 0.004685730268050299,
+        "active_ticks": 0,
+        "absolute_slip_pass": false,
+        "absolute_yaw_pass": false
+      },
+      "correction": {
+        "rounding_error_max_rad": 2.384185791015625e-07,
+        "median_rms": 0.1026984378695488,
+        "max_abs": 0.11999999731779099,
+        "p90_abs": 0.11999999731779099,
+        "trigger_rate": 0.7464367816091954,
+        "active_controls": 0
+      },
+      "path_audit": null,
+      "trace_sha": "2fb2feacb607e4c73227daeb69d4a5790174a132beb9703d070d071819e4a95b",
+      "model_sha": "54002fb0161de37bff3e2e00c781b216e8fc294e829bd88b60cf053a68222f79"
+    },
+    "mean": {
+      "not_completed": true
+    }
+  },
+  "pass_all": false
+}

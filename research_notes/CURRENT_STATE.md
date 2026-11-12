@@ -1,3 +1,15 @@
+# CURRENT_STATE — Issue62 Envelope frozen qualification failed; stopped
+
+[Results](ADAPTER_ENVELOPE_V1_RESULTS.md) · [Harness erratum](ADAPTER_ENVELOPE_V1_ERRATUM.md). Yi's inward numerical amendment is implemented: actual representableaction/g(action) shared across physics/replay, max measured correction≤4.77e-7rad. Old strict inverse failure preserved.
+
+FrozenB19 same11.8s sample branch completed3s: actual joint excess0 and no-support0; however loadedslip peak **.919526** andp95 **.150268m/s**, above matchedoff limits **.727233/.041672**. Physical qualification therefore fails under locked §4/§9. No tuning or furtherbranches/B/C/dev/probe. A128/B19/BC500/oldresults unchanged; sealedunread.
+
+Runtime `e4c2d3ff08fc0a29152dc7b1f0ee00201b077012`; physical trace SHA `2fb2feacb607e4c73227daeb69d4a5790174a132beb9703d070d071819e4a95b`. Gradient audit separately failed due outer no_grad after physicaltrace saved; no newoptimizerstep. Minimal harness fix is syntax-checked only, not fully qualified. Mean/active/no-contact gates remain missing, not inferred from sample.
+
+Pilot cumulativechargedupper **10.279462/18h**, output~3.4340/16GiB; GPU0 released. Newformaltraining0; actualphysics7641ticks includesreconstruction. Complete forecast and frozenstate manifest remain at e4c2d3f; current stop ledger supersedes queuepending status. Any future redesigned recipe needs an explicit scientific decision; do not auto-restartB/C or changeEnvelope constants.
+
+## Previous snapshot (historical)
+
 # CURRENT_STATE — Issue62 Envelope inward numerical revision, qualification pending
 
 Yi已批准确定性向原许可区间内部舍入；实际action/g(action)作为物理、actor/target、critic和replay共同真值。仅≤1e-6rad纯表示修正可自主处理，科学常数/物理门/reward不在授权内。c13cc69严格逆映射失败保留。
