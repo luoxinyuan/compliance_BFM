@@ -60,6 +60,8 @@ def study(e,m,c,out):
             agent.command=lambda ob,target=False:net.distribution(env.task.student_features()).mean
         if ARGS.manifest:
             assert ARGS.manifest.name==ARGS.split+'.json','No sealed evaluation in preparation/first read'
+            audit=json.loads((ARGS.manifest.parent/'audit.json').read_text())
+            assert hashlib.sha256(ARGS.manifest.read_bytes()).hexdigest()==audit['splits'][ARGS.split]['file_sha256']
             data=json.loads(ARGS.manifest.read_text());cases=[]
             for g in data['parents']:
                 for sp in g['specs']:

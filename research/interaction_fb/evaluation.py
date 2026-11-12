@@ -52,7 +52,12 @@ def run(env,agent,out,specs):
         torch.manual_seed(626299);np.random.seed(626299)
         env.reset(i);env.proxy.agent=agent;row_start=len(env.rows)
         while not env.task.done:
-            with torch.no_grad():env.collect_call()
+            try:
+                with torch.no_grad():env.collect_call()
+            except RuntimeError as exc:
+                if not str(exc).startswith('HARD_PHYSICS_BOUNDARY:'):raise
+                assert env.task.boundary is not None
+                break
         t=env.task;r=summarize(t);r['source_state_sha']=t.prefix_data['audit']['sha256'];r['spec']=s
         # Inputs/actions before the partner branch point must match exactly.
         if 'pair_branch_at' in s:
@@ -78,4 +83,4 @@ def run(env,agent,out,specs):
         with gzip.open(Path(out)/f'actual-{i}.json.gz','wt') as f:json.dump(dict(spec=s,physics=t.physics,controls=t.controls),f)
         (Path(out)/'evaluation.json').write_text(json.dumps(results,indent=2,allow_nan=False))
     with gzip.open(Path(out)/'probe-features.json.gz','wt') as f:json.dump(probe,f)
-    return dict(evaluation_only=True,episodes=len(results),optimizer_updates=0,common_prefix_checks=len(prefixes),results=results)
+    return dict(status='evaluation_completed',evaluation_only=True,episodes=len(results),optimizer_updates=0,common_prefix_checks=len(prefixes),results=results)

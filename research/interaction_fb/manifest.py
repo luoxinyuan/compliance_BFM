@@ -18,8 +18,9 @@ def build():
             if family=='near':d=rng.uniform(.04,.12);ramp=rng.uniform(1.6,2.6)
             elif family in ('mid','stop'):d=rng.uniform(.16,.45);ramp=rng.uniform(2.8,4.8)
             else:d=0.;ramp=3.
-            hold=rng.uniform(1.5,2.5);stop=round(onset+ramp*rng.uniform(.4,.7),1) if family=='stop' else None
-            decel=rng.uniform(.5,.8) if stop is not None else 0.
+            ramp=round(ramp,1)
+            hold=round(rng.uniform(1.5,2.5),1);stop=round(onset+ramp*rng.uniform(.4,.7),1) if family=='stop' else None
+            decel=round(rng.uniform(.5,.8),1) if stop is not None else 0.
             partner=dict(distance=d,ramp=ramp,onset=onset,hold=hold,stop=stop,deceleration=decel,enabled=family!='none')
             pid=digest(partner);assert pid not in partners;partners.add(pid)
             group=digest(dict(source=source_id,partner=pid))
