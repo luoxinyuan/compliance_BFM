@@ -1,3 +1,13 @@
+# CURRENT_STATE — Issue62 adapter-off对照完成，等待配方决策
+
+2026-11-12。[冻结反事实报告](INTERACTION_ADAPTER_OFF_RESULTS.md)：同一B19完整11.8s状态，关闭整个执行adapter但保留学习U/Guidance与原BFM/PD，采样和均值均完成3秒、实际关节越界0；原on采样/均值约0.51秒左踝pitch撞硬界。共同前缀/首观测/z/RNG严格一致。支持adapter在该释放状态中有实质因果贡献，不是全任务因果唯一解释。
+
+off滑移峰仍0.606/0.524m/s，未宣布质量全过或新配方成功。新增训练0，A128/B19和失败保留；B/C/dev继续停止，按Yi“结果出来再定配方”交付，不自动续训。
+
+runtime `33d5277c9c232bd817302aee1cf5d45823510754`；pilot累计9.0827/15h，输出3.053/8GiB。GPU0已释放。下一配方建议聚焦execution adapter实际动作与无接触恢复域约束，不再默认将该越界归因探索噪声；具体方案尚未获批。
+
+## 之前快照（保留历史）
+
 # CURRENT_STATE — Issue62 B均值真实越界，命中用户停止边界
 
 2026-11-12。[B定性报告](INTERACTION_PILOT_B_FAILURE_RESULTS.md)：从B19同一完整状态/RNG恢复，sample原动作/控制/5ms物理逐值复现；去噪声的真实mean分支也在12.310s左踝pitch越界0.02756rad（原sample12.315s、0.02138rad）。发生在25.984cm mid任务release10.8s之后，实际力0。原sample最后状态：BFM q_PD −0.8106rad、adapter后mean −1.1598rad、采样−1.1623rad，下限−0.87267rad。不是仅噪声，也不是恢复错配；不据此把adapter唯一因果或全回合mean失败写成事实。
