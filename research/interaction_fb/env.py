@@ -82,7 +82,8 @@ class Environment:
         self.physical_stream.extend(copy.deepcopy(t.physics[before:]))
         for r,source in zip(rs,p.records):
             r['zi']=source['zi']
-            r['group_provenance']=dict(parent_id=t.spec['parent_id'],spec_index=self.spec_id,episode_index=len(self.episodes),family=t.spec['demand_family'],physical_time=source['time'])
+            r['provenance']['spec_index']=torch.tensor([[self.spec_id]],dtype=torch.int64)
+            r['provenance']['online_episode']=torch.tensor([[len(self.episodes)]],dtype=torch.int64)
         self.rows.extend(rs);self.commands.append(raw.detach().cpu());self.next_cursor+=len(rs)
         # Next action at a high-level boundary must recompute Guidance.
         p.slot=0;p.start=t.last_command.clone();p.target=p.start.clone()
