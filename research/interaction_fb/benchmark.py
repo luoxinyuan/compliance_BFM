@@ -119,6 +119,22 @@ def study(e,m,c,out):
                     a=(a+noise).clamp(-1,1)
                 return a,z,zi
             agent.action=ankle_diagnostic
+        # Diagnostic-only observation of the same actual state, without replacing actions.
+        observed_actions=[];execute_action=agent.action
+        from research.interaction_fb.schema import robot,deploy
+        import mujoco
+        names=c['dof_names'];joint_ids=[mujoco.mj_name2id(e.sim.model,mujoco.mjtObj.mjOBJ_JOINT,n) for n in names]
+        joint_contract=[dict(name=n,qposadr=int(e.sim.model.jnt_qposadr[j]),qveladr=int(e.sim.model.jnt_dofadr[j]),range=e.sim.model.jnt_range[j].tolist(),limited=bool(e.sim.model.jnt_limited[j])) for n,j in zip(names,joint_ids)]
+        def observed_action(obs,target=False,sample=False,z_override=None):
+            mean,z,zi=execute_action(obs,target=target,sample=False,z_override=z_override)
+            actual,zz,ii=execute_action(obs,target=target,sample=sample,z_override=z_override)
+            assert torch.equal(z,zz) and torch.equal(zi,ii)
+            base=agent.base._actor(agent.base._normalize(robot(obs)),z,agent.base.cfg.actor_std).mean
+            correction=agent.nets['adapter'](torch.cat([deploy(obs),z,zi],-1)) if agent.arm!='A' else torch.zeros_like(base)
+            off=torch.as_tensor(c['q_PD_offset'],device=mean.device);scale=agent.scale
+            observed_actions.append(dict(time=float(env.task.e.tether.time),mean=mean.detach().cpu().tolist(),actual=actual.detach().cpu().tolist(),base_mean=base.detach().cpu().tolist(),adapter=correction.detach().cpu().tolist(),mean_q_PD=(mean*scale+off).detach().cpu().tolist(),actual_q_PD=(actual*scale+off).detach().cpu().tolist(),base_q_PD=(base.clamp(-1,1)*scale+off).detach().cpu().tolist(),pre_qpos=e.sim.data.qpos.tolist(),pre_qvel=e.sim.data.qvel.tolist(),slot=obs['_slot'].detach().cpu().tolist()))
+            return actual,zz,ii
+        agent.action=observed_action
         status='completed_3s';error=None
         try:
             with torch.no_grad():
@@ -130,6 +146,7 @@ def study(e,m,c,out):
         trace=dict(physics=env.physical_stream[start_physics:],controls=env.task.controls,
                    commands=env.commands,actions=env.proxy.actions,task_spec=env.task.spec)
         torch.save(trace,out/'probe-trace.pt')
+        write(out/'same-state-actions.json',dict(contract=joint_contract,controls=observed_actions,scope='diagnostic_only_frozen_no_control_replacement'))
         result=dict(status=status,error=error,mode=ARGS.failure_probe,restored_round=round0,
                     original_cursor=start_cursor,end_cursor=env.next_cursor,updates=agent.updates,
                     frozen_agent_digest=frozen,restored_rng_digest=start_rng,
