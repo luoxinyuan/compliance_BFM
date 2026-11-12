@@ -24,7 +24,7 @@ def specs():
 
 class Proxy(NativeActor):
     def __init__(self,t,m):
-        super().__init__(t,m,None,False);self.agent=None;self.slot=0;self.start=None;self.target=None;self.actions=[];self.replay_actions=None
+        super().__init__(t,m,None,False);self.agent=None;self.slot=0;self.start=None;self.target=None;self.actions=[];self.replay_actions=None;self.stochastic=True
     def enrich(self,o):
         prev=self.task.last_command if self.start is None else self.start
         target=prev if self.target is None else self.target
@@ -41,7 +41,7 @@ class Proxy(NativeActor):
         elif self.replay_actions is not None:
             a=next(self.replay_actions).to(z.device);zi=self.agent.zi(1)
         else:
-            a,calculated_z,zi=self.agent.action(ext,sample=True)
+            a,calculated_z,zi=self.agent.action(ext,sample=self.stochastic)
             assert torch.equal(calculated_z,z),'actual and training interpolation differ'
         row=dict(observation=cpu_obs(ext),action=a.detach().cpu(),z=z.detach().cpu(),zi=zi.detach().cpu(),
                  previous_z=self.previous_z,target_z=(self.target if self.target is not None else z).detach().cpu(),
@@ -52,19 +52,20 @@ class Proxy(NativeActor):
         return a
 
 class Environment:
-    def __init__(self,e,m,contract):
+    def __init__(self,e,m,contract,task_specs=None):
+        self.specs=specs() if task_specs is None else task_specs
         self.task=TrialTask(e,m,contract,6201);self.proxy=Proxy(self.task,m);self.task.m=self.proxy
         self.physical_stream=[];self.rows=[];self.native=[];self.commands=[];self.spec_id=0;self.episodes=[];self.next_cursor=0
     def reset(self,i=0):
         self.spec_id=i;self.proxy.begin_source();self.proxy.slot=0;self.proxy.start=None;self.proxy.target=None
-        self.task.reset(specs()[i],record=True,label='T0-'+str(i));self.proxy.finish_pending()
+        self.task.reset(self.specs[i],record=True,label='T0-'+str(i));self.proxy.finish_pending()
         self.native.extend(self.proxy.source_pairs);self.proxy.begin_online();self.proxy.actions=[];self.commands=[]
     def collect_call(self):
         t=self.task;p=self.proxy
         if t.done:
             self.episodes.append(dict(spec=copy.deepcopy(t.spec),boundary=t.boundary,controls=len(t.controls)))
             if t.boundary:raise RuntimeError('HARD_PHYSICS_BOUNDARY:'+str(t.boundary))
-            self.reset((self.spec_id+1)%len(specs()))
+            self.reset((self.spec_id+1)%len(self.specs))
         p.slot=0;p.start=t.last_command.clone();p.target=p.start.clone()
         ob=p.enrich(t.extended_observation())
         with torch.no_grad():

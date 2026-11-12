@@ -38,7 +38,11 @@ def restore(path,agent,env):
     path=Path(path);m=json.loads((path/'manifest.json').read_text())
     assert m['complete']
     for f,v in m['files'].items():assert sha(path/f)==v['sha256'] and (path/f).stat().st_size==v['bytes']
-    s=torch.load(path/'state.pt',map_location='cpu',weights_only=False)
+    if m.get('format')=='delta-v1':
+        from .journal import load_state
+        s=load_state(path)
+    else:s=torch.load(path/'state.pt',map_location='cpu',weights_only=False)
+    assert s.get('task_specs',env.specs)==env.specs,'Task manifest changed on restore'
     env.reset(s['spec_id']);assert env.task.prefix_data['audit']['sha256']==s['source_sha']
     agent.load(s['agent']);p=env.proxy;p.agent=agent;p.replay_actions=iter(s['actions']);p.actions=[]
     for raw in s['commands']:
