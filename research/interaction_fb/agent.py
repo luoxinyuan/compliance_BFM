@@ -30,6 +30,7 @@ class Agent:
         # Declared public goal prototype, NEVER current privileged state.
         self.prompt=interaction(obs).detach().clone();self.prompt[:,-16:]=0;self.prompt[:,-1]=1
         self.updates=0;self.z_buffer=[];self.audit=[]
+        self.exploration_std=.05;self.exploration_clip=.3
     def zi(self,n,target=False):
         nets=self.targets if target else self.nets
         if self.arm!="C":return torch.zeros(n,32,device=self.goal.device)
@@ -52,7 +53,7 @@ class Agent:
         a=self.base._actor(self.base._normalize(robot(obs)),z,self.base.cfg.actor_std).mean
         if self.arm!='A':a=a+nets['adapter'](torch.cat([x,z,zi],-1))
         a=a.clamp(-1,1)
-        if sample:a=(a+(.05*torch.randn_like(a)).clamp(-.3,.3)).clamp(-1,1)
+        if sample:a=(a+(self.exploration_std*torch.randn_like(a)).clamp(-self.exploration_clip,self.exploration_clip)).clamp(-1,1)
         return a,z,zi
     def inp(self,o,a,z,zi):return torch.cat([privileged(o),a,z,zi],-1)
     def stepopt(self,name,loss):
@@ -135,12 +136,14 @@ class Agent:
             replay_indices=ix.tolist(),expert_indices=ex.tolist())
         self.audit.append(metric);return metric
     def state(self):
-        return dict(arm=self.arm,nets=self.nets.state_dict(),targets=self.targets.state_dict(),
+        return dict(exploration=dict(std=self.exploration_std,clip=self.exploration_clip),arm=self.arm,nets=self.nets.state_dict(),targets=self.targets.state_dict(),
             optimizers={k:v.state_dict() for k,v in self.opts.items()},prompt=self.prompt,goal=self.goal,
             scale=self.scale,z_buffer=self.z_buffer,updates=self.updates,audit=self.audit,
             normalizers=self.base._obs_normalizer.state_dict())
     def load(self,s):
         assert s.get('arm','C')==self.arm
+        noise=s.get('exploration',dict(std=.05,clip=.3))
+        self.exploration_std=float(noise['std']);self.exploration_clip=float(noise['clip'])
         self.nets.load_state_dict(s['nets']);self.targets.load_state_dict(s['targets'])
         for k,v in s['optimizers'].items():self.opts[k].load_state_dict(v)
         for k in ('prompt','goal','scale'):setattr(self,k,s[k].cuda())

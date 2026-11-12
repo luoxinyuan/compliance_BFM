@@ -1,0 +1,75 @@
+{
+  "version": "Issue62-pilot-lock-v3-common-noise",
+  "status": "approved_by_Yi",
+  "approval_reference": "https://github.com/GaoE05/robot-research-bridge/issues/62#issuecomment-6822542264",
+  "transitions_per_arm": 32000,
+  "rounds_per_arm": 128,
+  "updates_per_round": 2,
+  "batch_size": 32,
+  "arms": [
+    "A",
+    "B",
+    "C"
+  ],
+  "seed": 6201,
+  "total_job_seconds": 54000,
+  "total_output_bytes": 8589934592,
+  "train_file_sha256": "ef9a6e9be602f613fecb30bd0941543aed0b4e4d366e2498f7579e55e1eebfb4",
+  "splits": {
+    "train": {
+      "parents": 34,
+      "episodes": 44,
+      "families": {
+        "near": 10,
+        "mid": 10,
+        "stop": 10,
+        "zero": 2,
+        "none": 2
+      },
+      "canonical_sha256": "e5915ae284442d18f266a7a43b5513496a93c725c3f629dcb5f90b20a18046c7",
+      "file_sha256": "ef9a6e9be602f613fecb30bd0941543aed0b4e4d366e2498f7579e55e1eebfb4"
+    },
+    "dev": {
+      "parents": 16,
+      "episodes": 20,
+      "families": {
+        "near": 4,
+        "mid": 4,
+        "stop": 4,
+        "zero": 2,
+        "none": 2
+      },
+      "canonical_sha256": "289d1c36bdf9b80b0e675bbf2a4ce50433bddd3214b9b75f8cf7d6f085390dc3",
+      "file_sha256": "d418de94370846562179c4bed5f6c39a8e6a0e7195e0e040c35f8bf9dec224e5"
+    },
+    "sealed": {
+      "parents": 28,
+      "episodes": 36,
+      "families": {
+        "near": 8,
+        "mid": 8,
+        "stop": 8,
+        "zero": 2,
+        "none": 2
+      },
+      "canonical_sha256": "290f68e70935542a593057b1bc6448183dec73fdf8582bf4b35824d57a4f1a18",
+      "file_sha256": "3bc707488465a639fed3c8568e7f440c09909c361925a45156e2dfef6a41c69f"
+    }
+  },
+  "sealed_execution": false,
+  "formal_5_1_claim": false,
+  "first_read": "dev directionality and initial B_I probe",
+  "maximum_projection_transitions_per_arm": 33500,
+  "approved_draft_commit": "fc6531c9eab5bd44c52ff6221056106ffdd3bd36",
+  "approved_draft_sha256": "916ebe40e6c8d97c155b932a2f2171aa3c08a9846693df7b40eebdc09f0fabf0",
+  "approval_quote": "接受 std .01 / clip .06 作为三臂共同新合同，按原授权续训，A 重跑、B/C 同合同。峰值验收未过如实入账，接受理由：该门为单窗保守筛查、非 §5.1 判据；分布指标全面改善、关节越界清零，残余滑移尾留给训练、由 dev 按 §5.1 原判据裁决。",
+  "preparation_charged_s": 1200,
+  "exploration": {
+    "std": 0.01,
+    "clip": 0.06
+  },
+  "restart_all_arms_from_common_initialization": true,
+  "inherited_pilot_job_upper_s": 22156.050969840097,
+  "acceptance": "explicit_Yi_acceptance_despite_single_window_peak_screen",
+  "validation_record": "INTERACTION_PILOT_NOISE_RESULTS.md; single-window peak screen failed, not reclassified"
+}

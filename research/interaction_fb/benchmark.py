@@ -29,6 +29,22 @@ def study(e,m,c,out):
     obs=env.proxy.enrich(env.task.extended_observation())
     torch.manual_seed(6201);np.random.seed(6201)
     agent=Agent(m,obs,e.standing,torch.tensor(c['q_PD_scale'],device='cuda'),ARGS.arm);env.proxy.agent=agent
+    if ARGS.mode=='pilot':
+        agent.exploration_std=ARGS.noise['std'];agent.exploration_clip=ARGS.noise['clip']
+    # Exact sampling contract check without consuming training RNG or modifying weights.
+    from dual_track_task import global_rng,restore_global_rng
+    saved_rng=global_rng()
+    with torch.no_grad():
+        mean=agent.action(obs,sample=False)[0]
+        sampled=agent.action(obs,sample=True)[0]
+        after_rng=global_rng()
+        restore_global_rng(saved_rng)
+        expected=(mean+(agent.exploration_std*torch.randn_like(mean)).clamp(-agent.exploration_clip,agent.exploration_clip)).clamp(-1,1)
+        assert torch.equal(sampled,expected),'Actual sampling differs from declared one-draw contract'
+        assert tree_digest(global_rng())==tree_digest(after_rng),'Sampling consumed extra random draws'
+        restore_global_rng(saved_rng)
+        assert torch.equal(mean,agent.action(obs,sample=False)[0])
+    restore_global_rng(saved_rng)
     # Permission test: all hidden truth can change without changing deploy input/action.
     hidden={k:v.clone() for k,v in obs.items()};hidden['privileged_state']+=100
     for lo,hi in [(9,15),(18,22)]:hidden['contact_privileged_v1'][:,lo:hi]+=100
@@ -36,7 +52,7 @@ def study(e,m,c,out):
         assert torch.equal(deploy(obs),deploy(hidden))
         assert torch.equal(agent.action(obs)[0],agent.action(hidden)[0])
     write(out/'interface.json',dict(hidden_input_invariance_exact=True,params={k:sum(p.numel() for p in v.parameters()) for k,v in agent.nets.items()},
-        frozen_base=True,optimizer_names=list(agent.opts),robot_keys={k:list(v.shape) for k,v in e.obs.items()},
+        frozen_base=True,exploration=dict(std=agent.exploration_std,clip=agent.exploration_clip),optimizer_names=list(agent.opts),robot_keys={k:list(v.shape) for k,v in e.obs.items()},
         global_hooks=['native_env.install:geometry_env.install_contact','dual_track_task.Task:clean_env.advance','rolling_backend.install:m8_stage.read'],
         isolated_one_Task_process=True))
     # Compare all common tensors at initialization, not just output-layer zeros.
@@ -82,7 +98,9 @@ def study(e,m,c,out):
     round0=0
     if ARGS.resume:
         round0=restore(ARGS.resume,agent,env)
-        if not ARGS.failure_probe:adopt(out/'checkpoints',ARGS.resume)
+        if not ARGS.failure_probe:
+            if ARGS.mode=='pilot':assert dict(std=agent.exploration_std,clip=agent.exploration_clip)==ARGS.noise,'Resume exploration contract mismatch'
+            adopt(out/'checkpoints',ARGS.resume)
     else:save(out/'checkpoints',0,agent,env,ARGS.runtime,'initial')
     if ARGS.failure_probe:
         assert ARGS.resume and ARGS.manifest.name=='train.json'
@@ -164,6 +182,8 @@ def main():
         assert lock['transitions_per_arm']%250==0 and lock['updates_per_round']==2 and lock['batch_size']==32
         assert hashlib.sha256(ARGS.manifest.read_bytes()).hexdigest()==lock['train_file_sha256']
         ARGS.rounds=lock['transitions_per_arm']//250
+        ARGS.noise=lock.get('exploration',dict(std=.05,clip=.3))
+        assert ARGS.noise in (dict(std=.05,clip=.3),dict(std=.01,clip=.06))
     else:ARGS.rounds=3
     ARGS.runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
     assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
