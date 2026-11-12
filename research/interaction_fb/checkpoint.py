@@ -66,7 +66,19 @@ def restore(path,agent,env):
         evidence=Path(os.environ['BFM_RECOVERY_OUTPUT'])
         jsonwrite(evidence/'restore-difference.json',dict(arrays=differences,metadata_now=ma,metadata_saved=s['mj_metadata']))
         torch.save(dict(now=now,old=old,controls=t.controls,physics=t.physics),evidence/'restore-difference.pt')
-    assert exact(ca,cb),'physical arrays differ after exact command replay'
+    # These two arrays were archived but never copied back by replay-only
+    # recovery. Preserve their full stored bytes; do not mask or waive them.
+    restored_arrays=('efc_J_colind','efc_J_rowsuper')
+    assert exact({k:v for k,v in ca.items() if k not in restored_arrays},
+                 {k:v for k,v in cb.items() if k not in restored_arrays}), 'non-restorable physical replay divergence'
+    assert exact(ma,s['mj_metadata']), 'MuJoCo allocation/configuration changed'
+    for key in restored_arrays:
+        destination=getattr(t.e.sim.data,key);saved=old['mjdata_arrays'][key]
+        assert destination.shape==saved.shape and destination.dtype==saved.dtype and destination.flags.writeable
+        destination[...] = saved
+    restored=portable(t)
+    assert exact(canonical(restored,metadata(t.e.sim.model,t.e.sim.data))['mjdata_arrays'],cb), 'full physical array restore differs'
+
 
     assert exact(now['history'],old['history']),'BFM history differs'
     def devices(value,template):
