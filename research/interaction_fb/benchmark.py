@@ -73,7 +73,7 @@ def study(e,m,c,out):
             cases=[specs()[2],specs()[3],specs()[5]]
             for case in cases[:2]:case['pair_branch_at']=cases[0]['stop_time']
         return run(env,agent,out,cases)
-    if ARGS.mode=='pilot' and not ARGS.resume:
+    if ARGS.mode=='pilot' or ARGS.failure_probe:
         data=json.loads(ARGS.manifest.read_text())
         env.specs=[dict(sp,split='train') for g in data['parents'] for sp in g['specs']]
         # Initialization stays canonical/common; training replay starts from real locked source.
@@ -81,8 +81,32 @@ def study(e,m,c,out):
         env.reset(0)
     round0=0
     if ARGS.resume:
-        round0=restore(ARGS.resume,agent,env);adopt(out/'checkpoints',ARGS.resume)
+        round0=restore(ARGS.resume,agent,env)
+        if not ARGS.failure_probe:adopt(out/'checkpoints',ARGS.resume)
     else:save(out/'checkpoints',0,agent,env,ARGS.runtime,'initial')
+    if ARGS.failure_probe:
+        assert ARGS.resume and ARGS.manifest.name=='train.json'
+        frozen=tree_digest(agent.state());start_cursor=env.next_cursor
+        start_rng=tree_digest(global_rng());start_physics=len(env.physical_stream)
+        env.proxy.stochastic=ARGS.failure_probe=='sample'
+        status='completed_3s';error=None
+        try:
+            with torch.no_grad():
+                for _ in range(30):env.collect_call()
+        except RuntimeError as exc:
+            if not str(exc).startswith('HARD_PHYSICS_BOUNDARY:'):raise
+            status='hard_physics_boundary';error=str(exc)
+        assert tree_digest(agent.state())==frozen, 'Diagnostic changed frozen model'
+        trace=dict(physics=env.physical_stream[start_physics:],controls=env.task.controls,
+                   commands=env.commands,actions=env.proxy.actions,task_spec=env.task.spec)
+        torch.save(trace,out/'probe-trace.pt')
+        result=dict(status=status,error=error,mode=ARGS.failure_probe,restored_round=round0,
+                    original_cursor=start_cursor,end_cursor=env.next_cursor,updates=agent.updates,
+                    frozen_agent_digest=frozen,restored_rng_digest=start_rng,
+                    trace_sha256=hashlib.sha256((out/'probe-trace.pt').read_bytes()).hexdigest(),
+                    boundary=env.task.boundary,physics=trace['physics'])
+        write(out/'probe.json',result)
+        return {k:v for k,v in result.items() if k!='physics'}
     records=[]
     try:
         for r in range(round0+1,ARGS.rounds+1):
@@ -119,7 +143,7 @@ def write(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False))
 def main():
     global ARGS
     signal.signal(signal.SIGTERM,request_stop);signal.signal(signal.SIGINT,request_stop)
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--resume',type=Path);p.add_argument('--inject',action='store_true');p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--mode',choices=['bench','eval','pilot'],default='bench');p.add_argument('--model',type=Path);p.add_argument('--manifest',type=Path);p.add_argument('--split',choices=['train','dev'],default='dev');p.add_argument('--reference-bc500',action='store_true');p.add_argument('--approval-lock',type=Path);ARGS=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--resume',type=Path);p.add_argument('--inject',action='store_true');p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--mode',choices=['bench','eval','pilot'],default='bench');p.add_argument('--model',type=Path);p.add_argument('--manifest',type=Path);p.add_argument('--split',choices=['train','dev'],default='dev');p.add_argument('--reference-bc500',action='store_true');p.add_argument('--approval-lock',type=Path);p.add_argument('--failure-probe',choices=['sample','mean']);ARGS=p.parse_args()
     if ARGS.mode=='pilot':
         assert ARGS.approval_lock is not None
         lock=json.loads(ARGS.approval_lock.read_text())
