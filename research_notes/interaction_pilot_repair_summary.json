@@ -1,0 +1,124 @@
+{
+  "sample-r3a": {
+    "status": "hard_physics_boundary",
+    "mode": "sample",
+    "restored_round": 65,
+    "original_cursor": 16250,
+    "end_cursor": 16375,
+    "updates": 130,
+    "frozen_agent_digest": "d6aac48d2d75c0893caef7c31ed3523fa9e888e5cc0cdbafd746bb98a7f7b18e",
+    "restored_rng_digest": "93a59ad840d548b4de71a5b930212d251252ebb894b4c4af69b5bb02043483f0",
+    "trace_sha256": "9050ccea470fa962546ad1ad6091c71845c268df172c5c47ee91f0a916376ffc",
+    "physical_summary": {
+      "t_start": 5.304999999999909,
+      "t_end": 7.799999999999856,
+      "ticks": 500,
+      "q_right_ankle_min": 0.021571658132738755,
+      "q_right_ankle_max": 0.285557277482969,
+      "excess_max": 0.02375727748296902,
+      "qpd_right_ankle_min": -0.366538941860199,
+      "qpd_right_ankle_max": 0.4931156635284424,
+      "error_last": 0.27552358633380447,
+      "support_last": [
+        true,
+        false
+      ]
+    },
+    "original_physics_first_difference": null,
+    "original_controls_first_difference": null,
+    "original_actions_first_difference": null,
+    "original_commands_first_difference": null
+  },
+  "sample-r3b": {
+    "status": "hard_physics_boundary",
+    "mode": "sample",
+    "restored_round": 65,
+    "original_cursor": 16250,
+    "end_cursor": 16375,
+    "updates": 130,
+    "frozen_agent_digest": "d6aac48d2d75c0893caef7c31ed3523fa9e888e5cc0cdbafd746bb98a7f7b18e",
+    "restored_rng_digest": "93a59ad840d548b4de71a5b930212d251252ebb894b4c4af69b5bb02043483f0",
+    "trace_sha256": "9050ccea470fa962546ad1ad6091c71845c268df172c5c47ee91f0a916376ffc",
+    "physical_summary": {
+      "t_start": 5.304999999999909,
+      "t_end": 7.799999999999856,
+      "ticks": 500,
+      "q_right_ankle_min": 0.021571658132738755,
+      "q_right_ankle_max": 0.285557277482969,
+      "excess_max": 0.02375727748296902,
+      "qpd_right_ankle_min": -0.366538941860199,
+      "qpd_right_ankle_max": 0.4931156635284424,
+      "error_last": 0.27552358633380447,
+      "support_last": [
+        true,
+        false
+      ]
+    },
+    "original_physics_first_difference": null,
+    "original_controls_first_difference": null,
+    "original_actions_first_difference": null,
+    "original_commands_first_difference": null
+  },
+  "mean-r3": {
+    "status": "completed_3s",
+    "mode": "mean",
+    "restored_round": 65,
+    "original_cursor": 16250,
+    "end_cursor": 16400,
+    "updates": 130,
+    "frozen_agent_digest": "d6aac48d2d75c0893caef7c31ed3523fa9e888e5cc0cdbafd746bb98a7f7b18e",
+    "restored_rng_digest": "93a59ad840d548b4de71a5b930212d251252ebb894b4c4af69b5bb02043483f0",
+    "trace_sha256": "1eceed2e3d09599efd0823701baeb96078b389b1d9a183c0b69548e0bfb92894",
+    "physical_summary": {
+      "t_start": 5.304999999999909,
+      "t_end": 8.299999999999898,
+      "ticks": 600,
+      "q_right_ankle_min": 0.05004113432749367,
+      "q_right_ankle_max": 0.17575288467164515,
+      "excess_max": 0.0,
+      "qpd_right_ankle_min": -0.14371369779109955,
+      "qpd_right_ankle_max": 0.19538576900959015,
+      "error_last": 0.22082242524149212,
+      "support_last": [
+        false,
+        true
+      ]
+    }
+  },
+  "ankle-r4": {
+    "status": "completed_3s",
+    "mode": "ankle",
+    "restored_round": 65,
+    "original_cursor": 16250,
+    "end_cursor": 16400,
+    "updates": 130,
+    "frozen_agent_digest": "d6aac48d2d75c0893caef7c31ed3523fa9e888e5cc0cdbafd746bb98a7f7b18e",
+    "restored_rng_digest": "93a59ad840d548b4de71a5b930212d251252ebb894b4c4af69b5bb02043483f0",
+    "trace_sha256": "48eb424bc33a3bfd3e9392821f733910bd7bf0b77b3345c1d70e3fa81f857158",
+    "physical_summary": {
+      "t_start": 5.304999999999909,
+      "t_end": 8.299999999999898,
+      "ticks": 600,
+      "q_right_ankle_min": 0.04395046644556552,
+      "q_right_ankle_max": 0.20625016716123462,
+      "excess_max": 0.0,
+      "qpd_right_ankle_min": -0.16357730329036713,
+      "qpd_right_ankle_max": 0.24525223672389984,
+      "error_last": 0.2757553391593714,
+      "support_last": [
+        true,
+        true
+      ]
+    }
+  },
+  "new_process_repeat_first_difference": null,
+  "cost": {
+    "inherited_job_upper_s": 20540.276874543237,
+    "prepare_reserved_s": 300,
+    "total_charged_upper_s": 21046.184267521905,
+    "new_training_updates": 0,
+    "output_bytes": 1494542813
+  },
+  "total_physics_ticks": 22486,
+  "formal_training_resumed": false
+}
