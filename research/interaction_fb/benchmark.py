@@ -58,6 +58,7 @@ def study(e,m,c,out):
             ck=torch.load(path,map_location='cuda',weights_only=True);net=Expert(1639,'direct').cuda()
             net.load_state_dict(ck['state_dict'],strict=True);net.eval().requires_grad_(False)
             agent.command=lambda ob,target=False:net.distribution(env.task.student_features()).mean
+            env.proxy.reference_original=True
         if ARGS.manifest:
             assert ARGS.manifest.name==ARGS.split+'.json','No sealed evaluation in preparation/first read'
             audit=json.loads((ARGS.manifest.parent/'audit.json').read_text())
@@ -72,18 +73,25 @@ def study(e,m,c,out):
             cases=[specs()[2],specs()[3],specs()[5]]
             for case in cases[:2]:case['pair_branch_at']=cases[0]['stop_time']
         return run(env,agent,out,cases)
+    if ARGS.mode=='pilot' and not ARGS.resume:
+        data=json.loads(ARGS.manifest.read_text())
+        env.specs=[dict(sp,split='train') for g in data['parents'] for sp in g['specs']]
+        # Initialization stays canonical/common; training replay starts from real locked source.
+        env.rows=[];env.native=[];env.physical_stream=[];env.episodes=[];env.next_cursor=0
+        env.reset(0)
     round0=0
     if ARGS.resume:
         round0=restore(ARGS.resume,agent,env);adopt(out/'checkpoints',ARGS.resume)
     else:save(out/'checkpoints',0,agent,env,ARGS.runtime,'initial')
     records=[]
     try:
-        for r in range(round0+1,4):
+        for r in range(round0+1,ARGS.rounds+1):
             begun=time.monotonic();sample=time.monotonic()
             with torch.no_grad():
                 for i in range(50):
                     env.collect_call()
                     if ARGS.inject and r==2 and i==2:raise InterruptedError('planned mid-round injection')
+            if ARGS.mode=='pilot':assert env.next_cursor==r*250,'Partial control step: preserve failure, do not miscount'
             collect_s=time.monotonic()-sample;update=time.monotonic()
             with torch.enable_grad():metrics=[agent.update(env.rows,env.native) for _ in range(2)]
             torch.cuda.synchronize();update_s=time.monotonic()-update;io=time.monotonic()
@@ -111,7 +119,16 @@ def write(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False))
 def main():
     global ARGS
     signal.signal(signal.SIGTERM,request_stop);signal.signal(signal.SIGINT,request_stop)
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--resume',type=Path);p.add_argument('--inject',action='store_true');p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--mode',choices=['bench','eval'],default='bench');p.add_argument('--model',type=Path);p.add_argument('--manifest',type=Path);p.add_argument('--split',choices=['train','dev'],default='dev');p.add_argument('--reference-bc500',action='store_true');ARGS=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--resume',type=Path);p.add_argument('--inject',action='store_true');p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--mode',choices=['bench','eval','pilot'],default='bench');p.add_argument('--model',type=Path);p.add_argument('--manifest',type=Path);p.add_argument('--split',choices=['train','dev'],default='dev');p.add_argument('--reference-bc500',action='store_true');p.add_argument('--approval-lock',type=Path);ARGS=p.parse_args()
+    if ARGS.mode=='pilot':
+        assert ARGS.approval_lock is not None
+        lock=json.loads(ARGS.approval_lock.read_text())
+        assert lock['status']=='approved_by_Yi' and lock.get('approval_reference'), 'Pilot requires explicit revised-lock approval'
+        assert ARGS.manifest and ARGS.manifest.name=='train.json'
+        assert lock['transitions_per_arm']%250==0 and lock['updates_per_round']==2 and lock['batch_size']==32
+        assert hashlib.sha256(ARGS.manifest.read_bytes()).hexdigest()==lock['train_file_sha256']
+        ARGS.rounds=lock['transitions_per_arm']//250
+    else:ARGS.rounds=3
     ARGS.runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
     assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
     ARGS.output.mkdir(parents=True,exist_ok=False)

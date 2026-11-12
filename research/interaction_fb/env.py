@@ -38,6 +38,11 @@ class Proxy(NativeActor):
         if self.pending is not None:self.pending['next_observation']=cpu_obs(ext)
         if self.source_mode:
             a=self.original.act(obs,z,True);zi=torch.zeros(1,32,device=z.device)
+        elif getattr(self,'reference_original',False):
+            # Frozen external BC reference chooses once per 100ms in collect_call.
+            # Task supplies its exact five-step interpolated z; do not requery
+            # BC against a different, already-updated last-z history here.
+            a=self.original.act(obs,z,True);zi=torch.zeros(1,32,device=z.device)
         elif self.replay_actions is not None:
             a=next(self.replay_actions).to(z.device);zi=self.agent.zi(1)
         else:
@@ -75,7 +80,9 @@ class Environment:
         before=len(t.physics)
         rs,done,stats=p.take_step(raw,5)
         self.physical_stream.extend(copy.deepcopy(t.physics[before:]))
-        for r,source in zip(rs,p.records):r['zi']=source['zi']
+        for r,source in zip(rs,p.records):
+            r['zi']=source['zi']
+            r['group_provenance']=dict(parent_id=t.spec['parent_id'],spec_index=self.spec_id,episode_index=len(self.episodes),family=t.spec['demand_family'],physical_time=source['time'])
         self.rows.extend(rs);self.commands.append(raw.detach().cpu());self.next_cursor+=len(rs)
         # Next action at a high-level boundary must recompute Guidance.
         p.slot=0;p.start=t.last_command.clone();p.target=p.start.clone()

@@ -22,7 +22,7 @@ def build():
             hold=round(rng.uniform(1.5,2.5),1);stop=round(onset+ramp*rng.uniform(.4,.7),1) if family=='stop' else None
             decel=round(rng.uniform(.5,.8),1) if stop is not None else 0.
             partner=dict(distance=d,ramp=ramp,onset=onset,hold=hold,stop=stop,deceleration=decel,enabled=family!='none')
-            pid=digest(partner);assert pid not in partners;partners.add(pid)
+            pid=digest(dict(source_origin=source_id,request=partner));assert pid not in partners;partners.add(pid)
             group=digest(dict(source=source_id,partner=pid))
             specs=[]
             for branch in (['stop','continue'] if family=='stop' else [family]):
@@ -39,7 +39,7 @@ def build():
     return result
 
 def audit(m):
-    report={'structural_group_pass':True,'physical_state_independence':'not yet executed; recipe uniqueness does not establish statistical independence','splits':{}}
+    report={'structural_group_pass':True,'physical_state_independence':'not yet executed; recipe uniqueness does not establish statistical independence','partner_identity':'request plus actual-source-origin recipe; identical zero-demand motion alone is not independent' ,'splits':{}}
     seen={k:set() for k in ('parent_id','source_parent_id','partner_parent_id')}
     for split,v in m.items():
         groups=v['parents'];summary={}
