@@ -1,0 +1,11 @@
+# R1-T0 v1 — pre-run engineering protocol
+
+User approved R0+T0 only on2026-11-12 via chat;Issue62 comment6814319591 records. R0≤7200s,T0≤21600s,newoutputs≤8GiB,existingproject240h ledger continues167333.98384354s. SingleGPU0,100GiBfree+writeheadroom. NoPilot/largeFB/Student/PPO, no sealed outcomes, no secondmechanism run. No budget borrow.
+
+C engineering path per METHOD_SPEC. One isolated process/oneTask,originalbase/PD frozen. Three rounds, each250 actual50Hz transitions and2 complete updates(batch32). Saveinitialround0;eachround atomically persists models/targets,all6Adam,frozen normalizer identity,goal/prompt,zbuffer,replay+indices,nativepreservationrows,source/partner/callback reconstruction,actualactions/rawz,fullportableMuJoCo/solver/history,allRNG/counters/runtime. Immutable base fullweights loaded bySHA;frozenF_R/B_R references explicit and never mutated. NoLRscheduler(constant).
+
+After eachround fsync files+dir,verifyhash/bytes/readability,atomicrenamepackage thenatomiclatestpointer. Uncommitted partial work separately preserved,no falsecompletedround. Injection duringround2 must leavepointerround1. Suddenkill promises onlylastcommittedround,not volatile work. All reset/warmup/reconstruction/failedsteps globally count via mj_step interception,including coldprefix. No physics tick ceiling beyond time/output bound;actualtotal must be reported.
+
+Runs: uninterrupted control3rounds;newprocessresume round1 andcomplete2rounds;thirdprocessround1resume andmidround2injection. Compareactualsamplesequence,physical/command/history,replay,RNG,targets,eachAdam/model exactly;F1validityrulesonlyforqualifiedmodel;no tolerance relax. Eageronly,compiledunqualified. First hard physics/probability/data correctnessfailure stops trial, saves lasttransaction+partialevidence;not a behavior quality judgment. Every updatefinite/nonzero gradients, targetsync and actionpermissions audited.
+
+A/B/C gate names here are engineering gates (not methodarms): T0-A fulljointloop, T0-B actualend-to-end throughput including IO,coldstart/source/failedcoverage, T0-C exactrestoration/injection. All3 needed. Failure doesn't authorize reducingqualitybounds, changingreward or automaticPilot. Only ifallpass prepare PILOT_BUDGET_AND_SPLIT_LOCK forYi.
