@@ -50,8 +50,25 @@ def study(e,m,c,out):
         from research.interaction_fb.journal import load_state
         from research.interaction_fb.env import specs
         if ARGS.model:agent.load(load_state(ARGS.model)['agent'])
-        cases=[specs()[2],specs()[3],specs()[5]]
-        for case in cases[:2]:case['pair_branch_at']=cases[0]['stop_time']
+        if ARGS.reference_bc500:
+            assert ARGS.arm=='A' and not ARGS.model
+            from clean_policy import Expert
+            path=Path('/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interactive-contact-pilot-20261108/runs/bc-fit-01/old_data_only-500.pt')
+            assert hashlib.sha256(path.read_bytes()).hexdigest()=='a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e'
+            ck=torch.load(path,map_location='cuda',weights_only=True);net=Expert(1639,'direct').cuda()
+            net.load_state_dict(ck['state_dict'],strict=True);net.eval().requires_grad_(False)
+            agent.command=lambda ob,target=False:net.distribution(env.task.student_features()).mean
+        if ARGS.manifest:
+            assert ARGS.manifest.name==ARGS.split+'.json','No sealed evaluation in preparation/first read'
+            data=json.loads(ARGS.manifest.read_text());cases=[]
+            for g in data['parents']:
+                for sp in g['specs']:
+                    sp=dict(sp,split=ARGS.split)
+                    if g['family']=='stop':sp['pair_branch_at']=g['specs'][0]['stop_time']
+                    cases.append(sp)
+        else:
+            cases=[specs()[2],specs()[3],specs()[5]]
+            for case in cases[:2]:case['pair_branch_at']=cases[0]['stop_time']
         return run(env,agent,out,cases)
     round0=0
     if ARGS.resume:
@@ -92,7 +109,7 @@ def write(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False))
 def main():
     global ARGS
     signal.signal(signal.SIGTERM,request_stop);signal.signal(signal.SIGINT,request_stop)
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--resume',type=Path);p.add_argument('--inject',action='store_true');p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--mode',choices=['bench','eval'],default='bench');p.add_argument('--model',type=Path);ARGS=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--resume',type=Path);p.add_argument('--inject',action='store_true');p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--mode',choices=['bench','eval'],default='bench');p.add_argument('--model',type=Path);p.add_argument('--manifest',type=Path);p.add_argument('--split',choices=['train','dev'],default='dev');p.add_argument('--reference-bc500',action='store_true');ARGS=p.parse_args()
     ARGS.runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
     assert not subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'])
     ARGS.output.mkdir(parents=True,exist_ok=False)
