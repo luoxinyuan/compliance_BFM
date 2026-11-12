@@ -26,7 +26,8 @@ def run(name,args,training=False):
  reserve=7300 if training else 300
  assert spent()<CAP-reserve-180 and size()<OUTCAP-1200*2**20
  cmd=[str(PY),'-u',str(R/'research/interaction_fb/benchmark.py'),'--output',str(S/'runs'/name),*args]
- start=time.time();side=J/('job-'+name+'.json');assert not side.exists()
+ start=time.time();cleanup_deadline=time.monotonic()+max(0,CAP-spent()-10)
+ side=J/('job-'+name+'.json');assert not side.exists()
  with (J/(name+'.log')).open('x') as f:
   p=subprocess.Popen(cmd,cwd=R,env=env,stdout=f,stderr=subprocess.STDOUT,start_new_session=True)
   row=dict(name=name,pid=p.pid,supervisor=os.getpid(),runtime=runtime,start=start,command=cmd,approval=lock['approval_reference'])
@@ -46,7 +47,7 @@ def run(name,args,training=False):
    raise
   finally:
    # IO/ledger/scanner exceptions must never strand the owned training child.
-   rc=stop_owned_group(p,grace=90)
+   rc=stop_owned_group(p,grace=min(90,max(0,cleanup_deadline-time.monotonic())))
    row.update(exit_code=rc,end=time.time(),wall_s=time.time()-start)
    try:row['output_bytes']=size()
    except OSError as exc:row['output_measurement_error']=repr(exc)
@@ -57,6 +58,10 @@ def run(name,args,training=False):
  write(S/'ledger.json',dict(status='running',charged_job_seconds=spent(),output_bytes=size(),runtime=runtime,approval=lock['approval_reference']))
 M=R/'research_notes/interaction_pilot_manifest_v2'
 try:
+ # A past orphan must be reconciled before another queue may charge the ledger.
+ for prior in J.glob('job-*.json'):
+  record=json.loads(prior.read_text())
+  assert all(k in record for k in ('wall_s','exit_code')), ('Unreconciled prior job; refuse launch',str(prior))
  for arm in 'ABC':run('pilot-'+arm+'-r1',['--mode','pilot','--arm',arm,'--approval-lock',str(L),'--manifest',str(M/'train.json')],True)
  for arm in 'ABC':run('dev-'+arm,['--mode','eval','--arm',arm,'--model',str(S/'runs'/('pilot-'+arm+'-r1')/'checkpoints/round-128'),'--manifest',str(M/'dev.json')])
  run('dev-initial',['--mode','eval','--arm','A','--model',str(S/'runs/pilot-A-r1/checkpoints/round-0'),'--manifest',str(M/'dev.json')])

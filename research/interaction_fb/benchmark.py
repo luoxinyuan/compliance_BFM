@@ -88,7 +88,17 @@ def study(e,m,c,out):
         assert ARGS.resume and ARGS.manifest.name=='train.json'
         frozen=tree_digest(agent.state());start_cursor=env.next_cursor
         start_rng=tree_digest(global_rng());start_physics=len(env.physical_stream)
-        env.proxy.stochastic=ARGS.failure_probe=='sample'
+        env.proxy.stochastic=ARGS.failure_probe!='mean'
+        if ARGS.failure_probe=='ankle':
+            original_action=agent.action
+            def ankle_diagnostic(obs,target=False,sample=False,z_override=None):
+                a,z,zi=original_action(obs,target=target,sample=False,z_override=z_override)
+                if sample:
+                    noise=(.05*torch.randn_like(a)).clamp(-.3,.3)
+                    noise[:,[5,11]]*=.2
+                    a=(a+noise).clamp(-1,1)
+                return a,z,zi
+            agent.action=ankle_diagnostic
         status='completed_3s';error=None
         try:
             with torch.no_grad():
@@ -143,7 +153,7 @@ def write(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False))
 def main():
     global ARGS
     signal.signal(signal.SIGTERM,request_stop);signal.signal(signal.SIGINT,request_stop)
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--resume',type=Path);p.add_argument('--inject',action='store_true');p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--mode',choices=['bench','eval','pilot'],default='bench');p.add_argument('--model',type=Path);p.add_argument('--manifest',type=Path);p.add_argument('--split',choices=['train','dev'],default='dev');p.add_argument('--reference-bc500',action='store_true');p.add_argument('--approval-lock',type=Path);p.add_argument('--failure-probe',choices=['sample','mean']);ARGS=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--resume',type=Path);p.add_argument('--inject',action='store_true');p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--mode',choices=['bench','eval','pilot'],default='bench');p.add_argument('--model',type=Path);p.add_argument('--manifest',type=Path);p.add_argument('--split',choices=['train','dev'],default='dev');p.add_argument('--reference-bc500',action='store_true');p.add_argument('--approval-lock',type=Path);p.add_argument('--failure-probe',choices=['sample','mean','ankle']);ARGS=p.parse_args()
     if ARGS.mode=='pilot':
         assert ARGS.approval_lock is not None
         lock=json.loads(ARGS.approval_lock.read_text())
