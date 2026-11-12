@@ -1,0 +1,162 @@
+{
+  "verification": {
+    "protocol": "INTERACTION_PILOT_NOISE_REVISION.md",
+    "checks": {
+      "error_rms_cm": true,
+      "force_rms_N": true,
+      "slip_peak_mps": false,
+      "complete_3s_no_hard_boundary": true
+    },
+    "first_gate_pass": false,
+    "cases": {
+      "old_sample": {
+        "status": "hard_physics_boundary",
+        "matched": {
+          "slip_peak_time": 7.554999999999861,
+          "slip_peak_contact": {
+            "body": "left_ankle_roll_link",
+            "normal_N": 81.53881897290958,
+            "tangent_speed_mps": 0.5822014415396327
+          },
+          "slip_exceed_ticks": 5,
+          "ticks": 500,
+          "start": 5.304999999999909,
+          "end": 7.799999999999856,
+          "error_rms_cm": 14.422462389733012,
+          "force_rms_N": 8.489368159865204,
+          "slip_peak_mps": 0.5822014415396327,
+          "slip_p90_mps": 0.085460684272193,
+          "joint_excess_max_rad": 0.02375727748296902,
+          "cap_fraction": 0.536,
+          "right_ankle_q_max_rad": 0.285557277482969
+        },
+        "full": {
+          "slip_peak_time": 7.554999999999861,
+          "slip_peak_contact": {
+            "body": "left_ankle_roll_link",
+            "normal_N": 81.53881897290958,
+            "tangent_speed_mps": 0.5822014415396327
+          },
+          "slip_exceed_ticks": 5,
+          "ticks": 500,
+          "start": 5.304999999999909,
+          "end": 7.799999999999856,
+          "error_rms_cm": 14.422462389733012,
+          "force_rms_N": 8.489368159865204,
+          "slip_peak_mps": 0.5822014415396327,
+          "slip_p90_mps": 0.085460684272193,
+          "joint_excess_max_rad": 0.02375727748296902,
+          "cap_fraction": 0.536,
+          "right_ankle_q_max_rad": 0.285557277482969
+        },
+        "trace_sha256": "9050ccea470fa962546ad1ad6091c71845c268df172c5c47ee91f0a916376ffc",
+        "agent": "d6aac48d2d75c0893caef7c31ed3523fa9e888e5cc0cdbafd746bb98a7f7b18e",
+        "rng": "93a59ad840d548b4de71a5b930212d251252ebb894b4c4af69b5bb02043483f0"
+      },
+      "mean": {
+        "status": "completed_3s",
+        "matched": {
+          "slip_peak_time": 5.914999999999896,
+          "slip_peak_contact": {
+            "body": "left_ankle_roll_link",
+            "normal_N": 94.95897364784128,
+            "tangent_speed_mps": 0.5236816555543109
+          },
+          "slip_exceed_ticks": 1,
+          "ticks": 500,
+          "start": 5.304999999999909,
+          "end": 7.799999999999856,
+          "error_rms_cm": 11.292609745459705,
+          "force_rms_N": 7.89121181416296,
+          "slip_peak_mps": 0.5236816555543109,
+          "slip_p90_mps": 0.04108421191363796,
+          "joint_excess_max_rad": 0.0,
+          "cap_fraction": 0.424,
+          "right_ankle_q_max_rad": 0.17575288467164515
+        },
+        "full": {
+          "slip_peak_time": 5.914999999999896,
+          "slip_peak_contact": {
+            "body": "left_ankle_roll_link",
+            "normal_N": 94.95897364784128,
+            "tangent_speed_mps": 0.5236816555543109
+          },
+          "slip_exceed_ticks": 1,
+          "ticks": 600,
+          "start": 5.304999999999909,
+          "end": 8.299999999999898,
+          "error_rms_cm": 15.09261004618033,
+          "force_rms_N": 8.280057563003668,
+          "slip_peak_mps": 0.5236816555543109,
+          "slip_p90_mps": 0.04018385848946515,
+          "joint_excess_max_rad": 0.0,
+          "cap_fraction": 0.52,
+          "right_ankle_q_max_rad": 0.17575288467164515
+        },
+        "trace_sha256": "1eceed2e3d09599efd0823701baeb96078b389b1d9a183c0b69548e0bfb92894",
+        "agent": "d6aac48d2d75c0893caef7c31ed3523fa9e888e5cc0cdbafd746bb98a7f7b18e",
+        "rng": "93a59ad840d548b4de71a5b930212d251252ebb894b4c4af69b5bb02043483f0"
+      },
+      "uniform": {
+        "status": "completed_3s",
+        "matched": {
+          "slip_peak_time": 7.729999999999857,
+          "slip_peak_contact": {
+            "body": "right_ankle_roll_link",
+            "normal_N": 146.02845106704274,
+            "tangent_speed_mps": 0.6196954633169409
+          },
+          "slip_exceed_ticks": 2,
+          "ticks": 500,
+          "start": 5.304999999999909,
+          "end": 7.799999999999856,
+          "error_rms_cm": 11.17084556238295,
+          "force_rms_N": 8.110574399388305,
+          "slip_peak_mps": 0.6196954633169409,
+          "slip_p90_mps": 0.034860032370590335,
+          "joint_excess_max_rad": 0.0,
+          "cap_fraction": 0.462,
+          "right_ankle_q_max_rad": 0.17705509820858661
+        },
+        "full": {
+          "slip_peak_time": 7.729999999999857,
+          "slip_peak_contact": {
+            "body": "right_ankle_roll_link",
+            "normal_N": 146.02845106704274,
+            "tangent_speed_mps": 0.6196954633169409
+          },
+          "slip_exceed_ticks": 2,
+          "ticks": 600,
+          "start": 5.304999999999909,
+          "end": 8.299999999999898,
+          "error_rms_cm": 11.585956109373807,
+          "force_rms_N": 8.370277963645686,
+          "slip_peak_mps": 0.6196954633169409,
+          "slip_p90_mps": 0.034860032370590335,
+          "joint_excess_max_rad": 0.0,
+          "cap_fraction": 0.47,
+          "right_ankle_q_max_rad": 0.17705509820858661
+        },
+        "trace_sha256": "9a1fb150b1c4c92d7d19b294c57b923dd33e9ec9fedf2b8b1cc3e90c76217627",
+        "agent": "d6aac48d2d75c0893caef7c31ed3523fa9e888e5cc0cdbafd746bb98a7f7b18e",
+        "rng": "93a59ad840d548b4de71a5b930212d251252ebb894b4c4af69b5bb02043483f0"
+      }
+    }
+  },
+  "cost": {
+    "inherited_job_upper_s": 21046.184267521905,
+    "prepare_reserved_s": 600,
+    "total_charged_upper_s": 22156.050969840097,
+    "new_training_updates": 0,
+    "output_bytes": 1508919540,
+    "report_cpu_reserved_s": 300,
+    "status": "validation_not_passed_no_training",
+    "pilot_limit_s": 54000,
+    "output_limit_bytes": 8589934592,
+    "new_training_transitions": 0,
+    "physics_ticks": 3981,
+    "runtime": "ecf8856ec575321600f788d7fb4450d000cf5b9e",
+    "sealed_executed": false
+  },
+  "job_wall_s": 209.86670231819153
+}
