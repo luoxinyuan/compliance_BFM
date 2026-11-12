@@ -52,9 +52,9 @@ def run(name,args,training=False):
  write(S/'ledger.json',dict(status='running',charged_job_seconds=spent(),output_bytes=size(),runtime=runtime,approval=lock['approval_reference']))
 M=R/'research_notes/interaction_pilot_manifest_v2'
 try:
- for arm in 'ABC':run('pilot-'+arm,['--mode','pilot','--arm',arm,'--approval-lock',str(L),'--manifest',str(M/'train.json')],True)
- for arm in 'ABC':run('dev-'+arm,['--mode','eval','--arm',arm,'--model',str(S/'runs'/('pilot-'+arm)/'checkpoints/round-128'),'--manifest',str(M/'dev.json')])
- run('dev-initial',['--mode','eval','--arm','A','--model',str(S/'runs/pilot-A/checkpoints/round-0'),'--manifest',str(M/'dev.json')])
+ for arm in 'ABC':run('pilot-'+arm+'-r1',['--mode','pilot','--arm',arm,'--approval-lock',str(L),'--manifest',str(M/'train.json')],True)
+ for arm in 'ABC':run('dev-'+arm,['--mode','eval','--arm',arm,'--model',str(S/'runs'/('pilot-'+arm+'-r1')/'checkpoints/round-128'),'--manifest',str(M/'dev.json')])
+ run('dev-initial',['--mode','eval','--arm','A','--model',str(S/'runs/pilot-A-r1/checkpoints/round-0'),'--manifest',str(M/'dev.json')])
  run('dev-BC500',['--mode','eval','--arm','A','--reference-bc500','--manifest',str(M/'dev.json')])
  # CPU-only grouped first read, no policy or representation updates.
  start=time.time()
