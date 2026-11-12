@@ -41,7 +41,8 @@ class Proxy(NativeActor):
         elif self.replay_actions is not None:
             a=next(self.replay_actions).to(z.device);zi=self.agent.zi(1)
         else:
-            a,_,zi=self.agent.action(ext,sample=True,z_override=z)
+            a,calculated_z,zi=self.agent.action(ext,sample=True)
+            assert torch.equal(calculated_z,z),'actual and training interpolation differ'
         row=dict(observation=cpu_obs(ext),action=a.detach().cpu(),z=z.detach().cpu(),zi=zi.detach().cpu(),
                  previous_z=self.previous_z,target_z=(self.target if self.target is not None else z).detach().cpu(),
                  time=float(self.task.e.tether.time),source='standing')
@@ -66,8 +67,9 @@ class Environment:
             self.reset((self.spec_id+1)%len(specs()))
         p.slot=0;p.start=t.last_command.clone();p.target=p.start.clone()
         ob=p.enrich(t.extended_observation())
-        with torch.no_grad():p.target=p.agent.command(ob)
-        raw=p.target/16
+        with torch.no_grad():
+            from clean_policy import direct_command
+            raw=p.agent.command(ob);p.target=direct_command(raw,t.e.standing)
         # Exactly five native controls. No phase/task/clock is a neural input.
         rs,done,stats=p.take_step(raw,5)
         for r,source in zip(rs,p.records):r['zi']=source['zi']

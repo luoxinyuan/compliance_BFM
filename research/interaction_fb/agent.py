@@ -31,10 +31,11 @@ class Agent:
         with torch.no_grad():return norm(nets['bi'](self.prompt)).expand(n,-1)
     def command(self,obs,target=False):
         nets=self.targets if target else self.nets;x=deploy(obs);g=self.goal.expand(len(x),-1)
-        return norm(g+nets['u'](torch.cat([x,g],-1)))
+        return (g+nets['u'](torch.cat([x,g],-1)))/16
     def action(self,obs,target=False,sample=False,z_override=None):
         nets=self.targets if target else self.nets;x=deploy(obs);g=self.goal.expand(len(x),-1)
-        new=self.command(obs,target)
+        from clean_policy import direct_command
+        new=direct_command(self.command(obs,target),self.goal)
         from locomotion_rollout import spherical
         zz=[]
         for i in range(len(x)):
@@ -58,7 +59,7 @@ class Agent:
     def update(self,rows,native,batch=32):
         from dual_track_fb_online import stack
         ix=torch.randint(len(rows),(batch,));ex=torch.randint(len(native),(batch,))
-        b=stack([rows[i] for i in ix]);e=stack([native[i] for i in ex])
+        b=stack([rows[i] for i in ix]);e=stack([{k:native[i][k] for k in ('observation','z','action')} for i in ex])
         o=to_device(b['observation']);no=to_device(b['next']['observation']);eo=to_device(e['observation'])
         a=b['action'].cuda();z=b['z'].cuda();zi=b['zi'].cuda()
         d=(.99**(b['duration'].cuda()/.1))*(~b['next']['terminated'].cuda())

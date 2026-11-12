@@ -27,3 +27,7 @@ A only U and independent Q; frozen base all original. B U+same adapter/Q/robot p
 ## Legacy reuse boundary
 
 A dedicated child process owns exactly one Task. Read-only physics/source/normalizer/action implementations reused; entry explicitly records native contact installer, clean_env.advance Task override, backend prefix calibration and m10 driver callback. They cannot affect another process/runtime. No old high-level actors, searched Teacher labels, model updates or old replay used. New learner/checkpoint/replay lifecycle resides research/interaction_fb. F1 validity mask only accepts MuJoCo3.3.3/Newton/dense/island-off; raw arrays saved, proven NULL views excluded only from comparisons.
+
+### Pre-update implementation clarification
+
+New U/F_I/Q MLPs consume original supplied robot fields directly (not a newly fitted normalizer); only frozen BFM Actor/F_R/B_R use the original keyed frozen normalizers. Q/F_I additionally receive actual held-target256 and own interpolation-slot1, needed for a Markov50Hz transition. Slot is self-control memory, never task time. Replay and executor now share exactly the original direct_command projection and spherical interpolation, asserted per real action. No change to physical reward or model-selection threshold.
