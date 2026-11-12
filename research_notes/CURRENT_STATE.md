@@ -1,3 +1,13 @@
+# CURRENT_STATE — Issue62 Envelope逆映射前置核查阻断
+
+2026-11-12。已承接最新授权comment6827917070；[数值预检报告](ADAPTER_ENVELOPE_V1_PREFLIGHT_RESULTS.md)证实原FP32 action→q_PD映射无法逐值表示批准Envelope的一个投影目标：NVIDIA反例由两相邻action输出严格夹住，最小差2.98e-8rad。这不是物理质量失败；但命中§3/§9明确的逆映射正确性暂停条款，未自行放宽或近似通过。
+
+新物理/训练均0，A128、B19与全部历史保留；B/C/dev/probe未启动。协议/机械表以BLOCKED版本记录，不冒充完整资格/预算锁。建议Yi确认理想目标与实际可表示目标分开、确定性朝许可区间内部舍入并以实际g(a_exec)作全路径逐值真值；尚未实施。
+
+Pilot累计9.452386/15h、输出3.052665/8GiB，未用条件扩额；GPU0释放。执行脚本SHA `1ab0bad8338ca61c813cfefc5554fa37b253af97a3174df9946c659b64275cd4`，基准e60fff4。科学/物理/概率阈值、封存和共享资产不变。
+
+## 之前快照（保留历史）
+
 # CURRENT_STATE — Issue62 adapter-off对照完成，等待配方决策
 
 2026-11-12。[冻结反事实报告](INTERACTION_ADAPTER_OFF_RESULTS.md)：同一B19完整11.8s状态，关闭整个执行adapter但保留学习U/Guidance与原BFM/PD，采样和均值均完成3秒、实际关节越界0；原on采样/均值约0.51秒左踝pitch撞硬界。共同前缀/首观测/z/RNG严格一致。支持adapter在该释放状态中有实质因果贡献，不是全任务因果唯一解释。

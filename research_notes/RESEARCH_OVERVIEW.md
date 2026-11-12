@@ -261,3 +261,8 @@ R0 specifies separate frozen robot representation and new interaction-successor 
 ### Issue62 Pilot lock revision (2026-11-12)
 
 T0 remains engineering-qualified, not behavior-qualified. A/B execution paths and independent evaluator are now measured; an exact-recoverable incremental checkpoint replaces quadratic full-snapshot output growth in the proposed Pilot only. The rejected3k/arm draft remains archived. [Revised lock](PILOT_BUDGET_AND_SPLIT_LOCK.md) proposes32k/arm and whole-parent train/dev/sealed manifests under8h/8GiB, awaiting Yi approval. First read is dev directionality plus an initial interaction-B probe; formal§5.1, factorization causality, convergence and generalization remain unproven. [Preparation evidence](INTERACTION_PILOT_PREPARATION_RESULTS.md) records common initialization/capacity differences and all engineering failures; noPilot launched.
+
+
+### Issue62 Envelope数值预检边界
+
+Nominal-anchored执行适配的物理设计与其有限精度实现须分别验证。原FP32动作接口不一定能精确表示单独在关节空间舍入的投影目标；本次最小反例导致按授权暂停，不能称物理方法已失败，也不能用近似逆冒充逐值通过。尚未开启新B/C或改变科学判断，见[预检](ADAPTER_ENVELOPE_V1_PREFLIGHT_RESULTS.md)。
