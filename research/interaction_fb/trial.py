@@ -14,7 +14,7 @@ def study(e,m,c,out):
     from research.interaction_fb.env import Environment
     from research.interaction_fb.agent import Agent
     from research.interaction_fb.schema import deploy
-    from research.interaction_fb.checkpoint import save,restore
+    from research.interaction_fb.checkpoint import save,restore,adopt
     from diagnostic_fb_resume import tree_digest
     from dual_track_task import global_rng
     torch.set_num_threads(1);torch.use_deterministic_algorithms(True)
@@ -35,7 +35,8 @@ def study(e,m,c,out):
         global_hooks=['native_env.install:geometry_env.install_contact','dual_track_task.Task:clean_env.advance','rolling_backend.install:m8_stage.read'],
         isolated_one_Task_process=True))
     round0=0
-    if ARGS.resume:round0=restore(ARGS.resume,agent,env)
+    if ARGS.resume:
+        round0=restore(ARGS.resume,agent,env);adopt(out/'checkpoints',ARGS.resume)
     else:save(out/'checkpoints',0,agent,env,ARGS.runtime,'initial')
     records=[]
     try:
@@ -54,7 +55,7 @@ def study(e,m,c,out):
                 total_s=time.monotonic()-begun,peak_cuda_bytes=torch.cuda.max_memory_allocated(),metrics=metrics,
                 contact_rows=sum(bool(x['observation']['contact_privileged_v1'][0,21]) for x in env.rows),
                 fingerprints=dict(agent=tree_digest(agent.state()),replay=tree_digest(env.rows),rng=tree_digest(global_rng()),
-                    qpos=tree_digest(e.sim.data.qpos),qvel=tree_digest(e.sim.data.qvel),history=tree_digest(e.base.history_handler.history)))
+                    physics_stream=tree_digest(env.physical_stream),qpos=tree_digest(e.sim.data.qpos),qvel=tree_digest(e.sim.data.qvel),history=tree_digest(e.base.history_handler.history)))
             records.append(rec);write(out/'rounds.json',records);print('COMMITTED',r,rec['total_s'],flush=True)
     except Exception as exc:
         write(out/'failure-evidence.json',dict(type=type(exc).__name__,error=str(exc),cursor=env.next_cursor,updates=agent.updates,

@@ -22,7 +22,7 @@ def save(root,round_id,agent,env,runtime,reason='completed_round'):
         physical=portable(t),mj_metadata=meta,rng=global_rng(),task_rng=copy.deepcopy(t.rng.bit_generator.state),
         physics_rng=copy.deepcopy(t.physics_rng),round_id=round_id,runtime=runtime,
         schema='robot frozen + deploy87 + independent successor interaction16',
-        source_sha=t.prefix_data['audit']['sha256'])
+        source_sha=t.prefix_data['audit']['sha256'],physical_stream=env.physical_stream)
     torch.save(state,tmp/'state.pt');sync(tmp/'state.pt')
     test=torch.load(tmp/'state.pt',map_location='cpu',weights_only=False)
     assert test['round_id']==round_id and len(test['rows'])==len(env.rows)
@@ -53,8 +53,27 @@ def restore(path,agent,env):
     now=portable(t);ma=metadata(t.e.sim.model,t.e.sim.data)
     assert exact(canonical(now,ma)['mjdata_arrays'],canonical(old,s['mj_metadata'])['mjdata_arrays']),'physical arrays differ after exact command replay'
     assert exact(now['history'],old['history']),'BFM history differs'
-    for obj,key in [(t,'task'),(t.e,'env'),(t.e.base,'base'),(t.e.tether,'tether'),(t.h,'force_history')]:put(obj,old[key])
+    def devices(value,template):
+        from collections import deque
+        if torch.is_tensor(value):
+            assert torch.is_tensor(template),'Missing tensor device template'
+            return value.to(template.device)
+        if isinstance(value,dict):return {k:devices(v,template[k]) for k,v in value.items()}
+        if isinstance(value,(list,tuple,deque)):
+            assert len(value)==len(template),'Physical history length differs'
+            vv=[devices(v,w) for v,w in zip(value,template)]
+            return deque(vv,maxlen=value.maxlen) if isinstance(value,deque) else tuple(vv) if isinstance(value,tuple) else vv
+        return value
+    for obj,key in [(t,'task'),(t.e,'env'),(t.e.base,'base'),(t.e.tether,'tether'),(t.h,'force_history')]:put(obj,{k:devices(v,getattr(obj,k)) for k,v in old[key].items()})
     t.physics_rng=copy.deepcopy(s['physics_rng']);restore_global_rng(s['rng']);t.rng.bit_generator.state=copy.deepcopy(s['task_rng'])
-    env.rows=s['rows'];env.native=s['native'];env.commands=s['commands'];p.actions=s['actions'];env.episodes=s['episodes'];env.next_cursor=s['cursor']
+    env.physical_stream=s['physical_stream'];env.rows=s['rows'];env.native=s['native'];env.commands=s['commands'];p.actions=s['actions'];env.episodes=s['episodes'];env.next_cursor=s['cursor']
     assert tree_digest(agent.state())==tree_digest(s['agent']),'agent/Adam/target restore differs'
     return s['round_id']
+
+def adopt(root,source):
+    """Reference an immutable verified incoming round in the new run's own pointer."""
+    import shutil
+    root=Path(root);source=Path(source);root.mkdir(parents=True,exist_ok=True)
+    dest=root/source.name;assert not dest.exists();shutil.copytree(source,dest,copy_function=os.link)
+    temp=root/'latest-committed.pending';jsonwrite(temp,dict(package=dest.name,manifest_sha256=sha(dest/'manifest.json')))
+    os.replace(temp,root/'latest-committed.json');fd=os.open(root,os.O_DIRECTORY);os.fsync(fd);os.close(fd)

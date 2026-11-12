@@ -54,7 +54,7 @@ class Proxy(NativeActor):
 class Environment:
     def __init__(self,e,m,contract):
         self.task=TrialTask(e,m,contract,6201);self.proxy=Proxy(self.task,m);self.task.m=self.proxy
-        self.rows=[];self.native=[];self.commands=[];self.spec_id=0;self.episodes=[];self.next_cursor=0
+        self.physical_stream=[];self.rows=[];self.native=[];self.commands=[];self.spec_id=0;self.episodes=[];self.next_cursor=0
     def reset(self,i=0):
         self.spec_id=i;self.proxy.begin_source();self.proxy.slot=0;self.proxy.start=None;self.proxy.target=None
         self.task.reset(specs()[i],record=True,label='T0-'+str(i));self.proxy.finish_pending()
@@ -71,7 +71,9 @@ class Environment:
             from clean_policy import direct_command
             raw=p.agent.command(ob);p.target=direct_command(raw,t.e.standing)
         # Exactly five native controls. No phase/task/clock is a neural input.
+        before=len(t.physics)
         rs,done,stats=p.take_step(raw,5)
+        self.physical_stream.extend(copy.deepcopy(t.physics[before:]))
         for r,source in zip(rs,p.records):r['zi']=source['zi']
         self.rows.extend(rs);self.commands.append(raw.detach().cpu());self.next_cursor+=len(rs)
         # Next action at a high-level boundary must recompute Guidance.
