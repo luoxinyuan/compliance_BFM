@@ -1,3 +1,15 @@
+# CURRENT_STATE — Issue62 新共同噪声合同已获接纳，A重跑进行中
+
+2026-11-12，Yi明确接纳std=.01/clip=.06为A/B/C共同合同：[批准记录](https://github.com/GaoE05/robot-research-bridge/issues/62#issuecomment-6822542264)。保留单窗峰值筛查未通过，不改判历史；该筛查非§5.1成功判据，残余尾部由原dev指标报告。原真实物理/正确性硬界不变。
+
+独立stage interaction-pilot-v3-20261112；实际runtime `62d55b0d26127440253dba2b5d0baa8bd1e457fa`。A从原共同模板/原生standing初始化、fresh optimizer/replay、零训练计数重跑；已逐值验证common网络tensor和初始化action与旧A一致。不是旧A65续训，不是BC500初始化。实际action一次Gaussian采样std=.01/clip=.06及RNG合同已核对；探索配置随checkpoint保存并在resume核对。
+
+启动核查已提交round3＝750真实50Hz transitions、6完整update，所有已完成轮完整存盘；监督PID2374035、A PID2374051。这是运行快照，实时以jobs/rounds/ledger为准。单GPU0队列A→B→C各32000，然后独立dev三臂/共享initial/BC500与B_I首读；sealed不执行。当前无新行为收益或三臂胜负结论，单seed有限规模不自动满足§5.1正式证据要求。
+
+[共同实施合同](INTERACTION_PILOT_V3_ACCEPTANCE.md)及[机器锁](interaction_pilot_lock_v3_approved.json)：Pilot累计15h/8GiB，继承22156.050970s，另保守预记1200s准备/发布；新子job和失败/IO/评价另累计，项目240h不重置。历史全部输出纳入8GiB计数，shared free≥100GiB。启动现场GPU0空闲、共享free约427GiB、CPU210核/RAM可用616GiB；这些不替代以后实时检查。旧A65/失败/噪声对照及共享资产保持。
+
+## 之前状态快照（原记录保留）
+
 # CURRENT_STATE — Issue62 全维降噪冻结验证未通过，训练未重启
 
 2026-11-12最新授权：共同std=.01/clip=.06先验证，通过后A从原共同初始化重跑、B/C同合同；Pilot累计上限15h，仍计入项目240h，输出8GiB不变。

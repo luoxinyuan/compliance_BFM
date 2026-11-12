@@ -1,0 +1,22 @@
+{
+  "runtime": "62d55b0d26127440253dba2b5d0baa8bd1e457fa",
+  "original_common_init_exact": true,
+  "initial_action_digest": "58e4b6acb8c3143edd4122873d57c7a88be551dfcf02eeec832e194ff202bd04",
+  "common_parameter_digests": {
+    "u": "bc51fe567da49ffe9f58ec59cf479e83a12a4db6061dee4e4f115f1d8094d738",
+    "q": "4cc125e20fce85fa502fda455f4bafbb747a968719168a9b57a365ce2059cd33"
+  },
+  "fresh_optimizers": true,
+  "round0_manifest_sha256": "4c7f9206337fc243fa86df7d42d180c88bb39cae93ef968ff8a6ab76de29a93c",
+  "current_round": 3,
+  "transitions": 750,
+  "updates": 6,
+  "current_manifest_sha256": "33ba1446a88b75f886661c59cbda9e20ead048e9b4a38ef7887778c7d794d350",
+  "exploration": {
+    "std": 0.01,
+    "clip": 0.06
+  },
+  "inherited_plus_preparation_s": 23356.050969840097,
+  "supervisor": 2374035,
+  "child": 2374051
+}
