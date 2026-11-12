@@ -1,3 +1,15 @@
+# CURRENT_STATE — Issue62 Envelope inward numerical revision, qualification pending
+
+Yi已批准确定性向原许可区间内部舍入；实际action/g(action)作为物理、actor/target、critic和replay共同真值。仅≤1e-6rad纯表示修正可自主处理，科学常数/物理门/reward不在授权内。c13cc69严格逆映射失败保留。
+
+CPU/CUDA离线算子已通过，最大数值修正4.76837e-7rad；完整物理资格尚未运行，不称新训练成功。已锁四个暴露父组、20新分支，B19原on/off存档复用须核对身份。A128/B19/全部失败不变。
+
+完整投影17.9636累计job小时、12.7414GiB（含历史/全部B+C128轮/恢复/五方100回合dev/probe/失败余量）；按6827917070条件预授权采用18h/16GiB，未重置历史。新物理前机器锁和两份投影提交。当前已计34028.589s＋本次数值实现/分析/准备上界1800s；九stage inode去重3.4223GiB，修正旧较窄统计范围而非删除资产。资格失败立即停，不自行换常数。
+
+[协议](ADAPTER_ENVELOPE_V1_PROTOCOL.md) · [时间投影](ADAPTER_ENVELOPE_V1_TIME_PROJECTION.md) · [存储投影](ADAPTER_ENVELOPE_V1_STORAGE_PROJECTION.md)。重GPU单GPU0串行，sharedfree≥100GiB，sealed未读。
+
+## 历史快照（不追改）
+
 # CURRENT_STATE — Issue62 Envelope逆映射前置核查阻断
 
 2026-11-12。已承接最新授权comment6827917070；[数值预检报告](ADAPTER_ENVELOPE_V1_PREFLIGHT_RESULTS.md)证实原FP32 action→q_PD映射无法逐值表示批准Envelope的一个投影目标：NVIDIA反例由两相邻action输出严格夹住，最小差2.98e-8rad。这不是物理质量失败；但命中§3/§9明确的逆映射正确性暂停条款，未自行放宽或近似通过。

@@ -31,6 +31,7 @@ class Agent:
         self.prompt=interaction(obs).detach().clone();self.prompt[:,-16:]=0;self.prompt[:,-1]=1
         self.updates=0;self.z_buffer=[];self.audit=[]
         self.exploration_std=.05;self.exploration_clip=.3
+        self.envelope=None;self.last_action_audit=None
     def zi(self,n,target=False):
         nets=self.targets if target else self.nets
         if self.arm!="C":return torch.zeros(n,32,device=self.goal.device)
@@ -50,10 +51,19 @@ class Agent:
         z=torch.cat(zz);z=z if z_override is None else z_override
         zi=self.zi(len(x),target)
         # Use underlying frozen actor, preserving gradient back to guidance.
-        a=self.base._actor(self.base._normalize(robot(obs)),z,self.base.cfg.actor_std).mean
-        if self.arm!='A':a=a+nets['adapter'](torch.cat([x,z,zi],-1))
-        a=a.clamp(-1,1)
-        if sample:a=(a+(self.exploration_std*torch.randn_like(a)).clamp(-self.exploration_clip,self.exploration_clip)).clamp(-1,1)
+        base=self.base._actor(self.base._normalize(robot(obs)),z,self.base.cfg.actor_std).mean
+        adapter=nets['adapter'](torch.cat([x,z,zi],-1)) if self.arm!='A' else torch.zeros_like(base)
+        if self.envelope is not None:
+            assert self.arm!='A'
+            noise=(self.exploration_std*torch.randn_like(base)).clamp(-self.exploration_clip,self.exploration_clip) if sample else torch.zeros_like(base)
+            raw=(base+adapter+noise).clamp(-1,1)
+            a,audit=self.envelope(base,raw)
+            self.last_action_audit=dict(audit,adapter=adapter.detach(),noise=noise.detach())
+        else:
+            # Preserve legacy A and all archived checkpoints bit for bit.
+            a=(base if self.arm=="A" else base+adapter).clamp(-1,1)
+            if sample:a=(a+(self.exploration_std*torch.randn_like(a)).clamp(-self.exploration_clip,self.exploration_clip)).clamp(-1,1)
+            self.last_action_audit=None
         return a,z,zi
     def inp(self,o,a,z,zi):return torch.cat([privileged(o),a,z,zi],-1)
     def stepopt(self,name,loss):
@@ -136,12 +146,16 @@ class Agent:
             replay_indices=ix.tolist(),expert_indices=ex.tolist())
         self.audit.append(metric);return metric
     def state(self):
-        return dict(exploration=dict(std=self.exploration_std,clip=self.exploration_clip),arm=self.arm,nets=self.nets.state_dict(),targets=self.targets.state_dict(),
+        result=dict(exploration=dict(std=self.exploration_std,clip=self.exploration_clip),arm=self.arm,nets=self.nets.state_dict(),targets=self.targets.state_dict(),
             optimizers={k:v.state_dict() for k,v in self.opts.items()},prompt=self.prompt,goal=self.goal,
             scale=self.scale,z_buffer=self.z_buffer,updates=self.updates,audit=self.audit,
             normalizers=self.base._obs_normalizer.state_dict())
+        if self.envelope is not None:result['envelope']=self.envelope.config
+        return result
     def load(self,s):
         assert s.get('arm','C')==self.arm
+        from .envelope import Envelope
+        self.envelope=Envelope(s['envelope'],self.goal.device) if 'envelope' in s else None
         noise=s.get('exploration',dict(std=.05,clip=.3))
         self.exploration_std=float(noise['std']);self.exploration_clip=float(noise['clip'])
         self.nets.load_state_dict(s['nets']);self.targets.load_state_dict(s['targets'])

@@ -51,6 +51,9 @@ class Proxy(NativeActor):
         row=dict(observation=cpu_obs(ext),action=a.detach().cpu(),z=z.detach().cpu(),zi=zi.detach().cpu(),
                  previous_z=self.previous_z,target_z=(self.target if self.target is not None else z).detach().cpu(),
                  time=float(self.task.e.tether.time),source='standing')
+        if not self.source_mode and self.replay_actions is None and self.agent is not None and self.agent.last_action_audit is not None:
+            row['envelope']={k:v.detach().cpu() for k,v in self.agent.last_action_audit.items()}
+            assert torch.equal(row['action'],row['envelope']['executed'])
         self.previous_z=z.detach().cpu();self.pending=row
         (self.source_pairs if self.source_mode else self.records).append(row)
         if not self.source_mode:self.actions.append(a.detach().cpu());self.slot+=1
@@ -82,6 +85,9 @@ class Environment:
         self.physical_stream.extend(copy.deepcopy(t.physics[before:]))
         for r,source in zip(rs,p.records):
             r['zi']=source['zi']
+            if 'envelope' in source:
+                r['envelope']=source['envelope']
+                assert torch.equal(r['action'],r['envelope']['executed'])
             r['provenance']['spec_index']=torch.tensor([[self.spec_id]],dtype=torch.int64)
             r['provenance']['online_episode']=torch.tensor([[len(self.episodes)]],dtype=torch.int64)
         self.rows.extend(rs);self.commands.append(raw.detach().cpu());self.next_cursor+=len(rs)

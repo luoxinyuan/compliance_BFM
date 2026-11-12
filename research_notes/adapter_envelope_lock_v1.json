@@ -1,1017 +1,681 @@
 {
-  "status": "BLOCKED_AT_INVERSE_PREFLIGHT_NOT_APPROVED_FOR_PHYSICS_OR_TRAINING",
+  "status": "qualification_locked_not_yet_executed",
   "approval": "https://github.com/GaoE05/robot-research-bridge/issues/62#issuecomment-6827917070",
-  "base_commit": "e60fff41446e4246faa4ecc471fb399c4eb4c95a",
-  "constants": {
-    "margin_min_rad": 0.02,
-    "margin_fraction": 0.05,
-    "delta_cap_rad": 0.12,
-    "remaining_margin_fraction": 0.25
+  "numeric_approval": "https://github.com/GaoE05/robot-research-bridge/issues/62#issuecomment-6828464806",
+  "parent_runtime": "c13cc6928e799f0d396a4e127f8fe285437e7263",
+  "operator": {
+    "version": "nominal-envelope-v1-inward-fp32",
+    "mechanical_table": [
+      {
+        "name": "left_hip_pitch_joint",
+        "qmin": -2.5306999683380127,
+        "qmax": 2.8798000812530518,
+        "margin": 0.2705250084400177,
+        "lo": -2.2601749897003174,
+        "hi": 2.6092751026153564,
+        "scale": 1.7533073425292969,
+        "offset": -0.10000000149011612
+      },
+      {
+        "name": "left_hip_roll_joint",
+        "qmin": -0.5235999822616577,
+        "qmax": 2.967099905014038,
+        "margin": 0.17453499138355255,
+        "lo": -0.34906500577926636,
+        "hi": 2.792564868927002,
+        "scale": 1.7533073425292969,
+        "offset": 0.0
+      },
+      {
+        "name": "left_hip_yaw_joint",
+        "qmin": -2.7576000690460205,
+        "qmax": 2.7576000690460205,
+        "margin": 0.2757600247859955,
+        "lo": -2.481840133666992,
+        "hi": 2.481840133666992,
+        "scale": 2.737732172012329,
+        "offset": 0.0
+      },
+      {
+        "name": "left_knee_joint",
+        "qmin": -0.08726699650287628,
+        "qmax": 2.8798000812530518,
+        "margin": 0.14835335314273834,
+        "lo": 0.06108635663986206,
+        "hi": 2.7314467430114746,
+        "scale": 1.7533073425292969,
+        "offset": 0.30000001192092896
+      },
+      {
+        "name": "left_ankle_pitch_joint",
+        "qmin": -0.8726699948310852,
+        "qmax": 0.5235999822616577,
+        "margin": 0.06981350481510162,
+        "lo": -0.8028565049171448,
+        "hi": 0.4537864923477173,
+        "scale": 2.1928863525390625,
+        "offset": -0.20000000298023224
+      },
+      {
+        "name": "left_ankle_roll_joint",
+        "qmin": -0.26179999113082886,
+        "qmax": 0.26179999113082886,
+        "margin": 0.026179999113082886,
+        "lo": -0.23561999201774597,
+        "hi": 0.23561999201774597,
+        "scale": 2.1928863525390625,
+        "offset": 0.0
+      },
+      {
+        "name": "right_hip_pitch_joint",
+        "qmin": -2.5306999683380127,
+        "qmax": 2.8798000812530518,
+        "margin": 0.2705250084400177,
+        "lo": -2.2601749897003174,
+        "hi": 2.6092751026153564,
+        "scale": 1.7533073425292969,
+        "offset": -0.10000000149011612
+      },
+      {
+        "name": "right_hip_roll_joint",
+        "qmin": -2.967099905014038,
+        "qmax": 0.5235999822616577,
+        "margin": 0.17453499138355255,
+        "lo": -2.792564868927002,
+        "hi": 0.34906500577926636,
+        "scale": 1.7533073425292969,
+        "offset": 0.0
+      },
+      {
+        "name": "right_hip_yaw_joint",
+        "qmin": -2.7576000690460205,
+        "qmax": 2.7576000690460205,
+        "margin": 0.2757600247859955,
+        "lo": -2.481840133666992,
+        "hi": 2.481840133666992,
+        "scale": 2.737732172012329,
+        "offset": 0.0
+      },
+      {
+        "name": "right_knee_joint",
+        "qmin": -0.08726699650287628,
+        "qmax": 2.8798000812530518,
+        "margin": 0.14835335314273834,
+        "lo": 0.06108635663986206,
+        "hi": 2.7314467430114746,
+        "scale": 1.7533073425292969,
+        "offset": 0.30000001192092896
+      },
+      {
+        "name": "right_ankle_pitch_joint",
+        "qmin": -0.8726699948310852,
+        "qmax": 0.5235999822616577,
+        "margin": 0.06981350481510162,
+        "lo": -0.8028565049171448,
+        "hi": 0.4537864923477173,
+        "scale": 2.1928863525390625,
+        "offset": -0.20000000298023224
+      },
+      {
+        "name": "right_ankle_roll_joint",
+        "qmin": -0.26179999113082886,
+        "qmax": 0.26179999113082886,
+        "margin": 0.026179999113082886,
+        "lo": -0.23561999201774597,
+        "hi": 0.23561999201774597,
+        "scale": 2.1928863525390625,
+        "offset": 0.0
+      },
+      {
+        "name": "waist_yaw_joint",
+        "qmin": -2.618000030517578,
+        "qmax": 2.618000030517578,
+        "margin": 0.26180002093315125,
+        "lo": -2.3561999797821045,
+        "hi": 2.3561999797821045,
+        "scale": 0.36666667461395264,
+        "offset": 0.0
+      },
+      {
+        "name": "waist_roll_joint",
+        "qmin": -0.5199999809265137,
+        "qmax": 0.5199999809265137,
+        "margin": 0.05199999734759331,
+        "lo": -0.46799999475479126,
+        "hi": 0.46799999475479126,
+        "scale": 0.2083333283662796,
+        "offset": 0.0
+      },
+      {
+        "name": "waist_pitch_joint",
+        "qmin": -0.5199999809265137,
+        "qmax": 0.5199999809265137,
+        "margin": 0.05199999734759331,
+        "lo": -0.46799999475479126,
+        "hi": 0.46799999475479126,
+        "scale": 0.2083333283662796,
+        "offset": 0.0
+      },
+      {
+        "name": "left_shoulder_pitch_joint",
+        "qmin": -3.089200019836426,
+        "qmax": 2.6703999042510986,
+        "margin": 0.28797999024391174,
+        "lo": -2.801219940185547,
+        "hi": 2.3824198246002197,
+        "scale": 2.1928870677948,
+        "offset": 0.0
+      },
+      {
+        "name": "left_shoulder_roll_joint",
+        "qmin": -1.5881999731063843,
+        "qmax": 2.251499891281128,
+        "margin": 0.19198499619960785,
+        "lo": -1.3962149620056152,
+        "hi": 2.0595149993896484,
+        "scale": 2.1928870677948,
+        "offset": 0.0
+      },
+      {
+        "name": "left_shoulder_yaw_joint",
+        "qmin": -2.618000030517578,
+        "qmax": 2.618000030517578,
+        "margin": 0.26180002093315125,
+        "lo": -2.3561999797821045,
+        "hi": 2.3561999797821045,
+        "scale": 2.1928870677948,
+        "offset": 0.0
+      },
+      {
+        "name": "left_elbow_joint",
+        "qmin": -1.0471999645233154,
+        "qmax": 2.094399929046631,
+        "margin": 0.15707999467849731,
+        "lo": -0.8901199698448181,
+        "hi": 1.9373199939727783,
+        "scale": 2.1928870677948,
+        "offset": 0.0
+      },
+      {
+        "name": "left_wrist_roll_joint",
+        "qmin": -1.9722199440002441,
+        "qmax": 1.9722199440002441,
+        "margin": 0.19722199440002441,
+        "lo": -1.7749979496002197,
+        "hi": 1.7749979496002197,
+        "scale": 2.1928870677948,
+        "offset": 0.0
+      },
+      {
+        "name": "left_wrist_pitch_joint",
+        "qmin": -1.6144299507141113,
+        "qmax": 1.6144299507141113,
+        "margin": 0.16144299507141113,
+        "lo": -1.4529869556427002,
+        "hi": 1.4529869556427002,
+        "scale": 0.3725042939186096,
+        "offset": 0.0
+      },
+      {
+        "name": "left_wrist_yaw_joint",
+        "qmin": -1.6144299507141113,
+        "qmax": 1.6144299507141113,
+        "margin": 0.16144299507141113,
+        "lo": -1.4529869556427002,
+        "hi": 1.4529869556427002,
+        "scale": 0.3725042939186096,
+        "offset": 0.0
+      },
+      {
+        "name": "right_shoulder_pitch_joint",
+        "qmin": -3.089200019836426,
+        "qmax": 2.6703999042510986,
+        "margin": 0.28797999024391174,
+        "lo": -2.801219940185547,
+        "hi": 2.3824198246002197,
+        "scale": 2.1928870677948,
+        "offset": 0.0
+      },
+      {
+        "name": "right_shoulder_roll_joint",
+        "qmin": -2.251499891281128,
+        "qmax": 1.5881999731063843,
+        "margin": 0.19198499619960785,
+        "lo": -2.0595149993896484,
+        "hi": 1.3962149620056152,
+        "scale": 2.1928870677948,
+        "offset": 0.0
+      },
+      {
+        "name": "right_shoulder_yaw_joint",
+        "qmin": -2.618000030517578,
+        "qmax": 2.618000030517578,
+        "margin": 0.26180002093315125,
+        "lo": -2.3561999797821045,
+        "hi": 2.3561999797821045,
+        "scale": 2.1928870677948,
+        "offset": 0.0
+      },
+      {
+        "name": "right_elbow_joint",
+        "qmin": -1.0471999645233154,
+        "qmax": 2.094399929046631,
+        "margin": 0.15707999467849731,
+        "lo": -0.8901199698448181,
+        "hi": 1.9373199939727783,
+        "scale": 2.1928870677948,
+        "offset": 0.0
+      },
+      {
+        "name": "right_wrist_roll_joint",
+        "qmin": -1.9722199440002441,
+        "qmax": 1.9722199440002441,
+        "margin": 0.19722199440002441,
+        "lo": -1.7749979496002197,
+        "hi": 1.7749979496002197,
+        "scale": 2.1928870677948,
+        "offset": 0.0
+      },
+      {
+        "name": "right_wrist_pitch_joint",
+        "qmin": -1.6144299507141113,
+        "qmax": 1.6144299507141113,
+        "margin": 0.16144299507141113,
+        "lo": -1.4529869556427002,
+        "hi": 1.4529869556427002,
+        "scale": 0.3725042939186096,
+        "offset": 0.0
+      },
+      {
+        "name": "right_wrist_yaw_joint",
+        "qmin": -1.6144299507141113,
+        "qmax": 1.6144299507141113,
+        "margin": 0.16144299507141113,
+        "lo": -1.4529869556427002,
+        "hi": 1.4529869556427002,
+        "scale": 0.3725042939186096,
+        "offset": 0.0
+      }
+    ],
+    "constants": {
+      "margin_min_rad": 0.02,
+      "margin_fraction": 0.05,
+      "delta_cap_rad": 0.12,
+      "remaining_margin_fraction": 0.25
+    },
+    "rounding_rad_max": 1e-06,
+    "derivative": "analytic projection with identity straight-through through numeric rounding only"
   },
-  "source_sha256": "1ab0bad8338ca61c813cfefc5554fa37b253af97a3174df9946c659b64275cd4",
-  "mechanical_table": [
+  "model_checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-v3-20261112/runs/pilot-B-v3/checkpoints/round-19",
+  "qualification_states": [
     {
-      "name": "left_hip_pitch_joint",
-      "qmin": -2.5306999683380127,
-      "qmax": 2.8798000812530518,
-      "margin": 0.2705250084400177,
-      "lo": -2.2601749897003174,
-      "hi": 2.6092751026153564,
-      "scale": 1.7533073425292969,
-      "offset": -0.10000000149011612
+      "id": "B19-release",
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-v3-20261112/runs/pilot-B-v3/checkpoints/round-19",
+      "core_sha": "0cd3e3684d764cad42caaa83773b885868caeed0557dba1780ec36a3d03a3984",
+      "manifest_sha": "150f107489e267fc0c93ef8e99b7a51d798cd5a1011f9c3c3ddba9017855306a",
+      "time": 11.800000000000445,
+      "parent_id": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "spec": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.2598418573725568,
+        "ramp": 4.2,
+        "onset": 5.1,
+        "release": 10.8,
+        "end": 14.8,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "standing",
+        "source_until": 4.4,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual",
+        "demand_family": "mid",
+        "source_profile": {
+          "arm_fraction": 1.0,
+          "pulse_fraction": 0.07682825846372102,
+          "pulse_duration": 0.6897354057055731,
+          "phase_offset": 0.0,
+          "phase_rate": 1.0
+        },
+        "parent_id": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+        "source_parent_id": "f2b9d9813473a0991f4147cbab8150bdb280858d2c3c580d44d31049d7ca84e8",
+        "partner_parent_id": "e4c491566f5ed2f915659f5d3af6e614966f4d9cf388567ba02f27a6f23fb1d6",
+        "common_prefix_parent_id": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+        "deceleration": 0.0,
+        "split": "train"
+      },
+      "branches": [
+        {
+          "id": "envelope-sample",
+          "mode": "envelope",
+          "sample": true
+        },
+        {
+          "id": "envelope-mean",
+          "mode": "envelope",
+          "sample": false
+        }
+      ],
+      "origin": "archived actual B policy state; current frozen model B19 for all branches"
     },
     {
-      "name": "left_hip_roll_joint",
-      "qmin": -0.5235999822616577,
-      "qmax": 2.967099905014038,
-      "margin": 0.17453499138355255,
-      "lo": -0.34906500577926636,
-      "hi": 2.792564868927002,
-      "scale": 1.7533073425292969,
-      "offset": 0.0
+      "id": "B16-near-active",
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-v3-20261112/runs/pilot-B-v3/checkpoints/round-16",
+      "core_sha": "e0c086aa7c019daf8a43b0f628fe82e0f00a55e4ec3f14fd263b1617df723b1c",
+      "manifest_sha": "4b08cdb434774d90ae322afbefda381a30db08d387fd9b0f0eb8a1b39429371c",
+      "time": 5.699999999999901,
+      "parent_id": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "spec": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.04421283458322102,
+        "ramp": 2.2,
+        "onset": 4.7,
+        "release": 9.3,
+        "end": 13.3,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "standing",
+        "source_until": 4.1,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual",
+        "demand_family": "near",
+        "source_profile": {
+          "arm_fraction": 1.0,
+          "pulse_fraction": 0.04043984547265493,
+          "pulse_duration": 0.3499503099507616,
+          "phase_offset": 0.0,
+          "phase_rate": 1.0
+        },
+        "parent_id": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+        "source_parent_id": "0d9d2613db4d3da1bad2e0fd33d17152f46a70a5bf41c26f1d3bf61010d3873f",
+        "partner_parent_id": "a11dd9eace9205fcc0d5fb2b88e1a56d517f3e4215c7cf4c3dc0d652ac074af7",
+        "common_prefix_parent_id": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+        "deceleration": 0.0,
+        "split": "train"
+      },
+      "branches": [
+        {
+          "id": "off-sample",
+          "mode": "off",
+          "sample": true
+        },
+        {
+          "id": "off-mean",
+          "mode": "off",
+          "sample": false
+        },
+        {
+          "id": "on-sample",
+          "mode": "on",
+          "sample": true
+        },
+        {
+          "id": "on-mean",
+          "mode": "on",
+          "sample": false
+        },
+        {
+          "id": "envelope-sample",
+          "mode": "envelope",
+          "sample": true
+        },
+        {
+          "id": "envelope-mean",
+          "mode": "envelope",
+          "sample": false
+        }
+      ],
+      "origin": "archived actual B policy state; current frozen model B19 for all branches"
     },
     {
-      "name": "left_hip_yaw_joint",
-      "qmin": -2.7576000690460205,
-      "qmax": 2.7576000690460205,
-      "margin": 0.2757600247859955,
-      "lo": -2.481840133666992,
-      "hi": 2.481840133666992,
-      "scale": 2.737732172012329,
-      "offset": 0.0
+      "id": "B2-mid-active",
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-v3-20261112/runs/pilot-B-v3/checkpoints/round-2",
+      "core_sha": "38f9f971b0aa2a3e6871604606ae8dbc19673544ae286ab770dfc7e59a27a005",
+      "manifest_sha": "ca5861d25acc33926e8cbad1b42cb92ad708a88ae33ce9afb527959f6e9a3a69",
+      "time": 5.499999999999905,
+      "parent_id": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "spec": {
+        "geometry": "wrist",
+        "enabled": true,
+        "distance": 0.438258037128581,
+        "ramp": 4.5,
+        "onset": 5.1,
+        "release": 11.6,
+        "end": 15.6,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "standing",
+        "source_until": 4.4,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual",
+        "demand_family": "mid",
+        "source_profile": {
+          "arm_fraction": 1.0,
+          "pulse_fraction": 0.04623227439881873,
+          "pulse_duration": 0.6241425042812216,
+          "phase_offset": 0.0,
+          "phase_rate": 1.0
+        },
+        "parent_id": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+        "source_parent_id": "5224268e7a6a82df17e63e22f6fd6825bddd4ec010c080d15f141a05a037a667",
+        "partner_parent_id": "61797724a9a27f65580098cefb51f9759e296d134f968596a26692af26f54cee",
+        "common_prefix_parent_id": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+        "deceleration": 0.0,
+        "split": "train"
+      },
+      "branches": [
+        {
+          "id": "off-sample",
+          "mode": "off",
+          "sample": true
+        },
+        {
+          "id": "off-mean",
+          "mode": "off",
+          "sample": false
+        },
+        {
+          "id": "on-sample",
+          "mode": "on",
+          "sample": true
+        },
+        {
+          "id": "on-mean",
+          "mode": "on",
+          "sample": false
+        },
+        {
+          "id": "envelope-sample",
+          "mode": "envelope",
+          "sample": true
+        },
+        {
+          "id": "envelope-mean",
+          "mode": "envelope",
+          "sample": false
+        }
+      ],
+      "origin": "archived actual B policy state; current frozen model B19 for all branches"
     },
     {
-      "name": "left_knee_joint",
-      "qmin": -0.08726699650287628,
-      "qmax": 2.8798000812530518,
-      "margin": 0.14835335314273834,
-      "lo": 0.06108635663986206,
-      "hi": 2.7314467430114746,
-      "scale": 1.7533073425292969,
-      "offset": 0.30000001192092896
-    },
-    {
-      "name": "left_ankle_pitch_joint",
-      "qmin": -0.8726699948310852,
-      "qmax": 0.5235999822616577,
-      "margin": 0.06981350481510162,
-      "lo": -0.8028565049171448,
-      "hi": 0.4537864923477173,
-      "scale": 2.1928863525390625,
-      "offset": -0.20000000298023224
-    },
-    {
-      "name": "left_ankle_roll_joint",
-      "qmin": -0.26179999113082886,
-      "qmax": 0.26179999113082886,
-      "margin": 0.026179999113082886,
-      "lo": -0.23561999201774597,
-      "hi": 0.23561999201774597,
-      "scale": 2.1928863525390625,
-      "offset": 0.0
-    },
-    {
-      "name": "right_hip_pitch_joint",
-      "qmin": -2.5306999683380127,
-      "qmax": 2.8798000812530518,
-      "margin": 0.2705250084400177,
-      "lo": -2.2601749897003174,
-      "hi": 2.6092751026153564,
-      "scale": 1.7533073425292969,
-      "offset": -0.10000000149011612
-    },
-    {
-      "name": "right_hip_roll_joint",
-      "qmin": -2.967099905014038,
-      "qmax": 0.5235999822616577,
-      "margin": 0.17453499138355255,
-      "lo": -2.792564868927002,
-      "hi": 0.34906500577926636,
-      "scale": 1.7533073425292969,
-      "offset": 0.0
-    },
-    {
-      "name": "right_hip_yaw_joint",
-      "qmin": -2.7576000690460205,
-      "qmax": 2.7576000690460205,
-      "margin": 0.2757600247859955,
-      "lo": -2.481840133666992,
-      "hi": 2.481840133666992,
-      "scale": 2.737732172012329,
-      "offset": 0.0
-    },
-    {
-      "name": "right_knee_joint",
-      "qmin": -0.08726699650287628,
-      "qmax": 2.8798000812530518,
-      "margin": 0.14835335314273834,
-      "lo": 0.06108635663986206,
-      "hi": 2.7314467430114746,
-      "scale": 1.7533073425292969,
-      "offset": 0.30000001192092896
-    },
-    {
-      "name": "right_ankle_pitch_joint",
-      "qmin": -0.8726699948310852,
-      "qmax": 0.5235999822616577,
-      "margin": 0.06981350481510162,
-      "lo": -0.8028565049171448,
-      "hi": 0.4537864923477173,
-      "scale": 2.1928863525390625,
-      "offset": -0.20000000298023224
-    },
-    {
-      "name": "right_ankle_roll_joint",
-      "qmin": -0.26179999113082886,
-      "qmax": 0.26179999113082886,
-      "margin": 0.026179999113082886,
-      "lo": -0.23561999201774597,
-      "hi": 0.23561999201774597,
-      "scale": 2.1928863525390625,
-      "offset": 0.0
-    },
-    {
-      "name": "waist_yaw_joint",
-      "qmin": -2.618000030517578,
-      "qmax": 2.618000030517578,
-      "margin": 0.26180002093315125,
-      "lo": -2.3561999797821045,
-      "hi": 2.3561999797821045,
-      "scale": 0.36666667461395264,
-      "offset": 0.0
-    },
-    {
-      "name": "waist_roll_joint",
-      "qmin": -0.5199999809265137,
-      "qmax": 0.5199999809265137,
-      "margin": 0.05199999734759331,
-      "lo": -0.46799999475479126,
-      "hi": 0.46799999475479126,
-      "scale": 0.2083333283662796,
-      "offset": 0.0
-    },
-    {
-      "name": "waist_pitch_joint",
-      "qmin": -0.5199999809265137,
-      "qmax": 0.5199999809265137,
-      "margin": 0.05199999734759331,
-      "lo": -0.46799999475479126,
-      "hi": 0.46799999475479126,
-      "scale": 0.2083333283662796,
-      "offset": 0.0
-    },
-    {
-      "name": "left_shoulder_pitch_joint",
-      "qmin": -3.089200019836426,
-      "qmax": 2.6703999042510986,
-      "margin": 0.28797999024391174,
-      "lo": -2.801219940185547,
-      "hi": 2.3824198246002197,
-      "scale": 2.1928870677948,
-      "offset": 0.0
-    },
-    {
-      "name": "left_shoulder_roll_joint",
-      "qmin": -1.5881999731063843,
-      "qmax": 2.251499891281128,
-      "margin": 0.19198499619960785,
-      "lo": -1.3962149620056152,
-      "hi": 2.0595149993896484,
-      "scale": 2.1928870677948,
-      "offset": 0.0
-    },
-    {
-      "name": "left_shoulder_yaw_joint",
-      "qmin": -2.618000030517578,
-      "qmax": 2.618000030517578,
-      "margin": 0.26180002093315125,
-      "lo": -2.3561999797821045,
-      "hi": 2.3561999797821045,
-      "scale": 2.1928870677948,
-      "offset": 0.0
-    },
-    {
-      "name": "left_elbow_joint",
-      "qmin": -1.0471999645233154,
-      "qmax": 2.094399929046631,
-      "margin": 0.15707999467849731,
-      "lo": -0.8901199698448181,
-      "hi": 1.9373199939727783,
-      "scale": 2.1928870677948,
-      "offset": 0.0
-    },
-    {
-      "name": "left_wrist_roll_joint",
-      "qmin": -1.9722199440002441,
-      "qmax": 1.9722199440002441,
-      "margin": 0.19722199440002441,
-      "lo": -1.7749979496002197,
-      "hi": 1.7749979496002197,
-      "scale": 2.1928870677948,
-      "offset": 0.0
-    },
-    {
-      "name": "left_wrist_pitch_joint",
-      "qmin": -1.6144299507141113,
-      "qmax": 1.6144299507141113,
-      "margin": 0.16144299507141113,
-      "lo": -1.4529869556427002,
-      "hi": 1.4529869556427002,
-      "scale": 0.3725042939186096,
-      "offset": 0.0
-    },
-    {
-      "name": "left_wrist_yaw_joint",
-      "qmin": -1.6144299507141113,
-      "qmax": 1.6144299507141113,
-      "margin": 0.16144299507141113,
-      "lo": -1.4529869556427002,
-      "hi": 1.4529869556427002,
-      "scale": 0.3725042939186096,
-      "offset": 0.0
-    },
-    {
-      "name": "right_shoulder_pitch_joint",
-      "qmin": -3.089200019836426,
-      "qmax": 2.6703999042510986,
-      "margin": 0.28797999024391174,
-      "lo": -2.801219940185547,
-      "hi": 2.3824198246002197,
-      "scale": 2.1928870677948,
-      "offset": 0.0
-    },
-    {
-      "name": "right_shoulder_roll_joint",
-      "qmin": -2.251499891281128,
-      "qmax": 1.5881999731063843,
-      "margin": 0.19198499619960785,
-      "lo": -2.0595149993896484,
-      "hi": 1.3962149620056152,
-      "scale": 2.1928870677948,
-      "offset": 0.0
-    },
-    {
-      "name": "right_shoulder_yaw_joint",
-      "qmin": -2.618000030517578,
-      "qmax": 2.618000030517578,
-      "margin": 0.26180002093315125,
-      "lo": -2.3561999797821045,
-      "hi": 2.3561999797821045,
-      "scale": 2.1928870677948,
-      "offset": 0.0
-    },
-    {
-      "name": "right_elbow_joint",
-      "qmin": -1.0471999645233154,
-      "qmax": 2.094399929046631,
-      "margin": 0.15707999467849731,
-      "lo": -0.8901199698448181,
-      "hi": 1.9373199939727783,
-      "scale": 2.1928870677948,
-      "offset": 0.0
-    },
-    {
-      "name": "right_wrist_roll_joint",
-      "qmin": -1.9722199440002441,
-      "qmax": 1.9722199440002441,
-      "margin": 0.19722199440002441,
-      "lo": -1.7749979496002197,
-      "hi": 1.7749979496002197,
-      "scale": 2.1928870677948,
-      "offset": 0.0
-    },
-    {
-      "name": "right_wrist_pitch_joint",
-      "qmin": -1.6144299507141113,
-      "qmax": 1.6144299507141113,
-      "margin": 0.16144299507141113,
-      "lo": -1.4529869556427002,
-      "hi": 1.4529869556427002,
-      "scale": 0.3725042939186096,
-      "offset": 0.0
-    },
-    {
-      "name": "right_wrist_yaw_joint",
-      "qmin": -1.6144299507141113,
-      "qmax": 1.6144299507141113,
-      "margin": 0.16144299507141113,
-      "lo": -1.4529869556427002,
-      "hi": 1.4529869556427002,
-      "scale": 0.3725042939186096,
-      "offset": 0.0
+      "id": "A83-none-recovery",
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-v3-20261112/runs/pilot-A-v3/checkpoints/round-83",
+      "core_sha": "69a1a4ad87a6c6c18a60cb31534473a408cbd9b3e99767e380d985327a7793f3",
+      "manifest_sha": "52545879ed16e21b646ca86dbe0762f20d04f59757739ea64d9874884ee3a70e",
+      "time": 5.999999999999894,
+      "parent_id": "6a2fe7552234ceb9dd5944b5601c46e3424d3995699b22bc02e6d37410dbc314",
+      "spec": {
+        "geometry": "wrist",
+        "enabled": false,
+        "distance": 0.0,
+        "ramp": 3.0,
+        "onset": 4.9,
+        "release": 9.700000000000001,
+        "end": 13.700000000000001,
+        "rotation_deg": 0.0,
+        "curvature": 0.0,
+        "heading_deg": 0.0,
+        "family": "walking",
+        "source": "standing",
+        "source_until": 4.2,
+        "total_cap": 10.0,
+        "anchor_mode": "onset_actual",
+        "demand_family": "none",
+        "source_profile": {
+          "arm_fraction": 1.0,
+          "pulse_fraction": 0.05148819590478011,
+          "pulse_duration": 0.6791810478811451,
+          "phase_offset": 0.0,
+          "phase_rate": 1.0
+        },
+        "parent_id": "6a2fe7552234ceb9dd5944b5601c46e3424d3995699b22bc02e6d37410dbc314",
+        "source_parent_id": "b40e8221ee9b9d56f8bd5e576cf6fca2f1528eff6996567c5419ddb5418f9182",
+        "partner_parent_id": "f5d8e33d3698f9de699c774f4a6288e012e9b327890832f2979e86264b897ae9",
+        "common_prefix_parent_id": "6a2fe7552234ceb9dd5944b5601c46e3424d3995699b22bc02e6d37410dbc314",
+        "deceleration": 0.0,
+        "split": "train"
+      },
+      "branches": [
+        {
+          "id": "off-sample",
+          "mode": "off",
+          "sample": true
+        },
+        {
+          "id": "off-mean",
+          "mode": "off",
+          "sample": false
+        },
+        {
+          "id": "on-sample",
+          "mode": "on",
+          "sample": true
+        },
+        {
+          "id": "on-mean",
+          "mode": "on",
+          "sample": false
+        },
+        {
+          "id": "envelope-sample",
+          "mode": "envelope",
+          "sample": true
+        },
+        {
+          "id": "envelope-mean",
+          "mode": "envelope",
+          "sample": false
+        }
+      ],
+      "origin": "archived no-contact A83 state following real native standing prefix; not claimed native-only after handoff; frozen B19 applied to identical complete state"
     }
   ],
-  "source_artifacts": {
-    "action-contract.json": "705fa1d4072b31523ef943c1121c8652f2ab09ba4d1bd4066b57adf8f30b36dd",
-    "same-state-actions.json": "1325d141934c088a0088736f679f6c856c4c915e7081e2bf4128e1025625d8eb"
+  "source_sha256": {
+    "agent.py": "815cf93b7126738bbbdeceaa732120124a9da1b48f700868bfe9d120c0ea5f7e",
+    "env.py": "83847642ecf8ca47252ba7cf86ceb311a4f459b71094f5c8f2aad0843d28b81e",
+    "benchmark.py": "b2c4447a0556a245fd04cd15f5eef76ee903efab6844135d87ead9030a96d6dd",
+    "envelope.py": "eaa0f2dec140974d9803edb91b3189a84c7b7ff3048cc66321944e805486d386",
+    "envelope_qualification.py": "80244963107e37123825e0a85e85b4cd6db8c3e3d12b57c50cd833e04bb09d1e",
+    "envelope_job.py": "cdc0b7ad02eac408a6c547d03b6c1ffb4a4bf70908b678960385d44c9495aa50"
   },
-  "unchanged_actual_q_allowance_rad": 0.02,
-  "state_manifest_locked": false,
-  "complete_time_storage_projection_locked": false,
-  "reason": "Required exact inverse has no FP32 preimage for an approved-formula projected target. No qualification physical state selected or executed, no constants adjusted.",
-  "inverse_formula": "q0=g(clamp(a_BFM)); dq_safe=clip(g(a_raw)-q0,-dminus,dplus); q_desired=q0+dq_safe; analytic a=((q_desired-offset)*5/scale)/5; exact g(a)==q_desired required but impossible for counterexample",
-  "preflight_gpu": {
-    "status": "BLOCKED_NO_EXACT_FP32_PREIMAGE",
-    "device": "cuda",
-    "frames": 26,
-    "joints": 29,
-    "constrained_entries": 566,
-    "analytic_inverse_mismatch_on_constrained_entries": 247,
-    "proof": {
-      "frame": 0,
-      "time": 11.800000000000445,
-      "joint": "left_hip_roll_joint",
-      "base_action": 0.16202348470687866,
-      "raw_action": 0.33060264587402344,
-      "q0": 0.284076988697052,
-      "requested_qPD": 0.4040769934654236,
-      "requested_delta": 0.11999999731779099,
-      "analytic_inverse": 0.2304655760526657,
-      "analytic_roundtrip": 0.40407702326774597,
-      "lower_action": 0.23046556115150452,
-      "upper_action": 0.2304655760526657,
-      "lower_qPD": 0.4040769636631012,
-      "upper_qPD": 0.40407702326774597,
-      "adjacent_float32_keys": [
-        3194748714,
-        3194748715
-      ],
-      "minimum_unavoidable_error_rad": 2.9802322387695312e-08,
-      "scope": "Monotone exhaustive binary search of ALL float32 normalized actions in [-1,1]; no exact preimage between adjacent actions."
-    },
-    "mechanical_table": [
-      {
-        "name": "left_hip_pitch_joint",
-        "qmin": -2.5306999683380127,
-        "qmax": 2.8798000812530518,
-        "margin": 0.2705250084400177,
-        "lo": -2.2601749897003174,
-        "hi": 2.6092751026153564,
-        "scale": 1.7533073425292969,
-        "offset": -0.10000000149011612
-      },
-      {
-        "name": "left_hip_roll_joint",
-        "qmin": -0.5235999822616577,
-        "qmax": 2.967099905014038,
-        "margin": 0.17453499138355255,
-        "lo": -0.34906500577926636,
-        "hi": 2.792564868927002,
-        "scale": 1.7533073425292969,
-        "offset": 0.0
-      },
-      {
-        "name": "left_hip_yaw_joint",
-        "qmin": -2.7576000690460205,
-        "qmax": 2.7576000690460205,
-        "margin": 0.2757600247859955,
-        "lo": -2.481840133666992,
-        "hi": 2.481840133666992,
-        "scale": 2.737732172012329,
-        "offset": 0.0
-      },
-      {
-        "name": "left_knee_joint",
-        "qmin": -0.08726699650287628,
-        "qmax": 2.8798000812530518,
-        "margin": 0.14835335314273834,
-        "lo": 0.06108635663986206,
-        "hi": 2.7314467430114746,
-        "scale": 1.7533073425292969,
-        "offset": 0.30000001192092896
-      },
-      {
-        "name": "left_ankle_pitch_joint",
-        "qmin": -0.8726699948310852,
-        "qmax": 0.5235999822616577,
-        "margin": 0.06981350481510162,
-        "lo": -0.8028565049171448,
-        "hi": 0.4537864923477173,
-        "scale": 2.1928863525390625,
-        "offset": -0.20000000298023224
-      },
-      {
-        "name": "left_ankle_roll_joint",
-        "qmin": -0.26179999113082886,
-        "qmax": 0.26179999113082886,
-        "margin": 0.026179999113082886,
-        "lo": -0.23561999201774597,
-        "hi": 0.23561999201774597,
-        "scale": 2.1928863525390625,
-        "offset": 0.0
-      },
-      {
-        "name": "right_hip_pitch_joint",
-        "qmin": -2.5306999683380127,
-        "qmax": 2.8798000812530518,
-        "margin": 0.2705250084400177,
-        "lo": -2.2601749897003174,
-        "hi": 2.6092751026153564,
-        "scale": 1.7533073425292969,
-        "offset": -0.10000000149011612
-      },
-      {
-        "name": "right_hip_roll_joint",
-        "qmin": -2.967099905014038,
-        "qmax": 0.5235999822616577,
-        "margin": 0.17453499138355255,
-        "lo": -2.792564868927002,
-        "hi": 0.34906500577926636,
-        "scale": 1.7533073425292969,
-        "offset": 0.0
-      },
-      {
-        "name": "right_hip_yaw_joint",
-        "qmin": -2.7576000690460205,
-        "qmax": 2.7576000690460205,
-        "margin": 0.2757600247859955,
-        "lo": -2.481840133666992,
-        "hi": 2.481840133666992,
-        "scale": 2.737732172012329,
-        "offset": 0.0
-      },
-      {
-        "name": "right_knee_joint",
-        "qmin": -0.08726699650287628,
-        "qmax": 2.8798000812530518,
-        "margin": 0.14835335314273834,
-        "lo": 0.06108635663986206,
-        "hi": 2.7314467430114746,
-        "scale": 1.7533073425292969,
-        "offset": 0.30000001192092896
-      },
-      {
-        "name": "right_ankle_pitch_joint",
-        "qmin": -0.8726699948310852,
-        "qmax": 0.5235999822616577,
-        "margin": 0.06981350481510162,
-        "lo": -0.8028565049171448,
-        "hi": 0.4537864923477173,
-        "scale": 2.1928863525390625,
-        "offset": -0.20000000298023224
-      },
-      {
-        "name": "right_ankle_roll_joint",
-        "qmin": -0.26179999113082886,
-        "qmax": 0.26179999113082886,
-        "margin": 0.026179999113082886,
-        "lo": -0.23561999201774597,
-        "hi": 0.23561999201774597,
-        "scale": 2.1928863525390625,
-        "offset": 0.0
-      },
-      {
-        "name": "waist_yaw_joint",
-        "qmin": -2.618000030517578,
-        "qmax": 2.618000030517578,
-        "margin": 0.26180002093315125,
-        "lo": -2.3561999797821045,
-        "hi": 2.3561999797821045,
-        "scale": 0.36666667461395264,
-        "offset": 0.0
-      },
-      {
-        "name": "waist_roll_joint",
-        "qmin": -0.5199999809265137,
-        "qmax": 0.5199999809265137,
-        "margin": 0.05199999734759331,
-        "lo": -0.46799999475479126,
-        "hi": 0.46799999475479126,
-        "scale": 0.2083333283662796,
-        "offset": 0.0
-      },
-      {
-        "name": "waist_pitch_joint",
-        "qmin": -0.5199999809265137,
-        "qmax": 0.5199999809265137,
-        "margin": 0.05199999734759331,
-        "lo": -0.46799999475479126,
-        "hi": 0.46799999475479126,
-        "scale": 0.2083333283662796,
-        "offset": 0.0
-      },
-      {
-        "name": "left_shoulder_pitch_joint",
-        "qmin": -3.089200019836426,
-        "qmax": 2.6703999042510986,
-        "margin": 0.28797999024391174,
-        "lo": -2.801219940185547,
-        "hi": 2.3824198246002197,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "left_shoulder_roll_joint",
-        "qmin": -1.5881999731063843,
-        "qmax": 2.251499891281128,
-        "margin": 0.19198499619960785,
-        "lo": -1.3962149620056152,
-        "hi": 2.0595149993896484,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "left_shoulder_yaw_joint",
-        "qmin": -2.618000030517578,
-        "qmax": 2.618000030517578,
-        "margin": 0.26180002093315125,
-        "lo": -2.3561999797821045,
-        "hi": 2.3561999797821045,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "left_elbow_joint",
-        "qmin": -1.0471999645233154,
-        "qmax": 2.094399929046631,
-        "margin": 0.15707999467849731,
-        "lo": -0.8901199698448181,
-        "hi": 1.9373199939727783,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "left_wrist_roll_joint",
-        "qmin": -1.9722199440002441,
-        "qmax": 1.9722199440002441,
-        "margin": 0.19722199440002441,
-        "lo": -1.7749979496002197,
-        "hi": 1.7749979496002197,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "left_wrist_pitch_joint",
-        "qmin": -1.6144299507141113,
-        "qmax": 1.6144299507141113,
-        "margin": 0.16144299507141113,
-        "lo": -1.4529869556427002,
-        "hi": 1.4529869556427002,
-        "scale": 0.3725042939186096,
-        "offset": 0.0
-      },
-      {
-        "name": "left_wrist_yaw_joint",
-        "qmin": -1.6144299507141113,
-        "qmax": 1.6144299507141113,
-        "margin": 0.16144299507141113,
-        "lo": -1.4529869556427002,
-        "hi": 1.4529869556427002,
-        "scale": 0.3725042939186096,
-        "offset": 0.0
-      },
-      {
-        "name": "right_shoulder_pitch_joint",
-        "qmin": -3.089200019836426,
-        "qmax": 2.6703999042510986,
-        "margin": 0.28797999024391174,
-        "lo": -2.801219940185547,
-        "hi": 2.3824198246002197,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "right_shoulder_roll_joint",
-        "qmin": -2.251499891281128,
-        "qmax": 1.5881999731063843,
-        "margin": 0.19198499619960785,
-        "lo": -2.0595149993896484,
-        "hi": 1.3962149620056152,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "right_shoulder_yaw_joint",
-        "qmin": -2.618000030517578,
-        "qmax": 2.618000030517578,
-        "margin": 0.26180002093315125,
-        "lo": -2.3561999797821045,
-        "hi": 2.3561999797821045,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "right_elbow_joint",
-        "qmin": -1.0471999645233154,
-        "qmax": 2.094399929046631,
-        "margin": 0.15707999467849731,
-        "lo": -0.8901199698448181,
-        "hi": 1.9373199939727783,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "right_wrist_roll_joint",
-        "qmin": -1.9722199440002441,
-        "qmax": 1.9722199440002441,
-        "margin": 0.19722199440002441,
-        "lo": -1.7749979496002197,
-        "hi": 1.7749979496002197,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "right_wrist_pitch_joint",
-        "qmin": -1.6144299507141113,
-        "qmax": 1.6144299507141113,
-        "margin": 0.16144299507141113,
-        "lo": -1.4529869556427002,
-        "hi": 1.4529869556427002,
-        "scale": 0.3725042939186096,
-        "offset": 0.0
-      },
-      {
-        "name": "right_wrist_yaw_joint",
-        "qmin": -1.6144299507141113,
-        "qmax": 1.6144299507141113,
-        "margin": 0.16144299507141113,
-        "lo": -1.4529869556427002,
-        "hi": 1.4529869556427002,
-        "scale": 0.3725042939186096,
-        "offset": 0.0
-      }
-    ],
-    "source_sha": {
-      "action-contract.json": "705fa1d4072b31523ef943c1121c8652f2ab09ba4d1bd4066b57adf8f30b36dd",
-      "same-state-actions.json": "1325d141934c088a0088736f679f6c856c4c915e7081e2bf4128e1025625d8eb"
-    },
-    "microbenchmark": {
-      "1": {
-        "p50_s": 0.0006697630160488188,
-        "p90_s": 0.0007093230378814042,
-        "max_s": 0.00131757598137483,
-        "samples": 100,
-        "scope": "operator only; not full training throughput; inverse qualification pending"
-      },
-      "32": {
-        "p50_s": 0.000681691977661103,
-        "p90_s": 0.000698762945830822,
-        "max_s": 0.000732392945792526,
-        "samples": 100,
-        "scope": "operator only; not full training throughput; inverse qualification pending"
-      }
-    },
-    "wall_s": 0.6982786655426025,
-    "physics_ticks": 0,
-    "training_updates": 0
+  "thresholds": {
+    "actual_q_allowance": 0.02,
+    "B19_actual_q_excess": 0,
+    "window_s": 3,
+    "adaptation_rms_median_min": 0.01,
+    "adaptation_frame_fraction_min": 0.2,
+    "adaptation_joint_delta_min": 0.02,
+    "retention_ratio_median_min": 0.2,
+    "slip_peak_abs_margin": 0.1,
+    "slip_relative_margin": 0.2,
+    "slip_p95_abs_margin": 0.02,
+    "error_abs_margin_m": 0.005,
+    "error_relative_margin": 0.1,
+    "force_abs_margin_N": 0.25,
+    "force_relative_margin": 0.1,
+    "progress_ratio_min": 0.9,
+    "yaw_worsening_max_deg": 5,
+    "height_loss_max_m": 0.03,
+    "new_no_support_ticks": 0,
+    "absolute_slip_reference": 0.45,
+    "absolute_yaw_reference_deg": 20
   },
-  "preflight_cpu": {
-    "status": "BLOCKED_NO_EXACT_FP32_PREIMAGE",
-    "device": "cpu",
-    "frames": 26,
-    "joints": 29,
-    "constrained_entries": 566,
-    "analytic_inverse_mismatch_on_constrained_entries": 161,
-    "proof": {
-      "frame": 0,
-      "time": 11.800000000000445,
-      "joint": "left_hip_yaw_joint",
-      "base_action": 0.023901551961898804,
-      "raw_action": 0.1180141419172287,
-      "q0": 0.06543605029582977,
-      "requested_qPD": 0.18543604016304016,
-      "requested_delta": 0.11999999731779099,
-      "analytic_inverse": 0.06773345172405243,
-      "analytic_roundtrip": 0.18543605506420135,
-      "lower_action": 0.06773344427347183,
-      "upper_action": 0.06773345172405243,
-      "lower_qPD": 0.18543602526187897,
-      "upper_qPD": 0.18543605506420135,
-      "adjacent_float32_keys": [
-        3179984853,
-        3179984854
-      ],
-      "minimum_unavoidable_error_rad": 1.4901161193847656e-08,
-      "scope": "Monotone exhaustive binary search of ALL float32 normalized actions in [-1,1]; no exact preimage between adjacent actions."
-    },
-    "mechanical_table": [
-      {
-        "name": "left_hip_pitch_joint",
-        "qmin": -2.5306999683380127,
-        "qmax": 2.8798000812530518,
-        "margin": 0.2705250084400177,
-        "lo": -2.2601749897003174,
-        "hi": 2.6092751026153564,
-        "scale": 1.7533073425292969,
-        "offset": -0.10000000149011612
-      },
-      {
-        "name": "left_hip_roll_joint",
-        "qmin": -0.5235999822616577,
-        "qmax": 2.967099905014038,
-        "margin": 0.17453499138355255,
-        "lo": -0.34906500577926636,
-        "hi": 2.792564868927002,
-        "scale": 1.7533073425292969,
-        "offset": 0.0
-      },
-      {
-        "name": "left_hip_yaw_joint",
-        "qmin": -2.7576000690460205,
-        "qmax": 2.7576000690460205,
-        "margin": 0.2757600247859955,
-        "lo": -2.481840133666992,
-        "hi": 2.481840133666992,
-        "scale": 2.737732172012329,
-        "offset": 0.0
-      },
-      {
-        "name": "left_knee_joint",
-        "qmin": -0.08726699650287628,
-        "qmax": 2.8798000812530518,
-        "margin": 0.14835335314273834,
-        "lo": 0.06108635663986206,
-        "hi": 2.7314467430114746,
-        "scale": 1.7533073425292969,
-        "offset": 0.30000001192092896
-      },
-      {
-        "name": "left_ankle_pitch_joint",
-        "qmin": -0.8726699948310852,
-        "qmax": 0.5235999822616577,
-        "margin": 0.06981350481510162,
-        "lo": -0.8028565049171448,
-        "hi": 0.4537864923477173,
-        "scale": 2.1928863525390625,
-        "offset": -0.20000000298023224
-      },
-      {
-        "name": "left_ankle_roll_joint",
-        "qmin": -0.26179999113082886,
-        "qmax": 0.26179999113082886,
-        "margin": 0.026179999113082886,
-        "lo": -0.23561999201774597,
-        "hi": 0.23561999201774597,
-        "scale": 2.1928863525390625,
-        "offset": 0.0
-      },
-      {
-        "name": "right_hip_pitch_joint",
-        "qmin": -2.5306999683380127,
-        "qmax": 2.8798000812530518,
-        "margin": 0.2705250084400177,
-        "lo": -2.2601749897003174,
-        "hi": 2.6092751026153564,
-        "scale": 1.7533073425292969,
-        "offset": -0.10000000149011612
-      },
-      {
-        "name": "right_hip_roll_joint",
-        "qmin": -2.967099905014038,
-        "qmax": 0.5235999822616577,
-        "margin": 0.17453499138355255,
-        "lo": -2.792564868927002,
-        "hi": 0.34906500577926636,
-        "scale": 1.7533073425292969,
-        "offset": 0.0
-      },
-      {
-        "name": "right_hip_yaw_joint",
-        "qmin": -2.7576000690460205,
-        "qmax": 2.7576000690460205,
-        "margin": 0.2757600247859955,
-        "lo": -2.481840133666992,
-        "hi": 2.481840133666992,
-        "scale": 2.737732172012329,
-        "offset": 0.0
-      },
-      {
-        "name": "right_knee_joint",
-        "qmin": -0.08726699650287628,
-        "qmax": 2.8798000812530518,
-        "margin": 0.14835335314273834,
-        "lo": 0.06108635663986206,
-        "hi": 2.7314467430114746,
-        "scale": 1.7533073425292969,
-        "offset": 0.30000001192092896
-      },
-      {
-        "name": "right_ankle_pitch_joint",
-        "qmin": -0.8726699948310852,
-        "qmax": 0.5235999822616577,
-        "margin": 0.06981350481510162,
-        "lo": -0.8028565049171448,
-        "hi": 0.4537864923477173,
-        "scale": 2.1928863525390625,
-        "offset": -0.20000000298023224
-      },
-      {
-        "name": "right_ankle_roll_joint",
-        "qmin": -0.26179999113082886,
-        "qmax": 0.26179999113082886,
-        "margin": 0.026179999113082886,
-        "lo": -0.23561999201774597,
-        "hi": 0.23561999201774597,
-        "scale": 2.1928863525390625,
-        "offset": 0.0
-      },
-      {
-        "name": "waist_yaw_joint",
-        "qmin": -2.618000030517578,
-        "qmax": 2.618000030517578,
-        "margin": 0.26180002093315125,
-        "lo": -2.3561999797821045,
-        "hi": 2.3561999797821045,
-        "scale": 0.36666667461395264,
-        "offset": 0.0
-      },
-      {
-        "name": "waist_roll_joint",
-        "qmin": -0.5199999809265137,
-        "qmax": 0.5199999809265137,
-        "margin": 0.05199999734759331,
-        "lo": -0.46799999475479126,
-        "hi": 0.46799999475479126,
-        "scale": 0.2083333283662796,
-        "offset": 0.0
-      },
-      {
-        "name": "waist_pitch_joint",
-        "qmin": -0.5199999809265137,
-        "qmax": 0.5199999809265137,
-        "margin": 0.05199999734759331,
-        "lo": -0.46799999475479126,
-        "hi": 0.46799999475479126,
-        "scale": 0.2083333283662796,
-        "offset": 0.0
-      },
-      {
-        "name": "left_shoulder_pitch_joint",
-        "qmin": -3.089200019836426,
-        "qmax": 2.6703999042510986,
-        "margin": 0.28797999024391174,
-        "lo": -2.801219940185547,
-        "hi": 2.3824198246002197,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "left_shoulder_roll_joint",
-        "qmin": -1.5881999731063843,
-        "qmax": 2.251499891281128,
-        "margin": 0.19198499619960785,
-        "lo": -1.3962149620056152,
-        "hi": 2.0595149993896484,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "left_shoulder_yaw_joint",
-        "qmin": -2.618000030517578,
-        "qmax": 2.618000030517578,
-        "margin": 0.26180002093315125,
-        "lo": -2.3561999797821045,
-        "hi": 2.3561999797821045,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "left_elbow_joint",
-        "qmin": -1.0471999645233154,
-        "qmax": 2.094399929046631,
-        "margin": 0.15707999467849731,
-        "lo": -0.8901199698448181,
-        "hi": 1.9373199939727783,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "left_wrist_roll_joint",
-        "qmin": -1.9722199440002441,
-        "qmax": 1.9722199440002441,
-        "margin": 0.19722199440002441,
-        "lo": -1.7749979496002197,
-        "hi": 1.7749979496002197,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "left_wrist_pitch_joint",
-        "qmin": -1.6144299507141113,
-        "qmax": 1.6144299507141113,
-        "margin": 0.16144299507141113,
-        "lo": -1.4529869556427002,
-        "hi": 1.4529869556427002,
-        "scale": 0.3725042939186096,
-        "offset": 0.0
-      },
-      {
-        "name": "left_wrist_yaw_joint",
-        "qmin": -1.6144299507141113,
-        "qmax": 1.6144299507141113,
-        "margin": 0.16144299507141113,
-        "lo": -1.4529869556427002,
-        "hi": 1.4529869556427002,
-        "scale": 0.3725042939186096,
-        "offset": 0.0
-      },
-      {
-        "name": "right_shoulder_pitch_joint",
-        "qmin": -3.089200019836426,
-        "qmax": 2.6703999042510986,
-        "margin": 0.28797999024391174,
-        "lo": -2.801219940185547,
-        "hi": 2.3824198246002197,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "right_shoulder_roll_joint",
-        "qmin": -2.251499891281128,
-        "qmax": 1.5881999731063843,
-        "margin": 0.19198499619960785,
-        "lo": -2.0595149993896484,
-        "hi": 1.3962149620056152,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "right_shoulder_yaw_joint",
-        "qmin": -2.618000030517578,
-        "qmax": 2.618000030517578,
-        "margin": 0.26180002093315125,
-        "lo": -2.3561999797821045,
-        "hi": 2.3561999797821045,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "right_elbow_joint",
-        "qmin": -1.0471999645233154,
-        "qmax": 2.094399929046631,
-        "margin": 0.15707999467849731,
-        "lo": -0.8901199698448181,
-        "hi": 1.9373199939727783,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "right_wrist_roll_joint",
-        "qmin": -1.9722199440002441,
-        "qmax": 1.9722199440002441,
-        "margin": 0.19722199440002441,
-        "lo": -1.7749979496002197,
-        "hi": 1.7749979496002197,
-        "scale": 2.1928870677948,
-        "offset": 0.0
-      },
-      {
-        "name": "right_wrist_pitch_joint",
-        "qmin": -1.6144299507141113,
-        "qmax": 1.6144299507141113,
-        "margin": 0.16144299507141113,
-        "lo": -1.4529869556427002,
-        "hi": 1.4529869556427002,
-        "scale": 0.3725042939186096,
-        "offset": 0.0
-      },
-      {
-        "name": "right_wrist_yaw_joint",
-        "qmin": -1.6144299507141113,
-        "qmax": 1.6144299507141113,
-        "margin": 0.16144299507141113,
-        "lo": -1.4529869556427002,
-        "hi": 1.4529869556427002,
-        "scale": 0.3725042939186096,
-        "offset": 0.0
-      }
-    ],
-    "source_sha": {
-      "action-contract.json": "705fa1d4072b31523ef943c1121c8652f2ab09ba4d1bd4066b57adf8f30b36dd",
-      "same-state-actions.json": "1325d141934c088a0088736f679f6c856c4c915e7081e2bf4128e1025625d8eb"
-    },
-    "microbenchmark": {
-      "1": {
-        "p50_s": 0.00016028998652473092,
-        "p90_s": 0.00017848098650574684,
-        "max_s": 0.00019458099268376827,
-        "samples": 100,
-        "scope": "operator only; not full training throughput; inverse qualification pending"
-      },
-      "32": {
-        "p50_s": 0.00018799002282321453,
-        "p90_s": 0.00027713103918358684,
-        "max_s": 0.00033100199652835727,
-        "samples": 100,
-        "scope": "operator only; not full training throughput; inverse qualification pending"
-      }
-    },
-    "wall_s": 0.5170319080352783,
-    "physics_ticks": 0,
-    "training_updates": 0
+  "time_projection": {
+    "already_charged": 34028.58896708589,
+    "current_preparation_analysis_tests_reserve": 1800,
+    "qualification_4_bundles_20_branches": 2400,
+    "new_process_restore_engineering_B_C_6_jobs": 1800,
+    "B_full_128_rounds": 6501.916663837433,
+    "C_full_128_rounds": 8082.872224760352,
+    "five_way_dev_100_episodes": 7955.5411871721335,
+    "BI_probe": 600,
+    "report_publication": 900,
+    "future_failure_reserve": 600
   },
-  "cost": {
-    "inherited_job_s": 32697.879391671227,
-    "preparation_analysis_publication_upper_s": 1200,
-    "cpu_preflight_process_upper_s": 120,
-    "gpu_preflight_wall_s": 10.709575414657593,
-    "total_charged_upper_s": 34028.58896708589,
-    "output_bytes": 3277773636,
-    "cap_s": 54000,
-    "cap_bytes": 8589934592,
-    "automatic_expansion_used": false,
-    "new_physics_ticks": 0,
-    "new_training_updates": 0,
-    "shared_free_bytes": 416632799232
-  }
+  "projected_job_s": 64668.91904285581,
+  "storage_projection": {
+    "B_full": 2365997547.6,
+    "C_full": 3023219088.6,
+    "qualification": 536870912.0,
+    "recovery_engineering": 536870912.0,
+    "five_way_dev": 1825361100.8,
+    "probe_logs_reports_failure": 644245094.4,
+    "temporary_atomic_double_files": 1073741824.0
+  },
+  "measured_output_bytes": 3674649989,
+  "projected_output_bytes": 13680956468.4,
+  "chosen_cap_s": 64800,
+  "chosen_cap_bytes": 17179869184,
+  "shared_free_min_bytes": 107374182400,
+  "dev_episodes": 20,
+  "dev_simulation_duration_s": 194.79999999999998,
+  "train_sha": "ef9a6e9be602f613fecb30bd0941543aed0b4e4d366e2498f7579e55e1eebfb4",
+  "dev_sha": "d418de94370846562179c4bed5f6c39a8e6a0e7195e0e040c35f8bf9dec224e5",
+  "counted_stage_roots": [
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-fb-r0t0-20261112/runs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-fb-r0t0-20261112/jobs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-fb-r0t0-20261112/prep",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-fb-r0t0-20261112/tmp",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-fb-pilot-lock-20261112/runs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-fb-pilot-lock-20261112/jobs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-fb-pilot-lock-20261112/prep",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-fb-pilot-lock-20261112/tmp",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-fb-pilot-20261112/runs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-fb-pilot-20261112/jobs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-fb-pilot-20261112/prep",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-fb-pilot-20261112/tmp",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-repair-20261112/runs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-repair-20261112/jobs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-repair-20261112/prep",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-repair-20261112/tmp",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-noise-20261112/runs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-noise-20261112/jobs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-noise-20261112/prep",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-noise-20261112/tmp",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-v3-20261112/runs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-v3-20261112/jobs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-v3-20261112/prep",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-v3-20261112/tmp",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-b-diagnosis-20261112/runs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-b-diagnosis-20261112/jobs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-b-diagnosis-20261112/prep",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-b-diagnosis-20261112/tmp",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-adapter-off-20261112/runs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-adapter-off-20261112/jobs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-adapter-off-20261112/prep",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-pilot-adapter-off-20261112/tmp",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-envelope-v1-20261112/runs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-envelope-v1-20261112/jobs",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-envelope-v1-20261112/prep",
+    "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/interaction-envelope-v1-20261112/tmp"
+  ],
+  "state_manifest_locked": true,
+  "complete_time_storage_projection_locked": true
 }

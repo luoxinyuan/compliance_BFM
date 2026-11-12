@@ -29,6 +29,9 @@ def study(e,m,c,out):
     obs=env.proxy.enrich(env.task.extended_observation())
     torch.manual_seed(6201);np.random.seed(6201)
     agent=Agent(m,obs,e.standing,torch.tensor(c['q_PD_scale'],device='cuda'),ARGS.arm);env.proxy.agent=agent
+    if ARGS.envelope_lock and not ARGS.resume and not ARGS.envelope_qualification and ARGS.arm!='A':
+        from research.interaction_fb.envelope import Envelope
+        agent.envelope=Envelope(json.loads(ARGS.envelope_lock.read_text())['operator'],agent.goal.device)
     if ARGS.mode=='pilot':
         agent.exploration_std=ARGS.noise['std'];agent.exploration_clip=ARGS.noise['clip']
     # Exact sampling contract check without consuming training RNG or modifying weights.
@@ -39,7 +42,15 @@ def study(e,m,c,out):
         sampled=agent.action(obs,sample=True)[0]
         after_rng=global_rng()
         restore_global_rng(saved_rng)
-        expected=(mean+(agent.exploration_std*torch.randn_like(mean)).clamp(-agent.exploration_clip,agent.exploration_clip)).clamp(-1,1)
+        if agent.envelope is None:
+            expected=(mean+(agent.exploration_std*torch.randn_like(mean)).clamp(-agent.exploration_clip,agent.exploration_clip)).clamp(-1,1)
+        else:
+            zi=agent.zi(1);_,z,_=agent.action(obs,sample=False)
+            from research.interaction_fb.schema import robot
+            base=agent.base._actor(agent.base._normalize(robot(obs)),z,agent.base.cfg.actor_std).mean
+            adapter=agent.nets['adapter'](torch.cat([deploy(obs),z,zi],-1))
+            noise=(agent.exploration_std*torch.randn_like(base)).clamp(-agent.exploration_clip,agent.exploration_clip)
+            expected=agent.envelope(base,(base+adapter+noise).clamp(-1,1))[0]
         assert torch.equal(sampled,expected),'Actual sampling differs from declared one-draw contract'
         assert tree_digest(global_rng())==tree_digest(after_rng),'Sampling consumed extra random draws'
         restore_global_rng(saved_rng)
@@ -89,7 +100,7 @@ def study(e,m,c,out):
             cases=[specs()[2],specs()[3],specs()[5]]
             for case in cases[:2]:case['pair_branch_at']=cases[0]['stop_time']
         return run(env,agent,out,cases)
-    if ARGS.mode=='pilot' or ARGS.failure_probe:
+    if ARGS.mode=='pilot' or ARGS.failure_probe or ARGS.envelope_qualification:
         data=json.loads(ARGS.manifest.read_text())
         env.specs=[dict(sp,split='train') for g in data['parents'] for sp in g['specs']]
         # Initialization stays canonical/common; training replay starts from real locked source.
@@ -98,10 +109,25 @@ def study(e,m,c,out):
     round0=0
     if ARGS.resume:
         round0=restore(ARGS.resume,agent,env)
-        if not ARGS.failure_probe:
+        if not ARGS.failure_probe and not ARGS.envelope_qualification:
             if ARGS.mode=='pilot':assert dict(std=agent.exploration_std,clip=agent.exploration_clip)==ARGS.noise,'Resume exploration contract mismatch'
             adopt(out/'checkpoints',ARGS.resume)
     else:save(out/'checkpoints',0,agent,env,ARGS.runtime,'initial')
+    if ARGS.envelope_qualification:
+        from research.interaction_fb.envelope_qualification import run
+        lock=json.loads(ARGS.envelope_lock.read_text());case=next(c for c in lock['qualification_states'] if c['id']==ARGS.envelope_qualification)
+        if ARGS.qual_bundle:
+            results=[]
+            for branch in case['branches']:
+                agent.action=Agent.action.__get__(agent,Agent);agent.last_action_audit=None;agent.envelope=None
+                restore(ARGS.resume,agent,env)
+                dest=out/branch['id'];dest.mkdir()
+                result=run(env,agent,dest,lock,case,branch['mode'],branch['sample']);results.append(result)
+                write(out/'qualification-bundle.json',results)
+                # Immediate safety stop on the proposed execution path; old on failures retained as controls.
+                if branch['mode']=='envelope' and result['status']!='completed_3s':break
+            return dict(status='qualification_bundle',results=results)
+        return run(env,agent,out,lock,case,ARGS.envelope_mode,not ARGS.qual_mean)
     if ARGS.failure_probe:
         assert ARGS.resume and ARGS.manifest.name=='train.json'
         frozen=tree_digest(agent.state());start_cursor=env.next_cursor
@@ -200,7 +226,7 @@ def write(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False))
 def main():
     global ARGS
     signal.signal(signal.SIGTERM,request_stop);signal.signal(signal.SIGINT,request_stop)
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--resume',type=Path);p.add_argument('--inject',action='store_true');p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--mode',choices=['bench','eval','pilot'],default='bench');p.add_argument('--model',type=Path);p.add_argument('--manifest',type=Path);p.add_argument('--split',choices=['train','dev'],default='dev');p.add_argument('--reference-bc500',action='store_true');p.add_argument('--approval-lock',type=Path);p.add_argument('--failure-probe',choices=['sample','mean','ankle','uniform','offsample','offmean']);ARGS=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--resume',type=Path);p.add_argument('--inject',action='store_true');p.add_argument('--arm',choices=['A','B','C'],required=True);p.add_argument('--mode',choices=['bench','eval','pilot'],default='bench');p.add_argument('--model',type=Path);p.add_argument('--manifest',type=Path);p.add_argument('--split',choices=['train','dev'],default='dev');p.add_argument('--reference-bc500',action='store_true');p.add_argument('--approval-lock',type=Path);p.add_argument('--failure-probe',choices=['sample','mean','ankle','uniform','offsample','offmean']);p.add_argument('--envelope-lock',type=Path);p.add_argument('--envelope-qualification');p.add_argument('--envelope-mode',choices=['on','off','envelope']);p.add_argument('--qual-mean',action='store_true');p.add_argument('--qual-bundle',action='store_true');ARGS=p.parse_args()
     if ARGS.mode=='pilot':
         assert ARGS.approval_lock is not None
         lock=json.loads(ARGS.approval_lock.read_text())

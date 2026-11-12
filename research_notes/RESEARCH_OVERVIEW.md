@@ -266,3 +266,7 @@ T0 remains engineering-qualified, not behavior-qualified. A/B execution paths an
 ### Issue62 Envelope数值预检边界
 
 Nominal-anchored执行适配的物理设计与其有限精度实现须分别验证。原FP32动作接口不一定能精确表示单独在关节空间舍入的投影目标；本次最小反例导致按授权暂停，不能称物理方法已失败，也不能用近似逆冒充逐值通过。尚未开启新B/C或改变科学判断，见[预检](ADAPTER_ENVELOPE_V1_PREFLIGHT_RESULTS.md)。
+
+
+### Issue62 execution representation clarification
+Nominal-anchored adapter Envelope is a constrained execution adaptation package, not a force-to-skill rule. Its deterministic inward FP32 representation uses actual executed action and original g(action) consistently for physics/replay/critic/target. This does not revise physical thresholds or prove behavioural qualification. A remains Guidance-only; C versus B shares this Envelope. Numerical-only fixes ≤1e-6rad that preserve criterion relationships may proceed with explicit milestone disclosure under Yi approval.
