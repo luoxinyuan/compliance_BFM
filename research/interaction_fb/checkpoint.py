@@ -55,7 +55,19 @@ def restore(path,agent,env):
     t=env.task;old=s['physical']
     # Compare actual regenerated physical state before restoring counters/RNG.
     now=portable(t);ma=metadata(t.e.sim.model,t.e.sim.data)
-    assert exact(canonical(now,ma)['mjdata_arrays'],canonical(old,s['mj_metadata'])['mjdata_arrays']),'physical arrays differ after exact command replay'
+    ca=canonical(now,ma)['mjdata_arrays'];cb=canonical(old,s['mj_metadata'])['mjdata_arrays']
+    if not exact(ca,cb):
+        differences={}
+        for key in ca:
+            if not exact(ca[key],cb[key]):
+                a,b=ca[key],cb[key]
+                differences[key]=dict(shape_now=list(a.shape),shape_saved=list(b.shape),
+                    max_abs=float(np.max(np.abs(a.astype(float)-b.astype(float)))) if a.shape==b.shape and a.size else None)
+        evidence=Path(os.environ['BFM_RECOVERY_OUTPUT'])
+        jsonwrite(evidence/'restore-difference.json',dict(arrays=differences,metadata_now=ma,metadata_saved=s['mj_metadata']))
+        torch.save(dict(now=now,old=old,controls=t.controls,physics=t.physics),evidence/'restore-difference.pt')
+    assert exact(ca,cb),'physical arrays differ after exact command replay'
+
     assert exact(now['history'],old['history']),'BFM history differs'
     def devices(value,template):
         from collections import deque
