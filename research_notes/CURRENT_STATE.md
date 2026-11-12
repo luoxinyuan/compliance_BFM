@@ -1,4 +1,4 @@
-# CURRENT_STATE — Issue62 修订 Pilot 锁待 Yi 确认
+# CURRENT_STATE — Issue62 Pilot 已获批准，准备启动
 
 2026-11-12。T0三门通过结论保持，用户已接受；每臂3,000提案被否决，原草案另存。此次仅完成获准工程准备，没有启动Pilot、Student/PPO或新机制。
 
@@ -8,6 +8,6 @@
 
 成本2560.4251s（含300s保守CPU记账），新资产约0.316GiB；项目累计48.8623h/240h。原BFM/BC500/所有历史不改。首读仅dev方向性+B_I探针；§5.1正式判据尚不可满足，不读sealed、不作显著性/收敛/晋级声明。
 
-**当前停止状态：等待Yi明确批准修订锁。** `interaction_pilot_lock_v2.json`仍awaiting_Yi_confirmation，入口拒绝该状态。以后启动仍须实时核GPU0与CPU/IO、共享free≥100GiB；三臂单卡串行，完成轮必须完整存盘。
+**用户已确认32k/臂修订锁。** 原草案JSON保持不变；批准版本为 `interaction_pilot_lock_v2_approved.json`，引用Issue62 comment6816360266。独立stage `interaction-fb-pilot-20261112`，计划A→B→C串行训练，再独立开发评价及CPU probe；当前尚无Pilot行为结果。累计预算包含准备2560.4251s，另保守预记当前启动/报告CPU600s；不重置8h/8GiB。运行PID和每轮账本以stage/jobs及ledger为准。以后启动仍须实时核GPU0与CPU/IO、共享free≥100GiB；三臂单卡串行，完成轮必须完整存盘。
 
-[Issue62](https://github.com/GaoE05/robot-research-bridge/issues/62)、[Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)、[T0报告](R1_T0_TRIAL_RESULTS.md)、[方法](INTERACTION_FB_METHOD_SPEC.md)、[历史入口](CURRENT_STATE_BEFORE_ISSUE62.md)。不得将代码推送当新行为成功，未批准Pilot不能启动。
+[Issue62](https://github.com/GaoE05/robot-research-bridge/issues/62)、[Master18](https://github.com/GaoE05/robot-research-bridge/issues/18)、[T0报告](R1_T0_TRIAL_RESULTS.md)、[方法](INTERACTION_FB_METHOD_SPEC.md)、[历史入口](CURRENT_STATE_BEFORE_ISSUE62.md)。不得将代码推送当新行为成功，不自动开启后续阶段。
