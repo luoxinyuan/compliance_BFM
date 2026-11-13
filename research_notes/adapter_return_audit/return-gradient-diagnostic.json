@@ -1,0 +1,53 @@
+{
+  "scope": "one already validated exact B19 release state11.8; frozen Q, fixed same z/base; gradient-only CPU diagnostic, not update or global calibration",
+  "L_Q": -0.2622776925563812,
+  "L_R": 5.62444543838501,
+  "task_gradient_norm": 0.12193739414215088,
+  "return_gradient_norm": 120.8488998413086,
+  "gradient_cosine": -0.8276132345199585,
+  "coefficient_for_half_task_norm": 0.0005045035504736006,
+  "ratio_if_lambda_point1": 99.10733795166016,
+  "adapter_CPU_vs_archived_error": 2.9802322387695312e-08,
+  "parameters_bitwise_unchanged": true,
+  "optimizer_steps": 0,
+  "new_physics_ticks": 0,
+  "cuda_initialized": false,
+  "wall_s": 0.6061804294586182,
+  "Q_same_state": {
+    "base_same_z": 0.24994675815105438,
+    "old_adapter_mean": 0.2622776925563812,
+    "Envelope_actual_sample": 0.2564585208892822
+  },
+  "Envelope_gradient_diagnostic": {
+    "Q_loss": -0.25648853182792664,
+    "post_return_loss": 1.0530223846435547,
+    "raw_return_loss": 5.639204025268555,
+    "task_gradient_norm": 0.04855800047516823,
+    "post_return_gradient_norm": 2.1483700275421143,
+    "raw_return_gradient_norm": 120.86236572265625,
+    "post_output_gradient_zero_fraction": 0.7931034564971924,
+    "raw_output_gradient_zero_fraction": 0.0,
+    "lambda_raw_for_two_task_norm": 0.0008035255596041679,
+    "raw_lambda_002_to_task_ratio": 4.978062152862549,
+    "raw_return_task_cosine": -0.027219921350479126,
+    "post_return_task_cosine": -0.838188886642456,
+    "projection_trigger_fraction": 0.7586206793785095
+  },
+  "historical_losses": {
+    "q": {
+      "min": 0.00021592668781522661,
+      "median": 0.001382476941216737,
+      "max": 0.018715402111411095
+    },
+    "actor": {
+      "min": -0.07878968119621277,
+      "median": 0.018914694897830486,
+      "max": 0.18336336314678192
+    },
+    "cpr": {
+      "min": 1.7310318298768834e-06,
+      "median": 0.004601829219609499,
+      "max": 0.007487608585506678
+    }
+  }
+}

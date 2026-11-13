@@ -273,3 +273,7 @@ Nominal-anchored adapter Envelope is a constrained execution adaptation package,
 
 
 Issue62 Envelope V1 frozen qualification: inward numeric representation succeeded; B19 sampled release-state actual joint excess became0, but loadedslip peak/p95 violated prelocked off-relative criteria. Constraining targets does not by itself establish coordinated recovery or qualify adaptation learning. B/C retraining and five-waydev remain unexecuted; no frozen baseline promotion. Full gradient-path audit is separately missing due a documented harness no_grad defect. See ADAPTER_ENVELOPE_V1_RESULTS/ERRATUM.
+
+
+### Issue62 read-only retention mechanism audit
+Current native CPR preserves a joint Guidance/action function on native prefixes; it does not enforce same-current-z adapter return on visited recovery states. Existing matched release traces and exact replay-draw counts support a narrow domain-specific retention hypothesis, with Q extrapolation and recovery-domain shift still competing explanations. A pre-Envelope raw-correction Return pilot is review-only; V1 qualification remains failed. No new physics or training was performed. See ADAPTER_RETURN_AUDIT_SUMMARY.md and ADAPTER_RETURN_TO_PRIOR_PILOT_DRAFT.md.

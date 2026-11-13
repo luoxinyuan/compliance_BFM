@@ -1,0 +1,34 @@
+{
+  "scope": "frozen B19 retrospective CPU forward on actual sampled native rows; not historical per-update model outputs",
+  "angle": {
+    "n": 495,
+    "median": 3.679030656814575,
+    "p90": 3.6802544593811035,
+    "max": 3.680786371231079,
+    "mean": 3.6782805052670566
+  },
+  "z_mismatches": 495,
+  "CPU_action_validation": {
+    "n": 495,
+    "median": 4.172325134277344e-07,
+    "p90": 6.556510925292969e-07,
+    "max": 1.1622905731201172e-06,
+    "mean": 4.569331955428075e-07
+  },
+  "q_mixed": {
+    "n": 495,
+    "median": 0.00577994529157877,
+    "p90": 0.005905077792704105,
+    "max": 0.005966591648757458,
+    "mean": 0.005800798071567157
+  },
+  "q_samez": {
+    "n": 495,
+    "median": 0.006703331135213375,
+    "p90": 0.006766210310161114,
+    "max": 0.006800068076699972,
+    "mean": 0.006715205547898406
+  },
+  "native_adapter_vs_z_shift_cos_negative": 495,
+  "source_states_count": 495
+}

@@ -1,0 +1,71 @@
+{
+  "status": "DRAFT_NOT_APPROVED_NOT_STARTED",
+  "base": "9441ec36a15ef423f79cbf6ac066c62dc575c288",
+  "parents": [
+    {
+      "role": "return_train",
+      "parent_id": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "time": 11.8,
+      "archived_round": 19,
+      "note": "existing exact offsample/offmean3s may be reused; complete current input saved"
+    },
+    {
+      "role": "return_train",
+      "parent_id": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "time": 10.0,
+      "archived_round": 17,
+      "note": "reconstruct prefix only to10.0 from archived actions; do not use10.7+3s beyond originalend"
+    },
+    {
+      "role": "recovery_dev",
+      "parent_id": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "time": 11.9,
+      "archived_round": 12,
+      "note": "reconstruct prefix only to11.9;3s ends at original14.9"
+    },
+    {
+      "role": "recovery_dev",
+      "parent_id": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "time": 9.7,
+      "archived_round": 13,
+      "note": "stop branch;3s ends12.7 beforeoriginalend13.4"
+    },
+    {
+      "role": "active_dev",
+      "parent_id": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "time": 6.0,
+      "archived_round": 1,
+      "note": "near ongoingcontact3s"
+    },
+    {
+      "role": "active_dev",
+      "parent_id": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "time": 6.0,
+      "archived_round": 3,
+      "note": "mid ongoingcontact3s"
+    },
+    {
+      "role": "active_dev",
+      "parent_id": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "time": 7.0,
+      "archived_round": 5,
+      "note": "stop branch contact; stop/continue remainoneparent"
+    },
+    {
+      "role": "none_dev",
+      "parent_id": "6a2fe7552234ceb9dd5944b5601c46e3424d3995699b22bc02e6d37410dbc314",
+      "time": 6.0,
+      "archived_round": 83,
+      "note": "archivedA83no-contact actualstate; true source/history preserved; not native-only afterhandoff"
+    }
+  ],
+  "lambda_return": 0.0008,
+  "return_scale_rad": 0.1,
+  "adapter_steps_per_arm": 64,
+  "seed": 6262013,
+  "formal_B_C_retraining": false,
+  "physics_now": 0,
+  "training_now": 0,
+  "new_budget_proposed_job_s": 7200,
+  "new_output_cap_proposed_bytes": 2147483648
+}

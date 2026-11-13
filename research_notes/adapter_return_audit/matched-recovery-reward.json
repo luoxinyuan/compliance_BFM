@@ -1,0 +1,65 @@
+{
+  "off_sample": {
+    "controls": 150,
+    "seconds": 3.000000000000002,
+    "discounted_actual_native_return": -0.2762945390896094,
+    "undiscounted_return": -0.2826578597436945,
+    "discounted_cost_terms": {
+      "force": 0.0,
+      "tracking": 0.0,
+      "uncapped": 0.0,
+      "relative_velocity": 0.0,
+      "heading": 0.0,
+      "slip": 0.0277142891634383,
+      "tilt": 0.0004128423136381589,
+      "continuity": 0.017506788445919873,
+      "soft_prior": 0.0,
+      "idle": 0.23066061916661315
+    },
+    "scope": "same actual3s window; no terminalbootstraptail, not infinitehorizonQ"
+  },
+  "off_mean": {
+    "controls": 150,
+    "seconds": 3.000000000000002,
+    "discounted_actual_native_return": -0.2588019254230339,
+    "undiscounted_return": -0.26333753036210855,
+    "discounted_cost_terms": {
+      "force": 0.0,
+      "tracking": 0.0,
+      "uncapped": 0.0,
+      "relative_velocity": 0.0,
+      "heading": 0.0,
+      "slip": 0.025926010139787223,
+      "tilt": 0.0003853975488399575,
+      "continuity": 0.009096245857748974,
+      "soft_prior": 0.0,
+      "idle": 0.22339427187665795
+    },
+    "scope": "same actual3s window; no terminalbootstraptail, not infinitehorizonQ"
+  },
+  "Envelope_sample": {
+    "controls": 150,
+    "seconds": 3.000000000000002,
+    "discounted_actual_native_return": -1.0110206640227615,
+    "undiscounted_return": -1.1288623245886382,
+    "discounted_cost_terms": {
+      "force": 0.0,
+      "tracking": 0.0,
+      "uncapped": 0.0,
+      "relative_velocity": 0.0,
+      "heading": 0.0,
+      "slip": 0.12826567048039758,
+      "tilt": 0.0012827527123318182,
+      "continuity": 0.036718750112904486,
+      "soft_prior": 0.0,
+      "idle": 0.8447534907171278
+    },
+    "scope": "same actual3s window; no terminalbootstraptail, not infinitehorizonQ"
+  },
+  "cost": {
+    "wall_s": 0.8040077686309814,
+    "new_physics": 0,
+    "optimizer_steps": 0,
+    "cuda_initialized": false
+  }
+}

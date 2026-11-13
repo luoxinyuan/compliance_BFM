@@ -1,3 +1,13 @@
+# CURRENT_STATE — Issue62只读机制审计完成，仍停止
+
+[一页结论](ADAPTER_RETURN_AUDIT_SUMMARY.md) · [完整依据/逐关节表](ADAPTER_RETURN_TO_PRIOR_AUDIT.md) · [待审阅小试验](ADAPTER_RETURN_TO_PRIOR_PILOT_DRAFT.md)。本轮新物理/训练/优化步均0，只读CPU分析；未改原实验runtime、科学阈值与负判定。原V1失败仍以9441ec3为准，B/C未重训。
+
+确认CPR是在原生前缀上比较当前策略z与存档native z对应的总动作，不是访问恢复域的同z adapter归零约束。B19恢复replay37秒/1850条，实际抽414次；特定失败父组恢复只抽1次；nativeCPR760条无访问恢复。旧reward在匹配3秒窗更喜欢off（−.276 vs V1−1.011）；局部Q偏好相反，支持但不证明外推/信用问题。执行后Return在一个已存状态79.3%输出分量被原Envelope饱和；提出raw Return代理作待审阅方案，未改clip。
+
+建议仅有条件做B-only隔离试验，不重启原完整B/C：独立恢复域先验证，若有效才做同数据/64步adapter对照；新协议预算建议2h/2GiB，尚未获准执行。A/B/C原权重、BC500、旧失败、封存、旧10.279462h Pilot账本均保留。当前任务完成即停。
+
+## Previous state snapshot (unchanged historical verdict)
+
 # CURRENT_STATE — Issue62 Envelope frozen qualification failed; stopped
 
 [Results](ADAPTER_ENVELOPE_V1_RESULTS.md) · [Harness erratum](ADAPTER_ENVELOPE_V1_ERRATUM.md). Yi's inward numerical amendment is implemented: actual representableaction/g(action) shared across physics/replay, max measured correction≤4.77e-7rad. Old strict inverse failure preserved.

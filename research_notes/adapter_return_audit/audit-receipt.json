@@ -1,0 +1,24 @@
+{
+  "status": "READ_ONLY_AUDIT_COMPLETED_PROPOSAL_ONLY",
+  "base_commit": "9441ec36a15ef423f79cbf6ac066c62dc575c288",
+  "new_physics_ticks": 0,
+  "optimizer_steps": 0,
+  "new_teacher_queries": 0,
+  "GPU_jobs": 0,
+  "cpu_analysis_internal_wall_seconds": {
+    "analysis-01.log": 49.139363288879395,
+    "analysis-02.log": 47.03911471366882
+  },
+  "internal_wall_excludes_imports": true,
+  "read_only_CPU_IO_analysis_reporting_upper_s": 3600,
+  "old_pilot_ledger_unchanged": true,
+  "old_pilot_charged_upper_s": 37006.06334757905,
+  "proposal_not_started": true,
+  "analysis_source_sha256": {
+    "audit_analysis.py": "b8301d827e449674245faa38c133ae0e970241d402a89f4432a3d0f5f1d036ac",
+    "audit_gradients.py": "bbd2532664ab45dc378d3179d913646e91c50538ea4718c891cb761078c2ff0b",
+    "audit_rewards.py": "ecfa72d3142dde6ade5f82052e9d777fe4255b521ec6aa95e6248e8def71c4e8",
+    "continuity_audit.py": "4afbeca6801bd3dacc3218f90cf92f89a874ddf65985b83061b77b632ba15827"
+  },
+  "new_output_bytes": 612572
+}
