@@ -1,3 +1,13 @@
+# CURRENT_STATE — Return小试验已获批；GPU0占用，未开物理/训练
+
+2026-11-13。Yi明确批准[Return小试验草案](ADAPTER_RETURN_TO_PRIOR_PILOT_DRAFT.md)，[批准协议与准备状态](ADAPTER_RETURN_TO_PRIOR_PILOT_PROTOCOL.md)已另存，未改写原草案或V1失败判定。两B19克隆各64次adapter-only，λ0/.0008，U/Q/discriminator/targets共同冻结；7200job秒/2GiB，先恢复参考域资格再学习，不是原B/C续训。
+
+CPU核查：B19哈希及8个存档状态来源可用，原4750/760条经父组隔离后训练replay1255/native205条；六个开发父组排除，native按10个真实前缀块归属。[清单证据](adapter_return_pilot/preparation-summary.json)。这只证明存档可用，尚未证明物理重建/恢复有效。预记准备成本保守600s（含已测8.45s CPU分析），余≤6600s，旧Pilot账不重置。
+
+现场GPU0正被SoftSONIC队列使用（smoke后已进入formal），遵守单GPU重任务串行，未操作其进程、未安装抢卡/watch。新物理/更新/Teacher查询=0；两组Return模型尚不存在。需卡释放后重新核资源，沿现有授权完成恢复资格与学习，不需重复审批。正式B/C仍停，sealed未读，原负判定保持。
+
+## Previous snapshot (historical, not current authorization)
+
 # CURRENT_STATE — Issue62只读机制审计完成，仍停止
 
 [一页结论](ADAPTER_RETURN_AUDIT_SUMMARY.md) · [完整依据/逐关节表](ADAPTER_RETURN_TO_PRIOR_AUDIT.md) · [待审阅小试验](ADAPTER_RETURN_TO_PRIOR_PILOT_DRAFT.md)。本轮新物理/训练/优化步均0，只读CPU分析；未改原实验runtime、科学阈值与负判定。原V1失败仍以9441ec3为准，B/C未重训。

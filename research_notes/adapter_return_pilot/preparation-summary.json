@@ -1,0 +1,253 @@
+{
+  "status": "CPU_ARCHIVE_CHECKS_PASSED_GPU_QUALIFICATION_PENDING",
+  "draft_sha256": "224fb0d39b2adccbbc8c58e6a11c7dcd66736d50d7a142ad15d0855f42bb71a9",
+  "parent_model_core_sha256": "0cd3e3684d764cad42caaa83773b885868caeed0557dba1780ec36a3d03a3984",
+  "original_replay_rows": 4750,
+  "selected_replay_rows": 1255,
+  "original_native_rows": 760,
+  "selected_native_rows": 205,
+  "native_parent_mapping": [
+    {
+      "episode": 0,
+      "spec_index": 0,
+      "parent_id": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "count": 80,
+      "time_range": [
+        2.9999999999999583,
+        4.579999999999925
+      ],
+      "selected": false
+    },
+    {
+      "episode": 1,
+      "spec_index": 1,
+      "parent_id": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "count": 70,
+      "time_range": [
+        2.9999999999999583,
+        4.379999999999929
+      ],
+      "selected": false
+    },
+    {
+      "episode": 2,
+      "spec_index": 2,
+      "parent_id": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "count": 85,
+      "time_range": [
+        2.9999999999999583,
+        4.6799999999999224
+      ],
+      "selected": false
+    },
+    {
+      "episode": 3,
+      "spec_index": 3,
+      "parent_id": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "count": 85,
+      "time_range": [
+        2.9999999999999583,
+        4.6799999999999224
+      ],
+      "selected": false
+    },
+    {
+      "episode": 4,
+      "spec_index": 4,
+      "parent_id": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "count": 80,
+      "time_range": [
+        2.9999999999999583,
+        4.579999999999925
+      ],
+      "selected": true
+    },
+    {
+      "episode": 5,
+      "spec_index": 5,
+      "parent_id": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "count": 65,
+      "time_range": [
+        2.9999999999999583,
+        4.279999999999931
+      ],
+      "selected": false
+    },
+    {
+      "episode": 6,
+      "spec_index": 6,
+      "parent_id": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "count": 85,
+      "time_range": [
+        2.9999999999999583,
+        4.6799999999999224
+      ],
+      "selected": false
+    },
+    {
+      "episode": 7,
+      "spec_index": 7,
+      "parent_id": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "count": 85,
+      "time_range": [
+        2.9999999999999583,
+        4.6799999999999224
+      ],
+      "selected": false
+    },
+    {
+      "episode": 8,
+      "spec_index": 8,
+      "parent_id": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "count": 55,
+      "time_range": [
+        2.9999999999999583,
+        4.079999999999935
+      ],
+      "selected": true
+    },
+    {
+      "episode": 9,
+      "spec_index": 9,
+      "parent_id": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "count": 70,
+      "time_range": [
+        2.9999999999999583,
+        4.379999999999929
+      ],
+      "selected": true
+    }
+  ],
+  "training_parent_ids": [
+    "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+    "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+    "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e"
+  ],
+  "development_parent_ids": [
+    "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+    "6a2fe7552234ceb9dd5944b5601c46e3424d3995699b22bc02e6d37410dbc314",
+    "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+    "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+    "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+    "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93"
+  ],
+  "archives": [
+    {
+      "role": "return_train",
+      "parent_id": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "time": 11.8,
+      "archived_round": 19,
+      "note": "existing exact offsample/offmean3s may be reused; complete current input saved",
+      "core_sha256": "0cd3e3684d764cad42caaa83773b885868caeed0557dba1780ec36a3d03a3984",
+      "manifest_sha256": "150f107489e267fc0c93ef8e99b7a51d798cd5a1011f9c3c3ddba9017855306a",
+      "source_sha256": "9bd89ce0d990e2a9e27e4f011debc12e87580fdf070709545d514bb78d75a61e",
+      "archived_commands": 74,
+      "archived_actions": 370,
+      "original_end": 14.8,
+      "status": "AVAILABLE_NOT_PHYSICALLY_RECONSTRUCTED"
+    },
+    {
+      "role": "return_train",
+      "parent_id": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "time": 10.0,
+      "archived_round": 17,
+      "note": "reconstruct prefix only to10.0 from archived actions; do not use10.7+3s beyond originalend",
+      "core_sha256": "cbbec0a96feaaa3a15bef3de76c36356b5e8e9f1fbc2b5ab42eec3fa28ee4b3a",
+      "manifest_sha256": "feff9172024f2c306c75ed7b231c87d49b7406e94da112bb7c6abb9baa4d37c6",
+      "source_sha256": "55c74c0e822c510ed0dcb77a643eb77a1f4d85b57704c83e3a8e3b28e6769f0c",
+      "archived_commands": 66,
+      "archived_actions": 330,
+      "original_end": 13.3,
+      "status": "AVAILABLE_NOT_PHYSICALLY_RECONSTRUCTED"
+    },
+    {
+      "role": "recovery_dev",
+      "parent_id": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "time": 11.9,
+      "archived_round": 12,
+      "note": "reconstruct prefix only to11.9;3s ends at original14.9",
+      "core_sha256": "2da9189329321cb42f84d5e34edca3e6d3aef0b9b8fd94cc7b376354df95f0ad",
+      "manifest_sha256": "2da49a87947833b75554e198cbda21e0436e043596d8f0dbaa63c89e4ea5cef9",
+      "source_sha256": "aeb78bdec9535900b492b139beb1f1cd57840de1ffabd9bd16efe3fd694376f6",
+      "archived_commands": 106,
+      "archived_actions": 530,
+      "original_end": 14.899999999999999,
+      "status": "AVAILABLE_NOT_PHYSICALLY_RECONSTRUCTED"
+    },
+    {
+      "role": "recovery_dev",
+      "parent_id": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "time": 9.7,
+      "archived_round": 13,
+      "note": "stop branch;3s ends12.7 beforeoriginalend13.4",
+      "core_sha256": "b77c5bca886531bc005f969380101948ef6a35bef7f5dccbd2a0a39a59c6dd30",
+      "manifest_sha256": "7cbf759bb44a49ade9412aa8734ab97ade59c8b1e9a4f6b69c3416f6f4ebab37",
+      "source_sha256": "fdd8ac5c31809836c7efce6292c4ede4cd28f5d79dca89b8b5ec6162ad7819e7",
+      "archived_commands": 50,
+      "archived_actions": 250,
+      "original_end": 13.399999999999999,
+      "status": "AVAILABLE_NOT_PHYSICALLY_RECONSTRUCTED"
+    },
+    {
+      "role": "active_dev",
+      "parent_id": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "time": 6.0,
+      "archived_round": 1,
+      "note": "near ongoingcontact3s",
+      "core_sha256": "e4a93f4eb5aff3b31f1fc3f589b64ad88fba3d6f6112228bc512572958bc9107",
+      "manifest_sha256": "99a4ec3dd98fd57c6183632a95c3d97d3f7156637ce44eb8fc05bc216d670f5f",
+      "source_sha256": "42a673e610ab45c9737ef25b1a748afed1ad6901d29592b7f2c33c4788942130",
+      "archived_commands": 50,
+      "archived_actions": 250,
+      "original_end": 13.5,
+      "status": "AVAILABLE_NOT_PHYSICALLY_RECONSTRUCTED"
+    },
+    {
+      "role": "active_dev",
+      "parent_id": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "time": 6.0,
+      "archived_round": 3,
+      "note": "mid ongoingcontact3s",
+      "core_sha256": "035eee39db6a264300a0ed1c6a582d884b706600b2b9fbaab930f8289498100e",
+      "manifest_sha256": "9e819af54860dd271945a7f503e430f145c05c77b87d65fe48aa27be9b01249e",
+      "source_sha256": "c4feeee871d9514f399c77cd8b15bc24a0fe3dd8de33d2bdfbbc24746d3db084",
+      "archived_commands": 61,
+      "archived_actions": 305,
+      "original_end": 15.6,
+      "status": "AVAILABLE_NOT_PHYSICALLY_RECONSTRUCTED"
+    },
+    {
+      "role": "active_dev",
+      "parent_id": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "time": 7.0,
+      "archived_round": 5,
+      "note": "stop branch contact; stop/continue remainoneparent",
+      "core_sha256": "d6886ede0e164b758bec98e5830a4174e3f23ebca316dd9013477721445323f6",
+      "manifest_sha256": "bf70ede4c300e3c47ad135f8654d8fe6566d9d08174ccc44e287636fc6ce56ca",
+      "source_sha256": "d59d94dee9c7616aa5569c618cdad46aeeadd12c9e2d168f52bf21a731e5971f",
+      "archived_commands": 49,
+      "archived_actions": 245,
+      "original_end": 14.7,
+      "status": "AVAILABLE_NOT_PHYSICALLY_RECONSTRUCTED"
+    },
+    {
+      "role": "none_dev",
+      "parent_id": "6a2fe7552234ceb9dd5944b5601c46e3424d3995699b22bc02e6d37410dbc314",
+      "time": 6.0,
+      "archived_round": 83,
+      "note": "archivedA83no-contact actualstate; true source/history preserved; not native-only afterhandoff",
+      "core_sha256": "69a1a4ad87a6c6c18a60cb31534473a408cbd9b3e99767e380d985327a7793f3",
+      "manifest_sha256": "52545879ed16e21b646ca86dbe0762f20d04f59757739ea64d9874884ee3a70e",
+      "source_sha256": "d428dacd0b099ffb4d0e57fd6ccba9b788ffc140ed328b1c88a3d2d11a31b9ce",
+      "archived_commands": 18,
+      "archived_actions": 90,
+      "original_end": 13.700000000000001,
+      "status": "AVAILABLE_NOT_PHYSICALLY_RECONSTRUCTED"
+    }
+  ],
+  "new_physics_ticks": 0,
+  "new_optimizer_steps": 0,
+  "cuda_initialized": false,
+  "wall_s": 8.447812595986761,
+  "full_index_manifest_sha256": "79238a8c5433dadddedef65fd96654c2edcbcc2f7dc54278eaa8d3e864bbac8c"
+}

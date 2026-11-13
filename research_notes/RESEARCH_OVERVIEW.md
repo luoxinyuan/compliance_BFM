@@ -277,3 +277,7 @@ Issue62 Envelope V1 frozen qualification: inward numeric representation succeede
 
 ### Issue62 read-only retention mechanism audit
 Current native CPR preserves a joint Guidance/action function on native prefixes; it does not enforce same-current-z adapter return on visited recovery states. Existing matched release traces and exact replay-draw counts support a narrow domain-specific retention hypothesis, with Q extrapolation and recovery-domain shift still competing explanations. A pre-Envelope raw-correction Return pilot is review-only; V1 qualification remains failed. No new physics or training was performed. See ADAPTER_RETURN_AUDIT_SUMMARY.md and ADAPTER_RETURN_TO_PRIOR_PILOT_DRAFT.md.
+
+## Issue62 Return机制小试验（2026-11-13授权）
+
+Yi已批准一次有限B-only adapter Return-to-Prior隔离试验：相同B19起点，冻结U/Q/discriminator及targets，仅比较64步原adapter目标与固定.0008同状态同z raw Return。先验证独立恢复域，不能以稀薄inactive帧推定可恢复；物理判断仍按原门，不修改失败结论。批准不等于已启动：GPU0当前被其他项目占用，CPU准备通过，新物理/优化仍0。参见[批准协议](ADAPTER_RETURN_TO_PRIOR_PILOT_PROTOCOL.md)。不自动恢复原B/C，也不把这个机制小试验称为新的通用训练配方。
