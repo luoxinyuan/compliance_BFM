@@ -85,21 +85,17 @@ def restore(path,agent,env):
 
 
     assert exact(now['history'],old['history']),'BFM history differs'
-    def devices(value,template):
-        from collections import deque
-        if torch.is_tensor(value):
-            assert torch.is_tensor(template),'Missing tensor device template'
-            return value.to(template.device)
-        if isinstance(value,dict):return {k:devices(v,template[k]) for k,v in value.items()}
-        if isinstance(value,(list,tuple,deque)):
-            assert len(value)==len(template),'Physical history length differs'
-            vv=[devices(v,w) for v,w in zip(value,template)]
-            return deque(vv,maxlen=value.maxlen) if isinstance(value,deque) else tuple(vv) if isinstance(value,tuple) else vv
-        return value
-    for obj,key in [(t,'task'),(t.e,'env'),(t.e.base,'base'),(t.e.tether,'tether'),(t.h,'force_history')]:put(obj,{k:devices(v,getattr(obj,k)) for k,v in old[key].items()})
+    from .restore_fields import restore_value, MISSING
+    for obj,key in [(t,'task'),(t.e,'env'),(t.e.base,'base'),(t.e.tether,'tether'),(t.h,'force_history')]:
+        put(obj,{k:restore_value(v,getattr(obj,k,MISSING),key+'/'+k) for k,v in old[key].items()})
     t.physics_rng=copy.deepcopy(s['physics_rng']);restore_global_rng(s['rng']);t.rng.bit_generator.state=copy.deepcopy(s['task_rng'])
     env.physical_stream=s['physical_stream'];env.rows=s['rows'];env.native=s['native'];env.commands=s['commands'];p.actions=s['actions'];env.episodes=s['episodes'];env.next_cursor=s['cursor']
     assert tree_digest(agent.state())==tree_digest(s['agent']),'agent/Adam/target restore differs'
+    effective=canonical(portable(t),metadata(t.e.sim.model,t.e.sim.data))
+    if not exact(effective,canonical(old,s['mj_metadata'])):
+        torch.save(dict(now=effective,old=canonical(old,s['mj_metadata'])),Path(os.environ['BFM_RECOVERY_OUTPUT'])/'effective-restore-difference.pt')
+    assert exact(effective,canonical(old,s['mj_metadata'])),'Full effective state/RNG/history restore differs'
+    jsonwrite(Path(os.environ['BFM_RECOVERY_OUTPUT'])/'restore-exact.json',dict(round_id=s['round_id'],effective_state_exact=True,agent_targets_adam_exact=True,rng_exact=True))
     return s['round_id']
 
 def adopt(root,source):
