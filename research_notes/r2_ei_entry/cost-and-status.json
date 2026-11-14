@@ -1,0 +1,48 @@
+{
+  "status": "STOPPED_SAMPLED_QUALIFICATION_NO_TRAINING",
+  "historical_R2_seconds": 3088.8395652770996,
+  "total_R2_charged_upper_s": 5544.703774929047,
+  "budget_s": 57600,
+  "output_bytes": 873919414,
+  "output_budget_bytes": 12884901888,
+  "preparation_upper_s": 1200,
+  "gpu_jobs": [
+    {
+      "name": "fresh-mean-qualification-01",
+      "runtime": "b8f62f1e85c3047df80331b6d350da8bb03cd7be",
+      "wall_s": 1047.2251827716827,
+      "exit_code": 0,
+      "physics_counts": {
+        "actual": 36441,
+        "reserved": 36441
+      },
+      "qualification_status": "qualification_passed"
+    },
+    {
+      "name": "fresh-sample-qualification-01",
+      "runtime": "a6151a6d4633e9318fb7542342af81fc2253e0f5",
+      "wall_s": 208.63902688026428,
+      "exit_code": 0,
+      "physics_counts": {
+        "actual": 4241,
+        "reserved": 4241
+      },
+      "qualification_status": "qualification_stopped"
+    }
+  ],
+  "new_physics_ticks": 40682,
+  "new_training_transitions": 0,
+  "Q_updates": 0,
+  "Actor_updates": 0,
+  "BI_updates": 0,
+  "dev_episodes": 0,
+  "sealed_episodes": 0,
+  "remaining_sampled_cases_not_run": 5,
+  "storage_test_scope": "CPU synthetic four-checkpoint model/Adam exact new-process load and corruption rejection only; no actual E/I four-block warm-up, no full scientific storage qualification",
+  "private_draft_sha256": {
+    "approved_warmup.py": "dd711c945149ddcf09bfbe142f8d8c2714acdea8f1decf3fe39b34d3a21f4c13",
+    "delta_tree.py": "7d4a03dcdb1b9ce072fa3bda5bc218049691448ee8db8df0a7d94c55c05f07d2",
+    "approved_journal.py": "705355f3b82066ebd764653ab77ce22c9a8b5f076ec07d83d92d9b15a8772ad3",
+    "approved_learning.py": "5ccc072385f681f1b7d33fee51d63ada3ac1fbf8bc057b7a567dec95a6b71cf8"
+  }
+}

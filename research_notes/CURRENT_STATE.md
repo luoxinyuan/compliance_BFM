@@ -1,3 +1,13 @@
+# CURRENT_STATE — Yi已批准R2 E/I v1.0；实际采样资格暂停
+
+2026-11-14。[批准合同](R2_EI_TRAIN_CONTRACT_V1.md)已签署归档（Issue63 / Master18）；[入口结果](R2_EI_ENTRY_RESULTS.md)。全新U隐藏层/零输出、原Actor tail、fresh双Q/Adam，未继承A128权重。10父组12回合mean保护全部通过、原六回合完整physics/control逐值复现；E/I逐步对齐通过。
+
+首个none实际std=.01/clip=.06回合：5ms累计绝对yaw39.323°>15°，末4s16.107°>15°；净yaw−3.529°、yaw范围3.730°，不是持续旋转。slip峰.007856m/s、root路程7.726cm、净位移.225cm、真实关节越界/失支撑0。按锁定采样资格门停止，没有改判或改噪声。none末窗不冒充真实释放恢复。
+
+Q/Actor/U/BI更新0，正式train0，Dev/Sealed0；余5个采样回合、四块Q-only/恢复/存储投影、正式E/I及五方dev未执行。R2累计5544.704/57600job秒，约.814GiB/12GiB；GPU0释放无队列。下一步须明确采样yaw门的科学语义或另批探索修订，不能自动改门继续。所有旧失败/资产/BC500保持。
+
+---
+
 # CURRENT_STATE — R2 E/I v1.0已获Yi明确批准，入口资格准备中
 
 2026-11-14。用户直接签署[R2-EI训练合同](R2_EI_TRAIN_CONTRACT_V1.md)，正文旧“DRAFT/待批准”已由明确授权覆盖。两臂必须完整新随机U、零输出，不能沿用零U诊断中A128隐藏层。E/I各32k真实50Hz、总R2≤57600秒/12GiB，继承3088.839565秒，不重置旧账。先实际采样/保持参考、完整恢复与存盘投影，再Q warm-up资格，之后才Actor/U更新。当前训练0，sealed不执行；原A128/BC500/负结果保持。
