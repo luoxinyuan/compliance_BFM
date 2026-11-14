@@ -1,3 +1,9 @@
+# 最新状态：v1.1采样资格通过，准备Q-only入口
+
+五个剩余sample回合完成，释放有效状态/RNG逐值恢复，全部入口保护通过；详见 [R2_EI_V11_SAMPLE_RESULTS.md](R2_EI_V11_SAMPLE_RESULTS.md)。正式Actor/U与Dev/Sealed仍0。下述是历史时点记录，不代表现在仍在运行。
+
+---
+
 # 最新运行状态：v1.1恢复比较已定位修复，采样资格续跑
 
 2026-11-14 Yi授权普通工程问题自主解决并继续。sample-04原断言复现：24项raw差异全部是当前NULL/零有效长度MuJoCo数组；既有L0有效状态差异0、RNG逐值一致。修复仅复用原有效范围规则，1e-12有效状态扰动及配置变更拒绝测试通过。原失败保留。见 [修复证据](R2_EI_V11_RESTORE_FIX.md) 与 [原阻塞记录](R2_EI_V11_RESTORE_BLOCKER.md)。

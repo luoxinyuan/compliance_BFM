@@ -38,7 +38,10 @@ def restore(path,agent,env):
     path=Path(path);m=json.loads((path/'manifest.json').read_text())
     assert m['complete']
     for f,v in m['files'].items():assert sha(path/f)==v['sha256'] and (path/f).stat().st_size==v['bytes']
-    if m.get('format')=='delta-v1':
+    if m.get('format')=='R2-lossless-v1':
+        from .approved_journal import load_state
+        s=load_state(path)
+    elif m.get('format')=='delta-v1':
         from .journal import load_state
         s=load_state(path)
     else:s=torch.load(path/'state.pt',map_location='cpu',weights_only=False)
