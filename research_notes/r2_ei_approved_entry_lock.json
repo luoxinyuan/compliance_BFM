@@ -1,0 +1,529 @@
+{
+  "version": "R2-EI-TRAIN-CONTRACT-v1.0-entry",
+  "status": "approved_by_Yi",
+  "approval_date": "2026-11-14",
+  "approval_quote": "我授权启动以下合同，记得归档时写明我已批准。",
+  "contract_sha256": "2abccaf91a1bf0b40958188ad96801adddb33aa14d77542d3ad50949f17f34b8",
+  "initialization_seed": 636410,
+  "physics_evaluation_seed": 626299,
+  "optimizer_lr": 0.0001,
+  "optimizer_lr_scope": "registered shared value before any update; no dev tuning",
+  "train_file_sha256": "c39f1ff60d09396d5b17f6b92aca40aedc6f65ef4d60a9a9dab42af7c4d8b24d",
+  "qualification_parents": [
+    {
+      "parent_id": "ede27bac003dfc662e814e958c1bd0f3e2b2c487616c1055634e9b3b7108ea79",
+      "source_parent_id": "fd385c45df1deef12fcef2d8b0c9886b9d17e0f2e596f124a77a3909189a5516",
+      "partner_parent_id": "2638edf0f88467246ec52c501522dd82f324953fd94931c2c075362956988aab",
+      "family": "none",
+      "specs": [
+        {
+          "geometry": "wrist",
+          "enabled": false,
+          "distance": 0.0,
+          "ramp": 3.0,
+          "onset": 4.9,
+          "release": 9.9,
+          "end": 13.9,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.3,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "none",
+          "source_profile": {
+            "arm_fraction": 1.0,
+            "pulse_fraction": 0.022067925824561987,
+            "pulse_duration": 0.6603745375693268,
+            "phase_offset": 0.0,
+            "phase_rate": 1.0
+          },
+          "parent_id": "ede27bac003dfc662e814e958c1bd0f3e2b2c487616c1055634e9b3b7108ea79",
+          "source_parent_id": "fd385c45df1deef12fcef2d8b0c9886b9d17e0f2e596f124a77a3909189a5516",
+          "partner_parent_id": "2638edf0f88467246ec52c501522dd82f324953fd94931c2c075362956988aab",
+          "common_prefix_parent_id": "ede27bac003dfc662e814e958c1bd0f3e2b2c487616c1055634e9b3b7108ea79",
+          "deceleration": 0.0
+        }
+      ]
+    },
+    {
+      "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "source_parent_id": "661d9e380f23a9a32bf3fede32dba24bc07486502c55b917ab01698e14acba72",
+      "partner_parent_id": "906108c030c7ed295415b4bf060d614047d11d76e04f1f4384de9b1bf881aa6e",
+      "family": "near",
+      "specs": [
+        {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.07107381256484407,
+          "ramp": 2.4,
+          "onset": 5.4,
+          "release": 9.8,
+          "end": 13.8,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.8,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "near",
+          "source_profile": {
+            "arm_fraction": 1.0,
+            "pulse_fraction": 0.07218145715143964,
+            "pulse_duration": 0.44082367161839775,
+            "phase_offset": 0.0,
+            "phase_rate": 1.0
+          },
+          "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+          "source_parent_id": "661d9e380f23a9a32bf3fede32dba24bc07486502c55b917ab01698e14acba72",
+          "partner_parent_id": "906108c030c7ed295415b4bf060d614047d11d76e04f1f4384de9b1bf881aa6e",
+          "common_prefix_parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+          "deceleration": 0.0
+        }
+      ]
+    },
+    {
+      "parent_id": "cb29bf09014a2b5416b8d9cf11921d07eac3a0c885365c55ea31a3ca27e371c4",
+      "source_parent_id": "97c9d78b74547ebdb9ef739603c2b57fc974575a293bdd55a64d0cf249f41e3b",
+      "partner_parent_id": "b3f95fa808146d64ba546ec95e6f81900f98b1097c838bbbf26fd64f9098fc4e",
+      "family": "mid",
+      "specs": [
+        {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.3464442423064491,
+          "ramp": 4.6,
+          "onset": 5.2,
+          "release": 12.200000000000001,
+          "end": 16.200000000000003,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.5,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "mid",
+          "source_profile": {
+            "arm_fraction": 1.0,
+            "pulse_fraction": 0.044728515675344166,
+            "pulse_duration": 0.40593158880084934,
+            "phase_offset": 0.0,
+            "phase_rate": 1.0
+          },
+          "parent_id": "cb29bf09014a2b5416b8d9cf11921d07eac3a0c885365c55ea31a3ca27e371c4",
+          "source_parent_id": "97c9d78b74547ebdb9ef739603c2b57fc974575a293bdd55a64d0cf249f41e3b",
+          "partner_parent_id": "b3f95fa808146d64ba546ec95e6f81900f98b1097c838bbbf26fd64f9098fc4e",
+          "common_prefix_parent_id": "cb29bf09014a2b5416b8d9cf11921d07eac3a0c885365c55ea31a3ca27e371c4",
+          "deceleration": 0.0
+        }
+      ]
+    },
+    {
+      "parent_id": "0e719f297deb2ad57dd345f9f4148c8df4073fb4b7f4dbd520303aedeb47c6f6",
+      "source_parent_id": "58e10cdc71fdea85a1eb43c60d6e052cc2f2086c4297fe8d45bf7bc8fc885f61",
+      "partner_parent_id": "810a07da7216bb74a27bcc27dfe0c42acc6d24d6a821491ecafe5649c49266b2",
+      "family": "zero",
+      "specs": [
+        {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.0,
+          "ramp": 3.0,
+          "onset": 5.3,
+          "release": 10.100000000000001,
+          "end": 14.100000000000001,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.5,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "zero",
+          "source_profile": {
+            "arm_fraction": 1.0,
+            "pulse_fraction": 0.029920437826198035,
+            "pulse_duration": 0.4599155062166862,
+            "phase_offset": 0.0,
+            "phase_rate": 1.0
+          },
+          "parent_id": "0e719f297deb2ad57dd345f9f4148c8df4073fb4b7f4dbd520303aedeb47c6f6",
+          "source_parent_id": "58e10cdc71fdea85a1eb43c60d6e052cc2f2086c4297fe8d45bf7bc8fc885f61",
+          "partner_parent_id": "810a07da7216bb74a27bcc27dfe0c42acc6d24d6a821491ecafe5649c49266b2",
+          "common_prefix_parent_id": "0e719f297deb2ad57dd345f9f4148c8df4073fb4b7f4dbd520303aedeb47c6f6",
+          "deceleration": 0.0
+        }
+      ]
+    },
+    {
+      "parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+      "source_parent_id": "5c944f900d8b86a7734df4da9f5f01eeb857e4d8b5ebfaa9b5c91b619bf0b24a",
+      "partner_parent_id": "1994aa5ce4e5b22ff150bab86f38b8649070ad68f5b2fcd3754ff3911b802c06",
+      "family": "stop",
+      "specs": [
+        {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.28538832496550526,
+          "ramp": 4.0,
+          "onset": 5.3,
+          "release": 10.9,
+          "end": 14.9,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.4,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "stop",
+          "source_profile": {
+            "arm_fraction": 1.0,
+            "pulse_fraction": 0.07218689360696728,
+            "pulse_duration": 0.4528561348918547,
+            "phase_offset": 0.0,
+            "phase_rate": 1.0
+          },
+          "parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+          "source_parent_id": "5c944f900d8b86a7734df4da9f5f01eeb857e4d8b5ebfaa9b5c91b619bf0b24a",
+          "partner_parent_id": "1994aa5ce4e5b22ff150bab86f38b8649070ad68f5b2fcd3754ff3911b802c06",
+          "common_prefix_parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+          "deceleration": 0.7,
+          "stop_time": 7.8
+        },
+        {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.28538832496550526,
+          "ramp": 4.0,
+          "onset": 5.3,
+          "release": 11.700000000000001,
+          "end": 15.700000000000001,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.4,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "continue",
+          "source_profile": {
+            "arm_fraction": 1.0,
+            "pulse_fraction": 0.07218689360696728,
+            "pulse_duration": 0.4528561348918547,
+            "phase_offset": 0.0,
+            "phase_rate": 1.0
+          },
+          "parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+          "source_parent_id": "5c944f900d8b86a7734df4da9f5f01eeb857e4d8b5ebfaa9b5c91b619bf0b24a",
+          "partner_parent_id": "1994aa5ce4e5b22ff150bab86f38b8649070ad68f5b2fcd3754ff3911b802c06",
+          "common_prefix_parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+          "deceleration": 0.0
+        }
+      ]
+    },
+    {
+      "parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+      "source_parent_id": "b845e5c5edb57758461a87e5fc1af8d510f29469dec97a08634c02c0edcaffd5",
+      "partner_parent_id": "d9830c990a8ce934375d5ba8613f80aa3ec775aaeddb14eac31cc1100bfcd2f5",
+      "family": "near",
+      "specs": [
+        {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.07479523306067543,
+          "ramp": 2.6,
+          "onset": 4.8,
+          "release": 9.7,
+          "end": 13.7,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.2,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "near",
+          "source_profile": {
+            "arm_fraction": 1.0,
+            "pulse_fraction": 0.045809450094576834,
+            "pulse_duration": 0.40418532112884087,
+            "phase_offset": 0.0,
+            "phase_rate": 1.0
+          },
+          "parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+          "source_parent_id": "b845e5c5edb57758461a87e5fc1af8d510f29469dec97a08634c02c0edcaffd5",
+          "partner_parent_id": "d9830c990a8ce934375d5ba8613f80aa3ec775aaeddb14eac31cc1100bfcd2f5",
+          "common_prefix_parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+          "deceleration": 0.0
+        }
+      ]
+    },
+    {
+      "parent_id": "fdde460420a47e3cb30e3a7b298277a9de8b2ed3de08ebd5547391339bbb24aa",
+      "source_parent_id": "a3a827c119d5d9093ca9d0a96df281945f7421d5be58301d9c66f047617283da",
+      "partner_parent_id": "87ef283a7f97f26f7c6a21289119311fb5e26db0d3db32f810ae774692efec94",
+      "family": "mid",
+      "specs": [
+        {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.189052962709434,
+          "ramp": 4.7,
+          "onset": 5.1,
+          "release": 12.100000000000001,
+          "end": 16.1,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.6,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "mid",
+          "source_profile": {
+            "arm_fraction": 1.0,
+            "pulse_fraction": 0.07847652111568106,
+            "pulse_duration": 0.3026149549037138,
+            "phase_offset": 0.0,
+            "phase_rate": 1.0
+          },
+          "parent_id": "fdde460420a47e3cb30e3a7b298277a9de8b2ed3de08ebd5547391339bbb24aa",
+          "source_parent_id": "a3a827c119d5d9093ca9d0a96df281945f7421d5be58301d9c66f047617283da",
+          "partner_parent_id": "87ef283a7f97f26f7c6a21289119311fb5e26db0d3db32f810ae774692efec94",
+          "common_prefix_parent_id": "fdde460420a47e3cb30e3a7b298277a9de8b2ed3de08ebd5547391339bbb24aa",
+          "deceleration": 0.0
+        }
+      ]
+    },
+    {
+      "parent_id": "2252e9238913c55517d367d57b556215d8424aa4179f5041825d5af69682c29b",
+      "source_parent_id": "c209a05dbecc686ac81501d8998f136739a6f25a5eb7e63cca48357533d3b3a9",
+      "partner_parent_id": "be9d68e4dab916794cf14ab4d955b96ed59b5fec98afffa2edf65bc573bf41b2",
+      "family": "none",
+      "specs": [
+        {
+          "geometry": "wrist",
+          "enabled": false,
+          "distance": 0.0,
+          "ramp": 3.0,
+          "onset": 5.3,
+          "release": 10.700000000000001,
+          "end": 14.700000000000001,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.7,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "none",
+          "source_profile": {
+            "arm_fraction": 1.0,
+            "pulse_fraction": 0.06777060985347211,
+            "pulse_duration": 0.34760959253392576,
+            "phase_offset": 0.0,
+            "phase_rate": 1.0
+          },
+          "parent_id": "2252e9238913c55517d367d57b556215d8424aa4179f5041825d5af69682c29b",
+          "source_parent_id": "c209a05dbecc686ac81501d8998f136739a6f25a5eb7e63cca48357533d3b3a9",
+          "partner_parent_id": "be9d68e4dab916794cf14ab4d955b96ed59b5fec98afffa2edf65bc573bf41b2",
+          "common_prefix_parent_id": "2252e9238913c55517d367d57b556215d8424aa4179f5041825d5af69682c29b",
+          "deceleration": 0.0
+        }
+      ]
+    },
+    {
+      "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "source_parent_id": "1f29b6ebb358c4d10ac6cf70c2d035102c5365f24cd883cb623306509027bcc2",
+      "partner_parent_id": "3c384c6672d15da55b64238e17cf680fcc370394d28efac93e16e635d1f3ed96",
+      "family": "stop",
+      "specs": [
+        {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.19894733252465424,
+          "ramp": 3.5,
+          "onset": 4.7,
+          "release": 9.4,
+          "end": 13.4,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.1,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "stop",
+          "source_profile": {
+            "arm_fraction": 1.0,
+            "pulse_fraction": 0.04977407791074313,
+            "pulse_duration": 0.6134256621572611,
+            "phase_offset": 0.0,
+            "phase_rate": 1.0
+          },
+          "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+          "source_parent_id": "1f29b6ebb358c4d10ac6cf70c2d035102c5365f24cd883cb623306509027bcc2",
+          "partner_parent_id": "3c384c6672d15da55b64238e17cf680fcc370394d28efac93e16e635d1f3ed96",
+          "common_prefix_parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+          "deceleration": 0.7,
+          "stop_time": 6.3
+        },
+        {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.19894733252465424,
+          "ramp": 3.5,
+          "onset": 4.7,
+          "release": 10.6,
+          "end": 14.6,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.1,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "continue",
+          "source_profile": {
+            "arm_fraction": 1.0,
+            "pulse_fraction": 0.04977407791074313,
+            "pulse_duration": 0.6134256621572611,
+            "phase_offset": 0.0,
+            "phase_rate": 1.0
+          },
+          "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+          "source_parent_id": "1f29b6ebb358c4d10ac6cf70c2d035102c5365f24cd883cb623306509027bcc2",
+          "partner_parent_id": "3c384c6672d15da55b64238e17cf680fcc370394d28efac93e16e635d1f3ed96",
+          "common_prefix_parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+          "deceleration": 0.0
+        }
+      ]
+    },
+    {
+      "parent_id": "12ad3430e68123e94210d7fe1ccd5ada45e575caa51919f114e7b48fb3810503",
+      "source_parent_id": "61ed2d14eb17c0a8ec1363762a198ae077af95ab77bcee36499c4262efc012a4",
+      "partner_parent_id": "dee2c22dc83bcb1073ce16b7e16685a025d370b818a35fa0e435be15c12ad558",
+      "family": "zero",
+      "specs": [
+        {
+          "geometry": "wrist",
+          "enabled": true,
+          "distance": 0.0,
+          "ramp": 3.0,
+          "onset": 5.1,
+          "release": 9.799999999999999,
+          "end": 13.799999999999999,
+          "rotation_deg": 0.0,
+          "curvature": 0.0,
+          "heading_deg": 0.0,
+          "family": "walking",
+          "source": "standing",
+          "source_until": 4.5,
+          "total_cap": 10.0,
+          "anchor_mode": "onset_actual",
+          "demand_family": "zero",
+          "source_profile": {
+            "arm_fraction": 1.0,
+            "pulse_fraction": 0.06616116688260074,
+            "pulse_duration": 0.4319361297559373,
+            "phase_offset": 0.0,
+            "phase_rate": 1.0
+          },
+          "parent_id": "12ad3430e68123e94210d7fe1ccd5ada45e575caa51919f114e7b48fb3810503",
+          "source_parent_id": "61ed2d14eb17c0a8ec1363762a198ae077af95ab77bcee36499c4262efc012a4",
+          "partner_parent_id": "dee2c22dc83bcb1073ce16b7e16685a025d370b818a35fa0e435be15c12ad558",
+          "common_prefix_parent_id": "12ad3430e68123e94210d7fe1ccd5ada45e575caa51919f114e7b48fb3810503",
+          "deceleration": 0.0
+        }
+      ]
+    }
+  ],
+  "original_six_parent_ids": [
+    "ede27bac003dfc662e814e958c1bd0f3e2b2c487616c1055634e9b3b7108ea79",
+    "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+    "cb29bf09014a2b5416b8d9cf11921d07eac3a0c885365c55ea31a3ca27e371c4",
+    "0e719f297deb2ad57dd345f9f4148c8df4073fb4b7f4dbd520303aedeb47c6f6",
+    "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62"
+  ],
+  "qualification_order": "mean all first two per family in manifest order; then sample first per family E/I paired",
+  "mean_reference": "reuse original six when exact initial action and physical source match; other six actual frozen episodes",
+  "arm_initialization": "fresh entire U, same seed; last output zero; original BFM actor tail; no old learned weights",
+  "exploration": {
+    "std": 0.01,
+    "clip": 0.06,
+    "draws_per_50Hz_action": 1
+  },
+  "q": {
+    "parameterization": "negative_softplus",
+    "batch": 64,
+    "updates_per_250": 4,
+    "warmup_min": 3500,
+    "warmup_max": 5000,
+    "ranking_min": 0.7
+  },
+  "interaction": {
+    "updates_per_250_after_first": 2,
+    "anticollapse": 0.1,
+    "sf_calibration": "before first actor step after Q gate, >=6 train parents"
+  },
+  "actor_updates_per_250_after_q_gate": 1,
+  "transitions_per_arm": 32000,
+  "retention": {
+    "actor_eps_rms": [
+      0.25,
+      0.015,
+      0.05
+    ],
+    "actor_eps_p95": [
+      0.5,
+      0.03,
+      0.1
+    ],
+    "dual_initial": 0.0,
+    "dual_rate": 0.05,
+    "dual_max": 3.0,
+    "dual_statistic": "p90 within parent, equally weight parents",
+    "dual_update_frequency": "once per eligible 250-transition block before joint actor/U update",
+    "dual_saturation_stop": "two consecutive eligible blocks at lambda=3 with normalized violation>1",
+    "none_zero_slip_peak": 0.1,
+    "none_zero_yaw_total_variation_deg": 15.0,
+    "none_zero_root_path": 0.1,
+    "recovery_slip_peak": 0.45,
+    "recovery_yaw_total_variation_deg": 15.0,
+    "recovery_extra_root_path": 0.1,
+    "u_standing_p95_deg": 5.0,
+    "u_recovery_p95_deg": 10.0
+  },
+  "budget": {
+    "total_s": 57600,
+    "prior_charged_s": 3088.8395652770996,
+    "output_bytes": 12884901888,
+    "shared_free_min_bytes": 107374182400,
+    "qualification_s": 3000,
+    "audit_lock_s": 4500
+  },
+  "sealed_execution": false,
+  "training_enabled": false,
+  "pending_gates": [
+    "frozen reference and actual sampling",
+    "retention scale/reference hash",
+    "incremental checkpoint new-process proof and 12GiB projection",
+    "Q gate",
+    "SF gradient/representation eligibility"
+  ]
+}
