@@ -1,3 +1,9 @@
+# 最新状态：E已提交500条/8组Q更新，重入修复后从round2续跑
+
+2026-11-14。E-four-blocks-02在第三块释放参考包装递归处退出，非物理门失败；round0/1/2完整保留。定向CPU接线测试通过，见 [Q入口erratum](R2_EI_Q_ENTRY_ERRATUM.md)。已提交独立runtime1c09a88的E-round2-resume-03，先原精确恢复检查，再补round3/4；启动前R2累计9188.101626秒，另加当前作业成本。Actor/U=0，I四块与Q排名资格、新进程最终续跑、Dev/Sealed仍待执行。历史下文“运行中”仅对应原时点。
+
+---
+
 # 最新状态：v1.1采样资格通过，E四块Q-only入口已启动
 
 五个剩余sample回合完成，释放有效状态/RNG逐值恢复，全部入口保护通过；详见 [R2_EI_V11_SAMPLE_RESULTS.md](R2_EI_V11_SAMPLE_RESULTS.md)。E-four-blocks-02 runtime e2de0d00a22ff992cd7f6083fb6e339be8085652 已启动（当前冷加载，尚未报告完成更新），1000秒护栏；I、新进程恢复与吞吐投影待执行。启动前累计8626.185610/57600秒，12GiB不变。首次入口因检出尚未完成被clean-worktree guard拒绝，无子物理/更新，保守60秒已计。正式Actor/U与Dev/Sealed仍0。下述是历史时点记录，不代表现在仍在运行。
