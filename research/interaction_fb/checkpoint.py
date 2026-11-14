@@ -66,9 +66,10 @@ def restore(path,agent,env):
         evidence=Path(os.environ['BFM_RECOVERY_OUTPUT'])
         jsonwrite(evidence/'restore-difference.json',dict(arrays=differences,metadata_now=ma,metadata_saved=s['mj_metadata']))
         torch.save(dict(now=now,old=old,controls=t.controls,physics=t.physics),evidence/'restore-difference.pt')
-    # These two arrays were archived but never copied back by replay-only
-    # recovery. Preserve their full stored bytes; do not mask or waive them.
-    restored_arrays=('efc_J_colind','efc_J_rowsuper')
+    # These archived arrays must be copied back by replay-only
+    # recovery. Return pilot found efc_JT was also omitted. Preserve all stored
+    # bytes; no unused-state claim, mask, tolerance or success-gate change.
+    restored_arrays=('efc_J_colind','efc_J_rowsuper','efc_JT')
     assert exact({k:v for k,v in ca.items() if k not in restored_arrays},
                  {k:v for k,v in cb.items() if k not in restored_arrays}), 'non-restorable physical replay divergence'
     assert exact(ma,s['mj_metadata']), 'MuJoCo allocation/configuration changed'
