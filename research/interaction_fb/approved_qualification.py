@@ -72,6 +72,7 @@ def study(e,m,c,out):
         for lo,hi in [(9,15),(18,22)]:hidden['contact_privileged_v1'][:,lo:hi]+=100
         assert torch.equal(deploy(ob),deploy(hidden))
         assert torch.equal(a.command(ob),a.command(hidden))
+        assert torch.equal(execute(ob,target,False,z_override)[0],execute(hidden,target,False,z_override)[0])
         mean=execute(ob,target,False,z_override)[0]
         if sample:
             restore_global_rng(saved)
@@ -97,6 +98,8 @@ def study(e,m,c,out):
         while not env.task.done:
             try:
                 with torch.no_grad():env.collect_call()
+                from research.interaction_fb import benchmark
+                if benchmark.STOP_REQUESTED:break
             except RuntimeError as exc:
                 if not str(exc).startswith('HARD_PHYSICS_BOUNDARY:'):raise
                 break
@@ -109,6 +112,15 @@ def study(e,m,c,out):
             for key,bound in [('slip_peak',.10),('yaw_total_variation_deg',15.),('root_path_m',.10),('unsupported_ticks',0)]:
                 if whole[key]>bound:errors.append('none_zero_'+key)
         r['recovery_qualified']=bool(rec and not t.boundary and rec['slip_peak']<=.45 and rec['yaw_total_variation_deg']<=15 and rec['unsupported_ticks']==0)
+        if ARGS.mode=='sample':
+            refs=json.loads((ROOT.parent/'runs/fresh-mean-qualification-01/qualification.json').read_text())
+            assert refs['status']=='qualification_passed'
+            ref=next(v for v in refs['results'] if v['spec']==spec)
+            assert ref['source_state_sha']==r['source_state_sha'],'Initial physical source differs'
+            r['recovery_root_reference_m']=ref['recovery_quality']['root_path_m']
+            if rec and rec['root_path_m']>ref['recovery_quality']['root_path_m']+.10:
+                errors.append('recovery_extra_root_path')
+                r['recovery_qualified']=False
         # Contract 3.3: an initially failing reference does not authorize moving its thresholds.
         if not r['recovery_qualified']:errors.append('frozen_recovery_reference_failed')
         r['protection_failures']=errors
