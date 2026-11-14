@@ -1,0 +1,41 @@
+{
+  "version": "R2-v11-Q-ranking-v1",
+  "status": "pre_registered_before_physical_results",
+  "train_sha256": "c39f1ff60d09396d5b17f6b92aca40aedc6f65ef4d60a9a9dab42af7c4d8b24d",
+  "warmup_runs": {
+    "E": "E-warmup3500-10",
+    "I": "I-warmup3500-11"
+  },
+  "warmup_manifest_sha256": {
+    "E": "2068e10d41e6cace8dfc5bef840e444562ad395af2767b06d996fb911bcc21de",
+    "I": "f100a8fc7f5ecde2ea43b82c807743a47bfa980f20a8d22f73944781172d0196"
+  },
+  "checkpoint_rounds": [
+    2,
+    4,
+    5,
+    7,
+    9,
+    11,
+    12,
+    14
+  ],
+  "window_s": 1.0,
+  "first_action_s": 0.02,
+  "candidate_seed": 636412,
+  "candidates": [
+    "mean",
+    "draw0_plus",
+    "draw0_minus",
+    "draw1_plus",
+    "draw1_minus"
+  ],
+  "std": 0.01,
+  "clip": 0.06,
+  "return_difference_floor": 0.0001,
+  "required_parents": 4,
+  "required_accuracy": 0.7,
+  "actor_updates": 0,
+  "job_limit_s": 1800,
+  "output_projection_gib": 0.4
+}
