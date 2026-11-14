@@ -1,0 +1,1639 @@
+{
+  "rows": [
+    {
+      "case": 0,
+      "family": "none",
+      "parent_id": "ede27bac003dfc662e814e958c1bd0f3e2b2c487616c1055634e9b3b7108ea79",
+      "initial_obs_q_qvel_time_exact": true,
+      "source_state_sha_equal": true,
+      "source_state_sha_old": "c810ec170b493382814a9c53ae4f4254bfb12980ba3a73755633b6ba4d80fe44",
+      "source_state_sha_new": "c810ec170b493382814a9c53ae4f4254bfb12980ba3a73755633b6ba4d80fe44",
+      "initial_action_max_abs": 0.02863788604736328,
+      "initial_qpd_max_abs_rad": 0.016563089564442635,
+      "traces_sha256": [
+        "878f5db82cb390ea3b72d6c6cbb543d8b25119260b12e7c28cd42d4e63714d02",
+        "e10df9f0a399ff49404a1bdf59ea4ca2c8b849c234a1801013ed87db5eb17dcb"
+      ],
+      "A128": {
+        "error_cm": null,
+        "force_N": 0.0,
+        "cap_fraction": 0.0,
+        "yaw_abs_final_deg": 4.298816108062776,
+        "clean_success": null,
+        "boundary": null,
+        "partner_progress_m": 0.0,
+        "wrist_progress_m": 0.0,
+        "whole": {
+          "physics": 1920,
+          "active_physics": 0,
+          "force_xyz_rms": null,
+          "error_xyz_rms_cm": null,
+          "yaw_delta_deg": 1081.1296517612598,
+          "yaw_excursion_deg": 1081.1296517612598,
+          "root_xy_path_m": 4.316136299613084,
+          "root_delta_m": [
+            0.043037027923985983,
+            -0.5696573426189397,
+            -0.19163806009321127
+          ],
+          "slip_peak_mps": 1.5662308271872165,
+          "slip_p95_mps": 0.19922686151237287,
+          "qpd_maxstep_rad": 0.879394993185997,
+          "actual_q_maxstep_rad": 0.07430402445937079
+        },
+        "phases": {
+          "precontact": {
+            "physics": 120,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 60.76275815426983,
+            "yaw_excursion_deg": 60.76275815426983,
+            "root_xy_path_m": 0.1515620754366001,
+            "root_delta_m": [
+              0.031517145485639386,
+              -0.0499334271731721,
+              -0.08613145457692406
+            ],
+            "slip_peak_mps": 1.1872321489019475,
+            "slip_p95_mps": 0.10761722765349951,
+            "qpd_maxstep_rad": 0.879394993185997,
+            "actual_q_maxstep_rad": 0.05979172439400135
+          },
+          "moving": {
+            "physics": 600,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 370.6517054771749,
+            "yaw_excursion_deg": 370.6517054771749,
+            "root_xy_path_m": 1.301333695577199,
+            "root_delta_m": [
+              -0.13566131560691072,
+              -0.3720933564417638,
+              -0.11662641118025185
+            ],
+            "slip_peak_mps": 1.5662308271872165,
+            "slip_p95_mps": 0.21880421269475822,
+            "qpd_maxstep_rad": 0.6309411525726318,
+            "actual_q_maxstep_rad": 0.07430402445937079
+          },
+          "holding": {
+            "physics": 399,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 223.0100590454296,
+            "yaw_excursion_deg": 223.0100590454296,
+            "root_xy_path_m": 0.9636256124442917,
+            "root_delta_m": [
+              0.41494820321555115,
+              0.02457575090558506,
+              0.031679090559128986
+            ],
+            "slip_peak_mps": 1.0858396482328971,
+            "slip_p95_mps": 0.2049103940144853,
+            "qpd_maxstep_rad": 0.6278388500213623,
+            "actual_q_maxstep_rad": 0.0578607144925411
+          },
+          "released": {
+            "physics": 800,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 424.8999073722353,
+            "yaw_excursion_deg": 424.8999073722353,
+            "root_xy_path_m": 1.8923979177640464,
+            "root_delta_m": [
+              -0.2676092353236623,
+              -0.16866167431436024,
+              -0.022173636864638024
+            ],
+            "slip_peak_mps": 0.9098181776800907,
+            "slip_p95_mps": 0.18754768051253337,
+            "qpd_maxstep_rad": 0.7394281625747681,
+            "actual_q_maxstep_rad": 0.06790157312119471
+          }
+        }
+      },
+      "zero_U": {
+        "error_cm": null,
+        "force_N": 0.0,
+        "cap_fraction": 0.0,
+        "yaw_abs_final_deg": 8.992665038249854,
+        "clean_success": null,
+        "boundary": null,
+        "partner_progress_m": 0.0,
+        "wrist_progress_m": 0.0,
+        "whole": {
+          "physics": 1920,
+          "active_physics": 0,
+          "force_xyz_rms": null,
+          "error_xyz_rms_cm": null,
+          "yaw_delta_deg": -3.567580346302157,
+          "yaw_excursion_deg": 3.567580346302157,
+          "root_xy_path_m": 0.0014084612622060092,
+          "root_delta_m": [
+            0.0007253040897459706,
+            0.0006397532738480691,
+            -0.001343400509398296
+          ],
+          "slip_peak_mps": 0.0016531258362968621,
+          "slip_p95_mps": 0.0015905649753865396,
+          "qpd_maxstep_rad": 9.251385927200317e-05,
+          "actual_q_maxstep_rad": 2.4037923187308907e-05
+        },
+        "phases": {
+          "precontact": {
+            "physics": 120,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -0.2955735391454383,
+            "yaw_excursion_deg": 0.2955735391454383,
+            "root_xy_path_m": 6.377350331622477e-05,
+            "root_delta_m": [
+              -1.8409819492894164e-05,
+              -6.105356858104177e-05,
+              -0.00010488787438311942
+            ],
+            "slip_peak_mps": 0.001652825601328979,
+            "slip_p95_mps": 0.0016487362409286872,
+            "qpd_maxstep_rad": 9.211152791976929e-05,
+            "actual_q_maxstep_rad": 2.3983975459690443e-05
+          },
+          "moving": {
+            "physics": 600,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -1.3310787864092894,
+            "yaw_excursion_deg": 1.3310787864092894,
+            "root_xy_path_m": 0.0003148806441016435,
+            "root_delta_m": [
+              0.00014130143836696418,
+              -0.00011664448114535181,
+              -0.00048193908916971395
+            ],
+            "slip_peak_mps": 0.0015749929920172458,
+            "slip_p95_mps": 0.0015562225798832175,
+            "qpd_maxstep_rad": 8.638203144073486e-05,
+            "actual_q_maxstep_rad": 2.201137125826258e-05
+          },
+          "holding": {
+            "physics": 399,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -0.7535019368536592,
+            "yaw_excursion_deg": 0.7535019368536592,
+            "root_xy_path_m": 0.00034550274040309953,
+            "root_delta_m": [
+              0.0002475244462694058,
+              0.00023908450688258504,
+              -0.000290945211952387
+            ],
+            "slip_peak_mps": 0.001255792675714657,
+            "slip_p95_mps": 0.0012459558241663645,
+            "qpd_maxstep_rad": 6.499141454696655e-05,
+            "actual_q_maxstep_rad": 2.0273621668370767e-05
+          },
+          "released": {
+            "physics": 800,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -1.1786727572555875,
+            "yaw_excursion_deg": 1.1786727572555875,
+            "root_xy_path_m": 0.0006816059197744982,
+            "root_delta_m": [
+              0.00035395709773110295,
+              0.000578287203897139,
+              -0.00046239714076401484
+            ],
+            "slip_peak_mps": 0.0010640669654787328,
+            "slip_p95_mps": 0.0010460155922244563,
+            "qpd_maxstep_rad": 5.500763654708862e-05,
+            "actual_q_maxstep_rad": 1.749875700216008e-05
+          }
+        }
+      }
+    },
+    {
+      "case": 1,
+      "family": "near",
+      "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "initial_obs_q_qvel_time_exact": true,
+      "source_state_sha_equal": true,
+      "source_state_sha_old": "1cfa71a1b3f5f22185ea8325cd66032c2fc9991d62b1dbf1fa333a1fc663118d",
+      "source_state_sha_new": "1cfa71a1b3f5f22185ea8325cd66032c2fc9991d62b1dbf1fa333a1fc663118d",
+      "initial_action_max_abs": 0.028548091650009155,
+      "initial_qpd_max_abs_rad": 0.016809171065688133,
+      "traces_sha256": [
+        "1f05a55aabce7fe55763d5d1f81f0eefe5d6629f941b862e819a556b3cf3664d",
+        "57d2334c3a7c9cfb3c51f84ff82e94d3d7c0fe19b7f31585605a25754bfaefcb"
+      ],
+      "A128": {
+        "error_cm": 42.57991217359602,
+        "force_N": 9.925150656945938,
+        "cap_fraction": 0.9806598407281001,
+        "yaw_abs_final_deg": 51.115416204276215,
+        "clean_success": false,
+        "boundary": null,
+        "partner_progress_m": 0.07107288840991005,
+        "wrist_progress_m": -0.1646458732634946,
+        "whole": {
+          "physics": 1800,
+          "active_physics": 879,
+          "force_xyz_rms": [
+            5.783530171242054,
+            6.078323294008743,
+            5.302205225650732
+          ],
+          "error_xyz_rms_cm": [
+            25.561279341808667,
+            26.611199058501473,
+            21.224892334347665
+          ],
+          "yaw_delta_deg": 1034.5640800606373,
+          "yaw_excursion_deg": 1034.5640800606373,
+          "root_xy_path_m": 4.74292736459017,
+          "root_delta_m": [
+            0.5407895630784703,
+            -0.18873780604320414,
+            -0.16499335296437156
+          ],
+          "slip_peak_mps": 2.58926825338287,
+          "slip_p95_mps": 0.24159714909380536,
+          "qpd_maxstep_rad": 0.8961037397384644,
+          "actual_q_maxstep_rad": 0.06875391271199627
+        },
+        "phases": {
+          "precontact": {
+            "physics": 120,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 60.596164362898826,
+            "yaw_excursion_deg": 60.596164362898826,
+            "root_xy_path_m": 0.15322115896358085,
+            "root_delta_m": [
+              0.02748828072113267,
+              -0.05063638816997515,
+              -0.08390336304595336
+            ],
+            "slip_peak_mps": 1.098653151784309,
+            "slip_p95_mps": 0.15373284900853643,
+            "qpd_maxstep_rad": 0.8432619869709015,
+            "actual_q_maxstep_rad": 0.05970668447651184
+          },
+          "moving": {
+            "physics": 480,
+            "active_physics": 480,
+            "force_xyz_rms": [
+              6.40224627590673,
+              5.490792653732849,
+              5.111882325154965
+            ],
+            "error_xyz_rms_cm": [
+              31.139258449783807,
+              27.58827908229412,
+              21.425731505242325
+            ],
+            "yaw_delta_deg": 300.18414863861045,
+            "yaw_excursion_deg": 300.18414863861045,
+            "root_xy_path_m": 1.3367488104939826,
+            "root_delta_m": [
+              0.5777560588569802,
+              -0.009422546422322486,
+              -0.0482323292599699
+            ],
+            "slip_peak_mps": 2.58926825338287,
+            "slip_p95_mps": 0.31560650795815665,
+            "qpd_maxstep_rad": 0.855679988861084,
+            "actual_q_maxstep_rad": 0.06875391271199627
+          },
+          "holding": {
+            "physics": 399,
+            "active_physics": 399,
+            "force_xyz_rms": [
+              4.937519881700235,
+              6.717373662665787,
+              5.522480284612962
+            ],
+            "error_xyz_rms_cm": [
+              16.519639889727188,
+              25.38597984330611,
+              20.980733860744184
+            ],
+            "yaw_delta_deg": 213.9365213902409,
+            "yaw_excursion_deg": 222.67412616692164,
+            "root_xy_path_m": 1.2812068234979845,
+            "root_delta_m": [
+              -0.00824718365402144,
+              -0.2937923829626562,
+              -0.056376071055237786
+            ],
+            "slip_peak_mps": 2.3716596391084286,
+            "slip_p95_mps": 0.18979841101357486,
+            "qpd_maxstep_rad": 0.8961037397384644,
+            "actual_q_maxstep_rad": 0.0632785681276552
+          },
+          "released": {
+            "physics": 800,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 458.4366114899283,
+            "yaw_excursion_deg": 458.4366114899283,
+            "root_xy_path_m": 1.9655011159111826,
+            "root_delta_m": [
+              -0.05639756897609516,
+              0.16743835598409834,
+              0.02517857554520797
+            ],
+            "slip_peak_mps": 1.2279091620227993,
+            "slip_p95_mps": 0.19515066098824493,
+            "qpd_maxstep_rad": 0.7223477959632874,
+            "actual_q_maxstep_rad": 0.061085590887700325
+          }
+        }
+      },
+      "zero_U": {
+        "error_cm": 3.8626418432922605,
+        "force_N": 3.1424588170329915,
+        "cap_fraction": 0.0,
+        "yaw_abs_final_deg": 7.7096666369634095,
+        "clean_success": false,
+        "boundary": null,
+        "partner_progress_m": 0.07107288840991005,
+        "wrist_progress_m": 0.02660945306922058,
+        "whole": {
+          "physics": 1800,
+          "active_physics": 879,
+          "force_xyz_rms": [
+            3.107695807622757,
+            0.18808283342839272,
+            0.4264962271836257
+          ],
+          "error_xyz_rms_cm": [
+            3.8228614606066214,
+            0.22969945307234704,
+            0.5226540209457744
+          ],
+          "yaw_delta_deg": -2.0335941653851997,
+          "yaw_excursion_deg": 2.0335941653851997,
+          "root_xy_path_m": 0.026218648995053086,
+          "root_delta_m": [
+            0.0019861210000489647,
+            0.0002768052882463415,
+            -0.0009399757245092122
+          ],
+          "slip_peak_mps": 0.001591307107968586,
+          "slip_p95_mps": 0.0015339000301222373,
+          "qpd_maxstep_rad": 0.008046448230743408,
+          "actual_q_maxstep_rad": 0.0005629007268906847
+        },
+        "phases": {
+          "precontact": {
+            "physics": 120,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -0.28577433517460304,
+            "yaw_excursion_deg": 0.28577433517460304,
+            "root_xy_path_m": 8.021757736921421e-05,
+            "root_delta_m": [
+              -1.6347920086121764e-05,
+              -7.849436516369629e-05,
+              -0.00010220540585270665
+            ],
+            "slip_peak_mps": 0.0015909972710424938,
+            "slip_p95_mps": 0.0015870083731252273,
+            "qpd_maxstep_rad": 8.897483348846436e-05,
+            "actual_q_maxstep_rad": 2.2711600621005967e-05
+          },
+          "moving": {
+            "physics": 480,
+            "active_physics": 480,
+            "force_xyz_rms": [
+              2.603842019695859,
+              0.11246893222594395,
+              0.31712448887155026
+            ],
+            "error_xyz_rms_cm": [
+              3.100242002880728,
+              0.1272654790362071,
+              0.3735361713439087
+            ],
+            "yaw_delta_deg": -0.07435329677050508,
+            "yaw_excursion_deg": 0.26853993144990784,
+            "root_xy_path_m": 0.012379413897796149,
+            "root_delta_m": [
+              0.01229445935070669,
+              0.0012235514183348492,
+              -0.00028211519554921516
+            ],
+            "slip_peak_mps": 0.0015147617959800402,
+            "slip_p95_mps": 0.0014803397834646504,
+            "qpd_maxstep_rad": 0.0020965933799743652,
+            "actual_q_maxstep_rad": 0.00017885304317722447
+          },
+          "holding": {
+            "physics": 399,
+            "active_physics": 399,
+            "force_xyz_rms": [
+              3.6221215017011366,
+              0.2504287734938835,
+              0.5289054216177916
+            ],
+            "error_xyz_rms_cm": [
+              4.542316456862977,
+              0.3110469636304857,
+              0.6587371929992906
+            ],
+            "yaw_delta_deg": 0.2004531089046103,
+            "yaw_excursion_deg": 0.2004531089046103,
+            "root_xy_path_m": 0.0014456573278705442,
+            "root_delta_m": [
+              0.0013820245662137312,
+              0.0004105047355100547,
+              -0.00010570548192689877
+            ],
+            "slip_peak_mps": 0.0009309097221664204,
+            "slip_p95_mps": 0.000924549912932836,
+            "qpd_maxstep_rad": 0.00014537572860717773,
+            "actual_q_maxstep_rad": 2.9788884020054418e-05
+          },
+          "released": {
+            "physics": 800,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -1.8696237625536793,
+            "yaw_excursion_deg": 1.8696237625536793,
+            "root_xy_path_m": 0.012291841313381327,
+            "root_delta_m": [
+              -0.0116912412458353,
+              -0.0012819957189219439,
+              -0.00044767820457924934
+            ],
+            "slip_peak_mps": 0.001194925004280294,
+            "slip_p95_mps": 0.0011915771362254223,
+            "qpd_maxstep_rad": 0.008046448230743408,
+            "actual_q_maxstep_rad": 0.0005629007268906847
+          }
+        }
+      }
+    },
+    {
+      "case": 2,
+      "family": "mid",
+      "parent_id": "cb29bf09014a2b5416b8d9cf11921d07eac3a0c885365c55ea31a3ca27e371c4",
+      "initial_obs_q_qvel_time_exact": true,
+      "source_state_sha_equal": true,
+      "source_state_sha_old": "bd9af4704ad66cc3c1d7a1948c2bd374588e1778b5396d6acf3de91490f2f2ff",
+      "source_state_sha_new": "bd9af4704ad66cc3c1d7a1948c2bd374588e1778b5396d6acf3de91490f2f2ff",
+      "initial_action_max_abs": 0.02860298752784729,
+      "initial_qpd_max_abs_rad": 0.016655562445521355,
+      "traces_sha256": [
+        "40ac6ac53dc2f4b707a72fd2f6aa1218ed89d110d65e46a4ac5e048062efaef0",
+        "033eda6557e9772a237d65ab5a7f44aa0ed55b1fff51f8cde4255fa46c36a476"
+      ],
+      "A128": {
+        "error_cm": 40.0742041998121,
+        "force_N": 10.0,
+        "cap_fraction": 1.0,
+        "yaw_abs_final_deg": 168.1159473370838,
+        "clean_success": false,
+        "boundary": null,
+        "partner_progress_m": 0.3464430152511712,
+        "wrist_progress_m": 0.30897410458315105,
+        "whole": {
+          "physics": 2340,
+          "active_physics": 1399,
+          "force_xyz_rms": [
+            6.316682756124346,
+            5.646822197781412,
+            5.3115833821116425
+          ],
+          "error_xyz_rms_cm": [
+            25.998163132587713,
+            22.955485440822514,
+            20.075582514545687
+          ],
+          "yaw_delta_deg": 1277.413456332701,
+          "yaw_excursion_deg": 1277.413456332701,
+          "root_xy_path_m": 6.10075855796196,
+          "root_delta_m": [
+            0.7655879313336431,
+            -0.19920529091437522,
+            -0.15247051220496355
+          ],
+          "slip_peak_mps": 2.596168891292138,
+          "slip_p95_mps": 0.22337805820368734,
+          "qpd_maxstep_rad": 0.899147242307663,
+          "actual_q_maxstep_rad": 0.07174147024127997
+        },
+        "phases": {
+          "precontact": {
+            "physics": 140,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 79.08704257030946,
+            "yaw_excursion_deg": 79.08704257030946,
+            "root_xy_path_m": 0.22045682540778877,
+            "root_delta_m": [
+              0.07555215943545864,
+              -0.10246832867962319,
+              -0.12908992065764047
+            ],
+            "slip_peak_mps": 1.2024846963411706,
+            "slip_p95_mps": 0.2643153173497887,
+            "qpd_maxstep_rad": 0.899147242307663,
+            "actual_q_maxstep_rad": 0.05975823263656699
+          },
+          "moving": {
+            "physics": 919,
+            "active_physics": 919,
+            "force_xyz_rms": [
+              6.586069792626328,
+              5.5119735405252825,
+              5.122678242404474
+            ],
+            "error_xyz_rms_cm": [
+              27.394664702085215,
+              23.92801240149759,
+              19.789850697048323
+            ],
+            "yaw_delta_deg": 491.3460557872285,
+            "yaw_excursion_deg": 491.3460557872285,
+            "root_xy_path_m": 2.702736625387386,
+            "root_delta_m": [
+              0.6634485640313545,
+              -0.1780260048401719,
+              -0.016496447832445194
+            ],
+            "slip_peak_mps": 2.4554117209621382,
+            "slip_p95_mps": 0.26038279620808596,
+            "qpd_maxstep_rad": 0.8718258738517761,
+            "actual_q_maxstep_rad": 0.06388346658264701
+          },
+          "holding": {
+            "physics": 480,
+            "active_physics": 480,
+            "force_xyz_rms": [
+              5.765909006848015,
+              5.896402934477463,
+              5.6556808395660445
+            ],
+            "error_xyz_rms_cm": [
+              23.089978081025315,
+              20.968023111180383,
+              20.611591218718825
+            ],
+            "yaw_delta_deg": 268.6169084391208,
+            "yaw_excursion_deg": 268.6169084391208,
+            "root_xy_path_m": 1.4768152069579528,
+            "root_delta_m": [
+              -0.1486178612587079,
+              0.2257003827666702,
+              -0.06177891128382962
+            ],
+            "slip_peak_mps": 2.596168891292138,
+            "slip_p95_mps": 0.2023915145054662,
+            "qpd_maxstep_rad": 0.7872470021247864,
+            "actual_q_maxstep_rad": 0.05984760392814381
+          },
+          "released": {
+            "physics": 800,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 436.32346259891204,
+            "yaw_excursion_deg": 436.32346259891204,
+            "root_xy_path_m": 1.693209822109242,
+            "root_delta_m": [
+              0.17146578860781103,
+              -0.14435580781014723,
+              0.05751189142416635
+            ],
+            "slip_peak_mps": 1.1803271681542227,
+            "slip_p95_mps": 0.18003270470306373,
+            "qpd_maxstep_rad": 0.7520392537117004,
+            "actual_q_maxstep_rad": 0.07174147024127997
+          }
+        }
+      },
+      "zero_U": {
+        "error_cm": 20.33388070198412,
+        "force_N": 8.721577348084868,
+        "cap_fraction": 0.6754824874910651,
+        "yaw_abs_final_deg": 5.047147233232105,
+        "clean_success": false,
+        "boundary": null,
+        "partner_progress_m": 0.34644301525117127,
+        "wrist_progress_m": 0.08299918236726098,
+        "whole": {
+          "physics": 2340,
+          "active_physics": 1399,
+          "force_xyz_rms": [
+            8.666862336568325,
+            0.5882432708581647,
+            0.7780607507711773
+          ],
+          "error_xyz_rms_cm": [
+            20.226021132396152,
+            1.3610980790247493,
+            1.6265260484473756
+          ],
+          "yaw_delta_deg": 0.47886149193667926,
+          "yaw_excursion_deg": 2.542571008634895,
+          "root_xy_path_m": 0.07226997214371914,
+          "root_delta_m": [
+            0.0068996055585130445,
+            -0.0016281444443798643,
+            -0.0007275219670991317
+          ],
+          "slip_peak_mps": 0.0019809830955279362,
+          "slip_p95_mps": 0.00197130035155048,
+          "qpd_maxstep_rad": 0.018837571144104004,
+          "actual_q_maxstep_rad": 0.002297687781526933
+        },
+        "phases": {
+          "precontact": {
+            "physics": 140,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -0.33939470193348464,
+            "yaw_excursion_deg": 0.33939470193348464,
+            "root_xy_path_m": 8.496387046343329e-05,
+            "root_delta_m": [
+              -2.2891146221237085e-05,
+              -8.180468395081048e-05,
+              -0.00011999855683009208
+            ],
+            "slip_peak_mps": 0.0016276062632120845,
+            "slip_p95_mps": 0.0016227092863697714,
+            "qpd_maxstep_rad": 9.062886238098145e-05,
+            "actual_q_maxstep_rad": 2.337460408474712e-05
+          },
+          "moving": {
+            "physics": 919,
+            "active_physics": 919,
+            "force_xyz_rms": [
+              7.9147119342140275,
+              0.5301799823366928,
+              0.8007603217837805
+            ],
+            "error_xyz_rms_cm": [
+              15.841475630416282,
+              1.039235632154799,
+              1.4204957008103982
+            ],
+            "yaw_delta_deg": 1.6794200827875176,
+            "yaw_excursion_deg": 1.6794200827875176,
+            "root_xy_path_m": 0.03628576169392881,
+            "root_delta_m": [
+              0.03539644273079921,
+              0.005545095885447791,
+              -0.0006325240175610869
+            ],
+            "slip_peak_mps": 0.0019662884407787894,
+            "slip_p95_mps": 0.0019514352468795713,
+            "qpd_maxstep_rad": 0.004357695579528809,
+            "actual_q_maxstep_rad": 0.00039996367784535247
+          },
+          "holding": {
+            "physics": 480,
+            "active_physics": 480,
+            "force_xyz_rms": [
+              9.949516343585808,
+              0.6858293581571887,
+              0.7326408534940881
+            ],
+            "error_xyz_rms_cm": [
+              26.680767162787554,
+              1.82530862260574,
+              1.9615101583875127
+            ],
+            "yaw_delta_deg": 1.2008179602011964,
+            "yaw_excursion_deg": 1.2008179602011964,
+            "root_xy_path_m": 0.0025090122417747327,
+            "root_delta_m": [
+              0.0024638704709089958,
+              -0.00043411760056619175,
+              5.779815844608738e-05
+            ],
+            "slip_peak_mps": 0.001980765362679403,
+            "slip_p95_mps": 0.001978993306972207,
+            "qpd_maxstep_rad": 5.334615707397461e-05,
+            "actual_q_maxstep_rad": 1.879058362205116e-05
+          },
+          "released": {
+            "physics": 800,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -2.0615170597005377,
+            "yaw_excursion_deg": 2.0615170597005377,
+            "root_xy_path_m": 0.033383236012829026,
+            "root_delta_m": [
+              -0.030943358860844587,
+              -0.006656361804999844,
+              -3.1774741528156625e-05
+            ],
+            "slip_peak_mps": 0.0019809830955279362,
+            "slip_p95_mps": 0.0018385945922045322,
+            "qpd_maxstep_rad": 0.018837571144104004,
+            "actual_q_maxstep_rad": 0.002297687781526933
+          }
+        }
+      }
+    },
+    {
+      "case": 3,
+      "family": "zero",
+      "parent_id": "0e719f297deb2ad57dd345f9f4148c8df4073fb4b7f4dbd520303aedeb47c6f6",
+      "initial_obs_q_qvel_time_exact": true,
+      "source_state_sha_equal": true,
+      "source_state_sha_old": "360c9c9cbea9656815ac8441d66189f919cf0564cfa6f7c2948d82af0592e514",
+      "source_state_sha_new": "360c9c9cbea9656815ac8441d66189f919cf0564cfa6f7c2948d82af0592e514",
+      "initial_action_max_abs": 0.028601735830307007,
+      "initial_qpd_max_abs_rad": 0.016654392704367638,
+      "traces_sha256": [
+        "3ef40d71a85c7de33f0c4e0bb993bad83b1ced065f88db1d8b7debbb252c1bc8",
+        "493c3cdc37461e166165b0b0ba9b4a734b80beb055d9764c8ec7d539598dcb1e"
+      ],
+      "A128": {
+        "error_cm": 36.77119491021785,
+        "force_N": 10.0,
+        "cap_fraction": 1.0,
+        "yaw_abs_final_deg": 76.35147867927333,
+        "clean_success": null,
+        "boundary": null,
+        "partner_progress_m": 0.0,
+        "wrist_progress_m": 0.1336934673351724,
+        "whole": {
+          "physics": 1920,
+          "active_physics": 959,
+          "force_xyz_rms": [
+            6.629611886357736,
+            6.433051929276212,
+            3.8293718951676374
+          ],
+          "error_xyz_rms_cm": [
+            25.303115254143837,
+            24.336739830367467,
+            10.835142819830244
+          ],
+          "yaw_delta_deg": 1161.8805100418829,
+          "yaw_excursion_deg": 1161.8805100418829,
+          "root_xy_path_m": 5.311618514889109,
+          "root_delta_m": [
+            0.9888734477409031,
+            -0.3221256247392401,
+            -0.15992906566631804
+          ],
+          "slip_peak_mps": 2.5240871369899036,
+          "slip_p95_mps": 0.2744796974660559,
+          "qpd_maxstep_rad": 1.0205173641443253,
+          "actual_q_maxstep_rad": 0.06430903982726896
+        },
+        "phases": {
+          "precontact": {
+            "physics": 160,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 99.92357060716782,
+            "yaw_excursion_deg": 99.92357060716782,
+            "root_xy_path_m": 0.2776321078741849,
+            "root_delta_m": [
+              0.10002830559122498,
+              -0.1538012734864245,
+              -0.15246588227655067
+            ],
+            "slip_peak_mps": 1.202084064358957,
+            "slip_p95_mps": 0.16211503574044978,
+            "qpd_maxstep_rad": 0.8988038003444672,
+            "actual_q_maxstep_rad": 0.059764412049857635
+          },
+          "moving": {
+            "physics": 600,
+            "active_physics": 600,
+            "force_xyz_rms": [
+              6.712839900451159,
+              6.1766395465830035,
+              4.097182493189408
+            ],
+            "error_xyz_rms_cm": [
+              24.203875862544525,
+              23.431514898645386,
+              11.549464788213113
+            ],
+            "yaw_delta_deg": 354.7521034520291,
+            "yaw_excursion_deg": 354.7521034520291,
+            "root_xy_path_m": 1.728447157023976,
+            "root_delta_m": [
+              0.08660554568660495,
+              0.28585013899775397,
+              0.02434795104671128
+            ],
+            "slip_peak_mps": 2.5240871369899036,
+            "slip_p95_mps": 0.27542653363367425,
+            "qpd_maxstep_rad": 0.8241484016180038,
+            "actual_q_maxstep_rad": 0.05632041068011154
+          },
+          "holding": {
+            "physics": 359,
+            "active_physics": 359,
+            "force_xyz_rms": [
+              6.488129323809502,
+              6.840173202616005,
+              3.3340978443556777
+            ],
+            "error_xyz_rms_cm": [
+              27.040716446819246,
+              25.778789956675908,
+              9.522415231746777
+            ],
+            "yaw_delta_deg": 212.97965929980086,
+            "yaw_excursion_deg": 212.97965929980086,
+            "root_xy_path_m": 1.0272756396901612,
+            "root_delta_m": [
+              0.3572802417768908,
+              -0.15547821297416028,
+              -0.0005989514778836913
+            ],
+            "slip_peak_mps": 2.4223859536786025,
+            "slip_p95_mps": 0.25502976116983384,
+            "qpd_maxstep_rad": 0.9605016708374023,
+            "actual_q_maxstep_rad": 0.0550902221155819
+          },
+          "released": {
+            "physics": 800,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 491.8449168148101,
+            "yaw_excursion_deg": 491.8449168148101,
+            "root_xy_path_m": 2.2714546608548964,
+            "root_delta_m": [
+              0.4476459280352487,
+              -0.29578834908887924,
+              -0.0348489444489436
+            ],
+            "slip_peak_mps": 2.1498980616847336,
+            "slip_p95_mps": 0.28549598525638575,
+            "qpd_maxstep_rad": 0.8561961054801941,
+            "actual_q_maxstep_rad": 0.06430903982726896
+          }
+        }
+      },
+      "zero_U": {
+        "error_cm": 0.40000391043697614,
+        "force_N": 0.32710940335944566,
+        "cap_fraction": 0.0,
+        "yaw_abs_final_deg": 8.838981141585544,
+        "clean_success": null,
+        "boundary": null,
+        "partner_progress_m": 0.0,
+        "wrist_progress_m": -0.0036658600257874208,
+        "whole": {
+          "physics": 1920,
+          "active_physics": 959,
+          "force_xyz_rms": [
+            0.1955419826773881,
+            0.2557840664498158,
+            0.057778941900702735
+          ],
+          "error_xyz_rms_cm": [
+            0.23843827279907392,
+            0.3127490109715121,
+            0.07049672662534846
+          ],
+          "yaw_delta_deg": -3.3133307436899155,
+          "yaw_excursion_deg": 3.3133307436899155,
+          "root_xy_path_m": 0.0033420049547875355,
+          "root_delta_m": [
+            0.0008332915239026017,
+            0.000857770156598249,
+            -0.0012577628322403278
+          ],
+          "slip_peak_mps": 0.0016272674486014563,
+          "slip_p95_mps": 0.0015656790668169308,
+          "qpd_maxstep_rad": 0.0006561875343322754,
+          "actual_q_maxstep_rad": 2.3334293206001e-05
+        },
+        "phases": {
+          "precontact": {
+            "physics": 160,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -0.38661803833366054,
+            "yaw_excursion_deg": 0.38661803833366054,
+            "root_xy_path_m": 9.552404230211701e-05,
+            "root_delta_m": [
+              -2.7053348077767103e-05,
+              -9.158023729462228e-05,
+              -0.0001357091464960769
+            ],
+            "slip_peak_mps": 0.001626953167209528,
+            "slip_p95_mps": 0.0016217357400105717,
+            "qpd_maxstep_rad": 9.04574990272522e-05,
+            "actual_q_maxstep_rad": 2.328361079698138e-05
+          },
+          "moving": {
+            "physics": 600,
+            "active_physics": 600,
+            "force_xyz_rms": [
+              0.14170569943839653,
+              0.19611270567764857,
+              0.04178816193532833
+            ],
+            "error_xyz_rms_cm": [
+              0.16996350188758222,
+              0.23595896059030091,
+              0.050049663688730865
+            ],
+            "yaw_delta_deg": -1.162723874074601,
+            "yaw_excursion_deg": 1.162723874074601,
+            "root_xy_path_m": 0.0011667444000108493,
+            "root_delta_m": [
+              0.0009062184221810439,
+              0.0006688359276906183,
+              -0.0004005343572539566
+            ],
+            "slip_peak_mps": 0.0015258400873209522,
+            "slip_p95_mps": 0.0014972727091594948,
+            "qpd_maxstep_rad": 9.489059448242188e-05,
+            "actual_q_maxstep_rad": 2.2248255527795857e-05
+          },
+          "holding": {
+            "physics": 359,
+            "active_physics": 359,
+            "force_xyz_rms": [
+              0.2618801767870038,
+              0.3324046248033491,
+              0.07745573251309125
+            ],
+            "error_xyz_rms_cm": [
+              0.32185607929069565,
+              0.4101622598807234,
+              0.09533763249024878
+            ],
+            "yaw_delta_deg": -0.5134774219965551,
+            "yaw_excursion_deg": 0.5134774219965551,
+            "root_xy_path_m": 0.00085752225884446,
+            "root_delta_m": [
+              0.0005531502370687141,
+              0.0006549921725469907,
+              -0.0001823892406667138
+            ],
+            "slip_peak_mps": 0.0010788773266900348,
+            "slip_p95_mps": 0.001067676201353564,
+            "qpd_maxstep_rad": 5.835294723510742e-05,
+            "actual_q_maxstep_rad": 1.8758454863820884e-05
+          },
+          "released": {
+            "physics": 800,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -1.2426356356589763,
+            "yaw_excursion_deg": 1.2426356356589763,
+            "root_xy_path_m": 0.0012165740235437089,
+            "root_delta_m": [
+              -0.0006016016126711883,
+              -0.0003768513768269005,
+              -0.0005363857672809891
+            ],
+            "slip_peak_mps": 0.0009962236730592072,
+            "slip_p95_mps": 0.00099432479311439,
+            "qpd_maxstep_rad": 0.0006561875343322754,
+            "actual_q_maxstep_rad": 1.652512519024346e-05
+          }
+        }
+      }
+    },
+    {
+      "case": 4,
+      "family": "stop",
+      "parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+      "initial_obs_q_qvel_time_exact": true,
+      "source_state_sha_equal": true,
+      "source_state_sha_old": "995709df0419dcad064c8944be054cde1647f4f94b45e9aec6d9506fbfac602b",
+      "source_state_sha_new": "995709df0419dcad064c8944be054cde1647f4f94b45e9aec6d9506fbfac602b",
+      "initial_action_max_abs": 0.028621643781661987,
+      "initial_qpd_max_abs_rad": 0.016613906249403954,
+      "traces_sha256": [
+        "bf8c39c0b13e9adb4744639e13980c48dcbe9745da211e77cbfa8d1f49c33b91",
+        "921747b5b76dbf89b5c1c4ee8764dd4e0621a5efa3a89dd4646d4bc45f0bb35f"
+      ],
+      "A128": {
+        "error_cm": 37.79228951063686,
+        "force_N": 9.995040697810486,
+        "cap_fraction": 0.9883824843610366,
+        "yaw_abs_final_deg": 129.58274258250344,
+        "clean_success": false,
+        "boundary": null,
+        "partner_progress_m": 0.23020448017490316,
+        "wrist_progress_m": 0.473030985523526,
+        "whole": {
+          "physics": 2100,
+          "active_physics": 1119,
+          "force_xyz_rms": [
+            6.802837527706948,
+            6.099885096831945,
+            4.0513753131445975
+          ],
+          "error_xyz_rms_cm": [
+            26.206929779593384,
+            22.931963078781546,
+            14.653091854494571
+          ],
+          "yaw_delta_deg": 1215.0635121086027,
+          "yaw_excursion_deg": 1215.0635121086027,
+          "root_xy_path_m": 5.5503361274676175,
+          "root_delta_m": [
+            0.15972611371638643,
+            -0.7416218918792541,
+            -0.19247513428057372
+          ],
+          "slip_peak_mps": 3.160134306918765,
+          "slip_p95_mps": 0.2670787825447499,
+          "qpd_maxstep_rad": 0.9642125368118286,
+          "actual_q_maxstep_rad": 0.0706424700556939
+        },
+        "phases": {
+          "precontact": {
+            "physics": 180,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 117.79315465466719,
+            "yaw_excursion_deg": 117.79315465466719,
+            "root_xy_path_m": 0.3225233484435264,
+            "root_delta_m": [
+              0.09328803821843351,
+              -0.19775932729013684,
+              -0.1371193450797672
+            ],
+            "slip_peak_mps": 1.1855330501166155,
+            "slip_p95_mps": 0.11704581263840583,
+            "qpd_maxstep_rad": 0.8878311216831207,
+            "actual_q_maxstep_rad": 0.05975443998843366
+          },
+          "moving": {
+            "physics": 500,
+            "active_physics": 500,
+            "force_xyz_rms": [
+              6.544092487823276,
+              6.127651491420392,
+              4.40508994089741
+            ],
+            "error_xyz_rms_cm": [
+              20.62898109351563,
+              20.996219587492256,
+              14.982008943085487
+            ],
+            "yaw_delta_deg": 296.87274761787904,
+            "yaw_excursion_deg": 296.87274761787904,
+            "root_xy_path_m": 1.4260599205470879,
+            "root_delta_m": [
+              0.15390226954083913,
+              0.4249442166819707,
+              -0.00560201444063968
+            ],
+            "slip_peak_mps": 2.28845766316446,
+            "slip_p95_mps": 0.32896803951614956,
+            "qpd_maxstep_rad": 0.8350758701562881,
+            "actual_q_maxstep_rad": 0.0639975696035252
+          },
+          "decelerating": {
+            "physics": 140,
+            "active_physics": 140,
+            "force_xyz_rms": [
+              4.9163967768485115,
+              7.672489686475359,
+              4.118488162362839
+            ],
+            "error_xyz_rms_cm": [
+              19.497672765333725,
+              28.583889188802626,
+              15.69248065795066
+            ],
+            "yaw_delta_deg": 84.34056645105429,
+            "yaw_excursion_deg": 84.34056645105429,
+            "root_xy_path_m": 0.3662640891305978,
+            "root_delta_m": [
+              -0.09586359201338393,
+              -0.2662349540203171,
+              0.020074207045713277
+            ],
+            "slip_peak_mps": 2.3076587453587183,
+            "slip_p95_mps": 0.25948019439961534,
+            "qpd_maxstep_rad": 0.9050664454698563,
+            "actual_q_maxstep_rad": 0.05960233031077947
+          },
+          "holding": {
+            "physics": 479,
+            "active_physics": 479,
+            "force_xyz_rms": [
+              7.506329184588299,
+              5.5248482651551125,
+              3.6236823563345797
+            ],
+            "error_xyz_rms_cm": [
+              32.390268293682425,
+              23.01166119688943,
+              13.97568056458435
+            ],
+            "yaw_delta_deg": 224.57938742424886,
+            "yaw_excursion_deg": 256.29440467981965,
+            "root_xy_path_m": 1.2154512618846929,
+            "root_delta_m": [
+              0.2123458427213034,
+              0.01015911645179142,
+              -0.0653313390302539
+            ],
+            "slip_peak_mps": 2.4048100015793508,
+            "slip_p95_mps": 0.3246458391280447,
+            "qpd_maxstep_rad": 0.9642125368118286,
+            "actual_q_maxstep_rad": 0.0706424700556939
+          },
+          "released": {
+            "physics": 800,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 489.06804365389934,
+            "yaw_excursion_deg": 489.06804365389934,
+            "root_xy_path_m": 2.207726360498574,
+            "root_delta_m": [
+              -0.20297805344129904,
+              -0.7031860968457487,
+              -0.009173662946171834
+            ],
+            "slip_peak_mps": 3.160134306918765,
+            "slip_p95_mps": 0.1882238289986518,
+            "qpd_maxstep_rad": 0.7691067755222321,
+            "actual_q_maxstep_rad": 0.06535456390930716
+          }
+        }
+      },
+      "zero_U": {
+        "error_cm": 12.483852505638191,
+        "force_N": 8.400182093134395,
+        "cap_fraction": 0.5942806076854334,
+        "yaw_abs_final_deg": 5.799522367741842,
+        "clean_success": false,
+        "boundary": null,
+        "partner_progress_m": 0.2302044801749032,
+        "wrist_progress_m": 0.07808500947115429,
+        "whole": {
+          "physics": 2100,
+          "active_physics": 1119,
+          "force_xyz_rms": [
+            8.310585220062192,
+            0.7304662344159321,
+            0.9816575667094035
+          ],
+          "error_xyz_rms_cm": [
+            12.355785267593099,
+            1.0989353103507011,
+            1.4468419203502867
+          ],
+          "yaw_delta_deg": -0.32218782465328377,
+          "yaw_excursion_deg": 1.6668539756150762,
+          "root_xy_path_m": 0.07103522201503679,
+          "root_delta_m": [
+            0.005292139862871862,
+            -0.0011130854440959334,
+            -0.0007937913369231442
+          ],
+          "slip_peak_mps": 0.0019569454421337258,
+          "slip_p95_mps": 0.0019131310245454288,
+          "qpd_maxstep_rad": 0.01866072416305542,
+          "actual_q_maxstep_rad": 0.0021583815638850923
+        },
+        "phases": {
+          "precontact": {
+            "physics": 180,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -0.4368454291754514,
+            "yaw_excursion_deg": 0.4368454291754514,
+            "root_xy_path_m": 0.00011332293071226924,
+            "root_delta_m": [
+              -2.150612464429935e-05,
+              -0.00011122134562233099,
+              -0.00015705543930122356
+            ],
+            "slip_peak_mps": 0.0016423823573095575,
+            "slip_p95_mps": 0.0016363552838720874,
+            "qpd_maxstep_rad": 9.243935346603394e-05,
+            "actual_q_maxstep_rad": 2.3986039821399796e-05
+          },
+          "moving": {
+            "physics": 500,
+            "active_physics": 500,
+            "force_xyz_rms": [
+              5.779397508557221,
+              0.3947196706060367,
+              0.7502581585233807
+            ],
+            "error_xyz_rms_cm": [
+              6.8346946347988045,
+              0.45572317355569714,
+              0.8877315413503213
+            ],
+            "yaw_delta_deg": 0.6275641145167914,
+            "yaw_excursion_deg": 0.6275641145167914,
+            "root_xy_path_m": 0.02902535204976915,
+            "root_delta_m": [
+              0.02886252321328587,
+              0.00259119042686249,
+              -0.0005429556661399326
+            ],
+            "slip_peak_mps": 0.001942524580571989,
+            "slip_p95_mps": 0.0019100773395219267,
+            "qpd_maxstep_rad": 0.004373013973236084,
+            "actual_q_maxstep_rad": 0.0003816966920647119
+          },
+          "decelerating": {
+            "physics": 140,
+            "active_physics": 140,
+            "force_xyz_rms": [
+              9.900513376209393,
+              0.8240357363233334,
+              1.1405261911771047
+            ],
+            "error_xyz_rms_cm": [
+              15.06105222743835,
+              1.243110676705782,
+              1.761097168474349
+            ],
+            "yaw_delta_deg": 0.31383774519872915,
+            "yaw_excursion_deg": 0.31383774519872915,
+            "root_xy_path_m": 0.005583429747680545,
+            "root_delta_m": [
+              0.005211901101068901,
+              0.0019641713516240777,
+              -0.0001416949501746867
+            ],
+            "slip_peak_mps": 0.0019569454421337258,
+            "slip_p95_mps": 0.001956592729875325,
+            "qpd_maxstep_rad": 0.0022562742233276367,
+            "actual_q_maxstep_rad": 0.00016081903532645658
+          },
+          "holding": {
+            "physics": 479,
+            "active_physics": 479,
+            "force_xyz_rms": [
+              9.890962870954883,
+              0.9409611248282286,
+              1.1328926016855603
+            ],
+            "error_xyz_rms_cm": [
+              15.543000434152507,
+              1.4672364977273642,
+              1.7779805333275247
+            ],
+            "yaw_delta_deg": 1.1586469228360534,
+            "yaw_excursion_deg": 1.1586469228360534,
+            "root_xy_path_m": 0.002692311169533352,
+            "root_delta_m": [
+              0.0026085925129989288,
+              -6.491102558473655e-05,
+              -2.733545647104485e-05
+            ],
+            "slip_peak_mps": 0.0019133497496927735,
+            "slip_p95_mps": 0.0019117033855,
+            "qpd_maxstep_rad": 0.00022977590560913086,
+            "actual_q_maxstep_rad": 3.1494263261431284e-05
+          },
+          "released": {
+            "physics": 800,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -1.9871250372068838,
+            "yaw_excursion_deg": 1.9871250372068838,
+            "root_xy_path_m": 0.03352163527415719,
+            "root_delta_m": [
+              -0.03146326783195917,
+              -0.005517483676243384,
+              7.880338959209698e-05
+            ],
+            "slip_peak_mps": 0.0019135721927019435,
+            "slip_p95_mps": 0.0017591785008936717,
+            "qpd_maxstep_rad": 0.01866072416305542,
+            "actual_q_maxstep_rad": 0.0021583815638850923
+          }
+        }
+      }
+    },
+    {
+      "case": 5,
+      "family": "continue",
+      "parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+      "initial_obs_q_qvel_time_exact": true,
+      "source_state_sha_equal": true,
+      "source_state_sha_old": "995709df0419dcad064c8944be054cde1647f4f94b45e9aec6d9506fbfac602b",
+      "source_state_sha_new": "995709df0419dcad064c8944be054cde1647f4f94b45e9aec6d9506fbfac602b",
+      "initial_action_max_abs": 0.028621643781661987,
+      "initial_qpd_max_abs_rad": 0.016613906249403954,
+      "traces_sha256": [
+        "a542784b964ef330c5a68ec0a4625ca6195b50347749050b2d5693e644396450",
+        "7b26b043ec45e15767708a15518906a24ddc90df9d5a9019c1891826a304e696"
+      ],
+      "A128": {
+        "error_cm": 38.27320715680189,
+        "force_N": 9.981336229593044,
+        "cap_fraction": 0.9757623143080532,
+        "yaw_abs_final_deg": 116.5963793820644,
+        "clean_success": false,
+        "boundary": null,
+        "partner_progress_m": 0.2853869883225302,
+        "wrist_progress_m": 0.4509785029325826,
+        "whole": {
+          "physics": 2260,
+          "active_physics": 1279,
+          "force_xyz_rms": [
+            6.342175239004172,
+            6.576236948633415,
+            4.01957631615294
+          ],
+          "error_xyz_rms_cm": [
+            25.677927690129504,
+            24.2876779260825,
+            14.65066613487086
+          ],
+          "yaw_delta_deg": 1328.8843901440348,
+          "yaw_excursion_deg": 1328.8843901440348,
+          "root_xy_path_m": 5.653770570819569,
+          "root_delta_m": [
+            1.0593404517244973,
+            -0.15962592034123746,
+            -0.18950538189023192
+          ],
+          "slip_peak_mps": 2.303243273673425,
+          "slip_p95_mps": 0.263079897427679,
+          "qpd_maxstep_rad": 0.9050644040107727,
+          "actual_q_maxstep_rad": 0.07542614772661488
+        },
+        "phases": {
+          "precontact": {
+            "physics": 180,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 117.79315465466719,
+            "yaw_excursion_deg": 117.79315465466719,
+            "root_xy_path_m": 0.3225233484435264,
+            "root_delta_m": [
+              0.09328803821843351,
+              -0.19775932729013684,
+              -0.1371193450797672
+            ],
+            "slip_peak_mps": 1.1855330501166155,
+            "slip_p95_mps": 0.11704581263840583,
+            "qpd_maxstep_rad": 0.8878311216831207,
+            "actual_q_maxstep_rad": 0.05975443998843366
+          },
+          "moving": {
+            "physics": 799,
+            "active_physics": 799,
+            "force_xyz_rms": [
+              6.857906393218011,
+              6.004142984885602,
+              4.0964022321268105
+            ],
+            "error_xyz_rms_cm": [
+              28.148817734682734,
+              22.498573725630706,
+              15.081039715543776
+            ],
+            "yaw_delta_deg": 475.9282531299234,
+            "yaw_excursion_deg": 475.9282531299234,
+            "root_xy_path_m": 2.231698945006002,
+            "root_delta_m": [
+              0.24981396744592976,
+              -0.027857129678841297,
+              0.0490024113798172
+            ],
+            "slip_peak_mps": 2.303243273673425,
+            "slip_p95_mps": 0.2923470294303176,
+            "qpd_maxstep_rad": 0.9050644040107727,
+            "actual_q_maxstep_rad": 0.0639975696035252
+          },
+          "holding": {
+            "physics": 480,
+            "active_physics": 480,
+            "force_xyz_rms": [
+              5.375054780823106,
+              7.43149810099846,
+              3.88832829711522
+            ],
+            "error_xyz_rms_cm": [
+              20.927647695357166,
+              27.004185691880956,
+              13.904763265801922
+            ],
+            "yaw_delta_deg": 230.83481858179888,
+            "yaw_excursion_deg": 250.73643714227248,
+            "root_xy_path_m": 1.1125325709799019,
+            "root_delta_m": [
+              0.17817222316275055,
+              0.2026007830643791,
+              -0.11382700128834622
+            ],
+            "slip_peak_mps": 2.0497699381117274,
+            "slip_p95_mps": 0.28799927623222676,
+            "qpd_maxstep_rad": 0.8028684854507446,
+            "actual_q_maxstep_rad": 0.07542614772661488
+          },
+          "released": {
+            "physics": 800,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": 501.8786460811601,
+            "yaw_excursion_deg": 501.8786460811601,
+            "root_xy_path_m": 1.9772862817927033,
+            "root_delta_m": [
+              0.5348169811213643,
+              -0.13665458884837955,
+              0.01235869534680456
+            ],
+            "slip_peak_mps": 2.204416191231719,
+            "slip_p95_mps": 0.189224615099087,
+            "qpd_maxstep_rad": 0.8614468723535538,
+            "actual_q_maxstep_rad": 0.06566697106798564
+          }
+        }
+      },
+      "zero_U": {
+        "error_cm": 16.214287577750248,
+        "force_N": 8.61658596817529,
+        "cap_fraction": 0.6450351837372947,
+        "yaw_abs_final_deg": 5.374894369819317,
+        "clean_success": false,
+        "boundary": null,
+        "partner_progress_m": 0.2853869883225302,
+        "wrist_progress_m": 0.08098388847992524,
+        "whole": {
+          "physics": 2260,
+          "active_physics": 1279,
+          "force_xyz_rms": [
+            8.54751879089045,
+            0.6583954482784864,
+            0.8671745499126164
+          ],
+          "error_xyz_rms_cm": [
+            16.09490066625079,
+            1.2521725299269324,
+            1.5519095897077861
+          ],
+          "yaw_delta_deg": 0.10244017326924144,
+          "yaw_excursion_deg": 2.1288869545222697,
+          "root_xy_path_m": 0.07177026722773416,
+          "root_delta_m": [
+            0.00623560542503452,
+            -0.0014240930448745429,
+            -0.0007720048566386417
+          ],
+          "slip_peak_mps": 0.0019572996525896585,
+          "slip_p95_mps": 0.0019458512825340456,
+          "qpd_maxstep_rad": 0.018726587295532227,
+          "actual_q_maxstep_rad": 0.0022410918170382016
+        },
+        "phases": {
+          "precontact": {
+            "physics": 180,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -0.4368454291754514,
+            "yaw_excursion_deg": 0.4368454291754514,
+            "root_xy_path_m": 0.00011332293071226924,
+            "root_delta_m": [
+              -2.150612464429935e-05,
+              -0.00011122134562233099,
+              -0.00015705543930122356
+            ],
+            "slip_peak_mps": 0.0016423823573095575,
+            "slip_p95_mps": 0.0016363552838720874,
+            "qpd_maxstep_rad": 9.243935346603394e-05,
+            "actual_q_maxstep_rad": 2.3986039821399796e-05
+          },
+          "moving": {
+            "physics": 799,
+            "active_physics": 799,
+            "force_xyz_rms": [
+              7.599276900024225,
+              0.553744756950773,
+              0.8472917598645174
+            ],
+            "error_xyz_rms_cm": [
+              12.465520675344486,
+              0.9162144148225178,
+              1.3167454395723013
+            ],
+            "yaw_delta_deg": 1.3714943733255198,
+            "yaw_excursion_deg": 1.3714943733255198,
+            "root_xy_path_m": 0.03575737655903082,
+            "root_delta_m": [
+              0.03500794437214147,
+              0.005223697950259003,
+              -0.0006757847976340825
+            ],
+            "slip_peak_mps": 0.0019572996525896585,
+            "slip_p95_mps": 0.0019475628099660655,
+            "qpd_maxstep_rad": 0.004373013973236084,
+            "actual_q_maxstep_rad": 0.0003816966920647119
+          },
+          "holding": {
+            "physics": 480,
+            "active_physics": 480,
+            "force_xyz_rms": [
+              9.927065337639819,
+              0.8028942293494385,
+              0.8992967467456855
+            ],
+            "error_xyz_rms_cm": [
+              20.774766241995778,
+              1.667502228188788,
+              1.879191133946215
+            ],
+            "yaw_delta_deg": 1.1926208872076176,
+            "yaw_excursion_deg": 1.1926208872076176,
+            "root_xy_path_m": 0.0024554344892012622,
+            "root_delta_m": [
+              0.002411913275702655,
+              -0.0003766210229063302,
+              4.269110418553268e-05
+            ],
+            "slip_peak_mps": 0.0019520630555545917,
+            "slip_p95_mps": 0.001949936104519963,
+            "qpd_maxstep_rad": 6.015598773956299e-05,
+            "actual_q_maxstep_rad": 2.2414166496297766e-05
+          },
+          "released": {
+            "physics": 800,
+            "active_physics": 0,
+            "force_xyz_rms": null,
+            "error_xyz_rms_cm": null,
+            "yaw_delta_deg": -2.0243362598986483,
+            "yaw_excursion_deg": 2.0243362598986483,
+            "root_xy_path_m": 0.033437611491524855,
+            "root_delta_m": [
+              -0.031167775832691473,
+              -0.006159876529462441,
+              1.9266802599893218e-05
+            ],
+            "slip_peak_mps": 0.0019523162781173305,
+            "slip_p95_mps": 0.0018041716948369066,
+            "qpd_maxstep_rad": 0.018726587295532227,
+            "actual_q_maxstep_rad": 0.0022410918170382016
+          }
+        }
+      }
+    }
+  ],
+  "cases": 6,
+  "new_physics": 0,
+  "new_updates": 0,
+  "analysis_s": 6.047668337996583,
+  "zero_u_identity": {
+    "zero_u": true,
+    "A128_core_sha": {
+      "sha256": "d97f8c515fb76f34b7ff3d75b7a29208a68987afbf75de5cf727f8227180114b",
+      "bytes": 6790102
+    },
+    "inherited_u_digest": "f71d7696dd98453f059c0d0686116323f2870484a67ededff4f47039fb0bfe5c",
+    "executed_u_digest": "c21e455e6c69de8ccd70b0227d94b7a331232cccaf8a5fc1015390b9405a1b19",
+    "actor_digest": "99fa786fbfd5f5f291f0b7db167b4d32ef24087b790511d4e73646e686491364",
+    "tail_digest": "05f449160edccfc8cc6393227897f9135e2d8fe5d2557052daee74c02e29ff29",
+    "normalizer_digest": "ef5a75e784ca31d85f12190b374fa73eccbe69f5081f38e645726f967b495883",
+    "goal_digest": "5ddea0371de46aff4a86d33e8bf4894f1a9b9ce188b1932c8b607e6c14abc99e",
+    "actual_initialized_agent_digest": "51ca59ee2891acafdead2d6d4f912b4a026f898839ca78b7ff78f56603fd2793"
+  },
+  "physical_runtime": "1a72d0fe4b7b4473f80a50fd47da4148c05889c6",
+  "reference_runtime": "852c4572f725f176cdab5076c33b5c93a15670a0",
+  "qualification_sha256": "e5bdf96d80972db65acdecd53a87443190590fa4fd5be3fb9f348c727bb720f9",
+  "cost": {
+    "job_wall_s": 480.05992221832275,
+    "new_preparation_analysis_publication_upper_s": 300,
+    "new_total_upper_s": 780.0599222183228,
+    "cumulative_R2_upper_s": 3088.8395652770996,
+    "new_physics_ticks": 19121,
+    "stage_bytes": 520672718
+  }
+}
