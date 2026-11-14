@@ -36,39 +36,41 @@ def study(e,m,c,out):
  # Initial source generation precedes the fixed training random stream.
  torch.manual_seed(636411);np.random.seed(636411)
  base_digest=tree_digest(m._actor.state_dict());tail_digest=tree_digest(agent.tail.state_dict());u_digest=tree_digest(agent.nets['u'].state_dict())
- records=[]
+ records=[];restored=0
+ journal=Journal(out/'checkpoints')
  if ARGS.resume:
   restored=restore(ARGS.resume,agent,env)
   assert tree_digest(agent.state())==tree_digest(load_state(ARGS.resume)['agent'])
+  if restored<4:assert journal.adopt(ARGS.resume)==restored
  else:
-  journal=Journal(out/'checkpoints');journal.save(0,agent,env,RUNTIME,'fresh_initial')
-  for block in range(1,5):
-   start=time.monotonic()
-   with torch.no_grad():
-    for _ in range(50):env.collect_call()
-   sampled=time.monotonic()
-   with torch.enable_grad():updates=agent.update_block_q_only(env.rows,block)
-   torch.cuda.synchronize();updated=time.monotonic()
-   meta=journal.save(block,agent,env,RUNTIME)
-   rec=dict(block=block,transitions=env.next_cursor,collect_s=sampled-start,update_s=updated-sampled,
-       io_s=time.monotonic()-updated,core_bytes=meta['files']['core.delta']['bytes'],data_bytes=meta['files']['data.ptz']['bytes'],
-       q_steps=agent.q_steps,representation_steps=agent.representation_steps,actor_steps=agent.actor_steps,updates=updates)
-   assert tree_digest(agent.tail.state_dict())==tail_digest and tree_digest(agent.nets['u'].state_dict())==u_digest
-   records.append(rec);(out/'blocks.json').write_text(json.dumps(records,indent=2));print('Q_ONLY_COMMITTED',json.dumps({k:v for k,v in rec.items() if k!='updates'}),flush=True)
-   from research.interaction_fb import benchmark
-   if benchmark.STOP_REQUESTED:return dict(status='stopped_after_complete_block',blocks=records)
+  journal.save(0,agent,env,RUNTIME,'fresh_initial')
+ for block in range(restored+1,5):
+  start=time.monotonic()
+  with torch.no_grad():
+   for _ in range(50):env.collect_call()
+  sampled=time.monotonic()
+  with torch.enable_grad():updates=agent.update_block_q_only(env.rows,block)
+  torch.cuda.synchronize();updated=time.monotonic()
+  meta=journal.save(block,agent,env,RUNTIME)
+  rec=dict(block=block,transitions=env.next_cursor,collect_s=sampled-start,update_s=updated-sampled,
+      io_s=time.monotonic()-updated,core_bytes=meta['files']['core.delta']['bytes'],data_bytes=meta['files']['data.ptz']['bytes'],
+      q_steps=agent.q_steps,representation_steps=agent.representation_steps,actor_steps=agent.actor_steps,updates=updates)
+  assert tree_digest(agent.tail.state_dict())==tail_digest and tree_digest(agent.nets['u'].state_dict())==u_digest
+  records.append(rec);(out/'blocks.json').write_text(json.dumps(records,indent=2));print('Q_ONLY_COMMITTED',json.dumps({k:v for k,v in rec.items() if k!='updates'}),flush=True)
+  from research.interaction_fb import benchmark
+  if benchmark.STOP_REQUESTED:return dict(status='stopped_after_complete_block',blocks=records)
  # Independent counterfactual continuation after saved block4; never promoted into rollout.
  before=len(env.physical_stream)
  with torch.no_grad():env.collect_call()
  with torch.enable_grad():metric=agent.q_update(env.rows)
  torch.cuda.synchronize()
  proof=dict(agent=tree_digest(agent.state()),rng=tree_digest(global_rng()),physics=tree_digest(env.physical_stream[before:]),rows=tree_digest(env.rows[-5:]),metric=metric)
- if ARGS.resume:
+ if ARGS.resume and restored==4:
   ref=json.loads((ARGS.resume.parent.parent/'continuation-proof.json').read_text());assert proof==ref,'Full resumed continuation/update differs'
  (out/'continuation-proof.json').write_text(json.dumps(proof,indent=2))
  assert tree_digest(m._actor.state_dict())==base_digest
  return dict(status='q_only_entry_complete',arm=ARGS.arm,blocks=records,checkpoint_transitions=1000,
-     continuation_test_only_transitions=5,actor_steps=0,resume_exact=bool(ARGS.resume),peak_cuda_bytes=torch.cuda.max_memory_allocated())
+     continuation_test_only_transitions=5,actor_steps=0,resume_exact=bool(ARGS.resume and restored==4),resumed_from_round=restored,peak_cuda_bytes=torch.cuda.max_memory_allocated())
 
 def main():
  global ARGS,RUNTIME

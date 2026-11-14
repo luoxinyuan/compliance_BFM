@@ -12,7 +12,7 @@ class GuardedEnvironment(Environment):
         if not t.done and self.guard_reference is None and any(p['active'] for p in t.physics) and float(t.e.tether.time)>=t.spec['release']-1e-8:
             dest=Path(self.guard_output)/('recovery-reference-'+str(len(self.episodes)))
             dest.mkdir(exist_ok=False)
-            self.guard_reference=same_state_reference(self,self.proxy.agent,dest)
+            self.guard_reference=same_state_reference(self,self.proxy.agent,dest,reference_collect=lambda: Environment.collect_call(self))
             assert not self.guard_reference['failures'],'Frozen recovery reference failed'
         result=super().collect_call()
         t=self.task;index=actual_release_index(t.physics)

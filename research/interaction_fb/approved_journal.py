@@ -12,6 +12,22 @@ class Journal:
  def __init__(self,root):
   self.root=Path(root);self.root.mkdir(parents=True,exist_ok=True)
   self.previous=None;self.previous_name=None;self.segments=[];self.lengths={k:0 for k in LISTS}
+ def adopt(self,source):
+  import shutil
+  source=Path(source);state=load_state(source);m=json.loads((source/'manifest.json').read_text())
+  cursor=source;names=set()
+  while True:
+   mm=json.loads((cursor/'manifest.json').read_text());names.add(cursor.name)
+   if mm['previous'] is None:break
+   cursor=source.parent/mm['previous']
+  names.update(Path(seg['path']).parts[0] for seg in m['segments'])
+  for name in sorted(names):
+   assert not (self.root/name).exists()
+   shutil.copytree(source.parent/name,self.root/name,copy_function=os.link)
+  self.previous={k:v for k,v in state.items() if k not in LISTS}
+  self.previous_name=source.name;self.segments=m['segments'];self.lengths=m['lengths']
+  jsonwrite(self.root/'latest-committed.json',dict(package=source.name,manifest_sha256=sha(self.root/source.name/'manifest.json')))
+  return m['round_id']
  def save(self,round_id,agent,env,runtime,reason='complete_block'):
   root=self.root;dest=root/f'round-{round_id}';assert not dest.exists()
   tmp=root/f'.pending-{round_id}-{os.getpid()}';tmp.mkdir()

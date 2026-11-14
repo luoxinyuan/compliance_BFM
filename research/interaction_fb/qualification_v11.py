@@ -26,7 +26,7 @@ def install_gate(env,history=()):
     return monitor
 
 
-def same_state_reference(env,a,dest):
+def same_state_reference(env,a,dest,reference_collect=None):
     """Actual frozen mean from sampled release state, with exact complete restoration."""
     import torch
     from dual_track_runtime import TrainingBranch
@@ -45,7 +45,7 @@ def same_state_reference(env,a,dest):
     env.proxy.stochastic=False;install_gate(env,t.physics)
     while not t.done:
         try:
-            with torch.no_grad():env.collect_call()
+            with torch.no_grad():(reference_collect or env.collect_call)()
         except RuntimeError as exc:
             if not str(exc).startswith('HARD_PHYSICS_BOUNDARY:'):raise
             break
