@@ -21,7 +21,7 @@ for run in ('d1-p2-02','d1-p3-01'):
         if b['candidate']=='V1':v=a.detach();grad=g.detach()
         support=[]
         for t in trace['physics']:
-            if t['slip']>.45:support.append(t)
+            if max(t['stage_loaded_slip_mps'])>.45:support.append(t)
         rows.append(dict(candidate=b['candidate'],gpu_q=b['one_step']['q'],cpu_q=float(score),cpu_gpu_q_abs=abs(float(score)-b['one_step']['q']),
             action_delta_l2=float((a-v).norm()),q_first_order_from_V1=float(((a-v)*grad).sum()),
             q_gradient_l2=float(g.norm()),return3s=b['discounted_return'],metrics=b['metrics'],
