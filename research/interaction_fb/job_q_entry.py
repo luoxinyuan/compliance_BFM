@@ -1,7 +1,7 @@
 """Single GPU0 supervisor; R2 cumulative inherited ledger; immutable job sidecars."""
 import argparse,json,os,shutil,subprocess,sys,time,hashlib
 from pathlib import Path
-S=Path(__file__).resolve().parents[3];R=S/'runtime';P=S.parents[1]
+S=Path(__file__).resolve().parents[3];R=Path(__file__).resolve().parents[2];P=S.parents[1]
 sys.path.insert(0,str(R/'research/interaction_fb'))
 from supervision import tree_bytes,stop_owned_group
 
