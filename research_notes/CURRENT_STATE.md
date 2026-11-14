@@ -1,6 +1,6 @@
-# 最新状态：v1.1采样资格通过，准备Q-only入口
+# 最新状态：v1.1采样资格通过，E四块Q-only入口已启动
 
-五个剩余sample回合完成，释放有效状态/RNG逐值恢复，全部入口保护通过；详见 [R2_EI_V11_SAMPLE_RESULTS.md](R2_EI_V11_SAMPLE_RESULTS.md)。正式Actor/U与Dev/Sealed仍0。下述是历史时点记录，不代表现在仍在运行。
+五个剩余sample回合完成，释放有效状态/RNG逐值恢复，全部入口保护通过；详见 [R2_EI_V11_SAMPLE_RESULTS.md](R2_EI_V11_SAMPLE_RESULTS.md)。E-four-blocks-02 runtime e2de0d00a22ff992cd7f6083fb6e339be8085652 已启动（当前冷加载，尚未报告完成更新），1000秒护栏；I、新进程恢复与吞吐投影待执行。启动前累计8626.185610/57600秒，12GiB不变。首次入口因检出尚未完成被clean-worktree guard拒绝，无子物理/更新，保守60秒已计。正式Actor/U与Dev/Sealed仍0。下述是历史时点记录，不代表现在仍在运行。
 
 ---
 
