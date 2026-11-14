@@ -1,5 +1,5 @@
 """Single GPU0 supervisor; R2 cumulative inherited ledger; immutable job sidecars."""
-import argparse,json,os,shutil,subprocess,sys,time
+import argparse,json,os,shutil,subprocess,sys,time,hashlib
 from pathlib import Path
 S=Path(__file__).resolve().parents[3];R=S/'runtime';P=S.parents[1]
 sys.path.insert(0,str(R/'research/interaction_fb'))
@@ -10,6 +10,10 @@ def write(p,x):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--name',required=True);ap.add_argument('--mode',choices=['mean','sample'],required=True);ap.add_argument('--limit',type=int,default=1600);a=ap.parse_args()
+    dep=json.loads((S/'prep/dependency-preflight.json').read_text())
+    assert dep['status']=='PASS' and dep['mujoco']=='3.3.3'
+    for name,digest in dep['sha256'].items():
+        assert hashlib.sha256((S/'prep'/name).read_bytes()).hexdigest()==digest
     ledger=json.loads((S/'ledger.json').read_text());prior=ledger['total_charged_upper_s']
     used=sum(j['wall_s'] for j in ledger['job_entries'] if j.get('category')=='qualification')
     assert used+a.limit<=3000 and prior+a.limit<57600
