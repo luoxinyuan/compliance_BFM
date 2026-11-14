@@ -1,0 +1,16 @@
+{
+  "last_physical_runtime": "8afe076c9362c74cdb37fc6e936780a959cc6567",
+  "fit_runtime": "1c06170c8932af7fbd95b8d843cc505fc814ab01",
+  "reference_runtime": "0338837994960b87317a2b6e7d4c3117eeac1da8",
+  "source_sha256": {
+    "research/interaction_fb/return_evaluation_queue.py": "845ec74aa784d11f180adfd64a1ad24639b53378faf0eb35a710b1ccc5d25d61",
+    "research/interaction_fb/return_fit.py": "c68ceb522620abe5f79ccbe5820c9d85a98a3640ce4a67493ff9453bc1c9848c",
+    "research/interaction_fb/return_job.py": "1018e345c4d63e36ddad3c3ff8483420e810afdfcacfcde3672293ecaf0f36eb",
+    "research/interaction_fb/return_prepare.py": "9dccdc07cdb07e028157313a5720493b1558ebfc5509bfb4d3f682abbcdcbaa1",
+    "research/interaction_fb/return_trial.py": "f2d52fd7cf2b553fd73d9389a8537ef3845bbbfc8d418e824cd043a3fababc0d"
+  },
+  "original_BFM_SHA256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "B19_core_SHA256": "0cd3e3684d764cad42caaa83773b885868caeed0557dba1780ec36a3d03a3984",
+  "cpu_analysis_source_sha256": "4441bdf365669a52426394d1cb0bebea5778e1b90d810aa2be5c49b8b0b09d61",
+  "analysis_execution_layout": "Execute the identical published analyze_return.py copied at isolated stage root; it reads existing traces only."
+}

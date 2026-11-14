@@ -1,0 +1,66 @@
+{
+  "control": {
+    "first": {
+      "q": 0.18617397546768188,
+      "cpr": 0.0033765221014618874,
+      "disc": 0.9078881740570068,
+      "raw_return": 2.959002733230591,
+      "raw_correction_rms": 0.10401349514722824,
+      "actor": -0.17675745487213135,
+      "total": -0.17675745487213135,
+      "actor_gradient_norm": 0.05165248645350158,
+      "return_gradient_norm": 64.44732919782285,
+      "weighted_return_gradient_norm": 0.0,
+      "total_gradient_norm": 0.05165248645350158,
+      "frozen_digest": "936ffb44450cb38987d0172cf013ef14f1e2955284bde44f58c02a8115df43c2",
+      "adapter_step": 1
+    },
+    "last": {
+      "q": 0.17321419715881348,
+      "cpr": 0.00027591310208663344,
+      "disc": 0.8577724695205688,
+      "raw_return": 13.777044296264648,
+      "raw_correction_rms": 0.2722879648208618,
+      "actor": -0.1646088808774948,
+      "total": -0.1646088808774948,
+      "actor_gradient_norm": 0.0331904825838598,
+      "return_gradient_norm": 184.6319191873579,
+      "weighted_return_gradient_norm": 0.0,
+      "total_gradient_norm": 0.0331904825838598,
+      "frozen_digest": "936ffb44450cb38987d0172cf013ef14f1e2955284bde44f58c02a8115df43c2",
+      "adapter_step": 64
+    }
+  },
+  "return": {
+    "first": {
+      "q": 0.18617397546768188,
+      "cpr": 0.0033765221014618874,
+      "disc": 0.9078881740570068,
+      "raw_return": 2.959002733230591,
+      "raw_correction_rms": 0.10401349514722824,
+      "actor": -0.17675745487213135,
+      "total": -0.1743902564048767,
+      "actor_gradient_norm": 0.05165248645350158,
+      "return_gradient_norm": 64.44732919782285,
+      "weighted_return_gradient_norm": 0.05155786335825829,
+      "total_gradient_norm": 0.0767028197794115,
+      "frozen_digest": "936ffb44450cb38987d0172cf013ef14f1e2955284bde44f58c02a8115df43c2",
+      "adapter_step": 1
+    },
+    "last": {
+      "q": 0.17309048771858215,
+      "cpr": 0.0003183609223924577,
+      "disc": 0.8577724695205688,
+      "raw_return": 0.14656750857830048,
+      "raw_correction_rms": 0.1061311811208725,
+      "actor": -0.16448093950748444,
+      "total": -0.16436368227005005,
+      "actor_gradient_norm": 0.02808341815000792,
+      "return_gradient_norm": 5.77531322157112,
+      "weighted_return_gradient_norm": 0.004620250577256896,
+      "total_gradient_norm": 0.026927947371096186,
+      "frozen_digest": "936ffb44450cb38987d0172cf013ef14f1e2955284bde44f58c02a8115df43c2",
+      "adapter_step": 64
+    }
+  }
+}

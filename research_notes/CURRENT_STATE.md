@@ -1,3 +1,17 @@
+# CURRENT_STATE — Return小试验负结果结项，全部停止
+
+2026-11-14。[结果与12条物理对照](ADAPTER_RETURN_PILOT_RESULTS.md) · [执行勘误](ADAPTER_RETURN_PILOT_ERRATUM.md)。先恢复域资格后，完成同B19起点λ0/.0008各64次adapter-only更新（另2个工程步），U/Q/discriminator/targets及原BFM/PD冻结；原Envelope/reward/噪声/物理门未改。
+
+Return训练代理末批.1466，对照13.777（−98.94%），但两个独立暴露恢复父组都明显退化。均值：V1滑移峰.0336/.0181、yaw−15.14/−15.37°、3s root位移6.42/4.82cm；Return64变为.7843/.8348、−145.73/−148.46°、42.31/39.52cm。采样分支同向。12分支均真实q越界0/失支撑0，释放力0不作为任务收益。首观测/z/BFM动作/q/qdot逐值一致；不是换初态比较。
+
+按“独立恢复未保住即结束本配方”停止队列，已运行第二父组完整保留。active/none/已知B19末轮物理缺格，未宣称通过，也不加训找补。新off相对门在独立dev缺匹配参考，记未测；V1不是off。结论仅为该固定offline adapter配方失败，不否定所有Return/接触RL/交互F/B。原V1负判定不改，B/C不恢复，sealed未读。
+
+训练runtime1c06170，物理8afe076；Return64 f2056e30087e…、control64 c4e1c1525b37…，全SHA见报告。累计本次保守3504.11/7200job秒，新增约0.422/2GiB，真实physics27584tick（含初始化/重建/失败），14个新3s窗，RL训练0、Teacher查询0。GPU0已释放；无后续作业/自动新阶段。
+
+08:11定时触发却因同会话writer冲突失败，09:06人工接续；IPC与efc_JT全量恢复缺口已分别修复并留勘误，未屏蔽数组或放宽比较。旧模型、全部失败和旧Pilot账不覆盖。
+
+## Previous snapshots (historical, superseded status only)
+
 # CURRENT_STATE — Return小试验已获批；GPU0占用，未开物理/训练
 
 2026-11-13。Yi明确批准[Return小试验草案](ADAPTER_RETURN_TO_PRIOR_PILOT_DRAFT.md)，[批准协议与准备状态](ADAPTER_RETURN_TO_PRIOR_PILOT_PROTOCOL.md)已另存，未改写原草案或V1失败判定。两B19克隆各64次adapter-only，λ0/.0008，U/Q/discriminator/targets共同冻结；7200job秒/2GiB，先恢复参考域资格再学习，不是原B/C续训。

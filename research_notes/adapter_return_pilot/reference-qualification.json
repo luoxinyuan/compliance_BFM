@@ -1,0 +1,91 @@
+{
+  "status": "reference_qualified",
+  "case": {
+    "role": "return_train",
+    "parent_id": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+    "time": 10.0,
+    "archived_round": 17,
+    "note": "reconstruct prefix only to10.0 from archived actions; do not use10.7+3s beyond originalend"
+  },
+  "prefix": {
+    "core_sha256": "cbbec0a96feaaa3a15bef3de76c36356b5e8e9f1fbc2b5ab42eec3fa28ee4b3a",
+    "manifest_sha256": "feff9172024f2c306c75ed7b231c87d49b7406e94da112bb7c6abb9baa4d37c6",
+    "saved_time": 10.700000000000273,
+    "original_exact_restore_passed": true,
+    "truncated_actual_action_prefix_exact": true,
+    "actual_prefix_controls": 295,
+    "actual_prefix_ticks": 1180,
+    "actual_prefix_sha256": "b690c086dfd6286cebe97db8a997750ada71f93ef21d6b7b1bb1d1435b021ef0",
+    "evaluation_rng_origin": "explicit archived endpoint RNG, matched across branches; not historical intermediate RNG",
+    "state_time": 10.000000000000163,
+    "state_digest": "effabfcbb932c2ab206a66f8575dede7301da9717a7b8d6218844aca4489c8c8",
+    "source_sha256": "55c74c0e822c510ed0dcb77a643eb77a1f4d85b57704c83e3a8e3b28e6769f0c",
+    "exact_previous_z_digest": "793ffa5d9a4787dbed6eaf8b3a1260c26ee372ccde5d986863edda55cc75bfe1"
+  },
+  "branches": [
+    {
+      "status": "completed_3s",
+      "error": null,
+      "model_digest": "54002fb0161de37bff3e2e00c781b216e8fc294e829bd88b60cf053a68222f79",
+      "rng_digest": "da7ff012cef1e5b729a3a3d09c2fa579fc57c377cc240f6ed482e63820063397",
+      "trace_sha256": "526edabacf0b1308c1708ae2d1b73931ba3deb948228934651d56d370f4d8081",
+      "exact_executed_replay_qpd": true,
+      "mode": "off",
+      "sample": false,
+      "metrics": {
+        "ticks": 600,
+        "duration_s": 3.0,
+        "joint_excess_max_rad": 0.0,
+        "no_support_ticks": 0,
+        "slip_peak": 0.023305296968821693,
+        "slip_p95": 0.012404458330589261,
+        "yaw_final_deg": -0.5490870552391461,
+        "min_height": 0.7260957112842508,
+        "tilt_max_deg": 13.468013345575692,
+        "root_displacement_m": 0.07805902876631246,
+        "final_root_speed_mps": 0.0030469349632585834,
+        "force_peak_n": 0.0,
+        "force_rms_n": 0.0,
+        "active_ticks": 0,
+        "undiscounted_native_return": -0.075294845262919,
+        "error_rms_m": null,
+        "active_force_rms_n": null,
+        "wrist_progress_m": null,
+        "partner_progress_m": null
+      }
+    },
+    {
+      "status": "completed_3s",
+      "error": null,
+      "model_digest": "54002fb0161de37bff3e2e00c781b216e8fc294e829bd88b60cf053a68222f79",
+      "rng_digest": "da7ff012cef1e5b729a3a3d09c2fa579fc57c377cc240f6ed482e63820063397",
+      "trace_sha256": "64ff3db6f8ad0cb5df937d42edb47127e5bfd9d64fd01cbe330b75ee4af6236c",
+      "exact_executed_replay_qpd": true,
+      "mode": "off",
+      "sample": true,
+      "metrics": {
+        "ticks": 600,
+        "duration_s": 3.0,
+        "joint_excess_max_rad": 0.0,
+        "no_support_ticks": 0,
+        "slip_peak": 0.02394567144932575,
+        "slip_p95": 0.013045191220135827,
+        "yaw_final_deg": -0.8436447632859422,
+        "min_height": 0.7261007389034427,
+        "tilt_max_deg": 13.44410479217615,
+        "root_displacement_m": 0.08013194306695941,
+        "final_root_speed_mps": 0.014781874195706365,
+        "force_peak_n": 0.0,
+        "force_rms_n": 0.0,
+        "active_ticks": 0,
+        "undiscounted_native_return": -0.0887861166843138,
+        "error_rms_m": null,
+        "active_force_rms_n": null,
+        "wrist_progress_m": null,
+        "partner_progress_m": null
+      }
+    }
+  ],
+  "adapter_updates": 0,
+  "qualification": "Safe same-z recovery reference only; not absolute slip/yaw success"
+}

@@ -281,3 +281,7 @@ Current native CPR preserves a joint Guidance/action function on native prefixes
 ## Issue62 Return机制小试验（2026-11-13授权）
 
 Yi已批准一次有限B-only adapter Return-to-Prior隔离试验：相同B19起点，冻结U/Q/discriminator及targets，仅比较64步原adapter目标与固定.0008同状态同z raw Return。先验证独立恢复域，不能以稀薄inactive帧推定可恢复；物理判断仍按原门，不修改失败结论。批准不等于已启动：GPU0当前被其他项目占用，CPU准备通过，新物理/优化仍0。参见[批准协议](ADAPTER_RETURN_TO_PRIOR_PILOT_PROTOCOL.md)。不自动恢复原B/C，也不把这个机制小试验称为新的通用训练配方。
+
+## Return pilot结果边界（2026-11-14）
+
+同z raw Return在两个恢复参考父组上明显降训练代理，但两组各64步adapter-only更新未保住另外两个原本稳定的恢复域；不能把原生参数冻结、较低loss或逐关节Envelope等同全身行为保持。保留按物理结果判定的原则，结束本固定配方；不自动加强Return/clip或重启B/C。下一机制重点是固定Q驱动的函数更新、覆盖与真实闭环后果之间的错配，尚未证明唯一根因。[完整负结果](ADAPTER_RETURN_PILOT_RESULTS.md)。

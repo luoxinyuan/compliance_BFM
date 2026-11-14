@@ -1,0 +1,128 @@
+{
+  "status": "COMPLETED_NEGATIVE_RECIPE_STOPPED",
+  "checked_at_utc": "2026-11-13T02:21:05.552117+00:00",
+  "cap_job_s": 7200,
+  "cap_output_bytes": 2147483648,
+  "preparation_charged_upper_s": 600,
+  "measured_cpu_archive_s": 8.447812595986761,
+  "measured_cpu_included_in_upper": true,
+  "remaining_job_s_upper": 3695.8898097515107,
+  "old_pilot_job_s_unchanged": 37006.06334757905,
+  "new_physics_ticks": 27584,
+  "new_optimizer_steps": 130,
+  "gpu_jobs": 6,
+  "no_background_watch": true,
+  "assets": "No shared or historical assets changed",
+  "scheduling_preparation_charged_upper_s": 60,
+  "total_charged_upper_s": 3504.1101902484893,
+  "schedule_erratum": {
+    "scheduled_at": "2026-11-14T08:11:00+08:00",
+    "exit_code": 1,
+    "error": "thread-store conflict: same thread already has an active writer",
+    "actual_trial_started": false,
+    "old_error_retained": true
+  },
+  "last_checked_utc": "2026-11-14T01:47:25.374966+00:00",
+  "last_runtime": "8afe076c9362c74cdb37fc6e936780a959cc6567",
+  "adopted_adapter_steps_per_arm": 64,
+  "disposable_adapter_steps": 2,
+  "new_RL_training_transitions": 0,
+  "new_teacher_queries": 0,
+  "completed_new_3s_windows": 14,
+  "planned_new_3s_windows_cap": 30,
+  "development_recovery_parents": 2,
+  "train_return_parents": 2,
+  "missing_cases": [
+    4,
+    5,
+    6,
+    7,
+    0
+  ],
+  "stop_reason": "Independent recovery not retained; do not tune or restart B/C",
+  "output_bytes_at_analysis": 452619382,
+  "jobs": [
+    {
+      "name": "evaluate-case-02-01",
+      "supervisor_pid": 2836248,
+      "runtime": "8afe076c9362c74cdb37fc6e936780a959cc6567",
+      "before_job_s": 1805.6309044361115,
+      "limit_s": 600,
+      "pid": 2836261,
+      "exit_code": 0,
+      "wall_s": 310.90060544013977
+    },
+    {
+      "name": "evaluate-case-03-01",
+      "supervisor_pid": 2836543,
+      "runtime": "8afe076c9362c74cdb37fc6e936780a959cc6567",
+      "before_job_s": 2116.531509876251,
+      "limit_s": 600,
+      "pid": 2836555,
+      "exit_code": 0,
+      "wall_s": 251.30587363243103
+    },
+    {
+      "name": "fit-01",
+      "supervisor_pid": 2835959,
+      "runtime": "1c06170c8932af7fbd95b8d843cc505fc814ab01",
+      "before_job_s": 1707.0709042549133,
+      "limit_s": 600,
+      "pid": 2835974,
+      "exit_code": 0,
+      "wall_s": 79.7482225894928
+    },
+    {
+      "name": "reference-near-01",
+      "supervisor_pid": 2835138,
+      "runtime": "1c2286eeb8cd1aafc4977bd0d84b7c9a8b958da8",
+      "before_job_s": 1260,
+      "limit_s": 600,
+      "pid": 2835154,
+      "exit_code": 1,
+      "wall_s": 10.873852968215942
+    },
+    {
+      "name": "reference-near-02",
+      "supervisor_pid": 2835290,
+      "runtime": "e8a7dae433a04fbd7519321b7df89d8c171954b3",
+      "before_job_s": 1270.873852968216,
+      "limit_s": 600,
+      "pid": 2835302,
+      "exit_code": 1,
+      "wall_s": 197.73254799842834
+    },
+    {
+      "name": "reference-near-03",
+      "supervisor_pid": 2835612,
+      "runtime": "0338837994960b87317a2b6e7d4c3117eeac1da8",
+      "before_job_s": 1468.6064009666443,
+      "limit_s": 600,
+      "pid": 2835624,
+      "exit_code": 0,
+      "wall_s": 238.46450328826904
+    }
+  ],
+  "physics_by_job": {
+    "reference-near-01": {
+      "actual": 0,
+      "reserved": 0
+    },
+    "evaluate-case-02-01": {
+      "actual": 10361,
+      "reserved": 10361
+    },
+    "evaluate-case-03-01": {
+      "actual": 6941,
+      "reserved": 6941
+    },
+    "reference-near-03": {
+      "actual": 6741,
+      "reserved": 6741
+    },
+    "reference-near-02": {
+      "actual": 3541,
+      "reserved": 3541
+    }
+  }
+}
