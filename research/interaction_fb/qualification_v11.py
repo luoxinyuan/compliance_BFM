@@ -21,6 +21,7 @@ def install_gate(env,history=()):
             if failure and t.stage_boundary is None:
                 t.stage_boundary=dict(kind='v11_train_protection',**failure)
     observed._v11_underlying=original
+    observed._dual_track_terminal=True # retain original terminal wrapper, prevent nesting observer on prepare
     t.e.sim.simulate_at_each_physics_step=observed
     return monitor
 
