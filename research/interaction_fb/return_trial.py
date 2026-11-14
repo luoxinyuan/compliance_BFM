@@ -13,7 +13,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT), str(ROOT / 'research_notes')]
-import m11_ipc  # propagate the existing abstract-socket fix into forkserver children
+import m11_ipc
 P = ROOT.parents[2]
 S = ROOT.parent
 OLD = P / 'experiments/interaction-pilot-v3-20261112/runs'
@@ -230,6 +230,8 @@ def study(e,m,c,out):
         for k,v in lists.items():setattr(env,k,list(v) if isinstance(v,list) else v)
         assert exact(canonical(portable(env.task),metadata(e.sim.model,e.sim.data)),initial),'Full state branch mismatch'
         env.proxy.agent=agent
+    if ARGS.evaluate:
+        return evaluate_case(env,agent,out,case,reset,prefix,incoming)
     results=[]
     for stochastic in (False,True):
         reset();dest=out/('off-sample' if stochastic else 'off-mean');dest.mkdir()
@@ -247,10 +249,46 @@ def study(e,m,c,out):
     return result
 
 
+
+def evaluate_case(env,agent,out,case,reset,prefix,incoming):
+    import torch
+    from research.interaction_fb.envelope import Envelope
+    from diagnostic_fb_resume import tree_digest
+    operator=json.loads((ROOT/'research_notes/adapter_envelope_lock_v1.json').read_text())['operator']
+    fit=S/'runs/fit-01'
+    identities=json.loads((fit/'checkpoint-identities.json').read_text())
+    assert json.loads((fit/'result.json').read_text())['status']=='adapter_fit_completed_physical_evaluation_pending'
+    models=['return','control'] if ARGS.case_index==0 else ['return','control','V1']
+    modes=(False,True) if case['role']=='recovery_dev' or ARGS.case_index==0 else (False,)
+    results=[]
+    for name in models:
+        if name=='V1':model=incoming
+        else:
+            path=fit/name/'adapter-64.pt'
+            assert sha(path)==identities[name+'64']['sha256']
+            ck=torch.load(path,map_location='cpu',weights_only=False)
+            assert ck['incremental_adapter_updates']==64 and ck['parent_updates']==38
+            model=ck['agent']
+        for sample in modes:
+            agent.load(model);agent.envelope=Envelope(operator,agent.goal.device)
+            reset()
+            dest=out/(name+('-sample' if sample else '-mean'));dest.mkdir()
+            r=branch(env,agent,dest,sample,'envelope');r.update(model=name,case=case)
+            results.append(r);write(out/'branches.json',results)
+            print('RETURN_EVALUATION',case['role'],case['parent_id'][:12],name,sample,r['status'],r['metrics'],flush=True)
+            if r['status']!='completed_3s':
+                result=dict(status='evaluation_physics_stop',case=case,branches=results,prefix=prefix,
+                            missing_cells='Stopped on original hard boundary; no reinterpretation or replacement')
+                write(out/'evaluation.json',result);return result
+    result=dict(status='matched_evaluation_completed',case=case,prefix=prefix,branches=results,
+                source='Exposed counterfactual states; no sealed/model selection',adapter_updates_here=0)
+    write(out/'evaluation.json',result);return result
+
 def main():
     global ARGS
     parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--case-index',type=int,required=True)
+    parser.add_argument('--evaluate',action='store_true')
     ARGS=parser.parse_args()
     from research.interaction_fb import benchmark
     benchmark.study=study
