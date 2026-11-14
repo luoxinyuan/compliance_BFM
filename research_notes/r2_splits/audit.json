@@ -1,0 +1,46 @@
+{
+  "structural_group_pass": true,
+  "physical_state_independence": "not yet executed; recipe uniqueness does not establish statistical independence",
+  "partner_identity": "request plus actual-source-origin recipe; identical zero-demand motion alone is not independent",
+  "splits": {
+    "train": {
+      "parents": 34,
+      "episodes": 44,
+      "families": {
+        "near": 10,
+        "mid": 10,
+        "stop": 10,
+        "zero": 2,
+        "none": 2
+      },
+      "canonical_sha256": "5a272837bf1feb2709725b4f6ceba2d2c64f53266c4de82e996625c93eb8ad3a",
+      "file_sha256": "994aae1c3aaed26ffb99d51c27833c62c2ab3b312b866134a72ccdfc3d1ca6f8"
+    },
+    "dev": {
+      "parents": 16,
+      "episodes": 20,
+      "families": {
+        "near": 4,
+        "mid": 4,
+        "stop": 4,
+        "zero": 2,
+        "none": 2
+      },
+      "canonical_sha256": "242941631285da20779687c639f953371dde66566c4f2fb716713ee8cb126b34",
+      "file_sha256": "6cda878c2d57b5ed0ba4434a697439ec0c5c427e8d27d9e299b96bd84989c7e0"
+    },
+    "sealed": {
+      "parents": 28,
+      "episodes": 36,
+      "families": {
+        "near": 8,
+        "mid": 8,
+        "stop": 8,
+        "zero": 2,
+        "none": 2
+      },
+      "canonical_sha256": "e6fe4dd95ec12a3b512ce5d68daed56dd2029d2f888911a9377d5a1b1fa0fa02",
+      "file_sha256": "e77b7ec8ad960b33508de26f069e789ad95792b41f38d217bcc0616c36edc0db"
+    }
+  }
+}
