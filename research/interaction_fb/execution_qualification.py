@@ -44,7 +44,8 @@ def study(e,m,c,out):
             if key in prefixes:assert prefixes[key]==digest,'Common prefix changed'
             else:prefixes[key]=digest
         (out/'completed-cases.json').write_text(json.dumps(results,indent=2,allow_nan=False))
-        if row['boundary'] is not None:break
+        from research.interaction_fb import benchmark
+        if row['boundary'] is not None or benchmark.STOP_REQUESTED:break
     result=dict(status='qualification_completed' if len(results)==6 else 'qualification_stopped',results=results,optimizer_updates=0)
     assert tree_digest(agent.state())==before
     result['qualification_only']=True;result['engineering_models_not_loaded']=True

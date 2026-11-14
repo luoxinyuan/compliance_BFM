@@ -296,3 +296,6 @@ D0档案审计确认固定Q绝对值未校准、投影后的执行变化与raw�
 ## Issue63 R2执行授权（2026-11-14）
 
 D1首动作匹配反事实已完成：单次Control/Return偏移由共同V1可恢复，严重失效与连续新反馈相容。R2现已获批启动真实rollout部分Actor适配/在线Q校准的E基线与BI/FI的I对照；不恢复旧29D Adapter-only修补。阶段以CURRENT_STATE与独立账本为准，工程检查不冒充物理学习收益。
+
+
+2026-11-14 Issue63补充：D1共同续跑支持完整反馈累积的作用；R2部分Actor联合适配工程/恢复通过，但继承A128 U的未训练初始函数严重退化，正式学习未启。详见[R2工程与初始化](R2_ENGINEERING_AND_INITIALIZATION_RESULTS.md)，不能将此记成新架构学习负结论。

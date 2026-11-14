@@ -1,0 +1,135 @@
+{
+  "status": "INITIALIZATION_QUALIFICATION_FAILED_NO_FORMAL_TRAINING",
+  "engineering_runtime": "4585b716ae1715cf06752bd6b6a3aae753a609f6",
+  "qualification_runtime": "852c4572f725f176cdab5076c33b5c93a15670a0",
+  "A128_core_sha256": "d97f8c515fb76f34b7ff3d75b7a29208a68987afbf75de5cf727f8227180114b",
+  "rows": [
+    {
+      "family": "none",
+      "error_cm": null,
+      "force_N": 0.0,
+      "cap_fraction": 0.0,
+      "slip_peak": 1.5662308271872165,
+      "yaw_unwrapped_delta_deg": 1081.1296517612598,
+      "yaw_abs_final_deg": 4.298816108062776,
+      "boundary": null
+    },
+    {
+      "family": "near",
+      "error_cm": 42.57991217359602,
+      "force_N": 9.925150656945938,
+      "cap_fraction": 0.9806598407281001,
+      "slip_peak": 2.58926825338287,
+      "yaw_unwrapped_delta_deg": 1034.5640800606373,
+      "yaw_abs_final_deg": 51.115416204276215,
+      "boundary": null
+    },
+    {
+      "family": "mid",
+      "error_cm": 40.0742041998121,
+      "force_N": 10.0,
+      "cap_fraction": 1.0,
+      "slip_peak": 2.596168891292138,
+      "yaw_unwrapped_delta_deg": 1277.413456332701,
+      "yaw_abs_final_deg": 168.1159473370838,
+      "boundary": null
+    },
+    {
+      "family": "zero",
+      "error_cm": 36.77119491021785,
+      "force_N": 10.0,
+      "cap_fraction": 1.0,
+      "slip_peak": 2.5240871369899036,
+      "yaw_unwrapped_delta_deg": 1161.8805100418829,
+      "yaw_abs_final_deg": 76.35147867927333,
+      "boundary": null
+    },
+    {
+      "family": "stop",
+      "error_cm": 37.79228951063686,
+      "force_N": 9.995040697810486,
+      "cap_fraction": 0.9883824843610366,
+      "slip_peak": 3.160134306918765,
+      "yaw_unwrapped_delta_deg": 1215.0635121086027,
+      "yaw_abs_final_deg": 129.58274258250344,
+      "boundary": null
+    },
+    {
+      "family": "continue",
+      "error_cm": 38.27320715680189,
+      "force_N": 9.981336229593044,
+      "cap_fraction": 0.9757623143080532,
+      "slip_peak": 2.303243273673425,
+      "yaw_unwrapped_delta_deg": 1328.8843901440348,
+      "yaw_abs_final_deg": 116.5963793820644,
+      "boundary": null
+    }
+  ],
+  "readonly_audit": {
+    "rows": [
+      {
+        "case": "case-0",
+        "family": "none",
+        "controls_checked": 48,
+        "original_actor_cpu_vs_executed_gpu_action_max_abs": 1.430511474609375e-06,
+        "yaw_unwrapped_delta_deg": 1081.1296517612598,
+        "yaw_abs_final_deg": 4.29881610806281,
+        "physics_ticks": 1920
+      },
+      {
+        "case": "case-1",
+        "family": "near",
+        "controls_checked": 45,
+        "original_actor_cpu_vs_executed_gpu_action_max_abs": 1.2516975402832031e-06,
+        "yaw_unwrapped_delta_deg": 1034.5640800606373,
+        "yaw_abs_final_deg": 51.115416204276194,
+        "physics_ticks": 1800
+      },
+      {
+        "case": "case-2",
+        "family": "mid",
+        "controls_checked": 59,
+        "original_actor_cpu_vs_executed_gpu_action_max_abs": 9.834766387939453e-07,
+        "yaw_unwrapped_delta_deg": 1277.413456332701,
+        "yaw_abs_final_deg": 168.11594733708378,
+        "physics_ticks": 2340
+      },
+      {
+        "case": "case-3",
+        "family": "zero",
+        "controls_checked": 48,
+        "original_actor_cpu_vs_executed_gpu_action_max_abs": 1.6093254089355469e-06,
+        "yaw_unwrapped_delta_deg": 1161.8805100418829,
+        "yaw_abs_final_deg": 76.35147867927327,
+        "physics_ticks": 1920
+      },
+      {
+        "case": "case-4",
+        "family": "stop",
+        "controls_checked": 53,
+        "original_actor_cpu_vs_executed_gpu_action_max_abs": 1.0132789611816406e-06,
+        "yaw_unwrapped_delta_deg": 1215.0635121086027,
+        "yaw_abs_final_deg": 129.5827425825034,
+        "physics_ticks": 2100
+      },
+      {
+        "case": "case-5",
+        "family": "continue",
+        "controls_checked": 57,
+        "original_actor_cpu_vs_executed_gpu_action_max_abs": 1.3113021850585938e-06,
+        "yaw_unwrapped_delta_deg": 1328.8843901440348,
+        "yaw_abs_final_deg": 116.5963793820645,
+        "physics_ticks": 2260
+      }
+    ],
+    "wall_s": 6.233628348971251,
+    "new_physics": 0,
+    "new_updates": 0,
+    "cuda_initialized": false,
+    "scope": "Original frozen Actor at recorded actual z; CPU/GPU numerical check, not a new tolerance or full U trajectory rerun"
+  },
+  "charged_upper_s": 2308.779643058777,
+  "physics_ticks": 30405,
+  "engineering_online_transitions": 520,
+  "formal_training_transitions": 0
+}

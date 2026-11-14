@@ -1,3 +1,9 @@
+# CURRENT_STATE — D1完成，R2工程通过但初始化资格失败
+
+2026-11-14。[D1结果](R2_D1_RESULTS.md)；[R2实测和阻断](R2_ENGINEERING_AND_INITIALIZATION_RESULTS.md)。E/I真实更新及新进程恢复通过；正式训练0。A128 Guidance初始化在无接触/近/中等完整回合严重旋转、牵拉，按原设计停止，不换零U/B19隐瞒失败。六回合与工程失败完整保存，sealed未执行。R2保守2308.780秒、D1保守1529.680秒，分别记账。GPU0无本阶段后续作业。用户授权普通修复自主解决；改变科学初始化须显式新决策。
+
+---
+
 # CURRENT_STATE — Issue63 D1完成；R2工程资格正在执行
 
 2026-11-14。Yi明确批准启动D1/R2；[授权登记](R2_EXECUTION_AUTHORIZATION.md)。旧B19/EnvelopeV1/Return64与BC500身份及负判定保持。
