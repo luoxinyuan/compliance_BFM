@@ -103,11 +103,11 @@ class ExecutionAgent:
             for k in ('q1','q2','fi'):
                 if k in self.nets:self.nets[k].requires_grad_(False)
             aa,zz,ii=self.action(o)
-            val=torch.minimum(self.nets['q1'](self.inp(o,aa,zz,ii)),self.nets['q2'](self.inp(o,aa,zz,ii))).mean()
+            val=torch.minimum(self.nets['q1'](self.inp(o,aa,zz,ii.detach())),self.nets['q2'](self.inp(o,aa,zz,ii.detach()))).mean()
             with torch.no_grad():old=self.base._actor(self.base._normalize(robot(eo)),ez,self.base.cfg.actor_std).mean
             delta=(self.mean_at_z(eo,ez)-old)*self.scale
             keep=delta.square().mean()
-            sf=(self.nets['fi'](self.inp(o,aa,zz,ii))*ii).sum(-1).mean()/32 if self.arm=='I' else val*0
+            sf=(self.nets['fi'](self.inp(o,aa,zz,ii.detach()))*ii.detach()).sum(-1).mean()/32 if self.arm=='I' else val*0
             objective=-val+self.retention_lambda*keep-self.lock['sf_coefficient']*sf
             keys=['actor_tail','u','goal_delta']+(['bi'] if self.arm=='I' else ['goal_encoder'])
             rec['gradient_norms'].update(self._step(keys,objective))
