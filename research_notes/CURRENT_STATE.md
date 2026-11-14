@@ -1,6 +1,6 @@
-# CURRENT_STATE — R2 E/I v1.1 已由Yi批准，签前审查完成
+# CURRENT_STATE — R2 E/I v1.1 已签署，剩余采样资格运行中
 
-2026-11-14。用户授权签署v1.1并启动；[签前清单](R2_EI_V11_SIGNOFF.md)、逐字源合同和22门机器表已落到个人分支。旧v1.0 TV失败不重判。13份归档CPU复算：新yaw excursion门通过、none不再冒充release；Q/BI/真实全链恢复仍待测，未把未来门填PASS。准备接续剩余5个sample回合，GPU0串行；当前正式更新0、Dev/Sealed0。预算继承5544.704秒，新增准备保守计900秒；原57600秒/12GiB不变。
+2026-11-14。用户授权签署v1.1并启动；[签前清单](R2_EI_V11_SIGNOFF.md)、逐字源合同和22门机器表已落到个人分支。旧v1.0 TV失败不重判。13份归档CPU复算：新yaw excursion门通过、none不再冒充release；Q/BI/真实全链恢复仍待测，未把未来门填PASS。已启动剩余5个sample回合，GPU0串行，runtime f53e3cdaec70d71208301b65021bcc2026f97c27；当前正式更新0、Dev/Sealed0。首次冷启动因发现监测回调接线问题主动终止，131.497秒全部入账，actual0/reserved1不宣称物理调用完全为零；修复与拒绝fixture见R2_EI_V11_ENTRY_ERRATUM.md。同父组/seed重启，不改变合同。已结算R2累计6576.201秒，另加当前作业实时成本；原57600秒/12GiB不变。
 
 ---
 
