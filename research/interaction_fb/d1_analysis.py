@@ -3,6 +3,7 @@ import json,sys,io,zlib,hashlib,itertools
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2];sys.path[:0]=[str(ROOT),str(ROOT/'research_notes')]
 import torch
+import numpy as np
 from torch import nn
 from research.interaction_fb.schema import privileged
 P=ROOT.parents[2];S=ROOT.parent
@@ -21,7 +22,7 @@ for run in ('d1-p2-02','d1-p3-01'):
         if b['candidate']=='V1':v=a.detach();grad=g.detach()
         support=[]
         for t in trace['physics']:
-            if max(t['stage_loaded_slip_mps'])>.45:support.append(t)
+            if float(np.max(t['stage_loaded_slip_mps']))>.45:support.append(t)
         rows.append(dict(candidate=b['candidate'],gpu_q=b['one_step']['q'],cpu_q=float(score),cpu_gpu_q_abs=abs(float(score)-b['one_step']['q']),
             action_delta_l2=float((a-v).norm()),q_first_order_from_V1=float(((a-v)*grad).sum()),
             q_gradient_l2=float(g.norm()),return3s=b['discounted_return'],metrics=b['metrics'],
