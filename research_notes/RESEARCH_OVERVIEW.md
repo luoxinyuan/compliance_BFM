@@ -8,6 +8,10 @@ Steering-first只作为下一研究主线：分离目标Goal、当前接触Guida
 
 F1证明有限状态有可执行反馈，也证明真实未来并非尾部质量问题的通用解；不据此宣布必须解冻或已有可部署通用策略。当前只授权S0，Contact Adaptation是否必要留给匹配物理证据，S1及训练不可自动启动。历史LPP/action alignment/Teacher→Student仍为有需要时工具，不强套形式。
 
+## 最新接力：Issue63 R2 E/I v1.1
+
+当前执行方法为全新零U、原Actor尾部副本的在线适配，配对比较E执行适配与I交互后继表示；不继承B19/A128旧Guidance或Adapter。四块真实Q-only及独立新进程采样/更新恢复已通过，Actor/U尚未更新，不能据此宣称任务能力或BI收益。接下来按原合同取得3500–5000条真实后继与Q排序资格，然后才能进行受保持约束的Actor/U学习。详见[入口结果](R2_EI_Q_ENTRY_RESULTS.md)、[v1.1批准附件](R2_EI_V11_SIGNOFF.md)。Dev用于最终方向性比较，sealed本Pilot不执行；旧判定和失败保持。
+
 ## 科学目标
 
 **Contact-Conditioned Whole-Body Motion Transitions / General Whole-Body Compliance**：机器人接受人的局部物理引导，根据真实接触、本体与动作历史，以及自身可维护记忆，组织任务合适的手臂、躯干/root、支撑和步态响应，降低不必要的交互负担，保持稳定与运动质量。

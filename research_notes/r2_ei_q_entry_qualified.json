@@ -1,0 +1,31 @@
+{
+  "E_resume_exact": true,
+  "I_resume_exact": true,
+  "physical_pair_exact": true,
+  "proofs": [
+    {
+      "job": "E-round4-proof-05",
+      "sha256": "149679e3df19dcf2ed52b4b1c03d70c355b1aae37f565840eaa58a07eb277902"
+    },
+    {
+      "job": "I-round4-proof-08",
+      "sha256": "5e02ba56b728d1da9c5298827b8f52b9090964f003037b9f63596165fdf46256"
+    }
+  ],
+  "physical_pair": {
+    "rows_E": 1000,
+    "rows_I": 1000,
+    "all_actual_action_and_z_equal": true,
+    "full_online_physics_exact": true,
+    "current_full_effective_state_exact": true,
+    "tail_exact": true,
+    "E_q_updates": 16,
+    "I_q_updates": 16,
+    "I_representation_updates": 6,
+    "scope": "actual first1000 Q-only E/I; representation learns but actor/U remain fixed",
+    "cuda_initialized": false
+  },
+  "warmup_only_projection_bytes": 3917938346,
+  "projection_formula": "current output + 2 arms*16 further blocks*max observed I packet*2 growth +1GiB reserve",
+  "scope": "Q-only <=5000 per arm; not full actor-training storage qualification"
+}
