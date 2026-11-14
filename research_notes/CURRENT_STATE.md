@@ -1,3 +1,11 @@
+# 最新：R2 Q排序FAIL，D11只读完成，Actor/U仍0
+
+2026-11-15。[报告](R2_EI_Q_RANKING_RESULTS.md) · [机器摘要](r2_ei_q_ranking_results.json)。E/I各3500真实行/56Q，I另26表示。八真实train状态/五锁定父组、40条1s物理分支；四父组58有效比较，两臂26/58=44.83%＜原70%，父组等权52.14%，非UNDERPOWERED。按已签v1.1 G17/D11停止，Actor/U=0、Dev/Sealed=0。D11只读未发现输入/previous-z/action/q_PD/reward错位：CPU Q最大差5.96e-8；mid保持0/9，TD loss约1.5e-4仍非可信排序。
+
+这不是完成E/I行为训练后失败，行为比较尚未发生。下一单变量建议：固定replay/Actor的Q更新量对照，未启动。Q运行d93d69b；R2累计15241.192/57600job秒，最近输出2.372/12GiB，GPU0释放。旧模型/失败不改判，原32k/Dev/probe缺格原因见报告。以下为历史时点。
+
+---
+
 # R2 E/I：3500条Q-only预热完成
 
 2026-11-14，runtime f62f918c7c545e534ef3b96583231324c0ab1848。两臂GPU0严格串行正常退出，E/I各3500条主轨真实50Hz transition、各56组Q更新；I额外26组交互表示更新，Actor/U均0。round14不可变完整逻辑checkpoint保存，额外continuation proof不计入主轨。
