@@ -1,0 +1,92 @@
+[
+  {
+    "index": 0,
+    "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+    "family": "near",
+    "onset": 5.3,
+    "release": 9.5,
+    "source": "standing",
+    "end": 13.5
+  },
+  {
+    "index": 1,
+    "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+    "family": "mid",
+    "onset": 5.1,
+    "release": 11.6,
+    "source": "standing",
+    "end": 15.6
+  },
+  {
+    "index": 2,
+    "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+    "family": "stop",
+    "onset": 5.4,
+    "release": 10.7,
+    "source": "standing",
+    "end": 14.7
+  },
+  {
+    "index": 3,
+    "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+    "family": "continue",
+    "onset": 5.4,
+    "release": 11.500000000000002,
+    "source": "standing",
+    "end": 15.500000000000002
+  },
+  {
+    "index": 4,
+    "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+    "family": "near",
+    "onset": 5.2,
+    "release": 9.100000000000001,
+    "source": "standing",
+    "end": 13.100000000000001
+  },
+  {
+    "index": 5,
+    "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+    "family": "mid",
+    "onset": 5.0,
+    "release": 10.899999999999999,
+    "source": "standing",
+    "end": 14.899999999999999
+  },
+  {
+    "index": 6,
+    "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+    "family": "stop",
+    "onset": 5.1,
+    "release": 9.399999999999999,
+    "source": "standing",
+    "end": 13.399999999999999
+  },
+  {
+    "index": 7,
+    "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+    "family": "continue",
+    "onset": 5.1,
+    "release": 10.399999999999999,
+    "source": "standing",
+    "end": 14.399999999999999
+  },
+  {
+    "index": 8,
+    "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+    "family": "near",
+    "onset": 4.7,
+    "release": 9.3,
+    "source": "standing",
+    "end": 13.3
+  },
+  {
+    "index": 9,
+    "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+    "family": "mid",
+    "onset": 5.1,
+    "release": 10.8,
+    "source": "standing",
+    "end": 14.8
+  }
+]

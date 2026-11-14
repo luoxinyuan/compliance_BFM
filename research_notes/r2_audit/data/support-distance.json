@@ -1,0 +1,46 @@
+[
+  {
+    "case": 2,
+    "nearest_global_index": 2850,
+    "normalized_rms": 0.053279150277376175,
+    "nearest_phase": "recovery",
+    "nearest_parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+    "same_parent_min_distance": 0.053279150277376175,
+    "action_distances": [
+      {
+        "model": "V1",
+        "rms_to_nearest_saved_action": 0.04577931389212608
+      },
+      {
+        "model": "control64",
+        "rms_to_nearest_saved_action": 0.1254557967185974
+      },
+      {
+        "model": "return64",
+        "rms_to_nearest_saved_action": 0.1228150948882103
+      }
+    ]
+  },
+  {
+    "case": 3,
+    "nearest_global_index": 3250,
+    "normalized_rms": 0.041740357875823975,
+    "nearest_phase": "recovery",
+    "nearest_parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+    "same_parent_min_distance": 0.041740357875823975,
+    "action_distances": [
+      {
+        "model": "V1",
+        "rms_to_nearest_saved_action": 0.03979969024658203
+      },
+      {
+        "model": "control64",
+        "rms_to_nearest_saved_action": 0.1148415133357048
+      },
+      {
+        "model": "return64",
+        "rms_to_nearest_saved_action": 0.10980736464262009
+      }
+    ]
+  }
+]

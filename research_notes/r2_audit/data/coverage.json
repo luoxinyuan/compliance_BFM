@@ -1,0 +1,1106 @@
+{
+  "original": [
+    {
+      "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "phase": "precontact",
+      "rows": 35,
+      "seconds": 0.6999999843537807,
+      "first": 4.599999999999924,
+      "last": 5.27999999999991
+    },
+    {
+      "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "phase": "active",
+      "rows": 110,
+      "seconds": 2.199999950826168,
+      "first": 5.299999999999909,
+      "last": 7.479999999999863
+    },
+    {
+      "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "phase": "holding",
+      "rows": 100,
+      "seconds": 1.9999999552965164,
+      "first": 7.499999999999862,
+      "last": 9.480000000000082
+    },
+    {
+      "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "phase": "recovery",
+      "rows": 200,
+      "seconds": 3.999999910593033,
+      "first": 9.500000000000085,
+      "last": 13.480000000000707
+    },
+    {
+      "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "phase": "precontact",
+      "rows": 35,
+      "seconds": 0.6999999843537807,
+      "first": 4.399999999999928,
+      "last": 5.079999999999914
+    },
+    {
+      "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "phase": "active",
+      "rows": 225,
+      "seconds": 4.499999899417162,
+      "first": 5.0999999999999135,
+      "last": 9.580000000000098
+    },
+    {
+      "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "phase": "holding",
+      "rows": 100,
+      "seconds": 1.9999999552965164,
+      "first": 9.600000000000101,
+      "last": 11.58000000000041
+    },
+    {
+      "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "phase": "recovery",
+      "rows": 200,
+      "seconds": 3.999999910593033,
+      "first": 11.600000000000414,
+      "last": 15.580000000001036
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "precontact",
+      "rows": 70,
+      "seconds": 1.3999999687075615,
+      "first": 4.699999999999922,
+      "last": 5.3799999999999075
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "active",
+      "rows": 295,
+      "seconds": 5.899999868124723,
+      "first": 5.399999999999907,
+      "last": 9.08000000000002
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "stopping",
+      "rows": 35,
+      "seconds": 0.6999999843537807,
+      "first": 7.59999999999986,
+      "last": 8.279999999999895
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "holding",
+      "rows": 240,
+      "seconds": 4.799999892711639,
+      "first": 8.299999999999898,
+      "last": 11.480000000000395
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "recovery",
+      "rows": 400,
+      "seconds": 7.999999821186066,
+      "first": 10.700000000000273,
+      "last": 15.48000000000102
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "precontact",
+      "rows": 30,
+      "seconds": 0.5999999865889549,
+      "first": 4.599999999999924,
+      "last": 5.179999999999912
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "active",
+      "rows": 105,
+      "seconds": 2.0999999530613422,
+      "first": 5.199999999999911,
+      "last": 7.279999999999867
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "holding",
+      "rows": 90,
+      "seconds": 1.7999999597668648,
+      "first": 7.299999999999867,
+      "last": 9.08000000000002
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "recovery",
+      "rows": 200,
+      "seconds": 3.999999910593033,
+      "first": 9.100000000000023,
+      "last": 13.080000000000645
+    },
+    {
+      "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "phase": "precontact",
+      "rows": 35,
+      "seconds": 0.6999999843537807,
+      "first": 4.2999999999999305,
+      "last": 4.979999999999916
+    },
+    {
+      "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "phase": "active",
+      "rows": 180,
+      "seconds": 3.5999999195337296,
+      "first": 4.999999999999916,
+      "last": 8.579999999999941
+    },
+    {
+      "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "phase": "holding",
+      "rows": 115,
+      "seconds": 2.299999948590994,
+      "first": 8.599999999999945,
+      "last": 10.880000000000301
+    },
+    {
+      "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "phase": "recovery",
+      "rows": 200,
+      "seconds": 3.999999910593033,
+      "first": 10.900000000000304,
+      "last": 14.880000000000926
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "precontact",
+      "rows": 40,
+      "seconds": 0.7999999821186066,
+      "first": 4.699999999999922,
+      "last": 5.079999999999914
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "active",
+      "rows": 250,
+      "seconds": 4.999999888241291,
+      "first": 5.0999999999999135,
+      "last": 8.37999999999991
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "stopping",
+      "rows": 30,
+      "seconds": 0.5999999865889549,
+      "first": 6.799999999999877,
+      "last": 7.379999999999865
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "holding",
+      "rows": 200,
+      "seconds": 3.999999910593033,
+      "first": 7.3999999999998645,
+      "last": 10.380000000000223
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "recovery",
+      "rows": 400,
+      "seconds": 7.999999821186066,
+      "first": 9.40000000000007,
+      "last": 14.380000000000848
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "precontact",
+      "rows": 30,
+      "seconds": 0.5999999865889549,
+      "first": 4.099999999999935,
+      "last": 4.6799999999999224
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "active",
+      "rows": 110,
+      "seconds": 2.199999950826168,
+      "first": 4.699999999999922,
+      "last": 6.8799999999998755
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "holding",
+      "rows": 120,
+      "seconds": 2.3999999463558197,
+      "first": 6.899999999999875,
+      "last": 9.28000000000005
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "recovery",
+      "rows": 200,
+      "seconds": 3.999999910593033,
+      "first": 9.300000000000054,
+      "last": 13.280000000000676
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "precontact",
+      "rows": 35,
+      "seconds": 0.6999999843537807,
+      "first": 4.399999999999928,
+      "last": 5.079999999999914
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "active",
+      "rows": 210,
+      "seconds": 4.1999999061226845,
+      "first": 5.0999999999999135,
+      "last": 9.28000000000005
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "holding",
+      "rows": 75,
+      "seconds": 1.4999999664723873,
+      "first": 9.300000000000054,
+      "last": 10.780000000000285
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "recovery",
+      "rows": 50,
+      "seconds": 0.9999999776482582,
+      "first": 10.800000000000288,
+      "last": 11.780000000000442
+    }
+  ],
+  "return_pool": [
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "precontact",
+      "rows": 30,
+      "seconds": 0.5999999865889549,
+      "first": 4.599999999999924,
+      "last": 5.179999999999912
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "active",
+      "rows": 105,
+      "seconds": 2.0999999530613422,
+      "first": 5.199999999999911,
+      "last": 7.279999999999867
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "holding",
+      "rows": 90,
+      "seconds": 1.7999999597668648,
+      "first": 7.299999999999867,
+      "last": 9.08000000000002
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "recovery",
+      "rows": 200,
+      "seconds": 3.999999910593033,
+      "first": 9.100000000000023,
+      "last": 13.080000000000645
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "precontact",
+      "rows": 30,
+      "seconds": 0.5999999865889549,
+      "first": 4.099999999999935,
+      "last": 4.6799999999999224
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "active",
+      "rows": 110,
+      "seconds": 2.199999950826168,
+      "first": 4.699999999999922,
+      "last": 6.8799999999998755
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "holding",
+      "rows": 120,
+      "seconds": 2.3999999463558197,
+      "first": 6.899999999999875,
+      "last": 9.28000000000005
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "recovery",
+      "rows": 200,
+      "seconds": 3.999999910593033,
+      "first": 9.300000000000054,
+      "last": 13.280000000000676
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "precontact",
+      "rows": 35,
+      "seconds": 0.6999999843537807,
+      "first": 4.399999999999928,
+      "last": 5.079999999999914
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "active",
+      "rows": 210,
+      "seconds": 4.1999999061226845,
+      "first": 5.0999999999999135,
+      "last": 9.28000000000005
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "holding",
+      "rows": 75,
+      "seconds": 1.4999999664723873,
+      "first": 9.300000000000054,
+      "last": 10.780000000000285
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "recovery",
+      "rows": 50,
+      "seconds": 0.9999999776482582,
+      "first": 10.800000000000288,
+      "last": 11.780000000000442
+    }
+  ],
+  "return_draws": [
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "active",
+      "rows": 333,
+      "seconds": 6.6599998511374,
+      "first": 5.0999999999999135,
+      "last": 9.28000000000005
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "recovery",
+      "rows": 341,
+      "seconds": 6.819999847561121,
+      "first": 9.120000000000026,
+      "last": 13.080000000000645
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "recovery",
+      "rows": 365,
+      "seconds": 7.299999836832285,
+      "first": 9.300000000000054,
+      "last": 13.260000000000673
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "recovery",
+      "rows": 79,
+      "seconds": 1.579999964684248,
+      "first": 10.800000000000288,
+      "last": 11.780000000000442
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "holding",
+      "rows": 139,
+      "seconds": 2.779999937862158,
+      "first": 7.319999999999866,
+      "last": 9.08000000000002
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "holding",
+      "rows": 183,
+      "seconds": 3.659999918192625,
+      "first": 6.899999999999875,
+      "last": 9.28000000000005
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "active",
+      "rows": 166,
+      "seconds": 3.3199999257922173,
+      "first": 4.719999999999922,
+      "last": 6.859999999999876
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "active",
+      "rows": 177,
+      "seconds": 3.539999920874834,
+      "first": 5.199999999999911,
+      "last": 7.279999999999867
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "precontact",
+      "rows": 48,
+      "seconds": 0.9599999785423279,
+      "first": 4.619999999999924,
+      "last": 5.179999999999912
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "precontact",
+      "rows": 52,
+      "seconds": 1.0399999767541885,
+      "first": 4.399999999999928,
+      "last": 5.079999999999914
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "holding",
+      "rows": 114,
+      "seconds": 2.2799999490380287,
+      "first": 9.34000000000006,
+      "last": 10.780000000000285
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "precontact",
+      "rows": 51,
+      "seconds": 1.0199999772012234,
+      "first": 4.119999999999934,
+      "last": 4.6799999999999224
+    }
+  ],
+  "return_unique_draws": [
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "precontact",
+      "rows": 24,
+      "seconds": 0.47999998927116394,
+      "first": 4.619999999999924,
+      "last": 5.179999999999912
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "active",
+      "rows": 84,
+      "seconds": 1.6799999624490738,
+      "first": 5.199999999999911,
+      "last": 7.279999999999867
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "holding",
+      "rows": 69,
+      "seconds": 1.3799999691545963,
+      "first": 7.319999999999866,
+      "last": 9.08000000000002
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "recovery",
+      "rows": 163,
+      "seconds": 3.2599999271333218,
+      "first": 9.120000000000026,
+      "last": 13.080000000000645
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "precontact",
+      "rows": 26,
+      "seconds": 0.5199999883770943,
+      "first": 4.119999999999934,
+      "last": 4.6799999999999224
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "active",
+      "rows": 85,
+      "seconds": 1.699999962002039,
+      "first": 4.719999999999922,
+      "last": 6.859999999999876
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "holding",
+      "rows": 100,
+      "seconds": 1.9999999552965164,
+      "first": 6.899999999999875,
+      "last": 9.28000000000005
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "recovery",
+      "rows": 168,
+      "seconds": 3.3599999248981476,
+      "first": 9.300000000000054,
+      "last": 13.260000000000673
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "precontact",
+      "rows": 28,
+      "seconds": 0.5599999874830246,
+      "first": 4.399999999999928,
+      "last": 5.079999999999914
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "active",
+      "rows": 173,
+      "seconds": 3.4599999226629734,
+      "first": 5.0999999999999135,
+      "last": 9.28000000000005
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "holding",
+      "rows": 61,
+      "seconds": 1.219999972730875,
+      "first": 9.34000000000006,
+      "last": 10.780000000000285
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "recovery",
+      "rows": 43,
+      "seconds": 0.8599999807775021,
+      "first": 10.800000000000288,
+      "last": 11.780000000000442
+    }
+  ],
+  "Q_original_draws": [
+    {
+      "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "phase": "active",
+      "rows": 102,
+      "seconds": 2.0399999544024467,
+      "first": 5.299999999999909,
+      "last": 7.479999999999863
+    },
+    {
+      "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "phase": "holding",
+      "rows": 92,
+      "seconds": 1.839999958872795,
+      "first": 7.499999999999862,
+      "last": 9.440000000000076
+    },
+    {
+      "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "phase": "precontact",
+      "rows": 30,
+      "seconds": 0.5999999865889549,
+      "first": 4.599999999999924,
+      "last": 5.27999999999991
+    },
+    {
+      "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "phase": "recovery",
+      "rows": 125,
+      "seconds": 2.4999999441206455,
+      "first": 9.580000000000098,
+      "last": 13.480000000000707
+    },
+    {
+      "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "phase": "precontact",
+      "rows": 21,
+      "seconds": 0.41999999061226845,
+      "first": 4.399999999999928,
+      "last": 5.059999999999914
+    },
+    {
+      "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "phase": "active",
+      "rows": 123,
+      "seconds": 2.459999945014715,
+      "first": 5.179999999999912,
+      "last": 9.580000000000098
+    },
+    {
+      "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "phase": "holding",
+      "rows": 44,
+      "seconds": 0.8799999803304672,
+      "first": 9.620000000000104,
+      "last": 11.480000000000395
+    },
+    {
+      "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "phase": "recovery",
+      "rows": 81,
+      "seconds": 1.6199999637901783,
+      "first": 11.680000000000426,
+      "last": 15.460000000001017
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "holding",
+      "rows": 86,
+      "seconds": 1.7199999615550041,
+      "first": 8.299999999999898,
+      "last": 11.420000000000385
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "active",
+      "rows": 87,
+      "seconds": 1.7399999611079693,
+      "first": 5.399999999999907,
+      "last": 9.040000000000013
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "precontact",
+      "rows": 19,
+      "seconds": 0.3799999915063381,
+      "first": 4.719999999999922,
+      "last": 5.339999999999908
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "stopping",
+      "rows": 15,
+      "seconds": 0.29999999329447746,
+      "first": 7.59999999999986,
+      "last": 8.279999999999895
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "recovery",
+      "rows": 110,
+      "seconds": 2.199999950826168,
+      "first": 10.720000000000276,
+      "last": 15.48000000000102
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "holding",
+      "rows": 19,
+      "seconds": 0.3799999915063381,
+      "first": 7.379999999999865,
+      "last": 9.000000000000007
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "active",
+      "rows": 17,
+      "seconds": 0.3399999924004078,
+      "first": 5.199999999999911,
+      "last": 7.11999999999987
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "precontact",
+      "rows": 8,
+      "seconds": 0.1599999964237213,
+      "first": 4.599999999999924,
+      "last": 5.139999999999913
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "recovery",
+      "rows": 24,
+      "seconds": 0.47999998927116394,
+      "first": 9.34000000000006,
+      "last": 12.520000000000557
+    },
+    {
+      "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "phase": "active",
+      "rows": 34,
+      "seconds": 0.6799999848008156,
+      "first": 5.019999999999915,
+      "last": 8.539999999999935
+    },
+    {
+      "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "phase": "precontact",
+      "rows": 6,
+      "seconds": 0.11999999731779099,
+      "first": 4.2999999999999305,
+      "last": 4.839999999999919
+    },
+    {
+      "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "phase": "holding",
+      "rows": 18,
+      "seconds": 0.35999999195337296,
+      "first": 8.599999999999945,
+      "last": 10.760000000000282
+    },
+    {
+      "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "phase": "recovery",
+      "rows": 32,
+      "seconds": 0.6399999856948853,
+      "first": 11.040000000000326,
+      "last": 14.84000000000092
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "active",
+      "rows": 32,
+      "seconds": 0.6399999856948853,
+      "first": 5.139999999999913,
+      "last": 8.339999999999904
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "holding",
+      "rows": 21,
+      "seconds": 0.41999999061226845,
+      "first": 7.439999999999864,
+      "last": 10.320000000000213
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "recovery",
+      "rows": 31,
+      "seconds": 0.6199999861419201,
+      "first": 9.520000000000088,
+      "last": 14.180000000000817
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "stopping",
+      "rows": 5,
+      "seconds": 0.09999999776482582,
+      "first": 6.799999999999877,
+      "last": 7.2599999999998674
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "precontact",
+      "rows": 3,
+      "seconds": 0.05999999865889549,
+      "first": 4.739999999999921,
+      "last": 4.859999999999919
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "active",
+      "rows": 7,
+      "seconds": 0.13999999687075615,
+      "first": 4.9599999999999165,
+      "last": 6.839999999999876
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "recovery",
+      "rows": 10,
+      "seconds": 0.19999999552965164,
+      "first": 9.560000000000095,
+      "last": 13.020000000000636
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "holding",
+      "rows": 5,
+      "seconds": 0.09999999776482582,
+      "first": 7.419999999999864,
+      "last": 9.180000000000035
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "precontact",
+      "rows": 2,
+      "seconds": 0.03999999910593033,
+      "first": 4.1599999999999335,
+      "last": 4.239999999999932
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "holding",
+      "rows": 4,
+      "seconds": 0.07999999821186066,
+      "first": 9.860000000000142,
+      "last": 10.640000000000263
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "recovery",
+      "rows": 1,
+      "seconds": 0.019999999552965164,
+      "first": 11.720000000000432,
+      "last": 11.720000000000432
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "active",
+      "rows": 2,
+      "seconds": 0.03999999910593033,
+      "first": 7.2599999999998674,
+      "last": 7.499999999999862
+    }
+  ],
+  "Q_original_unique": [
+    {
+      "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "phase": "precontact",
+      "rows": 23,
+      "seconds": 0.4599999897181988,
+      "first": 4.599999999999924,
+      "last": 5.27999999999991
+    },
+    {
+      "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "phase": "active",
+      "rows": 70,
+      "seconds": 1.3999999687075615,
+      "first": 5.299999999999909,
+      "last": 7.479999999999863
+    },
+    {
+      "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "phase": "holding",
+      "rows": 61,
+      "seconds": 1.219999972730875,
+      "first": 7.499999999999862,
+      "last": 9.440000000000076
+    },
+    {
+      "parent": "b69d7a23e0491199d8a8aa55d741a9878bc2b136b9d2c29b0a7c48a3527d916f",
+      "phase": "recovery",
+      "rows": 92,
+      "seconds": 1.839999958872795,
+      "first": 9.580000000000098,
+      "last": 13.480000000000707
+    },
+    {
+      "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "phase": "precontact",
+      "rows": 15,
+      "seconds": 0.29999999329447746,
+      "first": 4.399999999999928,
+      "last": 5.059999999999914
+    },
+    {
+      "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "phase": "active",
+      "rows": 92,
+      "seconds": 1.839999958872795,
+      "first": 5.179999999999912,
+      "last": 9.580000000000098
+    },
+    {
+      "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "phase": "holding",
+      "rows": 34,
+      "seconds": 0.6799999848008156,
+      "first": 9.620000000000104,
+      "last": 11.480000000000395
+    },
+    {
+      "parent": "06c173441f3204e6b90e5e5fb230e9356f15e30e91495171915d5a4f6897bd70",
+      "phase": "recovery",
+      "rows": 64,
+      "seconds": 1.2799999713897705,
+      "first": 11.680000000000426,
+      "last": 15.460000000001017
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "precontact",
+      "rows": 16,
+      "seconds": 0.3199999928474426,
+      "first": 4.719999999999922,
+      "last": 5.339999999999908
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "active",
+      "rows": 78,
+      "seconds": 1.5599999651312828,
+      "first": 5.399999999999907,
+      "last": 9.040000000000013
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "stopping",
+      "rows": 12,
+      "seconds": 0.23999999463558197,
+      "first": 7.59999999999986,
+      "last": 8.279999999999895
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "holding",
+      "rows": 71,
+      "seconds": 1.4199999682605267,
+      "first": 8.299999999999898,
+      "last": 11.420000000000385
+    },
+    {
+      "parent": "d52717d57a1504880c53e84b5707998e4f21614551ef369335ffe6d3eb2afa3b",
+      "phase": "recovery",
+      "rows": 96,
+      "seconds": 1.9199999570846558,
+      "first": 10.720000000000276,
+      "last": 15.48000000000102
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "precontact",
+      "rows": 6,
+      "seconds": 0.11999999731779099,
+      "first": 4.599999999999924,
+      "last": 5.139999999999913
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "active",
+      "rows": 15,
+      "seconds": 0.29999999329447746,
+      "first": 5.199999999999911,
+      "last": 7.11999999999987
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "holding",
+      "rows": 17,
+      "seconds": 0.3399999924004078,
+      "first": 7.379999999999865,
+      "last": 9.000000000000007
+    },
+    {
+      "parent": "7f3a7da65fb1b4b3d41944dcb3d9d623cb2249a42503eb9a5969909888075b1d",
+      "phase": "recovery",
+      "rows": 23,
+      "seconds": 0.4599999897181988,
+      "first": 9.34000000000006,
+      "last": 12.520000000000557
+    },
+    {
+      "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "phase": "precontact",
+      "rows": 6,
+      "seconds": 0.11999999731779099,
+      "first": 4.2999999999999305,
+      "last": 4.839999999999919
+    },
+    {
+      "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "phase": "active",
+      "rows": 29,
+      "seconds": 0.5799999870359898,
+      "first": 5.019999999999915,
+      "last": 8.539999999999935
+    },
+    {
+      "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "phase": "holding",
+      "rows": 17,
+      "seconds": 0.3399999924004078,
+      "first": 8.599999999999945,
+      "last": 10.760000000000282
+    },
+    {
+      "parent": "fea32998d2c1c42c5dad39c9e186641b29671f6e63f8973bcde5389186f77c93",
+      "phase": "recovery",
+      "rows": 31,
+      "seconds": 0.6199999861419201,
+      "first": 11.040000000000326,
+      "last": 14.84000000000092
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "precontact",
+      "rows": 3,
+      "seconds": 0.05999999865889549,
+      "first": 4.739999999999921,
+      "last": 4.859999999999919
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "active",
+      "rows": 31,
+      "seconds": 0.6199999861419201,
+      "first": 5.139999999999913,
+      "last": 8.339999999999904
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "stopping",
+      "rows": 4,
+      "seconds": 0.07999999821186066,
+      "first": 6.799999999999877,
+      "last": 7.2599999999998674
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "holding",
+      "rows": 19,
+      "seconds": 0.3799999915063381,
+      "first": 7.439999999999864,
+      "last": 10.320000000000213
+    },
+    {
+      "parent": "eb77738422ceb4787fad231c3b9b9a7eec4d690ecfe6fdaaa21cacd31e63323d",
+      "phase": "recovery",
+      "rows": 30,
+      "seconds": 0.5999999865889549,
+      "first": 9.520000000000088,
+      "last": 14.180000000000817
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "precontact",
+      "rows": 2,
+      "seconds": 0.03999999910593033,
+      "first": 4.1599999999999335,
+      "last": 4.239999999999932
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "active",
+      "rows": 7,
+      "seconds": 0.13999999687075615,
+      "first": 4.9599999999999165,
+      "last": 6.839999999999876
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "holding",
+      "rows": 4,
+      "seconds": 0.07999999821186066,
+      "first": 7.419999999999864,
+      "last": 9.180000000000035
+    },
+    {
+      "parent": "2670e363f8c204b64ab32dd614237f032a571e1cd03f4e5c50524c3caef42f79",
+      "phase": "recovery",
+      "rows": 10,
+      "seconds": 0.19999999552965164,
+      "first": 9.560000000000095,
+      "last": 13.020000000000636
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "active",
+      "rows": 2,
+      "seconds": 0.03999999910593033,
+      "first": 7.2599999999998674,
+      "last": 7.499999999999862
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "holding",
+      "rows": 4,
+      "seconds": 0.07999999821186066,
+      "first": 9.860000000000142,
+      "last": 10.640000000000263
+    },
+    {
+      "parent": "8dde57eac4325d7701fafe97d48f57cb962cd8ff121a9e4770a1bbdffa10db4e",
+      "phase": "recovery",
+      "rows": 1,
+      "seconds": 0.019999999552965164,
+      "first": 11.720000000000432,
+      "last": 11.720000000000432
+    }
+  ],
+  "original_native_count": 760,
+  "new_native_count": 205,
+  "new_Q_updates": 0,
+  "original_Q_updates": 38
+}

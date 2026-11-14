@@ -285,3 +285,10 @@ Yi已批准一次有限B-only adapter Return-to-Prior隔离试验：相同B19起
 ## Return pilot结果边界（2026-11-14）
 
 同z raw Return在两个恢复参考父组上明显降训练代理，但两组各64步adapter-only更新未保住另外两个原本稳定的恢复域；不能把原生参数冻结、较低loss或逐关节Envelope等同全身行为保持。保留按物理结果判定的原则，结束本固定配方；不自动加强Return/clip或重启B/C。下一机制重点是固定Q驱动的函数更新、覆盖与真实闭环后果之间的错配，尚未证明唯一根因。[完整负结果](ADAPTER_RETURN_PILOT_RESULTS.md)。
+
+
+## Issue63：真实后继、执行适配与交互表征分别验证
+
+D0档案审计确认固定Q绝对值未校准、投影后的执行变化与raw代理改善脱节、有限恢复参考未保住独立已暴露恢复域。有限窗口不同策略成绩不是无限时域Q真值；同状态首动作与共同后续策略仍需独立物理合同。不能把原生权重冻结或小修正视为行为保持，也不能用此负例否定所有离线学习。
+
+下一设计优先真实rollout下的原Actor部分网络适配，保留B_R/运动先验、同状态同z有效域保持与在线价值校准；在相同执行基线上比较新增B_I/F_I/Goal Composition的独立价值。旧B19 Adapter-only配方已结束，R2设计不是新训练授权；当前只读交付见[R2_CAUSAL_TRIAGE](R2_CAUSAL_TRIAGE.md)与[R2_INTERACTION_FB_DESIGN](R2_INTERACTION_FB_DESIGN.md)。

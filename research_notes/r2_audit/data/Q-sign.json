@@ -1,0 +1,28 @@
+{
+  "reward_max": -2.5840479793259874e-05,
+  "Q_positive": 3058,
+  "rows": 4750,
+  "by_phase": {
+    "active": {
+      "n": 1485,
+      "positive": 875
+    },
+    "holding": {
+      "n": 1040,
+      "positive": 466
+    },
+    "precontact": {
+      "n": 310,
+      "positive": 220
+    },
+    "recovery": {
+      "n": 1850,
+      "positive": 1471
+    },
+    "stopping": {
+      "n": 65,
+      "positive": 26
+    }
+  },
+  "interpretation": "Positive Q violates true return upper bound0; establishes calibration error, not its cause or relative action-ranking error."
+}

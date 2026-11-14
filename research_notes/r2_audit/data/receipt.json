@@ -1,0 +1,9 @@
+{
+  "wall_s": 11.178385411971249,
+  "new_physics": 0,
+  "new_updates": 0,
+  "cuda_initialized": false,
+  "replay_rows": 4750,
+  "source_runtime": "f6bd9eb606975202b34e693968784308bad3745c",
+  "analysis_sha256": "9d9f110d1bd9ec341aa271c7f086e90b2c54682848a18bae83f660fcd01e6741"
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "case": 2,
+    "exact_equal_action_components": 27,
+    "qPD_rms": 0.002999476855620742
+  },
+  {
+    "case": 3,
+    "exact_equal_action_components": 27,
+    "qPD_rms": 0.003990093246102333
+  }
+]

@@ -1,3 +1,15 @@
+# CURRENT_STATE — Issue63 D0只读审计完成，R2设计待审阅
+
+2026-11-14。最新用户授权仅D0档案机制审计＋R2方法设计；本轮**新物理0、优化0、GPU使用0、sealed读取0**。旧B19/Envelope V1/Return64负结果保持，B/C正式训练仍停止。
+
+[R2_CAUSAL_TRIAGE](R2_CAUSAL_TRIAGE.md)已核：实际reward能明显惩罚坏恢复，但inactive heading不计、slip成本封顶；原固定Q在3058/4750真实回放上为正（真实非正reward的价值上界0），故绝对值校准不足，不据此宣布同状态相对动作排名或唯一critic bug。两恢复起点的新两模型27/29执行action相同，raw→exec局部导数27/29为0；相对稳定V1首q_PD最大已变约.086–.108rad，真实状态首5ms分叉，随后支撑/滑移恶化。原生CPR和两个稀薄Return参考域没有保住另外恢复域。
+
+已交付[逐关节/数据/Q证据](r2_reward_q_execution_audit.json)、[D1最小首20ms动作＋共同V1后续合同草案](R2_D1_MINIMAL_PROTOCOL.md)、[下一代R2训练设计](R2_INTERACTION_FB_DESIGN.md)。D1建议仅2既有恢复状态/4动作、≤1.5job小时；R2建议真实rollout部分Actor适配强基线vs新增BI/FI/Goal Composition，均是待批准设计，**未执行、未解冻、未新建训练臂**。A128与BC500保留参考，旧B19不冒充新公平臂。
+
+事实runtime f6bd9eb606975202b34e693968784308bad3745c；分析仅CPU前向/自动微分/档案复算，不调用环境/optimizer。全轮读取/分析/文档/IO保守按≤3600job秒记入项目总账，数值作业receipt另列；公开输出约0.5MiB。不是新物理/训练预算授权，也不重置旧账。本轮完成即停，后续由Yi确认。
+
+---
+
 # CURRENT_STATE — Return小试验负结果结项，全部停止
 
 2026-11-14。[结果与12条物理对照](ADAPTER_RETURN_PILOT_RESULTS.md) · [执行勘误](ADAPTER_RETURN_PILOT_ERRATUM.md)。先恢复域资格后，完成同B19起点λ0/.0008各64次adapter-only更新（另2个工程步），U/Q/discriminator/targets及原BFM/PD冻结；原Envelope/reward/噪声/物理门未改。

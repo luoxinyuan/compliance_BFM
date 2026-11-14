@@ -1,0 +1,55 @@
+{
+  "status": "D0_READONLY_COMPLETE_R2_DESIGN_ONLY",
+  "new_physics_ticks": 0,
+  "new_optimizer_steps": 0,
+  "new_teacher_queries": 0,
+  "cuda_initialized": false,
+  "sealed_read": false,
+  "accounting": {
+    "conservative_total_debit_job_s": 3600,
+    "scope": "CPU/read/IO/worktree/document/publication entire stage upper bound, not GPU experiment time; no old ledger overwritten",
+    "numerical_receipts": {
+      "receipt.json": {
+        "wall_s": 11.178385411971249,
+        "new_physics": 0,
+        "new_updates": 0,
+        "cuda_initialized": false,
+        "replay_rows": 4750,
+        "source_runtime": "f6bd9eb606975202b34e693968784308bad3745c",
+        "analysis_sha256": "9d9f110d1bd9ec341aa271c7f086e90b2c54682848a18bae83f660fcd01e6741"
+      },
+      "target-receipt.json": {
+        "wall_s": 37.649747075047344,
+        "new_physics": 0,
+        "new_updates": 0,
+        "cuda_initialized": false
+      },
+      "temporal-receipt.json": {
+        "wall_s": 2.065220530028455,
+        "new_physics": 0,
+        "new_updates": 0,
+        "cuda_initialized": false
+      },
+      "checkpoint-receipt.json": {
+        "wall_s": 1.2295725390431471,
+        "new_physics": 0,
+        "new_updates": 0,
+        "cuda_initialized": false
+      }
+    },
+    "other_attempts": "Initial audit11.481179s; target includes repeated audit11.305476s; initial temporal receipt overwritten by corrected analysis, charge included in full3600s upper bound; no exact subprocess sum claimed",
+    "additional_readonly_recomputations": "Final 200Hz joint-range reaggregation; final first-action saved-value parity verification. All inside3600s full-stage upper debit; no exact subprocess sum claimed."
+  },
+  "preserved_failures": [
+    "Old V1/Return judgments unchanged",
+    "Initial analysis fixed-norm z angle produced spurious tiny angle for equal FP32 z; corrected analysis only; no model/physics changes"
+  ],
+  "missing": [
+    "Matched common-continuation D1 not run",
+    "Original per-update full Q residual on unavailable intermediate optimizer states not reconstructed",
+    "Active/none new Return physical branches remain unrun",
+    "No new R2 throughput or training",
+    "Original full-tensor historical gradient directions absent"
+  ],
+  "source_runtime": "f6bd9eb606975202b34e693968784308bad3745c"
+}
