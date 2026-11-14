@@ -1,6 +1,10 @@
-# 最新运行状态：v1.1 恢复门阻塞
+# 最新运行状态：v1.1恢复比较已定位修复，采样资格续跑
 
-2026-11-14 sample-03 已退出（非运行中），按D13只读诊断后 STOP_AWAIT_DECISION；正式E/I学习尚未开始。详见 [R2_EI_V11_RESTORE_BLOCKER.md](R2_EI_V11_RESTORE_BLOCKER.md)。原资格/历史记录如下保留。
+2026-11-14 Yi授权普通工程问题自主解决并继续。sample-04原断言复现：24项raw差异全部是当前NULL/零有效长度MuJoCo数组；既有L0有效状态差异0、RNG逐值一致。修复仅复用原有效范围规则，1e-12有效状态扰动及配置变更拒绝测试通过。原失败保留。见 [修复证据](R2_EI_V11_RESTORE_FIX.md) 与 [原阻塞记录](R2_EI_V11_RESTORE_BLOCKER.md)。
+
+sample-05 runtime47098d319ad8bf8cc860d38fc9d7c0483292e577 正在执行剩余5个冻结sample资格；未开始Q/Actor/BI学习、Dev/Sealed未执行。已结算7404.604265秒＋本次运行实际成本，原16h/12GiB及资格3000秒分账不变。以下为原时点记录，勿将历史“运行中”当最新进程状态。
+
+---
 
 # CURRENT_STATE — R2 E/I v1.1 已签署，剩余采样资格运行中
 
