@@ -12,6 +12,10 @@ F1证明有限状态有可执行反馈，也证明真实未来并非尾部质量
 
 E/I完成各3500条Q-only与完整恢复；八state/五锁定父组40真实分支的Q排序，四父组58有效比较均26/58=44.83%，未过原70%。D11只读复核后按合同停止，Actor/U=0、Dev/Sealed=0。证据定位为Q动作排序未可信，不是E/I Actor方法已训练后失败，也不否定运动能力或交互表征。实际更新覆盖、精确身份与未启动的单变量Q更新量建议见[Q资格结果](R2_EI_Q_RANKING_RESULTS.md)。旧BC500/失败/erratum保持；原16h/12GiB余额不改变科学门。
 
+## 最新修订：G17-QA1部分诊断
+
+Yi已批准固定3500行的E-only U/C匹配诊断。U增加至512组后旧排序44.83%→62.07%，仍未过原70%；mid保持0/9，不能用父组等权71.45%替代门。C在首更新前被完整起点hash守门拦下：CPU Adam step与重复load源缓存别名；原磁盘未变。一次只读定位后按QA1§6 STOP_AWAIT_DECISION，没有自动重跑、Actor或I。它是部分工程阻断＋单U描述性收益，不是行为训练失败或U/C方法胜负。见[QA1结果](R2_EI_G17_QA1_RESULTS.md)和[erratum](R2_EI_G17_QA1_ERRATUM.md)；历史结论保持。
+
 ## 科学目标
 
 **Contact-Conditioned Whole-Body Motion Transitions / General Whole-Body Compliance**：机器人接受人的局部物理引导，根据真实接触、本体与动作历史，以及自身可维护记忆，组织任务合适的手臂、躯干/root、支撑和步态响应，降低不必要的交互负担，保持稳定与运动质量。

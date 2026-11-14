@@ -1,3 +1,11 @@
+# 最新：G17-QA1部分完成，C起点一致性失败后按合同停止
+
+2026-11-15。Yi批准修订已归档。E-only U从Q56固定3500行续至512：旧40条排序26/58→36/58=62.07%，未过70%；mid保持仍0/9。U的3500行全部曝光、非Q状态不变。切C前full-agent hash断言捕获CPU Adam step与起点缓存别名，C更新0；一次只读定位完成，磁盘原source未变。**STOP_AWAIT_DECISION**，按QA1§6不自动修复重跑；非完整U/C比较，非新G17通过。Actor/U/I/Dev/Sealed/前瞻均0，旧FAIL不改。
+
+[实际结果](R2_EI_G17_QA1_RESULTS.md) · [独立erratum](R2_EI_G17_QA1_ERRATUM.md) · [批准协议](R2_EI_G17_QA1_PROTOCOL.md)。1968控制子步target action/z与实际共同mean续跑逐值一致；中距/停止Q仍乐观。QA1累计1041.132584/3600job秒、196.168MiB/1GiB；R2累计16282.324743/57600秒。GPU0已释放，无后续队列。以下为历史时点。
+
+---
+
 # 最新：R2 Q排序FAIL，D11只读完成，Actor/U仍0
 
 2026-11-15。[报告](R2_EI_Q_RANKING_RESULTS.md) · [机器摘要](r2_ei_q_ranking_results.json)。E/I各3500真实行/56Q，I另26表示。八真实train状态/五锁定父组、40条1s物理分支；四父组58有效比较，两臂26/58=44.83%＜原70%，父组等权52.14%，非UNDERPOWERED。按已签v1.1 G17/D11停止，Actor/U=0、Dev/Sealed=0。D11只读未发现输入/previous-z/action/q_PD/reward错位：CPU Q最大差5.96e-8；mid保持0/9，TD loss约1.5e-4仍非可信排序。
