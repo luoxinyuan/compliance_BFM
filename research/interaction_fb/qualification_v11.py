@@ -37,7 +37,9 @@ def same_state_reference(env,a,dest):
     from diagnostic_fb_resume import tree_digest
     t=env.task;ss=TrainingBranch(t)
     extra=state_of(env,exclude=('task','proxy'));proxy=state_of(env.proxy)
-    start_digest=tree_digest(portable(t));start_rng=tree_digest(global_rng())
+    from f1_mjdata_contract import metadata,canonical,exact
+    before=portable(t);before_meta=metadata(t.e.sim.model,t.e.sim.data)
+    start_digest=tree_digest(before);start_rng=tree_digest(global_rng())
     start=len(t.physics);start_control=len(t.controls)
     dump(dest/'same-state-release-start.ptz',dict(physical=portable(t),rng=global_rng(),proxy=proxy,spec=t.spec))
     env.proxy.stochastic=False;install_gate(env,t.physics)
@@ -52,7 +54,19 @@ def same_state_reference(env,a,dest):
     if t.boundary:errors.append('reference_boundary')
     with gzip.open(dest/'same-state-zeroU-reference.json.gz','wt') as f:json.dump(dict(physics=ph,controls=controls,start_digest=start_digest,start_rng=start_rng,quality=q,failures=errors),f)
     ss.restore();put(env,extra);put(env.proxy,proxy)
-    assert tree_digest(portable(t))==start_digest,'Full release state restore mismatch'
+    after=portable(t);after_meta=metadata(t.e.sim.model,t.e.sim.data)
+    dump(dest/'restore-before-after.ptz',dict(before=before,after=after,before_meta=before_meta,after_meta=after_meta))
+    def differences(x,y,path=''):
+        if isinstance(x,dict) and isinstance(y,dict):
+            out=[]
+            for k in sorted(set(x)|set(y)):
+                out+=differences(x.get(k),y.get(k),path+'/'+str(k))
+            return out
+        return [] if exact(x,y) else [path]
+    diff=differences(before,after);valid_diff=differences(canonical(before,before_meta),canonical(after,after_meta))
+    audit=dict(raw_diff=diff,valid_diff=valid_diff,rng_equal=tree_digest(global_rng())==start_rng,raw_equal=tree_digest(after)==start_digest)
+    (dest/'restore-audit.json').write_text(json.dumps(audit,indent=2))
+    assert audit['raw_equal'],'Full release state restore mismatch'
     assert tree_digest(global_rng())==start_rng,'Release RNG restore mismatch'
     install_gate(env,t.physics)
     return dict(quality=q,failures=errors,full_state_digest=start_digest,rng_digest=start_rng,source='same sampled complete state frozen zeroU mean',restored_exact=True)
