@@ -21,7 +21,7 @@ def write(path,value):
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--name',required=True)
     parser.add_argument('--case-index',type=int);parser.add_argument('--limit',type=int,default=600)
-    parser.add_argument('--training',action='store_true');parser.add_argument('--evaluate',action='store_true');parser.add_argument('--arm',choices=['E','I'],default='E');parser.add_argument('--resume',type=Path);parser.add_argument('--qualification',action='store_true')
+    parser.add_argument('--training',action='store_true');parser.add_argument('--evaluate',action='store_true');parser.add_argument('--arm',choices=['E','I'],default='E');parser.add_argument('--resume',type=Path);parser.add_argument('--qualification',action='store_true');parser.add_argument('--zero-u',action='store_true')
     args=parser.parse_args()
     pidfile=S/'jobs'/(args.name+'-supervisor.pid')
     launch_start=pidfile.stat().st_mtime if pidfile.exists() else time.time()
@@ -40,6 +40,9 @@ def main():
     assert not args.training
     entry='execution_qualification.py' if args.qualification else 'execution_preflight.py'
     cmd=[str(P/'.venv/bin/python'),'-u',str(R/'research/interaction_fb'/entry),'--output',str(output)]
+    if args.zero_u:
+        assert args.qualification
+        cmd+=['--zero-u']
     if args.case_index is not None:cmd+=['--case-index',str(args.case_index)]
     if not args.qualification:cmd+=['--arm',args.arm]
     if args.resume:cmd+=['--resume',str(args.resume)]

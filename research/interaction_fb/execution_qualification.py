@@ -1,5 +1,5 @@
 """Frozen initial-function qualification on preselected training parents only."""
-import argparse,json,sys
+import argparse,json,sys,gzip
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2];sys.path[:0]=[str(ROOT),str(ROOT/'research_notes')]
 import m11_ipc
@@ -33,11 +33,37 @@ def study(e,m,c,out):
     u={k.removeprefix('u.'):v for k,v in s['nets'].items() if k.startswith('u.')}
     torch.manual_seed(6301);np.random.seed(6301)
     agent=ExecutionAgent(m,obs,s['goal'].cuda(),torch.tensor(c['q_PD_scale'],device='cuda'),'E',u,LOCK)
+    assert torch.equal(agent.goal,e.standing),'Public goal is not native standing'
+    inherited_u=tree_digest(agent.nets['u'].state_dict())
+    if ZERO_U:
+        # Only the residual output is zeroed: preserve hidden layers and all other state.
+        with torch.no_grad():
+            for nets in (agent.nets,agent.targets):
+                nets['u'][-1].weight.zero_();nets['u'][-1].bias.zero_()
+            assert torch.equal(agent.command(obs),agent.goal/16)
+            from clean_policy import direct_command
+            assert torch.equal(direct_command(agent.command(obs),agent.goal),direct_command(agent.goal/16,agent.goal))
+    (out/'initial-function.json').write_text(json.dumps(dict(zero_u=ZERO_U,A128_core_sha=meta['files']['core.ptz'],
+        inherited_u_digest=inherited_u,executed_u_digest=tree_digest(agent.nets['u'].state_dict()),
+        actor_digest=tree_digest(m._actor.state_dict()),tail_digest=tree_digest(agent.tail.state_dict()),
+        normalizer_digest=tree_digest(m._obs_normalizer.state_dict()),goal_digest=tree_digest(agent.goal),
+        actual_initialized_agent_digest=tree_digest(agent.state())),indent=2))
     env.proxy.agent=agent;before=tree_digest(agent.state())
-    results=[];prefixes={}
+    results=[];prefixes={};paired_initial=[]
     for i,spec in enumerate(selected):
         dest=out/f'case-{i}';dest.mkdir()
         one=run(env,agent,dest,[spec]);row=one['results'][0];results.append(row)
+        if ZERO_U:
+            reference=P/'experiments/r2-online-20261114/runs/initial-qualification-01'/f'case-{i}'/'actual-0.json.gz'
+            with gzip.open(reference,'rt') as f:old=json.load(f)
+            assert old['spec']==spec,'Paired condition changed'
+            keys=('bfm_obs','pre_qpos','pre_qvel','time')
+            lhs={k:old['controls'][0][k] for k in keys};rhs={k:env.task.controls[0][k] for k in keys}
+            # JSON canonicalizes numpy/tensor-free archived values.
+            assert json.dumps(lhs,sort_keys=True)==json.dumps(rhs,sort_keys=True),'Paired initial physical/control history differs'
+            paired_initial.append(dict(case=i,parent=spec['parent_id'],initial_obs_q_qvel_time_exact=True,
+                reference_path=str(reference.relative_to(P))))
+            (out/'paired-initial-states.json').write_text(json.dumps(paired_initial,indent=2))
         if 'pair_branch_at' in spec:
             controls=[{k:c[k] for k in ('bfm_obs','executed_z','action','q_PD','pre_qpos','pre_qvel')} for c in env.task.controls if c['time']<spec['pair_branch_at']-1e-8]
             digest=tree_digest(controls);key=spec['parent_id']
@@ -48,13 +74,15 @@ def study(e,m,c,out):
         if row['boundary'] is not None or benchmark.STOP_REQUESTED:break
     result=dict(status='qualification_completed' if len(results)==6 else 'qualification_stopped',results=results,optimizer_updates=0)
     assert tree_digest(agent.state())==before
+    result['zero_u']=ZERO_U;result['paired_initial_states']=paired_initial
     result['qualification_only']=True;result['engineering_models_not_loaded']=True
     result['hard_boundary_pass']=all(r['boundary'] is None for r in result['results'])
     (out/'qualification.json').write_text(json.dumps(result,indent=2,allow_nan=False))
     return result
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);ARGS=p.parse_args()
+    global ZERO_U
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--zero-u',action='store_true');ARGS=p.parse_args();ZERO_U=ARGS.zero_u
     from research.interaction_fb import benchmark
     benchmark.study=study;sys.argv=[__file__,'--output',str(ARGS.output),'--arm','A'];benchmark.main()
 if __name__=='__main__':main()
