@@ -7,7 +7,7 @@
     "R2_D1_MINIMAL_PROTOCOL.md": "94d0b84512ab9fa06cc011b254621237a3b3bba79119d198ffce44f25bc6b80e",
     "R2_INTERACTION_FB_DESIGN.md": "217ed9ef73d4dc447cf0730d704b8bf8bb5665d36e32b439671b14be6d376719",
     "r2_audit/JOINT_TABLE.md": "28339d815467535d8d89e2220f641942bae17ce75f4785c76892a4ba576e37b9",
-    "r2_audit/audit.py": "9d9f110d1bd9ec341aa271c7f086e90b2c54682848a18bae83f660fcd01e6741",
+    "r2_audit/audit.py": "403ff89baa7c536fd1b8f338ad4e2d317742acea99cdad0d2a32542c11817963",
     "r2_audit/checkpoint_audit.py": "0922a7d8e7c2ce01970fa4531a438a5b99227e992f9d6626eb96d6f5b03e7f2a",
     "r2_audit/data/Q-sign.json": "d0847d5a815c6c11cb0c5d4064d4bb9fa2f1ced83a51d507c8d39ec5ad0fd58f",
     "r2_audit/data/behavior-td.json": "53899db40f2af527436b303ffc385182c72ed64b08050b03a46957c404ffba63",
@@ -16,7 +16,7 @@
     "r2_audit/data/coverage.json": "052fdd9a3ac5796c1901ac8adb3414efebf88e84a5dde2f32e3dc99f5256e0f1",
     "r2_audit/data/divergence.json": "2601abd5a9753d56228e964cc1a23a63714fba25fe06aaaaf14a9b201ce4d2b8",
     "r2_audit/data/first-state-jacobian.json": "a00cc8bbda38c9cf4b08ed4b51668e5ef83585a090aeecf58b02e9efbd504915",
-    "r2_audit/data/joint-trajectory.csv": "08d6db44fa7cd5c7796d84ace1e13e9ba1d76577dce4ae180e331e17d6e42527",
+    "r2_audit/data/joint-trajectory.csv": "5dab866e73db1470173cf6b8d12ccb77837480a95ec54c90d52a9a7e4dc135af",
     "r2_audit/data/joint-trajectory.json": "477ecc7b25f75801e21009635198b8134175f7bcd585066e49f249b3d3cc19b6",
     "r2_audit/data/receipt.json": "43f54491eeee9b738c0251ef26d14b65b934420e2fa01a99029df16957e53277",
     "r2_audit/data/reward.json": "5eaf3d95603f95665f0561068b41fffd68c792d08521649d2be8f2ed360f7a8f",
@@ -40,5 +40,6 @@
   },
   "read_only": true,
   "private_first_five_control_artifact": "r2-readonly-20261114/data/first-five-controls.json (not published raw trajectory)",
-  "reproduction": "COMPLIANCE_PROJECT_ROOT=<private project> CUDA_VISIBLE_DEVICES= python research_notes/r2_audit/target_audit.py; then temporal_audit.py and checkpoint_audit.py; new isolated output only"
+  "reproduction": "COMPLIANCE_PROJECT_ROOT=<private project> CUDA_VISIBLE_DEVICES= python research_notes/r2_audit/target_audit.py; then temporal_audit.py and checkpoint_audit.py; new isolated output only",
+  "format_note": "Published CSV uses LF instead of Python CSV default CRLF; audit writer changed only line terminator after computation. Numerical receipts retain executed source hash."
 }

@@ -83,7 +83,7 @@ for case in (2,3):
  support_dist.append(dict(case=case,nearest_global_index=ix,normalized_rms=float(distance[ix]),nearest_phase=phase(rows[ix]),nearest_parent=pid(rows[ix]),same_parent_min_distance=float(distance[mask].min()) if mask else None,
   action_distances=[dict(model=g['model'],rms_to_nearest_saved_action=float((torch.tensor([v['action'] for v in g['joint']])[None]-rows[ix]['action']).square().mean().sqrt())) for g in group]))
 write('reward.json',reward);write('first-state-jacobian.json',firsts);write('joint-trajectory.json',jointrows);write('support-distance.json',support_dist)
-with (O/'joint-trajectory.csv').open('w') as f:w=csv.DictWriter(f,fieldnames=list(jointrows[0]));w.writeheader();w.writerows(jointrows)
+with (O/'joint-trajectory.csv').open('w') as f:w=csv.DictWriter(f,fieldnames=list(jointrows[0]),lineterminator="\n");w.writeheader();w.writerows(jointrows)
 # Behavior successor residual: saved next actual action; not target-policy TD error.
 res={};qvals={}
 with torch.no_grad():
