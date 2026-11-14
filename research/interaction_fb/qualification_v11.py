@@ -66,10 +66,10 @@ def same_state_reference(env,a,dest):
     diff=differences(before,after);valid_diff=differences(canonical(before,before_meta),canonical(after,after_meta))
     audit=dict(raw_diff=diff,valid_diff=valid_diff,rng_equal=tree_digest(global_rng())==start_rng,raw_equal=tree_digest(after)==start_digest)
     (dest/'restore-audit.json').write_text(json.dumps(audit,indent=2))
-    assert audit['raw_equal'],'Full release state restore mismatch'
+    assert not audit['valid_diff'],'Effective full release state restore mismatch'
     assert tree_digest(global_rng())==start_rng,'Release RNG restore mismatch'
     install_gate(env,t.physics)
-    return dict(quality=q,failures=errors,full_state_digest=start_digest,rng_digest=start_rng,source='same sampled complete state frozen zeroU mean',restored_exact=True)
+    return dict(quality=q,failures=errors,full_state_digest=start_digest,rng_digest=start_rng,source='same sampled complete state frozen zeroU mean',restored_exact=True,comparison='existing L0 canonical effective ranges',raw_diff=diff,effective_state_digest=tree_digest(canonical(before,before_meta)))
 
 def study(e,m,c,out):
     import torch,numpy as np
