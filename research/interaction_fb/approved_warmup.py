@@ -22,6 +22,15 @@ def study(e,m,c,out):
  torch.set_num_threads(1);torch.use_deterministic_algorithms(True)
  install();speed(e);(out/'backend-prefix').mkdir();backend(e,m,out/'backend-prefix');install_restore_guard()
  stage=ROOT.parent
+ if ARGS.blocks>4:
+  entry=json.loads((stage/'prep/q-entry-complete.json').read_text())
+  assert entry['E_resume_exact'] and entry['I_resume_exact'] and entry['physical_pair_exact']
+  for proof in entry['proofs']:
+   proof_path=Path(proof['path'])
+   assert hashlib.sha256(proof_path.read_bytes()).hexdigest()==proof['sha256']
+   result=json.loads(proof_path.read_text())
+   assert result['status']=='q_only_entry_complete' and result['study']['resume_exact']
+  assert entry['warmup_only_projection_bytes']<12*2**30
  qualified=P/'experiments/r2-v11-20261114/runs/v11-remaining-sample-05/qualification.json'
  assert json.loads(qualified.read_text())['status']=='qualification_passed'
  mean=P/'experiments/r2-approved-20261114/runs/fresh-mean-qualification-01/qualification.json'
@@ -41,10 +50,10 @@ def study(e,m,c,out):
  if ARGS.resume:
   restored=restore(ARGS.resume,agent,env)
   assert tree_digest(agent.state())==tree_digest(load_state(ARGS.resume)['agent'])
-  if restored<4:assert journal.adopt(ARGS.resume)==restored
+  if restored<ARGS.blocks:assert journal.adopt(ARGS.resume)==restored
  else:
   journal.save(0,agent,env,RUNTIME,'fresh_initial')
- for block in range(restored+1,5):
+ for block in range(restored+1,ARGS.blocks+1):
   start=time.monotonic()
   with torch.no_grad():
    for _ in range(50):env.collect_call()
@@ -65,16 +74,16 @@ def study(e,m,c,out):
  with torch.enable_grad():metric=agent.q_update(env.rows)
  torch.cuda.synchronize()
  proof=dict(agent=tree_digest(agent.state()),rng=tree_digest(global_rng()),physics=tree_digest(env.physical_stream[before:]),rows=tree_digest(env.rows[-5:]),metric=metric)
- if ARGS.resume and restored==4:
+ if ARGS.resume and restored==ARGS.blocks:
   ref=json.loads((ARGS.resume.parent.parent/'continuation-proof.json').read_text());assert proof==ref,'Full resumed continuation/update differs'
  (out/'continuation-proof.json').write_text(json.dumps(proof,indent=2))
  assert tree_digest(m._actor.state_dict())==base_digest
- return dict(status='q_only_entry_complete',arm=ARGS.arm,blocks=records,checkpoint_transitions=1000,
-     continuation_test_only_transitions=5,actor_steps=0,resume_exact=bool(ARGS.resume and restored==4),resumed_from_round=restored,peak_cuda_bytes=torch.cuda.max_memory_allocated())
+ return dict(status='q_only_entry_complete',arm=ARGS.arm,blocks=records,checkpoint_transitions=ARGS.blocks*250,
+     continuation_test_only_transitions=5,actor_steps=0,resume_exact=bool(ARGS.resume and restored==ARGS.blocks),resumed_from_round=restored,peak_cuda_bytes=torch.cuda.max_memory_allocated())
 
 def main():
  global ARGS,RUNTIME
- p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--arm',choices=['E','I'],required=True);p.add_argument('--resume',type=Path);ARGS=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--arm',choices=['E','I'],required=True);p.add_argument('--resume',type=Path);p.add_argument('--blocks',type=int,choices=[4,14,20],default=4);ARGS=p.parse_args()
  RUNTIME=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
  from research.interaction_fb import benchmark
  benchmark.study=study;sys.argv=[__file__,'--output',str(ARGS.output),'--arm','A'];benchmark.main()

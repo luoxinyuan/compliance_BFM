@@ -9,14 +9,16 @@ def write(p,x):
     q=p.with_suffix('.pending.json');q.write_text(json.dumps(x,indent=2));os.replace(q,p)
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--name',required=True);ap.add_argument('--arm',choices=['E','I'],required=True);ap.add_argument('--resume');ap.add_argument('--limit',type=int,default=1600);a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--name',required=True);ap.add_argument('--arm',choices=['E','I'],required=True);ap.add_argument('--resume');ap.add_argument('--blocks',type=int,choices=[4,14,20],default=4);ap.add_argument('--limit',type=int,default=1600);a=ap.parse_args()
     dep=json.loads((S/'prep/dependency-preflight.json').read_text())
     assert dep['status']=='PASS' and dep['mujoco']=='3.3.3'
     for name,digest in dep['sha256'].items():
         assert hashlib.sha256((S/'prep'/name).read_bytes()).hexdigest()==digest
     ledger=json.loads((S/'ledger.json').read_text());prior=ledger['total_charged_upper_s']
-    used=sum(j['wall_s'] for j in ledger['job_entries'] if j.get('category')=='q_entry')
-    assert used+a.limit<=4500 and prior+a.limit<57600
+    category='q_entry' if a.blocks==4 else 'q_warmup_'+a.arm
+    cap=4500 if a.blocks==4 else (9000 if a.arm=='E' else 10500)
+    used=sum(j['wall_s'] for j in ledger['job_entries'] if j.get('category')==category)
+    assert used+a.limit<=cap and prior+a.limit<57600
     assert shutil.disk_usage(S).free>=100*2**30
     assert tree_bytes(ledger['output_roots'])<12*2**30
     runtime=subprocess.check_output(['git','-C',str(R),'rev-parse','HEAD'],text=True).strip()
@@ -26,10 +28,10 @@ def main():
     assert not any(s.split(',')[0].strip()==gpu for s in apps.splitlines()),'GPU0 occupied'
     lock=S/'active-owned-job.lock';fd=os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY);os.write(fd,str(os.getpid()).encode());os.close(fd)
     out=S/'runs'/a.name;side=S/'jobs'/(a.name+'.json');assert not side.exists() and not out.exists()
-    cmd=[str(P/'.venv/bin/python'),'-u',str(R/'research/interaction_fb/approved_warmup.py'),'--output',str(out),'--arm',a.arm]
+    cmd=[str(P/'.venv/bin/python'),'-u',str(R/'research/interaction_fb/approved_warmup.py'),'--output',str(out),'--arm',a.arm,'--blocks',str(a.blocks)]
     if a.resume:cmd+=['--resume',a.resume]
     env=os.environ.copy();env.update(CUDA_VISIBLE_DEVICES='0',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MUJOCO_GL='egl',MUJOCO_EGL_DEVICE_ID='0',PYOPENGL_PLATFORM='egl',CUBLAS_WORKSPACE_CONFIG=':4096:8',TMPDIR=str(S/'tmp'),BFM_RECOVERY_OUTPUT=str(out))
-    start=time.time();rec=dict(name=a.name,category='q_entry',runtime=runtime,start=start,supervisor_pid=os.getpid(),command=cmd,gpu_uuid=gpu,limit_s=a.limit,before_s=prior)
+    start=time.time();rec=dict(name=a.name,category=category,runtime=runtime,start=start,supervisor_pid=os.getpid(),command=cmd,gpu_uuid=gpu,limit_s=a.limit,before_s=prior)
     try:
         with (S/'jobs'/(a.name+'.log')).open('x') as log:
             child=subprocess.Popen(cmd,cwd=R,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True);rec['pid']=child.pid;write(side,rec)
