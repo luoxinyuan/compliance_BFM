@@ -1,3 +1,17 @@
+# CURRENT_STATE — Issue63 D1完成；R2工程资格正在执行
+
+2026-11-14。Yi明确批准启动D1/R2；[授权登记](R2_EXECUTION_AUTHORIZATION.md)。旧B19/EnvelopeV1/Return64与BC500身份及负判定保持。
+
+[D1八分支结果](R2_D1_RESULTS.md)：两个原V1分支physics/control/action逐值复现；Control64/Return64只执行首20ms后统一V1，全部3秒可恢复，slip峰值最高.08287m/s，没有旧完整新策略的~.8m/s/−150°崩坏。支持连续反馈累积的重要性，不证明仅第一步问题或旧Q的无限时域唯一bug。Q与共同V1有限窗pair排名一致7/12，四项Control/Return相对V1均Q更高、3sreturn略差。无sealed、无训练、全部失败保留。
+
+D1物理runtime290739f；共14903/18000physics ticks，含准备/分析发布保守1529.680/5400job秒，含工作树~.26GiB/1GiB。D1已结束。
+
+R2新E/I部分Actor执行器已实现，初始同A128动作/z逐值相同、隐藏伙伴输入不影响actor；原运动Actor末块+输出层4,263,965可训练参数，独立副本，原BFM/PD/BR不变。E工程实际采样250条18.327s、3个更新组.0842s、完整存盘2.824s；新进程读取后继续5条采样+一次完整更新，physics/replay/RNG/模型/Adam逐值一致。峰值显存~.852GiB。这是短工程测试，不是32k正式学习结果或长期吞吐承诺。
+
+I工程资格进行中；所有新作业GPU0串行，工程≤1h含在R2≤16h/12GiB内。正式训练尚未启动：仍需完整初态/恢复物理资格、训练域保持/辅助项校准并锁定、IO投影。不得把工程系数当科学最优，不继承工程更新模型开训。新train/dev/sealed父组recipe分组已生成，sealed未执行/未用于调整。下一步继续已授权R2资格与配对pilot；触科学/正确性/资源边界则停报。
+
+---
+
 # CURRENT_STATE — Issue63 D0只读审计完成，R2设计待审阅
 
 2026-11-14。最新用户授权仅D0档案机制审计＋R2方法设计；本轮**新物理0、优化0、GPU使用0、sealed读取0**。旧B19/Envelope V1/Return64负结果保持，B/C正式训练仍停止。

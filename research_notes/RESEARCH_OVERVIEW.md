@@ -292,3 +292,7 @@ Yi已批准一次有限B-only adapter Return-to-Prior隔离试验：相同B19起
 D0档案审计确认固定Q绝对值未校准、投影后的执行变化与raw代理改善脱节、有限恢复参考未保住独立已暴露恢复域。有限窗口不同策略成绩不是无限时域Q真值；同状态首动作与共同后续策略仍需独立物理合同。不能把原生权重冻结或小修正视为行为保持，也不能用此负例否定所有离线学习。
 
 下一设计优先真实rollout下的原Actor部分网络适配，保留B_R/运动先验、同状态同z有效域保持与在线价值校准；在相同执行基线上比较新增B_I/F_I/Goal Composition的独立价值。旧B19 Adapter-only配方已结束，R2设计不是新训练授权；当前只读交付见[R2_CAUSAL_TRIAGE](R2_CAUSAL_TRIAGE.md)与[R2_INTERACTION_FB_DESIGN](R2_INTERACTION_FB_DESIGN.md)。
+
+## Issue63 R2执行授权（2026-11-14）
+
+D1首动作匹配反事实已完成：单次Control/Return偏移由共同V1可恢复，严重失效与连续新反馈相容。R2现已获批启动真实rollout部分Actor适配/在线Q校准的E基线与BI/FI的I对照；不恢复旧29D Adapter-only修补。阶段以CURRENT_STATE与独立账本为准，工程检查不冒充物理学习收益。
