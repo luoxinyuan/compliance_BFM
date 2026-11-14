@@ -13,6 +13,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT), str(ROOT / 'research_notes')]
+import m11_ipc  # propagate the existing abstract-socket fix into forkserver children
 P = ROOT.parents[2]
 S = ROOT.parent
 OLD = P / 'experiments/interaction-pilot-v3-20261112/runs'
