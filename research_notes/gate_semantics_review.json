@@ -1,0 +1,1420 @@
+{
+  "version": "v1.1-signoff",
+  "approval_quote": "按issue #63的v1.1修订合同做签前清单，然后签 v1.1并启动",
+  "sources": {
+    "R2_EI_TRAIN_CONTRACT_V1_1.md": {
+      "repository": "GaoE05/robot-research-bridge",
+      "path": "contracts/R2_EI_TRAIN_CONTRACT_V1_1.md",
+      "git_blob_sha1": "e8db8700af53d1efd33f9f8b7078657489a0f588",
+      "sha256": "4a20a6f52d68d9eca1ed0c10ee7cb0a5036fae9d25b236e9e00950673a0eefe0",
+      "byte_exact": true
+    },
+    "R2_EI_GATE_SEMANTICS_V1_1.md": {
+      "repository": "GaoE05/robot-research-bridge",
+      "path": "contracts/R2_EI_GATE_SEMANTICS_V1_1.md",
+      "git_blob_sha1": "2fc4ddb5c4b48456c4036596d8e901f6bf147f47",
+      "sha256": "a00c44e5bae3cc4c50786a58830105e3d62c879bf945dd7b13a2e18bb337c1f8",
+      "byte_exact": true
+    },
+    "RESEARCH_GATE_SEMANTICS_STANDARD.md": {
+      "repository": "GaoE05/robot-research-bridge",
+      "path": "contracts/RESEARCH_GATE_SEMANTICS_STANDARD.md",
+      "git_blob_sha1": "e8443c6178b0d7a31cb59c26459c7b73585eafff",
+      "sha256": "94451ec7d58600b26248371f8fd8ebb6548e8e363d7661249ec11af3e7ee469a",
+      "byte_exact": true
+    }
+  },
+  "gates": [
+    {
+      "gate_id": "G01",
+      "phenomenon": "G01｜共同零U初始化与E/I物理一致",
+      "raw_field": "state_dict, obs, executed z/action/qPD",
+      "frame": "tensor coordinates",
+      "time_window": "initial + each matched control",
+      "unit": "tensor coordinates",
+      "formula": "exact tensor identity",
+      "threshold": 0,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：v1.0入口E/I全新U动作和Q输入逐值一致；FAIL历史反例：旧A128 U导致none连续偏航1081.13°，不符合本轮零U初始化要求。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：v1.0入口E/I全新U动作和Q输入逐值一致；FAIL历史反例：旧A128 U导致none连续偏航1081.13°，不符合本轮零U初始化要求。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "HISTORICAL_ENTRY_EVIDENCE_REVIEWED",
+      "planned_diagnostic": "D01",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G01｜共同零U初始化与E/I物理一致 | E/I全新U同seed、输出零，target/Actor原尾层一致；同完整源首状态z/action/qPD/Q输入逐值相同；禁止继承A128。 | PASS：v1.0入口E/I全新U动作和Q输入逐值一致；FAIL历史反例：旧A128 U导致none连续偏航1081.13°，不符合本轮零U初始化要求。 |"
+    },
+    {
+      "gate_id": "G02",
+      "phenomenon": "G02｜信息权限与父组去重",
+      "raw_field": "deploy obs, hidden perturbation, parent_id",
+      "frame": "declared schema",
+      "time_window": "same state / full parent",
+      "unit": "declared schema",
+      "formula": "invariance and group separation",
+      "threshold": 0,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：v1.0入口因果隐藏字段干预和stop/continue前缀通过；FAIL构造自现存数据：将同stop父组兄弟误作两个独立父组，真实parent_id相同，应被拒绝；该错分并未实际发生。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：v1.0入口因果隐藏字段干预和stop/continue前缀通过；FAIL构造自现存数据：将同stop父组兄弟误作两个独立父组，真实parent_id相同，应被拒绝；该错分并未实际发生。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "HISTORICAL_ENTRY_EVIDENCE_REVIEWED",
+      "planned_diagnostic": "D02",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G02｜信息权限与父组去重 | Actor/U隐藏伙伴与未来字段的独立扰动不改输出；train/dev/sealed真实source/partner和stop兄弟整组，前缀物理逐值一致。 | PASS：v1.0入口因果隐藏字段干预和stop/continue前缀通过；FAIL构造自现存数据：将同stop父组兄弟误作两个独立父组，真实parent_id相同，应被拒绝；该错分并未实际发生。 |"
+    },
+    {
+      "gate_id": "G03",
+      "phenomenon": "G03｜动作采样与实际replay合同",
+      "raw_field": "RNG, sampled action, actual action",
+      "frame": "29D / original qPD map",
+      "time_window": "each 20ms",
+      "unit": "29D / original qPD map",
+      "formula": "one draw std .01 clip .06 + exact equality",
+      "threshold": 0,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：v1.0入口480个sample控制验证动作/采样一致；FAIL案例缺实际动作不等记录（历史只是实现错误/恢复错误而非采样改变）；以同现存row篡改一维replay用于可重复拒绝测试，必须注明故障注入而非物理事实。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：v1.0入口480个sample控制验证动作/采样一致；FAIL案例缺实际动作不等记录（历史只是实现错误/恢复错误而非采样改变）；以同现存row篡改一维replay用于可重复拒绝测试，必须注明故障注入而非物理事实。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "HISTORICAL_ENTRY_EVIDENCE_REVIEWED",
+      "planned_diagnostic": "D03",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G03｜动作采样与实际replay合同 | std=.01,clip=.06，一次29D噪声；真实执行action==replay action==qPD反算原映射，同存档RNG；区别采样和mean。 | PASS：v1.0入口480个sample控制验证动作/采样一致；FAIL案例缺实际动作不等记录（历史只是实现错误/恢复错误而非采样改变）；以同现存row篡改一维replay用于可重复拒绝测试，必须注明故障注入而非物理事实。 |"
+    },
+    {
+      "gate_id": "G04",
+      "phenomenon": "G04｜真实q硬界（不是qPD限制）",
+      "raw_field": "qpos, model.jnt_range",
+      "frame": "joint rad",
+      "time_window": "each 5ms",
+      "unit": "joint rad",
+      "formula": "max joint excess",
+      "threshold": 0.02,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：v1.0 sample none excess=0；FAIL：B19 mean左踝pitch excess=.027559rad，真实触线；历史qPD超界但真实q未越界不能判此门失败。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：v1.0 sample none excess=0；FAIL：B19 mean左踝pitch excess=.027559rad，真实触线；历史qPD超界但真实q未越界不能判此门失败。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "HISTORICAL_ENTRY_EVIDENCE_REVIEWED",
+      "planned_diagnostic": "D04",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G04｜真实q硬界（不是qPD限制） | 每实际5ms qpos相对机器人机械限位计算 excess=max(max(qmin-q,q-qmax,0))；原控制硬终止0.02rad不变；qPD仅作附表。 | PASS：v1.0 sample none excess=0；FAIL：B19 mean左踝pitch excess=.027559rad，真实触线；历史qPD超界但真实q未越界不能判此门失败。 |"
+    },
+    {
+      "gate_id": "G05",
+      "phenomenon": "G05｜足支撑真实丢失",
+      "raw_field": "support",
+      "frame": "foot support boolean",
+      "time_window": "each 5ms protected domain",
+      "unit": "foot support boolean",
+      "formula": "count no support",
+      "threshold": 0,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：v1.0 sampled none 0 tick；FAIL：B19 adapter-on release段16个no-support ticks。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：v1.0 sampled none 0 tick；FAIL：B19 adapter-on release段16个no-support ticks。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "HISTORICAL_ENTRY_EVIDENCE_REVIEWED",
+      "planned_diagnostic": "D04",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G05｜足支撑真实丢失 | 每个真实5ms physics tick读取实际support；none/zero/恢复的no_support_ticks必须0，不能用时间平均或末时刻掩盖。 | PASS：v1.0 sampled none 0 tick；FAIL：B19 adapter-on release段16个no-support ticks。 |"
+    },
+    {
+      "gate_id": "G06",
+      "phenomenon": "G06｜无接触/零需求足滑移",
+      "raw_field": "stage_loaded_slip_mps",
+      "frame": "world material point m/s",
+      "time_window": "whole none/zero",
+      "unit": "world material point m/s",
+      "formula": "max",
+      "threshold": 0.1,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：v1.0 sampled none peak=.007856m/s；FAIL：旧A128 none peak=1.566231m/s。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：v1.0 sampled none peak=.007856m/s；FAIL：旧A128 none peak=1.566231m/s。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "HISTORICAL_ENTRY_EVIDENCE_REVIEWED",
+      "planned_diagnostic": "D05",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G06｜无接触/零需求足滑移 | 在整个online none/zero窗按原stage_loaded_slip_mps/原载荷口径逐5ms取peak≤.10m/s，另报p95/越界tick/法向力。 | PASS：v1.0 sampled none peak=.007856m/s；FAIL：旧A128 none peak=1.566231m/s。 |"
+    },
+    {
+      "gate_id": "G07",
+      "phenomenon": "G07｜无接触大幅偏航/自转（不误罚小幅抖动）",
+      "raw_field": "pelvis_matrix",
+      "frame": "unwrapped world yaw deg",
+      "time_window": "online first 5ms through end none/zero",
+      "unit": "unwrapped world yaw deg",
+      "formula": "max abs(yaw-yaw0)",
+      "threshold": 15,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：v1.0 sampled none yaw range=3.730°，所以M≤3.730°，即使TV=39.323°；FAIL：旧A128 none unwrapped net=1081.130°，所以M≥1081.130°。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：v1.0 sampled none yaw range=3.730°，所以M≤3.730°，即使TV=39.323°；FAIL：旧A128 none unwrapped net=1081.130°，所以M≥1081.130°。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "HISTORICAL_ENTRY_EVIDENCE_REVIEWED",
+      "planned_diagnostic": "D06",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G07｜无接触大幅偏航/自转（不误罚小幅抖动） | 以online首5ms为t0，从实际pelvis矩阵取yaw时间unwrap；M=max_t\\|yaw_u(t)-yaw_u(t0)\\|≤15°；TV/net/range/p95角速度只作不同意义指标。 | PASS：v1.0 sampled none yaw range=3.730°，所以M≤3.730°，即使TV=39.323°；FAIL：旧A128 none unwrapped net=1081.130°，所以M≥1081.130°。 |"
+    },
+    {
+      "gate_id": "G08",
+      "phenomenon": "G08｜无需求时root多余往返行走",
+      "raw_field": "root[:2]",
+      "frame": "world XY m",
+      "time_window": "whole online none/zero",
+      "unit": "world XY m",
+      "formula": "sum norm consecutive XY difference",
+      "threshold": 0.1,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：v1.0 sampled none path=.07726m（net仅.00225m）；FAIL：旧A128 none path=4.31614m。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：v1.0 sampled none path=.07726m（net仅.00225m）；FAIL：旧A128 none path=4.31614m。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "HISTORICAL_ENTRY_EVIDENCE_REVIEWED",
+      "planned_diagnostic": "D07",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G08｜无需求时root多余往返行走 | online全none/zero 5ms root xy逐步路径总长sum \\|\\|delta p_xy\\|\\|≤.10m；记录净位移但不能以净位移替代路径。 | PASS：v1.0 sampled none path=.07726m（net仅.00225m）；FAIL：旧A128 none path=4.31614m。 |"
+    },
+    {
+      "gate_id": "G09",
+      "phenomenon": "G09｜真正的恢复标签",
+      "raw_field": "active, force",
+      "frame": "actual physical event",
+      "time_window": "active then inactive force zero",
+      "unit": "actual physical event",
+      "formula": "real release exists",
+      "threshold": true,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：R2 mean near实际release9.8→13.8s并存档后继；FAIL：v1.0 sampled none始终无force，脚本尾4秒绝不可当release恢复Teacher。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：R2 mean near实际release9.8→13.8s并存档后继；FAIL：v1.0 sampled none始终无force，脚本尾4秒绝不可当release恢复Teacher。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "HISTORICAL_ENTRY_EVIDENCE_REVIEWED",
+      "planned_diagnostic": "D08",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G09｜真正的恢复标签 | 实际有contact建立然后release且force实测归零，才把release之后的真实窗称post-release；完整源/自身z/物理和Goal要能同状态比。 | PASS：R2 mean near实际release9.8→13.8s并存档后继；FAIL：v1.0 sampled none始终无force，脚本尾4秒绝不可当release恢复Teacher。 |"
+    },
+    {
+      "gate_id": "G10",
+      "phenomenon": "G10｜恢复时大幅偏航/回转",
+      "raw_field": "pelvis_matrix",
+      "frame": "unwrapped yaw deg",
+      "time_window": "first actual postrelease 5ms through end",
+      "unit": "unwrapped yaw deg",
+      "formula": "max abs(yaw-yaw0)",
+      "threshold": 15,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：R2 mean near真实释放后旧TV=1.869923°，数学上M≤TV<15°；FAIL历史：Return64 P2恢复3s净偏航−136.972°，M必≥136.972°（不同实验，只作量尺反例）。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：R2 mean near真实释放后旧TV=1.869923°，数学上M≤TV<15°；FAIL历史：Return64 P2恢复3s净偏航−136.972°，M必≥136.972°（不同实验，只作量尺反例）。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "HISTORICAL_ENTRY_EVIDENCE_REVIEWED",
+      "planned_diagnostic": "D06",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G10｜恢复时大幅偏航/回转 | 仅在真实release起或合格完整状态接管起窗口，M=max\\|yaw_u(t)-yaw_u(t0)\\|≤15°；旧20°世界末yaw另报。 | PASS：R2 mean near真实释放后旧TV=1.869923°，数学上M≤TV<15°；FAIL历史：Return64 P2恢复3s净偏航−136.972°，M必≥136.972°（不同实验，只作量尺反例）。 |"
+    },
+    {
+      "gate_id": "G11",
+      "phenomenon": "G11｜恢复时无谓root游走",
+      "raw_field": "root[:2], full-state reference hash",
+      "frame": "world XY m",
+      "time_window": "same complete release state and duration",
+      "unit": "world XY m",
+      "formula": "path_new-path_reference",
+      "threshold": 0.1,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：R2 mean near已资格参考自身release path=.012293m；FAIL风险实测历史：A128 near释放阶段root实际路径1.9655m vs零U near释放路径.0123m；两策略抵达release时的物理状态不同，不能直接拿来判本门的**同状态恢复相对资格**。此门尚无合格同态真实FAIL案例，必须标UNMEASURED，不以旧Return报告的root净位移冒充路径。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：R2 mean near已资格参考自身release path=.012293m；FAIL风险实测历史：A128 near释放阶段root实际路径1.9655m vs零U near释放路径.0123m；两策略抵达release时的物理状态不同，不能直接拿来判本门的**同状态恢复相对资格**。此门尚无合格同态真实FAIL案例，必须标UNMEASURED，不以旧Return报告的root净位移冒充路径。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "PENDING_UNMEASURED",
+      "planned_diagnostic": "D07",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G11｜恢复时无谓root游走 | 同完整物理状态、同Goal和相同时长3s/4s，候选实际root path≤合格冻结零U同父组参考path+.10m；无合格参考标UNMEASURED，不跨状态偷换。 | PASS：R2 mean near已资格参考自身release path=.012293m；FAIL风险实测历史：A128 near释放阶段root实际路径1.9655m vs零U near释放路径.0123m；两策略抵达release时的物理状态不同，不能直接拿来判本门的**同状态恢复相对资格**。此门尚无合格同态真实FAIL案例，必须标UNMEASURED，不以旧Return报告的root净位移冒充路径。 |"
+    },
+    {
+      "gate_id": "G12",
+      "phenomenon": "G12｜恢复时真实滑移及支撑/关节",
+      "raw_field": "stage_loaded_slip_mps,qpos,support",
+      "frame": "world m/s; joint rad",
+      "time_window": "true postrelease",
+      "unit": "world m/s; joint rad",
+      "formula": "peak slip; excess; missing support",
+      "threshold": [
+        0.45,
+        0.02,
+        0
+      ],
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：R2 mean near release slip=.001195、excess=0、support缺失0；FAIL：Return64 P2真实恢复slip=.7843m/s（历史物理，非新E/I）。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：R2 mean near release slip=.001195、excess=0、support缺失0；FAIL：Return64 P2真实恢复slip=.7843m/s（历史物理，非新E/I）。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "HISTORICAL_ENTRY_EVIDENCE_REVIEWED",
+      "planned_diagnostic": "D04",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G12｜恢复时真实滑移及支撑/关节 | 真实release后时窗loaded slip peak≤.45m/s，原q excess≤.02rad、no-support tick=0；按相同5ms窗和原法向语义。 | PASS：R2 mean near release slip=.001195、excess=0、support缺失0；FAIL：Return64 P2真实恢复slip=.7843m/s（历史物理，非新E/I）。 |"
+    },
+    {
+      "gate_id": "G13",
+      "phenomenon": "G13｜同状态同z的Actor功能保持",
+      "raw_field": "actor qPD at same obs/interpolated z",
+      "frame": "rad",
+      "time_window": "qualified train state, parent balanced",
+      "unit": "rad",
+      "formula": "parent p90 RMS; p95 joint abs",
+      "threshold": [
+        0.015,
+        0.03
+      ],
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：新E/I初始tail=原BFM，ΔqPD=0；FAIL证据限制：旧B19末状态存在−.349rad单帧adapter增量，说明为何应检查，但它不证明R2整父组p95失败。整门失败例暂缺。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：新E/I初始tail=原BFM，ΔqPD=0；FAIL证据限制：旧B19末状态存在−.349rad单帧adapter增量，说明为何应检查，但它不证明R2整父组p95失败。整门失败例暂缺。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "PENDING_UNMEASURED",
+      "planned_diagnostic": "D09",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G13｜同状态同z的Actor功能保持 | 只在已物理资格train保持域计算ΔqPD=新Actor−原Actor，父组p90 RMS≤锁eps_rms=.015rad、p95单关节≤.030rad；主动接触推进不强制原生。 | PASS：新E/I初始tail=原BFM，ΔqPD=0；FAIL证据限制：旧B19末状态存在−.349rad单帧adapter增量，说明为何应检查，但它不证明R2整父组p95失败。整门失败例暂缺。 |"
+    },
+    {
+      "gate_id": "G14",
+      "phenomenon": "G14｜U不在无接触/已资格恢复偏离Goal",
+      "raw_field": "command z, standing z",
+      "frame": "legal 256D direction deg",
+      "time_window": "qualified none/recovery only",
+      "unit": "legal 256D direction deg",
+      "formula": "parent p95 angle",
+      "threshold": [
+        5,
+        10
+      ],
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：新零U命令与standing角差0°；FAIL缺实测：A128对物理旋转有害但其U角距离p95未从存档算出，不可用yaw1081°冒充；要求签前只读补例或注入同现存z的6°/11°数值拒绝fixture并标级。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：新零U命令与standing角差0°；FAIL缺实测：A128对物理旋转有害但其U角距离p95未从存档算出，不可用yaw1081°冒充；要求签前只读补例或注入同现存z的6°/11°数值拒绝fixture并标级。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "PENDING_UNMEASURED",
+      "planned_diagnostic": "D09",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G14｜U不在无接触/已资格恢复偏离Goal | 原公开standing合法norm z与当前真实U命令角距离按父组p95，无接触≤5°、已资格恢复≤10°，active不加归零门。 | PASS：新零U命令与standing角差0°；FAIL缺实测：A128对物理旋转有害但其U角距离p95未从存档算出，不可用yaw1081°冒充；要求签前只读补例或注入同现存z的6°/11°数值拒绝fixture并标级。 |"
+    },
+    {
+      "gate_id": "G15",
+      "phenomenon": "G15｜保持对偶统计不被单帧支配",
+      "raw_field": "parent loss deviations, lambda",
+      "frame": "normalized dimensionless",
+      "time_window": "eligible block before Actor update",
+      "unit": "normalized dimensionless",
+      "formula": "clip(lambda+.05*(parent-weighted p90 violation-1),0,3)",
+      "threshold": 3,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：v1.0冻结初态Actor偏差0，lambda初始化0且应保持0；FAIL历史机制反例：Return=.0008来源单B19状态梯度尺度而非跨父组标定，按本轮禁止；不是对偶代码实测错误。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：v1.0冻结初态Actor偏差0，lambda初始化0且应保持0；FAIL历史机制反例：Return=.0008来源单B19状态梯度尺度而非跨父组标定，按本轮禁止；不是对偶代码实测错误。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "PENDING_UNMEASURED",
+      "planned_diagnostic": "D10",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G15｜保持对偶统计不被单帧支配 | 每独立资格父组p90相对eps，父组等权求normalized violation，锁定λ_next=clip(λ+.05*(violation−1),0,3)，不看Dev重定参数。 | PASS：v1.0冻结初态Actor偏差0，lambda初始化0且应保持0；FAIL历史机制反例：Return=.0008来源单B19状态梯度尺度而非跨父组标定，按本轮禁止；不是对偶代码实测错误。 |"
+    },
+    {
+      "gate_id": "G16",
+      "phenomenon": "G16｜Q非正且后继计算合法",
+      "raw_field": "Q, rewards, real a/z/next/duration/terminal",
+      "frame": "native20ms TD",
+      "time_window": "actual transitions",
+      "unit": "native20ms TD",
+      "formula": "negative softplus; real terminal bootstrap",
+      "threshold": 0,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：新R2工程Q负输出结构及真实update/恢复资格；FAIL：旧B19在3058/4750 replay上Q>0，绝对值不可信，不能作为新教师。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：新R2工程Q负输出结构及真实update/恢复资格；FAIL：旧B19在3058/4750 replay上Q>0，绝对值不可信，不能作为新教师。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "PENDING_UNMEASURED",
+      "planned_diagnostic": "D11",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G16｜Q非正且后继计算合法 | −softplus twinQ输出≤0，实际contact_physical reward非正、真实a_exec/z、duration、termination/truncation、targets按训练合同一致。 | PASS：新R2工程Q负输出结构及真实update/恢复资格；FAIL：旧B19在3058/4750 replay上Q>0，绝对值不可信，不能作为新教师。 |"
+    },
+    {
+      "gate_id": "G17",
+      "phenomenon": "G17｜Q真实排序有资格驱动Actor",
+      "raw_field": "online counts, families, pair outcomes",
+      "frame": "parent groups",
+      "time_window": "3500..5000 warmup",
+      "unit": "parent groups",
+      "formula": "correct nontrivial pairs / all nontrivial pairs",
+      "threshold": 0.7,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS整门尚不存在，因为新R2正式训练=0；仅D1 P2 Control vs Return等单pair方向一致，不等于整门；FAIL类证据：旧D1旧Q仅7/12=58.3%、且仅2父组，若用相同尺度评估不得放行。此门结果只能在新Q warm-up后实判，签时不假填PASS。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS整门尚不存在，因为新R2正式训练=0；仅D1 P2 Control vs Return等单pair方向一致，不等于整门；FAIL类证据：旧D1旧Q仅7/12=58.3%、且仅2父组，若用相同尺度评估不得放行。此门结果只能在新Q warm-up后实判，签时不假填PASS。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "PENDING_UNMEASURED",
+      "planned_diagnostic": "D11",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G17｜Q真实排序有资格驱动Actor | 已见至少3500至多5000真实online transitions，真实none/near/mid/zero/stop+continue及release回放；≥4独立train父组同状态可执行首动作＋共同后续的非平凡pair排序≥70%，不足证据为UNDERPOWERED。 | PASS整门尚不存在，因为新R2正式训练=0；仅D1 P2 Control vs Return等单pair方向一致，不等于整门；FAIL类证据：旧D1旧Q仅7/12=58.3%、且仅2父组，若用相同尺度评估不得放行。此门结果只能在新Q warm-up后实判，签时不假填PASS。 |"
+    },
+    {
+      "gate_id": "G18",
+      "phenomenon": "G18｜不再用固定旧Q离线长时间更新Actor",
+      "raw_field": "sample/update counters, policy versions",
+      "frame": "real transition / update groups",
+      "time_window": "every250 new rows",
+      "unit": "real transition / update groups",
+      "formula": "4Q; I2 after first; 1 Actor only after Q gate",
+      "threshold": [
+        250,
+        4,
+        2,
+        1
+      ],
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS工程局部：E/I真实250在线采样+更新和恢复可运行，但原工程步数不是v1.1节奏资格；FAIL历史：旧Return在无新rollout及Q更新时离线64次Adapter更新，本合同禁止。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS工程局部：E/I真实250在线采样+更新和恢复可运行，但原工程步数不是v1.1节奏资格；FAIL历史：旧Return在无新rollout及Q更新时离线64次Adapter更新，本合同禁止。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "PENDING_UNMEASURED",
+      "planned_diagnostic": "D12",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G18｜不再用固定旧Q离线长时间更新Actor | 首250真实数据只Q4；其后warm-up Q4/I表示2/Actor0；Q资格后每块250 Q4/I表示2/Actor+U1，下一Actor更新前须有新真实物理块。 | PASS工程局部：E/I真实250在线采样+更新和恢复可运行，但原工程步数不是v1.1节奏资格；FAIL历史：旧Return在无新rollout及Q更新时离线64次Adapter更新，本合同禁止。 |"
+    },
+    {
+      "gate_id": "G19",
+      "phenomenon": "G19｜每轮真实恢复+事务存盘",
+      "raw_field": "model/targets/Adam/replay/RNG/Task/solver",
+      "frame": "serialized exact state",
+      "time_window": "each committed block and new process",
+      "unit": "serialized exact state",
+      "formula": "hash/atomic + exact continuation",
+      "threshold": 0,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：E/I工程250+5条与更新新进程逐值一致；FAIL：Issue56 97D训练512更新后末轮未保存，只剩step0。v1.0合成存盘测试不算正式E/I全链恢复资格。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：E/I工程250+5条与更新新进程逐值一致；FAIL：Issue56 97D训练512更新后末轮未保存，只剩step0。v1.0合成存盘测试不算正式E/I全链恢复资格。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "PENDING_UNMEASURED",
+      "planned_diagnostic": "D13",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G19｜每轮真实恢复+事务存盘 | 250样本+对应完整优化后写不可变core+delta、Adam/replay/Task/solver/历史/RNG，hash/fsync/原子指针；新进程物理逐值续跑；故障包拒载。 | PASS：E/I工程250+5条与更新新进程逐值一致；FAIL：Issue56 97D训练512更新后末轮未保存，只剩step0。v1.0合成存盘测试不算正式E/I全链恢复资格。 |"
+    },
+    {
+      "gate_id": "G20",
+      "phenomenon": "G20｜时间、磁盘、GPU和全physics计数",
+      "raw_field": "ledger, output bytes, free disk, GPU pid",
+      "frame": "seconds/bytes/ticks",
+      "time_window": "cumulative incl old and failed",
+      "unit": "seconds/bytes/ticks",
+      "formula": "sum nonnested costs and all physical ticks",
+      "threshold": [
+        57600,
+        12884901888,
+        107374182400
+      ],
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS：R2现账在16h/12GiB内；FAIL历史边界：S1上限45k总physics ticks、已知实耗≥72,280，说明漏计reset会失败；这不是R2已超额。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS：R2现账在16h/12GiB内；FAIL历史边界：S1上限45k总physics ticks、已知实耗≥72,280，说明漏计reset会失败；这不是R2已超额。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "HISTORICAL_ENTRY_EVIDENCE_REVIEWED",
+      "planned_diagnostic": "D14",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G20｜时间、磁盘、GPU和全physics计数 | R2 cumulative≤57600job秒、≤12GiB，已记5544.704秒/.814GiB；GPU0重作业串行，共享free≥100GiB+峰值余量；reset/前缀/失败/tick全计。 | PASS：R2现账在16h/12GiB内；FAIL历史边界：S1上限45k总physics ticks、已知实耗≥72,280，说明漏计reset会失败；这不是R2已超额。 |"
+    },
+    {
+      "gate_id": "G21",
+      "phenomenon": "G21｜主动接触任务真实完成而非力小就算",
+      "raw_field": "error/force/slip/yaw/wrist+partner",
+      "frame": "cm/N/m/s/deg/m",
+      "time_window": "true task phase same parent",
+      "unit": "cm/N/m/s/deg/m",
+      "formula": "joint physical success gates",
+      "threshold": {
+        "near": [
+          4,
+          4
+        ],
+        "mid": [
+          8,
+          7
+        ],
+        "stop": [
+          8,
+          6.5
+        ],
+        "slip": 0.45,
+        "yaw": 20
+      },
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS组件：旧零U near误差3.86cm/力3.14N，但因推进不足，整任务仍FAIL；FAIL整门：零U mid20.33cm/8.72N且推进不足；旧F1 L1有11个已暴露参考合格窗口但非新E/I学习成功。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS组件：旧零U near误差3.86cm/力3.14N，但因推进不足，整任务仍FAIL；FAIL整门：零U mid20.33cm/8.72N且推进不足；旧F1 L1有11个已暴露参考合格窗口但非新E/I学习成功。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "PENDING_UNMEASURED",
+      "planned_diagnostic": "D15",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G21｜主动接触任务真实完成而非力小就算 | near≤4cm/4N、mid≤8cm/7N、stop hold≤8cm/6.5N、真实推进、slip peak≤.45m/s、末绝对yaw≤20°和原边界，按active窗/相同父组。 | PASS组件：旧零U near误差3.86cm/力3.14N，但因推进不足，整任务仍FAIL；FAIL整门：零U mid20.33cm/8.72N且推进不足；旧F1 L1有11个已暴露参考合格窗口但非新E/I学习成功。 |"
+    },
+    {
+      "gate_id": "G22",
+      "phenomenon": "G22｜BI真有表示增量而非参数更多",
+      "raw_field": "BR/BI/contact features, future labels, ablations",
+      "frame": "AUROC parent groups",
+      "time_window": "heldout .5/1s outcomes after fixed training",
+      "unit": "AUROC parent groups",
+      "formula": "BI independent increment + actual behavior + ablation",
+      "threshold": 0.05,
+      "comparator": "<= for upper bounds; exact for identity; >= for minimum evidence",
+      "parent_key": "parent_id; stop/continue same group",
+      "pass_source": {
+        "text": "PASS真实E/I增量样本不存在（I尚未开训），不能伪称；FAIL机制实例：仅固定connected prototype/无正负标签变化时必须判probe_underpowered，不能算BI成功。此门为未来结项判据，不是签前当前模型PASS。",
+        "grade": "see evidence distinctions; not automatically new E/I PASS",
+        "references": [
+          "b8bc894:R2_EI_ENTRY_RESULTS",
+          "d12a0e6:R2_ZERO_U_RESULTS"
+        ]
+      },
+      "fail_source": {
+        "text": "PASS真实E/I增量样本不存在（I尚未开训），不能伪称；FAIL机制实例：仅固定connected prototype/无正负标签变化时必须判probe_underpowered，不能算BI成功。此门为未来结项判据，不是签前当前模型PASS。",
+        "grade": "historical_other_model or explicitly synthetic; real R2 absence retained"
+      },
+      "evidence_grade": "ARCHIVED_OR_SYNTHETIC_NOT_NEW_TRAINING",
+      "status": "PENDING_UNMEASURED",
+      "planned_diagnostic": "D16",
+      "max_cost": {
+        "shared_pool_job_s": 3600,
+        "shared_pool_bytes": 1073741824,
+        "shared_pool_ticks": 18000,
+        "per_physical_job_s": 600,
+        "max_branches": 2,
+        "max_branch_s": 3
+      },
+      "stop_action": "STOP_AWAIT_DECISION after sole diagnosis; TV-only warning can continue if all hard gates pass",
+      "full_source_row": "| G22｜BI真有表示增量而非参数更多 | 冻结训练后I，在跨父组heldout未来.5/1s接触后果probe中比较BR/BI/concat/currentContact，配套公开Goal prompt disable/shuffle消融，先物理增量后表示。 | PASS真实E/I增量样本不存在（I尚未开训），不能伪称；FAIL机制实例：仅固定connected prototype/无正负标签变化时必须判probe_underpowered，不能算BI成功。此门为未来结项判据，不是签前当前模型PASS。 |"
+    }
+  ],
+  "fixtures": {
+    "status": "PASS",
+    "grade": "synthetic_logic_only",
+    "physical_rollouts": 0,
+    "training": 0,
+    "checked": [
+      "yaw excursion vs TV vs wrapped",
+      "root path vs net",
+      "actual release vs none",
+      "real q",
+      "support",
+      "slip",
+      "same-state root comparator",
+      "U 6deg/11deg rejection",
+      "Q group denominator",
+      "probe missing classes"
+    ]
+  },
+  "archive_regression": [
+    {
+      "mode": "mean",
+      "case": "case-0",
+      "parent": "ede27bac003dfc662e814e958c1bd0f3e2b2c487616c1055634e9b3b7108ea79",
+      "family": "none",
+      "sha256": "a678e70d9e68ee3dafcd21fad89945d7e26b2ef000d984873f5c4454654f5855",
+      "whole": {
+        "yaw_excursion_deg": 3.5675803463021576,
+        "yaw_total_variation_deg": 3.5675803463021576,
+        "yaw_net_deg": -3.5675803463021576,
+        "yaw_range_deg": 3.5675803463021576,
+        "yaw_rate_p95_deg_s": 0.4897244465344089,
+        "root_path_m": 0.0014084612622060092,
+        "root_net_m": 0.0009671350857049668,
+        "slip_peak": 0.0016531258362968621,
+        "slip_p95": 0.0015905649753865396,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.30499999999993,
+        "end_s": 13.900000000000773,
+        "physics_ticks": 1920
+      },
+      "actual_release_index": null,
+      "recovery": null,
+      "failures": [],
+      "recovery_relative_status": "NOT_APPLICABLE",
+      "warning": null
+    },
+    {
+      "mode": "mean",
+      "case": "case-1",
+      "parent": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "family": "near",
+      "sha256": "e296038f248273617ea2a6f95f9a60fe9b76de3479f0c167db4ecf17910f0516",
+      "whole": {
+        "yaw_excursion_deg": 2.0335941653851997,
+        "yaw_total_variation_deg": 2.8244801003167046,
+        "yaw_net_deg": -2.0335941653851997,
+        "yaw_range_deg": 2.0335941653851997,
+        "yaw_rate_p95_deg_s": 0.5698072774906066,
+        "root_path_m": 0.026218648995053086,
+        "root_net_m": 0.002005317379976706,
+        "slip_peak": 0.001591307107968586,
+        "slip_p95": 0.0015339000301222373,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.80499999999992,
+        "end_s": 13.800000000000757,
+        "physics_ticks": 1800
+      },
+      "actual_release_index": 1000,
+      "recovery": {
+        "yaw_excursion_deg": 1.8696237625536793,
+        "yaw_total_variation_deg": 1.8696237625536793,
+        "yaw_net_deg": -1.8696237625536793,
+        "yaw_range_deg": 1.8696237625536793,
+        "yaw_rate_p95_deg_s": 0.6556642946633929,
+        "root_path_m": 0.012291841313381327,
+        "root_net_m": 0.011761319436681189,
+        "slip_peak": 0.001194925004280294,
+        "slip_p95": 0.0011915771362254223,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 9.805000000000133,
+        "end_s": 13.800000000000757,
+        "physics_ticks": 800
+      },
+      "failures": [],
+      "recovery_relative_status": "REFERENCE_SELF",
+      "warning": null
+    },
+    {
+      "mode": "mean",
+      "case": "case-10",
+      "parent": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "family": "continue",
+      "sha256": "ded104c26d20947c90cc704b0365d80f4ab8240db23d76cb7f4b4f1f85f69e35",
+      "whole": {
+        "yaw_excursion_deg": 1.6562082744042377,
+        "yaw_total_variation_deg": 4.740393987065344,
+        "yaw_net_deg": -0.35573498320973035,
+        "yaw_range_deg": 2.192329501927807,
+        "yaw_rate_p95_deg_s": 0.5930938806261011,
+        "root_path_m": 0.07054470237603302,
+        "root_net_m": 0.005499404579525658,
+        "slip_peak": 0.0019060731781176188,
+        "slip_p95": 0.001893734327918067,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.104999999999935,
+        "end_s": 14.600000000000882,
+        "physics_ticks": 2100
+      },
+      "actual_release_index": 1300,
+      "recovery": {
+        "yaw_excursion_deg": 2.0104070662227693,
+        "yaw_total_variation_deg": 2.0134794490051666,
+        "yaw_net_deg": -2.0104070662227693,
+        "yaw_range_deg": 2.011943257613968,
+        "yaw_rate_p95_deg_s": 0.8738634107411156,
+        "root_path_m": 0.03330865775791971,
+        "root_net_m": 0.03177671333164591,
+        "slip_peak": 0.0018877278300609994,
+        "slip_p95": 0.0017819575222724356,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 10.605000000000258,
+        "end_s": 14.600000000000882,
+        "physics_ticks": 800
+      },
+      "failures": [],
+      "recovery_relative_status": "REFERENCE_SELF",
+      "warning": null
+    },
+    {
+      "mode": "mean",
+      "case": "case-11",
+      "parent": "12ad3430e68123e94210d7fe1ccd5ada45e575caa51919f114e7b48fb3810503",
+      "family": "zero",
+      "sha256": "fd0fadbcc68f759aa8f6bf71b786b3d4bf3df3a9e115310c92e56dbc597e05d8",
+      "whole": {
+        "yaw_excursion_deg": 3.241562064858666,
+        "yaw_total_variation_deg": 3.241562064858666,
+        "yaw_net_deg": -3.241562064858666,
+        "yaw_range_deg": 3.241562064858666,
+        "yaw_rate_p95_deg_s": 0.4834976986837418,
+        "root_path_m": 0.0032634422066225707,
+        "root_net_m": 0.0011557833053953978,
+        "slip_peak": 0.0016292136916201377,
+        "slip_p95": 0.0015686759106072039,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.504999999999926,
+        "end_s": 13.800000000000757,
+        "physics_ticks": 1860
+      },
+      "actual_release_index": 1060,
+      "recovery": {
+        "yaw_excursion_deg": 1.2720645272300333,
+        "yaw_total_variation_deg": 1.2720645272300333,
+        "yaw_net_deg": -1.2720645272300333,
+        "yaw_range_deg": 1.2720645272300333,
+        "yaw_rate_p95_deg_s": 0.35478921397826413,
+        "root_path_m": 0.0012252405828479898,
+        "root_net_m": 0.0006950851583414629,
+        "slip_peak": 0.0010218361506261048,
+        "slip_p95": 0.0010200282669727415,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 9.805000000000133,
+        "end_s": 13.800000000000757,
+        "physics_ticks": 800
+      },
+      "failures": [],
+      "recovery_relative_status": "REFERENCE_SELF",
+      "warning": null
+    },
+    {
+      "mode": "mean",
+      "case": "case-2",
+      "parent": "cb29bf09014a2b5416b8d9cf11921d07eac3a0c885365c55ea31a3ca27e371c4",
+      "family": "mid",
+      "sha256": "e041468f322a5787b6c60e7adfd79e71184534f4bb8156d1be250295554bf09a",
+      "whole": {
+        "yaw_excursion_deg": 2.5425710086348947,
+        "yaw_total_variation_deg": 5.71856069213781,
+        "yaw_net_deg": 0.47886149193668004,
+        "yaw_range_deg": 3.0987110920372447,
+        "yaw_rate_p95_deg_s": 0.6942617202980983,
+        "root_path_m": 0.07226997214371914,
+        "root_net_m": 0.007089105105359147,
+        "slip_peak": 0.0019809830955279362,
+        "slip_p95": 0.00197130035155048,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.504999999999926,
+        "end_s": 16.20000000000106,
+        "physics_ticks": 2340
+      },
+      "actual_release_index": 1540,
+      "recovery": {
+        "yaw_excursion_deg": 2.061517059700537,
+        "yaw_total_variation_deg": 2.0659019736958926,
+        "yaw_net_deg": -2.061517059700537,
+        "yaw_range_deg": 2.0637095166982147,
+        "yaw_rate_p95_deg_s": 0.8468533681827115,
+        "root_path_m": 0.033383236012829026,
+        "root_net_m": 0.03165120234793727,
+        "slip_peak": 0.0019809830955279362,
+        "slip_p95": 0.0018385945922045322,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 12.205000000000508,
+        "end_s": 16.20000000000106,
+        "physics_ticks": 800
+      },
+      "failures": [],
+      "recovery_relative_status": "REFERENCE_SELF",
+      "warning": null
+    },
+    {
+      "mode": "mean",
+      "case": "case-3",
+      "parent": "0e719f297deb2ad57dd345f9f4148c8df4073fb4b7f4dbd520303aedeb47c6f6",
+      "family": "zero",
+      "sha256": "b83fe332a20b4e563c798e32fbc1bfeab1cae58c8271a95b30ae71406199091b",
+      "whole": {
+        "yaw_excursion_deg": 3.3133307436899155,
+        "yaw_total_variation_deg": 3.3133307436899155,
+        "yaw_net_deg": -3.3133307436899155,
+        "yaw_range_deg": 3.3133307436899155,
+        "yaw_rate_p95_deg_s": 0.48298317108551664,
+        "root_path_m": 0.0033420049547875355,
+        "root_net_m": 0.0011958864516995354,
+        "slip_peak": 0.0016272674486014563,
+        "slip_p95": 0.0015656790668169308,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.504999999999926,
+        "end_s": 14.100000000000804,
+        "physics_ticks": 1920
+      },
+      "actual_release_index": 1120,
+      "recovery": {
+        "yaw_excursion_deg": 1.2426356356589763,
+        "yaw_total_variation_deg": 1.2426356356589763,
+        "yaw_net_deg": -1.2426356356589763,
+        "yaw_range_deg": 1.2426356356589763,
+        "yaw_rate_p95_deg_s": 0.3468153621626898,
+        "root_path_m": 0.0012165740235437089,
+        "root_net_m": 0.0007098883437449196,
+        "slip_peak": 0.0009962236730592072,
+        "slip_p95": 0.00099432479311439,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 10.10500000000018,
+        "end_s": 14.100000000000804,
+        "physics_ticks": 800
+      },
+      "failures": [],
+      "recovery_relative_status": "REFERENCE_SELF",
+      "warning": null
+    },
+    {
+      "mode": "mean",
+      "case": "case-4",
+      "parent": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+      "family": "stop",
+      "sha256": "b59bf9c4c1e1af9bdf2e5056b5fa237cafc8a02d3f406ef0646f8bdc34f4c32f",
+      "whole": {
+        "yaw_excursion_deg": 1.6668539756150762,
+        "yaw_total_variation_deg": 4.93869149691364,
+        "yaw_net_deg": -0.32218782465328377,
+        "yaw_range_deg": 2.3082518361301783,
+        "yaw_rate_p95_deg_s": 0.7010173968029658,
+        "root_path_m": 0.07103522201503679,
+        "root_net_m": 0.005407929690191585,
+        "slip_peak": 0.0019569454421337258,
+        "slip_p95": 0.0019131310245454288,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.404999999999928,
+        "end_s": 14.90000000000093,
+        "physics_ticks": 2100
+      },
+      "actual_release_index": 1300,
+      "recovery": {
+        "yaw_excursion_deg": 1.9871250372068838,
+        "yaw_total_variation_deg": 1.9909585633298363,
+        "yaw_net_deg": -1.9871250372068838,
+        "yaw_range_deg": 1.98904180026836,
+        "yaw_rate_p95_deg_s": 0.8700977871943081,
+        "root_path_m": 0.03352163527415719,
+        "root_net_m": 0.031943385055175494,
+        "slip_peak": 0.0019135721927019435,
+        "slip_p95": 0.0017591785008936717,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 10.905000000000305,
+        "end_s": 14.90000000000093,
+        "physics_ticks": 800
+      },
+      "failures": [],
+      "recovery_relative_status": "REFERENCE_SELF",
+      "warning": null
+    },
+    {
+      "mode": "mean",
+      "case": "case-5",
+      "parent": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+      "family": "continue",
+      "sha256": "b2310fef5c88e84a7aae362903e9e7193aa9256dd82b9f2a479109568d5017ac",
+      "whole": {
+        "yaw_excursion_deg": 2.1288869545222697,
+        "yaw_total_variation_deg": 5.438129456805502,
+        "yaw_net_deg": 0.10244017326924144,
+        "yaw_range_deg": 2.770284815037372,
+        "yaw_rate_p95_deg_s": 0.6929714469281236,
+        "root_path_m": 0.07177026722773416,
+        "root_net_m": 0.006396156347149433,
+        "slip_peak": 0.0019572996525896585,
+        "slip_p95": 0.0019458512825340456,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.404999999999928,
+        "end_s": 15.700000000001054,
+        "physics_ticks": 2260
+      },
+      "actual_release_index": 1460,
+      "recovery": {
+        "yaw_excursion_deg": 2.0243362598986483,
+        "yaw_total_variation_deg": 2.028557302607408,
+        "yaw_net_deg": -2.0243362598986483,
+        "yaw_range_deg": 2.0264467812530285,
+        "yaw_rate_p95_deg_s": 0.8537060727822237,
+        "root_path_m": 0.033437611491524855,
+        "root_net_m": 0.031770652011174225,
+        "slip_peak": 0.0019523162781173305,
+        "slip_p95": 0.0018041716948369066,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 11.70500000000043,
+        "end_s": 15.700000000001054,
+        "physics_ticks": 800
+      },
+      "failures": [],
+      "recovery_relative_status": "REFERENCE_SELF",
+      "warning": null
+    },
+    {
+      "mode": "mean",
+      "case": "case-6",
+      "parent": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+      "family": "near",
+      "sha256": "a66a4994c990a64b2b144683ab787dede63a3fdb19eba9310dcc03f3e27bed46",
+      "whole": {
+        "yaw_excursion_deg": 2.1383635762699402,
+        "yaw_total_variation_deg": 2.951612823549803,
+        "yaw_net_deg": -2.1383635762699402,
+        "yaw_range_deg": 2.1383635762699402,
+        "yaw_rate_p95_deg_s": 0.5865395064726502,
+        "root_path_m": 0.027700383031959784,
+        "root_net_m": 0.002169340901471133,
+        "slip_peak": 0.0016671624772613984,
+        "slip_p95": 0.0016044544165326744,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.204999999999933,
+        "end_s": 13.700000000000742,
+        "physics_ticks": 1900
+      },
+      "actual_release_index": 1100,
+      "recovery": {
+        "yaw_excursion_deg": 1.9354289714825041,
+        "yaw_total_variation_deg": 1.9354289714825044,
+        "yaw_net_deg": -1.9354289714825041,
+        "yaw_range_deg": 1.9354289714825041,
+        "yaw_rate_p95_deg_s": 0.6813634559709811,
+        "root_path_m": 0.01299456726285685,
+        "root_net_m": 0.012394627668022812,
+        "slip_peak": 0.0012411271111252226,
+        "slip_p95": 0.0012375607583380095,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 9.705000000000117,
+        "end_s": 13.700000000000742,
+        "physics_ticks": 800
+      },
+      "failures": [],
+      "recovery_relative_status": "REFERENCE_SELF",
+      "warning": null
+    },
+    {
+      "mode": "mean",
+      "case": "case-7",
+      "parent": "fdde460420a47e3cb30e3a7b298277a9de8b2ed3de08ebd5547391339bbb24aa",
+      "family": "mid",
+      "sha256": "e412dae7c4fc4dd403349624db06cfab3f5b8df5f7260a1e2ef91fa4fbe00b36",
+      "whole": {
+        "yaw_excursion_deg": 1.703977345417118,
+        "yaw_total_variation_deg": 4.741675890145199,
+        "yaw_net_deg": -0.20470936303631077,
+        "yaw_range_deg": 2.2684832635544443,
+        "yaw_rate_p95_deg_s": 0.5090340699544844,
+        "root_path_m": 0.06779573363856217,
+        "root_net_m": 0.0058755272890781375,
+        "slip_peak": 0.0018291283726923006,
+        "slip_p95": 0.0018126040898694478,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.604999999999924,
+        "end_s": 16.10000000000108,
+        "physics_ticks": 2300
+      },
+      "actual_release_index": 1500,
+      "recovery": {
+        "yaw_excursion_deg": 1.9072320576652788,
+        "yaw_total_variation_deg": 1.910141359241579,
+        "yaw_net_deg": -1.9072320576652788,
+        "yaw_range_deg": 1.908686708453429,
+        "yaw_rate_p95_deg_s": 0.8153888543253737,
+        "root_path_m": 0.031644772658833066,
+        "root_net_m": 0.030266540137588154,
+        "slip_peak": 0.0017835814754520467,
+        "slip_p95": 0.0016867227409356534,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 12.105000000000492,
+        "end_s": 16.10000000000108,
+        "physics_ticks": 800
+      },
+      "failures": [],
+      "recovery_relative_status": "REFERENCE_SELF",
+      "warning": null
+    },
+    {
+      "mode": "mean",
+      "case": "case-8",
+      "parent": "2252e9238913c55517d367d57b556215d8424aa4179f5041825d5af69682c29b",
+      "family": "none",
+      "sha256": "01d6cd5a7b62f9d5d33c5fd2fe142f5af59d2d64fd91b7fc5c776fdc7ee58dc1",
+      "whole": {
+        "yaw_excursion_deg": 3.556164122151671,
+        "yaw_total_variation_deg": 3.556164122151671,
+        "yaw_net_deg": -3.556164122151671,
+        "yaw_range_deg": 3.556164122151671,
+        "yaw_rate_p95_deg_s": 0.47545960673009335,
+        "root_path_m": 0.0015079343970881179,
+        "root_net_m": 0.001115478254712157,
+        "slip_peak": 0.0016030740909404218,
+        "slip_p95": 0.0015392445353918675,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.704999999999922,
+        "end_s": 14.700000000000898,
+        "physics_ticks": 2000
+      },
+      "actual_release_index": null,
+      "recovery": null,
+      "failures": [],
+      "recovery_relative_status": "NOT_APPLICABLE",
+      "warning": null
+    },
+    {
+      "mode": "mean",
+      "case": "case-9",
+      "parent": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "family": "stop",
+      "sha256": "8ad45503c0d2821f69b51ce79bf9f83f4b5c0233fde92f3fe9b54d48bcd4b53a",
+      "whole": {
+        "yaw_excursion_deg": 1.618448547441382,
+        "yaw_total_variation_deg": 3.5268480072149027,
+        "yaw_net_deg": -1.618448547441382,
+        "yaw_range_deg": 2.036527049804573,
+        "yaw_rate_p95_deg_s": 0.5796822124792609,
+        "root_path_m": 0.04057761017110974,
+        "root_net_m": 0.0029421830207989985,
+        "slip_peak": 0.0016814981883486783,
+        "slip_p95": 0.001619009184774805,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.104999999999935,
+        "end_s": 13.400000000000695,
+        "physics_ticks": 1860
+      },
+      "actual_release_index": 1060,
+      "recovery": {
+        "yaw_excursion_deg": 2.036527049804573,
+        "yaw_total_variation_deg": 2.0365270498045733,
+        "yaw_net_deg": -2.036527049804573,
+        "yaw_range_deg": 2.036527049804573,
+        "yaw_rate_p95_deg_s": 0.7775413487770578,
+        "root_path_m": 0.019124398187562872,
+        "root_net_m": 0.018403553921644975,
+        "slip_peak": 0.0014367654897014808,
+        "slip_p95": 0.0014257589440788625,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 9.40500000000007,
+        "end_s": 13.400000000000695,
+        "physics_ticks": 800
+      },
+      "failures": [],
+      "recovery_relative_status": "REFERENCE_SELF",
+      "warning": null
+    },
+    {
+      "mode": "sample",
+      "case": "case-0",
+      "parent": "ede27bac003dfc662e814e958c1bd0f3e2b2c487616c1055634e9b3b7108ea79",
+      "family": "none",
+      "sha256": "d0dd21ae08a128df4ec07ecb667ee7bac80a27e99853dd811e9b01ae87591af7",
+      "whole": {
+        "yaw_excursion_deg": 3.654932636206446,
+        "yaw_total_variation_deg": 39.322867439527194,
+        "yaw_net_deg": -3.528844663188118,
+        "yaw_range_deg": 3.7299947836191247,
+        "yaw_rate_p95_deg_s": 10.627997426090037,
+        "root_path_m": 0.0772557510011295,
+        "root_net_m": 0.002251728703562993,
+        "slip_peak": 0.007855518484842526,
+        "slip_p95": 0.00506477558586794,
+        "unsupported_ticks": 0,
+        "max_joint_excess_rad": 0.0,
+        "start_s": 4.30499999999993,
+        "end_s": 13.900000000000773,
+        "physics_ticks": 1920
+      },
+      "actual_release_index": null,
+      "recovery": null,
+      "failures": [],
+      "recovery_relative_status": "NOT_APPLICABLE",
+      "warning": "WARNING_EXPLAINED: small oscillations; no alternate hard metric"
+    }
+  ],
+  "limitations": [
+    "No empirical R2 failing same-state recovery reference example; synthetic comparator only",
+    "No empirical U p95 failure; 6deg/11deg rejection fixtures only",
+    "Q and BI scientific results PENDING_UNMEASURED",
+    "Four-block actual incremental recovery/storage qualification still required before large training",
+    "Online protection timing implemented independently of original reward"
+  ],
+  "signoff": "APPROVED_BY_YI_FOR_STAGED_EXECUTION_NOT_ALL_GATES_PASSED",
+  "source_issue_comment": 6873130334
+}

@@ -1,3 +1,9 @@
+# CURRENT_STATE — R2 E/I v1.1 已由Yi批准，签前审查完成
+
+2026-11-14。用户授权签署v1.1并启动；[签前清单](R2_EI_V11_SIGNOFF.md)、逐字源合同和22门机器表已落到个人分支。旧v1.0 TV失败不重判。13份归档CPU复算：新yaw excursion门通过、none不再冒充release；Q/BI/真实全链恢复仍待测，未把未来门填PASS。准备接续剩余5个sample回合，GPU0串行；当前正式更新0、Dev/Sealed0。预算继承5544.704秒，新增准备保守计900秒；原57600秒/12GiB不变。
+
+---
+
 # CURRENT_STATE — Yi已批准R2 E/I v1.0；实际采样资格暂停
 
 2026-11-14。[批准合同](R2_EI_TRAIN_CONTRACT_V1.md)已签署归档（Issue63 / Master18）；[入口结果](R2_EI_ENTRY_RESULTS.md)。全新U隐藏层/零输出、原Actor tail、fresh双Q/Adam，未继承A128权重。10父组12回合mean保护全部通过、原六回合完整physics/control逐值复现；E/I逐步对齐通过。
