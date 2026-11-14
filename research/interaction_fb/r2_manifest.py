@@ -7,7 +7,10 @@ def build():
     result={};sources=set();partners=set()
     for split,n,seed in [('train',30,636301),('dev',12,636302),('sealed',24,636303)]:
         rng=random.Random(seed);parents=[]
-        for j,family in enumerate(['near','mid','stop']*(n//3)+['zero','zero','none','none']):
+        families=['near','mid','stop']*(n//3)
+        for index,f in [(0,'none'),(3,'zero'),(7,'none'),(11,'zero')]:families.insert(min(index,len(families)),f)
+        assert families[0]=='none' and 'zero' in families[:4]
+        for j,family in enumerate(families):
             # Executed bounded native pulse creates different source histories;
             # different clock/seed alone is never an independent source.
             until=round(rng.uniform(4.1,4.8),1)
