@@ -3,6 +3,7 @@ import argparse,collections,copy,hashlib,itertools,json,os,sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT),str(ROOT/'research_notes')]
+import m11_ipc  # also imported by forkserver children before creating Manager sockets
 P=ROOT.parents[2]
 OLD=P/'experiments/r2-v11-qentry-20261114'
 STAGE=P/'experiments/r2-g17-qa1-20261115'
