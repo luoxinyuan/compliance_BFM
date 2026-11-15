@@ -5,6 +5,14 @@ ROOT=Path(__file__).resolve().parents[2];STAGE=ROOT.parent;OLD=STAGE.parent/'con
 os.environ['CUBLAS_WORKSPACE_CONFIG']=':4096:8'
 import m11_ipc
 
+def result_payload(path):
+    """Benchmark stores the study under an envelope; direct fixtures are bare."""
+    saved=json.loads(Path(path).read_text())
+    if 'study' in saved:
+        assert isinstance(saved['study'],dict) and saved['status']==saved['study']['status']
+        return saved['study']
+    return saved
+
 def study(e,base,c,out):
     import torch,numpy as np,random,subprocess
     from native_env import install as contacts
@@ -64,7 +72,8 @@ def study(e,base,c,out):
         assert src.resolve().is_relative_to((STAGE/'runs').resolve())
         assert json.loads((src/'result.json').read_text())['status']=='OR1_D1_TWO_NEW_P2_BLOCKS_PASS';restore(src/'checkpoints/block-2',agent,env,out);old_native=env.next_cursor;env.phase='P3'
         sample_qualification=qualify(env,agent,out/'P3-sample-entry','P3_sample','P3');assert sample_qualification['status']=='PASS','P3_SAMPLE_QUALIFICATION_FAILED'
-    initial_cursor=env.next_cursor;prior=json.loads((STAGE/'ledger.json').read_text())['new_scratch_50Hz'];records=reused_records;journal=Journal(out/'checkpoints');journal.save(0,agent,env,runtime,'OR1_initial_or_phase_resume_qualification_only')
+    initial_cursor=env.next_cursor;prior=json.loads((STAGE/'ledger.json').read_text())['new_scratch_50Hz'];records=reused_records;journal=Journal(out/'checkpoints')
+    if not RESTORE:journal.save(0,agent,env,runtime,'OR1_initial_or_phase_resume_qualification_only')
     def count(final=False,reserved=None):
         actual=0 if RESTORE else env.next_cursor-initial_cursor
         v=dict(actual_scratch_rows=actual,reserved_scratch_rows=actual if reserved is None else reserved,exact_final=final,restore_validation=RESTORE)
@@ -85,9 +94,13 @@ def study(e,base,c,out):
     if RESTORE:
         src=SOURCE_RUN or STAGE/f'runs/OR1-D2-{ARM}-01'
         assert src.resolve().is_relative_to((STAGE/'runs').resolve())
-        sm=json.loads((src/'result.json').read_text());restore(src/'checkpoints/block-mid-last',agent,env,out);initial_cursor=env.next_cursor
-        fill(12);aux=ActualSuccessors(env,'P3');mt=update(agent,env.rows[-1024:],keep,eps,aux,'P3');actual=signature(mt);expected=read(src/'expected-last-update.ptz',sm['expected']);checks={k:exact(actual[k],expected[k])for k in actual};dump(out/'actual-restored-update.ptz',actual);assert all(checks.values()),checks
-        result=dict(status='OR1_ACCEPTED_ACTOR_ADAM_PHYSICS_RESTORE_EXACT',arm=ARM,checks=checks,new_on_policy_rows=0,actual_validation_native_continuation=12,replayed_physics_not_training=True)
+        sm=result_payload(src/'result.json');restore(src/'checkpoints/block-mid-last',agent,env,out);initial_cursor=env.next_cursor
+        fill(12);aux=ActualSuccessors(env,'P3');mt=update(agent,env.rows[-1024:],keep,eps,aux,'P3');actual=signature(mt)
+        from .ei_v2_or1_expected import read as read_expected
+        expected=read_expected(src,sm['expected']);checks={k:exact(actual[k],expected[k])for k in actual}
+        from .ei_v2_or1_validation_delta import save as save_validation
+        validation_manifest=save_validation(out,actual,expected,src/sm['expected'].get('path','expected-last-update.ptz'),{k:sm['expected'][k]for k in ('sha256','bytes')},exact);assert all(checks.values()),checks
+        result=dict(status='OR1_ACCEPTED_ACTOR_ADAM_PHYSICS_RESTORE_EXACT',arm=ARM,checks=checks,validation_manifest=validation_manifest,new_on_policy_rows=0,actual_validation_native_continuation=12,replayed_physics_not_training=True)
     else:
         phase='P2' if PART=='D1'else 'P3';env.phase=phase;agent.selector.requires_grad_(phase=='P3')
         for block in ([2]if COMPLETE_P2 else range(1,3)):
@@ -113,8 +126,11 @@ def study(e,base,c,out):
                     mu=agent.mean(device_obs(r['observation'],agent.device),r['z'].to(agent.device),torch.tensor([r['option']],device=agent.device));deltas.append((mu-r['old_mu'].to(agent.device)).cpu().numpy())
                     if r['cat_boundary']:
                         old=r['old_logits'].to(agent.device).softmax(-1);new=agent.logits(device_obs(r['selector_obs'],agent.device),r['candidate_first_z'].to(agent.device)).softmax(-1);selector_deltas.append(float(abs(new-old).max()))
-            if block==2:expected=dump(out/'expected-last-update.ptz',signature(mt))
+            if block==2:expected_signature=signature(mt)
             ti=time.monotonic();manifest=journal.save(block,agent,env,runtime,'complete_OR1_engineering_block_not_formal');io=time.monotonic()-ti
+            if block==2:
+                from .ei_v2_or1_expected import write as write_expected
+                ti_ref=time.monotonic();expected=write_expected(out,out/'checkpoints'/('block-'+str(block)),mt,expected_signature,exact);io+=time.monotonic()-ti_ref
             m=dict(block=block,phase=phase,new_rows=len(env.rows)-before_collect,block_rows=1024,collection_s=collected,update_s=update_s,checkpoint_s=io,hot_s=time.monotonic()-t,actor_steps_this_block=actor_steps,actor_accepted_total=agent.actor_accepted,aux_accepted_total=agent.aux_accepted,selector_probability_max_delta=max(selector_deltas or[0.]),actual_selector_draws=len(selector_deltas),mean_delta_RMS=float(np.sqrt(np.mean(np.concatenate(deltas)**2))),metrics=mt,checkpoint=manifest)
             records.append(m);(out/'progress.json').write_text(json.dumps(records,indent=2)+'\n');print('OR1_BLOCK',ARM,PART,block,'actor',actor_steps,'hot',m['hot_s'],flush=True)
             if block==1:
