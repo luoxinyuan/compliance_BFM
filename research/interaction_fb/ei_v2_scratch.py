@@ -58,8 +58,8 @@ def study(e,base,c,out):
     if RESTORE:
         source=STAGE/f'runs/P1-scratch-{ARM}-02';source_meta=json.loads((source/'scratch.json').read_text());s=restore(source/'checkpoints/block-mid-last',agent,env,out);phase='P3';env.collection_role='engineering_on_policy';agent.selector.requires_grad_(True)
         fill(12);aux=ActualSuccessors(env,phase);block=env.rows[-1024:];t=time.monotonic();metrics=update(agent,block,keep,eps,aux,phase)
-        expected_meta=source_meta['expected'];expected=read(source/'expected-fourth-update.ptz',expected_meta);actual=signature(metrics)
-        checks={k:exact(actual[k],expected[k]) for k in actual};dump(out/'actual-fourth-update.ptz',actual);(out/'restore-fields.json').write_text(json.dumps(checks,indent=2)+'\n');assert all(checks.values()),checks
+        expected_meta=source_meta['expected'];expected=read(source/source_meta.get('expected_file','expected-fourth-update.ptz'),expected_meta);actual=signature(metrics)
+        checks={k:exact(actual[k],expected[k]) for k in actual};dump(out/'actual-restored-last-update.ptz',actual);(out/'restore-fields.json').write_text(json.dumps(checks,indent=2)+'\n');assert all(checks.values()),checks
         result=dict(status='TRAINED_ADAM_NEW_PROCESS_CONTINUATION_AND_UPDATE_EXACT',arm=ARM,checks=checks,update_s=time.monotonic()-t,unique_new_scratch_rows=0,replayed_unique_archive_rows=source_meta['unique_scratch_rows'],formal_rows=0)
     else:
         journal=Journal(out/'checkpoints');expected=None
@@ -81,11 +81,11 @@ def study(e,base,c,out):
                 dump(out/f'failed-{block+1}-gradients.ptz',{k:p.grad for k,p in agent.modules.named_parameters()})
                 raise
             update_s=time.monotonic()-tu
-            if block==allowed_blocks-1:expected=dump(out/'expected-fourth-update.ptz',signature(metrics))
+            if block==allowed_blocks-1:expected=dump(out/'expected-last-update.ptz',signature(metrics))
             tio=time.monotonic();manifest=journal.save(block+1,agent,env,runtime,'scratch_only_discard_before_formal');io_s=time.monotonic()-tio
             record=dict(block=block+1,phase=phase,unique_actual_rows=1024,collection_s=collect,update_s=update_s,checkpoint_s=io_s,wall_s=time.monotonic()-tb,accepted=agent.accepted,rejected=agent.rejected,checkpoint=manifest,metrics=metrics,gpu_peak_bytes=torch.cuda.max_memory_allocated(),optimizer_nonempty=bool(agent.opt.state) and bool(agent.vopt.state));records.append(record)
             (out/'progress.json').write_text(json.dumps(records,indent=2)+'\n');print('SCRATCH_BLOCK',ARM,block+1,phase,record['wall_s'],flush=True)
-        result=dict(status='DISPOSABLE_FOUR_FULL_BLOCKS_WRITTEN_RESTORE_PENDING' if allowed_blocks==4 else 'SCRATCH_NATIVE_BUDGET_STOP_INCOMPLETE_QUALIFICATION',arm=ARM,completed_blocks=allowed_blocks,required_blocks=4,records=records,expected=expected,unique_scratch_rows=allowed_blocks*1024,formal_rows=0,scratch_discard_required=True)
+        result=dict(status='DISPOSABLE_FOUR_FULL_BLOCKS_WRITTEN_RESTORE_PENDING' if allowed_blocks==4 else 'SCRATCH_NATIVE_BUDGET_STOP_INCOMPLETE_QUALIFICATION',arm=ARM,completed_blocks=allowed_blocks,required_blocks=4,records=records,expected=expected,expected_file='expected-last-update.ptz',unique_scratch_rows=allowed_blocks*1024,formal_rows=0,scratch_discard_required=True)
     (out/'scratch.json').write_text(json.dumps(result,indent=2)+'\n');return result
 
 def main():
