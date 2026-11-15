@@ -88,3 +88,17 @@ The main intervention is a single current-state choice of a sustained2s plan wit
 ## R1b physical-unit audit and restore evidence
 
 Parent-balanced selected-command standardized MSE: E=0.0043040, I=0.0043495, constant=0.0305786. Both forecast selected outcomes better than this constant on these four parents; no test-time refit or unexecuted-candidate ranking claim. Detailed wrist/root cm and mean-force N errors are in JSON. The same command duplicated across methods/Goals passed full physics/control exactness on 7 comparisons.
+
+## R1a补充：相同phase内当前身体/负担最近父组（只读描述性）
+
+没有重训或改变Goal效应判据；按当前可部署本体与实测力选择最接近的另一父组，再比较该组四个实际未来结果。匹配距离和力差完整保留；没有事前绝对邻近阈值，故只称nearest-available，不能把距离大也说成合格近邻。entry仅一fit父组、无跨父组支持；20条来自其余五个父组，仍是fit-only、非20独立父组。
+
+{"raw": {"n": 20, "fraction": 1.0}, "randomB": {"n": 20, "fraction": 0.9}, "B_I": {"n": 20, "fraction": 0.8}}
+
+## 最终账本与停止
+
+H0累计1802.902486/5400 job秒（含450秒准备和200秒最后归档/发布的保守inclusive记账）；R2累计21137.928257/57600秒。25164 actual/reserved全流程5ms ticks，其中12400新增分支、12764冷启动/reset/native/source前缀；reserved包含actual，不相加。旧F1复用4800tick不计新增。实际新fit12、evaluation16、恢复proof3；两头各1024组，新增RL/Actor/U均0。
+
+末次完整inode去重实扫：H0 237740424 bytes（0.221413GiB）/2GiB；R2 3805158840 bytes（3.543830GiB）/12GiB。此后仅少量报告/源码/账本与Git元数据增长，不冒称重复全盘实扫。分阶段成本与全部source/job/head身份见JSON；科学运行均b77ed34，后续只有只读报告。原生asset manifest与F1身份逐值匹配ea9c3323…；原BFM/PD、旧模型、失败/erratum及旧封存结项全部保持。
+
+全部预定阶段完成，GPU重作业退出，无待启动队列；H0只此一次，未开H0.1、独立Q、正式E/I/Student或新接触。下一合同仅[DRAFT](CONTACT_GOAL_EI_NEXT_CONTRACT_DRAFT.md)。没有因看到结项结果改候选、loss、源父组、Goal效果门或模型终点。

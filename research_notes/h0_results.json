@@ -2490,5 +2490,202 @@
     },
     "scientific_runtime": "b77ed34f06fcfcf6f68de6f0793f4f8b4b22fb22",
     "audit_wall_s": 112.44125153002096
-  }
+  },
+  "matched_r1a": {
+    "status": "DESCRIPTIVE_MATCHED_R1A_COMPLETE",
+    "scope": "fit-only auxiliary; not preregistered new pass threshold or heldout evidence",
+    "matching_rule": "same phase; choose nearest different parent by mean-square465D frozen-normalized proprio + squared body-frame measured-force vector difference/10N; all4 commands of that parent remain eligible",
+    "matching": [
+      {
+        "parent": "00be6bacd16f55262bc9c376fa4a31cba715b3a0d5364a3bf354d948f4308ad3",
+        "matched_parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+        "phase": "sustained",
+        "distance": 1.7796741724014282,
+        "normalized_proprio_RMS": 0.48536768555641174,
+        "body_frame_force_gap_N": 12.426151275634766,
+        "source_force_N": 4.461915016174316,
+        "matched_force_N": 9.999999046325684,
+        "status": "NEAREST_AVAILABLE_NOT_ABSOLUTE_QUALIFICATION",
+        "candidate_n": 4
+      },
+      {
+        "parent": "27d98b313b993a874da0dad9d093c88f8989647ac2566c97f317b9de7c31084b",
+        "phase": "entry",
+        "status": "NO_OTHER_PARENT_IN_PHASE",
+        "candidate_n": 0
+      },
+      {
+        "parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+        "matched_parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+        "phase": "sustained",
+        "distance": 0.17113205790519714,
+        "normalized_proprio_RMS": 0.2729165852069855,
+        "body_frame_force_gap_N": 3.1088359355926514,
+        "source_force_N": 9.999999046325684,
+        "matched_force_N": 10.0,
+        "status": "NEAREST_AVAILABLE_NOT_ABSOLUTE_QUALIFICATION",
+        "candidate_n": 4
+      },
+      {
+        "parent": "5c67db5a480212e779b854bbb5659808a672a06b39854b915b86892799a3951b",
+        "matched_parent": "467e780200066f97fe21c4a5158ab99182fc607a83871086de017a32d3350c7a",
+        "phase": "sustained",
+        "distance": 0.17113205790519714,
+        "normalized_proprio_RMS": 0.2729165852069855,
+        "body_frame_force_gap_N": 3.1088359355926514,
+        "source_force_N": 10.0,
+        "matched_force_N": 9.999999046325684,
+        "status": "NEAREST_AVAILABLE_NOT_ABSOLUTE_QUALIFICATION",
+        "candidate_n": 4
+      },
+      {
+        "parent": "ac1a0e2c9c958136b8bf55f2e8e673a0ff6dbfc87c974a084b0f7a3f1221bb5a",
+        "matched_parent": "d3c49a7a586cb8162b73d660fffa38fdd12e44f8b934a459d984217e36f44b41",
+        "phase": "moving",
+        "distance": 0.0008234666311182082,
+        "normalized_proprio_RMS": 0.0015859686536714435,
+        "body_frame_force_gap_N": 0.2865224778652191,
+        "source_force_N": 0.5861266255378723,
+        "matched_force_N": 0.8718067407608032,
+        "status": "NEAREST_AVAILABLE_NOT_ABSOLUTE_QUALIFICATION",
+        "candidate_n": 4
+      },
+      {
+        "parent": "d3c49a7a586cb8162b73d660fffa38fdd12e44f8b934a459d984217e36f44b41",
+        "matched_parent": "ac1a0e2c9c958136b8bf55f2e8e673a0ff6dbfc87c974a084b0f7a3f1221bb5a",
+        "phase": "moving",
+        "distance": 0.0008234666311182082,
+        "normalized_proprio_RMS": 0.0015859686536714435,
+        "body_frame_force_gap_N": 0.2865224778652191,
+        "source_force_N": 0.8718067407608032,
+        "matched_force_N": 0.5861266255378723,
+        "status": "NEAREST_AVAILABLE_NOT_ABSOLUTE_QUALIFICATION",
+        "candidate_n": 4
+      }
+    ],
+    "nearest_future_raw_agreement": {
+      "raw": {
+        "n": 20,
+        "fraction": 1.0
+      },
+      "randomB": {
+        "n": 20,
+        "fraction": 0.9
+      },
+      "B_I": {
+        "n": 20,
+        "fraction": 0.8
+      }
+    },
+    "absolute_body_load_proximity_gate": "UNMEASURED_NO_PRELOCKED_NUMERIC_THRESHOLD",
+    "wall_s": 0.1965647369506769,
+    "model_updates": 0,
+    "physics_ticks": 0
+  },
+  "cost": {
+    "H0_job_s": 1802.902486411098,
+    "R2_job_s": 21137.92825708026,
+    "H0_output_bytes_last_full_scan": 237740424,
+    "R2_output_bytes_last_full_scan": 3805158840,
+    "phase_job_s": {
+      "prep": 450.0,
+      "fit": 562.83528282505,
+      "learn": 120.73287620500196,
+      "eval": 303.4452220569947,
+      "closeout": 365.88910532405134,
+      "reserve": 0.0
+    },
+    "actual_reserved_physics_ticks": 25164,
+    "new_branch_ticks": 12400,
+    "cold_reset_native_prefix_ticks": 12764,
+    "archived_reused_ticks_not_new": 4800,
+    "new_fit_branches": 12,
+    "archived_fit_branches": 12,
+    "evaluation_branches": 16,
+    "restore_proof_branches": 3,
+    "new_RL_transitions": 0,
+    "actor_U_updates": 0,
+    "head_Adam_groups": {
+      "E": 1024,
+      "I": 1024
+    },
+    "jobs": [
+      {
+        "name": "H0-authorized-preflight-archive-data-implementation",
+        "phase": "prep",
+        "wall_s": 450,
+        "cost_type": "conservative inclusive upper charge"
+      },
+      {
+        "name": "qualification-01",
+        "phase": "fit",
+        "runtime": "b77ed34f06fcfcf6f68de6f0793f4f8b4b22fb22",
+        "wall_s": 155.75082700501662,
+        "exit_code": 0
+      },
+      {
+        "name": "qualification-restore-02",
+        "phase": "fit",
+        "runtime": "b77ed34f06fcfcf6f68de6f0793f4f8b4b22fb22",
+        "wall_s": 144.7541200920241,
+        "exit_code": 0
+      },
+      {
+        "name": "fit-03",
+        "phase": "fit",
+        "runtime": "b77ed34f06fcfcf6f68de6f0793f4f8b4b22fb22",
+        "wall_s": 262.33033572800923,
+        "exit_code": 0
+      },
+      {
+        "name": "learn-04",
+        "phase": "learn",
+        "runtime": "b77ed34f06fcfcf6f68de6f0793f4f8b4b22fb22",
+        "wall_s": 50.30003126896918,
+        "exit_code": 0
+      },
+      {
+        "name": "head-restore-05",
+        "phase": "learn",
+        "runtime": "b77ed34f06fcfcf6f68de6f0793f4f8b4b22fb22",
+        "wall_s": 44.24349730001995,
+        "exit_code": 0
+      },
+      {
+        "name": "evaluation-06",
+        "phase": "eval",
+        "runtime": "b77ed34f06fcfcf6f68de6f0793f4f8b4b22fb22",
+        "wall_s": 303.4452220569947,
+        "exit_code": 0
+      },
+      {
+        "name": "report-07",
+        "phase": "closeout",
+        "runtime": "0894fb4268f1a29a58b6644360f66bd1ac56ae2c",
+        "wall_s": 27.168346374004614,
+        "exit_code": 0
+      },
+      {
+        "name": "final-audit-08",
+        "phase": "closeout",
+        "runtime": "b2eb1bb7935f04c07502f357ec9306b7399b2998",
+        "wall_s": 138.72075895004673,
+        "exit_code": 0
+      },
+      {
+        "name": "matched-r1a-09",
+        "phase": "learn",
+        "runtime": "2538662fcba826b62d8ef0467ec6f8b942e46379",
+        "wall_s": 26.189347636012826,
+        "exit_code": 0
+      },
+      {
+        "name": "H0-final-bookkeeping-docs-review-commit-and-publication",
+        "phase": "closeout",
+        "wall_s": 200,
+        "cost_type": "conservative inclusive upper charge"
+      }
+    ]
+  },
+  "native_asset_manifest_sha256": "ea9c3323e21abb55d300835d79c3b4981c4a47fa59036f39b9dfc25df17e1fd7"
 }
