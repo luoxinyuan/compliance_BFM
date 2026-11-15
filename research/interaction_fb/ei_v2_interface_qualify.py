@@ -49,7 +49,8 @@ def study(e,base,c,out):
     def output_gradient(o):
         a.modules.zero_grad(set_to_none=True)
         weights=torch.linspace(.1,1.,29,device=dev)
-        (a.mean(o,z,option)*weights).sum().backward()
+        with torch.enable_grad():
+            (a.mean(o,z,option)*weights).sum().backward()
         g=a.film[-1].weight.grad.detach().clone();assert torch.isfinite(g).all() and g.abs().max()>0
         return g
     g=output_gradient(obs);gc=output_gradient(changed);assert not torch.equal(g,gc),'observed force absent from FiLM learning path'
