@@ -34,14 +34,19 @@ def study(e,base,c,out):
     assert json.loads((STAGE/'runs/OR1-D0-01/result.json').read_text())['status']=='OR1_D0_PASS_FOR_NEW_ENGINEERING_ONLY'
     old_native=0;carried_rows=0
     if FAILURE_RESUME:
-        failed=STAGE/'runs/OR1-D1-E-01/failed-sampling-packages/block-failed-15'
+        failed=RESUME_PACKAGE or STAGE/'runs/OR1-D1-E-01/failed-sampling-packages/block-failed-15'
+        assert failed.resolve().is_relative_to((STAGE/'runs').resolve())
+        fm=json.loads((failed/'manifest.json').read_text());assert fm['complete'] and fm['reason']=='failed_sampling_not_complete_training_block'
+        expected_rows=int(fm['actual_50Hz']);assert 0<expected_rows<1024
         restored=restore(failed,agent,env,out)
         assert ARM=='E' and PART=='D1' and agent.actor_accepted==0 and agent.aux_accepted==0 and not agent.opt.state and not agent.vopt.state
-        assert len(env.rows)==env.next_cursor==15 and all(r['eligible_for_joint_PPO'] for r in env.rows)
-        carried_rows=15
-        (out/'verified-carried-on-policy-prefix.json').write_text(json.dumps(dict(rows=15,original_policy_unchanged=True,model_Adam_RNG_full_physical_restore_exact=True,already_charged_in_failed_job=True,continuation_of_same_first_rollout_not_old_policy_replay=True),indent=2)+'\n')
+        assert len(env.rows)==env.next_cursor==expected_rows and all(r['eligible_for_joint_PPO'] for r in env.rows)
+        carried_rows=expected_rows
+        (out/'verified-carried-on-policy-prefix.json').write_text(json.dumps(dict(rows=carried_rows,source_manifest_sha256=__import__('hashlib').sha256((failed/'manifest.json').read_bytes()).hexdigest(),original_policy_unchanged=True,model_Adam_RNG_full_physical_restore_exact=True,already_charged_in_failed_job=True,continuation_of_same_first_rollout_not_old_policy_replay=True),indent=2)+'\n')
     if PART=='D2' and not RESTORE:
-        src=STAGE/f'runs/OR1-D1-{ARM}-01';restore(src/'checkpoints/block-2',agent,env,out);old_native=env.next_cursor;env.phase='P3'
+        src=SOURCE_RUN or STAGE/f'runs/OR1-D1-{ARM}-01'
+        assert src.resolve().is_relative_to((STAGE/'runs').resolve())
+        assert json.loads((src/'result.json').read_text())['status']=='OR1_D1_TWO_NEW_P2_BLOCKS_PASS';restore(src/'checkpoints/block-2',agent,env,out);old_native=env.next_cursor;env.phase='P3'
         sample_qualification=qualify(env,agent,out/'P3-sample-entry','P3_sample','P3');assert sample_qualification['status']=='PASS','P3_SAMPLE_QUALIFICATION_FAILED'
     initial_cursor=env.next_cursor;prior=json.loads((STAGE/'ledger.json').read_text())['new_scratch_50Hz'];records=[];journal=Journal(out/'checkpoints');journal.save(0,agent,env,runtime,'OR1_initial_or_phase_resume_qualification_only')
     def count(final=False,reserved=None):
@@ -62,7 +67,9 @@ def study(e,base,c,out):
     def signature(metrics):
         return dict(agent=copy.deepcopy(agent.state()),physics=canonical(portable(env.task),metadata(e.sim.model,e.sim.data)),rng=global_rng(),metrics=metrics,last_rows=copy.deepcopy(env.rows[-12:]))
     if RESTORE:
-        src=STAGE/f'runs/OR1-D2-{ARM}-01';sm=json.loads((src/'result.json').read_text());restore(src/'checkpoints/block-mid-last',agent,env,out);initial_cursor=env.next_cursor
+        src=SOURCE_RUN or STAGE/f'runs/OR1-D2-{ARM}-01'
+        assert src.resolve().is_relative_to((STAGE/'runs').resolve())
+        sm=json.loads((src/'result.json').read_text());restore(src/'checkpoints/block-mid-last',agent,env,out);initial_cursor=env.next_cursor
         fill(12);aux=ActualSuccessors(env,'P3');mt=update(agent,env.rows[-1024:],keep,eps,aux,'P3');actual=signature(mt);expected=read(src/'expected-last-update.ptz',sm['expected']);checks={k:exact(actual[k],expected[k])for k in actual};dump(out/'actual-restored-update.ptz',actual);assert all(checks.values()),checks
         result=dict(status='OR1_ACCEPTED_ACTOR_ADAM_PHYSICS_RESTORE_EXACT',arm=ARM,checks=checks,new_on_policy_rows=0,actual_validation_native_continuation=12,replayed_physics_not_training=True)
     else:
@@ -89,7 +96,7 @@ def study(e,base,c,out):
                         old=r['old_logits'].to(agent.device).softmax(-1);new=agent.logits(device_obs(r['selector_obs'],agent.device),r['candidate_first_z'].to(agent.device)).softmax(-1);selector_deltas.append(float(abs(new-old).max()))
             if block==2:expected=dump(out/'expected-last-update.ptz',signature(mt))
             ti=time.monotonic();manifest=journal.save(block,agent,env,runtime,'complete_OR1_engineering_block_not_formal');io=time.monotonic()-ti
-            m=dict(block=block,phase=phase,new_rows=1024,collection_s=collected,update_s=update_s,checkpoint_s=io,hot_s=time.monotonic()-t,actor_steps_this_block=actor_steps,actor_accepted_total=agent.actor_accepted,aux_accepted_total=agent.aux_accepted,selector_probability_max_delta=max(selector_deltas or[0.]),actual_selector_draws=len(selector_deltas),mean_delta_RMS=float(np.sqrt(np.mean(np.concatenate(deltas)**2))),metrics=mt,checkpoint=manifest)
+            m=dict(block=block,phase=phase,new_rows=1024-(carried_rows if block==1 else 0),block_rows=1024,collection_s=collected,update_s=update_s,checkpoint_s=io,hot_s=time.monotonic()-t,actor_steps_this_block=actor_steps,actor_accepted_total=agent.actor_accepted,aux_accepted_total=agent.aux_accepted,selector_probability_max_delta=max(selector_deltas or[0.]),actual_selector_draws=len(selector_deltas),mean_delta_RMS=float(np.sqrt(np.mean(np.concatenate(deltas)**2))),metrics=mt,checkpoint=manifest)
             records.append(m);(out/'progress.json').write_text(json.dumps(records,indent=2)+'\n');print('OR1_BLOCK',ARM,PART,block,'actor',actor_steps,'hot',m['hot_s'],flush=True)
             if block==1:
                 q=qualify(env,agent,out/'first-accepted-sentinel','sentinel',phase);assert q['status']=='PASS','CURRENT_ACTOR_SENTINEL_PROTECTION_FAILED'
@@ -101,8 +108,10 @@ def study(e,base,c,out):
     (out/'result.json').write_text(json.dumps(result,indent=2)+'\n');return result
 
 def main():
-    global ARM,PART,RESTORE,FAILURE_RESUME
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',required=True,choices=['D1E','D1I','D2E','D2I','restoreE','restoreI','D1E_resume']);a=p.parse_args();FAILURE_RESUME=a.mode.endswith('_resume');ARM=('E' if FAILURE_RESUME else a.mode[-1]);RESTORE=a.mode.startswith('restore');PART='D2'if RESTORE else a.mode[:2]
+    global ARM,PART,RESTORE,FAILURE_RESUME,RESUME_PACKAGE,SOURCE_RUN
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',required=True,choices=['D1E','D1I','D2E','D2I','restoreE','restoreI','D1E_resume']);p.add_argument('--resume-package',type=Path);p.add_argument('--source-run',type=Path);a=p.parse_args();RESUME_PACKAGE=a.resume_package;SOURCE_RUN=a.source_run;FAILURE_RESUME=a.mode.endswith('_resume');ARM=('E' if FAILURE_RESUME else a.mode[-1]);RESTORE=a.mode.startswith('restore');PART='D2'if RESTORE else a.mode[:2]
+    assert RESUME_PACKAGE is None or FAILURE_RESUME
+    assert SOURCE_RUN is None or RESTORE or PART=='D2'
     from . import benchmark
     from .ei_v2_counter_io import install
     original_write=benchmark.write
