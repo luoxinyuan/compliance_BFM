@@ -57,6 +57,25 @@ def study(e,base,c,out):
         assert json.loads((SOURCE_RUN/'first-accepted-sentinel/result.json').read_text())['status']=='PASS'
         reused_records=copy.deepcopy(reused_records);reused_records[0]['reused_complete_block_from']=SOURCE_RUN.name
         (out/'verified-resume-second-P2.json').write_text(json.dumps(dict(source_run=SOURCE_RUN.name,source_manifest_sha256=__import__('hashlib').sha256((RESUME_PACKAGE/'manifest.json').read_bytes()).hexdigest(),already_collected_second_block_rows=env.next_cursor-1024,original_current_behavior_actor_version=agent.actor_accepted,complete_first_block_and_three_sentinels_reused=True,no_new_PPO_data_in_restore=True),indent=2)+'\n')
+    if COMPLETE_P3:
+        assert PART=='D2' and RESUME_PACKAGE is not None and SOURCE_RUN is not None
+        assert RESUME_PACKAGE.resolve()==(SOURCE_RUN/'checkpoints/block-1').resolve()
+        assert SOURCE_RUN.resolve().is_relative_to((STAGE/'runs').resolve())
+        source_manifest=json.loads((RESUME_PACKAGE/'manifest.json').read_text())
+        reused_records=copy.deepcopy(json.loads((SOURCE_RUN/'progress.json').read_text()))
+        assert len(reused_records)==1 and reused_records[0]['block']==1 and reused_records[0]['phase']=='P3'
+        assert reused_records[0]['checkpoint']==source_manifest
+        assert result_payload(SOURCE_RUN/'P3-sample-entry/result.json')['status']=='PASS'
+        restored=restore(RESUME_PACKAGE,agent,env,out)
+        assert env.phase=='P3' and env.next_cursor==3072 and len(env.rows)==3072
+        assert agent.actor_accepted==reused_records[0]['actor_accepted_total'] and agent.opt.state and agent.vopt.state
+        assert all(r['behavior_phase']=='P3' and r['eligible_for_joint_PPO'] for r in env.rows[2048:])
+        reused_records[0]['reused_complete_block_from']=SOURCE_RUN.name
+        # Current policy is the accepted block1 policy. Reuse only completed gates
+        # from that exact checkpoint, then run the interrupted release gate afresh.
+        q=qualify(env,agent,out/'first-accepted-sentinel','sentinel','P3',completed_from=SOURCE_RUN/'first-accepted-sentinel')
+        assert q['status']=='PASS','CURRENT_ACTOR_SENTINEL_PROTECTION_FAILED'
+        (out/'verified-resume-second-P3.json').write_text(json.dumps(dict(source_run=SOURCE_RUN.name,source_manifest_sha256=__import__('hashlib').sha256((RESUME_PACKAGE/'manifest.json').read_bytes()).hexdigest(),already_completed_P3_rows=1024,no_old_rows_reoptimized=True,accepted_actor_Adam_RNG_physics_exact=True,sample_entry_reused=True,sentinel=q['status']),indent=2)+'\n')
     if FAILURE_RESUME:
         failed=RESUME_PACKAGE or STAGE/'runs/OR1-D1-E-01/failed-sampling-packages/block-failed-15'
         assert failed.resolve().is_relative_to((STAGE/'runs').resolve())
@@ -67,7 +86,7 @@ def study(e,base,c,out):
         assert len(env.rows)==env.next_cursor==expected_rows and all(r['eligible_for_joint_PPO'] for r in env.rows)
         carried_rows=expected_rows
         (out/'verified-carried-on-policy-prefix.json').write_text(json.dumps(dict(rows=carried_rows,source_manifest_sha256=__import__('hashlib').sha256((failed/'manifest.json').read_bytes()).hexdigest(),original_policy_unchanged=True,model_Adam_RNG_full_physical_restore_exact=True,already_charged_in_failed_job=True,continuation_of_same_first_rollout_not_old_policy_replay=True),indent=2)+'\n')
-    if PART=='D2' and not RESTORE:
+    if PART=='D2' and not RESTORE and not COMPLETE_P3:
         src=SOURCE_RUN or STAGE/f'runs/OR1-D1-{ARM}-01'
         assert src.resolve().is_relative_to((STAGE/'runs').resolve())
         assert json.loads((src/'result.json').read_text())['status']=='OR1_D1_TWO_NEW_P2_BLOCKS_PASS';restore(src/'checkpoints/block-2',agent,env,out);old_native=env.next_cursor;env.phase='P3'
@@ -103,7 +122,7 @@ def study(e,base,c,out):
         result=dict(status='OR1_ACCEPTED_ACTOR_ADAM_PHYSICS_RESTORE_EXACT',arm=ARM,checks=checks,validation_manifest=validation_manifest,new_on_policy_rows=0,actual_validation_native_continuation=12,replayed_physics_not_training=True)
     else:
         phase='P2' if PART=='D1'else 'P3';env.phase=phase;agent.selector.requires_grad_(phase=='P3')
-        for block in ([2]if COMPLETE_P2 else range(1,3)):
+        for block in ([2]if (COMPLETE_P2 or COMPLETE_P3) else range(1,3)):
             t=time.monotonic();before_collect=len(env.rows);b0=(1024 if COMPLETE_P2 else (0 if FAILURE_RESUME and block==1 else len(env.rows)));accepted0=agent.actor_accepted;tu=time.monotonic()
             if block==2:
                 if COMPLETE_P2 and env.next_cursor==2048:pass
@@ -143,15 +162,16 @@ def study(e,base,c,out):
     (out/'result.json').write_text(json.dumps(result,indent=2)+'\n');return result
 
 def main():
-    global ARM,PART,RESTORE,FAILURE_RESUME,RESUME_PACKAGE,SOURCE_RUN,COMPLETE_P2
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',required=True,choices=['D1E','D1I','D2E','D2I','restoreE','restoreI','D1E_resume','completeP2E','completeP2I']);p.add_argument('--resume-package',type=Path);p.add_argument('--source-run',type=Path);a=p.parse_args();RESUME_PACKAGE=a.resume_package;SOURCE_RUN=a.source_run;COMPLETE_P2=a.mode.startswith('completeP2');FAILURE_RESUME=a.mode.endswith('_resume');ARM=('E' if FAILURE_RESUME else a.mode[-1]);RESTORE=a.mode.startswith('restore');PART='D1'if COMPLETE_P2 else ('D2'if RESTORE else a.mode[:2])
-    assert RESUME_PACKAGE is None or FAILURE_RESUME or COMPLETE_P2
+    global ARM,PART,RESTORE,FAILURE_RESUME,RESUME_PACKAGE,SOURCE_RUN,COMPLETE_P2,COMPLETE_P3
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',required=True,choices=['D1E','D1I','D2E','D2I','restoreE','restoreI','D1E_resume','completeP2E','completeP2I','completeP3E','completeP3I']);p.add_argument('--resume-package',type=Path);p.add_argument('--source-run',type=Path);a=p.parse_args();RESUME_PACKAGE=a.resume_package;SOURCE_RUN=a.source_run;COMPLETE_P2=a.mode.startswith('completeP2');COMPLETE_P3=a.mode.startswith('completeP3');FAILURE_RESUME=a.mode.endswith('_resume');ARM=('E' if FAILURE_RESUME else a.mode[-1]);RESTORE=a.mode.startswith('restore');PART='D1'if COMPLETE_P2 else ('D2'if (RESTORE or COMPLETE_P3) else a.mode[:2])
+    assert RESUME_PACKAGE is None or FAILURE_RESUME or COMPLETE_P2 or COMPLETE_P3
     assert SOURCE_RUN is None or RESTORE or PART=='D2' or COMPLETE_P2
     from . import benchmark
     from .ei_v2_counter_io import install
     original_write=benchmark.write
     def atomic_counter(path,data):
         if Path(path).name!='physics-counter.json':return original_write(path,data)
-        tmp=Path(path).with_suffix('.pending');tmp.write_text(json.dumps(data,indent=2)+'\n');os.replace(tmp,path)
+        from .ei_v2_counter_lock import atomic_write
+        atomic_write(path,data)
     benchmark.write=atomic_counter;install(benchmark);benchmark.study=study;sys.argv=[__file__,'--output',str(a.output),'--arm','A'];benchmark.main()
 if __name__=='__main__':main()

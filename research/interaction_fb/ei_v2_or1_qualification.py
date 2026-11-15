@@ -14,7 +14,7 @@ from dual_track_task import global_rng
 
 ROOT=Path(__file__).resolve().parents[2];ARCHIVE=ROOT.parent.parent/'contact-goal-ei-v2-20261115'
 
-def run(env,agent,out,mode,phase):
+def run(env,agent,out,mode,phase,completed_from=None):
     from . import ei_v2_checkpoint as checkpoint
     out=Path(out);out.mkdir(parents=True,exist_ok=False);original_cases=env.cases;start_agent=tree_digest(agent.state());snap=EnvBranch(env);start=canonical(portable(env.task),metadata(env.e.sim.model,env.e.sim.data));start_rng=global_rng();oldload=checkpoint.load
     qualification=json.loads((ARCHIVE/'runs/P1-frozen-sample-01/qualification.json').read_text());parents=json.loads((ARCHIVE/'locks/qualification-parents.json').read_text())['parents'];cases=[dict(spec=copy.deepcopy(sp),goal_stream=p['goal_stream'],execution_source_parent_id=p['execution_source_parent_id'])for p in parents for sp in p['specs']]
@@ -26,6 +26,19 @@ def run(env,agent,out,mode,phase):
     checkpoint.load=trusted;records=[];keep_ref=qualification['results']
     # Stable original qualified parents: none0,zero2,near4,mid6,stop8,continue9.
     indices=[0,2,4] if mode=='sentinel' else [0,2,4,6,8,9]
+    if completed_from is not None:
+        completed_from=Path(completed_from)
+        assert mode=='sentinel' and phase=='P3'
+        previous=json.loads((completed_from/'progress.json').read_text())
+        assert [r['case']for r in previous]==[0,2], 'only exact completed prefix may be reused'
+        for prior in previous:
+            assert prior['complete'] and not prior['failed'] and prior['mode']==mode and prior['phase']==phase
+            archived=read(completed_from/f"case-{prior['case']}-actual.ptz",prior['archive'])
+            assert archived['spec']['parent_id']==prior['parent_id']==cases[prior['case']]['spec']['parent_id']
+            assert exact(quality(archived['physics']),prior['whole']) and not protection(prior['whole'],prior['family'])
+            prior=copy.deepcopy(prior);prior['reused_from']=str(completed_from)
+            records.append(prior)
+        indices=[4]
     try:
         for idx in indices:
             env.cases=cases
