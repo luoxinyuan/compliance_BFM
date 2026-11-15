@@ -28,6 +28,11 @@ def study(e,base,c,out):
     parents=json.loads((STAGE/'locks/expanded-corrected-train.json').read_text())['parents']
     parent=next(p for p in parents if p['family']=='near' and p['goal_stream']=='FOLLOW_TO_HOLD')
     env=GoalEnvironment(e,base,c,[parent]);env.reset(0);ob=env.proxy.enrich(env.task.extended_observation());a=ContactGoalAgent(base,ob,'E',e.standing.device);env.agent=a;env.proxy.agent=a;env.phase='P3'
+    b=ContactGoalAgent(base,ob,'I',e.standing.device)
+    for name in ('tail','film','selector','goal_encoder','value'):
+        assert tree_digest(getattr(a,name).state_dict())==tree_digest(getattr(b,name).state_dict())
+    hidden={k:v.clone() for k,v in ob.items()};hidden['_target_z']+=10;hidden['_slot']+=4;hidden['_option_memory']+=3
+    assert torch.equal(a.value_input(ob),a.value_input(hidden)), 'state-value leaked the newly chosen action'
     before=tree_digest(a.state())
     if MODE=='write':
         # Frozen stochastic continuation crosses a real public Goal change; no future partner data in policy.

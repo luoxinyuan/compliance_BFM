@@ -29,6 +29,10 @@ def advantages(agent,rows,groups):
         v=float(agent.v(device_obs(first['observation'],device)))
         nv=0. if term else float(agent.v(device_obs(last['next']['observation'],device)))
         rewards.append(rr);vs.append(v);ns.append(nv);discount.append(d);trace.append(0. if term or trunc else d*lam**(duration/.02))
+    for i in range(len(groups)-1):
+        last=rows[groups[i][-1]];nxt=rows[groups[i+1][0]]
+        if last['episode']==nxt['episode']:
+            assert torch.equal(agent.value_input(device_obs(last['next']['observation'],device)),agent.value_input(device_obs(nxt['observation'],device))), 'state-value input changed just by selecting the next action'
     adv=np.zeros(len(groups),dtype=np.float64);carry=0.
     for i in reversed(range(len(groups))):
         if i==len(groups)-1 or rows[groups[i][-1]]['episode']!=rows[groups[i+1][0]]['episode']:carry=0.

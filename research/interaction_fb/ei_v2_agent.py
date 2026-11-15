@@ -17,11 +17,11 @@ def mlp(inp,width,out,zero=False):
 
 class ContactGoalAgent:
     def __init__(self,base,ob,arm,device):
-        assert arm in ('E','I');self.base=base;self.arm=arm;self.device=device
+        assert arm in ('E','I');self.base=base;self.arm=arm;self.device=device;self.scales=torch.tensor(SCALES,device=device)[None]
         base._actor.requires_grad_(False);base._obs_normalizer.requires_grad_(False)
         assert len(base._actor.policy)==7
         self.tail=copy.deepcopy(base._actor.policy[5:]).to(device).requires_grad_(True)
-        self.ds=deploy(ob).shape[-1];self.dp=privileged(ob).shape[-1]
+        self.ds=deploy(ob).shape[-1];self.dp=self.value_input(ob).shape[-1]-50
         with torch.no_grad():
             v=self.frozen_features(ob,ob['_previous_z']);self.width=v.shape[-1]
         # Draw every common component before the differing prediction output.
@@ -70,7 +70,12 @@ class ContactGoalAgent:
         raw=self.selector(x);follow=o['_goal_mode'][:,0:1]
         pf=torch.tensor((.10,.10,.70,.10),device=self.device);ph=torch.tensor((.97,.01,.01,.01),device=self.device)
         return raw+torch.log(follow*pf+(1.-follow)*ph)
-    def v(self,o):return self.value(torch.cat((privileged(o),self.public(o)),-1)).squeeze(-1)
+    def value_input(self,o):
+        # State V sees current C-P and public Goal, never the just-selected target z/slot.
+        # The legacy action-Q helper privileged() includes those action-dependent fields.
+        c=o['contact_privileged_v1']
+        return torch.cat((deploy(o),o['privileged_state'],c[:,9:15],c[:,18:22],self.public(o)),-1)
+    def v(self,o):return self.value(self.value_input(o)).squeeze(-1)
     def sample(self,o,z,option,stochastic=True):
         mu=self.mean(o,z,option);u=mu+SIGMA*torch.randn_like(mu) if stochastic else mu
         return u,u.clamp(-1.,1.),mu,self.logp(u,mu)
