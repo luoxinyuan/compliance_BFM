@@ -1,5 +1,14 @@
 # Current — Issue66 E/I v2：P1暂停，正式训练未启动
 
+## OR1已整包签署，资源资格先行
+
+Yi已回复“签，整包一次放行”，并明确将共享盘free地板改为30GiB。[签署与资源修订](CONTACT_GOAL_EI_V2_OR1_SIGNOFF_20261115.md)／[原样批准正文](CONTACT_GOAL_EI_V2_OPTIMIZER_AMENDMENT_OR1_APPROVED.md)／[批准参数锁](contact_goal_ei_v2_or1_approved_lock.json)。原待签稿保留为历史。
+
+正常D0→有条件D1/D2不再逐段请批；固定五α、KL.02/std/reward/物理门不变；原32k/臂不自动启动。新采样≤8192，工作包6000s含review400，新增5000资金、stage47000s/8.4GiB等整包数值获批。原P1失败与8192原账不改。
+
+现场GPU0空闲；共享盘暂未达新30GiB＋临时包预留的发车护栏，因此尚无新GPU/Adam/采样/物理。先完成签署与隔离实现准备，资源过门后按已批合同执行。不得删除历史或降低地板找补。
+
+
 
 ## 2026-11-15：独立审查后局部优化修订待签（未执行）
 
