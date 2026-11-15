@@ -1,6 +1,6 @@
 # Humanoid Compliance — authoritative current research direction
 
-Current goal: contact-conditioned whole-body behavior selection, modulation and transition, grounded in real interaction outcomes and public goals. Current method: one bounded H0 finite-outcome/addressing probe, followed by a matched contact/Goal-conditioned adaptable Actor E/I design. H0 is not a new permanent prerequisite. No full FB success or generalized behavior claim.
+Current goal: contact-conditioned whole-body behavior selection, modulation and transition, grounded in real interaction outcomes and public goals. H0 is completed and stopped. Current work is the review-only Contact-Goal E/I v2 contract, with matched directly contact-conditioned Actor adaptation, explicit Goal reward and an audited multi-rate sampling contract. No new training or physics is authorized by writing this draft; no full FB or generalized behavior claim.
 
 QA2 ends the independent scalar-Q/Teacher exam chain. G17/QA1/QA2 failure remains valid for those methods;70% local scalar-Q rank is not a global gate for algorithms not using that Q. New B_I coordinates may not be added directly to frozen z_R; explicit legal-command alignment and physical effects are required.
 
@@ -11,3 +11,10 @@ Closed historical methods and facts, including FIBER/LPP, C0, adapter/Envelope/R
 ## H0实际结项（2026-11-15）
 
 有限公开Goal寻址：P-E4/4、P-I3/4，后果预测优于常数但BI无独立增量。固定候选/2s效应不等于持续反馈或行走Expert。下一是等能力可适配Actor的真实Goal条件E/I设计，普通Goal/outcome强基线必须保留；新Goal reward和联合概率合同需要新批准，不自动开训。H0到此结束，不繁殖H0.1或Q通行证。详见H0_REPRESENTATION_AND_CAUSAL_ADDRESS_RESULTS.md。
+
+
+## Issue66审查后的合同修订（REVIEW ONLY）
+
+[Contact-Goal E/I v2修订稿](CONTACT_GOAL_EI_TRAIN_CONTRACT_V2_DRAFT.md)与[审阅单](CONTACT_GOAL_EI_V2_REVIEW_PACKET.md)已形成，未签署、未跑新物理/训练。H0正结果原判保持，但Goal-only查表反例、未实际跨stop、没有完整release恢复与BI独立收益未证都进入下一合同的放行/归因规则。主提案先低层直接contact-FiLM适配，再有限option联合学习；不同时自由探索256D U与29D动作，不再开独立标量Q考试。目标、额外自身定位仿真假设和共同anchor初始化修订必须显式批准。
+
+合同预算不伪装成原8h小段：完整41,400秒，相对R2原余额缺4,937.928257秒，提前申请独立新阶段6,000秒；当前无此新增授权。400秒只读文档上界计原R2后余额36,062.071743秒，未发生方案41,000。完整阶段门/17行三列表、I增量数字、五分支及§9工程自治预锁，等Yi审阅，不自动开下一阶段。
