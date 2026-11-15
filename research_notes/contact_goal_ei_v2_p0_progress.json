@@ -1,0 +1,163 @@
+{
+  "status": "P0_INITIAL_SOURCE_INTERFACE_PROBABILITY_RECOVERY_READY_FOR_P1",
+  "source_version": "ei-v2-arm-parent-pulse-v1",
+  "source_count": 12,
+  "source_pair_count": 66,
+  "source_same_prefix_pairs": 0,
+  "initial_interface": {
+    "status": "STATIC_INTERFACE_QUALIFIED_NO_PHYSICAL_TASK_PASS",
+    "common_initial_tensors": {
+      "tail": true,
+      "goal_encoder": true,
+      "film": true,
+      "selector": true,
+      "value": true
+    },
+    "initial_original_action_exact": true,
+    "normalizer_unchanged": true,
+    "base_unchanged": true,
+    "param_counts": {
+      "E": 5229081,
+      "I": 5227321
+    },
+    "param_relative_difference": 0.00033669254289147346,
+    "tail_width": 2048,
+    "deploy_dim": 808,
+    "value_privileged_dim": 1538,
+    "goal_fields": {
+      "value24": 24,
+      "mask24": 24,
+      "mode2": 2,
+      "own_option_age5": 5
+    },
+    "hidden_input_invariance_exact": true,
+    "force_to_film_output_gradient_nonzero": true,
+    "force_gradient_changes": true,
+    "one_true_gaussian_draw_exact": true,
+    "no_relative_noise_clip": true,
+    "joint_five_substep_logprob_error": 0.00018310546875,
+    "strict_logprob_tolerance": 0.0003,
+    "formal_updates": 0,
+    "optimizer_steps": 0,
+    "physical_task_safety": "UNMEASURED",
+    "joint_categorical_sampling": "UNMEASURED",
+    "GAE_bootstrap": "UNMEASURED",
+    "new_process_recovery": "UNMEASURED"
+  },
+  "real_bridge": {
+    "status": "COMMAND_CHUNKING_AND_COMMON_PARTNER_QUALIFIED",
+    "actual_full_vs_2plus3_control_physics_exact": true,
+    "actual_gaussian_rng_exact": true,
+    "raw_and_executed_records_exact": true,
+    "reference_full_handoff_restore_exact": true,
+    "follow_hold_same_partner_anchor_exact": true,
+    "hold_reward_branch_executed": true,
+    "formal_updates": 0,
+    "optimizer_steps": 0,
+    "archive": {
+      "sha256": "0c323dc9a60d25a84903b6138a70849b938c02e907c6732157eab0cbfee6b932",
+      "bytes": 530615
+    },
+    "remaining_gates": [
+      "full sampled physical preservation",
+      "categorical joint and GAE update",
+      "new-process optimizer-and-physics recovery",
+      "reward-ranking and full end-to-end cost"
+    ]
+  },
+  "real_joint_sampler": {
+    "status": "FROZEN_JOINT_SAMPLER_AND_CHECKPOINT_WRITTEN",
+    "Gaussian_and_real_option_logprob_error": 0.0,
+    "strict_atol": 0.0003,
+    "analytic_joint_KL": {
+      "gaussian": 0.0,
+      "categorical": 0.0,
+      "joint": 0.0,
+      "sample_joint_old_minus_new": 0.0
+    },
+    "categorical_draws": 4,
+    "native_sampler_rows": 87,
+    "goal_change_crossed": true,
+    "mid_command_offset": 2,
+    "actual_updates": 0,
+    "expected": {
+      "sha256": "443b597fdcf7f6745fb2b362e3a6d0eb1db35b988359a94de709a47e6923a2fc",
+      "bytes": 19377689
+    },
+    "full_new_process_restore": "PENDING"
+  },
+  "new_process_empty_Adam_recovery": {
+    "status": "NEW_PROCESS_FULL_FROZEN_POLICY_RECOVERY_EXACT",
+    "checks": {
+      "rows": true,
+      "physics": true,
+      "after": true,
+      "rng": true,
+      "agent": true,
+      "phase": true
+    },
+    "actual_updates": 0,
+    "optimizer_states": "fresh empty Adam preserved; trained Adam qualification remains P1",
+    "Gaussian_and_option_rng_exact": true
+  },
+  "analytic_GAE_fixture": {
+    "status": "EXACT_ANALYTIC_TIME_AND_TERMINAL_FIXTURES_PASS",
+    "fixtures": {
+      "continuing": {
+        "return_actual": -4.583959579467773,
+        "return_expected_FP32": -4.583959579467773,
+        "discount": 0.9900000000000003,
+        "trace": 0.9405000000000002
+      },
+      "terminated": {
+        "return_actual": -4.979959964752197,
+        "return_expected_FP32": -4.979959964752197,
+        "discount": 0.9900000000000003,
+        "trace": 0.0
+      },
+      "truncated": {
+        "return_actual": -4.583959579467773,
+        "return_expected_FP32": -4.583959579467773,
+        "discount": 0.9900000000000003,
+        "trace": 0.0
+      }
+    },
+    "optimizer_steps": 0,
+    "physics_ticks": 0,
+    "probability_tolerance_changed": false
+  },
+  "protocol_sha256": "6ab5c5b7674c40236f560a9c7fe840f1bf1cf29dfb8b03e2b7a9f255a86fdac8",
+  "schema_sha256": "069286079094552591e38d99313f6edbd5128129e5e2a5a866a8125ec1cb9559",
+  "current_value_input_dim": 1331,
+  "current_policy_params": {
+    "E": 5229081,
+    "I": 5227321
+  },
+  "value_params_each": 407041,
+  "job_s": 3477.172930023924,
+  "P0_s": 2867.172930023924,
+  "repair_subset_s": 547.3077825529617,
+  "physics_ticks": {
+    "actual": 29502,
+    "reserved": 29502
+  },
+  "formal_RL_rows": {
+    "E": 0,
+    "I": 0
+  },
+  "optimizer_steps": 0,
+  "dev_task_episodes": 0,
+  "dev_source_prefixes_only": 6,
+  "sealed_cases_read": false,
+  "remaining_P1_gates": [
+    "full frozen mean/sample physical protections",
+    "same-condition reward ranking",
+    "four1024-row scratch blocks each arm, nonempty Adam recovery and whole-stage cost projection"
+  ],
+  "nonclaims": [
+    "No formal training or physical improvement yet",
+    "All P0 sample traces are frozen qualifications, not formal PPO data",
+    "Empty Adam recovery does not prove trained Adam recovery",
+    "No unseen task or Sealed evaluation"
+  ]
+}

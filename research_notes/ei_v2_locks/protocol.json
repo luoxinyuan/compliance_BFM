@@ -1,0 +1,84 @@
+{
+  "version": "CONTACT-GOAL-EI-v2-execution-lock",
+  "contract_sha256": "69f10a9143932351c740d5208d561f81f9aeeafe69da49c3efc9da773ac5c3b9",
+  "source_fix_authorization": "Yi: \u8fd9\u79cd\u4f60\u81ea\u5df1\u7684\u5b9e\u73b0\u95ee\u9898\u53ef\u4ee5\u81ea\u5df1\u4fee\u6b63\u540e\u7ee7\u7eed",
+  "seed": 660301,
+  "training_order_seed": 660302,
+  "arm_names": [
+    "E",
+    "I"
+  ],
+  "transitions": {
+    "P2": 12000,
+    "P3": 20000,
+    "each_arm": 32000
+  },
+  "scratch_each_arm": 4096,
+  "scratch_total": 8192,
+  "std": 0.01,
+  "relative_noise_clip": null,
+  "raw_clamp": [
+    -1,
+    1
+  ],
+  "option_dwell_slots": 5,
+  "command_Hz": 10,
+  "native_Hz": 50,
+  "physics_Hz": 200,
+  "gamma20": 0.9979919516614258,
+  "lambda20": 0.9897937816869885,
+  "gamma100": 0.99,
+  "joint_KL": 0.02,
+  "PPO_clip": 0.2,
+  "epochs": 2,
+  "minibatch_decision_segments": 64,
+  "rollout_native_rows": 1024,
+  "actor_lr": 1e-05,
+  "value_lr": 0.0003,
+  "adam_betas": [
+    0.9,
+    0.999
+  ],
+  "adam_eps": 1e-08,
+  "weight_decay": 0.0,
+  "max_grad_norm": 1.0,
+  "categorical_entropy": 0.0,
+  "auxiliary_updates": 4,
+  "auxiliary_batch": 64,
+  "auxiliary_coefficient": 0.1,
+  "auxiliary_recent_native_rows": 8192,
+  "retain_lambda_initial": 0.0,
+  "retain_lambda_rate": 0.05,
+  "retain_lambda_max": 3.0,
+  "sentinel_native_nodes": [
+    0,
+    4000,
+    8000,
+    12000,
+    20000,
+    28000,
+    32000
+  ],
+  "counts": {
+    "train": {
+      "parents": 34,
+      "episodes": 44
+    },
+    "dev": {
+      "parents": 16,
+      "episodes": 20
+    }
+  },
+  "qualification_parent_count": 10,
+  "sealed_read": false,
+  "asset_manifest_sha256": "ea9c3323e21abb55d300835d79c3b4981c4a47fa59036f39b9dfc25df17e1fd7",
+  "manifest_hashes": {
+    "execution-train.json": "a8090d4a3bf64ece98ad0241371ccba858c2976a2cd3e98831f24c26be7914d3",
+    "execution-dev.json": "7d8e1395e477f67bbc6becba19f736ffb395c0ca54fd06f8ba492969daa7afc9",
+    "training-order.json": "0e49df1ecdecc1d92c8ff43ad69496eb95b17675d3986b79a7728742fd403aa1",
+    "goal-stream-train.json": "762ad4a18ecff67d2ca9a42eca045f270bc7ec754ba5ed92f22e3c522ea20860",
+    "goal-stream-dev.json": "6b2eaf377e83cd64930f74be6ff5abc0eb351c69bfecd6974191aaac408b54b3",
+    "qualification-parents.json": "401089605e813bb5c578f40fee741a752bf131db15a4c923423c41d6f2706ed1"
+  },
+  "administrative_chunk_note": "A 1024-row block can contain 206 genuine decision fragments when it begins inside a five-row command, rather than the draft nominal ceil(1024/5)=205. Keep every actual conditional draw, exact times and real macro slots; never drop, duplicate or relabel a draw to fit a buffer. This is a storage bound correction only; joint probability, controls, 1024 rows and GAE unchanged."
+}

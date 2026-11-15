@@ -1,0 +1,132 @@
+{
+  "version": "contact-goal-ei-v2-causal",
+  "source": "current original checkpoint observation and qualified dual_track_task.contact_vector; no new learned normalizers",
+  "fields": [
+    {
+      "name": "state,last_action,history_actor",
+      "producer": "original environment real robot observation, actual executed actions and BFM history",
+      "roles": [
+        "actor",
+        "selector",
+        "predictor",
+        "value"
+      ],
+      "normalization": "original producer scales; original frozen normalizer inside BFM actor"
+    },
+    {
+      "name": "contact[0:6]",
+      "producer": "known wrist installation",
+      "frame": "mount local point SI m",
+      "scale": 1,
+      "roles": [
+        "actor",
+        "selector",
+        "predictor",
+        "value"
+      ],
+      "missing": "known mounting only; never active label"
+    },
+    {
+      "name": "contact[6:9],contact[22:97]",
+      "producer": "ideal measured current and25 real 50Hz wrist-force samples",
+      "frame": "current pelvis",
+      "units": "N",
+      "scale": "divide5N, not10N/K",
+      "roles": [
+        "actor",
+        "selector",
+        "predictor",
+        "value"
+      ],
+      "missing": "left zero-pad only absent pre-reset history"
+    },
+    {
+      "name": "contact[15:18]",
+      "producer": "own wrist kinematics minus own root",
+      "frame": "current pelvis",
+      "units": "m",
+      "scale": 1,
+      "roles": [
+        "actor",
+        "selector",
+        "predictor",
+        "value"
+      ]
+    },
+    {
+      "name": "_previous_z,_first_interpolated_z",
+      "producer": "own actual executed z and causal command interpolation memory",
+      "roles": [
+        "actor",
+        "selector",
+        "predictor",
+        "value_previous_only"
+      ],
+      "scale": "previous divide16 in deploy; first valid native256D raw norm16"
+    },
+    {
+      "name": "_goal_y,_goal_mask,_goal_mode",
+      "producer": "public current Goal; HOLD uses ideal own odometry and wrist kinematics, FOLLOW current measured force direction",
+      "roles": [
+        "actor",
+        "selector",
+        "predictor",
+        "value"
+      ],
+      "units": "H0 result SI slots",
+      "scale": "H0 fixed24D SCALES; mask/mode0or1",
+      "missing": "unspecified result slots0 withmask0; no hidden task/phase"
+    },
+    {
+      "name": "_option_memory",
+      "producer": "own selected option onehot and age/5",
+      "roles": [
+        "selector",
+        "actor_condition"
+      ],
+      "scale": "own controller memory, never global clock"
+    },
+    {
+      "name": "privileged_state,contact[9:15],contact[18:22]",
+      "producer": "current robot training privilege and current partner error/velocity/actual active",
+      "roles": [
+        "value",
+        "reward",
+        "evaluation"
+      ],
+      "denied": [
+        "actor",
+        "selector",
+        "predictor",
+        "publicGoalIssuer"
+      ]
+    },
+    {
+      "name": "_target_z,_slot",
+      "producer": "own actual command target/interpolation slot",
+      "roles": [
+        "execution",
+        "audit"
+      ],
+      "denied": [
+        "state_value_baseline"
+      ],
+      "reason": "do not condition state V on just-selected action"
+    },
+    {
+      "name": "future_y",
+      "producer": "same-arm actual future physical rows with explicit horizon/episode masks",
+      "roles": [
+        "auxiliary_training_only"
+      ],
+      "denied": [
+        "online_actor",
+        "online_selector",
+        "online_predictor_input"
+      ]
+    }
+  ],
+  "ideal_force_not_hardware_verified": true,
+  "ideal_odometry_assumption": true,
+  "global_clock_partner_future_taskID_hidden_active_to_policy": false
+}
