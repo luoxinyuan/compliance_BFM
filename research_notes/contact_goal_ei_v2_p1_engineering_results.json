@@ -1,0 +1,362 @@
+{
+  "status": "P1_PAUSED_G07_SCRATCH_CAP_AND_NO_EXECUTION_UPDATES",
+  "arms": {
+    "E": {
+      "completed_blocks": 4,
+      "required_blocks": 4,
+      "actual_50Hz": 4096,
+      "complete_episodes": 7,
+      "actor_accepted": 0,
+      "actor_attempted": 32,
+      "auxiliary_accepted": 16,
+      "value_updates": 32,
+      "policy_parameters_exact_initial": {
+        "tail": true,
+        "film": true,
+        "selector": true
+      },
+      "Adam_coverage": {
+        "tail": {
+          "parameters": 8,
+          "Adam_present": 0
+        },
+        "goal_encoder": {
+          "parameters": 4,
+          "Adam_present": 0
+        },
+        "film": {
+          "parameters": 6,
+          "Adam_present": 0
+        },
+        "selector": {
+          "parameters": 6,
+          "Adam_present": 0
+        },
+        "predictor": {
+          "parameters": 6,
+          "Adam_present": 6
+        }
+      },
+      "blocks": [
+        {
+          "block": 1,
+          "phase": "P2",
+          "actual_50Hz": 1024,
+          "collection_s": 53.45982141199056,
+          "update_s": 31.437112130923197,
+          "checkpoint_s": 5.9020838380092755,
+          "total_hot_s": 90.7990234119352,
+          "end_to_end_50Hz_per_s": 11.27765433505091,
+          "actor_accepted": 0,
+          "actor_attempted": 8,
+          "auxiliary_accepted": 4,
+          "value_updates": 8,
+          "attempted_joint_KL_min": 0.16900034563207045,
+          "attempted_joint_KL_max": 0.24828080713022047,
+          "old_joint_logprob_error": 0.0,
+          "gpu_peak_bytes": 357440512
+        },
+        {
+          "block": 2,
+          "phase": "P2",
+          "actual_50Hz": 1024,
+          "collection_s": 54.52984073408879,
+          "update_s": 32.28878244198859,
+          "checkpoint_s": 6.8090093929786235,
+          "total_hot_s": 93.62764459906612,
+          "end_to_end_50Hz_per_s": 10.93694073353004,
+          "actor_accepted": 0,
+          "actor_attempted": 8,
+          "auxiliary_accepted": 4,
+          "value_updates": 8,
+          "attempted_joint_KL_min": 0.16278055121272222,
+          "attempted_joint_KL_max": 0.2219284055302444,
+          "old_joint_logprob_error": 0.0,
+          "gpu_peak_bytes": 360109568
+        },
+        {
+          "block": 3,
+          "phase": "P3",
+          "actual_50Hz": 1024,
+          "collection_s": 43.54734561999794,
+          "update_s": 33.062392298015766,
+          "checkpoint_s": 5.702046700986102,
+          "total_hot_s": 82.31179636903107,
+          "end_to_end_50Hz_per_s": 12.44050118173911,
+          "actor_accepted": 0,
+          "actor_attempted": 8,
+          "auxiliary_accepted": 4,
+          "value_updates": 8,
+          "attempted_joint_KL_min": 0.20333607679956303,
+          "attempted_joint_KL_max": 0.2614606925262822,
+          "old_joint_logprob_error": 0.0,
+          "gpu_peak_bytes": 360700416
+        },
+        {
+          "block": 4,
+          "phase": "P3",
+          "actual_50Hz": 1024,
+          "collection_s": 62.85440577904228,
+          "update_s": 33.90832764096558,
+          "checkpoint_s": 3.291508450987749,
+          "total_hot_s": 100.931629493949,
+          "end_to_end_50Hz_per_s": 10.145481700177944,
+          "actor_accepted": 0,
+          "actor_attempted": 8,
+          "auxiliary_accepted": 4,
+          "value_updates": 8,
+          "attempted_joint_KL_min": 0.1615888875610963,
+          "attempted_joint_KL_max": 0.22445762107297673,
+          "old_joint_logprob_error": 0.0,
+          "gpu_peak_bytes": 360819200
+        }
+      ],
+      "new_process_restore": {
+        "agent": true,
+        "physics": true,
+        "rng": true,
+        "metrics": true,
+        "last_rows": true
+      },
+      "physical_replay_is_not_new_training": true
+    },
+    "I": {
+      "completed_blocks": 3,
+      "required_blocks": 4,
+      "actual_50Hz": 3072,
+      "complete_episodes": 5,
+      "actor_accepted": 0,
+      "actor_attempted": 24,
+      "auxiliary_accepted": 12,
+      "value_updates": 24,
+      "policy_parameters_exact_initial": {
+        "tail": true,
+        "film": true,
+        "selector": true
+      },
+      "Adam_coverage": {
+        "tail": {
+          "parameters": 8,
+          "Adam_present": 0
+        },
+        "goal_encoder": {
+          "parameters": 4,
+          "Adam_present": 4
+        },
+        "film": {
+          "parameters": 6,
+          "Adam_present": 0
+        },
+        "selector": {
+          "parameters": 6,
+          "Adam_present": 0
+        },
+        "predictor": {
+          "parameters": 6,
+          "Adam_present": 6
+        },
+        "decoder": {
+          "parameters": 4,
+          "Adam_present": 4
+        }
+      },
+      "blocks": [
+        {
+          "block": 1,
+          "phase": "P2",
+          "actual_50Hz": 1024,
+          "collection_s": 57.46117389400024,
+          "update_s": 29.812165347044356,
+          "checkpoint_s": 5.516985643072985,
+          "total_hot_s": 92.7903284439817,
+          "end_to_end_50Hz_per_s": 11.035632885147047,
+          "actor_accepted": 0,
+          "actor_attempted": 8,
+          "auxiliary_accepted": 4,
+          "value_updates": 8,
+          "attempted_joint_KL_min": 0.1689836739221724,
+          "attempted_joint_KL_max": 0.24827801085463383,
+          "old_joint_logprob_error": 0.0,
+          "gpu_peak_bytes": 356778496
+        },
+        {
+          "block": 2,
+          "phase": "P2",
+          "actual_50Hz": 1024,
+          "collection_s": 56.454069584026,
+          "update_s": 31.43043341091834,
+          "checkpoint_s": 6.931045484961942,
+          "total_hot_s": 94.8155661500059,
+          "end_to_end_50Hz_per_s": 10.799914418904054,
+          "actor_accepted": 0,
+          "actor_attempted": 8,
+          "auxiliary_accepted": 4,
+          "value_updates": 8,
+          "attempted_joint_KL_min": 0.16276344339571241,
+          "attempted_joint_KL_max": 0.22194908729311333,
+          "old_joint_logprob_error": 0.0,
+          "gpu_peak_bytes": 359447552
+        },
+        {
+          "block": 3,
+          "phase": "P3",
+          "actual_50Hz": 1024,
+          "collection_s": 52.33417928998824,
+          "update_s": 31.282614488969557,
+          "checkpoint_s": 2.3485878909705207,
+          "total_hot_s": 86.77014177595265,
+          "end_to_end_50Hz_per_s": 11.8012945356716,
+          "actor_accepted": 0,
+          "actor_attempted": 8,
+          "auxiliary_accepted": 4,
+          "value_updates": 8,
+          "attempted_joint_KL_min": 0.2032768159790041,
+          "attempted_joint_KL_max": 0.26139964324666126,
+          "old_joint_logprob_error": 0.0,
+          "gpu_peak_bytes": 360162816
+        }
+      ],
+      "new_process_restore": {
+        "agent": true,
+        "physics": true,
+        "rng": true,
+        "metrics": true,
+        "last_rows": true
+      },
+      "physical_replay_is_not_new_training": true
+    }
+  },
+  "model_identities": {
+    "E": {
+      "runtime": "7aa3418bbe17410db9fbbd48cd65a150b108aff0",
+      "logical_checkpoint_manifest_sha256": "cdd398b933a50852e9597f06517669250f64e313f7fa20dd40229e8f50c7a5c8",
+      "trainable_modules_weights_tree_sha256": "0c71cf16335e20af4f2528d16ea72866c6a124c76eaa780db6c013b99099a7c7",
+      "execution_tail_weights_tree_sha256": "2f6d8a0f3bac8fea7bf3e373477bd59d230e29f874ed91617482ef7d4376e9ee",
+      "normalizer_tree_sha256": "ef5a75e784ca31d85f12190b374fa73eccbe69f5081f38e645726f967b495883",
+      "digest_note": "logical manifest hashes each lossless storage segment; weights tree digest uses diagnostic_fb_resume.tree_digest, not a single-file .pt SHA"
+    },
+    "I": {
+      "runtime": "7ce3f0fba649058a4b9ee3d2d552080f07c78d40",
+      "logical_checkpoint_manifest_sha256": "326e875f969de2875fabc564b9197a5c3eefed81d0611cee75ab110a2eacd46d",
+      "trainable_modules_weights_tree_sha256": "68b69e8e09e60f314d65ffd5f5bb2987f793022d1cb70b778ef34ccf494f53d3",
+      "execution_tail_weights_tree_sha256": "2f6d8a0f3bac8fea7bf3e373477bd59d230e29f874ed91617482ef7d4376e9ee",
+      "normalizer_tree_sha256": "ef5a75e784ca31d85f12190b374fa73eccbe69f5081f38e645726f967b495883",
+      "digest_note": "logical manifest hashes each lossless storage segment; weights tree digest uses diagnostic_fb_resume.tree_digest, not a single-file .pt SHA"
+    }
+  },
+  "gates": {
+    "G02": {
+      "status": "PASS_LIMITED_FIXED_PROBES",
+      "tested_parents": 4,
+      "informative_parents": 3,
+      "pairs": 11,
+      "agreement": 1.0
+    },
+    "G04": {
+      "status": "PASS_IMPLEMENTED_PROBABILITY_AND_ADAM_ROLLBACK",
+      "joint_KL": 0.02,
+      "sigma": 0.01,
+      "atol": 0.0003,
+      "execution_updates": 0
+    },
+    "G05": {
+      "status": "PASS_ALL_ACTUALLY_EXISTING_STATE",
+      "E": {
+        "agent": true,
+        "physics": true,
+        "rng": true,
+        "metrics": true,
+        "last_rows": true
+      },
+      "I": {
+        "agent": true,
+        "physics": true,
+        "rng": true,
+        "metrics": true,
+        "last_rows": true
+      },
+      "scope": "predictor/goal-encoder/decoder/value Adam where present; execution-tail/FiLM/selector Adam remain empty and have not been empirically exercised"
+    },
+    "G06": {
+      "status": "PASS_P2_INITIAL_MEAN_AND_GAUSSIAN",
+      "mean_cases": 12,
+      "sample_cases": 12,
+      "P3_new_full_six_case_qualification": "NOT_RUN"
+    },
+    "G07": {
+      "status": "BLOCKED_SCRATCH_CAP",
+      "used": 8192,
+      "cap": 8192,
+      "failed_first_block": 1024,
+      "E_successful_rows": 4096,
+      "I_successful_rows": 3072,
+      "I_missing_second_P3_block": 1024,
+      "I_complete_episodes": 5,
+      "required_complete_episodes": 6,
+      "full_formal_forecast": "NOT_QUALIFIED; missing prescribed second I P3 block and actual execution update coverage"
+    }
+  },
+  "cost": {
+    "stage_job_s": 7536.135899982939,
+    "phase_job_s": {
+      "P0": 3110.6390663280035,
+      "reserve": 10,
+      "P6": 750.0,
+      "P1": 3665.4968336549355
+    },
+    "phase_caps": {
+      "P0": 4000,
+      "P1": 4500,
+      "P2": 6000,
+      "P3": 8000,
+      "P4": 12000,
+      "P5": 2500,
+      "P6": 1000,
+      "reserve": 3000
+    },
+    "repair_used_s": 667.3077825529617,
+    "repair_cap_s": 800,
+    "scratch_50Hz": 8192,
+    "formal_50Hz": {
+      "E": 0,
+      "I": 0
+    },
+    "physics_ticks": {
+      "actual": 196951,
+      "reserved": 196951
+    },
+    "budget_allocation": {
+      "old_R2_charged_s": 7536.135899982939,
+      "new_separate_6000_charged_s": 0.0,
+      "R2_after_stage_s": 29074.0641570632,
+      "R2_remaining_s": 28525.9358429368
+    },
+    "P1_bytes": 797625031,
+    "P1_GiB": 0.7428461974486709,
+    "combined_stage_and_review_GiB": 1.1845851615071297
+  },
+  "cold_job_wall_s": {
+    "P1-frozen-mean-01": 1214.9916325140512,
+    "P1-frozen-sample-01": 568.5126963329967,
+    "P1-reward-01": 291.9793047279818,
+    "P1-scratch-E-01": 187.627397884964,
+    "P1-scratch-E-02": 492.79830873396713,
+    "P1-scratch-I-02": 398.26748225302435,
+    "P1-restore-E-01": 194.83745536603965,
+    "P1-restore-I-01": 196.48255584191065
+  },
+  "sampling_roles": {
+    "failed_engineering_sampling": 1024,
+    "E_complete_blocks": 4096,
+    "I_complete_blocks": 3072,
+    "new_restore_training_rows": 0,
+    "restore_true_continuation_validation_rows": 24,
+    "reward_counterfactual_native_rows": 2400,
+    "teacher_production_queries": 0,
+    "Dev_tasks": 0,
+    "Sealed": 0
+  },
+  "scientific_conclusion": "No learned execution gain evaluated; PPO proposals are rejected, while auxiliary and V updates run. Cannot infer E/I behavior or factorization merit from this engineering pilot.",
+  "next_proposal": "Pending Yi review only: retain joint KL.02/std.01/reward/physics and calibrate transactionally scaled Adam proposal rather than raising KL; any effective-step modification is a signed optimizer-contract amendment, not an autonomous numerical fix.",
+  "CPU_report_wall_s": 44.56175012898166
+}

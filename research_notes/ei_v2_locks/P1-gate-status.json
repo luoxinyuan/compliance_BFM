@@ -1,0 +1,52 @@
+{
+  "G02": {
+    "status": "PASS_LIMITED_FIXED_PROBES",
+    "tested_parents": 4,
+    "informative_parents": 3,
+    "pairs": 11,
+    "agreement": 1.0
+  },
+  "G04": {
+    "status": "PASS_IMPLEMENTED_PROBABILITY_AND_ADAM_ROLLBACK",
+    "joint_KL": 0.02,
+    "sigma": 0.01,
+    "atol": 0.0003,
+    "execution_updates": 0
+  },
+  "G05": {
+    "status": "PASS_ALL_ACTUALLY_EXISTING_STATE",
+    "E": {
+      "agent": true,
+      "physics": true,
+      "rng": true,
+      "metrics": true,
+      "last_rows": true
+    },
+    "I": {
+      "agent": true,
+      "physics": true,
+      "rng": true,
+      "metrics": true,
+      "last_rows": true
+    },
+    "scope": "predictor/goal-encoder/decoder/value Adam where present; execution-tail/FiLM/selector Adam remain empty and have not been empirically exercised"
+  },
+  "G06": {
+    "status": "PASS_P2_INITIAL_MEAN_AND_GAUSSIAN",
+    "mean_cases": 12,
+    "sample_cases": 12,
+    "P3_new_full_six_case_qualification": "NOT_RUN"
+  },
+  "G07": {
+    "status": "BLOCKED_SCRATCH_CAP",
+    "used": 8192,
+    "cap": 8192,
+    "failed_first_block": 1024,
+    "E_successful_rows": 4096,
+    "I_successful_rows": 3072,
+    "I_missing_second_P3_block": 1024,
+    "I_complete_episodes": 5,
+    "required_complete_episodes": 6,
+    "full_formal_forecast": "NOT_QUALIFIED; missing prescribed second I P3 block and actual execution update coverage"
+  }
+}

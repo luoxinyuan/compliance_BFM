@@ -1,0 +1,22 @@
+{
+  "identity": "bounded_G04_archived_Adam_proposal_sensitivity_not_training_method_change",
+  "source_arm": "E",
+  "source_block": 4,
+  "proposal": "first actual logged PPO minibatch",
+  "scales": [
+    1.0,
+    0.5,
+    0.25,
+    0.125
+  ],
+  "joint_KL": 0.02,
+  "Gaussian_std": 0.01,
+  "new_onpolicy_training_rows": 0,
+  "actor_weights_published": false,
+  "rule_adopted": false,
+  "Sealed": false,
+  "physics": "complete archived state reconstruction plus exact replay of12 archived continuation rows only; no scaled-policy physics rollout",
+  "job_cap_s": 300,
+  "phase": "P1",
+  "if_original_proposal_not_exact": "stop interpretation; do not scan RNG or loosen equality"
+}
