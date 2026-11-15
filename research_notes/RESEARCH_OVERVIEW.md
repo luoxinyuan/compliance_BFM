@@ -1,5 +1,9 @@
 # Humanoid Compliance — 长期主线与当前执行入口
 
+
+2026-11-15独立审查后：P1被归为优化规则资格失败，非正式E/I行为失败。原Actor零接受步，先签一次[OR1固定五α回溯与有限新on-policy资格修订](CONTACT_GOAL_EI_V2_OPTIMIZER_AMENDMENT_OR1_DRAFT.md)，再决定是否沿用100ms joint PPO；若无可测可接受步，转交20ms低层／真实option时长的分层替代合同。原KL、sigma、reward/物理及输入不变；本轮仅[只读审计](CONTACT_GOAL_EI_V2_OPTIMIZER_AUDIT.md)与草案，未执行新优化、物理或正式训练。旧历史与erratum不变。
+
+
 长期目标：Contact-conditioned whole-body behavior selection, modulation and transition；由真实身体、接触历史与公开目标共同决定可持续响应。原生运动先验提供可追溯能力，真实闭环学习分配和转换，之后才验证受限观测Student及自身RL。不能将固定force→skill规则、Goal查表或物理搜索结果冒称已学会通用交互。
 
 ## 当前：已获批 Contact-Goal E/I v2

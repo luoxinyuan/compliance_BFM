@@ -1,0 +1,525 @@
+{
+  "phase_semantics": "none never counted as released; exact episode spec plus physical active retained; stop/continue siblings disambiguated by episode",
+  "source_commit": "02da99fcf26e638fd42d6516fd5aff2bdda9d821",
+  "mode": "CPU_READ_ONLY_ARCHIVE_NO_FORWARD_BACKWARD_OPTIMIZER_PHYSICS",
+  "read_wall_s": 22.541927946032956,
+  "arms": {
+    "E": {
+      "rows": 4096,
+      "parents": 7,
+      "episodes": 8,
+      "complete_episodes": 7,
+      "durations": {
+        "tensor([[0.0200]])": 4096
+      },
+      "group_length_histogram": {
+        "5": 819,
+        "1": 1
+      },
+      "phase_native_rows": {
+        "none_control": 480,
+        "precontact": 255,
+        "moving": 1155,
+        "holding": 765,
+        "released_recovery": 1366,
+        "stopping": 75
+      },
+      "option_native_rows": {
+        "P2|HOLD|none_control|option0": 480,
+        "P2|HOLD|precontact|option0": 75,
+        "P2|HOLD|moving|option0": 380,
+        "P2|HOLD|holding|option0": 210,
+        "P2|HOLD|released_recovery|option0": 400,
+        "P2|FOLLOW|precontact|option2": 75,
+        "P2|FOLLOW|moving|option2": 128,
+        "P2|FOLLOW|holding|option2": 100,
+        "P2|FOLLOW|released_recovery|option2": 200,
+        "P3|FOLLOW|moving|option2": 262,
+        "P3|HOLD|moving|option0": 360,
+        "P3|HOLD|stopping|option0": 50,
+        "P3|HOLD|holding|option0": 340,
+        "P3|HOLD|released_recovery|option0": 541,
+        "P3|HOLD|released_recovery|option3": 25,
+        "P3|FOLLOW|precontact|option2": 50,
+        "P3|FOLLOW|precontact|option1": 25,
+        "P3|FOLLOW|moving|option1": 25,
+        "P3|FOLLOW|holding|option2": 90,
+        "P3|FOLLOW|holding|option1": 25,
+        "P3|FOLLOW|released_recovery|option2": 75,
+        "P3|FOLLOW|released_recovery|option3": 50,
+        "P3|FOLLOW|released_recovery|option0": 50,
+        "P3|FOLLOW|released_recovery|option1": 25,
+        "P3|HOLD|precontact|option0": 30,
+        "P3|HOLD|stopping|option2": 25
+      },
+      "option_actual_draw_counts": {
+        "P3|HOLD|moving|option0": 14,
+        "P3|HOLD|stopping|option0": 3,
+        "P3|HOLD|holding|option0": 13,
+        "P3|HOLD|released_recovery|option0": 22,
+        "P3|HOLD|released_recovery|option3": 1,
+        "P3|FOLLOW|precontact|option2": 3,
+        "P3|FOLLOW|moving|option2": 9,
+        "P3|FOLLOW|precontact|option1": 1,
+        "P3|FOLLOW|moving|option1": 1,
+        "P3|FOLLOW|holding|option2": 4,
+        "P3|FOLLOW|holding|option1": 1,
+        "P3|FOLLOW|released_recovery|option3": 2,
+        "P3|FOLLOW|released_recovery|option0": 2,
+        "P3|FOLLOW|released_recovery|option1": 1,
+        "P3|FOLLOW|released_recovery|option2": 3,
+        "P3|HOLD|precontact|option0": 2,
+        "P3|HOLD|stopping|option2": 1
+      },
+      "draw_total": 83,
+      "draw_old_probability_ranges": {
+        "min": [
+          0.09999999952975056,
+          0.009999999099607765,
+          0.009999999099607765,
+          0.009999999099607765
+        ],
+        "max": [
+          0.9700000027011768,
+          0.09999999952975056,
+          0.7000000014107485,
+          0.09999999952975056
+        ]
+      },
+      "blocks": [
+        {
+          "block": 1,
+          "phase": "P2",
+          "groups": 205,
+          "old_logprob_max_error": 0.0,
+          "joint_KL_minmax": [
+            0.16900034563207045,
+            0.24828080713022047
+          ],
+          "cat_KL_minmax": [
+            0.0,
+            0.0
+          ],
+          "clip_fraction_minmax": [
+            0.0,
+            0.0
+          ],
+          "pre_step_policy_loss_minmax": [
+            -0.11727762222290039,
+            0.334396094083786
+          ],
+          "actor_grad_minmax": [
+            812.5706176757812,
+            3631.35546875
+          ],
+          "raw_adv_positive": 5,
+          "raw_adv_total": 205,
+          "raw_adv_quantiles": [
+            -0.9944772671638482,
+            -0.026379306148585184,
+            0.005444544105533078
+          ],
+          "value_quantiles": [
+            -0.02763306349515915,
+            0.10812386870384216,
+            0.12914727628231049
+          ],
+          "macro_reward_quantiles": [
+            -0.22988857630904283,
+            -0.0004234616275255331,
+            -0.0002269381828424819
+          ],
+          "hot_s": 90.7990234119352,
+          "checkpoint_s": 5.9020838380092755
+        },
+        {
+          "block": 2,
+          "phase": "P2",
+          "groups": 206,
+          "old_logprob_max_error": 0.0,
+          "joint_KL_minmax": [
+            0.16278055121272222,
+            0.2219284055302444
+          ],
+          "cat_KL_minmax": [
+            0.0,
+            0.0
+          ],
+          "clip_fraction_minmax": [
+            0.0,
+            0.0
+          ],
+          "pre_step_policy_loss_minmax": [
+            -0.10489297658205032,
+            0.16564005613327026
+          ],
+          "actor_grad_minmax": [
+            875.5360107421875,
+            2559.91943359375
+          ],
+          "raw_adv_positive": 56,
+          "raw_adv_total": 206,
+          "raw_adv_quantiles": [
+            -22.283848918152703,
+            -0.15507512716438052,
+            0.1792502092975609
+          ],
+          "value_quantiles": [
+            -0.8876545429229736,
+            -0.05898640304803848,
+            0.008000580593943596
+          ],
+          "macro_reward_quantiles": [
+            -1.7291920302382642,
+            -0.02009135302936225,
+            -0.00024449842169643054
+          ],
+          "hot_s": 93.62764459906612,
+          "checkpoint_s": 6.8090093929786235
+        },
+        {
+          "block": 3,
+          "phase": "P3",
+          "groups": 206,
+          "old_logprob_max_error": 0.0,
+          "joint_KL_minmax": [
+            0.20333607679956303,
+            0.2614606925262822
+          ],
+          "cat_KL_minmax": [
+            -1.694085248350215e-08,
+            -1.5935699275801596e-09
+          ],
+          "clip_fraction_minmax": [
+            0.0,
+            0.0
+          ],
+          "pre_step_policy_loss_minmax": [
+            -0.6173180341720581,
+            0.16763874888420105
+          ],
+          "actor_grad_minmax": [
+            900.1857299804688,
+            1896.887939453125
+          ],
+          "raw_adv_positive": 77,
+          "raw_adv_total": 206,
+          "raw_adv_quantiles": [
+            -21.50486584222854,
+            -9.640192119817286,
+            0.8976854946672532
+          ],
+          "value_quantiles": [
+            -2.8603427410125732,
+            -2.1260111331939697,
+            -0.9297767281532288
+          ],
+          "macro_reward_quantiles": [
+            -1.66506637219236,
+            -0.46079291014048895,
+            -0.00017170386382647895
+          ],
+          "hot_s": 82.31179636903107,
+          "checkpoint_s": 5.702046700986102
+        },
+        {
+          "block": 4,
+          "phase": "P3",
+          "groups": 206,
+          "old_logprob_max_error": 0.0,
+          "joint_KL_minmax": [
+            0.1615888875610963,
+            0.22445762107297673
+          ],
+          "cat_KL_minmax": [
+            -5.0146549437185176e-09,
+            2.7811622260839427e-09
+          ],
+          "clip_fraction_minmax": [
+            0.0,
+            0.0
+          ],
+          "pre_step_policy_loss_minmax": [
+            -0.3514758050441742,
+            0.11800485849380493
+          ],
+          "actor_grad_minmax": [
+            802.4563598632812,
+            2750.90234375
+          ],
+          "raw_adv_positive": 71,
+          "raw_adv_total": 206,
+          "raw_adv_quantiles": [
+            -19.15267428283012,
+            -2.833840427676871,
+            1.7546509219252497
+          ],
+          "value_quantiles": [
+            -6.2601447105407715,
+            -5.33310866355896,
+            -4.740548133850098
+          ],
+          "macro_reward_quantiles": [
+            -2.683516022179192,
+            -0.024822201076034407,
+            -9.371048508910462e-05
+          ],
+          "hot_s": 100.931629493949,
+          "checkpoint_s": 3.291508450987749
+        }
+      ],
+      "optimizer_state_count": 6,
+      "value_optimizer_state_count": 6,
+      "module_parameter_tensor_count": 30,
+      "last_manifest_sha256": "cdd398b933a50852e9597f06517669250f64e313f7fa20dd40229e8f50c7a5c8",
+      "source_scratch_report_sha256": "29fa7729b807e846f5a945cf9669326e2208ddead4eebd7c717c8094890147c5",
+      "optimizer_by_module": {
+        "tail": 0,
+        "film": 0,
+        "selector": 0,
+        "goal_encoder": 0,
+        "predictor": 6,
+        "decoder": 0
+      },
+      "double_recompute_old_native_logprob_bad_rows": 0
+    },
+    "I": {
+      "rows": 3072,
+      "parents": 5,
+      "episodes": 6,
+      "complete_episodes": 5,
+      "durations": {
+        "tensor([[0.0200]])": 3072
+      },
+      "group_length_histogram": {
+        "5": 614,
+        "2": 1
+      },
+      "phase_native_rows": {
+        "none_control": 480,
+        "precontact": 195,
+        "moving": 825,
+        "holding": 550,
+        "released_recovery": 987,
+        "stopping": 35
+      },
+      "option_native_rows": {
+        "P2|HOLD|none_control|option0": 480,
+        "P2|HOLD|precontact|option0": 75,
+        "P2|HOLD|moving|option0": 380,
+        "P2|HOLD|holding|option0": 210,
+        "P2|HOLD|released_recovery|option0": 400,
+        "P2|FOLLOW|precontact|option2": 75,
+        "P2|FOLLOW|moving|option2": 128,
+        "P2|FOLLOW|holding|option2": 100,
+        "P2|FOLLOW|released_recovery|option2": 200,
+        "P3|FOLLOW|moving|option2": 52,
+        "P3|HOLD|moving|option0": 265,
+        "P3|HOLD|stopping|option0": 35,
+        "P3|HOLD|holding|option0": 240,
+        "P3|HOLD|released_recovery|option0": 362,
+        "P3|HOLD|released_recovery|option3": 25,
+        "P3|FOLLOW|precontact|option2": 45
+      },
+      "option_actual_draw_counts": {
+        "P3|HOLD|moving|option0": 11,
+        "P3|HOLD|stopping|option0": 2,
+        "P3|HOLD|holding|option0": 9,
+        "P3|HOLD|released_recovery|option0": 15,
+        "P3|HOLD|released_recovery|option3": 1,
+        "P3|FOLLOW|precontact|option2": 2,
+        "P3|FOLLOW|moving|option2": 1
+      },
+      "draw_total": 41,
+      "draw_old_probability_ranges": {
+        "min": [
+          0.09999999952975056,
+          0.009999999099607765,
+          0.009999999099607765,
+          0.009999999099607765
+        ],
+        "max": [
+          0.9700000027011768,
+          0.09999999952975056,
+          0.7000000014107485,
+          0.09999999952975056
+        ]
+      },
+      "blocks": [
+        {
+          "block": 1,
+          "phase": "P2",
+          "groups": 205,
+          "old_logprob_max_error": 0.0,
+          "joint_KL_minmax": [
+            0.1689836739221724,
+            0.24827801085463383
+          ],
+          "cat_KL_minmax": [
+            0.0,
+            0.0
+          ],
+          "clip_fraction_minmax": [
+            0.0,
+            0.0
+          ],
+          "pre_step_policy_loss_minmax": [
+            -0.11727762222290039,
+            0.334396094083786
+          ],
+          "actor_grad_minmax": [
+            812.5703735351562,
+            3631.341796875
+          ],
+          "raw_adv_positive": 5,
+          "raw_adv_total": 205,
+          "raw_adv_quantiles": [
+            -0.9944772671638482,
+            -0.026379306148585184,
+            0.005444544105533078
+          ],
+          "value_quantiles": [
+            -0.02763306349515915,
+            0.10812386870384216,
+            0.12914727628231049
+          ],
+          "macro_reward_quantiles": [
+            -0.22988857630904283,
+            -0.0004234616275255331,
+            -0.0002269381828424819
+          ],
+          "hot_s": 92.7903284439817,
+          "checkpoint_s": 5.516985643072985
+        },
+        {
+          "block": 2,
+          "phase": "P2",
+          "groups": 206,
+          "old_logprob_max_error": 0.0,
+          "joint_KL_minmax": [
+            0.16276344339571241,
+            0.22194908729311333
+          ],
+          "cat_KL_minmax": [
+            0.0,
+            0.0
+          ],
+          "clip_fraction_minmax": [
+            0.0,
+            0.0
+          ],
+          "pre_step_policy_loss_minmax": [
+            -0.10489297658205032,
+            0.16564005613327026
+          ],
+          "actor_grad_minmax": [
+            875.5355224609375,
+            2559.9208984375
+          ],
+          "raw_adv_positive": 56,
+          "raw_adv_total": 206,
+          "raw_adv_quantiles": [
+            -22.283848918152703,
+            -0.15507512716438052,
+            0.1792502092975609
+          ],
+          "value_quantiles": [
+            -0.8876545429229736,
+            -0.05898640304803848,
+            0.008000580593943596
+          ],
+          "macro_reward_quantiles": [
+            -1.7291920302382642,
+            -0.02009135302936225,
+            -0.00024449842169643054
+          ],
+          "hot_s": 94.8155661500059,
+          "checkpoint_s": 6.931045484961942
+        },
+        {
+          "block": 3,
+          "phase": "P3",
+          "groups": 206,
+          "old_logprob_max_error": 0.0,
+          "joint_KL_minmax": [
+            0.2032768159790041,
+            0.26139964324666126
+          ],
+          "cat_KL_minmax": [
+            -1.664662204844823e-08,
+            -4.303989967013974e-09
+          ],
+          "clip_fraction_minmax": [
+            0.0,
+            0.0
+          ],
+          "pre_step_policy_loss_minmax": [
+            -0.6173180341720581,
+            0.16763874888420105
+          ],
+          "actor_grad_minmax": [
+            900.1858520507812,
+            1896.8896484375
+          ],
+          "raw_adv_positive": 77,
+          "raw_adv_total": 206,
+          "raw_adv_quantiles": [
+            -21.50486584222854,
+            -9.640192119817286,
+            0.8976854946672532
+          ],
+          "value_quantiles": [
+            -2.8603427410125732,
+            -2.1260111331939697,
+            -0.9297767281532288
+          ],
+          "macro_reward_quantiles": [
+            -1.66506637219236,
+            -0.46079291014048895,
+            -0.00017170386382647895
+          ],
+          "hot_s": 86.77014177595265,
+          "checkpoint_s": 2.3485878909705207
+        }
+      ],
+      "optimizer_state_count": 14,
+      "value_optimizer_state_count": 6,
+      "module_parameter_tensor_count": 34,
+      "last_manifest_sha256": "326e875f969de2875fabc564b9197a5c3eefed81d0611cee75ab110a2eacd46d",
+      "source_scratch_report_sha256": "230684028b16cd5368c7fe7bbcdcc5f6fb135ebfbb4659f98f5e0633e3c50ff3",
+      "optimizer_by_module": {
+        "tail": 0,
+        "film": 0,
+        "selector": 0,
+        "goal_encoder": 4,
+        "predictor": 6,
+        "decoder": 4
+      },
+      "double_recompute_old_native_logprob_bad_rows": 0
+    }
+  },
+  "audit_program_sha256": "127ca8266a6c7d660a32851ff2d30d11e0d4726c567477a87e5de69148d9bc71",
+  "initial_read_wall_s": 24.930083554936573,
+  "read_only_preparation_job_upper_s": 400,
+  "cost_note": "400 seconds inclusive conservative preparation/read/IO/publication upper, not measured GPU time; includes both CPU reads (24.930084 and22.541928 seconds inside Python), ordinary tool startup and publication; not charged again per child. Original ledgers not rewritten. No optimizer, forward, sampling or physics executed.",
+  "initial_private_phase_label_correction": "First unpublished scratch audit conflated inactive-after-onset with release; corrected using exact episode spec enabled/onset/stop/deceleration/release and actual physical stream. Neither private draft was scientific runtime output. Published phase counts use corrected second read.",
+  "original_ledger_reconciliation": {
+    "job_entries": 32,
+    "sum_wall_upper_s": 7807.703623851936,
+    "by_phase_s": {
+      "P0": 3110.6390663280035,
+      "reserve": 10.0,
+      "P6": 850.0,
+      "P1": 3837.0645575239323
+    },
+    "recorded_total_s": 7807.703623851936,
+    "matches_exactly": true,
+    "original_ledger_sha256": "2813193ec52e80042807abca444ba6be2bac76b07448dec7553c768e2cc969dc"
+  },
+  "read_source_file_sha256": {
+    "ei_v2_ppo.py": "a875921d7b0ac4cffd85dcad4f22b69b7c8c541bbfd898fe5626b0bf699a2c75",
+    "ei_v2_agent.py": "20c3bdeb8bd3d6a4470a3595962b7cfb46cbf134194196f70a1d2459a4d8ede7",
+    "CONTACT_GOAL_EI_TRAIN_CONTRACT_V2_APPROVED.md": "69f10a9143932351c740d5208d561f81f9aeeafe69da49c3efc9da773ac5c3b9",
+    "CONTACT_GOAL_EI_V2_P1_ENGINEERING_RESULTS.md": "883bff1601795172b62a5c6b7fc576dce3185dda96b2e38c8559453de87ce85f"
+  }
+}

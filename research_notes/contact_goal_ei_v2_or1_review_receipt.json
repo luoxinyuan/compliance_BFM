@@ -1,0 +1,20 @@
+{
+  "type": "READONLY_OPTIMIZER_REVIEW_PREPARATION",
+  "status": "COMPLETE_DOCUMENTS_ONLY",
+  "job_upper_s": 400,
+  "not_measured_GPU_time": true,
+  "includes": "all read-only CPU archive decoding, source/ledger/contract reads, IO and normal documentation publication; child costs not charged twice",
+  "original_ledger_unchanged": true,
+  "original_stage_charged_upper_s": 7807.703623851936,
+  "combined_v2_including_review_upper_s": 8207.703623851936,
+  "original_R2_before_review_s": 29345.631880932197,
+  "R2_after_review_s": 29745.631880932197,
+  "R2_remaining_s": 27854.368119067803,
+  "separate_6000_used_s": 0,
+  "new_scientific_jobs": 0,
+  "original_ledger_sha256": "2813193ec52e80042807abca444ba6be2bac76b07448dec7553c768e2cc969dc",
+  "raw_CPU_read_walls_s": [
+    24.930083554936573,
+    22.541927946032956
+  ]
+}

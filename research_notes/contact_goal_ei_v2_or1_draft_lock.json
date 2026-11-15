@@ -1,0 +1,95 @@
+{
+  "id": "Issue66-EI-v2-OR1-20261115",
+  "status": "DRAFT_REVIEW_ONLY_NOT_EXECUTABLE",
+  "authorization_this_turn": "archive audit and amendment drafting only",
+  "base_source": "02da99fcf26e638fd42d6516fd5aff2bdda9d821",
+  "original_signed_body_sha256": "69f10a9143932351c740d5208d561f81f9aeeafe69da49c3efc9da773ac5c3b9",
+  "amendment_file": "CONTACT_GOAL_EI_V2_OPTIMIZER_AMENDMENT_OR1_DRAFT.md",
+  "amendment_sha256": "67cff57ffa4b68eef07fa15278670609e4ff9c98927afe2c0be67be8999d73c5",
+  "alphas": [
+    1,
+    0.5,
+    0.25,
+    0.125,
+    0.0625
+  ],
+  "unchanged": {
+    "joint_KL": 0.02,
+    "sigma": 0.01,
+    "adam_base_lr": 1e-05,
+    "adam_weight_decay": 0,
+    "ppo_clip": 0.2,
+    "epochs": 2,
+    "minibatch_macro_segments": 64,
+    "goal_priors": {
+      "HOLD": [
+        0.97,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "FOLLOW": [
+        0.1,
+        0.1,
+        0.7,
+        0.1
+      ]
+    },
+    "minimum_option_slots": 5,
+    "physics_force_cap_N": 10,
+    "probability_assertion_atol": 0.0003,
+    "reward": "original signed v2 Goal reward",
+    "GAE": "original macro-time GAE"
+  },
+  "proposal": "one original Adam step; five frozen parameter candidates; alpha1 exact proposal copy",
+  "transaction": "commit scaled parameters with one full original proposed Adam state; reject restores entire original model and optimizer state",
+  "additional_acceptance_rule": "minibatch original PPO+lambda retention objective must not increase; full-block old-policy joint KL <= .02",
+  "proposed_observability_gates": {
+    "mean_delta_RMS_div_sigma": 0.005,
+    "qPD_abs_p95_rad": 1e-05,
+    "selector_probability_max_delta": 1e-06
+  },
+  "proposed_qualification": {
+    "new_engineering_rows_total": 8192,
+    "each_arm": 4096,
+    "blocks_each": [
+      "P2",
+      "P2",
+      "P3",
+      "P3"
+    ],
+    "minimum_complete_episodes_each": 6,
+    "full_train_qualification_and_sentinel_episode_cap": 24,
+    "new_physics_5ms_tick_cap": 160000,
+    "no_formal_training": true
+  },
+  "budget_revision": {
+    "new_work_total_job_s": 6000,
+    "review_already_authorized_upper_s": 400,
+    "D0_s": 900,
+    "D1_s": 2000,
+    "D2_s": 2600,
+    "equivalent_repair_subset_s": 100,
+    "P1_phase_cap_s": 10100,
+    "P6_phase_cap_s": 1400,
+    "stage_cap_excluding_original_400_document_s": 47000,
+    "stage_cap_including_original_document_s": 47400,
+    "new_additional_funding_requested_s": 5000,
+    "previous_separate_6000_remains": true,
+    "P1_output_GiB": 2.2,
+    "total_output_GiB": 8.4,
+    "original_R2_job_cap_unchanged_s": 57600,
+    "original_total_5ms_tick_cap_unchanged": 950000,
+    "project_job_hour_cap_unchanged": 240
+  },
+  "fallback": "hierarchical20ms+actual-dwell option update design only; separate scientific amendment required; no automatic execution",
+  "executed_this_turn": {
+    "new_model_forward": 0,
+    "backward": 0,
+    "optimizer_proposal": 0,
+    "on_policy_rows": 0,
+    "physics_ticks": 0,
+    "dev_tasks": 0,
+    "sealed_reads": 0
+  }
+}
