@@ -18,3 +18,8 @@ Closed historical methods and facts, including FIBER/LPP, C0, adapter/Envelope/R
 [Contact-Goal E/I v2修订稿](CONTACT_GOAL_EI_TRAIN_CONTRACT_V2_DRAFT.md)与[审阅单](CONTACT_GOAL_EI_V2_REVIEW_PACKET.md)已形成，未签署、未跑新物理/训练。H0正结果原判保持，但Goal-only查表反例、未实际跨stop、没有完整release恢复与BI独立收益未证都进入下一合同的放行/归因规则。主提案先低层直接contact-FiLM适配，再有限option联合学习；不同时自由探索256D U与29D动作，不再开独立标量Q考试。目标、额外自身定位仿真假设和共同anchor初始化修订必须显式批准。
 
 合同预算不伪装成原8h小段：完整41,400秒，相对R2原余额缺4,937.928257秒，提前申请独立新阶段6,000秒；当前无此新增授权。400秒只读文档上界计原R2后余额36,062.071743秒，未发生方案41,000。完整阶段门/17行三列表、I增量数字、五分支及§9工程自治预锁，等Yi审阅，不自动开下一阶段。
+
+
+## Contact-Goal E/I v2整体批准（2026-11-15）
+
+Yi已整体批准v2及独立新增6,000 job秒；规范正文与签署见CONTACT_GOAL_EI_TRAIN_CONTRACT_V2_APPROVED.md、CONTACT_GOAL_EI_V2_SIGNOFF_20261115.md。当前为P0实现/资格，不是训练或物理收益已验证；通过预写门后连续进行同等执行能力的有限E/I。旧H0和QA2不重判。41,400秒完整方案含文档400；余下41,000由R2旧余额36,062.071743与新6,000分账，原帽和项目240h不改，不自动扩大至Student或free-latent训练。
