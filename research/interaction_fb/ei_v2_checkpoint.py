@@ -13,7 +13,7 @@ from diagnostic_fb_resume import tree_digest
 from f1_mjdata_contract import metadata,canonical,exact
 
 LISTS=('rows','native','physical_stream')
-OWN=('spec_id','reset_cursor','next_cursor','option','option_age','command_slot','offset','macro_start','macro_target','motion_phase','motion_steps','phase','goal_stream','goal_changed','handoff','goal_mode','goal_world','instructions','episodes','source_cache')
+OWN=('spec_id','reset_cursor','next_cursor','option','option_age','command_slot','offset','macro_start','macro_target','motion_phase','motion_steps','phase','goal_stream','goal_changed','handoff','goal_mode','goal_world','instructions','episodes','source_cache','collection_role')
 class Journal:
     def __init__(self,root):
         self.root=Path(root);self.root.mkdir(exist_ok=True,parents=True);self.previous=None;self.previous_name=None;self.segments=[];self.lengths={k:0 for k in LISTS}
@@ -31,7 +31,11 @@ class Journal:
         self.previous=cpu;self.previous_name=dest.name;self.segments=m['segments'];self.lengths=m['lengths'];return m
 
 def load(path):
-    path=Path(path);m=json.loads((path/'manifest.json').read_text());assert m['format']=='EI-v2-lossless-v1' and m['complete'];chain=[];cursor=path;seen=set()
+    path=Path(path)
+    if path.is_file():
+        from .ei_v2_frozen_fixture import load as load_frozen_source
+        return load_frozen_source(path)
+    m=json.loads((path/'manifest.json').read_text());assert m['format']=='EI-v2-lossless-v1' and m['complete'];chain=[];cursor=path;seen=set()
     while True:
         assert cursor.name not in seen;seen.add(cursor.name);mm=json.loads((cursor/'manifest.json').read_text());assert mm['complete'];chain.append((cursor,mm))
         if mm['previous'] is None:break
@@ -84,6 +88,7 @@ def restore(path,agent,env,out):
         if getattr(env,k) is not None:setattr(env,k,getattr(env,k).to(agent.device))
     env.proxy.slot=env.offset;env.proxy.start=env.macro_start;env.proxy.target=env.macro_target;env.proxy.previous_z=s['proxy_previous_z'];env.proxy.actions=s['proxy_actions'];env.proxy.stochastic=s['stochastic']
     env.task.physics_rng=copy.deepcopy(s['physics_rng']);env.task.rng.bit_generator.state=copy.deepcopy(s['task_rng']);restore_global_rng(s['rng']);agent.load(s['agent'])
+    for par in agent.selector.parameters():par.requires_grad_(env.phase=='P3')
     actual=canonical(portable(env.task),metadata(env.e.sim.model,env.e.sim.data));assert exact(actual,canonical(old,s['mj_metadata'])),'full effective task/physical/history differs'
     assert tree_digest(agent.state())==tree_digest(s['agent']);assert exact(global_rng(),s['rng'])
     jsonwrite(Path(out)/'restore-exact.json',dict(model_Adam_rng_exact=True,full_effective_physics_history_exact=True,block=s['block'],actual_rows=len(s['rows']),physical_replay_only_not_training=True))

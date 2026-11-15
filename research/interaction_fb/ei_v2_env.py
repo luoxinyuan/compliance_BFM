@@ -75,7 +75,7 @@ class GoalEnvironment:
             for s in p['specs']:self.cases.append(dict(spec=copy.deepcopy(s),goal_stream=p['goal_stream'],execution_source_parent_id=p['execution_source_parent_id']))
         self.task=GoalTask(e,m,contract,660301);self.proxy=GoalProxy(self,self.task,m);self.task.m=self.proxy
         self.source_cache={};self.rows=[];self.native=[];self.physical_stream=[];self.episodes=[];self.instructions=[];self.next_cursor=0;self.reset_cursor=0
-        self.agent=None;self.option=0;self.option_age=0;self.command_slot=0;self.offset=0;self.macro_start=None;self.macro_target=None;self.motion_phase=None;self.motion_steps=0;self.spec_id=0;self.phase='P2';self.goal_stream='HOLD';self.goal_changed=False;self.handoff=0.;self.goal_mode=1;self.goal_world=None;self.reference_trace=[]
+        self.collection_role='qualification';self.agent=None;self.option=0;self.option_age=0;self.command_slot=0;self.offset=0;self.macro_start=None;self.macro_target=None;self.motion_phase=None;self.motion_steps=0;self.spec_id=0;self.phase='P2';self.goal_stream='HOLD';self.goal_changed=False;self.handoff=0.;self.goal_mode=1;self.goal_world=None;self.reference_trace=[]
     def public_goal(self):
         t=self.task;e=self.e;dev=e.standing.device
         R=np.asarray(e.sim.data.xmat[1]).reshape(3,3)
@@ -162,7 +162,7 @@ class GoalEnvironment:
         first=len(t.physics);rows,done,stats=p.take_step(self.raw_target,n)
         self.physical_stream.extend(copy.deepcopy(t.physics[first:]));self.instructions.append(dict(raw=self.raw_target.detach().cpu(),offset=self.offset,start=self.macro_start.detach().cpu(),target=self.macro_target.detach().cpu(),n=len(rows),option=self.option,phase=self.phase,cat_boundary=cat_boundary,episode=self.reset_cursor,time=float(rows[0]['provenance']['time']),goal_mode=self.goal_mode,goal_position_world=None if self.goal_world is None else self.goal_world.copy()))
         for j,(r,src) in enumerate(zip(rows,p.records)):
-            r.update(raw_u=src['raw_u'],old_mu=src['old_mu'],old_logp=src['old_logp'],option=self.option,cat_boundary=bool(cat_boundary and j==0),old_logits=old_logits.detach().cpu() if cat_boundary and j==0 else None,selector_obs=selector_obs if cat_boundary and j==0 else None,candidate_first_z=candidate_first.detach().cpu() if cat_boundary and j==0 else None,episode=self.reset_cursor,goal_mode=self.goal_mode,macro_slot=self.offset+j)
+            r.update(collection_role=self.collection_role,eligible_for_joint_PPO=bool(self.collection_role in ('engineering_on_policy','formal_on_policy') and p.stochastic and p.replay is None and getattr(self,'reference_constant_option',None) is None),behavior_version=int(self.agent.accepted),behavior_phase=self.phase,raw_u=src['raw_u'],old_mu=src['old_mu'],old_logp=src['old_logp'],option=self.option,cat_boundary=bool(cat_boundary and j==0),old_logits=old_logits.detach().cpu() if cat_boundary and j==0 else None,selector_obs=selector_obs if cat_boundary and j==0 else None,candidate_first_z=candidate_first.detach().cpu() if cat_boundary and j==0 else None,episode=self.reset_cursor,goal_mode=self.goal_mode,macro_slot=self.offset+j)
             self.rows.append(r)
         self.offset+=len(rows);self.next_cursor+=len(rows)
         if self.offset==5:

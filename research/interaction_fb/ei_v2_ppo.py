@@ -90,6 +90,7 @@ def retention(agent,by_parent,eps):
 
 def update(agent,rows,keep,eps,aux_batch,phase):
     assert rows and len(rows)<=1024
+    assert all(r.get('eligible_for_joint_PPO',False) and r['collection_role'] in ('formal_on_policy','engineering_on_policy') for r in rows), 'non-Gaussian/reference/qualification data cannot enter PPO'
     groups=segments(rows);indices=list(range(len(groups)));device=agent.device
     for p in agent.selector.parameters():p.requires_grad_(phase=='P3')
     with torch.no_grad():
