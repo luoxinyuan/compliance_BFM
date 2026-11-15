@@ -32,7 +32,23 @@ def study(e,base,c,out):
     agent=OR1Agent(base,env.proxy.enrich(env.task.extended_observation()),ARM,e.standing.device);env.agent=agent;env.proxy.agent=agent;env.collection_role='engineering_on_policy';env.proxy.stochastic=True
     qm=json.loads((OLD/'runs/P1-frozen-sample-01/qualification.json').read_text());kd=read(OLD/'runs/P1-frozen-sample-01/qualified-retention-data.ptz',qm['retention']);keep,eps=kd['keep_by_parent'],kd['eps']
     assert json.loads((STAGE/'runs/OR1-D0-01/result.json').read_text())['status']=='OR1_D0_PASS_FOR_NEW_ENGINEERING_ONLY'
-    old_native=0;carried_rows=0
+    old_native=0;carried_rows=0;reused_records=[]
+    if COMPLETE_P2:
+        assert RESUME_PACKAGE is not None and SOURCE_RUN is not None
+        assert RESUME_PACKAGE.resolve().is_relative_to((STAGE/'runs').resolve()) and SOURCE_RUN.resolve().is_relative_to((STAGE/'runs').resolve())
+        restored=restore(RESUME_PACKAGE,agent,env,out)
+        assert PART=='D1' and agent.actor_accepted>0 and agent.opt.state and agent.vopt.state
+        assert 1024<=env.next_cursor<=2048 and len(env.rows)==env.next_cursor
+        assert all(r['eligible_for_joint_PPO'] and r['behavior_phase']=='P2' and r['behavior_version']==agent.accepted and r.get('actual_actor_policy_version',agent.actor_accepted)==agent.actor_accepted for r in env.rows[1024:])
+        from .ei_v2_ppo import device_obs
+        with torch.no_grad():
+            for row in env.rows[1024:]:
+                mu=agent.mean(device_obs(row['observation'],agent.device),row['z'].to(agent.device),torch.tensor([row['option']],device=agent.device))
+                assert torch.equal(mu.cpu(),row['old_mu'].cpu()),'restored behavior mean differs from actual second-block policy'
+        reused_records=json.loads((SOURCE_RUN/'progress.json').read_text());assert len(reused_records)==1 and reused_records[0]['block']==1 and reused_records[0]['actor_accepted_total']==agent.actor_accepted
+        assert json.loads((SOURCE_RUN/'first-accepted-sentinel/result.json').read_text())['status']=='PASS'
+        reused_records=copy.deepcopy(reused_records);reused_records[0]['reused_complete_block_from']=SOURCE_RUN.name
+        (out/'verified-resume-second-P2.json').write_text(json.dumps(dict(source_run=SOURCE_RUN.name,source_manifest_sha256=__import__('hashlib').sha256((RESUME_PACKAGE/'manifest.json').read_bytes()).hexdigest(),already_collected_second_block_rows=env.next_cursor-1024,original_current_behavior_actor_version=agent.actor_accepted,complete_first_block_and_three_sentinels_reused=True,no_new_PPO_data_in_restore=True),indent=2)+'\n')
     if FAILURE_RESUME:
         failed=RESUME_PACKAGE or STAGE/'runs/OR1-D1-E-01/failed-sampling-packages/block-failed-15'
         assert failed.resolve().is_relative_to((STAGE/'runs').resolve())
@@ -48,7 +64,7 @@ def study(e,base,c,out):
         assert src.resolve().is_relative_to((STAGE/'runs').resolve())
         assert json.loads((src/'result.json').read_text())['status']=='OR1_D1_TWO_NEW_P2_BLOCKS_PASS';restore(src/'checkpoints/block-2',agent,env,out);old_native=env.next_cursor;env.phase='P3'
         sample_qualification=qualify(env,agent,out/'P3-sample-entry','P3_sample','P3');assert sample_qualification['status']=='PASS','P3_SAMPLE_QUALIFICATION_FAILED'
-    initial_cursor=env.next_cursor;prior=json.loads((STAGE/'ledger.json').read_text())['new_scratch_50Hz'];records=[];journal=Journal(out/'checkpoints');journal.save(0,agent,env,runtime,'OR1_initial_or_phase_resume_qualification_only')
+    initial_cursor=env.next_cursor;prior=json.loads((STAGE/'ledger.json').read_text())['new_scratch_50Hz'];records=reused_records;journal=Journal(out/'checkpoints');journal.save(0,agent,env,runtime,'OR1_initial_or_phase_resume_qualification_only')
     def count(final=False,reserved=None):
         actual=0 if RESTORE else env.next_cursor-initial_cursor
         v=dict(actual_scratch_rows=actual,reserved_scratch_rows=actual if reserved is None else reserved,exact_final=final,restore_validation=RESTORE)
@@ -74,9 +90,12 @@ def study(e,base,c,out):
         result=dict(status='OR1_ACCEPTED_ACTOR_ADAM_PHYSICS_RESTORE_EXACT',arm=ARM,checks=checks,new_on_policy_rows=0,actual_validation_native_continuation=12,replayed_physics_not_training=True)
     else:
         phase='P2' if PART=='D1'else 'P3';env.phase=phase;agent.selector.requires_grad_(phase=='P3')
-        for block in range(1,3):
-            t=time.monotonic();b0=(0 if FAILURE_RESUME and block==1 else len(env.rows));accepted0=agent.actor_accepted;tu=time.monotonic()
-            if block==2:fill(1012);journal.save('mid-last',agent,env,runtime,'real_accepted_Actor_Adam_mid_second_block');fill(12)
+        for block in ([2]if COMPLETE_P2 else range(1,3)):
+            t=time.monotonic();before_collect=len(env.rows);b0=(1024 if COMPLETE_P2 else (0 if FAILURE_RESUME and block==1 else len(env.rows)));accepted0=agent.actor_accepted;tu=time.monotonic()
+            if block==2:
+                if COMPLETE_P2 and env.next_cursor==2048:pass
+                else:
+                    fill(2036-env.next_cursor if COMPLETE_P2 else 1012);journal.save('mid-last',agent,env,runtime,'real_accepted_Actor_Adam_mid_second_block');fill(12)
             else:fill(1024-carried_rows if FAILURE_RESUME and block==1 else 1024)
             collected=time.monotonic()-tu;rows=env.rows[b0:];assert len(rows)==1024
             journal.save('pending-'+str(block),agent,env,runtime,'complete_sampling_before_pending_update_not_completed_training_step')
@@ -96,7 +115,7 @@ def study(e,base,c,out):
                         old=r['old_logits'].to(agent.device).softmax(-1);new=agent.logits(device_obs(r['selector_obs'],agent.device),r['candidate_first_z'].to(agent.device)).softmax(-1);selector_deltas.append(float(abs(new-old).max()))
             if block==2:expected=dump(out/'expected-last-update.ptz',signature(mt))
             ti=time.monotonic();manifest=journal.save(block,agent,env,runtime,'complete_OR1_engineering_block_not_formal');io=time.monotonic()-ti
-            m=dict(block=block,phase=phase,new_rows=1024-(carried_rows if block==1 else 0),block_rows=1024,collection_s=collected,update_s=update_s,checkpoint_s=io,hot_s=time.monotonic()-t,actor_steps_this_block=actor_steps,actor_accepted_total=agent.actor_accepted,aux_accepted_total=agent.aux_accepted,selector_probability_max_delta=max(selector_deltas or[0.]),actual_selector_draws=len(selector_deltas),mean_delta_RMS=float(np.sqrt(np.mean(np.concatenate(deltas)**2))),metrics=mt,checkpoint=manifest)
+            m=dict(block=block,phase=phase,new_rows=len(env.rows)-before_collect,block_rows=1024,collection_s=collected,update_s=update_s,checkpoint_s=io,hot_s=time.monotonic()-t,actor_steps_this_block=actor_steps,actor_accepted_total=agent.actor_accepted,aux_accepted_total=agent.aux_accepted,selector_probability_max_delta=max(selector_deltas or[0.]),actual_selector_draws=len(selector_deltas),mean_delta_RMS=float(np.sqrt(np.mean(np.concatenate(deltas)**2))),metrics=mt,checkpoint=manifest)
             records.append(m);(out/'progress.json').write_text(json.dumps(records,indent=2)+'\n');print('OR1_BLOCK',ARM,PART,block,'actor',actor_steps,'hot',m['hot_s'],flush=True)
             if block==1:
                 q=qualify(env,agent,out/'first-accepted-sentinel','sentinel',phase);assert q['status']=='PASS','CURRENT_ACTOR_SENTINEL_PROTECTION_FAILED'
@@ -108,10 +127,10 @@ def study(e,base,c,out):
     (out/'result.json').write_text(json.dumps(result,indent=2)+'\n');return result
 
 def main():
-    global ARM,PART,RESTORE,FAILURE_RESUME,RESUME_PACKAGE,SOURCE_RUN
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',required=True,choices=['D1E','D1I','D2E','D2I','restoreE','restoreI','D1E_resume']);p.add_argument('--resume-package',type=Path);p.add_argument('--source-run',type=Path);a=p.parse_args();RESUME_PACKAGE=a.resume_package;SOURCE_RUN=a.source_run;FAILURE_RESUME=a.mode.endswith('_resume');ARM=('E' if FAILURE_RESUME else a.mode[-1]);RESTORE=a.mode.startswith('restore');PART='D2'if RESTORE else a.mode[:2]
-    assert RESUME_PACKAGE is None or FAILURE_RESUME
-    assert SOURCE_RUN is None or RESTORE or PART=='D2'
+    global ARM,PART,RESTORE,FAILURE_RESUME,RESUME_PACKAGE,SOURCE_RUN,COMPLETE_P2
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',required=True,choices=['D1E','D1I','D2E','D2I','restoreE','restoreI','D1E_resume','completeP2E','completeP2I']);p.add_argument('--resume-package',type=Path);p.add_argument('--source-run',type=Path);a=p.parse_args();RESUME_PACKAGE=a.resume_package;SOURCE_RUN=a.source_run;COMPLETE_P2=a.mode.startswith('completeP2');FAILURE_RESUME=a.mode.endswith('_resume');ARM=('E' if FAILURE_RESUME else a.mode[-1]);RESTORE=a.mode.startswith('restore');PART='D1'if COMPLETE_P2 else ('D2'if RESTORE else a.mode[:2])
+    assert RESUME_PACKAGE is None or FAILURE_RESUME or COMPLETE_P2
+    assert SOURCE_RUN is None or RESTORE or PART=='D2' or COMPLETE_P2
     from . import benchmark
     from .ei_v2_counter_io import install
     original_write=benchmark.write
