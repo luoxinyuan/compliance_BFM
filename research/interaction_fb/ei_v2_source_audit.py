@@ -18,6 +18,9 @@ def study(e, model, contract, out):
     from f1_mjdata_contract import canonical, metadata, exact, install_restore_guard
     from research.interaction_fb.journal import dump
     torch.set_num_threads(1); torch.use_deterministic_algorithms(True)
+    if os.environ.get('EI_V2_SOURCE_FIX')=='1':
+        from research.interaction_fb.ei_v2_sources import install as source_install
+        source_install()
     assert contract['model_sha256'] == '33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361'
     install(); speed(e); (out/'backend-prefix').mkdir(); backend(e, model, out/'backend-prefix'); install_restore_guard()
     frozen = tree_digest(model._actor.state_dict())
@@ -73,6 +76,7 @@ def study(e, model, contract, out):
     a,b=outputs
     field_equal={k:exact(a['state'][k],b['state'][k]) for k in a['state']}
     result=dict(status='P0_SOURCE_IDENTITY_PHYSICAL_AUDIT_COMPLETE',
+        source_fix_enabled=os.environ.get('EI_V2_SOURCE_FIX')=='1',
         common_time_s=boundary,short_parent=a['parent'],long_parent=b['parent'],
         state_field_exact=field_equal,body_prefix_exact=exact(a['body'],b['body']),
         actions_qpd_prefix_exact=exact(a['actions'],b['actions']),

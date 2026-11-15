@@ -1,0 +1,248 @@
+{
+  "status": "BLOCKED_G01_DATA_INSUFFICIENT",
+  "signed_commit": "15fc96c573deba4f01972ccdeb85e8655428622e",
+  "runtime_commit": "6f1da47268a69d1bbdac0fc2f85f05eed0a8f9ef",
+  "BFM_SHA256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "physical_audit": {
+    "status": "P0_SOURCE_IDENTITY_PHYSICAL_AUDIT_COMPLETE",
+    "common_time_s": 4.1,
+    "short_parent": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+    "long_parent": "fdde460420a47e3cb30e3a7b298277a9de8b2ed3de08ebd5547391339bbb24aa",
+    "state_field_exact": {
+      "time": true,
+      "integration": true,
+      "mjdata_arrays": true,
+      "mjdata_validity": true,
+      "bfm_obs": true,
+      "previous_action": true,
+      "previous_z": true,
+      "previous_qpd": true,
+      "deploy_h": true,
+      "actual_force": true,
+      "physics_rng": true
+    },
+    "body_prefix_exact": true,
+    "actions_qpd_prefix_exact": true,
+    "common_physics_rows": [
+      220,
+      220
+    ],
+    "common_controls": [
+      55,
+      55
+    ],
+    "archives": [
+      {
+        "sha256": "24e3e9fd89251e938ea1204dd0b7132cf8522ab147e1c1d66a813cb41689a2d7",
+        "bytes": 1395524
+      },
+      {
+        "sha256": "35ef58c35b924acefe8e648abf39467560c9900699a547bb5c44ff1fc2875f7b",
+        "bytes": 1730149
+      }
+    ],
+    "source_has_actual_contact": false,
+    "formal_rl_transitions": 0,
+    "updates": 0,
+    "dev_physics": 0,
+    "sealed_read": false,
+    "original_bfm_actor_unchanged": true,
+    "next_action": "STOP_G01_DATA_INSUFFICIENT if shared actual source confirmed; do not alter recipe or split"
+  },
+  "recipe_audit": {
+    "status": "P0_RECIPE_AUDIT_SOURCE_OVERLAP_SUSPECT",
+    "signed_sha256": "69f10a9143932351c740d5208d561f81f9aeeafe69da49c3efc9da773ac5c3b9",
+    "counts": {
+      "train": {
+        "parents": 34,
+        "episodes": 44,
+        "families": {
+          "none": 2,
+          "near": 10,
+          "mid": 10,
+          "zero": 2,
+          "stop": 10
+        },
+        "source_counts": {
+          "standing": 28,
+          "goal_arm5": 6
+        },
+        "stiffness_counts": {
+          "80": 17,
+          "40": 17
+        },
+        "one_complete_sweep_50Hz": 21870
+      },
+      "dev": {
+        "parents": 16,
+        "episodes": 20,
+        "families": {
+          "none": 2,
+          "near": 4,
+          "mid": 4,
+          "zero": 2,
+          "stop": 4
+        },
+        "source_counts": {
+          "standing": 10,
+          "goal_arm5": 6
+        },
+        "stiffness_counts": {
+          "80": 8,
+          "40": 8
+        },
+        "one_complete_sweep_50Hz": 9690
+      }
+    },
+    "original_structural_id_audit_pass": true,
+    "original_physical_independence_note": "not yet executed; recipe uniqueness does not establish statistical independence",
+    "exact_effective_recipe_cross_split_pairs": [
+      {
+        "train_parent": "cb29bf09014a2b5416b8d9cf11921d07eac3a0c885365c55ea31a3ca27e371c4",
+        "dev_parent": "a3c5b59ce707e5e10dbf3485354d08df25cd1c4a5f5d805d69a08dd22ce248d9",
+        "train_source_parent": "97c9d78b74547ebdb9ef739603c2b57fc974575a293bdd55a64d0cf249f41e3b",
+        "dev_source_parent": "3598158ce138a514621743dd36e9b4337ef3033f31eeeadff6609c59e7d2a2cd",
+        "effective_recipe": {
+          "native_asset": "goal_arm5",
+          "arm_fraction": 1.0,
+          "time_law": "smoothstep(clamp((t-3)/1.5,0,1))",
+          "source_until": 4.5,
+          "reset": "m8_stage.reset_common(seed=0)"
+        }
+      },
+      {
+        "train_parent": "cb29bf09014a2b5416b8d9cf11921d07eac3a0c885365c55ea31a3ca27e371c4",
+        "dev_parent": "a7540e92d5c9bb05a1018e67d18a38d1d55f99056ffb81054ecd4f625d4464b8",
+        "train_source_parent": "97c9d78b74547ebdb9ef739603c2b57fc974575a293bdd55a64d0cf249f41e3b",
+        "dev_source_parent": "62015eaebde2bdccd812de425992da399576a88803d187cf6f95bc5b112a7855",
+        "effective_recipe": {
+          "native_asset": "goal_arm5",
+          "arm_fraction": 1.0,
+          "time_law": "smoothstep(clamp((t-3)/1.5,0,1))",
+          "source_until": 4.5,
+          "reset": "m8_stage.reset_common(seed=0)"
+        }
+      },
+      {
+        "train_parent": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+        "dev_parent": "5a13f004573c29feb788582df86f9da38e971cd81b1aa72ea7f0ead92933abe0",
+        "train_source_parent": "5c944f900d8b86a7734df4da9f5f01eeb857e4d8b5ebfaa9b5c91b619bf0b24a",
+        "dev_source_parent": "2d80b753845f12be1bb3ad4ca6fecee22b03de61c26b846cef032a9dbb7c7914",
+        "effective_recipe": {
+          "native_asset": "goal_arm5",
+          "arm_fraction": 1.0,
+          "time_law": "smoothstep(clamp((t-3)/1.5,0,1))",
+          "source_until": 4.4,
+          "reset": "m8_stage.reset_common(seed=0)"
+        }
+      },
+      {
+        "train_parent": "fdde460420a47e3cb30e3a7b298277a9de8b2ed3de08ebd5547391339bbb24aa",
+        "dev_parent": "5f8aa84d8a4f523859563e2dd5c5ff50451e224aad8bcdb1ec8bd8c708c88588",
+        "train_source_parent": "a3a827c119d5d9093ca9d0a96df281945f7421d5be58301d9c66f047617283da",
+        "dev_source_parent": "0128e6cf0de534e693078e662716866c567015c3ff401773c2fca23ac5108bbc",
+        "effective_recipe": {
+          "native_asset": "goal_arm5",
+          "arm_fraction": 1.0,
+          "time_law": "smoothstep(clamp((t-3)/1.5,0,1))",
+          "source_until": 4.6,
+          "reset": "m8_stage.reset_common(seed=0)"
+        }
+      },
+      {
+        "train_parent": "fdde460420a47e3cb30e3a7b298277a9de8b2ed3de08ebd5547391339bbb24aa",
+        "dev_parent": "80c1b0855c6ec0471264a5851faa057225e1ff03527740f99beb210ff202ba64",
+        "train_source_parent": "a3a827c119d5d9093ca9d0a96df281945f7421d5be58301d9c66f047617283da",
+        "dev_source_parent": "18d9f2d6844cdab7f5d57166216a90032cef7cb3d67032168f5a92ee823a7a5b",
+        "effective_recipe": {
+          "native_asset": "goal_arm5",
+          "arm_fraction": 1.0,
+          "time_law": "smoothstep(clamp((t-3)/1.5,0,1))",
+          "source_until": 4.6,
+          "reset": "m8_stage.reset_common(seed=0)"
+        }
+      }
+    ],
+    "common_native_arm_curve_count": 1,
+    "proposed_arm_recipe_parent_counts": {
+      "train": 6,
+      "dev": 6
+    },
+    "sealed_cases_read": false,
+    "sealed_summary_only": {
+      "parents": 28,
+      "episodes": 36,
+      "families": {
+        "none": 2,
+        "near": 8,
+        "mid": 8,
+        "zero": 2,
+        "stop": 8
+      },
+      "canonical_sha256": "e832715f8fb08c6a0809283c7f2c0bea3ca504418e897aebad3a656a8dde33b7",
+      "file_sha256": "afa33b4af521275bee7b49fa02ef59811126a865441400f1d254fceb5889b087"
+    },
+    "physical_check": {
+      "short_parent": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "long_parent": "fdde460420a47e3cb30e3a7b298277a9de8b2ed3de08ebd5547391339bbb24aa",
+      "short_end": 4.1,
+      "long_end": 4.6,
+      "scope": "two TRAIN-only native prefixes; no Dev physics, no partner activation, no policy update"
+    },
+    "future_gate": "G01 must use actual native trajectory ancestry, not ignored profile hashes"
+  },
+  "counts": {
+    "train_prefixes_executed": 2,
+    "actual_5ms_ticks": 2342,
+    "formal_E_transitions": 0,
+    "formal_I_transitions": 0,
+    "updates": 0,
+    "dev_executed": 0,
+    "sealed_executed": 0
+  },
+  "accounting": {
+    "charged_upper_s": 1301.6807619589963,
+    "phase_job_s": {
+      "P0": 691.6807619589963,
+      "reserve": 10,
+      "P6": 600.0
+    },
+    "repair_used_s": 10,
+    "budget_allocation": {
+      "old_R2_charged_s": 1301.6807619589963,
+      "new_separate_6000_charged_s": 0.0,
+      "new_separate_6000_unspent_s": 6000.0,
+      "R2_after_stage_s": 22839.609019039257,
+      "R2_remaining_s": 34760.39098096074
+    },
+    "output_snapshot": {
+      "stage_bytes": 180219150,
+      "prior_review_stage_bytes": 175894872,
+      "combined_bytes": 356114022,
+      "free_shared_bytes": 156212658176,
+      "stage_only_GiB": 0.16784216277301311,
+      "combined_GiB": 0.33165702782571316,
+      "scope": "all regular files including worktrees/reports, excludes symlink targets/shared assets; pre-final-commit snapshot"
+    }
+  },
+  "gates": {
+    "G00": "APPROVAL_ARCHIVED; project-wide ledger reconciliation not claimed complete",
+    "G01": "FAIL_DATA_INSUFFICIENT_ACTUAL_SOURCE_ANCESTRY",
+    "G01-P": "UNMEASURED",
+    "G02": "UNMEASURED",
+    "G03": "UNMEASURED",
+    "G04": "UNMEASURED",
+    "G05": "UNMEASURED_NEW_POLICY",
+    "G06": "UNMEASURED",
+    "G07": "UNMEASURED_FULL_END_TO_END",
+    "G08": "NOT_REACHED",
+    "G09": "NOT_REACHED",
+    "G10": "NOT_REACHED",
+    "G11": "NOT_REACHED",
+    "G12": "NOT_REACHED",
+    "G13": "NOT_REACHED",
+    "G14": "NOT_REACHED",
+    "G15": "POINTER_DEPENDENCY_REPAIR_EQUIVALENT_PASS"
+  },
+  "no_science_changed": true
+}

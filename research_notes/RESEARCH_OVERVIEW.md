@@ -1,3 +1,15 @@
+# 最新补充 — P0源实现修复获授权（2026-11-15）
+
+Yi在源祖先失败实测后明确授权自行修复继续；[追加授权与公式](CONTACT_GOAL_EI_V2_SOURCE_FIX_AUTHORIZATION_01.md)。先固定12个实际arm源/祖先并完整source-only资格，再按原E/I v2门推进；正式训练未开，sealed不读。下方阻断记录是修复前历史，不抹除、不当作仍须等待该问题签署。
+
+---
+
+# 最新执行位置 — E/I v2 P0源祖先阻断（2026-11-15）
+
+v2已获整体批准含新增6,000job秒；新stage完成两个TRAIN真实native前缀审计，发现新增arm-ready源实际共享同一轨迹、train/dev存在相同有效配方，G01=DATA_INSUFFICIENT。正式E/I训练及Dev/Sealed均0；必须审阅源生成/祖先补丁，不能把不同hash或相邻截点当独立源。详情：[P0报告](CONTACT_GOAL_EI_V2_P0_SOURCE_RESULTS.md)、[erratum](CONTACT_GOAL_EI_V2_SOURCE_ERRATUM_01.md)、[当前权威状态](CURRENT_STATE.md)。H0局部正结果/旧全部负例不变；下一仍是接触条件化Actor＋公开Goal的匹配E/I，不回独立Q考试。
+
+---
+
 # Humanoid Compliance — authoritative current research direction
 
 Current goal: contact-conditioned whole-body behavior selection, modulation and transition, grounded in real interaction outcomes and public goals. H0 is completed and stopped. Current work is the review-only Contact-Goal E/I v2 contract, with matched directly contact-conditioned Actor adaptation, explicit Goal reward and an audited multi-rate sampling contract. No new training or physics is authorized by writing this draft; no full FB or generalized behavior claim.
