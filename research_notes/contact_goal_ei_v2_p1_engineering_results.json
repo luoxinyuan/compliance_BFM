@@ -407,5 +407,6 @@
       "scratch_rows": 0
     },
     "joint_limit": 0.02
-  }
+  },
+  "throughput_storage_scope": "PPO Actor proposals all rolled back; auxiliary/value moments only. Accepted execution-moment/checkpoint-growth path unmeasured."
 }
