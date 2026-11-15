@@ -92,3 +92,5 @@ Q输入为当前特权、本体/真实动作历史、previous/target z与slot；
 上述只有1s冻结μ动作评价；mid仍高负担，不冒充合格反馈Expert或完整释放恢复。完整任务与新行为收益未训练/未验收，原机械门未放宽。
 
 最终输出实扫：QA2 0.439537/3GiB，全部R2 3.322409/12GiB；源/运行目录与小型报告均计入。
+
+父组独立性补核：四个不同source-parent与partner-parent，真实standing原生前缀handoff为4.6/4.1/4.2/4.5s；各自有不同的goal_arm5小脉冲幅度/时长，Task.native确实执行，不是仅换hash或相邻帧。所谓“新父组”指未进入3500 Q replay的train-only组，不宣称这些train来源在项目历史从未做冻结资格，也不冒充新sealed。原3500来源仅standing族，不据六父组宣称多运动源覆盖。

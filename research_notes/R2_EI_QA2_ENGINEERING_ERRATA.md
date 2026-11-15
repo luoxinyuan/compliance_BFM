@@ -21,3 +21,7 @@ family修复次数1。证明`prep/p1-serialization-repair.json`；恢复作业29
 ## 范围
 
 两次故障发生前更新总数0、物理ticks0，恢复点仅为不可变真实原始数据。原3500与40条mean分支、旧Q56、所有Adams/targets和物理source都未覆盖。每family最多一次，复发须按§9停止，不以本报告授权第二次修复。没有放宽概率/数值/物理断言，旧QA1/G17 FAIL不改判。
+
+## 发布复核fixture（非科学运行故障）
+
+最终公开JSON复核首次把布尔字段名source_reference_exact误当成私有路径而报错；实际内容不含私有路径或SSH地址。改为检查真正的路径/地址内容后通过，公开数据与科学门均未改，原检查记录保留在publication-review-fixture.json；费用含最终发布300秒上界。没有新实验修复或重跑。
