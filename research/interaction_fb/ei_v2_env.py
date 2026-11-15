@@ -148,7 +148,9 @@ class GoalEnvironment:
                 old_logits=self.agent.logits(o,candidate_first);dist=torch.distributions.Categorical(logits=old_logits)
                 forced=getattr(self,'replay_option',None)
                 self.option=(int(forced) if forced is not None else (int(dist.sample()) if p.stochastic else int(old_logits.argmax(-1))));self.option_age=0;cat_boundary=True
-            elif self.phase=='P2':self.option=0 if self.goal_mode else 2
+            elif self.phase=='P2':
+                ref=getattr(self,'reference_constant_option',None)
+                self.option=(int(ref) if ref is not None else (0 if self.goal_mode else 2))
             self.raw_target=raw[self.option];self.macro_target=zs[self.option:self.option+1];p.target=self.macro_target
             if self.option==3:
                 self.motion_phase=(phase+.1*.5/t.refs['straight']['period'])%1;self.motion_steps+=1
@@ -158,7 +160,7 @@ class GoalEnvironment:
             selector_obs=cpu_obs(o)
         else:selector_obs=None
         first=len(t.physics);rows,done,stats=p.take_step(self.raw_target,n)
-        self.physical_stream.extend(copy.deepcopy(t.physics[first:]));self.instructions.append(dict(raw=self.raw_target.detach().cpu(),offset=self.offset,start=self.macro_start.detach().cpu(),target=self.macro_target.detach().cpu(),n=len(rows),option=self.option,phase=self.phase,cat_boundary=cat_boundary,episode=self.reset_cursor))
+        self.physical_stream.extend(copy.deepcopy(t.physics[first:]));self.instructions.append(dict(raw=self.raw_target.detach().cpu(),offset=self.offset,start=self.macro_start.detach().cpu(),target=self.macro_target.detach().cpu(),n=len(rows),option=self.option,phase=self.phase,cat_boundary=cat_boundary,episode=self.reset_cursor,time=float(rows[0]['provenance']['time']),goal_mode=self.goal_mode,goal_position_world=None if self.goal_world is None else self.goal_world.copy()))
         for j,(r,src) in enumerate(zip(rows,p.records)):
             r.update(raw_u=src['raw_u'],old_mu=src['old_mu'],old_logp=src['old_logp'],option=self.option,cat_boundary=bool(cat_boundary and j==0),old_logits=old_logits.detach().cpu() if cat_boundary and j==0 else None,selector_obs=selector_obs if cat_boundary and j==0 else None,candidate_first_z=candidate_first.detach().cpu() if cat_boundary and j==0 else None,episode=self.reset_cursor,goal_mode=self.goal_mode,macro_slot=self.offset+j)
             self.rows.append(r)

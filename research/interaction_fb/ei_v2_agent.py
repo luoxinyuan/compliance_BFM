@@ -18,7 +18,10 @@ def mlp(inp,width,out,zero=False):
 class ContactGoalAgent:
     def __init__(self,base,ob,arm,device):
         assert arm in ('E','I');self.base=base;self.arm=arm;self.device=device;self.scales=torch.tensor(SCALES,device=device)[None]
-        base._actor.requires_grad_(False);base._obs_normalizer.requires_grad_(False)
+        for name in ('_actor','_forward_map','_backward_map','_critic','_aux_critic','_target_forward_map','_target_backward_map','_target_critic','_target_aux_critic','_discriminator'):
+            module=getattr(base,name,None)
+            if isinstance(module,nn.Module):module.requires_grad_(False)
+        base._obs_normalizer.requires_grad_(False);base._obs_normalizer.eval()
         assert len(base._actor.policy)==7
         self.tail=copy.deepcopy(base._actor.policy[5:]).to(device).requires_grad_(True)
         self.ds=deploy(ob).shape[-1];self.dp=self.value_input(ob).shape[-1]-50
