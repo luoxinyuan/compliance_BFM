@@ -1,5 +1,7 @@
 # Current — Issue66 E/I v2：P1暂停，正式训练未启动
 
+[OR1批准后实际执行状态](CONTACT_GOAL_EI_V2_OR1_EXECUTION_STATUS.md)：独立准备已完成；资源资格尚未通过，尚无新GPU实验。OR1累计480秒保守上界（既有review400＋本次准备80），原账不改。
+
 ## OR1已整包签署，资源资格先行
 
 Yi已回复“签，整包一次放行”，并明确将共享盘free地板改为30GiB。[签署与资源修订](CONTACT_GOAL_EI_V2_OR1_SIGNOFF_20261115.md)／[原样批准正文](CONTACT_GOAL_EI_V2_OPTIMIZER_AMENDMENT_OR1_APPROVED.md)／[批准参数锁](contact_goal_ei_v2_or1_approved_lock.json)。原待签稿保留为历史。
