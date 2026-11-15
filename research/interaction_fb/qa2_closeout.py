@@ -75,6 +75,10 @@ def main():
         '', '**未证：**隐藏未来信息是否导致相反最优动作、是否本质不可观测、是否增加网络容量/更新就可解决、可信Q能否带来Actor收益，以及I的交互表示价值，均未在本轮得到证明。',
         '', '下一项最可判别干预建议：单独设计有限、分父组的同状态动作差分ΔG监督/校准，直接核验改善方向，保持本物理reward与明确后续策略；继续用独立父组评价。它针对“知道状态贵不贵，却不知道动作往哪改”的现有证据，不再仅追加同轨迹MC/TD更新。新P2仍是评价集，不得转训练或自动启动该建议。',
         '', '**A0不执行：**所有头G1 FAIL，并且本轮没有Q_pi_mean的同策略价值资格；μ价值不能自动指导确定性mean Actor。QA2至此STOP，原QA1/G17 FAIL、BC500与原资产不改。']
+    lines+=['','## 附：前瞻物理窗口，不是新策略成功','','|状态族|1s实际误差RMS均值cm|实际力RMS均值N|loaded-slip峰最大m/s|yaw excursion最大°|硬关节/失支撑|','|---|---:|---:|---:|---:|---|']
+    for state in physical['states']:
+        bb=state['branches'];lines.append(f"|{state['family']}|{100*sum(b['error_rms'] or 0 for b in bb)/10:.3f}|{sum(b['force_rms'] for b in bb)/10:.3f}|{max(b['quality']['slip_peak'] for b in bb):.6f}|{max(b['quality']['yaw_excursion_deg'] for b in bb):.3f}|{max(b['quality']['max_joint_excess_rad'] for b in bb):.3f}rad/{sum(b['quality']['unsupported_ticks'] for b in bb)}tick|")
+    lines+=['','上述只有1s冻结μ动作评价；mid仍高负担，不冒充合格反馈Expert或完整释放恢复。完整任务与新行为收益未训练/未验收，原机械门未放宽。']
     (N/'QA2_VALUE_DECISION.md').write_text('\n'.join(lines)+'\n')
     head=f'''# 最新：Issue65 QA2完成；新父组动作排序全部FAIL
 
