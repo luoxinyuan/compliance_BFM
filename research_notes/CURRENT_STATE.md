@@ -1,3 +1,9 @@
+# 最新：Issue65 QA2整份合同已由Yi批准
+
+2026-11-15。唯一正式文本为[R2 QA2 v1.0](R2_EI_G17_QA2_VALUE_TARGET_CONTRACT_V1.md)，含§9；[签署记录](R2_EI_G17_QA2_SIGNOFF.md)。Issue64作废，仅保留历史。顺序P0→P1→V1→V2，P2/A0条件触发，无逐段待批。硬帽9000job秒/3GiB/38000全流程ticks，工程修复池800秒包含在reserve内。当前仅完成归档，P0尚未运行；没有新Q/Actor/U/I/Dev/Sealed结果。原QA1/G17 FAIL不改。
+
+---
+
 # 最新：G17-QA1 U/C均完成，固定512终点未获资格
 
 2026-11-15。Yi追加授权C修复续跑，独立快照装载＋真实首更新后source/Adam/target/RNG回归通过。U原数据只读复用，C原锁456组已完成。固定512：U 36/58=62.07%，C 40/58=68.97%；未取得原门及校准资格，不触发前瞻、不启动Actor/U/I/Dev/Sealed。旧G17 FAIL和全部错误保留。完成即停，无自动追加节点/调参。
