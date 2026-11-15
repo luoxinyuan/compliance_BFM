@@ -1,3 +1,11 @@
+# 最新：Issue65 QA2完成；新父组动作排序全部FAIL
+
+2026-11-15。Yi签署Issue65全文含§9；Issue64作废历史。[QA2最终报告](QA2_VALUE_DECISION.md) · [逐字合同](R2_EI_G17_QA2_VALUE_TARGET_CONTRACT_V1.md) · [机器摘要](r2_ei_qa2_value_results.json)。P0/P1/V1/V2/P2均已完成；五头各1024组、40条新train-only随机μ分支、四独立父组。训练高成本拟合n1 62.09%→n25 8.53% Macro-NMAE；但新排序最好的n25确定对14/34，含5不确定对上界48.72%仍低于70%。五头G1 FAIL；G2因三高/一低独立父组UNDERPOWERED。没有补组、看封存、重选或补训。
+
+A0不触发：G1失败，且无Q_pi_mean匹配资格。Actor/U/I/Dev/Sealed均0，原QA1/G17 FAIL保持。QA2累计2090.908580/9000job秒，15301 actual/reserved全流程tick；R2累计19335.025771/57600秒。GPU0作业已退出；阶段完成即停，不自动新训。两次工程故障及一次修复/家族原记录保留。以下为历史时点。
+
+---
+
 # 最新：Issue65 QA2整份合同已由Yi批准
 
 2026-11-15。唯一正式文本为[R2 QA2 v1.0](R2_EI_G17_QA2_VALUE_TARGET_CONTRACT_V1.md)，含§9；[签署记录](R2_EI_G17_QA2_SIGNOFF.md)。Issue64作废，仅保留历史。顺序P0→P1→V1→V2，P2/A0条件触发，无逐段待批。硬帽9000job秒/3GiB/38000全流程ticks，工程修复池800秒包含在reserve内。当前仅完成归档，P0尚未运行；没有新Q/Actor/U/I/Dev/Sealed结果。原QA1/G17 FAIL不改。
