@@ -8,7 +8,7 @@ def same(a,b):
     return a==b
 
 def main():
-    with torch.random.fork_rng():
+    with torch.random.fork_rng(devices=[]):
         torch.manual_seed(636413)
         original=torch.nn.Linear(3,2);o=torch.optim.Adam(original.parameters(),lr=.0001)
         x=torch.randn(8,3);original(x).square().sum().backward();o.step();o.zero_grad(set_to_none=True)
@@ -23,5 +23,6 @@ def main():
         assert same(new.state_dict(),before) and same(fresh.state_dict(),weights)
         for index,record in pristine['state'].items():
             for key,tensor in record.items():assert new.state_dict()['state'][index][key].data_ptr()!=tensor.data_ptr()
-    print('PASS CPU Adam isolated update + exact next reload + unchanged source + optimizer math unchanged; BFM_Q_groups=0 physics=0')
+    assert not torch.cuda.is_initialized()
+    print('PASS CPU Adam isolated update + exact next reload + unchanged source + optimizer math unchanged; CUDA_initialized=false BFM_Q_groups=0 physics=0')
 if __name__=='__main__':main()
