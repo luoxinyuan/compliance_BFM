@@ -1,0 +1,34 @@
+{
+  "identity": "fixed_P1_reward_qualification_before_any_optimizer",
+  "source_run": "P1-frozen-sample-01",
+  "cases": [
+    4,
+    5,
+    8,
+    10
+  ],
+  "goals": [
+    "FOLLOW",
+    "HOLD",
+    "HOLD",
+    "FOLLOW"
+  ],
+  "window_s": 2.0,
+  "candidate_options": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "candidate_execution": "each constant original native command for2s from same complete state",
+  "additional_intervention_options": [
+    0,
+    2
+  ],
+  "additional_execution": "first100ms then same frozen Goal-only continuation",
+  "same_partner": true,
+  "learning": false,
+  "new_search_labels": false,
+  "quality_pair_rule": "strict no deterioration in error/force/slip/yaw/support/joint, at least1cm error or.5N force gain; reward agreement by equal parent weight; threshold remains signed80%/8pairs/4parents; insufficient pairs is UNDERPOWERED",
+  "preserved_contract": "all original gate requirements and structural counterexample review required"
+}

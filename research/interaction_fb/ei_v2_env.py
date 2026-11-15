@@ -159,9 +159,13 @@ class GoalEnvironment:
             # selector condition is the actual pre-draw history, distinct from post-draw own option memory.
             selector_obs=cpu_obs(o)
         else:selector_obs=None
-        first=len(t.physics);rows,done,stats=p.take_step(self.raw_target,n)
+        stream_begin=len(self.physical_stream);first=len(t.physics);rows,done,stats=p.take_step(self.raw_target,n)
         self.physical_stream.extend(copy.deepcopy(t.physics[first:]));self.instructions.append(dict(raw=self.raw_target.detach().cpu(),offset=self.offset,start=self.macro_start.detach().cpu(),target=self.macro_target.detach().cpu(),n=len(rows),option=self.option,phase=self.phase,cat_boundary=cat_boundary,episode=self.reset_cursor,time=float(rows[0]['provenance']['time']),goal_mode=self.goal_mode,goal_position_world=None if self.goal_world is None else self.goal_world.copy()))
         for j,(r,src) in enumerate(zip(rows,p.records)):
+            begin=stream_begin+round((float(r['provenance']['time'])-float(rows[0]['provenance']['time']))/.005)
+            end=begin+round(float(r['duration'])/.005)
+            assert 0<=begin<end<=len(self.physical_stream)
+            r.update(physics_begin=begin,physics_end=end)
             r.update(collection_role=self.collection_role,eligible_for_joint_PPO=bool(self.collection_role in ('engineering_on_policy','formal_on_policy') and p.stochastic and p.replay is None and getattr(self,'reference_constant_option',None) is None),behavior_version=int(self.agent.accepted),behavior_phase=self.phase,raw_u=src['raw_u'],old_mu=src['old_mu'],old_logp=src['old_logp'],option=self.option,cat_boundary=bool(cat_boundary and j==0),old_logits=old_logits.detach().cpu() if cat_boundary and j==0 else None,selector_obs=selector_obs if cat_boundary and j==0 else None,candidate_first_z=candidate_first.detach().cpu() if cat_boundary and j==0 else None,episode=self.reset_cursor,goal_mode=self.goal_mode,macro_slot=self.offset+j)
             self.rows.append(r)
         self.offset+=len(rows);self.next_cursor+=len(rows)

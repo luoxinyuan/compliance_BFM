@@ -1,0 +1,63 @@
+{
+  "mean": {
+    "status": "PASS",
+    "cases": 12,
+    "runtime": "ce83d181e3a8aebd3076047dd914f108426adf70"
+  },
+  "sample": {
+    "status": "FROZEN_PHYSICAL_QUALIFICATION_PASS",
+    "expected": 12,
+    "completed": 12,
+    "common_prefix_checks": [
+      {
+        "parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+        "cutoff": 7.0,
+        "control_rows": 130,
+        "physics_rows": 520,
+        "exact": true
+      },
+      {
+        "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+        "cutoff": 5.5,
+        "control_rows": 70,
+        "physics_rows": 280,
+        "exact": true
+      }
+    ],
+    "elapsed_hot_s": 447.3914240919985,
+    "runtime": "7f0a9c6c2006a65699bb725d59b6fd7f4483f446",
+    "none_zero": [
+      {
+        "index": 0,
+        "family": "none",
+        "slip_peak": 0.00902403454153006,
+        "yaw_excursion_deg": 4.2531987987768005,
+        "root_path_m": 0.08296416437615392
+      },
+      {
+        "index": 1,
+        "family": "none",
+        "slip_peak": 0.008958687778664506,
+        "yaw_excursion_deg": 4.147719114552453,
+        "root_path_m": 0.08600055899091139
+      },
+      {
+        "index": 2,
+        "family": "zero",
+        "slip_peak": 0.00899061061756883,
+        "yaw_excursion_deg": 3.971370155829715,
+        "root_path_m": 0.08337176713155879
+      },
+      {
+        "index": 3,
+        "family": "zero",
+        "slip_peak": 0.008941376444967142,
+        "yaw_excursion_deg": 4.039614842639528,
+        "root_path_m": 0.08122111537521433
+      }
+    ]
+  },
+  "formal_updates": 0,
+  "dev_task_episodes": 0,
+  "sealed": false
+}

@@ -87,7 +87,9 @@ class ContactGoalAgent:
     def auxiliary(self,o,z,option,y,mask):
         # y is already standardized 3x24, mask contains real horizon validity.
         pred,_=self.context(o,o.get('_first_interpolated_z',z),option);w=mask.to(y.dtype)
-        def avg(x):return (x*w).sum()/w.sum().clamp_min(1)
+        def avg(x):
+            count=w.sum(0);per_horizon=(x*w).sum(0)/count.clamp_min(1)
+            return per_horizon[count>0].mean()
         if self.arm=='E':return avg((pred-y).square().mean(-1)),{'outcome':float(avg((pred-y).square().mean(-1)).detach())}
         b=self.goal_encoder(y.reshape(-1,24)).reshape(len(y),3,16)
         decoded=self.decoder(pred);recon=self.decoder(b)
