@@ -1,0 +1,305 @@
+{
+  "status": "STOP_COST_QUALIFICATION_INCOMPLETE_E_I_ONE_ACCEPTED_P2_BLOCK_EACH",
+  "arms": {
+    "E": {
+      "runtime": "91ccaaef995147b5095b05116eb771a476250642",
+      "wrapper_hash_recorded_private": true,
+      "job_wall_s": 771.7053915041033,
+      "job_exit_code": -9,
+      "stop_reason": "job_wall",
+      "unique_rows_this_job": 1563,
+      "complete_P2_blocks": 1,
+      "first_actor_accepted": 2,
+      "first_actor_proposals": 8,
+      "accepted_alpha": [
+        0.25,
+        0.0625
+      ],
+      "accepted_joint_KL": [
+        0.014926128889002452,
+        0.01888550988443923
+      ],
+      "value_steps": 8,
+      "auxiliary_accepted": 4,
+      "old_joint_logprob_error": 0.0,
+      "first_block_mean_RMS": 0.00016147573478519917,
+      "first_block_S_mu": 0.016147573478519917,
+      "first_block_collection_s": 59.12284693401307,
+      "first_block_update_s": 177.9336526239058,
+      "first_block_checkpoint_s": 1.7391328070079908,
+      "first_block_hot_s": 243.71265626198146,
+      "sentinels": [
+        {
+          "case": 0,
+          "family": "none",
+          "complete": true,
+          "failed": [],
+          "slip_peak": 0.0016531258362968621,
+          "slip_p95": 0.00157708615670456,
+          "yaw_excursion_deg": 3.518009368747613,
+          "yaw_net_deg": -3.518009368747613,
+          "root_path_m": 0.0013775709231468717,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0
+        },
+        {
+          "case": 2,
+          "family": "zero",
+          "complete": true,
+          "failed": [],
+          "slip_peak": 0.0016272674486014563,
+          "slip_p95": 0.0015521701821209506,
+          "yaw_excursion_deg": 3.260411647741048,
+          "yaw_net_deg": -3.260411647741048,
+          "root_path_m": 0.0033410234130806914,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0
+        },
+        {
+          "case": 4,
+          "family": "near",
+          "complete": true,
+          "failed": [],
+          "slip_peak": 0.0023502301891697892,
+          "slip_p95": 0.002238738297547647,
+          "yaw_excursion_deg": 1.764827426777453,
+          "yaw_net_deg": -1.764827426777453,
+          "root_path_m": 0.01921768818609973,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0
+        }
+      ],
+      "training_Task_RNG_actor_restored_after_sentinels": true,
+      "physics": {
+        "actual": 20292,
+        "reserved": 20296,
+        "counter_final": false,
+        "counter_IO_quantum": 4
+      },
+      "handled_metadata_retries": {
+        "116": 13,
+        "2": 2
+      },
+      "checkpoints": [
+        {
+          "logical_package": "checkpoints/block-0",
+          "manifest_sha256": "70777612b2acac92a6d7da8ad15825f5707c4b8efe19efb5eedfad4c6f321dd0",
+          "core_delta_sha256": "acc11d6c07b9d74b45fd86803a60a57ec83f975515a06c68e27056477f9c7e48",
+          "complete": true,
+          "reason": "OR1_initial_or_phase_resume_qualification_only",
+          "rows": 485
+        },
+        {
+          "logical_package": "checkpoints/block-1",
+          "manifest_sha256": "8eab5bbf97ff79f846cd794c7273d0f14d6531925085c8d2fc986eea0f155f2f",
+          "core_delta_sha256": "f08d7cb3197ea6f44420ed2db26bc591e68c65b4a5a4d39577dd0325a95c21e6",
+          "complete": true,
+          "reason": "complete_OR1_engineering_block_not_formal",
+          "rows": 1024
+        },
+        {
+          "logical_package": "checkpoints/block-mid-last",
+          "manifest_sha256": "078d9d2daa44dc93d968ee5a7cc6e70d1741535fb4c11a7f4d887ac263081898",
+          "core_delta_sha256": "ee4846063b4950d021be347cfcc7f0b9ef74fa1d5d79bc3d5450f15a135da90e",
+          "complete": true,
+          "reason": "real_accepted_Actor_Adam_mid_second_block",
+          "rows": 2036
+        },
+        {
+          "logical_package": "checkpoints/block-pending-1",
+          "manifest_sha256": "c43ffd190973365c8cdfd77316c06762c52b6e781124800c7441b68fa06bad0b",
+          "core_delta_sha256": "ea5c6d9c0836f581505ee25f41345f7d9b19badd2375b496b01c14f7a611cf95",
+          "complete": true,
+          "reason": "complete_sampling_before_pending_update_not_completed_training_step",
+          "rows": 1024
+        },
+        {
+          "logical_package": "checkpoints/block-pending-2",
+          "manifest_sha256": "a740b42634c4467186b6ac93c4a1385ee8a648e67908cd95d6cfc8c049fb4908",
+          "core_delta_sha256": "d7316b9aca0c5dcbf02ec976223ead4f539bfe46f549e8f9753d242de55e66ce",
+          "complete": true,
+          "reason": "complete_sampling_before_pending_update_not_completed_training_step",
+          "rows": 2048
+        }
+      ]
+    },
+    "I": {
+      "runtime": "91ccaaef995147b5095b05116eb771a476250642",
+      "wrapper_hash_recorded_private": true,
+      "job_wall_s": 583.0853995250072,
+      "job_exit_code": 1,
+      "stop_reason": "owner-budget-stop",
+      "unique_rows_this_job": 1025,
+      "complete_P2_blocks": 1,
+      "first_actor_accepted": 2,
+      "first_actor_proposals": 8,
+      "accepted_alpha": [
+        0.25,
+        0.0625
+      ],
+      "accepted_joint_KL": [
+        0.014927616732467602,
+        0.018887361459343173
+      ],
+      "value_steps": 8,
+      "auxiliary_accepted": 4,
+      "old_joint_logprob_error": 0.0,
+      "first_block_mean_RMS": 0.00016148392751347274,
+      "first_block_S_mu": 0.016148392751347274,
+      "first_block_collection_s": 109.5587530710036,
+      "first_block_update_s": 167.32513790403027,
+      "first_block_checkpoint_s": 2.472175165079534,
+      "first_block_hot_s": 285.7116683849599,
+      "sentinels": [
+        {
+          "case": 0,
+          "family": "none",
+          "complete": true,
+          "failed": [],
+          "slip_peak": 0.0016531258362968621,
+          "slip_p95": 0.0015770834708327271,
+          "yaw_excursion_deg": 3.5179955485010534,
+          "yaw_net_deg": -3.5179955485010534,
+          "root_path_m": 0.0013775859848147655,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0
+        },
+        {
+          "case": 2,
+          "family": "zero",
+          "complete": true,
+          "failed": [],
+          "slip_peak": 0.0016272674486014563,
+          "slip_p95": 0.0015521659285315421,
+          "yaw_excursion_deg": 3.2604008160559492,
+          "yaw_net_deg": -3.2604008160559492,
+          "root_path_m": 0.003341020426420536,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0
+        },
+        {
+          "case": 4,
+          "family": "near",
+          "complete": true,
+          "failed": [],
+          "slip_peak": 0.002350223490060367,
+          "slip_p95": 0.0022387288974103697,
+          "yaw_excursion_deg": 1.7648236689465548,
+          "yaw_net_deg": -1.7648236689465548,
+          "root_path_m": 0.01921771093994558,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0
+        }
+      ],
+      "training_Task_RNG_actor_restored_after_sentinels": true,
+      "physics": {
+        "actual": 16181,
+        "reserved": 16181,
+        "counter_final": true,
+        "counter_IO_quantum": 4
+      },
+      "handled_metadata_retries": {
+        "116": 12
+      },
+      "checkpoints": [
+        {
+          "logical_package": "checkpoints/block-0",
+          "manifest_sha256": "c07259bc1f52e8f4fedb6d7f7dda9cbcd6724a86e09ca075ad23296281ea264a",
+          "core_delta_sha256": "1884288ac3a294caca2f31f589191ac0da67ee8de2d0236d2047aec5225c0c87",
+          "complete": true,
+          "reason": "OR1_initial_or_phase_resume_qualification_only",
+          "rows": 0
+        },
+        {
+          "logical_package": "checkpoints/block-1",
+          "manifest_sha256": "bde22b0d97b335cadda646d973a15e62805a053a83a812e2a0a3f5c78a3bfd9e",
+          "core_delta_sha256": "b724d7398364644dda909125b3fa1258662d9775877cea476c829fb2f3585ad3",
+          "complete": true,
+          "reason": "complete_OR1_engineering_block_not_formal",
+          "rows": 1024
+        },
+        {
+          "logical_package": "checkpoints/block-pending-1",
+          "manifest_sha256": "a822db59a358b5d492d2ca82124258cbfcc8351439d3421a5481f9a10b98d068",
+          "core_delta_sha256": "8d8583e9d32feedce2ef5d8862faf484f445e02fbdb7eceb4fe3e583ce452de9",
+          "complete": true,
+          "reason": "complete_sampling_before_pending_update_not_completed_training_step",
+          "rows": 1024
+        },
+        {
+          "logical_package": "failed-sampling-packages/block-failed-1025",
+          "manifest_sha256": "82704fc70ed0305a699036ee9159fe06c56050003c9498a9a007691ede67e8a7",
+          "core_delta_sha256": "3b93b6be880af955cf35df4d8feda8ff58090b1340942fa23c07c7df1bcc44f2",
+          "complete": true,
+          "reason": "failed_sampling_not_complete_training_block",
+          "rows": 1025
+        }
+      ]
+    }
+  },
+  "restored_original485_exact": {
+    "model_Adam_rng_exact": true,
+    "full_effective_physics_history_exact": true,
+    "block": "failed-485",
+    "actual_rows": 485,
+    "physical_replay_only_not_training": true
+  },
+  "accepted_actor_archive_audit": {
+    "status": "TRUSTED_PENDING2_FULL_CPU_READ_PASS_NOT_RESTORED_PHYSICS",
+    "rows": 2048,
+    "actor_accepted": 2,
+    "aux_accepted": 4,
+    "actor_optimizer_state_entries": 24,
+    "value_optimizer_state_entries": 6,
+    "per_episode": {
+      "0": 480,
+      "1": 480,
+      "2": 450,
+      "3": 585,
+      "4": 53
+    },
+    "actual_actor_policy_versions": {
+      "0": 1024,
+      "2": 1024
+    },
+    "checkpoint_runtime": "91ccaaef995147b5095b05116eb771a476250642",
+    "complete_second_update": false,
+    "mid_update_unpersisted_counts": "unknown; SIGKILL; no invented count"
+  },
+  "new_unique_rows": 3073,
+  "new_physics_lower": 43555,
+  "new_physics_reserved_upper": 43559,
+  "job_s": 2819.4019942012383,
+  "phase_job_s": {
+    "review": 400,
+    "D0": 390.48461438401137,
+    "D1": 1785.917379817227,
+    "equivalent_repair": 100,
+    "report": 120,
+    "D2_preparation": 23
+  },
+  "R2_reference_s": 32165.033875133435,
+  "stage_reference_s": 10627.105618053174,
+  "remaining_D1_s": 214.0826201827731,
+  "cost_decision": {
+    "reason": "LOCKED_D1_REMAINING_COST_PROJECTION_FAIL_NOT_TASK_FAILURE",
+    "phase_D1_cap_s": 2000,
+    "previous_D1_job_s": 1202.8319802922197,
+    "current_job_elapsed_s": 572.4219093322754,
+    "remaining_D1_s": 224.74611037550494,
+    "measured_first_full_I_block_s": 285.7116683849599,
+    "next_block_conservative_s": 357.1395854811999,
+    "rule": "measured mode max times1.25; no borrowing D2; preserve old failures; do not lower scientific gates",
+    "sentinels_pass": true,
+    "scientific_protocol_changed": false
+  },
+  "conservative_next_full_I_block_s": 357.1395854811999,
+  "formal64block_hot_reference_s": 22856.933470796794,
+  "formal_P2_P3_original_job_cap_s": 14000,
+  "D2_P3_sampled": false,
+  "accepted_selector_restore_qualified": false,
+  "formal_rows": 0,
+  "dev_episodes": 0,
+  "sealed_read": false,
+  "no_automatic_jobs": true
+}
