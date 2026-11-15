@@ -12,7 +12,11 @@ from research.interaction_fb.journal import dump,read
 from research.interaction_fb.schema import privileged
 from diagnostic_fb_resume import tree_digest
 
-def write(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False))
+def json_scalar(x):
+    if isinstance(x,np.integer):return int(x)
+    if isinstance(x,np.floating):return float(x)
+    raise TypeError(type(x).__name__)
+def write(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False,default=json_scalar))
 
 def audit_force(ph):
     active=0;saturated=0;rawerr=0.;forceerr=0.;rows=[]
@@ -117,6 +121,6 @@ def main():
             ix=[i for i,m in enumerate(meta) if m['parent'] in pp and eligible[i,h-1]]
             counts.append(dict(H=h,split=split,windows=len(ix),parents=len({meta[i]['parent'] for i in ix}),high=sum(abs(labels[i,h-1])>=1 for i in ix),low=sum(abs(labels[i,h-1])<=.1 for i in ix),by_phase=dict(collections.Counter(meta[i]['phase'] for i in ix)),censored=sum(m['parent'] in pp for m in meta)-len(ix)))
     p1=dict(status='PASS_LABELS_INDEPENDENCE_LIMITED',source_rows=3500,independent_parents=6,fit_parents=sorted(train_parents),heldout_parents=sorted(held_parents),counts=counts,next_observation_max_linf=maxnext,continuity_checks=dict(checks),optimizer_updates=0,physics_ticks=0,data=dm,data_logical_digest=tree_digest(data),schedule_digest=tree_digest(samp),remaining_horizon_contract='Shared horizon head requires legal remaining h1..50. Only H5/25/50 are primary reports. All variants share the same actual full-window legal targets and parent/phase/horizon indices.',prospective=prospective,wall_s=time.monotonic()-t)
-    write(out/'p1.json',p1);print(json.dumps(dict(p0=p0['main'],p1={k:v for k,v in p1.items() if k not in ('prospective','fit_parents','heldout_parents')}),indent=2),flush=True)
+    write(out/'p1.json',p1);print(json.dumps(dict(p0=p0['main'],p1={k:v for k,v in p1.items() if k not in ('prospective','fit_parents','heldout_parents')}),indent=2,default=json_scalar),flush=True)
 
 if __name__=='__main__':main()
