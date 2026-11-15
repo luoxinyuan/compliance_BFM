@@ -30,7 +30,7 @@ def install(task):
  if not pair:base=task.anchor.copy()
  t.reach_aligned=False
  task.geometry_origin=base.copy();task.geometry_yaw=math.atan2(R0[1,0],R0[0,0]) if pair else 0.;task.contact_history=deque(maxlen=100);task.contact_rows=[];task.geometry_enabled=True
- total_cap=float(spec.get('total_cap',5.));assert total_cap in (5.,10.,20.);cap=total_cap/len(locals_);slots=[1,2] if pair else [0]
+ stiffness=float(spec.get('h0_stiffness',80.));assert stiffness in (40.,80.);total_cap=float(spec.get('total_cap',5.));assert total_cap in (5.,10.,20.);cap=total_cap/len(locals_);slots=[1,2] if pair else [0]
  def measure(self):
   nonlocal base
   mujoco.mj_forward(m,d);p,v,angle,omega=__import__('geometry_contact').frame(spec,self.time);
@@ -41,7 +41,7 @@ def install(task):
   self.active=bool(spec['enabled'] and spec['onset']<=self.time<spec['release']);rows=[];forces=[];points=[];vels=[];wrenches=[]
   for i,local in enumerate(locals_):
    point=d.xpos[self.body]+d.xmat[self.body].reshape(3,3)@local;jac=np.zeros((3,m.nv));mujoco.mj_jac(m,d,jac,None,point,self.body);velocity=jac@d.qvel
-   raw=80*(anchors[i]-point)+8*(av[i]-velocity) if self.active else np.zeros(3);f=spring_force(anchors[i],point,av[i],velocity,80,8,cap) if self.active else np.zeros(3)
+   raw=stiffness*(anchors[i]-point)+8*(av[i]-velocity) if self.active else np.zeros(3);f=spring_force(anchors[i],point,av[i],velocity,stiffness,8,cap) if self.active else np.zeros(3)
    if spec.get('physical_force_off',False):f=np.zeros(3)
    tau=np.cross(point-d.xipos[self.body],f);wrenches.append(np.r_[f,tau]);forces.append(f);points.append(point);vels.append(velocity)
    rows.append(dict(slot=slots[i],link='torso_link' if pair else 'right_wrist_yaw_link',body=int(self.body),local=local.tolist(),point=point.tolist(),velocity=velocity.tolist(),anchor=anchors[i].tolist(),anchor_velocity=av[i].tolist(),force=f.tolist(),raw_force=raw.tolist(),cap=cap,active=self.active,reference_com=d.subtree_com[1].tolist(),yaw_moment_com=float(np.cross(point-d.subtree_com[1],f)[2]),power=float(f@velocity)))
