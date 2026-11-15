@@ -1,43 +1,19 @@
-# 最新位置 — E/I v2源修复已通过，按已批合同进入P1（2026-11-15）
+# Humanoid Compliance — 长期主线与当前执行入口
 
-[P0进展](CONTACT_GOAL_EI_V2_P0_PROGRESS.md)是当前入口：源实现问题由Yi明确授权修复；12实际源/66对历史、初始FiLM、联合采样/GAE与完整新进程空Adam恢复已核。没有正式训练成功声明。下一做完整mean/sample、真实停止释放、reward、scratch非空Adam恢复与吞吐，满足门后进P2/P3。下方旧“源阻断”文本是保留历史，已被追加授权和实测修复接续。
+长期目标：Contact-conditioned whole-body behavior selection, modulation and transition；由真实身体、接触历史与公开目标共同决定可持续响应。原生运动先验提供可追溯能力，真实闭环学习分配和转换，之后才验证受限观测Student及自身RL。不能将固定force→skill规则、Goal查表或物理搜索结果冒称已学会通用交互。
 
----
+## 当前：已获批 Contact-Goal E/I v2
 
-# 最新补充 — P0源实现修复获授权（2026-11-15）
+[CURRENT_STATE](CURRENT_STATE.md)为唯一当前执行状态；[v2规范正文](CONTACT_GOAL_EI_TRAIN_CONTRACT_V2_APPROVED.md)、[签署](CONTACT_GOAL_EI_V2_SIGNOFF_20261115.md)、[不可变锁](ei_v2_locks/protocol.json)。Yi整体批准并追加授权自行修正实现问题继续；独立新6,000job秒已有批准，旧R2帽/项目240h不改。
 
-Yi在源祖先失败实测后明确授权自行修复继续；[追加授权与公式](CONTACT_GOAL_EI_V2_SOURCE_FIX_AUTHORIZATION_01.md)。先固定12个实际arm源/祖先并完整source-only资格，再按原E/I v2门推进；正式训练未开，sealed不读。下方阻断记录是修复前历史，不抹除、不当作仍须等待该问题签署。
+两臂都以原BFM/PD为先验、同等Actor-tail与零初始化contact-FiLM执行适配；E普通有限结果预测，I有限交互后继编码。公开FOLLOW/HOLD目标有明确且不同的实际reward。先Goal-only原生命令和50Hz Gaussian低层PPO，后最低0.5s dwell的有限option/低层联合PPO。两臂无旧I/C0/T30高层actor继承；不是自由256D U探索、标量动作Q考试或完整基座FB重训。自身理想里程计/理想接触测力是仿真假设，不能声称已验证G1感知。
 
----
+阶段顺序锁定：P0合同/身份→P1完整mean/sample/reward/工程更新恢复及成本→P2各12k低层→通过既定门→P3各20k联合→固定终点统一完整Dev→有限probe/消融→五分支结项。不用任务尚未完美作为额外门；科学/安全/权限/恢复/预算失败按原合同停，不放宽数值。
 
-# 最新执行位置 — E/I v2 P0源祖先阻断（2026-11-15）
+P0源重复实现已经Yi授权修复并实测12源/66对。P1完整mean/sample各12/12通过，真实停止与release后4s已覆盖；奖励固定4train父组/24实际分支、11强Pareto有效pairs/3有信息父组、父组等权100%同向，局限单列。当前为可丢弃scratch更新/非空Adam与吞吐资格，不是正式训练成果，sealed未读。详见[奖励及错误恢复报告](CONTACT_GOAL_EI_V2_P1_REWARD_RESULTS.md)。
 
-v2已获整体批准含新增6,000job秒；新stage完成两个TRAIN真实native前缀审计，发现新增arm-ready源实际共享同一轨迹、train/dev存在相同有效配方，G01=DATA_INSUFFICIENT。正式E/I训练及Dev/Sealed均0；必须审阅源生成/祖先补丁，不能把不同hash或相邻截点当独立源。详情：[P0报告](CONTACT_GOAL_EI_V2_P0_SOURCE_RESULTS.md)、[erratum](CONTACT_GOAL_EI_V2_SOURCE_ERRATUM_01.md)、[当前权威状态](CURRENT_STATE.md)。H0局部正结果/旧全部负例不变；下一仍是接触条件化Actor＋公开Goal的匹配E/I，不回独立Q考试。
+## 已完成事实与边界
 
----
+H0 P-E4/4、P-I3/4有限Goal局部物理效应保持有效；零学习Goal查表能复用E四组结果，窗口未跨真正stop，不能升级为接触驱动walking或BI独立行为收益。旧QA2/G17/Return/Envelope的失败保持，但不用其独立Q门阻塞不含该Q的新算法。BC500/BFM/PD与全部历史模型、失败、erratum保留。
 
-# Humanoid Compliance — authoritative current research direction
-
-Current goal: contact-conditioned whole-body behavior selection, modulation and transition, grounded in real interaction outcomes and public goals. H0 is completed and stopped. Current work is the review-only Contact-Goal E/I v2 contract, with matched directly contact-conditioned Actor adaptation, explicit Goal reward and an audited multi-rate sampling contract. No new training or physics is authorized by writing this draft; no full FB or generalized behavior claim.
-
-QA2 ends the independent scalar-Q/Teacher exam chain. G17/QA1/QA2 failure remains valid for those methods;70% local scalar-Q rank is not a global gate for algorithms not using that Q. New B_I coordinates may not be added directly to frozen z_R; explicit legal-command alignment and physical effects are required.
-
-H0 uses frozen BFM/PD/B_R/F_R, raw-outcome P-E versus finite interaction-successor P-I, matched legal native command pool, current restricted history and public FOLLOW/HOLD goals. K80 and explicit K40 domains are paired within method; scripted release is exogenous. H0 finishes once whether positive or negative; next E/I may adapt the same Actor capacity in both arms. Current approval does not start it.
-
-Closed historical methods and facts, including FIBER/LPP, C0, adapter/Envelope/Return, Expert PPO and Q qualifications, remain in [the full pre-H0 historical overview](RESEARCH_OVERVIEW_BEFORE_H0.md). They are tools/evidence, not simultaneous competing latest plans. Frozen BC500/BFM/PD and all negative results/errata remain unchanged.
-
-## H0实际结项（2026-11-15）
-
-有限公开Goal寻址：P-E4/4、P-I3/4，后果预测优于常数但BI无独立增量。固定候选/2s效应不等于持续反馈或行走Expert。下一是等能力可适配Actor的真实Goal条件E/I设计，普通Goal/outcome强基线必须保留；新Goal reward和联合概率合同需要新批准，不自动开训。H0到此结束，不繁殖H0.1或Q通行证。详见H0_REPRESENTATION_AND_CAUSAL_ADDRESS_RESULTS.md。
-
-
-## Issue66审查后的合同修订（REVIEW ONLY）
-
-[Contact-Goal E/I v2修订稿](CONTACT_GOAL_EI_TRAIN_CONTRACT_V2_DRAFT.md)与[审阅单](CONTACT_GOAL_EI_V2_REVIEW_PACKET.md)已形成，未签署、未跑新物理/训练。H0正结果原判保持，但Goal-only查表反例、未实际跨stop、没有完整release恢复与BI独立收益未证都进入下一合同的放行/归因规则。主提案先低层直接contact-FiLM适配，再有限option联合学习；不同时自由探索256D U与29D动作，不再开独立标量Q考试。目标、额外自身定位仿真假设和共同anchor初始化修订必须显式批准。
-
-合同预算不伪装成原8h小段：完整41,400秒，相对R2原余额缺4,937.928257秒，提前申请独立新阶段6,000秒；当前无此新增授权。400秒只读文档上界计原R2后余额36,062.071743秒，未发生方案41,000。完整阶段门/17行三列表、I增量数字、五分支及§9工程自治预锁，等Yi审阅，不自动开下一阶段。
-
-
-## Contact-Goal E/I v2整体批准（2026-11-15）
-
-Yi已整体批准v2及独立新增6,000 job秒；规范正文与签署见CONTACT_GOAL_EI_TRAIN_CONTRACT_V2_APPROVED.md、CONTACT_GOAL_EI_V2_SIGNOFF_20261115.md。当前为P0实现/资格，不是训练或物理收益已验证；通过预写门后连续进行同等执行能力的有限E/I。旧H0和QA2不重判。41,400秒完整方案含文档400；余下41,000由R2旧余额36,062.071743与新6,000分账，原帽和项目240h不改，不自动扩大至Student或free-latent训练。
+[本次P1之前的完整overview存档](RESEARCH_OVERVIEW_BEFORE_EI_V2_P1.md) · [H0之前历史](RESEARCH_OVERVIEW_BEFORE_H0.md)。历史“草案未签/源阻断/需下一批准”文字只说明当时状态，不覆盖上述最新签署和实测，不再次启动旧路线。
