@@ -1,4 +1,16 @@
-# H0 — finite interaction outcome prediction and causal Goal addressing
+# H0结项摘要：公开Goal可寻址；B_I增量未证
+
+2026-11-15，Issue66批准的一次性H0已按锁完成，未启动正式E/I、PPO或Student。
+
+- **已证实：**六fit源父组×四持续命令有真实后果差异；四独立评价父组/16真实分支，P-E 4/4、P-I 3/4满足≥2cm且质量合格的局部Goal效应。P-E的FOLLOW−HOLD为5.09/6.08/5.07/5.93cm；I在stop仅1.69cm，保留未过门。关节硬越界/失支撑均0；最大loaded-slip约0.004m/s、yaw excursion约6°，精确值见表。
+- **已证实：**同进程及新进程完整物理/历史/RNG/solver恢复与真实2s执行逐值一致；同命令重复的完整控制/物理亦逐值一致。K40与原K80每分支raw/applied公式最大差0，原BFM/PD未更新。
+- **B_I独立价值未证：**三组与P-E选相同命令、物理结果相同；stop选更小动作，进展不够2cm但误差/力可能有局部取舍，不能称P-E全指标支配I。不能凭B谱/低训练loss宣称I胜出。
+- **相容而未唯一证明：**结果编码会改变寻址取舍；当前候选和Goal范围很窄，16D表示有效秩约3.14。未证明低有效秩就是因果失败原因，也未证明冻结底座缺能力。
+- **未证：**P-E四组均为HOLD→standing、FOLLOW→arm15，未证明其选择真正依赖不同接触状态；I有一次状态相关改变但没有额外行为收益。更合适的持续行走、高层每100ms重规划、完整接触释放恢复、随机鲁棒性、generalization及正式Actor适配仍未验证。K40中距FOLLOW仍9.64cm，不能称完整中距Expert达标。HOLD的几何/力成绩不是主动跟随成功。
+
+**决策：H0到此完成，不产生H0.1/新Q通行证。进入匹配可训练Actor的E/I合同设计；raw Goal/outcome是强基线，B_I只能凭下一轮实际增量保留。以下完整数据与协议边界。**
+
+## Detailed evidence: finite outcome prediction and addressing
 
 Issue66 signed H0 v0.1; old G17/QA1/QA2 FAIL remains unchanged. This is a single bounded frozen-BFM probe, not formal E/I behavior training or full FB.
 
@@ -72,3 +84,7 @@ All jumps in this table are internal to the saved window:20ms q_PD target change
 Successor-feature disable: 8/8 goals have an already executed matching standing branch; remaining physical entries explicitly UNMEASURED. Offline candidate tie selects standing, not a demonstrated new physical outcome. Actual native standing baseline exists in every fit group; no extra independent-evaluation baseline branches were silently added.
 
 The main intervention is a single current-state choice of a sustained2s plan with native50Hz body feedback. It is not a demonstrated high-level controller that replans at every100ms, not full-episode contact/actual-release recovery validation, and not stochastic deployment robustness.
+
+## R1b physical-unit audit and restore evidence
+
+Parent-balanced selected-command standardized MSE: E=0.0043040, I=0.0043495, constant=0.0305786. Both forecast selected outcomes better than this constant on these four parents; no test-time refit or unexecuted-candidate ranking claim. Detailed wrist/root cm and mean-force N errors are in JSON. The same command duplicated across methods/Goals passed full physics/control exactness on 7 comparisons.

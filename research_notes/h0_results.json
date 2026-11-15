@@ -2254,5 +2254,241 @@
   "historical_G17_QA1_QA2": "FAIL_UNCHANGED",
   "Actor_updates": 0,
   "U_updates": 0,
-  "Dev_Sealed_executed": false
+  "Dev_Sealed_executed": false,
+  "final_audit": {
+    "status": "PASS_FINAL_READONLY_AUDIT",
+    "future_unit_errors": [
+      {
+        "parent": "560570cc402ed9ca081b6576c9c53cd12bffae6cb94146b11a84c4c46f98aa4b",
+        "K": 80,
+        "rows": [
+          {
+            "command": 0,
+            "E": {
+              "wrist_delta_RMSE_cm": 0.21631798288386023,
+              "root_delta_RMSE_cm": 0.13935546979395114,
+              "mean_force_XYZ_RMSE_N": 0.4855496258684188
+            },
+            "I": {
+              "wrist_delta_RMSE_cm": 0.38544376879492015,
+              "root_delta_RMSE_cm": 0.35221581841687083,
+              "mean_force_XYZ_RMSE_N": 0.7431172166384062
+            }
+          },
+          {
+            "command": 2,
+            "E": {
+              "wrist_delta_RMSE_cm": 0.7132158506753883,
+              "root_delta_RMSE_cm": 0.17616794074624986,
+              "mean_force_XYZ_RMSE_N": 0.5460625596955466
+            },
+            "I": {
+              "wrist_delta_RMSE_cm": 0.5454310202762386,
+              "root_delta_RMSE_cm": 0.29846640699267896,
+              "mean_force_XYZ_RMSE_N": 0.6881656280664997
+            }
+          }
+        ]
+      },
+      {
+        "parent": "92acbb87e917df6caa6b641f5266bbd7a5403567af82fc9b6c934f2c01a00615",
+        "K": 40,
+        "rows": [
+          {
+            "command": 0,
+            "E": {
+              "wrist_delta_RMSE_cm": 2.0016736753045445,
+              "root_delta_RMSE_cm": 0.8602166547200644,
+              "mean_force_XYZ_RMSE_N": 1.6177525042138543
+            },
+            "I": {
+              "wrist_delta_RMSE_cm": 1.874790579769049,
+              "root_delta_RMSE_cm": 1.0696630898004977,
+              "mean_force_XYZ_RMSE_N": 1.9144817733470456
+            }
+          },
+          {
+            "command": 2,
+            "E": {
+              "wrist_delta_RMSE_cm": 2.1396664942406276,
+              "root_delta_RMSE_cm": 1.015200775178054,
+              "mean_force_XYZ_RMSE_N": 1.8731589552291654
+            },
+            "I": {
+              "wrist_delta_RMSE_cm": 2.1363724194928624,
+              "root_delta_RMSE_cm": 0.9271637406533665,
+              "mean_force_XYZ_RMSE_N": 1.6044554165113631
+            }
+          }
+        ]
+      },
+      {
+        "parent": "c375fb9aff4bb33476479fb22b859430b5e3323f86231ec61c3908a9cd439341",
+        "K": 80,
+        "rows": [
+          {
+            "command": 0,
+            "E": {
+              "wrist_delta_RMSE_cm": 0.5602731584225195,
+              "root_delta_RMSE_cm": 0.3021431857872157,
+              "mean_force_XYZ_RMSE_N": 0.3823551711206056
+            },
+            "I": {
+              "wrist_delta_RMSE_cm": 0.5249111560153313,
+              "root_delta_RMSE_cm": 0.50896698092929,
+              "mean_force_XYZ_RMSE_N": 0.615881025971037
+            }
+          },
+          {
+            "command": 2,
+            "E": {
+              "wrist_delta_RMSE_cm": 0.5219096655675509,
+              "root_delta_RMSE_cm": 0.14329288116416122,
+              "mean_force_XYZ_RMSE_N": 0.641028361197861
+            },
+            "I": {
+              "wrist_delta_RMSE_cm": 0.23887062593784808,
+              "root_delta_RMSE_cm": 0.17749760148029498,
+              "mean_force_XYZ_RMSE_N": 0.8103468217675449
+            }
+          },
+          {
+            "command": 1,
+            "E": {
+              "wrist_delta_RMSE_cm": 0.3859016223564213,
+              "root_delta_RMSE_cm": 0.19392606719232025,
+              "mean_force_XYZ_RMSE_N": 0.17995615592889333
+            },
+            "I": {
+              "wrist_delta_RMSE_cm": 0.45269851442978193,
+              "root_delta_RMSE_cm": 0.17912978783379588,
+              "mean_force_XYZ_RMSE_N": 0.04491883603599287
+            }
+          }
+        ]
+      },
+      {
+        "parent": "d313f47d9377f9a69291fe54eadf4793a313820dfd68845aff3c623b39bcca88",
+        "K": 40,
+        "rows": [
+          {
+            "command": 0,
+            "E": {
+              "wrist_delta_RMSE_cm": 0.855849730525776,
+              "root_delta_RMSE_cm": 0.23830438384507135,
+              "mean_force_XYZ_RMSE_N": 0.6512008795986985
+            },
+            "I": {
+              "wrist_delta_RMSE_cm": 1.0427565014845022,
+              "root_delta_RMSE_cm": 0.16613023091810059,
+              "mean_force_XYZ_RMSE_N": 0.36095611803885574
+            }
+          },
+          {
+            "command": 2,
+            "E": {
+              "wrist_delta_RMSE_cm": 0.8721788355322326,
+              "root_delta_RMSE_cm": 0.14881204600107473,
+              "mean_force_XYZ_RMSE_N": 0.42934778569618004
+            },
+            "I": {
+              "wrist_delta_RMSE_cm": 0.9016938091798469,
+              "root_delta_RMSE_cm": 0.22689081090317645,
+              "mean_force_XYZ_RMSE_N": 0.6602570243715786
+            }
+          }
+        ]
+      }
+    ],
+    "parent_macro_MSE": {
+      "E_MSE": 0.0043040442223183754,
+      "I_MSE": 0.0043495158429750855,
+      "constant_MSE": 0.03057855001611578
+    },
+    "matched_duplicate_branch_exact": [
+      {
+        "parent": "560570cc402ed9ca081b6576c9c53cd12bffae6cb94146b11a84c4c46f98aa4b",
+        "command": 0,
+        "full_physics_control_exact": true
+      },
+      {
+        "parent": "560570cc402ed9ca081b6576c9c53cd12bffae6cb94146b11a84c4c46f98aa4b",
+        "command": 2,
+        "full_physics_control_exact": true
+      },
+      {
+        "parent": "92acbb87e917df6caa6b641f5266bbd7a5403567af82fc9b6c934f2c01a00615",
+        "command": 0,
+        "full_physics_control_exact": true
+      },
+      {
+        "parent": "92acbb87e917df6caa6b641f5266bbd7a5403567af82fc9b6c934f2c01a00615",
+        "command": 2,
+        "full_physics_control_exact": true
+      },
+      {
+        "parent": "c375fb9aff4bb33476479fb22b859430b5e3323f86231ec61c3908a9cd439341",
+        "command": 0,
+        "full_physics_control_exact": true
+      },
+      {
+        "parent": "d313f47d9377f9a69291fe54eadf4793a313820dfd68845aff3c623b39bcca88",
+        "command": 0,
+        "full_physics_control_exact": true
+      },
+      {
+        "parent": "d313f47d9377f9a69291fe54eadf4793a313820dfd68845aff3c623b39bcca88",
+        "command": 2,
+        "full_physics_control_exact": true
+      }
+    ],
+    "unique_test_h": [
+      {
+        "parent": "560570cc402ed9ca081b6576c9c53cd12bffae6cb94146b11a84c4c46f98aa4b",
+        "h_digest": "704b4606301a0ddcc7f9f8365bb05d119cd7564eae108edf524a80e65540dda9"
+      },
+      {
+        "parent": "92acbb87e917df6caa6b641f5266bbd7a5403567af82fc9b6c934f2c01a00615",
+        "h_digest": "b49123d44fedfab87294dab0f3a8aa48d0eb9b9e268c4e17955a8092e8f8c3c4"
+      },
+      {
+        "parent": "c375fb9aff4bb33476479fb22b859430b5e3323f86231ec61c3908a9cd439341",
+        "h_digest": "60b1fa4e51b7bea7040b40c7d9ecd935095087a7bfb44d1691b487ce4d2e7a72"
+      },
+      {
+        "parent": "d313f47d9377f9a69291fe54eadf4793a313820dfd68845aff3c623b39bcca88",
+        "h_digest": "d854e56fe6fbb058ca448b2f07aba36b3e66000ffa33acaf7f345ae91f0f81bc"
+      }
+    ],
+    "physics_by_job": {
+      "qualification-restore-02": {
+        "actual": 2141,
+        "reserved": 2141
+      },
+      "fit-03": {
+        "actual": 8901,
+        "reserved": 8901
+      },
+      "evaluation-06": {
+        "actual": 11581,
+        "reserved": 11581
+      },
+      "qualification-01": {
+        "actual": 2541,
+        "reserved": 2541
+      }
+    },
+    "physics_ticks": {
+      "actual": 25164,
+      "reserved": 25164
+    },
+    "new_output_bytes": 237740424,
+    "R2_output_bytes": 3805158840,
+    "head_manifest": {
+      "sha256": "608f607d191ea32f908b5b76c4e51fd5acb6996d8928d2d2b543bdd99b04baca",
+      "bytes": 9200831
+    },
+    "scientific_runtime": "b77ed34f06fcfcf6f68de6f0793f4f8b4b22fb22",
+    "audit_wall_s": 112.44125153002096
+  }
 }
