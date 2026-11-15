@@ -1,0 +1,47 @@
+{
+  "status": "ZERO_RMS_GRADIENT_FIX_EXACT_FORWARD_AND_APPLICABLE_GRADIENT_ADAM_PASS",
+  "method": "archived actual qualified old_mu values, identical deployed qPD clipping/scales and original parent weights; explicit raw-action perturbation unit fixture, not an Actor or physical success claim",
+  "actual_qualified_frames": 96,
+  "parents": 10,
+  "checks": [
+    {
+      "raw_action_offset": 0.0,
+      "forward_value_exact": true,
+      "dual_violation_exact": true,
+      "old_nonfinite_gradient_components": 29,
+      "fixed_gradient_correct": true,
+      "applicable_nonzero_gradient_and_Adam_exact": false
+    },
+    {
+      "raw_action_offset": 0.0001,
+      "forward_value_exact": true,
+      "dual_violation_exact": true,
+      "old_nonfinite_gradient_components": 0,
+      "fixed_gradient_correct": true,
+      "applicable_nonzero_gradient_and_Adam_exact": true
+    },
+    {
+      "raw_action_offset": 0.001,
+      "forward_value_exact": true,
+      "dual_violation_exact": true,
+      "old_nonfinite_gradient_components": 0,
+      "fixed_gradient_correct": true,
+      "applicable_nonzero_gradient_and_Adam_exact": true
+    },
+    {
+      "raw_action_offset": -0.001,
+      "forward_value_exact": true,
+      "dual_violation_exact": true,
+      "old_nonfinite_gradient_components": 0,
+      "fixed_gradient_correct": true,
+      "applicable_nonzero_gradient_and_Adam_exact": true
+    }
+  ],
+  "central_difference_zero": 29,
+  "scientific_thresholds_changed": false,
+  "Actor_forward_changed": false,
+  "new_physics": 0,
+  "new_scientific_RL_rows": 0,
+  "new_BFM_parameter_updates": 0,
+  "CPU_wall_s": 19.780705427983776
+}

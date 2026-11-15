@@ -5,6 +5,22 @@ import torch
 from torch.nn import functional as F
 from .ei_v2_agent import SIGMA
 
+class _ZeroSafeRMS(torch.autograd.Function):
+    """Bit-identical sqrt forward; exact zero derivative of composed RMS-squared loss at zero.
+
+    No epsilon, threshold, clipping or loss coefficient is introduced. For positive
+    RMS, backward is the original SqrtBackward expression. At all-zero action
+    difference the final max-quadratic retention loss has derivative exactly0;
+    avoid0/0 inside its otherwise undefined intermediate sqrt derivative.
+    """
+    @staticmethod
+    def forward(ctx,squared):
+        root=squared.sqrt();ctx.save_for_backward(root);return root
+    @staticmethod
+    def backward(ctx,grad):
+        root,=ctx.saved_tensors
+        return torch.where(root>0,grad/(2*root),torch.zeros_like(grad))
+
 def device_obs(o,device):return {k:v.to(device) for k,v in o.items()}
 def stack_obs(rows,key='observation'):return {k:torch.cat([r[key][k] for r in rows],0) for k in rows[0][key]}
 
@@ -82,7 +98,7 @@ def retention(agent,by_parent,eps):
             new=agent.mean(o,z,op)
             scale=torch.as_tensor(eps['qpd_scale'],device=agent.device);clip=eps['original_action_clip']
             delta=((new*5).clamp(-clip,clip)-(old*5).clamp(-clip,clip))*scale/5
-            norm=torch.maximum(delta.square().mean(-1).sqrt()/eps['eps_rms'],delta.abs().max(-1).values/eps['eps_p95'])
+            norm=torch.maximum(_ZeroSafeRMS.apply(delta.square().mean(-1))/eps['eps_rms'],delta.abs().max(-1).values/eps['eps_p95'])
             v.append(norm[0])
         vv=torch.stack(v);vals.append(vv.square().mean());parent_v.append(torch.quantile(vv,.9))
     if not vals:raise RuntimeError('No qualified parent-balanced retention data')

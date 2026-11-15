@@ -33,36 +33,59 @@ def study(e,base,c,out):
     env=GoalEnvironment(e,base,c,parents);env.reset(0);install_contact_details(e);install_post_velocity(e)
     agent=ContactGoalAgent(base,env.proxy.enrich(env.task.extended_observation()),ARM,e.standing.device);env.agent=agent;env.proxy.agent=agent;env.collection_role='engineering_on_policy';env.proxy.stochastic=True
     q=STAGE/'runs/P1-frozen-sample-01';qm=json.loads((q/'qualification.json').read_text());keeps=read(q/'qualified-retention-data.ptz',qm['retention']);keep,eps=keeps['keep_by_parent'],keeps['eps'];records=[];runtime=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    limit=json.loads((STAGE/'locks/protocol.json').read_text())['scratch_total']
+    prior_scratch=json.loads((STAGE/'ledger.json').read_text())['scratch_50Hz']
+    allowed_blocks=4 if RESTORE else min(4,max(0,(limit-prior_scratch)//1024))
+    def save_native_count(final=False,reserved=None):
+        value=dict(actual_scratch_rows=0 if RESTORE else env.next_cursor,reserved_scratch_rows=0 if RESTORE else (env.next_cursor if reserved is None else reserved),exact_final=bool(final),restore_validation=RESTORE,failed_and_prefix_physics_separate=True)
+        p=out/'native-count.pending';p.write_text(json.dumps(value,indent=2)+'\n');os.replace(p,out/'native-count.json')
     def fill(n):
         start=len(env.rows)
-        while len(env.rows)-start<n:
-            if benchmark.STOP_REQUESTED:raise RuntimeError('BUDGET_STOP_DURING_DISPOSABLE_SCRATCH')
-            env.collect(min(5,n-(len(env.rows)-start)))
+        assert RESTORE or prior_scratch+env.next_cursor+n<=limit,'global scratch sampling cap'
+        save_native_count(reserved=env.next_cursor+n)
+        try:
+            while len(env.rows)-start<n:
+                if benchmark.STOP_REQUESTED:raise RuntimeError('BUDGET_STOP_DURING_DISPOSABLE_SCRATCH')
+                env.collect(min(5,n-(len(env.rows)-start)))
+        except BaseException:
+            failure=Journal(out/'sampling-failure-packages')
+            failure.save(f'failed-{env.next_cursor}',agent,env,runtime,'FAILED_SAMPLING_NOT_A_COMPLETE_TRAINING_BLOCK')
+            raise
+        save_native_count(final=True)
         return env.rows[start:]
     def signature(metrics):
         return dict(agent=copy.deepcopy(agent.state()),physics=canonical(portable(env.task),metadata(e.sim.model,e.sim.data)),rng=global_rng(),metrics=metrics,last_rows=copy.deepcopy(env.rows[-12:]))
     if RESTORE:
-        source=STAGE/f'runs/P1-scratch-{ARM}-01';s=restore(source/'checkpoints/block-mid4',agent,env,out);phase='P3';env.collection_role='engineering_on_policy';agent.selector.requires_grad_(True)
+        source=STAGE/f'runs/P1-scratch-{ARM}-02';source_meta=json.loads((source/'scratch.json').read_text());s=restore(source/'checkpoints/block-mid-last',agent,env,out);phase='P3';env.collection_role='engineering_on_policy';agent.selector.requires_grad_(True)
         fill(12);aux=ActualSuccessors(env,phase);block=env.rows[-1024:];t=time.monotonic();metrics=update(agent,block,keep,eps,aux,phase)
-        expected_meta=json.loads((source/'scratch.json').read_text())['expected'];expected=read(source/'expected-fourth-update.ptz',expected_meta);actual=signature(metrics)
+        expected_meta=source_meta['expected'];expected=read(source/'expected-fourth-update.ptz',expected_meta);actual=signature(metrics)
         checks={k:exact(actual[k],expected[k]) for k in actual};dump(out/'actual-fourth-update.ptz',actual);(out/'restore-fields.json').write_text(json.dumps(checks,indent=2)+'\n');assert all(checks.values()),checks
-        result=dict(status='TRAINED_ADAM_NEW_PROCESS_CONTINUATION_AND_UPDATE_EXACT',arm=ARM,checks=checks,update_s=time.monotonic()-t,unique_new_scratch_rows=0,replayed_unique_archive_rows=4096,formal_rows=0)
+        result=dict(status='TRAINED_ADAM_NEW_PROCESS_CONTINUATION_AND_UPDATE_EXACT',arm=ARM,checks=checks,update_s=time.monotonic()-t,unique_new_scratch_rows=0,replayed_unique_archive_rows=source_meta['unique_scratch_rows'],formal_rows=0)
     else:
         journal=Journal(out/'checkpoints');expected=None
-        for block in range(4):
+        for block in range(allowed_blocks):
             phase='P2' if block<2 else 'P3';env.phase=phase;agent.selector.requires_grad_(phase=='P3');aux=ActualSuccessors(env,phase)
             start=len(env.rows);tb=time.monotonic();collect=time.monotonic()
-            if block==3:
-                fill(1012);journal.save('mid4',agent,env,runtime,'scratch_only_mid_fourth_block_with_nonempty_Adam')
+            if block==allowed_blocks-1:
+                fill(1012);journal.save('mid-last',agent,env,runtime,'scratch_only_mid_fourth_block_with_nonempty_Adam')
                 fill(12)
             else:fill(1024)
             collect=time.monotonic()-collect;rows=env.rows[start:];assert len(rows)==1024
-            tu=time.monotonic();metrics=update(agent,rows,keep,eps,aux,phase);update_s=time.monotonic()-tu
-            if block==3:expected=dump(out/'expected-fourth-update.ptz',signature(metrics))
+            tu=time.monotonic()
+            try:metrics=update(agent,rows,keep,eps,aux,phase)
+            except BaseException:
+                # Preserve failed pending updates separately; never publish as normal latest.
+                save_native_count(final=True)
+                failure=Journal(out/'failure-packages')
+                failure.save(f'failed-{block+1}',agent,env,runtime,'FAILED_PENDING_UPDATE_NOT_A_COMPLETED_TRAINING_BLOCK')
+                dump(out/f'failed-{block+1}-gradients.ptz',{k:p.grad for k,p in agent.modules.named_parameters()})
+                raise
+            update_s=time.monotonic()-tu
+            if block==allowed_blocks-1:expected=dump(out/'expected-fourth-update.ptz',signature(metrics))
             tio=time.monotonic();manifest=journal.save(block+1,agent,env,runtime,'scratch_only_discard_before_formal');io_s=time.monotonic()-tio
             record=dict(block=block+1,phase=phase,unique_actual_rows=1024,collection_s=collect,update_s=update_s,checkpoint_s=io_s,wall_s=time.monotonic()-tb,accepted=agent.accepted,rejected=agent.rejected,checkpoint=manifest,metrics=metrics,gpu_peak_bytes=torch.cuda.max_memory_allocated(),optimizer_nonempty=bool(agent.opt.state) and bool(agent.vopt.state));records.append(record)
             (out/'progress.json').write_text(json.dumps(records,indent=2)+'\n');print('SCRATCH_BLOCK',ARM,block+1,phase,record['wall_s'],flush=True)
-        result=dict(status='DISPOSABLE_FOUR_FULL_BLOCKS_WRITTEN_RESTORE_PENDING',arm=ARM,records=records,expected=expected,unique_scratch_rows=4096,formal_rows=0,scratch_discard_required=True)
+        result=dict(status='DISPOSABLE_FOUR_FULL_BLOCKS_WRITTEN_RESTORE_PENDING' if allowed_blocks==4 else 'SCRATCH_NATIVE_BUDGET_STOP_INCOMPLETE_QUALIFICATION',arm=ARM,completed_blocks=allowed_blocks,required_blocks=4,records=records,expected=expected,unique_scratch_rows=allowed_blocks*1024,formal_rows=0,scratch_discard_required=True)
     (out/'scratch.json').write_text(json.dumps(result,indent=2)+'\n');return result
 
 def main():
