@@ -73,7 +73,11 @@ def study(e,base,c,out):
         reused_records[0]['reused_complete_block_from']=SOURCE_RUN.name
         # Current policy is the accepted block1 policy. Reuse only completed gates
         # from that exact checkpoint, then run the interrupted release gate afresh.
-        q=qualify(env,agent,out/'first-accepted-sentinel','sentinel','P3',completed_from=SOURCE_RUN/'first-accepted-sentinel')
+        previous_sentinel=SOURCE_RUN/'first-accepted-sentinel'
+        completed_sentinel=previous_sentinel if (previous_sentinel/'progress.json').exists() else None
+        if completed_sentinel is None:
+            assert not list(previous_sentinel.glob('case-*-actual.ptz')), 'unindexed sentinel archive requires audit'
+        q=qualify(env,agent,out/'first-accepted-sentinel','sentinel','P3',completed_from=completed_sentinel)
         assert q['status']=='PASS','CURRENT_ACTOR_SENTINEL_PROTECTION_FAILED'
         (out/'verified-resume-second-P3.json').write_text(json.dumps(dict(source_run=SOURCE_RUN.name,source_manifest_sha256=__import__('hashlib').sha256((RESUME_PACKAGE/'manifest.json').read_bytes()).hexdigest(),already_completed_P3_rows=1024,no_old_rows_reoptimized=True,accepted_actor_Adam_RNG_physics_exact=True,sample_entry_reused=True,sentinel=q['status']),indent=2)+'\n')
     if FAILURE_RESUME:
