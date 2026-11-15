@@ -50,7 +50,7 @@ def study(e,base,c,out):
         assert tree_digest(a.state())==before
         result=dict(status='FROZEN_JOINT_SAMPLER_AND_CHECKPOINT_WRITTEN',Gaussian_and_real_option_logprob_error=err,strict_atol=3e-4,analytic_joint_KL=k,categorical_draws=sum(r['cat_boundary'] for r in env.rows),native_sampler_rows=len(env.rows),GAE=gae,goal_change_crossed=True,mid_command_offset=2,actual_updates=0,checkpoint=manifest,expected=archive,full_new_process_restore='PENDING')
     else:
-        source=STAGE/'runs/P0-joint-recovery-write-01';old=json.loads((source/'recovery.json').read_text());state=restore(source/'checkpoints/block-0',a,env,out)
+        source=STAGE/'runs/P0-joint-recovery-write-02';old=json.loads((source/'recovery.json').read_text());state=restore(source/'checkpoints/block-0',a,env,out)
         first=len(env.rows);fp=len(env.physical_stream)
         for n in (3,5,2):env.collect(n)
         expected=read(source/'expected-continuation.ptz',old['expected'])

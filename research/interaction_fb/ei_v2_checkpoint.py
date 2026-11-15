@@ -47,7 +47,9 @@ def load(path):
     return state
 
 def restore(path,agent,env,out):
-    s=load(path);own=s['own'];env.source_cache=copy.deepcopy(own['source_cache']);env.phase=own['phase'];env.reset(own['spec_id']);assert env.task.prefix_data['audit']['sha256']==s['source_sha']
+    s=load(path)
+    assert s['agent']['value']['0.weight'].shape==agent.value[0].weight.shape, 'fixture/value-input schema mismatch before physical replay'
+    own=s['own'];env.source_cache=copy.deepcopy(own['source_cache']);env.phase=own['phase'];env.reset(own['spec_id']);assert env.task.prefix_data['audit']['sha256']==s['source_sha']
     # Replay only this actual episode using its exact submitted command chunk plan.
     episode=own['reset_cursor'];rows=[r for r in s['rows'] if r['episode']==episode]
     # Instructions are appended per actual collection chunk, retain episode identity.
