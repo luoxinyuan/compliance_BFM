@@ -50,7 +50,7 @@ def study(e,base,c,out):
     assert exact(proposed,original),'original already logged proposal not exactly reproduced; no scale interpretation'
     samples=[]
     for alpha in (1.,.5,.25,.125):
-        candidate={k:before[k]+alpha*(proposal[k]-before[k]) for k in before};agent.modules.load_state_dict(candidate)
+        candidate=({k:proposal[k].clone() for k in before} if alpha==1. else {k:before[k]+alpha*(proposal[k]-before[k]) for k in before});agent.modules.load_state_dict(candidate)
         if alpha==1.:assert all(torch.equal(candidate[k],proposal[k]) for k in before)
         k=kl(agent,rows,groups);deltas=[]
         with torch.no_grad():

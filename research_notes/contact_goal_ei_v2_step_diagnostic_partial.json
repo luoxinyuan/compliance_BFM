@@ -1,0 +1,49 @@
+{
+  "status": "ORIGINAL_PROPOSAL_EXACT_SCALED_GRID_NOT_MEASURED",
+  "runtime": "9bd90400c3f5526cae2937831b0508c0acf92df2",
+  "actual": {
+    "gaussian": 0.18824948258336308,
+    "categorical": 2.7811622260839427e-09,
+    "joint": 0.1882494853645253,
+    "sample_joint_old_minus_new": 0.1515213838299212
+  },
+  "expected": {
+    "gaussian": 0.18824948258336308,
+    "categorical": 2.7811622260839427e-09,
+    "joint": 0.1882494853645253,
+    "sample_joint_old_minus_new": 0.1515213838299212
+  },
+  "exact": true,
+  "source_sha256": "fb2a0d19728ce78e66112a766411d4c374c67cd15baad59e9ef3c67d6b6715b8",
+  "candidate_scales_evaluated": [],
+  "planned_scales": [
+    1.0,
+    0.5,
+    0.25,
+    0.125
+  ],
+  "stop": "alpha1 weight reconstruction not bit-identical; specific first differing tensor not archived; no measured action or physical discrepancy may be invented",
+  "formal_optimizer_uses_interpolation": false,
+  "fix": "alpha1 directly copies proposal; CPU endpoint test passes; no GPU rerun",
+  "unit": {
+    "status": "DIAGNOSTIC_ENDPOINT_COPY_REGRESSION_PASS_CPU",
+    "old_endpoint_can_differ": true,
+    "unit_example_before": 9.999999747378752e-06,
+    "unit_example_proposal": -9.999999974752427e-07,
+    "unit_example_rebuilt": -1.0000003385357559e-06,
+    "unit_example_difference": -3.410605131648481e-13,
+    "fixed_alpha1_copy_exact": true,
+    "formal_PPO_uses_original_Adam_proposal_and_never_used_this_diagnostic_interpolation": true,
+    "new_physics": 0,
+    "new_training": 0
+  },
+  "launch_note": {
+    "failure": "step-diagnostic-01 preflight HEAD read128; no child launched",
+    "observed": "launch occurred while prior commit tool session had not been awaited to completion; exact filesystem-level cause not established",
+    "fix": "waited for completed commit, then independently verified HEAD object and clean runtime before one fresh unique job name",
+    "scientific_effect": false,
+    "physics": 0,
+    "scratch_rows": 0
+  },
+  "joint_limit": 0.02
+}

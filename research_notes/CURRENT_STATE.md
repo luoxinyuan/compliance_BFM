@@ -1,13 +1,15 @@
-# Current — Issue66 Contact-Goal E/I v2：初始完整物理和奖励资格通过，P1工程更新测试运行中
+# Current — Issue66 E/I v2：P1暂停，正式训练未启动
 
-2026-11-15。Yi整体批准v2与独立新增6,000秒，并明确授权自行修复实现问题后继续；普通阶段不再逐项请批。原BFM/PD/normalizer/BC500与旧结果不动。
+2026-11-15。Yi已批准v2、新增6000秒及自主修复实现问题。已修复并继续到原工程采样硬帽；现在需要科学优化配置审阅，不是等普通实现批准。
 
-[已签合同](CONTACT_GOAL_EI_TRAIN_CONTRACT_V2_APPROVED.md) · [签署](CONTACT_GOAL_EI_V2_SIGNOFF_20261115.md) · [P0源码/全部失败修复](CONTACT_GOAL_EI_V2_P0_PROGRESS.md) · [P1实际资格与汇总错误](CONTACT_GOAL_EI_V2_P1_REWARD_RESULTS.md) · [初始物理读数](contact_goal_ei_v2_initial_qualification.json) · [实际奖励读数](contact_goal_ei_v2_reward_qualification.json)。
+[P1权威报告](CONTACT_GOAL_EI_V2_P1_ENGINEERING_RESULTS.md) · [机器读数/身份/成本](contact_goal_ei_v2_p1_engineering_results.json) · [NaN修复](CONTACT_GOAL_EI_V2_P1_GRADIENT_ERRATUM_01.md) · [同提议诊断](contact_goal_ei_v2_step_diagnostic_partial.json) · [已签合同](CONTACT_GOAL_EI_TRAIN_CONTRACT_V2_APPROVED.md)。
 
-源生成已修复并验证12条arm-ready真实前缀/66对历史，原源祖先错误及erratum保留，不把不同hash冒充独立性。冻结mean12/12、实际Gaussian12/12完整回合通过；含实际停止/保持/释放后4s、同态原生恢复，stop/continue两父组分叉前的控制/物理逐值一致。不是新学习收益。
+已通过：源修复12真实前缀/66对；mean/sample各12/12完整资格；4测试父组/24reward分支、11强Pareto pairs来自3有信息父组、父组等权100%同向。含实际停止、release后4s及同态原生恢复。原失败全部保留，不声称全域reward正确。
 
-G02：4个固定train父组、FOLLOW/HOLD各2，24真实物理分支，11个强Pareto有效配对来自3个有信息父组，父组等权奖励同向100%。第四HOLD-stop父组为位置/力取舍，不伪造第4有信息组或声称全域reward已正确。2400个native reward重算逐值正确。末尾numpy.bool_汇总错误已由不可变档案CPU恢复，原exit1/trace保留，无重跑物理。原文4测试父组与实现误写4有信息父组的计数纠正单列，不改80%/8pair门。
+真正执行策略未学习：E4块4096、I3块3072；Actor接受0/32、0/24。只有辅助E16/I12与value32/24更新。tail/FiLM/selector权重逐值同初始化、相关Adam全空。Adam提议joint KL约.16–.26超过原.02，全回滚。原提议joint .188249485/Gaussian .188249483/categorical2.78e−9已逐值复现；缩放网格未完成、不改正式步长。
 
-**正在运行**：P1 E臂独立scratch四个1024块（2低层/2联合）；之后I同合同、非空Adam新进程完整继续采样/更新及G07全流程成本。scratch不是正式训练，完成后丢弃其可训练状态；G05/G07未通过不得P2/P3。当前正式E/I训练0、Dev任务0、sealed未读。Source/冻结资格/候选分支不得进入on-policy PPO；每种角色有显式断言。
+恢复：两臂新进程模型、已有Adam/RNG、有效物理/历史、后续采样与一轮更新逐值同；仅验证确已存在的预测/表示/value状态，没有训练后tail Adam可验证。
 
-已记新增5,856.122700job秒（运行中E另计）；P0 3,110.639066/4,000，P1 2,135.483634/4,500，全流程136,246/950,000 ticks，修复池607.307783/800。原R2累计27,394.050957/57,600；独立新增6,000尚未用。单GPU0串行、共享盘≥100GiB、本轮7GiB。无Student、旧Expert PPO、原FB长跑或共享资产修改。旧H0/QA2负结果不重判。
+G07不通过：失败1024+E4096+I3072=8192帽；I缺第二P3块且仅5完整回合（E7）。不补采、不虚报4块、不正式训练。正式E/I=0、Dev任务=0、sealed未读，无Student或FB长跑；GPU0释放，无队列。
+
+新增stage 7707.703624job秒；P1 3837.064558/4500；修复677.307783/800；201,096/950000 ticks；R2 29245.631881/57600，独立6000未用。下一是审共同可接受优化步及低层/selector尺度，不放宽KL/std/reward/物理。新规则和实际复测规模须另行明确，未执行。BC500、共享原BFM/PD、main及旧结项不动。
