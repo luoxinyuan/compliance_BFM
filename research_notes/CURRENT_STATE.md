@@ -1,3 +1,11 @@
+# 最新：G17-QA1 U/C均完成，固定512终点未获资格
+
+2026-11-15。Yi追加授权C修复续跑，独立快照装载＋真实首更新后source/Adam/target/RNG回归通过。U原数据只读复用，C原锁456组已完成。固定512：U 36/58=62.07%，C 40/58=68.97%；未取得原门及校准资格，不触发前瞻、不启动Actor/U/I/Dev/Sealed。旧G17 FAIL和全部错误保留。完成即停，无自动追加节点/调参。
+
+[完整结果](R2_EI_G17_QA1_COMPLETE_RESULTS.md) · [C修复回归](R2_EI_G17_QA1_C_REPAIR_RESULTS.md) · [机器摘要](r2_ei_qa1_complete_results.json)。QA1累计2002.925032/3600job秒、522.662MiB/1GiB；R2累计17244.117190/57600秒。原U runtime9d48d4d、C runtimee1fe70b；原Q56/BFM/PD不改。以下为历史时点。
+
+---
+
 # 最新：G17-QA1部分完成，C起点一致性失败后按合同停止
 
 2026-11-15。Yi批准修订已归档。E-only U从Q56固定3500行续至512：旧40条排序26/58→36/58=62.07%，未过70%；mid保持仍0/9。U的3500行全部曝光、非Q状态不变。切C前full-agent hash断言捕获CPU Adam step与起点缓存别名，C更新0；一次只读定位完成，磁盘原source未变。**STOP_AWAIT_DECISION**，按QA1§6不自动修复重跑；非完整U/C比较，非新G17通过。Actor/U/I/Dev/Sealed/前瞻均0，旧FAIL不改。

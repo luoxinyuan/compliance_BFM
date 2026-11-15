@@ -16,6 +16,10 @@ E/I完成各3500条Q-only与完整恢复；八state/五锁定父组40真实分�
 
 Yi已批准固定3500行的E-only U/C匹配诊断。U增加至512组后旧排序44.83%→62.07%，仍未过原70%；mid保持0/9，不能用父组等权71.45%替代门。C在首更新前被完整起点hash守门拦下：CPU Adam step与重复load源缓存别名；原磁盘未变。一次只读定位后按QA1§6 STOP_AWAIT_DECISION，没有自动重跑、Actor或I。它是部分工程阻断＋单U描述性收益，不是行为训练失败或U/C方法胜负。见[QA1结果](R2_EI_G17_QA1_RESULTS.md)和[erratum](R2_EI_G17_QA1_ERRATUM.md)；历史结论保持。
 
+## 最新补充：G17-QA1完整匹配诊断
+
+C装载别名问题已在Yi追加授权下修复并通过实际更新后独立再装载回归。U只读复用、C完成原456组，512终点U 62.07%、C 68.97%，尚未获原Q资格及价值校准，Actor/U/I和前瞻不启动。旧40条仅retrospective诊断；工程修复、更多更新和旧排序变化不等于学会新接触动作。见[完整结果](R2_EI_G17_QA1_COMPLETE_RESULTS.md)；旧部分报告/失败/erratum保留。下一问题应聚焦Q的多步信用与排序目标，未自动开新实验。
+
 ## 科学目标
 
 **Contact-Conditioned Whole-Body Motion Transitions / General Whole-Body Compliance**：机器人接受人的局部物理引导，根据真实接触、本体与动作历史，以及自身可维护记忆，组织任务合适的手臂、躯干/root、支撑和步态响应，降低不必要的交互负担，保持稳定与运动质量。

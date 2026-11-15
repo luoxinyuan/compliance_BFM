@@ -18,3 +18,7 @@
 ## 另一个启动错误（已工程关闭，未改变学习）
 
 首作业49dc30a在模型加载前因CPFS Unix socket Errno95退出，物理/优化0。新入口顶层补入已有`m11_ipc`，使forkserver子进程也复用Linux abstract socket；独立Manager/Queue读写fixture通过。修复源码9d48d4d，科学参数不变；原log及11.242017s保留。它不涉及Q、物理状态恢复、概率或采样定义。
+
+## C修复闭环（2026-11-15追加）
+
+Yi新授权后已完成修复及C456组，工程别名问题关闭；历史未关闭状态描述保留为原时点。见[C修复结果](R2_EI_G17_QA1_C_REPAIR_RESULTS.md)与[完整科学结果](R2_EI_G17_QA1_COMPLETE_RESULTS.md)。未放宽任何断言或门。
