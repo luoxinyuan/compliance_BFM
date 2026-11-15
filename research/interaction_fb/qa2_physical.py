@@ -28,6 +28,14 @@ def study(e,m,c,out):
     from diagnostic_fb_resume import tree_digest
     from diagnostic_frozen import portable
     torch.set_num_threads(1);torch.use_deterministic_algorithms(True)
+    import mujoco
+    counted_step=mujoco.mj_step
+    def bounded_step(*args,**kwargs):
+        counter=out/'physics-counter.json'
+        reserved=json.loads(counter.read_text())['reserved'] if counter.exists() else 0
+        assert reserved+int(kwargs.get('nstep',1))<=26000,'P2_PHYSICS_BUDGET'
+        return counted_step(*args,**kwargs)
+    mujoco.mj_step=bounded_step
     lock=json.loads((S/'prep/p0-p1/p1.json').read_text());data=read(S/'prep/p0-p1/data.ptz',lock['data']);pros=data['prospective']
     assert len(pros)==4 and len({r['parent'] for r in pros})==4
     assert set(r['parent'] for r in pros).isdisjoint({m['parent'] for m in data['metadata']})
@@ -110,6 +118,7 @@ def study(e,m,c,out):
                 ac=[r for r in ph if r['active']]
                 br=dict(candidate=name,crn=crn,parent=pr['parent'],return_1s=ret,complete_50_steps=len(rows)==50 and failure is None,prefix_restore_exact=True,quality=metrics(ph),force_rms=float(np.sqrt(np.mean([np.dot(r['force'],r['force']) for r in ac]))) if ac else 0.,error_rms=float(np.sqrt(np.mean([r['error']**2 for r in ac]))) if ac else None,archive=am,failure=failure)
                 branches.append(br);write(dest/'branches.json',branches);print('QA2_P2_BRANCH',case_index,name,crn,ret,failure,flush=True)
+                assert sum(p.stat().st_size for p in out.rglob('*') if p.is_file())<=.70*1024**3,'P2_OUTPUT_BUDGET'
                 assert tree_digest(agent.state())==frozen
                 if failure:
                     dump(dest/'failed-physical.ptz',dict(physical=portable(env.task),rng=global_rng()));return dict(status='HARD_PHYSICS_STOP',results=results,failed_branch=br)
