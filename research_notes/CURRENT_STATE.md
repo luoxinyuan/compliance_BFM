@@ -1,16 +1,16 @@
-# Current — Issue66 E/I v2：P1暂停，正式训练未启动
+# Current — Issue66 OR1：D0通过，D1监控IO复发按§9暂停
 
-[OR1批准后实际执行状态](CONTACT_GOAL_EI_V2_OR1_EXECUTION_STATUS.md)：独立准备已完成；资源资格尚未通过，尚无新GPU实验。OR1累计480秒保守上界（既有review400＋本次准备80），原账不改。
+[本次权威报告](CONTACT_GOAL_EI_V2_OR1_RESULTS.md) · [D0五α实际数值](contact_goal_ei_v2_or1_d0_results.json) · [停止包审核与成本](contact_goal_ei_v2_or1_stop_results.json)。2026-11-15，最新资源授权已记私有执行锁并完成发车资格；资源细节不公开。旧资源阻断文字已过时，历史提交保留。
 
-## OR1已整包签署，资源资格先行
+D0对真实E/block4、I/block3首Adam提议完成GPU固定五α网格，两臂均按原规则选α=.25；joint KL .01176645/.01333898，未放宽.02帽，完整事务回退通过。该候选未执行，不是任务学习收益。
 
-Yi已回复“签，整包一次放行”，并明确将共享盘free地板改为30GiB。[签署与资源修订](CONTACT_GOAL_EI_V2_OR1_SIGNOFF_20261115.md)／[原样批准正文](CONTACT_GOAL_EI_V2_OPTIMIZER_AMENDMENT_OR1_APPROVED.md)／[批准参数锁](contact_goal_ei_v2_or1_approved_lock.json)。原待签稿保留为历史。
+D1 E两次作业先后被监控OSError116中断。第一次补丁漏掉实际physics-counter读取；第二次栈已定位read_counter→read_text。依原已签v2 §9“同根因复发即停”，D1/D2暂停，未第三次启动。完整保存485实际行、7082实际5ms ticks；Actor/value/aux更新均0。原15行新进程完整恢复逐值PASS；最终485包哈希/CPU读取PASS，尚未做第三次物理恢复。
 
-正常D0→有条件D1/D2不再逐段请批；固定五α、KL.02/std/reward/物理门不变；原32k/臂不自动启动。新采样≤8192，工作包6000s含review400，新增5000资金、stage47000s/8.4GiB等整包数值获批。原P1失败与8192原账不改。
+补全计数读取修复仅为未启用提议，实际read_counter CPU故障注入PASS，不冒充GPU验证。下一单一干预是经Yi授权解除复发停报后，启用此补丁并先严格恢复485包，额度和全部科学门不变。当前无队列，GPU0已释放。
 
-现场GPU0空闲；共享盘暂未达新30GiB＋临时包预留的发车护栏，因此尚无新GPU/Adam/采样/物理。先完成签署与隔离实现准备，资源过门后按已批合同执行。不得删除历史或降低地板找补。
+OR1累计1291.611203/6000 job秒（含review400）；D0 390.484614、D1 431.126589、修复/审核30、报告40、review400。原v2账本不改、旧失败不覆盖；R2参考30637.243084/57600。正式32k、Dev任务、Sealed、Student及FB长跑均未启动；BC500与原BFM/PD、main不变。
 
-
+## 历史记录（以下为当时状态，以本页顶部为当前事实）
 
 ## 2026-11-15：独立审查后局部优化修订待签（未执行）
 

@@ -1,11 +1,6 @@
 # Humanoid Compliance — 长期主线与当前执行入口
 
-OR1整包已获Yi签署（2026-11-15），共享盘free地板按其新批准为30GiB；参见[签署](CONTACT_GOAL_EI_V2_OR1_SIGNOFF_20261115.md)。D0固定五α、通过后有限新on-policy D1/D2连续执行，不自动正式32k。旧“待签”是历史；当前仍先核资源，没有将签署写成实验完成。
-
-
-
-2026-11-15独立审查后：P1被归为优化规则资格失败，非正式E/I行为失败。原Actor零接受步，先签一次[OR1固定五α回溯与有限新on-policy资格修订](CONTACT_GOAL_EI_V2_OPTIMIZER_AMENDMENT_OR1_DRAFT.md)，再决定是否沿用100ms joint PPO；若无可测可接受步，转交20ms低层／真实option时长的分层替代合同。原KL、sigma、reward/物理及输入不变；本轮仅[只读审计](CONTACT_GOAL_EI_V2_OPTIMIZER_AUDIT.md)与草案，未执行新优化、物理或正式训练。旧历史与erratum不变。
-
+2026-11-15最新：OR1已获Yi整包签署并实际执行；D0固定五α通过，E/I均选.25且保留原joint KL .02。D1 E在首块更新前两次监控ESTALE中断，按原v2 §9同根因复发停报。485新采样完整保存、执行Actor仍0更新；补全读取修复仅CPU验证，未第三次启动。参见[OR1权威报告](CONTACT_GOAL_EI_V2_OR1_RESULTS.md)与[CURRENT_STATE](CURRENT_STATE.md)。这不改变旧P1优化规则资格失败、正式行为学习未启动的判定。
 
 长期目标：Contact-conditioned whole-body behavior selection, modulation and transition；由真实身体、接触历史与公开目标共同决定可持续响应。原生运动先验提供可追溯能力，真实闭环学习分配和转换，之后才验证受限观测Student及自身RL。不能将固定force→skill规则、Goal查表或物理搜索结果冒称已学会通用交互。
 

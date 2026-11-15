@@ -1,0 +1,53 @@
+{
+  "stage": "Issue66-EI-v2-OR1-20261115",
+  "status": "STOPPED_REPEATED_SUPERVISOR_ESTALE_V2_SECTION9",
+  "job_s": 1291.6112031721277,
+  "phase_job_s": {
+    "review": 400,
+    "D0": 390.48461438401137,
+    "D1": 431.12658878811635,
+    "equivalent_repair": 30,
+    "report": 40
+  },
+  "actual_new_sampling_50Hz": 485,
+  "actual_new_physics_5ms": 7082,
+  "actual_actor_updates": 0,
+  "formal_rows": 0,
+  "sealed_executed": false,
+  "third_run_started": false,
+  "archive_audit": {
+    "status": "ARCHIVE_HASH_AND_CPU_READ_PASS_NO_NEW_PHYSICS",
+    "rows": 485,
+    "native_rows": 140,
+    "physics_stream_rows": 1940,
+    "counts": {
+      "OR1_counts": {
+        "actor_accepted": 0,
+        "actor_rejected": 0,
+        "aux_accepted": 0,
+        "aux_rejected": 0
+      }
+    },
+    "optimizer_state_entries": {
+      "optimizer": 0,
+      "value_optimizer": 0
+    },
+    "restore15": {
+      "model_Adam_rng_exact": true,
+      "full_effective_physics_history_exact": true,
+      "block": "failed-15",
+      "actual_rows": 15,
+      "physical_replay_only_not_training": true
+    },
+    "third_run_started": false
+  },
+  "proposed_repair_test": {
+    "status": "PROPOSED_COUNTER_READ_CPU_INTEGRATION_TEST_PASS_NOT_EXECUTED_ON_GPU",
+    "actual_read_counter_path_tested": true,
+    "transient_stale_exact_counter_after_two_reads": true,
+    "persistent_stale_stops_after_three": true,
+    "missing_seen_counter_never_silently_zeroed": true,
+    "physical_or_learning_math_changed": false,
+    "third_GPU_run_started": false
+  }
+}
