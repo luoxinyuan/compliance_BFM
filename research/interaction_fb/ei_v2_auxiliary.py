@@ -30,7 +30,7 @@ class ActualSuccessors:
                     valid=begin+n<=end
                     ph=env.physical_stream[begin:begin+n] if valid else None
                     if valid:assert len(ph)==n and abs(ph[-1]['force_time']-ph[0]['force_time']-(n-1)*.005)<1e-7
-                    ys.append(outcome(ph)/np.asarray(SCALES) if valid else np.zeros(24,dtype=np.float32));masks.append(valid)
+                    ys.append(outcome(ph)/np.asarray(SCALES,dtype=np.float32) if valid else np.zeros(24,dtype=np.float32));masks.append(valid)
                 if any(masks):self.items.setdefault(bytes(r['provenance']['parent_sha256'][0].tolist()).hex(),[]).append((r,np.stack(ys),masks))
     def __call__(self):
         self.prepare()

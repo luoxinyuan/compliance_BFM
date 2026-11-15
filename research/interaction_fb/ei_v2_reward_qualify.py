@@ -13,7 +13,7 @@ def measure(ph,controls,goal_world,goal_mode):
     forces=[p['force'] for p in active]
     gamma=.99**.2;discount=1.;ret=0.
     for c in controls:ret+=discount*c['reward_integral'];discount*=gamma**(c['actual_duration_s']/.02)
-    return dict(error_m=float(np.sqrt(np.mean(np.sum(np.asarray(errors)**2,axis=1)))) if active else None,force_N=float(np.sqrt(np.mean(np.sum(np.asarray(forces)**2,axis=1)))) if active else None,active_ticks=len(active),discounted_return=ret,integrated_return=sum(c['reward_integral'] for c in controls),quality=quality(ph))
+    return dict(error_m=float(np.sqrt(np.mean(np.sum(np.asarray(errors)**2,axis=1)))) if active else None,force_N=float(np.sqrt(np.mean(np.sum(np.asarray(forces)**2,axis=1)))) if active else None,active_ticks=len(active),discounted_return=float(ret),integrated_return=sum(c['reward_integral'] for c in controls),quality=quality(ph))
 
 def study(e,base,c,out):
     import torch,numpy as np,random,subprocess
@@ -91,14 +91,16 @@ def study(e,base,c,out):
                         if x['error_m'] is None or y['error_m'] is None:continue
                         meaningful=y['error_m']-x['error_m']>=.01 or y['force_N']-x['force_N']>=.5
                         dominates=x['error_m']<=y['error_m'] and x['force_N']<=y['force_N'] and all(qx[k]<=qy[k] for k in ('slip_peak','yaw_excursion_deg','unsupported_ticks','max_joint_excess_rad')) and not better['boundary']
-                        if meaningful and dominates:pairs.append(dict(parent_id=parent,case=st['case'],style=style,better=better['option'],worse=worse['option'],error_improvement_m=y['error_m']-x['error_m'],force_improvement_N=y['force_N']-x['force_N'],reward_order_correct=x['discounted_return']>y['discounted_return']))
+                        if meaningful and dominates:pairs.append(dict(parent_id=parent,case=st['case'],style=style,better=better['option'],worse=worse['option'],error_improvement_m=y['error_m']-x['error_m'],force_improvement_N=y['force_N']-x['force_N'],reward_order_correct=bool(x['discounted_return']>y['discounted_return'])))
         branch.restore();identities.append(dict(case=st['case'],parent_id=parent,source_digest=baseline,goal='HOLD' if mode else 'FOLLOW'))
     by={}
     for p in pairs:by.setdefault(p['parent_id'],[]).append(p['reward_order_correct'])
     correct=float(np.mean([np.mean(v) for v in by.values()])) if by else None
     # Full per-candidate traces remain reviewable. Absence of a structural counterexample is not inferred from lack of pairs.
-    enough=len(pairs)>=8 and len(by)>=4
-    result=dict(status='REWARD_QUALIFICATION_PASS' if enough and correct>=.8 else 'REWARD_QUALIFICATION_UNDERPOWERED' if not enough else 'REWARD_QUALIFICATION_FAIL',states=identities,candidates=rows,meaningful_strict_quality_pairs=pairs,pair_count=len(pairs),independent_parent_count=len(by),parent_equal_correct_fraction=correct,strict_dominance_definition='force/error weak Pareto, >=1cm or .5N useful difference; slip/yaw/support/joint each no worse',structural_counterexample_assessment='full candidate physical summaries required; PASS also requires explicit review before any optimizer',reward_checks=reward_checks,optimizer_updates=0,sealed_read=False)
+    tested={v['parent_id'] for v in identities}
+    goal_parents={g:{v['parent_id'] for v in identities if v['goal']==g} for g in ('FOLLOW','HOLD')}
+    enough=len(pairs)>=8 and len(tested)>=4 and all(len(v)>=2 for v in goal_parents.values())
+    result=dict(status='REWARD_QUALIFICATION_PASS' if enough and correct>=.8 else 'REWARD_QUALIFICATION_UNDERPOWERED' if not enough else 'REWARD_QUALIFICATION_FAIL',states=identities,candidates=rows,meaningful_strict_quality_pairs=pairs,pair_count=len(pairs),independent_tested_parent_count=len(tested),informative_pair_parent_count=len(by),goal_tested_parent_counts={k:len(v) for k,v in goal_parents.items()},parent_equal_correct_fraction=correct,strict_dominance_definition='force/error weak Pareto, >=1cm or .5N useful difference; slip/yaw/support/joint each no worse',structural_counterexample_assessment='full candidate physical summaries required; PASS also requires explicit review before any optimizer',reward_checks=reward_checks,optimizer_updates=0,sealed_read=False)
     (out/'reward.json').write_text(json.dumps(result,indent=2)+'\n');return result
 
 def main():

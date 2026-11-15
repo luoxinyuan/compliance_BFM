@@ -1,0 +1,18 @@
+{
+  "gate": "G02",
+  "status": "PASS",
+  "scope": "only fixed4 train-parent reward qualification",
+  "tested_parents": 4,
+  "informative_parents": 3,
+  "effective_pairs": 11,
+  "parent_weighted_agreement": 1.0,
+  "goal_counts": {
+    "FOLLOW": 2,
+    "HOLD": 2
+  },
+  "reward_file_sha256": "7f2681f3fff81c2e84fc062f0142a5d50d08c120dee1fe4b0437b8452bedc391",
+  "unit_file_sha256": "d1af9b8a16160ae5235ad33e13383c471e6fd9ee6d272f1fc75055a6f12157dd",
+  "physics_runtime": "22d0e6da7e83a943e198b632e7ef4cf3620d2099",
+  "optimization_authority": "disposable P1 scratch only; G05/G07 remain pending",
+  "scientific_thresholds_changed": false
+}

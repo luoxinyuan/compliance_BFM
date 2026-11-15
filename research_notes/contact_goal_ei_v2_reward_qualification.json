@@ -1,0 +1,1410 @@
+{
+  "status": "REWARD_QUALIFICATION_PASS",
+  "original_physics_runtime": "22d0e6da7e83a943e198b632e7ef4cf3620d2099",
+  "original_exit_code": 1,
+  "original_failure": "numpy.bool_ final JSON serialization after all24 physical candidates and assertions",
+  "source_progress_sha256": "c2ee7e0881c9016eca86876adcd1dc1b405c5f77e846d92acfd2368c347612ca",
+  "meaningful_strict_quality_pairs": [
+    {
+      "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "case": 4,
+      "style": "constant_command",
+      "better": 1,
+      "worse": 0,
+      "error_improvement_m": 0.008529884043345315,
+      "force_improvement_N": 0.8320988396393871,
+      "reward_order_correct": true
+    },
+    {
+      "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "case": 4,
+      "style": "constant_command",
+      "better": 0,
+      "worse": 3,
+      "error_improvement_m": 0.006422891835063865,
+      "force_improvement_N": 0.5487881798545522,
+      "reward_order_correct": true
+    },
+    {
+      "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "case": 4,
+      "style": "constant_command",
+      "better": 1,
+      "worse": 3,
+      "error_improvement_m": 0.01495277587840918,
+      "force_improvement_N": 1.3808870194939393,
+      "reward_order_correct": true
+    },
+    {
+      "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "case": 4,
+      "style": "constant_command",
+      "better": 2,
+      "worse": 3,
+      "error_improvement_m": 0.004913760827970452,
+      "force_improvement_N": 0.6016849466275094,
+      "reward_order_correct": true
+    },
+    {
+      "parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+      "case": 5,
+      "style": "constant_command",
+      "better": 0,
+      "worse": 2,
+      "error_improvement_m": 0.03736948650859637,
+      "force_improvement_N": 0.20123434894904024,
+      "reward_order_correct": true
+    },
+    {
+      "parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+      "case": 5,
+      "style": "constant_command",
+      "better": 0,
+      "worse": 3,
+      "error_improvement_m": 0.01302478291817014,
+      "force_improvement_N": 0.26402130797666823,
+      "reward_order_correct": true
+    },
+    {
+      "parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+      "case": 5,
+      "style": "constant_command",
+      "better": 1,
+      "worse": 2,
+      "error_improvement_m": 0.04333916589913723,
+      "force_improvement_N": 0.9340431233701265,
+      "reward_order_correct": true
+    },
+    {
+      "parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+      "case": 5,
+      "style": "constant_command",
+      "better": 1,
+      "worse": 3,
+      "error_improvement_m": 0.018994462308711,
+      "force_improvement_N": 0.9968300823977545,
+      "reward_order_correct": true
+    },
+    {
+      "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "case": 10,
+      "style": "constant_command",
+      "better": 1,
+      "worse": 0,
+      "error_improvement_m": 0.0052174321169086366,
+      "force_improvement_N": 0.7786739712692818,
+      "reward_order_correct": true
+    },
+    {
+      "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "case": 10,
+      "style": "constant_command",
+      "better": 1,
+      "worse": 3,
+      "error_improvement_m": 0.004447891068634656,
+      "force_improvement_N": 0.6491922691761509,
+      "reward_order_correct": true
+    },
+    {
+      "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "case": 10,
+      "style": "constant_command",
+      "better": 2,
+      "worse": 3,
+      "error_improvement_m": 0.012517913218996778,
+      "force_improvement_N": 1.8605811300591377,
+      "reward_order_correct": true
+    }
+  ],
+  "pair_count": 11,
+  "independent_tested_parent_count": 4,
+  "informative_pair_parent_count": 3,
+  "goal_tested_parent_counts": {
+    "FOLLOW": 2,
+    "HOLD": 2
+  },
+  "parent_equal_correct_fraction": 1.0,
+  "control_flow_conformance_fix": "original draft helper accidentally required4 informative-pair parents; signed section2.3 requires4 tested parents,>=2 perGoal,>=8 meaningful pairs. Counts reported separately; no fourth informative parent invented; no threshold changed.",
+  "structural_review": {
+    "status": "NO_MATCHED_STRUCTURAL_COUNTEREXAMPLE_FOUND_IN_FIXED_PROBES",
+    "basis": "all11 strict physically dominant pairs correctly ranked; no clean matched solution was ranked below sustained cap nonprogress. Does not prove universal correctness.",
+    "important_limit": "HOLD-stop case8 contains a goal/force tradeoff and near-cap force; no strict Pareto pair. It is4th tested parent, not4th informative comparison parent. No clean task completion certified at that state.",
+    "human_interpretation": "HOLD is its own fixed wrist target; lack of following the moving anchor under HOLD alone is not a force-following hack."
+  },
+  "new_physics_ticks": 0,
+  "new_optimizer_updates": 0,
+  "candidates": [
+    {
+      "case": 4,
+      "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "label": "reward-local_follow",
+      "goal": "FOLLOW",
+      "style": "constant_command",
+      "option": 0,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.035119688054723264,
+        "force_N": 2.8267411203084762,
+        "active_ticks": 400,
+        "discounted_return": -0.9480661557898753,
+        "integrated_return": -1.0656219139548524,
+        "quality": {
+          "slip_peak": 0.006149373467401709,
+          "slip_p95": 0.0025437094614781386,
+          "slip_p90": 0.0020732504157551005,
+          "yaw_excursion_deg": 6.864470846891822,
+          "yaw_net_deg": 6.864470846891822,
+          "yaw_range_deg": 6.864470846891822,
+          "yaw_TV_deg": 6.864470846891822,
+          "root_path_m": 0.02618022996858274,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.002083675763163692,
+              "left_ankle_roll_link": 0.002249567988577403
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 4,
+      "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "label": "reward-local_follow",
+      "goal": "FOLLOW",
+      "style": "constant_command",
+      "option": 1,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.02658980401137795,
+        "force_N": 1.994642280669089,
+        "active_ticks": 400,
+        "discounted_return": -0.49394413275263477,
+        "integrated_return": -0.5410727631082762,
+        "quality": {
+          "slip_peak": 0.006149373467401709,
+          "slip_p95": 0.00286059271932695,
+          "slip_p90": 0.0024545356590372582,
+          "yaw_excursion_deg": 5.625231710318616,
+          "yaw_net_deg": 5.625231710318616,
+          "yaw_range_deg": 5.625231710318616,
+          "yaw_TV_deg": 5.625231710318616,
+          "root_path_m": 0.025807119591207985,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.0024246360958868904,
+              "left_ankle_roll_link": 0.0028925855333177403
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 4,
+      "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "label": "reward-local_follow",
+      "goal": "FOLLOW",
+      "style": "constant_command",
+      "option": 2,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.03662881906181668,
+        "force_N": 2.773844353535519,
+        "active_ticks": 400,
+        "discounted_return": -0.9713094901345583,
+        "integrated_return": -1.037022312281753,
+        "quality": {
+          "slip_peak": 0.006149373467401709,
+          "slip_p95": 0.003959863054034416,
+          "slip_p90": 0.0038727060621497984,
+          "yaw_excursion_deg": 1.1893354321384835,
+          "yaw_net_deg": 0.9449875137729865,
+          "yaw_range_deg": 1.2006114766752345,
+          "yaw_TV_deg": 2.901253978452224,
+          "root_path_m": 0.014824889461043777,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.006169241217317379,
+              "left_ankle_roll_link": 0.004207773400631354
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 4,
+      "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "label": "reward-local_follow",
+      "goal": "FOLLOW",
+      "style": "constant_command",
+      "option": 3,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.04154257988978713,
+        "force_N": 3.3755293001630284,
+        "active_ticks": 400,
+        "discounted_return": -1.3288114272981226,
+        "integrated_return": -1.5041769109436116,
+        "quality": {
+          "slip_peak": 0.020150646714567892,
+          "slip_p95": 0.007360653338133026,
+          "slip_p90": 0.005917018344389682,
+          "yaw_excursion_deg": 9.757813689519057,
+          "yaw_net_deg": 8.257232001667536,
+          "yaw_range_deg": 9.757813689519057,
+          "yaw_TV_deg": 12.700154936068069,
+          "root_path_m": 0.07746164338724207,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.009065609608313926,
+              "left_ankle_roll_link": 0.008751551622792014
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 4,
+      "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "label": "reward-local_follow",
+      "goal": "FOLLOW",
+      "style": "first_100ms_then_shared_goal_policy",
+      "option": 0,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.03492673083903955,
+        "force_N": 2.7296207272491158,
+        "active_ticks": 400,
+        "discounted_return": -0.9443271466449413,
+        "integrated_return": -1.0098828205124069,
+        "quality": {
+          "slip_peak": 0.006149373467401709,
+          "slip_p95": 0.0035221358316762626,
+          "slip_p90": 0.0034769406781154635,
+          "yaw_excursion_deg": 2.1353530583135827,
+          "yaw_net_deg": 1.2465416410296686,
+          "yaw_range_deg": 2.1353530583135827,
+          "yaw_TV_deg": 4.741394023558993,
+          "root_path_m": 0.01695923414809585,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.0058226338702855,
+              "left_ankle_roll_link": 0.004060074706767803
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 4,
+      "parent_id": "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+      "label": "reward-local_follow",
+      "goal": "FOLLOW",
+      "style": "first_100ms_then_shared_goal_policy",
+      "option": 2,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.03662881906181668,
+        "force_N": 2.773844353535519,
+        "active_ticks": 400,
+        "discounted_return": -0.9713094901345583,
+        "integrated_return": -1.037022312281753,
+        "quality": {
+          "slip_peak": 0.006149373467401709,
+          "slip_p95": 0.003959863054034416,
+          "slip_p90": 0.0038727060621497984,
+          "yaw_excursion_deg": 1.1893354321384835,
+          "yaw_net_deg": 0.9449875137729865,
+          "yaw_range_deg": 1.2006114766752345,
+          "yaw_TV_deg": 2.901253978452224,
+          "root_path_m": 0.014824889461043777,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.006169241217317379,
+              "left_ankle_roll_link": 0.004207773400631354
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 5,
+      "parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+      "label": "reward-local_hold",
+      "goal": "HOLD",
+      "style": "constant_command",
+      "option": 0,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.017673213021795094,
+        "force_N": 1.8018774733071758,
+        "active_ticks": 400,
+        "discounted_return": -1.832440322152523,
+        "integrated_return": -1.9901869021288767,
+        "quality": {
+          "slip_peak": 0.0025928366279109496,
+          "slip_p95": 0.0013564711979320045,
+          "slip_p90": 0.0013075790004425478,
+          "yaw_excursion_deg": 0.2384986295507681,
+          "yaw_net_deg": 0.2384986295507681,
+          "yaw_range_deg": 0.2384986295507681,
+          "yaw_TV_deg": 0.2384986295507681,
+          "root_path_m": 0.00867443559231405,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.0021070497069511558,
+              "left_ankle_roll_link": 0.0019657733646864795
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 5,
+      "parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+      "label": "reward-local_hold",
+      "goal": "HOLD",
+      "style": "constant_command",
+      "option": 1,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.011703533631254232,
+        "force_N": 1.0690686988860896,
+        "active_ticks": 400,
+        "discounted_return": -0.7936678240940526,
+        "integrated_return": -0.8776195844827325,
+        "quality": {
+          "slip_peak": 0.0025928366279109496,
+          "slip_p95": 0.001890470248477819,
+          "slip_p90": 0.0016967163441429511,
+          "yaw_excursion_deg": 0.8447882592633861,
+          "yaw_net_deg": -0.8447882592633861,
+          "yaw_range_deg": 0.949575030526048,
+          "yaw_TV_deg": 1.05436180178871,
+          "root_path_m": 0.005597367296859737,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.002676539385380576,
+              "left_ankle_roll_link": 0.0024272931899530334
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 5,
+      "parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+      "label": "reward-local_hold",
+      "goal": "HOLD",
+      "style": "constant_command",
+      "option": 2,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.05504269953039146,
+        "force_N": 2.003111822256216,
+        "active_ticks": 400,
+        "discounted_return": -14.88401309928261,
+        "integrated_return": -16.43371292984115,
+        "quality": {
+          "slip_peak": 0.003986279747649417,
+          "slip_p95": 0.003875622753234799,
+          "slip_p90": 0.003813254839162862,
+          "yaw_excursion_deg": 5.58334056367538,
+          "yaw_net_deg": -5.532833816436463,
+          "yaw_range_deg": 5.610663270555067,
+          "yaw_TV_deg": 7.025727766148381,
+          "root_path_m": 0.03431382408429947,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.006220576734700843,
+              "left_ankle_roll_link": 0.004187985501422156
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 5,
+      "parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+      "label": "reward-local_hold",
+      "goal": "HOLD",
+      "style": "constant_command",
+      "option": 3,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.030697995939965233,
+        "force_N": 2.065898781283844,
+        "active_ticks": 400,
+        "discounted_return": -4.682373610752745,
+        "integrated_return": -5.362882218689942,
+        "quality": {
+          "slip_peak": 0.02154617919547578,
+          "slip_p95": 0.0077582983268203514,
+          "slip_p90": 0.006461025200147455,
+          "yaw_excursion_deg": 3.260162045675039,
+          "yaw_net_deg": 1.8952435204945082,
+          "yaw_range_deg": 3.260162045675039,
+          "yaw_TV_deg": 6.419318723335145,
+          "root_path_m": 0.06964861162390436,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.009311024540090222,
+              "left_ankle_roll_link": 0.00838712787432154
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 5,
+      "parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+      "label": "reward-local_hold",
+      "goal": "HOLD",
+      "style": "first_100ms_then_shared_goal_policy",
+      "option": 0,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.017673213021795094,
+        "force_N": 1.8018774733071758,
+        "active_ticks": 400,
+        "discounted_return": -1.832440322152523,
+        "integrated_return": -1.9901869021288767,
+        "quality": {
+          "slip_peak": 0.0025928366279109496,
+          "slip_p95": 0.0013564711979320045,
+          "slip_p90": 0.0013075790004425478,
+          "yaw_excursion_deg": 0.2384986295507681,
+          "yaw_net_deg": 0.2384986295507681,
+          "yaw_range_deg": 0.2384986295507681,
+          "yaw_TV_deg": 0.2384986295507681,
+          "root_path_m": 0.00867443559231405,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.0021070497069511558,
+              "left_ankle_roll_link": 0.0019657733646864795
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 5,
+      "parent_id": "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+      "label": "reward-local_hold",
+      "goal": "HOLD",
+      "style": "first_100ms_then_shared_goal_policy",
+      "option": 2,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.017084708910796765,
+        "force_N": 1.878461843969295,
+        "active_ticks": 400,
+        "discounted_return": -2.1313670203110315,
+        "integrated_return": -2.2585698021801117,
+        "quality": {
+          "slip_peak": 0.002769424020040842,
+          "slip_p95": 0.0017982600305067409,
+          "slip_p90": 0.0014218299805389058,
+          "yaw_excursion_deg": 1.1099198474083007,
+          "yaw_net_deg": 0.11602999420041908,
+          "yaw_range_deg": 1.2259498416087198,
+          "yaw_TV_deg": 2.3906134175904645,
+          "root_path_m": 0.014023441206128445,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.0022329337932019107,
+              "left_ankle_roll_link": 0.0019570146512549254
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 8,
+      "parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+      "label": "reward-stop_crossing",
+      "goal": "HOLD",
+      "style": "constant_command",
+      "option": 0,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.05369184660065802,
+        "force_N": 10.0,
+        "active_ticks": 400,
+        "discounted_return": -24.434963037860708,
+        "integrated_return": -27.010030730039578,
+        "quality": {
+          "slip_peak": 0.005935217433077168,
+          "slip_p95": 0.0020100538453770712,
+          "slip_p90": 0.002006683839675882,
+          "yaw_excursion_deg": 1.0565416389592617,
+          "yaw_net_deg": 1.0565416389592617,
+          "yaw_range_deg": 1.0623810180154976,
+          "yaw_TV_deg": 1.0682203970717332,
+          "root_path_m": 0.01038587579466704,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.0038956449702573985,
+              "left_ankle_roll_link": 0.0030285771247171777
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 8,
+      "parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+      "label": "reward-stop_crossing",
+      "goal": "HOLD",
+      "style": "constant_command",
+      "option": 1,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.06556730394516934,
+        "force_N": 9.986143105995613,
+        "active_ticks": 400,
+        "discounted_return": -30.751876559229096,
+        "integrated_return": -34.03955056129083,
+        "quality": {
+          "slip_peak": 0.005935217433077168,
+          "slip_p95": 0.002064068783699232,
+          "slip_p90": 0.0020362287389232483,
+          "yaw_excursion_deg": 0.2740583548450397,
+          "yaw_net_deg": 0.2740583548450397,
+          "yaw_range_deg": 0.2868743901972981,
+          "yaw_TV_deg": 0.4470794943193846,
+          "root_path_m": 0.007458734830930813,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.003819835256836585,
+              "left_ankle_roll_link": 0.0025359819010936833
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 8,
+      "parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+      "label": "reward-stop_crossing",
+      "goal": "HOLD",
+      "style": "constant_command",
+      "option": 2,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.08127651143967018,
+        "force_N": 7.8141022757004635,
+        "active_ticks": 400,
+        "discounted_return": -37.320630142091254,
+        "integrated_return": -41.400688092728544,
+        "quality": {
+          "slip_peak": 0.005935217433077168,
+          "slip_p95": 0.0034514330856037544,
+          "slip_p90": 0.0032835473809669662,
+          "yaw_excursion_deg": 4.1463586459972515,
+          "yaw_net_deg": -4.062807978066865,
+          "yaw_range_deg": 4.157183627447216,
+          "yaw_TV_deg": 4.9250421909590605,
+          "root_path_m": 0.03200553039104325,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.0052095826850393585,
+              "left_ankle_roll_link": 0.005161008359036457
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 8,
+      "parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+      "label": "reward-stop_crossing",
+      "goal": "HOLD",
+      "style": "constant_command",
+      "option": 3,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.050073295570874296,
+        "force_N": 10.0,
+        "active_ticks": 400,
+        "discounted_return": -22.99439739708295,
+        "integrated_return": -25.207186064494568,
+        "quality": {
+          "slip_peak": 0.031714621605234423,
+          "slip_p95": 0.016145554238424096,
+          "slip_p90": 0.011949898857475398,
+          "yaw_excursion_deg": 3.524000220051918,
+          "yaw_net_deg": 1.826513059509036,
+          "yaw_range_deg": 3.563474496478404,
+          "yaw_TV_deg": 6.371979431196631,
+          "root_path_m": 0.06194715679666109,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.011504071461993818,
+              "left_ankle_roll_link": 0.009138408761872668
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 8,
+      "parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+      "label": "reward-stop_crossing",
+      "goal": "HOLD",
+      "style": "first_100ms_then_shared_goal_policy",
+      "option": 0,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.05369184660065802,
+        "force_N": 10.0,
+        "active_ticks": 400,
+        "discounted_return": -24.434963037860708,
+        "integrated_return": -27.010030730039578,
+        "quality": {
+          "slip_peak": 0.005935217433077168,
+          "slip_p95": 0.0020100538453770712,
+          "slip_p90": 0.002006683839675882,
+          "yaw_excursion_deg": 1.0565416389592617,
+          "yaw_net_deg": 1.0565416389592617,
+          "yaw_range_deg": 1.0623810180154976,
+          "yaw_TV_deg": 1.0682203970717332,
+          "root_path_m": 0.01038587579466704,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.0038956449702573985,
+              "left_ankle_roll_link": 0.0030285771247171777
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 8,
+      "parent_id": "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+      "label": "reward-stop_crossing",
+      "goal": "HOLD",
+      "style": "first_100ms_then_shared_goal_policy",
+      "option": 2,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.05471333092753966,
+        "force_N": 9.947203317637332,
+        "active_ticks": 400,
+        "discounted_return": -25.053427061900038,
+        "integrated_return": -27.7086313595406,
+        "quality": {
+          "slip_peak": 0.005935217433077168,
+          "slip_p95": 0.0024449162270602843,
+          "slip_p90": 0.0021749326701002167,
+          "yaw_excursion_deg": 0.8837431111166965,
+          "yaw_net_deg": 0.8837431111166965,
+          "yaw_range_deg": 1.635061923553139,
+          "yaw_TV_deg": 2.415438343457265,
+          "root_path_m": 0.015120047047171015,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.003948585924003909,
+              "left_ankle_roll_link": 0.0030356841012671595
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 10,
+      "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "label": "reward-release_crossing",
+      "goal": "FOLLOW",
+      "style": "constant_command",
+      "option": 0,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.054015517427597054,
+        "force_N": 3.6796650417130774,
+        "active_ticks": 40,
+        "discounted_return": -0.18658570019600004,
+        "integrated_return": -0.18888833527296958,
+        "quality": {
+          "slip_peak": 0.00259377091473674,
+          "slip_p95": 0.002303575035232509,
+          "slip_p90": 0.0022767352760583374,
+          "yaw_excursion_deg": 3.8259162824685755,
+          "yaw_net_deg": 3.6470552415130277,
+          "yaw_range_deg": 3.8259162824685755,
+          "yaw_TV_deg": 4.004777323424124,
+          "root_path_m": 0.02464629777764478,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.0016442876602648557,
+              "left_ankle_roll_link": 0.003951847957551851
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 10,
+      "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "label": "reward-release_crossing",
+      "goal": "FOLLOW",
+      "style": "constant_command",
+      "option": 1,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.04879808531068842,
+        "force_N": 2.9009910704437956,
+        "active_ticks": 40,
+        "discounted_return": -0.11975416274332262,
+        "integrated_return": -0.12122299907591844,
+        "quality": {
+          "slip_peak": 0.002364074287511992,
+          "slip_p95": 0.002310048240550205,
+          "slip_p90": 0.0022990284455860215,
+          "yaw_excursion_deg": 3.15679707280396,
+          "yaw_net_deg": 2.899402354403928,
+          "yaw_range_deg": 3.15679707280396,
+          "yaw_TV_deg": 3.414191791203992,
+          "root_path_m": 0.027696811728893878,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.0014213548772914809,
+              "left_ankle_roll_link": 0.004095953855351288
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 10,
+      "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "label": "reward-release_crossing",
+      "goal": "FOLLOW",
+      "style": "constant_command",
+      "option": 2,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.040728063160326296,
+        "force_N": 1.6896022095608088,
+        "active_ticks": 40,
+        "discounted_return": -0.04539690883155647,
+        "integrated_return": -0.04593767373279616,
+        "quality": {
+          "slip_peak": 0.002630451539600754,
+          "slip_p95": 0.0024398739981067344,
+          "slip_p90": 0.002377462750539804,
+          "yaw_excursion_deg": 1.2894485588096525,
+          "yaw_net_deg": -1.0844126502642848,
+          "yaw_range_deg": 1.322182371054903,
+          "yaw_TV_deg": 2.7010776194710813,
+          "root_path_m": 0.010255796007373141,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.003950585292080258,
+              "left_ankle_roll_link": 0.0031755258511900696
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 10,
+      "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "label": "reward-release_crossing",
+      "goal": "FOLLOW",
+      "style": "constant_command",
+      "option": 3,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.05324597637932307,
+        "force_N": 3.5501833396199465,
+        "active_ticks": 40,
+        "discounted_return": -0.2044250777213439,
+        "integrated_return": -0.21118791167234136,
+        "quality": {
+          "slip_peak": 0.009360840759400437,
+          "slip_p95": 0.005750720534397712,
+          "slip_p90": 0.005072382030194606,
+          "yaw_excursion_deg": 6.496923459646429,
+          "yaw_net_deg": 4.14956167333394,
+          "yaw_range_deg": 6.496923459646429,
+          "yaw_TV_deg": 9.137567093085561,
+          "root_path_m": 0.10611668346277486,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.007878902553301103,
+              "left_ankle_roll_link": 0.006055153174736002
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 10,
+      "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "label": "reward-release_crossing",
+      "goal": "FOLLOW",
+      "style": "first_100ms_then_shared_goal_policy",
+      "option": 0,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.05394590782959334,
+        "force_N": 3.5676795087095416,
+        "active_ticks": 40,
+        "discounted_return": -0.175427130071552,
+        "integrated_return": -0.17756120542489406,
+        "quality": {
+          "slip_peak": 0.00259377091473674,
+          "slip_p95": 0.0024868765654918225,
+          "slip_p90": 0.002459504661076789,
+          "yaw_excursion_deg": 1.2553514878352225,
+          "yaw_net_deg": -1.0995410973826394,
+          "yaw_range_deg": 2.2795355513092757,
+          "yaw_TV_deg": 4.212403492492901,
+          "root_path_m": 0.01385506411308842,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.0038401525288931215,
+              "left_ankle_roll_link": 0.003073979922038958
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    },
+    {
+      "case": 10,
+      "parent_id": "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+      "label": "reward-release_crossing",
+      "goal": "FOLLOW",
+      "style": "first_100ms_then_shared_goal_policy",
+      "option": 2,
+      "source_full_state_exact": true,
+      "metrics": {
+        "error_m": 0.040728063160326296,
+        "force_N": 1.6896022095608088,
+        "active_ticks": 40,
+        "discounted_return": -0.04539690883155647,
+        "integrated_return": -0.04593767373279616,
+        "quality": {
+          "slip_peak": 0.002630451539600754,
+          "slip_p95": 0.0024398739981067344,
+          "slip_p90": 0.002377462750539804,
+          "yaw_excursion_deg": 1.2894485588096525,
+          "yaw_net_deg": -1.0844126502642848,
+          "yaw_range_deg": 1.322182371054903,
+          "yaw_TV_deg": 2.7010776194710813,
+          "root_path_m": 0.010255796007373141,
+          "unsupported_ticks": 0,
+          "max_joint_excess_rad": 0.0,
+          "old_loaded_threshold_N": 1e-06,
+          "slip_semantics": {
+            "old_loaded_overlimit_contact_rows": 0,
+            "loaded_landing_transient_rows": 0,
+            "persistent_pre_post_rows": 0,
+            "old_loaded_overlimit_ticks": 0,
+            "persistent_pre_post_ticks": 0,
+            "transient_only_ticks": 0,
+            "max_consecutive_persistent_s": {
+              "right_ankle_roll_link": 0.0,
+              "left_ankle_roll_link": 0.0
+            },
+            "loaded_point_speed_integral_m": {
+              "right_ankle_roll_link": 0.003950585292080258,
+              "left_ankle_roll_link": 0.0031755258511900696
+            },
+            "transient_normal_impulse_Ns": {},
+            "event_normal_N_min": null,
+            "event_normal_N_max": null,
+            "threshold_N": 1e-06,
+            "threshold_mps": 0.45,
+            "scope": "all contacts retained; durations deduplicate simultaneous same-body contacts; max loaded point speed integral is travel proxy, not tracked-material-point displacement"
+          },
+          "material_point_displacement": "UNMEASURED; body-local/world points retained, speed integral is not material displacement"
+        }
+      },
+      "boundary": null
+    }
+  ]
+}

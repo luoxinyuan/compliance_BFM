@@ -26,7 +26,7 @@ def study(e,base,c,out):
     torch.set_num_threads(1);torch.use_deterministic_algorithms(True)
     contact_install();install();speed(e);(out/'backend-prefix').mkdir();backend(e,base,out/'backend-prefix');install_restore_guard()
     random.seed(660301);np.random.seed(660301);torch.manual_seed(660301);torch.cuda.manual_seed_all(660301)
-    reward=json.loads((STAGE/'runs/P1-reward-01/reward.json').read_text());assert reward['status']=='REWARD_QUALIFICATION_PASS'
+    reward=json.loads((STAGE/'runs/P1-reward-report-recovery-01/reward-recovered.json').read_text());assert reward['status']=='REWARD_QUALIFICATION_PASS'
     gate=json.loads((STAGE/'locks/P1-reward-review.json').read_text());assert gate['status']=='PASS' and gate['reward_file_sha256']
     parents=json.loads((STAGE/'locks/execution-train.json').read_text())['parents'];order=json.loads((STAGE/'locks/training-order.json').read_text())
     ids=order['parent_ids'];by={p['parent_id']:p for p in parents};parents=[by[k] for k in ids]
