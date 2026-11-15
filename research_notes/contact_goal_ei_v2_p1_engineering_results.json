@@ -297,11 +297,11 @@
     }
   },
   "cost": {
-    "stage_job_s": 7707.703623851936,
+    "stage_job_s": 7807.703623851936,
     "phase_job_s": {
       "P0": 3110.6390663280035,
       "reserve": 10,
-      "P6": 750.0,
+      "P6": 850.0,
       "P1": 3837.0645575239323
     },
     "phase_caps": {
@@ -326,14 +326,15 @@
       "reserved": 201096
     },
     "budget_allocation": {
-      "old_R2_charged_s": 7707.703623851936,
+      "old_R2_charged_s": 7807.703623851936,
       "new_separate_6000_charged_s": 0,
-      "R2_after_stage_s": 29245.631880932197,
-      "R2_remaining_s": 28354.368119067803
+      "R2_after_stage_s": 29345.631880932197,
+      "R2_remaining_s": 28254.368119067803
     },
     "P1_bytes": 797625031,
     "P1_GiB": 0.7428461974486709,
-    "combined_stage_and_review_GiB": 1.1845851615071297
+    "combined_stage_and_review_GiB": 1.1845851615071297,
+    "closing_receipt_upper_s": 100
   },
   "cold_job_wall_s": {
     "P1-frozen-mean-01": 1214.9916325140512,
