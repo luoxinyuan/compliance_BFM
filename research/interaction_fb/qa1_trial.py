@@ -7,6 +7,7 @@ import m11_ipc  # also imported by forkserver children before creating Manager s
 P=ROOT.parents[2]
 OLD=P/'experiments/r2-v11-qentry-20261114'
 STAGE=P/'experiments/r2-g17-qa1-20261115'
+ONLY_C=False
 
 def write(p,x):
     tmp=p.with_suffix('.pending.json');tmp.write_text(json.dumps(x,indent=2,allow_nan=False));os.replace(tmp,p)
@@ -39,7 +40,21 @@ def study(e,m,c,out):
             ix=self.qa_schedule[self.qa_cursor];self.qa_cursor+=1
             return ix,stack([rr[int(i)] for i in ix])
     agent=Fixed(m,obs,e.standing,torch.tensor(c['q_PD_scale'],device='cuda'),'E',init)
-    agent.load(s['agent'])
+    def pristine_load(learner):
+        # Adam.load_state_dict may retain CPU step tensor storage. Every load
+        # receives a private complete snapshot; the CPU source remains pristine.
+        assert tree_digest(s['agent'])==lock['source_agent_digest']
+        learner.load(copy.deepcopy(s['agent']))
+        assert tree_digest(learner.state())==lock['source_agent_digest']
+        assert tree_digest(s['agent'])==lock['source_agent_digest']
+        for key in ('q1','q2'):
+            now=learner.opts[key].state_dict()['state'];original=s['agent']['optimizers'][key]['state']
+            for index,record in original.items():
+                for name,value in record.items():
+                    current=now[index][name]
+                    if torch.is_tensor(value) and value.numel() and value.device.type==current.device.type=='cpu':
+                        assert value.data_ptr()!=current.data_ptr(),('Optimizer source alias',key,index,name)
+    pristine_load(agent)
     def frozen(a):
         ss=a.state();ss=copy.copy(ss)
         for k in ('audit','updates','q_steps'):ss.pop(k)
@@ -117,14 +132,38 @@ def study(e,m,c,out):
         write(path.with_suffix('.manifest.json'),dict(**info,logical_digest=digest,source_manifest_sha256=lock['source_manifest_sha256'],node=node,branch=branch,readback_exact=True))
         return info
     results={};timings=[]
-    for branch in ('U','C'):
-        agent.load(s['agent']);restore_global_rng(rng0);agent.qa_cursor=0;agent.qa_schedule=schedule[branch]
+    if ONLY_C:
+        old=STAGE/'runs/fixed-replay-02'
+        archive=json.loads((ROOT/'research_notes/r2_ei_qa1_results.json').read_text())
+        for name,record in archive['snapshots'].items():
+            assert json.loads((old/name).read_text())==record
+            packet_path=old/name.replace('.manifest.json','.ptz')
+            assert hashlib.sha256(packet_path.read_bytes()).hexdigest()==record['sha256']
+        reused=json.loads((old/'results-partial.json').read_text())['U']
+        reused['nodes']={int(k):v for k,v in reused['nodes'].items()}
+        reused['reuse_runtime']='9d48d4d7328c24ef8518a8af67e097c8af4be38a'
+        reused['reused_without_update']=True;results['U']=reused
+        write(out/'U-reuse-proof.json',dict(manifests=archive['snapshots'],old_result_sha256=hashlib.sha256((old/'results-partial.json').read_bytes()).hexdigest(),updates=0))
+    for branch in (('C',) if ONLY_C else ('U','C')):
+        pristine_load(agent);restore_global_rng(rng0);agent.qa_cursor=0;agent.qa_schedule=schedule[branch]
         assert frozen(agent)==frozen0 and tree_digest(agent.state())==lock['source_agent_digest']
         counts=schedule['historical_counts'].numpy().copy();records=[];nodes={56:base};snapshots={56:save(branch,56)}
         for group in range(57,513):
             before=time.monotonic()
             with torch.enable_grad():rec=agent.q_update(rows)
             torch.cuda.synchronize()
+            if group==57:
+                # First real C update is part of its456 groups, not an extra
+                # diagnostic update. Reload an independent learner afterwards.
+                assert tree_digest(s['agent'])==lock['source_agent_digest']
+                probe=Fixed(m,obs,e.standing,torch.tensor(c['q_PD_scale'],device='cuda'),'E',init)
+                pristine_load(probe)
+                assert probe.q_steps==56 and agent.q_steps==57
+                assert tree_digest(global_rng())==tree_digest(rng0)
+                write(out/'post-first-update-load-isolation.json',dict(source_unchanged=True,
+                    next_independent_learner_exact=True,actual_Q_group=57,source_Q_group=56,
+                    all_Q_optimizer_CPU_tensors_private=True,extra_Q_updates=0,global_rng_unchanged=True))
+                del probe
             assert rec['indices']==schedule[branch][group-57].tolist()
             for j in rec['indices']:counts[j]+=1
             rec.update(total_group=group,new_unique=int((counts>0).sum()),update_s=time.monotonic()-before)
@@ -134,6 +173,7 @@ def study(e,m,c,out):
             records.append(rec)
             assert np.isfinite(rec['losses']).all() and agent.actor_steps==0
             if group in (128,256,512):
+                assert tree_digest(s['agent'])==lock['source_agent_digest'],'Pristine source cache changed'
                 assert frozen(agent)==frozen0,'Non-Q mutable state changed'
                 assert tree_digest(global_rng())==tree_digest(rng0),'Unscheduled global RNG draw'
                 nodes[group]=evaluate();snapshots[group]=save(branch,group)
@@ -156,7 +196,8 @@ def study(e,m,c,out):
     write(out/'qa1-result.json',answer);return answer
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    global ONLY_C
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--only-c',action='store_true');a=p.parse_args();ONLY_C=a.only_c
     from research.interaction_fb import benchmark
     benchmark.study=study;sys.argv=[__file__,'--output',str(a.output),'--arm','A'];benchmark.main()
 if __name__=='__main__':main()
