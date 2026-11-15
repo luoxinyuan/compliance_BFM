@@ -52,8 +52,12 @@ class ContactGoalAgent:
         ctx=self.goal_encoder(pred.reshape(-1,24)).reshape(len(z),3,16).mean(1) if self.arm=='E' else pred.mean(1)
         return pred,ctx
     def mean(self,o,z,option):
+        # Same FP32 batch-one execution used by the real single-env sampler.
+        # Preserve autograd; do not loosen logprob assertions to use a different numerical forward.
+        if len(z)>1:
+            return torch.cat([self.mean({k:v[i:i+1] for k,v in o.items()},z[i:i+1],option[i:i+1]) for i in range(len(z))],0)
         h=self.frozen_features(o,z);gy,mask,mode=self.goal(o)
-        _,ctx=self.context(o,z,option)
+        _,ctx=self.context(o,o.get('_first_interpolated_z',z),option)
         cond=torch.cat((deploy(o),self.public(o),self.goal_encoder(gy),ctx),-1)
         gamma,beta=self.film(cond).chunk(2,-1)
         return torch.tanh(self.tail((1.+gamma)*h+beta))
@@ -74,7 +78,7 @@ class ContactGoalAgent:
     def logp(u,mu):return (-.5*((u-mu)/SIGMA).square()-math.log(SIGMA)-.5*math.log(2*math.pi)).sum(-1)
     def auxiliary(self,o,z,option,y,mask):
         # y is already standardized 3x24, mask contains real horizon validity.
-        pred,_=self.context(o,z,option);w=mask.to(y.dtype)
+        pred,_=self.context(o,o.get('_first_interpolated_z',z),option);w=mask.to(y.dtype)
         def avg(x):return (x*w).sum()/w.sum().clamp_min(1)
         if self.arm=='E':return avg((pred-y).square().mean(-1)),{'outcome':float(avg((pred-y).square().mean(-1)).detach())}
         b=self.goal_encoder(y.reshape(-1,24)).reshape(len(y),3,16)

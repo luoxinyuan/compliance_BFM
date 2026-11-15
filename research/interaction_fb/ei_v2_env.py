@@ -49,7 +49,7 @@ class GoalProxy(NativeActor):
         before=self.previous_z.to(dev)
         goal,mask,mode=self.env.public_goal()
         own=torch.zeros(1,5,device=dev);own[0,self.env.option]=1;own[0,4]=self.env.option_age/5
-        return dict(o,_previous_z=before,_target_z=(before if self.target is None else self.target),_slot=torch.tensor([[self.slot]],device=dev),_goal_y=goal,_goal_mask=mask,_goal_mode=mode,_option_memory=own)
+        return dict(o,_previous_z=before,_target_z=(before if self.target is None else self.target),_slot=torch.tensor([[self.slot]],device=dev),_goal_y=goal,_goal_mask=mask,_goal_mode=mode,_option_memory=own,_first_interpolated_z=(before if self.env.macro_start is None else spherical(self.env.macro_start,self.env.macro_target,.2)))
     def finish_pending(self):
         if self.pending is not None:self.pending['next_observation']=cpu_obs(self.enrich(self.task.extended_observation()));self.pending=None
     def act(self,obs,z,mean=True):
@@ -99,7 +99,7 @@ class GoalEnvironment:
         from f1_mjdata_contract import canonical,metadata,exact
         p=self.proxy;t=self.task;case=self.cases[index];self.spec_id=index;self.goal_stream=case['goal_stream'];self.goal_world=None;self.goal_changed=False
         self.option=0;self.option_age=0;self.command_slot=0;self.offset=0;self.motion_phase=None;self.motion_steps=0
-        self.goal_mode=0;t.v2_goal_mode=0;t.v2_goal_position_world=None;t.v2_interpolation=None
+        self.goal_mode=0;self.macro_start=None;self.macro_target=None;t.v2_goal_mode=0;t.v2_goal_position_world=None;t.v2_interpolation=None
         p.begin_source();p.slot=0;p.start=None;p.target=None
         t.reset(case['spec'],record=True,label='v2-'+str(index));p.finish_pending()
         self.handoff=float(self.e.tether.time);self.native.extend(copy.deepcopy(p.source_pairs))
@@ -146,7 +146,8 @@ class GoalEnvironment:
             o=p.enrich(t.extended_observation())
             if self.phase=='P3' and self.command_slot%5==0:
                 old_logits=self.agent.logits(o,candidate_first);dist=torch.distributions.Categorical(logits=old_logits)
-                self.option=int(dist.sample()) if p.stochastic else int(old_logits.argmax(-1));self.option_age=0;cat_boundary=True
+                forced=getattr(self,'replay_option',None)
+                self.option=(int(forced) if forced is not None else (int(dist.sample()) if p.stochastic else int(old_logits.argmax(-1))));self.option_age=0;cat_boundary=True
             elif self.phase=='P2':self.option=0 if self.goal_mode else 2
             self.raw_target=raw[self.option];self.macro_target=zs[self.option:self.option+1];p.target=self.macro_target
             if self.option==3:
@@ -157,11 +158,15 @@ class GoalEnvironment:
             selector_obs=cpu_obs(o)
         else:selector_obs=None
         first=len(t.physics);rows,done,stats=p.take_step(self.raw_target,n)
-        self.physical_stream.extend(copy.deepcopy(t.physics[first:]));self.instructions.append(dict(raw=self.raw_target.detach().cpu(),offset=self.offset,start=self.macro_start.detach().cpu(),target=self.macro_target.detach().cpu(),n=len(rows),option=self.option,phase=self.phase,cat_boundary=cat_boundary))
+        self.physical_stream.extend(copy.deepcopy(t.physics[first:]));self.instructions.append(dict(raw=self.raw_target.detach().cpu(),offset=self.offset,start=self.macro_start.detach().cpu(),target=self.macro_target.detach().cpu(),n=len(rows),option=self.option,phase=self.phase,cat_boundary=cat_boundary,episode=self.reset_cursor))
         for j,(r,src) in enumerate(zip(rows,p.records)):
             r.update(raw_u=src['raw_u'],old_mu=src['old_mu'],old_logp=src['old_logp'],option=self.option,cat_boundary=bool(cat_boundary and j==0),old_logits=old_logits.detach().cpu() if cat_boundary and j==0 else None,selector_obs=selector_obs if cat_boundary and j==0 else None,candidate_first_z=candidate_first.detach().cpu() if cat_boundary and j==0 else None,episode=self.reset_cursor,goal_mode=self.goal_mode,macro_slot=self.offset+j)
             self.rows.append(r)
         self.offset+=len(rows);self.next_cursor+=len(rows)
-        if self.offset==5:self.offset=0;self.command_slot+=1;self.option_age=(self.option_age+1)%5
+        if self.offset==5:
+            self.offset=0;self.command_slot+=1;self.option_age=(self.option_age+1)%5
+            self.update_public_goal()
+            p.slot=0;p.start=t.last_command.clone();p.target=p.start.clone()
+            self.rows[-1]['next']['observation']=cpu_obs(p.enrich(t.extended_observation()))
         if self.task.boundary:raise RuntimeError('HARD_PHYSICS_BOUNDARY:'+str(self.task.boundary))
         return rows,stats
