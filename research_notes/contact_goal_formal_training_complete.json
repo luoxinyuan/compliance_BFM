@@ -1,0 +1,101 @@
+{
+  "status": "BOTH_FORMAL_32K_COMPLETE_DEV_PENDING",
+  "arms": {
+    "E": {
+      "status": "FORMAL_32K_COMPLETE_EVALUATION_PENDING",
+      "rows": 32000,
+      "nodes": [
+        {
+          "rows": 4000,
+          "phase": "P2",
+          "sentinel": "PASS",
+          "actor_accepted": 9
+        },
+        {
+          "rows": 8000,
+          "phase": "P2",
+          "sentinel": "PASS",
+          "actor_accepted": 27
+        },
+        {
+          "rows": 12000,
+          "phase": "P2",
+          "sentinel": "PASS",
+          "actor_accepted": 43
+        },
+        {
+          "rows": 20000,
+          "phase": "P3",
+          "sentinel": "PASS",
+          "actor_accepted": 72
+        },
+        {
+          "rows": 28000,
+          "phase": "P3",
+          "sentinel": "PASS",
+          "actor_accepted": 107
+        },
+        {
+          "rows": 32000,
+          "phase": "P3",
+          "sentinel": "PASS",
+          "actor_accepted": 127
+        }
+      ],
+      "manifest_sha256": "804dda80c24f74222c3545f97107a13b9abfca0f6733de70a0ed27a27b1dae0b",
+      "core_sha256": "d71c8ab214cebbf1a5b0c49b9563cf33cb70a63d11104c9b329f080ffa12db32",
+      "dev_episodes": 0,
+      "sealed_read": false
+    },
+    "I": {
+      "status": "FORMAL_32K_COMPLETE_EVALUATION_PENDING",
+      "rows": 32000,
+      "nodes": [
+        {
+          "rows": 4000,
+          "phase": "P2",
+          "sentinel": "PASS",
+          "actor_accepted": 9
+        },
+        {
+          "rows": 8000,
+          "phase": "P2",
+          "sentinel": "PASS",
+          "actor_accepted": 27
+        },
+        {
+          "rows": 12000,
+          "phase": "P2",
+          "sentinel": "PASS",
+          "actor_accepted": 43
+        },
+        {
+          "rows": 20000,
+          "phase": "P3",
+          "sentinel": "PASS",
+          "actor_accepted": 72
+        },
+        {
+          "rows": 28000,
+          "phase": "P3",
+          "sentinel": "PASS",
+          "actor_accepted": 107
+        },
+        {
+          "rows": 32000,
+          "phase": "P3",
+          "sentinel": "PASS",
+          "actor_accepted": 127
+        }
+      ],
+      "manifest_sha256": "efde78ed0eefd4d690d5b993cf8d2a883c9a10da230fccc329a9a972c9379ec0",
+      "core_sha256": "abfb05aa0564586feb08df9ca3e9fb85b9cd67dbda8bd4fa87e29f4464a72108",
+      "dev_episodes": 0,
+      "sealed_read": false
+    }
+  },
+  "formal_training_runtime": "08b9c96a4ea3d0c0007e840029ba6a30f3c858f0",
+  "charged_job_s": 29443.14355925517,
+  "physics_reserved": 603881,
+  "evaluation_not_started": true
+}

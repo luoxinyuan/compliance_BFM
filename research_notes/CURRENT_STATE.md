@@ -1,3 +1,9 @@
+# Current — E/I各32k训练及最后保护均完成，统一Dev待执行
+
+2026-11-17：两臂各127次Actor接受，全部固定节点保护PASS；训练runtime08b9c96，终点模型已冻结。Dev尚未执行，不宣称E/I行为收益或BI增量。正在接通独立100完整回合评价入口；原错误与恢复记录、全部科学门/预算/封存边界不变。[完成证据与评价合同](CONTACT_GOAL_EI_V2_FORMAL_TRAINING_COMPLETE.md)。
+
+## 以下保留历史状态
+
 # Current — 两数组逐状态干预通过，E28k严格恢复续跑已启动
 
 2026-11-16：node28首次差异为efc_J_rowadr/efc_J_rownnz；三真实状态×五分支×3s逐数组干预全部逐值PASS（真实力峰0/4.53/10N，均有约束）。修复为完整恢复这两个存档数组，最终全部有效状态仍须逐值一致，不改容差/物理门。新runtime08b9c96，attempt06已启动；当前冷加载/完整读回，不预称28k保护或续采已通过。将核验两次12步，补28k原保护，保留640条pending与28384边界，E完成再I。旧28k停点、107次Actor接受和全部失败成本保留。[完整记录](CONTACT_GOAL_EI_V2_FORMAL_NODE28_RESTORE.md)。
