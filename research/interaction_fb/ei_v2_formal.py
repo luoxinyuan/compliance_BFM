@@ -44,7 +44,46 @@ def study(e,base,c,out):
     # No engineering model/optimizer/rollout is loaded into formal training.
     assert not agent.opt.state and not agent.vopt.state and agent.actor_accepted==0
     journal=Journal(out/'checkpoints');records=[];nodes=[];first_pass=set();cap_hits=0
-    started=time.monotonic();initial=journal.save('initial',agent,env,runtime,'formal_fresh_initial_not_OR1_scratch')
+    started=time.monotonic();resume_state=None
+    if RESUME_PLAN is not None:
+        import hashlib
+        plan=json.loads(RESUME_PLAN.read_text())
+        assert plan['arm']==ARM and plan['phase']=='P2' and plan['rows']==1095
+        for name,digest in plan['evidence_sha256'].items():
+            assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest
+        oldstop=json.loads(Path(plan['stop_json']).read_text())
+        assert oldstop['error']=="RuntimeError('SUPERVISOR_REQUESTED_COMPLETE_STOP')"
+        assert oldstop['rows']==plan['rows'] and oldstop['records'][-1]['end_row']==1024
+        from .ei_v2_checkpoint import load
+        resume_state=restore(Path(plan['checkpoint']),agent,env,out)
+        assert env.next_cursor==1095 and len(env.rows)==1095 and agent.actor_accepted==2
+        assert env.collection_role=='formal_on_policy'
+        committed=load(Path(plan['committed_checkpoint']))
+        assert tree_digest(committed['agent'])==tree_digest(resume_state['agent']), 'partial block updated unexpectedly'
+        del committed
+        # The preexisting sentinels belong to this exact unchanged agent.
+        q=json.loads(Path(plan['sentinel_result']).read_text())
+        assert q['status']=='PASS' and q['training_Task_rng_actor_restored_exact']
+        assert [v['case'] for v in q['records']]==[0,2,4] and all(not v['failed'] for v in q['records'])
+        records=oldstop['records'];nodes=oldstop['nodes'];first_pass=set(plan['first_accepted_pass']);cap_hits=0
+        assert not nodes and first_pass=={'P2'}
+        # Two reproducible 12-row continuation branches, discarded after comparison.
+        # These are restore checks, not additional PPO samples.
+        def check_branch():
+            env.collection_role='restore_check_not_PPO'
+            with torch.no_grad():new,_=env.collect(12)
+            return dict(agent=tree_digest(agent.state()),rng=tree_digest(global_rng()),
+                        physics=tree_digest(canonical(portable(env.task),metadata(e.sim.model,e.sim.data))),
+                        rows=tree_digest(new))
+        a=check_branch();restore(Path(plan['checkpoint']),agent,env,out)
+        b=check_branch();assert a==b, 'formal resumed continuation mismatch'
+        restore(Path(plan['checkpoint']),agent,env,out)
+        from .checkpoint import jsonwrite
+        jsonwrite(out/'resume-qualification.json',dict(status='PASS',rows=1095,pending_rows=71,
+                  block_start=1024,block_target=2048,new_formal_rows=0,verification_rows=24,
+                  exact_continuation=a,source_plan_sha256=hashlib.sha256(RESUME_PLAN.read_bytes()).hexdigest()))
+        print('FORMAL_RESUME_EXACT',ARM,1095,'pending',71,flush=True)
+    initial=journal.save('initial',agent,env,runtime,'formal_restored_complete_state' if resume_state is not None else 'formal_fresh_initial_not_OR1_scratch')
     from .checkpoint import jsonwrite
     def progress():
         jsonwrite(out/'progress.json',dict(status='RUNNING',arm=ARM,formal_rows=env.next_cursor,records=records,nodes=nodes,first_accepted_pass=sorted(first_pass),elapsed_hot_s=time.monotonic()-started))
@@ -70,7 +109,7 @@ def study(e,base,c,out):
         nodes.append(dict(rows=n,phase=phase,checkpoint=manifest,sentinel=q['status'],actor_accepted=agent.actor_accepted));progress()
     try:
         for phase,begin,end in [('P2',0,12000),('P3',12000,32000)]:
-            assert env.next_cursor==begin
+            assert env.next_cursor==begin or (resume_state is not None and phase=='P2' and env.next_cursor==1095)
             env.phase=phase;agent.selector.requires_grad_(phase=='P3')
             if phase=='P3':
                 episodes=env.episodes
@@ -83,9 +122,13 @@ def study(e,base,c,out):
                 jsonwrite(out/'G08-coverage.json',coverage)
                 assert len(parents)>=8 and {'none','zero','near','mid','stop','continue'}<=families and agent.actor_accepted>0,'G08_COVERAGE_OR_EFFECTIVE_UPDATE'
                 q=qualify(env,agent,out/'P3-sample-entry','P3_sample','P3');assert q['status']=='PASS','P3_ENTRY_SAMPLING_FAILED'
-            block=0
+            block=max((r['block'] for r in records if r['phase']==phase),default=0)
             while env.next_cursor<end:
-                guard();block+=1;b0=len(env.rows);target=min(end,env.next_cursor+1024);t0=time.monotonic();a0=agent.actor_accepted
+                guard();block+=1
+                # Resume retains the original pending block boundary, not cursor+1024.
+                b0=max((r['end_row'] for r in records if r['phase']==phase),default=begin)
+                assert b0<=env.next_cursor<min(end,b0+1024)
+                target=min(end,b0+1024);t0=time.monotonic();a0=agent.actor_accepted
                 # Intermediate safety/checkpoint nodes do not split the PPO block.
                 while env.next_cursor<target:
                     guard()
@@ -114,8 +157,8 @@ def study(e,base,c,out):
         raise
 
 def main():
-    global ARM
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',choices=['E','I'],required=True);a=p.parse_args();ARM=a.mode
+    global ARM,RESUME_PLAN
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',choices=['E','I'],required=True);p.add_argument('--resume-plan',type=Path);a=p.parse_args();ARM=a.mode;RESUME_PLAN=a.resume_plan
     from . import benchmark
     from .ei_v2_counter_io import install
     original_write=benchmark.write

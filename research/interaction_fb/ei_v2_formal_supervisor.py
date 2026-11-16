@@ -22,7 +22,7 @@ def size(root):
     return total
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--stage',type=Path,required=True);parser.add_argument('--mode',choices=['E','I'],required=True);parser.add_argument('--attempt',type=int,default=1);a=parser.parse_args();assert 1<=a.attempt<=99
+    parser=argparse.ArgumentParser();parser.add_argument('--stage',type=Path,required=True);parser.add_argument('--mode',choices=['E','I'],required=True);parser.add_argument('--attempt',type=int,default=1);parser.add_argument('--resume-plan',type=Path);a=parser.parse_args();assert 1<=a.attempt<=99
     S=a.stage.resolve();P=S.parent.parent;R=S/'runtime';job='formal-'+a.mode+'-'+format(a.attempt,'02d');side=S/'jobs'/f'{job}.json';out=S/'runs'/job
     assert not side.exists() and not out.exists()
     start=time.monotonic();meta=dict(name=job,arm=a.mode,start_epoch=time.time(),supervisor_pid=os.getpid(),status='PREFLIGHT');child=None;held=[];last_ticks=dict(actual=0,reserved=0);charged=False
@@ -53,12 +53,20 @@ def main():
         meta['runtime']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip()
         expected=json.loads((S/'locks/runtime-lock.json').read_text());assert meta['runtime']==expected['commit']
         uuid=subprocess.check_output(['nvidia-smi','--id=0','--query-gpu=uuid','--format=csv,noheader'],text=True).strip();assert uuid==expected['gpu_uuid']
-        assert int(subprocess.check_output(['nvidia-smi','--id=0','--query-gpu=memory.used','--format=csv,noheader,nounits'],text=True).strip())==0
+        # Graphics-only contexts are not CUDA training occupancy. Preserve other jobs.
+        active=subprocess.check_output(['nvidia-smi','--query-compute-apps=gpu_uuid,pid','--format=csv,noheader'],text=True)
+        assert not any(line.split(',')[0].strip()==uuid for line in active.splitlines()), 'GPU0_HAS_COMPUTE_OWNER'
+        meta['gpu_graphics_contexts']=subprocess.check_output(['nvidia-smi','--id=0'],text=True)
+        assert int(subprocess.check_output(['nvidia-smi','--id=0','--query-gpu=utilization.gpu','--format=csv,noheader,nounits'],text=True).strip())==0, 'GPU0_BUSY'
         for name,digest in expected['locks'].items():assert hashlib.sha256((S/'locks'/name).read_bytes()).hexdigest()==digest
         physical_remaining=B['formal_physics_ticks_cap']-L['physics_reserved'];assert physical_remaining>0
         deadline=min(20000.,B['formal_job_cap_s']-L['charged_s'])
         env=os.environ.copy();env.update(CUDA_VISIBLE_DEVICES='0',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',CUBLAS_WORKSPACE_CONFIG=':4096:8',EI_FORMAL_PHYSICS_CAP=str(min(400000,physical_remaining)))
         cmd=[str(P/'.venv/bin/python'),'-u','-m','research.interaction_fb.ei_v2_formal','--output',str(out),'--mode',a.mode]
+        if a.resume_plan is not None:
+            rp=a.resume_plan.resolve();rp.relative_to(S/'prep')
+            meta['resume_plan_sha256']=hashlib.sha256(rp.read_bytes()).hexdigest()
+            cmd+=['--resume-plan',str(rp)]
         log=open(S/'jobs'/f'{job}.log','w');child=subprocess.Popen(cmd,cwd=R,stdout=log,stderr=subprocess.STDOUT,env=env,start_new_session=True)
         meta.update(pid=child.pid,child_start_ticks=Path(f'/proc/{child.pid}/stat').read_text().split()[21],command=cmd,status='RUNNING',job_cap_s=deadline,physics_cap=int(env['EI_FORMAL_PHYSICS_CAP']));write(side,meta)
         last_check=0

@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "checks": [
+    "fresh_vs_resumed_32_blocks_identical",
+    "1095_retains_71_pending_target2048",
+    "fixed_nodes_unchanged",
+    "update_source_unchanged",
+    "driver_and_supervisor_parse"
+  ],
+  "physics": 0,
+  "new_formal_rows": 0
+}
