@@ -69,3 +69,12 @@ Resume source remains fullnode28000; model107 accepted updates equals last commi
 P3 block15. Rebuild complete state and two12-row sampled continuations before collecting.
 Rerun actualnode28 protection, then preserve pending640 rows and target28384. Original
 32-block/32k schedule unchanged. The two12-row probes are not new PPO samples.
+
+## Actual repaired-runtime launch
+
+After passing intervention02, independent attempt06 launched runtime08b9c96 under
+both GPU0 locks. It is cold-loading/reconstructing the immutable28000 package; no
+through-gate or new formal rows are claimed here. Strict exact restoration, two12-row
+continuations and original28k sentinels are automatic prerequisites to remaining
+collection. E→I serial queue remains bounded and stops on any failed correctness or
+physical gate. The running runtime is not modified by this documentation commit.
