@@ -1,3 +1,7 @@
+# Current update — 正式attempt03已恢复物理启动
+
+2026-11-16：attempt02在正式采样前因新目录缺少已验证的状态布局辅助库退出；原记录保留。已同哈希补齐并通过布局检查，attempt03开始实际物理前缀。源码仍 `646ba25`，I串行等待E正常完成。正式样本/更新以progress与sidecar为准；不将前缀计入PPO数据。[启动修复记录](CONTACT_GOAL_EI_V2_FORMAL_STARTUP_REPAIR.md)。
+
 # Current — E/I v2正式E臂已启动，I串行排队
 
 2026-11-16。用户确认空间恢复后，实时检查GPU0空闲、共享空间重新高于已批5GiB地板及完整停止包预留。正式E进程已启动，runtime `646ba2531e5ef418a93d7e990bb4bf2850616e6c`；I仅在E正常完成后串行启动。启动快照尚在模型/环境冷加载，不把进程存在称为首块训练完成。实际采样、更新、资格和成本以新阶段sidecar/ledger为准。

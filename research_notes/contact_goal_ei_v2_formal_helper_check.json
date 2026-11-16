@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "files": {
+    "pointer_layout.so": "8e7d74e1ffb947f1ccfc82b083dbf91b6433e2da847c29dc8e96ef1709dfb439",
+    "pointer_layout.json": "fa3c671ca8162ed1917bf0f7fbdcf2b701aa18f41342b202dbe5a554708df5ff"
+  },
+  "same_installed_MuJoCo_and_environment": true,
+  "field_count": 173,
+  "struct_size": 163056,
+  "new_physics": 0,
+  "formal_updates": 0,
+  "failed_attempt": "formal-E-02",
+  "repair": "Copy exact previously qualified immutable helper pair; no rebuild, no state rule change"
+}
