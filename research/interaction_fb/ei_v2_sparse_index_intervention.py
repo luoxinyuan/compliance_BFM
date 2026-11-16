@@ -16,7 +16,7 @@ def study(e,base,c,out):
     from dual_track_task import global_rng
     from .ei_v2_sources import install
     from .ei_v2_env import GoalEnvironment
-    from .ei_v2_formal_update import OR1Agent,update
+    from .ei_v2_agent import ContactGoalAgent
     from .ei_v2_or1_qualification import run as qualify
     from .ei_v2_checkpoint import Journal,restore
     from .ei_v2_auxiliary import ActualSuccessors
@@ -29,7 +29,7 @@ def study(e,base,c,out):
     random.seed(660301);np.random.seed(660301);torch.manual_seed(660301);torch.cuda.manual_seed_all(660301)
     ps=json.loads((STAGE/'locks/execution-train.json').read_text())['parents'];by={p['parent_id']:p for p in ps};ps=[by[k]for k in json.loads((STAGE/'locks/training-order.json').read_text())['parent_ids']]
     env=GoalEnvironment(e,base,c,ps);env.reset(0);install_contact_details(e);install_post_velocity(e)
-    agent=OR1Agent(base,env.proxy.enrich(env.task.extended_observation()),ARM,e.standing.device);env.agent=agent;env.proxy.agent=agent;env.collection_role='formal_on_policy';env.proxy.stochastic=True
+    agent=ContactGoalAgent(base,env.proxy.enrich(env.task.extended_observation()),ARM,e.standing.device);env.agent=agent;env.proxy.agent=agent;env.collection_role='formal_on_policy';env.proxy.stochastic=True
     qm=json.loads((OLD/'runs/P1-frozen-sample-01/qualification.json').read_text());kd=read(OLD/'runs/P1-frozen-sample-01/qualified-retention-data.ptz',qm['retention']);keep,eps=kd['keep_by_parent'],kd['eps']
     prior=STAGE.parent/'contact-goal-ei-v2-or1-20261115'
     assert json.loads((prior/'ledger.json').read_text())['status']=='OR1_D0_D1_D2_COMPLETE_OR6_NOT_CLEARED_NO_FORMAL_RUN'
