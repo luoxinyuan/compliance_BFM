@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "runtime": "6c863f0",
+  "arrays": [
+    "efc_J_rowadr",
+    "efc_J_rownnz"
+  ],
+  "config": "MuJoCo3.3.3 Newton dense no-island; no extrapolation to sparse",
+  "cases": [
+    {
+      "case": 0,
+      "label": "sentinel-handoff",
+      "branches": 5,
+      "seconds_min": 2.999999999999936,
+      "initial_nefc": 61,
+      "max_force_N": 0.0,
+      "active_ticks": 0,
+      "all_physics_controls_scores_rng_exact": true
+    },
+    {
+      "case": 4,
+      "label": "reward-local_follow",
+      "branches": 5,
+      "seconds_min": 3.0000000000000773,
+      "initial_nefc": 61,
+      "max_force_N": 4.532876791330617,
+      "active_ticks": 600,
+      "all_physics_controls_scores_rng_exact": true
+    },
+    {
+      "case": 8,
+      "label": "reward-stop_crossing",
+      "branches": 5,
+      "seconds_min": 3.000000000000415,
+      "initial_nefc": 61,
+      "max_force_N": 10.000000000000004,
+      "active_ticks": 600,
+      "all_physics_controls_scores_rng_exact": true
+    }
+  ],
+  "formal_rows_added": 0,
+  "optimizer_updates": 0,
+  "source_result_sha256": "2df48d2240588c9b96c9a21f1f6210ea5d3de6e3c86d1f4dbd15aee157d5b765",
+  "job_seconds": 380.5004900660133,
+  "physics_ticks": 14141
+}

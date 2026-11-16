@@ -70,8 +70,11 @@ def restore(path,agent,env,out):
     env.proxy.replay=None;env.replay_option=None
     now=portable(env.task);old=s['physical'];meta=metadata(env.e.sim.model,env.e.sim.data)
     ca=canonical(now,meta)['mjdata_arrays'];cb=canonical(old,s['mj_metadata'])['mjdata_arrays']
-    # Same already-proven replay-only allocation workspaces as original checkpoint.restore.
-    padding=('efc_J_colind','efc_J_rowsuper','efc_JT')
+    # Dense/Newton metadata is asserted by canonical() above. The stored sparse
+    # Jacobian index workspaces can retain allocator contents after exact replay.
+    # Preserve their archived bytes too; final full-state equality below remains
+    # mandatory. See the per-array three-state 3s intervention evidence.
+    padding=('efc_J_colind','efc_J_rowsuper','efc_JT','efc_J_rowadr','efc_J_rownnz')
     assert exact(meta,s['mj_metadata'])
     assert exact({k:v for k,v in ca.items() if k not in padding},{k:v for k,v in cb.items() if k not in padding}),'replayed dynamics/solver differs'
     assert exact(now['history'],old['history']),'BFM real history differs'

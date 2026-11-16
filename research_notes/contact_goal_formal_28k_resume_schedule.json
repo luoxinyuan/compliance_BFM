@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "pending_rows": 640,
+  "pending_target": 28384,
+  "schedule_equal_to_original": true,
+  "total_blocks": 32,
+  "required_pending_physical_gate": "node28000",
+  "update_module_changed": false
+}

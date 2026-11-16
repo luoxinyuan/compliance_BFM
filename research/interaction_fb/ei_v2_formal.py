@@ -48,25 +48,28 @@ def study(e,base,c,out):
     if RESUME_PLAN is not None:
         import hashlib
         plan=json.loads(RESUME_PLAN.read_text())
-        assert plan['arm']==ARM and plan['phase']=='P2' and plan['rows']==1095
+        assert plan['arm']==ARM and plan['phase'] in ('P2','P3') and plan['rows'] in (1095,28000)
         for name,digest in plan['evidence_sha256'].items():
             assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest
         oldstop=json.loads(Path(plan['stop_json']).read_text())
-        assert oldstop['error']=="RuntimeError('SUPERVISOR_REQUESTED_COMPLETE_STOP')"
-        assert oldstop['rows']==plan['rows'] and oldstop['records'][-1]['end_row']==1024
+        assert oldstop['error']==plan['expected_stop_error']
+        assert oldstop['rows']==plan['rows'] and oldstop['records'][-1]['end_row']==plan['pending_start']
         from .ei_v2_checkpoint import load
         resume_state=restore(Path(plan['checkpoint']),agent,env,out)
-        assert env.next_cursor==1095 and len(env.rows)==1095 and agent.actor_accepted==2
+        assert env.next_cursor==plan['rows'] and len(env.rows)==plan['rows'] and env.phase==plan['phase']
+        assert agent.actor_accepted==oldstop['records'][-1]['actor_accepted_total']
         assert env.collection_role=='formal_on_policy'
         committed=load(Path(plan['committed_checkpoint']))
         assert tree_digest(committed['agent'])==tree_digest(resume_state['agent']), 'partial block updated unexpectedly'
         del committed
         # The preexisting sentinels belong to this exact unchanged agent.
-        q=json.loads(Path(plan['sentinel_result']).read_text())
-        assert q['status']=='PASS' and q['training_Task_rng_actor_restored_exact']
-        assert [v['case'] for v in q['records']]==[0,2,4] and all(not v['failed'] for v in q['records'])
+        for sentinel_path in plan['sentinel_results']:
+            q=json.loads(Path(sentinel_path).read_text())
+            assert q['status']=='PASS' and q['training_Task_rng_actor_restored_exact']
+            assert [v['case'] for v in q['records']]==[0,2,4] and all(not v['failed'] for v in q['records'])
         records=oldstop['records'];nodes=oldstop['nodes'];first_pass=set(plan['first_accepted_pass']);cap_hits=0
-        assert not nodes and first_pass=={'P2'}
+        assert {n['rows'] for n in nodes}==set(plan['completed_nodes'])
+        assert agent.retention_lambda<3, 'resume requires explicit cap-hit provenance if lambda at max'
         # Two reproducible 12-row continuation branches, discarded after comparison.
         # These are restore checks, not additional PPO samples.
         def check_branch():
@@ -83,10 +86,10 @@ def study(e,base,c,out):
         b=check_branch();assert a==b, 'formal resumed continuation mismatch'
         restore(Path(plan['checkpoint']),agent,env,out)
         from .checkpoint import jsonwrite
-        jsonwrite(out/'resume-qualification.json',dict(status='PASS',rows=1095,pending_rows=71,
-                  block_start=1024,block_target=2048,new_formal_rows=0,verification_rows=24,
+        jsonwrite(out/'resume-qualification.json',dict(status='PASS',rows=plan['rows'],pending_rows=plan['rows']-plan['pending_start'],
+                  block_start=plan['pending_start'],block_target=plan['pending_target'],new_formal_rows=0,verification_rows=24,
                   exact_continuation=a,source_plan_sha256=hashlib.sha256(RESUME_PLAN.read_bytes()).hexdigest()))
-        print('FORMAL_RESUME_EXACT',ARM,1095,'pending',71,flush=True)
+        print('FORMAL_RESUME_EXACT',ARM,plan['rows'],'pending',plan['rows']-plan['pending_start'],flush=True)
     initial=journal.save('initial',agent,env,runtime,'formal_restored_complete_state' if resume_state is not None else 'formal_fresh_initial_not_OR1_scratch')
     from .checkpoint import jsonwrite
     def progress():
@@ -112,10 +115,13 @@ def study(e,base,c,out):
         q=sentinel('node-'+str(n),phase,fixed_node=True)
         nodes.append(dict(rows=n,phase=phase,checkpoint=manifest,sentinel=q['status'],actor_accepted=agent.actor_accepted));progress()
     try:
+        if resume_state is not None and plan.get('pending_node') is not None:
+            node(plan['pending_node'],plan['phase'])
         for phase,begin,end in [('P2',0,12000),('P3',12000,32000)]:
-            assert env.next_cursor==begin or (resume_state is not None and phase=='P2' and env.next_cursor==1095)
+            if env.next_cursor>=end:continue
+            assert env.next_cursor==begin or (resume_state is not None and phase==plan['phase'] and env.next_cursor==plan['rows'])
             env.phase=phase;agent.selector.requires_grad_(phase=='P3')
-            if phase=='P3':
+            if phase=='P3' and env.next_cursor==begin:
                 episodes=env.episodes
                 if env.task.done:episodes=episodes+[dict(spec=env.task.spec,boundary=env.task.boundary)]
                 parents={x['spec']['parent_id']for x in episodes};families={x['spec']['demand_family']for x in episodes}
