@@ -176,6 +176,7 @@ def study(e,base,c,out):
         assert tree_digest(a.state())==frozen,'Evaluation changed frozen weights/normalizer/Adam'
         assert all(not r['eligible_for_joint_PPO']for r in env.rows)
         t=env.task;ph=env.physical_stream;r=summarize(t);r.update(case_index=i,method=method,role=record['role'],goal_stream=record['goal_stream'],runtime=runtime,identity=identities[method],source_sha=source_sha,complete=bool(t.done and hard is None),hard_boundary=hard,goal_aware=stage_metrics(env,ph,env.rows),online_quality=quality(ph),optimizer_updates=0)
+        r['legacy_J_not_primary']=r.pop('J');r['legacy_FOLLOW_success_not_Goal_aware']=r.pop('clean_success')
         family=t.spec['demand_family'];rec=[p for p in ph if p['force_time']>=t.spec['release']-1e-8]
         r['recovery']=dict(status='NOT_APPLICABLE_no_actual_loaded_release')
         if t.spec['enabled'] and t.spec['distance']>0:
