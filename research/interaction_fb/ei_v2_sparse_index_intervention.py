@@ -34,7 +34,7 @@ def study(e,base,c,out):
     prior=STAGE.parent/'contact-goal-ei-v2-or1-20261115'
     assert json.loads((prior/'ledger.json').read_text())['status']=='OR1_D0_D1_D2_COMPLETE_OR6_NOT_CLEARED_NO_FORMAL_RUN'
     # No engineering model/optimizer/rollout is loaded into formal training.
-    assert not agent.opt.state and not agent.vopt.state and agent.actor_accepted==0
+    assert not agent.opt.state and not agent.vopt.state and agent.accepted==0
     import inspect,mujoco
     from . import ei_v2_checkpoint as cp
     from .ei_v2_quality import EnvBranch,quality
