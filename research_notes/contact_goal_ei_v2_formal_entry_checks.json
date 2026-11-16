@@ -1,0 +1,16 @@
+{
+  "status": "CPU_ENTRY_CHECKS_PASS",
+  "optimizer_AST_equal_except_role_and_docstring": true,
+  "updates_per_arm": 32,
+  "fixed_nodes": [
+    4000,
+    8000,
+    12000,
+    20000,
+    28000,
+    32000
+  ],
+  "formal_physics_executed": 0,
+  "project_conservative_debit_s": 450001.95073010435,
+  "with_full_formal_cap_s": 506001.95073010435
+}
