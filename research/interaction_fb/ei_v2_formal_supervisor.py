@@ -16,8 +16,8 @@ def size(root):
     return total
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--stage',type=Path,required=True);parser.add_argument('--mode',choices=['E','I'],required=True);a=parser.parse_args()
-    S=a.stage.resolve();P=S.parent.parent;R=S/'runtime';job='formal-'+a.mode+'-01';side=S/'jobs'/f'{job}.json';out=S/'runs'/job
+    parser=argparse.ArgumentParser();parser.add_argument('--stage',type=Path,required=True);parser.add_argument('--mode',choices=['E','I'],required=True);parser.add_argument('--attempt',type=int,default=1);a=parser.parse_args();assert 1<=a.attempt<=99
+    S=a.stage.resolve();P=S.parent.parent;R=S/'runtime';job='formal-'+a.mode+'-'+format(a.attempt,'02d');side=S/'jobs'/f'{job}.json';out=S/'runs'/job
     assert not side.exists() and not out.exists()
     start=time.monotonic();meta=dict(name=job,arm=a.mode,start_epoch=time.time(),supervisor_pid=os.getpid(),status='PREFLIGHT');child=None;held=[];last_ticks=dict(actual=0,reserved=0);charged=False
     def stop():
