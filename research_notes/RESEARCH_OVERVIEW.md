@@ -1,3 +1,7 @@
+# 当前更新：E/I v2正式运行准备
+
+2026-11-16：Yi已授权按OR1实测完成正式全程预算修订并开始长训；[预算修订](CONTACT_GOAL_EI_V2_FORMAL_BUDGET_AMENDMENT.md)。OR1科学与恢复资格复用，正式数据/初始化与工程scratch分离。当前尚未启动，具体以CURRENT_STATE及新阶段账本为准。旧已结项判读保留。
+
 # Humanoid Compliance — 长期主线与当前执行入口
 
 2026-11-16：OR1局部优化规则已完成有界工程资格及两臂完整恢复；[最终报告](CONTACT_GOAL_EI_V2_OR1_FINAL_RESULTS.md)。真实接触行为与BI增量未验收，OR6正式全流程成本尚未放行，当前停止。

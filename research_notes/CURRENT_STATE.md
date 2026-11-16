@@ -1,3 +1,11 @@
+# Current — E/I v2正式预算修订已授权，运行准备中
+
+2026-11-16。Yi已直接授权按实测修订完整正式训练/评价/存盘预算并发车，后续确认继续；[完整预算](CONTACT_GOAL_EI_V2_FORMAL_BUDGET_AMENDMENT.md)与[最新资源签署](CONTACT_GOAL_EI_V2_FORMAL_RESOURCE_SIGNOFF_20261116.md)已归档。原OR1工程资格与历史失败保留。正式仍是每臂P2 12k＋P3 20k，完整100 Dev、48 train sentinel、12 P3入口及最多8消融，不使用sealed。
+
+本轮新增预算56,000 job秒、10GiB输出，combined stage上限74,000秒/18.4GiB；物理新增1.1M ticks、stage1.5M。完整成本区分实测与投影。当前正式训练0，未把预算批准或源码准备写成发车；新入口/评价/资源与项目历史总账核验后才启动。
+
+## 以下保留历史快照
+
 # Current — Issue66 OR1有界资格完成，正式训练未启动
 
 2026-11-16。[最终报告](CONTACT_GOAL_EI_V2_OR1_FINAL_RESULTS.md)：D0/D1/D2及E/I新进程12条＋完整更新逐值恢复通过；新工程采样8192/8192，两臂各4块、Actor各接受12步。I最后恢复379.938秒/4145ticks/新增训练行0，GPU0释放。

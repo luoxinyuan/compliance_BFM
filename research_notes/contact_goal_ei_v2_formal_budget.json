@@ -1,0 +1,50 @@
+{
+  "id": "EI_V2_FORMAL_BUDGET_20261116",
+  "status": "AUTHORIZED_BUDGET_PREPARATION_NOT_LAUNCHED",
+  "authority_quote": "\u6309\u5b9e\u6d4b\u5b8c\u6210\u5b8c\u6574\u7684\u6b63\u5f0f\u8bad\u7ec3/\u8bc4\u4ef7/\u5b58\u76d8\u9884\u7b97\u4fee\u8ba2\uff0c\u7136\u540e\u5f00\u59cb\u957f\u8bad",
+  "prior_stage_charged_s": 17055.595430435438,
+  "prior_stage_cap_s": 47000,
+  "formal_job_cap_s": 56000,
+  "new_combined_stage_cap_s": 74000,
+  "project_cap_job_hours": 240,
+  "project_historical_dedup_balance": "UNRESOLVED_NOT_INVENTED",
+  "allocations_s": {
+    "training_sampling_update_block_IO": 25000,
+    "48_train_sentinels": 6000,
+    "12_P3_sample_entry": 2000,
+    "cold_start_and_complete_restore": 2400,
+    "100_full_dev": 12000,
+    "probe_and_8_ablations": 3000,
+    "implementation_audit_reporting": 1600,
+    "failure_reserve": 4000
+  },
+  "allocated_s": 56000,
+  "unallocated_buffer_s": 0,
+  "formal_train_50Hz": {
+    "E": 32000,
+    "I": 32000
+  },
+  "phase_per_arm": {
+    "P2": 12000,
+    "P3": 20000
+  },
+  "formal_new_output_cap_GiB": 10,
+  "combined_stage_output_cap_GiB": 18.4,
+  "formal_physics_ticks_cap": 1100000,
+  "combined_stage_physics_ticks_cap": 1500000,
+  "existing_stage_physics_reserved": 366563,
+  "cold_start_estimate_s": 170,
+  "measured_P2_block_max_s": 288.254686962,
+  "measured_P3_block_max_s": 314.250819713,
+  "hot_projection_s": 24360.18159451,
+  "disk_free_floor_GiB": 5,
+  "atomic_min_reserve_GiB": 0.25,
+  "dev_full_episode_count": 100,
+  "sentinel_count": 48,
+  "P3_entry_count": 12,
+  "physical_ablation_max": 8,
+  "dev_online_s": 969.2,
+  "dev_physics_ticks_with_prefix": 282144,
+  "evaluation_timing": "conservative projection from measured collection; full formal Dev p90 UNMEASURED",
+  "no_sealed": true
+}
