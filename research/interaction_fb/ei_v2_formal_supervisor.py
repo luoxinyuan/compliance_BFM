@@ -12,7 +12,13 @@ def size(root):
     for directory,dirs,files in os.walk(root):
         for name in files:
             p=Path(directory)/name
-            if not p.is_symlink():total+=p.stat().st_size
+            if p.is_symlink():continue
+            try:total+=p.stat().st_size
+            except FileNotFoundError:
+                # Atomic publication can remove temporary paths after os.walk.
+                # Missing committed evidence and every other IO error stay fatal.
+                if not any(part.endswith('.pending') or part.startswith('.pending-')
+                           for part in p.relative_to(root).parts):raise
     return total
 
 def main():

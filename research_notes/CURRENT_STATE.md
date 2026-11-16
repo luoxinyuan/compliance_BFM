@@ -1,3 +1,9 @@
+# Current update — formal E saved after supervision race
+
+2026-11-16：E完成1024条首块、2次Actor接受及none/zero/released三项保护；监督目录计量撞上原子临时文件消失而误停，完整保存1095条（含block2未更新71条）。I未启动。目录计量竞态修复及CPU六项回归已过；新进程完整恢复/续跑入口待完成，不称训练仍在运行。GPU0实时有其他项目进程，不抢占。[证据与恢复要求](CONTACT_GOAL_EI_V2_FORMAL_SIZE_RACE.md)。历史数据、失败、科学门不改。
+
+## 以下保留历史状态
+
 # Current update — 正式attempt03已恢复物理启动
 
 2026-11-16：attempt02在正式采样前因新目录缺少已验证的状态布局辅助库退出；原记录保留。已同哈希补齐并通过布局检查，attempt03开始实际物理前缀。源码仍 `646ba25`，I串行等待E正常完成。正式样本/更新以progress与sidecar为准；不将前缀计入PPO数据。[启动修复记录](CONTACT_GOAL_EI_V2_FORMAL_STARTUP_REPAIR.md)。

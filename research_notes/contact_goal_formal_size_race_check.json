@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "checks": {
+    "present_files_counted": true,
+    "vanished_atomic_temp_accepted": true,
+    "missing_committed_rejected": true,
+    "permission_error_rejected": true,
+    "renamed_atomic_checkpoint_dir_accepted": true,
+    "symlink_not_double_counted": true
+  },
+  "seconds": 0.3020867829909548,
+  "physics_ticks": 0,
+  "formal_rows": 0
+}

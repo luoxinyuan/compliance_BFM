@@ -1,3 +1,9 @@
+# Current update — formal E saved after supervision race
+
+2026-11-16：E完成1024条首块、2次Actor接受及none/zero/released三项保护；监督目录计量撞上原子临时文件消失而误停，完整保存1095条（含block2未更新71条）。I未启动。目录计量竞态修复及CPU六项回归已过；新进程完整恢复/续跑入口待完成，不称训练仍在运行。GPU0实时有其他项目进程，不抢占。[证据与恢复要求](CONTACT_GOAL_EI_V2_FORMAL_SIZE_RACE.md)。历史数据、失败、科学门不改。
+
+## 以下保留历史状态
+
 # 当前执行：正式E已启动，I串行排队
 
 2026-11-16：空间恢复后的新attempt02通过资源preflight，runtime `646ba2531e5ef418a93d7e990bb4bf2850616e6c`。启动不等于训练完成；实际首块、保护和终检结果待运行。历史空间阻断与工程失败保留，学习/概率/物理合同不改。当前状态见 [CURRENT_STATE](CURRENT_STATE.md)。
