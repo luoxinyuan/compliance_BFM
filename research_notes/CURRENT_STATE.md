@@ -1,3 +1,11 @@
+# Current — 正式E完整恢复通过，已续采
+
+2026-11-16：runtime c724c0f，attempt05已逐值恢复1095条的模型/Adam/RNG/物理/历史；两次各12条真实后续核验逐值通过（24条仅作恢复检查、不计PPO）。已保留block2的71条待更新数据，仍按2048原边界更新；最新观测累计1700条，I随后串行。首块已有2次Actor接受及三项保护通过，不宣称行为收益。
+
+GPU0没有其他CUDA计算作业；此前79MiB图形上下文属于GPU1–6训练的图形初始化，旧“需等空卡”判断已更正。目录统计竞态和恢复检查步数错误均保留失败/成本，不改科学门或预算。详见[恢复记录](CONTACT_GOAL_EI_V2_FORMAL_RESUME_1095.md)。原新鲜初始化仍在attempt03，续跑的initial包不是零学习基线。
+
+## 以下保留历史快照
+
 # Current update — formal E saved after supervision race
 
 2026-11-16：E完成1024条首块、2次Actor接受及none/zero/released三项保护；监督目录计量撞上原子临时文件消失而误停，完整保存1095条（含block2未更新71条）。I未启动。目录计量竞态修复及CPU六项回归已过；新进程完整恢复/续跑入口待完成，不称训练仍在运行。GPU0实时有其他项目进程，不抢占。[证据与恢复要求](CONTACT_GOAL_EI_V2_FORMAL_SIZE_RACE.md)。历史数据、失败、科学门不改。

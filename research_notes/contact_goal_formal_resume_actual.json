@@ -1,0 +1,15 @@
+{
+  "runtime": "c724c0f025e0fdd45e6fb04ac52809771abb4792",
+  "resume_rows": 1095,
+  "pending_rows": 71,
+  "block_target": 2048,
+  "exact_model_Adam_rng": true,
+  "exact_effective_physics_history": true,
+  "two_branch_verification_actual_rows": 24,
+  "verification_rows_are_PPO": false,
+  "live_formal_rows": 1700,
+  "live_actor_accepted": 2,
+  "status": "RUNNING_RESUMED_E_NOT_BEHAVIOR_RESULT",
+  "observed_epoch": 1794815691.8666391,
+  "I_started": false
+}

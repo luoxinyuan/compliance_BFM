@@ -35,3 +35,31 @@ actually emits at most one five-control command. The new check now loops to exac
 actual rows per branch. This is resume-test accounting/coverage repair, no PPO change.
 The attempt04 failure and actual supervisor cost remain; next attempt reads original1095.
 No claim that the discarded five-row implementation passed twelve-row qualification.
+
+## Preserved check-accounting erratum and new running attempt
+
+Attempt04 completed exact initial restore and two five-row continuation checks before
+owner stop. Its resume-qualification.json incorrectly states24 verification rows;
+actual executed verification rows were10 because collect limits each call to the
+remaining substeps of one command. The artifact is retained and is NOT accepted as
+twelve-row continuation qualification. No new formal training rows or updates occurred.
+Actual cost248.805643job seconds,6121 physics ticks; supervisor charged both.
+
+A queue-wrapper string replacement failed to change the attempt number; immutable
+sidecar guard rejected before child launch. Wrapper/log retained. The replacement
+queue derives both command and sidecar from a single integer argument.
+
+Attempt05 uses runtime c724c0f025e0fdd45e6fb04ac52809771abb4792 and the original
+1095-row package; full12+12 actual continuation verification is pending at launch.
+A resumed `block-initial` is explicitly restored learned state, NOT the frozen
+zero-learning reference. The original fresh `formal-E-03/checkpoints/block-initial`
+remains the E initialization reference. Do not relabel resumed initial state as baseline.
+
+## Actual attempt05 qualification and continuation
+
+Full model/Adam/RNG/effective physical-history restore PASS. Two actual12-row
+continuations matched in full state and sampled rows; discarded24 check rows are
+not PPO data. Restored1095 again, kept71 pending rows, resumed actual on-policy
+collection. Latest inspected count1700; only first block2 accepted Actor
+updates are claimed at this snapshot. I remains serially gated. No behavior success
+or final Dev result. Machine summary: contact_goal_formal_resume_actual.json.
