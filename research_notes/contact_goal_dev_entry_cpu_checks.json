@@ -1,0 +1,21 @@
+{
+  "status": "CPU_EVALUATION_ENTRY_CHECKS_PASS",
+  "cases": 100,
+  "counts": {
+    "BC500": 4,
+    "E-final": 24,
+    "Goal-only": 24,
+    "I-final": 24,
+    "native-zero-U": 24
+  },
+  "core_only_matches_full_loader_two_chained_fixtures": true,
+  "corrupt_core_rejected": true,
+  "no_learning_calls_in_entry": true,
+  "alternate_goal_inversion_exact": true,
+  "plan_sha256": "1bba4ae8084dde4438ed8f842202caa01baed8b329d6af57639705785ad8daeb",
+  "source_sha256": "d7729596c7450ecd4665f2a5969545f53a8076225ebbc3d9750709059aa7fddd",
+  "physical_cases_executed": 0,
+  "runtime": "590aa54eb829b03f2fb76cf4f6bfa8ecf7489c52",
+  "current_source_sha256": "ae25488d34430aadbdb2b260225e02f18ca0cf032a5631c3f97e86e4206b9eed",
+  "post_fixture_change": "Only two result dictionary keys renamed; plan and core loader unchanged; no optimizer calls rechecked"
+}

@@ -19,3 +19,11 @@
 ## 非行为账本元数据更正
 
 监督ledger的formal_rows仍为入口初始化的E0/I0，未从最终结果写回；progress、实际checkpoint长度及result始终为各32000。原ledger完整备份并记SHA后，只更正该汇总字段为E32000/I32000；实际采样/模型/物理/账本秒数和ticks未改。后续引用以不可变结果和checkpoint长度为准。
+
+## 独立评价已启动（非完成结果）
+
+新独立runtime590aa54，formal-dev-02已由单GPU0 owner实际启动，当前冷加载。原100回合清单及两臂终点不改，不追加训练。CPU检查已过：100例身份、两层core/full loader逐值一致、损坏拒绝、无优化调用、公开Goal反转；机器记录contact_goal_dev_entry_cpu_checks.json。其后仅重命名两项旧FOLLOW报告键，避免把旧J/clean_success当Goal-aware主指标；loader/plan保持相同。
+
+formal-dev-01在8个PINS检查中发现隔离worktree缺少已验证force_compliance包，0物理ticks、0评价回合，实际7.534836job秒计账。按原runtime逐文件同SHA复制本地小型依赖及no_force.json，8个PINS全部通过；复制引起的三个可执行位差异已还原，内容未改、worktree重新干净。修复清单另存dev-pinned-source-repair.json。两次CPU入口错误（维护目录缺stage辅助库、worktree未checkout完成即导入）同样发生在物理前，保留失败说明；未放宽任何断言。
+
+本次入口准备/CPU资格/隔离checkout/文档采用1200秒整体保守记账（不是GPU实测，也不与GPU sidecar重复），总新增账本30650.678395秒；正式评价按sidecar单独继续计。GPU0启动前空闲，内存与IO核验通过；共享盘约802GiB。尚无任何新Dev行为收益数字，不将冷加载或源码提交称为评价通过。

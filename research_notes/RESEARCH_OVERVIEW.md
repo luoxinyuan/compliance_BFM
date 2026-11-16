@@ -1,3 +1,9 @@
+# Current — E/I正式训练完成；独立完整Dev已启动
+
+2026-11-17：E/I各32000条、各127次Actor接受；全部固定训练保护通过。独立评价runtime590aa54，formal-dev-02已启动冷加载，固定100完整回合，尚无新Dev结果。此前缺少已验证隔离接触依赖的启动失败在物理前退出，已逐文件同SHA补齐并过8项PINS；失败/成本保留。训练原runtime08b9c96与终点模型不改，不加训、不读sealed、不按Dev反选。[完整事实、入口与成本](CONTACT_GOAL_EI_V2_FORMAL_TRAINING_COMPLETE.md)。
+
+## 以下保留历史状态
+
 # Current — E/I各32k训练及最后保护均完成，统一Dev待执行
 
 2026-11-17：两臂各127次Actor接受，全部固定节点保护PASS；训练runtime08b9c96，终点模型已冻结。Dev尚未执行，不宣称E/I行为收益或BI增量。正在接通独立100完整回合评价入口；原错误与恢复记录、全部科学门/预算/封存边界不变。[完成证据与评价合同](CONTACT_GOAL_EI_V2_FORMAL_TRAINING_COMPLETE.md)。
