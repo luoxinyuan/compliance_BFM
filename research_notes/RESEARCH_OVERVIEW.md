@@ -1,3 +1,7 @@
+# 当前执行：正式E已启动，I串行排队
+
+2026-11-16：空间恢复后的新attempt02通过资源preflight，runtime `646ba2531e5ef418a93d7e990bb4bf2850616e6c`。启动不等于训练完成；实际首块、保护和终检结果待运行。历史空间阻断与工程失败保留，学习/概率/物理合同不改。当前状态见 [CURRENT_STATE](CURRENT_STATE.md)。
+
 # 当前更新：E/I v2正式运行准备
 
 2026-11-16：Yi已授权按OR1实测完成正式全程预算修订并开始长训；[预算修订](CONTACT_GOAL_EI_V2_FORMAL_BUDGET_AMENDMENT.md)。OR1科学与恢复资格复用，正式数据/初始化与工程scratch分离。当前尚未启动，具体以CURRENT_STATE及新阶段账本为准。旧已结项判读保留。

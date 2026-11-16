@@ -1,3 +1,13 @@
+# Current — E/I v2正式E臂已启动，I串行排队
+
+2026-11-16。用户确认空间恢复后，实时检查GPU0空闲、共享空间重新高于已批5GiB地板及完整停止包预留。正式E进程已启动，runtime `646ba2531e5ef418a93d7e990bb4bf2850616e6c`；I仅在E正常完成后串行启动。启动快照尚在模型/环境冷加载，不把进程存在称为首块训练完成。实际采样、更新、资格和成本以新阶段sidecar/ledger为准。
+
+原发车因共享空间骤降到0而在preflight退出（正式数据0），以及队列包装语法失败均保留；新attempt02不覆盖旧sidecar。此次源码只增加运行编号，已完成语法检查；学习数学、数据、概率、物理及预算合同不变。磁盘地板仍5GiB，另预留1GiB完整停止包；空间不足会保存停止，不擅自清除证据。
+
+[正式入口](CONTACT_GOAL_EI_V2_FORMAL_ENTRY.md)、[完整预算](CONTACT_GOAL_EI_V2_FORMAL_BUDGET_AMENDMENT.md)。两臂各32k真实50Hz、固定训练保护节点与完整终检，未读sealed。当前没有新的行为成功或BI增量结论。
+
+## 以下保留历史快照
+
 # Current — E/I v2正式预算修订已授权，运行准备中
 
 2026-11-16。Yi已直接授权按实测修订完整正式训练/评价/存盘预算并发车，后续确认继续；[完整预算](CONTACT_GOAL_EI_V2_FORMAL_BUDGET_AMENDMENT.md)与[最新资源签署](CONTACT_GOAL_EI_V2_FORMAL_RESOURCE_SIGNOFF_20261116.md)已归档。原OR1工程资格与历史失败保留。正式仍是每臂P2 12k＋P3 20k，完整100 Dev、48 train sentinel、12 P3入口及最多8消融，不使用sealed。
