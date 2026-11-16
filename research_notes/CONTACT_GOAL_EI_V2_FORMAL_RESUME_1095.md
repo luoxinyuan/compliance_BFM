@@ -27,3 +27,11 @@ code; no running source is mutated. New runtime identity is frozen before launch
 Scientific gates, storage5GiB+1GiB reserve, output/job/tick budgets unchanged.
 
 This is a continuation implementation record, not a behavior-learning conclusion.
+
+## Entry repair before qualification
+
+Attempt04 was owner-stopped during cold startup: code review found collect(12)
+actually emits at most one five-control command. The new check now loops to exactly12
+actual rows per branch. This is resume-test accounting/coverage repair, no PPO change.
+The attempt04 failure and actual supervisor cost remain; next attempt reads original1095.
+No claim that the discarded five-row implementation passed twelve-row qualification.

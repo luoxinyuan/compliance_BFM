@@ -5,7 +5,8 @@
     "1095_retains_71_pending_target2048",
     "fixed_nodes_unchanged",
     "update_source_unchanged",
-    "driver_and_supervisor_parse"
+    "driver_and_supervisor_parse",
+    "exact12_rows_across_all_five_start_offsets"
   ],
   "physics": 0,
   "new_formal_rows": 0

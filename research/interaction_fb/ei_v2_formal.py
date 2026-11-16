@@ -71,7 +71,11 @@ def study(e,base,c,out):
         # These are restore checks, not additional PPO samples.
         def check_branch():
             env.collection_role='restore_check_not_PPO'
-            with torch.no_grad():new,_=env.collect(12)
+            new=[]
+            while len(new)<12:
+                with torch.no_grad():part,_=env.collect(min(5,12-len(new)))
+                new.extend(part)
+            assert len(new)==12
             return dict(agent=tree_digest(agent.state()),rng=tree_digest(global_rng()),
                         physics=tree_digest(canonical(portable(env.task),metadata(e.sim.model,e.sim.data))),
                         rows=tree_digest(new))
