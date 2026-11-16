@@ -1,5 +1,7 @@
 # Humanoid Compliance — 长期主线与当前执行入口
 
+2026-11-16：OR1局部优化规则已完成有界工程资格及两臂完整恢复；[最终报告](CONTACT_GOAL_EI_V2_OR1_FINAL_RESULTS.md)。真实接触行为与BI增量未验收，OR6正式全流程成本尚未放行，当前停止。
+
 2026-11-15最新：Yi已签[OR1分段秒帽补充](CONTACT_GOAL_EI_V2_OR1_SEGMENT_SECONDS_SIGNED_AMENDMENT.md)。仅分段秒数超支改报告制，stage47000/240h/输出/8192新采样/五α与科学门不变，OR0按决定接受现状继续。已获得E/I各首P2块2次真实Actor接受和各3项保持PASS；正在复用已有完整状态补齐原D1/D2，不再因原分段秒帽等待。原成本停点/IO/SIGKILL不重判，正式32k和Dev/Sealed仍未放行。[CURRENT_STATE](CURRENT_STATE.md)为当前执行状态。
 
 长期目标：Contact-conditioned whole-body behavior selection, modulation and transition；由真实身体、接触历史与公开目标共同决定可持续响应。原生运动先验提供可追溯能力，真实闭环学习分配和转换，之后才验证受限观测Student及自身RL。不能将固定force→skill规则、Goal查表或物理搜索结果冒称已学会通用交互。

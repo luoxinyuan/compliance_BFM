@@ -1,3 +1,11 @@
+# Current — Issue66 OR1有界资格完成，正式训练未启动
+
+2026-11-16。[最终报告](CONTACT_GOAL_EI_V2_OR1_FINAL_RESULTS.md)：D0/D1/D2及E/I新进程12条＋完整更新逐值恢复通过；新工程采样8192/8192，两臂各4块、Actor各接受12步。I最后恢复379.938秒/4145ticks/新增训练行0，GPU0释放。
+
+输出和I恢复补齐授权已归档；原tick轮询超支及所有失败保留，不追溯改判。OR6按实测热块/IO投影尚未放行；不自动32k/Dev/sealed，不宣称接触行为或BI增量成功。下一项仅提交完整正式预算修订。
+
+## 以下保留旧进度快照
+
 # Current — Issue66 OR1：P3工程IO修复，按已批合同续跑
 
 2026-11-15。D1 E/I完整通过；E的P3首1024行接受4次Actor、累计9次，入口6/6及none/zero通过，但actual-release期间监督器ESTALE中断，未宣称D2通过。用户已授权修复后继续。[工程修复与续跑02](CONTACT_GOAL_EI_V2_OR1_COUNTER_RESUME_02.md)只调整计数IO互斥、异常退出元数据和完整block1续跑。CPU并发/故障注入通过，真实恢复尚待运行。
