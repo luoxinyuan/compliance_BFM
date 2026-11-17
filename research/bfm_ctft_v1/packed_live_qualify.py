@@ -96,7 +96,19 @@ def study(e,original,contract,out):
         def package():return dict(learner=learner_state(agent,step=step,replay_segments=segments,
             replay_capacity=buffers['train'].capacity,replay_idx=buffers['train']._idx,reference=reference),task=live.snapshot(),
             scheduler=dict(committed_rows=buffers['train']._idx,step=step,disposable=True))
-        before=fingerprint(agent);base,stats=store.save('round-2',package(),anchor=True);assert fingerprint(agent)==before
+        base_meta=None
+        if args.get('reuse_base'):
+            import copy
+            old=Path(args['reuse_base']);old_store=PackedTensorStore(old.parent)
+            base_meta=copy.deepcopy(old_store.metadata(old.name))
+            def rebase(v):
+                if isinstance(v,dict):
+                    if 'file' in v and 'raw_sha256' in v:v['file']=os.path.relpath(old_store.root/v['file'],store.root)
+                    for value in v.values():rebase(value)
+                elif isinstance(v,(list,tuple)):
+                    for value in v:rebase(value)
+            rebase(base_meta)
+        before=fingerprint(agent);base,stats=store.save('round-2',package(),anchor=True,base=base_meta);assert fingerprint(agent)==before
         write(out/'save-2.json',stats)
         _,new=run(12);step+=1
         replay_path=out/'actual-next-replay.pt';torch.save(new,replay_path);segments.append(dict(path=str(replay_path),sha256=file_sha(replay_path)))
@@ -124,8 +136,8 @@ def study(e,original,contract,out):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',choices=['reference','interrupt','resume','alias-audit'],required=True)
-    p.add_argument('--store');p.add_argument('--reference');a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
-    os.environ.update(CTFT_PACKED_ARGS=json.dumps(dict(mode=a.mode,store=a.store,reference=a.reference)),
+    p.add_argument('--store');p.add_argument('--reference');p.add_argument('--reuse-base');a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
+    os.environ.update(CTFT_PACKED_ARGS=json.dumps(dict(mode=a.mode,store=a.store,reference=a.reference,reuse_base=a.reuse_base)),
         BFM_RECOVERY_OUTPUT=str(a.output),CCL_DEADLINE_MONOTONIC=str(time.monotonic()+1800))
     from resource_guard import check
     check(STAGE)

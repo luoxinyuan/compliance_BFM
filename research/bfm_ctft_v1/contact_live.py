@@ -120,6 +120,10 @@ class ContactLive:
 
     def step(self,action,before,z):
         from m8_stage import advance
+        # The optional wrapper time tensor aliases episode_length_buf. Freeze
+        # the actual pre-action input before physics mutates that metadata.
+        # Clock is NOT in the normalizer/Actor/F/B/discriminator input filters.
+        frozen_before=cpu(before)
         e=self.e;m,d=e.sim.model,e.sim.data;t=e.tether
         e.previous_z=z.clone()
         native_done=advance(e,action)
@@ -133,7 +137,7 @@ class ContactLive:
         raw=e.base.extras['aux_rewards']
         reward=sum(float(raw[k].detach().cpu().reshape(-1)[0])*v for k,v in self.coefficients.items())+cost['contact_native_reward']
         self.i+=1;self.done=self.i>=self.controls
-        return dict(observation=cpu(before),action=cpu(action),z=cpu(z),
+        return dict(observation=frozen_before,action=cpu(action),z=cpu(z),
             next=dict(observation=cpu(self.observation()),terminated=torch.zeros(1,1,dtype=torch.bool),truncated=torch.tensor([[self.done]],dtype=torch.bool)),
             aux_rewards=dict(ctft_total_native=torch.tensor([[reward]],dtype=torch.float32)))
 

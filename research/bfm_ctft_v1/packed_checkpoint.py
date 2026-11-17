@@ -41,7 +41,8 @@ class PackedTensorStore:
         return obj
 
     def metadata(self,name):
-        path=self.root/name;m=json.loads((path/'manifest.json').read_text());assert m['complete']
+        path=self.root/name;assert not (path/'retired.json').exists(),'Generation explicitly retired by retention policy'
+        m=json.loads((path/'manifest.json').read_text());assert m['complete']
         raw=(path/'state.pkl').read_bytes();assert sha(raw)==m['state_sha256']
         return pickle.loads(raw)
 
@@ -83,7 +84,9 @@ class PackedTensorStore:
             if isinstance(v,tuple):return tuple(pack(z,previous[i] if isinstance(previous,tuple) and i<len(previous) else None) for i,z in enumerate(v))
             return v
         try:
-            packed=pack(obj,None if anchor else base);stream.flush();os.fsync(stream.fileno())
+            # A milestone can depend on older permanent milestones. Its
+            # complete logical state stays independently addressable forever.
+            packed=pack(obj,base);stream.flush();os.fsync(stream.fileno())
         finally:stream.close()
         if inject=='after_blobs':raise RuntimeError('INJECTED_AFTER_BLOBS_BEFORE_COMMIT')
         content=pickle.dumps(packed,protocol=5);durable(pending/'state.pkl',content)
@@ -94,5 +97,42 @@ class PackedTensorStore:
         fsync_dir(pending);os.rename(pending,path);fsync_dir(self.root)
         from learning_checkpoint import digest
         assert digest(self.load(name))==digest(obj),'Packed readback differs'
+        durable(path/'readback.json',json.dumps(dict(complete=True,state_sha256=m['state_sha256'],all_tensor_raw_hashes_verified=True)).encode())
         durable(self.root/'latest.json',json.dumps(dict(package=name,manifest_sha256=sha((path/'manifest.json').read_bytes()))).encode())
         return packed,dict(m,save_verify_s=time.monotonic()-start)
+
+    def retain(self,completed_names,permanent_names):
+        """Only this store's successful nonanchors, after two verified commits.
+
+        No stage-wide cleanup, no failed/pending package or shared asset.
+        Caller supplies prelocked milestone names; all file dependencies of
+        retained logical states are protected even if an anchor list is wrong.
+        """
+        assert len(completed_names)>=2
+        latest=json.loads((self.root/'latest.json').read_text())['package']
+        assert latest==completed_names[-1]
+        keep=set(permanent_names)|set(completed_names[-2:])
+        for n in completed_names[-2:]:
+            m=json.loads((self.root/n/'manifest.json').read_text())
+            v=json.loads((self.root/n/'readback.json').read_text())
+            assert v['complete'] and v['state_sha256']==m['state_sha256'] and v['all_tensor_raw_hashes_verified']
+        def dependencies(v):
+            if isinstance(v,dict):
+                if 'file' in v and 'raw_sha256' in v:keep.add(Path(v['file']).parts[0])
+                for x in v.values():dependencies(x)
+            elif isinstance(v,(list,tuple)):
+                for x in v:dependencies(x)
+        for n in list(keep):
+            if n in completed_names:dependencies(self.metadata(n))
+        retired=[]
+        for n in completed_names:
+            if n in keep:continue
+            p=self.root/n;assert p.parent==self.root and n.startswith('round-')
+            if (p/'retired.json').exists():continue
+            m=json.loads((p/'manifest.json').read_text());assert m['complete'] and not m['anchor']
+            record=dict(policy='latesttwo-plus-permanent-and-all-dependencies',manifest_sha256=sha((p/'manifest.json').read_bytes()),
+                state_sha256=m['state_sha256'],data_bytes=(p/'data.bin').stat().st_size,state_bytes=(p/'state.pkl').stat().st_size,
+                retired_unix=time.time(),not_a_failed_or_pending_package=True)
+            durable(p/'retired.json',json.dumps(record,indent=2).encode())
+            (p/'data.bin').unlink();(p/'state.pkl').unlink();fsync_dir(p);retired.append(n)
+        return retired
