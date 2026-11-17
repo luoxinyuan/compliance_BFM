@@ -1,3 +1,13 @@
+# Current — Issue67 A1已批准；S0局部资格通过，编译有序反向复发阻断
+
+2026-11-17：[Yi追加批准A1](BFM_CTFT_V1_APPROVED_AMENDMENT_A1.md)已落实原aux逐步单位与新接触项单位接口修订，在线当前5ms支撑与离线0.10s滑移段分离，阈值不变。真实原生前进12次落脚均即时有效、最长无支撑5ms不误停；真实85ms失支撑反例应于55ms停。原材料点滑移全套量尺尚未通过，不填PASS。
+
+[中间实测与失败](BFM_CTFT_V1_S0_PROGRESS_A1.md)：12真实原生祖先的36完整状态恢复及后续12控制/48tick逐值一致；原生完整退出失败保留，不把较早合法状态恢复泛化为全域。原checkpoint strict加载、Actor/F零新增列输出和隐藏信息隔离已通过，B/target-B及原normalizer冻结，aux与五Adam fresh。未继承旧E/I或U/selector/FiLM学习权重。
+
+一次性g0完整更新接线试车遇AOT共享反向tape错误；一次工程修复后eager梯度、Adam和参数逐值等价，但compiled受donated-buffer限制再次失败。按合同§9同根因复发停报，状态BLOCKED_COMPILED_ORDERED_GRADIENT_LIFECYCLE；完整agent.update完成0，正式U/T未启动，N未锁。没有擅自关闭compile、删除GP或放宽恢复/物理门。建议另准一次仅禁用donated-buffer优化的兼容验证，未执行。真实接触采集/固定aux尺度/全链存盘与吞吐/血缘和材料点资格仍PENDING。短暂SSH中断已恢复、GPU0作业均已结束。原单位阻断与所有旧结项保留。
+
+## 以下保留此前状态
+
 # Current — Issue67 BFM-CTFT v1已批准；S0原辅助奖励单位阻断
 
 2026-11-17：Yi明确批准正文＋执行锁、40job小时/120GiB/16M ticks及最新两代＋里程碑checkpoint策略。[批准归档](BFM_CTFT_V1_SIGNED.md)。已建立独立bfm_ctft_v1，无旧E/I或selector/FiLM/U/residual权重继承。原BFM文件SHA与完整训练配置/模型配置一致，F/B/critic/targets存储键齐全；尚未strict加载或更新。

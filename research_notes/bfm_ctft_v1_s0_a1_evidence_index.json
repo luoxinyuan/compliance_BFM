@@ -1,0 +1,926 @@
+{
+  "status": "ORIGINAL_NATIVE_MODEL_MIGRATION_AND_PERMISSIONS_QUALIFIED",
+  "checks": [
+    {
+      "batch": 1,
+      "actor_max_error": 0.0,
+      "F_max_error": 0.0,
+      "hidden_actor_invariance_exact": true
+    },
+    {
+      "batch": 4,
+      "actor_max_error": 0.0,
+      "F_max_error": 0.0,
+      "hidden_actor_invariance_exact": true
+    }
+  ],
+  "optimizers": [
+    "actor_optimizer",
+    "forward_optimizer",
+    "critic_optimizer",
+    "aux_critic_optimizer",
+    "discriminator_optimizer"
+  ],
+  "all_adam_states_fresh": true,
+  "original_B_and_target_B_frozen": true,
+  "aux_fresh_and_target_exact": true,
+  "no_old_learning_weights": true,
+  "float32_matmul_precision": "high",
+  "amp": false,
+  "CUDA_reserved_peak": 10248781824,
+  "CUDA_allocated_peak": 10182675968,
+  "wall_s": 23.925453240051866,
+  "source_qualification_records": [
+    {
+      "case": 0,
+      "ancestor": "walk1_subject1",
+      "motion": "walk1_subject1_clip0",
+      "boundary_kind": "native_source_hard_boundary",
+      "complete": false,
+      "physics_rows": 1655,
+      "controls": 414,
+      "moving_sustained_200ms": true,
+      "root_progress_xy": [
+        1.315427082659158,
+        -0.04457049760322413
+      ],
+      "support_switches": 6,
+      "longest_no_support_s": 0.055,
+      "evidence_file": "source-00.pkl.gz",
+      "evidence_sha256": "c645046efac16ee6d5f6aabaaea931c8cc79271465a7e11f6a6f8ae6763b1c90",
+      "source_restoration_qualified": false
+    },
+    {
+      "case": 1,
+      "ancestor": "walk1_subject2",
+      "motion": "walk1_subject2_clip0",
+      "boundary_kind": null,
+      "complete": true,
+      "physics_rows": 2600,
+      "controls": 650,
+      "moving_sustained_200ms": true,
+      "root_progress_xy": [
+        -0.06027085959316461,
+        -0.006226954928536414
+      ],
+      "support_switches": 4,
+      "longest_no_support_s": 0.035,
+      "evidence_file": "source-01.pkl.gz",
+      "evidence_sha256": "c07d271d6fb4076442792dd8a9603231f628d5f5193ff71422e5a56dea31b95f",
+      "source_restoration_qualified": false
+    },
+    {
+      "case": 2,
+      "ancestor": "walk1_subject5",
+      "motion": "walk1_subject5_clip0",
+      "boundary_kind": null,
+      "complete": true,
+      "physics_rows": 2600,
+      "controls": 650,
+      "moving_sustained_200ms": true,
+      "root_progress_xy": [
+        0.2555529201786364,
+        1.219157710582704
+      ],
+      "support_switches": 9,
+      "longest_no_support_s": 0.035,
+      "evidence_file": "source-02.pkl.gz",
+      "evidence_sha256": "61ebdc31753b4bd489df444de6016b9e1d9420e7d924d155228855e63aa95901",
+      "source_restoration_qualified": false
+    },
+    {
+      "case": 3,
+      "ancestor": "walk2_subject1",
+      "motion": "walk2_subject1_clip0",
+      "boundary_kind": null,
+      "complete": true,
+      "physics_rows": 2600,
+      "controls": 650,
+      "moving_sustained_200ms": true,
+      "root_progress_xy": [
+        0.49079467585698816,
+        0.6769243444969384
+      ],
+      "support_switches": 3,
+      "longest_no_support_s": 0.035,
+      "evidence_file": "source-03.pkl.gz",
+      "evidence_sha256": "8e8e12c13dbd5dbe16a494ad8f71749cd1b7422fe64a371b498dd2f377a755c9",
+      "source_restoration_qualified": false
+    },
+    {
+      "case": 4,
+      "ancestor": "walk2_subject3",
+      "motion": "walk2_subject3_clip0",
+      "boundary_kind": null,
+      "complete": true,
+      "physics_rows": 2600,
+      "controls": 650,
+      "moving_sustained_200ms": false,
+      "root_progress_xy": [
+        0.02546889276648892,
+        0.061271690077699156
+      ],
+      "support_switches": 0,
+      "longest_no_support_s": 0.035,
+      "evidence_file": "source-04.pkl.gz",
+      "evidence_sha256": "ea76c258d2659d1a998f0d92a7227954d529ea9b0e4a96d03c900cfb43a7bb7b",
+      "source_restoration_qualified": false
+    },
+    {
+      "case": 5,
+      "ancestor": "walk2_subject4",
+      "motion": "walk2_subject4_clip0",
+      "boundary_kind": null,
+      "complete": true,
+      "physics_rows": 2600,
+      "controls": 650,
+      "moving_sustained_200ms": true,
+      "root_progress_xy": [
+        0.04977627052867116,
+        0.05515231521613485
+      ],
+      "support_switches": 2,
+      "longest_no_support_s": 0.035,
+      "evidence_file": "source-05.pkl.gz",
+      "evidence_sha256": "48f499f030f0a0aba27becab455b8a4311044ebfdc83ebb28969f3bbce921835",
+      "source_restoration_qualified": false
+    },
+    {
+      "case": 6,
+      "ancestor": "walk3_subject1",
+      "motion": "walk3_subject1_clip0",
+      "boundary_kind": null,
+      "complete": true,
+      "physics_rows": 2600,
+      "controls": 650,
+      "moving_sustained_200ms": false,
+      "root_progress_xy": [
+        0.15881688645258113,
+        0.020000949114422885
+      ],
+      "support_switches": 2,
+      "longest_no_support_s": 0.035,
+      "evidence_file": "source-06.pkl.gz",
+      "evidence_sha256": "e44b1c546954d602217fbf6ec627f696665c19ed31450bac87f9f03a0aaad40a",
+      "source_restoration_qualified": false
+    },
+    {
+      "case": 7,
+      "ancestor": "walk3_subject2",
+      "motion": "walk3_subject2_clip0",
+      "boundary_kind": null,
+      "complete": true,
+      "physics_rows": 2600,
+      "controls": 650,
+      "moving_sustained_200ms": false,
+      "root_progress_xy": [
+        0.04228103688226771,
+        -0.0017154037610612877
+      ],
+      "support_switches": 1,
+      "longest_no_support_s": 0.035,
+      "evidence_file": "source-07.pkl.gz",
+      "evidence_sha256": "5628564b00997f292762caa89133ef8e9c7393682b459256da34ca03c8f9a994",
+      "source_restoration_qualified": false
+    },
+    {
+      "case": 8,
+      "ancestor": "walk3_subject3",
+      "motion": "walk3_subject3_clip0",
+      "boundary_kind": "native_source_hard_boundary",
+      "complete": false,
+      "physics_rows": 1491,
+      "controls": 373,
+      "moving_sustained_200ms": true,
+      "root_progress_xy": [
+        0.35401614300278594,
+        -0.10667392400923334
+      ],
+      "support_switches": 2,
+      "longest_no_support_s": 0.035,
+      "evidence_file": "source-08.pkl.gz",
+      "evidence_sha256": "4741546a26496f7898ff5c0fff8b06ac0d313109e50cc194587c6ceb8c8a09b8",
+      "source_restoration_qualified": false
+    },
+    {
+      "case": 9,
+      "ancestor": "walk3_subject4",
+      "motion": "walk3_subject4_clip0",
+      "boundary_kind": null,
+      "complete": true,
+      "physics_rows": 2600,
+      "controls": 650,
+      "moving_sustained_200ms": true,
+      "root_progress_xy": [
+        1.8243735637834957,
+        1.4920251876122228
+      ],
+      "support_switches": 8,
+      "longest_no_support_s": 0.035,
+      "evidence_file": "source-09.pkl.gz",
+      "evidence_sha256": "dfbaf00bee36f97fdd96f96f6ca93610d6e69dab21b1f1d772f7771e0685d5f6",
+      "source_restoration_qualified": false
+    },
+    {
+      "case": 10,
+      "ancestor": "walk3_subject5",
+      "motion": "walk3_subject5_clip0",
+      "boundary_kind": null,
+      "complete": true,
+      "physics_rows": 2600,
+      "controls": 650,
+      "moving_sustained_200ms": true,
+      "root_progress_xy": [
+        0.7024707192224949,
+        0.21320363178895982
+      ],
+      "support_switches": 9,
+      "longest_no_support_s": 0.045,
+      "evidence_file": "source-10.pkl.gz",
+      "evidence_sha256": "01957056c6231b1a426bab615347288d3da9d6893ee2242c9f1d70882b283552",
+      "source_restoration_qualified": false
+    },
+    {
+      "case": 11,
+      "ancestor": "walk4_subject1",
+      "motion": "walk4_subject1_clip0",
+      "boundary_kind": null,
+      "complete": true,
+      "physics_rows": 2600,
+      "controls": 650,
+      "moving_sustained_200ms": false,
+      "root_progress_xy": [
+        0.00045949196192246813,
+        0.012308634861783033
+      ],
+      "support_switches": 0,
+      "longest_no_support_s": 0.035,
+      "evidence_file": "source-11.pkl.gz",
+      "evidence_sha256": "3a8d59c94eaf8bdb0d585dbe29d9aa941e855178428371c9da5a2e698e3d087d",
+      "source_restoration_qualified": false
+    }
+  ],
+  "representative_restore": {
+    "status": "NATIVE_SOURCE_REPRESENTATIVE_RESTORE_QUALIFIED",
+    "tests": [
+      {
+        "case": 0,
+        "ancestor": "walk1_subject1",
+        "control_index": 50,
+        "restored_time_s": 3.999999999999937,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 0,
+        "ancestor": "walk1_subject1",
+        "control_index": 150,
+        "restored_time_s": 5.999999999999894,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 0,
+        "ancestor": "walk1_subject1",
+        "control_index": 300,
+        "restored_time_s": 9.000000000000007,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 1,
+        "ancestor": "walk1_subject2",
+        "control_index": 50,
+        "restored_time_s": 3.999999999999937,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 1,
+        "ancestor": "walk1_subject2",
+        "control_index": 150,
+        "restored_time_s": 5.999999999999894,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 1,
+        "ancestor": "walk1_subject2",
+        "control_index": 300,
+        "restored_time_s": 9.000000000000007,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 2,
+        "ancestor": "walk1_subject5",
+        "control_index": 50,
+        "restored_time_s": 3.999999999999937,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 2,
+        "ancestor": "walk1_subject5",
+        "control_index": 150,
+        "restored_time_s": 5.999999999999894,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 2,
+        "ancestor": "walk1_subject5",
+        "control_index": 300,
+        "restored_time_s": 9.000000000000007,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 3,
+        "ancestor": "walk2_subject1",
+        "control_index": 50,
+        "restored_time_s": 3.999999999999937,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 3,
+        "ancestor": "walk2_subject1",
+        "control_index": 150,
+        "restored_time_s": 5.999999999999894,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 3,
+        "ancestor": "walk2_subject1",
+        "control_index": 300,
+        "restored_time_s": 9.000000000000007,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 4,
+        "ancestor": "walk2_subject3",
+        "control_index": 50,
+        "restored_time_s": 3.999999999999937,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 4,
+        "ancestor": "walk2_subject3",
+        "control_index": 150,
+        "restored_time_s": 5.999999999999894,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 4,
+        "ancestor": "walk2_subject3",
+        "control_index": 300,
+        "restored_time_s": 9.000000000000007,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 5,
+        "ancestor": "walk2_subject4",
+        "control_index": 50,
+        "restored_time_s": 3.999999999999937,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 5,
+        "ancestor": "walk2_subject4",
+        "control_index": 150,
+        "restored_time_s": 5.999999999999894,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 5,
+        "ancestor": "walk2_subject4",
+        "control_index": 300,
+        "restored_time_s": 9.000000000000007,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 6,
+        "ancestor": "walk3_subject1",
+        "control_index": 50,
+        "restored_time_s": 3.999999999999937,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 6,
+        "ancestor": "walk3_subject1",
+        "control_index": 150,
+        "restored_time_s": 5.999999999999894,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 6,
+        "ancestor": "walk3_subject1",
+        "control_index": 300,
+        "restored_time_s": 9.000000000000007,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 7,
+        "ancestor": "walk3_subject2",
+        "control_index": 50,
+        "restored_time_s": 3.999999999999937,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 7,
+        "ancestor": "walk3_subject2",
+        "control_index": 150,
+        "restored_time_s": 5.999999999999894,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 7,
+        "ancestor": "walk3_subject2",
+        "control_index": 300,
+        "restored_time_s": 9.000000000000007,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 8,
+        "ancestor": "walk3_subject3",
+        "control_index": 50,
+        "restored_time_s": 3.999999999999937,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 8,
+        "ancestor": "walk3_subject3",
+        "control_index": 150,
+        "restored_time_s": 5.999999999999894,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 8,
+        "ancestor": "walk3_subject3",
+        "control_index": 300,
+        "restored_time_s": 9.000000000000007,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 9,
+        "ancestor": "walk3_subject4",
+        "control_index": 50,
+        "restored_time_s": 3.999999999999937,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 9,
+        "ancestor": "walk3_subject4",
+        "control_index": 150,
+        "restored_time_s": 5.999999999999894,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 9,
+        "ancestor": "walk3_subject4",
+        "control_index": 300,
+        "restored_time_s": 9.000000000000007,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 10,
+        "ancestor": "walk3_subject5",
+        "control_index": 50,
+        "restored_time_s": 3.999999999999937,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 10,
+        "ancestor": "walk3_subject5",
+        "control_index": 150,
+        "restored_time_s": 5.999999999999894,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 10,
+        "ancestor": "walk3_subject5",
+        "control_index": 300,
+        "restored_time_s": 9.000000000000007,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 11,
+        "ancestor": "walk4_subject1",
+        "control_index": 50,
+        "restored_time_s": 3.999999999999937,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 11,
+        "ancestor": "walk4_subject1",
+        "control_index": 150,
+        "restored_time_s": 5.999999999999894,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      },
+      {
+        "case": 11,
+        "ancestor": "walk4_subject1",
+        "control_index": 300,
+        "restored_time_s": 9.000000000000007,
+        "matched_native_controls": 12,
+        "matched_physics_ticks": 48,
+        "valid_solver_arrays_exact": true,
+        "full_bfm_action_history_exact": true,
+        "rngs_exact": true,
+        "continuation_physics_exact": true,
+        "online_support_exact": true
+      }
+    ],
+    "source_ancestors": 12,
+    "source_qualification": [
+      {
+        "case": 0,
+        "ancestor": "walk1_subject1",
+        "qualified_state_controls": [
+          50,
+          150,
+          300
+        ],
+        "complete_native_13s": false,
+        "native_stop_failure_retained": true
+      },
+      {
+        "case": 1,
+        "ancestor": "walk1_subject2",
+        "qualified_state_controls": [
+          50,
+          150,
+          300
+        ],
+        "complete_native_13s": true,
+        "native_stop_failure_retained": false
+      },
+      {
+        "case": 2,
+        "ancestor": "walk1_subject5",
+        "qualified_state_controls": [
+          50,
+          150,
+          300
+        ],
+        "complete_native_13s": true,
+        "native_stop_failure_retained": false
+      },
+      {
+        "case": 3,
+        "ancestor": "walk2_subject1",
+        "qualified_state_controls": [
+          50,
+          150,
+          300
+        ],
+        "complete_native_13s": true,
+        "native_stop_failure_retained": false
+      },
+      {
+        "case": 4,
+        "ancestor": "walk2_subject3",
+        "qualified_state_controls": [
+          50,
+          150,
+          300
+        ],
+        "complete_native_13s": true,
+        "native_stop_failure_retained": false
+      },
+      {
+        "case": 5,
+        "ancestor": "walk2_subject4",
+        "qualified_state_controls": [
+          50,
+          150,
+          300
+        ],
+        "complete_native_13s": true,
+        "native_stop_failure_retained": false
+      },
+      {
+        "case": 6,
+        "ancestor": "walk3_subject1",
+        "qualified_state_controls": [
+          50,
+          150,
+          300
+        ],
+        "complete_native_13s": true,
+        "native_stop_failure_retained": false
+      },
+      {
+        "case": 7,
+        "ancestor": "walk3_subject2",
+        "qualified_state_controls": [
+          50,
+          150,
+          300
+        ],
+        "complete_native_13s": true,
+        "native_stop_failure_retained": false
+      },
+      {
+        "case": 8,
+        "ancestor": "walk3_subject3",
+        "qualified_state_controls": [
+          50,
+          150,
+          300
+        ],
+        "complete_native_13s": false,
+        "native_stop_failure_retained": true
+      },
+      {
+        "case": 9,
+        "ancestor": "walk3_subject4",
+        "qualified_state_controls": [
+          50,
+          150,
+          300
+        ],
+        "complete_native_13s": true,
+        "native_stop_failure_retained": false
+      },
+      {
+        "case": 10,
+        "ancestor": "walk3_subject5",
+        "qualified_state_controls": [
+          50,
+          150,
+          300
+        ],
+        "complete_native_13s": true,
+        "native_stop_failure_retained": false
+      },
+      {
+        "case": 11,
+        "ancestor": "walk4_subject1",
+        "qualified_state_controls": [
+          50,
+          150,
+          300
+        ],
+        "complete_native_13s": true,
+        "native_stop_failure_retained": false
+      }
+    ],
+    "qualification_scope": "Three prelocked safe actual states per source; original source failure tails remain negative, not teacher labels or sampled unsafe states.",
+    "original_whole_candidate_summary_status": "DATA_SUPPORT_BLOCKED for complete13s+walking-only screen; not the contract requirement that every source must walk.",
+    "scientific_source_coverage": "No all-source recovery-success claim. Legal-state and transition annotation admission is separately pending.",
+    "model_unchanged": true,
+    "training_transitions": 0,
+    "updates": 0
+  },
+  "joint_probe_attempts": [
+    {
+      "attempt": 1,
+      "failure": {
+        "error_type": "RuntimeError",
+        "error": "Trying to backward through the graph a second time (or directly access saved tensors after they have already been freed). Saved intermediate values of the graph are freed when you call .backward() or autograd.grad(). Specify retain_graph=True if you need to backward through the graph a second time or if you need to access saved tensors after calling backward.",
+        "counts": {
+          "real_new_physics_ticks": 0,
+          "formal_training_transitions": 0,
+          "agent_updates": 0
+        },
+        "wall_s": 133.003036147
+      },
+      "cost": {
+        "real_new_physics_ticks": 0,
+        "formal_training_transitions": 0,
+        "agent_updates": 0,
+        "wall_s": 133.09220208299996
+      }
+    },
+    {
+      "attempt": 2,
+      "failure": {
+        "error_type": "RuntimeError",
+        "error": "This backward function was compiled with non-empty donated buffers which requires create_graph=False and retain_graph=False. Please keep backward(create_graph=False, retain_graph=False) across all backward() function calls, or set torch._functorch.config.donated_buffer=False to disable donated buffer.",
+        "counts": {
+          "real_new_physics_ticks": 0,
+          "formal_training_transitions": 0,
+          "agent_updates": 0
+        },
+        "wall_s": 53.15937219
+      },
+      "cost": {
+        "real_new_physics_ticks": 0,
+        "formal_training_transitions": 0,
+        "agent_updates": 0,
+        "wall_s": 53.17907302100002
+      }
+    }
+  ],
+  "ordered_gradient_eager_regression": {
+    "original_eager_vs_repair_eager_gradients_exact": true,
+    "model_exact": true,
+    "adam_exact": true,
+    "all_three_loss_terms_preserved": true,
+    "compiled_complete_loop": "pending below; original compiled failure retained in s0-native-joint-01",
+    "extra_discriminator_regression_steps": 2
+  },
+  "formal_training_started": false
+}

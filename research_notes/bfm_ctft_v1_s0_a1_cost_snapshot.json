@@ -1,0 +1,21 @@
+{
+  "status": "BLOCKED_COMPILED_ORDERED_GRADIENT_LIFECYCLE",
+  "charged_job_s": 5676.626541153032,
+  "native_joint_probe_outer_wall_s": [
+    184,
+    98
+  ],
+  "native_joint_probe_core_s": [
+    133.09220208299996,
+    53.17907302100002
+  ],
+  "real_physics_ticks": 44533,
+  "agent_updates": 0,
+  "discriminator_equivalence_regression_steps": 2,
+  "project_conservative_upper_h": 137.86982927054765,
+  "cap_job_s": 144000,
+  "cap_output_bytes": 128849018880,
+  "cap_physics_ticks": 16000000,
+  "N_locked": null,
+  "cost_note": "817.720394s sums reported job cores; top-level imports not universally inside core timers.3600s explicit conservative prep/import/IO reserve, not measured GPU wall. Final sidecar reconciliation pending; do not add nested CPU measurements twice."
+}
