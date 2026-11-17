@@ -1,0 +1,47 @@
+# BFM-CTFT v1：恢复工程修复与严格回归
+
+2026-11-17。承接 Yi 明确授权“这种问题属于我之前批准的工程修复吧？你可以自行修复后继续”。A2 原失败、单次计费和全部原始结果保留；本次是独立工程续作，不追溯改判 A2。
+
+**结果：原生 eager 路径通过完整 learner 新进程逐值恢复。继续原 S0，不代表完整物理训练恢复或 U/T 已发车。**
+
+## 干预与证据
+
+1. `08f3d39`，`s0-restore-localize-01`：同一已保存实际模型/五 Adam/梯度/replay/RNG恢复两次，只在 compiled 方法外观察。输入与随机流相同；冷/热结果仍不同，473个数值叶不同。日志记录原 Adam.step 达到 Dynamo recompile_limit=8 并回退。Actor最大参数差9.536743e-7，Q_aux指标差7.152557e-6。量级不是放宽逐值门的理由。
+2. `99590e2`，`s0-restore-adam-boundary-01`：单点固定五个原生 Adam.step 在 eager 执行边界，网络仍编译。同一实际梯度上原生调用与包装调用的五个优化器、模型、梯度及RNG逐值一致；10次optimizer-only step后复原，不算完整agent.update。冷/热两个完整更新逐值相同，数值差异叶0。
+3. `10d33e3`，`s0-learner-exact-01`：上述局部改动**不足以通过**独立新进程验证。初始读取与mini-batch/RNG通过，下一更新仍有F/critic/Actor链差异。该失败完整保留，不用同进程冷/热通过代替新进程恢复。
+4. `a3d6c9f`，`s0-learner-boundary-01`：用原快照恢复双方真实状态，一侧先建立编译历史，另一侧新进程；只在方法外保存实际输入，不提前额外调用F。两侧执行配置、方法输入（含值、dtype、shape、stride）、RNG一致；本次F方法输出一致，首个观察到的输出差异位于后续CPR critic边界。未捕获首个不同算子，不能把“Adam缓存”升级成全部唯一根因，也不能声称已经修好编译器。
+5. `2b30585bad0aa44f21d532d17f8ea32dd9e0bb0a`，`s0-learner-eager-exact-01`：显式关闭训练函数的编译优化，运行相同原生eager数学函数。没有新loss、不同采样分布、不同Adam、不同精度、容差或安全门。完整更新→全量存盘→新进程读取→同一下一完整更新，严格逐值通过。
+
+编译/不编译可能改变浮点算术与伪随机数映射的具体序列，**不宣称跨执行模式bitwise等价**。本轮证明的是同一原生eager配置自身严格可恢复。正式两臂必须使用同一锁定执行模式，再从原始权重及fresh优化器开始，不能继承本工程训练权重。原生loss/GP、B冻结、normalizer、五Adam及更新顺序未改变。
+
+## 严格恢复及身份
+
+|项目|实测|
+|---|---|
+|全部模型、targets、normalizers、五Adam、梯度、z-buffer、RNG初始读回|逐值一致|
+|下一expert/train mini-batch完整内容|逐值一致|
+|下一完整agent.update后的模型/梯度/Adam/RNG/z-buffer和所有指标|逐值一致，differences=[]|
+|B/target-B/原robot normalizer|保持原冻结身份|
+|完整checkpoint|8,735,914,510bytes；保存47.680466s|
+|监督父进程外层墙钟|212.219342s，含两个串行子进程，不重复加总|
+|峰值CUDA reserved|12,939,427,840bytes，未触原显存门|
+|新物理、正式U/T更新|均0|
+
+原始基座SHA256仍为`33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361`。
+一次性工程model.pt SHA256：`715dbd4ad797054c77273d799d3929a40713b6a2a121312b99f2015b181b646e`。
+learner.pt SHA256：`79817fea3269257e18ed4d8089243f0364f202e3e298e116b654668bef3cbea4`。
+快照文件与完整私有指纹以该run的manifest、restore/comparison.json为准。
+
+## 吞吐范围
+
+完整1024逻辑batch更新计时：首个Actor冻结更新3.881614s（含首次调用）；次个冻结0.110464s；Actor联合首次0.157193s、随后0.155075s。`one_update`的4.429148s/8.094292s还含大模型逐值指纹、内存护栏和指标序列化，不能当纯GPU更新时长。
+
+以上来自本stage两个原生g0来源、1200条实际后继；**不是含接触/release的全链训练吞吐，不能据此直接锁N**。共同aux尺度仍待真实train-only校准。编译前后工程吞吐也不构成行为学习比较。
+
+## 成本与继续边界
+
+本续作五个GPU包：两个单进程诊断各2次完整更新；一次独立严格失败包6次；一次边界定位包6次；本次eager通过包6次，共22次一次性完整更新。另6次discriminator-only等价step、10次Adam-only等价step，分别计数。全部为工程资格，不是正式学习。新physics ticks=0；旧A2的6次完整更新不重复计入这22次。
+
+续作准备、CPU分析、GPU作业、存盘、失败与发布以连续工程sidecar时间计入原S0/repair、40h阶段与240h项目总账；串行子进程不重复收费。A2的1789.601618s保持原值。完整最新成本以ledger及归档snapshot为准。
+
+已选择原生eager作为后续S0学习执行模式；不修改原checkpoint训练配置文件，新增独立执行锁记录原compile=True与本次实际compile=False。完整Task/solver与learner联合checkpoint、真实接触字段/共同尺度、合法源分组、材料点累计滑移、全链吞吐及共同N仍待资格。依最新授权继续层内实现，不为普通工程问题重新请求批准。

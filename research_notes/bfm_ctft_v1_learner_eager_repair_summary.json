@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "initial_exact": true,
+  "post_update_exact": true,
+  "differences": [],
+  "runtime": "2b30585bad0aa44f21d532d17f8ea32dd9e0bb0a",
+  "checkpoint_files": {
+    "learner.pt": {
+      "sha256": "79817fea3269257e18ed4d8089243f0364f202e3e298e116b654668bef3cbea4",
+      "bytes": 5339298351
+    },
+    "model.pt": {
+      "sha256": "715dbd4ad797054c77273d799d3929a40713b6a2a121312b99f2015b181b646e",
+      "bytes": 3396616159
+    }
+  },
+  "save_s": 47.6804659039999,
+  "outer_wall_s": 212.2193422317505,
+  "update_s": [
+    3.8816135560000475,
+    0.11046426299981249,
+    0.15719250599977386,
+    0.15507456999966962
+  ],
+  "restored_update_s": 8.094292060999578,
+  "original_update_s": 4.429147925000507,
+  "peak_reserved": 12939427840,
+  "output_bytes": 8736900554,
+  "new_physics_ticks": 0,
+  "formal_updates": 0
+}

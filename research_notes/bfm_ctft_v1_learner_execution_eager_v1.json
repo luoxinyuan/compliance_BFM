@@ -1,0 +1,16 @@
+{
+  "version": "CTFT_LEARNER_EXECUTION_EAGER_V1",
+  "approval": "Yi authorizes ordinary equivalent implementation repair and continuation,2026-11-17",
+  "source_training_compile": true,
+  "actual_learner_compile": false,
+  "optimizer_execution": "native_eager_step_all_five",
+  "float32_matmul_precision": "high",
+  "amp": false,
+  "math": "unchanged native FB/CPR/aux/Actor losses and sampling distributions; frozen B; all five native Adam",
+  "qualified_runtime": "2b30585bad0aa44f21d532d17f8ea32dd9e0bb0a",
+  "learner_restore": "strict bitwise next complete update passed",
+  "full_task_learner_restore": "PENDING",
+  "formal_N": null,
+  "formal_training_started": false,
+  "benchmark_rule": "Only actual contact/physics/update/checkpoint measurements may lock common N; g0 microprobe not sufficient"
+}

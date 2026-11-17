@@ -1,3 +1,7 @@
+## 2026-11-17 严格learner恢复工程已通过
+
+原生eager执行下，完整模型/五Adam/RNG/replay初始读回和同一下一完整更新全部逐值一致。编译路径残余失败保留；普通工程继续授权已归档。采用已验证eager继续原S0，正式U/T尚未发车、N未锁。接触全链/物理联合恢复、来源分组、共同尺度和吞吐仍待资格。见[工程实测](BFM_CTFT_V1_RESTORE_ENGINEERING_RESULTS.md)。
+
 ## 2026-11-17 恢复工程继续
 
 Yi已明确授权自行修复严格learner恢复的实现问题并回归后继续；A2失败与计费保留，不变更科学/安全/逐值恢复门。见[继续授权](BFM_CTFT_V1_RESTORE_ENGINEERING_CONTINUATION.md)。正式U/T尚未启动。
