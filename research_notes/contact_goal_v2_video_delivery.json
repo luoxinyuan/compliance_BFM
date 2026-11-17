@@ -1,0 +1,56 @@
+{
+  "status": "THREE_ACTUAL_DEV_VIDEOS_DELIVERED_TO_MAC",
+  "source_commit": "f9a5119700b258fe306f1b08a6b0b7c7aa965d9a",
+  "renderer_sha256": "85b883c0ebcb4f5d60bbf36ee554ac8b51bba0d11b200792b8464236f46e9c18",
+  "actual_export_source": "formal-dev-02 actual archives",
+  "no_new_physics": true,
+  "training_updates": 0,
+  "total_render_job_s": 189.54807745898142,
+  "jobs": [
+    {
+      "name": "dev-videos-01",
+      "status": "failed_preserved",
+      "wall_s": 62.54181438102387,
+      "source_commit": "0a951e00c9bf05a82f1a4cab93e6fc732f201d12"
+    },
+    {
+      "name": "dev-videos-02",
+      "status": "completed",
+      "wall_s": 92.10193889797665,
+      "source_commit": "02595dfe96df8599e2321df65dc86c1fb1967393"
+    },
+    {
+      "name": "dev-videos-03",
+      "status": "completed",
+      "wall_s": 34.904324179980904,
+      "source_commit": "f9a5119700b258fe306f1b08a6b0b7c7aa965d9a"
+    }
+  ],
+  "videos": [
+    {
+      "name": "01-near-FOLLOW-four-methods",
+      "sha256": "fc415ab9f254eee5b3a8ceb50714b0f5460f7f4e424262e6ca19a8f81874990f",
+      "frames": 268,
+      "fps": 25,
+      "duration": 10.72
+    },
+    {
+      "name": "02-mid-FOLLOW-tracking-shortfall",
+      "sha256": "b67981f2ea7ccaf83d1e23b143c3eacbb96867706dfb66a5833f4ee120f62d7b",
+      "frames": 300,
+      "fps": 25,
+      "duration": 12.0
+    },
+    {
+      "name": "03-common-prefix-STOP-versus-CONTINUE",
+      "sha256": "7dbc8863b1baa8d80ad300da5439e160a41396b96aaf00cafd718b8a5a5e3e72",
+      "frames": 290,
+      "fps": 25,
+      "duration": 11.6
+    }
+  ],
+  "full_decode_remote": true,
+  "presentation_revisions_only": "explicit same-hash training XML; original joint order checked; camera target raised from0.60 to0.82m and physical partner phase labeled separately from public Goal",
+  "local_delivery_subdirectory": "videos/ei-v2-dev-20261117",
+  "local_delivery_verification": "source SHA256 equality, local full-frame decode and ffprobe25fps/1280x1280/frame counts; final oblique visual QA all body visible"
+}
