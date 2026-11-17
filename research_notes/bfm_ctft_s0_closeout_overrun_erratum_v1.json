@@ -1,0 +1,14 @@
+{
+  "status": "STOPPED_CLOSEOUT_TIME_OVERRUN_ERRATUM",
+  "prior_prebook_s": 28795.0,
+  "actual_continuous_before_correction_s": 28933.02746987343,
+  "final_correction_publication_reserve_s": 90.0,
+  "final_conservative_charge_s": 29023.02746987343,
+  "S0_cap_s": 28800,
+  "overrun_s": 223.02746987342834,
+  "reason": "Git publication and GitHub/Master verification exceeded prior61.475s closeout reserve. No GPU experiment/training after cap; do not hide administrative overrun.",
+  "formal_training_transitions": 0,
+  "current_gpu_jobs": 0,
+  "stage_total_cap_s": 144000,
+  "corrected_utc": "2026-11-17T16:58:28.402458+00:00"
+}
