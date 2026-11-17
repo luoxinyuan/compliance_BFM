@@ -1,3 +1,9 @@
+## 2026-11-17 奖励批准状态补正：A1已批准且实现，校准已授权但尚未完成
+
+[Issue67批准记录](https://github.com/GaoE05/robot-research-bridge/issues/67#issuecomment-6940383957)与[A1附件](BFM_CTFT_V1_APPROVED_AMENDMENT_A1.md)明确批准：aux接触项使用逐步成本 `-C`，物理积分另存 `-dt*C`。代码及既有接触probe已执行；本次只读检查有力/无力合计1050条，单位恒等式最大差0。两份最新报告已补写批准/落地/未完成三种状态：[恢复工程](BFM_CTFT_V1_RESTORE_ENGINEERING_RESULTS.md) · [S0接触推进](BFM_CTFT_V1_S0_CONTACT_PROGRESS.md)。
+
+“共同aux尺度待train-only校准”表示数值校准尚未完成，**不是待Yi批准**；该校准已获授权，按原合同继续。工程恢复的g0数据和scale=1仅是占位资格，不是正式共同尺度；正式U/T仍未启动。本次只读核查与文档补正不新增物理、模型更新、科学修订或资格PASS；以下历史状态原样保留。
+
 ## 2026-11-17 S0已恢复推进
 
 learner原生eager严格恢复通过后，已完成12祖先存档注释及同父组有力/无力冻结接触链记录，两支含停止与4s释放恢复均无硬边界；不是随机策略、完整Task+learner恢复或正式行为训练通过。新物理6001ticks、正式U/T为0，N未锁。见[实际推进](BFM_CTFT_V1_S0_CONTACT_PROGRESS.md)。
