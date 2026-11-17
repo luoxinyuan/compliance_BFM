@@ -4,7 +4,7 @@ from pathlib import Path
 
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--stage',required=True,type=Path);parser.add_argument('--attempt',type=int,default=1);a=parser.parse_args();assert 1<=a.attempt<=9
+    parser=argparse.ArgumentParser();parser.add_argument('--stage',required=True,type=Path);parser.add_argument('--attempt',type=int,default=1);parser.add_argument('--reuse-sources',choices=['dev-videos-02']);a=parser.parse_args();assert 1<=a.attempt<=9
     S=a.stage.resolve();P=S.parents[1];R=S/'eval-runtime';M=Path(__file__).resolve().parents[2];name='dev-videos-'+format(a.attempt,'02d');out=S/'runs'/name;side=S/'jobs'/(name+'.json')
     assert not out.exists() and not side.exists();out.mkdir();merged=out/'merged';merged.mkdir()
     start=time.monotonic();locks=[];job=dict(name=name,status='preflight',pid=os.getpid(),start_epoch=time.time(),physics=dict(actual=0,reserved=0),training_updates=0,no_new_physics=True,source_sha256=sha(__file__),renderer_sha256=sha(Path(__file__).with_name('ei_v2_movie.py')));charged=False
@@ -18,28 +18,39 @@ def main():
         ledger=json.loads((S/'ledger.json').read_text());assert ledger['charged_s']+1800<56000
         job.update(status='running',source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=M,text=True).strip(),asset_runtime=subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip(),gpu_uuid=uuid)
         side.write_text(json.dumps(job,indent=2)+'\n')
-        sys.path[:0]=[str(R),str(R/'research_notes')]
-        from research.interaction_fb.journal import read
-        rows=json.loads((S/'runs/formal-dev-02/evaluation.json').read_text());actual=S/'runs/formal-dev-02';exported={};provenance=[]
-        labels={0:'standing',1:'arm5',2:'arm15',3:'walking proposal'}
-        def entry(ix,title):
-            row=rows[ix];assert row['complete'] and row['hard_boundary'] is None
-            if ix not in exported:
-                path=actual/f'case-{ix:03d}-actual.ptz';x=read(path,row['archive']);assert x['role']=='actual_frozen_policy_independent_dev_not_training'
-                prefix=x['source']['physics'];physical=prefix+x['physics'];assert physical
-                assert prefix[-1]['time']<x['physics'][0]['time'];assert max(abs((b['time']-aa['time'])-.005)for aa,b in zip(physical,physical[1:]))<1e-6
-                ins=x['instructions'];ts=[v['time']for v in ins]
-                for v in physical:
-                    j=bisect.bisect_right(ts,v.get('force_time',v['time'])+1e-8)-1
-                    if j<0:v.update(video_goal='SOURCE PREFIX',video_command=x['spec']['source'])
-                    else:v.update(video_goal='FOLLOW'if ins[j]['goal_mode']==0 else'HOLD',video_command=labels[ins[j]['option']])
-                cond=dict(x['spec'],handoff_time=x['spec']['source_until']);dest=merged/f'actual-{ix:03d}.json.gz'
-                payload=dict(physics=physical,condition=cond,anchor=physical[0]['anchor'],provenance=dict(actual_source=str(path),source_sha256=sha(path),actual_case=ix,method=row['method'],role='saved_actual_full_source_prefix_and_episode',no_new_physics=True,start_time=physical[0]['time'],end_time=physical[-1]['time'],no_unrecorded_settle_reconstruction=True))
-                with gzip.open(dest,'wt')as f:json.dump(payload,f)
-                exported[ix]=str(dest);provenance.append(dict(case_index=ix,method=row['method'],parent_id=row['parent_id'],goal_stream=row['goal_stream'],source_sha256=sha(path),merged_sha256=sha(dest),start_s=physical[0]['time'],end_s=physical[-1]['time'],evaluation=dict(error_cm=row['all']['error_cm'],force_rms_N=row['all']['force_rms'],Goal_aware_J=row['goal_aware']['J'])))
-            return dict(path=exported[ix],title=title,role='FROZEN FINAL | ACTUAL EXECUTION')
-        videos=[dict(name='01-near-FOLLOW-four-methods',grid4=True,sides=[entry(1,'E 32k | small request | FOLLOW'),entry(25,'I 32k | small request | FOLLOW'),entry(49,'Goal-only | standing/arm15 lookup'),entry(73,'Native standing | frozen original BFM')]),dict(name='02-mid-FOLLOW-tracking-shortfall',grid4=True,sides=[entry(17,'E 32k | mid request | FOLLOW'),entry(41,'I 32k | mid request | FOLLOW'),entry(65,'Goal-only | standing/arm15 lookup'),entry(89,'Native standing | frozen original BFM')]),dict(name='03-common-prefix-STOP-versus-CONTINUE',grid4=True,cross_condition_description='Same source, same Goal stream, same partner prefix then stop/continue; each row is one frozen checkpoint. Not independent parents.',sides=[entry(9,'E 32k | partner STOPS'),entry(10,'E 32k | partner CONTINUES'),entry(33,'I 32k | partner STOPS'),entry(34,'I 32k | partner CONTINUES')])]
-        (out/'video-pairs.json').write_text(json.dumps(videos,indent=2)+'\n');(out/'provenance.json').write_text(json.dumps(provenance,indent=2)+'\n')
+        actual=S/'runs/formal-dev-02'
+        if a.reuse_sources:
+            previous=S/'runs'/a.reuse_sources
+            assert json.loads((previous/'verified.json').read_text())['full_decode']
+            provenance=json.loads((previous/'provenance.json').read_text())
+            for v in provenance:
+                assert sha(previous/'merged'/f"actual-{v['case_index']:03d}.json.gz")==v['merged_sha256']
+                assert sha(actual/f"case-{v['case_index']:03d}-actual.ptz")==v['source_sha256']
+            for namefile in ('video-pairs.json','provenance.json'):shutil.copyfile(previous/namefile,out/namefile)
+            job['actual_sources_reused_from']=str(previous)
+        else:
+            sys.path[:0]=[str(R),str(R/'research_notes')]
+            from research.interaction_fb.journal import read
+            rows=json.loads((S/'runs/formal-dev-02/evaluation.json').read_text());actual=S/'runs/formal-dev-02';exported={};provenance=[]
+            labels={0:'standing',1:'arm5',2:'arm15',3:'walking proposal'}
+            def entry(ix,title):
+                row=rows[ix];assert row['complete'] and row['hard_boundary'] is None
+                if ix not in exported:
+                    path=actual/f'case-{ix:03d}-actual.ptz';x=read(path,row['archive']);assert x['role']=='actual_frozen_policy_independent_dev_not_training'
+                    prefix=x['source']['physics'];physical=prefix+x['physics'];assert physical
+                    assert prefix[-1]['time']<x['physics'][0]['time'];assert max(abs((b['time']-aa['time'])-.005)for aa,b in zip(physical,physical[1:]))<1e-6
+                    ins=x['instructions'];ts=[v['time']for v in ins]
+                    for v in physical:
+                        j=bisect.bisect_right(ts,v.get('force_time',v['time'])+1e-8)-1
+                        if j<0:v.update(video_goal='SOURCE PREFIX',video_command=x['spec']['source'])
+                        else:v.update(video_goal='FOLLOW'if ins[j]['goal_mode']==0 else'HOLD',video_command=labels[ins[j]['option']])
+                    cond=dict(x['spec'],handoff_time=x['spec']['source_until']);dest=merged/f'actual-{ix:03d}.json.gz'
+                    payload=dict(physics=physical,condition=cond,anchor=physical[0]['anchor'],provenance=dict(actual_source=str(path),source_sha256=sha(path),actual_case=ix,method=row['method'],role='saved_actual_full_source_prefix_and_episode',no_new_physics=True,start_time=physical[0]['time'],end_time=physical[-1]['time'],no_unrecorded_settle_reconstruction=True))
+                    with gzip.open(dest,'wt')as f:json.dump(payload,f)
+                    exported[ix]=str(dest);provenance.append(dict(case_index=ix,method=row['method'],parent_id=row['parent_id'],goal_stream=row['goal_stream'],source_sha256=sha(path),merged_sha256=sha(dest),start_s=physical[0]['time'],end_s=physical[-1]['time'],evaluation=dict(error_cm=row['all']['error_cm'],force_rms_N=row['all']['force_rms'],Goal_aware_J=row['goal_aware']['J'])))
+                return dict(path=exported[ix],title=title,role='FROZEN FINAL | ACTUAL EXECUTION')
+            videos=[dict(name='01-near-FOLLOW-four-methods',grid4=True,sides=[entry(1,'E 32k | small request | FOLLOW'),entry(25,'I 32k | small request | FOLLOW'),entry(49,'Goal-only | standing/arm15 lookup'),entry(73,'Native standing | frozen original BFM')]),dict(name='02-mid-FOLLOW-tracking-shortfall',grid4=True,sides=[entry(17,'E 32k | mid request | FOLLOW'),entry(41,'I 32k | mid request | FOLLOW'),entry(65,'Goal-only | standing/arm15 lookup'),entry(89,'Native standing | frozen original BFM')]),dict(name='03-common-prefix-STOP-versus-CONTINUE',grid4=True,cross_condition_description='Same source, same Goal stream, same partner prefix then stop/continue; each row is one frozen checkpoint. Not independent parents.',sides=[entry(9,'E 32k | partner STOPS'),entry(10,'E 32k | partner CONTINUES'),entry(33,'I 32k | partner STOPS'),entry(34,'I 32k | partner CONTINUES')])]
+            (out/'video-pairs.json').write_text(json.dumps(videos,indent=2)+'\n');(out/'provenance.json').write_text(json.dumps(provenance,indent=2)+'\n')
         env=os.environ.copy();env.update(CUDA_VISIBLE_DEVICES='0',MUJOCO_GL='egl',MUJOCO_EGL_DEVICE_ID='0',PYOPENGL_PLATFORM='egl',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1',BFM_ROLLING_VIDEO_RUN=str(out),BFM_RECOVERY_OUTPUT=str(out),BFM_RENDER_ASSET_ROOT=str(R),PYTHONDONTWRITEBYTECODE='1')
         xml=S/'runtime/humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml';assert xml.exists();assert sha(xml)==sha(P/'repo/humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml')
         job['render_xml']=str(xml);job['render_xml_sha256']=sha(xml);env.update(BFM_RENDER_XML=str(xml),BFM_RENDER_ACTION_CONTRACT=str(actual/'action-contract.json'))

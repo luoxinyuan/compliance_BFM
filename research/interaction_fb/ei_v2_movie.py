@@ -24,7 +24,7 @@ def main():
   assert item.get('cross_condition_description') or all({k:x for k,x in v['ep']['condition'].items() if k!='enabled'}=={k:x for k,x in entries[0]['ep']['condition'].items() if k!='enabled'} for v in entries),'Only explicitly labelled physical contact enabled may differ'
   for v in entries:assert v['ep']['condition']['enabled'] or 'NO FORCE' in v['title']
   start=min(v['ts'][0] for v in entries);end=max(v['ts'][-1] for v in entries);times=np.arange(start,end+1e-8,.04);path=out/(item['name']+'.mp4');assert not path.exists();writer=imageio.get_writer(str(path),fps=25,codec='libx264',quality=8,macro_block_size=16,ffmpeg_params=['-pix_fmt','yuv420p','-movflags','+faststart','-threads','2']);started=time.monotonic()
-  allroots=np.concatenate([v['roots'] for v in entries],axis=0);lo=allroots[:,:2].min(0);hi=allroots[:,:2].max(0);center=np.r_[(lo+hi)/2,.6];distance=max(2.9,2.4+1.4*float((hi-lo).max()));cameras=[]
+  allroots=np.concatenate([v['roots'] for v in entries],axis=0);lo=allroots[:,:2].min(0);hi=allroots[:,:2].max(0);center=np.r_[(lo+hi)/2,.82];distance=max(2.9,2.4+1.4*float((hi-lo).max()));cameras=[]
   for az,el in [(125,-18),(90,-82)]:
    cam=mujoco.MjvCamera();cam.lookat[:]=center;cam.distance=distance;cam.azimuth=az;cam.elevation=el;cameras.append(cam)
   for n,t in enumerate(times):
@@ -58,7 +58,7 @@ def main():
     draw.rectangle((0,0,1280,150),fill=(15,20,28));draw.text((12,5),side['title'],font=font,fill='white')
     cond=side['ep']['condition']; rt=r.get('force_time',r['time']); stop=cond.get('stop_time',cond['onset']+cond['ramp']); he=stop+cond.get('deceleration',0.)
     phase='READY' if rt<cond['onset'] else ('RELEASED' if not r.get('active',False) else ('MOVING' if rt<stop else ('BRAKING' if rt<he else 'HOLD')))
-    draw.text((12,152),('EPISODE ENDED: last saved frame held' if t>side['ts'][-1]+.02 else ''),font=small,fill='red');draw.text((12,29),f'Actual qpos 1x | t={r["time"]:.2f}s | '+phase+' | '+('NATIVE PREFIX' if r['time']<cond.get('handoff_time',0) else side['role']),font=small,fill='white')
+    draw.text((12,152),('EPISODE ENDED: last saved frame held' if t>side['ts'][-1]+.02 else ''),font=small,fill='red');draw.text((12,29),f'Actual qpos 1x | t={r["time"]:.2f}s | '+'partner '+phase+' | '+('NATIVE PREFIX' if r['time']<cond.get('handoff_time',0) else side['role']),font=small,fill='white')
     for j,contact in enumerate(r.get('contacts',[])[:2]):
      ff=contact['force'];error=100*np.linalg.norm(np.array(contact['anchor'])-contact['point']);draw.text((12,51+j*21),f'Point {contact["slot"]} : Fxyz=({ff[0]:+.2f},{ff[1]:+.2f},{ff[2]:+.2f})N | '+('tracking' if r.get('active') else 'non-task geometry')+f' {error:.1f}cm',font=small,fill='white')
     draw.text((12,98),f'Public Goal: {r.get("video_goal", "SOURCE")} | command: {r.get("video_command", "native source")}',font=small,fill=(155,225,255))
