@@ -109,7 +109,7 @@ class TensorStore:
     def load(self,name):return self.unpack(self.metadata(name))
 
 
-def learner_state(agent,*,step,replay_segments,replay_capacity,replay_idx,reference):
+def learner_state(agent,*,step,replay_segments,replay_capacity,replay_idx,reference,replay_quotas=None):
     from learning_checkpoint import cpu,rng,fingerprint
     return dict(model=cpu(agent._model.state_dict()),optimizers=cpu(agent.optimizer_dict),
         gradients={k:cpu(p.grad) for k,p in agent._model.named_parameters()},
@@ -118,7 +118,7 @@ def learner_state(agent,*,step,replay_segments,replay_capacity,replay_idx,refere
         requires_grad={k:p.requires_grad for k,p in agent._model.named_parameters()},actor_enabled=agent.actor_enabled,
         step=step,aux_scale=float(agent._model._aux_reward_normalizer.scale),configuration=agent.cfg.model_dump(),
         execution_contract=cpu(agent.execution_contract),initial_fingerprint=fingerprint(agent),
-        replay_segments=replay_segments,replay_capacity=replay_capacity,replay_idx=replay_idx,reference=str(reference))
+        replay_segments=replay_segments,replay_capacity=replay_capacity,replay_idx=replay_idx,reference=str(reference),replay_quotas=replay_quotas)
 
 
 def restore_learner(state):
@@ -136,7 +136,10 @@ def restore_learner(state):
     assert {k:p.requires_grad for k,p in params.items()}==state['requires_grad']
     zb=state['z_buffer'];agent.z_buffer._storage.copy_(zb['storage'].to(agent.device));agent.z_buffer._idx=zb['idx'];agent.z_buffer._is_full=zb['is_full']
     agent.actor_enabled=state['actor_enabled']
-    replay=DictBuffer(capacity=state['replay_capacity'],device='cpu')
+    if state.get('replay_quotas') is not None:
+        from training_data import PhaseReplay
+        replay=PhaseReplay(capacity=state['replay_capacity'],quotas=state['replay_quotas'])
+    else:replay=DictBuffer(capacity=state['replay_capacity'],device='cpu')
     for segment in state['replay_segments']:
         path=Path(segment['path']);assert file_sha(path)==segment['sha256']
         replay.extend(torch.load(path,map_location='cpu',weights_only=False))
