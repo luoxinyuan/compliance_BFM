@@ -1,0 +1,237 @@
+{
+  "version": "CTFT_S0_FIXED_AUX_CALIBRATION_V1",
+  "cases": [
+    {
+      "name": "sampled_none",
+      "purpose": "native_training_sampling_qualification",
+      "sampled": true,
+      "mode": 1,
+      "apply_force": false,
+      "stiffness": 80.0,
+      "direction_deg": 0.0,
+      "speed": 0.12
+    },
+    {
+      "name": "sampled_force",
+      "purpose": "native_training_sampling_qualification",
+      "sampled": true,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 80.0,
+      "direction_deg": 0.0,
+      "speed": 0.12
+    },
+    {
+      "name": "cal_native_0",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 0,
+      "source_case": 1,
+      "source_control": 25,
+      "controls": 200
+    },
+    {
+      "name": "cal_native_1",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 0,
+      "source_case": 2,
+      "source_control": 75,
+      "controls": 200
+    },
+    {
+      "name": "cal_native_2",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 0,
+      "source_case": 1,
+      "source_control": 125,
+      "controls": 200
+    },
+    {
+      "name": "cal_native_3",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 0,
+      "source_case": 2,
+      "source_control": 175,
+      "controls": 200
+    },
+    {
+      "name": "cal_native_4",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 0,
+      "source_case": 1,
+      "source_control": 225,
+      "controls": 200
+    },
+    {
+      "name": "cal_contact_k40_v0.08_d-15",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 40.0,
+      "direction_deg": -15.0,
+      "speed": 0.08
+    },
+    {
+      "name": "cal_contact_k40_v0.08_d15",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 40.0,
+      "direction_deg": 15.0,
+      "speed": 0.08
+    },
+    {
+      "name": "cal_contact_k40_v0.12_d-15",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 40.0,
+      "direction_deg": -15.0,
+      "speed": 0.12
+    },
+    {
+      "name": "cal_contact_k40_v0.12_d15",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 40.0,
+      "direction_deg": 15.0,
+      "speed": 0.12
+    },
+    {
+      "name": "cal_contact_k40_v0.16_d-15",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 40.0,
+      "direction_deg": -15.0,
+      "speed": 0.16
+    },
+    {
+      "name": "cal_contact_k40_v0.16_d15",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 40.0,
+      "direction_deg": 15.0,
+      "speed": 0.16
+    },
+    {
+      "name": "cal_contact_k80_v0.08_d-15",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 80.0,
+      "direction_deg": -15.0,
+      "speed": 0.08
+    },
+    {
+      "name": "cal_contact_k80_v0.08_d15",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 80.0,
+      "direction_deg": 15.0,
+      "speed": 0.08
+    },
+    {
+      "name": "cal_contact_k80_v0.12_d-15",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 80.0,
+      "direction_deg": -15.0,
+      "speed": 0.12
+    },
+    {
+      "name": "cal_contact_k80_v0.12_d15",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 80.0,
+      "direction_deg": 15.0,
+      "speed": 0.12
+    },
+    {
+      "name": "cal_contact_k80_v0.16_d-15",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 80.0,
+      "direction_deg": -15.0,
+      "speed": 0.16
+    },
+    {
+      "name": "cal_contact_k80_v0.16_d15",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": true,
+      "stiffness": 80.0,
+      "direction_deg": 15.0,
+      "speed": 0.16
+    },
+    {
+      "name": "cal_unloaded_0.08",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": false,
+      "stiffness": 80.0,
+      "direction_deg": 0.0,
+      "speed": 0.08
+    },
+    {
+      "name": "cal_unloaded_0.12",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": false,
+      "stiffness": 80.0,
+      "direction_deg": 0.0,
+      "speed": 0.12
+    },
+    {
+      "name": "cal_unloaded_0.16",
+      "purpose": "fixed_scale",
+      "sampled": false,
+      "mode": 1,
+      "apply_force": false,
+      "stiffness": 80.0,
+      "direction_deg": 0.0,
+      "speed": 0.16
+    }
+  ],
+  "seed": 681117,
+  "native_weight_source": "original_matching_training_config",
+  "formula": "fixed_std=sqrt(max(mean(r_total^2)-mean(r_total)^2,1e-8)); output=r_total/fixed_std; no mean subtraction",
+  "pooling": "all actual mean-calibration control rows; sampled qualification excluded; no old task stats",
+  "population": "explicit train-only physical prefixes; two native walk ancestors and one standing prefix family, NOT20 independent groups",
+  "boundaries": "all original mechanical/tilt/undesired contacts and causal >50ms no-support; fail closed",
+  "duration": {
+    "contact_distance_m": 0.6,
+    "accel_s": 0.5,
+    "hold_s": 1.0,
+    "recovery_s": 4.0
+  },
+  "qualification_sampling": "original model.act(mean=False), matching actor_std, no extra exploration transform",
+  "no_training": true,
+  "no_dev_or_sealed": true,
+  "physics_tick_cap": 80000,
+  "wall_cap_s": 2400
+}
