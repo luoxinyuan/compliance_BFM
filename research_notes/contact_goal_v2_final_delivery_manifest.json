@@ -1,0 +1,42 @@
+{
+  "status": "NEGATIVE_CLOSEOUT_DELIVERED",
+  "files": {
+    "research_notes/CONTACT_GOAL_EI_V2_FINAL_TABLES.md": {
+      "bytes": 26384,
+      "sha256": "2209bd65481f234fd14d3332a92d635ffcb98e895c2ce66622cc5214e0558bd2"
+    },
+    "research_notes/CONTACT_GOAL_EI_V2_FINAL_STAGES.md": {
+      "bytes": 64925,
+      "sha256": "9e432e2ecaef6279010631f0fbdfbc410266bf9173e7cd7809b76780281d44bb"
+    },
+    "research_notes/CONTACT_GOAL_EI_V2_FINAL_RESULTS.md": {
+      "bytes": 14867,
+      "sha256": "e772b04f29aa29520c82f22d7765680184d7a872b8a73cee79bd860123fa0a32"
+    },
+    "research_notes/contact_goal_v2_final_results.json": {
+      "bytes": 258405,
+      "sha256": "5764b46fa99e4f30900867edc04e3e1c8fd6c1bc168c5d7474511532ff23301d"
+    },
+    "research_notes/contact_goal_v2_final_training_coverage.json": {
+      "bytes": 70405,
+      "sha256": "2836d2d59d8dd9f84e2556948e8fac87bcd37176aa642196efd73b3c7ec4daaa"
+    },
+    "research_notes/contact_goal_v2_final_gate_index.json": {
+      "bytes": 1942,
+      "sha256": "47069e8320dde36541e641159ddaf17d2bee59f1d7fc80b98250ac6e7c98310a"
+    },
+    "research_notes/contact_goal_v2_final_curves.png": {
+      "bytes": 246718,
+      "sha256": "dd38d6555a334e244680e243e701517894e1992e984a4349e62d3b87edef35d8"
+    },
+    "research_notes/contact_goal_v2_final_stage_quality.json": {
+      "bytes": 5610305,
+      "sha256": "71fb5fd9915cad81eea7ba5118983db3027be0becc86dc93c9eecde4edb34345"
+    }
+  },
+  "training_runtime": "08b9c96a4ea3d0c0007e840029ba6a30f3c858f0",
+  "evaluation_runtime": "590aa54eb829b03f2fb76cf4f6bfa8ecf7489c52",
+  "raw_trajectories_published": false,
+  "checkpoints_published": false,
+  "sealed_read": false
+}

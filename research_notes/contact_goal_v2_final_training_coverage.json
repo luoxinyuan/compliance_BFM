@@ -1,0 +1,2838 @@
+{
+  "E": {
+    "identity": {
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/contact-goal-ei-v2-formal-20261116/runs/formal-E-06/checkpoints/block-node-32000",
+      "manifest_sha256": "804dda80c24f74222c3545f97107a13b9abfca0f6733de70a0ed27a27b1dae0b",
+      "core_sha256": "d71c8ab214cebbf1a5b0c49b9563cf33cb70a63d11104c9b329f080ffa12db32",
+      "rows": 32000,
+      "training_runtime": "08b9c96a4ea3d0c0007e840029ba6a30f3c858f0",
+      "core_only_frozen_weight_read": true
+    },
+    "actual_rows": 32000,
+    "physics_ticks_in_onpolicy_rows": 128000,
+    "completed_episodes": 64,
+    "independent_parents": 34,
+    "native_reference_rows_not_PPO": 4650,
+    "phase_rows": {
+      "P2": 12000,
+      "P3": 20000
+    },
+    "option_rows": [
+      {
+        "phase": "P2",
+        "option": 0,
+        "rows": 6515
+      },
+      {
+        "phase": "P2",
+        "option": 2,
+        "rows": 5485
+      },
+      {
+        "phase": "P3",
+        "option": 0,
+        "rows": 12125
+      },
+      {
+        "phase": "P3",
+        "option": 1,
+        "rows": 1140
+      },
+      {
+        "phase": "P3",
+        "option": 2,
+        "rows": 5600
+      },
+      {
+        "phase": "P3",
+        "option": 3,
+        "rows": 1135
+      }
+    ],
+    "selector_draws": [
+      {
+        "phase": "P3",
+        "option": 0,
+        "draws": 495
+      },
+      {
+        "phase": "P3",
+        "option": 1,
+        "draws": 46
+      },
+      {
+        "phase": "P3",
+        "option": 2,
+        "draws": 228
+      },
+      {
+        "phase": "P3",
+        "option": 3,
+        "draws": 46
+      }
+    ],
+    "coverage": [
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 159,
+        "physical_duration_s": 3.18
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 214,
+        "physical_duration_s": 4.28
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 46,
+        "physical_duration_s": 0.92
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 159,
+        "physical_duration_s": 3.18
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 214,
+        "physical_duration_s": 4.28
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 46,
+        "physical_duration_s": 0.92
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 229,
+        "physical_duration_s": 4.58
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 36,
+        "physical_duration_s": 0.72
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 235,
+        "physical_duration_s": 4.7
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 49,
+        "physical_duration_s": 0.98
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 414,
+        "physical_duration_s": 8.28
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 26,
+        "physical_duration_s": 0.52
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 36,
+        "physical_duration_s": 0.72
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 400,
+        "physical_duration_s": 8.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 100,
+        "physical_duration_s": 2.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 115,
+        "physical_duration_s": 2.3000000000000003
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 119,
+        "physical_duration_s": 2.38
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 129,
+        "physical_duration_s": 2.58
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 100,
+        "physical_duration_s": 2.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 115,
+        "physical_duration_s": 2.3000000000000003
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 119,
+        "physical_duration_s": 2.38
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 129,
+        "physical_duration_s": 2.58
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "decelerating",
+        "goal": "FOLLOW",
+        "rows": 35,
+        "physical_duration_s": 0.7000000000000001
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "decelerating",
+        "goal": "HOLD",
+        "rows": 35,
+        "physical_duration_s": 0.7000000000000001
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 64,
+        "physical_duration_s": 1.28
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 139,
+        "physical_duration_s": 2.7800000000000002
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 46,
+        "physical_duration_s": 0.92
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "decelerating",
+        "goal": "FOLLOW",
+        "rows": 35,
+        "physical_duration_s": 0.7000000000000001
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "decelerating",
+        "goal": "HOLD",
+        "rows": 35,
+        "physical_duration_s": 0.7000000000000001
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 64,
+        "physical_duration_s": 1.28
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 139,
+        "physical_duration_s": 2.7800000000000002
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 46,
+        "physical_duration_s": 0.92
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 205,
+        "physical_duration_s": 4.1
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 100,
+        "physical_duration_s": 2.0
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 289,
+        "physical_duration_s": 5.78
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 307,
+        "physical_duration_s": 6.140000000000001
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 36,
+        "physical_duration_s": 0.72
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 98,
+        "physical_duration_s": 1.96
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 400,
+        "physical_duration_s": 8.0
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 295,
+        "physical_duration_s": 5.9
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 415,
+        "physical_duration_s": 8.3
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 766,
+        "physical_duration_s": 15.32
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 772,
+        "physical_duration_s": 15.44
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 134,
+        "physical_duration_s": 2.68
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 113,
+        "physical_duration_s": 2.2600000000000002
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 600,
+        "physical_duration_s": 12.0
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 800,
+        "physical_duration_s": 16.0
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 230,
+        "physical_duration_s": 4.6000000000000005
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 105,
+        "physical_duration_s": 2.1
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 373,
+        "physical_duration_s": 7.46
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 234,
+        "physical_duration_s": 4.68
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 77,
+        "physical_duration_s": 1.54
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 41,
+        "physical_duration_s": 0.8200000000000001
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 400,
+        "physical_duration_s": 8.0
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 415,
+        "physical_duration_s": 8.3
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 280,
+        "physical_duration_s": 5.6000000000000005
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 696,
+        "physical_duration_s": 13.92
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 542,
+        "physical_duration_s": 10.84
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 154,
+        "physical_duration_s": 3.08
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 103,
+        "physical_duration_s": 2.06
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 800,
+        "physical_duration_s": 16.0
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 600,
+        "physical_duration_s": 12.0
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 206,
+        "physical_duration_s": 4.12
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 135,
+        "physical_duration_s": 2.7
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 276,
+        "physical_duration_s": 5.5200000000000005
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 159,
+        "physical_duration_s": 3.18
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 400,
+        "physical_duration_s": 8.0
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 399,
+        "physical_duration_s": 7.98
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 316,
+        "physical_duration_s": 6.32
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 403,
+        "physical_duration_s": 8.06
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 341,
+        "physical_duration_s": 6.82
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 317,
+        "physical_duration_s": 6.34
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 124,
+        "physical_duration_s": 2.48
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 123,
+        "physical_duration_s": 2.46
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 599,
+        "physical_duration_s": 11.98
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 797,
+        "physical_duration_s": 15.94
+      },
+      {
+        "source": "standing",
+        "family": "none",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "standing",
+        "family": "none",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 449,
+        "physical_duration_s": 8.98
+      },
+      {
+        "source": "standing",
+        "family": "none",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 62,
+        "physical_duration_s": 1.24
+      },
+      {
+        "source": "standing",
+        "family": "none",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 918,
+        "physical_duration_s": 18.36
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "decelerating",
+        "goal": "FOLLOW",
+        "rows": 95,
+        "physical_duration_s": 1.9000000000000001
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "decelerating",
+        "goal": "HOLD",
+        "rows": 40,
+        "physical_duration_s": 0.8
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 290,
+        "physical_duration_s": 5.8
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 100,
+        "physical_duration_s": 2.0
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 279,
+        "physical_duration_s": 5.58
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 177,
+        "physical_duration_s": 3.54
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 36,
+        "physical_duration_s": 0.72
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 98,
+        "physical_duration_s": 1.96
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 600,
+        "physical_duration_s": 12.0
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "decelerating",
+        "goal": "FOLLOW",
+        "rows": 105,
+        "physical_duration_s": 2.1
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "decelerating",
+        "goal": "HOLD",
+        "rows": 145,
+        "physical_duration_s": 2.9
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 300,
+        "physical_duration_s": 6.0
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 415,
+        "physical_duration_s": 8.3
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 396,
+        "physical_duration_s": 7.92
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 397,
+        "physical_duration_s": 7.94
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 134,
+        "physical_duration_s": 2.68
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 113,
+        "physical_duration_s": 2.2600000000000002
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 600,
+        "physical_duration_s": 12.0
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 800,
+        "physical_duration_s": 16.0
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 175,
+        "physical_duration_s": 3.5
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 298,
+        "physical_duration_s": 5.96
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 72,
+        "physical_duration_s": 1.44
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 400,
+        "physical_duration_s": 8.0
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 175,
+        "physical_duration_s": 3.5
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 298,
+        "physical_duration_s": 5.96
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 72,
+        "physical_duration_s": 1.44
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 400,
+        "physical_duration_s": 8.0
+      }
+    ],
+    "completed_episode_coverage": [
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "episodes": 4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "episodes": 3
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "episodes": 4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "episodes": 4
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "episodes": 10
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "episodes": 10
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "episodes": 11
+      },
+      {
+        "source": "standing",
+        "family": "none",
+        "episodes": 3
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "episodes": 11
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "episodes": 4
+      }
+    ],
+    "accepted_actor_updates": 127,
+    "attempts": 250,
+    "selected_alpha": {
+      "0.25": 40,
+      "0.0625": 30,
+      "0.5": 11,
+      "1.0": 28,
+      "0.125": 18
+    },
+    "max_old_logprob_error": 0.0,
+    "accepted_joint_KL_p50_p95_max": [
+      0.018451932603613285,
+      0.019932640933998762,
+      0.01999311962235067
+    ],
+    "accepted_categorical_KL_p50_p95_max": [
+      0.0,
+      3.510943397930959e-09,
+      5.8232773746689555e-09
+    ],
+    "blocks": 32,
+    "auxiliary_updates_accepted": 128
+  },
+  "I": {
+    "identity": {
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/contact-goal-ei-v2-formal-20261116/runs/formal-I-06/checkpoints/block-node-32000",
+      "manifest_sha256": "efde78ed0eefd4d690d5b993cf8d2a883c9a10da230fccc329a9a972c9379ec0",
+      "core_sha256": "abfb05aa0564586feb08df9ca3e9fb85b9cd67dbda8bd4fa87e29f4464a72108",
+      "rows": 32000,
+      "training_runtime": "08b9c96a4ea3d0c0007e840029ba6a30f3c858f0",
+      "core_only_frozen_weight_read": true
+    },
+    "actual_rows": 32000,
+    "physics_ticks_in_onpolicy_rows": 128000,
+    "completed_episodes": 64,
+    "independent_parents": 34,
+    "native_reference_rows_not_PPO": 4650,
+    "phase_rows": {
+      "P2": 12000,
+      "P3": 20000
+    },
+    "option_rows": [
+      {
+        "phase": "P2",
+        "option": 0,
+        "rows": 6515
+      },
+      {
+        "phase": "P2",
+        "option": 2,
+        "rows": 5485
+      },
+      {
+        "phase": "P3",
+        "option": 0,
+        "rows": 12125
+      },
+      {
+        "phase": "P3",
+        "option": 1,
+        "rows": 1140
+      },
+      {
+        "phase": "P3",
+        "option": 2,
+        "rows": 5600
+      },
+      {
+        "phase": "P3",
+        "option": 3,
+        "rows": 1135
+      }
+    ],
+    "selector_draws": [
+      {
+        "phase": "P3",
+        "option": 0,
+        "draws": 495
+      },
+      {
+        "phase": "P3",
+        "option": 1,
+        "draws": 46
+      },
+      {
+        "phase": "P3",
+        "option": 2,
+        "draws": 228
+      },
+      {
+        "phase": "P3",
+        "option": 3,
+        "draws": 46
+      }
+    ],
+    "coverage": [
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 159,
+        "physical_duration_s": 3.18
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 214,
+        "physical_duration_s": 4.28
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 46,
+        "physical_duration_s": 0.92
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 159,
+        "physical_duration_s": 3.18
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 214,
+        "physical_duration_s": 4.28
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 46,
+        "physical_duration_s": 0.92
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 229,
+        "physical_duration_s": 4.58
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 36,
+        "physical_duration_s": 0.72
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 235,
+        "physical_duration_s": 4.7
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 49,
+        "physical_duration_s": 0.98
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 414,
+        "physical_duration_s": 8.28
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 26,
+        "physical_duration_s": 0.52
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 36,
+        "physical_duration_s": 0.72
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 400,
+        "physical_duration_s": 8.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 100,
+        "physical_duration_s": 2.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 115,
+        "physical_duration_s": 2.3000000000000003
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 119,
+        "physical_duration_s": 2.38
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 129,
+        "physical_duration_s": 2.58
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 100,
+        "physical_duration_s": 2.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 115,
+        "physical_duration_s": 2.3000000000000003
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 119,
+        "physical_duration_s": 2.38
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 129,
+        "physical_duration_s": 2.58
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "decelerating",
+        "goal": "FOLLOW",
+        "rows": 35,
+        "physical_duration_s": 0.7000000000000001
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "decelerating",
+        "goal": "HOLD",
+        "rows": 35,
+        "physical_duration_s": 0.7000000000000001
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 64,
+        "physical_duration_s": 1.28
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 139,
+        "physical_duration_s": 2.7800000000000002
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 46,
+        "physical_duration_s": 0.92
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "decelerating",
+        "goal": "FOLLOW",
+        "rows": 35,
+        "physical_duration_s": 0.7000000000000001
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "decelerating",
+        "goal": "HOLD",
+        "rows": 35,
+        "physical_duration_s": 0.7000000000000001
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 120,
+        "physical_duration_s": 2.4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 64,
+        "physical_duration_s": 1.28
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 139,
+        "physical_duration_s": 2.7800000000000002
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 46,
+        "physical_duration_s": 0.92
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 205,
+        "physical_duration_s": 4.1
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 100,
+        "physical_duration_s": 2.0
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 289,
+        "physical_duration_s": 5.78
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 307,
+        "physical_duration_s": 6.140000000000001
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 36,
+        "physical_duration_s": 0.72
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 98,
+        "physical_duration_s": 1.96
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 400,
+        "physical_duration_s": 8.0
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 295,
+        "physical_duration_s": 5.9
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 415,
+        "physical_duration_s": 8.3
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 766,
+        "physical_duration_s": 15.32
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 772,
+        "physical_duration_s": 15.44
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 134,
+        "physical_duration_s": 2.68
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 113,
+        "physical_duration_s": 2.2600000000000002
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 600,
+        "physical_duration_s": 12.0
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 800,
+        "physical_duration_s": 16.0
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 230,
+        "physical_duration_s": 4.6000000000000005
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 105,
+        "physical_duration_s": 2.1
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 373,
+        "physical_duration_s": 7.46
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 234,
+        "physical_duration_s": 4.68
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 77,
+        "physical_duration_s": 1.54
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 41,
+        "physical_duration_s": 0.8200000000000001
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 400,
+        "physical_duration_s": 8.0
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 415,
+        "physical_duration_s": 8.3
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 280,
+        "physical_duration_s": 5.6000000000000005
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 696,
+        "physical_duration_s": 13.92
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 542,
+        "physical_duration_s": 10.84
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 154,
+        "physical_duration_s": 3.08
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 103,
+        "physical_duration_s": 2.06
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 800,
+        "physical_duration_s": 16.0
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 600,
+        "physical_duration_s": 12.0
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 206,
+        "physical_duration_s": 4.12
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 135,
+        "physical_duration_s": 2.7
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 276,
+        "physical_duration_s": 5.5200000000000005
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 159,
+        "physical_duration_s": 3.18
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 400,
+        "physical_duration_s": 8.0
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 399,
+        "physical_duration_s": 7.98
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 316,
+        "physical_duration_s": 6.32
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 403,
+        "physical_duration_s": 8.06
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 341,
+        "physical_duration_s": 6.82
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 317,
+        "physical_duration_s": 6.34
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 124,
+        "physical_duration_s": 2.48
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 123,
+        "physical_duration_s": 2.46
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 599,
+        "physical_duration_s": 11.98
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 797,
+        "physical_duration_s": 15.94
+      },
+      {
+        "source": "standing",
+        "family": "none",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 31,
+        "physical_duration_s": 0.62
+      },
+      {
+        "source": "standing",
+        "family": "none",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 449,
+        "physical_duration_s": 8.98
+      },
+      {
+        "source": "standing",
+        "family": "none",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 62,
+        "physical_duration_s": 1.24
+      },
+      {
+        "source": "standing",
+        "family": "none",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 918,
+        "physical_duration_s": 18.36
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "decelerating",
+        "goal": "FOLLOW",
+        "rows": 95,
+        "physical_duration_s": 1.9000000000000001
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "decelerating",
+        "goal": "HOLD",
+        "rows": 40,
+        "physical_duration_s": 0.8
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 290,
+        "physical_duration_s": 5.8
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 100,
+        "physical_duration_s": 2.0
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 279,
+        "physical_duration_s": 5.58
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 177,
+        "physical_duration_s": 3.54
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 36,
+        "physical_duration_s": 0.72
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 98,
+        "physical_duration_s": 1.96
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 600,
+        "physical_duration_s": 12.0
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 200,
+        "physical_duration_s": 4.0
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "decelerating",
+        "goal": "FOLLOW",
+        "rows": 105,
+        "physical_duration_s": 2.1
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "decelerating",
+        "goal": "HOLD",
+        "rows": 145,
+        "physical_duration_s": 2.9
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "FOLLOW",
+        "rows": 300,
+        "physical_duration_s": 6.0
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 415,
+        "physical_duration_s": 8.3
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "FOLLOW",
+        "rows": 396,
+        "physical_duration_s": 7.92
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 397,
+        "physical_duration_s": 7.94
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "FOLLOW",
+        "rows": 134,
+        "physical_duration_s": 2.68
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 113,
+        "physical_duration_s": 2.2600000000000002
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "FOLLOW",
+        "rows": 600,
+        "physical_duration_s": 12.0
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 800,
+        "physical_duration_s": 16.0
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P2",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 175,
+        "physical_duration_s": 3.5
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P2",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 298,
+        "physical_duration_s": 5.96
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P2",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 72,
+        "physical_duration_s": 1.44
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P2",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 400,
+        "physical_duration_s": 8.0
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P3",
+        "physical_phase": "holding",
+        "goal": "HOLD",
+        "rows": 175,
+        "physical_duration_s": 3.5
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P3",
+        "physical_phase": "moving",
+        "goal": "HOLD",
+        "rows": 298,
+        "physical_duration_s": 5.96
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P3",
+        "physical_phase": "precontact",
+        "goal": "HOLD",
+        "rows": 72,
+        "physical_duration_s": 1.44
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "learning_phase": "P3",
+        "physical_phase": "released",
+        "goal": "HOLD",
+        "rows": 400,
+        "physical_duration_s": 8.0
+      }
+    ],
+    "completed_episode_coverage": [
+      {
+        "source": "goal_arm5",
+        "family": "continue",
+        "episodes": 4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "mid",
+        "episodes": 3
+      },
+      {
+        "source": "goal_arm5",
+        "family": "near",
+        "episodes": 4
+      },
+      {
+        "source": "goal_arm5",
+        "family": "stop",
+        "episodes": 4
+      },
+      {
+        "source": "standing",
+        "family": "continue",
+        "episodes": 10
+      },
+      {
+        "source": "standing",
+        "family": "mid",
+        "episodes": 10
+      },
+      {
+        "source": "standing",
+        "family": "near",
+        "episodes": 11
+      },
+      {
+        "source": "standing",
+        "family": "none",
+        "episodes": 3
+      },
+      {
+        "source": "standing",
+        "family": "stop",
+        "episodes": 11
+      },
+      {
+        "source": "standing",
+        "family": "zero",
+        "episodes": 4
+      }
+    ],
+    "accepted_actor_updates": 127,
+    "attempts": 250,
+    "selected_alpha": {
+      "0.25": 40,
+      "0.0625": 30,
+      "0.5": 11,
+      "1.0": 28,
+      "0.125": 18
+    },
+    "max_old_logprob_error": 0.0,
+    "accepted_joint_KL_p50_p95_max": [
+      0.018448477501389022,
+      0.01993175864117081,
+      0.019991671205299183
+    ],
+    "accepted_categorical_KL_p50_p95_max": [
+      0.0,
+      2.6547967776827736e-09,
+      3.989730116940296e-09
+    ],
+    "blocks": 32,
+    "auxiliary_updates_accepted": 128
+  }
+}

@@ -1,3 +1,19 @@
+# Current — E/I v2正式负结果结项；停止当前配方
+
+2026-11-17：完整报告、100条件表、445阶段×Goal表、逐关节质量、训练覆盖、优化图和因果在线上下文probe均已归档。[完整结项](CONTACT_GOAL_EI_V2_FINAL_RESULTS.md) · [逐条件](CONTACT_GOAL_EI_V2_FINAL_TABLES.md) · [分阶段](CONTACT_GOAL_EI_V2_FINAL_STAGES.md) · [最终门表](contact_goal_v2_final_gate_index.json)。
+
+E/I各32k真实50Hz数据、127次Actor接受；实际覆盖34训练父组/44规格、64完整回合，FOLLOW→HOLD/HOLD→FOLLOW实际8/7父组。100/100固定终点Dev：E相对Goal-only near改善3.554%、mid−0.096%、stop/continue0.580%，两臂均未满足两族10%门；E/I/Goal-only联合任务质量父组均7/16。机械/保持/恢复保护无新失败；稳定不等于有效跟随。
+
+训练中motion各1135条/46次抽样，终点却未调用motion；selector接受categorical KL最大E5.82e−9/I3.99e−9。同317个实际I决策状态，两最终selector相对初始先验argmax均未改变，raw-logit修正最大约0.00033。高层有效变化小已证实；探索/信用/梯度或reward何者主导尚未证实。
+
+12源祖先分组、3762起点的0.5/1s预测probe：I在线上下文AUROC .9018/.8782，当前deploy/public-Goal基线 .9609/.9093，无独立预测增量。该读数是当前因果F_I预测上下文，不是未来结果B_I编码；独立B_I(state)与8回合正向归因消融维持UNMEASURED，不填PASS。行为已失败，按§7.4第三分支停止，不加训练/不读sealed/不自动开下一阶段。
+
+正式新增stage扣费40652.8081s（含300s未逐项计时小IO保守扣费）、956642个5ms计数、现有输出约7.1554GiB，均在原批准帽内。本次测得CPU收尾1457.7894s，新增物理/策略更新0，三次读取/表生成失败完整计账。项目136.293h为继承阶段重复扣费的保守上界，不冒称去重实际工时。GPU0没有本任务遗留作业。
+
+三条真实qpos 1×视频已在Mac指定videos/ei-v2-dev-20261117目录；完整结项另交本地reports目录。原BC500、BFM/PD、所有旧运行、模型、erratum和正式判断保持。
+
+## 以下保留此前状态
+
 # Current — 100完整Dev已完成；E/I未达到预锁行为增量
 
 2026-11-17：主评价100/100，实际2h11min、352761物理ticks，GPU0释放。相对Goal-only，E近距J改善3.55%、中距约持平、停止/继续改善0.58%；I几乎同E，未达两族10%必要条件。主学习回合none/zero及真实恢复保护无失败，不能用保护PASS替代任务收益。[首轮实际读数与边界](CONTACT_GOAL_EI_V2_DEV_FIRST_RESULTS.md)。只读100存档和16组共同前缀已PASS；终点E/I均只选standing/arm15且执行z完全相同，分阶段结项继续整理；不加训、不读sealed。

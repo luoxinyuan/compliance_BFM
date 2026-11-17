@@ -1,0 +1,59 @@
+{
+  "final_branch": 3,
+  "earlier_gate_records_preserved": true,
+  "sealed_read": false,
+  "additional_training": 0,
+  "gates": [
+    {
+      "gate": "G09",
+      "status": "PASS",
+      "quantity": "32k/arm; all44 unique train specs;34 parents; frozen endpoints; independent Dev",
+      "evidence": [
+        "contact_goal_v2_final_results.json",
+        "CONTACT_GOAL_EI_V2_FORMAL_TRAINING_COMPLETE.md"
+      ]
+    },
+    {
+      "gate": "G10",
+      "status": "PASS",
+      "quantity": "100 complete episodes;16 exact stop/continue common-prefix comparisons;16 qualified loaded-release references/arm",
+      "evidence": [
+        "contact_goal_v2_dev_archive_audit.json",
+        "contact_goal_v2_dev_first_results.json"
+      ]
+    },
+    {
+      "gate": "G11",
+      "status": "PASS_FOR_MEASURED_LEARNING_ARM_PROTECTIONS",
+      "quantity": "no hard boundary/support-loss;none/zero/recovery protection0fails;445 stage-Goal windows no additional locked continuity violations",
+      "evidence": [
+        "contact_goal_v2_final_stage_quality.json",
+        "CONTACT_GOAL_EI_V2_FINAL_TABLES.md"
+      ]
+    },
+    {
+      "gate": "G12",
+      "status": "FAIL",
+      "quantity": "E/I both fail at least2 families Jdown10%; joint qualified parents7/16 equalsGoal-only",
+      "evidence": [
+        "contact_goal_v2_final_results.json"
+      ]
+    },
+    {
+      "gate": "G13",
+      "status": "FAIL",
+      "quantity": "I has no registered independent behavioral increment over E",
+      "evidence": [
+        "contact_goal_v2_final_results.json"
+      ]
+    },
+    {
+      "gate": "G14",
+      "status": "UNMEASURED_FOR_POSITIVE_BI_ATTRIBUTION",
+      "quantity": "causal predicted-context grouped probe measured, no incremental prediction; standalone BI(state) input not available;8physicalablation episodes not run after branch3 behavioral failure",
+      "evidence": [
+        "CONTACT_GOAL_EI_V2_FINAL_RESULTS.md"
+      ]
+    }
+  ]
+}

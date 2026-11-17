@@ -1,0 +1,14 @@
+{
+  "base_personal_commit": "a4fce00bf562b0e68f46876ed1866712217c33eb",
+  "sources": {
+    "final_stage_quality3.py": "c314fe59f328c059b5a09ba9b282ebf1690646c1213edae48f6ebaa502635c41",
+    "final_stage_quality2.py": "d57d3db15503defaae5a649e60eef7ea5b1eeaff9bfca363d5c3e13d38194b49",
+    "final_training.py": "de5e70761f307a05deb1e1b3fd649de903b19c75b15fba6797deba1fd3659856",
+    "build_report.py": "b3e37d8a442e9e519590d571e31d8383120a8b025b7746f7fa579dd46434b3f2",
+    "final_readonly.py": "0ff8620286ba65796ad0bc79b0eded7fec7dff4fbc0e029c6ed2249769f62754",
+    "final_stage_quality.py": "11ab94ef842eb61e098e8491ec0b2871e874f9a62472a7a31a40d0c72a6774ed",
+    "final_probe.py": "f558953094c296ccce6ee17cf4b567050da466c5e55268db1cc188148bd9f3fc",
+    "final_curves.py": "52887fce70485ecad51373474b9328fe1ee9250d81d926b9daae4f6e2b6ba679"
+  },
+  "execution_contract": "The seven final_*.py archive copies ran under formal stage/prep. They resolve STAGE from that placement. build_report.py ran in the Mac closeout directory. No training runtime was modified."
+}
