@@ -176,6 +176,11 @@ def build(*,device='cuda',aux_scale=1.,seed=681117,compile_execution=None):
     agent.update_fb=types.MethodType(fb,agent);agent.update=types.MethodType(up,agent)
     agent.actor_enabled=False
     agent.cfg=agent.cfg.model_copy(update={'compile':execution_compile})
+    # Pin original Adam steps to one execution path independent of compiler
+    # cache history. All network methods retain native compile=True. The five
+    # eager optimizer calls are exactly equivalent on actual saved gradients.
+    from execution import eager_adam_boundaries
+    agent.execution_contract=eager_adam_boundaries(agent)
     # Deterministic accumulation preserves all original discriminator/GP terms.
     from ordered_grad import install
     install(agent,record_gradients=False)
@@ -188,4 +193,5 @@ def build(*,device='cuda',aux_scale=1.,seed=681117,compile_execution=None):
         migration=migration,source_math_diff=diff,aux_scale=aux_scale,
         actor_full_network=True,B_frozen=True,no_backward_optimizer=True,
         no_old_learning_weights=True,source_sha256=SOURCE_SHA,execution_compile=execution_compile,
+        optimizer_execution=agent.execution_contract,
         aot_donated_buffer=torch._functorch.config.donated_buffer)

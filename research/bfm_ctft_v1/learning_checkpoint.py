@@ -87,6 +87,7 @@ def atomic_save(agent,buffers,expert_groups,folder,step):
         replay=cpu(buffers['train'].get_full_buffer()),replay_capacity=buffers['train'].capacity,
         replay_idx=buffers['train']._idx,replay_full=buffers['train']._is_full,
         expert_groups=cpu(expert_groups),configuration=agent.cfg.model_dump(),
+        execution_contract=cpu(agent.execution_contract),
         aot_donated_buffer=torch._functorch.config.donated_buffer)
     expected=fingerprint(agent)
     torch.save(cpu(agent._model.state_dict()),tmp/'model.pt')
@@ -144,6 +145,7 @@ def resume_and_compare(package,out):
         state=torch.load(package/'learner.pt',map_location='cpu',weights_only=False)
         assert state['aot_donated_buffer'] is False
         agent,manifest=build(aux_scale=state['aux_scale'])
+        assert agent.execution_contract==state['execution_contract'],'Execution contract differs from saved learner'
         agent._model.load_state_dict(torch.load(package/'model.pt',map_location='cpu',weights_only=False),strict=True)
         assert manifest['aot_donated_buffer'] is False and agent.cfg.model_dump()==state['configuration']
         for name,s in state['optimizers'].items():getattr(agent,name).load_state_dict(s)
