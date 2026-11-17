@@ -184,6 +184,10 @@ def study(e,model,contract,out):
             if not str(exc).startswith('RESOURCE_PREFLIGHT_REFUSED:'):raise
             boundary=dict(kind='resource_interruption',detail=str(exc))
             states.append(capture_state(e,last_command,dict(source_case=i,control=len(cs),resource_pause=True)))
+        except AssertionError as exc:
+            if str(exc)!='Holdout source qualification wall cap':raise
+            boundary=dict(kind='local_wall_budget',detail=str(exc))
+            states.append(capture_state(e,last_command,dict(source_case=i,control=len(cs),budget_pause=True)))
         finally:enabled=False;e.qualification_active=False
         ph=copy.deepcopy(e.trace[start:]);assert all(np.linalg.norm(r['force'])==0 for r in ph)
         # Complete private evidence includes failed sources and every saved state.
@@ -208,8 +212,8 @@ def study(e,model,contract,out):
             source_restoration_qualified=False)
         brief.append(record);write(out/'progress.json',brief);print('CTFT_NATIVE_SOURCE',json.dumps(record),flush=True)
         del states,cs,ph
-        if boundary and boundary['kind']=='resource_interruption':
-            result=dict(status='HOLDOUT_SOURCE_RESOURCE_PAUSED',sources=brief,updates=0,new_training_samples=0,
+        if boundary and boundary['kind'] in ('resource_interruption','local_wall_budget'):
+            result=dict(status='HOLDOUT_SOURCE_RESOURCE_OR_BUDGET_PAUSED',sources=brief,updates=0,new_training_samples=0,
                 all_evidence_preserved=True,actual_completed_cases=len(brief)-1,interrupted_case=i)
             write(out/'source-summary.json',result)
             return result
