@@ -143,3 +143,24 @@ class ContactLive:
             live_spec=copy.deepcopy(self.spec),live_control=self.i,live_controls=self.controls,
             native_commands=cpu(self.native_commands),done=self.done)
         return saved
+
+    def restore(self,saved):
+        """Restore this callback graph, not just body coordinates or data fields."""
+        learner_rng=rng();e=self.e
+        spec=copy.deepcopy(saved['live_spec'])
+        if spec['mode']==1:
+            partner_spec=saved['tether']['ctft_partner_spec']
+            for cfg in [e.cfg,e.tether.cfg]:
+                cfg.enabled=spec['force'];cfg.body='right_wrist_yaw_link'
+                cfg.local_point=[0.,0.,0.];cfg.stiffness=80.;cfg.damping=8.;cfg.max_force=10.
+                cfg.activation_time=partner_spec['onset_s'];cfg.release_time=partner_spec['release_s']
+        else:e.cfg.enabled=e.tether.cfg.enabled=False
+        restore_source(e,saved)
+        e.tether.measure=types.MethodType(measure if spec['mode']==1 else self.native_measure,e.tether)
+        self.spec=spec;self.history=ForceHistory(saved['ctft_force_history'])
+        self.ema=ForceEMA(np.asarray(saved['ctft_force_ema']).copy())
+        self.guard=OnlineSupport(**saved['online_support']);self.last_z=saved['actual_last_z'].to(e.standing.device)
+        self.native_commands=copy.deepcopy(saved['native_commands']);self.i=saved['live_control']
+        self.controls=saved['live_controls'];self.done=saved['done']
+        e.sim.simulate_at_each_physics_step=self.guarded;e.qualification_active=True
+        e.trace=[];set_rng(learner_rng)
