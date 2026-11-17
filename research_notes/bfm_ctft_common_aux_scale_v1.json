@@ -1,0 +1,34 @@
+{
+  "version": "CTFT_COMMON_FIXED_AUX_SCALE_V1",
+  "status": "LOCKED_FROM_PREDECLARED_TRAIN_ONLY_FROZEN_ROLLOUT",
+  "value": 0.8752717971801758,
+  "value_float64_estimate": 0.8752717708234656,
+  "translate": false,
+  "online_update": false,
+  "source_run": "s0-aux-calibration-01",
+  "source_runtime": "67aaf69",
+  "source_result_sha256": "62be2c26040b0caab59a63a53adfcbaca4a24f21ec7e4e40dbc7ab568b262bac",
+  "predeclared_protocol_sha256": "f309fd0c088524aebdb6e9419874d82c1ca3eb463fa011249f5f4055eb456beb",
+  "calibration_control_rows": 9185,
+  "guidance_episodes": 15,
+  "native_episodes": 5,
+  "sampled_qualification_episodes_excluded": 2,
+  "independent_source_ancestors": 2,
+  "standing_common_prefix_family": 1,
+  "formula": "fixed_std=sqrt(max(mean(r_total^2)-mean(r_total)^2,1e-8)); output=r_total/fixed_std; no mean subtraction",
+  "applies_equally": [
+    "U",
+    "T"
+  ],
+  "original_reward_coefficients": {
+    "penalty_action_rate": -0.1,
+    "penalty_feet_ori": -0.4,
+    "penalty_ankle_roll": -4.0,
+    "limits_dof_pos": -10.0,
+    "penalty_slippage": -2.0,
+    "penalty_undesired_contact": -1.0,
+    "penalty_torques": 0.0,
+    "limits_torque": 0.0
+  },
+  "formal_training_started": false
+}
