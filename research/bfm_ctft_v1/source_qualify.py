@@ -69,6 +69,8 @@ def capture_state(e,last_z,source_progress):
         wrapped=state_of(e.wrapped),tether=state_of(e.tether),
         bfm_history=copy.deepcopy(e.base.history_handler.history),
         actual_last_z=last_z.detach().cpu().clone(),native_source_progress=source_progress,
+        env_generator_state=copy.deepcopy(e.rng.bit_generator.state),
+        contact_generator_state=copy.deepcopy(e.contact_rng.bit_generator.state),
         python_rng=__import__('random').getstate(),numpy_rng=np.random.get_state(),
         torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state_all())
 
@@ -139,10 +141,17 @@ def study(e,model,contract,out):
             assert match['full_motion_key']==case['ancestor']
             library_key=match['full_motion_key']
         source_idx=keys.index(library_key)
-        lib.load_motions(random_sample=False,start_idx=source_idx,num_motions_to_load=1)
-        obs,_=get_backward_observation(e.base,0,use_root_height_obs=bool(e.base.config.obs.get('root_height_obs',True)))
-        indices=torch.arange(1,302,device=e.standing.device)
-        zz=model.tracking_inference({k:v[indices] for k,v in obs.items()})
+        old_ids=lib._curr_motion_ids.cpu().tolist()
+        assert len(old_ids)==1
+        try:
+            lib.load_motions(random_sample=False,start_idx=source_idx,num_motions_to_load=1)
+            obs,_=get_backward_observation(e.base,0,use_root_height_obs=bool(e.base.config.obs.get('root_height_obs',True)))
+            indices=torch.arange(1,302,device=e.standing.device)
+            zz=model.tracking_inference({k:v[indices] for k,v in obs.items()})
+        finally:
+            # Reference queries must not mutate subsequent physical reset
+            # context; same ownership discipline as original m9_tracking.encode.
+            lib.load_motions(random_sample=False,start_idx=old_ids[0],num_motions_to_load=1)
         assert torch.isfinite(zz).all() and float((zz.norm(dim=-1)-16).abs().max())<1e-4
         cs=[];states=[];start=len(e.trace);boundary=None;enabled=True
         begin=float(e.tether.time);last_command=e.standing.clone()
