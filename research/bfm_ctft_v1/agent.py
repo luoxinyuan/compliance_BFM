@@ -139,7 +139,10 @@ def build(*,device='cuda',aux_scale=1.,seed=681117,compile_execution=None):
     train.update(lr_actor=3e-5,lr_f=1e-4,lr_critic=1e-4,lr_aux_critic=1e-4,lr_discriminator=1e-4,
                  weight_decay=0.,weight_decay_discriminator=0.,clip_grad_norm=1.,batch_size=1024,
                  fb_target_tau=.01,critic_target_tau=.005)
-    execution_compile=raw['compile'] if compile_execution is None else bool(compile_execution)
+    # Selected before formal learning after strict fresh-process qualification.
+    # Preserve source compile=True in provenance, not as an implicit default
+    # that can reintroduce the failed cache-dependent continuation path.
+    execution_compile=False if compile_execution is None else bool(compile_execution)
     cfg=FBcprAuxAgentConfig(model=FBcprAuxModelConfig(**modelcfg),train=train,
         aux_rewards=['ctft_total_native'],aux_rewards_scaling={'ctft_total_native':1.},compile=False,cudagraphs=raw['cudagraphs'])
     torch.manual_seed(seed)

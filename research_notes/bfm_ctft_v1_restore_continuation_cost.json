@@ -1,0 +1,14 @@
+{
+  "status": "S0_CONTINUING_AFTER_STRICT_LEARNER_REPAIR",
+  "charged_job_s": 11588.466448799212,
+  "engineering_continuation_elapsed_s": 4122.238289356232,
+  "project_conservative_upper_h": 139.51200702267158,
+  "agent_updates": 28,
+  "formal_agent_updates": 0,
+  "real_physics_ticks": 50534,
+  "contact_interface_collected_rows": 1050,
+  "output_bytes_stage_current": 27434572096,
+  "learner_strict_restore_passed": true,
+  "complete_task_learner_restore": "PENDING",
+  "N_locked": null
+}

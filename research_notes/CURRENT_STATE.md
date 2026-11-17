@@ -1,3 +1,7 @@
+## 2026-11-17 S0已恢复推进
+
+learner原生eager严格恢复通过后，已完成12祖先存档注释及同父组有力/无力冻结接触链记录，两支含停止与4s释放恢复均无硬边界；不是随机策略、完整Task+learner恢复或正式行为训练通过。新物理6001ticks、正式U/T为0，N未锁。见[实际推进](BFM_CTFT_V1_S0_CONTACT_PROGRESS.md)。
+
 ## 2026-11-17 严格learner恢复工程已通过
 
 原生eager执行下，完整模型/五Adam/RNG/replay初始读回和同一下一完整更新全部逐值一致。编译路径残余失败保留；普通工程继续授权已归档。采用已验证eager继续原S0，正式U/T尚未发车、N未锁。接触全链/物理联合恢复、来源分组、共同尺度和吞吐仍待资格。见[工程实测](BFM_CTFT_V1_RESTORE_ENGINEERING_RESULTS.md)。
