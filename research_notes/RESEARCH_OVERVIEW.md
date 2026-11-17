@@ -1,3 +1,9 @@
+# Current — 100完整Dev已完成；E/I未达到预锁行为增量
+
+2026-11-17：主评价100/100，实际2h11min、352761物理ticks，GPU0释放。相对Goal-only，E近距J改善3.55%、中距约持平、停止/继续改善0.58%；I几乎同E，未达两族10%必要条件。主学习回合none/zero及真实恢复保护无失败，不能用保护PASS替代任务收益。[首轮实际读数与边界](CONTACT_GOAL_EI_V2_DEV_FIRST_RESULTS.md)。正在只读复核动作身份/common-prefix并完成分阶段结项；不加训、不读sealed。
+
+## 以下保留历史状态
+
 # Current — E/I正式训练完成；独立完整Dev已启动
 
 2026-11-17：E/I各32000条、各127次Actor接受；全部固定训练保护通过。独立评价runtime590aa54，formal-dev-02已启动冷加载，固定100完整回合，尚无新Dev结果。此前缺少已验证隔离接触依赖的启动失败在物理前退出，已逐文件同SHA补齐并过8项PINS；失败/成本保留。训练原runtime08b9c96与终点模型不改，不加训、不读sealed、不按Dev反选。[完整事实、入口与成本](CONTACT_GOAL_EI_V2_FORMAL_TRAINING_COMPLETE.md)。

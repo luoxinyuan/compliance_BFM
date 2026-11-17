@@ -1,0 +1,230 @@
+{
+  "status": "MAIN_DEV_COMPLETE_NO_REGISTERED_BEHAVIOR_GAIN",
+  "runtime": "590aa54eb829b03f2fb76cf4f6bfa8ecf7489c52",
+  "episodes": 100,
+  "complete": 100,
+  "hard_failures": 0,
+  "cost_job_s": 7860.995746943052,
+  "physics_ticks": 352761,
+  "evaluation_sha256": "08c58edfe874ddba6018f1ef834ab0a69e7cd9ebbf923486f9eb1cb1feec940c",
+  "identities": {
+    "E-final": {
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/contact-goal-ei-v2-formal-20261116/runs/formal-E-06/checkpoints/block-node-32000",
+      "manifest_sha256": "804dda80c24f74222c3545f97107a13b9abfca0f6733de70a0ed27a27b1dae0b",
+      "core_sha256": "d71c8ab214cebbf1a5b0c49b9563cf33cb70a63d11104c9b329f080ffa12db32",
+      "rows": 32000,
+      "training_runtime": "08b9c96a4ea3d0c0007e840029ba6a30f3c858f0",
+      "core_only_frozen_weight_read": true,
+      "agent_sha256": "44f6fe118e2d7337079739eaf2b9cbe6310ad8efafa4185b0d3ede6cdeeef2f3",
+      "actor_accepted": 127,
+      "completed_training_parent_ids": [
+        "0e5c9b3a61a5ac8c4e648500a0637f30237952511809393ecc1d8acce3d57617",
+        "0e719f297deb2ad57dd345f9f4148c8df4073fb4b7f4dbd520303aedeb47c6f6",
+        "12ad3430e68123e94210d7fe1ccd5ada45e575caa51919f114e7b48fb3810503",
+        "2252e9238913c55517d367d57b556215d8424aa4179f5041825d5af69682c29b",
+        "27d98b313b993a874da0dad9d093c88f8989647ac2566c97f317b9de7c31084b",
+        "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+        "560570cc402ed9ca081b6576c9c53cd12bffae6cb94146b11a84c4c46f98aa4b",
+        "57b1eeeb84f9fbeeb67faf9bf2dce8b0907a2dc74dc8a9d83f7df4c32b894fce",
+        "57be7272375a642cb7ad26d6fe20240731b556c011a633c4f6c6e5e995360726",
+        "5c25c5a7292af35e119768596fc4ebe9053e96bb85073908524c96b8336fd02b",
+        "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+        "65924819c5102074e2bafe27cac6cbb0abb45508cc2ca82644bd829f0da97021",
+        "70dcd4b0aab9801961da3b0168bd0885b82a2cd2f5d1e3232a3e3b6227d7e9e0",
+        "751bf9964e177fff0126611f26c641f7a1154769d6026f8680d3335a174084a1",
+        "7695b5e718d9da17391b1fd81778c91a07730a3cd2bf007e0f452adf3b4625cd",
+        "7697e25416743709f4b0d3467dac46d1b6b8534166fdbc1b1e79ed8f453ce43e",
+        "77d8be60d8e55c74d3e051f341db35926a6f47ef050dae7d8dd77d840b623e69",
+        "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+        "92acbb87e917df6caa6b641f5266bbd7a5403567af82fc9b6c934f2c01a00615",
+        "970cc11f8dff122532ff4406c786fd22008eb0fbfbf7255d841de2e1bc2fb844",
+        "a0f253c9a6c96da97b70230fc526e41e32ad321310d3b791e14e5b650126b14c",
+        "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+        "abe694c512ad087b49eee81e31b408d0d718d85d2e9cccd5ab284c9ea24d9770",
+        "ac1a0e2c9c958136b8bf55f2e8e673a0ff6dbfc87c974a084b0f7a3f1221bb5a",
+        "c375fb9aff4bb33476479fb22b859430b5e3323f86231ec61c3908a9cd439341",
+        "c9bc8363a2c3f844d14975cfb756c7aed0dedc7cb8042a9d600a4361acdb813b",
+        "cb29bf09014a2b5416b8d9cf11921d07eac3a0c885365c55ea31a3ca27e371c4",
+        "d313f47d9377f9a69291fe54eadf4793a313820dfd68845aff3c623b39bcca88",
+        "d3c49a7a586cb8162b73d660fffa38fdd12e44f8b934a459d984217e36f44b41",
+        "d6bcbb04a4b4c0f961f9d1ab876ceeb6ca14c8a7345737642b5d97e79f1273a5",
+        "ede27bac003dfc662e814e958c1bd0f3e2b2c487616c1055634e9b3b7108ea79",
+        "f104eee4952021cd690fe10b3e84c1888b44569b5dc0bc0ce57fe9fe10fca110",
+        "f97eefce4c51cb3a38a607c7ac525322aeecd9d9fc9ac958d6095ee739f28919",
+        "fdde460420a47e3cb30e3a7b298277a9de8b2ed3de08ebd5547391339bbb24aa"
+      ],
+      "completed_training_episodes": 64
+    },
+    "I-final": {
+      "checkpoint": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/contact-goal-ei-v2-formal-20261116/runs/formal-I-06/checkpoints/block-node-32000",
+      "manifest_sha256": "efde78ed0eefd4d690d5b993cf8d2a883c9a10da230fccc329a9a972c9379ec0",
+      "core_sha256": "abfb05aa0564586feb08df9ca3e9fb85b9cd67dbda8bd4fa87e29f4464a72108",
+      "rows": 32000,
+      "training_runtime": "08b9c96a4ea3d0c0007e840029ba6a30f3c858f0",
+      "core_only_frozen_weight_read": true,
+      "agent_sha256": "7db8ce3c847294cfce25e8d0127b175f88e1bfffdfaaacb06381d45874adc0e4",
+      "actor_accepted": 127,
+      "completed_training_parent_ids": [
+        "0e5c9b3a61a5ac8c4e648500a0637f30237952511809393ecc1d8acce3d57617",
+        "0e719f297deb2ad57dd345f9f4148c8df4073fb4b7f4dbd520303aedeb47c6f6",
+        "12ad3430e68123e94210d7fe1ccd5ada45e575caa51919f114e7b48fb3810503",
+        "2252e9238913c55517d367d57b556215d8424aa4179f5041825d5af69682c29b",
+        "27d98b313b993a874da0dad9d093c88f8989647ac2566c97f317b9de7c31084b",
+        "4cfa2904af7c27fe8c7d80c59110eb5213576a049a2743acbc222a569e781e62",
+        "560570cc402ed9ca081b6576c9c53cd12bffae6cb94146b11a84c4c46f98aa4b",
+        "57b1eeeb84f9fbeeb67faf9bf2dce8b0907a2dc74dc8a9d83f7df4c32b894fce",
+        "57be7272375a642cb7ad26d6fe20240731b556c011a633c4f6c6e5e995360726",
+        "5c25c5a7292af35e119768596fc4ebe9053e96bb85073908524c96b8336fd02b",
+        "6483f344172f31e49f7487e3f6ccb9e062f3e6dedbfd841d2bfb227cbaa01f0c",
+        "65924819c5102074e2bafe27cac6cbb0abb45508cc2ca82644bd829f0da97021",
+        "70dcd4b0aab9801961da3b0168bd0885b82a2cd2f5d1e3232a3e3b6227d7e9e0",
+        "751bf9964e177fff0126611f26c641f7a1154769d6026f8680d3335a174084a1",
+        "7695b5e718d9da17391b1fd81778c91a07730a3cd2bf007e0f452adf3b4625cd",
+        "7697e25416743709f4b0d3467dac46d1b6b8534166fdbc1b1e79ed8f453ce43e",
+        "77d8be60d8e55c74d3e051f341db35926a6f47ef050dae7d8dd77d840b623e69",
+        "78a7f21fe0c2c1f5980f0d70a37f25e949024dd012198ebd75215c169b9600c1",
+        "92acbb87e917df6caa6b641f5266bbd7a5403567af82fc9b6c934f2c01a00615",
+        "970cc11f8dff122532ff4406c786fd22008eb0fbfbf7255d841de2e1bc2fb844",
+        "a0f253c9a6c96da97b70230fc526e41e32ad321310d3b791e14e5b650126b14c",
+        "a99f5480497ca4592de3b533ce3cb31b6858baf3c65b5a07da00a3e77d59c69a",
+        "abe694c512ad087b49eee81e31b408d0d718d85d2e9cccd5ab284c9ea24d9770",
+        "ac1a0e2c9c958136b8bf55f2e8e673a0ff6dbfc87c974a084b0f7a3f1221bb5a",
+        "c375fb9aff4bb33476479fb22b859430b5e3323f86231ec61c3908a9cd439341",
+        "c9bc8363a2c3f844d14975cfb756c7aed0dedc7cb8042a9d600a4361acdb813b",
+        "cb29bf09014a2b5416b8d9cf11921d07eac3a0c885365c55ea31a3ca27e371c4",
+        "d313f47d9377f9a69291fe54eadf4793a313820dfd68845aff3c623b39bcca88",
+        "d3c49a7a586cb8162b73d660fffa38fdd12e44f8b934a459d984217e36f44b41",
+        "d6bcbb04a4b4c0f961f9d1ab876ceeb6ca14c8a7345737642b5d97e79f1273a5",
+        "ede27bac003dfc662e814e958c1bd0f3e2b2c487616c1055634e9b3b7108ea79",
+        "f104eee4952021cd690fe10b3e84c1888b44569b5dc0bc0ce57fe9fe10fca110",
+        "f97eefce4c51cb3a38a607c7ac525322aeecd9d9fc9ac958d6095ee739f28919",
+        "fdde460420a47e3cb30e3a7b298277a9de8b2ed3de08ebd5547391339bbb24aa"
+      ],
+      "completed_training_episodes": 64
+    },
+    "Goal-only": {
+      "initial_function": "original frozen actor + zero FiLM",
+      "agent_sha256": "44bc1147c397016af469ab762e983b4c6ebb5597cd8b102e512759bd9e7773ec",
+      "command": "Goal lookup HOLD-standing FOLLOW-arm15"
+    },
+    "native-zero-U": {
+      "initial_function": "original frozen actor + zero FiLM",
+      "agent_sha256": "44bc1147c397016af469ab762e983b4c6ebb5597cd8b102e512759bd9e7773ec",
+      "command": "constant standing"
+    },
+    "BC500": {
+      "model_sha256": "a6688f292d8a212bebed4384532026ce3f703269165cd74afd0d0d635d4d4e1e",
+      "input_dim": 1639,
+      "goal_not_an_input": true
+    }
+  },
+  "parent_weighted_family_J": {
+    "E-final": {
+      "none": {
+        "J": null,
+        "independent_parents": 2
+      },
+      "near": {
+        "J": 0.6152694969855417,
+        "independent_parents": 4
+      },
+      "mid": {
+        "J": 1.1255091725228517,
+        "independent_parents": 4
+      },
+      "zero": {
+        "J": 0.05509695570026264,
+        "independent_parents": 2
+      },
+      "stop-continue": {
+        "J": 0.8929722101682557,
+        "independent_parents": 4
+      }
+    },
+    "I-final": {
+      "none": {
+        "J": null,
+        "independent_parents": 2
+      },
+      "near": {
+        "J": 0.6152706382369895,
+        "independent_parents": 4
+      },
+      "mid": {
+        "J": 1.1255089123358066,
+        "independent_parents": 4
+      },
+      "zero": {
+        "J": 0.0551008698738973,
+        "independent_parents": 2
+      },
+      "stop-continue": {
+        "J": 0.8929728842297804,
+        "independent_parents": 4
+      }
+    },
+    "Goal-only": {
+      "none": {
+        "J": null,
+        "independent_parents": 2
+      },
+      "near": {
+        "J": 0.637944174955766,
+        "independent_parents": 4
+      },
+      "mid": {
+        "J": 1.1244284384897858,
+        "independent_parents": 4
+      },
+      "zero": {
+        "J": 0.10434826575230326,
+        "independent_parents": 2
+      },
+      "stop-continue": {
+        "J": 0.8981783302156484,
+        "independent_parents": 4
+      }
+    },
+    "native-zero-U": {
+      "none": {
+        "J": null,
+        "independent_parents": 2
+      },
+      "near": {
+        "J": 0.6756904615601953,
+        "independent_parents": 4
+      },
+      "mid": {
+        "J": 1.2523587768202384,
+        "independent_parents": 4
+      },
+      "zero": {
+        "J": 0.10434826575230326,
+        "independent_parents": 2
+      },
+      "stop-continue": {
+        "J": 1.0171585645505261,
+        "independent_parents": 4
+      }
+    }
+  },
+  "reduction_percent_relative_Goal_only": {
+    "E-final": {
+      "near": 3.5543357648491147,
+      "mid": -0.09611407859067,
+      "stop-continue": 0.5796310011334627
+    },
+    "I-final": {
+      "near": 3.554156869658498,
+      "mid": -0.09609093909719313,
+      "stop-continue": 0.5795559535062722
+    }
+  },
+  "EI_max_paired_RMS_difference": {
+    "error_cm": 3.619815213973254e-05,
+    "force_N": 1.3711305636210369e-05
+  },
+  "behavior_gate": "Neither arm reaches two families with J reduction >=10%; necessary condition fails independently of parent pass/probe",
+  "further_processing": "archive identity/common-prefix check in progress; full phase, continuity, representation evidence and milestone closeout not yet submitted",
+  "sealed_read": false
+}
