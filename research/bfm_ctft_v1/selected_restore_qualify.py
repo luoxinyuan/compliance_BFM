@@ -36,8 +36,8 @@ def study(e,model,contract,out):
     speed(e);(out/'backend-prefix').mkdir();backend(e,model,out/'backend-prefix')
     reset_common(e,model,model.act)
     source_dir=STAGE/'runs/s0-holdout-sources-02'
-    selection=json.loads((STAGE/'locks/selected-source-state-manifest-v1.json').read_text())
-    summary=selection['states'];assert len(summary)==24
+    selection=json.loads(Path(os.environ.get('CTFT_SELECTED_MANIFEST',str(STAGE/'locks/selected-source-state-manifest-v1.json'))).read_text())
+    summary=selection['states'];assert len(summary)==selection.get('expected_count',24)
     # The original assets/reference definitions stay fixed; no recovery source
     # is silently substituted for a failed native stop.
     actual_sources=[];tests=[];weight=float(e.sim.model.body_mass.sum()*np.linalg.norm(e.sim.model.opt.gravity))
@@ -108,14 +108,15 @@ def study(e,model,contract,out):
         del x
     result=dict(status='SELECTED_HOLDOUT_SOURCE_RESTORE_QUALIFIED',tests=tests,
         source_ancestors=len(actual_sources),source_qualification=actual_sources,
-        qualification_scope='One prelocked actual state per24 independent holdout ancestors. Original source hard tails remain negative; no new contact task has been evaluated.',
+        qualification_scope=f'One prelocked actual state per{len(summary)} independent holdout ancestors. Original source hard tails remain negative; no new contact task has been evaluated.',
         scientific_source_coverage='Full state and12 native controls reproduce; this is not a claim of long-horizon new-goal or contact recovery success.',
         model_unchanged=True,training_transitions=0,updates=0)
     write(out/'result-restore.json',result);return result
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--manifest',type=Path);a=p.parse_args()
+    if a.manifest:os.environ['CTFT_SELECTED_MANIFEST']=str(a.manifest)
     a.output.mkdir(parents=True,exist_ok=False)
     write(a.output/'launch.json',dict(pid=os.getpid(),runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),started_unix=time.time(),purpose='full native source restore qualification, no training'))
     os.environ.update(BFM_RECOVERY_OUTPUT=str(a.output),CCL_DEADLINE_MONOTONIC=str(time.monotonic()+1800))
