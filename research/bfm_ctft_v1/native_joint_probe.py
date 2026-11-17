@@ -4,6 +4,7 @@ This is NOT the required contact/full-chain T0 benchmark, a formal warm-up, or
 a calibration dataset. No probe weights/data migrate into the formal U/T run.
 """
 import argparse
+import copy
 import gzip
 import hashlib
 import json
@@ -89,6 +90,42 @@ def main():
                     start=int(torch.randint(len(g)-7,()).item());rows.extend(g[start:start+8])
                 c=cat(rows);return dict(observation=c['observation'],next=dict(observation=c['next']['observation']))
         buffers=dict(train=buffer,expert_slicer=Sequences())
+        # One focused equivalence regression before any complete update. The
+        # original eager and tape-lifetime repair must match gradients/Adam/
+        # parameters exactly. Restore the pre-test state and RNG afterwards.
+        import fb_ordered_grad
+        import ordered_grad
+        batch=buffers['train'].sample(1024)
+        ob={k:v.cuda() for k,v in batch['observation'].items()}
+        zz=batch['z'].cuda()
+        op=agent.discriminator_optimizer
+        weights=copy.deepcopy(agent._model._discriminator.state_dict())
+        adam=copy.deepcopy(op.state_dict())
+        cpu_rng=torch.get_rng_state();cuda_rng=torch.cuda.get_rng_state_all()
+        def equal(x,y):
+            if torch.is_tensor(x):return torch.equal(x,y)
+            if isinstance(x,dict):return x.keys()==y.keys() and all(equal(x[k],y[k]) for k in x)
+            if isinstance(x,(list,tuple)):return len(x)==len(y) and all(equal(a,b) for a,b in zip(x,y))
+            return x==y
+        kwargs=dict(expert_obs=ob,expert_z=zz,train_obs=ob,train_z=zz,
+                    grad_penalty=agent.cfg.train.grad_penalty_discriminator)
+        fb_ordered_grad.update_discriminator(agent,**kwargs)
+        reference=dict(weights=copy.deepcopy(agent._model._discriminator.state_dict()),
+            adam=copy.deepcopy(op.state_dict()),
+            gradients=[None if p.grad is None else p.grad.clone() for p in agent._model._discriminator.parameters()])
+        agent._model._discriminator.load_state_dict(weights);op.load_state_dict(adam)
+        torch.set_rng_state(cpu_rng);torch.cuda.set_rng_state_all(cuda_rng)
+        ordered_grad.update_discriminator(agent,**kwargs)
+        assert equal(reference['weights'],agent._model._discriminator.state_dict())
+        assert equal(reference['adam'],op.state_dict())
+        assert equal(reference['gradients'],[p.grad for p in agent._model._discriminator.parameters()])
+        write('ordered-gradient-regression.json',dict(original_eager_vs_repair_eager_gradients_exact=True,
+            model_exact=True,adam_exact=True,all_three_loss_terms_preserved=True,
+            compiled_complete_loop='pending below; original compiled failure retained in s0-native-joint-01',
+            extra_discriminator_regression_steps=2))
+        agent._model._discriminator.load_state_dict(weights);op.load_state_dict(adam);op.zero_grad(set_to_none=True)
+        torch.set_rng_state(cpu_rng);torch.cuda.set_rng_state_all(cuda_rng)
+        del weights,adam,reference
         def frozen_sha():
             h=hashlib.sha256()
             for module in ['_backward_map','_target_backward_map','_obs_normalizer']:

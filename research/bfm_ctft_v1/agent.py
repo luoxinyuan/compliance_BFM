@@ -173,7 +173,7 @@ def build(*,device='cuda',aux_scale=1.,seed=681117,compile_execution=None):
     agent.actor_enabled=False
     agent.cfg=agent.cfg.model_copy(update={'compile':execution_compile})
     # Deterministic accumulation preserves all original discriminator/GP terms.
-    from fb_ordered_grad import install
+    from ordered_grad import install
     install(agent,record_gradients=False)
     if execution_compile:agent.setup_compile()
     assert all(not s['state'] for s in agent.optimizer_dict.values())
