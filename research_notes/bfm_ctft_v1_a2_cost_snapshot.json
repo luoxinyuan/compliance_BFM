@@ -1,0 +1,13 @@
+{
+  "status": "BLOCKED_A2_STRICT_LEARNER_RESUME",
+  "a2_final_charge_s": 1789.6016182899475,
+  "a2_closeout_reserve_s": 75,
+  "a2_charge_semantics": "elapsed from first resource/preparation check plus75s bounded closeout reserve; child wall is nested and not added again",
+  "charged_job_s": 7466.22815944298,
+  "agent_updates": 6,
+  "formal_agent_updates": 0,
+  "real_physics_ticks": 44533,
+  "output_bytes_stage_current": 9844053555,
+  "project_conservative_upper_h": 138.36694083118374,
+  "N_locked": null
+}

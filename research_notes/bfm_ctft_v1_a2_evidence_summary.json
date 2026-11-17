@@ -1,0 +1,73 @@
+{
+  "status": "A2_FULL_UPDATE_PASS_STRICT_RESTORE_FAIL",
+  "runtime": "d3a3e582c3172c73682e60d9830b7b7836aebd82",
+  "initial_restored_state_exact": true,
+  "sample_trace_equal": true,
+  "end_global_rng_equal": true,
+  "z_buffer_equal": true,
+  "difference_path_counts": {
+    "model": 469,
+    "gradients": 280,
+    "optimizers": 559
+  },
+  "different_metric_names": [
+    "metrics/F1",
+    "metrics/M1",
+    "metrics/Q_aux",
+    "metrics/Q_discriminator",
+    "metrics/Q_fb",
+    "metrics/actor_loss",
+    "metrics/auxQ1",
+    "metrics/aux_critic_loss",
+    "metrics/critic_loss",
+    "metrics/fb_diag",
+    "metrics/fb_loss",
+    "metrics/fb_offdiag"
+  ],
+  "model_sha256": "1d88255887b1908500c21dc41b43a9afce425ad55d65ed95e38617e6bf642bc0",
+  "supervisor_cost": {
+    "status": "A2_STOPPED",
+    "outer_accounting_s": 1145.0839385986328,
+    "includes_preparation": true,
+    "includes_serial_children_not_added_again": true,
+    "output_bytes": 8736978868,
+    "jobs": [
+      {
+        "label": "joint",
+        "pid": 13173,
+        "command": [
+          "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+          "-u",
+          "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/bfm_ctft_v1/runtime/research/bfm_ctft_v1/native_joint_probe.py",
+          "--output",
+          "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/bfm_ctft_v1/runs/s0-a2-approved-01/joint",
+          "--a2-checkpoint"
+        ],
+        "started_unix": 1794905000.4354177,
+        "exit_code": 0,
+        "outer_wall_s": 486.8243741989136
+      },
+      {
+        "label": "restore",
+        "pid": 17041,
+        "command": [
+          "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/.venv/bin/python",
+          "-u",
+          "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/bfm_ctft_v1/runtime/research/bfm_ctft_v1/a2_resume.py",
+          "--package",
+          "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/bfm_ctft_v1/runs/s0-a2-approved-01/joint/learner-checkpoint-4",
+          "--output",
+          "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/bfm_ctft_v1/runs/s0-a2-approved-01/restore"
+        ],
+        "started_unix": 1794905487.2994914,
+        "exit_code": 1,
+        "outer_wall_s": 120.73019361495972
+      }
+    ],
+    "finished_utc": "2026-11-17T08:53:28.120648+00:00"
+  },
+  "complete_agent_updates": 6,
+  "discriminator_only_equivalence_steps": 2,
+  "formal_updates": 0,
+  "new_physics_ticks": 0
+}

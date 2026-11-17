@@ -1,3 +1,15 @@
+## 2026-11-17 恢复工程继续
+
+Yi已明确授权自行修复严格learner恢复的实现问题并回归后继续；A2失败与计费保留，不变更科学/安全/逐值恢复门。见[继续授权](BFM_CTFT_V1_RESTORE_ENGINEERING_CONTINUATION.md)。正式U/T尚未启动。
+
+# Current — Issue67 A2已签并执行；完整编译更新通过，严格恢复失败
+
+2026-11-17：[A2签署](BFM_CTFT_V1_A2_SIGNED.md)与[实际结果](BFM_CTFT_V1_A2_RESULTS.md)已归档。只禁用AOT donated-buffer优化，compile=True与原数学/五Adam/全部门槛不改。原eager等价逐值通过，2组Actor冻结＋2组联合更新均通过；完整learner快照约8.14GiB、原子写入约51s。
+
+新进程初始模型/五Adam/梯度/RNG逐值一致，下一expert/train batch、更新末全局RNG和z-buffer一致，判别器仍一致；但实际下一更新后F/critic/Actor出现469个模型张量等差异。严格恢复判FAIL；只能定位至F相关输出边界，尚无首算子或误差量级，不推测为可忽略舍入。A2单次尝试已停止，不改容差、不切eager。GPU0本任务已结束；正式U/T未启动、N未锁，S0接触/材料点/源分组与全链资格未补造PASS。A1支撑正反例和36源状态恢复证据仍保留，旧失败不重判。
+
+## 以下保留此前状态
+
 # Current — Issue67 A1已批准；S0局部资格通过，编译有序反向复发阻断
 
 2026-11-17：[Yi追加批准A1](BFM_CTFT_V1_APPROVED_AMENDMENT_A1.md)已落实原aux逐步单位与新接触项单位接口修订，在线当前5ms支撑与离线0.10s滑移段分离，阈值不变。真实原生前进12次落脚均即时有效、最长无支撑5ms不误停；真实85ms失支撑反例应于55ms停。原材料点滑移全套量尺尚未通过，不填PASS。
