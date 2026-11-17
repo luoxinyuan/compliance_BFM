@@ -122,6 +122,8 @@ def study(e,model,contract,out):
     off=torch.as_tensor(contract['q_PD_offset'],device=e.standing.device)
     actor_sha_before=hashlib.sha256(b''.join(p.detach().cpu().numpy().tobytes() for p in model._actor.parameters())).hexdigest()
     for i,case in enumerate(plan['cases']):
+        from resource_guard import check as resource_check
+        resource_check(STAGE,allowed_owned_pids=[os.getpid()])
         enabled=False
         reset_common(e,model,model.act)
         # ComplianceEnv.reset restores its own callback; rebind the explicit
@@ -158,6 +160,7 @@ def study(e,model,contract,out):
         try:
             for step in range(round(13./.02)):
                 assert time.monotonic()<float(os.environ['CCL_DEADLINE_MONOTONIC']),'Holdout source qualification wall cap'
+                if step%64==0:resource_check(STAGE,allowed_owned_pids=[os.getpid()])
                 t=float(e.tether.time)-begin
                 if t<1.5:z=spherical(e.standing,zz[:1],min(1.,max(0.,t/1.5))**2*(3.-2.*min(1.,max(0.,t/1.5))))
                 elif t<7.5:z=zz[min(round((t-1.5)/.02),len(zz)-1):min(round((t-1.5)/.02),len(zz)-1)+1]
@@ -177,6 +180,10 @@ def study(e,model,contract,out):
                 if advance(e,a):boundary=dict(kind='native_termination',time=float(e.tether.time));break
         except UnsafePhysics as exc:
             boundary=dict(kind='native_source_hard_boundary',physics=exc.row)
+        except RuntimeError as exc:
+            if not str(exc).startswith('RESOURCE_PREFLIGHT_REFUSED:'):raise
+            boundary=dict(kind='resource_interruption',detail=str(exc))
+            states.append(capture_state(e,last_command,dict(source_case=i,control=len(cs),resource_pause=True)))
         finally:enabled=False;e.qualification_active=False
         ph=copy.deepcopy(e.trace[start:]);assert all(np.linalg.norm(r['force'])==0 for r in ph)
         # Complete private evidence includes failed sources and every saved state.
@@ -201,6 +208,11 @@ def study(e,model,contract,out):
             source_restoration_qualified=False)
         brief.append(record);write(out/'progress.json',brief);print('CTFT_NATIVE_SOURCE',json.dumps(record),flush=True)
         del states,cs,ph
+        if boundary and boundary['kind']=='resource_interruption':
+            result=dict(status='HOLDOUT_SOURCE_RESOURCE_PAUSED',sources=brief,updates=0,new_training_samples=0,
+                all_evidence_preserved=True,actual_completed_cases=len(brief)-1,interrupted_case=i)
+            write(out/'source-summary.json',result)
+            return result
     actor_after=hashlib.sha256(b''.join(p.detach().cpu().numpy().tobytes() for p in model._actor.parameters())).hexdigest()
     assert actor_after==actor_sha_before
     usable=[r for r in brief if r['complete'] and r['moving_sustained_200ms'] and r['support_switches']>=2]
@@ -217,6 +229,8 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--prepare-only',action='store_true');p.add_argument('--output',type=Path)
     a=p.parse_args()
     if a.prepare_only:return prepare()
+    from resource_guard import check
+    check(STAGE)
     assert a.output;a.output.mkdir(parents=True,exist_ok=False)
     write(a.output/'launch.json',dict(pid=os.getpid(),runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),
         argv=sys.argv,no_old_learned_weights=True,purpose='S0 frozen original native source qualification',started_unix=time.time()))
