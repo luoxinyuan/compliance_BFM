@@ -1,0 +1,231 @@
+{
+  "status": "S0_PLUS2H_CLOSED_PARTIAL_BUDGET_GATE",
+  "S0_cap_s": 28800,
+  "charged_job_s": 28795.0,
+  "actual_continuous_before_closeout_s": 28733.52475643158,
+  "closeout_reserve_s": 61.47524356842041,
+  "stage_cap_s": 144000,
+  "project_conservative_upper_h": 144.2915996757829,
+  "physics_committed_exact": 233503,
+  "physics_uncommitted_abort_interval": [
+    0,
+    120000
+  ],
+  "physics_conservative_upper": 353503,
+  "additional_agent_update_calls": 11,
+  "additional_Actor_updates": 10,
+  "formal_training_transitions": 0,
+  "formal_agent_updates": 0,
+  "N_locked": null,
+  "actual_output_last_measured_GiB": 92.11396429501474,
+  "output_conservative_upper_GiB": 93,
+  "output_note": "Last full directory scan16:41UTC; since then only bounded moving-source restore logs/manifests and small reports, no model payload.93GiB conservative bound, not a fresh exact du.",
+  "packed_full_restore": "PASS_DIFFERENT_EMPTY",
+  "phase_replay_traininglive_complete_restore": "NOT_YET_RUN",
+  "fresh8192_probe": "NOT_STARTED_BUDGET_PREFLIGHT_REFUSED",
+  "final_source_state_manifest_sha256": "867bb8c27d4b9516317005d9dc82ee51e7741e9ca6808340142fbfc3c65be37c",
+  "scientific_contract_not_relaxed": true,
+  "all_failures_preserved": true,
+  "assets_deleted": 0,
+  "current_gpu_jobs": 0,
+  "runtime_current": "db2dacb943d6452171d305ded87cf35ec0db69be",
+  "closed_utc": "2026-11-17T16:55:08.899745+00:00",
+  "jobs": {
+    "s0-cas-reference-01": {
+      "cost": {
+        "wall_s": 89.41514422800174,
+        "physics": {
+          "actual": 1,
+          "reserved": 1
+        },
+        "formal_updates": 0
+      },
+      "launch": {
+        "pid": 318387,
+        "runtime": "a379a0760c54ec83652ca5cc0a9a448db0e1c88e",
+        "started_unix": 1794927604.3947036
+      }
+    },
+    "s0-cas-reference-02": {
+      "cost": {
+        "wall_s": 1017.5204800389984,
+        "physics": {
+          "actual": 1249,
+          "reserved": 1249
+        },
+        "formal_updates": 0
+      },
+      "launch": {
+        "pid": 325067,
+        "runtime": "f462fb08772ec95612b5684bcc4949b1906f3d17",
+        "started_unix": 1794927754.9032924
+      }
+    },
+    "s0-packed-reference-01": {
+      "cost": {
+        "wall_s": 400.50226314000247,
+        "physics": {
+          "actual": 1297,
+          "reserved": 1297
+        },
+        "formal_updates": 0
+      },
+      "launch": {
+        "pid": 376498,
+        "runtime": "d1e63cf8d98f6e28728c0d59944647e38308212b",
+        "started_unix": 1794928914.1552572
+      }
+    },
+    "s0-packed-interrupt-01": {
+      "cost": {
+        "wall_s": 146.38886010100032,
+        "physics": {
+          "actual": 1221,
+          "reserved": 1221
+        },
+        "formal_updates": 0
+      },
+      "launch": {
+        "pid": 378892,
+        "runtime": "d1e63cf8d98f6e28728c0d59944647e38308212b",
+        "started_unix": 1794929390.0433059
+      }
+    },
+    "s0-packed-resume-01": {
+      "cost": {
+        "wall_s": 151.03078811399973,
+        "physics": {
+          "actual": 1249,
+          "reserved": 1249
+        },
+        "formal_updates": 0
+      },
+      "launch": {
+        "pid": 379371,
+        "runtime": "d1e63cf8d98f6e28728c0d59944647e38308212b",
+        "started_unix": 1794929702.1984391
+      }
+    },
+    "s0-causal-row-audit-01": {
+      "cost": {
+        "wall_s": 142.1939035260002,
+        "physics": {
+          "actual": 1249,
+          "reserved": 1249
+        },
+        "formal_updates": 0
+      },
+      "launch": {
+        "pid": 379922,
+        "runtime": "c28bd7188de3c9062d6c04bda4630eb827f16252",
+        "started_unix": 1794930119.7738025
+      }
+    },
+    "s0-packed-reference-02": {
+      "cost": {
+        "wall_s": 351.8898328519972,
+        "physics": {
+          "actual": 1297,
+          "reserved": 1297
+        },
+        "formal_updates": 0
+      },
+      "launch": {
+        "pid": 380350,
+        "runtime": "c72f2f6f5b01b3f1d6b4a6a9f58142b11d5620e3",
+        "started_unix": 1794930405.8742292
+      }
+    },
+    "s0-packed-interrupt-02": {
+      "cost": {
+        "wall_s": 146.36459862599804,
+        "physics": {
+          "actual": 1221,
+          "reserved": 1221
+        },
+        "formal_updates": 0
+      },
+      "launch": {
+        "pid": 381049,
+        "runtime": "c72f2f6f5b01b3f1d6b4a6a9f58142b11d5620e3",
+        "started_unix": 1794930959.2638822
+      }
+    },
+    "s0-packed-resume-02": {
+      "cost": {
+        "wall_s": 130.05415703499966,
+        "physics": {
+          "actual": 1249,
+          "reserved": 1249
+        },
+        "formal_updates": 0
+      },
+      "launch": {
+        "pid": 381341,
+        "runtime": "c72f2f6f5b01b3f1d6b4a6a9f58142b11d5620e3",
+        "started_unix": 1794931140.5640848
+      }
+    },
+    "s0-grad-reference-01": {
+      "cost": {
+        "wall_s": 199.27796637999927,
+        "physics": {
+          "actual": 1249,
+          "reserved": 1249
+        },
+        "formal_updates": 0
+      },
+      "launch": {
+        "pid": 381857,
+        "runtime": "bfab97e874ad245ce64a4b2c3020c9b0e11a4e70",
+        "started_unix": 1794931453.852274
+      }
+    },
+    "s0-grad-resume-01": {
+      "cost": {
+        "wall_s": 137.53779440499784,
+        "physics": {
+          "actual": 1249,
+          "reserved": 1249
+        },
+        "formal_updates": 0
+      },
+      "launch": {
+        "pid": 382176,
+        "runtime": "bfab97e874ad245ce64a4b2c3020c9b0e11a4e70",
+        "started_unix": 1794931660.0375595
+      }
+    },
+    "s0-training-source-01": {
+      "cost": {
+        "wall_s": 163.45943682399957,
+        "physics": {
+          "actual": 12001,
+          "reserved": 12001
+        },
+        "formal_updates": 0
+      },
+      "launch": {
+        "pid": 383186,
+        "runtime": "bfab97e874ad245ce64a4b2c3020c9b0e11a4e70",
+        "started_unix": 1794932283.4596927
+      }
+    },
+    "s0-moving-restore-01": {
+      "cost": {
+        "wall_s": 140.55343742300465,
+        "physics": {
+          "actual": 1489,
+          "reserved": 1489
+        },
+        "pid": 385085
+      },
+      "launch": {
+        "pid": 385085,
+        "runtime": "db2dacb943d6452171d305ded87cf35ec0db69be",
+        "started_unix": 1794933935.8805954,
+        "purpose": "full native source restore qualification, no training"
+      }
+    }
+  }
+}
