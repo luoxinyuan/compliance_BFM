@@ -26,7 +26,9 @@ from humanoidverse.agents.buffers.transition import DictBuffer
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
-    p.add_argument('--a2-checkpoint',action='store_true');a=p.parse_args()
+    p.add_argument('--a2-checkpoint',action='store_true')
+    p.add_argument('--reuse-package',type=Path);a=p.parse_args()
+    assert not (a.a2_checkpoint and a.reuse_package)
     a.output.mkdir(parents=True,exist_ok=False);begun=time.monotonic()
     def write(name,data):(a.output/name).write_text(json.dumps(data,indent=2,allow_nan=False)+'\n')
     write('launch.json',dict(pid=os.getpid(),started_unix=time.time(),runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),scope='g0-only disposable loop wiring, not full-chain contact qualification'))
@@ -152,6 +154,20 @@ def main():
             from learning_checkpoint import save_and_reference
             save_and_reference(agent,buffers,expert_groups,a.output,step=4)
             counts['agent_updates']+=1
+        if a.reuse_package:
+            from learning_checkpoint import fingerprint,one_update,file_sha
+            from restore_diagnose import restore
+            old=json.loads((a.reuse_package/'manifest.json').read_text())
+            before_restore=fingerprint(agent)
+            write('warm-prefix-comparison.json',dict(scope='compile-history diagnostic; restore follows, not uninterrupted qualification',
+                  equal_by_field={k:before_restore[k]==v for k,v in old['expected_initial'].items()}))
+            for name,info in old['files'].items():assert file_sha(a.reuse_package/name)==info['sha256']
+            saved=torch.load(a.reuse_package/'learner.pt',map_location='cpu',weights_only=False)
+            weights=torch.load(a.reuse_package/'model.pt',map_location='cpu',weights_only=False)
+            buffers=restore(agent,saved,weights)
+            assert fingerprint(agent)==old['expected_initial'],'Warm trace did not start from exact archived state'
+            reference=one_update(agent,buffers,step=4)
+            write('uninterrupted-update5.json',reference);counts['agent_updates']+=1
         write('result.json',dict(status='DISPOSABLE_NATIVE_G0_JOINT_LOOP_PASSED',sources=sources,
             unique_real_source_rows=len(train_rows),counts=counts,updates=results,
             original_B_targets_normalizers_unchanged=True,

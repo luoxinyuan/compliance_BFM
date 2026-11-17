@@ -118,7 +118,12 @@ class Audited:
 
 def one_update(agent,buffers,step):
     trace=[];audited={k:Audited(v,k,trace) for k,v in buffers.items()}
+    close=None
+    if os.environ.get('CTFT_LEARNER_BOUNDARY_TRACE'):
+        from learner_trace import install
+        close=install(agent,os.environ['CTFT_LEARNER_BOUNDARY_TRACE'])
     torch.cuda.synchronize();t=time.monotonic();metrics=agent.update(audited,step);torch.cuda.synchronize()
+    if close:close()
     assert all(torch.isfinite(v).all() for v in metrics.values() if torch.is_tensor(v))
     free,total=torch.cuda.mem_get_info()
     assert torch.cuda.max_memory_reserved()<=.88*total and free>=max(6*2**30,.08*total)
@@ -134,7 +139,7 @@ def save_and_reference(agent,buffers,expert_groups,out,step):
     print('CTFT_A2_LEARNER_REFERENCE_SAVED',reference['update_s'],flush=True)
 
 
-def resume_and_compare(package,out):
+def resume_and_compare(package,out,reference_path=None):
     from agent import build
     from humanoidverse.agents.buffers.transition import DictBuffer
     package=Path(package);out=Path(out);out.mkdir(parents=True,exist_ok=False);begun=time.monotonic()
@@ -172,7 +177,7 @@ def resume_and_compare(package,out):
         actual=fingerprint(agent)
         assert actual==m['expected_initial'],'New-process initial learner state differs'
         result=one_update(agent,buffers,state['step'])
-        reference=json.loads((package.parent/'uninterrupted-update5.json').read_text())
+        reference=json.loads((Path(reference_path) if reference_path else package.parent/'uninterrupted-update5.json').read_text())
         differences=[]
         def compare(x,y,path=''):
             if isinstance(x,dict):
