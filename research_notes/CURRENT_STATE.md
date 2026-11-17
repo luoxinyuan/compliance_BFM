@@ -1,3 +1,11 @@
+# Current — Issue67 BFM-CTFT v1已批准；S0原辅助奖励单位阻断
+
+2026-11-17：Yi明确批准正文＋执行锁、40job小时/120GiB/16M ticks及最新两代＋里程碑checkpoint策略。[批准归档](BFM_CTFT_V1_SIGNED.md)。已建立独立bfm_ctft_v1，无旧E/I或selector/FiLM/U/residual权重继承。原BFM文件SHA与完整训练配置/模型配置一致，F/B/critic/targets存储键齐全；尚未strict加载或更新。
+
+[单位核查与局部修订建议](BFM_CTFT_V1_S0_REWARD_UNIT_BLOCK.md)：原aux critic使用未乘dt的raw成本，环境rew_buf的dt不传入aux路径。执行实际原函数的CPU fixture确认20ms下−.04vs−.0008的50倍口径差。执行锁A4明确要求先报告；没有静默改reward或normalizer。状态BLOCKED_REWARD_UNITS，N未锁，物理/transition/agent update均0；源池/联合更新/恢复/吞吐/U-T均NOT_RUN。需Yi决定局部单位修订后再继续S0，非新学习失败。GPU0未启作业，旧Issue66负结项与全部历史保持。
+
+## 以下保留此前状态
+
 # Current — E/I v2正式负结果结项；停止当前配方
 
 2026-11-17：完整报告、100条件表、445阶段×Goal表、逐关节质量、训练覆盖、优化图和因果在线上下文probe均已归档。[完整结项](CONTACT_GOAL_EI_V2_FINAL_RESULTS.md) · [逐条件](CONTACT_GOAL_EI_V2_FINAL_TABLES.md) · [分阶段](CONTACT_GOAL_EI_V2_FINAL_STAGES.md) · [最终门表](contact_goal_v2_final_gate_index.json)。

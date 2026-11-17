@@ -1,0 +1,2743 @@
+{
+  "status": "BLOCKED_ORIGINAL_AUX_NOT_DT_INTEGRATED_EXECUTION_LOCK_A4",
+  "scope": "CPU exact original arithmetic and file/header audit; no model forward, physics, or update",
+  "weights_sha256": "33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361",
+  "weights_bytes": 3384968272,
+  "config_sha256": "96889c351a919a907f1f6e3001c5213fe5469ffc4fc2d87c0ef52e422eba7d0f",
+  "source_training_model_vs_model_config": {},
+  "training_config": {
+    "name": "FBcprAuxAgentTrainConfig",
+    "lr_f": 0.0003,
+    "lr_b": 1e-05,
+    "lr_actor": 0.0003,
+    "weight_decay": 0.0,
+    "clip_grad_norm": 0.0,
+    "fb_target_tau": 0.01,
+    "ortho_coef": 100.0,
+    "train_goal_ratio": 0.2,
+    "fb_pessimism_penalty": 0.0,
+    "actor_pessimism_penalty": 0.5,
+    "stddev_clip": 0.3,
+    "q_loss_coef": 0.0,
+    "batch_size": 1024,
+    "discount": 0.98,
+    "use_mix_rollout": true,
+    "update_z_every_step": 100,
+    "z_buffer_size": 8192,
+    "rollout_expert_trajectories": true,
+    "rollout_expert_trajectories_length": 250,
+    "rollout_expert_trajectories_percentage": 0.5,
+    "lr_discriminator": 1e-05,
+    "lr_critic": 0.0003,
+    "critic_target_tau": 0.005,
+    "critic_pessimism_penalty": 0.5,
+    "reg_coeff": 0.05,
+    "scale_reg": true,
+    "expert_asm_ratio": 0.6,
+    "relabel_ratio": 0.8,
+    "grad_penalty_discriminator": 10.0,
+    "weight_decay_discriminator": 0.0,
+    "lr_aux_critic": 0.0003,
+    "reg_coeff_aux": 0.02,
+    "aux_critic_pessimism_penalty": 0.5
+  },
+  "original_aux_names": [
+    "penalty_torques",
+    "penalty_action_rate",
+    "limits_dof_pos",
+    "limits_torque",
+    "penalty_undesired_contact",
+    "penalty_feet_ori",
+    "penalty_ankle_roll",
+    "penalty_slippage"
+  ],
+  "original_aux_scaling": {
+    "penalty_action_rate": -0.1,
+    "penalty_feet_ori": -0.4,
+    "penalty_ankle_roll": -4.0,
+    "limits_dof_pos": -10.0,
+    "penalty_slippage": -2.0,
+    "penalty_undesired_contact": -1.0,
+    "penalty_torques": 0.0,
+    "limits_torque": 0.0
+  },
+  "model_actor_std": 0.05,
+  "model_amp": false,
+  "init_observation_keys": [
+    "history_actor",
+    "last_action",
+    "privileged_state",
+    "state"
+  ],
+  "action_dim": 29,
+  "modules": {
+    "_actor": {
+      "tensors": 44,
+      "shapes": {
+        "_actor.embed_s.0.mlp.0.bias": [
+          465
+        ],
+        "_actor.embed_s.0.mlp.0.weight": [
+          465
+        ],
+        "_actor.embed_s.0.mlp.1.bias": [
+          2048
+        ],
+        "_actor.embed_s.0.mlp.1.weight": [
+          2048,
+          465
+        ],
+        "_actor.embed_s.1.mlp.0.bias": [
+          2048
+        ],
+        "_actor.embed_s.1.mlp.0.weight": [
+          2048
+        ],
+        "_actor.embed_s.1.mlp.1.bias": [
+          1024
+        ],
+        "_actor.embed_s.1.mlp.1.weight": [
+          1024,
+          2048
+        ],
+        "_actor.embed_z.0.mlp.0.bias": [
+          721
+        ],
+        "_actor.embed_z.0.mlp.0.weight": [
+          721
+        ],
+        "_actor.embed_z.0.mlp.1.bias": [
+          2048
+        ],
+        "_actor.embed_z.0.mlp.1.weight": [
+          2048,
+          721
+        ],
+        "_actor.embed_z.1.mlp.0.bias": [
+          2048
+        ],
+        "_actor.embed_z.1.mlp.0.weight": [
+          2048
+        ],
+        "_actor.embed_z.1.mlp.1.bias": [
+          1024
+        ],
+        "_actor.embed_z.1.mlp.1.weight": [
+          1024,
+          2048
+        ],
+        "_actor.policy.0.mlp.0.bias": [
+          2048
+        ],
+        "_actor.policy.0.mlp.0.weight": [
+          2048
+        ],
+        "_actor.policy.0.mlp.1.bias": [
+          2048
+        ],
+        "_actor.policy.0.mlp.1.weight": [
+          2048,
+          2048
+        ],
+        "_actor.policy.1.mlp.0.bias": [
+          2048
+        ],
+        "_actor.policy.1.mlp.0.weight": [
+          2048
+        ],
+        "_actor.policy.1.mlp.1.bias": [
+          2048
+        ],
+        "_actor.policy.1.mlp.1.weight": [
+          2048,
+          2048
+        ],
+        "_actor.policy.2.mlp.0.bias": [
+          2048
+        ],
+        "_actor.policy.2.mlp.0.weight": [
+          2048
+        ],
+        "_actor.policy.2.mlp.1.bias": [
+          2048
+        ],
+        "_actor.policy.2.mlp.1.weight": [
+          2048,
+          2048
+        ],
+        "_actor.policy.3.mlp.0.bias": [
+          2048
+        ],
+        "_actor.policy.3.mlp.0.weight": [
+          2048
+        ],
+        "_actor.policy.3.mlp.1.bias": [
+          2048
+        ],
+        "_actor.policy.3.mlp.1.weight": [
+          2048,
+          2048
+        ],
+        "_actor.policy.4.mlp.0.bias": [
+          2048
+        ],
+        "_actor.policy.4.mlp.0.weight": [
+          2048
+        ],
+        "_actor.policy.4.mlp.1.bias": [
+          2048
+        ],
+        "_actor.policy.4.mlp.1.weight": [
+          2048,
+          2048
+        ],
+        "_actor.policy.5.mlp.0.bias": [
+          2048
+        ],
+        "_actor.policy.5.mlp.0.weight": [
+          2048
+        ],
+        "_actor.policy.5.mlp.1.bias": [
+          2048
+        ],
+        "_actor.policy.5.mlp.1.weight": [
+          2048,
+          2048
+        ],
+        "_actor.policy.6.mlp.0.bias": [
+          2048
+        ],
+        "_actor.policy.6.mlp.0.weight": [
+          2048
+        ],
+        "_actor.policy.6.mlp.1.bias": [
+          29
+        ],
+        "_actor.policy.6.mlp.1.weight": [
+          29,
+          2048
+        ]
+      }
+    },
+    "_forward_map": {
+      "tensors": 76,
+      "shapes": {
+        "_forward_map.Fs.0.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.0.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.0.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.Fs.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.Fs.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.Fs.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.Fs.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.Fs.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.5.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.5.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.Fs.6.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.6.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.Fs.6.mlp.1.bias": [
+          2,
+          1,
+          256
+        ],
+        "_forward_map.Fs.6.mlp.1.weight": [
+          2,
+          2048,
+          256
+        ],
+        "_forward_map.embed_sa.0.mlp.0.bias": [
+          2,
+          1,
+          957
+        ],
+        "_forward_map.embed_sa.0.mlp.0.weight": [
+          2,
+          1,
+          957
+        ],
+        "_forward_map.embed_sa.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.0.mlp.1.weight": [
+          2,
+          957,
+          2048
+        ],
+        "_forward_map.embed_sa.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.embed_sa.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.embed_sa.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.embed_sa.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.embed_sa.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_sa.5.mlp.1.bias": [
+          2,
+          1,
+          1024
+        ],
+        "_forward_map.embed_sa.5.mlp.1.weight": [
+          2,
+          2048,
+          1024
+        ],
+        "_forward_map.embed_z.0.mlp.0.bias": [
+          2,
+          1,
+          1184
+        ],
+        "_forward_map.embed_z.0.mlp.0.weight": [
+          2,
+          1,
+          1184
+        ],
+        "_forward_map.embed_z.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.0.mlp.1.weight": [
+          2,
+          1184,
+          2048
+        ],
+        "_forward_map.embed_z.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.embed_z.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.embed_z.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.embed_z.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_forward_map.embed_z.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_forward_map.embed_z.5.mlp.1.bias": [
+          2,
+          1,
+          1024
+        ],
+        "_forward_map.embed_z.5.mlp.1.weight": [
+          2,
+          2048,
+          1024
+        ]
+      }
+    },
+    "_backward_map": {
+      "tensors": 6,
+      "shapes": {
+        "_backward_map.net.0.bias": [
+          256
+        ],
+        "_backward_map.net.0.weight": [
+          256,
+          527
+        ],
+        "_backward_map.net.1.bias": [
+          256
+        ],
+        "_backward_map.net.1.weight": [
+          256
+        ],
+        "_backward_map.net.3.bias": [
+          256
+        ],
+        "_backward_map.net.3.weight": [
+          256,
+          256
+        ]
+      }
+    },
+    "_critic": {
+      "tensors": 76,
+      "shapes": {
+        "_critic.Fs.0.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.0.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.0.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.Fs.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.Fs.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.Fs.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.Fs.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.Fs.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.5.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.5.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.Fs.6.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.6.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.Fs.6.mlp.1.bias": [
+          2,
+          1,
+          1
+        ],
+        "_critic.Fs.6.mlp.1.weight": [
+          2,
+          2048,
+          1
+        ],
+        "_critic.embed_sa.0.mlp.0.bias": [
+          2,
+          1,
+          957
+        ],
+        "_critic.embed_sa.0.mlp.0.weight": [
+          2,
+          1,
+          957
+        ],
+        "_critic.embed_sa.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.0.mlp.1.weight": [
+          2,
+          957,
+          2048
+        ],
+        "_critic.embed_sa.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.embed_sa.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.embed_sa.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.embed_sa.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.embed_sa.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_sa.5.mlp.1.bias": [
+          2,
+          1,
+          1024
+        ],
+        "_critic.embed_sa.5.mlp.1.weight": [
+          2,
+          2048,
+          1024
+        ],
+        "_critic.embed_z.0.mlp.0.bias": [
+          2,
+          1,
+          1184
+        ],
+        "_critic.embed_z.0.mlp.0.weight": [
+          2,
+          1,
+          1184
+        ],
+        "_critic.embed_z.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.0.mlp.1.weight": [
+          2,
+          1184,
+          2048
+        ],
+        "_critic.embed_z.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.embed_z.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.embed_z.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.embed_z.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_critic.embed_z.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_critic.embed_z.5.mlp.1.bias": [
+          2,
+          1,
+          1024
+        ],
+        "_critic.embed_z.5.mlp.1.weight": [
+          2,
+          2048,
+          1024
+        ]
+      }
+    },
+    "_aux_critic": {
+      "tensors": 76,
+      "shapes": {
+        "_aux_critic.Fs.0.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.0.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.0.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.Fs.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.Fs.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.Fs.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.Fs.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.Fs.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.5.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.5.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.Fs.6.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.6.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.Fs.6.mlp.1.bias": [
+          2,
+          1,
+          1
+        ],
+        "_aux_critic.Fs.6.mlp.1.weight": [
+          2,
+          2048,
+          1
+        ],
+        "_aux_critic.embed_sa.0.mlp.0.bias": [
+          2,
+          1,
+          957
+        ],
+        "_aux_critic.embed_sa.0.mlp.0.weight": [
+          2,
+          1,
+          957
+        ],
+        "_aux_critic.embed_sa.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.0.mlp.1.weight": [
+          2,
+          957,
+          2048
+        ],
+        "_aux_critic.embed_sa.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.embed_sa.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.embed_sa.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.embed_sa.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.embed_sa.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_sa.5.mlp.1.bias": [
+          2,
+          1,
+          1024
+        ],
+        "_aux_critic.embed_sa.5.mlp.1.weight": [
+          2,
+          2048,
+          1024
+        ],
+        "_aux_critic.embed_z.0.mlp.0.bias": [
+          2,
+          1,
+          1184
+        ],
+        "_aux_critic.embed_z.0.mlp.0.weight": [
+          2,
+          1,
+          1184
+        ],
+        "_aux_critic.embed_z.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.0.mlp.1.weight": [
+          2,
+          1184,
+          2048
+        ],
+        "_aux_critic.embed_z.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.embed_z.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.embed_z.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.embed_z.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_aux_critic.embed_z.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_aux_critic.embed_z.5.mlp.1.bias": [
+          2,
+          1,
+          1024
+        ],
+        "_aux_critic.embed_z.5.mlp.1.weight": [
+          2,
+          2048,
+          1024
+        ]
+      }
+    },
+    "_discriminator": {
+      "tensors": 10,
+      "shapes": {
+        "_discriminator.trunk.0.bias": [
+          1024
+        ],
+        "_discriminator.trunk.0.weight": [
+          1024,
+          783
+        ],
+        "_discriminator.trunk.1.bias": [
+          1024
+        ],
+        "_discriminator.trunk.1.weight": [
+          1024
+        ],
+        "_discriminator.trunk.3.bias": [
+          1024
+        ],
+        "_discriminator.trunk.3.weight": [
+          1024,
+          1024
+        ],
+        "_discriminator.trunk.5.bias": [
+          1024
+        ],
+        "_discriminator.trunk.5.weight": [
+          1024,
+          1024
+        ],
+        "_discriminator.trunk.7.bias": [
+          1
+        ],
+        "_discriminator.trunk.7.weight": [
+          1,
+          1024
+        ]
+      }
+    },
+    "_target_forward_map": {
+      "tensors": 76,
+      "shapes": {
+        "_target_forward_map.Fs.0.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.0.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.0.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.Fs.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.Fs.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.Fs.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.Fs.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.Fs.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.5.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.5.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.Fs.6.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.6.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.Fs.6.mlp.1.bias": [
+          2,
+          1,
+          256
+        ],
+        "_target_forward_map.Fs.6.mlp.1.weight": [
+          2,
+          2048,
+          256
+        ],
+        "_target_forward_map.embed_sa.0.mlp.0.bias": [
+          2,
+          1,
+          957
+        ],
+        "_target_forward_map.embed_sa.0.mlp.0.weight": [
+          2,
+          1,
+          957
+        ],
+        "_target_forward_map.embed_sa.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.0.mlp.1.weight": [
+          2,
+          957,
+          2048
+        ],
+        "_target_forward_map.embed_sa.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.embed_sa.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.embed_sa.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.embed_sa.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.embed_sa.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_sa.5.mlp.1.bias": [
+          2,
+          1,
+          1024
+        ],
+        "_target_forward_map.embed_sa.5.mlp.1.weight": [
+          2,
+          2048,
+          1024
+        ],
+        "_target_forward_map.embed_z.0.mlp.0.bias": [
+          2,
+          1,
+          1184
+        ],
+        "_target_forward_map.embed_z.0.mlp.0.weight": [
+          2,
+          1,
+          1184
+        ],
+        "_target_forward_map.embed_z.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.0.mlp.1.weight": [
+          2,
+          1184,
+          2048
+        ],
+        "_target_forward_map.embed_z.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.embed_z.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.embed_z.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.embed_z.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_forward_map.embed_z.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_forward_map.embed_z.5.mlp.1.bias": [
+          2,
+          1,
+          1024
+        ],
+        "_target_forward_map.embed_z.5.mlp.1.weight": [
+          2,
+          2048,
+          1024
+        ]
+      }
+    },
+    "_target_backward_map": {
+      "tensors": 6,
+      "shapes": {
+        "_target_backward_map.net.0.bias": [
+          256
+        ],
+        "_target_backward_map.net.0.weight": [
+          256,
+          527
+        ],
+        "_target_backward_map.net.1.bias": [
+          256
+        ],
+        "_target_backward_map.net.1.weight": [
+          256
+        ],
+        "_target_backward_map.net.3.bias": [
+          256
+        ],
+        "_target_backward_map.net.3.weight": [
+          256,
+          256
+        ]
+      }
+    },
+    "_target_critic": {
+      "tensors": 76,
+      "shapes": {
+        "_target_critic.Fs.0.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.0.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.0.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.Fs.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.Fs.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.Fs.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.Fs.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.Fs.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.5.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.5.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.Fs.6.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.6.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.Fs.6.mlp.1.bias": [
+          2,
+          1,
+          1
+        ],
+        "_target_critic.Fs.6.mlp.1.weight": [
+          2,
+          2048,
+          1
+        ],
+        "_target_critic.embed_sa.0.mlp.0.bias": [
+          2,
+          1,
+          957
+        ],
+        "_target_critic.embed_sa.0.mlp.0.weight": [
+          2,
+          1,
+          957
+        ],
+        "_target_critic.embed_sa.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.0.mlp.1.weight": [
+          2,
+          957,
+          2048
+        ],
+        "_target_critic.embed_sa.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.embed_sa.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.embed_sa.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.embed_sa.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.embed_sa.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_sa.5.mlp.1.bias": [
+          2,
+          1,
+          1024
+        ],
+        "_target_critic.embed_sa.5.mlp.1.weight": [
+          2,
+          2048,
+          1024
+        ],
+        "_target_critic.embed_z.0.mlp.0.bias": [
+          2,
+          1,
+          1184
+        ],
+        "_target_critic.embed_z.0.mlp.0.weight": [
+          2,
+          1,
+          1184
+        ],
+        "_target_critic.embed_z.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.0.mlp.1.weight": [
+          2,
+          1184,
+          2048
+        ],
+        "_target_critic.embed_z.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.embed_z.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.embed_z.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.embed_z.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_critic.embed_z.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_critic.embed_z.5.mlp.1.bias": [
+          2,
+          1,
+          1024
+        ],
+        "_target_critic.embed_z.5.mlp.1.weight": [
+          2,
+          2048,
+          1024
+        ]
+      }
+    },
+    "_target_aux_critic": {
+      "tensors": 76,
+      "shapes": {
+        "_target_aux_critic.Fs.0.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.0.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.0.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.Fs.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.Fs.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.Fs.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.Fs.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.Fs.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.5.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.5.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.Fs.6.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.6.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.Fs.6.mlp.1.bias": [
+          2,
+          1,
+          1
+        ],
+        "_target_aux_critic.Fs.6.mlp.1.weight": [
+          2,
+          2048,
+          1
+        ],
+        "_target_aux_critic.embed_sa.0.mlp.0.bias": [
+          2,
+          1,
+          957
+        ],
+        "_target_aux_critic.embed_sa.0.mlp.0.weight": [
+          2,
+          1,
+          957
+        ],
+        "_target_aux_critic.embed_sa.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.0.mlp.1.weight": [
+          2,
+          957,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_sa.5.mlp.1.bias": [
+          2,
+          1,
+          1024
+        ],
+        "_target_aux_critic.embed_sa.5.mlp.1.weight": [
+          2,
+          2048,
+          1024
+        ],
+        "_target_aux_critic.embed_z.0.mlp.0.bias": [
+          2,
+          1,
+          1184
+        ],
+        "_target_aux_critic.embed_z.0.mlp.0.weight": [
+          2,
+          1,
+          1184
+        ],
+        "_target_aux_critic.embed_z.0.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.0.mlp.1.weight": [
+          2,
+          1184,
+          2048
+        ],
+        "_target_aux_critic.embed_z.1.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.1.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.1.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.1.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.embed_z.2.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.2.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.2.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.2.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.embed_z.3.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.3.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.3.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.3.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.embed_z.4.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.4.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.4.mlp.1.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.4.mlp.1.weight": [
+          2,
+          2048,
+          2048
+        ],
+        "_target_aux_critic.embed_z.5.mlp.0.bias": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.5.mlp.0.weight": [
+          2,
+          1,
+          2048
+        ],
+        "_target_aux_critic.embed_z.5.mlp.1.bias": [
+          2,
+          1,
+          1024
+        ],
+        "_target_aux_critic.embed_z.5.mlp.1.weight": [
+          2,
+          2048,
+          1024
+        ]
+      }
+    },
+    "_obs_normalizer": {
+      "tensors": 12,
+      "shapes": {
+        "_obs_normalizer._normalizers.history_actor._normalizer.num_batches_tracked": [],
+        "_obs_normalizer._normalizers.last_action._normalizer.num_batches_tracked": [],
+        "_obs_normalizer._normalizers.privileged_state._normalizer.num_batches_tracked": [],
+        "_obs_normalizer._normalizers.state._normalizer.num_batches_tracked": [],
+        "_obs_normalizer._normalizers.history_actor._normalizer.running_mean": [
+          372
+        ],
+        "_obs_normalizer._normalizers.history_actor._normalizer.running_var": [
+          372
+        ],
+        "_obs_normalizer._normalizers.last_action._normalizer.running_mean": [
+          29
+        ],
+        "_obs_normalizer._normalizers.last_action._normalizer.running_var": [
+          29
+        ],
+        "_obs_normalizer._normalizers.privileged_state._normalizer.running_mean": [
+          463
+        ],
+        "_obs_normalizer._normalizers.privileged_state._normalizer.running_var": [
+          463
+        ],
+        "_obs_normalizer._normalizers.state._normalizer.running_mean": [
+          64
+        ],
+        "_obs_normalizer._normalizers.state._normalizer.running_var": [
+          64
+        ]
+      }
+    },
+    "_aux_reward_normalizer": {
+      "tensors": 3,
+      "shapes": {
+        "_aux_reward_normalizer.counter": [
+          1
+        ],
+        "_aux_reward_normalizer.mean": [
+          1
+        ],
+        "_aux_reward_normalizer.mean_square": [
+          1
+        ]
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "/mnt/data-oss/users/yi.gao/compliance_BFM/pretrained/official/new_model_for_training_code_inference/config.json",
+      "sha256": "96889c351a919a907f1f6e3001c5213fe5469ffc4fc2d87c0ef52e422eba7d0f"
+    },
+    {
+      "path": "/mnt/data-oss/users/yi.gao/compliance_BFM/pretrained/official/new_model_for_training_code_inference/checkpoint/model/config.json",
+      "sha256": "52f94d2946ed8912fc12ac9c25b4bf0e68ccdc669a05ea104e8b6c178e91fb46"
+    },
+    {
+      "path": "/mnt/data-oss/users/yi.gao/compliance_BFM/pretrained/official/new_model_for_training_code_inference/checkpoint/model/init_kwargs.json",
+      "sha256": "b8df2d6006fbeda9a0bb9a9eb3f21dcccadf165f2252fce108714f81655a0094"
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/repo/humanoidverse/envs/legged_base_task/legged_robot_base.py",
+      "sha256": "5de7f691e32e9798975722e7c4a6c7e28d5ccdb4044c28d9101ff21102dbdd09"
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/repo/humanoidverse/agents/envs/humanoidverse_isaac.py",
+      "sha256": "e7f467a1c57bdb347ed10e556c0e1bff63028702443309a228cbeb8e9c7d1985"
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/repo/humanoidverse/train.py",
+      "sha256": "e2c5350eea5eb3581529a479c0cf965552394468da8799e0ae2afc860a4c79fd"
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/repo/humanoidverse/agents/fb_cpr_aux/agent.py",
+      "sha256": "534a86048e271087a845616bd96576f008ad48da5708d09726c5fc74fec06660"
+    },
+    {
+      "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/repo/humanoidverse/agents/nn_models.py",
+      "sha256": "bace2c9967320ab0cf1e570054acf1f7e0378f15690e11af11fcce462b3a9254"
+    }
+  ],
+  "fixtures": [
+    {
+      "dt": 0.01,
+      "raw_ankle_square": 0.009999999776482582,
+      "main_env_integrated_reward": -0.00039999998989515007,
+      "replay_aux_raw": 0.009999999776482582,
+      "actual_original_aux_sum_before_normalizer": -0.03999999910593033,
+      "hypothetical_dt_scaled_aux_sum": -0.0003999999910593033,
+      "ratio_to_dt_scaled": 100.0
+    },
+    {
+      "dt": 0.02,
+      "raw_ankle_square": 0.009999999776482582,
+      "main_env_integrated_reward": -0.0007999999797903001,
+      "replay_aux_raw": 0.009999999776482582,
+      "actual_original_aux_sum_before_normalizer": -0.03999999910593033,
+      "hypothetical_dt_scaled_aux_sum": -0.0007999999821186066,
+      "ratio_to_dt_scaled": 50.0
+    },
+    {
+      "dt": 0.04,
+      "raw_ankle_square": 0.009999999776482582,
+      "main_env_integrated_reward": -0.0015999999595806003,
+      "replay_aux_raw": 0.009999999776482582,
+      "actual_original_aux_sum_before_normalizer": -0.03999999910593033,
+      "hypothetical_dt_scaled_aux_sum": -0.0015999999642372132,
+      "ratio_to_dt_scaled": 25.0
+    }
+  ],
+  "normalizer": "scale-only EMA follows raw weighted sum; it is not a dt integrator",
+  "mathematical_restatement": "original aux = sum(c_i * raw_i), contact = -dt * c_contact",
+  "blocked_reason": "Execution lock A4 requires stop/report if original reward unit is not dt-integrated. No relative-scale or normalizer remedy is silently chosen.",
+  "real_physics_ticks": 0,
+  "real_transitions": 0,
+  "agent_updates": 0,
+  "formal_N_locked": false,
+  "wall_s": 2.2225828839000314,
+  "audit_script_sha256": "3d2a59a65ec14a9f0d2b5c46982489eab03d9dd2aefdf29641748da0ee3398ac",
+  "audit_execution_head": "7cad51880f418db5757a2057bbe202acac00d0cb",
+  "audit_source_was_uncommitted_at_execution": true
+}
