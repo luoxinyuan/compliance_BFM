@@ -4,10 +4,10 @@ from pathlib import Path
 
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--stage',required=True,type=Path);a=parser.parse_args()
-    S=a.stage.resolve();P=S.parents[1];R=S/'eval-runtime';M=Path(__file__).resolve().parents[2];out=S/'runs/dev-videos-01';side=S/'jobs/dev-videos-01.json'
+    parser=argparse.ArgumentParser();parser.add_argument('--stage',required=True,type=Path);parser.add_argument('--attempt',type=int,default=1);a=parser.parse_args();assert 1<=a.attempt<=9
+    S=a.stage.resolve();P=S.parents[1];R=S/'eval-runtime';M=Path(__file__).resolve().parents[2];name='dev-videos-'+format(a.attempt,'02d');out=S/'runs'/name;side=S/'jobs'/(name+'.json')
     assert not out.exists() and not side.exists();out.mkdir();merged=out/'merged';merged.mkdir()
-    start=time.monotonic();locks=[];job=dict(name='dev-videos-01',status='preflight',pid=os.getpid(),start_epoch=time.time(),physics=dict(actual=0,reserved=0),training_updates=0,no_new_physics=True,source_sha256=sha(__file__),renderer_sha256=sha(Path(__file__).with_name('ei_v2_movie.py')));charged=False
+    start=time.monotonic();locks=[];job=dict(name=name,status='preflight',pid=os.getpid(),start_epoch=time.time(),physics=dict(actual=0,reserved=0),training_updates=0,no_new_physics=True,source_sha256=sha(__file__),renderer_sha256=sha(Path(__file__).with_name('ei_v2_movie.py')));charged=False
     try:
         for path in (P/'.dual-track-gpu0.lock',P/'gpu0-experiment.lock'):
             f=path.open('a+');fcntl.flock(f,fcntl.LOCK_EX|fcntl.LOCK_NB);locks.append(f)
@@ -41,6 +41,8 @@ def main():
         videos=[dict(name='01-near-FOLLOW-four-methods',grid4=True,sides=[entry(1,'E 32k | small request | FOLLOW'),entry(25,'I 32k | small request | FOLLOW'),entry(49,'Goal-only | standing/arm15 lookup'),entry(73,'Native standing | frozen original BFM')]),dict(name='02-mid-FOLLOW-tracking-shortfall',grid4=True,sides=[entry(17,'E 32k | mid request | FOLLOW'),entry(41,'I 32k | mid request | FOLLOW'),entry(65,'Goal-only | standing/arm15 lookup'),entry(89,'Native standing | frozen original BFM')]),dict(name='03-common-prefix-STOP-versus-CONTINUE',grid4=True,cross_condition_description='Same source, same Goal stream, same partner prefix then stop/continue; each row is one frozen checkpoint. Not independent parents.',sides=[entry(9,'E 32k | partner STOPS'),entry(10,'E 32k | partner CONTINUES'),entry(33,'I 32k | partner STOPS'),entry(34,'I 32k | partner CONTINUES')])]
         (out/'video-pairs.json').write_text(json.dumps(videos,indent=2)+'\n');(out/'provenance.json').write_text(json.dumps(provenance,indent=2)+'\n')
         env=os.environ.copy();env.update(CUDA_VISIBLE_DEVICES='0',MUJOCO_GL='egl',MUJOCO_EGL_DEVICE_ID='0',PYOPENGL_PLATFORM='egl',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1',BFM_ROLLING_VIDEO_RUN=str(out),BFM_RECOVERY_OUTPUT=str(out),BFM_RENDER_ASSET_ROOT=str(R),PYTHONDONTWRITEBYTECODE='1')
+        xml=S/'runtime/humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml';assert xml.exists();assert sha(xml)==sha(P/'repo/humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml')
+        job['render_xml']=str(xml);job['render_xml_sha256']=sha(xml);env.update(BFM_RENDER_XML=str(xml),BFM_RENDER_ACTION_CONTRACT=str(actual/'action-contract.json'))
         cmd=[sys.executable,'-u',str(Path(__file__).with_name('ei_v2_movie.py'))];job['renderer_command']=cmd;side.write_text(json.dumps(job,indent=2)+'\n')
         subprocess.run(cmd,env=env,cwd=out,check=True,timeout=1200)
         import imageio_ffmpeg

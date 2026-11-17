@@ -14,7 +14,8 @@ mujoco.mj_step=no_new_physics
 ROOT=Path(__file__).resolve().parents[1]
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- out=Path(os.environ['BFM_RECOVERY_OUTPUT']);specs=json.loads((RUN/'video-pairs.json').read_text());m=mujoco.MjModel.from_xml_path(str(Path(os.environ.get("BFM_RENDER_ASSET_ROOT",str(ROOT)))/'humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml'));m.vis.global_.offwidth=640;m.vis.global_.offheight=640;m.site_rgba[:,3]=0
+ out=Path(os.environ['BFM_RECOVERY_OUTPUT']);specs=json.loads((RUN/'video-pairs.json').read_text());m=mujoco.MjModel.from_xml_path(os.environ["BFM_RENDER_XML"]);m.vis.global_.offwidth=640;m.vis.global_.offheight=640;m.site_rgba[:,3]=0
+ contract=json.loads(Path(os.environ['BFM_RENDER_ACTION_CONTRACT']).read_text());names=[mujoco.mj_id2name(m,mujoco.mjtObj.mjOBJ_JOINT,j)for j in range(m.njnt)if m.jnt_type[j]!=mujoco.mjtJoint.mjJNT_FREE];assert names==contract['dof_names'],'render joint coordinates differ from actual execution'
  d=mujoco.MjData(m);renderer=mujoco.Renderer(m,height=640,width=640);font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',17);small=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',14);manifest=[]
  for item in specs:
   entries=[]
