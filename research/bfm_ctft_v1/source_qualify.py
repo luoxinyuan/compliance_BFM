@@ -128,7 +128,17 @@ def study(e,model,contract,out):
         monitor=OnlineSupport(weight)
         for r in e.trace:monitor.update(r['foot_normal_force_n'])
         e.cfg.enabled=False;e.tether.cfg.enabled=False;e.qualification_active=True
-        source_idx=lib._motion_data_keys.tolist().index(case['motion'])
+        keys=lib._motion_data_keys.tolist()
+        library_key=case['motion']
+        if library_key not in keys:
+            # The deployed physical loader retains the complete original motion
+            # names; the planned clip0 is its byte-exact chronological prefix.
+            mapping=json.loads((STAGE/'locks/source-library-key-equivalence.json').read_text())
+            match=next(c for c in mapping['cases'] if c['planned_clip']==case['motion'])
+            assert match['fps_equal'] and all(match['fields_exact'].values())
+            assert match['full_motion_key']==case['ancestor']
+            library_key=match['full_motion_key']
+        source_idx=keys.index(library_key)
         lib.load_motions(random_sample=False,start_idx=source_idx,num_motions_to_load=1)
         obs,_=get_backward_observation(e.base,0,use_root_height_obs=bool(e.base.config.obs.get('root_height_obs',True)))
         indices=torch.arange(1,302,device=e.standing.device)
