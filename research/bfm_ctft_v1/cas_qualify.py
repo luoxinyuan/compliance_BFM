@@ -29,6 +29,8 @@ def study(e,original,contract,out):
     from rolling_backend import install as backend
     speed(e);(out/'backend-prefix').mkdir();backend(e,original,out/'backend-prefix');reset_common(e,original,original.act)
     args=json.loads(os.environ['CTFT_CAS_ARGS']);mode=args['mode']
+    if args.get('store_kind','cas')=='packed':
+        from packed_checkpoint import PackedTensorStore as TensorStore
     location=out/'store' if mode=='reference' else Path(args['store'])
     store=TensorStore(location)
     if mode=='reference':
@@ -105,8 +107,9 @@ def study(e,original,contract,out):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',choices=['reference','resume'],required=True)
-    p.add_argument('--store');p.add_argument('--reference');a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
-    os.environ.update(CTFT_CAS_ARGS=json.dumps(dict(mode=a.mode,store=a.store,reference=a.reference)),
+    p.add_argument('--store');p.add_argument('--reference');p.add_argument('--store-kind',choices=['cas','packed'],default='cas')
+    a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
+    os.environ.update(CTFT_CAS_ARGS=json.dumps(dict(mode=a.mode,store=a.store,reference=a.reference,store_kind=a.store_kind)),
         BFM_RECOVERY_OUTPUT=str(a.output),CCL_DEADLINE_MONOTONIC=str(time.monotonic()+1800))
     from resource_guard import check
     check(STAGE)
