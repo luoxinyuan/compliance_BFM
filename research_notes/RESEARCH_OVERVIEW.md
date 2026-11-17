@@ -1,3 +1,11 @@
+## 2026-11-17 Yi追加批准S0两小时，资格继续
+
+[S0追加签署](BFM_CTFT_V1_S0_PLUS2H_SIGNED.md)：分项上限现8h，stage40h等总帽及科学门不变。下列预算暂停为批准前中间事实，现已恢复资格工程；U/T尚未启动、N未锁。
+
+## 2026-11-17 Issue67 S0续报
+
+原始BFM独立CTFT资格继续：共同尺度完成，真实接触完整Task/learner短程严格恢复通过；24独立新源状态资格通过。正式U/T尚未启动，生产CPR、增量存盘/故障资格和主指标仍待完成，S0分项预算门暂停；不是学习负结论。详见[实测报告](BFM_CTFT_V1_S0_CONTINUATION_RESULTS.md)。
+
 ## 2026-11-17 奖励批准状态补正：A1已批准且实现，校准已授权但尚未完成
 
 [Issue67批准记录](https://github.com/GaoE05/robot-research-bridge/issues/67#issuecomment-6940383957)与[A1附件](BFM_CTFT_V1_APPROVED_AMENDMENT_A1.md)明确批准：aux接触项使用逐步成本 `-C`，物理积分另存 `-dt*C`。代码及既有接触probe已执行；本次只读检查有力/无力合计1050条，单位恒等式最大差0。两份最新报告已补写批准/落地/未完成三种状态：[恢复工程](BFM_CTFT_V1_RESTORE_ENGINEERING_RESULTS.md) · [S0接触推进](BFM_CTFT_V1_S0_CONTACT_PROGRESS.md)。

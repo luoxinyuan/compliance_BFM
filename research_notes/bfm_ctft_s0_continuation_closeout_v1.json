@@ -1,0 +1,33 @@
+{
+  "status": "S0_PARTIAL_BUDGET_GATE",
+  "formal_training_started": false,
+  "N_locked": null,
+  "measured_continuous_charge_before_closeout_s": 21071.25454902649,
+  "closeout_reserve_s": 240,
+  "charged_job_s": 21311.25454902649,
+  "S0_cap_s": 21600,
+  "stage_cap_s": 144000,
+  "project_upper_h": 142.21278149495691,
+  "physics_committed_exact": 207482,
+  "physics_uncommitted_abort_interval": [
+    0,
+    120000
+  ],
+  "physics_conservative_upper": 327482,
+  "engineering_agent_updates_new": 30,
+  "formal_agent_updates": 0,
+  "formal_training_transitions": 0,
+  "output_bytes_before_closeout": 63530253342,
+  "source_restore_states_pass": 24,
+  "source_restore_ancestor_groups": 24,
+  "common_aux_scale_double": 0.8752717708234656,
+  "common_aux_scale_float32": 0.8752717971801758,
+  "qualified_worker_count": 1,
+  "unqualified_worker_count": 4,
+  "formal_N_not_locked_reason": "Production CPR ancestry-filtered reference, primary cumulative material-point semantics, incremental replay retention and fault injections, formal sampler/partner manifests remain incomplete; benchmark is not a scientific substitute.",
+  "next_proposal": "Separate bounded S0 completion allocation <=4 job hours within unchanged40h stage after explicit budget decision; no formal training until gates and commonN lock.",
+  "snapshot_utc": "2026-11-17T14:47:26.629538+00:00",
+  "runtime_source_commit": "99c2738ac72c746bd396e6936f3bc8563d2442c7",
+  "all_prior_failures_preserved": true,
+  "no_assets_deleted": true
+}

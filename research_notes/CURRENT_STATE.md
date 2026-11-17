@@ -1,3 +1,17 @@
+## 2026-11-17 Yi追加批准S0两小时，资格继续
+
+[S0追加签署](BFM_CTFT_V1_S0_PLUS2H_SIGNED.md)：分项上限现8h，stage40h等总帽及科学门不变。下列预算暂停为批准前中间事实，现已恢复资格工程；U/T尚未启动、N未锁。
+
+## 2026-11-17 S0续跑结算：尺度与严格恢复通过，生产资格未闭合，尚未长训
+
+共同aux标准差已校准并锁定 **0.8752717972 FP32**；A1此前已批准且执行，无待批准科学项。完整接触Task＋五Adam/模型/RNG/replay的新进程短程继续与下一更新逐值通过。另完成3072真实工程采样＋24完整联合更新，单环境采样热态约16–23s/1024行，8次更新约1.25s，完整存盘47–56s。4worker跨batch数值门失败保留，不改精度/容差。
+
+12训练祖先与28新候选祖先无交叉；选中12早静止＋12真实转换附近源状态 **24/24完整恢复与12控制后继逐值通过**。不是24个新接触成功，也未把硬停原生尾当正Teacher。材料点累计主指标、正式CPR参考过滤、生产增量replay/存盘与故障注入、正式sampler/伙伴清单仍未闭合。
+
+**正式U/T=0，N未锁，S0按资源边界暂停**：累计21311.255s/21600s（含240s收尾预留），当前输出约59.167GiB/120GiB；总40h未耗尽，但不自行挪用分项。GPU0无本任务遗留。见[完整续报](BFM_CTFT_V1_S0_CONTINUATION_RESULTS.md)、[资源/数值负例](BFM_CTFT_V1_RESOURCE_GUARD_ERRATUM.md)、[实际账本锁](bfm_ctft_s0_continuation_closeout_v1.json)。
+
+以下历史状态保留，历史“共同尺度未完成”已被本次实测更新。
+
 ## 2026-11-17 奖励批准状态补正：A1已批准且实现，校准已授权但尚未完成
 
 [Issue67批准记录](https://github.com/GaoE05/robot-research-bridge/issues/67#issuecomment-6940383957)与[A1附件](BFM_CTFT_V1_APPROVED_AMENDMENT_A1.md)明确批准：aux接触项使用逐步成本 `-C`，物理积分另存 `-dt*C`。代码及既有接触probe已执行；本次只读检查有力/无力合计1050条，单位恒等式最大差0。两份最新报告已补写批准/落地/未完成三种状态：[恢复工程](BFM_CTFT_V1_RESTORE_ENGINEERING_RESULTS.md) · [S0接触推进](BFM_CTFT_V1_S0_CONTACT_PROGRESS.md)。
