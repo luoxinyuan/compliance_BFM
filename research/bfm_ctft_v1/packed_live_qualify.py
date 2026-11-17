@@ -24,7 +24,7 @@ def study(e,original,contract,out):
     import torch
     from packed_checkpoint import PackedTensorStore
     from cas_checkpoint import learner_state,restore_learner
-    from learning_checkpoint import file_sha,fingerprint,one_update,digest
+    from learning_checkpoint import file_sha,fingerprint,one_update,digest,cpu
     from contact_live import ContactLive
     from contact_replay import cat
     from f1_mjdata_contract import canonical,metadata
@@ -76,6 +76,20 @@ def study(e,original,contract,out):
             full_task_sha256=digest(canonical(live.snapshot(),metadata(e.sim.model,e.sim.data))),
             learner={k:updated[k] for k in ['state','sample_trace','metrics']},
             committed_replay_rows=buffers['train']._idx),cat(rows)
+    if mode=='alias-audit':
+        audit=[];rows=[]
+        for i in range(12):
+            before=live.observation();frozen=cpu(before);z=live.command()
+            with torch.no_grad():action=agent.act(before,z,mean=False)
+            row=live.step(action,before,z);rows.append(row)
+            differences={k:dict(max_abs=float((frozen[k]-row['observation'][k]).abs().max()),
+                frozen_sha256=digest(frozen[k]),stored_sha256=digest(row['observation'][k]))
+                for k in frozen if digest(frozen[k])!=digest(row['observation'][k])}
+            audit.append(dict(control=i,changed_after_physics=differences))
+        torch.save(dict(actual_rows=rows,field_differences=audit),out/'causal-row-evidence.pt')
+        write(out/'causal-row-audit.json',dict(status='CAUSAL_ROW_ALIAS_DEFECT' if any(r['changed_after_physics'] for r in audit) else 'CAUSAL_ROW_EXACT',
+            controls=audit,updates=0,actual_controls=12,scope='Same actual input frozen before Actor execution versus replay observation stored after physics'))
+        return dict(status='CAUSAL_ROW_AUDIT_COMPLETED',formal_training=False,updates=0,actual_controls=12)
     if mode=='interrupt':run(5,interrupt=True)
     if mode=='reference':
         reference=state['reference']
@@ -109,7 +123,7 @@ def study(e,original,contract,out):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',choices=['reference','interrupt','resume'],required=True)
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--mode',choices=['reference','interrupt','resume','alias-audit'],required=True)
     p.add_argument('--store');p.add_argument('--reference');a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     os.environ.update(CTFT_PACKED_ARGS=json.dumps(dict(mode=a.mode,store=a.store,reference=a.reference)),
         BFM_RECOVERY_OUTPUT=str(a.output),CCL_DEADLINE_MONOTONIC=str(time.monotonic()+1800))
