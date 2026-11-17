@@ -23,8 +23,7 @@ def study(e,original,contract,out):
     from cas_checkpoint import TensorStore,learner_state,restore_learner,durable
     from learning_checkpoint import fingerprint,file_sha,digest,one_update
     from contact_live import ContactLive
-    from contact_joint_qualify import canonical
-    from f1_mjdata_contract import metadata
+    from f1_mjdata_contract import metadata,canonical
     from m8_stage import reset_common
     from m11_runtime_speed import install as speed
     from rolling_backend import install as backend
