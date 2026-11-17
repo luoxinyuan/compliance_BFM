@@ -67,6 +67,7 @@ def numerical_diff(a,b):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--package',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--eager-adam',action='store_true')
     args=p.parse_args();args.output.mkdir(parents=True,exist_ok=False)
     started=time.monotonic();updates=0
     write(args.output/'launch.json',dict(pid=os.getpid(),started_unix=time.time(),scope='saved learner cold/warm diagnosis; no physics or formal learning'))
@@ -78,6 +79,17 @@ def main():
         state=torch.load(args.package/'learner.pt',map_location='cpu',weights_only=False)
         model=torch.load(args.package/'model.pt',map_location='cpu',weights_only=False)
         agent,_=build(aux_scale=state['aux_scale'])
+        if args.eager_adam:
+            from execution import eager_adam_boundaries
+            restore(agent,state,model)
+            for name in agent.optimizer_names:getattr(agent,name).step()
+            native_steps=fingerprint(agent)
+            restore(agent,state,model)
+            write(args.output/'execution.json',eager_adam_boundaries(agent))
+            for name in agent.optimizer_names:getattr(agent,name).step()
+            assert fingerprint(agent)==native_steps,'Execution boundary altered original eager Adam math'
+            write(args.output/'adam-boundary-regression.json',dict(all_five_original_vs_wrapped_exact=True,
+                  model_gradients_adam_rng_exact=True,optimizer_only_steps=10))
         boundary=[]
         for name in ['sample_mixed_z','update_discriminator','update_fb','update_critic','update_aux_critic','update_actor']:
             fn=getattr(agent,name)
@@ -90,6 +102,15 @@ def main():
                     item['eager_current_F']=tree_info(fs);item['eager_current_B']=tree_info(b)
                 r=_fn(*a,**kw)
                 item.update(outputs=tree_info(r),rng_after=digest(rng()))
+                if _name.startswith('update_'):
+                    module={'update_discriminator':'_discriminator','update_fb':'_forward_map','update_critic':'_critic',
+                            'update_aux_critic':'_aux_critic','update_actor':'_actor'}[_name]
+                    opt={'update_discriminator':'discriminator','update_fb':'forward','update_critic':'critic',
+                         'update_aux_critic':'aux_critic','update_actor':'actor'}[_name]+'_optimizer'
+                    mod=getattr(agent._model,module)
+                    item.update(parameters={k:digest(v) for k,v in mod.state_dict().items()},
+                                gradients={k:digest(v.grad) for k,v in mod.named_parameters()},
+                                optimizer=digest(getattr(agent,opt).state_dict()))
                 boundary.append(item);return r
             setattr(agent,name,observer)
         first_numeric=None;results=[]
