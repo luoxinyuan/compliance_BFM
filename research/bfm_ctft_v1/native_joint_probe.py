@@ -25,7 +25,8 @@ from humanoidverse.agents.buffers.transition import DictBuffer
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--a2-checkpoint',action='store_true');a=p.parse_args()
     a.output.mkdir(parents=True,exist_ok=False);begun=time.monotonic()
     def write(name,data):(a.output/name).write_text(json.dumps(data,indent=2,allow_nan=False)+'\n')
     write('launch.json',dict(pid=os.getpid(),started_unix=time.time(),runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),scope='g0-only disposable loop wiring, not full-chain contact qualification'))
@@ -147,6 +148,10 @@ def main():
                 optimizer_state_entries={k:len(v['state']) for k,v in agent.optimizer_dict.items()})
             results.append(result);write('progress.json',results);print('CTFT_DISPOSABLE_UPDATE',step,elapsed,flush=True)
         assert all(len(v['state'])>0 for v in agent.optimizer_dict.values())
+        if a.a2_checkpoint:
+            from learning_checkpoint import save_and_reference
+            save_and_reference(agent,buffers,expert_groups,a.output,step=4)
+            counts['agent_updates']+=1
         write('result.json',dict(status='DISPOSABLE_NATIVE_G0_JOINT_LOOP_PASSED',sources=sources,
             unique_real_source_rows=len(train_rows),counts=counts,updates=results,
             original_B_targets_normalizers_unchanged=True,

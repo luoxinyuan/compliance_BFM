@@ -16,6 +16,10 @@ import gymnasium as gym
 import numpy as np
 import safetensors.torch
 import torch
+import torch._functorch.config
+# Yi-approved A2: retain the native compiled math and ordered FP32 gradients;
+# prohibit donation of a backward tape that later loss components still need.
+torch._functorch.config.donated_buffer = False
 from torch import nn
 from torch.nn import functional as F
 from humanoidverse.agents.fb.agent import FBAgent
@@ -183,4 +187,5 @@ def build(*,device='cuda',aux_scale=1.,seed=681117,compile_execution=None):
     return agent,dict(original_training_config=raw,actual_config=agent.cfg.model_dump(),
         migration=migration,source_math_diff=diff,aux_scale=aux_scale,
         actor_full_network=True,B_frozen=True,no_backward_optimizer=True,
-        no_old_learning_weights=True,source_sha256=SOURCE_SHA,execution_compile=execution_compile)
+        no_old_learning_weights=True,source_sha256=SOURCE_SHA,execution_compile=execution_compile,
+        aot_donated_buffer=torch._functorch.config.donated_buffer)
