@@ -1,0 +1,144 @@
+{
+  "status": "READONLY_ACTUAL_ARCHIVE_AUDIT_PASS",
+  "source_sha256": "c196ad9d566fe88a0e4000547369b82e87d44ac769806b97ad893e1a019a5a66",
+  "evaluation_runtime": "590aa54eb829b03f2fb76cf4f6bfa8ecf7489c52",
+  "actual_archives": 100,
+  "actual_stop_continue_prefix_comparisons": [
+    {
+      "method": "E-final",
+      "parent_id": "dfb829251073373888789a29f719449f3678b4dd91b7f1d3c0f424ef92cb0915",
+      "stop_continue_prefix_exact": true,
+      "controls": 155
+    },
+    {
+      "method": "E-final",
+      "parent_id": "5a13f004573c29feb788582df86f9da38e971cd81b1aa72ea7f0ead92933abe0",
+      "stop_continue_prefix_exact": true,
+      "controls": 115
+    },
+    {
+      "method": "E-final",
+      "parent_id": "1d9adff8607f6c9f4f0734add41987f7e9f3ee1f7c1dab7353014bbcc327002b",
+      "stop_continue_prefix_exact": true,
+      "controls": 100
+    },
+    {
+      "method": "E-final",
+      "parent_id": "1cad66985c2d2e10b5874e46cea7e129b6f18db0216cc7528e537e3e0a17e70b",
+      "stop_continue_prefix_exact": true,
+      "controls": 110
+    },
+    {
+      "method": "I-final",
+      "parent_id": "dfb829251073373888789a29f719449f3678b4dd91b7f1d3c0f424ef92cb0915",
+      "stop_continue_prefix_exact": true,
+      "controls": 155
+    },
+    {
+      "method": "I-final",
+      "parent_id": "5a13f004573c29feb788582df86f9da38e971cd81b1aa72ea7f0ead92933abe0",
+      "stop_continue_prefix_exact": true,
+      "controls": 115
+    },
+    {
+      "method": "I-final",
+      "parent_id": "1d9adff8607f6c9f4f0734add41987f7e9f3ee1f7c1dab7353014bbcc327002b",
+      "stop_continue_prefix_exact": true,
+      "controls": 100
+    },
+    {
+      "method": "I-final",
+      "parent_id": "1cad66985c2d2e10b5874e46cea7e129b6f18db0216cc7528e537e3e0a17e70b",
+      "stop_continue_prefix_exact": true,
+      "controls": 110
+    },
+    {
+      "method": "Goal-only",
+      "parent_id": "dfb829251073373888789a29f719449f3678b4dd91b7f1d3c0f424ef92cb0915",
+      "stop_continue_prefix_exact": true,
+      "controls": 155
+    },
+    {
+      "method": "Goal-only",
+      "parent_id": "5a13f004573c29feb788582df86f9da38e971cd81b1aa72ea7f0ead92933abe0",
+      "stop_continue_prefix_exact": true,
+      "controls": 115
+    },
+    {
+      "method": "Goal-only",
+      "parent_id": "1d9adff8607f6c9f4f0734add41987f7e9f3ee1f7c1dab7353014bbcc327002b",
+      "stop_continue_prefix_exact": true,
+      "controls": 100
+    },
+    {
+      "method": "Goal-only",
+      "parent_id": "1cad66985c2d2e10b5874e46cea7e129b6f18db0216cc7528e537e3e0a17e70b",
+      "stop_continue_prefix_exact": true,
+      "controls": 110
+    },
+    {
+      "method": "native-zero-U",
+      "parent_id": "dfb829251073373888789a29f719449f3678b4dd91b7f1d3c0f424ef92cb0915",
+      "stop_continue_prefix_exact": true,
+      "controls": 155
+    },
+    {
+      "method": "native-zero-U",
+      "parent_id": "5a13f004573c29feb788582df86f9da38e971cd81b1aa72ea7f0ead92933abe0",
+      "stop_continue_prefix_exact": true,
+      "controls": 115
+    },
+    {
+      "method": "native-zero-U",
+      "parent_id": "1d9adff8607f6c9f4f0734add41987f7e9f3ee1f7c1dab7353014bbcc327002b",
+      "stop_continue_prefix_exact": true,
+      "controls": 100
+    },
+    {
+      "method": "native-zero-U",
+      "parent_id": "1cad66985c2d2e10b5874e46cea7e129b6f18db0216cc7528e537e3e0a17e70b",
+      "stop_continue_prefix_exact": true,
+      "controls": 110
+    }
+  ],
+  "actual_EI_max_abs": {
+    "action": 0.0003573000431060791,
+    "q_PD": 0.00013309717178344727,
+    "executed_z": 0.0
+  },
+  "notes": [
+    "No re-simulation, training or new Teacher queries.",
+    "Continue family is spelled continue in this manifest; original entry only checked stop/continue_pair. This read-only replay-archive comparison supplies the missing continue-sibling check without altering saved physics.",
+    "Low-level arrays compare actual trajectories, not same-state counterfactuals; differences do not identify a mechanism."
+  ],
+  "wall_s": 193.796478403965,
+  "physics_ticks": 0,
+  "updates": 0,
+  "option_row_counts": {
+    "E-final": {
+      "0": 6805,
+      "2": 4825
+    },
+    "I-final": {
+      "0": 6805,
+      "2": 4825
+    },
+    "Goal-only": {
+      "0": 6805,
+      "2": 4825
+    },
+    "native-zero-U": {
+      "0": 11630
+    },
+    "BC500": {
+      "2": 1940
+    }
+  },
+  "option_coordinates": {
+    "0": "standing",
+    "1": "arm5",
+    "2": "arm15",
+    "3": "motion"
+  },
+  "counts_note": "BC500 option2 is executor placeholder for its high-level z, not a BC500 categorical choice"
+}
