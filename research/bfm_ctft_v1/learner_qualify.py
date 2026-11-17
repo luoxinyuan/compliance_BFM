@@ -18,7 +18,8 @@ ROOT=Path(__file__).resolve().parents[2]
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
     p.add_argument('--wall-limit-s',type=int,default=1200)
-    p.add_argument('--trace-package',type=Path);a=p.parse_args()
+    p.add_argument('--trace-package',type=Path)
+    p.add_argument('--native-eager',action='store_true');a=p.parse_args()
     started=time.time();a.output.mkdir(exist_ok=False,parents=True);jobs=[];status='RUNNING'
     def write(name,x):(a.output/name).write_text(json.dumps(x,indent=2)+'\n')
     def used():return sum(p.stat().st_size for p in a.output.rglob('*') if p.is_file())
@@ -36,6 +37,7 @@ def main():
                       ('restore',[sys.executable,'-u',str(ROOT/'research/bfm_ctft_v1/a2_resume.py'),
                         '--package',str(a.trace_package),'--output',str(a.output/'restore'),
                         '--reference',str(a.output/'joint/uninterrupted-update5.json')])]
+        if a.native_eager:commands[0][1].append('--native-eager')
         for label,command in commands:
             begun=time.time()
             with (a.output/(label+'.log')).open('x') as log:

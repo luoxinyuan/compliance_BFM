@@ -27,6 +27,7 @@ from humanoidverse.agents.buffers.transition import DictBuffer
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
     p.add_argument('--a2-checkpoint',action='store_true')
+    p.add_argument('--native-eager',action='store_true')
     p.add_argument('--reuse-package',type=Path);a=p.parse_args()
     assert not (a.a2_checkpoint and a.reuse_package)
     a.output.mkdir(parents=True,exist_ok=False);begun=time.monotonic()
@@ -35,7 +36,7 @@ def main():
     torch.set_num_threads(1);torch.set_float32_matmul_precision('high');torch.manual_seed(681117)
     counts=dict(real_new_physics_ticks=0,formal_training_transitions=0,agent_updates=0)
     try:
-        agent,manifest=build(aux_scale=1.)
+        agent,manifest=build(aux_scale=1.,compile_execution=False if a.native_eager else None)
         import mujoco
         model=mujoco.MjModel.from_xml_path(str(ROOT/'humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml'))
         data=mujoco.MjData(model)

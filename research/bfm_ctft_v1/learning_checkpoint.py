@@ -149,7 +149,7 @@ def resume_and_compare(package,out,reference_path=None):
         for name,info in m['files'].items():assert file_sha(package/name)==info['sha256'],('Checkpoint bytes/hash mismatch',name)
         state=torch.load(package/'learner.pt',map_location='cpu',weights_only=False)
         assert state['aot_donated_buffer'] is False
-        agent,manifest=build(aux_scale=state['aux_scale'])
+        agent,manifest=build(aux_scale=state['aux_scale'],compile_execution=state['configuration']['compile'])
         assert agent.execution_contract==state['execution_contract'],'Execution contract differs from saved learner'
         agent._model.load_state_dict(torch.load(package/'model.pt',map_location='cpu',weights_only=False),strict=True)
         assert manifest['aot_donated_buffer'] is False and agent.cfg.model_dump()==state['configuration']
