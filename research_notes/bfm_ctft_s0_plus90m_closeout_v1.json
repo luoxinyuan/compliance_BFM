@@ -1,0 +1,216 @@
+{
+  "status": "S0_COMPLETE_COMMON_N_LOCKED_FORMAL_NOT_STARTED",
+  "recorded_unix": 1794969187.191241,
+  "approved": true,
+  "output_cap_bytes": 268435456000,
+  "stage_cap_job_s": 144000,
+  "stage_cap_physics_ticks": 16000000,
+  "plus90m_actual_elapsed_s": 4535.689429283142,
+  "preparation_reserve_s": 300,
+  "publication_reserve_s": 420,
+  "plus90m_conservative_charge_s": 5255.689429283142,
+  "plus90m_cap_s": 5400,
+  "prior_stage_charge_s": 29023.02746987343,
+  "stage_conservative_charge_s": 34278.71689915657,
+  "project_conservative_upper_h": 145.81485436999304,
+  "accounting": "Continuous outer preparation/analysis/serial jobs/IO through snapshot+300prep+420publication; nested core wall never added again",
+  "jobs": [
+    {
+      "run": "s0-round-probe-01",
+      "launch": {
+        "pid": 427131,
+        "runtime": "09864eff0310bd1ab1fef2da3648756eca84f838",
+        "started_unix": 1794964691.9462457
+      },
+      "cost": {
+        "wall_s": 621.1870611539998,
+        "physics": {
+          "actual": 42209,
+          "reserved": 42209
+        },
+        "formal_updates": 0
+      }
+    },
+    {
+      "run": "s0-round-probe-resume-01",
+      "launch": {
+        "pid": 428156,
+        "runtime": "5b919f957e9650473c47296fd9235b452c1dd07d",
+        "started_unix": 1794965393.4355667
+      },
+      "cost": {
+        "wall_s": 146.5191266940019,
+        "physics": {
+          "actual": 1249,
+          "reserved": 1249
+        },
+        "formal_updates": 0
+      }
+    },
+    {
+      "run": "s0-production-reference-01",
+      "launch": {
+        "pid": 428824,
+        "runtime": "1d1b96517100c03adbdadf77597fa607aed7e665",
+        "started_unix": 1794965691.6484551
+      },
+      "cost": {
+        "wall_s": 433.86747010799445,
+        "physics": {
+          "actual": 1297,
+          "reserved": 1297
+        },
+        "formal_updates": 0
+      }
+    },
+    {
+      "run": "s0-production-resume-01",
+      "launch": {
+        "pid": 431147,
+        "runtime": "1d1b96517100c03adbdadf77597fa607aed7e665",
+        "started_unix": 1794966214.034492
+      },
+      "cost": {
+        "wall_s": 134.97633231899817,
+        "physics": {
+          "actual": 1249,
+          "reserved": 1249
+        },
+        "formal_updates": 0
+      }
+    },
+    {
+      "run": "s0-scheduler-reference-01",
+      "launch": {
+        "pid": 433251,
+        "runtime": "44e7b63558710fc7c5db559caa11ea908893eae5",
+        "started_unix": 1794966602.1525214
+      },
+      "cost": {
+        "wall_s": 199.25185761001194,
+        "physics": {
+          "actual": 3681,
+          "reserved": 3681
+        },
+        "formal_updates": 0
+      }
+    },
+    {
+      "run": "s0-scheduler-resume-01",
+      "launch": {
+        "pid": 434388,
+        "runtime": "44e7b63558710fc7c5db559caa11ea908893eae5",
+        "started_unix": 1794966841.216445
+      },
+      "cost": {
+        "wall_s": 152.9896211400046,
+        "physics": {
+          "actual": 3681,
+          "reserved": 3681
+        },
+        "formal_updates": 0
+      }
+    },
+    {
+      "run": "s0-scheduler-profile-01",
+      "launch": {
+        "pid": 437532,
+        "runtime": "1a4562672fa4e888fe03cd3d631bdeb58b0a9da3",
+        "started_unix": 1794967525.062588
+      },
+      "cost": {
+        "wall_s": 155.70226664400252,
+        "physics": {
+          "actual": 3681,
+          "reserved": 3681
+        },
+        "formal_updates": 0
+      }
+    }
+  ],
+  "comparisons": {
+    "s0-round-probe-resume-01": {
+      "status": "PASS",
+      "different": [],
+      "actual_PhaseReplay_TrainingLive_native_update": true
+    },
+    "s0-production-resume-01": {
+      "status": "PASS",
+      "different": [],
+      "actual_Task_PhaseReplay_round_driver_full_update": true,
+      "formal_training": false
+    },
+    "s0-scheduler-resume-01": {
+      "status": "PASS",
+      "different": [],
+      "real_controls": 620,
+      "actual_full_episode_reset": 1,
+      "full_native_updates": 1,
+      "formal_training": false
+    },
+    "s0-scheduler-profile-01": {
+      "status": "PASS",
+      "different": [],
+      "real_controls": 620,
+      "actual_full_episode_reset": 1,
+      "full_native_updates": 1,
+      "formal_training": false
+    }
+  },
+  "new_actual_physics_ticks": 57047,
+  "cumulative_actual_physics_ticks": 290550,
+  "unknown_previous_aborted_ticks": [
+    0,
+    120000
+  ],
+  "physics_conservative_upper": 410550,
+  "new_engineering_agent_updates": 88,
+  "new_engineering_Actor_updates": 24,
+  "new_Actor_frozen_updates": 64,
+  "cumulative_engineering_agent_updates": 157,
+  "formal_rows": 0,
+  "formal_updates": 0,
+  "N": 131072,
+  "formal_runtime": "6b148753c77a4619941259c0ca983dabe11881bd",
+  "source_weight_unchanged": true,
+  "old_failures_preserved": true,
+  "no_other_user_or_shared_asset_modified": true,
+  "resource_projection": {
+    "N_per_arm": 131072,
+    "rounds_per_arm": 128,
+    "native_update_groups_per_arm": 1024,
+    "actor_updates_per_arm": 960,
+    "conservative_arm_job_s": 24409.618333540973,
+    "passes12h_per_arm": true,
+    "projected_stage_job_s": 118355.32902829372,
+    "passes40h_stage": true,
+    "retained_counts_per_arm": {
+      "permanent": [
+        0,
+        8192,
+        32768,
+        65536,
+        98304,
+        131072
+      ],
+      "final": 7,
+      "peak": 8
+    },
+    "simultaneous_full_logical_packs": 15,
+    "expected_output_bytes": 217054849870.4,
+    "conservative_output_bytes": 260360349475.5,
+    "approved_output_cap_bytes": 268435456000,
+    "passes_approved_output_cap": true,
+    "replay_finite_capacity_compatible": true,
+    "physical_training_ticks_two_arms": 1048576
+  },
+  "current_logical_output_bytes": 120036110530,
+  "resource_profile": {
+    "full_native_update_s": 4.998902352992445,
+    "peak_cuda_reserved_bytes": 13017022464,
+    "peak_cuda_allocated_bytes": 12815007232,
+    "free_cuda_bytes_at_update_end": 62624563200,
+    "main_process_peak_RSS_bytes": 17218695168,
+    "scope": "Actual full Task/PhaseReplay restore,620 controls crossing reset,complete native1024 update; not empty inference FPS"
+  }
+}

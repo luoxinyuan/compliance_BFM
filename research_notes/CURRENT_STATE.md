@@ -1,3 +1,11 @@
+## 2026-11-18 S0完整恢复通过；250GiB追加已批，共同N锁定
+
+真实8192新行/64组Actor冻结＋两完整联合轮、完整PhaseReplay/Task新进程恢复、620控制跨实际reset后的下一联合更新均逐值PASS。scheduler少计12控制的工程缺陷单列erratum、旧包保留，新独立修正包回归通过。原BFM/PD及数学/安全门不变。
+
+Yi依次批准输出120→200→250GiB；加入训练物理轨迹和评价各8GiB预留后，131072/臂保守输出242.48GiB、时间约6.78h/臂；更大N超时，已在正式训练结果/新评价前机械锁N。当前资格结算时正式U/T尚未开始；下一步按已批整体合同从原BFM/fresh五Adam/空replay串行U→T，首16k复测全链成本与存储增长。不继承任何S0工程学习权重。
+
+[完整S0报告](BFM_CTFT_V1_S0_PLUS90M_RESULTS.md) · [独立计数勘误](BFM_CTFT_V1_SCHEDULER_ERRATUM.md) · [250GiB批准](BFM_CTFT_V1_OUTPUT_CAP_250GIB_SIGNED.md) · [N资源锁](bfm_ctft_common_N_resource_lock_v4.json) · [实际账本](bfm_ctft_s0_plus90m_closeout_v1.json)。以下历史状态和全部负结果保留。
+
 ## 收尾计费勘误：S0分项超时已停止
 
 此前28795秒是预结算，61.475秒发布预留不足；最终保守结算 **29023.027s／28800s，超出223.027s**（含本次90秒纠正／发布预留），已完整进入stage／项目总账。超时发生于Git／Issue／Master收尾与核验，无新GPU作业、采样或训练；40h总帽未超。原预账本保留，不声称本次全部在S0帽内。详见[独立计费勘误](bfm_ctft_s0_closeout_overrun_erratum_v1.json)。
