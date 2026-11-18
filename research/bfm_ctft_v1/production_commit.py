@@ -10,13 +10,13 @@ from packed_checkpoint import PackedTensorStore, durable, sha
 
 
 class RoundCommitter:
-    def __init__(self, root, *, total_rows, milestone_rows, create=True):
+    def __init__(self, root, *, total_rows, milestone_rows, create=True, initial_rows=0):
         self.root = Path(root)
         self.store = PackedTensorStore(self.root)
-        self.policy = dict(version='CTFT_ROUND_RETENTION_V1', total_rows=total_rows,
+        self.policy = dict(version='CTFT_ROUND_RETENTION_V1', total_rows=total_rows, initial_rows=initial_rows,
                            milestone_rows=sorted(set(milestone_rows)), latest=2,
                            only_this_store=True, preserve_all_failure_and_replay=True)
-        assert 0 in self.policy['milestone_rows']
+        assert initial_rows in self.policy['milestone_rows']
         assert total_rows in self.policy['milestone_rows']
         path = self.root / 'policy.json'
         if create:
@@ -45,18 +45,20 @@ class RoundCommitter:
             for name in self.completed[-2:]:
                 self.store.metadata(name)
 
-    def commit(self, rows, full_state):
+    def commit(self, rows, full_state, *, imported_base=None):
         assert 0 <= rows <= self.policy['total_rows']
+        if 'scheduler' in full_state and 'collected' in full_state['scheduler']:
+            assert full_state['scheduler']['collected'] == rows
         name = f'round-{rows}'
         assert name not in self.completed
         if self.completed:
             assert rows > int(self.completed[-1].split('-')[1])
         else:
-            assert rows == 0
+            assert rows == self.policy['initial_rows']
         anchor = rows in self.policy['milestone_rows']
         # Never reference the preceding transient generation. All dependencies
         # remain permanent, bounding storage independently of round count.
-        base = self.store.metadata(self.permanent[-1]) if self.permanent else None
+        base = imported_base if imported_base is not None else self.store.metadata(self.permanent[-1]) if self.permanent else None
         _, measured = self.store.save(name, full_state, base=base, anchor=anchor)
         self.completed.append(name)
         if anchor:
@@ -67,6 +69,32 @@ class RoundCommitter:
                       latest=name, last_retired=retired)
         durable(self.root / 'commits.json', json.dumps(record, sort_keys=True).encode())
         return dict(measured, retired=retired, permanent=list(self.permanent))
+
+    def adopt(self, rows, origin, name):
+        """Full verified alias of a permanent engineering input, not new data.
+
+        All original files remain immutable. This does not count an adopted
+        checkpoint as another update, nor copy its bytes into fresh training.
+        """
+        import copy
+        import os
+        origin = PackedTensorStore(origin)
+        metadata = copy.deepcopy(origin.metadata(name))
+        def rebase(v):
+            if isinstance(v, dict):
+                if 'file' in v and 'raw_sha256' in v:
+                    v['file'] = os.path.relpath(origin.root / v['file'], self.root)
+                for x in v.values():
+                    rebase(x)
+            elif isinstance(v, (list, tuple)):
+                for x in v:
+                    rebase(x)
+        rebase(metadata)
+        measured = self.commit(rows, origin.load(name), imported_base=metadata)
+        measured['adopted_immutable_origin_manifest_sha256'] = sha((origin.root / name / 'manifest.json').read_bytes())
+        measured['new_physical_rows'] = 0
+        measured['new_agent_updates'] = 0
+        return measured
 
     def load_latest(self):
         return self.store.load(self.completed[-1])
