@@ -1,5 +1,6 @@
 ## 2026-11-19 BFM-CTFT v1.1 固定终点已结项
 
+结项阅读入口：[机制解释与下一项判别实验](BFM_CTFT_MECHANISM_AND_NEXT_TESTS.md)，含无力漂移、抖腕、早期承重失败及通用奖励的适用边界。
 两臂各 131,072 条，252 个正式评价条目。静止源同态有力相对无力的身体前进增量中位数 U +54.2 cm、T +58.1 cm；持续牵引联合质量门两臂均 0/24。承重滑移是重复出现的早期失败，T 额外降低牵拉但停止与释放更差。两臂均新增原生硬停。保留反馈正例，两臂不晋级。见[正式结项](BFM_CTFT_V1A_CLOSEOUT.md)、[配对结果](BFM_CTFT_FIXED_ENDPOINT_RESULTS.md)与[恢复勘误](BFM_CTFT_ENDPOINT_RESTORE_ERRATUM.md)。
 
 ## 2026-11-18 v1.1 已签署，U通过恢复并续训
