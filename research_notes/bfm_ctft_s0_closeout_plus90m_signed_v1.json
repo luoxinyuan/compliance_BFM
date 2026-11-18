@@ -1,0 +1,11 @@
+{
+  "approved": true,
+  "approval_text": "\u6279\u51c6\u6269\u5927\u989d\u5ea6\uff0c\u7ee7\u7eed\u6536\u53e3",
+  "scope": "Prior proposed90min S0 closure: actualfresh8192/64 chain, retention qualification, finalparentmanifest and commonN feasibility. No changed science or automaticcapexpansion.",
+  "start_unix": 1794964651.5018117,
+  "additional_cap_s": 5400,
+  "prior_charged_s": 29023.02746987343,
+  "stage_cap_s": 144000,
+  "cap_output_bytes": 128849018880,
+  "formal_training_started": false
+}
