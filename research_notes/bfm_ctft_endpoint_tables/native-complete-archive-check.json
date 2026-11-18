@@ -1,0 +1,137 @@
+{
+  "records": [
+    {
+      "parent": "ctft-native-regression-00",
+      "actual": 1555,
+      "archived": 1555,
+      "diff": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "foot_normal_force_n": 0.0,
+        "force": 0.0
+      }
+    },
+    {
+      "parent": "ctft-native-regression-01",
+      "actual": 2500,
+      "archived": 2500,
+      "diff": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "foot_normal_force_n": 0.0,
+        "force": 0.0
+      }
+    },
+    {
+      "parent": "ctft-native-regression-02",
+      "actual": 2500,
+      "archived": 2500,
+      "diff": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "foot_normal_force_n": 0.0,
+        "force": 0.0
+      }
+    },
+    {
+      "parent": "ctft-native-regression-03",
+      "actual": 2500,
+      "archived": 2500,
+      "diff": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "foot_normal_force_n": 0.0,
+        "force": 0.0
+      }
+    },
+    {
+      "parent": "ctft-native-regression-04",
+      "actual": 2500,
+      "archived": 2500,
+      "diff": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "foot_normal_force_n": 0.0,
+        "force": 0.0
+      }
+    },
+    {
+      "parent": "ctft-native-regression-05",
+      "actual": 2500,
+      "archived": 2500,
+      "diff": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "foot_normal_force_n": 0.0,
+        "force": 0.0
+      }
+    },
+    {
+      "parent": "ctft-native-regression-06",
+      "actual": 2500,
+      "archived": 2500,
+      "diff": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "foot_normal_force_n": 0.0,
+        "force": 0.0
+      }
+    },
+    {
+      "parent": "ctft-native-regression-07",
+      "actual": 2500,
+      "archived": 2500,
+      "diff": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "foot_normal_force_n": 0.0,
+        "force": 0.0
+      }
+    },
+    {
+      "parent": "ctft-native-regression-08",
+      "actual": 1391,
+      "archived": 1391,
+      "diff": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "foot_normal_force_n": 0.0,
+        "force": 0.0
+      }
+    },
+    {
+      "parent": "ctft-native-regression-09",
+      "actual": 2500,
+      "archived": 2500,
+      "diff": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "foot_normal_force_n": 0.0,
+        "force": 0.0
+      }
+    },
+    {
+      "parent": "ctft-native-regression-10",
+      "actual": 2500,
+      "archived": 2500,
+      "diff": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "foot_normal_force_n": 0.0,
+        "force": 0.0
+      }
+    },
+    {
+      "parent": "ctft-native-regression-11",
+      "actual": 2500,
+      "archived": 2500,
+      "diff": {
+        "qpos": 0.0,
+        "qvel": 0.0,
+        "foot_normal_force_n": 0.0,
+        "force": 0.0
+      }
+    }
+  ],
+  "wall_s": 28.079997123990324
+}

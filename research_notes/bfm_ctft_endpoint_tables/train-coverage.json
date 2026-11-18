@@ -1,0 +1,43 @@
+{
+  "U": {
+    "actual_phase_rows": {
+      "0": 11788,
+      "1": 56806,
+      "2": 26700,
+      "3": 35778
+    },
+    "actual_complete_episodes": 237,
+    "started_episodes": 238,
+    "distinct_source_cases": 12,
+    "actual_source_entry_components": {
+      "uniform": 238
+    },
+    "endpoints": {
+      "complete": true,
+      "state_sha256": "d212e05868b9104f9ff8fb497bf8dcf62146ebf63e90edf353283e30d4fd3da2",
+      "all_tensor_raw_hashes_verified": true
+    }
+  },
+  "T": {
+    "actual_phase_rows": {
+      "0": 11549,
+      "1": 57045,
+      "2": 26700,
+      "3": 35778
+    },
+    "actual_complete_episodes": 237,
+    "started_episodes": 238,
+    "distinct_source_cases": 12,
+    "actual_source_entry_components": {
+      "uniform": 143,
+      "at": 47,
+      "pre": 36,
+      "post": 12
+    },
+    "endpoints": {
+      "complete": true,
+      "state_sha256": "eba00d9c9d2da567e3c31e5abe771cc6c32eadb3e3c57f55cc646eb9b210bc21",
+      "all_tensor_raw_hashes_verified": true
+    }
+  }
+}
