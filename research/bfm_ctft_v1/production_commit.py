@@ -9,6 +9,18 @@ from pathlib import Path
 from packed_checkpoint import PackedTensorStore, durable, sha
 
 
+def validate_scheduler(full_state):
+    if 'scheduler' not in full_state or 'collected' not in full_state['scheduler']:
+        return
+    s=full_state['scheduler']
+    assert s['updates']==full_state['learner']['step']
+    assert sum(e['controls'] for e in s['episodes'])==s['collected']
+    assert len(s['episodes'])==s['source_index']
+    assert s['episodes'][-1]['controls']==full_state['task']['live_control']
+    assert s['episodes'][-1]['spec']==full_state['task']['live_spec']
+    assert s['episodes'][-1]['complete']==full_state['task']['done']
+
+
 class RoundCommitter:
     def __init__(self, root, *, total_rows, milestone_rows, create=True, initial_rows=0):
         self.root = Path(root)
@@ -46,6 +58,7 @@ class RoundCommitter:
                 self.store.metadata(name)
 
     def commit(self, rows, full_state, *, imported_base=None):
+        validate_scheduler(full_state)
         assert 0 <= rows <= self.policy['total_rows']
         if 'scheduler' in full_state and 'collected' in full_state['scheduler']:
             assert full_state['scheduler']['collected'] == rows

@@ -93,6 +93,8 @@ def study(e, original, contract, out):
         segments.append(dict(path=str(path), sha256=file_sha(path)))
         clear = clear_consumed(agent)
         scheduler = dict(scheduler, collected=10252, updates=step)
+        scheduler['episodes'][-1]['controls']=live.i
+        scheduler['episodes'][-1]['complete']=live.done
         new = dict(learner=learner_state(agent, step=step, replay_segments=segments,
                        replay_capacity=buffers['train'].capacity, replay_idx=buffers['train']._idx,
                        reference=package['learner']['reference'], replay_quotas=buffers['train'].quotas),
