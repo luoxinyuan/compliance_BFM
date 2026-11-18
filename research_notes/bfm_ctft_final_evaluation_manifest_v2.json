@@ -1,0 +1,1741 @@
+{
+  "version": "CTFT_FINAL_PARENTS_V2",
+  "status": "LOCKED_NOT_EVALUATED",
+  "seed": 681117,
+  "source_manifest_sha256": "867bb8c27d4b9516317005d9dc82ee51e7741e9ca6808340142fbfc3c65be37c",
+  "independent_source_ancestors": 24,
+  "parents": [
+    {
+      "parent_id": "ctft-eval-parent-00",
+      "source": {
+        "case": 1,
+        "ancestor": "dance1_subject2",
+        "evidence_file": "source-01.pkl.gz",
+        "evidence_sha256": "0af6edfeecd9ef69f9d3b6aaf45a085e50f36d55707327dd3e201bf1dfcfd97e",
+        "complete": true,
+        "selected_control": 50,
+        "selected_stratum": "early_static"
+      },
+      "common_prefix_s": 3.75,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.3
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-01",
+      "source": {
+        "case": 2,
+        "ancestor": "dance1_subject3",
+        "evidence_file": "source-02.pkl.gz",
+        "evidence_sha256": "d048a0752d6a2e154c66f73cb8bac9a5fd023cb5c3f5fb28cc318addad059bdf",
+        "complete": true,
+        "selected_control": 50,
+        "selected_stratum": "early_static"
+      },
+      "common_prefix_s": 3.125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.375
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-02",
+      "source": {
+        "case": 4,
+        "ancestor": "dance2_subject2",
+        "evidence_file": "source-04.pkl.gz",
+        "evidence_sha256": "bda1794d9c0067c62adf9bc22a6f372b6be4caff00751dbc6bde91169bef79db",
+        "complete": true,
+        "selected_control": 50,
+        "selected_stratum": "early_static"
+      },
+      "common_prefix_s": 2.8125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.45
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-03",
+      "source": {
+        "case": 5,
+        "ancestor": "dance2_subject3",
+        "evidence_file": "source-05.pkl.gz",
+        "evidence_sha256": "65abf676f33c882dde7ace78bcd7d38ac172c8f215bcceb37b16df9898b910cc",
+        "complete": true,
+        "selected_control": 50,
+        "selected_stratum": "early_static"
+      },
+      "common_prefix_s": 3.75,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.3
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-04",
+      "source": {
+        "case": 6,
+        "ancestor": "dance2_subject4",
+        "evidence_file": "source-06.pkl.gz",
+        "evidence_sha256": "d6d67cc5780340a9aefd84aa8ef47bc067c1389cf09e78d5c026b9144d4bdd5c",
+        "complete": true,
+        "selected_control": 50,
+        "selected_stratum": "early_static"
+      },
+      "common_prefix_s": 3.125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.375
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-05",
+      "source": {
+        "case": 7,
+        "ancestor": "dance2_subject5",
+        "evidence_file": "source-07.pkl.gz",
+        "evidence_sha256": "ee97c4fc7db49b1f2106243970f564aaac89868416e352da4b37adc434e951cb",
+        "complete": true,
+        "selected_control": 50,
+        "selected_stratum": "early_static"
+      },
+      "common_prefix_s": 2.8125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.45
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-06",
+      "source": {
+        "case": 11,
+        "ancestor": "fallAndGetUp2_subject2",
+        "evidence_file": "source-11.pkl.gz",
+        "evidence_sha256": "c830ea201a404f994776286d030bc6b163f4e85f424f11fd6e2ebeefab0effd9",
+        "complete": false,
+        "selected_control": 50,
+        "selected_stratum": "early_static"
+      },
+      "common_prefix_s": 3.75,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.9
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.3
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-07",
+      "source": {
+        "case": 12,
+        "ancestor": "fallAndGetUp2_subject3",
+        "evidence_file": "source-12.pkl.gz",
+        "evidence_sha256": "8612fa5e2e471f28adea3ad62357cf6ee5e157ac9f833680608886986ce83620",
+        "complete": false,
+        "selected_control": 50,
+        "selected_stratum": "early_static"
+      },
+      "common_prefix_s": 3.125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.9
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.375
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-08",
+      "source": {
+        "case": 17,
+        "ancestor": "fightAndSports1_subject1",
+        "evidence_file": "source-17.pkl.gz",
+        "evidence_sha256": "426f9537e9d5612f2b877409ce2c6c1528f0e4b6c553a9048af784a3bb5bb995",
+        "complete": false,
+        "selected_control": 50,
+        "selected_stratum": "early_static"
+      },
+      "common_prefix_s": 2.8125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.9
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.45
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-09",
+      "source": {
+        "case": 18,
+        "ancestor": "fightAndSports1_subject4",
+        "evidence_file": "source-18.pkl.gz",
+        "evidence_sha256": "0b322a62646f042537823daeb8f74dc169d34cbf169def6437245364ef049f65",
+        "complete": true,
+        "selected_control": 50,
+        "selected_stratum": "early_static"
+      },
+      "common_prefix_s": 3.75,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.3
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-10",
+      "source": {
+        "case": 20,
+        "ancestor": "jumps1_subject2",
+        "evidence_file": "source-20.pkl.gz",
+        "evidence_sha256": "e88b9ad31ba0880d267fc7e1eb6e0aee4721af6cfd0b94ffc595d22ac83f39f7",
+        "complete": false,
+        "selected_control": 50,
+        "selected_stratum": "early_static"
+      },
+      "common_prefix_s": 3.125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.375
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-11",
+      "source": {
+        "case": 21,
+        "ancestor": "jumps1_subject5",
+        "evidence_file": "source-21.pkl.gz",
+        "evidence_sha256": "23da09ed9d461db068691eb7498c00b77790f15900238d99b7797ac4d5ad0189",
+        "complete": false,
+        "selected_control": 50,
+        "selected_stratum": "early_static"
+      },
+      "common_prefix_s": 2.8125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.45
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-12",
+      "source": {
+        "case": 14,
+        "ancestor": "fight1_subject2",
+        "evidence_file": "source-14.pkl.gz",
+        "evidence_sha256": "10dae7935a898bd936aaf225102d67d98ef7a4b46427e74531d9f795954e95d5",
+        "complete": false,
+        "selected_control": 241,
+        "selected_stratum": "transition_near"
+      },
+      "common_prefix_s": 3.75,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.3
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-13",
+      "source": {
+        "case": 0,
+        "ancestor": "dance1_subject1",
+        "evidence_file": "source-00.pkl.gz",
+        "evidence_sha256": "81c6e9c22c3fb0fb2da0a7ca479d72ef85cc4d8d5e9fec694267013aafa0b1ee",
+        "complete": true,
+        "selected_control": 322,
+        "selected_stratum": "post_transition_actual_moving",
+        "source_speed_mps": 0.33100971189118417,
+        "past200ms_speed_above015": true
+      },
+      "common_prefix_s": 3.125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.375
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-14",
+      "source": {
+        "case": 3,
+        "ancestor": "dance2_subject1",
+        "evidence_file": "source-03.pkl.gz",
+        "evidence_sha256": "e0b55395479295d777b2754d4db6922f1c4f15a8f98feb662dee29e710bade2e",
+        "complete": true,
+        "selected_control": 326,
+        "selected_stratum": "post_transition_actual_moving",
+        "source_speed_mps": 0.18548162585924177,
+        "past200ms_speed_above015": true
+      },
+      "common_prefix_s": 2.8125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.45
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-15",
+      "source": {
+        "case": 8,
+        "ancestor": "fallAndGetUp1_subject1",
+        "evidence_file": "source-08.pkl.gz",
+        "evidence_sha256": "adfe9d687ad0675c4cb4c34d8533f3868979f80de20ac28d4d8690b6cffd9f88",
+        "complete": false,
+        "selected_control": 325,
+        "selected_stratum": "post_transition_actual_moving",
+        "source_speed_mps": 0.46818841753371704,
+        "past200ms_speed_above015": true
+      },
+      "common_prefix_s": 3.75,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.9
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.3
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-16",
+      "source": {
+        "case": 9,
+        "ancestor": "fallAndGetUp1_subject4",
+        "evidence_file": "source-09.pkl.gz",
+        "evidence_sha256": "21cffeb259e723c06f3cf7b68ef6e1cf4ccf34fcc0fd11d7f4c3c0c5aec3ebc3",
+        "complete": false,
+        "selected_control": 312,
+        "selected_stratum": "post_transition_actual_moving",
+        "source_speed_mps": 0.5141276896436654,
+        "past200ms_speed_above015": true
+      },
+      "common_prefix_s": 3.125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.9
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.375
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-17",
+      "source": {
+        "case": 10,
+        "ancestor": "fallAndGetUp1_subject5",
+        "evidence_file": "source-10.pkl.gz",
+        "evidence_sha256": "55dd24afd4b8cdad5a854d14fcda394672e084d0079d3efa283161d5cbb5cf39",
+        "complete": true,
+        "selected_control": 283,
+        "selected_stratum": "post_transition_actual_moving",
+        "source_speed_mps": 0.4476010669536046,
+        "past200ms_speed_above015": true
+      },
+      "common_prefix_s": 2.8125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.9
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.45
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-18",
+      "source": {
+        "case": 13,
+        "ancestor": "fallAndGetUp3_subject1",
+        "evidence_file": "source-13.pkl.gz",
+        "evidence_sha256": "a6c8c625efae3651b9e75564cbdcfce85dc839fe8c8c6c27dc797307d7f0cb2c",
+        "complete": true,
+        "selected_control": 268,
+        "selected_stratum": "post_transition_actual_moving",
+        "source_speed_mps": 0.20865014836603624,
+        "past200ms_speed_above015": true
+      },
+      "common_prefix_s": 3.75,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.3
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-19",
+      "source": {
+        "case": 15,
+        "ancestor": "fight1_subject3",
+        "evidence_file": "source-15.pkl.gz",
+        "evidence_sha256": "d59b1980d619b85bcb456d3522fa8ce06c13e5a601140d6815afd989ec36169b",
+        "complete": false,
+        "selected_control": 201,
+        "selected_stratum": "transition_near"
+      },
+      "common_prefix_s": 3.125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.375
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-20",
+      "source": {
+        "case": 16,
+        "ancestor": "fight1_subject5",
+        "evidence_file": "source-16.pkl.gz",
+        "evidence_sha256": "7f90b9ff8e308049f60fa51d5470995e86f957243c9ac2c228ed8ebbec0100fa",
+        "complete": false,
+        "selected_control": 219,
+        "selected_stratum": "transition_near"
+      },
+      "common_prefix_s": 2.8125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.45
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": -15.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-21",
+      "source": {
+        "case": 19,
+        "ancestor": "jumps1_subject1",
+        "evidence_file": "source-19.pkl.gz",
+        "evidence_sha256": "bbc4a6a94885bfc202cdb837136489e4e345512457c6e6b8e7327affa4359225",
+        "complete": true,
+        "selected_control": 216,
+        "selected_stratum": "transition_near"
+      },
+      "common_prefix_s": 3.75,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.3
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.08,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 40.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-22",
+      "source": {
+        "case": 23,
+        "ancestor": "run1_subject5",
+        "evidence_file": "source-23.pkl.gz",
+        "evidence_sha256": "71b643c4df8248ba530c3542e79b7f5d4d15d71270e0b25c42c4aca30318d085",
+        "complete": false,
+        "selected_control": 236,
+        "selected_stratum": "transition_near"
+      },
+      "common_prefix_s": 3.125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.375
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.12,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        }
+      ]
+    },
+    {
+      "parent_id": "ctft-eval-parent-23",
+      "source": {
+        "case": 24,
+        "ancestor": "run2_subject1",
+        "evidence_file": "source-24.pkl.gz",
+        "evidence_sha256": "eb496ec1a6df8bbaaee46a7583b7b2f420b076b0e221efaff7bad7b99fbb8554",
+        "complete": false,
+        "selected_control": 337,
+        "selected_stratum": "transition_near"
+      },
+      "common_prefix_s": 2.8125,
+      "branches": [
+        {
+          "branch": "continue",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        },
+        {
+          "branch": "stop",
+          "mode": 1,
+          "apply_force": true,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.45
+          }
+        },
+        {
+          "branch": "no_force",
+          "mode": 1,
+          "apply_force": false,
+          "partner": {
+            "plateau_speed_mps": 0.16,
+            "accel_s": 0.5,
+            "hold_s": 3.0,
+            "stiffness": 80.0,
+            "damping": 8.0,
+            "cap_n": 10.0,
+            "direction_deg": 0.0,
+            "recovery_s": 4.0,
+            "distance_m": 0.75
+          }
+        }
+      ]
+    }
+  ],
+  "contact_episodes_per_model": 72,
+  "models": [
+    "B0",
+    "U",
+    "T"
+  ],
+  "same_complete_source_rng_for_all_siblings_and_models": true,
+  "no_source_motion_id_or_partner_future_in_actor": true,
+  "initial_anchor": "actual same source wrist; no mid-episode reanchor",
+  "native_g0_evaluation": [
+    {
+      "parent_id": "ctft-native-regression-00",
+      "source": {
+        "case": 0,
+        "ancestor": "walk1_subject1",
+        "evidence_file": "source-00.pkl.gz",
+        "source_sha256": "c645046efac16ee6d5f6aabaaea931c8cc79271465a7e11f6a6f8ae6763b1c90"
+      },
+      "source_control": 25,
+      "mode": 0,
+      "force": false,
+      "command": "Original saved native motion z sequence at its real source phase; source schedule then returns to standing",
+      "horizon": "Through original13s source schedule; preserve original failed tails as evaluation failures",
+      "source_starting_state_qualification": "Requires actual complete restore, never qpos-only",
+      "prior_exposure": "Training source ancestor, native capability regression only"
+    },
+    {
+      "parent_id": "ctft-native-regression-01",
+      "source": {
+        "case": 1,
+        "ancestor": "walk1_subject2",
+        "evidence_file": "source-01.pkl.gz",
+        "source_sha256": "c07d271d6fb4076442792dd8a9603231f628d5f5193ff71422e5a56dea31b95f"
+      },
+      "source_control": 25,
+      "mode": 0,
+      "force": false,
+      "command": "Original saved native motion z sequence at its real source phase; source schedule then returns to standing",
+      "horizon": "Through original13s source schedule; preserve original failed tails as evaluation failures",
+      "source_starting_state_qualification": "Requires actual complete restore, never qpos-only",
+      "prior_exposure": "Training source ancestor, native capability regression only"
+    },
+    {
+      "parent_id": "ctft-native-regression-02",
+      "source": {
+        "case": 2,
+        "ancestor": "walk1_subject5",
+        "evidence_file": "source-02.pkl.gz",
+        "source_sha256": "61ebdc31753b4bd489df444de6016b9e1d9420e7d924d155228855e63aa95901"
+      },
+      "source_control": 25,
+      "mode": 0,
+      "force": false,
+      "command": "Original saved native motion z sequence at its real source phase; source schedule then returns to standing",
+      "horizon": "Through original13s source schedule; preserve original failed tails as evaluation failures",
+      "source_starting_state_qualification": "Requires actual complete restore, never qpos-only",
+      "prior_exposure": "Training source ancestor, native capability regression only"
+    },
+    {
+      "parent_id": "ctft-native-regression-03",
+      "source": {
+        "case": 3,
+        "ancestor": "walk2_subject1",
+        "evidence_file": "source-03.pkl.gz",
+        "source_sha256": "8e8e12c13dbd5dbe16a494ad8f71749cd1b7422fe64a371b498dd2f377a755c9"
+      },
+      "source_control": 25,
+      "mode": 0,
+      "force": false,
+      "command": "Original saved native motion z sequence at its real source phase; source schedule then returns to standing",
+      "horizon": "Through original13s source schedule; preserve original failed tails as evaluation failures",
+      "source_starting_state_qualification": "Requires actual complete restore, never qpos-only",
+      "prior_exposure": "Training source ancestor, native capability regression only"
+    },
+    {
+      "parent_id": "ctft-native-regression-04",
+      "source": {
+        "case": 4,
+        "ancestor": "walk2_subject3",
+        "evidence_file": "source-04.pkl.gz",
+        "source_sha256": "ea76c258d2659d1a998f0d92a7227954d529ea9b0e4a96d03c900cfb43a7bb7b"
+      },
+      "source_control": 25,
+      "mode": 0,
+      "force": false,
+      "command": "Original saved native motion z sequence at its real source phase; source schedule then returns to standing",
+      "horizon": "Through original13s source schedule; preserve original failed tails as evaluation failures",
+      "source_starting_state_qualification": "Requires actual complete restore, never qpos-only",
+      "prior_exposure": "Training source ancestor, native capability regression only"
+    },
+    {
+      "parent_id": "ctft-native-regression-05",
+      "source": {
+        "case": 5,
+        "ancestor": "walk2_subject4",
+        "evidence_file": "source-05.pkl.gz",
+        "source_sha256": "48f499f030f0a0aba27becab455b8a4311044ebfdc83ebb28969f3bbce921835"
+      },
+      "source_control": 25,
+      "mode": 0,
+      "force": false,
+      "command": "Original saved native motion z sequence at its real source phase; source schedule then returns to standing",
+      "horizon": "Through original13s source schedule; preserve original failed tails as evaluation failures",
+      "source_starting_state_qualification": "Requires actual complete restore, never qpos-only",
+      "prior_exposure": "Training source ancestor, native capability regression only"
+    },
+    {
+      "parent_id": "ctft-native-regression-06",
+      "source": {
+        "case": 6,
+        "ancestor": "walk3_subject1",
+        "evidence_file": "source-06.pkl.gz",
+        "source_sha256": "e44b1c546954d602217fbf6ec627f696665c19ed31450bac87f9f03a0aaad40a"
+      },
+      "source_control": 25,
+      "mode": 0,
+      "force": false,
+      "command": "Original saved native motion z sequence at its real source phase; source schedule then returns to standing",
+      "horizon": "Through original13s source schedule; preserve original failed tails as evaluation failures",
+      "source_starting_state_qualification": "Requires actual complete restore, never qpos-only",
+      "prior_exposure": "Training source ancestor, native capability regression only"
+    },
+    {
+      "parent_id": "ctft-native-regression-07",
+      "source": {
+        "case": 7,
+        "ancestor": "walk3_subject2",
+        "evidence_file": "source-07.pkl.gz",
+        "source_sha256": "5628564b00997f292762caa89133ef8e9c7393682b459256da34ca03c8f9a994"
+      },
+      "source_control": 25,
+      "mode": 0,
+      "force": false,
+      "command": "Original saved native motion z sequence at its real source phase; source schedule then returns to standing",
+      "horizon": "Through original13s source schedule; preserve original failed tails as evaluation failures",
+      "source_starting_state_qualification": "Requires actual complete restore, never qpos-only",
+      "prior_exposure": "Training source ancestor, native capability regression only"
+    },
+    {
+      "parent_id": "ctft-native-regression-08",
+      "source": {
+        "case": 8,
+        "ancestor": "walk3_subject3",
+        "evidence_file": "source-08.pkl.gz",
+        "source_sha256": "4741546a26496f7898ff5c0fff8b06ac0d313109e50cc194587c6ceb8c8a09b8"
+      },
+      "source_control": 25,
+      "mode": 0,
+      "force": false,
+      "command": "Original saved native motion z sequence at its real source phase; source schedule then returns to standing",
+      "horizon": "Through original13s source schedule; preserve original failed tails as evaluation failures",
+      "source_starting_state_qualification": "Requires actual complete restore, never qpos-only",
+      "prior_exposure": "Training source ancestor, native capability regression only"
+    },
+    {
+      "parent_id": "ctft-native-regression-09",
+      "source": {
+        "case": 9,
+        "ancestor": "walk3_subject4",
+        "evidence_file": "source-09.pkl.gz",
+        "source_sha256": "dfbaf00bee36f97fdd96f96f6ca93610d6e69dab21b1f1d772f7771e0685d5f6"
+      },
+      "source_control": 25,
+      "mode": 0,
+      "force": false,
+      "command": "Original saved native motion z sequence at its real source phase; source schedule then returns to standing",
+      "horizon": "Through original13s source schedule; preserve original failed tails as evaluation failures",
+      "source_starting_state_qualification": "Requires actual complete restore, never qpos-only",
+      "prior_exposure": "Training source ancestor, native capability regression only"
+    },
+    {
+      "parent_id": "ctft-native-regression-10",
+      "source": {
+        "case": 10,
+        "ancestor": "walk3_subject5",
+        "evidence_file": "source-10.pkl.gz",
+        "source_sha256": "01957056c6231b1a426bab615347288d3da9d6893ee2242c9f1d70882b283552"
+      },
+      "source_control": 25,
+      "mode": 0,
+      "force": false,
+      "command": "Original saved native motion z sequence at its real source phase; source schedule then returns to standing",
+      "horizon": "Through original13s source schedule; preserve original failed tails as evaluation failures",
+      "source_starting_state_qualification": "Requires actual complete restore, never qpos-only",
+      "prior_exposure": "Training source ancestor, native capability regression only"
+    },
+    {
+      "parent_id": "ctft-native-regression-11",
+      "source": {
+        "case": 11,
+        "ancestor": "walk4_subject1",
+        "evidence_file": "source-11.pkl.gz",
+        "source_sha256": "3a8d59c94eaf8bdb0d585dbe29d9aa941e855178428371c9da5a2e698e3d087d"
+      },
+      "source_control": 25,
+      "mode": 0,
+      "force": false,
+      "command": "Original saved native motion z sequence at its real source phase; source schedule then returns to standing",
+      "horizon": "Through original13s source schedule; preserve original failed tails as evaluation failures",
+      "source_starting_state_qualification": "Requires actual complete restore, never qpos-only",
+      "prior_exposure": "Training source ancestor, native capability regression only"
+    }
+  ],
+  "source_labels_are_not_contact_success": true,
+  "unseen_claim": "held out from this adaptation, not necessarily original BFM pretraining",
+  "previous_manifest_sha256": "e63785db0e3b0b3abdd9606192fb636fa213e00051f176a5592b1f82012e89bc",
+  "native_regression_ancestors": 12,
+  "native_small_turn_coverage": "Actual native responses must be reported; motion names do not establish directional-turn qualification"
+}
