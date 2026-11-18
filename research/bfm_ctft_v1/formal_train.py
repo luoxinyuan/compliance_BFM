@@ -1,8 +1,8 @@
-"""Fixed-N U/T driver over the qualified native CTFT learning/Task path.
+"""Fixed-N CTFT v1.1 U/T over the qualified native learning and Task path.
 
-No learning equation, replay quota, source/partner plan or physical gate is
-defined here. Each1024-row round commits a complete lossless state before its
-completion is reported. S0 learner states are never formal initialization.
+The shared warm start is the original formal U Actor-frozen round-8192.
+The v1.1 behavior choice affects g0 collection only. Each new round
+still commits full lossless state after its 1024 rows and eight updates.
 """
 import argparse
 import copy
@@ -11,7 +11,6 @@ import json
 import os
 from pathlib import Path
 import pickle
-import random
 import signal
 import subprocess
 import sys
@@ -29,30 +28,29 @@ def write(path,value):
     durable(path,(json.dumps(value,indent=2,allow_nan=False)+'\n').encode())
 
 
-def study(e,original,contract,out):
-    import numpy as np
+def study(e,original,contract,process_out):
     import torch
-    from agent import build
     from training_live import TrainingLive
-    from training_data import PhaseReplay,episode
-    from native_reference import load_reference
+    from training_data import episode
     from contact_replay import cat
-    from learning_checkpoint import digest,file_sha
+    from learning_checkpoint import digest,file_sha,one_update,set_rng
     from gradient_housekeeping import clear_consumed
     from cas_checkpoint import learner_state,restore_learner
     from production_commit import RoundCommitter
     from packed_checkpoint import PackedTensorStore
     from f1_mjdata_contract import canonical,metadata
-    from locomotion_rollout import UnsafePhysics
     from m8_stage import reset_common
     from m11_runtime_speed import install as speed
     from rolling_backend import install as backend
     from resource_guard import check
-    speed(e)
-    (out/'backend-prefix').mkdir()
-    backend(e,original,out/'backend-prefix')
-    reset_common(e,original,original.act)
     args=json.loads(os.environ['CTFT_FORMAL_ARGS'])
+    out=Path(args['output'])
+    revision=json.loads((STAGE/'locks/bfm-ctft-v1a-signed.json').read_text())
+    assert revision['approved'] and revision['version']=='1.1'
+    speed(e)
+    (process_out/'backend-prefix').mkdir()
+    backend(e,original,process_out/'backend-prefix')
+    reset_common(e,original,original.act)
     lock=json.loads((STAGE/'locks/common-N-resource-lock-output250-v4.json').read_text())
     n=lock['N']
     assert lock['status']=='COMMON_N_RESOURCE_LOCK' and n==131072
@@ -61,51 +59,124 @@ def study(e,original,contract,out):
     plan=json.loads(plan_path.read_text());reset=json.loads(reset_path.read_text())
     records=json.loads((STAGE/'runs/s0-source-admission-01/result.json').read_text())['train']
     coeff=json.loads((STAGE/'runs/s0-online-probe-01/agent-identity.json').read_text())['original_training_config']['aux_rewards_scaling']
-    scale=json.loads((STAGE/'locks/common-aux-scale-v1.json').read_text())['value']
     reference=STAGE/'runs/s0-cas-reference-02/reference'
-    milestones=[0,8192,n//4,n//2,3*n//4,n]
+    initial_rows=revision['shared_rows']
+    assert initial_rows==8192 and revision['formal_N_per_arm']==n
+    milestones=[initial_rows,n//4,n//2,3*n//4,n]
     live=TrainingLive(e,STAGE,coeff,records)
     stops={'requested':False}
     def request_stop(signum,frame): stops['requested']=True
     signal.signal(signal.SIGINT,request_stop);signal.signal(signal.SIGTERM,request_stop)
-    if args['resume']:
-        committer=RoundCommitter(out/'store',total_rows=n,milestone_rows=milestones,create=False)
-        package=committer.load_latest()
-        with torch.enable_grad(): agent,buffers=restore_learner(package['learner'])
-        live.restore(package['task'])
-        assert digest(canonical(live.snapshot(),metadata(e.sim.model,e.sim.data)))==digest(canonical(package['task'],metadata(e.sim.model,e.sim.data)))
-        scheduler=copy.deepcopy(package['scheduler'])
-        segments=copy.deepcopy(package['learner']['replay_segments'])
-        blocks=json.loads((out/'blocks.json').read_text()) if (out/'blocks.json').exists() else []
-        # Atomic committed state is authoritative after a write interruption.
-        blocks=[b for b in blocks if b['collected']<=scheduler['collected']]
-        initial_actor_sha=package['initial_actor_sha']
-        write(out/f'resume-{time.time_ns()}.json',dict(collected=scheduler['collected'],exact_learner_and_Task_restore=True))
+    warm_name='round-8192'
+    warm=PackedTensorStore(STAGE/'runs/formal-U-01/store')
+    warm_manifest=json.loads((warm.root/warm_name/'manifest.json').read_text())
+    assert warm_manifest['anchor'] and warm_manifest['complete']
+    assert warm_manifest['state_sha256']==revision['warm_state_sha256']
+    warm_model=warm.metadata(warm_name)['learner']['model']
+    b0_state={k.removeprefix('_actor.'):warm.unpack(v) for k,v in warm_model.items()
+              if k.startswith('_actor.')}
+    committer=RoundCommitter(out/'store',total_rows=n,milestone_rows=milestones,
+                             create=not args['resume'],initial_rows=initial_rows)
+    if not args['resume']:
+        alias=committer.adopt(initial_rows,warm.root,warm_name)
+        assert alias['newly_written_blob_bytes']==0
+        write(out/'common-warm-start.json',dict(source_state_sha256=warm_manifest['state_sha256'],
+              alias=alias,shared_rows=initial_rows,shared_updates=64,arm=args['arm']))
+    package=committer.load_latest()
+    if not args['resume']:
+        assert package['learner']['step']==64 and not package['learner']['actor_enabled']
+        assert package['scheduler']['collected']==initial_rows
     else:
-        random.seed(681117);np.random.seed(681117)
-        with torch.enable_grad(): agent,identity=build(aux_scale=scale,compile_execution=False)
-        assert identity['source_sha256']=='33f410c190877a1348dc3fafa3f0e97b277ad0251b39615ff98e5bd26369e361'
-        assert all(not x['state'] for x in agent.optimizer_dict.values())
-        write(out/'identity.json',identity)
-        replay=PhaseReplay(capacity=min(1000000,2*n),quotas=plan['replay_quotas'])
-        buffers=dict(train=replay,expert_slicer=load_reference(reference))
-        first=episode(plan,reset,0,args['arm']);live.start(first)
-        scheduler=dict(collected=0,updates=0,source_index=1,
-                       episodes=[dict(spec=first,controls=0,complete=False)])
-        segments=[];blocks=[]
-        initial_actor_sha=digest(agent._model._actor.state_dict())
-        committer=RoundCommitter(out/'store',total_rows=n,milestone_rows=milestones)
+        assert package['revision']=='1.1' and package['arm']==args['arm']
+
+    def exact_restore(saved):
+        with torch.enable_grad():
+            model,replay_buffers=restore_learner(saved['learner'])
+        live.restore(saved['task'])
+        set_rng(saved['learner']['rng'])
+        meta=metadata(e.sim.model,e.sim.data)
+        assert digest(canonical(live.snapshot(),meta))==digest(canonical(saved['task'],meta))
+        return model,replay_buffers
+
+    agent,buffers=exact_restore(package)
+    initial_actor_sha=package['initial_actor_sha']
+    assert digest(b0_state)==initial_actor_sha==revision['frozen_actor_sha256']
+    b0_actor=copy.deepcopy(agent._model._actor)
+    b0_actor.load_state_dict(b0_state,strict=True)
+    b0_actor.requires_grad_(False)
+    def behavior(obs,z,mode):
+        with torch.no_grad():
+            if mode==0:
+                model=agent._model
+                with torch.autocast(device_type=model.device,dtype=model.amp_dtype,enabled=model.cfg.amp):
+                    return b0_actor(model._normalize(obs),z,model.cfg.actor_std).mean.float()
+            assert mode==1
+            return agent.act(obs,z,mean=False)
+
+    scheduler=copy.deepcopy(package['scheduler'])
+    segments=copy.deepcopy(package['learner']['replay_segments'])
+    blocks=json.loads((out/'blocks.json').read_text()) if (out/'blocks.json').exists() else []
+    blocks=[b for b in blocks if b['collected']<=scheduler['collected']]
+    if not args['resume']:
+        assert digest(agent._model._actor.state_dict())==initial_actor_sha
+        ob,z=live.observation(),live.command()
+        assert torch.equal(behavior(ob,z,0),agent.act(ob,z,mean=True))
+        set_rng(package['learner']['rng'])
+        write(out/'v1a-identity.json',dict(
+            warm_state_sha256=warm_manifest['state_sha256'],frozen_actor_sha256=initial_actor_sha,
+            qualification='exact B0 mean on actual warm handoff observation',
+            shared_rows=initial_rows,mode_0='frozen B0 mean',mode_1='current actor original stochastic',
+            plan_sha256=file_sha(plan_path),reset_sha256=file_sha(reset_path)))
+    else:
+        write(out/f'resume-{time.time_ns()}.json',dict(collected=scheduler['collected'],exact_learner_and_Task_restore=True))
+
+    def next_action(state):
+        if live.done:
+            spec=episode(plan,reset,state['source_index'],args['arm'])
+            state['source_index']+=1
+            live.start(spec)
+            state['episodes'].append(dict(spec=spec,controls=0,complete=False))
+        before,z=live.observation(),live.command()
+        return before,z,behavior(before,z,live.spec['mode'])
+
+    def restore_canary():
+        """Non-formal short trajectory and update used only for restart proof."""
+        st=copy.deepcopy(scheduler)
+        evidence=[]
+        ticks=[]
+        for _ in range(12):
+            before,z,action=next_action(st)
+            evidence.append(live.step(action,before,z))
+            ticks.extend(copy.deepcopy(e.trace[-4:]))
+        with torch.enable_grad():
+            updated=one_update(agent,buffers,scheduler['updates'])
+        return dict(transition_sha256=digest(evidence),physics_sha256=digest(ticks),
+                    task_sha256=digest(canonical(live.snapshot(),metadata(e.sim.model,e.sim.data))),
+                    update_model_optimizer_rng=updated['state'],tested_controls=12,
+                    update_metrics=updated['metrics'],sample_trace=updated['sample_trace'],
+                    formal_updates=0,formal_rows=0)
+
+    if args['resume'] and scheduler['collected']==initial_rows+1024:
+        expected=json.loads((out/'first-round-uninterrupted-canary.json').read_text())
+        actual=restore_canary()
+        assert actual==expected,'FIRST_ROUND_ACTUAL_NEXT_TRAJECTORY_OR_UPDATE_NOT_EXACT'
+        # Discard the canary's live state and optimizer mutation before learning.
+        del agent,buffers
+        agent,buffers=exact_restore(package)
+        write(out/'first-round-recovery-qualified.json',dict(
+            status='PASS',committed_rows=scheduler['collected'],
+            production_state_restored_again=True,canary_rows_entered_replay=0))
+    if args['resume'] and scheduler['collected']>initial_rows+1024:
+        assert json.loads((out/'first-round-recovery-qualified.json').read_text())['status']=='PASS'
+    del package,warm_model,b0_state
+
     def full_state():
         state=learner_state(agent,step=scheduler['updates'],replay_segments=segments,
             replay_capacity=buffers['train'].capacity,replay_idx=buffers['train']._idx,
             reference=reference,replay_quotas=buffers['train'].quotas)
         return dict(learner=state,task=live.snapshot(),scheduler=copy.deepcopy(scheduler),
-                    initial_actor_sha=initial_actor_sha,formal_training=True,arm=args['arm'],N=n)
-    if not args['resume']:
-        save=committer.commit(0,full_state())
-        write(out/'step0.json',dict(status='FRESH_ORIGINAL_STEP0_FULLY_COMMITTED',save=save,
-            original_weights=True,fresh_five_Adam=True,fresh_replay=True,no_S0_learner_inherited=True,
-            plan_sha256=file_sha(plan_path),reset_sha256=file_sha(reset_path)))
+                    initial_actor_sha=initial_actor_sha,formal_training=True,arm=args['arm'],N=n,
+                    revision='1.1',shared_rows=initial_rows)
     physics=[]
     def persist_physics(label):
         nonlocal physics
@@ -134,12 +205,7 @@ def study(e,original,contract,out):
             for i in range(1024):
                 assert not stops['requested'],'USER_NORMAL_STOP'
                 assert time.monotonic()<float(os.environ['CCL_DEADLINE_MONOTONIC']),'ARM_JOB_LIMIT'
-                if live.done:
-                    spec=episode(plan,reset,scheduler['source_index'],args['arm'])
-                    scheduler['source_index']+=1;live.start(spec)
-                    scheduler['episodes'].append(dict(spec=spec,controls=0,complete=False))
-                before=live.observation();z=live.command()
-                with torch.no_grad(): action=agent.act(before,z,mean=False)
+                before,z,action=next_action(scheduler)
                 rows.append(live.step(action,before,z))
                 physics.extend(copy.deepcopy(e.trace[-4:]))
                 scheduler['collected']+=1
@@ -149,11 +215,15 @@ def study(e,original,contract,out):
             data=cat(rows);buffers['train'].extend(data)
             rowpath=out/f'actual-rows-{scheduler["collected"]:06d}.pt'
             assert not rowpath.exists();torch.save(data,rowpath)
-            segments.append(dict(path=str(rowpath),sha256=file_sha(rowpath)))
+            g0_count=int((data['ctft_replay_phase']==0).sum())
+            segments.append(dict(path=str(rowpath),sha256=file_sha(rowpath),rows=1024,
+                provenance=dict(g0_frozen_b0_mean=g0_count,g1_current_actor_sample=1024-g0_count,
+                                discriminator='actual ctft_replay_phase==0 on v1.1 new segments')))
             persist_physics(str(scheduler['collected']))
             collected=scheduler['collected']
-            count=64 if collected==8192 else 8 if collected>8192 else 0
-            agent.actor_enabled=collected>8192
+            assert collected>initial_rows
+            count=8
+            agent.actor_enabled=True
             update_s=[];metrics_record=[]
             for _ in range(count):
                 torch.cuda.synchronize();t=time.monotonic()
@@ -162,7 +232,6 @@ def study(e,original,contract,out):
                 assert all(torch.isfinite(v).all() for v in metrics.values() if torch.is_tensor(v))
                 metrics_record.append({k:float(v.detach().mean().cpu()) if torch.is_tensor(v) else v for k,v in metrics.items()})
                 scheduler['updates']+=1
-            if collected<=8192:assert digest(agent._model._actor.state_dict())==initial_actor_sha
             clear_consumed(agent)
             save=committer.commit(collected,full_state())
             free,total=torch.cuda.mem_get_info()
@@ -177,6 +246,11 @@ def study(e,original,contract,out):
                 collected=collected,updates=scheduler['updates'],completed_rounds=len(blocks),
                 latest_manifest_sha256=file_sha(out/'store'/f'round-{collected}'/'manifest.json')))
             print('CTFT_FORMAL_COMMIT',args['arm'],collected,scheduler['updates'],block['total_s'],flush=True)
+            if args['qualify_first_round']:
+                assert collected==initial_rows+1024
+                write(out/'first-round-uninterrupted-canary.json',restore_canary())
+                return dict(status='PAUSED_FOR_FRESH_PROCESS_RECOVERY',arm=args['arm'],
+                            actual_rows=collected,actual_update_groups=scheduler['updates'])
             if collected in [16384,n//4,n//2,3*n//4,n]:
                 # Mandatory finite-N growth recheck, using actual complete
                 #rounds. No reward/Dev criterion enters this resource gate.
@@ -187,8 +261,8 @@ def study(e,original,contract,out):
                 row_bytes=sum(p.stat().st_size for p in out.glob('actual-rows-*.pt'))
                 peak_pack=max([lock['measured']['first_full_pack_bytes']]+[
                     b['save']['newly_written_blob_bytes'] for b in blocks])
-                projected_output=lock['stage_storage']['logical_bytes']+1.25*(
-                    15*peak_pack+2*n*(row_bytes+trace_bytes)/collected+8*2**30)
+                projected_output=revision['base_stage_output_bytes']+1.25*(
+                    11*peak_pack+2*(n-initial_rows)*(row_bytes+trace_bytes)/(collected-initial_rows)+8*2**30)
                 check_record=dict(
                     actual_rows=collected,source_episodes=scheduler['episodes'],
                     instantaneous_physics_hard_guards_active=True,
@@ -232,7 +306,10 @@ def study(e,original,contract,out):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
     p.add_argument('--arm',choices=['U','T'],required=True);p.add_argument('--resume',action='store_true')
+    p.add_argument('--qualify-first-round',action='store_true')
     a=p.parse_args()
+    assert a.resume!=a.qualify_first_round
+    a.output=a.output.resolve()
     if a.resume: assert a.output.exists()
     else:a.output.mkdir(parents=True,exist_ok=False)
     from resource_guard import check
@@ -240,9 +317,12 @@ def main():
     prior=sum(json.loads(f.read_text())['wall_s'] for f in a.output.glob('cost-*.json'))
     assert prior<43200
     start=time.monotonic()
-    os.environ.update(CTFT_FORMAL_ARGS=json.dumps(dict(arm=a.arm,resume=a.resume)),
+    process_out=a.output/'attempts'/str(time.time_ns())
+    process_out.mkdir(parents=True,exist_ok=False)
+    os.environ.update(CTFT_FORMAL_ARGS=json.dumps(dict(arm=a.arm,resume=a.resume,
+        output=str(a.output),qualify_first_round=a.qualify_first_round)),
         CTFT_PRIOR_WALL=str(prior),CTFT_RUN_START_MONO=str(start),
-        BFM_RECOVERY_OUTPUT=str(a.output),CCL_DEADLINE_MONOTONIC=str(start+43200-prior))
+        BFM_RECOVERY_OUTPUT=str(process_out),CCL_DEADLINE_MONOTONIC=str(start+43200-prior))
     write(a.output/f'launch-{time.time_ns()}.json',dict(pid=os.getpid(),arm=a.arm,
         runtime=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),
         started_unix=time.time(),formal_training=True))
@@ -254,7 +334,7 @@ def main():
         result=raw(*args,**kw);counts['actual']+=n;return result
     mujoco.mj_step=counted
     import m10_stage,m10_physics
-    m10_stage.run_study=study;m10_physics.OUT=a.output
+    m10_stage.run_study=study;m10_physics.OUT=process_out
     try:m10_physics.main()
     finally:write(a.output/f'cost-{time.time_ns()}.json',dict(wall_s=time.monotonic()-start,
         physics=counts,formal_training=True,arm=a.arm))
