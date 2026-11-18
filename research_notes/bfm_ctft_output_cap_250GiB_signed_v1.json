@@ -1,0 +1,14 @@
+{
+  "protocol": "BFM_CTFT_V1_OUTPUT_CAP_AMENDMENT",
+  "approved_by": "Yi",
+  "approval_text": "如果必要的话就扩大到250GiB吧",
+  "approved": true,
+  "necessity": "Existing conservative complete-checkpoint forecast232.48GiB exceeds200GiB",
+  "recorded_unix": 1794968712.1830978,
+  "old_output_cap_bytes": 214748364800,
+  "new_output_cap_bytes": 268435456000,
+  "job_cap_s": 144000,
+  "physics_tick_cap": 16000000,
+  "project_job_cap_h": 240,
+  "other_scientific_and_checkpoint_contracts_unchanged": true
+}

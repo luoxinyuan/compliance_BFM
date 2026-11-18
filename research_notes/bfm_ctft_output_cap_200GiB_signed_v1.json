@@ -1,0 +1,14 @@
+{
+  "protocol": "BFM_CTFT_V1_OUTPUT_CAP_AMENDMENT",
+  "approved_by": "Yi",
+  "approval_text": "我批准扩大120GiB输出帽到200GiB",
+  "approved": true,
+  "recorded_unix": 1794968135.6790125,
+  "old_output_cap_bytes": 128849018880,
+  "new_output_cap_bytes": 214748364800,
+  "job_cap_s": 144000,
+  "physics_tick_cap": 16000000,
+  "project_job_cap_h": 240,
+  "other_scientific_and_checkpoint_contracts_unchanged": true,
+  "does_not_approve_240GiB": true
+}

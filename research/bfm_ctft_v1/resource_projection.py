@@ -11,7 +11,10 @@ from stage_storage import footprint
 
 
 def retained_counts(n):
-    permanent={0, 9216, n//4, n//2, 3*n//4, n}
+    # The first effective complete learning round is the64-group warm-up at
+    #8192. Keep it permanently;9216 is the first Actor round, not a second
+    #mandatory permanent milestone. Step0 is an extra engineering anchor.
+    permanent={0, 8192, n//4, n//2, 3*n//4, n}
     committed=[]
     seen=set()
     peak=0
@@ -46,6 +49,9 @@ def project(stage, output):
     rowbytes=sum(p.stat().st_size for p in run.glob('actual-rows-*.pt'))/10240
     disk=footprint(stage)
     lock=json.loads((stage/'locks/s0-closeout-plus90m-signed-v1.json').read_text())
+    output_lock=json.loads((stage/'locks/output-cap-250GiB-signed-v1.json').read_text())
+    assert output_lock['approved'] and output_lock['new_output_cap_bytes']==250*2**30
+    output_cap=output_lock['new_output_cap_bytes']
     elapsed=time.time()-lock['start_unix']+300.
     stage_now=lock['prior_charged_s']+elapsed
     candidates=[]
@@ -60,8 +66,9 @@ def project(stage, output):
         checkpoint_conservative=packs*max(warm_full,delta)
         data=2*n*rowbytes
         evaluation=8*2**30
-        expected=disk['logical_bytes']+checkpoint_expected+data+evaluation
-        bound=disk['logical_bytes']+1.25*(checkpoint_conservative+data+evaluation)
+        training_trace=8*2**30
+        expected=disk['logical_bytes']+checkpoint_expected+data+evaluation+training_trace
+        bound=disk['logical_bytes']+1.25*(checkpoint_conservative+data+evaluation+training_trace)
         total_job=stage_now+2*arm+6*3600+2*3600+2*3600
         candidates.append(dict(N_per_arm=n, rounds_per_arm=rounds,
             native_update_groups_per_arm=8*rounds, actor_updates_per_arm=8*(n-8192)//1024,
@@ -69,10 +76,11 @@ def project(stage, output):
             projected_stage_job_s=total_job, passes40h_stage=total_job<=144000,
             retained_counts_per_arm=counts, simultaneous_full_logical_packs=packs,
             expected_output_bytes=expected, conservative_output_bytes=bound,
-            passes120GiB_output=bound<=120*2**30,
+            approved_output_cap_bytes=output_cap,
+            passes_approved_output_cap=bound<=output_cap,
             replay_finite_capacity_compatible=n<1000000,
             physical_training_ticks_two_arms=8*n))
-    feasible=[x for x in candidates if x['passes12h_per_arm'] and x['passes40h_stage'] and x['passes120GiB_output'] and x['replay_finite_capacity_compatible']]
+    feasible=[x for x in candidates if x['passes12h_per_arm'] and x['passes40h_stage'] and x['passes_approved_output_cap'] and x['replay_finite_capacity_compatible']]
     time_only=[x for x in candidates if x['passes12h_per_arm'] and x['passes40h_stage']]
     result=dict(status='COMMON_N_RESOURCE_LOCK' if feasible else 'T0_REPORT_RESOURCE_BLOCKED',
         N=max(x['N_per_arm'] for x in feasible) if feasible else None,
@@ -84,12 +92,15 @@ def project(stage, output):
             reset_s='UNKNOWN separately; already INCLUDED in actual collect timing, never added twice',
             full_learner_readback='Included in save_verify_s', safety_factor=1.25),
         stage_storage=disk, stage_job_s_at_projection=stage_now, candidates=candidates,
+        approved_output_cap_bytes=output_cap,
+        approved_output_cap_source='locks/output-cap-250GiB-signed-v1.json',
         actual_formal_training_rows=0, no_future_learning_result_read=True,
-        checkpoint_policy='step0 + firstActorupdate + Nquarters/end + latesttwo; pending write included in peak',
+        checkpoint_policy='step0 + first effective warm-up8192 + Nquarters/end + latesttwo; pending write included in peak',
         projection_boundary='Only2 real joint blocks; first formal16k would require remeasurement. Projection is not measured future cost.',
         evaluation_output_reserve_bytes=8*2**30,
+        training_trace_output_reserve_bytes=8*2**30,
         evaluation_output_reserve_is_allocation_not_measurement=True,
         actual_physical_evaluation_complete=False,
-        possible_resource_decision='Output cap change requires explicit Yi approval; no deletion of old failures or omission of Adam/replay allowed')
+        possible_resource_decision='Yi subsequently approved250GiB when necessary. Conservative forecast must fit; no deletion of old failures or omission of Adam/replay allowed')
     output.write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')
     return result
