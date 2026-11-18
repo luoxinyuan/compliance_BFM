@@ -115,6 +115,13 @@ def study(e,original,contract,out):
     buffers['train'].extend(cat(rows))
     with torch.enable_grad():
         u=one_update(agent,buffers,x['learner']['step'])
+    import resource
+    write(out/'resource-profile.json',dict(
+        full_native_update_s=u['update_s'], peak_cuda_reserved_bytes=u['peak_reserved'],
+        peak_cuda_allocated_bytes=torch.cuda.max_memory_allocated(),
+        free_cuda_bytes_at_update_end=u['free_bytes'],
+        main_process_peak_RSS_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,
+        scope='Actual full Task/PhaseReplay restore,620 controls crossing reset,complete native1024 update; not empty inference FPS'))
     scheduler['updates']+=1
     assert scheduler['collected']==buffers['train']._idx
     validate_scheduler(dict(scheduler=scheduler,learner=dict(step=x['learner']['step']+1),task=live.snapshot()))

@@ -40,6 +40,9 @@ def project(stage, output):
     cold=max(120., json.loads((run/'cost.json').read_text())['wall_s']-sum(b['total_s'] for b in blocks))
     warm_full=next(b['save']['newly_written_blob_bytes'] for b in blocks if b['collected']==8192)
     delta=max(b['save']['newly_written_blob_bytes'] for b in joint)
+    retained=stage/'runs/s0-production-reference-01/actual-retention.json'
+    if retained.exists():
+        delta=max(delta,json.loads(retained.read_text())['save']['newly_written_blob_bytes'])
     rowbytes=sum(p.stat().st_size for p in run.glob('actual-rows-*.pt'))/10240
     disk=footprint(stage)
     lock=json.loads((stage/'locks/s0-closeout-plus90m-signed-v1.json').read_text())
@@ -84,6 +87,8 @@ def project(stage, output):
         actual_formal_training_rows=0, no_future_learning_result_read=True,
         checkpoint_policy='step0 + firstActorupdate + Nquarters/end + latesttwo; pending write included in peak',
         projection_boundary='Only2 real joint blocks; first formal16k would require remeasurement. Projection is not measured future cost.',
+        evaluation_output_reserve_bytes=8*2**30,
+        evaluation_output_reserve_is_allocation_not_measurement=True,
         actual_physical_evaluation_complete=False,
         possible_resource_decision='Output cap change requires explicit Yi approval; no deletion of old failures or omission of Adam/replay allowed')
     output.write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')
