@@ -22,13 +22,27 @@ def json_read(path):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--recover-u-after-canary", action="store_true")
+    args = parser.parse_args()
     contract = json_read(STAGE / "locks/bfm-ctft-v1a-signed.json")
     assert contract["approved"] and contract["version"] == "1.1"
     assert contract["formal_N_per_arm"] == 131072
-    out = STAGE / "runs/formal-pair-v1a-01"
+    prior_wall = 0.0
+    if args.recover_u_after_canary:
+        baseline = json_read(STAGE / "runs/formal-pair-v1a-01/ledger.json")
+        assert baseline["status"] == "STOPPED_ARM_NO_AUTOMATIC_NEXT_ARM"
+        assert [row["arm"] for row in baseline["arms"]] == ["U"]
+        assert [(p["label"], p["returncode"]) for p in baseline["arms"][0]["phases"]] == [
+            ("first-round", 0), ("resume", 1),
+        ]
+        prior_wall = baseline["elapsed_s"]
+    out = STAGE / "runs" / ("formal-pair-v1a-02" if args.recover_u_after_canary else "formal-pair-v1a-01")
     out.mkdir(exist_ok=False)
     started = time.monotonic()
-    wall_limit = 144000 - contract["prior_stage_job_s"] - 36000 - 900
+    prior_stage_jobs=contract["prior_stage_job_s"] + prior_wall
+    wall_limit = 144000 - prior_stage_jobs - 36000 - 900
     assert wall_limit > 2 * 5.789 * 3600
     paths = sorted((ROOT / "research/bfm_ctft_v1").glob("*.py"))
 
@@ -39,7 +53,8 @@ def main():
     revision = subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip()
     record = dict(status="RUNNING", pid=os.getpid(), runtime=revision, version="1.1", arms=[],
                   N_per_arm=131072, shared_warm_rows=8192, new_rows_per_arm=122880,
-                  prior_stage_job_s=contract["prior_stage_job_s"], max_pair_wall_s=wall_limit,
+                  prior_stage_job_s=prior_stage_jobs, previous_v1a_attempt_wall_s=prior_wall,
+                  max_pair_wall_s=wall_limit,
                   source_sha256=source, started_unix=time.time())
     requested = False
 
@@ -52,7 +67,7 @@ def main():
 
     def save():
         record["elapsed_s"] = time.monotonic() - started
-        record["stage_job_s_conservative"] = contract["prior_stage_job_s"] + record["elapsed_s"]
+        record["stage_job_s_conservative"] = prior_stage_jobs + record["elapsed_s"]
         durable(out / "ledger.json", (json.dumps(record, indent=2) + "\n").encode())
 
     def run_phase(arm, directory, label, option):
@@ -90,9 +105,17 @@ def main():
 
     for arm in ("U", "T"):
         d = STAGE / "runs" / f"formal-{arm}-v1a-01"
-        assert not d.exists()
         record["arms"].append(dict(arm=arm, output=str(d.relative_to(STAGE)), phases=[]))
-        ok = run_phase(arm, d, "first-round", "--qualify-first-round")
+        if arm=="U" and args.recover_u_after_canary:
+            assert json_read(d / "progress.json")["collected"] == FIRST_V1A_COMMIT
+            assert (d / "first-round-uninterrupted-canary.json").is_file()
+            assert not (d / "first-round-recovery-qualified.json").exists()
+            assert sorted(p.name for p in d.glob("actual-rows-*.pt")) == ["actual-rows-009216.pt"]
+            record["arms"][-1]["source"] = "already committed U round-9216"
+            ok=True
+        else:
+            assert not d.exists()
+            ok = run_phase(arm, d, "first-round", "--qualify-first-round")
         if ok:
             committed = json_read(d / "progress.json")["collected"]
             ok = committed == FIRST_V1A_COMMIT and (d / "first-round-uninterrupted-canary.json").is_file()

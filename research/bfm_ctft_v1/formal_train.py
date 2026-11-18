@@ -158,14 +158,27 @@ def study(e,original,contract,process_out):
 
     if args['resume'] and scheduler['collected']==initial_rows+1024:
         expected=json.loads((out/'first-round-uninterrupted-canary.json').read_text())
+        optimizer_before={key:digest(value) for key,value in package['learner']['optimizers'].items()}
         actual=restore_canary()
         assert actual==expected,'FIRST_ROUND_ACTUAL_NEXT_TRAJECTORY_OR_UPDATE_NOT_EXACT'
-        # Discard the canary's live state and optimizer mutation before learning.
-        del agent,buffers
+        optimizer_changed=[key for key,value in package['learner']['optimizers'].items()
+                           if digest(value)!=optimizer_before[key]]
+        write(out/f'first-round-canary-match-{time.time_ns()}.json',dict(
+            tested_controls=12,same_next_update=True,
+            optimizer_sources_mutated_in_deserialized_package=optimizer_changed))
+        # Adam can retain CPU step-tensor references from load_state_dict.
+        # The deserialized package is therefore scratch after the canary.
+        # Reopen the authoritative immutable package rather than reuse any
+        # Python objects that might have been changed by an optimizer.
+        del agent,buffers,package
+        package=committer.load_latest()
+        assert package['scheduler']['collected']==initial_rows+1024
+        assert package['learner']['step']==64+8
         agent,buffers=exact_restore(package)
         write(out/'first-round-recovery-qualified.json',dict(
             status='PASS',committed_rows=scheduler['collected'],
-            production_state_restored_again=True,canary_rows_entered_replay=0))
+            production_state_restored_again=True,production_state_reloaded_from_disk=True,
+            canary_rows_entered_replay=0))
     if args['resume'] and scheduler['collected']>initial_rows+1024:
         assert json.loads((out/'first-round-recovery-qualified.json').read_text())['status']=='PASS'
     del package,warm_model,b0_state
