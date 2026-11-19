@@ -1,0 +1,96 @@
+{
+  "control": {
+    "unloaded_cm": 25.814901318325955,
+    "unloaded_yaw_deg": 46.03114606296183,
+    "increment_cm": 12.550957590065066,
+    "arms": {
+      "continue": {
+        "lag_rms": 0.05734363256976619,
+        "force_rms": 3.3453977406478477,
+        "root_forward": 0.2489061780302072,
+        "slip_result": "FAIL",
+        "complete_release": true,
+        "release_root_path": 0.02701191357127112,
+        "release_yaw": 6.485998695694008,
+        "hard": false,
+        "alternating_support_changes": 8,
+        "stopped": true
+      },
+      "no_force": {
+        "lag_rms": 0.1347418638554698,
+        "force_rms": 0.0,
+        "root_forward": 0.12339660212955657,
+        "slip_result": "FAIL",
+        "complete_release": true,
+        "release_root_path": 0.0779862775455937,
+        "release_yaw": 15.305904247555205,
+        "hard": false,
+        "alternating_support_changes": 0,
+        "stopped": true
+      },
+      "stop": {
+        "lag_rms": 0.04332716142735662,
+        "force_rms": 2.2823332369742055,
+        "root_forward": 0.12008941268649771,
+        "slip_result": "FAIL",
+        "complete_release": true,
+        "release_root_path": 0.034042287481078765,
+        "release_yaw": 5.3372876797610225,
+        "hard": false,
+        "alternating_support_changes": 0,
+        "stopped": true
+      }
+    }
+  },
+  "keep": {
+    "unloaded_cm": 22.970750218237935,
+    "unloaded_yaw_deg": 40.007475651724,
+    "increment_cm": 11.821333599010291,
+    "arms": {
+      "continue": {
+        "lag_rms": 0.056208404669080954,
+        "force_rms": 3.167076890262164,
+        "root_forward": 0.2360044278434261,
+        "slip_result": "FAIL",
+        "complete_release": true,
+        "release_root_path": 0.039291228006729614,
+        "release_yaw": 8.846441208966255,
+        "hard": false,
+        "alternating_support_changes": 8,
+        "stopped": true
+      },
+      "no_force": {
+        "lag_rms": 0.1399280374535678,
+        "force_rms": 0.0,
+        "root_forward": 0.11779109185332319,
+        "slip_result": "FAIL",
+        "complete_release": true,
+        "release_root_path": 0.056111714682460755,
+        "release_yaw": 10.315707997748476,
+        "hard": false,
+        "alternating_support_changes": 0,
+        "stopped": true
+      },
+      "stop": {
+        "lag_rms": 0.042792031277536016,
+        "force_rms": 2.2594476180765253,
+        "root_forward": 0.11898945032329276,
+        "slip_result": "FAIL",
+        "complete_release": true,
+        "release_root_path": 0.02948595987668924,
+        "release_yaw": 8.771935515934349,
+        "hard": false,
+        "alternating_support_changes": 0,
+        "stopped": true
+      }
+    }
+  },
+  "directional_gate": {
+    "path": true,
+    "yaw": true,
+    "progress": true,
+    "force": true,
+    "lag": true,
+    "hard": true
+  }
+}

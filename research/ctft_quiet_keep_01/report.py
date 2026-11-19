@@ -1,0 +1,42 @@
+from pathlib import Path
+import json,hashlib,time
+root=Path(__file__).resolve().parent
+read=lambda p:json.loads(p.read_text())
+r=read(root/'comparison.json');bn=read(root/'bank.json');co=read(root/'control.json');ke=read(root/'keep.json')
+g=r['directional_gate'];lines=[]
+for k in ['control','keep']:
+    v=r[k]
+    for br,m in v['arms'].items():
+        lines.append(f"| {k} | {br} | {100*m['root_forward']:.2f} | {m['force_rms']:.3f} | "+(f"{100*m['lag_rms']:.2f}" if br!='no_force' else '—')+f" | {m['alternating_support_changes']} | {m['slip_result']} | {m['hard']} | "+(f"{100*m['release_root_path']:.2f}" if br!='no_force' else '—')+" |")
+ledger={p.parent.name:read(p) for p in root.glob('*/cost.json')}
+note=f"""# 安静站立动作保持，末批配对微调
+
+从 U 实际第 130048 条记录的完整检查点分叉，在线还原下一批 1024 条实际数据，与旧存档内容哈希逐值相同。两个学习器各恢复同一模型、Adam、replay、RNG，在同一真实数据与采样起点运行最后 8 组原生联合更新。此为末批干预：没有在改过策略后继续采样训练。控制臂 Actor SHA256 复现原终点 `{co['actor_sha']}`；实验臂为 `{ke['actor_sha']}`。零力比例、伙伴、公开目标、物理奖励和运动命令均沿用旧配方。源和评价没有读封存。
+
+保持批来自 {len(bn['ancestors'])} 条实际原生训练来源，每个来源取 4 个已验证安静、零力、standing 命令下的控制边界，合计 {bn['samples']} 条。最大单关节 B0 目标回算误差 {bn['max_B0_qPD_record_error_rad']:.3g} rad。固定用 0.10 rad 作归一化，系数 1，同一 Adam step 联合更新；这是首次试验尺度。训练保持误差须与物理评价分别解读。全程保持相同采样比例并共享此批真实数据，伙伴没有在策略更新后被强制重放。
+
+|模型|分支|接触窗末骨盆前移 cm|腕力 RMS N|腕误差 RMS cm|左右单脚支撑交替|承重材料点|硬终止|释放后路程 cm|
+|---|---|---:|---:|---:|---:|---|---|---:|
+"""+'\n'.join(lines)+'\n\n'
+for k in ['control','keep']:
+    s=r[k];note+=f"{k} 的全程零力路程 {s['unloaded_cm']:.2f} cm、最大偏航 {s['unloaded_yaw_deg']:.2f}°。持续牵引相对同模型无力的净前移 {s['increment_cm']:.2f} cm。\n\n"
+note+=f"""预声明方向性判读：{'通过' if all(g.values()) else '未通过'}。逐项 {g}。一次训练块、一个已暴露的评估初态，不外推为步态习得或跨身体状态泛化。控制臂物理取已有同 Actor、同 normalizer、同完整初态确定性档案。三条实验分支均使用真实 MuJoCo。详细的失败、资源、代码身份和单项判据见随附文件。
+
+首轮 1024 条采样与历史一致，之后参考样本读取处对列表调用转置报错，没有优化更新。修复输入数组表示后新进程重做，原失败计入成本。物理作业含失败计数 {sum(x['ticks'] for x in ledger.values())} 个 tick，内部计时合计 {sum(x['seconds'] for x in ledger.values()):.1f} 秒；另含来源扫描、读盘、发布和分析成本。
+"""
+note+=f'''
+## 执行细节与限制
+
+正常完成的进程真实重采 1024 条再将同一数据分别加入两臂的相同 replay。初版协议写的是两臂分别重采；实现共享了更新前唯一的物理块，且首次失败进程独立采出的内容也与存档逐值一致。这避免了把某一臂更新后的动作误作另一臂的新数据。最后一块中 850 条属于完整 no-force 回合，另 174 条来自 continue 回合。整批采集比例不等于旧 replay 的实际抽样比例。原任务与参数保持由同一 Actor Adam 步共同优化。冻结 B0 目标取同状态同 standing z 的原生确定性输出；保持样本各 4 个，全部来自原生运动结束后的安静尾段。两条原生源没有完整通过而未给保持标签。
+
+末组更新后上述目标上的误差 RMS：对照 {0.1*co['steps'][-1]['quiet_loss']**0.5:.5f} rad，保持臂 {0.1*ke['steps'][-1]['quiet_loss']**0.5:.5f} rad。这个数字度量局部函数，不能代替闭环表现。训练使用 U 的原伙伴物理，独立已暴露评价中的伙伴竖直 K/D 均沿用上一对照的 0.25 倍，结论只适用于这组匹配条件。
+'''
+note+='''
+
+## 科学判读
+
+这个末批的单一训练改动在同一站立父组上产生了方向一致、幅度有限的变化：零力路程减少 2.84 cm（11.0%）、最大偏航减少 6.02°，持续牵引净推进保留 94.2%。持续牵引期间力和误差都有小幅改善，提前停止的腕力也从 2.28 降至 2.26 N。它仍有 22.97 cm 无力路程与 40.01° 偏航，实验臂所有分支均未通过承重材料点滑移门。持续条件释放后恢复路程 2.70→3.93 cm、恢复偏航 6.49→8.85°，停止条件释放后的偏航 5.34→8.77°。所以通过方向性检验，不作策略晋级。推荐先在独立安静初态上复核同一冻结权重；暂不增加系数或延长训练。
+
+资源核算：初次来源筛查至交付的整体经过时间保守计作不超过 1800 秒，包含修复、真实采样、训练、验证、视频与 IO。内层作业秒已经含在其中，不重复相加。输出规模在资源账本中以实际目录占用记录。
+'''
+(root/'RESULTS.md').write_text(note)

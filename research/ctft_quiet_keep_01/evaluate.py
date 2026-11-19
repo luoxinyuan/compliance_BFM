@@ -1,0 +1,207 @@
+"""Immutable endpoint rollout collector. Uses pinned simulation and records failed tails."""
+import gzip
+import hashlib
+import json
+import os
+from pathlib import Path
+import pickle
+import shutil
+import sys
+import time
+
+ROOT = Path(os.environ["CTFT_PINNED_RUNTIME"])
+STAGE = ROOT.parent
+sys.path[:0] = [str(ROOT), str(ROOT/"research_notes"), str(ROOT/"research/bfm_ctft_v1")]
+os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
+import m11_ipc
+from cas_checkpoint import durable
+
+def write(path, value):
+    durable(path, (json.dumps(value, indent=2, allow_nan=False)+"\n").encode())
+
+def load(path):
+    return json.loads(path.read_text())
+
+def study(e, original, contract, out):
+    import numpy as np
+    import torch
+    import mujoco
+    from agent import build
+    from learning_checkpoint import digest, set_rng
+    from m8_stage import reset_common
+    from m11_runtime_speed import install as speed
+    from rolling_backend import install as backend
+    from training_live import TrainingLive
+    from packed_checkpoint import PackedTensorStore
+    from locomotion_rollout import UnsafePhysics, spherical
+    speed(e)
+    (out/"backend-prefix").mkdir()
+    backend(e, original, out/"backend-prefix")
+    reset_common(e, original, original.act)
+    m,d=e.sim.model,e.sim.data
+    native_physics=e._original_step
+    def record_material_points():
+        pre_velocity=d.qvel.copy();native_physics()
+        material=[]
+        for i,c in enumerate(d.contact[:d.ncon]):
+            b=[int(m.geom_bodyid[c.geom1]),int(m.geom_bodyid[c.geom2])]
+            if 0 not in b:continue
+            body=max(b);name=mujoco.mj_id2name(m,mujoco.mjtObj.mjOBJ_BODY,body) or ''
+            if 'ankle' not in name and 'foot' not in name:continue
+            f=np.zeros(6);mujoco.mj_contactForce(m,d,i,f)
+            jac=np.zeros((3,m.nv));mujoco.mj_jac(m,d,jac,None,c.pos,body)
+            R=d.xmat[body].reshape(3,3)
+            material.append(dict(foot=0 if 'left' in name else 1,body=body,
+                geom_pair=[int(c.geom1),int(c.geom2)],normal_n=float(abs(f[0])),
+                material_local=(R.T@(c.pos-d.xpos[body])).tolist(),contact_world=c.pos.tolist(),
+                body_world=d.xpos[body].tolist(),body_rotation=R.tolist(),
+                tangent_velocity=(c.frame.reshape(3,3)[1:]@(jac@pre_velocity)).tolist()))
+        e.contact_sample['ctft_material_contacts']=material
+    e._original_step=record_material_points
+    coeff=load(STAGE/"runs/s0-online-probe-01/agent-identity.json")["original_training_config"]["aux_rewards_scaling"]
+    with torch.enable_grad():
+        agent,_=build(aux_scale=load(STAGE/"locks/common-aux-scale-v1.json")["value"],compile_execution=False)
+    states={"B0":{k:v.cpu().clone() for k,v in agent._model._actor.state_dict().items()}}
+    ids={"B0":digest(states["B0"])}
+    assert ids["B0"]==load(STAGE/"locks/bfm-ctft-v1a-signed.json")["frozen_actor_sha256"]
+    for name in ("U",):
+        store=PackedTensorStore(STAGE/f"runs/formal-{name}-v1a-01/store")
+        ck="round-131072"
+        receipt=load(store.root/ck/"readback.json")
+        assert receipt["complete"] and receipt["all_tensor_raw_hashes_verified"]
+        assert receipt["state_sha256"]==load(store.root/ck/"manifest.json")["state_sha256"]
+        model=store.metadata(ck)["learner"]["model"]
+        states[name]={k[7:]:store.unpack(v) for k,v in model.items() if k.startswith("_actor.")}
+        for k,v in agent._model.state_dict().items():
+            if k.startswith("_obs_normalizer."):
+                assert torch.equal(v.cpu(),store.unpack(model[k]).cpu()),k
+        ids[name]=digest(states[name])
+    write(out/"model-identities.json",ids)
+    live=TrainingLive(e,STAGE,coeff,[])
+    import random
+    from f1_mjdata_contract import metadata,inactive,exact
+    from score_endpoint import score
+    scope=Path(__file__).resolve().parent
+    assert ids['U']=='a4026430c821128e18a8f22f5531413dc393fa71d9f1483812b3ad928022569b'
+    import types
+    from contact_scale_qualify import measure as original_measure
+    def vertical_measure(tether):
+        point,_=original_measure(tether)
+        raw=tether.ctft_raw_force.copy()
+        raw[2]*=.25
+        tether.ctft_raw_force=raw
+        tether.force=raw*min(1.,10./max(np.linalg.norm(raw),1e-12))
+        return point,tether.force.copy()
+    def dump(path,x):
+        with gzip.open(path.with_suffix('.tmp'),'wb',compresslevel=1) as f:pickle.dump(x,f,protocol=5)
+        path.with_suffix('.tmp').rename(path)
+    def read(path):
+        with gzip.open(path,'rb') as f:return pickle.load(f)
+    def phys_restore(saved):
+        mask=mujoco.mjtState.mjSTATE_INTEGRATION
+        mujoco.mj_setState(m,d,saved['integration'],mask); skip=inactive(metadata(m,d))
+        for k,v in saved['mjdata_arrays'].items():
+            if k not in skip:
+                dest=getattr(d,k)
+                if dest.flags.writeable and dest.shape==v.shape:dest[...]=v
+        mujoco.mj_setState(m,d,saved['integration'],mask)
+        assert all(exact(v,getattr(d,k)) for k,v in saved['mjdata_arrays'].items() if k not in skip)
+        random.setstate(saved['python_rng']);np.random.set_state(saved['numpy_rng'])
+        torch.set_rng_state(saved['torch_rng']);torch.cuda.set_rng_state_all(saved['cuda_rng'])
+    def eq(a,b):
+        if isinstance(a,dict):return a.keys()==b.keys() and all(eq(a[k],b[k]) for k in a)
+        if isinstance(a,(list,tuple)):return len(a)==len(b) and all(eq(i,j) for i,j in zip(a,b))
+        if isinstance(a,np.ndarray):return np.array_equal(a,b,equal_nan=True)
+        return a==b
+    from source_qualify import capture_state
+    from quality import OnlineSupport
+    ph=e.trace.copy();assert len(ph)==600
+    tail=ph[-200:];weight=m.body_mass.sum()*np.linalg.norm(m.opt.gravity)
+    monitor=OnlineSupport(weight)
+    for row in ph:monitor.update(row['foot_normal_force_n'])
+    arr=lambda k:np.asarray([row[k] for row in tail])
+    yaw=np.unwrap(np.arctan2(arr('pelvis_matrix')[:,1,0],arr('pelvis_matrix')[:,0,0]))
+    quiet=dict(speed95_mps=float(np.percentile(np.linalg.norm(arr('qvel')[:,:2],axis=1),95)),root_path_m=float(np.linalg.norm(np.diff(arr('root')[:,:2],axis=0),axis=1).sum()),wrist_path_m=float(np.linalg.norm(np.diff(arr('wrist'),axis=0),axis=1).sum()),yaw_range_deg=float(np.rad2deg(np.ptp(yaw))),force_max=float(abs(arr('force')).max()),unsupported_ticks=int((arr('foot_normal_force_n').max(1)<.05*weight).sum()))
+    write(out/'quiet.json',quiet)
+    assert quiet['speed95_mps']<=.05 and quiet['root_path_m']<=.03 and quiet['wrist_path_m']<=.04 and quiet['yaw_range_deg']<=3 and quiet['force_max']==0 and quiet['unsupported_ticks']==0,'QUIET_SOURCE_UNQUALIFIED'
+    assert torch.equal(e.previous_z.reshape_as(e.standing),e.standing)
+    before=capture_state(e,e.previous_z,dict(source='original_reset_common_standing',time_s=float(e.tether.time)));before['online_support']=dict(vars(monitor))
+    dump(out/'common-source.gz',before)
+    live.sources={0:{'case':0}};live.cache['formal_native_source',0]={'states':{150:before},'physics':ph}
+    log=[]
+    prior=scope.parent/'ctft_quiet_01/paired'
+    old=read(prior/'common-source.gz')
+    assert all(eq(old[k],before[k]) for k in ['integration','mjdata_arrays','ctft_force_history'] if k in old and k!='mjdata_arrays')
+    before=old
+    live.cache['formal_native_source',0]['states'][150]=old
+    assert len(load(prior/'progress.json'))==3 and all(v['series'].startswith('B0-') for v in load(prior/'progress.json'))
+    states['keep']=torch.load(scope/'keep-actor.pt',map_location='cpu',weights_only=True)
+    ids['keep']=digest(states['keep']);assert ids['keep']==load(scope/'keep.json')['actor_sha']
+    for name in ['keep']:
+        for branch in ['no_force','continue','stop']:
+            series=f'{name}-{branch}';partner=dict(distance_m=.12 if branch=='stop' else .24,plateau_speed_mps=.08,accel_s=.5,hold_s=2.,stiffness=80.,direction_deg=0.)
+            spec=dict(parent='quiet-native-00',source=dict(case=0,control=150),mode=1,force=branch!='no_force',branch=branch,partner=partner)
+            agent._model._actor.load_state_dict(states[name],strict=True)
+            live.start(spec)
+            snap=live.snapshot()
+            live.restore(snap);phys_restore(snap)
+            tether=e.tether
+            tether.measure=types.MethodType(vertical_measure,tether)
+            e.trace=[];q0=d.qpos.copy();start=float(tether.time);cs=[];hard=None
+            assert np.array_equal(q0,before['mjdata_arrays']['qpos'])
+            charge('branches',1)
+            while not live.done:
+                i=live.i;obs=live.observation()
+                # Only the privileged uncapped world wrench changes; rotate the
+                # adjusted vector back into the original privileged body frame.
+                from agent import CRITIC_KEY
+                rotation=d.xmat[live.pelvis].reshape(3,3)
+                priv=obs[CRITIC_KEY].clone()
+                body=priv[0,-3:].detach().cpu().double().numpy()
+                world=rotation@body;world[2]*=.25
+                priv[0,-3:]=torch.as_tensor(rotation.T@world,dtype=priv.dtype,device=priv.device)
+                obs[CRITIC_KEY]=priv
+                z=live.command()
+                assert torch.equal(z,e.standing)
+                with torch.no_grad():a=agent.act(obs,z,mean=True)
+                c=dict(time=float(tether.time),action=a.cpu().numpy(),z=z.cpu().numpy());cs.append(c)
+                try:r=live.step(a,obs,z)
+                except UnsafePhysics as exc:hard=exc.row;break
+                c['reward_components']={k:v.item() for k,v in r['ctft_reward_components'].items()}
+                c['native_terms']={k:float(e.base.extras['aux_rewards'][k].reshape(-1)[0]) for k in coeff}
+                if i%100==0:assert shutil.disk_usage(scope).free>=100*2**30
+            packet=dict(spec=spec,initial_qpos=q0,start=start,model=name,model_sha=ids[name],physics=e.trace,controls=cs,contract=contract,hard=hard,vertical_scale=.25)
+            dump(out/(series+'.gz'),packet)
+            if branch=='no_force':assert not any(np.any(row['force']) for row in e.trace)
+            write(out/(series+'.json'),score(packet,m))
+            log.append(dict(series=series,controls=len(cs),ticks=len(e.trace),hard=hard is not None))
+            write(out/'progress.json',log)
+    write(out/'complete.json',log)
+    return dict(status='COMPLETE',branches=len(log),updates=0)
+
+def charge(key,n):
+    ctr[key]+=n
+    assert ctr[key]+previous[key]<=dict(ticks=20000,branches=6)[key]
+    if key=='branches' or ctr[key]%200==1:
+        # Persist the pending reservation, including abnormal process termination.
+        write(OUT/'cost.json',dict(ticks=ctr['ticks']+199,branches=ctr['branches'],seconds=time.monotonic()-zero))
+    assert time.monotonic()-zero<=limit
+if __name__=='__main__':
+    import mujoco
+    from resource_guard import check
+    mode=os.environ['DIAG_MODE'];OUT=Path(__file__).resolve().parent/mode
+    OUT.mkdir(exist_ok=False); zero=time.monotonic();ctr=dict(ticks=0,branches=0);previous=dict(ticks=0,branches=0)
+    for f in OUT.parent.glob('*/cost.json'):
+        if f.parent!=OUT and not f.parent.is_symlink():
+            for k in previous:previous[k]+=load(f).get(k,0)
+    limit=float(os.environ['DIAG_TIMEOUT'])
+    guard=check(OUT);write(OUT/'launch.json',dict(pid=os.getpid(),guard=guard,src=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),wall=time.time(),budget_s=limit))
+    os.environ.update(BFM_RECOVERY_OUTPUT=str(OUT),CCL_DEADLINE_MONOTONIC=str(zero+limit))
+    raw=mujoco.mj_step
+    def step(*a,**kw):
+        charge('ticks',int(kw.get('nstep',1)));return raw(*a,**kw)
+    mujoco.mj_step=step
+    import m10_physics,m10_stage
+    m10_stage.run_study=study;m10_physics.OUT=OUT
+    try:m10_physics.main()
+    finally:write(OUT/'cost.json',dict(**ctr,seconds=time.monotonic()-zero))

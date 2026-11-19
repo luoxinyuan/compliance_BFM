@@ -1,0 +1,16 @@
+{
+  "ancestors": [
+    "walk1_subject2",
+    "walk1_subject5",
+    "walk2_subject1",
+    "walk2_subject3",
+    "walk2_subject4",
+    "walk3_subject1",
+    "walk3_subject2",
+    "walk3_subject4",
+    "walk3_subject5",
+    "walk4_subject1"
+  ],
+  "samples": 40,
+  "max_B0_qPD_record_error_rad": 1.0505318641662598e-06
+}

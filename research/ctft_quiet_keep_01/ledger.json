@@ -1,0 +1,21 @@
+{
+  "jobs": {
+    "matched01/cost.json": {
+      "ticks": 5297,
+      "seconds": 230.0640647780092
+    },
+    "evaluation/cost.json": {
+      "ticks": 6601,
+      "branches": 3,
+      "seconds": 144.7518681229849
+    },
+    "matched02/cost.json": {
+      "ticks": 5297,
+      "seconds": 437.1073296070099
+    }
+  },
+  "all_physics_ticks": 17195,
+  "stage_bytes": 144125064,
+  "elapsed_upper_seconds": 1800,
+  "historical_project_aggregate": "not independently reconciled in this pilot"
+}

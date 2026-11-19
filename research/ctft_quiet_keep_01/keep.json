@@ -1,0 +1,45 @@
+{
+  "actor_sha": "ad0967e0b10e059bc1c9a8a9bb0b5e0a09d8935c7fb50242f18f60acc642c0c8",
+  "steps": [
+    {
+      "step": 1,
+      "quiet_loss": 5.643779277801514,
+      "native_actor_loss": 56920.8984375
+    },
+    {
+      "step": 2,
+      "quiet_loss": 5.666774272918701,
+      "native_actor_loss": 57072.8125
+    },
+    {
+      "step": 3,
+      "quiet_loss": 5.66677713394165,
+      "native_actor_loss": 57110.7109375
+    },
+    {
+      "step": 4,
+      "quiet_loss": 5.660009860992432,
+      "native_actor_loss": 56992.34765625
+    },
+    {
+      "step": 5,
+      "quiet_loss": 5.651205539703369,
+      "native_actor_loss": 56875.40625
+    },
+    {
+      "step": 6,
+      "quiet_loss": 5.623370170593262,
+      "native_actor_loss": 57084.48828125
+    },
+    {
+      "step": 7,
+      "quiet_loss": 5.587634563446045,
+      "native_actor_loss": 57143.953125
+    },
+    {
+      "step": 8,
+      "quiet_loss": 5.544559001922607,
+      "native_actor_loss": 57243.69140625
+    }
+  ]
+}
