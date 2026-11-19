@@ -1,0 +1,22 @@
+{
+  "warmup": {
+    "draws": 65536,
+    "release_draws": 25216,
+    "front": 3412,
+    "right": 2775,
+    "left": 3413,
+    "batches": 64,
+    "moving_loaded_min": 114,
+    "moving_loaded_max": 177
+  },
+  "actor": {
+    "draws": 65536,
+    "release_draws": 25216,
+    "right": 3065,
+    "left": 3097,
+    "front": 2990,
+    "batches": 64,
+    "moving_loaded_min": 129,
+    "moving_loaded_max": 162
+  }
+}
