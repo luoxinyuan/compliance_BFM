@@ -1,0 +1,122 @@
+[
+  {
+    "series": "00-continue",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 3224
+  },
+  {
+    "series": "00-no_force",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 3224
+  },
+  {
+    "series": "00-stop",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 2448
+  },
+  {
+    "series": "01-continue",
+    "max_force_mapping_residual_N": 3.552713678800501e-15,
+    "ticks": 2352
+  },
+  {
+    "series": "01-no_force",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 2352
+  },
+  {
+    "series": "01-stop",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 1968
+  },
+  {
+    "series": "02-continue",
+    "max_force_mapping_residual_N": 3.552713678800501e-15,
+    "ticks": 2676
+  },
+  {
+    "series": "02-no_force",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 2676
+  },
+  {
+    "series": "02-stop",
+    "max_force_mapping_residual_N": 1.7763568394002505e-15,
+    "ticks": 2148
+  },
+  {
+    "series": "04-continue",
+    "max_force_mapping_residual_N": 3.552713678800501e-15,
+    "ticks": 3264
+  },
+  {
+    "series": "04-no_force",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 3264
+  },
+  {
+    "series": "04-stop",
+    "max_force_mapping_residual_N": 3.552713678800501e-15,
+    "ticks": 2472
+  },
+  {
+    "series": "05-continue",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 2448
+  },
+  {
+    "series": "05-no_force",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 2448
+  },
+  {
+    "series": "05-stop",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 2020
+  },
+  {
+    "series": "06-continue",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 2828
+  },
+  {
+    "series": "06-no_force",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 2828
+  },
+  {
+    "series": "06-stop",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 2232
+  },
+  {
+    "series": "07-continue",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 3516
+  },
+  {
+    "series": "07-no_force",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 3516
+  },
+  {
+    "series": "07-stop",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 2612
+  },
+  {
+    "series": "08-continue",
+    "max_force_mapping_residual_N": 3.552713678800501e-15,
+    "ticks": 3624
+  },
+  {
+    "series": "08-no_force",
+    "max_force_mapping_residual_N": 0.0,
+    "ticks": 3624
+  },
+  {
+    "series": "08-stop",
+    "max_force_mapping_residual_N": 3.552713678800501e-15,
+    "ticks": 2668
+  }
+]

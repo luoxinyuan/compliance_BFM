@@ -1,0 +1,18 @@
+{
+  "original_vs_new_soft": {
+    "qpos": 3.3306690738754696e-16,
+    "qvel": 2.5091040356528538e-14,
+    "force": 0.0,
+    "torque": 0.0,
+    "foot_normal_force_n": 1.1482370609883219e-11
+  },
+  "original_vs_archived": {
+    "qpos": 0.0,
+    "qvel": 0.0,
+    "force": 0.0,
+    "torque": 0.0,
+    "foot_normal_force_n": 0.0
+  },
+  "exact_new_soft_controls": false,
+  "exact_new_soft_physics": false
+}
