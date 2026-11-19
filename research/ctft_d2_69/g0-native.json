@@ -1,0 +1,111 @@
+[
+  {
+    "case": 0,
+    "trajectory_sha": "0b4a53f6908b29f45673f2ab3704f9e2223bbfef12ee8b7676b0d3ae55f88d2a",
+    "actor_sha": "a4026430c821128e18a8f22f5531413dc393fa71d9f1483812b3ad928022569b",
+    "hard": true,
+    "end_s": 7.195000000000324,
+    "rows": 1439,
+    "root_path": 1.665122430394639,
+    "yaw": 21.941501476978843,
+    "reason": {
+      "ctft_stop_reason": "continuous_no_effective_support_gt_50ms",
+      "tilt_deg": 1.6359684395152685,
+      "height": 0.7594308434890832,
+      "joint_limit_excess_max_rad": 0.0,
+      "undesired_ground_contacts": 0,
+      "failed": false
+    }
+  },
+  {
+    "case": 1,
+    "trajectory_sha": "073b83511f6a4b0e96bdb9faec6ba9adaea1c8476f8b5d65419f05d50d31b7e6",
+    "actor_sha": "a4026430c821128e18a8f22f5531413dc393fa71d9f1483812b3ad928022569b",
+    "hard": false,
+    "end_s": 12.500000000001153,
+    "rows": 2500,
+    "root_path": 1.0228060649398725,
+    "yaw": 65.27460656504729,
+    "reason": null
+  },
+  {
+    "case": 2,
+    "trajectory_sha": "57e1474108a89b3181f239cf37cfed2e8e2269fd81d4ef81e5356b592c340118",
+    "actor_sha": "a4026430c821128e18a8f22f5531413dc393fa71d9f1483812b3ad928022569b",
+    "hard": true,
+    "end_s": 8.12500000000047,
+    "rows": 1625,
+    "root_path": 3.1164203827559924,
+    "yaw": 119.54199800014881,
+    "reason": {
+      "ctft_stop_reason": "continuous_no_effective_support_gt_50ms",
+      "tilt_deg": 6.461877266401949,
+      "height": 0.8067915087321742,
+      "joint_limit_excess_max_rad": 0.0,
+      "undesired_ground_contacts": 0,
+      "failed": false
+    }
+  },
+  {
+    "case": 4,
+    "trajectory_sha": "14d2e7f20e8331f456e54000a404b5cd803fe80b5f64bd5d0c94579af2da00a8",
+    "actor_sha": "a4026430c821128e18a8f22f5531413dc393fa71d9f1483812b3ad928022569b",
+    "hard": false,
+    "end_s": 12.500000000001153,
+    "rows": 2500,
+    "root_path": 0.5233088415007275,
+    "yaw": 13.851373799948425,
+    "reason": null
+  },
+  {
+    "case": 5,
+    "trajectory_sha": "494eee6651936a1e54c302cdb7c73fd00fcad4b69237213e270ba6314b4e162a",
+    "actor_sha": "a4026430c821128e18a8f22f5531413dc393fa71d9f1483812b3ad928022569b",
+    "hard": false,
+    "end_s": 12.500000000001153,
+    "rows": 2500,
+    "root_path": 0.9676264532807048,
+    "yaw": 138.57731434207196,
+    "reason": null
+  },
+  {
+    "case": 6,
+    "trajectory_sha": "1b46a714cced885a9e245ca76cd4211be4b88b736f0f6eb82c9083e67aa1d20e",
+    "actor_sha": "a4026430c821128e18a8f22f5531413dc393fa71d9f1483812b3ad928022569b",
+    "hard": false,
+    "end_s": 12.500000000001153,
+    "rows": 2500,
+    "root_path": 0.9371358824287185,
+    "yaw": 29.1380306619511,
+    "reason": null
+  },
+  {
+    "case": 7,
+    "trajectory_sha": "4e23c9a8e042a8fbd65fe1557130560fec95f738a606e28b204d5fc6166acbb4",
+    "actor_sha": "a4026430c821128e18a8f22f5531413dc393fa71d9f1483812b3ad928022569b",
+    "hard": false,
+    "end_s": 12.500000000001153,
+    "rows": 2500,
+    "root_path": 0.8610027528331506,
+    "yaw": 48.59454190004885,
+    "reason": null
+  },
+  {
+    "case": 8,
+    "trajectory_sha": "c5b66b8bb9c786eb3dd52d20dc6b5ce9a61f490c884112545179cf6eb77d3bed",
+    "actor_sha": "a4026430c821128e18a8f22f5531413dc393fa71d9f1483812b3ad928022569b",
+    "hard": true,
+    "end_s": 6.53000000000022,
+    "rows": 1306,
+    "root_path": 0.9052670974152721,
+    "yaw": 25.70804760313698,
+    "reason": {
+      "ctft_stop_reason": null,
+      "tilt_deg": 2.6371396718017635,
+      "height": 0.7352776806965609,
+      "joint_limit_excess_max_rad": 0.020110874501611975,
+      "undesired_ground_contacts": 0,
+      "failed": false
+    }
+  }
+]
