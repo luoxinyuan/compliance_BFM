@@ -1,0 +1,11 @@
+model,interval,coord,retraction_cm,peak_s,trough_s,root_delta_cm,shoulder_delta_cm,first_single_s,exchange_confirm_s
+rolling_continue,first_3s,world,2.9738398484532134,1.255,1.5,-0.2693491940664323,4.217413967828139,1.505,2.22
+rolling_continue,first_3s,shoulder_relative,8.806375031383878,1.215,2.96,37.023114977140935,42.71869178720292,1.505,2.22
+rolling_continue,before_first_sustained_single_support,world,2.9738398484532134,1.255,1.5,-0.2693491940664323,4.217413967828139,1.505,2.22
+rolling_continue,before_first_sustained_single_support,shoulder_relative,7.515935739654994,1.215,1.505,-0.40850162478699853,4.689500258853587,1.505,2.22
+rolling_continue,first_single_to_advancing_exchange,world,0.0,1.505,1.505,0.0,0.0,1.505,2.22
+rolling_continue,first_single_to_advancing_exchange,shoulder_relative,1.1204820427826223,2.08,2.22,3.227746231314723,3.085280760387939,1.505,2.22
+C32__speed0.15,first_3s,world,0.35349489332264783,2.725,2.97,0.6639157960308444,-0.30012241867395234,2.485,
+C32__speed0.15,first_3s,shoulder_relative,0.09819712802255909,2.775,2.95,0.45923228370168684,-0.2002115239367705,2.485,
+C32__speed0.15,before_first_sustained_single_support,world,0.021650241081616617,-0.0,0.19,0.003082675277313665,-0.02029744298074447,2.485,
+C32__speed0.15,before_first_sustained_single_support,shoulder_relative,0.008597168042107084,2.41,2.46,0.017214543127401852,0.05405480495831658,2.485,

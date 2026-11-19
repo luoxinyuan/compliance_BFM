@@ -1,0 +1,10 @@
+case,cmd,pair,verified_prefix_ticks
+01,early,continue/stop,300
+01,late,continue/stop,300
+01,unchanged,continue/stop,300
+02,early,continue/stop,300
+02,late,continue/stop,300
+02,unchanged,continue/stop,300
+03,early,continue/stop,300
+03,late,continue/stop,300
+03,unchanged,continue/stop,300

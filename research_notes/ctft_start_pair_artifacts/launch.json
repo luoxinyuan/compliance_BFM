@@ -1,0 +1,21 @@
+{
+  "pid": 982945,
+  "guard": {
+    "evidence_kind": "live",
+    "checked_unix": 1795073209.1929536,
+    "gpu_uuid": "GPU-3ae548cd-2131-2b5d-42ad-5d0f40ff9da0",
+    "total_mib": 73415,
+    "used_mib": 0,
+    "utilization_percent": 0,
+    "external_gpu_processes": {},
+    "allowed_owned_pids": [
+      982945
+    ],
+    "shared_disk_free_bytes": 248411848704,
+    "contract": "GPU0 exclusive project job +100GiB shared disk floor; no other processes touched",
+    "pass": true
+  },
+  "src": "035c8b3938ac4f168e8eb71e8c8b4d65415619d33f27cf6f453bdbe8e30761a1",
+  "wall": 1795073209.2403357,
+  "budget_s": 3300.0
+}

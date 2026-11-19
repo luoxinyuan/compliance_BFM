@@ -1,0 +1,137 @@
+[
+  {
+    "name": "01-continue-unchanged",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "01-continue-early",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "01-continue-late",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "01-stop-unchanged",
+    "hard": false,
+    "ticks": 1600
+  },
+  {
+    "name": "01-stop-early",
+    "hard": false,
+    "ticks": 1600
+  },
+  {
+    "name": "01-stop-late",
+    "hard": false,
+    "ticks": 1600
+  },
+  {
+    "name": "01-no_force-unchanged",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "01-no_force-early",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "01-no_force-late",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "02-continue-unchanged",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "02-continue-early",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "02-continue-late",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "02-stop-unchanged",
+    "hard": false,
+    "ticks": 1600
+  },
+  {
+    "name": "02-stop-early",
+    "hard": false,
+    "ticks": 1600
+  },
+  {
+    "name": "02-stop-late",
+    "hard": false,
+    "ticks": 1600
+  },
+  {
+    "name": "02-no_force-unchanged",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "02-no_force-early",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "02-no_force-late",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "03-continue-unchanged",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "03-continue-early",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "03-continue-late",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "03-stop-unchanged",
+    "hard": false,
+    "ticks": 1600
+  },
+  {
+    "name": "03-stop-early",
+    "hard": false,
+    "ticks": 1600
+  },
+  {
+    "name": "03-stop-late",
+    "hard": false,
+    "ticks": 1600
+  },
+  {
+    "name": "03-no_force-unchanged",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "03-no_force-early",
+    "hard": false,
+    "ticks": 1900
+  },
+  {
+    "name": "03-no_force-late",
+    "hard": false,
+    "ticks": 1900
+  }
+]
