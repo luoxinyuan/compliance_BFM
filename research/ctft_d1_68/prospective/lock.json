@@ -1,0 +1,357 @@
+{
+  "picks": [
+    {
+      "source": {
+        "case": 0,
+        "ancestor": "walk1_subject1",
+        "evidence_file": "source-00.pkl.gz",
+        "source_sha256": "c645046efac16ee6d5f6aabaaea931c8cc79271465a7e11f6a6f8ae6763b1c90"
+      },
+      "control": 269,
+      "speed": 0.13165464356330278,
+      "phase": [
+        true,
+        true
+      ],
+      "branches": {
+        "continue": {
+          "distance_m": 0.6893644857132076,
+          "plateau_speed_mps": 0.08,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 80.0,
+          "direction_deg": 6.06517223259743
+        },
+        "stop": {
+          "distance_m": 0.37915046714226425,
+          "plateau_speed_mps": 0.08,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 80.0,
+          "direction_deg": 6.06517223259743
+        },
+        "no_force": {
+          "distance_m": 0.6893644857132076,
+          "plateau_speed_mps": 0.08,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 80.0,
+          "direction_deg": 6.06517223259743
+        }
+      },
+      "history_partner": "train-family-0002-0"
+    },
+    {
+      "source": {
+        "case": 1,
+        "ancestor": "walk1_subject2",
+        "evidence_file": "source-01.pkl.gz",
+        "source_sha256": "c07d271d6fb4076442792dd8a9603231f628d5f5193ff71422e5a56dea31b95f"
+      },
+      "control": 302,
+      "speed": 0.055784507064901546,
+      "phase": [
+        true,
+        true
+      ],
+      "branches": {
+        "continue": {
+          "distance_m": 0.6801337936422029,
+          "plateau_speed_mps": 0.16,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 80.0,
+          "direction_deg": 13.033649007710508
+        },
+        "stop": {
+          "distance_m": 0.37407358650321165,
+          "plateau_speed_mps": 0.16,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 80.0,
+          "direction_deg": 13.033649007710508
+        },
+        "no_force": {
+          "distance_m": 0.6801337936422029,
+          "plateau_speed_mps": 0.16,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 80.0,
+          "direction_deg": 13.033649007710508
+        }
+      },
+      "history_partner": "train-family-0007-2"
+    },
+    {
+      "source": {
+        "case": 2,
+        "ancestor": "walk1_subject5",
+        "evidence_file": "source-02.pkl.gz",
+        "source_sha256": "61ebdc31753b4bd489df444de6016b9e1d9420e7d924d155228855e63aa95901"
+      },
+      "control": 110,
+      "speed": 0.01631016404728231,
+      "phase": [
+        true,
+        true
+      ],
+      "branches": {
+        "continue": {
+          "distance_m": 0.7049506555429083,
+          "plateau_speed_mps": 0.12,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": 4.682560961579949
+        },
+        "stop": {
+          "distance_m": 0.38772286054859956,
+          "plateau_speed_mps": 0.12,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": 4.682560961579949
+        },
+        "no_force": {
+          "distance_m": 0.7049506555429083,
+          "plateau_speed_mps": 0.12,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": 4.682560961579949
+        }
+      },
+      "history_partner": "train-family-0000-0"
+    },
+    {
+      "source": {
+        "case": 4,
+        "ancestor": "walk2_subject3",
+        "evidence_file": "source-04.pkl.gz",
+        "source_sha256": "ea76c258d2659d1a998f0d92a7227954d529ea9b0e4a96d03c900cfb43a7bb7b"
+      },
+      "control": 226,
+      "speed": 0.03800061979929518,
+      "phase": [
+        true,
+        true
+      ],
+      "branches": {
+        "continue": {
+          "distance_m": 0.7053531175497387,
+          "plateau_speed_mps": 0.08,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": -8.177295939684598
+        },
+        "stop": {
+          "distance_m": 0.38794421465235635,
+          "plateau_speed_mps": 0.08,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": -8.177295939684598
+        },
+        "no_force": {
+          "distance_m": 0.7053531175497387,
+          "plateau_speed_mps": 0.08,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": -8.177295939684598
+        }
+      },
+      "history_partner": "train-family-0000-1"
+    },
+    {
+      "source": {
+        "case": 5,
+        "ancestor": "walk2_subject4",
+        "evidence_file": "source-05.pkl.gz",
+        "source_sha256": "48f499f030f0a0aba27becab455b8a4311044ebfdc83ebb28969f3bbce921835"
+      },
+      "control": 282,
+      "speed": 0.04302470325474859,
+      "phase": [
+        true,
+        true
+      ],
+      "branches": {
+        "continue": {
+          "distance_m": 0.756120358388047,
+          "plateau_speed_mps": 0.16,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": 8.976474669569384
+        },
+        "stop": {
+          "distance_m": 0.41586619711342593,
+          "plateau_speed_mps": 0.16,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": 8.976474669569384
+        },
+        "no_force": {
+          "distance_m": 0.756120358388047,
+          "plateau_speed_mps": 0.16,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": 8.976474669569384
+        }
+      },
+      "history_partner": "train-family-0003-2"
+    },
+    {
+      "source": {
+        "case": 6,
+        "ancestor": "walk3_subject1",
+        "evidence_file": "source-06.pkl.gz",
+        "source_sha256": "e44b1c546954d602217fbf6ec627f696665c19ed31450bac87f9f03a0aaad40a"
+      },
+      "control": 363,
+      "speed": 0.14478525275651885,
+      "phase": [
+        true,
+        true
+      ],
+      "branches": {
+        "continue": {
+          "distance_m": 0.7962387376020983,
+          "plateau_speed_mps": 0.12,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": -13.951434714950846
+        },
+        "stop": {
+          "distance_m": 0.43793130568115407,
+          "plateau_speed_mps": 0.12,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": -13.951434714950846
+        },
+        "no_force": {
+          "distance_m": 0.7962387376020983,
+          "plateau_speed_mps": 0.12,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": -13.951434714950846
+        }
+      },
+      "history_partner": "train-family-0001-1"
+    },
+    {
+      "source": {
+        "case": 7,
+        "ancestor": "walk3_subject2",
+        "evidence_file": "source-07.pkl.gz",
+        "source_sha256": "5628564b00997f292762caa89133ef8e9c7393682b459256da34ca03c8f9a994"
+      },
+      "control": 241,
+      "speed": 0.1403023648716439,
+      "phase": [
+        true,
+        true
+      ],
+      "branches": {
+        "continue": {
+          "distance_m": 0.8061753512660215,
+          "plateau_speed_mps": 0.08,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": 11.923512344823163
+        },
+        "stop": {
+          "distance_m": 0.44339644319631183,
+          "plateau_speed_mps": 0.08,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": 11.923512344823163
+        },
+        "no_force": {
+          "distance_m": 0.8061753512660215,
+          "plateau_speed_mps": 0.08,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": 11.923512344823163
+        }
+      },
+      "history_partner": "train-family-0002-1"
+    },
+    {
+      "source": {
+        "case": 8,
+        "ancestor": "walk3_subject3",
+        "evidence_file": "source-08.pkl.gz",
+        "source_sha256": "4741546a26496f7898ff5c0fff8b06ac0d313109e50cc194587c6ceb8c8a09b8"
+      },
+      "control": 180,
+      "speed": 0.039502937325240885,
+      "phase": [
+        true,
+        true
+      ],
+      "branches": {
+        "continue": {
+          "distance_m": 0.8490374713326378,
+          "plateau_speed_mps": 0.08,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": -14.435182822569475
+        },
+        "stop": {
+          "distance_m": 0.46697060923295086,
+          "plateau_speed_mps": 0.08,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": -14.435182822569475
+        },
+        "no_force": {
+          "distance_m": 0.8490374713326378,
+          "plateau_speed_mps": 0.08,
+          "accel_s": 0.5,
+          "hold_s": 3.0,
+          "stiffness": 40.0,
+          "direction_deg": -14.435182822569475
+        }
+      },
+      "history_partner": "train-family-0006-2"
+    }
+  ],
+  "walking": {
+    "case": 0,
+    "control": 273,
+    "phase": [
+      true,
+      true
+    ],
+    "speed": 0.1450236721033914,
+    "z_file_sha256": "965a80f176245bda6fe503d3af9da15c6623a9a0510e131ee15e05fd6fca330a",
+    "source_sha": "c645046efac16ee6d5f6aabaaea931c8cc79271465a7e11f6a6f8ae6763b1c90"
+  },
+  "missing": [
+    [
+      3,
+      "no completed historical continue"
+    ]
+  ],
+  "first_event": "earliest measured failing stance by start then foot. select control immediately before stance, clamp to handoff; normal same ordering; no outcome-based reselection",
+  "d1": "continue failure, U/B0/T 20ms then U 2s total; no replacements",
+  "d2": "at source handoff from same actual history; one 1s fixed walking z versus standing, all three branches through release+4s; phase matched by loaded feet",
+  "branch_cap": 180,
+  "physics_cap": 1000000,
+  "stage_cap_s": 36000,
+  "output_cap_bytes": 103079215104,
+  "parent_cap": 12
+}
