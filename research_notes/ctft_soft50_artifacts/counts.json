@@ -1,0 +1,8 @@
+{
+  "candidate_physics_steps": 725760,
+  "actual_physics_steps": 4320,
+  "qualification_physics_steps": 0,
+  "reset_source_physics_steps": 0,
+  "searches": 216,
+  "native_inference_samples": 0
+}

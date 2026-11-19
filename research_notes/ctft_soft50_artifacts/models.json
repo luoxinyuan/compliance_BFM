@@ -1,0 +1,30 @@
+{
+  "native_initial": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/native-initial.pt",
+    "sha256": "d399174cc2ddbd3efb858953653c9134495070948341381565f5f918f58da5cd",
+    "runtime": "c1a8cc3e50d2258aa6afbf8d3ecf7b889c6250d6",
+    "iteration": null,
+    "role": "native independent reference"
+  },
+  "C32": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/native-contact-20261106/ppo-coordinate/last.pt",
+    "sha256": "39cd0db55fddb174de3f77104acbd8d7574fb3a5051f743e4ca39bb6b7d24ad0",
+    "runtime": "1b99576ebca9bfa2c221cc382714e1d6184f5040",
+    "iteration": 32,
+    "role": "native independent reference"
+  },
+  "I": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/m39a-demand-20261104/B-ppo-03/job/best.pt",
+    "sha256": "72877017c56fb9145e9fe6a016a06cd093e3ea5ba56302080132dffd57f8b32a",
+    "runtime": "6f1789269de53a428aa5f5383eff0adcf247c04d",
+    "iteration": 64,
+    "role": "frozen evaluation only"
+  },
+  "C0": {
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/bridge-v2-owned/runs/prior-recovery-20261105/correct-C0/C0.pt",
+    "sha256": "ffe0eb0666da12c99788e039061b27e8738051c276a3ca41bebf656d9a96352c",
+    "runtime": "f7559db0706fb19331aa153b2db7ea7b854be159",
+    "iteration": null,
+    "role": "frozen evaluation only"
+  }
+}

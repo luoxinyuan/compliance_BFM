@@ -1,0 +1,41 @@
+[
+  {
+    "name": "soft-start-72cm",
+    "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/ctft_soft50_01/video/soft-start-72cm.mp4",
+    "sha256": "1a6f323c24cc5fbf76dc21c865d04b50f33cb079d8d6da40314b4e7b59457a2b",
+    "frames": 295,
+    "fps": 25,
+    "duration": 11.8,
+    "seconds": 5.022096314991359,
+    "sides": [
+      {
+        "title": "Original #50 rolling feedback",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/ctft_soft50_01/paired02/baseline.json.gz",
+        "sha256": "f24e0d4aef3d99efec14953cc6551f075ff38480465101f52bf885270b634006"
+      },
+      {
+        "title": "50% command angle during first 0.5s",
+        "path": "/mnt/data/temp_user/yi.gao/projects/compliance_BFM/experiments/ctft_soft50_01/paired02/soft.json.gz",
+        "sha256": "d3e6c605ea09f5be42447227c6246d9899dea367200bd33b092edd9a28e79b25"
+      }
+    ],
+    "condition": {
+      "geometry": "wrist",
+      "enabled": true,
+      "distance": 0.72,
+      "ramp": 4.8,
+      "onset": 5.0,
+      "release": 11.8,
+      "end": 15.8,
+      "rotation_deg": 0.0,
+      "curvature": 0.0,
+      "heading_deg": 0.0,
+      "family": "walking",
+      "source": "standing",
+      "source_until": 4.0,
+      "total_cap": 10.0,
+      "anchor_mode": "onset_actual",
+      "handoff_time": 3.999999999999937
+    }
+  }
+]

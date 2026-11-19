@@ -1,0 +1,151 @@
+{
+ "early": {
+  "force": 3.9714453169586643,
+  "err": 3.4507410599433483,
+  "v95": 0.5498169040837756,
+  "lateral_v95": 0.4514451131915872,
+  "root_cm": -0.06712716021606072,
+  "wrist_cm": 5.239618900545895,
+  "root_path_cm": 1.1238738420423162,
+  "yaw_change": -3.831497100603216,
+  "wrist_lead_cm": 3.12384732085817
+ },
+ "move": {
+  "force": 6.098130000604756,
+  "err": 8.359186003572336,
+  "v95": 0.5650423015293956,
+  "lateral_v95": 0.2312434407330938,
+  "root_cm": 60.93964183191992,
+  "wrist_cm": 67.99368983328316,
+  "root_path_cm": 72.72998536011391,
+  "yaw_change": -7.128813608053895,
+  "wrist_lead_cm": 3.12384732085817
+ },
+ "hold": {
+  "force": 3.493130098086857,
+  "err": 4.381473517887503,
+  "v95": 0.021773129577997603,
+  "lateral_v95": 0.019289298409606043,
+  "root_cm": 0.2048007466157964,
+  "wrist_cm": 0.35602054079673096,
+  "root_path_cm": 0.815259674124719,
+  "yaw_change": 0.11011677269206643,
+  "wrist_lead_cm": -3.650289625920111
+ },
+ "release": {
+  "force": 0.0,
+  "err": null,
+  "v95": 0.16748956051679126,
+  "lateral_v95": 0.0789403494383629,
+  "root_cm": -2.1722917590731416,
+  "wrist_cm": -10.456794267752102,
+  "root_path_cm": 3.1668355858259876,
+  "yaw_change": 2.15451903715387,
+  "wrist_lead_cm": null
+ },
+ "contact": {
+  "force": 5.46247123272603,
+  "err": 7.414209087356135,
+  "v95": 0.49015580366361655,
+  "lateral_v95": 0.17986637357859922,
+  "root_cm": 61.14444257853572,
+  "wrist_cm": 68.34971037407989,
+  "root_path_cm": 73.54524503423862,
+  "yaw_change": -7.018696835361829,
+  "wrist_lead_cm": 3.12384732085817
+ },
+ "recoil": {
+  "world": 2.97383678660581,
+  "relative": 7.515933611475031
+ },
+ "first_single": 1.5,
+ "exchange": 2.215,
+ "stances": [
+  {
+   "foot": 0,
+   "start": 0,
+   "end_exclusive": 500,
+   "ticks": 500,
+   "duration_s": 2.5,
+   "qualified": true,
+   "measured": true,
+   "missing": 0,
+   "p95": 0.015020412157522206,
+   "path": 0.00775933810092174
+  },
+  {
+   "foot": 0,
+   "start": 547,
+   "end_exclusive": 704,
+   "ticks": 157,
+   "duration_s": 0.785,
+   "qualified": true,
+   "measured": true,
+   "missing": 0,
+   "p95": 0.02133051897360709,
+   "path": 0.006395884107363712
+  },
+  {
+   "foot": 0,
+   "start": 836,
+   "end_exclusive": 940,
+   "ticks": 104,
+   "duration_s": 0.52,
+   "qualified": true,
+   "measured": true,
+   "missing": 0,
+   "p95": 0.019277158168970496,
+   "path": 0.0039364296207137495
+  },
+  {
+   "foot": 0,
+   "start": 963,
+   "end_exclusive": 2360,
+   "ticks": 1397,
+   "duration_s": 6.985,
+   "qualified": true,
+   "measured": true,
+   "missing": 0,
+   "p95": 0.0035659049737404944,
+   "path": 0.016162461080728833
+  },
+  {
+   "foot": 1,
+   "start": 0,
+   "end_exclusive": 624,
+   "ticks": 624,
+   "duration_s": 3.12,
+   "qualified": true,
+   "measured": true,
+   "missing": 0,
+   "p95": 0.012942433648796815,
+   "path": 0.009936750957848744
+  },
+  {
+   "foot": 1,
+   "start": 701,
+   "end_exclusive": 848,
+   "ticks": 147,
+   "duration_s": 0.735,
+   "qualified": true,
+   "measured": true,
+   "missing": 0,
+   "p95": 0.01982927734917979,
+   "path": 0.006129363286784164
+  },
+  {
+   "foot": 1,
+   "start": 921,
+   "end_exclusive": 2360,
+   "ticks": 1439,
+   "duration_s": 7.195,
+   "qualified": true,
+   "measured": true,
+   "missing": 0,
+   "p95": 0.0027896402654407557,
+   "path": 0.012022841039036775
+  }
+ ],
+ "slip_pass": true,
+ "hard": null
+}
