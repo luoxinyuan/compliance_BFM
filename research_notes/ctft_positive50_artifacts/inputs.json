@@ -1,0 +1,51 @@
+{
+  "files": {
+    "runs/rolling-02/rolling_continue.json.gz": "6dca928debf10115250902a307fefd9ab016f57ae284761124d8ba866516d249",
+    "runs/rolling-02/rolling_continue-source-prefix.json.gz": "cc0bee86c849d31ed3d8b7ba6d72f47cfebfe82663d9c3a07ba0c9e858a7c8c8",
+    "runs/video-input/rolling_continue.json.gz": "67f9e736b45c5f68399080aa0fedc58d77981f459c9a44ec8b72284729cee7d6",
+    "runs/rolling-02/rolling_stop.json.gz": "a1ae5df524b066928238fb02fed6d114d75a861463c1a3d63f556fe2ffcbe041",
+    "runs/rolling-02/rolling_stop-source-prefix.json.gz": "7671c89c61e0837599d1527dbfcae634259033be8a162bc124ba3a36f8c870e6",
+    "runs/video-input/rolling_stop.json.gz": "0641a6514959046f40beab35e490ae2f81129fb092ec7ba0c69a584524d9560f",
+    "runs/qualification-03/I__speed0.15.json.gz": "9a40083666b3f2b18841007dc3f9c8f213efc1a111394bdc20f67bc1ca252e01",
+    "runs/qualification-03/I__speed0.15-source-prefix.json.gz": "522c70dabb4aefa5d5fc5a6ea54133aadc408aa609517d85ec2cdc38f83c0752",
+    "runs/video-input/I__speed0.15.json.gz": "3bae992cabf56fdf6f05ac97782d1b3a7740812608463c12a81f4239f7c48451",
+    "runs/qualification-03/C32__speed0.15.json.gz": "6377cba102c57f7cfb66b646f089857cce8f50b392bf3ebe13dc72914b875da1",
+    "runs/qualification-03/C32__speed0.15-source-prefix.json.gz": "264fd5b43321c03d4e5818b853419bfb631558472f5006a28a9a4969297cdfeb",
+    "runs/video-input/C32__speed0.15.json.gz": "4afdfd3e5407cea1debad361a1ecc690fc565c4eac886629d684a0380e251bda",
+    "runs/qualification-03/motion__speed0.15.json.gz": "69b6da5be97cdbfec2f24dadce047c89b70a440ef3d149caa3a4f802641cb57a",
+    "runs/qualification-03/motion__speed0.15-source-prefix.json.gz": "dfd8685684ef26365032e1c750ebc123f0f199e01e21db15753463b2eb7b2ea5",
+    "runs/video-input/motion__speed0.15.json.gz": "e95dee753697eee53b27f7faadb3f131361d6db74fd62e2a865fd703f163306f"
+  },
+  "episodes": {
+    "rolling_continue": {
+      "handoff": 3.999999999999937,
+      "frames": 2360,
+      "video_start": 3.004999999999958,
+      "video_input_matches_suffix": true
+    },
+    "rolling_stop": {
+      "handoff": 3.999999999999937,
+      "frames": 2100,
+      "video_start": 3.004999999999958,
+      "video_input_matches_suffix": true
+    },
+    "I__speed0.15": {
+      "handoff": 3.999999999999937,
+      "frames": 2360,
+      "video_start": 3.004999999999958,
+      "video_input_matches_suffix": true
+    },
+    "C32__speed0.15": {
+      "handoff": 3.999999999999937,
+      "frames": 2360,
+      "video_start": 3.004999999999958,
+      "video_input_matches_suffix": true
+    },
+    "motion__speed0.15": {
+      "handoff": 3.999999999999937,
+      "frames": 2360,
+      "video_start": 3.004999999999958,
+      "video_input_matches_suffix": true
+    }
+  }
+}

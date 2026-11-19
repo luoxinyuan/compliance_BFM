@@ -1,0 +1,50 @@
+{
+  "gpu_jobs": [
+    {
+      "ticks": 601,
+      "seconds": 115.6928562229732
+    },
+    {
+      "ticks": 5,
+      "seconds": 115.09448217900353
+    },
+    {
+      "ticks": 5,
+      "seconds": 111.39081254700432
+    },
+    {
+      "ticks": 11541,
+      "seconds": 122.74494160199538
+    }
+  ],
+  "gpu_wrapper_wall_s": 464.92309255097643,
+  "cpu_direct_replay_complete_ticks": 11540,
+  "cpu_start_order_probes_ticks": 10,
+  "physical_ticks_total": 23702,
+  "policy_updates": 0,
+  "search_queries": 0,
+  "distinct_exposed_parents": 1,
+  "control_rows": 2885,
+  "max_jacobian_dot_abs_difference_mps": 1.1102230246251565e-16,
+  "elapsed_since_preflight_s": 1135.057677745819,
+  "files_sha256": {
+    "LOCK.md": "f35a2feb105f8444f0cbfea20c269a25154e8c8d268bb40012a56e40a3d63ecf",
+    "replay.py": "ba1bb8379ebf18f5c5313ced443e04aa75097428955011e792ad5774c5e89bbf",
+    "low.py": "998c2f48bf016c54afe4746237bdca75e5361ca198fb26eecb6b304da46536cb",
+    "low2.py": "01f41b8bff7e806fdaefc4c489a7f63442d405b4423c796ef30c47fa9f181429",
+    "aux.py": "568489c59382fbdf555f4fb943f9ab3a9abd1aa9a65b78fb8d90a2b8a2f5c67e",
+    "aux2.py": "631aac9aef4e57f910755e748b5d616fc43f8fb8b860387ddf8b227cfc7fa133",
+    "aux3.py": "4f90080c446b7a4d00ec2d7e7e6793d64954894e0284cb35686456e395dc4731",
+    "analyze.py": "98669a27e4cb53e226a7d9ca755965c74c303f766286713b56b3d1a612ab7c42",
+    "write_report.py": "dec0a23c27ad01b17e0197870ae11c3ecd81a5d6bc9a738eba8b83e34201df84",
+    "decomposition.py": "b2eb80aef4f31ef471aaca0bc866143d53f17d2d8303f03bca66a228e6adea3d",
+    "inventory.py": "b2f7e4932b1ffa4f6dcf2b3ef153e575c17717bf692ae1d50d36564ca0c336b7",
+    "annotate.py": "e604adc74af50c986b5ba7b3cc9372a4555fd44274a69782571e3f2d51578708",
+    "phases.csv": "89b7cfa1e55500f95d871088d18181ebbb884fc544857214caa9ff2dc702fb42",
+    "stances.csv": "2b8ae71a1f1a07b0d75f145e6f54a986da3f1d0e095283c23057cc6b6ecfc8ab",
+    "windows.csv": "541c0108ea66d4f8278b2df68cd53e42e39a747dad547cc87d0a4bd43d5df0be",
+    "matched.csv": "6c2f1ef8c8893bb925b7d0f0e7c194c142dffe962024a69dcb067e5aabf98474",
+    "decomposition.csv": "2471ca09ac0a46d3b6871f392e9e7d547f1c5596a408e2b33b69ac91763fd3ea",
+    "inputs.json": "8e1fd94eb67eda18bc669e1f6e4c61eeef150ecb472353699c01855ed6d2cda3"
+  }
+}
