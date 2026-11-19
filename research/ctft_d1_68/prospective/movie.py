@@ -9,8 +9,9 @@ s=Path(sys.argv[1]);o=s/'videos';o.mkdir(exist_ok=False);clock=time.monotonic()
 m=mj.MjModel.from_xml_path(str(Path(os.environ['CTFT_PINNED_RUNTIME'])/'humanoidverse/data/robots/g1/scene_29dof_freebase_mujoco.xml'))
 d=mj.MjData(m); weight=m.body_mass.sum()*np.linalg.norm(m.opt.gravity);font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',15)
 case=json.loads((s/'lock/lock.json').read_text())['picks'][0]['source']['case'];movies=[]
-for group in ['branches','prior']:
+for group in ['branches','prior','stop-and-no-force']:
     plan=[('reference',b,'') for b in ['continue','stop','no_force']] if group=='branches' else [('reference','continue',''),('d2','continue','-walk')]
+    if group=='stop-and-no-force':plan=[(k,b,suffix) for b in ['stop','no_force'] for k,suffix in [('reference',''),('d2','-walk')]]
     paths=[s/k/f'{case:02d}-{b}{suffix}.gz' for k,b,suffix in plan]
     if not all(p.is_file() for p in paths):continue
     eps=[]

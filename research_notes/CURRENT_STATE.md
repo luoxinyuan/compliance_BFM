@@ -1,3 +1,7 @@
+## 2026-11-19 CTFT-D1 前瞻诊断完成
+
+8祖先24条冻结U参考在新进程逐tick复现。首动作3个可辨别祖先；1s walking提升推进但0/8推进匹配，无力也走。维持 UNDERPOWERED，不启动训练。见[前瞻结项与分阶段表](CTFT_D1_PROSPECTIVE_RESULTS.md)。
+
 ## 2026-11-19 CTFT-D1 诊断资格
 
 Issue 68：训练动作档案与终点U确定性接触参考身份不同，合格接触祖先 0/至少6。D1/D2未运行。见[逐事件表、证据与新增参考建议](CTFT_D1_DIAGNOSTIC_RESULTS.md)。

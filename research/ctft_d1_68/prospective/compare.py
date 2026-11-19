@@ -22,7 +22,7 @@ def metric(x):
 def rank(a,b):
     if a is None or b is None:return dict(status='INCOMPLETE_OR_UNMEASURED')
     if min(a['root'],b['root'])<.05 or any(abs(a[k]-b[k])>max(.03,.1*max(abs(a[k]),abs(b[k]))) for k in ['root','wrist']):return dict(status='UNMATCHED_PROGRESS')
-    clean,dirty=sorted([a,b],key=lambda v:v['p95']); comparable=(dirty['p95']>0 and (dirty['p95']-clean['p95'])>=.3*dirty['p95']) or (clean['p95']<=.05 and clean['path']<=.02 and (dirty['p95']>.05 or dirty['path']>.02))
+    clean,dirty=sorted([a,b],key=lambda v:(not(v['p95']<=.05 and v['path']<=.02),v['p95'])); comparable=(dirty['p95']>0 and (dirty['p95']-clean['p95'])>=.3*dirty['p95']) or (clean['p95']<=.05 and clean['path']<=.02 and (dirty['p95']>.05 or dirty['path']>.02))
     return dict(status='MATCHED' if comparable else 'EFFECT_UNRESOLVED',clean='baseline' if clean is a else 'alternative',proxy_weak_or_reversed=dirty['slip_cost']-clean['slip_cost']<=.1*abs(a['slip_cost']),aux_prefers_clean=clean['aux']>dirty['aux'])
 rows=[]
 for p in sorted((s/'d1').glob('*-U.gz')):
