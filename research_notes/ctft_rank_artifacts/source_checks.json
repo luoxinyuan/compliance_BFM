@@ -1,0 +1,149 @@
+{
+  "shared_original_snapshots": [
+    {
+      "state": "00-continue.state.gz",
+      "sha": "d7f866d9ca646468d3fb1a7e6c2b21d88e528d61d1c6fd40796367575c552e37",
+      "qpos": "9edfec9479b0ca04ff275fc51e74a2144edddd18423e6dcad67ff41554419c4d",
+      "qvel": "cb4f67027abea0c2baae6320d77a41205c660280cb76e70803ddc8725c04a242"
+    },
+    {
+      "state": "00-no_force.state.gz",
+      "sha": "73ab74b7c374ec1f9bac91864b2692be494d9fc56ca180485c6f05b8aa8f4b1f",
+      "qpos": "9edfec9479b0ca04ff275fc51e74a2144edddd18423e6dcad67ff41554419c4d",
+      "qvel": "cb4f67027abea0c2baae6320d77a41205c660280cb76e70803ddc8725c04a242"
+    },
+    {
+      "state": "00-stop.state.gz",
+      "sha": "b815ed655194d615a4a117e09efa08e2fb5c3766580b0c88d09e4283dc0c88c8",
+      "qpos": "9edfec9479b0ca04ff275fc51e74a2144edddd18423e6dcad67ff41554419c4d",
+      "qvel": "cb4f67027abea0c2baae6320d77a41205c660280cb76e70803ddc8725c04a242"
+    },
+    {
+      "state": "01-continue.state.gz",
+      "sha": "f42c66f6c24ea8726328f0f0cae7f90188c02ba85996778d1e4946e450b68ab4",
+      "qpos": "a1bfa75e274683bdc105ad8284a6b073cc78590f2848682c6d0a2405102c0751",
+      "qvel": "7025af4c975c331bfea63a46c01b7f76ed3b5001d08d91be32feea9c0362ee24"
+    },
+    {
+      "state": "01-no_force.state.gz",
+      "sha": "6557d69e4ebb74ada3c511fb8a059b8aaa2d5f776858f6df52e639317c874479",
+      "qpos": "a1bfa75e274683bdc105ad8284a6b073cc78590f2848682c6d0a2405102c0751",
+      "qvel": "7025af4c975c331bfea63a46c01b7f76ed3b5001d08d91be32feea9c0362ee24"
+    },
+    {
+      "state": "01-stop.state.gz",
+      "sha": "00492cafd3db9461ffa69cd5fc526c3ab9ad2c57fadd99c3d5212e5b6d82a142",
+      "qpos": "a1bfa75e274683bdc105ad8284a6b073cc78590f2848682c6d0a2405102c0751",
+      "qvel": "7025af4c975c331bfea63a46c01b7f76ed3b5001d08d91be32feea9c0362ee24"
+    },
+    {
+      "state": "02-continue.state.gz",
+      "sha": "b1e67bd902b979d02e9c5cc2cca6a252b9d9d643f64c121cd93992b462316d13",
+      "qpos": "b33bdfc9519557b2cc71ad7bc438fd467ec4d288700c59d02093925682ba78a6",
+      "qvel": "f6fd5d90f24e5dfd0e8fe0d7015c20199e1dc0bd6a2c07113533d2fd9158197b"
+    },
+    {
+      "state": "02-no_force.state.gz",
+      "sha": "f6f2ed5307aef2522a19b4169e83e14af883fbd0416415ac77374a5afbe7aacb",
+      "qpos": "b33bdfc9519557b2cc71ad7bc438fd467ec4d288700c59d02093925682ba78a6",
+      "qvel": "f6fd5d90f24e5dfd0e8fe0d7015c20199e1dc0bd6a2c07113533d2fd9158197b"
+    },
+    {
+      "state": "02-stop.state.gz",
+      "sha": "89687ae3872c417746927b184535ee4ee521e13210b1df30d07f59cfc637f5c8",
+      "qpos": "b33bdfc9519557b2cc71ad7bc438fd467ec4d288700c59d02093925682ba78a6",
+      "qvel": "f6fd5d90f24e5dfd0e8fe0d7015c20199e1dc0bd6a2c07113533d2fd9158197b"
+    },
+    {
+      "state": "04-continue.state.gz",
+      "sha": "3cf2d0c6da4419e37b092ce7d15f38d67197045cdd0e4f78c2dfc26991e72e85",
+      "qpos": "61b3d6bec395229d87c93e5f3e1ad42db13881582e4679909d0258e681985ded",
+      "qvel": "876c24c36a988706554bff10273133fb84a17a3bb55b570652d7774d54196155"
+    },
+    {
+      "state": "04-no_force.state.gz",
+      "sha": "ef93c8b59cae772a9a9eb6c7d3b7b9385952807011b50014fd669a572931e89c",
+      "qpos": "61b3d6bec395229d87c93e5f3e1ad42db13881582e4679909d0258e681985ded",
+      "qvel": "876c24c36a988706554bff10273133fb84a17a3bb55b570652d7774d54196155"
+    },
+    {
+      "state": "04-stop.state.gz",
+      "sha": "a9a8b6aa8c7631f39a08b6712f94f19aa5d371de628568740d8607bf9cdfd5b9",
+      "qpos": "61b3d6bec395229d87c93e5f3e1ad42db13881582e4679909d0258e681985ded",
+      "qvel": "876c24c36a988706554bff10273133fb84a17a3bb55b570652d7774d54196155"
+    },
+    {
+      "state": "05-continue.state.gz",
+      "sha": "6cb10e8a758bf9714f46bbd29565764d6da6232829990db76d9294d277958655",
+      "qpos": "09ccd4d3c4ade2cdb57d40334da22c058dfc47bf6d7424d42b0cade9c5759737",
+      "qvel": "011773728e8b40e1b7923d98383c154479bd01660e439a5a30ac45b6f444011a"
+    },
+    {
+      "state": "05-no_force.state.gz",
+      "sha": "f3a9ab4dc2b4ba10f58b83a78f167dfb28fc7d343c7017c27c36630c0751504b",
+      "qpos": "09ccd4d3c4ade2cdb57d40334da22c058dfc47bf6d7424d42b0cade9c5759737",
+      "qvel": "011773728e8b40e1b7923d98383c154479bd01660e439a5a30ac45b6f444011a"
+    },
+    {
+      "state": "05-stop.state.gz",
+      "sha": "7b5d61f7b21f062a03cad831e22f8909871a3c4e696ed99a7c488669c84b7da0",
+      "qpos": "09ccd4d3c4ade2cdb57d40334da22c058dfc47bf6d7424d42b0cade9c5759737",
+      "qvel": "011773728e8b40e1b7923d98383c154479bd01660e439a5a30ac45b6f444011a"
+    },
+    {
+      "state": "06-continue.state.gz",
+      "sha": "add9a8b6bd9804faa97f202b373f40f2b0fbc14b33ce86ad1a5dcde4e0fe32df",
+      "qpos": "cf51f77dbee12aa8b370176505e95f273e3129c89bee52ec5279199b97bc3d8a",
+      "qvel": "f0dc423b59be661106b855d986a8d4ace6cf0dd560854709eac18ab1cd79b1a4"
+    },
+    {
+      "state": "06-no_force.state.gz",
+      "sha": "141814d7dfd858d5fc1508cd91f7099d1fa55e07ab401dcfc186af4dae9fa193",
+      "qpos": "cf51f77dbee12aa8b370176505e95f273e3129c89bee52ec5279199b97bc3d8a",
+      "qvel": "f0dc423b59be661106b855d986a8d4ace6cf0dd560854709eac18ab1cd79b1a4"
+    },
+    {
+      "state": "06-stop.state.gz",
+      "sha": "32979e328a44752a12a244057e5ad8559736653b622e673f368c831aa86cfdef",
+      "qpos": "cf51f77dbee12aa8b370176505e95f273e3129c89bee52ec5279199b97bc3d8a",
+      "qvel": "f0dc423b59be661106b855d986a8d4ace6cf0dd560854709eac18ab1cd79b1a4"
+    },
+    {
+      "state": "07-continue.state.gz",
+      "sha": "52f41d7197c4c69361d7734baf6595415ea3b9e62eea15bfbb123ca386c24345",
+      "qpos": "4bd83e131c5840b3a001c966b35ef264fdfeadfd6abac57037ffc9eb9df3dd43",
+      "qvel": "18c6e4d63b88ffb2448d1c3e5bd5204381d39d932bba57540496d0d829e20fd3"
+    },
+    {
+      "state": "07-no_force.state.gz",
+      "sha": "4a4fb33eb9062302679cbe97b8b3dd968537b8914ace9e2d2f157219d19df43a",
+      "qpos": "4bd83e131c5840b3a001c966b35ef264fdfeadfd6abac57037ffc9eb9df3dd43",
+      "qvel": "18c6e4d63b88ffb2448d1c3e5bd5204381d39d932bba57540496d0d829e20fd3"
+    },
+    {
+      "state": "07-stop.state.gz",
+      "sha": "030457a133cbeec9fec37ff6d345ebc3ccb022a58ef5ce7e17b5152aedc72c51",
+      "qpos": "4bd83e131c5840b3a001c966b35ef264fdfeadfd6abac57037ffc9eb9df3dd43",
+      "qvel": "18c6e4d63b88ffb2448d1c3e5bd5204381d39d932bba57540496d0d829e20fd3"
+    },
+    {
+      "state": "08-continue.state.gz",
+      "sha": "7b690e3b5f0b2f7ee395f24d98052ad00ff7dad048044d3c345fece947f881b0",
+      "qpos": "6dc1bde49fc6689baaf6c5361dffa326fd9b264bc1cbf47c5a7a203f743989f5",
+      "qvel": "44d2aa6b689c941d4911a56cb3d574f645cd747c4883b93e8e1c3ab946908612"
+    },
+    {
+      "state": "08-no_force.state.gz",
+      "sha": "0a44c8d0c7edee27e2ea7fa8bf1a6b53ecfdc99e73e56b85ba8c46a0c4874763",
+      "qpos": "6dc1bde49fc6689baaf6c5361dffa326fd9b264bc1cbf47c5a7a203f743989f5",
+      "qvel": "44d2aa6b689c941d4911a56cb3d574f645cd747c4883b93e8e1c3ab946908612"
+    },
+    {
+      "state": "08-stop.state.gz",
+      "sha": "d3b1a1f044eec1e233dbd9cd422d7d8717df6cb99e3fb3e8890138abd3661078",
+      "qpos": "6dc1bde49fc6689baaf6c5361dffa326fd9b264bc1cbf47c5a7a203f743989f5",
+      "qvel": "44d2aa6b689c941d4911a56cb3d574f645cd747c4883b93e8e1c3ab946908612"
+    }
+  ],
+  "quiet_qpos_qvel_equal": true
+}
